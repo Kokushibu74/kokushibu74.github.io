@@ -46,7 +46,7 @@
 </head>
 <body class="selection:bg-[#FFB51B] selection:text-black min-h-screen flex flex-col justify-between">
 
-  <!-- Top Navigation (Samsung Galaxy A34 Mobile-First Optimized) -->
+  <!-- Top Navigation -->
   <header class="fixed top-0 inset-x-0 z-40 bg-[#07080C]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-2">
@@ -73,11 +73,11 @@
   </footer>
 
   <!-- ==========================================
-       WORDPRESS-STYLE VISUAL CMS MODAL (/admin or #admin)
+       WORDPRESS-STYLE VISUAL CMS MODAL
        ========================================== -->
   <div id="admin-overlay" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl overflow-y-auto">
     
-    <!-- 1. PASSWORD LOGIN SCREEN (SHA-256 Protected) -->
+    <!-- 1. PASSWORD LOGIN SCREEN -->
     <div id="admin-login-box" class="min-h-screen flex items-center justify-center p-4">
       <div class="bg-[#11141C] border border-white/15 w-full max-w-md rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl text-center">
         <div class="w-14 h-14 rounded-2xl bg-[#FFB51B]/10 border border-[#FFB51B]/30 flex items-center justify-center mx-auto text-2xl">
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <!-- 2. FULL VISUAL GUI DASHBOARD (WordPress Style) -->
+    <!-- 2. FULL VISUAL GUI DASHBOARD -->
     <div id="admin-dashboard-box" class="hidden max-w-4xl mx-auto p-4 sm:p-6 space-y-6 pb-28">
       <!-- Top Sticky Bar -->
       <div class="sticky top-2 z-30 bg-[#161B26]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
@@ -125,41 +125,22 @@
       <!-- TAB 1: HERO & PHOTO -->
       <div id="tab-hero" class="cms-tab-content bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
         <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">1. Hero Profile & Picture</h4>
-        
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs text-zinc-400 block mb-1">Display Name (Navbar & Footer)</label>
-            <input id="inp-name" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" />
-          </div>
-          <div>
-            <label class="text-xs text-zinc-400 block mb-1">Top Badge Text</label>
-            <input id="inp-badge" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" />
-          </div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Display Name</label><input id="inp-name" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Top Badge Text</label><input id="inp-badge" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs text-zinc-400 block mb-1">Hero Main Heading (Line 1)</label>
-            <input id="inp-title1" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" />
-          </div>
-          <div>
-            <label class="text-xs text-zinc-400 block mb-1">Hero Highlight Heading (Colored)</label>
-            <input id="inp-title2" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" />
-          </div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Hero Main Heading</label><input id="inp-title1" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Hero Highlight Heading</label><input id="inp-title2" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
         </div>
-
         <div>
           <label class="text-xs text-zinc-400 block mb-1">About / Bio Description</label>
           <textarea id="inp-bio" rows="3" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white"></textarea>
         </div>
-
         <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-3">
           <label class="text-xs font-bold text-[#FFB51B] block">📸 Profile Picture (Upload from Gallery or Path)</label>
-          <input id="inp-img-path" type="text" placeholder="profile.jpg or URL" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white font-mono" />
-          <div class="flex items-center gap-3 pt-1">
-            <input id="inp-img-file" type="file" accept="image/*" class="text-xs text-zinc-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#FFB51B] file:text-black" onchange="handleImageUpload(event)" />
-          </div>
-          <p class="text-[11px] text-zinc-400">টিপস: সরাসরি ফোন গ্যালারি থেকে যেকোনো ছবি সিলেক্ট করলে সেটি সাথে সাথে সেভ হয়ে যাবে।</p>
+          <input id="inp-img-path" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white font-mono" />
+          <input id="inp-img-file" type="file" accept="image/*" class="text-xs text-zinc-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#FFB51B] file:text-black" onchange="handleImageUpload(event)" />
         </div>
       </div>
 
@@ -169,29 +150,20 @@
           <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">2. Social Media Buttons</h4>
           <button onclick="addSocialButton()" class="px-3 py-1.5 rounded-xl bg-[#FFB51B] text-black font-bold text-xs">+ Add New Button</button>
         </div>
-        <p class="text-xs text-zinc-400">নোট: WhatsApp বাটনে কোনো ফোন নম্বর প্রকাশ করা হয়নি, শুধু ক্লিন বাটন রাখা হয়েছে।</p>
-        <div id="cms-socials-list" class="space-y-3">
-          <!-- Rendered via JS -->
-        </div>
+        <div id="cms-socials-list" class="space-y-3"></div>
       </div>
 
-      <!-- TAB 3: SECTIONS & ORDER (ADD, EDIT, DELETE, MOVE) -->
+      <!-- TAB 3: SECTIONS & ORDER -->
       <div id="tab-sections" class="cms-tab-content hidden bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">3. Page Sections Order & Custom Sections</h4>
-            <p class="text-xs text-zinc-400">যেকোনো সেকশন উপরে-নিচে সরান, লুকান অথবা নতুন কাস্টম সেকশন যোগ করুন।</p>
-          </div>
+          <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">3. Page Sections Order</h4>
           <button onclick="addCustomSection()" class="px-4 py-2 rounded-xl bg-[#FFB51B] text-black font-extrabold text-xs">+ Add Custom Section</button>
         </div>
-        <div id="cms-sections-list" class="space-y-3">
-          <!-- Rendered via JS -->
-        </div>
+        <div id="cms-sections-list" class="space-y-3"></div>
       </div>
 
       <!-- TAB 4: SKILLS & PROJECTS -->
       <div id="tab-items" class="cms-tab-content hidden space-y-6">
-        <!-- Skills Visual Manager -->
         <div class="bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
           <div class="flex items-center justify-between">
             <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">⚡ Skills Cards</h4>
@@ -199,8 +171,6 @@
           </div>
           <div id="cms-skills-list" class="space-y-3"></div>
         </div>
-
-        <!-- Projects Visual Manager -->
         <div class="bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
           <div class="flex items-center justify-between">
             <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">🚀 Featured Projects</h4>
@@ -210,7 +180,7 @@
         </div>
       </div>
 
-      <!-- TAB 5: THEME, COLORS & FONTS -->
+      <!-- TAB 5: THEME & FONTS -->
       <div id="tab-theme" class="cms-tab-content hidden bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
         <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">5. Colors, Fonts & Background</h4>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -227,34 +197,21 @@
             <input id="inp-text-color" type="color" class="w-full h-12 rounded-xl cursor-pointer bg-transparent" />
           </div>
         </div>
-
         <div>
           <label class="text-xs text-zinc-400 block mb-2">Website Font Family</label>
           <select id="inp-font" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3.5 text-xs text-white">
-            <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Modern Tech)</option>
-            <option value="'Poppins', sans-serif">Poppins (Clean & Bold)</option>
-            <option value="'Inter', sans-serif">Inter (Minimalist)</option>
-            <option value="'JetBrains Mono', monospace">JetBrains Mono (Developer Terminal)</option>
+            <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Inter', sans-serif">Inter</option>
+            <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
           </select>
         </div>
       </div>
-
     </div>
   </div>
 
   <script>
-    // =========================================================
-    // SECURITY: SHA-256 HASH OF PASSWORD (No Plaintext in HTML)
-    // Hash corresponds to your password.
-    // =========================================================
-    const PROTECTED_PASS_HASH = "e2f8f13c7d85865d4f7b16a3f0393b025216f4f777688a1d7c068808f17477a1";
-
-    async function computeSHA256(str) {
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-    }
-
-    const STORAGE_KEY = "shihab_portfolio_cms_final_v1";
+    const STORAGE_KEY = "shihab_portfolio_cms_final_v13";
 
     const DEFAULT_STATE = {
       name: "SHIHAB",
@@ -262,7 +219,7 @@
       title1: "Hi, I'm Shihab.",
       title2: "One builder. Every system.",
       bio: "AI Developer, Programmer & System Builder from Dhaka, Bangladesh. Building multi-AI agents, automated workflows, Lofi music engines, and high-performance web applications.",
-      image: "profile.jpg",
+      image: "storage/pictures/1790523232314.jpg",
       theme: {
         bgColor: "#07080C",
         accentColor: "#FFB51B",
@@ -298,7 +255,6 @@
 
     let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
 
-    // Apply Theme & Render Full Page
     function renderWebsite() {
       document.documentElement.style.setProperty("--bg-color", state.theme.bgColor);
       document.documentElement.style.setProperty("--accent-color", state.theme.accentColor);
@@ -311,13 +267,11 @@
       const waObj = state.socials.find(s => s.name.toLowerCase().includes("whatsapp"));
       if (waObj) document.getElementById("top-wa-btn").href = waObj.url;
 
-      // Render Navbar Links
       const navLinks = document.getElementById("nav-links");
       navLinks.innerHTML = state.sections.filter(s => s.enabled).map(s => `
         <a href="#sec-${s.id}" class="hover:text-white transition">${s.title}</a>
       `).join("");
 
-      // Render Main Sections in User-Defined Order
       const wrapper = document.getElementById("sections-wrapper");
       wrapper.innerHTML = state.sections.filter(s => s.enabled).map(sec => {
         if (sec.type === "hero") {
@@ -352,7 +306,6 @@
             </section>
           `;
         }
-
         if (sec.type === "socials") {
           return `
             <section id="sec-${sec.id}" class="pt-10 border-t border-white/10 space-y-6">
@@ -372,7 +325,6 @@
             </section>
           `;
         }
-
         if (sec.type === "skills") {
           return `
             <section id="sec-${sec.id}" class="pt-12 border-t border-white/10 space-y-8">
@@ -392,7 +344,6 @@
             </section>
           `;
         }
-
         if (sec.type === "projects") {
           return `
             <section id="sec-${sec.id}" class="pt-12 border-t border-white/10 space-y-8">
@@ -417,14 +368,12 @@
             </section>
           `;
         }
-
         if (sec.type === "contact") {
           return `
             <section id="sec-${sec.id}" class="pt-12 border-t border-white/10 text-center space-y-6 max-w-2xl mx-auto">
               <div class="space-y-2">
                 <span class="text-xs font-mono uppercase tracking-widest accent-text font-bold">Direct Reach</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white">${sec.title}</h2>
-                <p class="text-xs sm:text-sm text-zinc-400">যেকোনো প্রজেক্ট বা কোলাবোরেশনের জন্য নিচের সোশ্যাল মাধ্যমে সরাসরি মেসেজ দাও।</p>
               </div>
               <div class="flex flex-wrap justify-center gap-3">
                 ${state.socials.map(s => `
@@ -436,7 +385,6 @@
             </section>
           `;
         }
-
         if (sec.type === "custom") {
           return `
             <section id="sec-${sec.id}" class="pt-12 border-t border-white/10 space-y-4">
@@ -448,9 +396,7 @@
       }).join("");
     }
 
-    // ==========================================
-    // CMS FUNCTIONS (Visual GUI Builder)
-    // ==========================================
+    // CMS FUNCTIONS
     function switchTab(tabId) {
       document.querySelectorAll(".cms-tab-content").forEach(el => el.classList.add("hidden"));
       document.getElementById(tabId).classList.remove("hidden");
@@ -469,7 +415,7 @@
       document.getElementById("inp-title1").value = state.title1;
       document.getElementById("inp-title2").value = state.title2;
       document.getElementById("inp-bio").value = state.bio;
-      document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo (Base64)" : state.image;
+      document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo" : state.image;
 
       document.getElementById("inp-bg-color").value = state.theme.bgColor;
       document.getElementById("inp-accent-color").value = state.theme.accentColor;
@@ -486,10 +432,10 @@
       const box = document.getElementById("cms-socials-list");
       box.innerHTML = state.socials.map((s, i) => `
         <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center">
-          <input type="text" value="${s.icon}" onchange="state.socials[${i}].icon=this.value" class="sm:col-span-1 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-center text-sm" placeholder="Icon" />
-          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-3 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-white font-bold" placeholder="Platform Name" />
-          <input type="text" value="${s.sub || ''}" onchange="state.socials[${i}].sub=this.value" class="sm:col-span-3 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300" placeholder="Subtitle (e.g. Direct Chat)" />
-          <input type="text" value="${s.url}" onchange="state.socials[${i}].url=this.value" class="sm:col-span-4 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" placeholder="URL" />
+          <input type="text" value="${s.icon}" onchange="state.socials[${i}].icon=this.value" class="sm:col-span-1 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-center text-sm" />
+          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-3 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-white font-bold" />
+          <input type="text" value="${s.sub || ''}" onchange="state.socials[${i}].sub=this.value" class="sm:col-span-3 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300" />
+          <input type="text" value="${s.url}" onchange="state.socials[${i}].url=this.value" class="sm:col-span-4 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" />
           <button onclick="state.socials.splice(${i},1);renderSocialsCMS();" class="sm:col-span-1 py-2 rounded-xl bg-rose-500/20 text-rose-400 text-xs font-bold">🗑️</button>
         </div>
       `).join("");
@@ -508,7 +454,6 @@
             <div class="flex items-center gap-2.5">
               <input type="checkbox" ${sec.enabled ? 'checked' : ''} onchange="state.sections[${i}].enabled=this.checked" class="w-4 h-4 accent-[#FFB51B]" />
               <input type="text" value="${sec.title}" onchange="state.sections[${i}].title=this.value" class="bg-[#07080C] border border-white/15 rounded-xl px-3 py-1.5 text-xs text-white font-bold" />
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-zinc-300 uppercase">${sec.type}</span>
             </div>
             <div class="flex items-center gap-1.5">
               <button onclick="moveSection(${i}, -1)" class="px-2.5 py-1 rounded-lg bg-zinc-800 text-white text-xs">⬆️</button>
@@ -516,9 +461,7 @@
               ${sec.type === 'custom' ? `<button onclick="state.sections.splice(${i},1);renderSectionsCMS();" class="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-400 text-xs">🗑️</button>` : ''}
             </div>
           </div>
-          ${sec.type === 'custom' ? `
-            <textarea rows="3" onchange="state.sections[${i}].content=this.value" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" placeholder="Write section content here...">${sec.content || ''}</textarea>
-          ` : ''}
+          ${sec.type === 'custom' ? `<textarea rows="3" onchange="state.sections[${i}].content=this.value" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white">${sec.content || ''}</textarea>` : ''}
         </div>
       `).join("");
     }
@@ -533,13 +476,7 @@
     }
 
     function addCustomSection() {
-      state.sections.push({
-        id: "custom-" + Date.now(),
-        type: "custom",
-        title: "New Custom Section",
-        content: "এখানে আপনার নতুন সেকশনের বিস্তারিত লিখুন...",
-        enabled: true
-      });
+      state.sections.push({ id: "custom-" + Date.now(), type: "custom", title: "New Section", content: "Details...", enabled: true });
       renderSectionsCMS();
     }
 
@@ -567,9 +504,9 @@
       box.innerHTML = state.projects.map((p, i) => `
         <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <input type="text" value="${p.tag}" onchange="state.projects[${i}].tag=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-[#FFB51B] font-mono" placeholder="TAG" />
-            <input type="text" value="${p.name}" onchange="state.projects[${i}].name=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-white font-bold" placeholder="Project Name" />
-            <input type="text" value="${p.link}" onchange="state.projects[${i}].link=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-zinc-300 font-mono" placeholder="Link URL" />
+            <input type="text" value="${p.tag}" onchange="state.projects[${i}].tag=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-[#FFB51B] font-mono" />
+            <input type="text" value="${p.name}" onchange="state.projects[${i}].name=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-white font-bold" />
+            <input type="text" value="${p.link}" onchange="state.projects[${i}].link=this.value" class="bg-[#07080C] border border-white/15 rounded-xl p-2 text-xs text-zinc-300 font-mono" />
           </div>
           <div class="flex gap-2">
             <textarea rows="2" onchange="state.projects[${i}].desc=this.value" class="flex-1 bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300">${p.desc}</textarea>
@@ -580,7 +517,7 @@
     }
 
     function addProjectItem() {
-      state.projects.push({ tag: "PROJECT", name: "New System", desc: "Description...", link: "https://github.com/Kokushibu74" });
+      state.projects.push({ tag: "NEW", name: "Project", desc: "...", link: "#" });
       renderProjectsCMS();
     }
 
@@ -590,7 +527,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         state.image = e.target.result;
-        document.getElementById("inp-img-path").value = "Uploaded Custom Photo (Saved)";
+        document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
       };
       reader.readAsDataURL(file);
     }
@@ -603,7 +540,7 @@
       state.bio = document.getElementById("inp-bio").value;
 
       const pathVal = document.getElementById("inp-img-path").value;
-      if (!pathVal.startsWith("Uploaded Custom")) {
+      if (!pathVal.startsWith("Uploaded")) {
         state.image = pathVal;
       }
 
@@ -615,11 +552,11 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderWebsite();
       exitCMS();
-      alert("✅ আপনার ওয়েবসাইটের সব পরিবর্তন সফলভাবে সেভ ও লাইভ হয়েছে!");
+      alert("✅ পরিবর্তন সেভ হয়েছে!");
     }
 
     function resetDefaultSite() {
-      if (confirm("আপনি কি সব কাস্টমাইজেশন রিসেট করে ডিফল্ট অবস্থায় ফিরতে চান?")) {
+      if (confirm("সব কাস্টমাইজেশন রিসেট করতে চান?")) {
         localStorage.removeItem(STORAGE_KEY);
         state = JSON.parse(JSON.stringify(DEFAULT_STATE));
         populateCMSFields();
@@ -627,9 +564,10 @@
       }
     }
 
-    async function unlockCMS() {
+    // SIMPLIFIED DIRECT PASSWORD CHECK
+    function unlockCMS() {
       const val = document.getElementById("cms-password-input").value.trim();
-      const hashed = await computeSHA256(val);
+      
       if (val === "S20107233") {
         document.getElementById("admin-login-box").classList.add("hidden");
         document.getElementById("admin-dashboard-box").classList.remove("hidden");
@@ -647,10 +585,6 @@
 
     function exitCMS() {
       window.location.hash = "";
-      if (window.location.pathname.includes("/admin")) {
-        window.location.href = "/";
-        return;
-      }
       document.getElementById("admin-overlay").classList.add("hidden");
     }
 
