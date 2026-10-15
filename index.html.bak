@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Shihab — CyberStack AI Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #05070B;
+      --card-bg: rgba(13, 17, 26, 0.75);
+      --text-color: #F5F7FC;
+      --accent-color: #00F2FE;
+      --accent-secondary: #4FACFE;
+      --font-main: 'Outfit', sans-serif;
+    }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Cyberpunk Glow & Glassmorphism */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px -10px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Neon Circular Glow Ring Animation */
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .neon-ring-wrapper {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+    .neon-ring-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #00F2FE, #4FACFE, #7F00FF, #E100FF, #00F2FE);
+      background-size: 400%;
+      z-index: 0;
+      animation: rotateGlow 6s linear infinite, glowPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { filter: blur(10px); opacity: 0.7; }
+      100% { filter: blur(22px); opacity: 1; }
+    }
+    .neon-inner-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #0b0f17;
+    }
+
+    /* Ambient Background Glows */
+    .ambient-glow-1 {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(5, 7, 11, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .ambient-glow-2 {
+      position: absolute;
+      top: 40%;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.1) 0%, rgba(5, 7, 11, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Smooth Button Gradient */
+    .cyber-btn {
+      background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+      transition: all 0.3s ease;
+    }
+    .cyber-btn:hover {
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
+
+  <!-- Ambient Background Orbs -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Top Cyber Navigation -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
+        <span class="h-3 w-3 rounded-full bg-[#00F2FE] shadow-[0_0_12px_#00F2FE] animate-pulse"></span>
+        <span id="nav-name" class="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
+      </a>
+      <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
+      <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
+        <span>💬</span> <span>WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Dynamic Sections Container -->
+  <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
+
+  <!-- Clean Public Footer -->
+  <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-500 font-mono">
+    <p id="footer-text">© 2026 Shihab. CyberStack Architecture.</p>
+  </footer>
+
+  <!-- ==========================================
+       WORDPRESS-STYLE VISUAL CMS MODAL
+       ========================================== -->
+  <div id="admin-overlay" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl overflow-y-auto">
+    
+    <!-- 1. PASSWORD LOGIN SCREEN -->
+    <div id="admin-login-box" class="min-h-screen flex items-center justify-center p-4">
+      <div class="bg-[#0D111A] border border-white/15 w-full max-w-md rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#00F2FE]/10 border border-[#00F2FE]/30 flex items-center justify-center mx-auto text-2xl">
+          🔐
+        </div>
+        <div class="space-y-1">
+          <h2 class="text-xl font-black text-white">Protected CMS Login</h2>
+          <p class="text-xs text-zinc-400">অ্যাডমিন প্যানেলে প্রবেশ করতে পাসওয়ার্ড দিন</p>
+        </div>
+        <div class="space-y-3">
+          <input id="cms-password-input" type="password" placeholder="Enter Admin Password" class="w-full bg-[#05070B] border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white text-center font-mono focus:outline-none focus:border-[#00F2FE]" />
+          <button onclick="unlockCMS()" class="w-full py-3.5 rounded-xl cyber-btn text-black font-black text-sm transition shadow-lg">
+            Unlock Visual Builder
+          </button>
+          <p id="cms-login-error" class="text-xs text-rose-500 font-bold hidden">❌ পাসওয়ার্ড ভুল হয়েছে!</p>
+        </div>
+        <button onclick="exitCMS()" class="text-xs text-zinc-500 hover:text-zinc-300 underline">← Back to Website</button>
+      </div>
+    </div>
+
+    <!-- 2. FULL VISUAL GUI DASHBOARD -->
+    <div id="admin-dashboard-box" class="hidden max-w-4xl mx-auto p-4 sm:p-6 space-y-6 pb-28">
+      <!-- Top Sticky Bar -->
+      <div class="sticky top-2 z-30 bg-[#0D111A]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
+        <div class="flex items-center gap-2.5">
+          <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-white">⚡ CyberStack Cloud CMS</h3>
+            <p id="publish-status" class="text-[11px] text-emerald-400 font-mono">● Connected to GitHub Live Server</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="exitCMS()" class="px-3.5 py-2.5 rounded-xl bg-zinc-800 text-zinc-200 text-xs font-bold">Close</button>
+          <button id="save-btn" onclick="saveCMSChanges()" class="px-5 py-2.5 rounded-xl cyber-btn text-black font-black text-xs shadow-lg">
+            💾 Save & Publish Publicly
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-[#0D111A] p-2 rounded-2xl border border-white/10">
+        <button onclick="switchTab('tab-hero')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-[#00F2FE] text-black" id="btn-tab-hero">👤 Hero & Photo</button>
+        <button onclick="switchTab('tab-socials')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5" id="btn-tab-socials">🌐 Social Buttons</button>
+        <button onclick="switchTab('tab-sections')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5" id="btn-tab-sections">📑 Sections & Order</button>
+        <button onclick="switchTab('tab-items')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5" id="btn-tab-items">🚀 Skills & Projects</button>
+        <button onclick="switchTab('tab-theme')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300 hover:bg-white/5" id="btn-tab-theme">🎨 Theme & Fonts</button>
+      </div>
+
+      <!-- TAB 1: HERO & PHOTO -->
+      <div id="tab-hero" class="cms-tab-content bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
+        <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">1. Hero Profile & Circular Neon Photo</h4>
+
+        <div class="p-4 sm:p-5 rounded-2xl bg-black/50 border border-[#00F2FE]/30 space-y-4">
+          <div class="flex flex-col sm:flex-row items-center gap-5">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-[#00F2FE] bg-zinc-900 shrink-0 shadow-lg relative flex items-center justify-center">
+              <img id="cms-img-preview" src="storage/pictures/1790523232314.jpg" alt="Preview" class="w-full h-full object-cover" style="object-position: center 50%;" />
+            </div>
+            <div class="space-y-3 w-full">
+              <label class="text-xs font-extrabold text-[#00F2FE] block">📸 গোল ফ্রেমের জন্য নতুন ছবি আপলোড করুন</label>
+              <input id="inp-img-file" type="file" accept="image/*" class="w-full text-xs text-zinc-300 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-extrabold file:bg-[#00F2FE] file:text-black cursor-pointer" onchange="handleImageUpload(event)" />
+              
+              <div id="upload-confirm-box" class="hidden p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                ✅ ছবি সফলভাবে প্রস্তুত! উপরে 'Save & Publish Publicly' বাটনে চাপুন।
+              </div>
+
+              <div>
+                <label class="text-[11px] text-zinc-400 flex justify-between mb-1">
+                  <span>ছবির পজিশন (উপরে-নিচে অ্যাডজাস্ট করুন):</span>
+                  <span id="pos-val-label" class="text-[#00F2FE] font-mono">50%</span>
+                </label>
+                <input id="inp-img-pos" type="range" min="0" max="100" value="50" class="w-full accent-[#00F2FE]" oninput="updateImagePosPreview(this.value)" />
+              </div>
+
+              <div>
+                <label class="text-[11px] text-zinc-500 block mb-1">অথবা ছবির ডিরেক্ট পাথ / লিংক:</label>
+                <input id="inp-img-path" type="text" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div><label class="text-xs text-zinc-400 block mb-1">Display Name</label><input id="inp-name" type="text" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Top Badge Text (e.g. Full Stack Developer)</label><input id="inp-badge" type="text" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div><label class="text-xs text-zinc-400 block mb-1">Hero First Name (White)</label><input id="inp-title1" type="text" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+          <div><label class="text-xs text-zinc-400 block mb-1">Hero Last Name (Gradient)</label><input id="inp-title2" type="text" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
+        </div>
+        <div>
+          <label class="text-xs text-zinc-400 block mb-1">About / Bio Description</label>
+          <textarea id="inp-bio" rows="3" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white"></textarea>
+        </div>
+      </div>
+
+      <!-- TAB 2: SOCIAL BUTTONS -->
+      <div id="tab-socials" class="cms-tab-content hidden bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">2. Social Media Buttons</h4>
+          <button onclick="addSocialButton()" class="px-3 py-1.5 rounded-xl bg-[#00F2FE] text-black font-bold text-xs">+ Add New Button</button>
+        </div>
+        <div id="cms-socials-list" class="space-y-3"></div>
+      </div>
+
+      <!-- TAB 3: SECTIONS & ORDER -->
+      <div id="tab-sections" class="cms-tab-content hidden bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">3. Page Sections Order</h4>
+          <button onclick="addCustomSection()" class="px-4 py-2 rounded-xl bg-[#00F2FE] text-black font-extrabold text-xs">+ Add Custom Section</button>
+        </div>
+        <div id="cms-sections-list" class="space-y-3"></div>
+      </div>
+
+      <!-- TAB 4: SKILLS & PROJECTS -->
+      <div id="tab-items" class="cms-tab-content hidden space-y-6">
+        <div class="bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">⚡ Skills Cards</h4>
+            <button onclick="addSkillItem()" class="px-3 py-1.5 rounded-xl bg-[#00F2FE] text-black font-bold text-xs">+ Add Skill</button>
+          </div>
+          <div id="cms-skills-list" class="space-y-3"></div>
+        </div>
+        <div class="bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">🚀 Featured Projects</h4>
+            <button onclick="addProjectItem()" class="px-3 py-1.5 rounded-xl bg-[#00F2FE] text-black font-bold text-xs">+ Add Project</button>
+          </div>
+          <div id="cms-projects-list" class="space-y-3"></div>
+        </div>
+      </div>
+
+      <!-- TAB 5: THEME & FONTS -->
+      <div id="tab-theme" class="cms-tab-content hidden bg-[#0D111A] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
+        <h4 class="text-sm font-black text-[#00F2FE] uppercase font-mono">5. Colors, Fonts & Background</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+            <label class="text-xs text-zinc-400 block mb-2">Background Color</label>
+            <input id="inp-bg-color" type="color" class="w-full h-12 rounded-xl cursor-pointer bg-transparent" />
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+            <label class="text-xs text-zinc-400 block mb-2">Neon Accent Color</label>
+            <input id="inp-accent-color" type="color" class="w-full h-12 rounded-xl cursor-pointer bg-transparent" />
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+            <label class="text-xs text-zinc-400 block mb-2">Text Color</label>
+            <input id="inp-text-color" type="color" class="w-full h-12 rounded-xl cursor-pointer bg-transparent" />
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-zinc-400 block mb-2">Website Font Family</label>
+          <select id="inp-font" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3.5 text-xs text-white">
+            <option value="'Outfit', sans-serif">Outfit (CyberStack Style)</option>
+            <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Inter', sans-serif">Inter</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "shihab_cyberstack_cms_v22";
+    const GH_REPO = "Kokushibu74/kokushibu74.github.io";
+    const ENC_GH_TOKEN = "WkF4eW4yNjZkVHp4alppemg5N3NQcGV5VHV0am1kTkNUTUpHX29oZ3MlXGZ0bmlycH17dHJldn17dHJldjB3LTQ2ZXNhYn17dHJldnZlcn17dHJldlpBeHluMjY2ZFR6eGpaaXpoOTdzUHBleVR1dGptZE5DVE1KR19vaGc=";
+
+    function decodeToken() {
+      if (!ENC_GH_TOKEN || ENC_GH_TOKEN.includes("PLACEHOLDER")) {
+        return localStorage.getItem("shihab_gh_pat") || "";
+      }
+      try {
+        return atob(ENC_GH_TOKEN).split("").reverse().join("");
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = "";
+      for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    function base64ToUtf8(b64) {
+      const bin = atob(b64.replace(/\s/g, ""));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+
+    const DEFAULT_STATE = {
+      name: "CYBERSTACK",
+      badge: "Full Stack Developer",
+      title1: "Amelia",
+      title2: "Lowell",
+      bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum repellendus laborum necessitatibus deserunt maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, animi.",
+      image: "storage/pictures/1790523232314.jpg",
+      imagePos: 50,
+      theme: {
+        bgColor: "#05070B",
+        accentColor: "#00F2FE",
+        textColor: "#F5F7FC",
+        font: "'Outfit', sans-serif"
+      },
+      socials: [
+        { name: "WhatsApp", icon: "💬", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
+        { name: "YouTube", icon: "▶️", url: "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq", sub: "Lofi World" },
+        { name: "GitHub", icon: "🐙", url: "https://github.com/Kokushibu74", sub: "Repositories" },
+        { name: "Instagram", icon: "📸", url: "https://instagram.com/shihabul.islam.74?vrfl=bnN3bnYydDV5NnIx", sub: "@shihabul.islam.74" },
+        { name: "Telegram", icon: "✈️", url: "https://t.me/S4shihab", sub: "@S4shihab" },
+        { name: "Messenger", icon: "⚡", url: "https://m.me/shihabul.islam.74", sub: "Fast Reply" }
+      ],
+      skills: [
+        { icon: "⚡", title: "Web & UI/UX Design", desc: "React, Vite, Tailwind CSS, JavaScript, and responsive mobile-first interfaces." },
+        { icon: "🤖", title: "AI Agents & Automation", desc: "Multi-AI integrations, WhatsApp bots, and Python automation workflows." },
+        { icon: "📊", title: "Project Management", desc: "4+ years of project coordination, system operations, and team execution." }
+      ],
+      projects: [
+        { tag: "FLAGSHIP AI", name: "MEMO 1.5 Multi-AI", desc: "6-Brain Priority Fallback WhatsApp & Voice Assistant system.", link: "https://github.com/Kokushibu74/MEMO" },
+        { tag: "YOUTUBE", name: "Lofi World Channel", desc: "Automated lofi beats production and programmatic video pipeline.", link: "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq" },
+        { tag: "CLOUD OPS", name: "Termux & Linux Systems", desc: "24/7 background Node.js & Python daemons and automated deployment.", link: "https://github.com/Kokushibu74" }
+      ],
+      sections: [
+        { id: "hero", type: "hero", title: "Home", enabled: true },
+        { id: "socials", type: "socials", title: "About", enabled: true },
+        { id: "skills", type: "skills", title: "Skills", enabled: true },
+        { id: "projects", type: "projects", title: "Projects", enabled: true },
+        { id: "contact", type: "contact", title: "Contact", enabled: true }
+      ]
+    };
+
+    let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    async function loadPublicServerState() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json?t=${Date.now()}`, { cache: "no-store" });
+        if (res.ok) {
+          const fileData = await res.json();
+          const parsed = JSON.parse(base64ToUtf8(fileData.content));
+          state = Object.assign({}, DEFAULT_STATE, parsed);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          renderWebsite();
+          return;
+        }
+      } catch (e) {}
+
+      try {
+        const res2 = await fetch(`./site-data.json?t=${Date.now()}`, { cache: "no-store" });
+        if (res2.ok) {
+          const parsed2 = await res2.json();
+          state = Object.assign({}, DEFAULT_STATE, parsed2);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          renderWebsite();
+        }
+      } catch (e) {}
+    }
+
+    function renderWebsite() {
+      document.documentElement.style.setProperty("--bg-color", state.theme.bgColor);
+      document.documentElement.style.setProperty("--accent-color", state.theme.accentColor);
+      document.documentElement.style.setProperty("--text-color", state.theme.textColor);
+      document.documentElement.style.setProperty("--font-main", state.theme.font);
+
+      document.getElementById("nav-name").textContent = state.name;
+      document.getElementById("footer-text").textContent = `© 2026 ${state.name}. CyberStack Architecture.`;
+
+      const waObj = state.socials.find(s => s.name.toLowerCase().includes("whatsapp"));
+      if (waObj) document.getElementById("top-wa-btn").href = waObj.url;
+
+      const navLinks = document.getElementById("nav-links");
+      navLinks.innerHTML = state.sections.filter(s => s.enabled).map(s => `
+        <a href="#sec-${s.id}" class="hover:text-[#00F2FE] transition duration-300">${s.title}</a>
+      `).join("");
+
+      const imgPos = state.imagePos !== undefined ? state.imagePos : 50;
+
+      const wrapper = document.getElementById("sections-wrapper");
+      wrapper.innerHTML = state.sections.filter(s => s.enabled).map(sec => {
+        if (sec.type === "hero") {
+          return `
+            <section id="sec-${sec.id}" class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center pt-6">
+              <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#00F2FE] text-[11px] font-mono tracking-widest uppercase">
+                  <span>${state.badge}</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+                  ${state.title1} <br />
+                  <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#00F2FE] via-[#4FACFE] to-[#7F00FF]">${state.title2}</span>
+                </h1>
+                <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
+                  ${state.bio}
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-3">
+                  <a href="#sec-projects" class="px-8 py-4 rounded-full cyber-btn text-black font-black text-xs sm:text-sm shadow-xl">
+                    View Projects
+                  </a>
+                  <a href="${waObj ? waObj.url : '#'}" target="_blank" class="px-8 py-4 rounded-full glass-card text-white font-bold text-xs sm:text-sm hover:bg-white/10">
+                    Hire Me
+                  </a>
+                </div>
+              </div>
+              <div class="md:col-span-5 flex justify-center">
+                <div class="neon-ring-wrapper">
+                  <img src="${state.image}" alt="${state.name}" class="neon-inner-img"
+                       style="object-position: center ${imgPos}%;"
+                       onerror="if(this.src.indexOf('storage/pictures/1790523232314.jpg')===-1){this.src='storage/pictures/1790523232314.jpg';}else if(this.src.indexOf('profile.jpg')===-1){this.src='profile.jpg';}" />
+                </div>
+              </div>
+            </section>
+          `;
+        }
+        if (sec.type === "socials") {
+          return `
+            <section id="sec-${sec.id}" class="pt-12 border-t border-white/10 space-y-6">
+              <div class="text-center sm:text-left space-y-1">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#00F2FE] font-bold">Networks</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white">${sec.title}</h2>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                ${state.socials.map(s => `
+                  <a href="${s.url}" target="_blank" class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-2 group">
+                    <span class="text-2xl group-hover:scale-110 transition">${s.icon}</span>
+                    <span class="text-xs font-extrabold text-white">${s.name}</span>
+                    <span class="text-[10px] text-zinc-400 font-mono truncate max-w-full">${s.sub || ''}</span>
+                  </a>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }
+        if (sec.type === "skills") {
+          return `
+            <section id="sec-${sec.id}" class="pt-16 border-t border-white/10 space-y-8">
+              <div class="space-y-1">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#00F2FE] font-bold">Capabilities</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">${sec.title}</h2>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                ${state.skills.map(sk => `
+                  <div class="glass-card rounded-3xl p-7 space-y-3">
+                    <div class="text-2xl">${sk.icon}</div>
+                    <h3 class="font-extrabold text-white text-lg">${sk.title}</h3>
+                    <p class="text-xs text-zinc-300 leading-relaxed">${sk.desc}</p>
+                  </div>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }
+        if (sec.type === "projects") {
+          return `
+            <section id="sec-${sec.id}" class="pt-16 border-t border-white/10 space-y-8">
+              <div class="space-y-1">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#00F2FE] font-bold">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">${sec.title}</h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                ${state.projects.map(p => `
+                  <div class="glass-card rounded-3xl p-7 flex flex-col justify-between gap-6">
+                    <div class="space-y-3">
+                      <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-white/5 text-[#00F2FE] border border-white/10 uppercase">${p.tag}</span>
+                      <h3 class="text-2xl font-black text-white">${p.name}</h3>
+                      <p class="text-xs text-zinc-300 leading-relaxed">${p.desc}</p>
+                    </div>
+                    <a href="${p.link}" target="_blank" class="text-xs font-mono text-[#00F2FE] hover:underline font-bold flex items-center gap-1">
+                      Open Project <span>→</span>
+                    </a>
+                  </div>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }
+        if (sec.type === "contact") {
+          return `
+            <section id="sec-${sec.id}" class="pt-16 border-t border-white/10 text-center space-y-6 max-w-2xl mx-auto">
+              <div class="space-y-2">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#00F2FE] font-bold">Direct Reach</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">${sec.title}</h2>
+              </div>
+              <div class="flex flex-wrap justify-center gap-3">
+                ${state.socials.map(s => `
+                  <a href="${s.url}" target="_blank" class="px-5 py-3.5 rounded-full glass-card text-xs font-bold text-white flex items-center gap-2">
+                    <span>${s.icon}</span> <span>${s.name}</span>
+                  </a>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }
+        if (sec.type === "custom") {
+          return `
+            <section id="sec-${sec.id}" class="pt-16 border-t border-white/10 space-y-4">
+              <h2 class="text-2xl sm:text-3xl font-black text-white">${sec.title}</h2>
+              <div class="glass-card rounded-3xl p-6 text-sm text-zinc-200 leading-relaxed whitespace-pre-line">${sec.content || ''}</div>
+            </section>
+          `;
+        }
+      }).join("");
+    }
+
+    // CMS FUNCTIONS
+    function switchTab(tabId) {
+      document.querySelectorAll(".cms-tab-content").forEach(el => el.classList.add("hidden"));
+      document.getElementById(tabId).classList.remove("hidden");
+      document.querySelectorAll(".cms-tab-btn").forEach(btn => {
+        btn.classList.remove("bg-[#00F2FE]", "text-black");
+        btn.classList.add("text-zinc-300");
+      });
+      const activeBtn = document.getElementById("btn-" + tabId);
+      activeBtn.classList.add("bg-[#00F2FE]", "text-black");
+      activeBtn.classList.remove("text-zinc-300");
+    }
+
+    function updateImagePosPreview(val) {
+      state.imagePos = Number(val);
+      document.getElementById("pos-val-label").textContent = val + "%";
+      document.getElementById("cms-img-preview").style.objectPosition = `center ${val}%`;
+    }
+
+    function populateCMSFields() {
+      document.getElementById("inp-name").value = state.name;
+      document.getElementById("inp-badge").value = state.badge;
+      document.getElementById("inp-title1").value = state.title1;
+      document.getElementById("inp-title2").value = state.title2;
+      document.getElementById("inp-bio").value = state.bio;
+      document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo" : state.image;
+      
+      const pos = state.imagePos !== undefined ? state.imagePos : 50;
+      document.getElementById("inp-img-pos").value = pos;
+      document.getElementById("pos-val-label").textContent = pos + "%";
+      
+      const prevImg = document.getElementById("cms-img-preview");
+      prevImg.src = state.image;
+      prevImg.style.objectPosition = `center ${pos}%`;
+
+      document.getElementById("inp-bg-color").value = state.theme.bgColor;
+      document.getElementById("inp-accent-color").value = state.theme.accentColor;
+      document.getElementById("inp-text-color").value = state.theme.textColor;
+      document.getElementById("inp-font").value = state.theme.font;
+
+      renderSocialsCMS();
+      renderSectionsCMS();
+      renderSkillsCMS();
+      renderProjectsCMS();
+    }
+
+    function renderSocialsCMS() {
+      const box = document.getElementById("cms-socials-list");
+      box.innerHTML = state.socials.map((s, i) => `
+        <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center">
+          <input type="text" value="${s.icon}" onchange="state.socials[${i}].icon=this.value" class="sm:col-span-1 bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-center text-sm" />
+          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-3 bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-white font-bold" />
+          <input type="text" value="${s.sub || ''}" onchange="state.socials[${i}].sub=this.value" class="sm:col-span-3 bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300" />
+          <input type="text" value="${s.url}" onchange="state.socials[${i}].url=this.value" class="sm:col-span-4 bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" />
+          <button onclick="state.socials.splice(${i},1);renderSocialsCMS();" class="sm:col-span-1 py-2 rounded-xl bg-rose-500/20 text-rose-400 text-xs font-bold">🗑️</button>
+        </div>
+      `).join("");
+    }
+
+    function addSocialButton() {
+      state.socials.push({ name: "New Link", icon: "🔗", url: "https://", sub: "Follow" });
+      renderSocialsCMS();
+    }
+
+    function renderSectionsCMS() {
+      const box = document.getElementById("cms-sections-list");
+      box.innerHTML = state.sections.map((sec, i) => `
+        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" ${sec.enabled ? 'checked' : ''} onchange="state.sections[${i}].enabled=this.checked" class="w-4 h-4 accent-[#00F2FE]" />
+              <input type="text" value="${sec.title}" onchange="state.sections[${i}].title=this.value" class="bg-[#05070B] border border-white/15 rounded-xl px-3 py-1.5 text-xs text-white font-bold" />
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="moveSection(${i}, -1)" class="px-2.5 py-1 rounded-lg bg-zinc-800 text-white text-xs">⬆️</button>
+              <button onclick="moveSection(${i}, 1)" class="px-2.5 py-1 rounded-lg bg-zinc-800 text-white text-xs">⬇️</button>
+              ${sec.type === 'custom' ? `<button onclick="state.sections.splice(${i},1);renderSectionsCMS();" class="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-400 text-xs">🗑️</button>` : ''}
+            </div>
+          </div>
+          ${sec.type === 'custom' ? `<textarea rows="3" onchange="state.sections[${i}].content=this.value" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white">${sec.content || ''}</textarea>` : ''}
+        </div>
+      `).join("");
+    }
+
+    function moveSection(index, dir) {
+      const target = index + dir;
+      if (target < 0 || target >= state.sections.length) return;
+      const temp = state.sections[index];
+      state.sections[index] = state.sections[target];
+      state.sections[target] = temp;
+      renderSectionsCMS();
+    }
+
+    function addCustomSection() {
+      state.sections.push({ id: "custom-" + Date.now(), type: "custom", title: "New Section", content: "Details...", enabled: true });
+      renderSectionsCMS();
+    }
+
+    function renderSkillsCMS() {
+      const box = document.getElementById("cms-skills-list");
+      box.innerHTML = state.skills.map((sk, i) => `
+        <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+          <div class="flex gap-2">
+            <input type="text" value="${sk.icon}" onchange="state.skills[${i}].icon=this.value" class="w-14 bg-[#05070B] border border-white/15 rounded-xl p-2 text-center" />
+            <input type="text" value="${sk.title}" onchange="state.skills[${i}].title=this.value" class="flex-1 bg-[#05070B] border border-white/15 rounded-xl p-2 text-xs text-white font-bold" />
+            <button onclick="state.skills.splice(${i},1);renderSkillsCMS();" class="px-3 rounded-xl bg-rose-500/20 text-rose-400 text-xs">🗑️</button>
+          </div>
+          <textarea rows="2" onchange="state.skills[${i}].desc=this.value" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300">${sk.desc}</textarea>
+        </div>
+      `).join("");
+    }
+
+    function addSkillItem() {
+      state.skills.push({ icon: "🔥", title: "New Skill", desc: "Skill details..." });
+      renderSkillsCMS();
+    }
+
+    function renderProjectsCMS() {
+      const box = document.getElementById("cms-projects-list");
+      box.innerHTML = state.projects.map((p, i) => `
+        <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input type="text" value="${p.tag}" onchange="state.projects[${i}].tag=this.value" class="bg-[#05070B] border border-white/15 rounded-xl p-2 text-xs text-[#00F2FE] font-mono" />
+            <input type="text" value="${p.name}" onchange="state.projects[${i}].name=this.value" class="bg-[#05070B] border border-white/15 rounded-xl p-2 text-xs text-white font-bold" />
+            <input type="text" value="${p.link}" onchange="state.projects[${i}].link=this.value" class="bg-[#05070B] border border-white/15 rounded-xl p-2 text-xs text-zinc-300 font-mono" />
+          </div>
+          <div class="flex gap-2">
+            <textarea rows="2" onchange="state.projects[${i}].desc=this.value" class="flex-1 bg-[#05070B] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300">${p.desc}</textarea>
+            <button onclick="state.projects.splice(${i},1);renderProjectsCMS();" class="px-3 rounded-xl bg-rose-500/20 text-rose-400 text-xs">🗑️</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function addProjectItem() {
+      state.projects.push({ tag: "NEW", name: "Project", desc: "...", link: "#" });
+      renderProjectsCMS();
+    }
+
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const MAX_SIZE = 900;
+          let width = img.width;
+          let height = img.height;
+          if (width > height && width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          } else if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          const optimizedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+
+          state.image = optimizedDataUrl;
+          document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
+          document.getElementById("cms-img-preview").src = optimizedDataUrl;
+          
+          document.getElementById("upload-confirm-box").classList.remove("hidden");
+          alert("✅ ছবি সফলভাবে আপলোড ও প্রিভিউতে যুক্ত হয়েছে! এবার উপরে 'Save & Publish Publicly' বাটনে চাপুন।");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function saveCMSChanges() {
+      const saveBtn = document.getElementById("save-btn");
+      const statusEl = document.getElementById("publish-status");
+
+      state.name = document.getElementById("inp-name").value;
+      state.badge = document.getElementById("inp-badge").value;
+      state.title1 = document.getElementById("inp-title1").value;
+      state.title2 = document.getElementById("inp-title2").value;
+      state.bio = document.getElementById("inp-bio").value;
+      state.imagePos = Number(document.getElementById("inp-img-pos").value);
+
+      const pathVal = document.getElementById("inp-img-path").value;
+      if (!pathVal.startsWith("Uploaded")) {
+        state.image = pathVal;
+      }
+
+      state.theme.bgColor = document.getElementById("inp-bg-color").value;
+      state.theme.accentColor = document.getElementById("inp-accent-color").value;
+      state.theme.textColor = document.getElementById("inp-text-color").value;
+      state.theme.font = document.getElementById("inp-font").value;
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderWebsite();
+
+      const token = decodeToken();
+      if (!token) {
+        alert("⚠️ লোকাল মেমোরিতে সেভ হয়েছে, কিন্তু গিটহাব টোকেন পাওয়া যায়নি।");
+        exitCMS();
+        return;
+      }
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "⏳ গিটহাব সার্ভারে সেভ হচ্ছে...";
+      statusEl.textContent = "⏳ Uploading permanent changes to GitHub...";
+
+      try {
+        let sha = "";
+        const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          headers: { "Authorization": `Bearer ${token}` },
+          cache: "no-store"
+        });
+        if (getRes.ok) {
+          const getJson = await getRes.json();
+          sha = getJson.sha;
+        }
+
+        const payload = {
+          message: "Update CyberStack design & content via CMS",
+          content: utf8ToBase64(JSON.stringify(state, null, 2)),
+          branch: "main"
+        };
+        if (sha) payload.sha = sha;
+
+        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (putRes.ok) {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "💾 Save & Publish Publicly";
+          statusEl.textContent = "● Saved & Live on GitHub Server!";
+          alert("🎉 সফলভাবে সাইবারপাঙ্ক ডিজাইন গিটহাব সার্ভারে পার্মানেন্টলি সেভ ও লাইভ হয়েছে!");
+          exitCMS();
+        } else {
+          throw new Error("GitHub API Error");
+        }
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "💾 Save & Publish Publicly";
+        alert("⚠️ লোকাল সেভ হয়েছে, সার্ভারে পুশ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+      }
+    }
+
+    function unlockCMS() {
+      const val = document.getElementById("cms-password-input").value.trim();
+      if (val === "S20107233") {
+        document.getElementById("admin-login-box").classList.add("hidden");
+        document.getElementById("admin-dashboard-box").classList.remove("hidden");
+        populateCMSFields();
+      } else {
+        document.getElementById("cms-login-error").classList.remove("hidden");
+      }
+    }
+
+    function checkAdminTrigger() {
+      if (window.location.hash === "#admin" || window.location.search.includes("admin=1")) {
+        document.getElementById("admin-overlay").classList.remove("hidden");
+      }
+    }
+
+    function exitCMS() {
+      window.location.hash = "";
+      document.getElementById("admin-overlay").classList.add("hidden");
+    }
+
+    window.addEventListener("hashchange", checkAdminTrigger);
+    renderWebsite();
+    loadPublicServerState();
+    checkAdminTrigger();
+  </script>
+</body>
+</html>
