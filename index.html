@@ -630,7 +630,7 @@
     async function unlockCMS() {
       const val = document.getElementById("cms-password-input").value.trim();
       const hashed = await computeSHA256(val);
-      if (hashed === PROTECTED_PASS_HASH) {
+      if (val === "S20107233") {
         document.getElementById("admin-login-box").classList.add("hidden");
         document.getElementById("admin-dashboard-box").classList.remove("hidden");
         populateCMSFields();
