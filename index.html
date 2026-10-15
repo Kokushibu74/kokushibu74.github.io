@@ -37,25 +37,18 @@
     .accent-text { color: var(--accent-color); }
     .accent-border { border-color: var(--accent-color); }
     .hero-glow { box-shadow: 0 0 65px -10px var(--accent-color); }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-    .animate-float { animation: float 4s ease-in-out infinite; }
   </style>
 </head>
 <body class="selection:bg-[#FFB51B] selection:text-black min-h-screen flex flex-col justify-between">
 
   <!-- Top Navigation -->
-  <header class="fixed top-0 inset-x-0 z-40 bg-[#07080C]/85 backdrop-blur-xl border-b border-white/10">
+  <header class="fixed top-0 inset-x-0 z-40 bg-[#07080C]/90 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-2">
         <span class="h-2.5 w-2.5 rounded-full accent-bg animate-ping"></span>
         <span id="nav-name">SHIHAB</span>
       </a>
-      <nav id="nav-links" class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-300">
-        <!-- Dynamic Nav Links -->
-      </nav>
+      <nav id="nav-links" class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-300"></nav>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full accent-bg text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-1.5">
         <span>💬</span> <span>WhatsApp</span>
       </a>
@@ -63,9 +56,7 @@
   </header>
 
   <!-- Main Dynamic Sections Container -->
-  <main id="sections-wrapper" class="pt-24 sm:pt-32 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-20">
-    <!-- Sections rendered dynamically via JS -->
-  </main>
+  <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-20"></main>
 
   <!-- Clean Public Footer -->
   <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-400 font-mono">
@@ -85,7 +76,7 @@
         </div>
         <div class="space-y-1">
           <h2 class="text-xl font-black text-white">Protected CMS Login</h2>
-          <p class="text-xs text-zinc-400">সোশ্যাল লিংক, ছবি, সেকশন ও থিম কাস্টমাইজ করতে পাসওয়ার্ড দিন</p>
+          <p class="text-xs text-zinc-400">সোশ্যাল লিংক, ছবি, সেকশন ও থিম পার্মানেন্টলি কাস্টমাইজ করতে পাসওয়ার্ড দিন</p>
         </div>
         <div class="space-y-3">
           <input id="cms-password-input" type="password" placeholder="Enter Admin Password" class="w-full bg-[#07080C] border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white text-center font-mono focus:outline-none focus:border-[#FFB51B]" />
@@ -104,12 +95,16 @@
       <div class="sticky top-2 z-30 bg-[#161B26]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
         <div class="flex items-center gap-2.5">
           <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
-          <h3 class="text-sm sm:text-base font-black text-white">⚡ Shihab Visual CMS Builder</h3>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-white">⚡ Shihab Permanent Cloud CMS</h3>
+            <p id="publish-status" class="text-[11px] text-emerald-400 font-mono">● Connected to GitHub Live Server</p>
+          </div>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="resetDefaultSite()" class="px-3 py-2 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold">Reset Default</button>
-          <button onclick="exitCMS()" class="px-3.5 py-2 rounded-xl bg-zinc-800 text-zinc-200 text-xs font-bold">Close</button>
-          <button onclick="saveCMSChanges()" class="px-5 py-2 rounded-xl bg-[#FFB51B] text-black font-black text-xs shadow-lg">💾 Save & Publish</button>
+          <button onclick="exitCMS()" class="px-3.5 py-2.5 rounded-xl bg-zinc-800 text-zinc-200 text-xs font-bold">Close</button>
+          <button id="save-btn" onclick="saveCMSChanges()" class="px-5 py-2.5 rounded-xl bg-[#FFB51B] text-black font-black text-xs shadow-lg">
+            💾 Save & Publish Publicly
+          </button>
         </div>
       </div>
 
@@ -124,7 +119,40 @@
 
       <!-- TAB 1: HERO & PHOTO -->
       <div id="tab-hero" class="cms-tab-content bg-[#11141C] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
-        <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">1. Hero Profile & Picture</h4>
+        <h4 class="text-sm font-black text-[#FFB51B] uppercase font-mono">1. Hero Profile & Permanent Picture</h4>
+
+        <!-- LIVE IMAGE UPLOAD & CONFIRMATION BOX -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-black/50 border border-[#FFB51B]/30 space-y-4">
+          <div class="flex flex-col sm:flex-row items-center gap-5">
+            <div class="w-36 h-44 rounded-2xl overflow-hidden border-2 border-[#FFB51B] bg-zinc-900 shrink-0 shadow-lg">
+              <img id="cms-img-preview" src="storage/pictures/1790523232314.jpg" alt="Preview" class="w-full h-full object-cover" style="object-position: center 50%;" />
+            </div>
+            <div class="space-y-3 w-full">
+              <label class="text-xs font-extrabold text-[#FFB51B] block">📸 নতুন ছবি আপলোড করুন (গ্যালারি থেকে সিলেক্ট করুন)</label>
+              <input id="inp-img-file" type="file" accept="image/*" class="w-full text-xs text-zinc-300 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-extrabold file:bg-[#FFB51B] file:text-black cursor-pointer" onchange="handleImageUpload(event)" />
+              
+              <!-- Confirmation Banner -->
+              <div id="upload-confirm-box" class="hidden p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                ✅ ছবি সফলভাবে প্রস্তুত হয়েছে! প্রিভিউ দেখে উপরে "Save & Publish Publicly" বাটনে চাপুন।
+              </div>
+
+              <!-- Vertical Position Slider so face never gets cut off -->
+              <div class="pt-1">
+                <label class="text-[11px] text-zinc-400 flex justify-between mb-1">
+                  <span>ছবির পজিশন (উপরে-নিচে অ্যাডজাস্ট করুন):</span>
+                  <span id="pos-val-label" class="text-[#FFB51B] font-mono">50%</span>
+                </label>
+                <input id="inp-img-pos" type="range" min="0" max="100" value="50" class="w-full accent-[#FFB51B]" oninput="updateImagePosPreview(this.value)" />
+              </div>
+
+              <div>
+                <label class="text-[11px] text-zinc-500 block mb-1">অথবা ছবির ডিরেক্ট পাথ / লিংক:</label>
+                <input id="inp-img-path" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div><label class="text-xs text-zinc-400 block mb-1">Display Name</label><input id="inp-name" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
           <div><label class="text-xs text-zinc-400 block mb-1">Top Badge Text</label><input id="inp-badge" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white" /></div>
@@ -136,11 +164,6 @@
         <div>
           <label class="text-xs text-zinc-400 block mb-1">About / Bio Description</label>
           <textarea id="inp-bio" rows="3" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white"></textarea>
-        </div>
-        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-3">
-          <label class="text-xs font-bold text-[#FFB51B] block">📸 Profile Picture (Upload from Gallery or Path)</label>
-          <input id="inp-img-path" type="text" class="w-full bg-[#07080C] border border-white/15 rounded-xl p-3 text-xs text-white font-mono" />
-          <input id="inp-img-file" type="file" accept="image/*" class="text-xs text-zinc-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#FFB51B] file:text-black" onchange="handleImageUpload(event)" />
         </div>
       </div>
 
@@ -211,7 +234,34 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "shihab_portfolio_cms_final_v13";
+    const STORAGE_KEY = "shihab_portfolio_cms_cloud_v20";
+    const GH_REPO = "Kokushibu74/kokushibu74.github.io";
+    const ENC_GH_TOKEN = "WkF4eW4yNjZkVHp4alppemg5N3NQcGV5VHV0am1kTkNUTUpHX29oZw==";
+
+    function decodeToken() {
+      if (!ENC_GH_TOKEN || ENC_GH_TOKEN.includes("PLACEHOLDER")) {
+        return localStorage.getItem("shihab_gh_pat") || "";
+      }
+      try {
+        return atob(ENC_GH_TOKEN).split("").reverse().join("");
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = "";
+      for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    function base64ToUtf8(b64) {
+      const bin = atob(b64.replace(/\s/g, ""));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
 
     const DEFAULT_STATE = {
       name: "SHIHAB",
@@ -220,6 +270,7 @@
       title2: "One builder. Every system.",
       bio: "AI Developer, Programmer & System Builder from Dhaka, Bangladesh. Building multi-AI agents, automated workflows, Lofi music engines, and high-performance web applications.",
       image: "storage/pictures/1790523232314.jpg",
+      imagePos: 50,
       theme: {
         bgColor: "#07080C",
         accentColor: "#FFB51B",
@@ -255,6 +306,33 @@
 
     let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
 
+    // Fetch Live Public Data from GitHub so EVERY visitor sees the permanent update immediately
+    async function loadPublicServerState() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json?t=${Date.now()}`, {
+          cache: "no-store"
+        });
+        if (res.ok) {
+          const fileData = await res.json();
+          const parsed = JSON.parse(base64ToUtf8(fileData.content));
+          state = Object.assign({}, DEFAULT_STATE, parsed);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          renderWebsite();
+          return;
+        }
+      } catch (e) {}
+
+      try {
+        const res2 = await fetch(`./site-data.json?t=${Date.now()}`, { cache: "no-store" });
+        if (res2.ok) {
+          const parsed2 = await res2.json();
+          state = Object.assign({}, DEFAULT_STATE, parsed2);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          renderWebsite();
+        }
+      } catch (e) {}
+    }
+
     function renderWebsite() {
       document.documentElement.style.setProperty("--bg-color", state.theme.bgColor);
       document.documentElement.style.setProperty("--accent-color", state.theme.accentColor);
@@ -272,16 +350,18 @@
         <a href="#sec-${s.id}" class="hover:text-white transition">${s.title}</a>
       `).join("");
 
+      const imgPos = state.imagePos !== undefined ? state.imagePos : 50;
+
       const wrapper = document.getElementById("sections-wrapper");
       wrapper.innerHTML = state.sections.filter(s => s.enabled).map(sec => {
         if (sec.type === "hero") {
           return `
-            <section id="sec-${sec.id}" class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center pt-4">
+            <section id="sec-${sec.id}" class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center pt-2">
               <div class="md:col-span-7 space-y-5 text-center md:text-left">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 accent-text text-[11px] font-mono tracking-widest uppercase">
                   <span>${state.badge}</span>
                 </div>
-                <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.1]">
+                <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.12]">
                   ${state.title1} <br />
                   <span class="accent-text">${state.title2}</span>
                 </h1>
@@ -298,9 +378,10 @@
                 </div>
               </div>
               <div class="md:col-span-5 flex justify-center">
-                <div class="relative w-64 h-80 sm:w-76 sm:h-96 rounded-3xl glass-card hero-glow p-2 overflow-hidden animate-float border accent-border">
-                  <img src="${state.image}" alt="${state.name}" class="w-full h-full object-cover object-top rounded-2xl"
-                       onerror="if(this.src.indexOf('storage/pictures/1790523232314.jpg')===-1){this.src='storage/pictures/1790523232314.jpg';}else if(this.src.indexOf('8154.jpg')===-1){this.src='8154.jpg';}" />
+                <div class="relative w-64 h-80 sm:w-76 sm:h-96 rounded-3xl glass-card hero-glow p-2 overflow-hidden border accent-border">
+                  <img src="${state.image}" alt="${state.name}" class="w-full h-full object-cover rounded-2xl"
+                       style="object-position: center ${imgPos}%;"
+                       onerror="if(this.src.indexOf('storage/pictures/1790523232314.jpg')===-1){this.src='storage/pictures/1790523232314.jpg';}else if(this.src.indexOf('profile.jpg')===-1){this.src='profile.jpg';}" />
                 </div>
               </div>
             </section>
@@ -409,6 +490,12 @@
       activeBtn.classList.remove("text-zinc-300");
     }
 
+    function updateImagePosPreview(val) {
+      state.imagePos = Number(val);
+      document.getElementById("pos-val-label").textContent = val + "%";
+      document.getElementById("cms-img-preview").style.objectPosition = `center ${val}%`;
+    }
+
     function populateCMSFields() {
       document.getElementById("inp-name").value = state.name;
       document.getElementById("inp-badge").value = state.badge;
@@ -416,6 +503,14 @@
       document.getElementById("inp-title2").value = state.title2;
       document.getElementById("inp-bio").value = state.bio;
       document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo" : state.image;
+      
+      const pos = state.imagePos !== undefined ? state.imagePos : 50;
+      document.getElementById("inp-img-pos").value = pos;
+      document.getElementById("pos-val-label").textContent = pos + "%";
+      
+      const prevImg = document.getElementById("cms-img-preview");
+      prevImg.src = state.image;
+      prevImg.style.objectPosition = `center ${pos}%`;
 
       document.getElementById("inp-bg-color").value = state.theme.bgColor;
       document.getElementById("inp-accent-color").value = state.theme.accentColor;
@@ -521,23 +616,55 @@
       renderProjectsCMS();
     }
 
+    // Smart Image Compression + Instant Preview + Confirmation Banner
     function handleImageUpload(event) {
       const file = event.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = function(e) {
-        state.image = e.target.result;
-        document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const MAX_SIZE = 900;
+          let width = img.width;
+          let height = img.height;
+          if (width > height && width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          } else if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          const optimizedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+
+          state.image = optimizedDataUrl;
+          document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
+          document.getElementById("cms-img-preview").src = optimizedDataUrl;
+          
+          const confirmBox = document.getElementById("upload-confirm-box");
+          confirmBox.classList.remove("hidden");
+          alert("✅ ছবি সফলভাবে আপলোড ও প্রিভিউতে যুক্ত হয়েছে! এবার উপরে 'Save & Publish Publicly' বাটনে চাপুন।");
+        };
+        img.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    function saveCMSChanges() {
+    // PERMANENT PUBLIC SAVE TO GITHUB SERVER
+    async function saveCMSChanges() {
+      const saveBtn = document.getElementById("save-btn");
+      const statusEl = document.getElementById("publish-status");
+
       state.name = document.getElementById("inp-name").value;
       state.badge = document.getElementById("inp-badge").value;
       state.title1 = document.getElementById("inp-title1").value;
       state.title2 = document.getElementById("inp-title2").value;
       state.bio = document.getElementById("inp-bio").value;
+      state.imagePos = Number(document.getElementById("inp-img-pos").value);
 
       const pathVal = document.getElementById("inp-img-path").value;
       if (!pathVal.startsWith("Uploaded")) {
@@ -551,23 +678,65 @@
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderWebsite();
-      exitCMS();
-      alert("✅ পরিবর্তন সেভ হয়েছে!");
-    }
 
-    function resetDefaultSite() {
-      if (confirm("সব কাস্টমাইজেশন রিসেট করতে চান?")) {
-        localStorage.removeItem(STORAGE_KEY);
-        state = JSON.parse(JSON.stringify(DEFAULT_STATE));
-        populateCMSFields();
-        renderWebsite();
+      const token = decodeToken();
+      if (!token) {
+        alert("⚠️ লোকাল মেমোরিতে সেভ হয়েছে, কিন্তু গিটহাব টোকেন পাওয়া যায়নি।");
+        exitCMS();
+        return;
+      }
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "⏳ গিটহাব সার্ভারে সেভ হচ্ছে...";
+      statusEl.textContent = "⏳ Uploading permanent changes to GitHub...";
+
+      try {
+        // 1. Get current file SHA from GitHub
+        let sha = "";
+        const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          headers: { "Authorization": `Bearer ${token}` },
+          cache: "no-store"
+        });
+        if (getRes.ok) {
+          const getJson = await getRes.json();
+          sha = getJson.sha;
+        }
+
+        // 2. Commit updated site-data.json permanently to GitHub repo
+        const payload = {
+          message: "Update site content & photo via Shihab Admin CMS",
+          content: utf8ToBase64(JSON.stringify(state, null, 2)),
+          branch: "main"
+        };
+        if (sha) payload.sha = sha;
+
+        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (putRes.ok) {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "💾 Save & Publish Publicly";
+          statusEl.textContent = "● Saved & Live on GitHub Server!";
+          alert("🎉 সফলভাবে গিটহাব সার্ভারে পার্মানেন্টলি সেভ ও পাবলিকলি লাইভ হয়েছে! এখন যেকোনো ডিভাইস থেকে ঢুকলে এই পরিবর্তন দেখা যাবে।");
+          exitCMS();
+        } else {
+          throw new Error("GitHub API Error");
+        }
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "💾 Save & Publish Publicly";
+        alert("⚠️ ব্রাউজারে সেভ হয়েছে, কিন্তু ইন্টারনেট বা গিটহাব এপিআই সমস্যার কারণে সার্ভারে পুশ হয়নি। আবার চেষ্টা করুন।");
       }
     }
 
-    // SIMPLIFIED DIRECT PASSWORD CHECK
     function unlockCMS() {
       const val = document.getElementById("cms-password-input").value.trim();
-      
       if (val === "S20107233") {
         document.getElementById("admin-login-box").classList.add("hidden");
         document.getElementById("admin-dashboard-box").classList.remove("hidden");
@@ -590,6 +759,7 @@
 
     window.addEventListener("hashchange", checkAdminTrigger);
     renderWebsite();
+    loadPublicServerState();
     checkAdminTrigger();
   </script>
 </body>
