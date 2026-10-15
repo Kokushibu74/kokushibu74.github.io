@@ -5,36 +5,118 @@
   "title2": "One builder. Every system.",
   "bio": "AI Developer, Programmer & System Builder from Dhaka, Bangladesh. Building multi-AI agents, automated workflows, Lofi music engines, and high-performance web applications.",
   "image": "profile.jpg",
-  "imagePos": 50,
+  "imagePos": 32,
   "theme": {
     "bgColor": "#030308",
-    "neon1": "#00F5D4",
-    "neon2": "#FF007F",
-    "neon3": "#7B2CBF"
+    "neon1": "#00f5d4",
+    "neon2": "#ff007f",
+    "neon3": "#7b2cbf"
   },
   "socials": [
-    { "name": "Facebook", "icon": "fa-brands fa-facebook", "url": "https://facebook.com/shihabul.islam.74", "sub": "Connect" },
-    { "name": "WhatsApp", "icon": "fa-brands fa-whatsapp", "url": "https://wa.me/8801620107233", "sub": "Direct Chat" },
-    { "name": "Instagram", "icon": "fa-brands fa-instagram", "url": "https://instagram.com/shihabul.islam.74?vrfl=bnN3bnYydDV5NnIx", "sub": "@shihabul.islam.74" },
-    { "name": "YouTube", "icon": "fa-brands fa-youtube", "url": "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq", "sub": "Lofi World" },
-    { "name": "GitHub", "icon": "fa-brands fa-github", "url": "https://github.com/Kokushibu74", "sub": "Repositories" },
-    { "name": "Telegram", "icon": "fa-brands fa-telegram", "url": "https://t.me/S4shihab", "sub": "@S4shihab" }
+    {
+      "name": "Facebook",
+      "icon": "fa-brands fa-facebook",
+      "url": "https://facebook.com/shihabul.islam.74",
+      "sub": "Connect"
+    },
+    {
+      "name": "WhatsApp",
+      "icon": "fa-brands fa-whatsapp",
+      "url": "https://wa.me/8801620107233",
+      "sub": "Direct Chat"
+    },
+    {
+      "name": "Instagram",
+      "icon": "fa-brands fa-instagram",
+      "url": "https://instagram.com/shihabul.islam.74?vrfl=bnN3bnYydDV5NnIx",
+      "sub": "@shihabul.islam.74"
+    },
+    {
+      "name": "YouTube",
+      "icon": "fa-brands fa-youtube",
+      "url": "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq",
+      "sub": "Lofi World"
+    },
+    {
+      "name": "GitHub",
+      "icon": "fa-brands fa-github",
+      "url": "https://github.com/Kokushibu74",
+      "sub": "Repositories"
+    },
+    {
+      "name": "Telegram",
+      "icon": "fa-brands fa-telegram",
+      "url": "https://t.me/S4shihab",
+      "sub": "@S4shihab"
+    }
   ],
   "skills": [
-    { "icon": "⚡", "title": "Web & UI/UX Design", "desc": "React, Vite, Tailwind CSS, JavaScript, and responsive mobile-first interfaces." },
-    { "icon": "🤖", "title": "AI Agents & Automation", "desc": "Multi-AI integrations, WhatsApp bots, and Python automation workflows." },
-    { "icon": "📊", "title": "Project Management", "desc": "4+ years of project coordination, system operations, and team execution." }
+    {
+      "icon": "⚡",
+      "title": "Web & UI/UX Design",
+      "desc": "React, Vite, Tailwind CSS, JavaScript, and responsive mobile-first interfaces."
+    },
+    {
+      "icon": "🤖",
+      "title": "AI Agents & Automation",
+      "desc": "Multi-AI integrations, WhatsApp bots, and Python automation workflows."
+    },
+    {
+      "icon": "📊",
+      "title": "Project Management",
+      "desc": "4+ years of project coordination, system operations, and team execution."
+    }
   ],
   "projects": [
-    { "tag": "FLAGSHIP AI", "name": "MEMO 1.5 Multi-AI", "desc": "6-Brain Priority Fallback WhatsApp & Voice Assistant system.", "link": "https://github.com/Kokushibu74/MEMO" },
-    { "tag": "YOUTUBE", "name": "Lofi World Channel", "desc": "Automated lofi beats production and programmatic video pipeline.", "link": "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq" },
-    { "tag": "CLOUD OPS", "name": "Termux & Linux Systems", "desc": "24/7 background Node.js & Python daemons and automated deployment.", "link": "https://github.com/Kokushibu74" }
+    {
+      "tag": "FLAGSHIP AI",
+      "name": "MEMO 1.5 Multi-AI",
+      "desc": "6-Brain Priority Fallback WhatsApp & Voice Assistant system.",
+      "link": "https://github.com/Kokushibu74/MEMO"
+    },
+    {
+      "tag": "YOUTUBE",
+      "name": "Lofi World Channel",
+      "desc": "Automated lofi beats production and programmatic video pipeline.",
+      "link": "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq"
+    },
+    {
+      "tag": "CLOUD OPS",
+      "name": "Termux & Linux Systems",
+      "desc": "24/7 background Node.js & Python daemons and automated deployment.",
+      "link": "https://github.com/Kokushibu74"
+    }
   ],
   "sections": [
-    { "id": "hero", "type": "hero", "title": "Home", "enabled": true },
-    { "id": "socials", "type": "socials", "title": "Connect", "enabled": true },
-    { "id": "skills", "type": "skills", "title": "Skills", "enabled": true },
-    { "id": "projects", "type": "projects", "title": "Projects", "enabled": true },
-    { "id": "contact", "type": "contact", "title": "Contact", "enabled": true }
+    {
+      "id": "hero",
+      "type": "hero",
+      "title": "Home",
+      "enabled": true
+    },
+    {
+      "id": "socials",
+      "type": "socials",
+      "title": "Connect",
+      "enabled": false
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "Skills",
+      "enabled": true
+    },
+    {
+      "id": "projects",
+      "type": "projects",
+      "title": "Projects",
+      "enabled": true
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "title": "Contact",
+      "enabled": true
+    }
   ]
 }
