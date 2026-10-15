@@ -23,6 +23,44 @@
       transition: background-color 0.4s ease, color 0.4s ease;
     }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Page Refresh / Load Transforming Animation */
+    @keyframes pageTransform {
+      0% { opacity: 0; transform: scale(0.95) translateY(15px); filter: blur(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    }
+    .page-loaded {
+      animation: pageTransform 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Water Dot Canvas Background */
+    #water-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Touch Spark Particle Animation */
+    .spark {
+      position: fixed;
+      pointer-events: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00F2FE;
+      box-shadow: 0 0 12px #00F2FE, 0 0 24px #4FACFE;
+      animation: sparkAnim 0.6s ease-out forwards;
+      z-index: 9999;
+    }
+    @keyframes sparkAnim {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    }
+
     .glass-card {
       background: var(--card-bg);
       backdrop-filter: blur(20px);
@@ -71,26 +109,6 @@
       object-fit: cover;
       background: #0b0f17;
     }
-    .ambient-glow-1 {
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(5, 7, 11, 0) 70%);
-      z-index: -1;
-      pointer-events: none;
-    }
-    .ambient-glow-2 {
-      position: absolute;
-      top: 40%;
-      right: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(127, 0, 255, 0.1) 0%, rgba(5, 7, 11, 0) 70%);
-      z-index: -1;
-      pointer-events: none;
-    }
     .cyber-btn {
       background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
       transition: all 0.3s ease;
@@ -101,10 +119,10 @@
     }
   </style>
 </head>
-<body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
+<body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative page-loaded">
 
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <!-- Water Dot Animation Canvas Background -->
+  <canvas id="water-canvas"></canvas>
 
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
@@ -149,7 +167,7 @@
           <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
           <div>
             <h3 class="text-sm sm:text-base font-black text-white">⚡ CyberStack Clean CMS</h3>
-            <p class="text-[11px] text-emerald-400 font-mono">● 100% Smooth & Error-Free Saving</p>
+            <p class="text-[11px] text-emerald-400 font-mono">● Water Dot & Touch Spark Active</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -261,7 +279,87 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "shihab_cyberstack_cms_clean_v26";
+    // --- WATER DOT BACKGROUND ANIMATION SCRIPT ---
+    const canvas = document.getElementById("water-canvas");
+    const ctx = canvas.getContext("2d");
+    let dots = [];
+    const numDots = 65;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < numDots; i++) {
+      dots.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1.2,
+        baseX: Math.random() * canvas.width,
+        baseY: Math.random() * canvas.height,
+        angle: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.015 + 0.005
+      });
+    }
+
+    function animateWaterDots() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(0, 242, 254, 0.22)";
+      ctx.strokeStyle = "rgba(0, 242, 254, 0.05)";
+
+      dots.forEach((dot, index) => {
+        dot.angle += dot.speed;
+        dot.x = dot.baseX + Math.sin(dot.angle) * 20;
+        dot.y = dot.baseY + Math.cos(dot.angle) * 20;
+
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Connect nearby dots with light water web lines
+        for (let j = index + 1; j < dots.length; j++) {
+          const dx = dots[j].x - dot.x;
+          const dy = dots[j].y - dot.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(dot.x, dot.y);
+            ctx.lineTo(dots[j].x, dots[j].y);
+            ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(animateWaterDots);
+    }
+    animateWaterDots();
+
+    // --- TOUCH / CLICK SPARK ANIMATION ---
+    window.addEventListener("pointerdown", (e) => {
+      const sparkCount = 6;
+      for (let i = 0; i < sparkCount; i++) {
+        const spark = document.createElement("div");
+        spark.className = "spark";
+        spark.style.left = e.clientX + "px";
+        spark.style.top = e.clientY + "px";
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 60 + 20;
+        const tx = Math.cos(angle) * distance + "px";
+        const ty = Math.sin(angle) * distance + "px";
+
+        spark.style.setProperty("--tx", tx);
+        spark.style.setProperty("--ty", ty);
+        document.body.appendChild(spark);
+
+        setTimeout(() => spark.remove(), 600);
+      }
+    });
+
+    // --- PORTFOLIO CMS & STATE LOGIC ---
+    const STORAGE_KEY = "shihab_cyberstack_cms_water_v27";
 
     const DEFAULT_STATE = {
       name: "CYBERSTACK",
@@ -274,8 +372,7 @@
       theme: {
         bgColor: "#05070B",
         accentColor: "#00F2FE",
-        textColor: "#F5F7FC",
-        font: "'Outfit', sans-serif"
+        textColor: "#F5F7FC"
       },
       socials: [
         { name: "WhatsApp", icon: "💬", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
@@ -310,7 +407,6 @@
       document.documentElement.style.setProperty("--bg-color", state.theme.bgColor);
       document.documentElement.style.setProperty("--accent-color", state.theme.accentColor);
       document.documentElement.style.setProperty("--text-color", state.theme.textColor);
-      document.documentElement.style.setProperty("--font-main", state.theme.font);
 
       document.getElementById("nav-name").textContent = state.name;
       document.getElementById("footer-text").textContent = `© 2026 ${state.name}. CyberStack Architecture.`;
@@ -354,7 +450,7 @@
                 <div class="neon-ring-wrapper">
                   <img src="${state.image}" alt="${state.name}" class="neon-inner-img"
                        style="object-position: center ${imgPos}%;"
-                       onerror="if(this.src.indexOf('profile.jpg')===-1){this.src='profile.jpg';}else if(this.src.indexOf('profile.jpg')===-1){this.src='profile.jpg';}" />
+                       onerror="this.src='profile.jpg';" />
                 </div>
               </div>
             </section>
@@ -623,7 +719,6 @@
       reader.readAsDataURL(file);
     }
 
-    // CLEAN LOCAL SAVE (No API errors)
     function saveCMSChanges() {
       state.name = document.getElementById("inp-name").value;
       state.badge = document.getElementById("inp-badge").value;
@@ -644,7 +739,7 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderWebsite();
       exitCMS();
-      alert("🎉 সফলভাবে সেভ হয়েছে! এখন টার্মাক্সে শুধু এই কমান্ডটি দিন: \n\ngit add -A && git commit -m 'Update site' && git push origin main --force");
+      alert("🎉 সফলভাবে সেভ হয়েছে! এখন টার্মাক্সে কমান্ড দিয়ে গিটহাবে লাইভ করে দিন।");
     }
 
     function unlockCMS() {
