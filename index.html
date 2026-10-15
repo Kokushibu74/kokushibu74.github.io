@@ -6,6 +6,8 @@
   <title>Shihab — Hyper-Neon AI Architect</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Original Brand Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --bg-color: #030308;
@@ -26,208 +28,50 @@
     }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Page Load Transforming Animation */
     @keyframes pageTransform {
       0% { opacity: 0; transform: scale(0.92) translateY(25px); filter: blur(16px); }
       100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
     }
-    .page-loaded {
-      animation: pageTransform 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
+    .page-loaded { animation: pageTransform 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-    /* Water Dot Canvas Background */
-    #water-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
-      pointer-events: none;
-    }
+    #water-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; }
 
-    /* Ambient Cyber Mesh Glows */
-    .cyber-aura-1 {
-      position: fixed;
-      top: -120px;
-      left: -120px;
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, var(--neon-1) 0%, transparent 70%);
-      opacity: 0.14;
-      filter: blur(60px);
-      z-index: -1;
-      pointer-events: none;
-      transition: background 0.5s ease;
-    }
-    .cyber-aura-2 {
-      position: fixed;
-      bottom: -150px;
-      right: -120px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, var(--neon-2) 0%, transparent 70%);
-      opacity: 0.14;
-      filter: blur(70px);
-      z-index: -1;
-      pointer-events: none;
-      transition: background 0.5s ease;
-    }
+    .cyber-aura-1 { position: fixed; top: -120px; left: -120px; width: 480px; height: 480px; background: radial-gradient(circle, var(--neon-1) 0%, transparent 70%); opacity: 0.14; filter: blur(60px); z-index: -1; pointer-events: none; transition: background 0.5s ease; }
+    .cyber-aura-2 { position: fixed; bottom: -150px; right: -120px; width: 520px; height: 520px; background: radial-gradient(circle, var(--neon-2) 0%, transparent 70%); opacity: 0.14; filter: blur(70px); z-index: -1; pointer-events: none; transition: background 0.5s ease; }
 
-    /* Hyper-Neon Double Plasma Ring */
-    @keyframes spinClockwise {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes spinCounter {
-      0% { transform: rotate(360deg); }
-      100% { transform: rotate(0deg); }
-    }
-    .neon-ring-wrapper {
-      position: relative;
-      width: 290px;
-      height: 290px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px;
-    }
-    /* Outer Intense Plasma Halo */
-    .neon-ring-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--neon-1), var(--neon-2), var(--neon-3), var(--neon-1));
-      z-index: 0;
-      animation: spinClockwise 4s linear infinite;
-      filter: blur(18px);
-      opacity: 0.95;
-    }
-    /* Crisp Inner Laser Border */
-    .neon-ring-wrapper::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--neon-2), var(--neon-1), var(--neon-3), var(--neon-2));
-      z-index: 0;
-      animation: spinCounter 6s linear infinite;
-    }
-    .neon-inner-img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #060810;
-      border: 3px solid #030308;
-    }
+    @keyframes spinClockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes spinCounter { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+    .neon-ring-wrapper { position: relative; width: 290px; height: 290px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 6px; }
+    .neon-ring-wrapper::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, var(--neon-1), var(--neon-2), var(--neon-3), var(--neon-1)); z-index: 0; animation: spinClockwise 4s linear infinite; filter: blur(18px); opacity: 0.95; }
+    .neon-ring-wrapper::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; background: conic-gradient(from 180deg, var(--neon-2), var(--neon-1), var(--neon-3), var(--neon-2)); z-index: 0; animation: spinCounter 6s linear infinite; }
+    .neon-inner-img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #060810; border: 3px solid #030308; }
 
-    /* Floating Orbit Badges */
-    @keyframes floatBadge {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-    .orbit-badge {
-      position: absolute;
-      z-index: 10;
-      background: rgba(8, 10, 18, 0.88);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--neon-1);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 12px color-mix(in srgb, var(--neon-1) 40%, transparent);
-      animation: floatBadge 3.5s ease-in-out infinite;
-    }
+    @keyframes floatBadge { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    .orbit-badge { position: absolute; z-index: 10; background: rgba(8, 10, 18, 0.88); backdrop-filter: blur(12px); border: 1px solid var(--neon-1); box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 12px color-mix(in srgb, var(--neon-1) 40%, transparent); animation: floatBadge 3.5s ease-in-out infinite; }
 
-    /* Neon Glass Cards with Animated Border Hover */
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(22px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card:hover {
-      border-color: var(--neon-1);
-      transform: translateY(-7px) scale(1.01);
-      box-shadow: 0 20px 45px -15px color-mix(in srgb, var(--neon-1) 35%, transparent),
-                  0 0 25px -5px color-mix(in srgb, var(--neon-2) 25%, transparent);
-    }
+    .glass-card { background: var(--card-bg); backdrop-filter: blur(22px); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .glass-card:hover { border-color: var(--neon-1); transform: translateY(-7px) scale(1.01); box-shadow: 0 20px 45px -15px color-mix(in srgb, var(--neon-1) 35%, transparent), 0 0 25px -5px color-mix(in srgb, var(--neon-2) 25%, transparent); }
 
-    /* Hyper-Neon Gradient Text */
-    .neon-gradient-text {
-      background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 55%, var(--neon-3) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon-1) 35%, transparent));
-    }
+    .neon-gradient-text { background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 55%, var(--neon-3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon-1) 35%, transparent)); }
 
-    /* Hyper-Neon Button */
-    .cyber-btn {
-      background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 100%);
-      color: #000;
-      box-shadow: 0 0 25px color-mix(in srgb, var(--neon-1) 50%, transparent);
-      transition: all 0.35s ease;
-    }
-    .cyber-btn:hover {
-      box-shadow: 0 0 38px var(--neon-1), 0 0 60px var(--neon-2);
-      transform: translateY(-3px) scale(1.03);
-    }
+    .cyber-btn { background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 100%); color: #000; box-shadow: 0 0 25px color-mix(in srgb, var(--neon-1) 50%, transparent); transition: all 0.35s ease; }
+    .cyber-btn:hover { box-shadow: 0 0 38px var(--neon-1), 0 0 60px var(--neon-2); transform: translateY(-3px) scale(1.03); }
 
-    /* Touch Spark & Shockwave Ring */
-    .spark {
-      position: fixed;
-      pointer-events: none;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--neon-1);
-      box-shadow: 0 0 14px var(--neon-1), 0 0 28px var(--neon-2);
-      animation: sparkAnim 0.65s ease-out forwards;
-      z-index: 9999;
-    }
-    @keyframes sparkAnim {
-      0% { transform: translate(0, 0) scale(1.2); opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-    }
-    .touch-ripple {
-      position: fixed;
-      pointer-events: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 2px solid var(--neon-2);
-      box-shadow: 0 0 16px var(--neon-1);
-      transform: translate(-50%, -50%);
-      animation: rippleOut 0.6s ease-out forwards;
-      z-index: 9998;
-    }
-    @keyframes rippleOut {
-      0% { width: 10px; height: 10px; opacity: 0.95; }
-      100% { width: 110px; height: 110px; opacity: 0; }
-    }
+    .spark { position: fixed; pointer-events: none; width: 8px; height: 8px; border-radius: 50%; background: var(--neon-1); box-shadow: 0 0 14px var(--neon-1), 0 0 28px var(--neon-2); animation: sparkAnim 0.65s ease-out forwards; z-index: 9999; }
+    @keyframes sparkAnim { 0% { transform: translate(0, 0) scale(1.2); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
+    .touch-ripple { position: fixed; pointer-events: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--neon-2); box-shadow: 0 0 16px var(--neon-1); transform: translate(-50%, -50%); animation: rippleOut 0.6s ease-out forwards; z-index: 9998; }
+    @keyframes rippleOut { 0% { width: 10px; height: 10px; opacity: 0.95; } 100% { width: 110px; height: 110px; opacity: 0; } }
 
-    /* Equalizer Animation */
-    @keyframes eqBar {
-      0%, 100% { height: 6px; }
-      50% { height: 24px; }
-    }
-    .eq-playing span {
-      animation: eqBar 0.6s ease-in-out infinite;
-    }
+    @keyframes eqBar { 0%, 100% { height: 6px; } 50% { height: 24px; } }
+    .eq-playing span { animation: eqBar 0.6s ease-in-out infinite; }
   </style>
 </head>
 <body class="selection:bg-[#FF007F] selection:text-white min-h-screen flex flex-col justify-between relative page-loaded">
 
-  <!-- Water Dot Animation Canvas & Neon Auras -->
   <canvas id="water-canvas"></canvas>
   <div class="cyber-aura-1"></div>
   <div class="cyber-aura-2"></div>
 
-  <!-- Top Cyber Navigation -->
   <header class="fixed top-0 inset-x-0 z-40 bg-[#030308]/80 backdrop-blur-2xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-black text-xl tracking-wider text-white flex items-center gap-2.5">
@@ -236,12 +80,11 @@
       </a>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full cyber-btn font-black text-xs flex items-center gap-2">
-        <span>💬</span> <span>WhatsApp</span>
+        <i class="fa-brands fa-whatsapp text-lg"></i> <span>WhatsApp</span>
       </a>
     </div>
   </header>
 
-  <!-- Floating Quick Neon Theme Switcher Bar -->
   <div class="pt-24 sm:pt-28 px-4 max-w-6xl mx-auto w-full flex justify-center">
     <div class="glass-card rounded-full px-3 py-1.5 flex flex-wrap items-center justify-center gap-2 border border-white/15 shadow-2xl">
       <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 px-2">⚡ Neon Mode:</span>
@@ -252,17 +95,13 @@
     </div>
   </div>
 
-  <!-- Main Dynamic Sections Container -->
   <main id="sections-wrapper" class="pt-8 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
 
-  <!-- Clean Public Footer -->
   <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-500 font-mono">
     <p id="footer-text">© 2026 Shihab. Hyper-Neon CyberStack Architecture.</p>
   </footer>
 
-  <!-- ==========================================
-       SECURE ADMIN CMS MODAL
-       ========================================== -->
+  <!-- SECURE ADMIN CMS MODAL -->
   <div id="admin-overlay" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl overflow-y-auto">
     <div id="admin-login-box" class="min-h-screen flex items-center justify-center p-4">
       <div class="bg-[#0B0E17] border border-white/15 w-full max-w-md rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl text-center">
@@ -286,7 +125,7 @@
           <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
           <div>
             <h3 class="text-sm sm:text-base font-black text-white">⚡ Hyper-Neon Cloud CMS</h3>
-            <p class="text-[11px] text-emerald-400 font-mono">● Dual Neon & Direct GitHub Sync</p>
+            <p class="text-[11px] text-emerald-400 font-mono">● FontAwesome Icons Active</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -295,9 +134,8 @@
         </div>
       </div>
 
-      <!-- GitHub Token Bar -->
       <div class="bg-[#0B0E17] border border-white/15 rounded-2xl p-4 space-y-2">
-        <label class="text-xs font-bold text-[#00F5D4] block">🔑 GitHub Personal Access Token (শুধু ব্রাউজার সেশনে থাকবে, সার্ভারে সেভ হবে না)</label>
+        <label class="text-xs font-bold text-[#00F5D4] block">🔑 GitHub Personal Access Token</label>
         <div class="flex gap-2">
           <input id="inp-github-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full bg-[#030308] border border-white/15 rounded-xl p-3 text-xs text-white font-mono" />
           <button onclick="saveTokenLocally()" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold rounded-xl shrink-0">Remember</button>
@@ -305,14 +143,13 @@
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-[#0B0E17] p-2 rounded-2xl border border-white/10">
-        <button onclick="switchTab('tab-hero')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-[#00F5D4] text-black" id="btn-tab-hero">👤 Hero & Photo</button>
+        <button onclick="switchTab('tab-hero')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-[#00F5D4] text-black" id="btn-tab-hero">👤 Hero</button>
         <button onclick="switchTab('tab-socials')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300" id="btn-tab-socials">🌐 Socials</button>
         <button onclick="switchTab('tab-sections')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300" id="btn-tab-sections">📑 Sections</button>
         <button onclick="switchTab('tab-items')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300" id="btn-tab-items">🚀 Projects</button>
-        <button onclick="switchTab('tab-theme')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300" id="btn-tab-theme">🎨 Neon Colors</button>
+        <button onclick="switchTab('tab-theme')" class="cms-tab-btn py-2.5 px-3 rounded-xl text-xs font-bold text-zinc-300" id="btn-tab-theme">🎨 Theme</button>
       </div>
 
-      <!-- TAB 1: HERO -->
       <div id="tab-hero" class="cms-tab-content bg-[#0B0E17] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
         <div class="p-4 rounded-2xl bg-black/50 border border-white/15 space-y-4">
           <div class="flex flex-col sm:flex-row items-center gap-5">
@@ -347,16 +184,15 @@
         </div>
       </div>
 
-      <!-- TAB 2: SOCIALS -->
       <div id="tab-socials" class="cms-tab-content hidden bg-[#0B0E17] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
         <div class="flex items-center justify-between">
-          <h4 class="text-sm font-black text-[#00F5D4] uppercase font-mono">Social Media Buttons</h4>
+          <h4 class="text-sm font-black text-[#00F5D4] uppercase font-mono">Social Media Brand Icons</h4>
           <button onclick="addSocialButton()" class="px-3 py-1.5 rounded-xl bg-[#00F5D4] text-black font-bold text-xs">+ Add Button</button>
         </div>
+        <p class="text-[11px] text-zinc-400 mb-2">আইকনের ঘরে FontAwesome ক্লাস দিন (যেমন: fa-brands fa-facebook)</p>
         <div id="cms-socials-list" class="space-y-3"></div>
       </div>
 
-      <!-- TAB 3: SECTIONS -->
       <div id="tab-sections" class="cms-tab-content hidden bg-[#0B0E17] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
         <div class="flex items-center justify-between">
           <h4 class="text-sm font-black text-[#00F5D4] uppercase font-mono">Sections Order</h4>
@@ -365,7 +201,6 @@
         <div id="cms-sections-list" class="space-y-3"></div>
       </div>
 
-      <!-- TAB 4: SKILLS & PROJECTS -->
       <div id="tab-items" class="cms-tab-content hidden space-y-6">
         <div class="bg-[#0B0E17] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-4">
           <div class="flex items-center justify-between">
@@ -383,9 +218,8 @@
         </div>
       </div>
 
-      <!-- TAB 5: NEON THEME PICKER -->
       <div id="tab-theme" class="cms-tab-content hidden bg-[#0B0E17] border border-white/10 rounded-3xl p-5 sm:p-6 space-y-5">
-        <h4 class="text-sm font-black text-[#00F5D4] uppercase font-mono">5. Custom Dual-Neon & Background Colors</h4>
+        <h4 class="text-sm font-black text-[#00F5D4] uppercase font-mono">5. Custom Colors</h4>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
             <label class="text-xs text-zinc-400 block mb-2">Background</label>
@@ -409,7 +243,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "shihab_hyperneon_cms_v35";
+    const STORAGE_KEY = "shihab_hyperneon_cms_v36_icons";
     const GH_REPO = "Kokushibu74/kokushibu74.github.io";
 
     const DEFAULT_STATE = {
@@ -427,12 +261,12 @@
         neon3: "#7B2CBF"
       },
       socials: [
-        { name: "WhatsApp", icon: "💬", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
-        { name: "YouTube", icon: "▶️", url: "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq", sub: "Lofi World" },
-        { name: "GitHub", icon: "🐙", url: "https://github.com/Kokushibu74", sub: "Repositories" },
-        { name: "Instagram", icon: "📸", url: "https://instagram.com/shihabul.islam.74?vrfl=bnN3bnYydDV5NnIx", sub: "@shihabul.islam.74" },
-        { name: "Telegram", icon: "✈️", url: "https://t.me/S4shihab", sub: "@S4shihab" },
-        { name: "Messenger", icon: "⚡", url: "https://m.me/shihabul.islam.74", sub: "Fast Reply" }
+        { name: "Facebook", icon: "fa-brands fa-facebook", url: "https://facebook.com/shihabul.islam.74", sub: "Connect" },
+        { name: "WhatsApp", icon: "fa-brands fa-whatsapp", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
+        { name: "Instagram", icon: "fa-brands fa-instagram", url: "https://instagram.com/shihabul.islam.74?vrfl=bnN3bnYydDV5NnIx", sub: "@shihabul.islam.74" },
+        { name: "YouTube", icon: "fa-brands fa-youtube", url: "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq", sub: "Lofi World" },
+        { name: "GitHub", icon: "fa-brands fa-github", url: "https://github.com/Kokushibu74", sub: "Repositories" },
+        { name: "Telegram", icon: "fa-brands fa-telegram", url: "https://t.me/S4shihab", sub: "@S4shihab" }
       ],
       skills: [
         { icon: "⚡", title: "Web & UI/UX Design", desc: "React, Vite, Tailwind CSS, JavaScript, and responsive mobile-first interfaces." },
@@ -454,9 +288,7 @@
     };
 
     let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
-    if (!state.theme.neon1) state.theme = JSON.parse(JSON.stringify(DEFAULT_STATE.theme));
 
-    // PRESET SWITCHER
     function applyPreset(name) {
       const presets = {
         cyber:   { bgColor: "#030308", neon1: "#00F5D4", neon2: "#FF007F", neon3: "#7B2CBF" },
@@ -471,7 +303,6 @@
       }
     }
 
-    // WATER DOTS ANIMATION (Dynamic Neon Colors)
     const canvas = document.getElementById("water-canvas");
     const ctx = canvas.getContext("2d");
     let dots = [];
@@ -479,108 +310,55 @@
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     for (let i = 0; i < 70; i++) {
-      dots.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2.2 + 1,
-        baseX: Math.random() * canvas.width,
-        baseY: Math.random() * canvas.height,
-        angle: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.018 + 0.006,
-        colorIndex: i % 2
-      });
+      dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2.2 + 1, baseX: Math.random() * canvas.width, baseY: Math.random() * canvas.height, angle: Math.random() * Math.PI * 2, speed: Math.random() * 0.018 + 0.006, colorIndex: i % 2 });
     }
     function animateWaterDots() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const c1 = state.theme.neon1 || "#00F5D4";
-      const c2 = state.theme.neon2 || "#FF007F";
-
+      const c1 = state.theme.neon1 || "#00F5D4", c2 = state.theme.neon2 || "#FF007F";
       dots.forEach((dot, index) => {
-        dot.angle += dot.speed;
-        dot.x = dot.baseX + Math.sin(dot.angle) * 22;
-        dot.y = dot.baseY + Math.cos(dot.angle) * 22;
+        dot.angle += dot.speed; dot.x = dot.baseX + Math.sin(dot.angle) * 22; dot.y = dot.baseY + Math.cos(dot.angle) * 22;
         ctx.fillStyle = dot.colorIndex === 0 ? c1 + "55" : c2 + "55";
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-        ctx.fill();
-
+        ctx.beginPath(); ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); ctx.fill();
         for (let j = index + 1; j < dots.length; j++) {
           const dx = dots[j].x - dot.x, dy = dots[j].y - dot.y;
-          if (Math.sqrt(dx * dx + dy * dy) < 115) {
-            ctx.strokeStyle = c1 + "18";
-            ctx.lineWidth = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(dot.x, dot.y);
-            ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.stroke();
-          }
+          if (Math.sqrt(dx * dx + dy * dy) < 115) { ctx.strokeStyle = c1 + "18"; ctx.lineWidth = 0.6; ctx.beginPath(); ctx.moveTo(dot.x, dot.y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke(); }
         }
       });
       requestAnimationFrame(animateWaterDots);
     }
     animateWaterDots();
 
-    // TOUCH SPARK + SHOCKWAVE RIPPLE
     window.addEventListener("pointerdown", (e) => {
-      const ripple = document.createElement("div");
-      ripple.className = "touch-ripple";
-      ripple.style.left = e.clientX + "px";
-      ripple.style.top = e.clientY + "px";
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-
+      const ripple = document.createElement("div"); ripple.className = "touch-ripple"; ripple.style.left = e.clientX + "px"; ripple.style.top = e.clientY + "px"; document.body.appendChild(ripple); setTimeout(() => ripple.remove(), 600);
       for (let i = 0; i < 8; i++) {
-        const spark = document.createElement("div");
-        spark.className = "spark";
-        spark.style.left = e.clientX + "px";
-        spark.style.top = e.clientY + "px";
-        spark.style.background = i % 2 === 0 ? state.theme.neon1 : state.theme.neon2;
+        const spark = document.createElement("div"); spark.className = "spark"; spark.style.left = e.clientX + "px"; spark.style.top = e.clientY + "px"; spark.style.background = i % 2 === 0 ? state.theme.neon1 : state.theme.neon2;
         const angle = Math.random() * Math.PI * 2, distance = Math.random() * 75 + 20;
-        spark.style.setProperty("--tx", Math.cos(angle) * distance + "px");
-        spark.style.setProperty("--ty", Math.sin(angle) * distance + "px");
-        document.body.appendChild(spark);
-        setTimeout(() => spark.remove(), 650);
+        spark.style.setProperty("--tx", Math.cos(angle) * distance + "px"); spark.style.setProperty("--ty", Math.sin(angle) * distance + "px"); document.body.appendChild(spark); setTimeout(() => spark.remove(), 650);
       }
     });
 
-    // LOFI SYNTH AUDIO ENGINE
     let audioCtx = null, isPlayingLofi = false, lofiInterval = null;
     function toggleLofiMusic() {
-      const btn = document.getElementById("lofi-play-btn");
-      const eq = document.getElementById("lofi-eq");
+      const btn = document.getElementById("lofi-play-btn"), eq = document.getElementById("lofi-eq");
       if (!isPlayingLofi) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        isPlayingLofi = true;
-        if (btn) btn.innerHTML = "⏸️ Pause Lofi Synth";
-        if (eq) eq.classList.add("eq-playing");
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)(); isPlayingLofi = true;
+        if (btn) btn.innerHTML = "⏸️ Pause Lofi Synth"; if (eq) eq.classList.add("eq-playing");
         const chords = [[261.63, 329.63, 392.00, 493.88], [220.00, 261.63, 329.63, 392.00], [174.61, 220.00, 261.63, 349.23], [196.00, 246.94, 293.66, 392.00]];
         let step = 0;
         const playChord = () => {
-          if (!isPlayingLofi) return;
-          const now = audioCtx.currentTime;
+          if (!isPlayingLofi) return; const now = audioCtx.currentTime;
           chords[step % chords.length].forEach(freq => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = "sine";
-            osc.frequency.setValueAtTime(freq, now);
-            gain.gain.setValueAtTime(0.001, now);
-            gain.gain.exponentialRampToValueAtTime(0.035, now + 0.4);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.3);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start(now);
-            osc.stop(now + 2.4);
+            const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = "sine"; osc.frequency.setValueAtTime(freq, now);
+            gain.gain.setValueAtTime(0.001, now); gain.gain.exponentialRampToValueAtTime(0.035, now + 0.4); gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.3);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(now); osc.stop(now + 2.4);
           });
           step++;
         };
-        playChord();
-        lofiInterval = setInterval(playChord, 2400);
+        playChord(); lofiInterval = setInterval(playChord, 2400);
       } else {
-        isPlayingLofi = false;
-        clearInterval(lofiInterval);
-        if (audioCtx) audioCtx.close();
-        if (btn) btn.innerHTML = "🎵 Play Lofi Chill Beats";
-        if (eq) eq.classList.remove("eq-playing");
+        isPlayingLofi = false; clearInterval(lofiInterval); if (audioCtx) audioCtx.close();
+        if (btn) btn.innerHTML = "🎵 Play Lofi Chill Beats"; if (eq) eq.classList.remove("eq-playing");
       }
     }
 
@@ -590,12 +368,13 @@
         if (res.ok) {
           const parsed = await res.json();
           state = Object.assign({}, DEFAULT_STATE, parsed);
-          if (!state.theme.neon1) state.theme = DEFAULT_STATE.theme;
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
           renderWebsite();
         }
       } catch (e) {}
     }
+
+    const renderIcon = (iconStr) => iconStr.includes('fa-') ? `<i class="${iconStr}"></i>` : iconStr;
 
     function renderWebsite() {
       document.documentElement.style.setProperty("--bg-color", state.theme.bgColor || "#030308");
@@ -605,9 +384,6 @@
 
       document.getElementById("nav-name").textContent = state.name;
       document.getElementById("footer-text").textContent = `© 2026 ${state.name}. Hyper-Neon CyberStack Architecture.`;
-
-      const waObj = state.socials.find(s => s.name.toLowerCase().includes("whatsapp"));
-      if (waObj) document.getElementById("top-wa-btn").href = waObj.url;
 
       const navLinks = document.getElementById("nav-links");
       navLinks.innerHTML = state.sections.filter(s => s.enabled).map(s => `
@@ -674,9 +450,9 @@
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
                 ${state.socials.map(s => `
-                  <a href="${s.url}" target="_blank" class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-2 group">
-                    <span class="text-2xl group-hover:scale-125 transition">${s.icon}</span>
-                    <span class="text-xs font-extrabold text-white">${s.name}</span>
+                  <a href="${s.url}" target="_blank" class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:bg-white/5">
+                    <span class="text-3xl group-hover:scale-125 transition drop-shadow-md" style="color: var(--neon-1);">${renderIcon(s.icon)}</span>
+                    <span class="text-xs font-extrabold text-white mt-1">${s.name}</span>
                     <span class="text-[10px] text-zinc-400 font-mono truncate max-w-full">${s.sub || ''}</span>
                   </a>
                 `).join("")}
@@ -694,7 +470,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 ${state.skills.map(sk => `
                   <div class="glass-card rounded-3xl p-7 space-y-3">
-                    <div class="text-3xl">${sk.icon}</div>
+                    <div class="text-3xl" style="color: var(--neon-1); filter: drop-shadow(0 0 8px var(--neon-1));">${renderIcon(sk.icon)}</div>
                     <h3 class="font-extrabold text-white text-lg">${sk.title}</h3>
                     <p class="text-xs text-zinc-300 leading-relaxed">${sk.desc}</p>
                   </div>
@@ -736,36 +512,23 @@
               </div>
               <div class="flex flex-wrap justify-center gap-3">
                 ${state.socials.map(s => `
-                  <a href="${s.url}" target="_blank" class="px-5 py-3.5 rounded-full glass-card text-xs font-bold text-white flex items-center gap-2">
-                    <span>${s.icon}</span> <span>${s.name}</span>
+                  <a href="${s.url}" target="_blank" class="px-5 py-3.5 rounded-full glass-card text-xs font-bold text-white flex items-center gap-2 hover:bg-white/10">
+                    <span class="text-lg" style="color: var(--neon-1);">${renderIcon(s.icon)}</span> <span>${s.name}</span>
                   </a>
                 `).join("")}
               </div>
             </section>
           `;
         }
-        if (sec.type === "custom") {
-          return `
-            <section id="sec-${sec.id}" class="pt-16 border-t border-white/10 space-y-4">
-              <h2 class="text-2xl sm:text-3xl font-black text-white">${sec.title}</h2>
-              <div class="glass-card rounded-3xl p-6 text-sm text-zinc-200 leading-relaxed whitespace-pre-line">${sec.content || ''}</div>
-            </section>
-          `;
-        }
       }).join("");
     }
 
-    // CMS FUNCTIONS
     function switchTab(tabId) {
       document.querySelectorAll(".cms-tab-content").forEach(el => el.classList.add("hidden"));
       document.getElementById(tabId).classList.remove("hidden");
-      document.querySelectorAll(".cms-tab-btn").forEach(btn => {
-        btn.classList.remove("bg-[#00F5D4]", "text-black");
-        btn.classList.add("text-zinc-300");
-      });
+      document.querySelectorAll(".cms-tab-btn").forEach(btn => { btn.classList.remove("bg-[#00F5D4]", "text-black"); btn.classList.add("text-zinc-300"); });
       const activeBtn = document.getElementById("btn-" + tabId);
-      activeBtn.classList.add("bg-[#00F5D4]", "text-black");
-      activeBtn.classList.remove("text-zinc-300");
+      activeBtn.classList.add("bg-[#00F5D4]", "text-black"); activeBtn.classList.remove("text-zinc-300");
     }
 
     function updateImagePosPreview(val) {
@@ -775,20 +538,13 @@
     }
 
     function populateCMSFields() {
-      document.getElementById("inp-name").value = state.name;
-      document.getElementById("inp-badge").value = state.badge;
-      document.getElementById("inp-title1").value = state.title1;
-      document.getElementById("inp-title2").value = state.title2;
+      document.getElementById("inp-name").value = state.name; document.getElementById("inp-badge").value = state.badge;
+      document.getElementById("inp-title1").value = state.title1; document.getElementById("inp-title2").value = state.title2;
       document.getElementById("inp-bio").value = state.bio;
       document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo" : state.image;
-      
       const pos = state.imagePos !== undefined ? state.imagePos : 50;
-      document.getElementById("inp-img-pos").value = pos;
-      document.getElementById("pos-val-label").textContent = pos + "%";
-      
-      const prevImg = document.getElementById("cms-img-preview");
-      prevImg.src = state.image;
-      prevImg.style.objectPosition = `center ${pos}%`;
+      document.getElementById("inp-img-pos").value = pos; document.getElementById("pos-val-label").textContent = pos + "%";
+      document.getElementById("cms-img-preview").style.objectPosition = `center ${pos}%`;
 
       document.getElementById("inp-bg-color").value = state.theme.bgColor || "#030308";
       document.getElementById("inp-neon-1").value = state.theme.neon1 || "#00F5D4";
@@ -798,26 +554,20 @@
       const savedToken = sessionStorage.getItem("shihab_temp_gh_token") || "";
       if (savedToken) document.getElementById("inp-github-token").value = savedToken;
 
-      renderSocialsCMS();
-      renderSectionsCMS();
-      renderSkillsCMS();
-      renderProjectsCMS();
+      renderSocialsCMS(); renderSectionsCMS(); renderSkillsCMS(); renderProjectsCMS();
     }
 
     function saveTokenLocally() {
       const tkn = document.getElementById("inp-github-token").value.trim();
-      if (tkn) {
-        sessionStorage.setItem("shihab_temp_gh_token", tkn);
-        alert("✅ টোকেন ব্রাউজার সেশনে সেভ হয়েছে!");
-      }
+      if (tkn) { sessionStorage.setItem("shihab_temp_gh_token", tkn); alert("✅ টোকেন ব্রাউজার সেশনে সেভ হয়েছে!"); }
     }
 
     function renderSocialsCMS() {
       const box = document.getElementById("cms-socials-list");
       box.innerHTML = state.socials.map((s, i) => `
         <div class="p-3.5 rounded-2xl bg-black/40 border border-white/10 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center">
-          <input type="text" value="${s.icon}" onchange="state.socials[${i}].icon=this.value" class="sm:col-span-1 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-center text-sm" />
-          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-3 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-xs text-white font-bold" />
+          <input type="text" value="${s.icon}" onchange="state.socials[${i}].icon=this.value" class="sm:col-span-2 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-center text-xs font-mono" placeholder="fa-brands fa-facebook" />
+          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-2 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-xs text-white font-bold" />
           <input type="text" value="${s.sub || ''}" onchange="state.socials[${i}].sub=this.value" class="sm:col-span-3 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-xs text-zinc-300" />
           <input type="text" value="${s.url}" onchange="state.socials[${i}].url=this.value" class="sm:col-span-4 bg-[#030308] border border-white/15 rounded-xl p-2.5 text-xs text-white font-mono" />
           <button onclick="state.socials.splice(${i},1);renderSocialsCMS();" class="sm:col-span-1 py-2 rounded-xl bg-rose-500/20 text-rose-400 text-xs font-bold">🗑️</button>
@@ -825,11 +575,8 @@
       `).join("");
     }
 
-    function addSocialButton() {
-      state.socials.push({ name: "New Link", icon: "🔗", url: "https://", sub: "Follow" });
-      renderSocialsCMS();
-    }
-
+    function addSocialButton() { state.socials.push({ name: "New Link", icon: "fa-brands fa-github", url: "https://", sub: "Follow" }); renderSocialsCMS(); }
+    
     function renderSectionsCMS() {
       const box = document.getElementById("cms-sections-list");
       box.innerHTML = state.sections.map((sec, i) => `
@@ -851,18 +598,10 @@
     }
 
     function moveSection(index, dir) {
-      const target = index + dir;
-      if (target < 0 || target >= state.sections.length) return;
-      const temp = state.sections[index];
-      state.sections[index] = state.sections[target];
-      state.sections[target] = temp;
-      renderSectionsCMS();
+      const target = index + dir; if (target < 0 || target >= state.sections.length) return;
+      const temp = state.sections[index]; state.sections[index] = state.sections[target]; state.sections[target] = temp; renderSectionsCMS();
     }
-
-    function addCustomSection() {
-      state.sections.push({ id: "custom-" + Date.now(), type: "custom", title: "New Section", content: "Details...", enabled: true });
-      renderSectionsCMS();
-    }
+    function addCustomSection() { state.sections.push({ id: "custom-" + Date.now(), type: "custom", title: "New Section", content: "Details...", enabled: true }); renderSectionsCMS(); }
 
     function renderSkillsCMS() {
       const box = document.getElementById("cms-skills-list");
@@ -877,11 +616,7 @@
         </div>
       `).join("");
     }
-
-    function addSkillItem() {
-      state.skills.push({ icon: "🔥", title: "New Skill", desc: "Skill details..." });
-      renderSkillsCMS();
-    }
+    function addSkillItem() { state.skills.push({ icon: "fa-solid fa-code", title: "New Skill", desc: "Skill details..." }); renderSkillsCMS(); }
 
     function renderProjectsCMS() {
       const box = document.getElementById("cms-projects-list");
@@ -899,142 +634,68 @@
         </div>
       `).join("");
     }
-
-    function addProjectItem() {
-      state.projects.push({ tag: "NEW", name: "Project", desc: "...", link: "#" });
-      renderProjectsCMS();
-    }
+    function addProjectItem() { state.projects.push({ tag: "NEW", name: "Project", desc: "...", link: "#" }); renderProjectsCMS(); }
 
     function handleImageUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
+      const file = event.target.files[0]; if (!file) return; const reader = new FileReader();
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
-          const canvas = document.createElement("canvas");
-          const MAX_SIZE = 800;
+          const canvas = document.createElement("canvas"), MAX_SIZE = 800;
           let width = img.width, height = img.height;
           if (width > height && width > MAX_SIZE) { height *= MAX_SIZE / width; width = MAX_SIZE; }
           else if (height > MAX_SIZE) { width *= MAX_SIZE / height; height = MAX_SIZE; }
-          canvas.width = width; canvas.height = height;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, width, height);
-          const optimizedDataUrl = canvas.toDataURL("image/jpeg", 0.82);
-          state.image = optimizedDataUrl;
-          document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
-          document.getElementById("cms-img-preview").src = optimizedDataUrl;
-          alert("✅ ছবি প্রিভিউতে যুক্ত হয়েছে!");
+          canvas.width = width; canvas.height = height; const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height); const optimizedDataUrl = canvas.toDataURL("image/jpeg", 0.82);
+          state.image = optimizedDataUrl; document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
+          document.getElementById("cms-img-preview").src = optimizedDataUrl; alert("✅ ছবি প্রিভিউতে যুক্ত হয়েছে!");
         };
         img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+      }; reader.readAsDataURL(file);
     }
 
     async function syncWithGitHub() {
-      state.name = document.getElementById("inp-name").value;
-      state.badge = document.getElementById("inp-badge").value;
-      state.title1 = document.getElementById("inp-title1").value;
-      state.title2 = document.getElementById("inp-title2").value;
-      state.bio = document.getElementById("inp-bio").value;
-      state.imagePos = Number(document.getElementById("inp-img-pos").value);
+      state.name = document.getElementById("inp-name").value; state.badge = document.getElementById("inp-badge").value;
+      state.title1 = document.getElementById("inp-title1").value; state.title2 = document.getElementById("inp-title2").value;
+      state.bio = document.getElementById("inp-bio").value; state.imagePos = Number(document.getElementById("inp-img-pos").value);
+      const pathVal = document.getElementById("inp-img-path").value; if (!pathVal.startsWith("Uploaded")) state.image = pathVal;
+      state.theme.bgColor = document.getElementById("inp-bg-color").value; state.theme.neon1 = document.getElementById("inp-neon-1").value;
+      state.theme.neon2 = document.getElementById("inp-neon-2").value; state.theme.neon3 = document.getElementById("inp-neon-3").value;
 
-      const pathVal = document.getElementById("inp-img-path").value;
-      if (!pathVal.startsWith("Uploaded")) state.image = pathVal;
-
-      state.theme.bgColor = document.getElementById("inp-bg-color").value;
-      state.theme.neon1 = document.getElementById("inp-neon-1").value;
-      state.theme.neon2 = document.getElementById("inp-neon-2").value;
-      state.theme.neon3 = document.getElementById("inp-neon-3").value;
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      renderWebsite();
-
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); renderWebsite();
       const token = document.getElementById("inp-github-token").value.trim() || sessionStorage.getItem("shihab_temp_gh_token");
-      if (!token) {
-        alert("✅ আপনার ব্রাউজারে সেভ হয়েছে! (গিটহাব সার্ভারে সরাসরি সিঙ্ক করতে চাইলে ওপরে GitHub Token দিন)।");
-        exitCMS();
-        return;
-      }
+      if (!token) { alert("✅ আপনার ব্রাউজারে সেভ হয়েছে! গিটহাবে পাঠাতে ওপরে GitHub Token দিন।"); exitCMS(); return; }
 
-      const btn = document.getElementById("save-sync-btn");
-      btn.disabled = true;
-      btn.textContent = "⏳ সিঙ্ক হচ্ছে...";
-
+      const btn = document.getElementById("save-sync-btn"); btn.disabled = true; btn.textContent = "⏳ সিঙ্ক হচ্ছে...";
       try {
-        let sha = "";
-        const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
-          headers: { "Authorization": `Bearer ${token}` },
-          cache: "no-store"
-        });
-        if (getRes.ok) {
-          const getJson = await getRes.json();
-          sha = getJson.sha;
-        }
-
-        const jsonString = JSON.stringify(state, null, 2);
-        const utf8Bytes = new TextEncoder().encode(jsonString);
-        let binStr = "";
-        for (let i = 0; i < utf8Bytes.length; i++) binStr += String.fromCharCode(utf8Bytes[i]);
+        let sha = ""; const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, { headers: { "Authorization": `Bearer ${token}` }, cache: "no-store" });
+        if (getRes.ok) { const getJson = await getRes.json(); sha = getJson.sha; }
+        const jsonString = JSON.stringify(state, null, 2); const utf8Bytes = new TextEncoder().encode(jsonString);
+        let binStr = ""; for (let i = 0; i < utf8Bytes.length; i++) binStr += String.fromCharCode(utf8Bytes[i]);
         const base64Content = btoa(binStr);
-
-        const payload = {
-          message: "Update Hyper-Neon theme & content via CMS",
-          content: base64Content,
-          branch: "main"
-        };
+        const payload = { message: "Update site via CMS", content: base64Content, branch: "main" };
         if (sha) payload.sha = sha;
-
-        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
-          method: "PUT",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (putRes.ok) {
-          btn.disabled = false;
-          btn.textContent = "🚀 Save & Sync GitHub";
-          alert("🎉 সফলভাবে গিটহাব সার্ভারে পার্মানেন্টলি সিঙ্ক হয়ে গেছে!");
-          exitCMS();
-        } else {
-          throw new Error("API Error");
-        }
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = "🚀 Save & Sync GitHub";
-        alert("⚠️ গিটহাব টোকেন সঠিক নয় অথবা ইন্টারনেট সমস্যা!");
-      }
+        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, { method: "PUT", headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        if (putRes.ok) { btn.disabled = false; btn.textContent = "🚀 Save & Sync GitHub"; alert("🎉 সফলভাবে গিটহাব সার্ভারে সিঙ্ক হয়ে গেছে!"); exitCMS(); } else { throw new Error("API Error"); }
+      } catch (err) { btn.disabled = false; btn.textContent = "🚀 Save & Sync GitHub"; alert("⚠️ গিটহাব টোকেন সঠিক নয় অথবা ইন্টারনেট সমস্যা!"); }
     }
 
     function unlockCMS() {
-      const val = document.getElementById("cms-password-input").value.trim();
-      if (val === "S20107233") {
-        document.getElementById("admin-login-box").classList.add("hidden");
-        document.getElementById("admin-dashboard-box").classList.remove("hidden");
-        populateCMSFields();
-      } else {
-        document.getElementById("cms-login-error").classList.remove("hidden");
-      }
+      if (document.getElementById("cms-password-input").value.trim() === "S20107233") {
+        document.getElementById("admin-login-box").classList.add("hidden"); document.getElementById("admin-dashboard-box").classList.remove("hidden"); populateCMSFields();
+      } else { document.getElementById("cms-login-error").classList.remove("hidden"); }
     }
 
     function checkAdminTrigger() {
-      if (window.location.hash === "#admin" || window.location.search.includes("admin=1")) {
-        document.getElementById("admin-overlay").classList.remove("hidden");
-      }
+      if (window.location.hash === "#admin" || window.location.search.includes("admin=1")) { document.getElementById("admin-overlay").classList.remove("hidden"); }
     }
-
-    function exitCMS() {
-      window.location.hash = "";
-      document.getElementById("admin-overlay").classList.add("hidden");
-    }
-
+    function exitCMS() { window.location.hash = ""; document.getElementById("admin-overlay").classList.add("hidden"); }
     window.addEventListener("hashchange", checkAdminTrigger);
-    loadPublicServerState();
-    renderWebsite();
-    checkAdminTrigger();
+
+    let saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) { try { state = JSON.parse(saved); } catch(e){} } else { loadPublicServerState(); }
+
+    renderWebsite(); checkAdminTrigger();
   </script>
 </body>
 </html>
