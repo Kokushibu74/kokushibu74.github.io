@@ -24,7 +24,6 @@
     }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
     
-    /* Page Refresh / Load Transforming Animation */
     @keyframes pageTransform {
       0% { opacity: 0; transform: scale(0.95) translateY(15px); filter: blur(10px); }
       100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
@@ -33,7 +32,6 @@
       animation: pageTransform 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Water Dot Canvas Background */
     #water-canvas {
       position: fixed;
       top: 0;
@@ -44,7 +42,6 @@
       pointer-events: none;
     }
 
-    /* Touch Spark Particle Animation */
     .spark {
       position: fixed;
       pointer-events: none;
@@ -121,7 +118,6 @@
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative page-loaded">
 
-  <!-- Water Dot Animation Canvas Background -->
   <canvas id="water-canvas"></canvas>
 
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
@@ -166,13 +162,22 @@
         <div class="flex items-center gap-2.5">
           <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
           <div>
-            <h3 class="text-sm sm:text-base font-black text-white">⚡ CyberStack Clean CMS</h3>
-            <p class="text-[11px] text-emerald-400 font-mono">● Water Dot & Touch Spark Active</p>
+            <h3 class="text-sm sm:text-base font-black text-white">⚡ CyberStack Secure Cloud CMS</h3>
+            <p id="publish-status" class="text-[11px] text-emerald-400 font-mono">● Secure Direct GitHub API Sync</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
           <button onclick="exitCMS()" class="px-3.5 py-2.5 rounded-xl bg-zinc-800 text-zinc-200 text-xs font-bold">Close</button>
-          <button onclick="saveCMSChanges()" class="px-5 py-2.5 rounded-xl cyber-btn text-black font-black text-xs shadow-lg">💾 Save Changes</button>
+          <button id="save-sync-btn" onclick="syncWithGitHub()" class="px-5 py-2.5 rounded-xl cyber-btn text-black font-black text-xs shadow-lg">🚀 Save & Sync GitHub</button>
+        </div>
+      </div>
+
+      <!-- GitHub Token Security Bar -->
+      <div class="bg-[#0D111A] border border-[#00F2FE]/30 rounded-2xl p-4 space-y-2">
+        <label class="text-xs font-bold text-[#00F2FE] block">🔑 GitHub Personal Access Token (শুধু আপনার ব্রাউজারে সুরক্ষিত থাকবে, সার্ভারে সেভ হবে না)</label>
+        <div class="flex gap-2">
+          <input id="inp-github-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full bg-[#05070B] border border-white/15 rounded-xl p-3 text-xs text-white font-mono" />
+          <button onclick="saveTokenLocally()" class="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold rounded-xl shrink-0">Remember</button>
         </div>
       </div>
 
@@ -194,9 +199,6 @@
             <div class="space-y-3 w-full">
               <label class="text-xs font-extrabold text-[#00F2FE] block">📸 নতুন ছবি আপলোড করুন</label>
               <input id="inp-img-file" type="file" accept="image/*" class="w-full text-xs text-zinc-300 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-extrabold file:bg-[#00F2FE] file:text-black cursor-pointer" onchange="handleImageUpload(event)" />
-              <div id="upload-confirm-box" class="hidden p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
-                ✅ ছবি সফলভাবে প্রিভিউতে যুক্ত হয়েছে! নিচে 'Save Changes' বাটনে চাপুন।
-              </div>
               <div>
                 <label class="text-[11px] text-zinc-400 flex justify-between mb-1">
                   <span>ছবির পজিশন (উপরে-নিচে):</span>
@@ -279,56 +281,30 @@
   </div>
 
   <script>
-    // --- WATER DOT BACKGROUND ANIMATION SCRIPT ---
+    // WATER DOTS
     const canvas = document.getElementById("water-canvas");
     const ctx = canvas.getContext("2d");
     let dots = [];
     const numDots = 65;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
-
     for (let i = 0; i < numDots; i++) {
-      dots.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1.2,
-        baseX: Math.random() * canvas.width,
-        baseY: Math.random() * canvas.height,
-        angle: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.015 + 0.005
-      });
+      dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2 + 1.2, baseX: Math.random() * canvas.width, baseY: Math.random() * canvas.height, angle: Math.random() * Math.PI * 2, speed: Math.random() * 0.015 + 0.005 });
     }
-
     function animateWaterDots() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "rgba(0, 242, 254, 0.22)";
       ctx.strokeStyle = "rgba(0, 242, 254, 0.05)";
-
       dots.forEach((dot, index) => {
         dot.angle += dot.speed;
         dot.x = dot.baseX + Math.sin(dot.angle) * 20;
         dot.y = dot.baseY + Math.cos(dot.angle) * 20;
-
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Connect nearby dots with light water web lines
+        ctx.beginPath(); ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); ctx.fill();
         for (let j = index + 1; j < dots.length; j++) {
-          const dx = dots[j].x - dot.x;
-          const dy = dots[j].y - dot.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(dot.x, dot.y);
-            ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.stroke();
+          const dx = dots[j].x - dot.x, dy = dots[j].y - dot.y;
+          if (Math.sqrt(dx * dx + dy * dy) < 110) {
+            ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(dot.x, dot.y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke();
           }
         }
       });
@@ -336,30 +312,23 @@
     }
     animateWaterDots();
 
-    // --- TOUCH / CLICK SPARK ANIMATION ---
+    // TOUCH SPARK
     window.addEventListener("pointerdown", (e) => {
-      const sparkCount = 6;
-      for (let i = 0; i < sparkCount; i++) {
+      for (let i = 0; i < 6; i++) {
         const spark = document.createElement("div");
         spark.className = "spark";
         spark.style.left = e.clientX + "px";
         spark.style.top = e.clientY + "px";
-
-        const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 60 + 20;
-        const tx = Math.cos(angle) * distance + "px";
-        const ty = Math.sin(angle) * distance + "px";
-
-        spark.style.setProperty("--tx", tx);
-        spark.style.setProperty("--ty", ty);
+        const angle = Math.random() * Math.PI * 2, distance = Math.random() * 60 + 20;
+        spark.style.setProperty("--tx", Math.cos(angle) * distance + "px");
+        spark.style.setProperty("--ty", Math.sin(angle) * distance + "px");
         document.body.appendChild(spark);
-
         setTimeout(() => spark.remove(), 600);
       }
     });
 
-    // --- PORTFOLIO CMS & STATE LOGIC ---
-    const STORAGE_KEY = "shihab_cyberstack_cms_water_v27";
+    const STORAGE_KEY = "shihab_cyberstack_cms_apilive_v29";
+    const GH_REPO = "Kokushibu74/kokushibu74.github.io";
 
     const DEFAULT_STATE = {
       name: "CYBERSTACK",
@@ -369,11 +338,7 @@
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum repellendus laborum necessitatibus deserunt maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, animi.",
       image: "profile.jpg",
       imagePos: 50,
-      theme: {
-        bgColor: "#05070B",
-        accentColor: "#00F2FE",
-        textColor: "#F5F7FC"
-      },
+      theme: { bgColor: "#05070B", accentColor: "#00F2FE", textColor: "#F5F7FC" },
       socials: [
         { name: "WhatsApp", icon: "💬", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
         { name: "YouTube", icon: "▶️", url: "https://youtube.com/@lo-fi_world-x3w?si=eN5uTLxdVGyVkWdq", sub: "Lofi World" },
@@ -402,6 +367,18 @@
     };
 
     let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    async function loadPublicServerState() {
+      try {
+        const res = await fetch(`./site-data.json?t=${Date.now()}`, { cache: "no-store" });
+        if (res.ok) {
+          const parsed = await res.json();
+          state = Object.assign({}, DEFAULT_STATE, parsed);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          renderWebsite();
+        }
+      } catch (e) {}
+    }
 
     function renderWebsite() {
       document.documentElement.style.setProperty("--bg-color", state.theme.bgColor);
@@ -584,10 +561,21 @@
       document.getElementById("inp-accent-color").value = state.theme.accentColor;
       document.getElementById("inp-text-color").value = state.theme.textColor;
 
+      const savedToken = sessionStorage.getItem("shihab_temp_gh_token") || "";
+      if (savedToken) document.getElementById("inp-github-token").value = savedToken;
+
       renderSocialsCMS();
       renderSectionsCMS();
       renderSkillsCMS();
       renderProjectsCMS();
+    }
+
+    function saveTokenLocally() {
+      const tkn = document.getElementById("inp-github-token").value.trim();
+      if (tkn) {
+        sessionStorage.setItem("shihab_temp_gh_token", tkn);
+        alert("✅ টোকেন ব্রাউজার সেশনে সেভ হয়েছে (সার্ভারে বা ফাইলে সেভ হয়নি)।");
+      }
     }
 
     function renderSocialsCMS() {
@@ -692,34 +680,31 @@
         img.onload = function() {
           const canvas = document.createElement("canvas");
           const MAX_SIZE = 800;
-          let width = img.width;
-          let height = img.height;
-          if (width > height && width > MAX_SIZE) {
-            height *= MAX_SIZE / width;
-            width = MAX_SIZE;
-          } else if (height > MAX_SIZE) {
-            width *= MAX_SIZE / height;
-            height = MAX_SIZE;
-          }
-          canvas.width = width;
-          canvas.height = height;
+          let width = img.width, height = img.height;
+          if (width > height && width > MAX_SIZE) { height *= MAX_SIZE / width; width = MAX_SIZE; }
+          else if (height > MAX_SIZE) { width *= MAX_SIZE / height; height = MAX_SIZE; }
+          canvas.width = width; canvas.height = height;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, width, height);
           const optimizedDataUrl = canvas.toDataURL("image/jpeg", 0.8);
-
           state.image = optimizedDataUrl;
           document.getElementById("inp-img-path").value = "Uploaded Custom Photo";
           document.getElementById("cms-img-preview").src = optimizedDataUrl;
-          
-          document.getElementById("upload-confirm-box").classList.remove("hidden");
-          alert("✅ ছবি সফলভাবে প্রিভিউতে যুক্ত হয়েছে! নিচে 'Save Changes' বাটনে চাপুন।");
+          alert("✅ ছবি সফলভাবে প্রিভিউতে যুক্ত হয়েছে!");
         };
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    function saveCMSChanges() {
+    // DIRECT SECURE GITHUB API SYNC (Token NOT saved in repo)
+    async function syncWithGitHub() {
+      const token = document.getElementById("inp-github-token").value.trim() || sessionStorage.getItem("shihab_temp_gh_token");
+      if (!token) {
+        alert("⚠️ দয়া করে আপনার GitHub Personal Access Token (PAT) দিন। এটি কোথাও সেভ হবে না, শুধু এই রিকোয়েস্টের জন্য ব্যবহৃত হবে।");
+        return;
+      }
+
       state.name = document.getElementById("inp-name").value;
       state.badge = document.getElementById("inp-badge").value;
       state.title1 = document.getElementById("inp-title1").value;
@@ -728,9 +713,7 @@
       state.imagePos = Number(document.getElementById("inp-img-pos").value);
 
       const pathVal = document.getElementById("inp-img-path").value;
-      if (!pathVal.startsWith("Uploaded")) {
-        state.image = pathVal;
-      }
+      if (!pathVal.startsWith("Uploaded")) { state.image = pathVal; }
 
       state.theme.bgColor = document.getElementById("inp-bg-color").value;
       state.theme.accentColor = document.getElementById("inp-accent-color").value;
@@ -738,8 +721,57 @@
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       renderWebsite();
-      exitCMS();
-      alert("🎉 সফলভাবে সেভ হয়েছে! এখন টার্মাক্সে কমান্ড দিয়ে গিটহাবে লাইভ করে দিন।");
+
+      const btn = document.getElementById("save-sync-btn");
+      btn.disabled = true;
+      btn.textContent = "⏳ সিঙ্ক হচ্ছে...";
+
+      try {
+        let sha = "";
+        const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          headers: { "Authorization": `Bearer ${token}` },
+          cache: "no-store"
+        });
+        if (getRes.ok) {
+          const getJson = await getRes.json();
+          sha = getJson.sha;
+        }
+
+        const jsonString = JSON.stringify(state, null, 2);
+        const utf8Bytes = new TextEncoder().encode(jsonString);
+        let binStr = "";
+        for (let i = 0; i < utf8Bytes.length; i++) binStr += String.fromCharCode(utf8Bytes[i]);
+        const base64Content = btoa(binStr);
+
+        const payload = {
+          message: "Update site via Secure Admin CMS",
+          content: base64Content,
+          branch: "main"
+        };
+        if (sha) payload.sha = sha;
+
+        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (putRes.ok) {
+          btn.disabled = false;
+          btn.textContent = "🚀 Save & Sync GitHub";
+          alert("🎉 সফলভাবে গিটহাব সার্ভারে লাইভ সিঙ্ক হয়ে গেছে!");
+          exitCMS();
+        } else {
+          throw new Error("API Error");
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "🚀 Save & Sync GitHub";
+        alert("⚠️ টোকেন ভুল অথবা নেটওয়ার্ক সমস্যা! আপনার টোকেনটি সঠিক আছে কি না চেক করুন।");
+      }
     }
 
     function unlockCMS() {
@@ -769,6 +801,8 @@
     let saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try { state = JSON.parse(saved); } catch(e){}
+    } else {
+      loadPublicServerState();
     }
 
     renderWebsite();
