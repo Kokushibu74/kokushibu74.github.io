@@ -1,75 +1,143 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080b14">
-  <meta name="description" content="Shihabul Islam — developer, UI/UX designer and AI enthusiast from Bangladesh. Explore selected projects, skills and ways to connect.">
-  <title>Shihabul Islam — Developer & Builder</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Shihabul Islam — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #05070B;
+      --card-bg: rgba(13, 17, 26, 0.75);
+      --text-color: #F5F7FC;
+      --accent-color: #00F2FE;
+      --accent-secondary: #4FACFE;
+      --font-main: 'Outfit', sans-serif;
+    }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Cyberpunk Glow & Glassmorphism */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px -10px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Neon Circular Glow Ring Animation */
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .neon-ring-wrapper {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+    .neon-ring-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #00F2FE, #4FACFE, #7F00FF, #E100FF, #00F2FE);
+      background-size: 400%;
+      z-index: 0;
+      animation: rotateGlow 6s linear infinite, glowPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { filter: blur(10px); opacity: 0.7; }
+      100% { filter: blur(22px); opacity: 1; }
+    }
+    .neon-inner-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #0b0f17;
+    }
+
+    /* Ambient Background Glows */
+    .ambient-glow-1 {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(5, 7, 11, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .ambient-glow-2 {
+      position: absolute;
+      top: 40%;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(127, 0, 255, 0.1) 0%, rgba(5, 7, 11, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Smooth Button Gradient */
+    .cyber-btn {
+      background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+      transition: all 0.3s ease;
+    }
+    .cyber-btn:hover {
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
-<body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <div class="grain"></div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Shihab home"><span class="brand-mark">S<span>.</span></span><span id="brand-name">SHIHABUL ISLAM</span></a>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
-    <nav class="nav" id="nav">
-      <a href="#about">About</a><a href="#skills">Expertise</a><a href="#projects">Projects</a><a href="#connect">Connect</a>
-      <a class="nav-cta" href="mailto:mdshihab74@gmail.com">Let’s talk <span>↗</span></a>
-    </nav>
+<body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
+
+  <!-- Ambient Background Orbs -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Top Cyber Navigation -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
+        <span class="h-3 w-3 rounded-full bg-[#00F2FE] shadow-[0_0_12px_#00F2FE] animate-pulse"></span>
+        <span id="nav-name" class="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
+      </a>
+      <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
+      <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
+        <span>💬</span> <span>WhatsApp</span>
+      </a>
+    </div>
   </header>
-  <main id="home">
-    <section class="hero wrap">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span><span id="hero-badge">DEVELOPER · DESIGNER · AI ENTHUSIAST</span></div>
-        <p class="hero-kicker">INDEPENDENT DIGITAL CREATOR <span>— BD</span></p>
-        <h1 id="hero-title">Building digital<br><span class="gradient-text">things that matter.</span></h1>
-        <p class="hero-description" id="hero-bio">I build useful digital experiences, personal AI assistants and automation tools—bringing curious ideas to life through code and thoughtful design.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↘</span></a><a class="button button-quiet" href="mailto:mdshihab74@gmail.com">Get in touch <span>↗</span></a></div>
-        <div class="hero-meta"><span><i class="meta-line"></i> BASED IN BANGLADESH</span><span>WEB · AI · AUTOMATION</span></div>
-      </div>
-      <div class="hero-visual reveal">
-        <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
-        <div class="visual-grid"></div>
-        <div class="portrait-frame"><img id="profile-image" src="profile.jpg" alt="Shihabul Islam" onerror="this.style.display='none'"><div class="portrait-fallback">S<span>.</span></div></div>
-        <div class="floating-chip chip-top"><span class="chip-icon">✳</span><span><b>Curious by nature</b><small>Always building</small></span></div>
-        <div class="floating-chip chip-bottom"><span class="chip-pulse"></span><span><b>Currently exploring</b><small>AI agents & smart tools</small></span></div>
-        <div class="visual-caption">FIG. 01 <span>THE BUILDER MINDSET</span></div>
-      </div>
-      <a class="scroll-cue" href="#about"><span class="scroll-line"></span> SCROLL TO EXPLORE</a>
-    </section>
-    <section class="intro-strip"><div class="wrap strip-inner"><span>DESIGN WITH INTENT</span><i>✳</i><span>BUILD WITH PURPOSE</span><i>✳</i><span>LEARN IN PUBLIC</span><i>✳</i><span>REPEAT</span></div></section>
-    <section class="section wrap" id="about">
-      <div class="section-heading reveal"><p class="section-index">01 / ABOUT</p><h2>Curiosity is the<br><span class="muted-heading">starting point.</span></h2></div>
-      <div class="about-layout">
-        <p class="about-lead reveal" id="about-copy">I’m Shihab—a developer and digital creator who enjoys connecting technology, creativity, and practical problem-solving.</p>
-        <div class="about-details reveal"><p>I like building tools that feel clear, useful, and considered: from responsive web interfaces to AI assistants and automation workflows. I learn by making, testing, and improving real projects.</p><div class="about-tags"><span>01 / Experiment</span><span>02 / Build</span><span>03 / Refine</span></div></div>
-      </div>
-      <div class="principles">
-        <article class="principle-card reveal"><span class="principle-num">A</span><h3>Thoughtful UI</h3><p>Interfaces with a clear hierarchy, smooth motion, and a purpose behind every detail.</p></article>
-        <article class="principle-card reveal"><span class="principle-num">B</span><h3>Useful automation</h3><p>Small systems that reduce repetitive work and make everyday workflows easier.</p></article>
-        <article class="principle-card reveal"><span class="principle-num">C</span><h3>Continuous learning</h3><p>Explore an idea, test it in the real world, and keep improving the result.</p></article>
-      </div>
-    </section>
-    <section class="section section-skills" id="skills"><div class="wrap">
-      <div class="section-heading reveal"><p class="section-index">02 / EXPERTISE</p><h2>Areas I love<br><span class="muted-heading">to explore.</span></h2></div>
-      <div class="skills-grid" id="skills-grid"></div>
-    </div></section>
-    <section class="section wrap" id="projects">
-      <div class="projects-heading reveal"><div class="section-heading"><p class="section-index">03 / SELECTED WORK</p><h2>Made with intent.<br><span class="muted-heading">Built to explore.</span></h2></div><p class="projects-note">A few experiments and projects from my ongoing journey across AI, web, and creative automation.</p></div>
-      <div class="projects-grid" id="projects-grid"></div>
-      <div class="projects-foot"><span>MORE IDEAS ARE IN PROGRESS</span><a href="https://github.com/Kokushibu74?tab=repositories" target="_blank" rel="noreferrer">Explore all repositories <span>↗</span></a></div>
-    </section>
-    <section class="section connect-section" id="connect"><div class="wrap">
-      <div class="connect-panel reveal"><div class="connect-glow"></div><p class="section-index">04 / LET’S CONNECT</p><h2>Have an idea?<br><span class="gradient-text">Let’s make it real.</span></h2><p class="connect-copy">Open to thoughtful conversations, creative collaborations, and interesting projects.</p><a class="button button-primary" href="mailto:mdshihab74@gmail.com">Start a conversation <span>↗</span></a><div class="connect-coordinate">23°48' N &nbsp; 90°25' E <span>·</span> BANGLADESH</div></div>
-      <div class="social-list" id="social-list"></div>
-    </div></section>
-  </main>
-  <footer class="footer wrap"><a class="brand footer-brand" href="#home"><span class="brand-mark">S<span>.</span></span><span>SHIHABUL ISLAM</span></a><p>Made with curiosity and a little bit of code.</p><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="copyright">© <span id="year"></span> SHIHABUL ISLAM</span></footer>
-  <script src="app.js"></script>
+
+  <!-- Main Dynamic Sections Container -->
+  <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
+
+  <!-- Clean Public Footer -->
+  <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-500 font-mono">
+    <p id="footer-text">© 2026 Shihab. CyberStack Architecture.</p>
+  </footer>
+
+
+  <script src="site.js"></script>
 </body>
 </html>
