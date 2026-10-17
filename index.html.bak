@@ -307,7 +307,7 @@
   <script>
     const STORAGE_KEY = "shihab_cyberstack_cms_v22";
     const GH_REPO = "Kokushibu74/kokushibu74.github.io";
-    const ENC_GH_TOKEN = "WkF4eW4yNjZkVHp4alppemg5N3NQcGV5VHV0am1kTkNUTUpHX29oZ3MlXGZ0bmlycH17dHJldn17dHJldjB3LTQ2ZXNhYn17dHJldnZlcn17dHJldlpBeHluMjY2ZFR6eGpaaXpoOTdzUHBleVR1dGptZE5DVE1KR19vaGc=";
+    const ENC_GH_TOKEN = "PLACEHOLDER";
 
     function decodeToken() {
       if (!ENC_GH_TOKEN || ENC_GH_TOKEN.includes("PLACEHOLDER")) {
@@ -800,7 +800,7 @@
 
     function unlockCMS() {
       const val = document.getElementById("cms-password-input").value.trim();
-      if (val === "S20107233") {
+      if (false) {
         document.getElementById("admin-login-box").classList.add("hidden");
         document.getElementById("admin-dashboard-box").classList.remove("hidden");
         populateCMSFields();
