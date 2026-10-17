@@ -1,675 +1,75 @@
-<!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Shihab — Hyper-Neon AI Architect</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --bg-color: #030308;
-      --card-bg: rgba(10, 12, 22, 0.72);
-      --text-color: #F8FAFC;
-      --neon-1: #00F5D4;
-      --neon-2: #FF007F;
-      --neon-3: #7B2CBF;
-      --font-main: 'Outfit', sans-serif;
-    }
-
-    body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; transition: background-color 0.5s ease; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-    @keyframes pageTransform { 0% { opacity: 0; transform: scale(0.92) translateY(25px); filter: blur(16px); } 100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); } }
-    .page-loaded { animation: pageTransform 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-    #water-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; }
-    .cyber-aura-1 { position: fixed; top: -120px; left: -120px; width: 480px; height: 480px; background: radial-gradient(circle, var(--neon-1) 0%, transparent 70%); opacity: 0.14; filter: blur(60px); z-index: -1; pointer-events: none; transition: background 0.5s ease; }
-    .cyber-aura-2 { position: fixed; bottom: -150px; right: -120px; width: 520px; height: 520px; background: radial-gradient(circle, var(--neon-2) 0%, transparent 70%); opacity: 0.14; filter: blur(70px); z-index: -1; pointer-events: none; transition: background 0.5s ease; }
-
-    @keyframes spinClockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes spinCounter { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
-    .neon-ring-wrapper { position: relative; width: 290px; height: 290px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 6px; }
-    .neon-ring-wrapper::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, var(--neon-1), var(--neon-2), var(--neon-3), var(--neon-1)); z-index: 0; animation: spinClockwise 4s linear infinite; filter: blur(18px); opacity: 0.95; }
-    .neon-ring-wrapper::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; background: conic-gradient(from 180deg, var(--neon-2), var(--neon-1), var(--neon-3), var(--neon-2)); z-index: 0; animation: spinCounter 6s linear infinite; }
-    .neon-inner-img { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #060810; border: 3px solid #030308; }
-
-    @keyframes floatBadge { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-    .orbit-badge { position: absolute; z-index: 10; background: rgba(8, 10, 18, 0.88); backdrop-filter: blur(12px); border: 1px solid var(--neon-1); box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 12px color-mix(in srgb, var(--neon-1) 40%, transparent); animation: floatBadge 3.5s ease-in-out infinite; }
-
-    .glass-card { background: var(--card-bg); backdrop-filter: blur(22px); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .glass-card:hover { border-color: var(--neon-1); transform: translateY(-7px) scale(1.01); box-shadow: 0 20px 45px -15px color-mix(in srgb, var(--neon-1) 35%, transparent), 0 0 25px -5px color-mix(in srgb, var(--neon-2) 25%, transparent); }
-    .neon-gradient-text { background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 55%, var(--neon-3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon-1) 35%, transparent)); }
-    .cyber-btn { background: linear-gradient(135deg, var(--neon-1) 0%, var(--neon-2) 100%); color: #000; box-shadow: 0 0 25px color-mix(in srgb, var(--neon-1) 50%, transparent); transition: all 0.35s ease; }
-    .cyber-btn:hover { box-shadow: 0 0 38px var(--neon-1), 0 0 60px var(--neon-2); transform: translateY(-3px) scale(1.03); }
-
-    .spark { position: fixed; pointer-events: none; width: 8px; height: 8px; border-radius: 50%; background: var(--neon-1); box-shadow: 0 0 14px var(--neon-1), 0 0 28px var(--neon-2); animation: sparkAnim 0.65s ease-out forwards; z-index: 9999; }
-    @keyframes sparkAnim { 0% { transform: translate(0, 0) scale(1.2); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
-    .touch-ripple { position: fixed; pointer-events: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--neon-2); box-shadow: 0 0 16px var(--neon-1); transform: translate(-50%, -50%); animation: rippleOut 0.6s ease-out forwards; z-index: 9998; }
-    @keyframes rippleOut { 0% { width: 10px; height: 10px; opacity: 0.95; } 100% { width: 110px; height: 110px; opacity: 0; } }
-    @keyframes eqBar { 0%, 100% { height: 6px; } 50% { height: 24px; } }
-    .eq-playing span { animation: eqBar 0.6s ease-in-out infinite; }
-
-    /* Admin Panel Pro Scrollbar & Inputs */
-    .pro-input { background: #0B0F19; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; font-size: 13px; color: white; transition: all 0.3s ease; outline: none; }
-    .pro-input:focus { border-color: var(--neon-1); box-shadow: 0 0 0 3px color-mix(in srgb, var(--neon-1) 20%, transparent); }
-    .admin-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-    .admin-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
-    .admin-scroll::-webkit-scrollbar-thumb { background: var(--neon-1); border-radius: 10px; }
-    .admin-tab { padding: 10px 16px; border-radius: 12px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s; white-space: nowrap; }
-    .admin-tab.active { background: var(--neon-1); color: #000; box-shadow: 0 4px 15px color-mix(in srgb, var(--neon-1) 40%, transparent); }
-    .admin-tab.inactive { color: #94A3B8; background: transparent; }
-    .admin-tab.inactive:hover { background: rgba(255,255,255,0.05); color: white; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="Shihabul Islam — developer, UI/UX designer and AI enthusiast from Bangladesh. Explore selected projects, skills and ways to connect.">
+  <title>Shihabul Islam — Developer & Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="selection:bg-[#FF007F] selection:text-white min-h-screen flex flex-col justify-between relative page-loaded">
-
-  <canvas id="water-canvas"></canvas>
-  <div class="cyber-aura-1"></div>
-  <div class="cyber-aura-2"></div>
-
-  <header class="fixed top-0 inset-x-0 z-40 bg-[#030308]/80 backdrop-blur-2xl border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-      <a href="#" class="font-black text-xl tracking-wider text-white flex items-center gap-2.5">
-        <span class="h-3 w-3 rounded-full" style="background: var(--neon-1); box-shadow: 0 0 14px var(--neon-1);"></span>
-        <span id="nav-name" class="neon-gradient-text">SHIHAB</span>
-      </a>
-      <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
-      <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full cyber-btn font-black text-xs flex items-center gap-2">
-        <i class="fa-brands fa-whatsapp text-lg"></i> <span>WhatsApp</span>
-      </a>
-    </div>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="grain"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Shihab home"><span class="brand-mark">S<span>.</span></span><span id="brand-name">SHIHABUL ISLAM</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a><a href="#skills">Expertise</a><a href="#projects">Projects</a><a href="#connect">Connect</a>
+      <a class="nav-cta" href="mailto:mdshihab74@gmail.com">Let’s talk <span>↗</span></a>
+    </nav>
   </header>
-
-  <!-- Main Content Space -->
-  <main id="sections-wrapper" class="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
-
-  <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-500 font-mono">
-    <p id="footer-text">© 2026 Shihab. Hyper-Neon CyberStack Architecture.</p>
-  </footer>
-
-  <!-- ==========================================
-       PRO ADMIN CMS MODAL (High-End UI)
-       ========================================== -->
-  <div id="admin-overlay" class="fixed inset-0 z-50 hidden bg-[#030308]/95 backdrop-blur-2xl overflow-y-auto admin-scroll">
-    <!-- LOGIN SCREEN -->
-    <div id="admin-login-box" class="min-h-screen flex items-center justify-center p-4">
-      <div class="bg-[#0A0D14] border border-white/10 w-full max-w-sm rounded-3xl p-8 space-y-6 shadow-2xl relative overflow-hidden">
-        <div class="absolute -top-20 -left-20 w-40 h-40 bg-[#00F5D4] opacity-20 blur-[50px] rounded-full"></div>
-        <div class="w-16 h-16 rounded-2xl bg-[#00F5D4]/10 border border-[#00F5D4]/30 flex items-center justify-center mx-auto text-2xl text-[#00F5D4] shadow-[0_0_20px_rgba(0,245,212,0.2)]">
-          <i class="fa-solid fa-fingerprint"></i>
-        </div>
-        <div class="text-center space-y-1.5 relative z-10">
-          <h2 class="text-2xl font-black text-white">System Access</h2>
-          <p class="text-xs text-zinc-400">অ্যাডমিন প্যানেলে প্রবেশ করতে পাসওয়ার্ড দিন</p>
-        </div>
-        <div class="space-y-4 relative z-10">
-          <input id="cms-password-input" type="password" placeholder="Enter Password" class="w-full pro-input text-center text-lg tracking-widest font-mono" />
-          <button onclick="unlockCMS()" class="w-full py-3.5 rounded-xl cyber-btn font-black text-sm uppercase tracking-wide">Authenticate</button>
-          <p id="cms-login-error" class="text-xs text-rose-500 font-bold hidden text-center">❌ Access Denied!</p>
-        </div>
-        <div class="text-center relative z-10 pt-2">
-          <button onclick="exitCMS()" class="text-xs text-zinc-500 hover:text-white transition"><i class="fa-solid fa-arrow-left mr-1"></i> Return to Site</button>
-        </div>
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span><span id="hero-badge">DEVELOPER · DESIGNER · AI ENTHUSIAST</span></div>
+        <p class="hero-kicker">INDEPENDENT DIGITAL CREATOR <span>— BD</span></p>
+        <h1 id="hero-title">Building digital<br><span class="gradient-text">things that matter.</span></h1>
+        <p class="hero-description" id="hero-bio">I build useful digital experiences, personal AI assistants and automation tools—bringing curious ideas to life through code and thoughtful design.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↘</span></a><a class="button button-quiet" href="mailto:mdshihab74@gmail.com">Get in touch <span>↗</span></a></div>
+        <div class="hero-meta"><span><i class="meta-line"></i> BASED IN BANGLADESH</span><span>WEB · AI · AUTOMATION</span></div>
       </div>
-    </div>
-
-    <!-- PRO DASHBOARD -->
-    <div id="admin-dashboard-box" class="hidden max-w-5xl mx-auto p-4 sm:p-6 space-y-6 pb-28">
-      
-      <!-- Premium Sticky Top Bar -->
-      <div class="sticky top-4 z-30 bg-[#0A0D14]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-        <div class="flex items-center gap-3 w-full sm:w-auto">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4] to-[#FF007F] flex items-center justify-center text-black text-lg shadow-lg shadow-[#00F5D4]/20"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <h3 class="text-base font-black text-white tracking-wide">CMS Dashboard</h3>
-            <div class="flex items-center gap-1.5 text-[10px] text-emerald-400 font-mono uppercase tracking-wider">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> System Online
-            </div>
-          </div>
-        </div>
-        <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
-          <button onclick="exitCMS()" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-bold transition">Exit</button>
-          <button id="save-sync-btn" onclick="syncWithGitHub()" class="px-5 py-2.5 rounded-xl cyber-btn font-black text-xs shadow-[0_0_15px_rgba(0,245,212,0.3)] flex items-center gap-2">
-            <i class="fa-solid fa-cloud-arrow-up"></i> Save & Publish
-          </button>
-        </div>
+      <div class="hero-visual reveal">
+        <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+        <div class="visual-grid"></div>
+        <div class="portrait-frame"><img id="profile-image" src="profile.jpg" alt="Shihabul Islam" onerror="this.style.display='none'"><div class="portrait-fallback">S<span>.</span></div></div>
+        <div class="floating-chip chip-top"><span class="chip-icon">✳</span><span><b>Curious by nature</b><small>Always building</small></span></div>
+        <div class="floating-chip chip-bottom"><span class="chip-pulse"></span><span><b>Currently exploring</b><small>AI agents & smart tools</small></span></div>
+        <div class="visual-caption">FIG. 01 <span>THE BUILDER MINDSET</span></div>
       </div>
-
-      <!-- Advanced Token Settings -->
-      <div class="bg-[#0A0D14] border border-[#00F5D4]/20 rounded-2xl p-5 relative overflow-hidden group">
-        <div class="absolute -right-20 -top-20 w-40 h-40 bg-[#00F5D4] opacity-5 blur-[60px] group-hover:opacity-10 transition"></div>
-        <label class="text-xs font-bold text-[#00F5D4] flex items-center gap-2 mb-3"><i class="fa-solid fa-key"></i> GitHub Token Authorization (Session Only)</label>
-        <div class="flex gap-3">
-          <input id="inp-github-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full pro-input font-mono" />
-          <button onclick="saveTokenLocally()" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl shrink-0 transition">Secure Link</button>
-        </div>
+      <a class="scroll-cue" href="#about"><span class="scroll-line"></span> SCROLL TO EXPLORE</a>
+    </section>
+    <section class="intro-strip"><div class="wrap strip-inner"><span>DESIGN WITH INTENT</span><i>✳</i><span>BUILD WITH PURPOSE</span><i>✳</i><span>LEARN IN PUBLIC</span><i>✳</i><span>REPEAT</span></div></section>
+    <section class="section wrap" id="about">
+      <div class="section-heading reveal"><p class="section-index">01 / ABOUT</p><h2>Curiosity is the<br><span class="muted-heading">starting point.</span></h2></div>
+      <div class="about-layout">
+        <p class="about-lead reveal" id="about-copy">I’m Shihab—a developer and digital creator who enjoys connecting technology, creativity, and practical problem-solving.</p>
+        <div class="about-details reveal"><p>I like building tools that feel clear, useful, and considered: from responsive web interfaces to AI assistants and automation workflows. I learn by making, testing, and improving real projects.</p><div class="about-tags"><span>01 / Experiment</span><span>02 / Build</span><span>03 / Refine</span></div></div>
       </div>
-
-      <!-- Scrollable Pro Tabs -->
-      <div class="overflow-x-auto admin-scroll pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-        <div class="flex items-center gap-2 bg-[#0A0D14] p-1.5 rounded-2xl border border-white/5 w-max sm:w-full">
-          <button onclick="switchTab('tab-hero')" class="admin-tab active" id="btn-tab-hero"><i class="fa-regular fa-id-badge"></i> Profile</button>
-          <button onclick="switchTab('tab-socials')" class="admin-tab inactive" id="btn-tab-socials"><i class="fa-solid fa-hashtag"></i> Socials</button>
-          <button onclick="switchTab('tab-sections')" class="admin-tab inactive" id="btn-tab-sections"><i class="fa-solid fa-layer-group"></i> Sections</button>
-          <button onclick="switchTab('tab-items')" class="admin-tab inactive" id="btn-tab-items"><i class="fa-solid fa-rocket"></i> Projects & Skills</button>
-          <button onclick="switchTab('tab-theme')" class="admin-tab inactive" id="btn-tab-theme"><i class="fa-solid fa-palette"></i> Neon Theme</button>
-        </div>
+      <div class="principles">
+        <article class="principle-card reveal"><span class="principle-num">A</span><h3>Thoughtful UI</h3><p>Interfaces with a clear hierarchy, smooth motion, and a purpose behind every detail.</p></article>
+        <article class="principle-card reveal"><span class="principle-num">B</span><h3>Useful automation</h3><p>Small systems that reduce repetitive work and make everyday workflows easier.</p></article>
+        <article class="principle-card reveal"><span class="principle-num">C</span><h3>Continuous learning</h3><p>Explore an idea, test it in the real world, and keep improving the result.</p></article>
       </div>
-
-      <!-- TAB: HERO -->
-      <div id="tab-hero" class="cms-tab-content bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
-        <div class="flex flex-col md:flex-row gap-8 items-start">
-          <!-- Image Upload Block -->
-          <div class="w-full md:w-1/3 bg-black/30 border border-white/5 rounded-2xl p-5 flex flex-col items-center gap-4 text-center">
-            <div class="w-36 h-36 rounded-full overflow-hidden border-2 border-[#00F5D4] bg-zinc-900 relative shadow-[0_0_20px_rgba(0,245,212,0.15)]">
-              <img id="cms-img-preview" src="profile.jpg" alt="Preview" class="w-full h-full object-cover" />
-            </div>
-            <div class="w-full space-y-3">
-              <label class="relative cursor-pointer block w-full py-2.5 rounded-xl bg-[#00F5D4]/10 text-[#00F5D4] border border-[#00F5D4]/30 text-xs font-bold hover:bg-[#00F5D4]/20 transition">
-                <i class="fa-solid fa-camera mr-1"></i> Upload Photo
-                <input id="inp-img-file" type="file" accept="image/*" class="hidden" onchange="handleImageUpload(event)" />
-              </label>
-              <div class="text-left space-y-1">
-                <label class="text-[10px] text-zinc-400 uppercase tracking-wider flex justify-between"><span>Y-Position</span><span id="pos-val-label" class="text-[#00F5D4]">50%</span></label>
-                <input id="inp-img-pos" type="range" min="0" max="100" value="50" class="w-full accent-[#00F5D4]" oninput="updateImagePosPreview(this.value)" />
-              </div>
-              <input id="inp-img-path" type="text" class="w-full pro-input text-[11px] text-zinc-500" placeholder="Direct URL or Path" />
-            </div>
-          </div>
-          
-          <!-- Text Data Block -->
-          <div class="w-full md:w-2/3 space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div class="space-y-1.5"><label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Display Name</label><input id="inp-name" type="text" class="w-full pro-input" /></div>
-              <div class="space-y-1.5"><label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Badge Text</label><input id="inp-badge" type="text" class="w-full pro-input" /></div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div class="space-y-1.5"><label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Headline Line 1</label><input id="inp-title1" type="text" class="w-full pro-input" /></div>
-              <div class="space-y-1.5"><label class="text-[11px] font-bold text-[#00F5D4] uppercase tracking-wider">Gradient Headline</label><input id="inp-title2" type="text" class="w-full pro-input border-[#00F5D4]/30" /></div>
-            </div>
-            <div class="space-y-1.5">
-              <label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Bio Description</label>
-              <textarea id="inp-bio" rows="4" class="w-full pro-input leading-relaxed"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB: SOCIALS -->
-      <div id="tab-socials" class="cms-tab-content hidden bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h4 class="text-base font-black text-white">Social Brand Links</h4>
-            <p class="text-[11px] text-zinc-400 mt-1">Use FontAwesome classes (e.g. <span class="text-[#00F5D4] font-mono">fa-brands fa-facebook</span>)</p>
-          </div>
-          <button onclick="addSocialButton()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition"><i class="fa-solid fa-plus mr-1"></i> Add Link</button>
-        </div>
-        <div id="cms-socials-list" class="space-y-3"></div>
-      </div>
-
-      <!-- TAB: SECTIONS -->
-      <div id="tab-sections" class="cms-tab-content hidden bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-        <div class="flex items-center justify-between">
-          <h4 class="text-base font-black text-white">Sections Manager</h4>
-          <button onclick="addCustomSection()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition"><i class="fa-solid fa-plus mr-1"></i> Add Section</button>
-        </div>
-        <div id="cms-sections-list" class="space-y-3"></div>
-      </div>
-
-      <!-- TAB: PROJECTS & SKILLS -->
-      <div id="tab-items" class="cms-tab-content hidden space-y-6">
-        <div class="bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-          <div class="flex items-center justify-between border-b border-white/5 pb-4">
-            <h4 class="text-base font-black text-white"><i class="fa-solid fa-bolt text-[#00F5D4] mr-2"></i> Skills Inventory</h4>
-            <button onclick="addSkillItem()" class="px-4 py-2 rounded-xl bg-white/10 text-white text-xs font-bold"><i class="fa-solid fa-plus"></i></button>
-          </div>
-          <div id="cms-skills-list" class="space-y-4"></div>
-        </div>
-        <div class="bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-          <div class="flex items-center justify-between border-b border-white/5 pb-4">
-            <h4 class="text-base font-black text-white"><i class="fa-solid fa-rocket text-[#FF007F] mr-2"></i> Featured Projects</h4>
-            <button onclick="addProjectItem()" class="px-4 py-2 rounded-xl bg-white/10 text-white text-xs font-bold"><i class="fa-solid fa-plus"></i></button>
-          </div>
-          <div id="cms-projects-list" class="space-y-4"></div>
-        </div>
-      </div>
-
-      <!-- TAB: THEME & NEON PRESETS (Moved from public to here) -->
-      <div id="tab-theme" class="cms-tab-content hidden bg-[#0A0D14] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-8">
-        
-        <!-- Quick Presets -->
-        <div class="space-y-3">
-          <label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Quick Neon Presets</label>
-          <div class="flex flex-wrap gap-3">
-            <button onclick="applyPresetAdmin('cyber')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#00F5D4] to-[#FF007F] text-black shadow-lg hover:scale-105 transition">CyberPink</button>
-            <button onclick="applyPresetAdmin('crimson')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#FF003C] to-[#FF6B00] text-white shadow-lg hover:scale-105 transition">Crimson Red</button>
-            <button onclick="applyPresetAdmin('matrix')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#00FF66] to-[#00B4D8] text-black shadow-lg hover:scale-105 transition">Matrix Green</button>
-            <button onclick="applyPresetAdmin('gold')" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#FFB703] to-[#9D4EDD] text-black shadow-lg hover:scale-105 transition">Gold Violet</button>
-          </div>
-          <p class="text-[10px] text-zinc-500 mt-2">যেকোনো একটি সিলেক্ট করলে ওয়েবসাইটের ব্যাকগ্রাউন্ড ও কালার অটোমেটিক আপডেট হয়ে যাবে।</p>
-        </div>
-
-        <hr class="border-white/5" />
-
-        <!-- Manual Color Adjustment -->
-        <div class="space-y-4">
-          <label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider"><i class="fa-solid fa-sliders mr-1"></i> Manual Color Tweak</label>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div class="bg-black/30 border border-white/5 rounded-2xl p-3 text-center space-y-2">
-              <label class="text-[10px] text-zinc-400 uppercase font-bold">Background</label>
-              <input id="inp-bg-color" type="color" class="w-full h-10 rounded-lg cursor-pointer bg-transparent border-0 p-0" onchange="previewColorVal()" />
-            </div>
-            <div class="bg-black/30 border border-white/5 rounded-2xl p-3 text-center space-y-2">
-              <label class="text-[10px] text-zinc-400 uppercase font-bold">Primary Neon</label>
-              <input id="inp-neon-1" type="color" class="w-full h-10 rounded-lg cursor-pointer bg-transparent border-0 p-0" onchange="previewColorVal()" />
-            </div>
-            <div class="bg-black/30 border border-white/5 rounded-2xl p-3 text-center space-y-2">
-              <label class="text-[10px] text-zinc-400 uppercase font-bold">Secondary Neon</label>
-              <input id="inp-neon-2" type="color" class="w-full h-10 rounded-lg cursor-pointer bg-transparent border-0 p-0" onchange="previewColorVal()" />
-            </div>
-            <div class="bg-black/30 border border-white/5 rounded-2xl p-3 text-center space-y-2">
-              <label class="text-[10px] text-zinc-400 uppercase font-bold">Third Glow</label>
-              <input id="inp-neon-3" type="color" class="w-full h-10 rounded-lg cursor-pointer bg-transparent border-0 p-0" onchange="previewColorVal()" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const STORAGE_KEY = "shihab_hyperneon_cms_v38_pro_admin";
-    const GH_REPO = "Kokushibu74/kokushibu74.github.io";
-
-    const DEFAULT_STATE = {
-      name: "SHIHAB",
-      badge: "AI DEVELOPER • UI/UX • SYSTEM ARCHITECT",
-      title1: "Hi, I'm Shihab.",
-      title2: "One builder. Every system.",
-      bio: "AI Developer, Programmer & System Builder from Dhaka, Bangladesh. Building multi-AI agents, automated workflows, Lofi music engines, and high-performance web applications.",
-      image: "profile.jpg",
-      imagePos: 50,
-      theme: { bgColor: "#030308", neon1: "#00F5D4", neon2: "#FF007F", neon3: "#7B2CBF" },
-      socials: [
-        { name: "Facebook", icon: "fa-brands fa-facebook", url: "https://facebook.com/shihabul.islam.74", sub: "Connect" },
-        { name: "WhatsApp", icon: "fa-brands fa-whatsapp", url: "https://wa.me/8801620107233", sub: "Direct Chat" },
-        { name: "Instagram", icon: "fa-brands fa-instagram", url: "https://instagram.com/shihabul.islam.74", sub: "@shihabul.islam.74" },
-        { name: "YouTube", icon: "fa-brands fa-youtube", url: "https://youtube.com/@lo-fi_world-x3w", sub: "Lofi World" },
-        { name: "GitHub", icon: "fa-brands fa-github", url: "https://github.com/Kokushibu74", sub: "Repositories" }
-      ],
-      skills: [
-        { icon: "fa-solid fa-code", title: "Web & UI/UX Design", desc: "React, Tailwind CSS, JavaScript, and modern front-end engineering." },
-        { icon: "fa-solid fa-robot", title: "AI Agents & Automation", desc: "Multi-AI integrations, NLP, and advanced workflow automation." }
-      ],
-      projects: [
-        { tag: "FLAGSHIP AI", name: "MEMO 1.5 Multi-AI", desc: "6-Brain Priority Fallback Assistant.", link: "https://github.com/Kokushibu74/MEMO" }
-      ],
-      sections: [
-        { id: "hero", type: "hero", title: "Home", enabled: true },
-        { id: "socials", type: "socials", title: "Connect", enabled: true },
-        { id: "skills", type: "skills", title: "Skills", enabled: true },
-        { id: "projects", type: "projects", title: "Projects", enabled: true }
-      ]
-    };
-
-    let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || JSON.parse(JSON.stringify(DEFAULT_STATE));
-
-    // WATER DOTS
-    const canvas = document.getElementById("water-canvas"), ctx = canvas.getContext("2d"); let dots = [];
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.addEventListener("resize", resizeCanvas); resizeCanvas();
-    for (let i = 0; i < 60; i++) { dots.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2 + 1, baseX: Math.random() * canvas.width, baseY: Math.random() * canvas.height, angle: Math.random() * Math.PI * 2, speed: Math.random() * 0.015 + 0.005, colorIndex: i % 2 }); }
-    function animateWaterDots() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const c1 = state.theme.neon1 || "#00F5D4", c2 = state.theme.neon2 || "#FF007F";
-      dots.forEach((dot, index) => {
-        dot.angle += dot.speed; dot.x = dot.baseX + Math.sin(dot.angle) * 20; dot.y = dot.baseY + Math.cos(dot.angle) * 20;
-        ctx.fillStyle = dot.colorIndex === 0 ? c1 + "55" : c2 + "55"; ctx.beginPath(); ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); ctx.fill();
-        for (let j = index + 1; j < dots.length; j++) {
-          if (Math.sqrt(Math.pow(dots[j].x - dot.x, 2) + Math.pow(dots[j].y - dot.y, 2)) < 110) {
-            ctx.strokeStyle = c1 + "15"; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(dot.x, dot.y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke();
-          }
-        }
-      }); requestAnimationFrame(animateWaterDots);
-    } animateWaterDots();
-
-    window.addEventListener("pointerdown", (e) => {
-      const ripple = document.createElement("div"); ripple.className = "touch-ripple"; ripple.style.left = e.clientX + "px"; ripple.style.top = e.clientY + "px"; document.body.appendChild(ripple); setTimeout(() => ripple.remove(), 600);
-      for (let i = 0; i < 7; i++) {
-        const spark = document.createElement("div"); spark.className = "spark"; spark.style.left = e.clientX + "px"; spark.style.top = e.clientY + "px"; spark.style.background = i % 2 === 0 ? state.theme.neon1 : state.theme.neon2;
-        const angle = Math.random() * Math.PI * 2, distance = Math.random() * 60 + 20;
-        spark.style.setProperty("--tx", Math.cos(angle) * distance + "px"); spark.style.setProperty("--ty", Math.sin(angle) * distance + "px"); document.body.appendChild(spark); setTimeout(() => spark.remove(), 650);
-      }
-    });
-
-    let audioCtx = null, isPlayingLofi = false, lofiInterval = null;
-    function toggleLofiMusic() {
-      const btn = document.getElementById("lofi-play-btn"), eq = document.getElementById("lofi-eq");
-      if (!isPlayingLofi) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)(); isPlayingLofi = true;
-        if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>Pause Synth</span>'; if (eq) eq.classList.add("eq-playing");
-        const chords = [[261.63, 329.63, 392.00], [220.00, 261.63, 329.63], [174.61, 220.00, 261.63], [196.00, 246.94, 293.66]]; let step = 0;
-        const playChord = () => { if (!isPlayingLofi) return; const now = audioCtx.currentTime; chords[step % chords.length].forEach(freq => { const osc = audioCtx.createOscillator(), gain = audioCtx.createGain(); osc.type = "sine"; osc.frequency.setValueAtTime(freq, now); gain.gain.setValueAtTime(0.001, now); gain.gain.exponentialRampToValueAtTime(0.03, now + 0.4); gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(now); osc.stop(now + 2.4); }); step++; };
-        playChord(); lofiInterval = setInterval(playChord, 2400);
-      } else {
-        isPlayingLofi = false; clearInterval(lofiInterval); if (audioCtx) audioCtx.close();
-        if (btn) btn.innerHTML = '<i class="fa-solid fa-music"></i> <span>Play Lofi Chill</span>'; if (eq) eq.classList.remove("eq-playing");
-      }
-    }
-
-    async function loadPublicServerState() {
-      try { const res = await fetch(`./site-data.json?t=${Date.now()}`, { cache: "no-store" }); if (res.ok) { const parsed = await res.json(); state = Object.assign({}, DEFAULT_STATE, parsed); localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); renderWebsite(); } } catch (e) {}
-    }
-
-    const renderIcon = (iconStr) => iconStr.includes('fa-') ? `<i class="${iconStr}"></i>` : iconStr;
-
-    function renderWebsite() {
-      document.documentElement.style.setProperty("--bg-color", state.theme.bgColor || "#030308");
-      document.documentElement.style.setProperty("--neon-1", state.theme.neon1 || "#00F5D4");
-      document.documentElement.style.setProperty("--neon-2", state.theme.neon2 || "#FF007F");
-      document.documentElement.style.setProperty("--neon-3", state.theme.neon3 || "#7B2CBF");
-
-      document.getElementById("nav-name").textContent = state.name;
-      const waObj = state.socials.find(s => s.name.toLowerCase().includes("whatsapp"));
-      if (waObj) document.getElementById("top-wa-btn").href = waObj.url;
-
-      const navLinks = document.getElementById("nav-links");
-      navLinks.innerHTML = state.sections.filter(s => s.enabled).map(s => `<a href="#sec-${s.id}" class="hover:text-white transition duration-300">${s.title}</a>`).join("");
-
-      const wrapper = document.getElementById("sections-wrapper");
-      wrapper.innerHTML = state.sections.filter(s => s.enabled).map(sec => {
-        if (sec.type === "hero") {
-          return `
-            <section id="sec-${sec.id}" class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-              <div class="md:col-span-7 space-y-6 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[11px] font-mono tracking-widest uppercase" style="color: var(--neon-1); box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-                  <i class="fa-solid fa-bolt"></i> <span>${state.badge}</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.06]">
-                  ${state.title1} <br />
-                  <span class="neon-gradient-text">${state.title2}</span>
-                </h1>
-                <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0">${state.bio}</p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-3">
-                  <a href="#sec-projects" class="px-7 py-3.5 rounded-full cyber-btn font-black text-xs sm:text-sm shadow-xl flex items-center gap-2"><i class="fa-solid fa-rocket"></i> View Projects</a>
-                  <button id="lofi-play-btn" onclick="toggleLofiMusic()" class="px-6 py-3.5 rounded-full glass-card text-white font-bold text-xs sm:text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-music"></i> <span>Play Lofi Chill</span>
-                  </button>
-                  <div id="lofi-eq" class="flex items-end gap-1 h-6 my-auto px-2">
-                    <span class="w-1 bg-[#00F5D4] rounded-full h-2" style="animation-delay: 0s; background: var(--neon-1)"></span>
-                    <span class="w-1 bg-[#FF007F] rounded-full h-3" style="animation-delay: 0.2s; background: var(--neon-2)"></span>
-                    <span class="w-1 bg-[#00F5D4] rounded-full h-1.5" style="animation-delay: 0.4s; background: var(--neon-1)"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="md:col-span-5 flex justify-center">
-                <div class="relative flex items-center justify-center">
-                  <div class="orbit-badge -top-2 -left-3 px-3 py-1.5 rounded-full text-[10px] font-mono font-bold text-white flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span> Dhaka, BD</div>
-                  <div class="orbit-badge -bottom-3 -right-4 px-3 py-1.5 rounded-full text-[10px] font-mono font-bold text-white" style="animation-delay: 1.2s; border-color: var(--neon-2);"><i class="fa-solid fa-microchip"></i> 6-Brain AI</div>
-                  <div class="neon-ring-wrapper">
-                    <img src="${state.image}?v=${Date.now()}" alt="Profile" class="neon-inner-img" style="object-position: center ${state.imagePos || 50}%;" onerror="this.src='profile.jpg';" />
-                  </div>
-                </div>
-              </div>
-            </section>
-          `;
-        }
-        if (sec.type === "socials") {
-          return `
-            <section id="sec-${sec.id}" class="pt-16 space-y-6">
-              <div class="text-center sm:text-left space-y-1">
-                <span class="text-xs font-mono uppercase tracking-widest font-bold" style="color: var(--neon-1);">Networks</span>
-                <h2 class="text-3xl font-black text-white">${sec.title}</h2>
-              </div>
-              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-                ${state.socials.map(s => `
-                  <a href="${s.url}" target="_blank" class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center gap-2 group hover:bg-white/5">
-                    <span class="text-3xl group-hover:scale-125 transition drop-shadow-md" style="color: var(--neon-1);">${renderIcon(s.icon)}</span>
-                    <span class="text-xs font-extrabold text-white mt-1">${s.name}</span>
-                    <span class="text-[10px] text-zinc-400 font-mono truncate max-w-full">${s.sub || ''}</span>
-                  </a>
-                `).join("")}
-              </div>
-            </section>
-          `;
-        }
-        if (sec.type === "skills") {
-          return `
-            <section id="sec-${sec.id}" class="pt-20 space-y-8">
-              <div class="space-y-1">
-                <span class="text-xs font-mono uppercase tracking-widest font-bold" style="color: var(--neon-1);">Capabilities</span>
-                <h2 class="text-3xl font-black text-white">${sec.title}</h2>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                ${state.skills.map(sk => `
-                  <div class="glass-card rounded-3xl p-7 space-y-4">
-                    <div class="text-3xl" style="color: var(--neon-1); filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon-1) 50%, transparent));">${renderIcon(sk.icon)}</div>
-                    <h3 class="font-extrabold text-white text-lg">${sk.title}</h3>
-                    <p class="text-xs text-zinc-300 leading-relaxed">${sk.desc}</p>
-                  </div>
-                `).join("")}
-              </div>
-            </section>
-          `;
-        }
-        if (sec.type === "projects") {
-          return `
-            <section id="sec-${sec.id}" class="pt-20 space-y-8">
-              <div class="space-y-1">
-                <span class="text-xs font-mono uppercase tracking-widest font-bold" style="color: var(--neon-1);">Portfolio</span>
-                <h2 class="text-3xl font-black text-white">${sec.title}</h2>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                ${state.projects.map(p => `
-                  <div class="glass-card rounded-3xl p-7 flex flex-col justify-between gap-6">
-                    <div class="space-y-3">
-                      <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 uppercase" style="color: var(--neon-1);">${p.tag}</span>
-                      <h3 class="text-2xl font-black text-white">${p.name}</h3>
-                      <p class="text-xs text-zinc-300 leading-relaxed">${p.desc}</p>
-                    </div>
-                    <a href="${p.link}" target="_blank" class="text-xs font-mono hover:underline font-bold flex items-center gap-1.5" style="color: var(--neon-2);">
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project
-                    </a>
-                  </div>
-                `).join("")}
-              </div>
-            </section>
-          `;
-        }
-        return '';
-      }).join("");
-    }
-
-    // ADMIN CMS SCRIPTS
-    function switchTab(tabId) {
-      document.querySelectorAll(".cms-tab-content").forEach(el => el.classList.add("hidden"));
-      document.getElementById(tabId).classList.remove("hidden");
-      document.querySelectorAll(".admin-tab").forEach(btn => { btn.classList.remove("active"); btn.classList.add("inactive"); });
-      const activeBtn = document.getElementById("btn-" + tabId);
-      activeBtn.classList.add("active"); activeBtn.classList.remove("inactive");
-    }
-
-    // Apply Presets from within Admin Panel
-    function applyPresetAdmin(name) {
-      const presets = {
-        cyber:   { bgColor: "#030308", neon1: "#00F5D4", neon2: "#FF007F", neon3: "#7B2CBF" },
-        crimson: { bgColor: "#070204", neon1: "#FF003C", neon2: "#FF6B00", neon3: "#9D0208" },
-        matrix:  { bgColor: "#020804", neon1: "#00FF66", neon2: "#00B4D8", neon3: "#80FFDB" },
-        gold:    { bgColor: "#06040A", neon1: "#FFB703", neon2: "#9D4EDD", neon3: "#FB8500" }
-      };
-      if (presets[name]) {
-        document.getElementById("inp-bg-color").value = presets[name].bgColor;
-        document.getElementById("inp-neon-1").value = presets[name].neon1;
-        document.getElementById("inp-neon-2").value = presets[name].neon2;
-        document.getElementById("inp-neon-3").value = presets[name].neon3;
-        previewColorVal(); // Update live preview immediately
-      }
-    }
-
-    function previewColorVal() {
-      const b = document.getElementById("inp-bg-color").value;
-      const n1 = document.getElementById("inp-neon-1").value;
-      const n2 = document.getElementById("inp-neon-2").value;
-      const n3 = document.getElementById("inp-neon-3").value;
-      document.documentElement.style.setProperty("--bg-color", b);
-      document.documentElement.style.setProperty("--neon-1", n1);
-      document.documentElement.style.setProperty("--neon-2", n2);
-      document.documentElement.style.setProperty("--neon-3", n3);
-    }
-
-    function updateImagePosPreview(val) {
-      document.getElementById("pos-val-label").textContent = val + "%";
-      document.getElementById("cms-img-preview").style.objectPosition = `center ${val}%`;
-    }
-
-    function populateCMSFields() {
-      document.getElementById("inp-name").value = state.name; document.getElementById("inp-badge").value = state.badge;
-      document.getElementById("inp-title1").value = state.title1; document.getElementById("inp-title2").value = state.title2;
-      document.getElementById("inp-bio").value = state.bio;
-      document.getElementById("inp-img-path").value = state.image.startsWith("data:") ? "Uploaded Custom Photo" : state.image;
-      
-      const pos = state.imagePos !== undefined ? state.imagePos : 50;
-      document.getElementById("inp-img-pos").value = pos; document.getElementById("pos-val-label").textContent = pos + "%";
-      document.getElementById("cms-img-preview").src = state.image; document.getElementById("cms-img-preview").style.objectPosition = `center ${pos}%`;
-
-      document.getElementById("inp-bg-color").value = state.theme.bgColor || "#030308";
-      document.getElementById("inp-neon-1").value = state.theme.neon1 || "#00F5D4";
-      document.getElementById("inp-neon-2").value = state.theme.neon2 || "#FF007F";
-      document.getElementById("inp-neon-3").value = state.theme.neon3 || "#7B2CBF";
-
-      const savedToken = sessionStorage.getItem("shihab_temp_gh_token") || "";
-      if (savedToken) document.getElementById("inp-github-token").value = savedToken;
-
-      renderSocialsCMS(); renderSectionsCMS(); renderSkillsCMS(); renderProjectsCMS();
-    }
-
-    function saveTokenLocally() {
-      const tkn = document.getElementById("inp-github-token").value.trim();
-      if (tkn) { sessionStorage.setItem("shihab_temp_gh_token", tkn); alert("✅ Token Secured in Session!"); }
-    }
-
-    function renderSocialsCMS() {
-      const box = document.getElementById("cms-socials-list");
-      box.innerHTML = state.socials.map((s, i) => `
-        <div class="bg-black/30 border border-white/5 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-          <input type="text" value='${s.icon}' onchange="state.socials[${i}].icon=this.value" class="sm:col-span-3 pro-input text-xs font-mono" placeholder="fa-brands fa-facebook" />
-          <input type="text" value="${s.name}" onchange="state.socials[${i}].name=this.value" class="sm:col-span-2 pro-input text-xs font-bold" />
-          <input type="text" value="${s.sub || ''}" onchange="state.socials[${i}].sub=this.value" class="sm:col-span-3 pro-input text-xs text-zinc-300" placeholder="Subtitle" />
-          <input type="text" value="${s.url}" onchange="state.socials[${i}].url=this.value" class="sm:col-span-3 pro-input text-xs font-mono" />
-          <button onclick="state.socials.splice(${i},1);renderSocialsCMS();" class="sm:col-span-1 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      `).join("");
-    }
-    function addSocialButton() { state.socials.push({ name: "New Link", icon: "fa-solid fa-link", url: "https://", sub: "Connect" }); renderSocialsCMS(); }
-    
-    function renderSectionsCMS() {
-      const box = document.getElementById("cms-sections-list");
-      box.innerHTML = state.sections.map((sec, i) => `
-        <div class="bg-black/30 border border-white/5 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <input type="checkbox" ${sec.enabled ? 'checked' : ''} onchange="state.sections[${i}].enabled=this.checked" class="w-4 h-4 accent-[#00F5D4]" />
-            <input type="text" value="${sec.title}" onchange="state.sections[${i}].title=this.value" class="pro-input py-2 px-3 text-xs font-bold" />
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="moveSection(${i}, -1)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-white transition"><i class="fa-solid fa-arrow-up"></i></button>
-            <button onclick="moveSection(${i}, 1)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-white transition"><i class="fa-solid fa-arrow-down"></i></button>
-          </div>
-        </div>
-      `).join("");
-    }
-    function moveSection(index, dir) { const target = index + dir; if (target < 0 || target >= state.sections.length) return; const temp = state.sections[index]; state.sections[index] = state.sections[target]; state.sections[target] = temp; renderSectionsCMS(); }
-    function addCustomSection() { state.sections.push({ id: "custom-" + Date.now(), type: "custom", title: "New Section", enabled: true }); renderSectionsCMS(); }
-
-    function renderSkillsCMS() {
-      const box = document.getElementById("cms-skills-list");
-      box.innerHTML = state.skills.map((sk, i) => `
-        <div class="bg-black/30 border border-white/5 rounded-2xl p-4 space-y-3">
-          <div class="flex gap-3">
-            <input type="text" value="${sk.icon}" onchange="state.skills[${i}].icon=this.value" class="w-16 pro-input text-center text-xs" />
-            <input type="text" value="${sk.title}" onchange="state.skills[${i}].title=this.value" class="flex-1 pro-input text-xs font-bold" />
-            <button onclick="state.skills.splice(${i},1);renderSkillsCMS();" class="px-4 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition"><i class="fa-solid fa-trash"></i></button>
-          </div>
-          <textarea rows="2" onchange="state.skills[${i}].desc=this.value" class="w-full pro-input text-xs text-zinc-300 leading-relaxed">${sk.desc}</textarea>
-        </div>
-      `).join("");
-    }
-    function addSkillItem() { state.skills.push({ icon: "fa-solid fa-star", title: "New Skill", desc: "Details..." }); renderSkillsCMS(); }
-
-    function renderProjectsCMS() {
-      const box = document.getElementById("cms-projects-list");
-      box.innerHTML = state.projects.map((p, i) => `
-        <div class="bg-black/30 border border-white/5 rounded-2xl p-4 space-y-3">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <input type="text" value="${p.tag}" onchange="state.projects[${i}].tag=this.value" class="pro-input text-xs text-[#00F5D4] font-mono" />
-            <input type="text" value="${p.name}" onchange="state.projects[${i}].name=this.value" class="pro-input text-xs font-bold" />
-            <input type="text" value="${p.link}" onchange="state.projects[${i}].link=this.value" class="pro-input text-xs font-mono" />
-          </div>
-          <div class="flex gap-3">
-            <textarea rows="2" onchange="state.projects[${i}].desc=this.value" class="flex-1 pro-input text-xs text-zinc-300 leading-relaxed">${p.desc}</textarea>
-            <button onclick="state.projects.splice(${i},1);renderProjectsCMS();" class="px-4 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </div>
-      `).join("");
-    }
-    function addProjectItem() { state.projects.push({ tag: "NEW", name: "Project Name", desc: "Details...", link: "#" }); renderProjectsCMS(); }
-
-    function handleImageUpload(event) {
-      const file = event.target.files[0]; if (!file) return; const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement("canvas"), MAX_SIZE = 800; let w = img.width, h = img.height;
-          if (w > h && w > MAX_SIZE) { h *= MAX_SIZE / w; w = MAX_SIZE; } else if (h > MAX_SIZE) { w *= MAX_SIZE / h; h = MAX_SIZE; }
-          canvas.width = w; canvas.height = h; const ctx = canvas.getContext("2d"); ctx.drawImage(img, 0, 0, w, h);
-          const dataUrl = canvas.toDataURL("image/jpeg", 0.82); state.image = dataUrl;
-          document.getElementById("inp-img-path").value = "Uploaded Photo"; document.getElementById("cms-img-preview").src = dataUrl;
-        }; img.src = e.target.result;
-      }; reader.readAsDataURL(file);
-    }
-
-    async function syncWithGitHub() {
-      state.name = document.getElementById("inp-name").value; state.badge = document.getElementById("inp-badge").value;
-      state.title1 = document.getElementById("inp-title1").value; state.title2 = document.getElementById("inp-title2").value;
-      state.bio = document.getElementById("inp-bio").value; state.imagePos = Number(document.getElementById("inp-img-pos").value);
-      const pathVal = document.getElementById("inp-img-path").value; if (!pathVal.startsWith("Uploaded")) state.image = pathVal;
-      
-      state.theme.bgColor = document.getElementById("inp-bg-color").value; state.theme.neon1 = document.getElementById("inp-neon-1").value;
-      state.theme.neon2 = document.getElementById("inp-neon-2").value; state.theme.neon3 = document.getElementById("inp-neon-3").value;
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); renderWebsite();
-      const token = document.getElementById("inp-github-token").value.trim() || sessionStorage.getItem("shihab_temp_gh_token");
-      if (!token) { alert("✅ ব্রাউজারে সেভ হয়েছে! গিটহাবে পাঠাতে GitHub Token দিন।"); exitCMS(); return; }
-
-      const btn = document.getElementById("save-sync-btn"); btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Syncing...'; btn.disabled = true;
-      try {
-        let sha = ""; const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, { headers: { "Authorization": `Bearer ${token}` }, cache: "no-store" });
-        if (getRes.ok) { const getJson = await getRes.json(); sha = getJson.sha; }
-        const jsonString = JSON.stringify(state, null, 2); const utf8Bytes = new TextEncoder().encode(jsonString);
-        let binStr = ""; for (let i = 0; i < utf8Bytes.length; i++) binStr += String.fromCharCode(utf8Bytes[i]);
-        const payload = { message: "Update site via Pro Admin CMS", content: btoa(binStr), branch: "main" };
-        if (sha) payload.sha = sha;
-        const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/site-data.json`, { method: "PUT", headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-        if (putRes.ok) { alert("🎉 সফলভাবে গিটহাব সার্ভারে পার্মানেন্টলি সিঙ্ক হয়ে গেছে!"); exitCMS(); } else throw new Error("API Error");
-      } catch (err) { alert("⚠️ গিটহাব টোকেন সঠিক নয় অথবা নেটওয়ার্ক সমস্যা!"); }
-      btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save & Publish';
-    }
-
-    function unlockCMS() {
-      if (document.getElementById("cms-password-input").value.trim() === "S20107233") {
-        document.getElementById("admin-login-box").classList.add("hidden"); document.getElementById("admin-dashboard-box").classList.remove("hidden"); populateCMSFields();
-      } else { document.getElementById("cms-login-error").classList.remove("hidden"); }
-    }
-    function checkAdminTrigger() { if (window.location.hash === "#admin" || window.location.search.includes("admin=1")) { document.getElementById("admin-overlay").classList.remove("hidden"); } }
-    function exitCMS() { window.location.hash = ""; document.getElementById("admin-overlay").classList.add("hidden"); }
-    window.addEventListener("hashchange", checkAdminTrigger);
-
-    let saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) { try { state = JSON.parse(saved); } catch(e){} } else { loadPublicServerState(); }
-
-    renderWebsite(); checkAdminTrigger();
-  </script>
+    </section>
+    <section class="section section-skills" id="skills"><div class="wrap">
+      <div class="section-heading reveal"><p class="section-index">02 / EXPERTISE</p><h2>Areas I love<br><span class="muted-heading">to explore.</span></h2></div>
+      <div class="skills-grid" id="skills-grid"></div>
+    </div></section>
+    <section class="section wrap" id="projects">
+      <div class="projects-heading reveal"><div class="section-heading"><p class="section-index">03 / SELECTED WORK</p><h2>Made with intent.<br><span class="muted-heading">Built to explore.</span></h2></div><p class="projects-note">A few experiments and projects from my ongoing journey across AI, web, and creative automation.</p></div>
+      <div class="projects-grid" id="projects-grid"></div>
+      <div class="projects-foot"><span>MORE IDEAS ARE IN PROGRESS</span><a href="https://github.com/Kokushibu74?tab=repositories" target="_blank" rel="noreferrer">Explore all repositories <span>↗</span></a></div>
+    </section>
+    <section class="section connect-section" id="connect"><div class="wrap">
+      <div class="connect-panel reveal"><div class="connect-glow"></div><p class="section-index">04 / LET’S CONNECT</p><h2>Have an idea?<br><span class="gradient-text">Let’s make it real.</span></h2><p class="connect-copy">Open to thoughtful conversations, creative collaborations, and interesting projects.</p><a class="button button-primary" href="mailto:mdshihab74@gmail.com">Start a conversation <span>↗</span></a><div class="connect-coordinate">23°48' N &nbsp; 90°25' E <span>·</span> BANGLADESH</div></div>
+      <div class="social-list" id="social-list"></div>
+    </div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand footer-brand" href="#home"><span class="brand-mark">S<span>.</span></span><span>SHIHABUL ISLAM</span></a><p>Made with curiosity and a little bit of code.</p><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="copyright">© <span id="year"></span> SHIHABUL ISLAM</span></footer>
+  <script src="app.js"></script>
 </body>
 </html>
