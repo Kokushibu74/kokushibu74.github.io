@@ -1,43 +1,45 @@
 (() => {
   "use strict";
-  const styles = `
-    #live-news-preview{margin-top:2rem;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:clamp(18px,4vw,30px);background:linear-gradient(135deg,rgba(13,17,26,.94),rgba(8,12,22,.88))}
-    #live-news-preview .ln-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-    #live-news-preview .ln-kicker{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#00f2fe}
-    #live-news-preview .ln-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
-    #live-news-preview .ln-card{display:block;padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:rgba(255,255,255,.025);text-decoration:none;transition:.2s}
-    #live-news-preview .ln-card:hover{border-color:rgba(0,242,254,.5);transform:translateY(-3px)}
-    #live-news-preview .ln-cat{font:10px 'JetBrains Mono',monospace;color:#00f2fe;text-transform:uppercase}
-    #live-news-preview .ln-title{font-weight:700;color:#f5f7fc;font-size:14px;line-height:1.6;margin:9px 0}
-    #live-news-preview .ln-meta{font-size:11px;color:#8993a7}
-    #live-news-preview .ln-ad{margin-top:18px;min-height:80px;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,.12);border-radius:12px;color:#64748b;font:10px 'JetBrains Mono',monospace}
-    #live-news-preview .ln-link{color:#00f2fe;font-size:12px;font-weight:700;text-decoration:none}
+  const css = `
+    #breaking-news-ticker{position:fixed;top:72px;left:0;right:0;z-index:35;height:34px;display:flex;align-items:center;overflow:hidden;background:rgba(5,7,11,.96);border-bottom:1px solid rgba(0,242,254,.25);box-shadow:0 5px 18px rgba(0,0,0,.2)}
+    #breaking-news-ticker .bnt-label{height:100%;flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:0 13px;background:#00f2fe;color:#031015;font:800 10px 'JetBrains Mono',monospace;letter-spacing:.08em}
+    #breaking-news-ticker .bnt-dot{width:6px;height:6px;border-radius:50%;background:#ff254f;box-shadow:0 0 8px #ff254f;animation:bntPulse 1s infinite}
+    #breaking-news-ticker .bnt-window{min-width:0;flex:1;overflow:hidden;white-space:nowrap}
+    #breaking-news-ticker .bnt-track{display:inline-flex;align-items:center;gap:34px;white-space:nowrap;will-change:transform;animation:bntMoveRight 48s linear infinite;padding-left:0}
+    #breaking-news-ticker:hover .bnt-track{animation-play-state:paused}
+    #breaking-news-ticker .bnt-item{color:#e8f4ff;text-decoration:none;font:600 11px 'Outfit',sans-serif}
+    #breaking-news-ticker .bnt-item:before{content:'◆';color:#00f2fe;font-size:8px;margin-right:9px}
+    #breaking-news-ticker .bnt-item:hover{color:#00f2fe}
+    #breaking-news-ticker .bnt-empty{padding-left:14px;color:#94a3b8;font:500 11px 'Outfit',sans-serif}
+    @keyframes bntMoveRight{from{transform:translateX(-100%)}to{transform:translateX(100vw)}}
+    @keyframes bntPulse{50%{opacity:.25}}
+    @media(min-width:640px){#breaking-news-ticker{top:80px}}
+    @media(prefers-reduced-motion:reduce){#breaking-news-ticker .bnt-track{animation:none;transform:none}}
   `;
-  function addNews() {
-    const root = document.getElementById("sections-wrapper");
-    if (!root || document.getElementById("live-news-preview")) return;
-    const section = document.createElement("section");
-    section.id = "live-news-preview";
-    section.innerHTML = '<div class="ln-head"><div><p class="ln-kicker">LIVE / NEWS DESK</p><h2 style="font-size:clamp(25px,4vw,38px);font-weight:900;margin-top:8px">Latest <span style="color:#00f2fe">headlines.</span></h2></div><a class="ln-link" href="news.html">ALL NEWS ↗</a></div><p id="ln-status" class="ln-meta" aria-live="polite">Loading latest headlines…</p><div id="ln-grid" class="ln-grid"></div><div id="home-ad-slot" class="ln-ad" aria-label="Advertisement">ADVERTISEMENT · AdSense placement (requires publisher setup)</div>';
-    const contact = root.querySelector("#contact");
-    if (contact) root.insertBefore(section, contact); else root.appendChild(section);
-    if (window.mountShihabAd) window.mountShihabAd(section.querySelector("#home-ad-slot"), "home");
-    fetch("news-feed.json?updated=" + Date.now(), {cache:"no-store"})
-      .then(r => { if (!r.ok) throw new Error("Feed not ready"); return r.json(); })
-      .then(data => {
-        const items = (data.items || []).slice(0, 6);
-        const grid = document.getElementById("ln-grid");
-        const status = document.getElementById("ln-status");
-        if (!items.length) { status.textContent = "The news feed is being prepared. Please check back soon."; return; }
-        status.textContent = "Updated " + new Date(data.updatedAt || Date.now()).toLocaleString() + " · Headlines open at their original sources.";
-        grid.innerHTML = items.map(item => '<a class="ln-card" href="' + safe(item.link) + '" target="_blank" rel="noopener noreferrer"><span class="ln-cat">' + esc(item.category || "News") + '</span><div class="ln-title">' + esc(item.title) + '</div><div class="ln-meta">' + esc(item.source || "News source") + (item.publishedAt ? " · " + esc(new Date(item.publishedAt).toLocaleDateString()) : "") + '</div></a>').join("");
+  const style=document.createElement("style");style.textContent=css;document.head.appendChild(style);
+  function safe(v){try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}}
+  function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+  function mount(){
+    if(document.getElementById("breaking-news-ticker"))return;
+    const header=document.querySelector("header");
+    if(!header)return;
+    const bar=document.createElement("div");bar.id="breaking-news-ticker";bar.setAttribute("aria-label","Breaking live news");
+    bar.innerHTML='<div class="bnt-label"><span class="bnt-dot"></span>BREAKING</div><div class="bnt-window"><div id="bnt-track" class="bnt-track"><span class="bnt-empty">Connecting to live headlines…</span></div></div>';
+    header.insertAdjacentElement("afterend",bar);
+    fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"})
+      .then(r=>{if(!r.ok)throw Error("feed unavailable");return r.json()})
+      .then(data=>{
+        const now=Date.now();
+        const items=(Array.isArray(data.items)?data.items:[])
+          .filter(x=>x.title&&x.link&&x.publishedAt&&now-new Date(x.publishedAt).getTime()<=36*60*60*1000&&now-new Date(x.publishedAt).getTime()>=-5*60*1000)
+          .sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,18);
+        const track=document.getElementById("bnt-track");if(!track)return;
+        if(!items.length){track.innerHTML='<span class="bnt-empty">No fresh breaking headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';return}
+        const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>').join("");
+        track.innerHTML=content+content;
+        track.style.animationDuration=Math.max(30,items.length*4)+"s";
       })
-      .catch(() => { const s = document.getElementById("ln-status"); if (s) s.textContent = "News feed will appear after the scheduled feed updater runs."; });
+      .catch(()=>{const track=document.getElementById("bnt-track");if(track)track.innerHTML='<span class="bnt-empty">Live headlines temporarily unavailable · <a style="color:#00f2fe" href="news.html">Open News</a></span>'});
   }
-  function esc(v) { return String(v || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-  function safe(v) { try { const u = new URL(v); return u.protocol === "https:" ? u.href : "#"; } catch (_) { return "#"; } }
-  const style = document.createElement("style"); style.textContent = styles; document.head.appendChild(style);
-  const observer = new MutationObserver(() => { if (document.getElementById("sections-wrapper")?.children.length) addNews(); });
-  observer.observe(document.documentElement, {childList:true,subtree:true});
-  if (document.readyState !== "loading") addNews(); else document.addEventListener("DOMContentLoaded", addNews);
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 })();
