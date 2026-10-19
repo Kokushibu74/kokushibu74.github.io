@@ -416,7 +416,9 @@
       timeline.to([panelA,panelB],{xPercent:0,duration:0},2.59);
       timeline.to(panelA,{xPercent:-105,rotation:-1.2,transformOrigin:'0% 50%',duration:.72,ease:'power4.inOut'},2.72);
       timeline.to(panelB,{xPercent:105,rotation:1.2,transformOrigin:'100% 50%',duration:.72,ease:'power4.inOut'},2.72);
-      timeline.to(eyes,{autoAlpha:0,duration:.15},2.68);\n      timeline.to(label,{autoAlpha:0,duration:.15},2.68);\n      timeline.to(crack,{autoAlpha:0,duration:.15},2.68);
+      timeline.to(eyes,{autoAlpha:0,duration:.15},2.68);
+      timeline.to(label,{autoAlpha:0,duration:.15},2.68);
+      timeline.to(crack,{autoAlpha:0,duration:.15},2.68);
       timeline.to(intro,{autoAlpha:0,duration:.16,pointerEvents:'none'},3.38);
       // Fail-safe in case a third-party script or animation is interrupted.
       setTimeout(finish,5200);
