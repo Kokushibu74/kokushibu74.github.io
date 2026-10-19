@@ -70,7 +70,7 @@ def main():
     payload = {"updatedAt": datetime.now(timezone.utc).isoformat(), "items": items[:48]}
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
-        file.write("\\n")
+        file.write("\n")
     print("Wrote", len(payload["items"]), "headlines to", OUTPUT)
 
 if __name__ == "__main__":
