@@ -41,6 +41,19 @@ $("download-btn").addEventListener("click",()=>{const d=collect(),blob=new Blob(
 $("reset-btn").addEventListener("click",()=>loadData());
 $("save-btn").addEventListener("click",async()=>{let token=$("token").value.trim()||sessionStorage.getItem("portfolio_gh_token");if(!token){status("Enter a fine-grained GitHub token with Contents read/write for this repository.",true);return}sessionStorage.setItem("portfolio_gh_token",token);const btn=$("save-btn");btn.disabled=true;btn.textContent="Publishing…";try{const d=collect();const live=await githubFile(INDEX_PATH,token);const decoded=atob(live.content.replace(/\n/g,""));const bytes=Uint8Array.from(decoded,c=>c.charCodeAt(0));const html=new TextDecoder().decode(bytes);status("Publishing visual content…");await githubPut(DATA_PATH,JSON.stringify(d,null,2),token,"Publish visual portfolio edits");await githubPut(INDEX_PATH,applySeo(html,d),token,"Update portfolio SEO metadata");status("Published successfully to GitHub. Wait for Pages deployment, then refresh the live site.");}catch(e){status(e.message,true)}finally{btn.disabled=false;btn.textContent="Publish to live website "}});
 async function loadData(){status("Loading published site content…");try{const r=await fetch("site-data.json?edit="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("Could not load site-data.json");data=normalize(await r.json());populate();status("Loaded current published content. Make changes visually and publish when ready.")}catch(e){data=normalize(fallback);populate();status("Could not load live content: "+e.message,true)}}
+// Monitor preview only: toggles a visual indicator; intentionally does not collect visitor events.
+const monitorTestButton=$("monitor-test-btn");
+if(monitorTestButton){
+  monitorTestButton.addEventListener("click",()=>{
+    const dot=$("monitor-dot"),label=$("monitor-indicator-label");
+    const red=!dot.classList.contains("is-red");
+    dot.classList.toggle("is-red",red);
+    label.classList.toggle("is-red",red);
+    dot.setAttribute("aria-label",red?"Demo indicator red":"Demo indicator blue");
+    label.textContent=red?"RED · DEMO CLICK PREVIEW":"BLUE · DEMO IDLE";
+    monitorTestButton.textContent=red?"Reset indicator":"Test indicator";
+  });
+}
 setupAuth();
 if(sessionStorage.getItem("cyberstack_admin_unlocked")==="1"){ $("auth-screen").classList.add("hidden");$("app").classList.remove("hidden");authenticated=true;loadData()}
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll("#side-nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id))}}),{rootMargin:"-20% 0px -70% 0px"});document.querySelectorAll(".panel[id]").forEach(p=>observer.observe(p));
