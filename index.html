@@ -213,24 +213,30 @@
   </footer>
 
 
-  <script src="site.js?v=20261019-5"></script>
+  <script src="site.js?v=20261019-6"></script>
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
-  <script src="homepage-news.js?v=20261019-5"></script>
+  <script src="homepage-news.js?v=20261019-6"></script>
   <script>
-    // Final homepage guard: remove legacy About/Skills/Projects sections even if an old script injects them.
+    // Homepage-only cleanup: About, Expertise and Projects belong exclusively to their own pages.
     (() => {
       const root = document.getElementById("sections-wrapper");
       if (!root) return;
-      const enforceHomepage = () => {
+      const forbidden = "#about, #skills, #expertise, #projects, [data-section='about'], [data-section='skills'], [data-section='expertise'], [data-section='projects']";
+      const removeLegacySections = () => {
         root.querySelectorAll(":scope > *").forEach(el => {
           if (el.id !== "home") el.remove();
         });
-        root.querySelectorAll("#about, #skills, #expertise, #projects, [data-section='about'], [data-section='skills'], [data-section='expertise'], [data-section='projects']").forEach(el => el.remove());
+        document.querySelectorAll(forbidden).forEach(el => {
+          if (el.id !== "contact" && !el.closest("footer")) el.remove();
+        });
+        document.querySelectorAll("main section, main article").forEach(el => {
+          if (el.id !== "home" && !el.closest("#home")) el.remove();
+        });
       };
-      enforceHomepage();
-      new MutationObserver(enforceHomepage).observe(root, { childList: true, subtree: true });
+      removeLegacySections();
+      new MutationObserver(removeLegacySections).observe(document.body, { childList: true, subtree: true });
     })();
-  </script>
+  </script>t>
 </body>
 </html>
