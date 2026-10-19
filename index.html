@@ -183,29 +183,40 @@
   <!-- Main Dynamic Sections Container -->
   <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
 
-  <!-- Clean Public Footer -->
-  <footer class="site-footer px-4 sm:px-6 pt-8 pb-6">
-    <div class="max-w-6xl mx-auto">
-      <section id="contact" class="footer-contact-panel mb-7 rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-slate-900/95 via-slate-950/95 to-cyan-950/30 p-6 sm:p-9 shadow-[0_18px_60px_rgba(0,242,254,.08)]">
-        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] items-center gap-6">
-          <div>
-            <p class="font-mono text-[10px] tracking-[.28em] text-[#00F2FE]">04 / LET’S CONNECT</p>
-            <h2 class="mt-3 text-3xl sm:text-4xl font-black text-white">Have a good idea?<br><span class="text-[#00F2FE]">Let’s build it.</span></h2>
-            <p class="mt-3 max-w-xl text-sm leading-7 text-zinc-400">For projects, collaboration, or a simple hello—reach out through your preferred channel.</p>
-          </div>
-          <a href="mailto:mdshihab74@gmail.com" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00F2FE] to-[#4FACFE] px-6 py-3.5 text-xs font-extrabold text-slate-950 transition hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(0,242,254,.25)]">Email me <span>↗</span></a>
-        </div>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="social-link" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><span class="social-icon"><i class="fa-brands fa-whatsapp"></i></span><span class="social-copy"><strong>WhatsApp</strong><small>Direct chat</small></span><span class="social-arrow">↗</span></a>
-          <a class="social-link" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer"><span class="social-icon"><i class="fa-brands fa-github"></i></span><span class="social-copy"><strong>GitHub</strong><small>Projects & code</small></span><span class="social-arrow">↗</span></a>
-          <a class="social-link" href="https://www.youtube.com/@Lo-Fi_World-x3w" target="_blank" rel="noopener noreferrer"><span class="social-icon"><i class="fa-brands fa-youtube"></i></span><span class="social-copy"><strong>YouTube</strong><small>Lo-Fi World</small></span><span class="social-arrow">↗</span></a>
-          <a class="social-link" href="mailto:mdshihab74@gmail.com"><span class="social-icon"><i class="fa-regular fa-envelope"></i></span><span class="social-copy"><strong>Email</strong><small>mdshihab74@gmail.com</small></span><span class="social-arrow">↗</span></a>
-        </div>
-      </section>
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-5 text-center sm:text-left">
-        <p id="footer-text" class="text-[10px] text-zinc-500 font-mono">© 2026 Shihab. Built with curiosity.</p>
+  <!-- Full-width animated social footer -->
+  <footer class="social-footer relative overflow-hidden border-t border-cyan-300/20 bg-[#05070B] px-4 sm:px-6 pt-10 pb-6">
+    <style>
+      .social-footer:before{content:"";position:absolute;inset:-60% -20%;pointer-events:none;background:radial-gradient(ellipse at 15% 55%,rgba(0,242,254,.12),transparent 38%),radial-gradient(ellipse at 85% 30%,rgba(127,0,255,.13),transparent 36%);animation:footerGlow 12s ease-in-out infinite alternate}
+      .social-footer-inner{position:relative;z-index:1;width:min(1100px,100%);margin-inline:auto}
+      .social-footer-title{background:linear-gradient(90deg,#fff,#00f2fe,#a78bfa,#fff);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:footerTextShine 7s linear infinite}
+      .social-action{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:11px;min-height:62px;padding:15px 20px;border:1px solid rgba(255,255,255,.13);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));color:#f8fafc;text-decoration:none;font-size:13px;font-weight:800;letter-spacing:.025em;overflow:hidden;transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .28s,box-shadow .28s,background .28s}
+      .social-action:before{content:"";position:absolute;z-index:-1;inset:0;opacity:0;background:linear-gradient(115deg,transparent 15%,rgba(255,255,255,.16) 45%,transparent 70%);transform:translateX(-120%);transition:transform .65s,opacity .25s}
+      .social-action:hover{transform:translateY(-6px) scale(1.025);border-color:rgba(0,242,254,.65);box-shadow:0 14px 35px rgba(0,242,254,.13),0 0 22px rgba(0,242,254,.08);background:linear-gradient(135deg,rgba(0,242,254,.12),rgba(127,0,255,.09))}
+      .social-action:hover:before{opacity:1;transform:translateX(120%)}
+      .social-action .social-symbol{display:grid;place-items:center;width:32px;height:32px;flex:0 0 32px;border-radius:10px;background:rgba(255,255,255,.08);font-size:17px;transition:transform .28s,background .28s}
+      .social-action:hover .social-symbol{transform:rotate(-8deg) scale(1.12);background:rgba(0,242,254,.14)}
+      .social-action .social-arrow{margin-left:auto;color:#94a3b8;transition:transform .28s,color .28s}
+      .social-action:hover .social-arrow{transform:translate(3px,-3px);color:#00f2fe}
+      @keyframes footerGlow{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,-2%,0) scale(1.04)}}
+      @keyframes footerTextShine{to{background-position:220% center}}
+      @media(prefers-reduced-motion:reduce){.social-footer:before,.social-footer-title{animation:none}.social-action,.social-action:before,.social-action .social-symbol,.social-action .social-arrow{transition:none}}
+    </style>
+    <div class="social-footer-inner">
+      <div class="mb-7 text-center">
+        <p class="mb-2 font-mono text-[10px] tracking-[.32em] text-cyan-300">FIND ME AROUND THE WEB</p>
+        <h2 class="social-footer-title text-2xl sm:text-3xl font-black tracking-tight">Let’s connect.</h2>
+        <p class="mt-2 text-sm text-slate-400">Choose your favourite place to find me online.</p>
+      </div>
+      <nav aria-label="Social profiles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <a class="social-action" href="https://facebook.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook Profile</span><span class="social-arrow">↗</span></a>
+        <a class="social-action" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-whatsapp"></i></span><span>WhatsApp Chat</span><span class="social-arrow">↗</span></a>
+        <a class="social-action" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-github"></i></span><span>GitHub Profile</span><span class="social-arrow">↗</span></a>
+        <a class="social-action" href="https://instagram.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-instagram"></i></span><span>Instagram Profile</span><span class="social-arrow">↗</span></a>
+      </nav>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-5 text-center sm:text-left">
+        <p id="footer-text" class="text-[10px] text-zinc-500 font-mono">© 2026 SHIHABUL ISLAM. Built with curiosity.</p>
         <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-semibold">
-          <a class="footer-bottom-link" href="about.html">About</a><a class="footer-bottom-link" href="expertise.html">Expertise</a><a class="footer-bottom-link" href="projects.html">Projects</a><a class="footer-bottom-link" href="news.html">News</a><a class="footer-bottom-link" href="mailto:mdshihab74@gmail.com">Email me ↗</a>
+          <a class="footer-bottom-link" href="about.html">About</a><a class="footer-bottom-link" href="expertise.html">Expertise</a><a class="footer-bottom-link" href="projects.html">Projects</a><a class="footer-bottom-link" href="news.html">News</a>
         </nav>
         <a class="footer-bottom-link text-[10px] font-mono" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a>
       </div>
