@@ -135,6 +135,15 @@
     .social-icon{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;color:#00F2FE;background:rgba(0,242,254,.09);border:1px solid rgba(0,242,254,.2);font-size:17px}
     .social-copy{display:flex;flex-direction:column;gap:3px;min-width:0}.social-copy strong{font-size:12px;color:#f5f7fc}.social-copy small{font-size:10px;color:#8993a7;white-space:nowrap}.social-arrow{margin-left:auto;color:#00F2FE;font-size:14px}
     @media(max-width:480px){.social-link{min-width:calc(50% - 7px);flex:1;padding:10px}.social-icon{width:34px;height:34px;flex-basis:34px}.social-copy strong{font-size:11px}}
+    .site-footer{position:relative;isolation:isolate;overflow:hidden;margin-top:2rem;border-top:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,rgba(7,13,23,.96),rgba(8,18,29,.9));}
+    .site-footer::before{content:"";position:absolute;z-index:-1;inset:-40% auto auto 20%;width:60%;height:260px;background:radial-gradient(ellipse,rgba(0,242,254,.10),transparent 70%);pointer-events:none}
+    .site-footer .footer-contact-section{padding-top:0!important;border-top:0!important;padding-bottom:1.25rem!important}
+    .site-footer .footer-contact-section>.flex:first-child{display:none}
+    .site-footer .footer-contact-section .glass-card{border-color:rgba(0,242,254,.2);background:linear-gradient(135deg,rgba(13,22,34,.92),rgba(7,12,21,.9));box-shadow:0 12px 50px rgba(0,0,0,.22)}
+    .site-footer .footer-contact-section .glass-card:hover{border-color:rgba(0,242,254,.55);box-shadow:0 18px 60px rgba(0,242,254,.10)}
+    .footer-bottom-link{color:#8993a7;transition:color .25s,transform .25s;text-decoration:none}
+    .footer-bottom-link:hover{color:#00f2fe;transform:translateY(-2px)}
+    @media(max-width:640px){.site-footer{margin-top:1rem}.site-footer .footer-contact-section .glass-card{padding:1.25rem}}
     @media(prefers-reduced-motion:reduce){.liquid-orb,.neon-ring-wrapper::before,.glass-card{animation:none!important;transition:none!important}}
 
   </style>
@@ -163,8 +172,17 @@
   <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
 
   <!-- Clean Public Footer -->
-  <footer class="py-8 px-4 border-t border-white/10 text-center text-xs text-zinc-500 font-mono">
-    <p id="footer-text">© 2026 Shihab. CyberStack Architecture.</p>
+  <footer class="site-footer px-4 sm:px-6 pt-8 pb-6">
+    <div class="max-w-6xl mx-auto">
+      <div id="footer-contact-slot"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-5 text-center sm:text-left">
+        <p id="footer-text" class="text-[10px] text-zinc-500 font-mono">© 2026 Shihab. Built with curiosity.</p>
+        <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] font-semibold">
+          <a class="footer-bottom-link" href="about.html">About</a><a class="footer-bottom-link" href="expertise.html">Expertise</a><a class="footer-bottom-link" href="projects.html">Projects</a><a class="footer-bottom-link" href="news.html">News</a><a class="footer-bottom-link" href="mailto:mdshihab74@gmail.com">Email me ↗</a>
+        </nav>
+        <a class="footer-bottom-link text-[10px] font-mono" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a>
+      </div>
+    </div>
   </footer>
 
 
