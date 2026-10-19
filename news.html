@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Latest Bangladesh, world, technology and AI headlines curated from public news RSS feeds. Read stories at their original sources.">
+  <meta name="theme-color" content="#05070b">
+  <title>Live News Desk | Shihabul Islam</title>
+  <link rel="canonical" href="https://kokushibu74.github.io/news.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#05070b;--panel:rgba(13,17,26,.85);--cyan:#00f2fe;--muted:#929caf}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0,rgba(0,242,254,.09),transparent 38%),radial-gradient(ellipse at 100% 35%,rgba(127,0,255,.08),transparent 35%),var(--bg);color:#f5f7fc;font-family:Outfit,sans-serif;min-height:100vh}
+    a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff18}.brand{font-weight:900;letter-spacing:.08em;text-decoration:none}.brand b{color:var(--cyan)}.back{border:1px solid #ffffff24;border-radius:999px;padding:10px 15px;text-decoration:none;font-size:12px}
+    .hero{padding:55px 0 25px}.kicker{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--cyan)}h1{font-size:clamp(36px,7vw,68px);line-height:1.02;margin:14px 0;font-weight:900;letter-spacing:-.04em}.accent{color:var(--cyan)}.intro{color:var(--muted);line-height:1.8;max-width:650px}
+    .ticker{overflow:hidden;white-space:nowrap;border:1px solid #00f2fe35;border-radius:12px;padding:12px;margin:24px 0;background:#00f2fe08;font:11px 'JetBrains Mono',monospace;color:var(--cyan)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.filter{background:#ffffff08;border:1px solid #ffffff20;color:#dce5f5;padding:10px 14px;border-radius:999px;cursor:pointer;font:600 12px Outfit,sans-serif}.filter.active,.filter:hover{background:#00f2fe15;border-color:#00f2fe;color:var(--cyan)}
+    .status{color:var(--muted);font-size:12px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:15px}.story{display:flex;flex-direction:column;min-height:205px;background:var(--panel);border:1px solid #ffffff14;border-radius:20px;padding:20px;text-decoration:none;transition:.2s}.story:hover{transform:translateY(-3px);border-color:#00f2fe70;box-shadow:0 12px 35px #00f2fe0c}.tag{font:10px 'JetBrains Mono',monospace;color:var(--cyan);text-transform:uppercase}.story h2{font-size:17px;line-height:1.55;margin:13px 0;font-weight:800}.meta{margin-top:auto;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:10px}.ad{margin:24px 0;min-height:90px;display:flex;align-items:center;justify-content:center;border:1px dashed #ffffff25;border-radius:14px;color:#748096;font:10px 'JetBrains Mono',monospace;text-align:center;padding:15px}.footer{border-top:1px solid #ffffff16;margin-top:60px;padding:25px 0;color:#788296;font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><a class="back" href="./">← Back to portfolio</a></header>
+  <main class="wrap">
+    <section class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Headlines and links are provided for discovery; full reporting remains with each original publisher.</p></section>
+    <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY &nbsp; / &nbsp; ARTIFICIAL INTELLIGENCE</div>
+    <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
+    <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
+    <div id="news-grid" class="grid"></div>
+    <div class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
+    <p class="status">Feed refreshes automatically when the scheduled GitHub updater succeeds. News timing depends on each publisher's RSS feed.</p>
+  </main>
+  <footer class="wrap footer"><span>© <span id="year"></span> Shihabul Islam</span><span>Headlines link to original publishers · <a href="./">Portfolio home</a></span></footer>
+  <script src="news.js"></script>
+</body>
+</html>
