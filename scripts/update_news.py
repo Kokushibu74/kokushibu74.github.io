@@ -8,10 +8,11 @@ from email.utils import parsedate_to_datetime
 
 OUTPUT = "news-feed.json"
 QUERIES = [
-    ("Bangladesh", "Bangladesh latest news"),
-    ("World", "world latest news"),
-    ("Technology", "technology news"),
-    ("AI", "artificial intelligence AI news"),
+    ("Bangladesh", "বাংলাদেশ সংবাদ", "bn-BD", "BD", "BD:bn"),
+    ("Bangladesh", "Bangladesh latest news", "en-US", "BD", "BD:en"),
+    ("World", "world latest news", "en-US", "US", "US:en"),
+    ("Technology", "technology news", "en-US", "US", "US:en"),
+    ("AI", "artificial intelligence AI news", "en-US", "US", "US:en"),
 ]
 MAX_PER_CATEGORY = 12
 HEADERS = {"User-Agent": "Kokushibu74-NewsFeed/1.0 (+https://kokushibu74.github.io/)"}
@@ -41,8 +42,8 @@ def parse_date(value):
 
 def main():
     items, seen = [], set()
-    for label, query in QUERIES:
-        params = urllib.parse.urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    for label, query, language, country, edition in QUERIES:
+        params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
         url = "https://news.google.com/rss/search?" + params
         req = urllib.request.Request(url, headers=HEADERS)
         try:
