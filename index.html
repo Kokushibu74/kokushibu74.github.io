@@ -159,8 +159,59 @@
     #sections-wrapper > [data-section="expertise"],
     #sections-wrapper > [data-section="projects"] { display: none !important; }
   </style>
+
+  /* Kokushibu74 — Moon Breathing cinematic intro */
+  #moon-intro{position:fixed;inset:0;z-index:100000;background:#030208;overflow:hidden;display:grid;place-items:center;isolation:isolate;opacity:1;visibility:visible}
+  #moon-intro[hidden]{display:none}
+  #moon-intro .moon-void{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(69,25,100,.2),transparent 48%),#030208}
+  #moon-intro .moon-grain{position:absolute;inset:-50%;opacity:.13;background-image:radial-gradient(#fff 0.6px,transparent .7px);background-size:5px 5px;mask-image:radial-gradient(ellipse,black,transparent 72%);animation:moonGrainDrift 1.5s linear infinite}
+  #moon-intro .moon-eyes{position:absolute;top:50%;left:50%;width:min(78vw,560px);height:180px;transform:translate(-50%,-55%) scale(.65);opacity:0;filter:drop-shadow(0 0 18px #ff263f);display:flex;align-items:center;justify-content:center;gap:clamp(8px,3vw,28px);animation:moonEyesFlash 1.2s ease-out forwards}
+  #moon-intro .moon-eye{width:clamp(35px,9vw,74px);height:clamp(54px,12vw,96px);position:relative;background:linear-gradient(180deg,#fff2b2 0%,#ffcf39 20%,#f52350 58%,#8a0d3f 100%);clip-path:polygon(0 0,100% 15%,80% 76%,50% 100%,20% 76%);box-shadow:0 0 22px #ff1f50}
+  #moon-intro .moon-eye:after{content:"";position:absolute;left:47%;top:10%;width:3px;height:80%;background:#130514;transform:rotate(8deg);box-shadow:0 0 5px #000}
+  #moon-intro .moon-eye:nth-child(2),#moon-intro .moon-eye:nth-child(5){transform:scale(.82);filter:hue-rotate(15deg)}
+  #moon-intro .moon-eye:nth-child(3),#moon-intro .moon-eye:nth-child(4){transform:scale(.7);filter:hue-rotate(-15deg)}
+  #moon-intro .moon-title{position:absolute;top:calc(50% + 112px);left:0;right:0;text-align:center;color:#e9dcff;font:700 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.48em;text-transform:uppercase;opacity:0;animation:moonTitleIn .5s .18s ease forwards}
+  #moon-intro .moon-title small{display:block;margin-top:9px;color:#9b82b7;font-size:8px;letter-spacing:.28em}
+  #moon-intro .moon-slash{position:absolute;left:-25%;top:50%;width:150%;height:3px;opacity:0;transform:rotate(-13deg) scaleX(0);transform-origin:center;background:linear-gradient(90deg,transparent 0%,#ff214d 18%,#ffefff 48%,#a855f7 68%,#5e2aff 82%,transparent 100%);box-shadow:0 0 8px #fff,0 0 22px #b43cff,0 0 55px #ff174d}
+  #moon-intro .moon-slash:before{content:"";position:absolute;inset:-20px 0;background:linear-gradient(90deg,transparent,rgba(255,36,84,.25),rgba(178,90,255,.38),transparent);filter:blur(10px)}
+  #moon-intro .moon-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+  #moon-intro .moon-shard{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:calc(var(--s)*1.7);background:linear-gradient(180deg,#fff6b0,#f6c344 35%,#b438f5 72%,#f52e55);clip-path:polygon(50% 0,100% 35%,53% 100%,0 56%);opacity:0;filter:drop-shadow(0 0 5px #d04aff);animation:moonShardFly var(--dur) cubic-bezier(.12,.65,.25,1) forwards;--dx:0px;--dy:0px;--rot:0deg}
+  #moon-intro .moon-panel{position:absolute;top:-2%;bottom:-2%;width:51%;background:linear-gradient(145deg,#05030a,#0d0718 60%,#030208);z-index:4;box-shadow:0 0 38px rgba(178,62,255,.2);transition:transform .95s cubic-bezier(.75,0,.18,1);will-change:transform}
+  #moon-intro .moon-panel-left{left:0;border-right:1px solid rgba(211,167,255,.8)}
+  #moon-intro .moon-panel-right{right:0;border-left:1px solid rgba(255,64,100,.7)}
+  #moon-intro .moon-panel:after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(transparent,#fff 35%,#e6b9ff 50%,#ff315f 65%,transparent);box-shadow:0 0 22px #c45cff}
+  #moon-intro .moon-panel-left:after{right:0}#moon-intro .moon-panel-right:after{left:0}
+  #moon-intro.is-slashing .moon-slash{opacity:1;animation:moonSlashCut .42s cubic-bezier(.15,.8,.2,1) forwards}
+  #moon-intro.is-slashing .moon-flash{animation:moonWhiteFlash .22s ease-out forwards}
+  #moon-intro.is-opening .moon-panel-left{transform:translateX(-102%) rotate(-1deg)}
+  #moon-intro.is-opening .moon-panel-right{transform:translateX(102%) rotate(1deg)}
+  #moon-intro.is-opening .moon-slash{opacity:0;transition:opacity .2s}
+  #moon-intro.is-done{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s,visibility .35s}
+  #moon-intro .moon-skip{position:absolute;z-index:8;right:20px;bottom:20px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(12,8,22,.72);color:#eee6ff;padding:10px 14px;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.12em;cursor:pointer}
+  .moon-cursor{position:fixed;z-index:99990;left:0;top:0;width:18px;height:18px;pointer-events:none;border:1px solid rgba(204,151,255,.88);border-radius:50% 50% 50% 4%;transform:translate(-50%,-50%) rotate(-35deg) scale(.5);background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.9),rgba(178,71,255,.55) 28%,rgba(255,42,86,.1) 70%);box-shadow:0 0 10px rgba(181,76,255,.8),0 0 24px rgba(255,41,92,.3);animation:moonCursorFade .65s ease-out forwards}
+  .moon-cursor:after{content:"";position:absolute;inset:3px 5px 3px 3px;border-radius:50%;background:#08050e}
+  @keyframes moonEyesFlash{0%{opacity:0;transform:translate(-50%,-55%) scale(.65)}12%{opacity:1;transform:translate(-50%,-55%) scale(1.04)}28%{opacity:1;transform:translate(-50%,-55%) scale(1)}62%{opacity:.85}100%{opacity:0;transform:translate(-50%,-55%) scale(1.15)}}
+  @keyframes moonTitleIn{to{opacity:.9}}
+  @keyframes moonSlashCut{0%{transform:rotate(-13deg) scaleX(0);opacity:0}15%{opacity:1}100%{transform:rotate(-13deg) scaleX(1);opacity:1}}
+  @keyframes moonWhiteFlash{0%{opacity:0}20%{opacity:.72}100%{opacity:0}}
+  @keyframes moonShardFly{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.25)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1)}}
+  @keyframes moonCursorFade{0%{opacity:.95;transform:translate(-50%,-50%) rotate(-35deg) scale(.8)}100%{opacity:0;transform:translate(-50%,-50%) rotate(30deg) scale(1.7)}}
+  @keyframes moonGrainDrift{to{transform:translate3d(5px,5px,0)}}
+  @media(max-width:600px){#moon-intro .moon-eyes{height:120px}#moon-intro .moon-title{top:calc(50% + 82px);font-size:8px;letter-spacing:.32em}.moon-cursor{width:14px;height:14px}}
+  @media(prefers-reduced-motion:reduce){#moon-intro .moon-grain{animation:none}#moon-intro .moon-eyes{animation:none;opacity:1;transform:translate(-50%,-55%)}#moon-intro .moon-title{animation:none;opacity:1}#moon-intro .moon-panel{transition-duration:.25s}.moon-cursor{display:none}}
+
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
+
+  <div id="moon-intro" role="status" aria-label="Moon Breathing intro animation">
+    <div class="moon-void"></div><div class="moon-grain"></div>
+    <div class="moon-eyes" aria-hidden="true"><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span></div>
+    <div class="moon-title">KOKUSHIBU <small>MOON BREATHING · FIRST FORM</small></div>
+    <div class="moon-slash" aria-hidden="true"></div><div class="moon-flash"></div>
+    <div class="moon-panel moon-panel-left"></div><div class="moon-panel moon-panel-right"></div>
+    <button class="moon-skip" type="button" aria-label="Skip intro animation">SKIP INTRO ↗</button>
+  </div>
+
 
   <!-- Ambient Background Orbs -->
   <div class="ambient-glow-1"></div>
@@ -249,5 +300,72 @@
       new MutationObserver(removeLegacySections).observe(document.body, { childList: true, subtree: true });
     })();
   </script>
+
+  <script>
+  (() => {
+    const intro = document.getElementById('moon-intro');
+    if (!intro) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      intro.classList.add('is-opening');
+      window.setTimeout(() => {
+        intro.classList.add('is-done');
+        window.setTimeout(() => intro.remove(), 450);
+      }, reduceMotion ? 260 : 1020);
+    };
+    intro.querySelector('.moon-skip').addEventListener('click', finish);
+    // Generate crescent fragments in a controlled burst around the slash line.
+    const burst = () => {
+      const count = window.innerWidth < 600 ? 20 : 34;
+      for (let i = 0; i < count; i++) {
+        const shard = document.createElement('span');
+        shard.className = 'moon-shard';
+        const x = 12 + Math.random() * 76;
+        const y = 34 + Math.random() * 32;
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 55 + Math.random() * Math.min(window.innerWidth * .42, 300);
+        shard.style.setProperty('--x', x + 'vw');
+        shard.style.setProperty('--y', y + 'vh');
+        shard.style.setProperty('--s', (4 + Math.random() * 10) + 'px');
+        shard.style.setProperty('--dx', (Math.cos(angle) * distance) + 'px');
+        shard.style.setProperty('--dy', (Math.sin(angle) * distance) + 'px');
+        shard.style.setProperty('--rot', (Math.random() * 620 - 310) + 'deg');
+        shard.style.setProperty('--dur', (550 + Math.random() * 550) + 'ms');
+        intro.appendChild(shard);
+      }
+    };
+    if (reduceMotion || sessionStorage.getItem('kokushibu-moon-intro-seen') === '1') {
+      intro.remove();
+    } else {
+      sessionStorage.setItem('kokushibu-moon-intro-seen', '1');
+      window.setTimeout(() => intro.classList.add('is-slashing'), 560);
+      window.setTimeout(burst, 760);
+      window.setTimeout(() => intro.classList.add('is-opening'), 1180);
+      window.setTimeout(finish, 2250);
+      // A fail-safe ensures the page can never remain covered.
+      window.setTimeout(finish, 5000);
+    }
+    // Lightweight Moon Breathing trail on mouse and touch; avoid input controls.
+    let lastTrail = 0;
+    document.addEventListener('pointermove', event => {
+      if (finished || reduceMotion || (event.pointerType === 'touch' && !event.isPrimary)) return;
+      if (event.target && event.target.closest && event.target.closest('input,textarea,select,button,[contenteditable="true"]')) return;
+      const now = performance.now();
+      const delay = event.pointerType === 'touch' ? 110 : 48;
+      if (now - lastTrail < delay) return;
+      lastTrail = now;
+      const mark = document.createElement('span');
+      mark.className = 'moon-cursor';
+      mark.style.left = event.clientX + 'px';
+      mark.style.top = event.clientY + 'px';
+      document.body.appendChild(mark);
+      mark.addEventListener('animationend', () => mark.remove(), {once:true});
+    }, {passive:true});
+  })();
+  </script>
+
 </body>
 </html>
