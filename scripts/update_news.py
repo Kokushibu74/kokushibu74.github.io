@@ -17,7 +17,7 @@ MAX_PER_CATEGORY = 12
 HEADERS = {"User-Agent": "Kokushibu74-NewsFeed/1.0 (+https://kokushibu74.github.io/)"}
 
 def clean(value):
-    return re.sub(r"\\s+", " ", value or "").strip()
+    return re.sub(r"\s+", " ", value or "").strip()
 
 def category_for(label, title):
     if label == "Bangladesh":
@@ -25,7 +25,7 @@ def category_for(label, title):
     if label == "World":
         return "World"
     if label == "Technology":
-        return "AI" if re.search(r"\\b(ai|artificial intelligence|llm|large language model|chatgpt|gemini)\\b", title, re.I) else "Technology"
+        return "AI" if re.search(r"\b(ai|artificial intelligence|llm|large language model|chatgpt|gemini)\b", title, re.I) else "Technology"
     return "AI"
 
 def parse_date(value):
