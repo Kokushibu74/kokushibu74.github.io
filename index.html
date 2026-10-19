@@ -147,6 +147,18 @@
     @media(prefers-reduced-motion:reduce){.liquid-orb,.neon-ring-wrapper::before,.glass-card{animation:none!important;transition:none!important}}
 
   </style>
+  <style id="homepage-section-guard">
+    /* The homepage must show only the hero. About, Expertise/Skills and Projects live on their own pages. */
+    #sections-wrapper > section:not(#home) { display: none !important; }
+    #sections-wrapper > #about,
+    #sections-wrapper > #skills,
+    #sections-wrapper > #expertise,
+    #sections-wrapper > #projects,
+    #sections-wrapper > [data-section="about"],
+    #sections-wrapper > [data-section="skills"],
+    #sections-wrapper > [data-section="expertise"],
+    #sections-wrapper > [data-section="projects"] { display: none !important; }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
