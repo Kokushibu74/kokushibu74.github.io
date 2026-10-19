@@ -340,10 +340,10 @@
         intro.appendChild(shard);
       }
     };
-    if (reduceMotion || sessionStorage.getItem('kokushibu-moon-intro-seen') === '1') {
+    if (reduceMotion || sessionStorage.getItem('kokushibu-moon-intro-seen-v2') === '1') {
       intro.remove();
     } else {
-      sessionStorage.setItem('kokushibu-moon-intro-seen', '1');
+      sessionStorage.setItem('kokushibu-moon-intro-seen-v2', '1');
       window.setTimeout(() => intro.classList.add('is-slashing'), 560);
       window.setTimeout(burst, 760);
       window.setTimeout(() => intro.classList.add('is-opening'), 1180);
