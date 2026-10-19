@@ -336,7 +336,7 @@
     const panelA = document.getElementById('moon-panel-a');
     const panelB = document.getElementById('moon-panel-b');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const seenKey = 'kokushibu-moon-intro-seen-v3';
+    const seenKey = 'kokushibu-moon-intro-seen-v4';
     let width = 0, height = 0, dpr = 1, raf = 0, done = false, timeline = null;
     const embers = [], crescents = [];
     const rand = (a,b) => a + Math.random() * (b-a);
@@ -414,8 +414,8 @@
       timeline.to(flash,{opacity:0,duration:.11},2.615);
       timeline.to(crack,{opacity:1,duration:.04},2.59);
       timeline.to([panelA,panelB],{xPercent:0,duration:0},2.59);
-      timeline.to(panelA,{xPercent:-105,rotation:-1.2,transformOrigin:'0% 50%',duration:.72,ease:'power4.inOut'},2.72);
-      timeline.to(panelB,{xPercent:105,rotation:1.2,transformOrigin:'100% 50%',duration:.72,ease:'power4.inOut'},2.72);
+      timeline.to(panelA,{xPercent:-112,rotation:-1.8,transformOrigin:'0% 50%',duration:.78,ease:'power4.inOut'},2.57);
+      timeline.to(panelB,{xPercent:112,rotation:1.8,transformOrigin:'100% 50%',duration:.78,ease:'power4.inOut'},2.57);
       timeline.to(eyes,{autoAlpha:0,duration:.15},2.68);
       timeline.to(label,{autoAlpha:0,duration:.15},2.68);
       timeline.to(crack,{autoAlpha:0,duration:.15},2.68);
@@ -434,7 +434,7 @@
       mark.addEventListener('animationend',()=>mark.remove(),{once:true});
     },{passive:true});
   })();
-  </script>>
+  </script>
 
 </body>
 </html>
