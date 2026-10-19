@@ -1,0 +1,34 @@
+name: Refresh live news feed
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-feed-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Generate feed from public RSS sources
+        run: python3 scripts/update_news.py
+      - name: Commit feed when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news-feed.json
+          if git diff --cached --quiet; then
+            echo "News feed unchanged."
+          else
+            git commit -m "chore: refresh live news feed"
+            git push
+          fi
