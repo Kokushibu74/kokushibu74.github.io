@@ -236,6 +236,30 @@
     @media(max-width:600px){#moon-eyes{width:88vw;height:42vw;min-height:125px}#moon-intro .moon-label{top:calc(50% + 82px);font-size:8px;letter-spacing:.3em}.moon-cursor{width:12px;height:12px}}
     @media(prefers-reduced-motion:reduce){#moon-spinner{animation-duration:2s}.moon-cursor{display:none}}
   </style>
+
+  <style id="clock-anime-action-styles">
+    #nav-digital-clock{font-family:inherit;color:inherit;cursor:pointer;text-align:left;appearance:none;-webkit-appearance:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+    #nav-digital-clock:hover,#nav-digital-clock:focus-visible{border-color:rgba(0,242,254,.72);box-shadow:0 0 22px rgba(0,242,254,.14);outline:none}
+    #nav-digital-clock:active{transform:scale(.96)}
+    #anime-action-overlay{position:fixed;inset:0;z-index:99980;overflow:hidden;pointer-events:none;isolation:isolate}
+    #anime-action-overlay[hidden]{display:none}
+    .anime-action-figure{position:absolute;top:0;left:var(--anime-x,50%);width:clamp(190px,31vw,390px);height:auto;overflow:visible;transform:translate(-50%,-130%) rotate(var(--anime-tilt,-7deg));filter:drop-shadow(0 0 12px var(--anime-glow,#00f2fe));animation:animeDropIn .48s cubic-bezier(.16,.8,.28,1) forwards,animeFigureExit .45s ease-in 1.68s forwards}
+    .anime-action-figure svg{display:block;width:100%;height:auto;overflow:visible}
+    .anime-action-figure .blade-trail{stroke-dasharray:650;stroke-dashoffset:650;animation:animeSlash .42s cubic-bezier(.2,.75,.2,1) .48s forwards}
+    .anime-action-figure .impact-ring{transform-origin:center;animation:animeImpact .56s ease-out .42s forwards}
+    .anime-action-figure .spark{opacity:0;animation:animeSpark .6s ease-out .45s forwards}
+    .anime-action-figure .speed-lines{opacity:0;animation:animeSpeed .42s ease-out .12s forwards}
+    .anime-action-figure .character-core{transform-box:fill-box;transform-origin:center;animation:animePose .65s cubic-bezier(.2,.8,.2,1) .42s forwards}
+    @keyframes animeDropIn{0%{transform:translate(-50%,-130%) rotate(var(--anime-tilt,-7deg));opacity:0}65%{opacity:1}82%{transform:translate(-50%,5vh) rotate(4deg)}100%{transform:translate(-50%,0) rotate(0);opacity:1}}
+    @keyframes animePose{0%{transform:translateY(-5px) rotate(-4deg)}38%{transform:translateY(8px) rotate(7deg)}100%{transform:translateY(0) rotate(0)}}
+    @keyframes animeSlash{to{stroke-dashoffset:0}}
+    @keyframes animeImpact{0%{opacity:0;transform:scale(.1)}30%{opacity:.9}100%{opacity:0;transform:scale(1.7)}}
+    @keyframes animeSpark{0%{opacity:0;transform:scale(.2)}25%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
+    @keyframes animeSpeed{0%{opacity:0;transform:translateY(-30px)}40%{opacity:.8}100%{opacity:0;transform:translateY(35px)}}
+    @keyframes animeFigureExit{0%{opacity:1;transform:translate(-50%,0) scale(1)}65%{opacity:1;transform:translate(-50%,-10px) scale(1.04)}100%{opacity:0;transform:translate(calc(-50% + 110px),-75px) scale(.72)}}
+    @media(max-width:600px){.anime-action-figure{width:clamp(175px,55vw,260px)}}
+    @media(prefers-reduced-motion:reduce){.anime-action-figure{animation:animeDropIn .2s ease-out forwards,animeFigureExit .2s ease-in .8s forwards}.anime-action-figure *{animation-duration:.2s!important;animation-delay:0s!important}}
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
@@ -287,10 +311,10 @@
         <span id="nav-name" class="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
       </a>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
-      <div id="nav-digital-clock" class="nav-digital-clock" role="timer" aria-label="Bangladesh local time">
+      <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Play a random anime action animation" title="Click for a random anime action animation">
         <span class="clock-dot" aria-hidden="true"></span>
         <div><span id="nav-clock-time" class="clock-time">--:--:--</span><span id="nav-clock-date" class="clock-date">DHAKA · BANGLADESH</span></div>
-      </div>
+      </button>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
         <span>💬</span> <span>WhatsApp</span>
       </a>
@@ -580,5 +604,82 @@
   })();
   </script>
 
+
+  <script id="clock-anime-action-script">
+  (() => {
+    const clock = document.getElementById('nav-digital-clock');
+    if (!clock) return;
+    const palettes = [
+      {glow:'#00f2fe',main:'#121c32',edge:'#6cf7ff',blade:'#e8fdff',accent:'#4facfe'},
+      {glow:'#a855f7',main:'#1b1028',edge:'#e9a8ff',blade:'#fff0ff',accent:'#9333ea'},
+      {glow:'#ff4d6d',main:'#260d18',edge:'#ffb4a2',blade:'#fff0d6',accent:'#ff6b35'},
+      {glow:'#fbbf24',main:'#20180b',edge:'#ffe28a',blade:'#fff9d6',accent:'#fb7185'}
+    ];
+    let active = false, cleanupTimer = 0;
+    const svgFor = p => `
+      <svg viewBox="0 0 360 440" role="presentation" aria-hidden="true">
+        <defs>
+          <linearGradient id="aa-cloak" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${p.edge}"/><stop offset=".35" stop-color="${p.main}"/><stop offset="1" stop-color="#03050a"/></linearGradient>
+          <linearGradient id="aa-blade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".4" stop-color="${p.blade}"/><stop offset="1" stop-color="${p.accent}"/></linearGradient>
+          <filter id="aa-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g class="speed-lines" stroke="${p.edge}" stroke-width="2" stroke-linecap="round" opacity=".65">
+          <path d="M92 8L58 96M125 0L98 70M269 12L238 91M301 42L276 102M68 142L28 202M300 142L337 204"/>
+        </g>
+        <g class="character-core" stroke-linejoin="round" stroke-linecap="round">
+          <ellipse cx="180" cy="405" rx="92" ry="13" fill="${p.glow}" opacity=".22" class="impact-ring"/>
+          <!-- scarf / streaming cloth -->
+          <path d="M164 154Q112 139 88 180L38 213Q94 213 137 187L109 235Q159 220 188 178Z" fill="${p.accent}" stroke="${p.edge}" stroke-width="3"/>
+          <path d="M184 158Q238 142 265 179L319 199Q279 220 230 190L258 231Q212 216 179 183Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
+          <!-- legs in a descending action pose -->
+          <path d="M151 273L118 327L76 353L91 369L145 348L188 304Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M202 274L224 320L267 338L258 357L205 345L171 307Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M76 352L54 371L99 381L112 365Z" fill="#080c16" stroke="${p.edge}" stroke-width="3"/>
+          <path d="M267 337L291 354L249 368L239 351Z" fill="#080c16" stroke="${p.edge}" stroke-width="3"/>
+          <!-- torso and armor -->
+          <path d="M142 155L210 153L235 238L204 287L139 273L119 220Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M155 177L193 177L211 231L174 252L143 222Z" fill="${p.main}" stroke="${p.accent}" stroke-width="3"/>
+          <path d="M155 201L190 217L174 249L145 225Z" fill="${p.edge}" opacity=".9"/>
+          <!-- arms -->
+          <path d="M139 171L104 203L78 184L65 199L103 231L155 204Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M210 170L245 194L267 165L284 178L256 224L216 211Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M65 194L53 202L69 216L82 204Z" fill="${p.blade}" stroke="${p.edge}" stroke-width="2"/>
+          <path d="M264 164L280 153L294 169L281 183Z" fill="${p.blade}" stroke="${p.edge}" stroke-width="2"/>
+          <!-- neck, face, mask -->
+          <path d="M160 130L158 158L199 160L196 128Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
+          <path d="M135 86L147 52L163 68L181 35L194 65L220 50L214 83L229 98L215 129L196 145L159 140L139 119Z" fill="${p.main}" stroke="${p.edge}" stroke-width="4"/>
+          <path d="M145 99L169 105L188 98L215 100L207 124L190 136L161 131L146 116Z" fill="${p.accent}" stroke="${p.edge}" stroke-width="2"/>
+          <path d="M151 96L171 103L157 109Z M190 103L211 97L199 110Z" fill="#fff" filter="url(#aa-glow)"/>
+          <path d="M143 85L126 74L145 72L134 56L157 68L172 44L184 69L204 54L203 74L224 70L212 91Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
+          <!-- sword / blade -->
+          <path d="M280 158L322 54L333 40L329 63L293 170Z" fill="url(#aa-blade)" stroke="${p.blade}" stroke-width="2" filter="url(#aa-glow)"/>
+          <path d="M265 177L292 147" stroke="${p.accent}" stroke-width="9"/>
+          <path d="M271 182L299 153" stroke="${p.edge}" stroke-width="3"/>
+          <!-- action slash sweeps across the screen; transparent everywhere else -->
+          <path class="blade-trail" d="M-35 303Q110 166 394 93" fill="none" stroke="${p.edge}" stroke-width="9" stroke-linecap="round" filter="url(#aa-glow)"/>
+          <path d="M-25 307Q113 172 390 99" fill="none" stroke="${p.blade}" stroke-width="2.5" stroke-linecap="round"/>
+          ${Array.from({length:13},(_,i)=>{const x=35+(i*23)%290,y=80+(i*47)%270;return `<path class="spark" d="M${x} ${y}l${(i%2?1:-1)*13} -${8+i%8}" stroke="${p.edge}" stroke-width="2.5" stroke-linecap="round"/>`}).join('')}
+        </g>
+      </svg>`;
+    function play(){
+      if(active)return;
+      active=true;clearTimeout(cleanupTimer);
+      const palette=palettes[Math.floor(Math.random()*palettes.length)];
+      const overlay=document.createElement('div');
+      overlay.id='anime-action-overlay';
+      const figure=document.createElement('div');
+      figure.className='anime-action-figure';
+      figure.style.setProperty('--anime-x',(24+Math.random()*52)+'%');
+      figure.style.setProperty('--anime-glow',palette.glow);
+      figure.style.setProperty('--anime-tilt',(Math.random()>.5?'-':'')+(4+Math.random()*10)+'deg');
+      figure.innerHTML=svgFor(palette);
+      overlay.appendChild(figure);document.body.appendChild(overlay);
+      clock.setAttribute('aria-busy','true');
+      cleanupTimer=setTimeout(()=>{overlay.remove();clock.removeAttribute('aria-busy');active=false},2450);
+    }
+    clock.addEventListener('click',play);
+    clock.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}});
+  })();
+  </script>
 </body>
 </html>
