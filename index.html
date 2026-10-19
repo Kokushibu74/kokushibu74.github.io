@@ -351,7 +351,7 @@
     // Lightweight Moon Breathing trail on mouse and touch; avoid input controls.
     let lastTrail = 0;
     document.addEventListener('pointermove', event => {
-      if (finished || reduceMotion || (event.pointerType === 'touch' && !event.isPrimary)) return;
+      if (reduceMotion || (intro.isConnected && !intro.classList.contains('is-done')) || (event.pointerType === 'touch' && !event.isPrimary)) return;
       if (event.target && event.target.closest && event.target.closest('input,textarea,select,button,[contenteditable="true"]')) return;
       const now = performance.now();
       const delay = event.pointerType === 'touch' ? 110 : 48;
