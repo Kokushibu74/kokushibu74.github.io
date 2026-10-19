@@ -23,7 +23,7 @@ function render(raw) {
  document.title=(d.seo&&d.seo.title)||"Shihabul Islam | Web Developer, UI/UX Designer & AI Developer in Bangladesh";
  $("nav-name").textContent=d.name||fallback.name;
  $("footer-text").textContent="© "+new Date().getFullYear()+" "+(d.name||fallback.name)+". Built with curiosity.";
- $("nav-links").innerHTML=[["#about","About"],["#skills","Expertise"],["#projects","Projects"],["#contact","Contact"]].map(a=>'<a class="hover:text-[#00F2FE] transition-colors" href="'+a[0]+'">'+a[1]+'</a>').join("");
+ $("nav-links").innerHTML=[["#about","About"],["#skills","Expertise"],["#projects","Projects"],["#contact","Contact"],["news.html","News"]].map(a=>'<a class="hover:text-[#00F2FE] transition-colors" href="'+a[0]+'">'+a[1]+'</a>').join("");
  const skills=Array.isArray(d.skills)&&d.skills.length?d.skills:fallback.skills;
  const projects=Array.isArray(d.projects)&&d.projects.length?d.projects:fallback.projects;
  const socials=Array.isArray(d.socials)&&d.socials.length?d.socials:fallback.socials;
