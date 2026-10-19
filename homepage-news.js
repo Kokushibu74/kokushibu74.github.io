@@ -37,9 +37,9 @@
         if(!items.length){track.innerHTML='<span class="bnt-empty">No fresh breaking headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';track.style.animation="none";return}
         const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>').join("");
         track.innerHTML=content+content;
-        // Move left slowly: 8 pixels per second, looping seamlessly through duplicated headlines.
+        // Move left slowly: 10 pixels per second, looping seamlessly through duplicated headlines.
         const halfWidth=track.scrollWidth/2;
-        track.style.animationDuration=Math.max(45,halfWidth/8)+"s";
+        track.style.animationDuration=Math.max(45,halfWidth/10)+"s";
       })
       .catch(()=>{const track=document.getElementById("bnt-track");if(track){track.innerHTML='<span class="bnt-empty">Live headlines temporarily unavailable · <a style="color:#00f2fe" href="news.html">Open News</a></span>';track.style.animation="none"}});
   }
