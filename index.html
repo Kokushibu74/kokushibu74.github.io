@@ -40,6 +40,13 @@
       transition: background-color 0.4s ease, color 0.4s ease;
     }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
+    /* Compact digital clock in the top navigation */
+    .nav-digital-clock{display:flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(0,242,254,.22);border-radius:13px;background:rgba(0,242,254,.045);box-shadow:inset 0 0 16px rgba(0,242,254,.025);white-space:nowrap}
+    .nav-digital-clock .clock-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#00f2fe;box-shadow:0 0 9px #00f2fe;animation:clockPulse 1.8s ease-in-out infinite}
+    .nav-digital-clock .clock-time{font:700 14px/1.2 'JetBrains Mono',monospace;letter-spacing:.045em;color:#00f2fe;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(0,242,254,.25)}
+    .nav-digital-clock .clock-date{display:block;margin-top:3px;font:500 8px/1.2 'JetBrains Mono',monospace;letter-spacing:.08em;color:#94a3b8}
+    @keyframes clockPulse{50%{opacity:.4;box-shadow:0 0 3px #00f2fe}}
+    @media(max-width:767px){.nav-digital-clock{margin-left:auto;margin-right:9px;padding:6px 8px;gap:6px}.nav-digital-clock .clock-time{font-size:12px}.nav-digital-clock .clock-date{font-size:7px}#top-wa-btn{padding:9px 11px;gap:5px}#top-wa-btn span:last-child{display:none}}
     
     /* Cyberpunk Glow & Glassmorphism */
     .glass-card {
@@ -243,6 +250,10 @@
         <span id="nav-name" class="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
       </a>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
+      <div id="nav-digital-clock" class="nav-digital-clock" role="timer" aria-label="Bangladesh local time">
+        <span class="clock-dot" aria-hidden="true"></span>
+        <div><span id="nav-clock-time" class="clock-time">--:--:--</span><span id="nav-clock-date" class="clock-date">DHAKA · BANGLADESH</span></div>
+      </div>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
         <span>💬</span> <span>WhatsApp</span>
       </a>
@@ -293,6 +304,25 @@
   </footer>
 
 
+  <script>
+    // Live digital clock pinned beside the WhatsApp button (Bangladesh time).
+    (() => {
+      const time = document.getElementById('nav-clock-time');
+      const date = document.getElementById('nav-clock-date');
+      if (!time || !date) return;
+      const updateClock = () => {
+        const now = new Date();
+        time.textContent = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        }).format(now);
+        date.textContent = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Dhaka', day: '2-digit', month: 'short', year: 'numeric'
+        }).format(now).toUpperCase() + ' · DHAKA';
+      };
+      updateClock();
+      setInterval(updateClock, 1000);
+    })();
+  </script>
   <script src="site.js?v=20261019-6"></script>
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
