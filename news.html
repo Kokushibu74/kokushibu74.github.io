@@ -27,10 +27,13 @@
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
     <div id="news-grid" class="grid"></div>
-    <div class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
+    <div id="news-ad-slot" class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
     <p class="status">Feed refreshes automatically when the scheduled GitHub updater succeeds. News timing depends on each publisher's RSS feed.</p>
   </main>
   <footer class="wrap footer"><span>© <span id="year"></span> Shihabul Islam</span><span>Headlines link to original publishers · <a href="./">Portfolio home</a></span></footer>
+  <script src="ads-config.js"></script>
+  <script src="ads.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
   <script src="news.js"></script>
 </body>
 </html>
