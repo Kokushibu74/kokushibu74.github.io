@@ -18,9 +18,10 @@
     if (!root || document.getElementById("live-news-preview")) return;
     const section = document.createElement("section");
     section.id = "live-news-preview";
-    section.innerHTML = '<div class="ln-head"><div><p class="ln-kicker">LIVE / NEWS DESK</p><h2 style="font-size:clamp(25px,4vw,38px);font-weight:900;margin-top:8px">Latest <span style="color:#00f2fe">headlines.</span></h2></div><a class="ln-link" href="news.html">ALL NEWS ↗</a></div><p id="ln-status" class="ln-meta" aria-live="polite">Loading latest headlines…</p><div id="ln-grid" class="ln-grid"></div><div class="ln-ad" aria-label="Advertisement">ADVERTISEMENT · AdSense placement (requires publisher setup)</div>';
+    section.innerHTML = '<div class="ln-head"><div><p class="ln-kicker">LIVE / NEWS DESK</p><h2 style="font-size:clamp(25px,4vw,38px);font-weight:900;margin-top:8px">Latest <span style="color:#00f2fe">headlines.</span></h2></div><a class="ln-link" href="news.html">ALL NEWS ↗</a></div><p id="ln-status" class="ln-meta" aria-live="polite">Loading latest headlines…</p><div id="ln-grid" class="ln-grid"></div><div id="home-ad-slot" class="ln-ad" aria-label="Advertisement">ADVERTISEMENT · AdSense placement (requires publisher setup)</div>';
     const contact = root.querySelector("#contact");
     if (contact) root.insertBefore(section, contact); else root.appendChild(section);
+    if (window.mountShihabAd) window.mountShihabAd(section.querySelector("#home-ad-slot"), "home");
     fetch("news-feed.json?updated=" + Date.now(), {cache:"no-store"})
       .then(r => { if (!r.ok) throw new Error("Feed not ready"); return r.json(); })
       .then(data => {
