@@ -160,7 +160,10 @@
     #sections-wrapper > [data-section="projects"] { display: none !important; }
   </style>
 
-  /* Kokushibu74 — Moon Breathing cinematic intro */
+  
+
+  <style id="moon-breathing-intro-styles">
+/* Kokushibu74 — Moon Breathing cinematic intro */
   #moon-intro{position:fixed;inset:0;z-index:100000;background:#030208;overflow:hidden;display:grid;place-items:center;isolation:isolate;opacity:1;visibility:visible}
   #moon-intro[hidden]{display:none}
   #moon-intro .moon-void{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(69,25,100,.2),transparent 48%),#030208}
@@ -199,7 +202,7 @@
   @keyframes moonGrainDrift{to{transform:translate3d(5px,5px,0)}}
   @media(max-width:600px){#moon-intro .moon-eyes{height:120px}#moon-intro .moon-title{top:calc(50% + 82px);font-size:8px;letter-spacing:.32em}.moon-cursor{width:14px;height:14px}}
   @media(prefers-reduced-motion:reduce){#moon-intro .moon-grain{animation:none}#moon-intro .moon-eyes{animation:none;opacity:1;transform:translate(-50%,-55%)}#moon-intro .moon-title{animation:none;opacity:1}#moon-intro .moon-panel{transition-duration:.25s}.moon-cursor{display:none}}
-
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
@@ -209,7 +212,7 @@
     <div class="moon-title">KOKUSHIBU <small>MOON BREATHING · FIRST FORM</small></div>
     <div class="moon-slash" aria-hidden="true"></div><div class="moon-flash"></div>
     <div class="moon-panel moon-panel-left"></div><div class="moon-panel moon-panel-right"></div>
-    <button class="moon-skip" type="button" aria-label="Skip intro animation">SKIP INTRO ↗</button>
+    <button class="moon-skip" type="button" aria-label="Skip intro animation">SKIP INTRO</button>
   </div>
 
 
