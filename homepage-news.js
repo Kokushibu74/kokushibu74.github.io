@@ -26,9 +26,11 @@
     const bar=document.createElement("div");bar.id="breaking-news-ticker";bar.setAttribute("aria-label","Breaking live news");
     bar.innerHTML='<div class="bnt-label"><span class="bnt-dot"></span>BREAKING</div><div class="bnt-window"><div id="bnt-track" class="bnt-track"><span class="bnt-empty">Connecting to live headlines…</span></div></div>';
     header.insertAdjacentElement("afterend",bar);
-    fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"})
-      .then(r=>{if(!r.ok)throw Error("feed unavailable");return r.json()})
-      .then(data=>{
+    async function loadHeadlines(){
+      try{
+        const response=await fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"});
+        if(!response.ok)throw Error("feed unavailable");
+        const data=await response.json();
         const now=Date.now();
         const items=(Array.isArray(data.items)?data.items:[])
           .filter(x=>x.title&&x.link&&x.publishedAt&&now-new Date(x.publishedAt).getTime()<=36*60*60*1000&&now-new Date(x.publishedAt).getTime()>=-5*60*1000)
@@ -37,11 +39,17 @@
         if(!items.length){track.innerHTML='<span class="bnt-empty">No fresh breaking headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';track.style.animation="none";return}
         const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>').join("");
         track.innerHTML=content+content;
-        // Move left slowly: 10 pixels per second, looping seamlessly through duplicated headlines.
+        // Move left at 10 pixels per second.
         const halfWidth=track.scrollWidth/2;
         track.style.animationDuration=Math.max(45,halfWidth/10)+"s";
-      })
-      .catch(()=>{const track=document.getElementById("bnt-track");if(track){track.innerHTML='<span class="bnt-empty">Live headlines temporarily unavailable · <a style="color:#00f2fe" href="news.html">Open News</a></span>';track.style.animation="none"}});
+      }catch(_){
+        const track=document.getElementById("bnt-track");
+        if(track&&track.querySelector(".bnt-empty"))track.innerHTML='<span class="bnt-empty">Live headlines temporarily unavailable · <a style="color:#00f2fe" href="news.html">Open News</a></span>';
+      }
+    }
+    loadHeadlines();
+    // Refresh ticker data in place; users do not need to reload the homepage.
+    window.setInterval(loadHeadlines,10*60*1000);
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 })();
