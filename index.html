@@ -168,6 +168,9 @@
   #moon-intro[hidden]{display:none}
   #moon-intro .moon-void{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(69,25,100,.2),transparent 48%),#030208}
   #moon-intro .moon-grain{position:absolute;inset:-50%;opacity:.13;background-image:radial-gradient(#fff 0.6px,transparent .7px);background-size:5px 5px;mask-image:radial-gradient(ellipse,black,transparent 72%);animation:moonGrainDrift 1.5s linear infinite}
+  #moon-intro .moon-kokushibo{position:absolute;top:45%;left:50%;width:min(88vw,470px);transform:translate(-50%,-50%) scale(.78);opacity:0;filter:drop-shadow(0 0 24px rgba(170,65,255,.55));animation:moonKokushiboReveal 2.25s ease-out forwards;z-index:2;pointer-events:none}
+  #moon-intro .moon-kokushibo svg{display:block;width:100%;height:auto;overflow:visible}
+  @keyframes moonKokushiboReveal{0%{opacity:0;transform:translate(-50%,-46%) scale(.68)}12%{opacity:1;transform:translate(-50%,-50%) scale(1)}65%{opacity:1;transform:translate(-50%,-50%) scale(1.02)}88%{opacity:.8}100%{opacity:0;transform:translate(-50%,-53%) scale(1.08)}}
   #moon-intro .moon-eyes{position:absolute;top:50%;left:50%;width:min(78vw,560px);height:180px;transform:translate(-50%,-55%) scale(.65);opacity:0;filter:drop-shadow(0 0 18px #ff263f);display:flex;align-items:center;justify-content:center;gap:clamp(8px,3vw,28px);animation:moonEyesFlash 1.2s ease-out forwards}
   #moon-intro .moon-eye{width:clamp(35px,9vw,74px);height:clamp(54px,12vw,96px);position:relative;background:linear-gradient(180deg,#fff2b2 0%,#ffcf39 20%,#f52350 58%,#8a0d3f 100%);clip-path:polygon(0 0,100% 15%,80% 76%,50% 100%,20% 76%);box-shadow:0 0 22px #ff1f50}
   #moon-intro .moon-eye:after{content:"";position:absolute;left:47%;top:10%;width:3px;height:80%;background:#130514;transform:rotate(8deg);box-shadow:0 0 5px #000}
@@ -200,15 +203,51 @@
   @keyframes moonShardFly{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.25)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1)}}
   @keyframes moonCursorFade{0%{opacity:.95;transform:translate(-50%,-50%) rotate(-35deg) scale(.8)}100%{opacity:0;transform:translate(-50%,-50%) rotate(30deg) scale(1.7)}}
   @keyframes moonGrainDrift{to{transform:translate3d(5px,5px,0)}}
-  @media(max-width:600px){#moon-intro .moon-eyes{height:120px}#moon-intro .moon-title{top:calc(50% + 82px);font-size:8px;letter-spacing:.32em}.moon-cursor{width:14px;height:14px}}
-  @media(prefers-reduced-motion:reduce){#moon-intro .moon-grain{animation:none}#moon-intro .moon-eyes{animation:none;opacity:1;transform:translate(-50%,-55%)}#moon-intro .moon-title{animation:none;opacity:1}#moon-intro .moon-panel{transition-duration:.25s}.moon-cursor{display:none}}
+  @media(max-width:600px){#moon-intro .moon-kokushibo{width:min(96vw,390px);top:44%}#moon-intro .moon-eyes{height:120px}#moon-intro .moon-title{top:calc(50% + 82px);font-size:8px;letter-spacing:.32em}.moon-cursor{width:14px;height:14px}}
+  @media(prefers-reduced-motion:reduce){#moon-intro .moon-kokushibo{animation:none;opacity:1;transform:translate(-50%,-50%) scale(.9)}#moon-intro .moon-grain{animation:none}#moon-intro .moon-eyes{animation:none;opacity:1;transform:translate(-50%,-55%)}#moon-intro .moon-title{animation:none;opacity:1}#moon-intro .moon-panel{transition-duration:.25s}.moon-cursor{display:none}}
   </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
   <div id="moon-intro" role="status" aria-label="Moon Breathing intro animation">
     <div class="moon-void"></div><div class="moon-grain"></div>
-    <div class="moon-eyes" aria-hidden="true"><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span><span class="moon-eye"></span></div>
+    <div class="moon-kokushibo" aria-hidden="true">
+      <svg viewBox="0 0 420 440" role="presentation">
+        <defs>
+          <linearGradient id="kbHair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#160d27"/><stop offset=".48" stop-color="#39214d"/><stop offset=".78" stop-color="#100b1b"/><stop offset="1" stop-color="#05040b"/></linearGradient>
+          <linearGradient id="kbSkin" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#f0c3a0"/><stop offset=".5" stop-color="#b87979"/><stop offset="1" stop-color="#552744"/></linearGradient>
+          <linearGradient id="kbBlade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".35" stop-color="#f5a4ff"/><stop offset=".7" stop-color="#a34cff"/><stop offset="1" stop-color="#ff315d"/></linearGradient>
+          <filter id="kbGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Long, wild hair silhouette -->
+        <path d="M210 28 L175 4 164 45 126 16 133 63 89 43 110 91 60 81 100 126 48 139 101 161 68 196 116 190 89 242 140 218 137 283 174 246 205 303 224 249 263 284 266 224 315 247 296 199 345 210 317 169 370 151 319 133 359 96 308 104 334 58 287 77 289 29 251 56 247 10Z" fill="url(#kbHair)" stroke="#8e54b4" stroke-opacity=".65" stroke-width="2"/>
+        <path d="M116 89 Q155 49 210 57 Q270 48 306 93 L290 230 Q269 281 211 300 Q151 281 130 230Z" fill="url(#kbSkin)" stroke="#2a142e" stroke-width="5"/>
+        <!-- hair framing cheeks -->
+        <path d="M118 94 L91 149 113 158 94 203 128 190 135 126 M301 91 L330 147 307 160 326 201 293 190 287 125" fill="#21132f" stroke="#8750a6" stroke-width="2"/>
+        <!-- six unmistakable glowing eyes -->
+        <g filter="url(#kbGlow)" stroke="#5b102e" stroke-width="3">
+          <path d="M143 117 Q163 98 183 118 Q164 138 143 117Z" fill="#f8e8a5"/><ellipse cx="163" cy="118" rx="4" ry="13" fill="#c51d48" stroke="none"/>
+          <path d="M237 118 Q257 98 277 117 Q257 138 237 118Z" fill="#f8e8a5"/><ellipse cx="257" cy="118" rx="4" ry="13" fill="#c51d48" stroke="none"/>
+          <path d="M135 157 Q159 139 183 158 Q159 177 135 157Z" fill="#fff0b0"/><ellipse cx="159" cy="158" rx="4" ry="12" fill="#d21e48" stroke="none"/>
+          <path d="M237 158 Q261 139 285 157 Q261 177 237 158Z" fill="#fff0b0"/><ellipse cx="261" cy="158" rx="4" ry="12" fill="#d21e48" stroke="none"/>
+          <path d="M151 195 Q170 178 190 197 Q170 215 151 195Z" fill="#fbe8a2"/><ellipse cx="171" cy="197" rx="4" ry="11" fill="#c91a43" stroke="none"/>
+          <path d="M230 197 Q250 178 269 195 Q250 215 230 197Z" fill="#fbe8a2"/><ellipse cx="250" cy="197" rx="4" ry="11" fill="#c91a43" stroke="none"/>
+        </g>
+        <!-- brows, moon-like demon markings, nose and grim mouth -->
+        <path d="M137 105 Q163 88 187 106 M233 106 Q257 88 283 105" fill="none" stroke="#241027" stroke-width="8" stroke-linecap="round"/>
+        <path d="M145 127 Q128 145 143 170 L132 190 151 185 M275 127 Q292 145 277 170 L288 190 269 185 M177 179 L166 224 183 232 M245 179 L256 224 239 232" fill="none" stroke="#7d174b" stroke-width="7" stroke-linecap="round"/>
+        <path d="M205 176 L195 222 211 229" fill="none" stroke="#3a1b31" stroke-width="5" stroke-linecap="round"/>
+        <path d="M176 252 Q210 264 246 251 Q225 280 194 273Z" fill="#2a091c" stroke="#6b1c43" stroke-width="3"/>
+        <path d="M188 256 L196 267 M204 258 L210 270 M221 257 L225 266" stroke="#f0c5bf" stroke-width="3"/>
+        <!-- neck and collar -->
+        <path d="M169 278 L167 323 210 350 254 323 252 278 Q210 311 169 278Z" fill="#25122f" stroke="#6b3b81" stroke-width="3"/>
+        <path d="M143 315 L210 352 277 314 303 370 210 413 117 370Z" fill="#120d1e" stroke="#7d4ca0" stroke-width="3"/>
+        <path d="M210 352 L196 390 210 413 225 390Z" fill="#5a174f"/>
+        <!-- diagonal neon blade slash -->
+        <path d="M44 364 L366 72" stroke="url(#kbBlade)" stroke-width="5" stroke-linecap="round" opacity=".95" filter="url(#kbGlow)"/>
+        <path d="M54 375 L376 83" stroke="#ff315d" stroke-width="1.5" opacity=".85"/>
+      </svg>
+    </div>
     <div class="moon-title">KOKUSHIBU <small>MOON BREATHING · FIRST FORM</small></div>
     <div class="moon-slash" aria-hidden="true"></div><div class="moon-flash"></div>
     <div class="moon-panel moon-panel-left"></div><div class="moon-panel moon-panel-right"></div>
