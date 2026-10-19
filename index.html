@@ -161,6 +161,36 @@
     @media(prefers-reduced-motion:reduce){.liquid-orb,.neon-ring-wrapper::before,.glass-card{animation:none!important;transition:none!important}}
 
   </style>
+  <style id="mobile-layout-guard">
+    /* Prevent accidental horizontal page overflow without changing desktop layout. */
+    html, body { width:100%; max-width:100%; overflow-x:clip; }
+    *, *::before, *::after { box-sizing:border-box; }
+    img, video, canvas, svg, iframe { max-width:100%; }
+    #sections-wrapper, #home, #home > div, footer, .site-footer,
+    .footer-contact-section, .footer-contact-section > div { min-width:0; }
+    #home h1, #home p, #home a, .social-copy, .social-copy strong,
+    .social-copy small { overflow-wrap:anywhere; }
+    @media (max-width:640px) {
+      #sections-wrapper { width:100%; max-width:100%; padding-left:16px; padding-right:16px; }
+      #home { width:100%; max-width:100%; gap:24px; }
+      #home > div:first-child { width:100%; min-width:0; }
+      #home > div:first-child > div:first-child { max-width:100%; white-space:normal; flex-wrap:wrap; }
+      #home h1 { font-size:clamp(2.35rem, 10.5vw, 3.6rem); line-height:1.08; letter-spacing:-.045em; }
+      #home > div:nth-child(2) { width:100%; max-width:100%; min-width:0; overflow:visible; }
+      #home > div:nth-child(2) .neon-ring-wrapper { width:min(280px, 82vw); height:min(280px, 82vw); }
+      #home > div:nth-child(2) .glass-card { max-width:calc(100% - 8px); min-width:0; }
+      .social-footer, .social-footer-inner { width:100%; max-width:100%; min-width:0; }
+      .social-footer-inner { padding-left:0; padding-right:0; }
+      .footer-utility-actions { min-width:0; max-width:100%; }
+      .donation-popover {
+        position:fixed; left:14px; right:14px; bottom:calc(16px + env(safe-area-inset-bottom));
+        width:calc(100% - 28px); max-width:350px; max-height:calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        margin-inline:auto; overflow-y:auto; overscroll-behavior:contain;
+        transform-origin:bottom center;
+      }
+      .donation-popover:after { display:none; }
+    }
+  </style>
   <style id="homepage-section-guard">
     /* The homepage must show only the hero. About, Expertise/Skills and Projects live on their own pages. */
     #sections-wrapper > section:not(#home) { display: none !important; }
