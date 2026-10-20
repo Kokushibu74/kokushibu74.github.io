@@ -55,7 +55,7 @@ function installPortraitReveal(){
  style.textContent=`
   #portrait-reveal-overlay{position:fixed;inset:0;z-index:99970;display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));background:rgba(2,5,14,.84);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .24s ease,visibility .24s ease;overflow:hidden;isolation:isolate}
   #portrait-reveal-overlay.is-visible{opacity:1;visibility:visible}
-  #portrait-reveal-frame{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border-radius:18px;transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate}
+  #portrait-reveal-frame{position:relative;pointer-events:none;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border-radius:18px;transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate}
   #portrait-reveal-overlay.is-visible #portrait-reveal-frame{transform:translateY(0) scale(1)}
   #portrait-reveal-frame:before{content:"";position:absolute;z-index:-1;inset:-5px;border-radius:22px;background:conic-gradient(from var(--portrait-angle,0deg),#00f2fe,#4facfe,#9b5cff,#ff4fd8,#00f2fe);animation:portraitNeonRotate 3.8s linear infinite;filter:blur(10px);opacity:.92}
   #portrait-reveal-frame:after{content:"";position:absolute;z-index:-1;inset:0;border:1px solid rgba(115,244,255,.8);border-radius:15px;box-shadow:0 0 13px rgba(0,242,254,.8),inset 0 0 16px rgba(0,242,254,.12);pointer-events:none}
