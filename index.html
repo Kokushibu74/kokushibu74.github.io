@@ -628,8 +628,8 @@
   (() => {
     const clock = document.getElementById('nav-digital-clock');
     if (!clock) return;
-    let canvas = null, ctx = null, raf = 0, cleanupTimer = 0, active = false;
-    const paletteSets = [
+    let active = false, raf = 0, finishTimer = 0, resizeHandler = null;
+    const palettes = [
       ['#ff3b30','#ffd166','#fff7d6','#ff8c42'],
       ['#35d7ff','#7c4dff','#ffffff','#ff4fd8'],
       ['#55f28b','#d8ff65','#fffde7','#28c9b7'],
@@ -637,60 +637,109 @@
       ['#ff7b00','#ffe66d','#fff4e6','#ff3d3d'],
       ['#63a4ff','#b8f2e6','#ffffff','#c084fc']
     ];
-    function play(){
-      if(active) return;
+    function play() {
+      if (active) return;
       active = true;
       const overlay = document.createElement('div');
       overlay.id = 'fireworks-overlay';
-      Object.assign(overlay.style,{position:'fixed',inset:'0',zIndex:'99980',pointerEvents:'none',overflow:'hidden',background:'rgba(2,4,12,.10)'});
-      canvas = document.createElement('canvas');
-      Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%'});
+      Object.assign(overlay.style, {
+        position:'fixed', inset:'0', zIndex:'99980', pointerEvents:'none',
+        overflow:'hidden', background:'rgba(2,4,12,.06)', opacity:'1',
+        transition:'opacity .35s ease-out', contain:'strict'
+      });
+      const canvas = document.createElement('canvas');
+      Object.assign(canvas.style, {position:'absolute',inset:'0',width:'100%',height:'100%'});
       overlay.appendChild(canvas);
       document.body.appendChild(overlay);
-      ctx = canvas.getContext('2d');
-      let w=0,h=0,dpr=1,started=performance.now();
-      const particles=[], rockets=[];
-      const colors=paletteSets[Math.floor(Math.random()*paletteSets.length)];
-      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
-      resize(); addEventListener('resize',resize);
-      function burst(x,y,style){
-        const n=style===0?105:style===1?78:125;
-        for(let i=0;i<n;i++){
-          const angle=(Math.PI*2*i/n)+(Math.random()-.5)*.08;
-          const speed=(style===1?2.2:1.5)+Math.random()*(style===2?7:5);
-          particles.push({x,y,px:x,py:y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:1,max:0.7+Math.random()*.5,r:.8+Math.random()*2.3,c:Math.random()<.28?'#fff':colors[Math.floor(Math.random()*colors.length)],g:.035+Math.random()*.055,tw:Math.random()});
+      const ctx = canvas.getContext('2d', {alpha:true, desynchronized:true});
+      if (!ctx) { overlay.remove(); active=false; return; }
+      let w=0,h=0,dpr=1,last=0,elapsed=0;
+      const particles=[], rockets=[], timers=[];
+      const colors=palettes[Math.floor(Math.random()*palettes.length)];
+      const rand=(a,b)=>a+Math.random()*(b-a);
+      const resize=()=>{
+        w=window.innerWidth; h=window.innerHeight;
+        dpr=Math.min(window.devicePixelRatio||1,1.15);
+        canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      };
+      resize();
+      resizeHandler=resize;
+      window.addEventListener('resize',resizeHandler,{passive:true});
+      function burst(x,y,kind=0) {
+        const count=kind===2?86:kind===1?64:76;
+        for(let i=0;i<count;i++){
+          const a=(Math.PI*2*i/count)+rand(-.035,.035);
+          const speed=rand(kind===1?1.8:2.4,kind===2?6.2:5.2);
+          particles.push({x,y,px:x,py:y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,
+            age:0,life:rand(42,68),r:rand(1,2.1),
+            color:Math.random()<.22?'#ffffff':colors[(Math.random()*colors.length)|0],
+            gravity:rand(.025,.055)});
         }
-        if(style===2) for(let i=0;i<24;i++){const a=Math.random()*Math.PI*2,sp=1+Math.random()*3;particles.push({x,y,px:x,py:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,max:1,r:2+Math.random()*2,c:'#fff8cf',g:.025,tw:0})}
       }
-      function launch(xTarget,yTarget,style){
-        rockets.push({x:Math.random()*w,y:h+8,tx:xTarget,ty:yTarget,vy:-(6+Math.random()*3),vx:(xTarget-Math.random()*w)*.008,c:colors[Math.floor(Math.random()*colors.length)],style});
+      function launch(tx,ty,kind=0) {
+        rockets.push({x:rand(w*.12,w*.88),y:h+10,tx,ty,
+          vx:rand(-1.2,1.2),vy:rand(-8.8,-7.2),
+          color:colors[(Math.random()*colors.length)|0],kind,trail:[]});
       }
-      const style=Math.floor(Math.random()*4);
-      if(style===0){launch(w*.2+Math.random()*w*.6,h*.18+Math.random()*h*.35,0);setTimeout(()=>launch(w*.25+Math.random()*w*.5,h*.2+Math.random()*h*.3,1),250)}
-      else if(style===1){for(let i=0;i<3;i++)setTimeout(()=>launch(w*(.2+i*.3),h*(.25+Math.random()*.25),i%2),i*220)}
-      else if(style===2){launch(w*.5,h*.27,2);setTimeout(()=>burst(w*.5,h*.27,2),700)}
-      else {launch(w*.18+Math.random()*w*.64,h*.2+Math.random()*h*.3,1);setTimeout(()=>{burst(w*.25+Math.random()*w*.5,h*.25+Math.random()*h*.35,0);burst(w*.25+Math.random()*w*.5,h*.2+Math.random()*h*.3,1)},650)}
-      function frame(now){
+      const pattern=(Math.random()*4)|0;
+      if(pattern===0){
+        launch(rand(w*.2,w*.8),rand(h*.18,h*.38),0);
+        timers.push(setTimeout(()=>launch(rand(w*.25,w*.75),rand(h*.2,h*.4),1),280));
+      } else if(pattern===1){
+        for(let i=0;i<3;i++) timers.push(setTimeout(()=>launch(w*(.2+i*.3),rand(h*.2,h*.38),i%2),i*240));
+      } else if(pattern===2){
+        launch(w*.5,h*.28,2);
+        timers.push(setTimeout(()=>burst(w*.5,h*.28,2),620));
+      } else {
+        launch(rand(w*.15,w*.85),rand(h*.2,h*.38),1);
+        timers.push(setTimeout(()=>{burst(rand(w*.2,w*.45),rand(h*.22,h*.4),0);burst(rand(w*.55,w*.8),rand(h*.22,h*.4),1)},600));
+      }
+      function frame(now) {
+        if(!last) last=now;
+        const dt=Math.min((now-last)/16.67,1.8);
+        last=now; elapsed+=dt;
         ctx.clearRect(0,0,w,h);
         ctx.globalCompositeOperation='lighter';
         for(let i=rockets.length-1;i>=0;i--){
-          const r=rockets[i];r.x+=r.vx;r.y+=r.vy;r.vy+=.045;
-          ctx.beginPath();ctx.moveTo(r.x,r.y+15);ctx.lineTo(r.x,r.y);ctx.strokeStyle=r.c;ctx.lineWidth=2;ctx.shadowBlur=12;ctx.shadowColor=r.c;ctx.stroke();
-          if(r.y<=r.ty||r.vy>=-1){burst(r.x,r.y,r.style);rockets.splice(i,1)}
+          const r=rockets[i];
+          r.trail.push({x:r.x,y:r.y}); if(r.trail.length>5)r.trail.shift();
+          r.x+=r.vx*dt; r.y+=r.vy*dt; r.vy+=.12*dt;
+          ctx.beginPath();
+          for(let j=0;j<r.trail.length;j++){const t=r.trail[j];if(j===0)ctx.moveTo(t.x,t.y);else ctx.lineTo(t.x,t.y)}
+          ctx.lineTo(r.x,r.y);ctx.strokeStyle=r.color;ctx.globalAlpha=.65;ctx.lineWidth=1.7;ctx.stroke();ctx.globalAlpha=1;
+          if(r.y<=r.ty||r.vy>=-1){burst(r.x,r.y,r.kind);rockets.splice(i,1)}
         }
         for(let i=particles.length-1;i>=0;i--){
-          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.992;p.vy*=.992;p.life-=.012/p.max;
-          if(p.life<=0){particles.splice(i,1);continue}
-          ctx.globalAlpha=Math.max(0,p.life);ctx.strokeStyle=p.c;ctx.fillStyle=p.c;ctx.lineWidth=p.r;ctx.shadowBlur=8;ctx.shadowColor=p.c;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,p.r*.65,0,Math.PI*2);ctx.fill();
+          const p=particles[i];p.age+=dt;
+          p.px=p.x;p.py=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=p.gravity*dt;
+          p.vx*=Math.pow(.992,dt);p.vy*=Math.pow(.992,dt);
+          const alpha=Math.max(0,1-p.age/p.life);
+          if(alpha<=0){particles.splice(i,1);continue}
+          ctx.globalAlpha=alpha;
+          ctx.strokeStyle=p.color;ctx.lineWidth=p.r;ctx.beginPath();
+          ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();
         }
-        ctx.globalAlpha=1;ctx.shadowBlur=0;ctx.globalCompositeOperation='source-over';
-        if(now-started<3300&&(particles.length||rockets.length))raf=requestAnimationFrame(frame);
+        ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+        if(elapsed<190&& (particles.length||rockets.length)) raf=requestAnimationFrame(frame);
+        else {
+          overlay.style.opacity='0';
+          finishTimer=setTimeout(cleanup,380);
+        }
+      }
+      function cleanup(){
+        cancelAnimationFrame(raf);
+        timers.forEach(clearTimeout);
+        if(resizeHandler)window.removeEventListener('resize',resizeHandler);
+        overlay.remove();active=false;finishTimer=0;
       }
       raf=requestAnimationFrame(frame);
-      cleanupTimer=setTimeout(()=>{cancelAnimationFrame(raf);removeEventListener('resize',resize);overlay.remove();active=false},3600);
+      finishTimer=setTimeout(cleanup,3900);
     }
     clock.addEventListener('click',play);
-    clock.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}});
+    clock.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}
+    });
   })();
   </script>
 </body>
