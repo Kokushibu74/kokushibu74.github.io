@@ -444,7 +444,7 @@
       const updateClock = () => {
         const now = new Date();
         time.textContent = new Intl.DateTimeFormat('en-GB', {
-          timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+          timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
         }).format(now);
         date.textContent = new Intl.DateTimeFormat('en-GB', {
           timeZone: 'Asia/Dhaka', day: '2-digit', month: 'short', year: 'numeric'
@@ -628,72 +628,66 @@
   (() => {
     const clock = document.getElementById('nav-digital-clock');
     if (!clock) return;
-    const palettes = [
-      {glow:'#ff552e',main:'#17111a',edge:'#ffb15c',blade:'#fff5d7',accent:'#d92825'},
-      {glow:'#ff3e33',main:'#17101a',edge:'#ff9b54',blade:'#fff9e7',accent:'#ff4b27'}
+    let canvas = null, ctx = null, raf = 0, cleanupTimer = 0, active = false;
+    const paletteSets = [
+      ['#ff3b30','#ffd166','#fff7d6','#ff8c42'],
+      ['#35d7ff','#7c4dff','#ffffff','#ff4fd8'],
+      ['#55f28b','#d8ff65','#fffde7','#28c9b7'],
+      ['#ff5fa2','#ffcf56','#ffffff','#a78bfa'],
+      ['#ff7b00','#ffe66d','#fff4e6','#ff3d3d'],
+      ['#63a4ff','#b8f2e6','#ffffff','#c084fc']
     ];
-    let active = false, cleanupTimer = 0, raf = 0;
-    const svgFor = p => `
-      <svg viewBox="0 0 360 440" role="presentation" aria-hidden="true">
-        <defs>
-          <linearGradient id="aa-cloak" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${p.edge}"/><stop offset=".28" stop-color="${p.main}"/><stop offset="1" stop-color="#03050a"/></linearGradient>
-          <linearGradient id="aa-blade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".4" stop-color="${p.blade}"/><stop offset="1" stop-color="${p.accent}"/></linearGradient>
-          <filter id="aa-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <g class="speed-lines" stroke="${p.edge}" stroke-width="2.2" stroke-linecap="round" opacity=".8">
-          <path d="M92 8L58 96M125 0L98 70M269 12L238 91M301 42L276 102M68 142L28 202M300 142L337 204M20 60L92 112M320 70L270 125"/>
-        </g>
-        <g class="character-core" stroke-linejoin="round" stroke-linecap="round">
-          <path d="M164 154Q112 139 88 180L38 213Q94 213 137 187L109 235Q159 220 188 178Z" fill="${p.accent}" stroke="${p.edge}" stroke-width="3"/>
-          <path d="M184 158Q238 142 265 179L319 199Q279 220 230 190L258 231Q212 216 179 183Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
-          <path d="M151 273L118 327L76 353L91 369L145 348L188 304Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
-          <path d="M202 274L224 320L267 338L258 357L205 345L171 307Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
-          <path d="M76 352L54 371L99 381L112 365Z M267 337L291 354L249 368L239 351Z" fill="#080c16" stroke="${p.edge}" stroke-width="3"/>
-          <path d="M142 155L210 153L235 238L204 287L139 273L119 220Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
-          <path d="M155 177L193 177L211 231L174 252L143 222Z" fill="${p.main}" stroke="${p.accent}" stroke-width="3"/>
-          <path d="M155 201L190 217L174 249L145 225Z" fill="${p.edge}" opacity=".9"/>
-          <path d="M139 171L104 203L78 184L65 199L103 231L155 204Z M210 170L245 194L267 165L284 178L256 224L216 211Z" fill="url(#aa-cloak)" stroke="${p.edge}" stroke-width="4"/>
-          <path d="M160 130L158 158L199 160L196 128Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
-          <path d="M135 86L147 52L163 68L181 35L194 65L220 50L214 83L229 98L215 129L196 145L159 140L139 119Z" fill="${p.main}" stroke="${p.edge}" stroke-width="4"/>
-          <path d="M145 99L169 105L188 98L215 100L207 124L190 136L161 131L146 116Z" fill="${p.accent}" stroke="${p.edge}" stroke-width="2"/>
-          <path d="M151 96L171 103L157 109Z M190 103L211 97L199 110Z" fill="#fff" filter="url(#aa-glow)"/>
-          <path d="M143 85L126 74L145 72L134 56L157 68L172 44L184 69L204 54L203 74L224 70L212 91Z" fill="${p.main}" stroke="${p.edge}" stroke-width="3"/>
-          <path d="M280 158L322 54L333 40L329 63L293 170Z" fill="url(#aa-blade)" stroke="${p.blade}" stroke-width="2" filter="url(#aa-glow)"/>
-          <path d="M265 177L292 147" stroke="${p.accent}" stroke-width="9"/><path d="M271 182L299 153" stroke="${p.edge}" stroke-width="3"/>
-          <path class="blade-trail" d="M-35 303Q110 166 394 93" fill="none" stroke="${p.edge}" stroke-width="10" stroke-linecap="round"/>
-          <path d="M-25 307Q113 172 390 99" fill="none" stroke="${p.blade}" stroke-width="2.5" stroke-linecap="round"/>
-          ${Array.from({length:18},(_,i)=>{const x=20+(i*23)%320,y=48+(i*47)%340;return `<path class="spark" d="M${x} ${y}l${(i%2?1:-1)*(9+i%8)} -${5+i%8}" stroke="${p.edge}" stroke-width="2.5" stroke-linecap="round"/>`}).join('')}
-          <ellipse cx="180" cy="405" rx="92" ry="13" fill="${p.glow}" opacity=".22" class="impact-ring"/>
-        </g>
-      </svg>`;
     function play(){
-      if(active)return;
-      active=true;clearTimeout(cleanupTimer);cancelAnimationFrame(raf);
-      const p=palettes[Math.floor(Math.random()*palettes.length)];
-      const overlay=document.createElement('div');overlay.id='anime-action-overlay';
-      overlay.innerHTML='<canvas class="aa-canvas" aria-hidden="true"></canvas><div class="aa-speed"></div><div class="aa-flash"></div><div class="aa-shockwave"></div><div class="aa-title">HINOKAMI KAGURA · FIRST FORM</div><div class="aa-vignette"></div>';
-      const figure=document.createElement('div');figure.className='aa-figure';figure.style.setProperty('--ax',(27+Math.random()*46)+'%');figure.innerHTML=svgFor(p);overlay.appendChild(figure);
-      const slash=document.createElementNS('http://www.w3.org/2000/svg','svg');slash.setAttribute('viewBox','0 0 1000 180');slash.setAttribute('class','aa-slash');slash.setAttribute('aria-hidden','true');
-      slash.innerHTML='<defs><linearGradient id="aa-fire"><stop stop-color="#fff8da"/><stop offset=".28" stop-color="#ffdb78"/><stop offset=".62" stop-color="#ff542f"/><stop offset="1" stop-color="#9c101e"/></linearGradient></defs><path d="M0 145 Q380 -40 1000 25" fill="none" stroke="url(#aa-fire)" stroke-width="34" stroke-linecap="round"/><path d="M0 145 Q380 -40 1000 25" fill="none" stroke="#fff9dd" stroke-width="4" stroke-linecap="round"/>';
-      overlay.appendChild(slash);document.body.appendChild(overlay);
-      const canvas=overlay.querySelector('canvas'),ctx=canvas.getContext('2d',{alpha:true});
-      let w=0,h=0,dpr=1,frame=0;const particles=[];
-      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0)};
-      resize();
-      const originX=w*(.27+Math.random()*.46),originY=h*.5;
-      const count=w<600?65:115;
-      for(let i=0;i<count;i++){const a=Math.random()*Math.PI*2,s=1.2+Math.random()*8;particles.push({x:originX,y:originY,vx:Math.cos(a)*s+(Math.random()-.5)*3,vy:Math.sin(a)*s-1.3,life:.45+Math.random()*.65,max:.45+Math.random()*.65,size:.7+Math.random()*2.8,ember:Math.random()>.35})}
-      let start=performance.now();
-      function draw(now){const elapsed=(now-start)/1000;ctx.clearRect(0,0,w,h);ctx.globalCompositeOperation='lighter';
-        for(let i=particles.length-1;i>=0;i--){const q=particles[i];q.x+=q.vx;q.y+=q.vy;q.vy+=.035;q.vx*=.992;q.life-=.016;if(q.life<=0){particles.splice(i,1);continue}ctx.globalAlpha=Math.max(0,q.life/q.max);ctx.strokeStyle=q.ember?'#ff6b35':'#fff0b0';ctx.fillStyle=q.ember?'#ff9a45':'#e8fbff';ctx.lineWidth=q.size;ctx.shadowBlur=q.ember?14:8;ctx.shadowColor=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(q.x-q.vx*2.3,q.y-q.vy*2.3);ctx.stroke();ctx.beginPath();ctx.arc(q.x,q.y,q.size*.7,0,Math.PI*2);ctx.fill()}
-        ctx.globalAlpha=1;ctx.shadowBlur=0;ctx.globalCompositeOperation='source-over';
-        if(elapsed<2.6&&particles.length)raf=requestAnimationFrame(draw);
+      if(active) return;
+      active = true;
+      const overlay = document.createElement('div');
+      overlay.id = 'fireworks-overlay';
+      Object.assign(overlay.style,{position:'fixed',inset:'0',zIndex:'99980',pointerEvents:'none',overflow:'hidden',background:'rgba(2,4,12,.10)'});
+      canvas = document.createElement('canvas');
+      Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%'});
+      overlay.appendChild(canvas);
+      document.body.appendChild(overlay);
+      ctx = canvas.getContext('2d');
+      let w=0,h=0,dpr=1,started=performance.now();
+      const particles=[], rockets=[];
+      const colors=paletteSets[Math.floor(Math.random()*paletteSets.length)];
+      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
+      resize(); addEventListener('resize',resize);
+      function burst(x,y,style){
+        const n=style===0?105:style===1?78:125;
+        for(let i=0;i<n;i++){
+          const angle=(Math.PI*2*i/n)+(Math.random()-.5)*.08;
+          const speed=(style===1?2.2:1.5)+Math.random()*(style===2?7:5);
+          particles.push({x,y,px:x,py:y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:1,max:0.7+Math.random()*.5,r:.8+Math.random()*2.3,c:Math.random()<.28?'#fff':colors[Math.floor(Math.random()*colors.length)],g:.035+Math.random()*.055,tw:Math.random()});
+        }
+        if(style===2) for(let i=0;i<24;i++){const a=Math.random()*Math.PI*2,sp=1+Math.random()*3;particles.push({x,y,px:x,py:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,max:1,r:2+Math.random()*2,c:'#fff8cf',g:.025,tw:0})}
       }
-      raf=requestAnimationFrame(draw);
-      setTimeout(()=>{overlay.classList.add('aa-strike');},110);
-      setTimeout(()=>{overlay.classList.add('aa-impact');},510);
-      clock.setAttribute('aria-busy','true');
-      cleanupTimer=setTimeout(()=>{cancelAnimationFrame(raf);overlay.remove();clock.removeAttribute('aria-busy');active=false},2650);
+      function launch(xTarget,yTarget,style){
+        rockets.push({x:Math.random()*w,y:h+8,tx:xTarget,ty:yTarget,vy:-(6+Math.random()*3),vx:(xTarget-Math.random()*w)*.008,c:colors[Math.floor(Math.random()*colors.length)],style});
+      }
+      const style=Math.floor(Math.random()*4);
+      if(style===0){launch(w*.2+Math.random()*w*.6,h*.18+Math.random()*h*.35,0);setTimeout(()=>launch(w*.25+Math.random()*w*.5,h*.2+Math.random()*h*.3,1),250)}
+      else if(style===1){for(let i=0;i<3;i++)setTimeout(()=>launch(w*(.2+i*.3),h*(.25+Math.random()*.25),i%2),i*220)}
+      else if(style===2){launch(w*.5,h*.27,2);setTimeout(()=>burst(w*.5,h*.27,2),700)}
+      else {launch(w*.18+Math.random()*w*.64,h*.2+Math.random()*h*.3,1);setTimeout(()=>{burst(w*.25+Math.random()*w*.5,h*.25+Math.random()*h*.35,0);burst(w*.25+Math.random()*w*.5,h*.2+Math.random()*h*.3,1)},650)}
+      function frame(now){
+        ctx.clearRect(0,0,w,h);
+        ctx.globalCompositeOperation='lighter';
+        for(let i=rockets.length-1;i>=0;i--){
+          const r=rockets[i];r.x+=r.vx;r.y+=r.vy;r.vy+=.045;
+          ctx.beginPath();ctx.moveTo(r.x,r.y+15);ctx.lineTo(r.x,r.y);ctx.strokeStyle=r.c;ctx.lineWidth=2;ctx.shadowBlur=12;ctx.shadowColor=r.c;ctx.stroke();
+          if(r.y<=r.ty||r.vy>=-1){burst(r.x,r.y,r.style);rockets.splice(i,1)}
+        }
+        for(let i=particles.length-1;i>=0;i--){
+          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.992;p.vy*=.992;p.life-=.012/p.max;
+          if(p.life<=0){particles.splice(i,1);continue}
+          ctx.globalAlpha=Math.max(0,p.life);ctx.strokeStyle=p.c;ctx.fillStyle=p.c;ctx.lineWidth=p.r;ctx.shadowBlur=8;ctx.shadowColor=p.c;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,p.r*.65,0,Math.PI*2);ctx.fill();
+        }
+        ctx.globalAlpha=1;ctx.shadowBlur=0;ctx.globalCompositeOperation='source-over';
+        if(now-started<3300&&(particles.length||rockets.length))raf=requestAnimationFrame(frame);
+      }
+      raf=requestAnimationFrame(frame);
+      cleanupTimer=setTimeout(()=>{cancelAnimationFrame(raf);removeEventListener('resize',resize);overlay.remove();active=false},3600);
     }
     clock.addEventListener('click',play);
     clock.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}});
