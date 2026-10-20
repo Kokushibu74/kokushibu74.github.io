@@ -35,11 +35,59 @@ function render(raw) {
  html+='<div class="relative flex items-center justify-center min-h-[340px] sm:min-h-[420px]"><div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-[#00F2FE]/15 animate-[spin_24s_linear_infinite]"></div><div class="absolute w-60 h-80 sm:w-72 sm:h-[26rem] rounded-[50%] border border-violet-500/20 rotate-45"></div><div class="absolute inset-5 sm:inset-0 rounded-full" style="background:radial-gradient(circle,rgba(0,242,254,.12),transparent 65%)"></div><span class="liquid-orb liquid-orb-a" aria-hidden="true"></span><span class="liquid-orb liquid-orb-b" aria-hidden="true"></span><div class="neon-ring-wrapper"><img class="neon-inner-img" src="'+img+'" alt="'+esc(d.name||fallback.name)+'" style="object-position:center '+Number(d.imagePos==null?50:d.imagePos)+'%" onerror="this.src=\'profile.jpg\';this.onerror=null"></div><div class="absolute bottom-6 left-0 sm:left-2 glass-card rounded-2xl p-4"><p class="text-xs font-bold text-white">✳ Always building</p><p class="text-[10px] text-zinc-400 mt-1">AI tools & digital experiences</p></div><div class="absolute top-8 right-0 sm:right-2 glass-card rounded-2xl p-4"><p class="text-xs font-bold text-white">⌘ Curious by nature</p><p class="text-[10px] text-zinc-400 mt-1">Learning by making</p></div></div></section>';
  // Contact is a static, accessible part of the footer in index.html.
  $("sections-wrapper").innerHTML=html;
+ installPortraitReveal();
  // About, Expertise and Projects are rendered only on their dedicated HTML pages.
  const contactSection=$("contact"), footer=document.querySelector("footer"), slot=$("footer-contact-slot");
  if(contactSection&&footer&&slot){contactSection.classList.add("footer-contact-section");slot.appendChild(contactSection);}
  const effects=d.effects||{}; if(effects.liquid===false){document.querySelectorAll(".liquid-orb").forEach(el=>el.remove());} if(effects.glow===false){document.querySelectorAll(".glass-card").forEach(el=>el.style.boxShadow="none");}
 }
+
+function installPortraitReveal(){
+ const img=document.querySelector("#home .neon-inner-img");
+ if(!img || img.dataset.revealReady) return;
+ img.dataset.revealReady="1";
+ img.tabIndex=0;
+ img.setAttribute("role","button");
+ img.setAttribute("aria-label","Show the full portrait");
+ img.setAttribute("aria-haspopup","dialog");
+ const style=document.createElement("style");
+ style.id="portrait-reveal-styles";
+ style.textContent=`
+  #portrait-reveal-overlay{position:fixed;inset:0;z-index:99970;display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));background:rgba(2,5,14,.84);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .24s ease,visibility .24s ease;overflow:hidden;isolation:isolate}
+  #portrait-reveal-overlay.is-visible{opacity:1;visibility:visible}
+  #portrait-reveal-frame{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border-radius:18px;transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate}
+  #portrait-reveal-overlay.is-visible #portrait-reveal-frame{transform:translateY(0) scale(1)}
+  #portrait-reveal-frame:before{content:"";position:absolute;z-index:-1;inset:-5px;border-radius:22px;background:conic-gradient(from var(--portrait-angle,0deg),#00f2fe,#4facfe,#9b5cff,#ff4fd8,#00f2fe);animation:portraitNeonRotate 3.8s linear infinite;filter:blur(10px);opacity:.92}
+  #portrait-reveal-frame:after{content:"";position:absolute;z-index:-1;inset:0;border:1px solid rgba(115,244,255,.8);border-radius:15px;box-shadow:0 0 13px rgba(0,242,254,.8),inset 0 0 16px rgba(0,242,254,.12);pointer-events:none}
+  #portrait-reveal-image{display:block;width:auto;height:auto;max-width:min(90vw,1100px);max-height:min(86vh,calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 36px));object-fit:contain;object-position:center;border-radius:12px;background:rgba(4,8,18,.7);box-shadow:0 0 18px rgba(0,242,254,.16);animation:portraitImageIn .42s cubic-bezier(.16,1,.3,1) both}
+  @keyframes portraitNeonRotate{to{filter:blur(14px) brightness(1.18)}}
+  @keyframes portraitImageIn{from{opacity:.65;filter:brightness(.65) saturate(.8)}to{opacity:1;filter:brightness(1) saturate(1)}}
+  @media(max-width:600px){#portrait-reveal-overlay{padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom))}#portrait-reveal-frame{padding:7px;border-radius:14px}#portrait-reveal-frame:before{inset:-4px;filter:blur(8px)}#portrait-reveal-image{max-width:calc(100vw - 34px);max-height:calc(88dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:9px}}
+  @media(prefers-reduced-motion:reduce){#portrait-reveal-overlay,#portrait-reveal-frame{transition:none}#portrait-reveal-frame:before,#portrait-reveal-image{animation:none}}
+ `;
+ document.head.appendChild(style);
+ const overlay=document.createElement("div");
+ overlay.id="portrait-reveal-overlay";
+ overlay.setAttribute("aria-hidden","true");
+ overlay.innerHTML='<div id="portrait-reveal-frame"><img id="portrait-reveal-image" alt=""></div>';
+ document.body.appendChild(overlay);
+ const full=overlay.querySelector("#portrait-reveal-image");
+ let mode="",hideTimer=0;
+ const open=nextMode=>{
+  clearTimeout(hideTimer);mode=nextMode;
+  if(!full.src || full.src!==img.src) full.src=img.currentSrc||img.src;
+  full.alt=img.alt||"Full portrait";
+  overlay.classList.add("is-visible");overlay.setAttribute("aria-hidden","false");
+  if(nextMode==="tap")hideTimer=setTimeout(close,2600);
+ };
+ function close(){clearTimeout(hideTimer);hideTimer=0;mode="";overlay.classList.remove("is-visible");overlay.setAttribute("aria-hidden","true")}
+ img.addEventListener("mouseenter",()=>{if(matchMedia("(hover: hover) and (pointer: fine)").matches)open("hover")});
+ img.addEventListener("mouseleave",()=>{if(mode==="hover")close()});
+ img.addEventListener("click",e=>{e.preventDefault();open("tap")});
+ img.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open("tap")}else if(e.key==="Escape")close()});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+}
+
 async function start(){
  let data=null;
  try { const p=sessionStorage.getItem("portfolio_admin_preview"); if(p){data=JSON.parse(p);sessionStorage.removeItem("portfolio_admin_preview");} } catch(_){}
