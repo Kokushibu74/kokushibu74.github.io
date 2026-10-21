@@ -33,7 +33,7 @@
         const data=await response.json();
         const now=Date.now();
         const items=(Array.isArray(data.items)?data.items:[])
-          .filter(x=>x.title&&x.link&&x.publishedAt&&now-new Date(x.publishedAt).getTime()<=36*60*60*1000&&now-new Date(x.publishedAt).getTime()>=-5*60*1000)
+          .filter(x=>x.category==="Bangladesh"&&x.title&&x.link&&x.publishedAt&&now-new Date(x.publishedAt).getTime()<=36*60*60*1000&&now-new Date(x.publishedAt).getTime()>=-5*60*1000)
           .sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,18);
         const track=document.getElementById("bnt-track");if(!track)return;
         if(!items.length){track.innerHTML='<span class="bnt-empty">No fresh breaking headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';track.style.animation="none";return}
