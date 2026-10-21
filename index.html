@@ -479,7 +479,20 @@
     })();
   </script>
 
-  <script src="site.js?v=20261020-1"></script>
+  <script src="site.js?v=20261022-2"></script>
+  <script>
+  // Keep public SEO/social image metadata in sync with the image published by Admin.
+  (async()=>{try{
+    const r=await fetch("site-data.json?seo="+Date.now(),{cache:"no-store"});
+    if(!r.ok)return;const d=await r.json();if(!d.image)return;
+    const image=new URL(d.image,location.href).href;
+    for(const selector of ['meta[property="og:image"]','meta[name="twitter:image"]']){
+      const el=document.querySelector(selector);if(el)el.setAttribute("content",image);
+    }
+    const ld=document.querySelector('script[type="application/ld+json"]');
+    if(ld){const data=JSON.parse(ld.textContent);data.image=image;ld.textContent=JSON.stringify(data);}
+  }catch(e){console.warn("Portfolio image metadata sync failed",e)}})();
+  </script>
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script src="homepage-news.js?v=20261019-6"></script>
