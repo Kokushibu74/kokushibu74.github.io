@@ -7,7 +7,35 @@ function authStatus(msg,error=false){$("auth-status").textContent=msg;$("auth-st
 const AUTH_SALT_HEX="98f7922c8ba888774fd858a54c854ca9",AUTH_HASH_HEX="0092e099ae0c8186ca3710e3f55f5bf8af6a4cdcb34dfec2b431680952db74a8";
 async function verifyFixedPassword(value){const salt=Uint8Array.from(AUTH_SALT_HEX.match(/.{2}/g),x=>parseInt(x,16));const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(value),"PBKDF2",false,["deriveBits"]);const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:600000},key,256);return [...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,"0")).join("")===AUTH_HASH_HEX}
 function setupAuth(){authMode="login";$("auth-title").innerHTML='Admin <span>login.</span>';$("auth-help").textContent="Enter the fixed admin password to unlock the visual editor.";$("password-label").textContent="Admin password";$("confirm-label").classList.add("hidden");$("confirm-password").classList.add("hidden");$("auth-submit").textContent="Unlock admin panel "}
-$("auth-form").addEventListener("submit",async e=>{e.preventDefault();const p=$("admin-password").value;const submit=$("auth-submit");submit.disabled=true;submit.textContent="Verifying…";let valid=false;try{valid=await verifyFixedPassword(p)}catch(_){authStatus("Secure password verification is unavailable in this browser.",true)}if(!valid){if(!document.querySelector("#auth-status").textContent.includes("unavailable"))authStatus("Incorrect password.",true);submit.disabled=false;submit.textContent="Unlock admin panel ";return}submit.disabled=false;submit.textContent="Unlock admin panel ";$("auth-screen").classList.add("hidden");$("app").classList.remove("hidden");authenticated=true;sessionStorage.setItem("cyberstack_admin_unlocked","1");loadData()});
+$("auth-form").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const p=$("admin-password").value;
+ const submit=$("auth-submit");
+ submit.disabled=true;
+ submit.textContent="Verifying…";
+ authStatus("Checking password securely. Please wait…");
+ try{
+   const valid=await verifyFixedPassword(p);
+   if(!valid){
+     authStatus("Incorrect password. Please check it and try again.",true);
+     submit.disabled=false;
+     submit.textContent="Unlock admin panel ";
+     return;
+   }
+   authStatus("Password accepted. Opening admin panel…");
+   authenticated=true;
+   sessionStorage.setItem("cyberstack_admin_unlocked","1");
+   $("auth-screen").classList.add("hidden");
+   $("app").classList.remove("hidden");
+   submit.disabled=false;
+   submit.textContent="Unlock admin panel ";
+   await loadData();
+ }catch(err){
+   authStatus("Login could not run: "+(err&&err.message?err.message:"browser security check failed")+". Open this page in Chrome and try again.",true);
+   submit.disabled=false;
+   submit.textContent="Unlock admin panel ";
+ }
+});
 function lock(){authenticated=false;sessionStorage.removeItem("cyberstack_admin_unlocked");$("app").classList.add("hidden");$("auth-screen").classList.remove("hidden");$("admin-password").value="";$("confirm-password").value="";setupAuth()}
 $("lock-btn").addEventListener("click",lock);
 function escapeHtml(v){return String(v??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
