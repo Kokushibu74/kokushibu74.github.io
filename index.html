@@ -697,29 +697,29 @@
     };
     resize();
     const colors=['#00f2fe','#ffcf5a','#ff5b45','#ffffff','#a78bfa','#5df59b'];
-    const sparks=Array.from({length:Math.min(260,Math.floor(w*h/4200))},()=>({
-      x:Math.random()*w, y:Math.random()*h-h, vx:(Math.random()-.5)*2.4,
-      vy:2.2+Math.random()*5.8, len:5+Math.random()*19,
-      size:.7+Math.random()*1.8, color:colors[Math.floor(Math.random()*colors.length)],
-      life:45+Math.random()*75, age:0
+    const sparks=Array.from({length:Math.min(280,Math.floor(w*h/3800))},()=>({
+      x:Math.random()*w, y:-Math.random()*h*1.4, vx:(Math.random()-.5)*1.5,
+      vy:1.5+Math.random()*3.8, len:7+Math.random()*22,
+      size:.8+Math.random()*1.8, color:colors[Math.floor(Math.random()*colors.length)],
+      life:Infinity, age:0
     }));
     const started=performance.now();
     function draw(now) {
       ctx.clearRect(0,0,w,h);
       for(const p of sparks){
         p.age++; p.x+=p.vx; p.y+=p.vy;
-        if(p.y>h+25 || p.age>p.life){p.x=Math.random()*w;p.y=-10-Math.random()*h*.25;p.vx=(Math.random()-.5)*2.4;p.vy=2.2+Math.random()*5.8;p.age=0;p.life=45+Math.random()*75;}
-        ctx.globalAlpha=Math.min(1,(p.life-p.age)/15,.9);
+        if(p.y>h+25){p.x=Math.random()*w;p.y=-10-Math.random()*h*.35;p.vx=(Math.random()-.5)*1.5;p.vy=1.5+Math.random()*3.8;p.age=0;}
+        ctx.globalAlpha=Math.min(1,Math.max(.15,(p.y+20)/90),.9);
         ctx.strokeStyle=p.color;ctx.lineWidth=p.size;ctx.shadowBlur=8;ctx.shadowColor=p.color;
         ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*1.8,p.y-p.len);ctx.stroke();
       }
       ctx.globalAlpha=1;ctx.shadowBlur=0;
-      if(now-started<2200){frame=requestAnimationFrame(draw);}
+      if(now-started<3200){frame=requestAnimationFrame(draw);}
       else{cancelAnimationFrame(frame);canvas.remove();running=false;}
     }
     frame=requestAnimationFrame(draw);
     window.addEventListener('resize',resize,{passive:true});
-    setTimeout(()=>window.removeEventListener('resize',resize),2400);
+    setTimeout(()=>window.removeEventListener('resize',resize),3400);
   });
 })();
 </script>
