@@ -328,7 +328,7 @@
         <span id="nav-name" class="bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
       </a>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
-      <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Play a random anime action animation" title="Click for a random anime action animation">
+      <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Current time" title="Current time">
         <span><div><span id="nav-clock-time" class="clock-time">--:--</span><span id="nav-clock-date" class="clock-date">DHAKA · BANGLADESH</span></div>
       </button>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
@@ -638,124 +638,7 @@
 
 
   
-  <script id="clock-anime-action-script">
-  (() => {
-    const clock = document.getElementById('nav-digital-clock');
-    if (!clock) return;
-    let active = false, raf = 0, finishTimer = 0, resizeHandler = null;
-    const palettes = [
-      ['#ff3b30','#ffd166','#fff7d6','#ff8c42'],
-      ['#35d7ff','#7c4dff','#ffffff','#ff4fd8'],
-      ['#55f28b','#d8ff65','#fffde7','#28c9b7'],
-      ['#ff5fa2','#ffcf56','#ffffff','#a78bfa'],
-      ['#ff7b00','#ffe66d','#fff4e6','#ff3d3d'],
-      ['#63a4ff','#b8f2e6','#ffffff','#c084fc']
-    ];
-    function play() {
-      if (active) return;
-      active = true;
-      const overlay = document.createElement('div');
-      overlay.id = 'fireworks-overlay';
-      Object.assign(overlay.style, {
-        position:'fixed', inset:'0', zIndex:'99980', pointerEvents:'none',
-        overflow:'hidden', background:'rgba(2,4,12,.06)', opacity:'1',
-        transition:'opacity .35s ease-out', contain:'strict'
-      });
-      const canvas = document.createElement('canvas');
-      Object.assign(canvas.style, {position:'absolute',inset:'0',width:'100%',height:'100%'});
-      overlay.appendChild(canvas);
-      document.body.appendChild(overlay);
-      const ctx = canvas.getContext('2d', {alpha:true, desynchronized:true});
-      if (!ctx) { overlay.remove(); active=false; return; }
-      let w=0,h=0,dpr=1,last=0,elapsed=0;
-      const particles=[], rockets=[], timers=[];
-      const colors=palettes[Math.floor(Math.random()*palettes.length)];
-      const rand=(a,b)=>a+Math.random()*(b-a);
-      const resize=()=>{
-        w=window.innerWidth; h=window.innerHeight;
-        dpr=Math.min(window.devicePixelRatio||1,1.15);
-        canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-      };
-      resize();
-      resizeHandler=resize;
-      window.addEventListener('resize',resizeHandler,{passive:true});
-      function burst(x,y,kind=0) {
-        const count=kind===2?86:kind===1?64:76;
-        for(let i=0;i<count;i++){
-          const a=(Math.PI*2*i/count)+rand(-.035,.035);
-          const speed=rand(kind===1?1.8:2.4,kind===2?6.2:5.2);
-          particles.push({x,y,px:x,py:y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,
-            age:0,life:rand(42,68),r:rand(1,2.1),
-            color:Math.random()<.22?'#ffffff':colors[(Math.random()*colors.length)|0],
-            gravity:rand(.025,.055)});
-        }
-      }
-      function launch(tx,ty,kind=0) {
-        rockets.push({x:rand(w*.12,w*.88),y:h+10,tx,ty,
-          vx:rand(-1.2,1.2),vy:rand(-8.8,-7.2),
-          color:colors[(Math.random()*colors.length)|0],kind,trail:[]});
-      }
-      const pattern=(Math.random()*4)|0;
-      if(pattern===0){
-        launch(rand(w*.2,w*.8),rand(h*.18,h*.38),0);
-        timers.push(setTimeout(()=>launch(rand(w*.25,w*.75),rand(h*.2,h*.4),1),280));
-      } else if(pattern===1){
-        for(let i=0;i<3;i++) timers.push(setTimeout(()=>launch(w*(.2+i*.3),rand(h*.2,h*.38),i%2),i*240));
-      } else if(pattern===2){
-        launch(w*.5,h*.28,2);
-        timers.push(setTimeout(()=>burst(w*.5,h*.28,2),620));
-      } else {
-        launch(rand(w*.15,w*.85),rand(h*.2,h*.38),1);
-        timers.push(setTimeout(()=>{burst(rand(w*.2,w*.45),rand(h*.22,h*.4),0);burst(rand(w*.55,w*.8),rand(h*.22,h*.4),1)},600));
-      }
-      function frame(now) {
-        if(!last) last=now;
-        const dt=Math.min((now-last)/16.67,1.8);
-        last=now; elapsed+=dt;
-        ctx.clearRect(0,0,w,h);
-        ctx.globalCompositeOperation='lighter';
-        for(let i=rockets.length-1;i>=0;i--){
-          const r=rockets[i];
-          r.trail.push({x:r.x,y:r.y}); if(r.trail.length>5)r.trail.shift();
-          r.x+=r.vx*dt; r.y+=r.vy*dt; r.vy+=.12*dt;
-          ctx.beginPath();
-          for(let j=0;j<r.trail.length;j++){const t=r.trail[j];if(j===0)ctx.moveTo(t.x,t.y);else ctx.lineTo(t.x,t.y)}
-          ctx.lineTo(r.x,r.y);ctx.strokeStyle=r.color;ctx.globalAlpha=.65;ctx.lineWidth=1.7;ctx.stroke();ctx.globalAlpha=1;
-          if(r.y<=r.ty||r.vy>=-1){burst(r.x,r.y,r.kind);rockets.splice(i,1)}
-        }
-        for(let i=particles.length-1;i>=0;i--){
-          const p=particles[i];p.age+=dt;
-          p.px=p.x;p.py=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=p.gravity*dt;
-          p.vx*=Math.pow(.992,dt);p.vy*=Math.pow(.992,dt);
-          const alpha=Math.max(0,1-p.age/p.life);
-          if(alpha<=0){particles.splice(i,1);continue}
-          ctx.globalAlpha=alpha;
-          ctx.strokeStyle=p.color;ctx.lineWidth=p.r;ctx.beginPath();
-          ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();
-        }
-        ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
-        if(elapsed<190&& (particles.length||rockets.length)) raf=requestAnimationFrame(frame);
-        else {
-          overlay.style.opacity='0';
-          finishTimer=setTimeout(cleanup,380);
-        }
-      }
-      function cleanup(){
-        cancelAnimationFrame(raf);
-        timers.forEach(clearTimeout);
-        if(resizeHandler)window.removeEventListener('resize',resizeHandler);
-        overlay.remove();active=false;finishTimer=0;
-      }
-      raf=requestAnimationFrame(frame);
-      finishTimer=setTimeout(cleanup,3900);
-    }
-    clock.addEventListener('click',play);
-    clock.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}
-    });
-  })();
-  </script>
+
 <!-- Multi AI floating portfolio assistant -->
 <style>
 #multi-ai-launcher{position:fixed;right:22px;bottom:22px;z-index:2147483000;width:62px;height:62px;border:1px solid rgba(0,242,254,.65);border-radius:50%;background:linear-gradient(135deg,#00f2fe,#4facfe 60%,#7f00ff);color:#061018;font-size:25px;font-weight:900;box-shadow:0 0 24px rgba(0,242,254,.42),0 10px 35px rgba(0,0,0,.4);cursor:pointer;display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
