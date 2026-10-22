@@ -73,17 +73,49 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 2px;
+      isolation: isolate;
+      --portrait-light: 0deg;
+      transition: filter .45s ease, transform .55s cubic-bezier(.2,.8,.2,1);
     }
     .neon-ring-wrapper::before {
       content: '';
       position: absolute;
-      inset: -3px;
+      inset: -1px;
       border-radius: 50%;
-      background: linear-gradient(45deg, #00F2FE, #4FACFE, #7F00FF, #E100FF, #00F2FE);
-      background-size: 400%;
+      background: conic-gradient(from var(--portrait-light), #00F2FE, #4FACFE 22%, #7F00FF 48%, #E100FF 70%, #00F2FE);
       z-index: 0;
-      animation: rotateGlow 6s linear infinite, glowPulse 3s ease-in-out infinite alternate;
+      animation: rotateGlow 7s linear infinite, glowPulse 3.8s ease-in-out infinite alternate;
+      box-shadow: 0 0 8px rgba(0,242,254,.35);
+      transition: filter .4s ease, opacity .4s ease;
+    }
+    .neon-ring-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      z-index: 2;
+      pointer-events: none;
+      opacity: .22;
+      background: conic-gradient(from var(--portrait-light), transparent 0deg, rgba(0,242,254,.7) 24deg, transparent 72deg, transparent 180deg, rgba(225,0,255,.42) 205deg, transparent 250deg);
+      mix-blend-mode: screen;
+      filter: blur(5px);
+      animation: rotateGlow 5s linear infinite;
+      transition: opacity .4s ease, filter .4s ease;
+    }
+    .neon-ring-wrapper:hover::before,
+    .neon-ring-wrapper:focus-within::before {
+      filter: blur(8px);
+      opacity: .9;
+    }
+    .neon-ring-wrapper:hover::after,
+    .neon-ring-wrapper:focus-within::after {
+      opacity: .58;
+      filter: blur(3px);
+    }
+    .neon-ring-wrapper:hover .neon-inner-img,
+    .neon-ring-wrapper:focus-within .neon-inner-img {
+      filter: saturate(1.08) brightness(1.035);
     }
     @keyframes glowPulse {
       0% { filter: blur(10px); opacity: 0.7; }
@@ -714,7 +746,11 @@
         ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*1.8,p.y-p.len);ctx.stroke();
       }
       ctx.globalAlpha=1;ctx.shadowBlur=0;
-      if(now-started<3200){frame=requestAnimationFrame(draw);}
+      const elapsed=now-started;
+      // Ease the whole shower away instead of cutting it off at the end.
+      const fadeStart=2450, duration=850;
+      canvas.style.opacity=elapsed>fadeStart?String(Math.max(0,1-((elapsed-fadeStart)/duration))):'1';
+      if(elapsed<3300){frame=requestAnimationFrame(draw);}
       else{cancelAnimationFrame(frame);canvas.remove();running=false;}
     }
     frame=requestAnimationFrame(draw);
