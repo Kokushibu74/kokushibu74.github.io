@@ -58,9 +58,13 @@ function installPortraitReveal(){
   #portrait-reveal-frame{position:relative;pointer-events:none;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border-radius:18px;transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate}
   #portrait-reveal-overlay.is-visible #portrait-reveal-frame{transform:translateY(0) scale(1)}
   #portrait-reveal-frame:before{content:"";position:absolute;z-index:-1;inset:-5px;border-radius:22px;background:conic-gradient(from var(--portrait-angle,0deg),#00f2fe,#4facfe,#9b5cff,#ff4fd8,#00f2fe);animation:portraitNeonRotate 3.8s linear infinite;filter:blur(10px);opacity:.92}
-  #portrait-reveal-frame:after{content:"";position:absolute;z-index:-1;inset:0;border:1px solid rgba(115,244,255,.8);border-radius:15px;box-shadow:0 0 13px rgba(0,242,254,.8),inset 0 0 16px rgba(0,242,254,.12);pointer-events:none}
+  #portrait-reveal-frame:after{content:"";position:absolute;z-index:3;inset:0;border:1px solid rgba(115,244,255,.55);border-radius:15px;box-shadow:0 0 9px rgba(0,242,254,.48),inset 0 0 12px rgba(0,242,254,.08);pointer-events:none}
   #portrait-reveal-image{display:block;width:auto;height:auto;max-width:min(90vw,1100px);max-height:min(86vh,calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 36px));object-fit:contain;object-position:center;border-radius:12px;background:rgba(4,8,18,.7);box-shadow:0 0 18px rgba(0,242,254,.16);animation:portraitImageIn .42s cubic-bezier(.16,1,.3,1) both}
-  @keyframes portraitNeonRotate{to{filter:blur(14px) brightness(1.18)}}
+  #portrait-reveal-light{position:absolute;z-index:2;inset:1px;border-radius:12px;pointer-events:none;overflow:hidden;mix-blend-mode:screen;opacity:.72}
+  #portrait-reveal-light:before{content:"";position:absolute;inset:-45%;background:linear-gradient(112deg,transparent 38%,rgba(0,242,254,0) 43%,rgba(0,242,254,.24) 48%,rgba(190,245,255,.46) 50%,rgba(155,123,255,.2) 53%,transparent 60%);transform:translateX(-65%) rotate(0deg);animation:portraitLightSweep 3.6s ease-in-out infinite}
+  #portrait-reveal-frame:before{inset:-2px;filter:blur(6px);opacity:.75}
+  @keyframes portraitLightSweep{0%,12%{transform:translateX(-70%)}68%,100%{transform:translateX(70%)}}
+  @keyframes portraitNeonRotate{to{filter:blur(9px) brightness(1.08)}}
   @keyframes portraitImageIn{from{opacity:.65;filter:brightness(.65) saturate(.8)}to{opacity:1;filter:brightness(1) saturate(1)}}
   @media(max-width:600px){#portrait-reveal-overlay{padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom))}#portrait-reveal-frame{padding:7px;border-radius:14px}#portrait-reveal-frame:before{inset:-4px;filter:blur(8px)}#portrait-reveal-image{max-width:calc(100vw - 34px);max-height:calc(88dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:9px}}
   @media(prefers-reduced-motion:reduce){#portrait-reveal-overlay,#portrait-reveal-frame{transition:none}#portrait-reveal-frame:before,#portrait-reveal-image{animation:none}}
@@ -69,7 +73,7 @@ function installPortraitReveal(){
  const overlay=document.createElement("div");
  overlay.id="portrait-reveal-overlay";
  overlay.setAttribute("aria-hidden","true");
- overlay.innerHTML='<div id="portrait-reveal-frame"><img id="portrait-reveal-image" alt=""></div>';
+ overlay.innerHTML='<div id="portrait-reveal-frame"><img id="portrait-reveal-image" alt=""><span id="portrait-reveal-light" aria-hidden="true"></span></div>';
  document.body.appendChild(overlay);
  const full=overlay.querySelector("#portrait-reveal-image");
  let mode="",hideTimer=0;
