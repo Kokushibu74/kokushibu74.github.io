@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#080d16">
+<title>Shihab AI — Portfolio Chat</title>
+<style>
+:root{color-scheme:dark;--bg:#080d16;--panel:#101a27;--line:#23384a;--text:#edf7ff;--muted:#8fa7b9;--cyan:#00e5ff}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{background:radial-gradient(ellipse at 20% 0%,#102b3b 0,transparent 45%),var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+header{height:58px;flex-shrink:0;display:flex;align-items:center;gap:10px;padding:0 15px;border-bottom:1px solid var(--line);background:#0b1420e8}
+.logo{width:34px;height:34px;display:grid;place-items:center;border-radius:12px;color:#03131b;font-weight:900;background:linear-gradient(135deg,#00e5ff,#76a9ff);box-shadow:0 0 24px #00e5ff25}
+.brand{font-weight:800;letter-spacing:.2px}.sub{font-size:11px;color:var(--muted)}.online{margin-left:auto;font-size:11px;color:#77e6c0;white-space:nowrap}
+#chat{flex:1;min-height:0;overflow:auto;padding:15px 12px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.welcome{margin:auto;text-align:center;max-width:340px;padding:18px}.welcome .spark{font-size:32px;color:var(--cyan);text-shadow:0 0 24px #00e5ff55}.welcome h2{font-size:21px;margin:7px 0}.welcome p{color:var(--muted);margin:0}
+.msg{max-width:90%;padding:10px 12px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere}.user{align-self:flex-end;background:#163448;border:1px solid #22516a;border-bottom-right-radius:5px}.bot{align-self:flex-start;background:var(--panel);border:1px solid var(--line);border-bottom-left-radius:5px}.error{color:#ffb6b6}
+form{padding:10px 11px max(11px,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#09111c}
+.composer{display:flex;align-items:flex-end;gap:8px;padding:7px;border:1px solid #2c4559;border-radius:17px;background:#0d1825}
+textarea{flex:1;min-width:0;max-height:120px;resize:none;border:0;outline:0;background:transparent;color:var(--text);font:inherit;padding:7px 5px}
+button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:750;cursor:pointer}
+#send{background:linear-gradient(135deg,#00e5ff,#7aabff);color:#03131b}button:disabled{opacity:.5;cursor:wait}
+.note{text-align:center;font-size:10px;color:#71899a;margin-top:6px}
+</style>
+</head>
+<body>
+<header><div class="logo">✦</div><div><div class="brand">Shihab AI</div><div class="sub">Ask about this portfolio</div></div><div class="online">● Chat</div></header>
+<main id="chat" aria-live="polite"><div class="welcome" id="welcome"><div class="spark">✦</div><h2>Hey there!</h2><p>Ask me about Shihab’s projects, skills, or ways to get in touch.</p></div></main>
+<form id="form"><div class="composer"><textarea id="input" rows="1" maxlength="4000" placeholder="Message Shihab AI…" aria-label="Message" required></textarea><button id="send" type="submit" aria-label="Send message">➤</button></div><div class="note" id="status">Simple portfolio chat · Powered by AI</div></form>
+<script>
+(function(){
+ const API='https://multi-ai-memory-api.mdshihab74.workers.dev';
+ const chat=document.getElementById('chat'),form=document.getElementById('form'),input=document.getElementById('input'),send=document.getElementById('send'),status=document.getElementById('status');
+ const system='You are Shihab AI, a simple helpful chatbot for Shihabul Islam’s portfolio. Owner: Shihabul Islam, Bangladesh. Website: https://kokushibu74.github.io/ . GitHub: https://github.com/Kokushibu74 . Email: mdshihab74@gmail.com . WhatsApp: https://wa.me/8801620107233 . YouTube: Lo-Fi World https://www.youtube.com/@Lo-Fi_World-x3w . Interests and work: web development, UI/UX, programming, AI assistants and automation. Known projects include MEMO WhatsApp AI Assistant and Termux Tool OS. Answer in the visitor’s language (Bangla, English, or Banglish), be concise and friendly, and never invent personal details or project capabilities.';
+ let messages=[{role:'system',content:system}],busy=false;
+ let clientId;try{clientId=localStorage.getItem('portfolio-chat-id');if(!clientId){clientId=crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(16).slice(2);localStorage.setItem('portfolio-chat-id',clientId)}}catch(e){clientId='portfolio-'+Math.random().toString(16).slice(2)}
+ function add(role,text,isError){document.getElementById('welcome')?.remove();const el=document.createElement('div');el.className='msg '+(role==='user'?'user':'bot')+(isError?' error':'');el.textContent=text;chat.appendChild(el);chat.scrollTop=chat.scrollHeight;return el}
+ function setBusy(v){busy=v;send.disabled=v;input.disabled=v;status.textContent=v?'Thinking…':'Simple portfolio chat · Powered by AI'}
+ async function submit(){const text=input.value.trim();if(!text||busy)return;add('user',text);messages.push({role:'user',content:text});input.value='';input.style.height='auto';setBusy(true);const waiting=add('assistant','One moment…');
+  try{const res=await fetch(API+'/api/chat',{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({messages:messages.slice(-16),provider:'auto',clientId})});let data={};try{data=await res.json()}catch(e){}if(!res.ok||!data.text)throw new Error(data.error||data.message||('Chat request failed ('+res.status+').'));waiting.textContent=data.text;messages.push({role:'assistant',content:data.text});if(messages.length>21)messages=[messages[0],...messages.slice(-20)];}
+  catch(e){waiting.textContent='Sorry, I could not get a reply right now. Please try again shortly.';waiting.classList.add('error');status.textContent=String(e.message||e).slice(0,120)}
+  finally{setBusy(false);input.focus();chat.scrollTop=chat.scrollHeight}
+ }
+ form.addEventListener('submit',e=>{e.preventDefault();submit()});input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,120)+'px'});input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});
+})();
+</script>
+</body>
+</html>
