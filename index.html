@@ -686,18 +686,18 @@
 @media(max-width:480px){#multi-ai-launcher{right:14px;bottom:14px;width:56px;height:56px}#multi-ai-panel{right:8px;bottom:78px;width:calc(100vw - 16px);height:min(72dvh,620px);border-radius:18px}}
 @media(prefers-reduced-motion:reduce){#multi-ai-panel.is-open{animation:none}#multi-ai-launcher{transition:none}}
 </style>
-<div id="multi-ai-panel" role="dialog" aria-label="Multi AI assistant" aria-modal="false">
-  <header><div>✦ <span>Multi AI</span> · Ask about this portfolio</div><button id="multi-ai-close" type="button" aria-label="Close AI chat">×</button></header>
-  <iframe id="multi-ai-frame" title="Multi AI chat" src="https://kokushibu74.github.io/Multi-Ai/" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<div id="multi-ai-panel" role="dialog" aria-label="Portfolio chat assistant" aria-modal="false">
+  <header><div>✦ <span>Shihab AI</span> · Portfolio Chat</div><button id="multi-ai-close" type="button" aria-label="Close AI chat">×</button></header>
+  <iframe id="multi-ai-frame" title="Multi AI chat" src="https://kokushibu74.github.io/chatbot.html" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
-<button id="multi-ai-launcher" type="button" aria-label="Open Multi AI assistant" aria-expanded="false" title="Chat with Multi AI">✦</button>
+<button id="multi-ai-launcher" type="button" aria-label="Open portfolio chat assistant" aria-expanded="false" title="Chat with Shihab AI">✦</button>
 <script>
 (function(){
  const launch=document.getElementById('multi-ai-launcher');
  const panel=document.getElementById('multi-ai-panel');
  const close=document.getElementById('multi-ai-close');
  if(!launch||!panel||!close)return;
- function setOpen(open){panel.classList.toggle('is-open',open);launch.setAttribute('aria-expanded',String(open));launch.setAttribute('aria-label',open?'Close Multi AI assistant':'Open Multi AI assistant');launch.textContent=open?'×':'✦';}
+ function setOpen(open){panel.classList.toggle('is-open',open);launch.setAttribute('aria-expanded',String(open));launch.setAttribute('aria-label',open?'Close portfolio chat assistant':'Open portfolio chat assistant');launch.textContent=open?'×':'✦';}
  launch.addEventListener('click',()=>setOpen(!panel.classList.contains('is-open')));
  close.addEventListener('click',()=>setOpen(false));
  document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
