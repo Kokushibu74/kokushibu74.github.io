@@ -429,25 +429,30 @@
 
 
   <style id="living-watcher-styles">
-    /* Rinnegan watcher: one clean, iconic eye mark; no enclosing badge or paired-eye box. */
-    #living-watcher{position:relative;display:grid;place-items:center;width:40px;height:36px;flex:0 0 40px;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;isolation:isolate;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 0 5px rgba(170,115,255,.38))}
-    #living-watcher:before{content:'';position:absolute;inset:2px 0;border-radius:50%;background:radial-gradient(ellipse,rgba(153,92,255,.24),transparent 70%);z-index:-1;opacity:.65;animation:lwAura 3s ease-in-out infinite alternate}
-    #living-watcher .lw-face{display:block;width:40px;height:34px;overflow:visible;animation:lwFloat 5s ease-in-out infinite}
-    #living-watcher .lw-outer{fill:#090611;stroke:#bda0ff;stroke-width:1.15}
-    #living-watcher .lw-ring{fill:none;stroke:#a98aff;stroke-width:1.05;opacity:.92}
-    #living-watcher .lw-ring-inner{fill:none;stroke:#e1d3ff;stroke-width:.55;opacity:.78}
-    #living-watcher .lw-iris{fill:url(#lw-rinnegan);stroke:#f0dcff;stroke-width:.55}
-    #living-watcher .lw-pupil{fill:#08050d;stroke:#eadcff;stroke-width:.45}
-    #living-watcher .lw-tomoe{fill:#f3eaff;filter:drop-shadow(0 0 1.5px #bca0ff)}
-    #living-watcher:hover,#living-watcher:focus-visible{outline:none;transform:scale(1.12);filter:drop-shadow(0 0 7px rgba(195,154,255,.9))}
-    #living-watcher.is-demon{transform:scale(1.2);filter:drop-shadow(0 0 5px #d8b8ff) drop-shadow(0 0 13px rgba(143,66,255,.95))}
-    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(150,70,255,.52),transparent 72%)}
+    /* Compact paired Rinnegan eyes with a living gaze, designed for the nav. */
+    #living-watcher{position:relative;display:grid;place-items:center;width:46px;height:30px;flex:0 0 46px;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;isolation:isolate;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 0 3px rgba(170,115,255,.34))}
+    #living-watcher:before{content:'';position:absolute;inset:1px -2px;border-radius:50%;background:radial-gradient(ellipse,rgba(153,92,255,.2),transparent 72%);z-index:-1;opacity:.55;animation:lwAura 3.4s ease-in-out infinite alternate}
+    #living-watcher .lw-face{display:block;width:46px;height:29px;overflow:visible;animation:lwFloat 4.6s ease-in-out infinite}
+    #living-watcher .lw-eye{transform-box:fill-box;transform-origin:center;animation:lwGaze 6.8s ease-in-out infinite}
+    #living-watcher .lw-eye:nth-of-type(2){animation-delay:-.16s}
+    #living-watcher .lw-outer{fill:#090611;stroke:#bda0ff;stroke-width:1}
+    #living-watcher .lw-ring{fill:none;stroke:#a98aff;stroke-width:.9;opacity:.92}
+    #living-watcher .lw-ring-inner{fill:none;stroke:#e1d3ff;stroke-width:.5;opacity:.78}
+    #living-watcher .lw-iris{fill:url(#lw-rinnegan);stroke:#f0dcff;stroke-width:.45}
+    #living-watcher .lw-pupil{fill:#08050d;stroke:#eadcff;stroke-width:.4}
+    #living-watcher .lw-tomoe{fill:#f3eaff;filter:drop-shadow(0 0 1px #bca0ff)}
+    #living-watcher:hover,#living-watcher:focus-visible{outline:none;transform:scale(1.07);filter:drop-shadow(0 0 5px rgba(195,154,255,.85))}
+    #living-watcher.is-demon{transform:scale(1.1);filter:drop-shadow(0 0 4px #d8b8ff) drop-shadow(0 0 9px rgba(143,66,255,.9))}
+    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(150,70,255,.48),transparent 72%)}
     #living-watcher.is-demon .lw-face{animation:lwRinneganPulse .42s ease-in-out infinite alternate}
-    #living-watcher.is-demon .lw-ring{stroke:#f0d8ff;stroke-width:1.35}
-    @keyframes lwAura{from{transform:scale(.88);opacity:.3}to{transform:scale(1.14);opacity:.8}}
-    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
-    @keyframes lwRinneganPulse{from{transform:scale(1)}to{transform:scale(1.05)}}
-    @media(prefers-reduced-motion:reduce){#living-watcher:before,#living-watcher .lw-face{animation:none!important}#living-watcher{transition:none}}
+    #living-watcher.is-demon .lw-ring{stroke:#f0d8ff;stroke-width:1.15}
+    #living-watcher.lw-glance .lw-eye{animation:lwGlance .32s ease-out 1}
+    @keyframes lwAura{from{transform:scale(.9);opacity:.28}to{transform:scale(1.1);opacity:.72}}
+    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+    @keyframes lwGaze{0%,20%,100%{transform:translate(0,0)}28%,38%{transform:translate(1px,-.6px)}45%,58%{transform:translate(-1px,.4px)}66%,78%{transform:translate(.4px,0)}}
+    @keyframes lwGlance{0%{transform:translateX(0)}45%{transform:translateX(2px) scaleY(.78)}100%{transform:translateX(0)}}
+    @keyframes lwRinneganPulse{from{transform:scale(1)}to{transform:scale(1.035)}}
+    @media(prefers-reduced-motion:reduce){#living-watcher:before,#living-watcher .lw-face,#living-watcher .lw-eye{animation:none!important}#living-watcher{transition:none}}
   </style>
 
   <!-- Top Cyber Navigation -->
@@ -455,21 +460,26 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
         <button id="living-watcher" type="button" aria-label="Activate Rinnegan" aria-pressed="false" title="Rinnegan · Living Watcher">
-          <svg class="lw-face" viewBox="0 0 44 36" aria-hidden="true">
+          <svg class="lw-face" viewBox="0 0 54 34" aria-hidden="true">
             <defs>
               <radialGradient id="lw-rinnegan" cx="40%" cy="32%" r="72%"><stop offset="0" stop-color="#e5d2ff"/><stop offset=".36" stop-color="#a878f2"/><stop offset=".72" stop-color="#7541c6"/><stop offset="1" stop-color="#291044"/></radialGradient>
             </defs>
-            <path class="lw-outer" d="M3 18 Q22 -1 41 18 Q22 37 3 18Z"/>
-            <circle class="lw-iris" cx="22" cy="18" r="12.2"/>
-            <circle class="lw-ring" cx="22" cy="18" r="9.2"/>
-            <circle class="lw-ring-inner" cx="22" cy="18" r="6.1"/>
-            <circle class="lw-pupil" cx="22" cy="18" r="3.2"/>
-            <g class="lw-tomoe">
-              <path d="M22 5.9 Q25 8.2 22 10.1 Q19.2 9.1 22 5.9Z"/>
-              <path d="M11.4 24.1 Q15.2 23.5 14.7 20.5 Q11.8 19.4 11.4 24.1Z"/>
-              <path d="M32.6 24.1 Q28.8 23.5 29.3 20.5 Q32.2 19.4 32.6 24.1Z"/>
+            <g class="lw-eye" transform="translate(1 0)">
+              <path class="lw-outer" d="M1 17 Q13 3 25 17 Q13 31 1 17Z"/>
+              <circle class="lw-iris" cx="13" cy="17" r="8.2"/>
+              <circle class="lw-ring" cx="13" cy="17" r="6.1"/>
+              <circle class="lw-ring-inner" cx="13" cy="17" r="4"/>
+              <circle class="lw-pupil" cx="13" cy="17" r="2.1"/>
+              <g class="lw-tomoe"><path d="M13 8.7 Q15 10.2 13 11.5 Q11 10.8 13 8.7Z"/><path d="M5.8 20.5 Q8.3 20 8 18 Q6.1 17.4 5.8 20.5Z"/><path d="M20.2 20.5 Q17.7 20 18 18 Q19.9 17.4 20.2 20.5Z"/></g>
             </g>
-            <path d="M5 14 Q10 7 15 7" fill="none" stroke="#f3eaff" stroke-width=".7" stroke-linecap="round" opacity=".8"/>
+            <g class="lw-eye" transform="translate(27 0)">
+              <path class="lw-outer" d="M1 17 Q13 3 25 17 Q13 31 1 17Z"/>
+              <circle class="lw-iris" cx="13" cy="17" r="8.2"/>
+              <circle class="lw-ring" cx="13" cy="17" r="6.1"/>
+              <circle class="lw-ring-inner" cx="13" cy="17" r="4"/>
+              <circle class="lw-pupil" cx="13" cy="17" r="2.1"/>
+              <g class="lw-tomoe"><path d="M13 8.7 Q15 10.2 13 11.5 Q11 10.8 13 8.7Z"/><path d="M5.8 20.5 Q8.3 20 8 18 Q6.1 17.4 5.8 20.5Z"/><path d="M20.2 20.5 Q17.7 20 18 18 Q19.9 17.4 20.2 20.5Z"/></g>
+            </g>
           </svg>
         </button>
         <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
