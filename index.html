@@ -362,6 +362,28 @@
       .site-footer, footer.social-footer { margin-top: 1.5rem !important; }
     }
   </style>
+<style id="page-flow-and-header-clearance-fix">
+    /* Let the page flow naturally: don't push the footer to the viewport bottom. */
+    body { justify-content: flex-start !important; }
+    #sections-wrapper {
+      flex: 0 0 auto !important;
+      min-height: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 2rem !important;
+    }
+    /* Clear the fixed header/ticker area without clipping the hero intro. */
+    @media (max-width: 767px) {
+      #sections-wrapper { padding-top: 8.5rem !important; }
+      #sections-wrapper > #home { min-height: 0 !important; margin-bottom: 0 !important; }
+      footer.social-footer { margin-top: 0 !important; }
+    }
+    @media (min-width: 768px) {
+      #sections-wrapper { padding-top: 7.5rem !important; }
+      #sections-wrapper > #home { min-height: 0 !important; margin-bottom: 0 !important; }
+      footer.social-footer { margin-top: 0 !important; }
+    }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
