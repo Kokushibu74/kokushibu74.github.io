@@ -429,21 +429,22 @@
 
 
   <style id="living-watcher-styles">
-    #living-watcher{position:relative;display:grid;place-items:center;width:34px;height:30px;flex:0 0 34px;padding:1px;border:1px solid rgba(255,65,83,.42);border-radius:9px;background:linear-gradient(145deg,rgba(31,8,18,.95),rgba(5,7,11,.9));cursor:pointer;isolation:isolate;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;box-shadow:0 0 12px rgba(255,35,65,.13)}
-    #living-watcher:before{content:'';position:absolute;inset:-5px;border-radius:12px;background:radial-gradient(ellipse,rgba(255,32,64,.22),transparent 70%);opacity:.6;z-index:-1;animation:lwAura 2.8s ease-in-out infinite alternate}
-    #living-watcher .lw-face{display:block;width:31px;height:23px;overflow:visible;filter:drop-shadow(0 0 2px rgba(255,35,65,.8));animation:lwFloat 3.8s ease-in-out infinite}
-    #living-watcher .lw-eye path{fill:#4b0918;stroke:#ff465a;stroke-width:.8}
-    #living-watcher .lw-eye ellipse{fill:#ff263f;stroke:#ffd3a0;stroke-width:.55;transform-box:fill-box;transform-origin:center;animation:lwBlink 5.6s infinite}
-    #living-watcher .lw-eye circle{fill:#fff6d7}
-    #living-watcher .lw-horn{fill:none;stroke:#a52b47;stroke-width:1.5;stroke-linecap:round}
-    #living-watcher .lw-mark{fill:none;stroke:#ff5b6e;stroke-width:1.2;stroke-linecap:round}
-    #living-watcher:hover,#living-watcher:focus-visible{outline:none;border-color:#ff526a;box-shadow:0 0 18px rgba(255,35,65,.4);transform:scale(1.08)}
-    #living-watcher.is-demon{border-color:#ff243f;box-shadow:0 0 12px #ff243f,0 0 28px rgba(255,20,50,.7);transform:scale(1.13)}
-    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(255,20,50,.55),transparent 72%)}
-    #living-watcher.is-demon .lw-face{filter:drop-shadow(0 0 4px #ff183d) drop-shadow(0 0 9px #ff183d);animation:lwFloat .42s ease-in-out infinite alternate}
-    #living-watcher.is-demon .lw-eye ellipse{fill:#fff0c0}
-    @keyframes lwAura{from{transform:scale(.9);opacity:.35}to{transform:scale(1.12);opacity:.8}}
-    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+    #living-watcher{position:relative;display:grid;place-items:center;width:38px;height:32px;flex:0 0 38px;padding:1px;border:1px solid rgba(255,35,55,.62);border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#3a0711,#08060b 72%);cursor:pointer;isolation:isolate;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;box-shadow:0 0 9px rgba(255,15,45,.28),inset 0 0 8px #4c0614}
+    #living-watcher:before{content:'';position:absolute;inset:-5px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,12,40,.32),transparent 72%);opacity:.7;z-index:-1;animation:lwAura 2.4s ease-in-out infinite alternate}
+    #living-watcher .lw-face{display:block;width:34px;height:26px;overflow:visible;filter:drop-shadow(0 0 2px rgba(255,15,45,.8));animation:lwFloat 3.8s ease-in-out infinite}
+    #living-watcher .lw-brow{fill:#1a050b;stroke:#ff304c;stroke-width:.8;stroke-linejoin:round}
+    #living-watcher .lw-lid{fill:#13050a;stroke:#ff3b54;stroke-width:1.1;stroke-linejoin:round}
+    #living-watcher .lw-white{fill:url(#lw-sclera);stroke:#ffb1a6;stroke-width:.5}
+    #living-watcher .lw-iris{fill:url(#lw-iris);stroke:#ff6a72;stroke-width:.45;transform-box:fill-box;transform-origin:center;animation:lwBlink 5.6s infinite}
+    #living-watcher .lw-pupil{fill:#16020a}
+    #living-watcher .lw-sigil{fill:none;stroke:#ff6677;stroke-width:.8;stroke-linecap:round}
+    #living-watcher:hover,#living-watcher:focus-visible{outline:none;border-color:#ff9aa5;box-shadow:0 0 17px rgba(255,20,50,.55);transform:scale(1.1)}
+    #living-watcher.is-demon{border-color:#ff182e;box-shadow:0 0 15px #ff1838,0 0 30px rgba(255,10,35,.8),inset 0 0 12px #8c001b;transform:scale(1.16)}
+    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(255,0,35,.62),transparent 72%)}
+    #living-watcher.is-demon .lw-face{filter:drop-shadow(0 0 4px #ff183d) drop-shadow(0 0 10px #ff183d);animation:lwFloat .38s ease-in-out infinite alternate}
+    #living-watcher.is-demon .lw-iris{fill:#fff1c7}
+    @keyframes lwAura{from{transform:scale(.9);opacity:.35}to{transform:scale(1.13);opacity:.85}}
+    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
     @keyframes lwBlink{0%,45%,48%,100%{transform:scaleY(1)}46%,47%{transform:scaleY(.12)}}
     @media(prefers-reduced-motion:reduce){#living-watcher:before,#living-watcher .lw-face,#living-watcher .lw-eye ellipse{animation:none!important}#living-watcher{transition:none}}
   </style>
@@ -452,16 +453,18 @@
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
-        <button id="living-watcher" type="button" aria-label="Activate Kokushibo Demon Mode" aria-pressed="false" title="Kokushibo · Living Watcher">
+        <button id="living-watcher" type="button" aria-label="Activate Demon Eye" aria-pressed="false" title="Demon Eye · Living Watcher">
           <svg class="lw-face" viewBox="0 0 44 30" aria-hidden="true">
-            <path class="lw-horn" d="M5 11 2 3 11 7M39 11 42 3 33 7" />
-            <g class="lw-eye"><path d="M3 9 Q7 4 12 9 Q7 14 3 9Z"/><ellipse cx="7.5" cy="9" rx="1.8" ry="2.8"/><circle cx="8" cy="8" r=".65"/></g>
-            <g class="lw-eye"><path d="M14 7 Q19 2 23 7 Q19 12 14 7Z"/><ellipse cx="18.5" cy="7" rx="1.8" ry="2.8"/><circle cx="19" cy="6" r=".65"/></g>
-            <g class="lw-eye"><path d="M25 7 Q30 2 34 7 Q30 12 25 7Z"/><ellipse cx="29.5" cy="7" rx="1.8" ry="2.8"/><circle cx="30" cy="6" r=".65"/></g>
-            <g class="lw-eye"><path d="M32 15 Q37 10 42 15 Q37 20 32 15Z"/><ellipse cx="36.5" cy="15" rx="1.8" ry="2.8"/><circle cx="37" cy="14" r=".65"/></g>
-            <g class="lw-eye"><path d="M20 17 Q25 12 30 17 Q25 22 20 17Z"/><ellipse cx="24.5" cy="17" rx="1.8" ry="2.8"/><circle cx="25" cy="16" r=".65"/></g>
-            <g class="lw-eye"><path d="M2 20 Q7 15 12 20 Q7 25 2 20Z"/><ellipse cx="6.5" cy="20" rx="1.8" ry="2.8"/><circle cx="7" cy="19" r=".65"/></g>
-            <path class="lw-mark" d="M14 25 Q22 29 30 25"/>
+            <defs>
+              <radialGradient id="lw-iris" cx="42%" cy="35%" r="70%"><stop offset="0" stop-color="#ffb0a0"/><stop offset=".42" stop-color="#ff2b45"/><stop offset="1" stop-color="#650016"/></radialGradient>
+              <linearGradient id="lw-sclera" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0e8"/><stop offset="1" stop-color="#ff6170"/></linearGradient>
+            </defs>
+            <path class="lw-brow" d="M2 10 8 4 15 7 22 3 29 7 36 4 42 10 35 8 29 10 22 7 15 10 8 8Z"/>
+            <path class="lw-lid" d="M2 15 Q7 5 14 13 Q22 3 30 13 Q37 5 42 15 Q36 24 30 17 Q22 27 14 17 Q7 24 2 15Z"/>
+            <g class="lw-eye"><path class="lw-white" d="M4 15 Q8 8 13 14 Q8 20 4 15Z"/><ellipse class="lw-iris" cx="8.5" cy="14.5" rx="2.2" ry="3.2"/><ellipse class="lw-pupil" cx="8.7" cy="14.5" rx=".8" ry="2.3"/></g>
+            <g class="lw-eye"><path class="lw-white" d="M15 13 Q22 5 29 13 Q22 21 15 13Z"/><ellipse class="lw-iris" cx="22" cy="13" rx="3.1" ry="4.1"/><ellipse class="lw-pupil" cx="22" cy="13" rx="1" ry="3"/></g>
+            <g class="lw-eye"><path class="lw-white" d="M31 15 Q36 8 40 15 Q36 21 31 15Z"/><ellipse class="lw-iris" cx="35.5" cy="14.5" rx="2.2" ry="3.2"/><ellipse class="lw-pupil" cx="35.5" cy="14.5" rx=".8" ry="2.3"/></g>
+            <path class="lw-sigil" d="M19 23 22 19 25 23 22 27Z M21 23h2 M22 19v8"/>
           </svg>
         </button>
         <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
