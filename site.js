@@ -62,7 +62,7 @@ function installPortraitReveal(){
   #portrait-reveal-image{display:block;width:auto;height:auto;max-width:min(90vw,1100px);max-height:min(86vh,calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 36px));object-fit:contain;object-position:center;border-radius:12px;background:rgba(4,8,18,.7);box-shadow:0 0 18px rgba(0,242,254,.16);animation:portraitImageIn .42s cubic-bezier(.16,1,.3,1) both}
   #portrait-reveal-light{position:absolute;z-index:2;inset:clamp(6px,1.4vw,12px);border-radius:10px;pointer-events:none;overflow:hidden;clip-path:inset(0 round 10px);mix-blend-mode:screen;opacity:.72}
   #portrait-reveal-light:before{content:"";position:absolute;inset:-45%;background:linear-gradient(112deg,transparent 38%,rgba(0,242,254,0) 43%,rgba(0,242,254,.24) 48%,rgba(190,245,255,.46) 50%,rgba(155,123,255,.2) 53%,transparent 60%);transform:translateX(-65%) rotate(0deg);animation:portraitLightSweep 3.6s ease-in-out infinite}
-  #portrait-reveal-frame:before{inset:-2px;filter:blur(6px);opacity:.75}
+  #portrait-reveal-frame:before{inset:0;filter:none;opacity:.75}
   @keyframes portraitLightSweep{0%,12%{transform:translateX(-70%)}68%,100%{transform:translateX(70%)}}
   @keyframes portraitNeonGlow{0%{filter:blur(5px) brightness(.9);opacity:.65}100%{filter:blur(8px) brightness(1.12);opacity:.9}}
   @keyframes portraitImageIn{from{opacity:.65;filter:brightness(.65) saturate(.8)}to{opacity:1;filter:brightness(1) saturate(1)}}
