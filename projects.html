@@ -64,7 +64,7 @@ a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{min-h
     if(!response.ok)throw new Error("Project data unavailable");
     const data=await response.json();
     if(!Array.isArray(data.projects))return;
-    grid.innerHTML=data.projects.map((p,i)=>'<article class="card"><span class="tag">'+esc(p.tag||"PROJECT")+' / '+String(i+1).padStart(2,"0")+'</span><h2>'+esc(p.name||"Project")+'</h2><p class="desc">'+esc(p.desc||"")+'</p><a class="cta" href="'+esc(p.link||"#")+'" target="_blank" rel="noopener noreferrer">View project ↗</a></article>').join("");
+    grid.innerHTML=data.projects.map((p,i)=>'<article class="card"><span class="tag">'+esc(p.tag||"PROJECT")+' / '+String(i+1).padStart(2,"0")+'</span><h2>'+esc(p.name||"Project")+'</h2><p class="desc">'+esc(p.desc||"")+'</p><a class="cta" href="'+esc(p.link||"#")+'" target="_blank" rel="noopener noreferrer">View project</a></article>').join("");
   }catch(error){console.warn("Using built-in project list:",error)}
 })();
 </script>
