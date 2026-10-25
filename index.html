@@ -351,6 +351,39 @@
     @media(max-width:600px){#anime-action-overlay .aa-figure{width:min(94vw,420px)}#anime-action-overlay .aa-title{top:17%;letter-spacing:.24em;font-size:10px}#anime-action-overlay .aa-slash{top:48%;height:24%}}
     @media(prefers-reduced-motion:reduce){#anime-action-overlay *{animation-duration:.01ms!important;animation-delay:0ms!important}}
   </style>
+  <style id="desktop-hero-balance">
+    /* Desktop only: use the empty right side for the portrait while preserving phone layout. */
+    @media (min-width: 1024px) {
+      #sections-wrapper { max-width: 1320px; padding-left: clamp(28px, 4vw, 64px); padding-right: clamp(28px, 4vw, 64px); }
+      #home {
+        grid-template-columns: minmax(0, 1.08fr) minmax(400px, .92fr);
+        align-items: center;
+        gap: clamp(28px, 4vw, 64px);
+        min-height: min(760px, calc(100vh - 150px));
+      }
+      #home > div:first-child { position: relative; z-index: 2; }
+      #home > div:nth-child(2) {
+        min-height: 540px;
+        height: 100%;
+        align-self: stretch;
+        overflow: visible;
+        isolation: isolate;
+      }
+      #home > div:nth-child(2) .neon-ring-wrapper {
+        width: clamp(300px, 27vw, 390px);
+        height: clamp(300px, 27vw, 390px);
+        flex-shrink: 0;
+      }
+      #home > div:nth-child(2) > .absolute.w-72,
+      #home > div:nth-child(2) > .absolute.w-60 { transform-origin: center; }
+      #home > div:nth-child(2) .glass-card { z-index: 5; }
+    }
+    @media (min-width: 1024px) and (max-height: 800px) {
+      #home { min-height: 590px; }
+      #home > div:nth-child(2) { min-height: 460px; }
+      #home > div:nth-child(2) .neon-ring-wrapper { width: clamp(280px, 24vw, 340px); height: clamp(280px, 24vw, 340px); }
+    }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
