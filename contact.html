@@ -22,10 +22,11 @@
 <label class="field"><span>Your name</span><input name="name" autocomplete="name" maxlength="100" placeholder="Your name" required></label>
 <label class="field"><span>Your email</span><input name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com" required></label>
 <label class="field"><span>What is this about?</span><select name="topic" required><option value="" disabled selected>Select a topic</option><option>Job opportunity</option><option>Freelance project</option><option>Collaboration</option><option>Question about a project</option><option>Other</option></select></label>
-<label class="field"><span>Message</span><textarea name="message" maxlength="5000" placeholder="Tell me a little about it..." required></textarea></label>
-<button class="submit" type="submit">Prepare email ↗</button><p id="form-status" class="muted" role="status" aria-live="polite"></p>
+<label class="field"><span>Message</span><textarea name="message" maxlength="4000" placeholder="Tell me a little about it..." required></textarea></label>
+<div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><label>Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label></div>
+<button class="submit" type="submit">Send message ↗</button><p id="form-status" class="muted" role="status" aria-live="polite"></p>
 </form>
-<div class="note">This static form does not upload or store your message. It opens your email app with the details filled in, so you can review and send it yourself.</div>
+<div class="note">Messages are sent to the site owner's Telegram bot. Please don't include passwords, payment details, or other sensitive information.</div>
 </section>
 <aside class="panel"><h2>Other ways to connect</h2><p class="muted">Choose whichever channel works best for you.</p>
 <a class="contact-link" href="mailto:mdshihab74@gmail.com"><span class="contact-icon">✉</span><span><strong>Email</strong><small>mdshihab74@gmail.com</small></span></a>
@@ -38,14 +39,27 @@
 <footer class="wrap footer"><span>© <span id="year"></span> Shihabul Islam</span><span><a href="./">Portfolio home</a> · <a href="projects.html">Explore projects</a></span></footer>
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
-document.getElementById("contact-form").addEventListener("submit",function(event){
+const form=document.getElementById("contact-form");
+const status=document.getElementById("form-status");
+const submit=form.querySelector('button[type="submit"]');
+form.addEventListener("submit",async function(event){
  event.preventDefault();
- const form=new FormData(this);
- const name=String(form.get("name")||"").trim(), email=String(form.get("email")||"").trim(), topic=String(form.get("topic")||"").trim(), message=String(form.get("message")||"").trim();
- const subject=encodeURIComponent("Portfolio contact: "+topic);
- const body=encodeURIComponent("Name: "+name+"\nEmail: "+email+"\nTopic: "+topic+"\n\nMessage:\n"+message);
- document.getElementById("form-status").textContent="Opening your email app…";
- window.location.href="mailto:mdshihab74@gmail.com?subject="+subject+"&body="+body;
+ if(!form.reportValidity()) return;
+ const values=Object.fromEntries(new FormData(form).entries());
+ status.textContent="Sending your message securely…";
+ submit.disabled=true;
+ try{
+  const response=await fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/submit",{
+   method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(values)
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||!result.ok) throw new Error(result.error||"Message could not be delivered.");
+  form.reset();
+  status.textContent="Message sent! Thanks for reaching out.";
+ }catch(error){
+  status.textContent="Telegram delivery is not ready or the connection failed. Please email mdshihab74@gmail.com directly.";
+ }
+ submit.disabled=false;
 });
 </script>
 </body></html>
