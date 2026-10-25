@@ -222,44 +222,7 @@
       .donation-popover:after { display:none; }
     }
   </style>
-  <style id="desktop-hero-balance">
-    /* Desktop only: place the portrait visual directly beside the hero headline. */
-    @media (min-width: 1024px) {
-      #sections-wrapper { max-width: 1280px; }
-      #home {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(360px, .88fr) !important;
-        align-items: center !important;
-        gap: clamp(28px, 3.5vw, 56px) !important;
-        min-height: 0 !important;
-      }
-      #home > div:first-child { min-width: 0; position: relative; z-index: 2; }
-      #home > div:nth-child(2) {
-        min-width: 0;
-        width: 100%;
-        min-height: 440px !important;
-        height: 100%;
-        align-self: center;
-        overflow: visible;
-        isolation: isolate;
-      }
-      #home > div:nth-child(2) > .neon-ring-wrapper {
-        width: clamp(300px, 27vw, 370px) !important;
-        height: clamp(300px, 27vw, 370px) !important;
-        flex: 0 0 auto;
-      }
-    }
-    @media (min-width: 1024px) and (max-height: 800px) {
-      #home { min-height: 0 !important; }
-      #home > div:nth-child(2) { min-height: 390px !important; }
-      #home > div:nth-child(2) > .neon-ring-wrapper {
-        width: clamp(280px, 23vw, 330px) !important;
-        height: clamp(280px, 23vw, 330px) !important;
-      }
-    }
-  </style>
-
-  <style id="homepage-section-guard">
+<style id="homepage-section-guard">
     /* The homepage must show only the hero. About, Expertise/Skills and Projects live on their own pages. */
     #sections-wrapper > section:not(#home) { display: none !important; }
     #sections-wrapper > #about,
