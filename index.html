@@ -349,6 +349,32 @@
       }
     }
   </style>
+  <style id="mobile-hero-visual-pullup">
+    /* Mobile only: remove the dead space and pull the portrait closer to the hero copy. */
+    @media (max-width: 640px) {
+      #sections-wrapper > #home {
+        row-gap: 8px !important;
+        gap: 8px !important;
+        min-height: 0 !important;
+        align-content: start !important;
+      }
+      #sections-wrapper > #home > div:first-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      #sections-wrapper > #home > div:nth-child(2) {
+        margin-top: -12px !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding-top: 0 !important;
+        align-self: start !important;
+      }
+      #sections-wrapper > #home > div:nth-child(2) > .neon-ring-wrapper {
+        width: min(250px, 76vw) !important;
+        height: min(250px, 76vw) !important;
+      }
+    }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
