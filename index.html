@@ -222,6 +222,48 @@
       .donation-popover:after { display:none; }
     }
   </style>
+  <style id="desktop-hero-balance">
+    /* Desktop-only: use the hero's side space for a tighter, balanced portrait composition.
+       Mobile layout is intentionally untouched. */
+    @media (min-width: 1024px) {
+      #home {
+        grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+        gap: clamp(28px, 4vw, 64px);
+        min-height: min(74vh, 760px);
+        align-items: center;
+      }
+      #home > div:first-child { position: relative; z-index: 2; }
+      #home > div:nth-child(2) {
+        min-height: 0;
+        height: min(68vh, 610px);
+        max-height: 610px;
+        align-self: center;
+        overflow: visible;
+        isolation: isolate;
+      }
+      #home > div:nth-child(2) > .neon-ring-wrapper {
+        width: clamp(300px, 27vw, 380px);
+        height: clamp(300px, 27vw, 380px);
+        flex: 0 0 auto;
+      }
+      #home > div:nth-child(2) > .absolute.w-72,
+      #home > div:nth-child(2) > .absolute.w-60 {
+        opacity: .75;
+      }
+      #home > div:nth-child(2) > .glass-card {
+        max-width: 220px;
+        padding: 16px 18px;
+        backdrop-filter: blur(18px);
+      }
+      #home > div:nth-child(2) > .glass-card p:first-child {
+        font-size: 13px;
+      }
+      #home > div:nth-child(2) > .glass-card p:last-child {
+        font-size: 11px;
+      }
+    }
+  </style>
+
   <style id="homepage-section-guard">
     /* The homepage must show only the hero. About, Expertise/Skills and Projects live on their own pages. */
     #sections-wrapper > section:not(#home) { display: none !important; }
