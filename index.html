@@ -310,6 +310,37 @@
     @media(prefers-reduced-motion:reduce){#anime-action-overlay *{animation-duration:.01ms!important;animation-delay:0ms!important}}
   </style>
   
+  <style id="desktop-hero-card-position">
+    /* Only large screens: place the existing animated portrait card beside the hero copy.
+       No changes to touch/mobile layout or animation scripts. */
+    @media screen and (min-width: 1024px) {
+      #sections-wrapper > #home {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr) !important;
+        align-items: center !important;
+        gap: clamp(28px, 3.5vw, 56px) !important;
+        min-height: 0 !important;
+      }
+      #sections-wrapper > #home > div:first-child {
+        min-width: 0;
+        position: relative;
+        z-index: 2;
+      }
+      #sections-wrapper > #home > div:nth-child(2) {
+        min-width: 0;
+        width: 100%;
+        min-height: 460px !important;
+        height: min(68vh, 620px);
+        align-self: center;
+        overflow: visible;
+      }
+      #sections-wrapper > #home > div:nth-child(2) > .neon-ring-wrapper {
+        width: clamp(300px, 27vw, 380px) !important;
+        height: clamp(300px, 27vw, 380px) !important;
+        flex: 0 0 auto;
+      }
+    }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
