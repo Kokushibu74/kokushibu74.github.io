@@ -689,14 +689,67 @@
       // A second bright spray follows the blade's curved trajectory.
       for(let i=0;i<30;i++){const t=Math.random();crescents.push({x:width*(.06+t*.9),y:height*(.91-t*.82),vx:rand(-2,3),vy:rand(-3,2),g:.025,r:rand(2,7),rot:rand(0,6.28),vr:rand(-.2,.2),life:rand(.4,.85),c:'#ffdb78'})}
     }
+    // Soft cinematic loading whoosh, synthesized locally (no external audio file).
+    let audioCtx=null, introSoundStarted=false, soundNodes=[];
+    function playIntroSound(){
+      if(done || introSoundStarted) return;
+      const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+      if(!AudioContextClass) return;
+      try{
+        if(!audioCtx) audioCtx=new AudioContextClass();
+        const begin=()=>{
+          if(done || introSoundStarted || audioCtx.state!=='running') return;
+          introSoundStarted=true;
+          const now=audioCtx.currentTime, duration=3.25;
+          const master=audioCtx.createGain();
+          master.gain.setValueAtTime(.0001,now);
+          master.gain.exponentialRampToValueAtTime(.12,now+.28);
+          master.gain.exponentialRampToValueAtTime(.0001,now+duration);
+          master.connect(audioCtx.destination);
+          const osc=audioCtx.createOscillator(), oscGain=audioCtx.createGain();
+          osc.type='sine';
+          osc.frequency.setValueAtTime(110,now);
+          osc.frequency.exponentialRampToValueAtTime(52,now+duration);
+          oscGain.gain.setValueAtTime(.0001,now);
+          oscGain.gain.exponentialRampToValueAtTime(.42,now+.35);
+          oscGain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+          osc.connect(oscGain);oscGain.connect(master);osc.start(now);osc.stop(now+duration+.05);
+          const buffer=audioCtx.createBuffer(1,Math.ceil(audioCtx.sampleRate*duration),audioCtx.sampleRate);
+          const data=buffer.getChannelData(0);
+          for(let i=0;i<data.length;i++) data[i]=(Math.random()*2-1)*(1-i/data.length);
+          const noise=audioCtx.createBufferSource(), filter=audioCtx.createBiquadFilter(), noiseGain=audioCtx.createGain();
+          noise.buffer=buffer;filter.type='lowpass';
+          filter.frequency.setValueAtTime(900,now);
+          filter.frequency.exponentialRampToValueAtTime(180,now+duration);
+          noiseGain.gain.setValueAtTime(.0001,now);
+          noiseGain.gain.exponentialRampToValueAtTime(.22,now+.22);
+          noiseGain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+          noise.connect(filter);filter.connect(noiseGain);noiseGain.connect(master);
+          noise.start(now);noise.stop(now+duration+.05);
+          soundNodes=[osc,noise,master];
+          setTimeout(()=>{soundNodes=[];},duration*1000+250);
+        };
+        if(audioCtx.state==='running') begin();
+        else audioCtx.resume().then(begin).catch(()=>{});
+      }catch(_){}
+    }
+    function stopIntroSound(){
+      soundNodes.forEach(node=>{try{if(node.stop)node.stop()}catch(_){}});
+      soundNodes=[];
+      if(audioCtx){try{audioCtx.close()}catch(_){}audioCtx=null;}
+    }
     function finish(){
-      if(done)return;done=true;
+      if(done)return;done=true;stopIntroSound();
       if(timeline)timeline.kill();
       cancelAnimationFrame(raf);
       intro.remove();
     }
     function start(){
-      resize();seedEmbers();draw();
+      resize();seedEmbers();draw();playIntroSound();
+      // Browsers may block autoplay; retry after a real user gesture while intro is visible.
+      const retryIntroSound=()=>{if(!done)playIntroSound();};
+      document.addEventListener('pointerdown',retryIntroSound,{once:true,passive:true});
+      document.addEventListener('keydown',retryIntroSound,{once:true});
       addEventListener('resize',()=>{resize();seedEmbers()},{passive:true});
       intro.querySelector('.moon-skip').addEventListener('click',finish);
       if(reduced || !window.gsap){
