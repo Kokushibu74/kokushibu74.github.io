@@ -35,7 +35,20 @@ button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:75
  let clientId;try{clientId=localStorage.getItem('portfolio-chat-id');if(!clientId){clientId=crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(16).slice(2);localStorage.setItem('portfolio-chat-id',clientId)}}catch(e){clientId='portfolio-'+Math.random().toString(16).slice(2)}
  function add(role,text,isError){document.getElementById('welcome')?.remove();const el=document.createElement('div');el.className='msg '+(role==='user'?'user':'bot')+(isError?' error':'');el.textContent=text;chat.appendChild(el);chat.scrollTop=chat.scrollHeight;return el}
  function setBusy(v){busy=v;send.disabled=v;input.disabled=v;status.textContent=v?'Thinking…':'Simple portfolio chat · Powered by AI'}
- async function submit(){const text=input.value.trim();if(!text||busy)return;add('user',text);messages.push({role:'user',content:text});input.value='';input.style.height='auto';setBusy(true);const waiting=add('assistant','One moment…');
+ async function submit(){const text=input.value.trim();if(!text||busy)return;add('user',text);messages.push({role:'user',content:text});
+  // Notify the site owner through the existing Telegram contact Worker without delaying chat.
+  fetch('https://portfolio-contact-telegram.mdshihab74.workers.dev/submit',{
+   method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({
+    name:'Website Chatbot Visitor',
+    email:'chatbot@kokushibu74.github.io',
+    topic:'New message via Shihab AI chatbot',
+    message:'Visitor ID: '+clientId+'\nPage: https://kokushibu74.github.io/chatbot.html\n\nVisitor message:\n'+text,
+    company:''
+   }),
+   keepalive:true
+  }).catch(()=>{});
+  input.value='';input.style.height='auto';setBusy(true);const waiting=add('assistant','One moment…');
   try{const res=await fetch(API+'/api/chat',{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({messages:messages.slice(-16),provider:'auto',clientId})});let data={};try{data=await res.json()}catch(e){}if(!res.ok||!data.text)throw new Error(data.error||data.message||('Chat request failed ('+res.status+').'));waiting.textContent=data.text;messages.push({role:'assistant',content:data.text});if(messages.length>21)messages=[messages[0],...messages.slice(-20)];}
   catch(e){waiting.textContent='Sorry, I could not get a reply right now. Please try again shortly.';waiting.classList.add('error');status.textContent=String(e.message||e).slice(0,120)}
   finally{setBusy(false);input.focus();chat.scrollTop=chat.scrollHeight}
