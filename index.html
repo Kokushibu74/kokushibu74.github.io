@@ -311,33 +311,41 @@
   </style>
   
   <style id="desktop-hero-card-position">
-    /* Only large screens: place the existing animated portrait card beside the hero copy.
-       No changes to touch/mobile layout or animation scripts. */
+    /* Large screens only: keep the complete animated hero visual beside the headline. */
     @media screen and (min-width: 1024px) {
+      #sections-wrapper { max-width: 1280px !important; }
       #sections-wrapper > #home {
         display: grid !important;
-        grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr) !important;
+        grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr) !important;
+        grid-template-rows: auto !important;
         align-items: center !important;
-        gap: clamp(28px, 3.5vw, 56px) !important;
+        column-gap: clamp(32px, 4vw, 60px) !important;
+        row-gap: 0 !important;
         min-height: 0 !important;
       }
       #sections-wrapper > #home > div:first-child {
-        min-width: 0;
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        width: 100% !important;
+        min-width: 0 !important;
         position: relative;
         z-index: 2;
       }
       #sections-wrapper > #home > div:nth-child(2) {
-        min-width: 0;
-        width: 100%;
-        min-height: 460px !important;
-        height: min(68vh, 620px);
-        align-self: center;
-        overflow: visible;
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 500px !important;
+        height: min(70vh, 650px) !important;
+        align-self: center !important;
+        overflow: visible !important;
+        position: relative;
       }
       #sections-wrapper > #home > div:nth-child(2) > .neon-ring-wrapper {
         width: clamp(300px, 27vw, 380px) !important;
         height: clamp(300px, 27vw, 380px) !important;
-        flex: 0 0 auto;
+        flex: 0 0 auto !important;
       }
     }
   </style>
