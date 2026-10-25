@@ -429,42 +429,47 @@
 
 
   <style id="living-watcher-styles">
-    #living-watcher{position:relative;display:grid;place-items:center;width:38px;height:32px;flex:0 0 38px;padding:1px;border:1px solid rgba(255,35,55,.62);border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#3a0711,#08060b 72%);cursor:pointer;isolation:isolate;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;box-shadow:0 0 9px rgba(255,15,45,.28),inset 0 0 8px #4c0614}
-    #living-watcher:before{content:'';position:absolute;inset:-5px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,12,40,.32),transparent 72%);opacity:.7;z-index:-1;animation:lwAura 2.4s ease-in-out infinite alternate}
-    #living-watcher .lw-face{display:block;width:34px;height:26px;overflow:visible;filter:drop-shadow(0 0 2px rgba(255,15,45,.8));animation:lwFloat 3.8s ease-in-out infinite}
-    #living-watcher .lw-brow{fill:#1a050b;stroke:#ff304c;stroke-width:.8;stroke-linejoin:round}
-    #living-watcher .lw-lid{fill:#13050a;stroke:#ff3b54;stroke-width:1.1;stroke-linejoin:round}
-    #living-watcher .lw-white{fill:url(#lw-sclera);stroke:#ffb1a6;stroke-width:.5}
-    #living-watcher .lw-iris{fill:url(#lw-iris);stroke:#ff6a72;stroke-width:.45;transform-box:fill-box;transform-origin:center;animation:lwBlink 5.6s infinite}
-    #living-watcher .lw-pupil{fill:#16020a}
-    #living-watcher .lw-sigil{fill:none;stroke:#ff6677;stroke-width:.8;stroke-linecap:round}
-    #living-watcher:hover,#living-watcher:focus-visible{outline:none;border-color:#ff9aa5;box-shadow:0 0 17px rgba(255,20,50,.55);transform:scale(1.1)}
-    #living-watcher.is-demon{border-color:#ff182e;box-shadow:0 0 15px #ff1838,0 0 30px rgba(255,10,35,.8),inset 0 0 12px #8c001b;transform:scale(1.16)}
-    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(255,0,35,.62),transparent 72%)}
-    #living-watcher.is-demon .lw-face{filter:drop-shadow(0 0 4px #ff183d) drop-shadow(0 0 10px #ff183d);animation:lwFloat .38s ease-in-out infinite alternate}
-    #living-watcher.is-demon .lw-iris{fill:#fff1c7}
-    @keyframes lwAura{from{transform:scale(.9);opacity:.35}to{transform:scale(1.13);opacity:.85}}
-    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
-    @keyframes lwBlink{0%,45%,48%,100%{transform:scaleY(1)}46%,47%{transform:scaleY(.12)}}
-    @media(prefers-reduced-motion:reduce){#living-watcher:before,#living-watcher .lw-face,#living-watcher .lw-eye ellipse{animation:none!important}#living-watcher{transition:none}}
+    /* Rinnegan watcher: one clean, iconic eye mark; no enclosing badge or paired-eye box. */
+    #living-watcher{position:relative;display:grid;place-items:center;width:40px;height:36px;flex:0 0 40px;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;isolation:isolate;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 0 5px rgba(170,115,255,.38))}
+    #living-watcher:before{content:'';position:absolute;inset:2px 0;border-radius:50%;background:radial-gradient(ellipse,rgba(153,92,255,.24),transparent 70%);z-index:-1;opacity:.65;animation:lwAura 3s ease-in-out infinite alternate}
+    #living-watcher .lw-face{display:block;width:40px;height:34px;overflow:visible;animation:lwFloat 5s ease-in-out infinite}
+    #living-watcher .lw-outer{fill:#090611;stroke:#bda0ff;stroke-width:1.15}
+    #living-watcher .lw-ring{fill:none;stroke:#a98aff;stroke-width:1.05;opacity:.92}
+    #living-watcher .lw-ring-inner{fill:none;stroke:#e1d3ff;stroke-width:.55;opacity:.78}
+    #living-watcher .lw-iris{fill:url(#lw-rinnegan);stroke:#f0dcff;stroke-width:.55}
+    #living-watcher .lw-pupil{fill:#08050d;stroke:#eadcff;stroke-width:.45}
+    #living-watcher .lw-tomoe{fill:#f3eaff;filter:drop-shadow(0 0 1.5px #bca0ff)}
+    #living-watcher:hover,#living-watcher:focus-visible{outline:none;transform:scale(1.12);filter:drop-shadow(0 0 7px rgba(195,154,255,.9))}
+    #living-watcher.is-demon{transform:scale(1.2);filter:drop-shadow(0 0 5px #d8b8ff) drop-shadow(0 0 13px rgba(143,66,255,.95))}
+    #living-watcher.is-demon:before{opacity:1;background:radial-gradient(ellipse,rgba(150,70,255,.52),transparent 72%)}
+    #living-watcher.is-demon .lw-face{animation:lwRinneganPulse .42s ease-in-out infinite alternate}
+    #living-watcher.is-demon .lw-ring{stroke:#f0d8ff;stroke-width:1.35}
+    @keyframes lwAura{from{transform:scale(.88);opacity:.3}to{transform:scale(1.14);opacity:.8}}
+    @keyframes lwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+    @keyframes lwRinneganPulse{from{transform:scale(1)}to{transform:scale(1.05)}}
+    @media(prefers-reduced-motion:reduce){#living-watcher:before,#living-watcher .lw-face{animation:none!important}#living-watcher{transition:none}}
   </style>
 
   <!-- Top Cyber Navigation -->
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
-        <button id="living-watcher" type="button" aria-label="Activate Demon Eye" aria-pressed="false" title="Demon Eye · Living Watcher">
-          <svg class="lw-face" viewBox="0 0 44 30" aria-hidden="true">
+        <button id="living-watcher" type="button" aria-label="Activate Rinnegan" aria-pressed="false" title="Rinnegan · Living Watcher">
+          <svg class="lw-face" viewBox="0 0 44 36" aria-hidden="true">
             <defs>
-              <radialGradient id="lw-iris" cx="42%" cy="35%" r="70%"><stop offset="0" stop-color="#ffb0a0"/><stop offset=".42" stop-color="#ff2b45"/><stop offset="1" stop-color="#650016"/></radialGradient>
-              <linearGradient id="lw-sclera" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0e8"/><stop offset="1" stop-color="#ff6170"/></linearGradient>
+              <radialGradient id="lw-rinnegan" cx="40%" cy="32%" r="72%"><stop offset="0" stop-color="#e5d2ff"/><stop offset=".36" stop-color="#a878f2"/><stop offset=".72" stop-color="#7541c6"/><stop offset="1" stop-color="#291044"/></radialGradient>
             </defs>
-            <path class="lw-brow" d="M2 10 8 4 15 7 22 3 29 7 36 4 42 10 35 8 29 10 22 7 15 10 8 8Z"/>
-            <path class="lw-lid" d="M2 15 Q7 5 14 13 Q22 3 30 13 Q37 5 42 15 Q36 24 30 17 Q22 27 14 17 Q7 24 2 15Z"/>
-            <g class="lw-eye"><path class="lw-white" d="M4 15 Q8 8 13 14 Q8 20 4 15Z"/><ellipse class="lw-iris" cx="8.5" cy="14.5" rx="2.2" ry="3.2"/><ellipse class="lw-pupil" cx="8.7" cy="14.5" rx=".8" ry="2.3"/></g>
-            <g class="lw-eye"><path class="lw-white" d="M15 13 Q22 5 29 13 Q22 21 15 13Z"/><ellipse class="lw-iris" cx="22" cy="13" rx="3.1" ry="4.1"/><ellipse class="lw-pupil" cx="22" cy="13" rx="1" ry="3"/></g>
-            <g class="lw-eye"><path class="lw-white" d="M31 15 Q36 8 40 15 Q36 21 31 15Z"/><ellipse class="lw-iris" cx="35.5" cy="14.5" rx="2.2" ry="3.2"/><ellipse class="lw-pupil" cx="35.5" cy="14.5" rx=".8" ry="2.3"/></g>
-            <path class="lw-sigil" d="M19 23 22 19 25 23 22 27Z M21 23h2 M22 19v8"/>
+            <path class="lw-outer" d="M3 18 Q22 -1 41 18 Q22 37 3 18Z"/>
+            <circle class="lw-iris" cx="22" cy="18" r="12.2"/>
+            <circle class="lw-ring" cx="22" cy="18" r="9.2"/>
+            <circle class="lw-ring-inner" cx="22" cy="18" r="6.1"/>
+            <circle class="lw-pupil" cx="22" cy="18" r="3.2"/>
+            <g class="lw-tomoe">
+              <path d="M22 5.9 Q25 8.2 22 10.1 Q19.2 9.1 22 5.9Z"/>
+              <path d="M11.4 24.1 Q15.2 23.5 14.7 20.5 Q11.8 19.4 11.4 24.1Z"/>
+              <path d="M32.6 24.1 Q28.8 23.5 29.3 20.5 Q32.2 19.4 32.6 24.1Z"/>
+            </g>
+            <path d="M5 14 Q10 7 15 7" fill="none" stroke="#f3eaff" stroke-width=".7" stroke-linecap="round" opacity=".8"/>
           </svg>
         </button>
         <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
