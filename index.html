@@ -432,9 +432,9 @@
 
   <style id="living-watcher-styles">
     /* Compact paired Rinnegan eyes with a living gaze, designed for the nav. */
-    #living-watcher{position:relative;display:grid;place-items:center;width:46px;height:30px;flex:0 0 46px;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;isolation:isolate;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 0 3px rgba(170,115,255,.34))}
+    #living-watcher{position:relative;display:grid;place-items:center;width:58px;height:30px;flex:0 0 58px;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;isolation:isolate;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 0 3px rgba(170,115,255,.34))}
     #living-watcher:before{content:'';position:absolute;inset:1px -2px;border-radius:50%;background:radial-gradient(ellipse,rgba(153,92,255,.2),transparent 72%);z-index:-1;opacity:.55;animation:lwAura 3.4s ease-in-out infinite alternate}
-    #living-watcher .lw-face{display:block;width:46px;height:29px;overflow:visible;animation:lwFloat 4.6s ease-in-out infinite}
+    #living-watcher .lw-face{display:block;width:58px;height:29px;overflow:visible;animation:lwFloat 4.6s ease-in-out infinite}
     #living-watcher .lw-eye{transform-box:fill-box;transform-origin:center;animation:lwGaze 6.8s ease-in-out infinite}
     /* Keep each eye's SVG translate() while animating its gaze independently. */
     #living-watcher .lw-eye{animation-name:lwGaze}
@@ -462,9 +462,9 @@
   <!-- Top Cyber Navigation -->
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
-      <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
+      <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5 whitespace-nowrap shrink-0">
         <button id="living-watcher" type="button" aria-label="Activate Rinnegan" aria-pressed="false" title="Rinnegan · Living Watcher">
-          <svg class="lw-face" viewBox="0 0 54 34" aria-hidden="true">
+          <svg class="lw-face" viewBox="0 0 64 34" aria-hidden="true">
             <defs>
               <radialGradient id="lw-rinnegan" cx="40%" cy="32%" r="72%"><stop offset="0" stop-color="#e5d2ff"/><stop offset=".36" stop-color="#a878f2"/><stop offset=".72" stop-color="#7541c6"/><stop offset="1" stop-color="#291044"/></radialGradient>
             </defs>
@@ -476,7 +476,7 @@
               <circle class="lw-pupil" cx="13" cy="17" r="2.1"/>
               <g class="lw-tomoe"><path d="M13 8.7 Q15 10.2 13 11.5 Q11 10.8 13 8.7Z"/><path d="M5.8 20.5 Q8.3 20 8 18 Q6.1 17.4 5.8 20.5Z"/><path d="M20.2 20.5 Q17.7 20 18 18 Q19.9 17.4 20.2 20.5Z"/></g>
             </g>
-            <g class="lw-eye" transform="translate(27 0)">
+            <g class="lw-eye" transform="translate(35 0)">
               <path class="lw-outer" d="M1 17 Q13 3 25 17 Q13 31 1 17Z"/>
               <circle class="lw-iris" cx="13" cy="17" r="8.2"/>
               <circle class="lw-ring" cx="13" cy="17" r="6.1"/>
@@ -486,7 +486,7 @@
             </g>
           </svg>
         </button>
-        <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
+        <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE] whitespace-nowrap">CYBERSTACK</span>
       </a>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
       <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Current time" title="Current time">
