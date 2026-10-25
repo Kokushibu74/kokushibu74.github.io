@@ -703,7 +703,7 @@
           const now=audioCtx.currentTime, duration=3.25;
           const master=audioCtx.createGain();
           master.gain.setValueAtTime(.0001,now);
-          master.gain.exponentialRampToValueAtTime(.12,now+.28);
+          master.gain.exponentialRampToValueAtTime(.32,now+.28);
           master.gain.exponentialRampToValueAtTime(.0001,now+duration);
           master.connect(audioCtx.destination);
           const osc=audioCtx.createOscillator(), oscGain=audioCtx.createGain();
@@ -746,15 +746,27 @@
     }
     function start(){
       resize();seedEmbers();draw();playIntroSound();
-      // Browsers may block autoplay; retry after a real user gesture while intro is visible.
-      const retryIntroSound=()=>{if(!done)playIntroSound();};
+      // Mobile browsers often block audio until a user gesture. Resume the existing
+      // context directly inside the gesture, then start the sound at a usable level.
+      const retryIntroSound=()=>{
+        if(done || introSoundStarted) return;
+        const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+        if(!AudioContextClass) return;
+        try{
+          if(!audioCtx) audioCtx=new AudioContextClass();
+          const resume=audioCtx.resume();
+          Promise.resolve(resume).then(()=>{
+            if(!done && !introSoundStarted) playIntroSound();
+          }).catch(()=>{});
+        }catch(_){}
+      };
       document.addEventListener('pointerdown',retryIntroSound,{once:true,passive:true});
       document.addEventListener('keydown',retryIntroSound,{once:true});
       addEventListener('resize',()=>{resize();seedEmbers()},{passive:true});
       intro.querySelector('.moon-skip').addEventListener('click',finish);
       if(reduced || !window.gsap){
         spinner.style.display='none';eyes.style.opacity='1';label.style.opacity='1';
-        setTimeout(finish,reduced?500:1800);return;
+        setTimeout(finish,reduced?3600:1800);return;
       }
       // GSAP timeline: 0.0–1.5 spinner, 1.5–2.2 eyes, 2.2–2.6 slash,
       // then a 150 ms shake/flash and diagonal panels reveal the real homepage.
