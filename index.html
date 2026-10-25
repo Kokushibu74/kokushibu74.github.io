@@ -661,7 +661,7 @@
     })();
   </script>
 
-  <script src="site.js?v=20261025-portrait-fix"></script>
+  <script src="site.js?v=20261025-full-repo-fix2"></script>
   <script>
   // Keep public SEO/social image metadata in sync with the image published by Admin.
   (async()=>{try{
@@ -938,5 +938,77 @@
       new MutationObserver(cleanFooter).observe(document.body, { childList: true, subtree: true });
     })();
   </script>
+
+<!-- Final responsive/layout guard: loaded after the page scripts so it wins over earlier styles. -->
+<style id="final-mobile-layout-fix">
+  @media (max-width: 640px) {
+    #sections-wrapper { padding-top: 6.5rem !important; padding-bottom: 2rem !important; }
+    #sections-wrapper > #home {
+      display: block !important;
+      min-height: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      gap: 0 !important;
+    }
+    #sections-wrapper > #home > div:first-child { position: relative !important; z-index: 1 !important; }
+    #sections-wrapper > #home > div:first-child h1 {
+      padding-right: 106px !important;
+      font-size: clamp(1.95rem, 8.6vw, 2.65rem) !important;
+      line-height: 1.05 !important;
+    }
+    #sections-wrapper > #home > div:nth-child(2) {
+      position: absolute !important;
+      top: 8.4rem !important;
+      right: 0 !important;
+      width: 108px !important;
+      height: 124px !important;
+      min-height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: visible !important;
+      z-index: 4 !important;
+    }
+    #sections-wrapper > #home > div:nth-child(2) > .absolute:not(.liquid-orb) { display: none !important; }
+    #sections-wrapper > #home > div:nth-child(2) .neon-ring-wrapper {
+      width: 98px !important; height: 98px !important; flex: 0 0 98px !important;
+    }
+    #sections-wrapper > #home > div:nth-child(2) .glass-card {
+      max-width: 140px !important; padding: 5px 6px !important; border-radius: 9px !important;
+    }
+    #sections-wrapper > #home > div:nth-child(2) .glass-card p:first-child { font-size: 8px !important; line-height: 1.2 !important; }
+    #sections-wrapper > #home > div:nth-child(2) .glass-card p:last-child { font-size: 7px !important; line-height: 1.2 !important; }
+    #sections-wrapper > #home > div:first-child > p:nth-of-type(2) { padding-top: 12px !important; }
+    footer.social-footer .social-footer-inner > div:first-child { margin-bottom: 1.25rem !important; }
+    footer.social-footer .social-footer-inner > nav[aria-label="Social profiles"] a { min-width: 0 !important; }
+  }
+</style>
+<script id="final-footer-dedupe-guard">
+(() => {
+  const clean = () => {
+    const footer = document.querySelector("footer.social-footer");
+    if (!footer) return;
+    const root = footer.querySelector(".social-footer-inner") || footer;
+    const normalized = value => (value || "").replace(/\\s+/g, " ").trim().toLowerCase();
+    const seenCopy = new Set();
+    root.querySelectorAll("p, h2, h3").forEach(el => {
+      const key = normalized(el.textContent);
+      if (/^(find me around the web|let.?s connect\\.?|choose your favourite place to find me online\\.?)$/.test(key)) {
+        if (seenCopy.has(key)) el.remove();
+        else seenCopy.add(key);
+      }
+    });
+    const seenDestinations = new Set();
+    root.querySelectorAll('nav[aria-label="Social profiles"] a[href]').forEach(link => {
+      const key = new URL(link.href, location.href).href;
+      if (seenDestinations.has(key)) link.remove();
+      else seenDestinations.add(key);
+    });
+  };
+  clean();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", clean, { once: true });
+  new MutationObserver(clean).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
 </body>
 </html>
