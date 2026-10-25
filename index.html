@@ -312,14 +312,15 @@
   
   <style id="desktop-hero-card-position">
     /* Large screens only: keep the complete animated hero visual beside the headline. */
-    @media screen and (min-width: 1024px) {
-      #sections-wrapper { max-width: 1280px !important; }
+    @media screen and (min-width: 768px) {
+      /* Desktop layout also applies when a phone browser requests the desktop site. */
+      #sections-wrapper { max-width: 1280px !important; padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
       #sections-wrapper > #home {
         display: grid !important;
         grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr) !important;
         grid-template-rows: auto !important;
         align-items: center !important;
-        column-gap: clamp(32px, 4vw, 60px) !important;
+        column-gap: clamp(24px, 3vw, 44px) !important;
         row-gap: 0 !important;
         min-height: 0 !important;
       }
@@ -336,21 +337,31 @@
         grid-row: 1 !important;
         width: 100% !important;
         min-width: 0 !important;
-        min-height: 500px !important;
-        height: min(70vh, 650px) !important;
+        min-height: 420px !important;
+        height: min(64vh, 560px) !important;
         align-self: center !important;
         overflow: visible !important;
         position: relative;
       }
       #sections-wrapper > #home > div:nth-child(2) > .neon-ring-wrapper {
-        width: clamp(300px, 27vw, 380px) !important;
-        height: clamp(300px, 27vw, 380px) !important;
+        width: clamp(280px, 25vw, 350px) !important;
+        height: clamp(280px, 25vw, 350px) !important;
         flex: 0 0 auto !important;
       }
     }
   </style>
   
   
+<style id="desktop-spacing-tighten">
+    /* Compact excess whitespace only in desktop layout; mobile layout is untouched. */
+    @media screen and (min-width: 768px) {
+      #sections-wrapper { padding-left: clamp(24px, 4vw, 52px) !important; padding-right: clamp(24px, 4vw, 52px) !important; }
+      #sections-wrapper > #home { gap: clamp(24px, 3vw, 40px) !important; }
+      #sections-wrapper > #home > div:first-child { gap: 1.15rem !important; }
+      #sections-wrapper > #home > div:first-child > .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem !important; }
+      .site-footer, footer.social-footer { margin-top: 1.5rem !important; }
+    }
+  </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
