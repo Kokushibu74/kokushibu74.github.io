@@ -64,6 +64,7 @@ a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{min-h
 
 @media(prefers-reduced-motion:reduce){.subpage-donation .donation-popover.is-opening{animation:none}}
 </style>
+<link rel="stylesheet" href="shared-shell.css?v=1">
 </head><body><header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a class="" href="about.html">About</a><a class="" href="expertise.html">Expertise</a><a class="active" href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header><main class="wrap"><section class="hero"><p class="kicker">03 / SELECTED WORK</p><h1>Projects I’m<br><span class="accent">building.</span></h1><p class="intro">A collection of experiments and practical tools across personal AI, Android development, digital media, and automation.</p></section><section class="grid" aria-label="Project portfolio">
 <article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-comments"></i></span></div><span class="project-state">AI ASSISTANT</span><p class="tag">01 / MESSAGING</p><h2>MEMO — WhatsApp AI</h2><p class="desc">A personal WhatsApp AI assistant exploring model integrations, messaging, and automation.</p><div class="project-tags"><span>AI integration</span><span>Messaging</span><span>Automation</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74/MEMO" target="_blank" rel="noopener noreferrer">Source Code ↗</a></div></article>
 <article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-terminal"></i></span></div><span class="project-state">DEVELOPER TOOL</span><p class="tag">02 / ANDROID · CLI</p><h2>Termux Tool OS</h2><p class="desc">A dashboard concept for developer utilities, terminal workflows, and project management on Android.</p><div class="project-tags"><span>Android</span><span>Termux</span><span>CLI workflows</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a></div></article>
@@ -110,4 +111,5 @@ a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{min-h
  copy.addEventListener('click',async()=>{const address=wrap.querySelector('#donation-wallet').textContent;try{await navigator.clipboard.writeText(address);status.textContent='Wallet address copied!'}catch(_){status.textContent='Please select and copy the wallet address.'}});
 })();
 </script>
+<script src="shared-shell.js?v=1" defer></script>
 </body></html>
