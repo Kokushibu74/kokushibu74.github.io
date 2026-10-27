@@ -25,6 +25,35 @@
     .hero{padding:55px 0 25px}.kicker{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--cyan)}h1{font-size:clamp(36px,7vw,68px);line-height:1.02;margin:14px 0;font-weight:900;letter-spacing:-.04em}.accent{color:var(--cyan)}.intro{color:var(--muted);line-height:1.8;max-width:650px}
     .ticker{overflow:hidden;white-space:nowrap;border:1px solid #00f2fe35;border-radius:12px;padding:12px;margin:24px 0;background:#00f2fe08;font:11px 'JetBrains Mono',monospace;color:var(--cyan)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.filter{background:#ffffff08;border:1px solid #ffffff20;color:#dce5f5;padding:10px 14px;border-radius:999px;cursor:pointer;font:600 12px Outfit,sans-serif}.filter.active,.filter:hover{background:#00f2fe15;border-color:#00f2fe;color:var(--cyan)}
     .status{color:var(--muted);font-size:12px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:15px}.story{display:flex;flex-direction:column;min-height:205px;background:var(--panel);border:1px solid #ffffff14;border-radius:20px;padding:20px;text-decoration:none;transition:.2s}.story:hover{transform:translateY(-3px);border-color:#00f2fe70;box-shadow:0 12px 35px #00f2fe0c}.tag{font:10px 'JetBrains Mono',monospace;color:var(--cyan);text-transform:uppercase}.story h2{font-size:17px;line-height:1.55;margin:13px 0;font-weight:800}.meta{margin-top:auto;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:10px}.ad{margin:24px 0;min-height:90px;display:flex;align-items:center;justify-content:center;border:1px dashed #ffffff25;border-radius:14px;color:#748096;font:10px 'JetBrains Mono',monospace;text-align:center;padding:15px}.footer{border-top:1px solid #ffffff16;margin-top:60px;padding:25px 0;color:#788296;font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+
+    .top-stories{position:relative;margin:0 0 28px;border:1px solid #00f2fe38;border-radius:22px;overflow:hidden;background:#080c14;box-shadow:0 22px 70px #0008,0 0 35px #00f2fe0b}
+    .top-stories-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border-bottom:1px solid #ffffff12;background:#0a101beF}
+    .top-stories-label{display:flex;align-items:center;gap:9px;color:#eafaff;font:800 12px 'JetBrains Mono',monospace;letter-spacing:.11em}
+    .top-live-dot{width:8px;height:8px;border-radius:50%;background:#ff465d;box-shadow:0 0 13px #ff465d;animation:topPulse 1.5s infinite}
+    .top-stories-count{color:#7e8ca4;font:10px 'JetBrains Mono',monospace}
+    .top-slide{position:relative;display:none;min-height:clamp(360px,52vw,590px);isolation:isolate;color:white;text-decoration:none;overflow:hidden}
+    .top-slide.active{display:flex;align-items:flex-end;animation:topSlideIn .5s ease both}
+    .top-slide-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 6s ease; background:radial-gradient(ellipse at 70% 30%,#123a50,#101226 48%,#05070b)}
+    .top-slide.active .top-slide-image{transform:scale(1.045)}
+    .top-slide:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,6,12,.94) 0%,rgba(3,6,12,.70) 48%,rgba(3,6,12,.10) 100%),linear-gradient(0deg,rgba(3,6,12,.85),transparent 65%)}
+    .top-slide-copy{width:min(760px,100%);padding:clamp(24px,5vw,54px)}
+    .top-slide-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid #00f2fe55;border-radius:99px;background:#00f2fe12;color:#8cf8ff;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+    .top-slide h2{max-width:780px;margin:18px 0 12px;font-size:clamp(27px,4.8vw,54px);line-height:1.08;letter-spacing:-.035em;font-weight:900;text-wrap:balance}
+    .top-slide-summary{max-width:650px;color:#d4deed;font-size:clamp(13px,1.6vw,16px);line-height:1.75;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .top-slide-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;color:#b7c4d6;font:10px 'JetBrains Mono',monospace}
+    .top-slide-cta{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:12px 16px;border-radius:999px;background:#00f2fe;color:#031016;font-size:12px;font-weight:900;box-shadow:0 7px 26px #00f2fe30}
+    .top-slide-controls{position:absolute;right:18px;bottom:20px;z-index:3;display:flex;align-items:center;gap:8px}
+    .top-slide-arrow{display:grid;place-items:center;width:39px;height:39px;border:1px solid #ffffff38;border-radius:50%;background:#05070bb8;color:white;font-size:20px;cursor:pointer;backdrop-filter:blur(10px)}
+    .top-slide-arrow:hover{border-color:#00f2fe;color:#00f2fe}
+    .top-slide-dots{display:flex;align-items:center;gap:6px;margin-right:5px}
+    .top-slide-dot{width:7px;height:7px;padding:0;border:0;border-radius:9px;background:#ffffff65;cursor:pointer;transition:width .25s,background .25s}
+    .top-slide-dot.active{width:23px;background:#00f2fe}
+    .top-stories-empty{padding:32px 20px;color:#8b98ad;font-size:13px;line-height:1.7}
+    @keyframes topPulse{50%{opacity:.35;box-shadow:0 0 3px #ff465d}}
+    @keyframes topSlideIn{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:600px){.top-stories-head{padding:13px}.top-slide{min-height:490px}.top-slide:after{background:linear-gradient(0deg,rgba(3,6,12,.97) 0%,rgba(3,6,12,.68) 55%,rgba(3,6,12,.12) 100%)}.top-slide-copy{padding:22px 18px 78px}.top-slide h2{font-size:clamp(25px,7vw,36px)}.top-slide-controls{right:12px;bottom:13px}.top-slide-summary{-webkit-line-clamp:4}}
+    @media(prefers-reduced-motion:reduce){.top-slide.active,.top-slide-image{animation:none;transition:none}}
+
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 
@@ -60,6 +89,11 @@
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><a class="back" href="contact.html">Contact</a> <a class="back" href="./">← Back to portfolio</a></header>
   <main class="wrap">
     <section class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Headlines and links are provided for discovery; full reporting remains with each original publisher.</p></section>
+    <section id="top-stories" class="top-stories" aria-label="Top and trending news">
+      <div class="top-stories-head"><div class="top-stories-label"><span class="top-live-dot" aria-hidden="true"></span> TOP STORIES <span style="color:#00f2fe">/</span> HOT RIGHT NOW</div><span id="top-stories-count" class="top-stories-count">CURATING LIVE HEADLINES</span></div>
+      <div id="top-stories-slides"><div class="top-stories-empty">Loading the top headlines…</div></div>
+      <div id="top-stories-controls" class="top-slide-controls" hidden><div id="top-stories-dots" class="top-slide-dots"></div><button class="top-slide-arrow" type="button" data-slide-step="-1" aria-label="Previous top story">‹</button><button class="top-slide-arrow" type="button" data-slide-step="1" aria-label="Next top story">›</button></div>
+    </section>
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY &nbsp; / &nbsp; ARTIFICIAL INTELLIGENCE</div>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
