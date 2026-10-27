@@ -390,7 +390,8 @@
     }
     /* Clear the fixed header/ticker area without clipping the hero intro. */
     @media (max-width: 767px) {
-      #sections-wrapper { padding-top: 8.5rem !important; }
+      /* Bring the hero closer to the fixed breaking-news bar on phones. */
+      #sections-wrapper { padding-top: 7rem !important; }
       #sections-wrapper > #home { min-height: 0 !important; margin-bottom: 0 !important; }
       footer.social-footer { margin-top: 0 !important; }
     }
