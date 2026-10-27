@@ -455,14 +455,10 @@
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <div class="flex items-center gap-3 min-w-0">
-        <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
+        <a id="nav-brand-intro" href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5" aria-label="CYBERSTACK — replay homepage intro" title="Click name to replay intro">
           <span class="nav-dot" aria-hidden="true"></span>
           <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
         </a>
-        <button id="replay-moon-intro" type="button" aria-label="Replay homepage intro animation" title="Replay intro animation">
-          <span class="intro-replay-moon" aria-hidden="true">☾</span>
-          <span class="intro-replay-spark" aria-hidden="true">✦</span>
-        </button>
       </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
       <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Current time" title="Current time">
@@ -971,9 +967,10 @@
 
 <script id="replay-home-intro-action">
   (() => {
-    const button = document.getElementById('replay-moon-intro');
-    if (!button) return;
-    button.addEventListener('click', () => {
+    const brand = document.getElementById('nav-brand-intro');
+    if (!brand) return;
+    brand.addEventListener('click', (event) => {
+      event.preventDefault();
       try { sessionStorage.removeItem('kokushibu-moon-intro-seen-v5'); } catch (_) {}
       window.location.reload();
     });
