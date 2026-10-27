@@ -462,7 +462,7 @@
       </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
       <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Current time" title="Current time">
-        <span><div><span id="nav-clock-time" class="clock-time">--:--</span><span id="nav-clock-date" class="clock-date">DHAKA · BANGLADESH</span></div>
+        <span><div><span id="nav-clock-time" class="clock-time">--:--</span><span id="nav-clock-date" class="clock-date">Local date · time zone</span></div>
       </button>
       <a id="top-wa-btn" href="https://wa.me/8801620107233" target="_blank" class="px-5 py-2.5 rounded-full cyber-btn text-black font-extrabold text-xs transition transform active:scale-95 shadow-lg flex items-center gap-2">
         <span>💬</span> <span>WhatsApp</span>
@@ -567,22 +567,22 @@
 
 
   <script>
-    // Live digital clock pinned beside the WhatsApp button (Bangladesh time).
+    // Live visitor-local clock pinned beside the WhatsApp button.
     (() => {
       const time = document.getElementById('nav-clock-time');
       const date = document.getElementById('nav-clock-date');
       if (!time || !date) return;
       const updateClock = () => {
         const now = new Date();
-        time.textContent = new Intl.DateTimeFormat('en-GB', {
-          timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', hour12: true
+        time.textContent = new Intl.DateTimeFormat(undefined, {
+          hour: '2-digit', minute: '2-digit', hour12: true
         }).format(now);
-        const seconds = Number(new Intl.DateTimeFormat('en-GB', {timeZone:'Asia/Dhaka', second:'2-digit'}).format(now));
+        const seconds = now.getSeconds();
         const clock = document.getElementById('nav-digital-clock');
         if (clock) clock.style.setProperty('--clock-angle', ((seconds + 1) / 60 * 360) + 'deg');
-        date.textContent = new Intl.DateTimeFormat('en-GB', {
-          timeZone: 'Asia/Dhaka', day: '2-digit', month: 'short', year: 'numeric'
-        }).format(now).toUpperCase() + ' · DHAKA';
+        date.textContent = new Intl.DateTimeFormat(undefined, {
+          weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+        }).format(now).toUpperCase() + ' · ' + (Intl.DateTimeFormat().resolvedOptions().timeZone || 'LOCAL');
       };
       updateClock();
       setInterval(updateClock, 1000);
