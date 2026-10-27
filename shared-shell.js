@@ -1,19 +1,30 @@
 /* Shared header/footer polish on all secondary pages */
 (()=>{'use strict';
 const header=document.querySelector('header');
-if(header){header.classList.add('site-shell-header');
-let nav=header.querySelector('nav.links');
-if(!nav){nav=document.createElement('nav');nav.className='links';nav.setAttribute('aria-label','Main navigation');header.appendChild(nav);}
-const links=[['Home','./'],['About','about.html'],['Expertise','expertise.html'],['Projects','projects.html'],['News','news.html'],['Contact','contact.html']];
-nav.innerHTML=links.map(([label,url])=>'<a href="'+url+'"'+(location.pathname.endsWith(url)&&url!=='./'?' class="active"':'')+'>'+label+'</a>').join('');
-/* Secondary pages: keep WhatsApp, but no clock/date/location block. */
-const oldClock=header.querySelector('.shell-clock');
-if(oldClock)oldClock.remove();
-if(!header.querySelector('.shell-tools')){const tools=document.createElement('div');tools.className='shell-tools';tools.innerHTML='<a class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener">💬 WhatsApp</a>';header.appendChild(tools);}
-else {const tools=header.querySelector('.shell-tools');const oldTime=tools.querySelector('.shell-clock');if(oldTime)oldTime.remove();}
+if(header){
+  header.classList.add('site-shell-header');
+  let nav=header.querySelector('nav.links');
+  if(!nav){nav=document.createElement('nav');nav.className='links';nav.setAttribute('aria-label','Main navigation');header.appendChild(nav);}
+  const links=[['Home','./'],['About','about.html'],['Expertise','expertise.html'],['Projects','projects.html'],['News','news.html'],['Contact','contact.html']];
+  nav.innerHTML=links.map(([label,url])=>'<a href="'+url+'"'+(location.pathname.endsWith(url)&&url!=='./'?' class="active"':'')+'>'+label+'</a>').join('');
+
+  let tools=header.querySelector('.shell-tools');
+  if(!tools){tools=document.createElement('div');tools.className='shell-tools';header.appendChild(tools);}
+  tools.innerHTML='<div class="shell-clock" aria-label="Your local date and time"><span class="shell-clock-time">--:--</span><small class="shell-clock-date">YOUR LOCAL TIME</small><small class="shell-clock-zone"></small></div><a class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>';
+  const timeNode=tools.querySelector('.shell-clock-time'),dateNode=tools.querySelector('.shell-clock-date'),zoneNode=tools.querySelector('.shell-clock-zone');
+  const zone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local timezone';
+  const tick=()=>{
+    const now=new Date();
+    timeNode.textContent=new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',hour12:undefined}).format(now);
+    dateNode.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric'}).format(now).toUpperCase();
+    zoneNode.textContent=zone.replace(/_/g,' ');
+  };
+  tick();setInterval(tick,15000);
 }
 const footer=document.querySelector('footer');
-if(footer){footer.classList.add('site-shell-footer');
-if(!footer.querySelector('.shell-footer-links')){const links=document.createElement('nav');links.className='shell-footer-links';links.innerHTML='<a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="./">Back to top ↑</a>';footer.appendChild(links);}
+if(footer){
+  footer.classList.add('site-shell-footer');
+  /* Do not add a second About/Expertise/Projects/News/Contact link bar to subpage footers. */
+  footer.querySelectorAll('.shell-footer-links').forEach(el=>el.remove());
 }
 })();
