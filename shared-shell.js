@@ -10,7 +10,7 @@ if(header){
 
   let tools=header.querySelector('.shell-tools');
   if(!tools){tools=document.createElement('div');tools.className='shell-tools';header.appendChild(tools);}
-  tools.innerHTML='<div class="shell-clock" aria-label="Your local date and time"><span class="shell-clock-time">--:--</span><small class="shell-clock-date">YOUR LOCAL TIME</small><small class="shell-clock-zone"></small></div><a class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>';
+  tools.innerHTML='<div class="shell-clock" aria-label="Your local date and time"><span class="shell-clock-time">--:--</span><small class="shell-clock-date">YOUR LOCAL TIME</small><small class="shell-clock-zone"></small></div><a class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span><span class="shell-wa-arrow" aria-hidden="true">↗</span></a>';
   const timeNode=tools.querySelector('.shell-clock-time'),dateNode=tools.querySelector('.shell-clock-date'),zoneNode=tools.querySelector('.shell-clock-zone');
   const zone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local timezone';
   const tick=()=>{
@@ -24,7 +24,6 @@ if(header){
 const footer=document.querySelector('footer');
 if(footer){
   footer.classList.add('site-shell-footer');
-  /* Do not add a second About/Expertise/Projects/News/Contact link bar to subpage footers. */
   footer.querySelectorAll('.shell-footer-links').forEach(el=>el.remove());
 }
 })();
