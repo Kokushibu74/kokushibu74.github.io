@@ -56,6 +56,25 @@
     @media(max-width:600px){.top-stories-head{padding:13px}.top-slide{min-height:490px}.top-slide:after{background:linear-gradient(0deg,rgba(3,6,12,.97) 0%,rgba(3,6,12,.68) 55%,rgba(3,6,12,.12) 100%)}.top-slide-copy{padding:22px 18px 78px}.top-slide h2{font-size:clamp(25px,7vw,36px)}.top-slide-controls{right:12px;bottom:13px}.top-slide-summary{-webkit-line-clamp:4}}
     @media(prefers-reduced-motion:reduce){.top-slide.active,.top-slide-image{animation:none;transition:none}}
 
+
+    .news-hero-layout{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:center;gap:clamp(22px,4vw,48px);padding:35px 0 14px}
+    .news-hero-layout .hero{padding:16px 0 22px;min-width:0}
+    .news-hero-layout .intro{max-width:470px}
+    .news-hero-note{display:flex;align-items:center;gap:9px;margin-top:24px;color:#8b9bb0;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.08em}
+    .news-hero-note .top-live-dot{flex:0 0 8px}
+    .news-hero-layout .top-stories{min-width:0;margin:0 0 18px}
+    .top-slide-preview{left:auto!important;right:0!important;top:0!important;width:48%!important;height:100%!important;z-index:0!important;opacity:.94;background:#f7f8fa;border:0;border-left:1px solid #00f2fe40;pointer-events:none!important}
+    .top-slide-image{z-index:-2;opacity:.2}
+    .top-slide:after{z-index:1;background:linear-gradient(90deg,rgba(3,6,12,.99) 0%,rgba(3,6,12,.94) 42%,rgba(3,6,12,.55) 62%,rgba(3,6,12,.12) 100%),linear-gradient(0deg,rgba(3,6,12,.8),transparent 55%)}
+    .top-slide-copy{position:relative;z-index:2;width:65%;padding:clamp(20px,3vw,34px)}
+    .top-slide h2{font-size:clamp(22px,2.5vw,34px)}
+    .top-slide-summary{-webkit-line-clamp:4;font-size:13px}
+    .top-slide-preview-note{max-width:300px}
+    .top-slide{min-height:clamp(390px,39vw,500px);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+    #top-stories-controls{z-index:5}
+    @media(max-width:850px){.news-hero-layout{grid-template-columns:1fr;gap:12px;padding-top:20px}.news-hero-layout .hero{padding:18px 0 8px}.news-hero-layout .hero h1{font-size:clamp(38px,8vw,58px)}.news-hero-layout .top-stories{margin-bottom:18px}.top-slide{min-height:460px}.top-slide-copy{width:70%;padding:24px}.top-slide-preview{width:45%!important}}
+    @media(max-width:600px){.top-slide{min-height:520px}.top-slide-copy{width:100%;padding:22px 18px 80px}.top-slide-preview{width:100%!important;opacity:.28}.top-slide:after{background:linear-gradient(0deg,rgba(3,6,12,.98) 0%,rgba(3,6,12,.82) 65%,rgba(3,6,12,.55) 100%)}.top-slide h2{font-size:clamp(25px,7vw,36px)}.top-slide-summary{-webkit-line-clamp:4}.top-slide-controls{right:12px;bottom:13px}}
+
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 
@@ -91,12 +110,12 @@
 <body>
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a></header>
   <main class="wrap">
-    <section class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Headlines and links are provided for discovery; full reporting remains with each original publisher.</p></section>
+    <section class="news-hero-layout" aria-label="News introduction and featured stories"><div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Explore the latest stories and preview the publisher page right here before opening the original report.</p><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL SOURCE PREVIEWS</div></div>
     <section id="top-stories" class="top-stories" aria-label="Top and trending news">
       <div class="top-stories-head"><div class="top-stories-label"><span class="top-live-dot" aria-hidden="true"></span> TOP STORIES <span style="color:#00f2fe">/</span> HOT RIGHT NOW</div><span id="top-stories-count" class="top-stories-count">CURATING LIVE HEADLINES</span></div>
       <div id="top-stories-slides"><div class="top-stories-empty">Loading the top headlines…</div></div>
       <div id="top-stories-controls" class="top-slide-controls" hidden><div id="top-stories-dots" class="top-slide-dots"></div><button class="top-slide-arrow" type="button" data-slide-step="-1" aria-label="Previous top story">‹</button><button class="top-slide-arrow" type="button" data-slide-step="1" aria-label="Next top story">›</button></div>
-    </section>
+    </section></section>
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY &nbsp; / &nbsp; ARTIFICIAL INTELLIGENCE</div>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
