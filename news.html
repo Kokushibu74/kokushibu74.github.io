@@ -81,33 +81,7 @@
 .subpage-donation{display:none!important}
 </style>
 
-<style>
-.subpage-donation{position:relative;display:flex;justify-content:center;align-items:center;margin:22px auto 4px;flex-basis:100%;width:100%}
-.subpage-donation .donation-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 11px;border:1px solid rgba(0,242,254,.27);border-radius:999px;background:linear-gradient(135deg,rgba(0,242,254,.10),rgba(127,0,255,.10));color:#c9faff;font:700 10px/1.2 'JetBrains Mono',monospace;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s}
-.subpage-donation .donation-trigger:hover,.subpage-donation .donation-trigger[aria-expanded=true]{transform:translateY(-2px);border-color:rgba(0,242,254,.7);box-shadow:0 0 22px rgba(0,242,254,.13)}
-.subpage-donation .donation-trigger-icon{display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:rgba(0,242,254,.14);color:#00f2fe;font-size:15px}
-.subpage-donation .donation-popover{position:fixed;z-index:9999;left:50%;top:50%;bottom:auto;right:auto;transform:translate(-50%,-50%);width:min(350px,calc(100vw - 24px));max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;padding:18px;border:1px solid rgba(0,242,254,.3);border-radius:20px;background:linear-gradient(145deg,rgba(9,17,29,.985),rgba(12,8,25,.985));box-shadow:0 24px 80px rgba(0,0,0,.58),0 0 35px rgba(0,242,254,.12);backdrop-filter:blur(24px);color:#f8fafc;box-sizing:border-box}
-.subpage-donation .donation-popover[hidden]{display:none}
-.subpage-donation .donation-popover.is-opening{animation:donationPopIn .28s cubic-bezier(.16,1,.3,1) both}
-.subpage-donation .donation-popover-head{display:flex;align-items:center;gap:11px;margin-bottom:17px}
-.subpage-donation .donation-coin{display:grid;place-items:center;width:43px;height:43px;border:1px solid rgba(0,242,254,.28);border-radius:14px;background:rgba(0,242,254,.09);color:#00f2fe;font-size:25px;font-weight:800}
-.subpage-donation .donation-eyebrow{margin:0 0 3px;color:#7dd3fc;font:600 8px/1.4 'JetBrains Mono',monospace;letter-spacing:.17em}
-.subpage-donation .donation-popover h3{margin:0;color:#fff;font-size:18px;font-weight:800}
-.subpage-donation .donation-close{margin-left:auto;display:grid;place-items:center;width:27px;height:27px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.04);color:#aab4c5;font-size:20px;cursor:pointer}
-.subpage-donation .donation-network{display:flex;align-items:center;gap:9px;padding:10px 11px;border:1px solid rgba(45,212,191,.18);border-radius:12px;background:rgba(45,212,191,.055);font-size:11px;color:#d1fae5}
-.subpage-donation .network-pulse{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#34d399;box-shadow:0 0 10px rgba(52,211,153,.8)}
-.subpage-donation .donation-label{margin:15px 0 7px;color:#9ca3af;font:600 9px/1.4 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
-.subpage-donation .donation-address-row{display:flex;align-items:stretch;gap:7px;padding:8px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(0,0,0,.27)}
-.subpage-donation .donation-address-row code{min-width:0;flex:1;align-self:center;overflow-wrap:anywhere;color:#b9f7ff;font:500 10px/1.65 'JetBrains Mono',monospace;user-select:all}
-.subpage-donation .donation-copy{display:grid;place-items:center;flex:0 0 34px;min-height:34px;border:1px solid rgba(0,242,254,.22);border-radius:9px;background:rgba(0,242,254,.09);color:#67e8f9;cursor:pointer}
-.subpage-donation .donation-warning{display:flex;align-items:flex-start;gap:8px;margin:13px 0 0;padding:10px;border:1px solid rgba(251,191,36,.2);border-radius:11px;background:rgba(245,158,11,.07);color:#fcdca0;font-size:10px;line-height:1.65}
-.subpage-donation .donation-thanks{margin:15px 0 0;text-align:center;color:#c4b5fd;font-size:11px;font-weight:700}
-.subpage-donation .donation-thanks span{color:#fb7185}
-.subpage-donation .donation-copy-status{min-height:12px;margin:5px 0 0;text-align:center;color:#6ee7b7;font-size:10px}
-@keyframes donationPopIn{from{opacity:0;transform:translate(-50%,-47%) scale(.94);filter:blur(4px)}to{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0)}}
 
-@media(prefers-reduced-motion:reduce){.subpage-donation .donation-popover.is-opening{animation:none}}
-</style>
 <link rel="stylesheet" href="shared-shell.css?v=3">
 </head>
 <body>
@@ -127,36 +101,13 @@
     <p class="status">Feed refreshes automatically when the scheduled GitHub updater succeeds. News timing depends on each publisher's RSS feed.</p>
   </main>
   <footer class="wrap footer"><span>© <span id="year"></span> Shihabul Islam</span><span>Headlines link to original publishers · <a href="./">Portfolio home</a></span>
-  <div class="subpage-donation">
-    <button id="donation-toggle" class="donation-trigger" type="button" aria-expanded="false" aria-controls="donation-popover">
-      <span class="donation-trigger-icon" aria-hidden="true">♡</span><span>Supporting donation</span>
-    </button>
-    <section id="donation-popover" class="donation-popover" role="dialog" aria-labelledby="donation-title" aria-hidden="true" hidden>
-      <div class="donation-popover-head"><span class="donation-coin" aria-hidden="true">₮</span><div><p class="donation-eyebrow">SUPPORT THE CREATOR</p><h3 id="donation-title">Donate with USDT</h3></div><button id="donation-close" class="donation-close" type="button" aria-label="Close donation box">×</button></div>
-      <div class="donation-network"><span class="network-pulse"></span><span><strong>Network:</strong> TRON (TRC20)</span></div>
-      <p class="donation-label">Wallet Address</p>
-      <div class="donation-address-row"><code id="donation-wallet">TVFZWJe4sxwC1gcFB4P68SLBygmWNjFpSc</code><button id="donation-copy" class="donation-copy" type="button" aria-label="Copy wallet address" title="Copy wallet address"><i class="fa-regular fa-copy" aria-hidden="true"></i></button></div>
-      <p class="donation-warning"><span aria-hidden="true">⚠️</span><span><strong>Important:</strong> Send USDT only via the <strong>TRON (TRC20)</strong> network.</span></p>
-      <p class="donation-thanks">Thank you for supporting <span aria-hidden="true">♥</span></p><p id="donation-copy-status" class="donation-copy-status" aria-live="polite"></p>
-    </section>
-  </div>
-</footer>
+  </footer>
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
   <script src="news.js?v=4"></script>
 
-<script>
-(function(){
- const wrap=document.querySelector('.subpage-donation');if(!wrap)return;
- const toggle=wrap.querySelector('#donation-toggle'),panel=wrap.querySelector('#donation-popover'),close=wrap.querySelector('#donation-close'),copy=wrap.querySelector('#donation-copy'),status=wrap.querySelector('#donation-copy-status');
- function setOpen(open){panel.hidden=!open;panel.setAttribute('aria-hidden',String(!open));toggle.setAttribute('aria-expanded',String(open));if(open){panel.classList.remove('is-opening');void panel.offsetWidth;panel.classList.add('is-opening')}}
- toggle.addEventListener('click',()=>setOpen(panel.hidden));close.addEventListener('click',()=>setOpen(false));
- document.addEventListener('click',e=>{if(!wrap.contains(e.target))setOpen(false)});
- document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
- copy.addEventListener('click',async()=>{const address=wrap.querySelector('#donation-wallet').textContent;try{await navigator.clipboard.writeText(address);status.textContent='Wallet address copied!'}catch(_){status.textContent='Please select and copy the wallet address.'}});
-})();
-</script>
+
 <script src="shared-shell.js?v=3" defer></script>
 </body>
 </html>
