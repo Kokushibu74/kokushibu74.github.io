@@ -11,7 +11,7 @@ if(header){
   let tools=header.querySelector('.shell-tools');
   if(!tools){tools=document.createElement('div');tools.className='shell-tools';header.appendChild(tools);}
   // Secondary pages share the homepage WhatsApp treatment; the clock stays on Home only.
-  tools.innerHTML='<a id="top-wa-btn" class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span><span class="shell-wa-arrow" aria-hidden="true">↗</span></a>';
+  tools.innerHTML='<a id="top-wa-btn" class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span></a>';
 }
 const footer=document.querySelector('footer');
 if(footer){
