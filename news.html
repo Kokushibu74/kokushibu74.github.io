@@ -105,7 +105,7 @@
 
 @media(prefers-reduced-motion:reduce){.subpage-donation .donation-popover.is-opening{animation:none}}
 </style>
-<link rel="stylesheet" href="shared-shell.css?v=2">
+<link rel="stylesheet" href="shared-shell.css?v=3">
 </head>
 <body>
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a></header>
@@ -154,6 +154,6 @@
  copy.addEventListener('click',async()=>{const address=wrap.querySelector('#donation-wallet').textContent;try{await navigator.clipboard.writeText(address);status.textContent='Wallet address copied!'}catch(_){status.textContent='Please select and copy the wallet address.'}});
 })();
 </script>
-<script src="shared-shell.js?v=2" defer></script>
+<script src="shared-shell.js?v=3" defer></script>
 </body>
 </html>
