@@ -11,7 +11,6 @@ const tick=()=>{const n=document.getElementById('shell-time');if(n)n.textContent
 }}
 const footer=document.querySelector('footer');
 if(footer){footer.classList.add('site-shell-footer');
-if(!footer.querySelector('.shell-socials')){const socials=document.createElement('div');socials.className='shell-socials';socials.innerHTML='<a href="https://www.facebook.com/" target="_blank" rel="noopener">● Facebook Profile</a><a href="https://m.me/" target="_blank" rel="noopener">● Messenger Chat</a><a href="https://wa.me/8801620107233" target="_blank" rel="noopener">◉ WhatsApp Chat</a><a href="https://github.com/Kokushibu74" target="_blank" rel="noopener">⌘ GitHub Profile</a><a href="https://www.instagram.com/" target="_blank" rel="noopener">◎ Instagram Profile</a><a href="https://www.youtube.com/@Lo-Fi_World-x3w" target="_blank" rel="noopener">▶ YouTube Channel</a>';footer.prepend(socials);}
 if(!footer.querySelector('.shell-footer-links')){const links=document.createElement('nav');links.className='shell-footer-links';links.innerHTML='<a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="./">Back to top ↑</a>';footer.appendChild(links);}
 }
 })();
