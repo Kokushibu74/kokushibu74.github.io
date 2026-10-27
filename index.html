@@ -212,7 +212,12 @@
     .social-copy small { overflow-wrap:anywhere; }
     /* The hero name should remain one line; only supporting copy may wrap. */
     #home h1 { overflow-wrap:normal; word-break:normal; }
+    /* Keep the clickable header name on one line on phones. */
+    #nav-brand-intro { white-space:nowrap; flex-shrink:0; }
+    #nav-name { display:inline-block; white-space:nowrap; overflow-wrap:normal; word-break:keep-all; }
     @media (max-width:640px) {
+      #nav-brand-intro { gap:.4rem; font-size:clamp(.88rem, 4.1vw, 1.15rem); letter-spacing:.015em; }
+      #nav-brand-intro .nav-dot { flex-shrink:0; }
       #sections-wrapper { width:100%; max-width:100%; padding-left:16px; padding-right:16px; }
       #home { width:100%; max-width:100%; gap:24px; }
       #home > div:first-child { width:100%; min-width:0; }
