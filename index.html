@@ -442,14 +442,28 @@
 
 
   <!-- Top Cyber Navigation -->
-  <style id="nav-dot-style">.nav-dot{display:inline-block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#00F2FE;box-shadow:0 0 8px rgba(0,242,254,.65)}</style>
+  <style id="nav-dot-style">.nav-dot{display:inline-block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#00F2FE;box-shadow:0 0 8px rgba(0,242,254,.65)}
+    #replay-moon-intro{position:relative;display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border:1px solid rgba(193,122,255,.45);border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(193,122,255,.2),rgba(5,7,11,.85) 72%);color:#e8d8ff;cursor:pointer;box-shadow:0 0 12px rgba(141,61,255,.15);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+    #replay-moon-intro:hover,#replay-moon-intro:focus-visible{transform:rotate(-12deg) scale(1.08);border-color:#c17aff;box-shadow:0 0 19px rgba(141,61,255,.45);outline:none}
+    .intro-replay-moon{font-size:23px;line-height:1;text-shadow:0 0 9px rgba(193,122,255,.9);animation:introMoonFloat 2.8s ease-in-out infinite}
+    .intro-replay-spark{position:absolute;right:3px;top:1px;font-size:10px;color:#71f4ff;text-shadow:0 0 7px #71f4ff;animation:introSparkPulse 1.6s ease-in-out infinite}
+    @keyframes introMoonFloat{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-2px) rotate(8deg)}}
+    @keyframes introSparkPulse{0%,100%{opacity:.45;transform:scale(.75)}50%{opacity:1;transform:scale(1.15)}}
+    @media(prefers-reduced-motion:reduce){.intro-replay-moon,.intro-replay-spark{animation:none}}
+  </style>
 
   <header class="fixed top-0 inset-x-0 z-40 bg-[#05070B]/85 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
-      <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
-        <span class="nav-dot" aria-hidden="true"></span>
-        <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
-      </a>
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5">
+          <span class="nav-dot" aria-hidden="true"></span>
+          <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">CYBERSTACK</span>
+        </a>
+        <button id="replay-moon-intro" type="button" aria-label="Replay homepage intro animation" title="Replay intro animation">
+          <span class="intro-replay-moon" aria-hidden="true">☾</span>
+          <span class="intro-replay-spark" aria-hidden="true">✦</span>
+        </button>
+      </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
       <button id="nav-digital-clock" class="nav-digital-clock" type="button" aria-label="Current time" title="Current time">
         <span><div><span id="nav-clock-time" class="clock-time">--:--</span><span id="nav-clock-date" class="clock-date">DHAKA · BANGLADESH</span></div>
@@ -953,6 +967,17 @@
     });
   },{passive:true});
 })();
+</script>
+
+<script id="replay-home-intro-action">
+  (() => {
+    const button = document.getElementById('replay-moon-intro');
+    if (!button) return;
+    button.addEventListener('click', () => {
+      try { sessionStorage.removeItem('kokushibu-moon-intro-seen-v5'); } catch (_) {}
+      window.location.reload();
+    });
+  })();
 </script>
 
 <!-- End Multi AI floating portfolio assistant -->
