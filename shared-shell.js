@@ -10,16 +10,8 @@ if(header){
 
   let tools=header.querySelector('.shell-tools');
   if(!tools){tools=document.createElement('div');tools.className='shell-tools';header.appendChild(tools);}
-  tools.innerHTML='<div class="shell-clock" aria-label="Your local date and time"><span class="shell-clock-time">--:--</span><small class="shell-clock-date">YOUR LOCAL TIME</small><small class="shell-clock-zone"></small></div><a class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span><span class="shell-wa-arrow" aria-hidden="true">↗</span></a>';
-  const timeNode=tools.querySelector('.shell-clock-time'),dateNode=tools.querySelector('.shell-clock-date'),zoneNode=tools.querySelector('.shell-clock-zone');
-  const zone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local timezone';
-  const tick=()=>{
-    const now=new Date();
-    timeNode.textContent=new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',hour12:undefined}).format(now);
-    dateNode.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric'}).format(now).toUpperCase();
-    zoneNode.textContent=zone.replace(/_/g,' ');
-  };
-  tick();setInterval(tick,15000);
+  // Secondary pages share the homepage WhatsApp treatment; the clock stays on Home only.
+  tools.innerHTML='<a id="top-wa-btn" class="shell-wa" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span><span class="shell-wa-arrow" aria-hidden="true">↗</span></a>';
 }
 const footer=document.querySelector('footer');
 if(footer){
