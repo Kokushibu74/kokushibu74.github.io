@@ -45,6 +45,34 @@
   const slider=document.getElementById("top-stories");
   slider.addEventListener("mouseenter",()=>{if(slideTimer)clearInterval(slideTimer)});
   slider.addEventListener("mouseleave",startSlideTimer);
+
+  // Mobile swipe / touch support for the featured-news carousel.
+  let touchStartX=0,touchStartY=0,touchMoved=false;
+  slider.addEventListener("touchstart",e=>{
+    if(!e.touches||e.touches.length!==1)return;
+    touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;touchMoved=false;
+    if(slideTimer)clearInterval(slideTimer);
+  },{passive:true});
+  slider.addEventListener("touchmove",e=>{
+    if(!e.touches||e.touches.length!==1)return;
+    const dx=e.touches[0].clientX-touchStartX,dy=e.touches[0].clientY-touchStartY;
+    if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy))touchMoved=true;
+  },{passive:true});
+  slider.addEventListener("touchend",e=>{
+    if(!touchMoved||!e.changedTouches||!e.changedTouches.length){startSlideTimer();return}
+    const dx=e.changedTouches[0].clientX-touchStartX;
+    if(Math.abs(dx)>40)showSlide(slideIndex+(dx<0?1:-1));
+    startSlideTimer();
+  },{passive:true});
+  // Also support pointer swipes on touch-enabled laptops and tablets.
+  let pointerStartX=0,pointerStartY=0;
+  slider.addEventListener("pointerdown",e=>{if(e.pointerType==="touch"){pointerStartX=e.clientX;pointerStartY=e.clientY;if(slideTimer)clearInterval(slideTimer)}});
+  slider.addEventListener("pointerup",e=>{
+    if(e.pointerType!=="touch")return;
+    const dx=e.clientX-pointerStartX,dy=e.clientY-pointerStartY;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))showSlide(slideIndex+(dx<0?1:-1));
+    startSlideTimer();
+  });
   function render(){
     const visible=sorted(active==="All"?items:items.filter(x=>x.category===active));
     if(!visible.length){grid.innerHTML="";status.textContent=items.length?"No stories in this category yet.":"No headlines are available yet. The feed updater may still be running.";return}
