@@ -33,8 +33,10 @@
     .top-stories-count{color:#7e8ca4;font:10px 'JetBrains Mono',monospace}
     .top-slide{position:relative;display:none;min-height:clamp(360px,52vw,590px);isolation:isolate;color:white;text-decoration:none;overflow:hidden}
     .top-slide.active{display:flex;align-items:flex-end;animation:topSlideIn .5s ease both}
-    .top-slide-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 6s ease; background:radial-gradient(ellipse at 70% 30%,#123a50,#101226 48%,#05070b)}
+    .top-slide-preview{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;z-index:-2;pointer-events:none}
+    .top-slide-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.22;transition:transform 6s ease;background:radial-gradient(ellipse at 70% 30%,#123a50,#101226 48%,#05070b)}
     .top-slide.active .top-slide-image{transform:scale(1.045)}
+    .top-slide-preview-note{display:block;margin-top:10px;color:#c3ccda;font-size:10px;line-height:1.5}
     .top-slide:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,6,12,.94) 0%,rgba(3,6,12,.70) 48%,rgba(3,6,12,.10) 100%),linear-gradient(0deg,rgba(3,6,12,.85),transparent 65%)}
     .top-slide-copy{width:min(760px,100%);padding:clamp(24px,5vw,54px)}
     .top-slide-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid #00f2fe55;border-radius:99px;background:#00f2fe12;color:#8cf8ff;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
