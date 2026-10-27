@@ -56,8 +56,8 @@
   slider.addEventListener("touchmove",e=>{
     if(!e.touches||e.touches.length!==1)return;
     const dx=e.touches[0].clientX-touchStartX,dy=e.touches[0].clientY-touchStartY;
-    if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy))touchMoved=true;
-  },{passive:true});
+    if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)){touchMoved=true;e.preventDefault();}
+  },{passive:false});
   slider.addEventListener("touchend",e=>{
     if(!touchMoved||!e.changedTouches||!e.changedTouches.length){startSlideTimer();return}
     const dx=e.changedTouches[0].clientX-touchStartX;
