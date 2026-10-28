@@ -12,6 +12,18 @@ from html.parser import HTMLParser
 from urllib.parse import urlparse
 
 OUTPUT = "news-feed.json"
+WEATHER_QUERIES = [
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "bn-BD", "BD", "BD:bn"),
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "en-US", "BD", "BD:en"),
+    ("world weather OR flood OR cyclone OR earthquake OR landslide OR wildfire OR drought", "en-US", "US", "US:en"),
+    ("natural disaster OR extreme weather OR major storm OR tsunami", "en-US", "US", "US:en"),
+]
+WEATHER_DISASTER_RE = re.compile(
+    r"(?:weather|forecast|flood|flooding|cyclone|hurricane|typhoon|storm|"
+    r"heavy rain|rainfall|heatwave|heat wave|earthquake|landslide|wildfire|"
+    r"drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
+    r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)", re.I
+)
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
 QUERIES = [
     # Search dedicated breaking-news feeds first so explicit fresh alerts can be tagged.
@@ -437,6 +449,21 @@ def read_previous():
     except (OSError, json.JSONDecodeError, TypeError):
         return []
 
+def is_weather_disaster_story(title, summary="", published=None, now=None):
+    """Only accept weather/disaster stories with a credible, recent publication date."""
+    if not WEATHER_DISASTER_RE.search((title or "") + " " + (summary or "")) or not published:
+        return False
+    try:
+        stamp = datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        age = current - stamp.astimezone(timezone.utc)
+        return timedelta(minutes=-5) <= age <= timedelta(days=7)
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+
 def main():
     previous = read_previous()
     breaking_history = read_breaking_history()
@@ -509,6 +536,41 @@ def main():
         except Exception as exc:
             print("Feed error for", label, repr(query), ":", exc)
 
+
+    # Keep a separate, date-checked stream for the desktop weather/disaster cards.
+    weather_collected, weather_seen = [], set()
+    for query, language, country, edition in WEATHER_QUERIES:
+        params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
+        request = urllib.request.Request("https://news.google.com/rss/search?" + params, headers=HEADERS)
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                root = parse_feed_xml(response.read())
+            successful_feeds += 1
+            for node in feed_items(root)[:MAX_PER_FEED]:
+                title = clean(child_text(node, "title"))
+                link = clean(child_text(node, "link"))
+                summary = clean(child_text(node, "description", "summary", "content"))[:420]
+                published = parse_date(child_text(node, "pubDate", "published", "updated", "date"))
+                source_node = child_element(node, "source")
+                source = clean((source_node.text or "") if source_node is not None else "") or "Original publisher"
+                if not title or not link.startswith("https://") or not is_weather_disaster_story(title, summary, published):
+                    continue
+                item = {
+                    "title": title, "link": link, "source": source,
+                    "publishedAt": published, "summary": summary,
+                    "publisherUrl": link, "publisherName": source,
+                    "previewTitle": title, "previewSummary": summary,
+                    "category": "Weather & Disasters",
+                }
+                key = key_for(item)
+                if not key or key in weather_seen:
+                    continue
+                weather_seen.add(key)
+                weather_collected.append(item)
+        except Exception as exc:
+            print("Weather/disaster feed error for", repr(query), ":", type(exc).__name__, str(exc)[:180])
+    weather_collected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+    weather_items = weather_collected[:12]
 
     # Reuse publisher metadata from the last feed run for unchanged stories.
     old_metadata = {key_for(item): item for item in previous}
@@ -634,7 +696,7 @@ def main():
         if stamp and stamp >= history_cutoff:
             history.append(item)
     history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
-    payload = {"updatedAt": now_iso, "items": selected, "breakingHistory": history[:500]}
+    payload = {"updatedAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
         file.write("\n")
