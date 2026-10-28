@@ -401,6 +401,7 @@
       footer.social-footer { margin-top: 0 !important; }
     }
   </style>
+  <link rel="stylesheet" href="chatbot-widget.css?v=1">
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
@@ -843,39 +844,6 @@
 
   
 
-<!-- Multi AI floating portfolio assistant -->
-<style>
-#multi-ai-launcher{position:fixed;right:22px;bottom:22px;z-index:2147483000;width:62px;height:62px;border:1px solid rgba(0,242,254,.65);border-radius:50%;background:linear-gradient(135deg,#00f2fe,#4facfe 60%,#7f00ff);color:#061018;font-size:25px;font-weight:900;box-shadow:0 0 24px rgba(0,242,254,.42),0 10px 35px rgba(0,0,0,.4);cursor:pointer;display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
-#multi-ai-launcher:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 35px rgba(0,242,254,.7),0 10px 35px rgba(0,0,0,.4)}
-#multi-ai-panel{position:fixed;right:22px;bottom:96px;z-index:2147483000;width:min(390px,calc(100vw - 24px));height:min(620px,calc(100dvh - 125px));background:#0d111a;border:1px solid rgba(0,242,254,.45);border-radius:22px;overflow:hidden;box-shadow:0 20px 75px rgba(0,0,0,.65),0 0 28px rgba(0,242,254,.12);display:none;flex-direction:column}
-#multi-ai-panel.is-open{display:flex;animation:multiAiPop .22s ease-out}
-#multi-ai-panel header{height:48px;min-height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 13px;background:#101925;border-bottom:1px solid rgba(0,242,254,.2);color:#eafaff;font:700 13px/1.2 system-ui,sans-serif}
-#multi-ai-panel header span{color:#00f2fe}
-#multi-ai-panel button{cursor:pointer}
-#multi-ai-close{border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#182333;color:#dffaff;font-size:20px;width:32px;height:32px}
-#multi-ai-frame{display:block;width:100%;height:100%;flex:1;border:0;background:#101116}
-@keyframes multiAiPop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(max-width:480px){#multi-ai-launcher{right:14px;bottom:14px;width:56px;height:56px}#multi-ai-panel{right:8px;bottom:78px;width:calc(100vw - 16px);height:min(72dvh,620px);border-radius:18px}}
-@media(prefers-reduced-motion:reduce){#multi-ai-panel.is-open{animation:none}#multi-ai-launcher{transition:none}}
-</style>
-<div id="multi-ai-panel" role="dialog" aria-label="Portfolio chat assistant" aria-modal="false">
-  <header><div>✦ <span>Shihab AI</span> · Portfolio Chat</div><button id="multi-ai-close" type="button" aria-label="Close AI chat">×</button></header>
-  <iframe id="multi-ai-frame" title="Multi AI chat" src="https://kokushibu74.github.io/chatbot.html" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-</div>
-<button id="multi-ai-launcher" type="button" aria-label="Open portfolio chat assistant" aria-expanded="false" title="Chat with Shihab AI">✦</button>
-<script>
-(function(){
- const launch=document.getElementById('multi-ai-launcher');
- const panel=document.getElementById('multi-ai-panel');
- const close=document.getElementById('multi-ai-close');
- if(!launch||!panel||!close)return;
- function setOpen(open){panel.classList.toggle('is-open',open);launch.setAttribute('aria-expanded',String(open));launch.setAttribute('aria-label',open?'Close portfolio chat assistant':'Open portfolio chat assistant');launch.textContent=open?'×':'✦';}
- launch.addEventListener('click',()=>setOpen(!panel.classList.contains('is-open')));
- close.addEventListener('click',()=>setOpen(false));
- document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
-})();
-</script>
-
 <script id="clock-spark-shower">
 (() => {
   const clock = document.getElementById('nav-digital-clock');
@@ -1017,5 +985,6 @@
 
 
 
+  <script src="chatbot-widget.js?v=1" defer></script>
 </body>
 </html>
