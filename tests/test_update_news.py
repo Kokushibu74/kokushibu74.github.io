@@ -39,6 +39,12 @@ class NewsLogicTests(unittest.TestCase):
             "Bangladesh breaking news"
         ))
 
+    def test_word_breaking_alone_does_not_trigger_alert(self):
+        self.assertFalse(news.is_recent_breaking(
+            "Breaking the Iron Law", self.iso(timedelta(minutes=-10)),
+            "Bangladesh breaking news"
+        ))
+
     def test_recent_high_impact_event_from_direct_source_is_detected(self):
         self.assertTrue(news.is_recent_breaking(
             "ঢাকায় ভয়াবহ বিস্ফোরণ", self.iso(timedelta(minutes=-20)),
