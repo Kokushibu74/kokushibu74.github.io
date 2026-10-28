@@ -20,13 +20,14 @@
     #breaking-news-ticker:hover .bnt-track{animation-play-state:paused}
     #breaking-news-ticker .bnt-item{color:#e8f4ff;text-decoration:none;font:600 11px 'Outfit',sans-serif;letter-spacing:.005em;transition:color .18s ease}
     #breaking-news-ticker .bnt-track.is-single .bnt-item{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 14px;width:100%;animation:bntHeadlineIn .35s ease both}
-    #breaking-news-ticker .bnt-item:before{content:'↗';display:inline-flex;align-items:center;justify-content:center;color:#00f2fe;font-size:11px;font-weight:800;margin-right:10px;width:17px;height:17px;border-radius:50%;background:rgba(0,242,254,.09);border:1px solid rgba(0,242,254,.22)}
-    #breaking-news-ticker.is-breaking .bnt-item:before{content:'!';color:#ff6b88;background:rgba(255,55,95,.1);border-color:rgba(255,55,95,.28)}
+    #breaking-news-ticker .bnt-item:before{content:'';display:inline-block;vertical-align:middle;margin:0 10px 2px 0;width:6px;height:6px;border-radius:50%;background:#00f2fe;box-shadow:0 0 0 3px rgba(0,242,254,.12),0 0 10px rgba(0,242,254,.8);animation:bntHeadlineDot 1.25s ease-in-out infinite}
+    #breaking-news-ticker.is-breaking .bnt-item:before{background:#ff6b88;box-shadow:0 0 0 3px rgba(255,55,95,.13),0 0 10px rgba(255,55,95,.85)}
     #breaking-news-ticker .bnt-item:hover{color:#00f2fe}
     #breaking-news-ticker .bnt-empty{padding-left:14px;color:#94a3b8;font:500 11px 'Outfit',sans-serif}
     @media(max-width:420px){#breaking-news-ticker{height:38px}#breaking-news-ticker .bnt-label{gap:6px;padding:0 12px;font-size:9px;letter-spacing:.09em}#breaking-news-ticker .bnt-item{font-size:10px}}
     @keyframes bntMoveLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes bntPulse{50%{opacity:.25}}
+    @keyframes bntHeadlineDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.38;transform:scale(.72)}}
     @keyframes bntHeadlineIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
     @media(min-width:640px){#breaking-news-ticker{top:80px}}
     @media(prefers-reduced-motion:reduce){#breaking-news-ticker .bnt-track{animation:none!important;transform:none!important}#breaking-news-ticker .bnt-dot{animation:none}}
