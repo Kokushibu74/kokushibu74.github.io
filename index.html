@@ -415,13 +415,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 @media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
 </style>
 
-<style id="soft-home-connect-transition-v1">
-/* Blend the Home content into Let’s connect without changing its interaction effects. */
-footer.social-footer{border-top-color:transparent!important;background-color:rgba(5,7,11,.88)!important}
-footer.social-footer::after{content:"";position:absolute;z-index:1;pointer-events:none;left:0;right:0;top:0;height:clamp(72px,10vw,132px);background:linear-gradient(180deg,rgba(5,7,11,0),rgba(5,7,11,.42) 48%,rgba(5,7,11,.94) 100%)}
-footer.social-footer::before{z-index:0;background:radial-gradient(ellipse at 16% 0%,rgba(0,242,254,.10),transparent 54%),radial-gradient(ellipse at 84% 0%,rgba(127,0,255,.11),transparent 52%),radial-gradient(ellipse at 50% 0%,rgba(79,172,254,.055),transparent 62%),radial-gradient(ellipse at 15% 55%,rgba(0,242,254,.08),transparent 38%),radial-gradient(ellipse at 85% 30%,rgba(127,0,255,.09),transparent 36%)}
-@media(max-width:640px){footer.social-footer::after{height:78px}footer.social-footer{border-top-color:transparent!important}}
-</style>
+
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
