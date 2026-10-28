@@ -27,9 +27,9 @@ class NewsLogicTests(unittest.TestCase):
         b = {"title": "ঢাকায় জরুরি সংবাদ!", "source": "Source B"}
         self.assertEqual(news.key_for(a), news.key_for(b))
 
-    def test_explicit_recent_breaking_alert_is_detected(self):
+    def test_explicit_recent_high_impact_breaking_alert_is_detected(self):
         self.assertTrue(news.is_recent_breaking(
-            "Breaking News: major update", self.iso(timedelta(minutes=-10)),
+            "Breaking News: major fire breaks out in Dhaka", self.iso(timedelta(minutes=-10)),
             "Bangladesh breaking news"
         ))
 
