@@ -1,69 +1,70 @@
 <!doctype html>
 <html lang="en" class="dark">
 <head>
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXBD1454H8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-WXBD1454H8');
-</script>
-
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#05070b">
+<meta name="description" content="Selected projects by Shihabul Islam across AI, developer tools, digital media and automation.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Projects | Shihabul Islam</title>
+<link rel="stylesheet" href="shared-shell.css?v=3">
 <style>
 :root{color-scheme:dark;--bg:#05070b;--panel:rgba(13,17,26,.76);--cyan:#00f2fe;--blue:#4facfe;--muted:#929caf}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0,rgba(0,242,254,.10),transparent 36%),radial-gradient(ellipse at 100% 45%,rgba(127,0,255,.08),transparent 36%),var(--bg);color:#f5f7fc;font-family:Outfit,sans-serif;overflow-x:hidden}
-a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #ffffff18}.brand{font-weight:900;letter-spacing:.08em;text-decoration:none}.brand b{color:var(--cyan)}.links{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;color:#a8b1c2;transition:color .2s,transform .2s}.links a:hover,.links a.active{color:var(--cyan);transform:translateY(-2px)}.hero{padding:clamp(45px,8vw,82px) 0 32px}.kicker{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--cyan)}h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.045em;margin:14px 0;font-weight:900}.accent{color:var(--cyan)}.intro{max-width:680px;color:var(--muted);line-height:1.9;font-size:15px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:17px;margin:24px 0 70px}.card{position:relative;overflow:hidden;padding:25px;border:1px solid #ffffff16;border-radius:24px;background:linear-gradient(145deg,rgba(15,23,36,.9),rgba(6,11,20,.86));transition:transform .3s,border-color .3s,box-shadow .3s}.card:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),#7f00ff,transparent);transform:scaleX(0);transform-origin:left;transition:transform .35s}.card:hover{transform:translateY(-7px);border-color:#00f2fe75;box-shadow:0 18px 45px #00f2fe12}.card:hover:before{transform:scaleX(1)}.icon{display:grid;place-items:center;width:50px;height:50px;border:1px solid #00f2fe3b;border-radius:16px;background:#00f2fe10;color:var(--cyan);font-size:22px}.tag{font:10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--cyan)}h2{font-size:21px;margin:18px 0 10px}p.desc{font-size:13px;line-height:1.9;color:var(--muted)}.cta{display:inline-flex;align-items:center;gap:9px;padding:12px 18px;margin-top:10px;border-radius:999px;background:linear-gradient(120deg,var(--cyan),var(--blue));color:#041018;text-decoration:none;font-size:12px;font-weight:900;transition:transform .2s,box-shadow .2s}.cta:hover{transform:translateY(-3px);box-shadow:0 8px 28px #00f2fe35}.footer{border-top:1px solid #ffffff16;padding:24px 0 30px;color:#7f8a9f;font:10px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer a{color:#a8b1c2;text-decoration:none}.footer a:hover{color:var(--cyan)}@media(max-width:680px){.nav{padding:15px 0;align-items:flex-start;flex-direction:column}.links{gap:14px}.hero{padding-top:45px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-
-/* Project showcase upgrades */
-.project-preview{height:145px;margin:-25px -25px 20px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid #ffffff12;background:radial-gradient(circle at 50% 45%,rgba(0,242,254,.17),transparent 55%),linear-gradient(135deg,#101827,#080b13)}
-.project-preview:before,.project-preview:after{content:"";position:absolute;border:1px solid rgba(0,242,254,.18);border-radius:50%;width:170px;height:170px}
-.project-preview:after{width:230px;height:230px;border-color:rgba(127,0,255,.18)}
-.preview-core{position:relative;z-index:1;display:grid;place-items:center;width:66px;height:66px;border:1px solid #00f2fe55;border-radius:20px;background:rgba(0,242,254,.09);color:var(--cyan);font-size:28px;box-shadow:0 0 35px #00f2fe18}
-.project-state{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid #ffffff1c;border-radius:999px;color:#aeb8ca;font:9px 'JetBrains Mono',monospace}
-.project-state:before{content:"";width:6px;height:6px;border-radius:50%;background:#00f2fe;box-shadow:0 0 7px #00f2fe}
-.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0 4px}
-.project-tags span{padding:5px 8px;border:1px solid #ffffff14;border-radius:7px;background:#ffffff06;color:#aeb8ca;font:9px 'JetBrains Mono',monospace}
-.project-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
-.project-actions .cta{margin-top:0}
-.cta.secondary{background:transparent;border:1px solid #00f2fe45;color:#bafaff}
-.card{display:flex;flex-direction:column}
-@media(max-width:600px){.project-preview{margin:-25px -25px 18px;height:125px}}
-
-
-/* Donation button is intentionally Home-page only. */
-.subpage-donation{display:none!important}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 10% 0,rgba(0,242,254,.10),transparent 36%),radial-gradient(ellipse at 100% 45%,rgba(127,0,255,.08),transparent 36%),var(--bg);color:#f5f7fc;font-family:Outfit,sans-serif;overflow-x:hidden}a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #ffffff18}.brand{font-weight:900;letter-spacing:.08em;text-decoration:none}.brand b{color:var(--cyan)}.links{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;color:#a8b1c2;transition:color .2s,transform .2s}.links a:hover,.links a.active{color:var(--cyan);transform:translateY(-2px)}
+.hero{padding:clamp(45px,8vw,82px) 0 26px}.kicker{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--cyan)}h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.045em;margin:14px 0;font-weight:900}.accent{color:var(--cyan)}.intro{max-width:680px;color:var(--muted);line-height:1.9;font-size:15px}
+.gallery-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:24px 0 16px}.gallery-label{font:10px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#a6b2c7}.slider-controls{display:flex;align-items:center;gap:10px}.slider-count{min-width:58px;text-align:center;color:#8d9ab0;font:11px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}.slider-btn{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid #ffffff20;background:#0d1420;color:#dffcff;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}.slider-btn:hover:not(:disabled){background:#00f2fe16;border-color:#00f2fe8a;transform:translateY(-2px)}.slider-btn:disabled{opacity:.32;cursor:not-allowed}
+.project-gallery{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 24px;margin:0 -2px 32px;scrollbar-width:thin;scrollbar-color:#00f2fe55 transparent;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.project-gallery::-webkit-scrollbar{height:6px}.project-gallery::-webkit-scrollbar-thumb{background:#00f2fe55;border-radius:99px}.project-card{position:relative;display:flex;flex:0 0 calc((100% - 36px)/3);min-width:0;flex-direction:column;overflow:hidden;scroll-snap-align:start;border:1px solid #ffffff18;border-radius:24px;background:linear-gradient(145deg,rgba(15,23,36,.96),rgba(6,11,20,.96));transition:transform .3s,border-color .3s,box-shadow .3s}.project-card:hover{transform:translateY(-5px);border-color:#00f2fe75;box-shadow:0 18px 45px #00f2fe12}.project-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c1423;border-bottom:1px solid #ffffff14}.project-cover img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .4s}.project-card:hover .project-cover img{transform:scale(1.045);filter:saturate(1.08)}.cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,15,.03) 35%,rgba(3,7,15,.68) 100%);pointer-events:none}.cover-index{position:absolute;top:13px;left:13px;padding:6px 9px;border:1px solid #ffffff2a;border-radius:99px;background:#05070bb8;color:#e4faff;font:9px 'JetBrains Mono',monospace;backdrop-filter:blur(10px)}.cover-mark{position:absolute;right:15px;bottom:13px;color:#dffcff;font:10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-shadow:0 2px 10px #000}.card-content{display:flex;flex:1;flex-direction:column;padding:20px 21px 21px}.tag{font:10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--cyan)}h2{font-size:21px;line-height:1.25;margin:13px 0 8px;letter-spacing:-.02em}.desc{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0 4px}.project-tags span{padding:5px 8px;border:1px solid #ffffff14;border-radius:7px;background:#ffffff06;color:#aeb8ca;font:9px 'JetBrains Mono',monospace}.project-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:18px}.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 15px;border-radius:999px;background:linear-gradient(120deg,var(--cyan),var(--blue));color:#041018;text-decoration:none;font-size:11px;font-weight:900;transition:transform .2s,box-shadow .2s}.cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px #00f2fe35}.cta.secondary{background:transparent;border:1px solid #00f2fe45;color:#bafaff}.gallery-dots{display:flex;justify-content:center;gap:7px;margin:-16px 0 58px}.gallery-dot{width:7px;height:7px;padding:0;border:0;border-radius:20px;background:#536075;cursor:pointer;transition:width .2s,background .2s}.gallery-dot[aria-current=true]{width:24px;background:var(--cyan)}.empty-state{padding:30px;border:1px solid #ffffff18;border-radius:20px;color:var(--muted);text-align:center}.footer{border-top:1px solid #ffffff16;padding:24px 0 30px;color:#7f8a9f;font:10px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer a{color:#a8b1c2;text-decoration:none}.footer a:hover{color:var(--cyan)}.subpage-donation{display:none!important}
+@media(min-width:1200px){.project-card{flex-basis:calc((100% - 36px)/3)}}@media(max-width:900px){.project-card{flex-basis:calc((100% - 18px)/2)}}@media(max-width:600px){.wrap{width:min(100% - 24px,1100px)}.nav{padding:15px 0;align-items:flex-start;flex-direction:column}.links{gap:14px}.hero{padding-top:42px}.gallery-head{align-items:flex-end}.project-card{flex-basis:min(86%,360px);border-radius:21px}.card-content{padding:18px}.project-cover{aspect-ratio:16/9}.slider-btn{width:38px;height:38px}.gallery-dots{margin-bottom:42px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
-<title>Projects | Shihabul Islam</title><meta name="description" content="Selected projects by Shihabul Islam: MEMO WhatsApp AI, Termux Tool OS, Media Studio, and Lo-Fi World automation.">
-
-
-<link rel="stylesheet" href="shared-shell.css?v=3">
-</head><body><header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a class="" href="about.html">About</a><a class="" href="expertise.html">Expertise</a><a class="active" href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header><main class="wrap"><section class="hero"><p class="kicker">03 / SELECTED WORK</p><h1>Projects I’m<br><span class="accent">building.</span></h1><p class="intro">A collection of experiments and practical tools across personal AI, Android development, digital media, and automation.</p></section><section class="grid" aria-label="Project portfolio">
-<article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-comments"></i></span></div><span class="project-state">AI ASSISTANT</span><p class="tag">01 / MESSAGING</p><h2>MEMO — WhatsApp AI</h2><p class="desc">A personal WhatsApp AI assistant exploring model integrations, messaging, and automation.</p><div class="project-tags"><span>AI integration</span><span>Messaging</span><span>Automation</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74/MEMO" target="_blank" rel="noopener noreferrer">Source Code </a></div></article>
-<article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-terminal"></i></span></div><span class="project-state">DEVELOPER TOOL</span><p class="tag">02 / ANDROID · CLI</p><h2>Termux Tool OS</h2><p class="desc">A dashboard concept for developer utilities, terminal workflows, and project management on Android.</p><div class="project-tags"><span>Android</span><span>Termux</span><span>CLI workflows</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer">Explore GitHub </a></div></article>
-<article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-photo-film"></i></span></div><span class="project-state">CREATIVE TOOLS</span><p class="tag">03 / DIGITAL MEDIA</p><h2>Media Studio</h2><p class="desc">A creative project for digital media workflows and content experiences.</p><div class="project-tags"><span>Media</span><span>Creative workflow</span><span>Web</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74/media-studio" target="_blank" rel="noopener noreferrer">Source Code </a></div></article>
-<article class="card"><div class="project-preview"><span class="preview-core"><i class="fa-solid fa-music"></i></span></div><span class="project-state">VIDEO WORKFLOW</span><p class="tag">04 / CONTENT AUTOMATION</p><h2>Lo-Fi World Automation</h2><p class="desc">An ongoing workflow project around lo-fi music content and YouTube publishing.</p><div class="project-tags"><span>Lo-fi</span><span>YouTube</span><span>Automation</span></div><div class="project-actions"><a class="cta" href="https://github.com/Kokushibu74/lo-fi-world-automation" target="_blank" rel="noopener noreferrer">Source Code </a><a class="cta secondary" href="https://www.youtube.com/@lo-fi_world-x3w" target="_blank" rel="noopener noreferrer">YouTube </a></div></article>
-</section></main><footer class="wrap footer"><span>© 2026 Shihabul Islam · Built with curiosity.</span><span><a href="./">Back to home ↑</a></span>
-  </footer>
+</head>
+<body>
+<header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a class="active" href="projects.html" aria-current="page">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
+<main class="wrap">
+<section class="hero"><p class="kicker">03 / SELECTED WORK</p><h1>Projects I’m<br><span class="accent">building.</span></h1><p class="intro">A collection of experiments and practical tools across personal AI, developer utilities, digital media, and automation. Swipe through the work and open a project to explore it.</p></section>
+<div class="gallery-head"><span class="gallery-label">PROJECT GALLERY <span aria-hidden="true">/</span> <span id="project-total">LOADING</span></span><div class="slider-controls"><span class="slider-count" id="slider-count" aria-live="polite">01 / 05</span><button class="slider-btn" id="gallery-prev" type="button" aria-label="Previous projects"><i class="fa-solid fa-arrow-left"></i></button><button class="slider-btn" id="gallery-next" type="button" aria-label="Next projects"><i class="fa-solid fa-arrow-right"></i></button></div></div>
+<section class="project-gallery" id="project-gallery" aria-label="Project portfolio" tabindex="0"><div class="empty-state">Loading projects…</div></section><div class="gallery-dots" id="gallery-dots" aria-label="Choose project slide"></div>
+</main>
+<footer class="wrap footer"><span>© 2026 Shihabul Islam · Built with curiosity.</span><span><a href="./">Back to home ↑</a></span></footer>
 <script>
-(async function(){
-  const grid=document.querySelector("main .grid");
-  if(!grid)return;
-  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  try{
-    const response=await fetch("site-data.json?projects="+Date.now(),{cache:"no-store"});
-    if(!response.ok)throw new Error("Project data unavailable");
-    const data=await response.json();
-    if(!Array.isArray(data.projects))return;
-    grid.innerHTML=data.projects.map((p,i)=>'<article class="card"><span class="tag">'+esc(p.tag||"PROJECT")+' / '+String(i+1).padStart(2,"0")+'</span><h2>'+esc(p.name||"Project")+'</h2><p class="desc">'+esc(p.desc||"")+'</p><a class="cta" href="'+esc(p.link||"#")+'" target="_blank" rel="noopener noreferrer">View project</a></article>').join("");
-  }catch(error){console.warn("Using built-in project list:",error)}
+(function(){
+"use strict";
+const gallery=document.getElementById("project-gallery"),prev=document.getElementById("gallery-prev"),next=document.getElementById("gallery-next"),count=document.getElementById("slider-count"),total=document.getElementById("project-total"),dots=document.getElementById("gallery-dots");
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const known=[
+{name:"Multi-AI — AI Chat & Memory",match:/multi.?ai/i,cover:"storage/projects/multi-ai.svg",tag:"MULTI-MODEL AI",category:"01 / AI CHAT",tags:["AI chat","Memory","Voice"],linkFallback:"https://kokushibu74.github.io/Multi-Ai",mark:"CHAT · REMEMBER · SPEAK"},
+{name:"API Tester",match:/api tester/i,cover:"storage/projects/api-tester.svg",tag:"DEVELOPER TOOL",category:"02 / API UTILITIES",tags:["API testing","Diagnostics","Models"],linkFallback:"https://github.com/Kokushibu74/API-TESTER-",mark:"REQUEST · INSPECT · VERIFY"},
+{name:"MEMO — WhatsApp AI",match:/memo|whatsapp/i,cover:"storage/projects/memo.svg",tag:"AI ASSISTANT",category:"03 / MESSAGING",tags:["AI integration","Messaging","Automation"],linkFallback:"https://github.com/Kokushibu74/MEMO",mark:"PERSONAL AI · WHATSAPP"},
+{name:"Media Studio",match:/media studio/i,cover:"storage/projects/media-studio.svg",tag:"CREATIVE TOOLS",category:"04 / DIGITAL MEDIA",tags:["Media","Creative workflow","Web"],linkFallback:"https://github.com/Kokushibu74/media-studio",mark:"CREATE · EDIT · SHIP"},
+{name:"Lo-Fi World Automation",match:/lo.?fi|automation/i,cover:"storage/projects/lofi-automation.svg",tag:"VIDEO WORKFLOW",category:"05 / CONTENT AUTOMATION",tags:["Lo-fi","YouTube","Automation"],linkFallback:"https://www.youtube.com/@Lo-Fi_World-x3w",mark:"MUSIC · VIDEO · AUTOMATION"}
+];
+let cards=[],active=0,resizeFrame=0;
+function getMeta(p){return known.find(k=>k.match.test(p.name||""))||{tag:p.tag||"PROJECT",category:"SELECTED WORK",tags:["Project","Development"],cover:"storage/projects/multi-ai.svg",linkFallback:"#",mark:"BUILD · TEST · REFINE"}}
+function render(projects){
+ if(!Array.isArray(projects)||!projects.length)throw new Error("No projects found");
+ gallery.innerHTML=projects.map((p,i)=>{const m=getMeta(p),link=p.link||m.linkFallback;return '<article class="project-card"><div class="project-cover"><img src="'+esc(m.cover)+'" alt="'+esc((p.name||m.tag)+" project cover")+'" loading="'+(i<2?"eager":"lazy")+'" width="1200" height="675"><span class="cover-overlay"></span><span class="cover-index">'+String(i+1).padStart(2,"0")+' / '+String(projects.length).padStart(2,"0")+'</span><span class="cover-mark">'+esc(m.mark)+'</span></div><div class="card-content"><span class="tag">'+esc(m.tag||p.tag||"PROJECT")+'</span><h2>'+esc(p.name||m.name||"Project")+'</h2><p class="desc">'+esc(p.desc||"A project exploring useful digital experiences.")+'</p><div class="project-tags">'+m.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div><div class="project-actions"><a class="cta" href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">Explore project <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div></article>'}).join("");
+ cards=Array.from(gallery.querySelectorAll(".project-card"));total.textContent=String(cards.length).padStart(2,"0")+" PROJECTS";
+ dots.innerHTML=cards.map((_,i)=>'<button type="button" class="gallery-dot" aria-label="Go to project '+(i+1)+'" aria-current="'+(i===0?'true':'false')+'" data-index="'+i+'"></button>').join("");
+ dots.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>go(Number(b.dataset.index))));
+ active=0;update();
+}
+function stepSize(){if(cards.length<2)return 0;const a=cards[0].getBoundingClientRect(),b=cards[1].getBoundingClientRect();return b.left-a.left}
+function update(){if(!cards.length)return;const max=Math.max(0,gallery.scrollWidth-gallery.clientWidth-2);prev.disabled=gallery.scrollLeft<=2;next.disabled=gallery.scrollLeft>=max-2;let closest=0,best=Infinity;cards.forEach((c,i)=>{const dist=Math.abs(c.offsetLeft-gallery.offsetLeft-gallery.scrollLeft);if(dist<best){best=dist;closest=i}});active=closest;count.textContent=String(active+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");dots.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",String(i===active)))}
+function go(i){if(!cards.length)return;const target=Math.max(0,Math.min(cards.length-1,i));gallery.scrollTo({left:cards[target].offsetLeft-gallery.offsetLeft,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});active=target;update()}
+prev.addEventListener("click",()=>go(active-1));next.addEventListener("click",()=>go(active+1));
+gallery.addEventListener("scroll",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(update)},{passive:true});
+gallery.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(active+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(active-1)}});
+window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(update)});
+async function start(){try{const r=await fetch("site-data.json?projects="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("Project data unavailable");const data=await r.json();render(data.projects)}catch(e){console.warn("Using built-in project list:",e);render([
+{tag:"MULTI-MODEL AI",name:"Multi-AI — AI Chat & Memory",desc:"A multilingual AI chat interface with voice features, portfolio knowledge, and a backend for persistent memory.",link:"https://kokushibu74.github.io/Multi-Ai"},
+{tag:"DEVELOPER TOOL / API",name:"API Tester",desc:"A lightweight tool for testing AI API keys and models, with clear diagnostics for connection and response issues.",link:"https://github.com/Kokushibu74/API-TESTER-"},
+{tag:"AI ASSISTANT / WHATSAPP",name:"MEMO — WhatsApp AI",desc:"A personal WhatsApp AI assistant exploring model integrations, messaging, and automation.",link:"https://github.com/Kokushibu74/MEMO"},
+{tag:"CREATIVE TOOLS",name:"Media Studio",desc:"A creative project for digital media workflows and content experiences.",link:"https://github.com/Kokushibu74/media-studio"},
+{tag:"VIDEO / LO-FI WORKFLOW",name:"Lo-Fi World Automation",desc:"An ongoing workflow project around lo-fi music content and YouTube publishing.",link:"https://www.youtube.com/@lo-fi_world-x3w"}
+])}}
+start();
 })();
 </script>
-
-
 <script src="shared-shell.js?v=4" defer></script>
 </body></html>
