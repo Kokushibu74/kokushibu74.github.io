@@ -146,7 +146,7 @@ def is_recent_breaking(title, published, query, source=""):
         if BREAKING_FOLLOWUP_RE.search(title):
             return False
         # Anniversary/retrospective coverage is not a live breaking event.
-        if re.search(r"(?:বার্ষিকী|২০\\s*বছর|বিশ\\s*বছর|আগে যা যা ঘটেছিল|পেছন ফিরে|স্মরণে|anniversary|years? ago|what happened before|look back)", title, re.I):
+        if re.search(r"(?:বার্ষিকী|২০\s*বছর|বিশ\s*বছর|আগে যা যা ঘটেছিল|পেছন ফিরে|স্মরণে|anniversary|years? ago|what happened before|look back)", title, re.I):
             return False
         # Google News query results are noisy: require an actual high-impact event
         # phrase, even when the query or title says "breaking news".
