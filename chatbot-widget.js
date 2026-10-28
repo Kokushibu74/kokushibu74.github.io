@@ -11,7 +11,7 @@ const close=panel.querySelector('.portfolio-chat-close');
 const frame=document.getElementById('portfolio-chat-frame');
 let loaded=false,reactionTimer=0;
 function react(){launch.classList.add('is-reacting');window.clearTimeout(reactionTimer);reactionTimer=window.setTimeout(()=>launch.classList.remove('is-reacting'),650)}
-function setOpen(open){panel.classList.toggle('is-open',open);launch.setAttribute('aria-expanded',String(open));launch.setAttribute('aria-label',open?'Close portfolio chatbot':'Open portfolio chatbot');if(open&&!loaded){frame.src='chatbot.html?v=2';loaded=true}if(open)react()}
+function setOpen(open){panel.classList.toggle('is-open',open);launch.setAttribute('aria-expanded',String(open));launch.setAttribute('aria-label',open?'Close portfolio chatbot':'Open portfolio chatbot');if(open&&!loaded){frame.src='chatbot.html?v=3';loaded=true}if(open)react()}
 launch.addEventListener('click',()=>setOpen(!panel.classList.contains('is-open')));
 launch.addEventListener('pointerenter',react,{passive:true});
 launch.addEventListener('pointerdown',react,{passive:true});
