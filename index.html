@@ -1149,5 +1149,72 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 
 
   <script src="chatbot-widget.js?v=2" defer></script>
+
+<style id="hero-typewriter-experiences-style-v1">
+  #home .hero-typewriter-text { display:inline; }
+  #home .hero-typewriter-text::after { content:""; display:inline-block; width:2px; height:.82em; margin-left:.08em; vertical-align:-.03em; background:#00e5ff; box-shadow:0 0 9px rgba(0,229,255,.7); animation:heroTypeCursor .72s steps(1,end) infinite; }
+  #home .hero-typewriter-text.is-done::after { display:none; }
+  @keyframes heroTypeCursor { 50% { opacity:0; } }
+  @media(prefers-reduced-motion:reduce) { #home .hero-typewriter-text::after { display:none; } }
+</style>
+<script id="hero-typewriter-experiences-v1">
+(() => {
+  const phrase = "experiences with purpose.";
+  let finished = false;
+  const apply = () => {
+    if (finished) return;
+    const heading = document.querySelector("#home h1");
+    if (!heading || !heading.textContent.includes(phrase)) return;
+    const fullText = heading.textContent;
+    const start = fullText.indexOf(phrase);
+    const end = start + phrase.length;
+    const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let node, offset = 0, startNode = null, startOffset = 0, endNode = null, endOffset = 0;
+    while ((node = walker.nextNode())) {
+      const nextOffset = offset + node.nodeValue.length;
+      nodes.push(node);
+      if (!startNode && start >= offset && start < nextOffset) {
+        startNode = node; startOffset = start - offset;
+      }
+      if (end > offset && end <= nextOffset) {
+        endNode = node; endOffset = end - offset; break;
+      }
+      offset = nextOffset;
+    }
+    if (!startNode || !endNode) return;
+    finished = true;
+    const range = document.createRange();
+    range.setStart(startNode, startOffset);
+    range.setEnd(endNode, endOffset);
+    const span = document.createElement("span");
+    span.className = "hero-typewriter-text";
+    span.setAttribute("aria-label", phrase);
+    range.deleteContents();
+    range.insertNode(span);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      span.textContent = phrase;
+      span.classList.add("is-done");
+      return;
+    }
+    let index = 0;
+    const typeNext = () => {
+      index++;
+      span.textContent = phrase.slice(0, index);
+      if (index < phrase.length) window.setTimeout(typeNext, 48);
+      else span.classList.add("is-done");
+    };
+    span.textContent = "";
+    window.setTimeout(typeNext, 260);
+  };
+  apply();
+  const observer = new MutationObserver(() => {
+    apply();
+    if (finished) observer.disconnect();
+  });
+  if (!finished && document.body) observer.observe(document.body, { childList:true, subtree:true, characterData:true });
+})();
+</script>
+
 </body>
 </html>
