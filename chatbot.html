@@ -55,6 +55,7 @@ button{border:0;border-radius:12px;padding:10px 13px;font:inherit;font-weight:75
  function saveHistory(){try{let payload=JSON.stringify({version:1,messages:history.slice(-60),contactFlow});while(payload.length>85000&&history.length>2){history.shift();payload=JSON.stringify({version:1,messages:history,contactFlow})}localStorage.setItem(HISTORY_KEY,payload)}catch(e){}}
  let messages=[{role:'system',content:system},...history.filter(m=>m.context!==false).slice(-14).map(m=>({role:m.role,content:m.content}))];
  function renderBotText(el,text){
+  el.replaceChildren();
   const lines=String(text).replace(/\r/g,'').split('\n');let list=null,paragraph=[];
   function inline(parent,s){
    const re=/\*\*(.+?)\*\*|\*(.+?)\*|\x60([^\x60]+)\x60|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<]+)/g;let last=0,m;
