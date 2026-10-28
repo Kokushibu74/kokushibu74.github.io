@@ -102,8 +102,10 @@ def child_text(node, *names):
     child = child_element(node, *names)
     if child is None:
         return ""
-    # Atom links store the URL in href rather than text.
-    return (child.attrib.get("href", "") if local_name(child.tag) == "link" else (child.text or "")).strip()
+    # Atom links store the URL in href; RSS links usually store it as text.
+    if local_name(child.tag) == "link":
+        return (child.attrib.get("href", "") or child.text or "").strip()
+    return (child.text or "").strip()
 
 
 def feed_items(root):
