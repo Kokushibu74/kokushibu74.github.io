@@ -24,6 +24,20 @@
 .gallery-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:24px 0 16px}.gallery-label{font:10px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#a6b2c7}.slider-controls{display:flex;align-items:center;gap:10px}.slider-count{min-width:58px;text-align:center;color:#8d9ab0;font:11px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}.slider-btn{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid #ffffff20;background:#0d1420;color:#dffcff;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}.slider-btn:hover:not(:disabled){background:#00f2fe16;border-color:#00f2fe8a;transform:translateY(-2px)}.slider-btn:disabled{opacity:.32;cursor:not-allowed}
 .project-gallery{display:flex;align-items:stretch;gap:18px;overflow-x:auto;overflow-y:visible;perspective:1400px;transform-style:preserve-3d;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:24px 2px 32px;margin:0 -2px 24px;scrollbar-width:thin;scrollbar-color:#00f2fe55 transparent;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.project-gallery::-webkit-scrollbar{height:6px}.project-gallery::-webkit-scrollbar-thumb{background:#00f2fe55;border-radius:99px}.project-card{position:relative;display:flex;flex:0 0 calc((100% - 36px)/3);min-width:0;flex-direction:column;overflow:hidden;scroll-snap-align:center;transform-origin:center center;transform-style:preserve-3d;backface-visibility:hidden;border:1px solid #ffffff18;border-radius:24px;background:linear-gradient(145deg,rgba(15,23,36,.96),rgba(6,11,20,.96));transition:transform .48s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,filter .3s;filter:saturate(.78) brightness(.78);}.project-card.is-active{transform:translateY(-7px) translateZ(55px) scale(1.035);filter:saturate(1.08) brightness(1);border-color:#00f2fe9c;box-shadow:0 24px 60px #00f2fe20,0 0 0 1px #00f2fe18}.project-card.is-prev{transform:perspective(900px) rotateY(13deg) translateX(7px) scale(.91);filter:saturate(.8) brightness(.8);box-shadow:12px 16px 35px #0007}.project-card.is-next{transform:perspective(900px) rotateY(-13deg) translateX(-7px) scale(.91);filter:saturate(.8) brightness(.8);box-shadow:-12px 16px 35px #0007}.project-card.is-far{transform:rotateY(0) scale(.88) translateZ(-70px);filter:saturate(.55) brightness(.58)}.project-card:hover{border-color:#00f2fe75}.project-card.is-active:hover{transform:translateY(-10px) translateZ(65px) scale(1.045)}.project-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c1423;border-bottom:1px solid #ffffff14}.project-cover img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .4s}.project-card:hover .project-cover img{transform:scale(1.045);filter:saturate(1.08)}.cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,15,.03) 35%,rgba(3,7,15,.68) 100%);pointer-events:none}.cover-index{position:absolute;top:13px;left:13px;padding:6px 9px;border:1px solid #ffffff2a;border-radius:99px;background:#05070bb8;color:#e4faff;font:9px 'JetBrains Mono',monospace;backdrop-filter:blur(10px)}.cover-mark{position:absolute;right:15px;bottom:13px;color:#dffcff;font:10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-shadow:0 2px 10px #000}.card-content{display:flex;flex:1;flex-direction:column;padding:20px 21px 21px}.tag{font:10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--cyan)}h2{font-size:21px;line-height:1.25;margin:13px 0 8px;letter-spacing:-.02em}.desc{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0 4px}.project-tags span{padding:5px 8px;border:1px solid #ffffff14;border-radius:7px;background:#ffffff06;color:#aeb8ca;font:9px 'JetBrains Mono',monospace}.project-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:18px}.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 15px;border-radius:999px;background:linear-gradient(120deg,var(--cyan),var(--blue));color:#041018;text-decoration:none;font-size:11px;font-weight:900;transition:transform .2s,box-shadow .2s}.cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px #00f2fe35}.cta.secondary{background:transparent;border:1px solid #00f2fe45;color:#bafaff}.gallery-dots{display:flex;justify-content:center;gap:7px;margin:-16px 0 58px}.gallery-dot{width:7px;height:7px;padding:0;border:0;border-radius:20px;background:#536075;cursor:pointer;transition:width .2s,background .2s}.gallery-dot[aria-current=true]{width:24px;background:var(--cyan)}.empty-state{padding:30px;border:1px solid #ffffff18;border-radius:20px;color:var(--muted);text-align:center}.footer{border-top:1px solid #ffffff16;padding:24px 0 30px;color:#7f8a9f;font:10px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer a{color:#a8b1c2;text-decoration:none}.footer a:hover{color:var(--cyan)}.subpage-donation{display:none!important}
 @media(min-width:1200px){.project-card{flex-basis:calc((100% - 36px)/3)}}@media(max-width:900px){.project-card{flex-basis:calc((100% - 18px)/2)}}@media(max-width:600px){.wrap{width:min(100% - 24px,1100px)}.nav{padding:15px 0;align-items:flex-start;flex-direction:column}.links{gap:14px}.hero{padding-top:42px}.gallery-head{align-items:flex-end}.project-card{flex-basis:min(82%,360px);border-radius:21px}.project-card.is-prev{transform:perspective(700px) rotateY(10deg) translateX(4px) scale(.9)}.project-card.is-next{transform:perspective(700px) rotateY(-10deg) translateX(-4px) scale(.9)}.card-content{padding:18px}.project-cover{aspect-ratio:16/9}.slider-btn{width:38px;height:38px}.gallery-dots{margin-bottom:42px}}
+/* Cosmic Planet cinematic orbit gallery — isolated to this page's project gallery */
+.project-gallery{position:relative;display:grid;align-items:stretch;gap:0;overflow:hidden;overflow:clip;overflow-y:visible;perspective:1600px;transform-style:preserve-3d;padding:28px 0 36px;margin:0 0 24px;scroll-snap-type:none;scroll-behavior:auto;scrollbar-width:none;touch-action:pan-y;isolation:isolate}
+.project-gallery::-webkit-scrollbar{display:none}
+.project-card{grid-area:1/1;justify-self:center;width:calc((100% - 36px)/3);flex:none;min-width:0;opacity:0;pointer-events:none;transform-origin:center center;will-change:transform,opacity;transition:transform .78s cubic-bezier(.2,.75,.2,1),opacity .58s ease,filter .58s ease,border-color .35s,box-shadow .58s;backface-visibility:hidden}
+.project-card.is-active{filter:saturate(1.16) brightness(1.06);border-color:#72edffcc;box-shadow:0 28px 85px #00d9ff27,0 0 34px #5a5bff1b,inset 0 0 0 1px #ffffff08}
+.project-card.is-active:before{content:"";position:absolute;inset:-1px;z-index:2;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,#7ceeff20,transparent 32%,transparent 70%,#9a70ff1a);opacity:.9}
+.project-cover:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 110%,#4a9fff20,transparent 62%);mix-blend-mode:screen}
+.gallery-label{color:#9befff}
+.gallery-dots{gap:8px}
+.gallery-dot{transition:width .35s ease,background .35s ease,box-shadow .35s ease}
+.gallery-dot[aria-current=true]{box-shadow:0 0 14px #00f2fe85}
+.slider-btn{box-shadow:0 0 0 1px #ffffff04,inset 0 0 20px #65dfff05}
+@media(max-width:900px){.project-card{width:calc((100% - 18px)/2)}}
+@media(max-width:600px){.project-gallery{padding:20px 0 30px;margin-bottom:18px}.project-card{width:min(82%,360px)}.project-card .card-content{padding:18px}.project-card .project-actions{padding-top:16px}.project-card.is-active{box-shadow:0 20px 52px #00d9ff25,0 0 25px #5a5bff19}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -57,12 +71,42 @@ function render(projects){
  dots.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>go(Number(b.dataset.index))));
  active=0;go(0);
 }
-function update(){if(!cards.length)return;const box=gallery.getBoundingClientRect(),center=box.left+box.width/2;let closest=0,best=Infinity;cards.forEach((c,i)=>{const r=c.getBoundingClientRect(),dist=Math.abs(r.left+r.width/2-center);if(dist<best){best=dist;closest=i}});active=closest;cards.forEach((c,i)=>{c.classList.toggle("is-active",i===active);c.classList.toggle("is-prev",i===active-1);c.classList.toggle("is-next",i===active+1);c.classList.toggle("is-far",Math.abs(i-active)>1)});const max=Math.max(0,gallery.scrollWidth-gallery.clientWidth-2);prev.disabled=active===0;next.disabled=active===cards.length-1;count.textContent=String(active+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");dots.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",String(i===active)))}
-function go(i){if(!cards.length)return;const target=Math.max(0,Math.min(cards.length-1,i));const card=cards[target];const left=card.offsetLeft-(gallery.clientWidth-card.clientWidth)/2;gallery.scrollTo({left:Math.max(0,left),behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});active=target;cards.forEach((c,i)=>{c.classList.toggle("is-active",i===target);c.classList.toggle("is-prev",i===target-1);c.classList.toggle("is-next",i===target+1);c.classList.toggle("is-far",Math.abs(i-target)>1)});count.textContent=String(target+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");dots.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",String(i===target)))}
+function update(){if(!cards.length)return;layoutCards(active,false)}
+function layoutCards(index,animate=true){
+ if(!cards.length)return;
+ active=((index%cards.length)+cards.length)%cards.length;
+ const mobile=matchMedia("(max-width: 600px)").matches;
+ const cardWidth=cards[active].getBoundingClientRect().width||gallery.clientWidth*.8;
+ const step=cardWidth*(mobile?.88:.78)+(mobile?0:18);
+ const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ cards.forEach((card,i)=>{
+  let offset=((i-active+cards.length/2)%cards.length+cards.length)%cards.length-Math.floor(cards.length/2);
+  if(cards.length%2===0&&offset===-cards.length/2)offset=cards.length/2;
+  const distance=Math.abs(offset),scale=distance===0?1:distance===1?.91:distance===2?.79:.68;
+  const opacity=distance===0?1:distance===1?.88:distance===2?.34:0;
+  const rotate=offset*(mobile?-11:-16);
+  card.classList.toggle("is-active",distance===0);
+  card.classList.toggle("is-prev",offset===-1);
+  card.classList.toggle("is-next",offset===1);
+  card.classList.toggle("is-far",distance>1);
+  card.style.zIndex=String(20-distance);
+  card.style.opacity=String(opacity);
+  card.style.pointerEvents=distance<=1?"auto":"none";
+  card.style.transform="translateX("+(offset*step)+"px) translateZ("+(-distance*(mobile?48:82))+"px) rotateY("+rotate+"deg) scale("+scale+")";
+  card.setAttribute("aria-label",(i+1)+" of "+cards.length);
+ });
+ prev.disabled=false;next.disabled=false;
+ count.textContent=String(active+1).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0");
+ dots.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",String(i===active)));
+}
+function go(i){layoutCards(i,true)}
 prev.addEventListener("click",()=>go(active-1));next.addEventListener("click",()=>go(active+1));
-gallery.addEventListener("scroll",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(update)},{passive:true});
 gallery.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(active+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(active-1)}});
-window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(update)});
+let pointerStart=null;
+gallery.addEventListener("pointerdown",e=>{pointerStart={x:e.clientX,y:e.clientY,id:e.pointerId}},{passive:true});
+gallery.addEventListener("pointerup",e=>{if(!pointerStart)return;const dx=e.clientX-pointerStart.x,dy=e.clientY-pointerStart.y;pointerStart=null;if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.2)go(active+(dx<0?1:-1))},{passive:true});
+gallery.addEventListener("pointercancel",()=>{pointerStart=null},{passive:true});
+window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>layoutCards(active,false))});
 async function start(){try{const r=await fetch("site-data.json?projects="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("Project data unavailable");const data=await r.json();render(data.projects)}catch(e){console.warn("Using built-in project list:",e);render([
 {tag:"MULTI-MODEL AI",name:"Multi-AI — AI Chat & Memory",desc:"A multilingual AI chat interface with voice features, portfolio knowledge, and a backend for persistent memory.",link:"https://kokushibu74.github.io/Multi-Ai"},
 {tag:"DEVELOPER TOOL / API",name:"API Tester",desc:"A lightweight tool for testing AI API keys and models, with clear diagnostics for connection and response issues.",link:"https://github.com/Kokushibu74/API-TESTER-"},
