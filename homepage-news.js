@@ -65,7 +65,7 @@
           const stamp=new Date(x.publishedAt).getTime();
           const age=now-stamp;
           if(!Number.isFinite(stamp)||age>36*60*60*1000||age < -5*60*1000)return false;
-          const key=String(x.title).toLocaleLowerCase().replace(/[^\\p{L}\\p{N}]+/gu," ").trim();
+          const key=String(x.title).toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
           if(!key||seenTitles.has(key))return false;
           seenTitles.add(key);
           return true;
