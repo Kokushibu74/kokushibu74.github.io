@@ -402,6 +402,18 @@
     }
   </style>
   <link rel="stylesheet" href="chatbot-widget.css?v=1">
+
+<style id="hybrid-cosmic-background-v1">
+/* Hybrid Cosmic Energy: cinematic on Home, restrained on content pages. */
+html{background:#05070b}
+body{position:relative;isolation:isolate}
+body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;opacity:.52;background:radial-gradient(ellipse at 14% 18%,rgba(0,242,254,.115) 0%,transparent 34%),radial-gradient(ellipse at 83% 36%,rgba(127,0,255,.105) 0%,transparent 35%),radial-gradient(ellipse at 54% 90%,rgba(79,172,254,.065) 0%,transparent 38%);background-size:135% 135%;animation:hybridCosmicDrift 26s ease-in-out infinite alternate;will-change:background-position}
+@keyframes hybridCosmicDrift{0%{background-position:0% 0%}50%{background-position:55% 35%}100%{background-position:100% 70%}}
+/* Home gets the richer cinematic glow; other pages keep text and cards dominant. */
+body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24%,rgba(0,242,254,.17) 0%,transparent 36%),radial-gradient(ellipse at 82% 44%,rgba(127,0,255,.15) 0%,transparent 38%),radial-gradient(ellipse at 48% 88%,rgba(79,172,254,.08) 0%,transparent 42%);background-size:150% 150%;animation-duration:22s}
+@media(max-width:640px){body::before{opacity:.34;background-size:120% 120%;animation-duration:34s}body:has(#home)::before{opacity:.48;animation-duration:30s}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
+</style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
