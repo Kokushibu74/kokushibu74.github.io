@@ -51,7 +51,7 @@ BREAKING_EVENT_RE = re.compile(
     r"(?:নিহত|মারা গেছেন|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
     r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
     r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
-    r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষ(?:ে নিহত|ে আহত)?|গুলিতে নিহত|গুলি চালনা|"
+    r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
     r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
@@ -144,6 +144,9 @@ def is_recent_breaking(title, published, query, source=""):
         if not (timedelta(minutes=-5) <= age <= timedelta(minutes=45)):
             return False
         if BREAKING_FOLLOWUP_RE.search(title):
+            return False
+        # Anniversary/retrospective coverage is not a live breaking event.
+        if re.search(r"(?:বার্ষিকী|২০\\s*বছর|বিশ\\s*বছর|আগে যা যা ঘটেছিল|পেছন ফিরে|স্মরণে|anniversary|years? ago|what happened before|look back)", title, re.I):
             return False
         # Google News query results are noisy: require an actual high-impact event
         # phrase, even when the query or title says "breaking news".
