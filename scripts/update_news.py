@@ -240,8 +240,12 @@ def publisher_metadata(url):
         canonical = parser.canonical or final_url
         if not canonical.startswith("https://"):
             canonical = final_url
+        publisher_name = clean(meta.get("og:site_name") or meta.get("application-name") or final.hostname or "")
+        if publisher_name.startswith("www."):
+            publisher_name = publisher_name[4:]
         return {
             "publisherUrl": canonical,
+            "publisherName": publisher_name[:120],
             "previewTitle": title[:260],
             "previewSummary": summary[:700],
             "previewImage": image,
@@ -317,7 +321,7 @@ def main():
 
     # Reuse publisher metadata from the last feed run for unchanged stories.
     old_metadata = {key_for(item): item for item in previous}
-    preview_fields = ("publisherUrl", "previewTitle", "previewSummary", "previewImage", "iframeAllowed", "previewCheckedAt")
+    preview_fields = ("publisherUrl", "publisherName", "previewTitle", "previewSummary", "previewImage", "previewScreenshot", "iframeAllowed", "previewCheckedAt")
     for item in collected:
         cached = old_metadata.get(key_for(item), {})
         for field in preview_fields:
@@ -346,6 +350,7 @@ def main():
             enriched += 1
         else:
             # Keep the direct publisher link and RSS summary when publisher pages block bots.
+            item.setdefault("publisherName", item.get("source", "Original publisher"))
             item.setdefault("previewTitle", item.get("title", ""))
             item.setdefault("previewSummary", item.get("summary", ""))
             item.setdefault("previewImage", item.get("image", ""))
