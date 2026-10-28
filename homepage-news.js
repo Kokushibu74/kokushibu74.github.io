@@ -41,20 +41,16 @@
     const bar=document.createElement("div");bar.id="breaking-news-ticker";bar.setAttribute("aria-label","News headlines");
     bar.innerHTML='<div class="bnt-label"><span class="bnt-dot"></span><span id="bnt-label-text" class="bnt-label-text">NEWS</span></div><div class="bnt-window"><div id="bnt-track" class="bnt-track"><span class="bnt-empty">Loading headlines…</span></div></div>';
     header.insertAdjacentElement("afterend",bar);
-    let breakingItems=[],breakingIndex=0;
+    let breakingItems=[];
     const track=()=>document.getElementById("bnt-track");
-    function showBreaking(){
+    function renderBreaking(){
       const t=track();if(!t||!breakingItems.length)return;
-      const item=breakingItems[breakingIndex%breakingItems.length];
-      // Keep the breaking ticker moving continuously from right to left,
-      // even when there is only one qualifying headline.
-      const items=breakingItems.slice();
-      const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer" title="'+esc(x.title)+'">'+esc(x.title)+'</a>').join("");
+      // Newest valid breaking stories appear first; duplicate the sequence for a seamless marquee.
+      const content=breakingItems.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer" title="'+esc(x.title)+'">'+esc(x.title)+'</a>').join("");
       t.className="bnt-track";
       t.innerHTML=content+content;
       const halfWidth=t.scrollWidth/2;
       t.style.animationDuration=Math.max(24,halfWidth/24)+"s";
-      breakingIndex=(breakingIndex+1)%breakingItems.length;
     }
     async function loadHeadlines(){
       try{
@@ -62,12 +58,25 @@
         if(!response.ok)throw Error("feed unavailable");
         const data=await response.json();
         const now=Date.now();
+        // Keep recent headlines from every feed category, newest publication first.
+        const seenTitles=new Set();
         const fresh=(Array.isArray(data.items)?data.items:[]).filter(x=>{
-          if(x.category!=="Bangladesh"||!x.title||!x.link||!x.publishedAt)return false;
-          const age=now-new Date(x.publishedAt).getTime();
-          return Number.isFinite(age)&&age<=36*60*60*1000&&age>=-5*60*1000;
+          if(!x.title||!x.link||!x.publishedAt)return false;
+          const stamp=new Date(x.publishedAt).getTime();
+          const age=now-stamp;
+          if(!Number.isFinite(stamp)||age>36*60*60*1000||age < -5*60*1000)return false;
+          const key=String(x.title).toLocaleLowerCase().replace(/[^\\p{L}\\p{N}]+/gu," ").trim();
+          if(!key||seenTitles.has(key))return false;
+          seenTitles.add(key);
+          return true;
         }).sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
-        breakingItems=fresh.filter(x=>x.isBreaking===true&&(now-new Date(x.publishedAt).getTime())<=2*60*60*1000).slice(0,8);
+        // Breaking status expires exactly 60 minutes after the original publication time.
+        // Future-dated items are tolerated only for the small clock-skew window above.
+        breakingItems=fresh.filter(x=>{
+          if(x.isBreaking!==true)return false;
+          const age=now-new Date(x.publishedAt).getTime();
+          return age>=0&&age<=60*60*1000;
+        }).slice(0,12);
         const label=document.getElementById("bnt-label-text");
         const ticker=document.getElementById("breaking-news-ticker");
         const t=track();if(!t)return;
@@ -75,13 +84,13 @@
           ticker.classList.add("is-breaking");
           ticker.setAttribute("aria-label","Breaking news headlines");
           label.textContent="BREAKING NEWS";
-          breakingIndex=0;showBreaking();
+          renderBreaking();
           return;
         }
         ticker.classList.remove("is-breaking");
         ticker.setAttribute("aria-label","News headlines");
         label.textContent="NEWS";
-        const items=fresh.slice(0,18);
+        const items=fresh.slice(0,7);
         if(!items.length){
           t.className="bnt-track is-single";
           t.innerHTML='<span class="bnt-empty">No fresh headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';
@@ -100,10 +109,9 @@
       }
     }
     loadHeadlines();
-    // Keep each confirmed breaking headline on screen for 20 seconds.
-    window.setInterval(()=>{if(breakingItems.length)showBreaking()},20*1000);
-    // Refresh the source feed periodically; the headline bar updates without a page reload.
-    window.setInterval(loadHeadlines,10*60*1000);
+    // Re-scan the published feed every minute so breaking alerts expire on time
+    // and newly published feed content appears without a page reload.
+    window.setInterval(loadHeadlines,60*1000);
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 })();
