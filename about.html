@@ -27,6 +27,18 @@ a{color:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.nav{min-h
 
 <link rel="stylesheet" href="shared-shell.css?v=3">
   <link rel="stylesheet" href="chatbot-widget.css?v=1">
+
+<style id="hybrid-cosmic-background-v1">
+/* Hybrid Cosmic Energy: cinematic on Home, restrained on content pages. */
+html{background:#05070b}
+body{position:relative;isolation:isolate}
+body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;opacity:.52;background:radial-gradient(ellipse at 14% 18%,rgba(0,242,254,.115) 0%,transparent 34%),radial-gradient(ellipse at 83% 36%,rgba(127,0,255,.105) 0%,transparent 35%),radial-gradient(ellipse at 54% 90%,rgba(79,172,254,.065) 0%,transparent 38%);background-size:135% 135%;animation:hybridCosmicDrift 26s ease-in-out infinite alternate;will-change:background-position}
+@keyframes hybridCosmicDrift{0%{background-position:0% 0%}50%{background-position:55% 35%}100%{background-position:100% 70%}}
+/* Home gets the richer cinematic glow; other pages keep text and cards dominant. */
+body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24%,rgba(0,242,254,.17) 0%,transparent 36%),radial-gradient(ellipse at 82% 44%,rgba(127,0,255,.15) 0%,transparent 38%),radial-gradient(ellipse at 48% 88%,rgba(79,172,254,.08) 0%,transparent 42%);background-size:150% 150%;animation-duration:22s}
+@media(max-width:640px){body::before{opacity:.34;background-size:120% 120%;animation-duration:34s}body:has(#home)::before{opacity:.48;animation-duration:30s}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
+</style>
 </head><body><header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a class="active" href="about.html">About</a><a class="" href="expertise.html">Expertise</a><a class="" href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header><main class="wrap"><section class="hero"><p class="kicker">01 / ABOUT ME</p><h1>Curiosity first.<br><span class="accent">Purpose in every build.</span></h1><p class="intro">I’m Shihab—a developer and digital creator who enjoys connecting technology, creativity, and practical problem-solving. I like turning ideas into useful experiences, learning by building, and improving each project one step at a time.</p><a class="cta" href="mailto:mdshihab74@gmail.com">Let’s connect <span></span></a></section><section class="grid"><article class="card"><span class="icon">✳</span><p class="tag">01 / DESIGN</p><h2>Thoughtful interfaces</h2><p class="desc">I value clear layouts, responsive experiences, accessible content, and motion that helps a product feel alive without getting in the way.</p></article><article class="card"><span class="icon">⌘</span><p class="tag">02 / BUILD</p><h2>Useful automation</h2><p class="desc">I explore practical tools, personal AI assistants, dashboards, and workflows that can reduce repetitive work.</p></article><article class="card"><span class="icon"></span><p class="tag">03 / GROW</p><h2>Learn by making</h2><p class="desc">Real projects are my way to experiment, test assumptions, understand what breaks, and steadily improve my skills.</p></article></section></main><footer class="wrap footer"><span>© 2026 Shihabul Islam · Built with curiosity.</span><span><a href="./">Back to home ↑</a></span>
   </footer>
 
