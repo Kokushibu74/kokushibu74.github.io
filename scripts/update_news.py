@@ -33,10 +33,14 @@ QUERIES = [
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
-    # These feeds were confirmed to parse successfully in GitHub Actions.
+    # Public publisher RSS feeds; Google News queries remain as a fallback and for breadth.
     ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
     ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
     ("Prothom Alo", "https://www.prothomalo.com/feed/"),
+    ("bdnews24.com", "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true"),
+    ("Banglanews24", "https://www.banglanews24.com/rss/rss.xml"),
+    ("Jugantor", "https://www.jugantor.com/feed/rss.xml"),
+    ("Kaler Kantho", "https://www.kalerkantho.com/rss.xml"),
 ]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
 DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
@@ -83,6 +87,29 @@ def parse_feed_xml(raw):
         text = re.sub(r"&(?!amp;|lt;|gt;|apos;|quot;|#\d+;|#x[0-9a-fA-F]+;)", "&amp;", text)
         text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
         return ET.fromstring(text)
+
+def local_name(tag):
+    """Return an XML tag's local name, including for namespaced RSS/Atom feeds."""
+    return str(tag).rsplit("}", 1)[-1].split(":")[-1].lower()
+
+
+def child_element(node, *names):
+    wanted = {name.lower() for name in names}
+    return next((child for child in list(node) if local_name(child.tag) in wanted), None)
+
+
+def child_text(node, *names):
+    child = child_element(node, *names)
+    if child is None:
+        return ""
+    # Atom links store the URL in href rather than text.
+    return (child.attrib.get("href", "") if local_name(child.tag) == "link" else (child.text or "")).strip()
+
+
+def feed_items(root):
+    """Find RSS items or Atom entries even when the feed uses XML namespaces."""
+    return [node for node in root.iter() if local_name(node.tag) in ("item", "entry")]
+
 
 def parse_date(value):
     if not value:
@@ -325,6 +352,21 @@ def publisher_metadata(url):
         return {}
 
 
+def classify_direct_item(title, link):
+    """Infer a broad feed category from the publisher section and headline."""
+    path = urlparse(link).path.lower()
+    text = (title or "").lower()
+    if re.search(r"/(?:international|world|global|foreign)(?:/|$)", path):
+        return "World"
+    if re.search(r"/(?:technology|tech|science|gadget|gadgets)(?:/|$)", path):
+        return "Technology"
+    if re.search(r"/(?:ai|artificial-intelligence)(?:/|$)", path) or re.search(
+        r"\b(?:artificial intelligence|generative ai|openai|chatgpt|gemini ai)\b|কৃত্রিম বুদ্ধিমত্তা", text, re.I
+    ):
+        return "AI"
+    return "Bangladesh"
+
+
 def key_for(item):
     """Deduplicate identical headlines across publishers, not just within one source."""
     title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
@@ -395,26 +437,21 @@ def main():
             request = urllib.request.Request(feed_url, headers=HEADERS)
             with urllib.request.urlopen(request, timeout=10) as response:
                 root = parse_feed_xml(response.read())
-            nodes = root.findall("./channel/item")
-            if not nodes:
-                nodes = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+            nodes = feed_items(root)
             successful_feeds += 1
             for node in nodes[:MAX_PER_FEED]:
-                title = clean(node.findtext("title"))
-                link_node = node.find("link")
-                link = clean(link_node.attrib.get("href", "") if link_node is not None and link_node.attrib.get("href") else node.findtext("link"))
-                published_raw = (
-                    node.findtext("pubDate") or node.findtext("published")
-                    or node.findtext("updated") or node.findtext("{http://purl.org/dc/elements/1.1/}date")
-                )
+                title = clean(child_text(node, "title"))
+                link = clean(child_text(node, "link"))
+                published_raw = child_text(node, "pubDate", "published", "updated", "date")
                 published = parse_date(published_raw)
-                summary_raw = node.findtext("description") or node.findtext("summary") or node.findtext("{http://www.w3.org/2005/Atom}content") or ""
+                summary_raw = child_text(node, "description", "summary", "content")
                 summary = clean(summary_raw)[:420]
                 if not title or not link.startswith("https://"):
                     continue
+                category = classify_direct_item(title, link)
                 item = {
                     "title": title, "link": link, "source": source,
-                    "publishedAt": published, "category": "Bangladesh",
+                    "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
                     "summary": summary, "image": image_for(node),
                     "publisherUrl": link, "publisherName": source,

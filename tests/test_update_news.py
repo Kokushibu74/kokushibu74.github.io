@@ -87,9 +87,49 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
         ))
 
+    def test_namespaced_atom_feed_items_and_links_are_parsed(self):
+        root = news.parse_feed_xml(b"""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>ঢাকায় নতুন খবর</title>
+          <link href="https://example.com/story"/>
+          <updated>2026-10-28T12:00:00Z</updated></entry></feed>""")
+        items = news.feed_items(root)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(news.child_text(items[0], "title"), "ঢাকায় নতুন খবর")
+        self.assertEqual(news.child_text(items[0], "link"), "https://example.com/story")
+        self.assertEqual(news.child_text(items[0], "updated"), "2026-10-28T12:00:00Z")
+
+    def test_namespaced_rss_feed_items_are_parsed(self):
+        root = news.parse_feed_xml(b"""<rss xmlns="https://example.com/rss"><channel>
+          <item><title>Test headline</title><link>https://example.com/news</link></item>
+          </channel></rss>""")
+        items = news.feed_items(root)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(news.child_text(items[0], "title"), "Test headline")
+        self.assertEqual(news.child_text(items[0], "link"), "https://example.com/news")
+
+    def test_direct_international_section_is_not_misclassified_as_bangladesh(self):
+        self.assertEqual(
+            news.classify_direct_item("ঘূর্ণিঝড় অর্ণবের আঘাতে ৫ জনের মৃত্যু",
+                                      "https://www.jagonews24.com/international/news/1172989"),
+            "World"
+        )
+
+    def test_direct_technology_section_is_classified(self):
+        self.assertEqual(
+            news.classify_direct_item("নতুন প্রযুক্তি", "https://example.com/technology/news/1"),
+            "Technology"
+        )
+
+    def test_ai_headline_is_classified(self):
+        self.assertEqual(
+            news.classify_direct_item("OpenAI announces a new model", "https://example.com/news/1"),
+            "AI"
+        )
+
     def test_multiple_free_direct_sources_are_configured(self):
-        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 3)
+        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 7)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
+        self.assertEqual(len({url for _, url in news.DIRECT_FEEDS}), len(news.DIRECT_FEEDS))
 
 
 if __name__ == "__main__":
