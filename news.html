@@ -294,12 +294,52 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 @media(max-width:640px){body::before{opacity:.34;background-size:120% 120%;animation-duration:34s}body:has(#home)::before{opacity:.48;animation-duration:30s}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
 </style>
+
+<style id="news-pagination-weather-cards">
+.news-pagination{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:28px 0 34px}
+.page-button{min-width:38px;height:38px;padding:0 12px;border:1px solid #ffffff20;border-radius:11px;background:#0b111c;color:#cbd6e8;font:700 12px 'JetBrains Mono',monospace;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.page-button:hover,.page-button.active{border-color:#00f2fe;background:#00f2fe13;color:#00f2fe}
+.page-button:disabled{opacity:.35;cursor:not-allowed}
+.weather-disaster{display:none}
+.weather-disaster[hidden]{display:none!important}
+.weather-card-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:22px 0 10px;color:#c6faff;font:800 9px 'JetBrains Mono',monospace;letter-spacing:.07em}
+.weather-card-heading>span:first-child{display:flex;align-items:center;gap:8px}
+.weather-card-heading i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#00f2fe;box-shadow:0 0 12px #00f2fe;animation:weatherPulse 1.8s ease-in-out infinite}
+.weather-card-heading>span:last-child{color:#7d8ca5;font-size:8px;white-space:nowrap}
+.weather-slides{position:relative;min-height:164px;border:1px solid #00f2fe35;border-radius:17px;overflow:hidden;background:radial-gradient(ellipse at 90% 0%,#00f2fe12,transparent 50%),linear-gradient(145deg,#0c1421,#070b12);box-shadow:0 14px 35px #0004}
+.weather-slide{padding:17px 17px 14px}
+.weather-slide[hidden]{display:none!important}
+.weather-slide.active{display:block}
+.weather-kicker{color:#8b9bb4;font:700 8px 'JetBrains Mono',monospace;letter-spacing:.1em}
+.weather-slide h3{margin:10px 0 7px;font-size:clamp(13px,1.1vw,16px);line-height:1.45;font-weight:850}
+.weather-slide h3 a{color:#f0f7ff;text-decoration:none}
+.weather-slide h3 a:hover{color:#00f2fe}
+.weather-slide p{margin:0;color:#9eacc0;font-size:10px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.weather-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;color:#7f8da4;font:8px 'JetBrains Mono',monospace}
+.weather-controls{display:flex;align-items:center;justify-content:space-between;margin-top:8px;color:#7f8da4;font:9px 'JetBrains Mono',monospace}
+.weather-controls[hidden]{display:none!important}
+.weather-controls>div{display:flex;gap:6px}
+.weather-controls button{width:28px;height:28px;border:1px solid #ffffff20;border-radius:9px;background:#0b111c;color:#d7e5f5;font-size:18px;cursor:pointer}
+.weather-controls button:hover{border-color:#00f2fe;color:#00f2fe}
+@keyframes weatherPulse{50%{opacity:.45;box-shadow:0 0 4px #00f2fe}}
+@media(min-width:851px){.news-hero-layout>.hero #weather-disaster:not([hidden]){display:block}}
+@media(max-width:850px){.weather-disaster{display:none!important}}
+@media(max-width:600px){.news-pagination{gap:6px;margin:22px 0 28px}.page-button{min-width:34px;height:35px;padding:0 9px;border-radius:9px}}
+@media(prefers-reduced-motion:reduce){.weather-card-heading i{animation:none!important}.page-button{transition:none!important}}
+</style>
+
 </head>
 <body>
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a class="active" href="news.html" aria-current="page">News</a><a href="contact.html">Contact</a></nav></header>
   <main class="wrap">
     <section class="news-hero-layout" aria-label="News introduction and featured stories">
-      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international and technology headlines. Explore the latest headlines across Bangladesh, the world and technology, with every story linked to its original publisher.</p><nav class="news-hero-nav" aria-label="Explore news categories"><a href="#filters" data-hero-category="Bangladesh">Bangladesh</a><a href="#filters" data-hero-category="World">World</a><a href="#filters" data-hero-category="Technology">Technology</a><a href="#latest-feed" data-hero-category="All">All headlines</a></nav><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div></div>
+      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international and technology headlines. Explore the latest headlines across Bangladesh, the world and technology, with every story linked to its original publisher.</p><nav class="news-hero-nav" aria-label="Explore news categories"><a href="#filters" data-hero-category="Bangladesh">Bangladesh</a><a href="#filters" data-hero-category="World">World</a><a href="#filters" data-hero-category="Technology">Technology</a><a href="#latest-feed" data-hero-category="All">All headlines</a></nav><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div>
+        <section id="weather-disaster" class="weather-disaster" aria-label="Latest weather and natural disaster news" hidden>
+          <div class="weather-card-heading"><span><i aria-hidden="true"></i> WEATHER / DISASTER WATCH</span><span id="weather-count">LOADING</span></div>
+          <div id="weather-slides" class="weather-slides"><div class="weather-slide active">Loading recent weather and disaster headlines…</div></div>
+          <div id="weather-controls" class="weather-controls" hidden><span id="weather-position">1 / 1</span><div><button type="button" data-weather-step="-1" aria-label="Previous weather or disaster story">‹</button><button type="button" data-weather-step="1" aria-label="Next weather or disaster story">›</button></div></div>
+        </section>
+      </div>
     <section id="top-stories" class="top-stories" aria-label="Top and trending news">
       <div class="top-stories-head"><div class="top-stories-label"><span class="top-live-dot" aria-hidden="true"></span> TOP STORIES <span style="color:#00f2fe">/</span> HOT RIGHT NOW</div><span id="top-stories-count" class="top-stories-count">CURATING LIVE HEADLINES</span></div>
       <div id="top-stories-slides"><div class="top-stories-empty">Loading the top headlines…</div></div>
@@ -311,6 +351,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div id="latest-feed" class="news-feed-heading"><div><p class="kicker">THE LATEST</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
     <div id="news-grid" class="grid"></div>
+    <nav id="news-pagination" class="news-pagination" aria-label="News feed pages"></nav>
     <div id="news-ad-slot" class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
     <p class="status">Feed refreshes automatically when the scheduled GitHub updater succeeds. News timing depends on each publisher's RSS feed.</p>
   </main>
@@ -319,7 +360,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script src="news.js?v=11"></script>
+  <script src="news.js?v=12"></script>
 
 
 <script src="shared-shell.js?v=6" defer></script>
