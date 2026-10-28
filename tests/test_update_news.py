@@ -162,10 +162,10 @@ class NewsLogicTests(unittest.TestCase):
             "Technology"
         )
 
-    def test_ai_headline_is_classified(self):
+    def test_ai_headline_is_classified_as_technology(self):
         self.assertEqual(
             news.classify_direct_item("OpenAI announces a new model", "https://example.com/news/1"),
-            "AI"
+            "Technology"
         )
 
     def test_multiple_free_direct_sources_are_configured(self):
