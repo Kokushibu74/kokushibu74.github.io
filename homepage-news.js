@@ -3,12 +3,16 @@
   const css = `
     #breaking-news-ticker{position:fixed;top:72px;left:0;right:0;z-index:35;height:40px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(100deg,rgba(7,12,22,.98),rgba(9,17,29,.96) 55%,rgba(4,9,17,.98));border-bottom:1px solid rgba(0,242,254,.24);box-shadow:0 7px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.035);backdrop-filter:blur(14px)}
     #breaking-news-ticker:after{content:"";position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,242,254,.6),transparent);pointer-events:none}
-    #breaking-news-ticker .bnt-label{position:relative;align-self:stretch;flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 17px;background:linear-gradient(135deg,#d8fbff,#00d9f5 70%,#00aeca);color:#04131b;font:800 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-shadow:0 1px rgba(255,255,255,.4);clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);filter:drop-shadow(0 0 8px rgba(0,242,254,.12))}
-    #breaking-news-ticker .bnt-label:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fff;opacity:.8}
+    #breaking-news-ticker .bnt-label{position:relative;z-index:1;align-self:stretch;flex:0 0 auto;display:flex;align-items:center;gap:9px;padding:0 18px 0 15px;background:linear-gradient(115deg,#d8fbff 0%,#35e8f8 48%,#00aeca 100%);color:#06202a;font:900 10px/1 'Outfit',system-ui,sans-serif;letter-spacing:.105em;text-shadow:0 1px rgba(255,255,255,.45);clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%);box-shadow:4px 0 18px rgba(0,242,254,.12)}
+    #breaking-news-ticker .bnt-label:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fff;opacity:.9}
     #breaking-news-ticker .bnt-label-text{display:inline-block;white-space:nowrap}
-    #breaking-news-ticker.is-breaking .bnt-label{background:linear-gradient(135deg,#ff8aa0,#ff3156 70%,#d90c3d);color:#fff;text-shadow:0 1px rgba(0,0,0,.25)}
+    #breaking-news-ticker.is-breaking .bnt-label{gap:8px;padding-left:14px;padding-right:20px;background:linear-gradient(115deg,#ff718c 0%,#f5234f 52%,#b90835 100%);color:#fff;letter-spacing:.09em;text-shadow:0 1px 2px rgba(65,0,15,.35);box-shadow:4px 0 20px rgba(255,37,79,.22)}
+    #breaking-news-ticker.is-breaking .bnt-label:before{background:#fff}
+    #breaking-news-ticker.is-breaking .bnt-label-text{font-size:10px;font-weight:900}
+    #breaking-news-ticker.is-breaking .bnt-dot{width:6px;height:6px;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.17),0 0 10px rgba(255,255,255,.8)}
     #breaking-news-ticker.is-breaking:after{background:linear-gradient(90deg,transparent,rgba(255,55,95,.75),transparent)}
     #breaking-news-ticker .bnt-dot{width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:#ff254f;box-shadow:0 0 0 3px rgba(255,37,79,.13),0 0 11px rgba(255,37,79,.9);animation:bntPulse 1s infinite}
+    #breaking-news-ticker.is-breaking .bnt-dot{width:6px;height:6px;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.15),0 0 10px rgba(255,255,255,.8)}
     #breaking-news-ticker:not(.is-breaking) .bnt-dot{display:none}
     #breaking-news-ticker .bnt-window{min-width:0;flex:1;overflow:hidden;white-space:nowrap;padding-left:5px}
     #breaking-news-ticker .bnt-track{display:inline-flex;align-items:center;gap:34px;white-space:nowrap;will-change:transform;animation:bntMoveLeft linear infinite;width:max-content}
@@ -42,8 +46,14 @@
     function showBreaking(){
       const t=track();if(!t||!breakingItems.length)return;
       const item=breakingItems[breakingIndex%breakingItems.length];
-      t.className="bnt-track is-single";
-      t.innerHTML='<a class="bnt-item" href="'+safe(item.link)+'" target="_blank" rel="noopener noreferrer" title="'+esc(item.title)+'">'+esc(item.title)+'</a>';
+      // Keep the breaking ticker moving continuously from right to left,
+      // even when there is only one qualifying headline.
+      const items=breakingItems.slice();
+      const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer" title="'+esc(x.title)+'">'+esc(x.title)+'</a>').join("");
+      t.className="bnt-track";
+      t.innerHTML=content+content;
+      const halfWidth=t.scrollWidth/2;
+      t.style.animationDuration=Math.max(24,halfWidth/24)+"s";
       breakingIndex=(breakingIndex+1)%breakingItems.length;
     }
     async function loadHeadlines(){
