@@ -184,7 +184,7 @@
     const cards=Array.from(weatherSlidesRoot.querySelectorAll(".weather-slide"));if(!cards.length||!total)return;
     const previous=weatherSlideIndex, target=(next+total)%total;
     if(target===previous)return;
-    const direction=next>previous||next<0?"up":"down";
+    const direction=next-previous>=0?"up":"down";
     const outgoing=cards[previous],incoming=cards[target];
     if(weatherTransitionTimer)clearTimeout(weatherTransitionTimer);
     cards.forEach(card=>card.classList.remove("exit-up","exit-down","enter-from-top","enter-from-bottom"));
