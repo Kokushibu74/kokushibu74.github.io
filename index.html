@@ -525,6 +525,30 @@
       @media(prefers-reduced-motion:reduce){.donation-popover.is-opening,.donation-popover.is-closing{animation:none}}
       @keyframes footerGlow{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,-2%,0) scale(1.04)}}
       @keyframes footerTextShine{to{background-position:220% center}}
+      
+      /* Orbit Motion — homepage social section only; preserve the existing six links and mobile grid. */
+      .social-footer{position:relative;isolation:isolate}
+      .social-footer-inner{position:relative}
+      .social-footer nav[aria-label="Social profiles"]{position:relative;isolation:isolate;gap:1rem}
+      .social-footer nav[aria-label="Social profiles"]::before{content:"";position:absolute;z-index:-1;inset:-24px -14px;border-radius:28px;background:radial-gradient(ellipse at 50% 50%,rgba(0,242,254,.10),rgba(127,0,255,.07) 44%,transparent 72%);filter:blur(10px);pointer-events:none;animation:orbitNebula 6s ease-in-out infinite alternate}
+      .social-footer .social-action{position:relative;isolation:isolate;overflow:hidden;min-height:72px;border:1px solid rgba(0,242,254,.22);background:linear-gradient(120deg,rgba(8,18,31,.96),rgba(19,13,38,.94),rgba(7,20,30,.96));box-shadow:inset 0 0 22px rgba(0,242,254,.025),0 8px 24px rgba(0,0,0,.2);animation:orbitFloat 5.5s ease-in-out infinite;will-change:transform}
+      .social-footer .social-action:nth-child(2n){animation-delay:-2.7s}
+      .social-footer .social-action:nth-child(3n){animation-delay:-1.3s}
+      .social-footer .social-action::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:conic-gradient(from var(--orbit-angle,0deg),transparent 0 40%,rgba(0,242,254,.85) 48%,rgba(168,85,247,.9) 55%,transparent 65% 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;animation:orbitBorder 4.5s linear infinite;pointer-events:none}
+      .social-footer .social-action::after{content:"";position:absolute;top:-60%;left:-70%;width:45%;height:220%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),rgba(0,242,254,.16),transparent);pointer-events:none;animation:orbitSweep 6.8s ease-in-out infinite}
+      .social-footer .social-action:nth-child(2n)::after{animation-delay:-3.2s}
+      .social-footer .social-action .social-symbol{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,color .3s;border-color:rgba(0,242,254,.28);box-shadow:0 0 0 rgba(0,242,254,0)}
+      .social-footer .social-action .social-arrow{transition:transform .35s,color .35s}
+      .social-footer .social-action:hover,.social-footer .social-action:focus-visible{transform:translateY(-7px) scale(1.025);border-color:rgba(0,242,254,.7);box-shadow:0 16px 40px rgba(0,242,254,.13),0 0 28px rgba(127,0,255,.12);animation-play-state:paused}
+      .social-footer .social-action:hover .social-symbol,.social-footer .social-action:focus-visible .social-symbol{transform:rotate(-9deg) scale(1.13);box-shadow:0 0 22px rgba(0,242,254,.24);color:#fff}
+      .social-footer .social-action:hover .social-arrow,.social-footer .social-action:focus-visible .social-arrow{transform:translate(3px,-3px)}
+      @keyframes orbitFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+      @keyframes orbitBorder{to{--orbit-angle:360deg}}
+      @keyframes orbitSweep{0%,60%,100%{left:-70%;opacity:0}12%{opacity:1}35%{left:130%;opacity:0}}
+      @keyframes orbitNebula{from{opacity:.55;transform:scale(.97)}to{opacity:1;transform:scale(1.03)}}
+      @media(max-width:640px){.social-footer .social-action{min-height:64px;animation-duration:6.5s}.social-footer nav[aria-label="Social profiles"]{gap:.7rem}.social-footer nav[aria-label="Social profiles"]::before{inset:-12px -5px}}
+      @media(prefers-reduced-motion:reduce){.social-footer nav[aria-label="Social profiles"]::before,.social-footer .social-action,.social-footer .social-action::before,.social-footer .social-action::after{animation:none!important}.social-footer .social-action{will-change:auto}}
+
       @media(prefers-reduced-motion:reduce){.social-footer:before,.social-footer-title{animation:none}.social-action,.social-action:before,.social-action .social-symbol,.social-action .social-arrow{transition:none}}
     </style>
     <div class="social-footer-inner">
