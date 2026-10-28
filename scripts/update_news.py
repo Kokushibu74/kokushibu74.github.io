@@ -50,11 +50,11 @@ BREAKING_TITLE_RE = re.compile(
 BREAKING_EVENT_RE = re.compile(
     r"(?:নিহত|মারা গেছেন|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
     r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
-    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|"
+    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
     r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষ(?:ে নিহত|ে আহত)?|গুলিতে নিহত|গুলি চালনা|"
-    r"গ্রেপ্তার(?: হয়েছেন| হয়েছেন| করা হয়েছে| করা হয়েছে)?|আটক(?: হয়েছেন| হয়েছেন| করা হয়েছে| করা হয়েছে)?|"
+    r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
-    r"attack|shooting|arrested|evacuated)", re.I
+    r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
 )
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
@@ -131,7 +131,7 @@ def parse_date(value):
         return None
 
 def is_recent_breaking(title, published, query, source=""):
-    """Conservative, free rule-based detection; publisher/event signals must be recent."""
+    """Only fresh, high-impact events qualify; a 'breaking' label alone is insufficient."""
     if not published:
         return False
     try:
@@ -139,22 +139,17 @@ def is_recent_breaking(title, published, query, source=""):
         if stamp.tzinfo is None:
             stamp = stamp.replace(tzinfo=timezone.utc)
         age = datetime.now(timezone.utc) - stamp.astimezone(timezone.utc)
-        if not (timedelta(minutes=-5) <= age <= timedelta(hours=2)):
+        # Keep the threshold deliberately strict; feed labels and search query names
+        # are not evidence that a story itself is genuinely breaking.
+        if not (timedelta(minutes=-5) <= age <= timedelta(minutes=45)):
             return False
-        explicit_alert = bool(BREAKING_TITLE_RE.search(title))
-        if explicit_alert:
-            return True
-        if query in BREAKING_QUERY_TEXTS:
+        if BREAKING_FOLLOWUP_RE.search(title):
             return False
-        if source in DIRECT_SOURCE_NAMES:
-            # A recent high-impact event may qualify, but routine legal follow-ups
-            # about an older incident should not trigger the breaking ticker.
-            return (
-                age <= timedelta(minutes=45)
-                and bool(BREAKING_EVENT_RE.search(title))
-                and not BREAKING_FOLLOWUP_RE.search(title)
-            )
-        return False
+        # Google News query results are noisy: require an actual high-impact event
+        # phrase, even when the query or title says "breaking news".
+        if not BREAKING_EVENT_RE.search(title):
+            return False
+        return True
     except (ValueError, TypeError):
         return False
 
@@ -398,10 +393,7 @@ def read_breaking_history():
             if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
                 continue
             # Purge entries misclassified by older, overly broad event keywords.
-            if not BREAKING_TITLE_RE.search(item["title"]) and (
-                not BREAKING_EVENT_RE.search(item["title"])
-                or BREAKING_FOLLOWUP_RE.search(item["title"])
-            ):
+            if not BREAKING_EVENT_RE.search(item["title"]) or BREAKING_FOLLOWUP_RE.search(item["title"]):
                 continue
             stamp_text = item.get("detectedAt") or item.get("publishedAt")
             try:
