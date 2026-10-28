@@ -17,12 +17,12 @@
     if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">Bangladesh headlines are being collected. Please check back after the next feed refresh.</div>';slideCount.textContent="BANGLADESH NEWS";controls.hidden=true;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
-      const image=safe(x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
+      const image=safe(x.previewScreenshot||x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const title=x.previewTitle||x.title;
       const summary=x.previewSummary||x.summary||x.description||"Open the original report for the full story, context and latest developments.";
       const publisherUrl=safe(x.publisherUrl||x.link);
       const d=dateOf(x);
-      const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(x.previewScreenshot||image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()">':'';
+      const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()">':'';
       const recent=d&&(Date.now()-d.getTime()<=24*60*60*1000);
       const publisher=String(x.publisherName||x.source||"Original publisher");
       const fallback='<div class="top-slide-fallback" aria-hidden="true"><strong>'+esc(publisher)+'</strong><span>ORIGINAL NEWS SOURCE</span></div>';
@@ -82,20 +82,21 @@
     pointerStartX=e.clientX;pointerStartY=e.clientY;pointerActive=true;dragged=false;
     slider.querySelector("#top-stories-slides")?.classList.add("is-dragging");
     if(slideTimer)clearInterval(slideTimer);
-    try{slider.setPointerCapture(e.pointerId)}catch(_){}
   });
-  slider.addEventListener("pointermove",e=>{
+  document.addEventListener("pointermove",e=>{
     if(!pointerActive)return;
     if(Math.abs(e.clientX-pointerStartX)>8)dragged=true;
   },{passive:true});
-  slider.addEventListener("pointerup",e=>{
+  document.addEventListener("pointerup",e=>{
     if(!pointerActive)return;pointerActive=false;
     slider.querySelector("#top-stories-slides")?.classList.remove("is-dragging");
     const dx=e.clientX-pointerStartX,dy=e.clientY-pointerStartY;
     if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.15){
       showSlide(slideIndex+(dx<0?1:-1));
       suppressCardClick=true;
-      setTimeout(()=>{suppressCardClick=false},0);
+      setTimeout(()=>{suppressCardClick=false;dragged=false},0);
+    } else {
+      dragged=false;
     }
     startSlideTimer();
   });
