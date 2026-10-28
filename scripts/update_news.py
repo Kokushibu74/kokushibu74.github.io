@@ -33,13 +33,18 @@ QUERIES = [
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
+    ("bdnews24.com", "https://bdnews24.com/?getXmlFeed=true&widgetId=1150&widgetName=rssfeed"),
     ("bdnews24.com", "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true"),
     ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
+    ("The Daily Star", "https://www.thedailystar.net/rss"),
     ("Banglanews24", "https://www.banglanews24.com/rss/rss.xml"),
     ("Jugantor", "https://www.jugantor.com/feed/rss.xml"),
     ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
     ("Kaler Kantho", "https://www.kalerkantho.com/rss.xml"),
     ("Dhaka Tribune", "https://www.dhakatribune.com/rss/home"),
+    ("Dhaka Tribune", "https://www.dhakatribune.com/topic/rss/feed"),
+    ("BD24Live", "https://www.bd24live.com/feed"),
+    ("Prothom Alo", "https://www.prothomalo.com/feed/"),
 ]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
 DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
@@ -59,7 +64,11 @@ BANGLADESH_TARGET = 60
 TOTAL_TARGET = 140
 RETENTION_DAYS = 30
 BREAKING_HISTORY_DAYS = 30
-HEADERS = {"User-Agent": "Kokushibu74-NewsFeed/2.0 (+https://kokushibu74.github.io/)"}
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+    "Accept-Language": "en-US,en;q=0.9,bn;q=0.8",
+}
 NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -68,6 +77,16 @@ NS = {
 def clean(value):
     value = re.sub(r"<[^>]+>", " ", value or "")
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
+
+def parse_feed_xml(raw):
+    """Parse RSS/Atom XML and recover from common unescaped ampersands in feeds."""
+    try:
+        return ET.fromstring(raw)
+    except ET.ParseError:
+        text = raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else str(raw)
+        text = re.sub(r"&(?!amp;|lt;|gt;|apos;|quot;|#\d+;|#x[0-9a-fA-F]+;)", "&amp;", text)
+        text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
+        return ET.fromstring(text)
 
 def parse_date(value):
     if not value:
@@ -376,7 +395,7 @@ def main():
         try:
             request = urllib.request.Request(feed_url, headers=HEADERS)
             with urllib.request.urlopen(request, timeout=10) as response:
-                root = ET.fromstring(response.read())
+                root = parse_feed_xml(response.read())
             nodes = root.findall("./channel/item")
             if not nodes:
                 nodes = root.findall(".//{http://www.w3.org/2005/Atom}entry")
