@@ -48,19 +48,19 @@ class NewsLogicTests(unittest.TestCase):
     def test_recent_high_impact_event_from_direct_source_is_detected(self):
         self.assertTrue(news.is_recent_breaking(
             "ঢাকায় ভয়াবহ বিস্ফোরণ", self.iso(timedelta(minutes=-20)),
-            "direct-rss", "bdnews24.com"
+            "direct-rss", "The Daily Star"
         ))
 
     def test_old_event_from_direct_source_is_not_breaking(self):
         self.assertFalse(news.is_recent_breaking(
             "ঢাকায় ভয়াবহ বিস্ফোরণ", self.iso(timedelta(hours=-2)),
-            "direct-rss", "bdnews24.com"
+            "direct-rss", "The Daily Star"
         ))
 
     def test_unrelated_headline_is_not_breaking(self):
         self.assertFalse(news.is_recent_breaking(
             "আজকের আবহাওয়ার পূর্বাভাস", self.iso(timedelta(minutes=-5)),
-            "direct-rss", "bdnews24.com"
+            "direct-rss", "The Daily Star"
         ))
 
     def test_multiple_free_direct_sources_are_configured(self):
