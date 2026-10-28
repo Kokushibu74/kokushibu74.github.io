@@ -352,6 +352,21 @@ def publisher_metadata(url):
         return {}
 
 
+def classify_direct_item(title, link):
+    """Infer a broad feed category from the publisher section and headline."""
+    path = urlparse(link).path.lower()
+    text = (title or "").lower()
+    if re.search(r"/(?:international|world|global|foreign)(?:/|$)", path):
+        return "World"
+    if re.search(r"/(?:technology|tech|science|gadget|gadgets)(?:/|$)", path):
+        return "Technology"
+    if re.search(r"/(?:ai|artificial-intelligence)(?:/|$)", path) or re.search(
+        r"\b(?:artificial intelligence|generative ai|openai|chatgpt|gemini ai)\b|কৃত্রিম বুদ্ধিমত্তা", text, re.I
+    ):
+        return "AI"
+    return "Bangladesh"
+
+
 def key_for(item):
     """Deduplicate identical headlines across publishers, not just within one source."""
     title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
@@ -433,9 +448,10 @@ def main():
                 summary = clean(summary_raw)[:420]
                 if not title or not link.startswith("https://"):
                     continue
+                category = classify_direct_item(title, link)
                 item = {
                     "title": title, "link": link, "source": source,
-                    "publishedAt": published, "category": "Bangladesh",
+                    "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
                     "summary": summary, "image": image_for(node),
                     "publisherUrl": link, "publisherName": source,
