@@ -7,7 +7,7 @@ on:
       - ".github/workflows/update-news.yml"
       - "scripts/update_news.py"
   schedule:
-    - cron: "17 * * * *"
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: write
@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Run offline news logic tests
+        run: python3 -m unittest discover -s tests -v
       - name: Generate feed from public RSS sources
         run: python3 scripts/update_news.py
       - name: Commit feed when changed
