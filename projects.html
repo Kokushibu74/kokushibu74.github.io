@@ -80,8 +80,8 @@ function layoutCards(index,animate=true){
  const step=cardWidth*(mobile?.88:.78)+(mobile?0:18);
  const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
  cards.forEach((card,i)=>{
-  let offset=((i-active+cards.length/2)%cards.length+cards.length)%cards.length-Math.floor(cards.length/2);
-  if(cards.length%2===0&&offset===-cards.length/2)offset=cards.length/2;
+  let offset=((i-active+cards.length)%cards.length);
+  if(offset>cards.length/2)offset-=cards.length;
   const distance=Math.abs(offset),scale=distance===0?1:distance===1?.91:distance===2?.79:.68;
   const opacity=distance===0?1:distance===1?.88:distance===2?.34:0;
   const rotate=offset*(mobile?-11:-16);
