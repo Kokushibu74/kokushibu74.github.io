@@ -69,6 +69,18 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
         ))
 
+    def test_urgent_word_in_opinion_headline_is_not_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "পাহাড়ে শান্তি ফেরাতে রাজনৈতিক ও সামাজিক ঐকমত্য জরুরি: মীর হেলাল",
+            self.iso(timedelta(minutes=-5)), "Bangladesh breaking news"
+        ))
+
+    def test_past_attack_case_headline_is_not_automatically_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "বিএনপি কার্যালয়ে হামলা-ভাঙচুরের ঘটনায় মামলা, আসামি ৮১",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "Jago News 24"
+        ))
+
     def test_recent_fatality_event_is_detected(self):
         self.assertTrue(news.is_recent_breaking(
             "ঘূর্ণিঝড়ের আঘাতে ৫ জনের মৃত্যু",
