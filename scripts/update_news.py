@@ -127,11 +127,79 @@ def frame_permission(headers):
     return not bool(xfo)
 
 
+
+def resolve_google_news_url(url):
+    """Resolve current Google News RSS wrapper URLs using its article RPC."""
+    try:
+        parsed = urlparse(url)
+        if parsed.hostname not in ("news.google.com", "www.news.google.com"):
+            return url
+        article_id = parsed.path.rstrip("/").split("/")[-1]
+        if not article_id or parsed.scheme != "https":
+            return ""
+        headers = {
+            "User-Agent": "Mozilla/5.0",
+            "Cookie": "CONSENT=YES+cb; SOCS=CAI",
+            "Accept": "text/html,application/xhtml+xml",
+        }
+        page_request = urllib.request.Request(
+            "https://news.google.com/rss/articles/" + article_id,
+            headers=headers,
+        )
+        with urllib.request.urlopen(page_request, timeout=8) as response:
+            page = response.read(1_200_000).decode("utf-8", errors="replace")
+        signature = re.search(r'data-n-a-sg="([^"]+)"', page)
+        timestamp = re.search(r'data-n-a-ts="([^"]+)"', page)
+        if not signature or not timestamp:
+            print("Google News resolver: missing signature/timestamp.")
+            return ""
+        inner = (
+            '["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,'
+            'null,null,null,null,null,0,1],"X","X",1,[1,1,1],1,1,null,0,0,null,0],'
+            + json.dumps(article_id) + "," + timestamp.group(1) + "," + json.dumps(signature.group(1)) + "]"
+        )
+        payload = urllib.parse.urlencode({
+            "f.req": json.dumps([[["Fbv4je", inner, None, "generic"]]])
+        }).encode()
+        rpc_request = urllib.request.Request(
+            "https://news.google.com/_/DotsSplashUi/data/batchexecute?rpcids=Fbv4je",
+            data=payload,
+            headers={
+                "User-Agent": "Mozilla/5.0",
+                "Cookie": "CONSENT=YES+cb; SOCS=CAI",
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+        )
+        with urllib.request.urlopen(rpc_request, timeout=8) as response:
+            raw = response.read(300_000).decode("utf-8", errors="replace")
+        parts = raw.split("\n\n", 1)
+        if len(parts) < 2:
+            return ""
+        outer = json.loads(parts[1])
+        row = next((entry[2] for entry in outer if len(entry) > 2 and entry[0] == "wrb.fr" and entry[1] == "Fbv4je"), None)
+        if not row:
+            return ""
+        result = json.loads(row)
+        candidate = result[1] if isinstance(result, list) and len(result) > 1 else ""
+        final = urlparse(candidate)
+        if final.scheme == "https" and final.hostname and not final.hostname.endswith("google.com"):
+            return candidate
+        return ""
+    except Exception as exc:
+        print("Google News URL resolution failed:", type(exc).__name__)
+        return ""
+
+
 def publisher_metadata(url):
     """Fetch a public article's Open Graph metadata with strict time/size limits."""
     try:
         parsed = urlparse(url)
         if parsed.scheme != "https" or not parsed.hostname:
+            return {}
+        if parsed.hostname.endswith("news.google.com"):
+            resolved_url = resolve_google_news_url(url)
+            if resolved_url:
+                return publisher_metadata(resolved_url)
             return {}
         request = urllib.request.Request(url, headers={
             **HEADERS,
