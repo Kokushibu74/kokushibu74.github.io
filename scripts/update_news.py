@@ -29,8 +29,8 @@ QUERIES = [
     ("World", "international breaking news", "en-US", "US", "US:en"),
     ("Technology", "technology news", "en-US", "US", "US:en"),
     ("Technology", "cybersecurity gadgets science technology", "en-US", "US", "US:en"),
-    ("AI", "artificial intelligence AI news", "en-US", "US", "US:en"),
-    ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
+    ("Technology", "artificial intelligence AI news", "en-US", "US", "US:en"),
+    ("Technology", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
     # Public publisher RSS feeds; Google News searches remain a broad free fallback.
@@ -375,7 +375,7 @@ def classify_direct_item(title, link, source=""):
     if re.search(r"/(?:ai|artificial-intelligence)(?:/|$)", path) or re.search(
         r"\b(?:artificial intelligence|generative ai|openai|chatgpt|gemini ai)\b|কৃত্রিম বুদ্ধিমত্তা", text, re.I
     ):
-        return "AI"
+        return "Technology"
     return "Bangladesh"
 
 
@@ -563,7 +563,7 @@ def main():
         print("ERROR: no RSS items were collected; preserving the existing file.")
         return
     # Keep fresh items first, then fill category targets with retained headlines.
-    by_category = {name: [] for name in ("Bangladesh", "World", "Technology", "AI")}
+    by_category = {name: [] for name in ("Bangladesh", "World", "Technology")}
     category_seen = {name: set() for name in by_category}
     for item in merged:
         category = item.get("category", "World")
@@ -581,7 +581,7 @@ def main():
     selected = []
     selected_keys = set()
     # Prioritize at least 60 Bangladesh items when the sources/retained feed provide them.
-    for category, quota in (("Bangladesh", BANGLADESH_TARGET), ("World", 30), ("Technology", 30), ("AI", 30)):
+    for category, quota in (("Bangladesh", BANGLADESH_TARGET), ("World", 30), ("Technology", 60)):
         for item in by_category[category][:quota]:
             key = key_for(item)
             if key not in selected_keys:
