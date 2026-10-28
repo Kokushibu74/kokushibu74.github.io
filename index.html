@@ -490,12 +490,14 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     </div>
   </header>
 
+  <!-- Shared Cyber Energy Storm background: covers the homepage below the header. -->
+  <canvas id="homepage-energy-canvas" class="cyber-storm-canvas" aria-hidden="true"></canvas>
+
   <!-- Main Dynamic Sections Container -->
   <main id="sections-wrapper" class="pt-28 sm:pt-36 pb-16 px-4 sm:px-6 max-w-6xl mx-auto w-full space-y-24"></main>
 
   <!-- Full-width animated social footer -->
-  <footer class="social-footer relative overflow-hidden border-t border-cyan-300/20 bg-[#05070B] px-4 sm:px-6 pt-10 pb-6">
-    <canvas class="cyber-storm-canvas" aria-hidden="true"></canvas>
+  <footer class="social-footer relative overflow-hidden border-t border-cyan-300/20 bg-transparent px-4 sm:px-6 pt-10 pb-6">
     <style>
       .social-footer:before{content:"";position:absolute;inset:-60% -20%;pointer-events:none;background:radial-gradient(ellipse at 15% 55%,rgba(0,242,254,.12),transparent 38%),radial-gradient(ellipse at 85% 30%,rgba(127,0,255,.13),transparent 36%);animation:footerGlow 12s ease-in-out infinite alternate}
       .social-footer-inner{position:relative;z-index:1;width:min(1100px,100%);margin-inline:auto}
@@ -541,10 +543,12 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
       @keyframes footerGlow{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,-2%,0) scale(1.04)}}
       @keyframes footerTextShine{to{background-position:220% center}}
       
-      /* Cyber Energy Storm — animated only inside the Let’s connect footer. */
-      .social-footer{position:relative;isolation:isolate;overflow:hidden;background-color:#05070b}
+      /* One shared Cyber Energy Storm layer across the homepage, excluding the fixed header. */
+      #homepage-energy-canvas{position:fixed;z-index:0;top:72px;bottom:0;left:0;width:100%;height:calc(100dvh - 72px);display:block;pointer-events:none;opacity:.98}
+      @media(min-width:640px){#homepage-energy-canvas{top:80px;height:calc(100dvh - 80px)}}
+      #sections-wrapper,footer.social-footer{position:relative;z-index:1}
+      .social-footer{isolation:isolate;overflow:hidden;background-color:transparent!important}
       .social-footer-inner{position:relative;z-index:2}
-      .social-footer .cyber-storm-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:.98}
       .social-footer nav[aria-label="Social profiles"]{position:relative;isolation:isolate;gap:1rem}
       .social-footer nav.social-icon-row{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,24px);flex-wrap:nowrap;max-width:720px;margin-inline:auto;padding:18px 8px}
       .social-footer .social-action{display:grid;place-items:center;position:relative;z-index:1;isolation:isolate;overflow:hidden;width:clamp(48px,7vw,68px);height:clamp(48px,7vw,68px);min-height:0;flex:0 0 auto;border-radius:18px;padding:0;border:1px solid rgba(0,242,254,.38);background:linear-gradient(120deg,rgba(8,18,31,.88),rgba(19,13,38,.86),rgba(7,20,30,.88));box-shadow:inset 0 0 22px rgba(0,242,254,.07),0 0 18px rgba(0,242,254,.10),0 8px 24px rgba(0,0,0,.22);transition:transform .35s,border-color .35s,box-shadow .35s}
@@ -562,8 +566,8 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
       .social-footer .social-action:hover,.social-footer .social-action:focus-visible{transform:translateY(-5px) scale(1.04);border-color:rgba(0,242,254,.9);box-shadow:0 12px 34px rgba(0,242,254,.22),0 0 30px rgba(127,0,255,.20);outline:none}
       .social-footer .social-action:hover .social-symbol,.social-footer .social-action:focus-visible .social-symbol{transform:scale(1.12);color:#fff;text-shadow:0 0 16px rgba(0,242,254,.7)}
       @keyframes orbitBorder{to{--orbit-angle:360deg}}
-      @media(max-width:640px){.social-footer nav.social-icon-row{gap:clamp(8px,2.8vw,14px);padding-inline:2px}.social-footer .social-action{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);border-radius:15px}.social-footer .cyber-storm-canvas{opacity:.82}}
-      @media(prefers-reduced-motion:reduce){.social-footer .cyber-storm-canvas{display:none}.social-footer .social-action,.social-footer .social-action::before{animation:none!important;translate:none;transition:none}}
+      @media(max-width:640px){.social-footer nav.social-icon-row{gap:clamp(8px,2.8vw,14px);padding-inline:2px}.social-footer .social-action{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);border-radius:15px}#homepage-energy-canvas{opacity:.72}}
+      @media(prefers-reduced-motion:reduce){#homepage-energy-canvas{display:none}.social-footer .social-action,.social-footer .social-action::before{animation:none!important;translate:none;transition:none}}
     </style>
     <div class="social-footer-inner">
       <div class="mb-7 text-center">
@@ -611,9 +615,8 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 
   <script id="cyber-energy-storm">
   (() => {
-    const footer = document.querySelector('footer.social-footer');
-    const canvas = footer && footer.querySelector('.cyber-storm-canvas');
-    if (!footer || !canvas) return;
+    const canvas = document.getElementById('homepage-energy-canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -622,8 +625,8 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     const sparks=[];
     const rand=(a,b)=>a+Math.random()*(b-a);
     function resize(){
-      const rect=footer.getBoundingClientRect();
-      w=Math.max(1,rect.width);h=Math.max(1,rect.height);
+      const rect=canvas.getBoundingClientRect();
+      w=Math.max(1,window.innerWidth);h=Math.max(1,window.innerHeight-rect.top);
       dpr=Math.min(window.devicePixelRatio||1,1.5);
       canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
       canvas.style.width=w+'px';canvas.style.height=h+'px';
@@ -634,10 +637,10 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
       sparks.forEach(p=>{p.x=Math.min(w,Math.max(0,p.x));p.y=Math.min(h,Math.max(0,p.y))});
     }
     function draw(now){
-      if(!footer.isConnected)return;
+      if(!canvas.isConnected)return;
       const dt=Math.min(32,now-(last||now));last=now;
       ctx.clearRect(0,0,w,h);
-      // Moving atmospheric energy fields stay inside this footer canvas.
+      // Moving atmospheric energy fields fill the page area below the fixed header.
       const t=now*.00022;
       const g1=ctx.createRadialGradient(w*(.18+Math.sin(t)*.08),h*(.34+Math.cos(t*.8)*.08),0,w*.22,h*.48,Math.max(w*.46,h*.9));
       g1.addColorStop(0,'rgba(0,242,254,.16)');g1.addColorStop(.48,'rgba(0,110,255,.055)');g1.addColorStop(1,'rgba(0,0,0,0)');
@@ -687,20 +690,20 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
       if(!reduce)raf=requestAnimationFrame(draw);
     }
     function onPointer(e){
-      const r=footer.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+      const r=canvas.getBoundingClientRect();
+      if(e.clientY<r.top){pointer.energy*=.45;return;}
+      const x=e.clientX-r.left,y=e.clientY-r.top;
       if(pointer.x>-900){pointer.vx=x-pointer.x;pointer.vy=y-pointer.y;}
       pointer.x=x;pointer.y=y;
       if(pointer.sx<-900){pointer.sx=x;pointer.sy=y;}
       pointer.energy=Math.min(1,pointer.energy+(e.type==='pointerdown'?.24:.08));
     }
-    footer.addEventListener('pointermove',onPointer,{passive:true});
-    footer.addEventListener('pointerdown',onPointer,{passive:true});
-    footer.addEventListener('pointerleave',()=>{pointer.energy*=.45},{passive:true});
+    document.addEventListener('pointermove',onPointer,{passive:true});
+    document.addEventListener('pointerdown',onPointer,{passive:true});
     resize();
     if(reduce){draw(0);return;}
     active=true;raf=requestAnimationFrame(draw);
-    const ro=typeof ResizeObserver!=='undefined'?new ResizeObserver(()=>resize()):null;
-    if(ro)ro.observe(footer);else window.addEventListener('resize',resize,{passive:true});
+    window.addEventListener('resize',resize,{passive:true});
     document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);active=false}else if(!active){active=true;last=0;raf=requestAnimationFrame(draw)}});
   })();
   </script>
