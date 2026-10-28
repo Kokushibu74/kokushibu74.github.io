@@ -33,17 +33,9 @@ QUERIES = [
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
-    ("bdnews24.com", "https://bdnews24.com/?getXmlFeed=true&widgetId=1150&widgetName=rssfeed"),
-    ("bdnews24.com", "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true"),
+    # These feeds were confirmed to parse successfully in GitHub Actions.
     ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
-    ("The Daily Star", "https://www.thedailystar.net/rss"),
-    ("Banglanews24", "https://www.banglanews24.com/rss/rss.xml"),
-    ("Jugantor", "https://www.jugantor.com/feed/rss.xml"),
     ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
-    ("Kaler Kantho", "https://www.kalerkantho.com/rss.xml"),
-    ("Dhaka Tribune", "https://www.dhakatribune.com/rss/home"),
-    ("Dhaka Tribune", "https://www.dhakatribune.com/topic/rss/feed"),
-    ("BD24Live", "https://www.bd24live.com/feed"),
     ("Prothom Alo", "https://www.prothomalo.com/feed/"),
 ]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
