@@ -107,6 +107,25 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(news.child_text(items[0], "title"), "Test headline")
         self.assertEqual(news.child_text(items[0], "link"), "https://example.com/news")
 
+    def test_direct_international_section_is_not_misclassified_as_bangladesh(self):
+        self.assertEqual(
+            news.classify_direct_item("ঘূর্ণিঝড় অর্ণবের আঘাতে ৫ জনের মৃত্যু",
+                                      "https://www.jagonews24.com/international/news/1172989"),
+            "World"
+        )
+
+    def test_direct_technology_section_is_classified(self):
+        self.assertEqual(
+            news.classify_direct_item("নতুন প্রযুক্তি", "https://example.com/technology/news/1"),
+            "Technology"
+        )
+
+    def test_ai_headline_is_classified(self):
+        self.assertEqual(
+            news.classify_direct_item("OpenAI announces a new model", "https://example.com/news/1"),
+            "AI"
+        )
+
     def test_multiple_free_direct_sources_are_configured(self):
         self.assertGreaterEqual(len(news.DIRECT_FEEDS), 7)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
