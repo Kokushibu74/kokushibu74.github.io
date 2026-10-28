@@ -17,12 +17,14 @@
     if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">Bangladesh headlines are being collected. Please check back after the next feed refresh.</div>';slideCount.textContent="BANGLADESH NEWS";controls.hidden=true;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
-      const image=safe(x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
-      const summary=x.summary||x.description||"Open the original report for the full story, context and latest developments.";
+      const image=safe(x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
+      const title=x.previewTitle||x.title;
+      const summary=x.previewSummary||x.summary||x.description||"Open the original report for the full story, context and latest developments.";
+      const publisherUrl=safe(x.publisherUrl||x.link);
       const d=dateOf(x);
       const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.style.display=&quot;none&quot;">':'<div class="top-slide-image" aria-hidden="true"></div>';
       const recent=d&&(Date.now()-d.getTime()<=24*60*60*1000);
-      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🇧🇩 BANGLADESH · '+(recent?'LATEST':'NEWS')+'</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">READ FULL STORY <span aria-hidden="true">↗</span></a></div></article>';
+      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🇧🇩 BANGLADESH · '+(recent?'LATEST':'NEWS')+'</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><div class="top-slide-actions"><a class="top-slide-cta" href="'+publisherUrl+'" target="_blank" rel="noopener noreferrer">READ FULL STORY <span aria-hidden="true">↗</span></a>'+(x.iframeAllowed===true?'<details class="publisher-embed"><summary>Site preview</summary><iframe src="'+publisherUrl+'" title="Publisher page preview" loading="lazy" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></details>':'')+'</div></div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show Bangladesh story '+(i+1)+'"></button>').join("");
     slideCount.textContent=String(topItems.length).padStart(2,"0")+" BANGLADESH HEADLINES";
@@ -91,10 +93,10 @@
     const now=Date.now();
     grid.innerHTML=visible.map((x,i)=>{
       const date=dateOf(x),age=date?now-date.getTime():Infinity,recent=age>=-5*60*1000&&age<=24*60*60*1000;
-      const image=safe(x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
+      const image=safe(x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const imageMarkup=image!=="#"?'<div class="story-image"><img src="'+esc(image)+'" alt="" loading="'+(i<6?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()"></div>':'<div class="story-image no-image" aria-hidden="true"><span>NEWS</span></div>';
-      const summary=String(x.summary||x.description||"").trim();
-      return '<a class="story" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">'+imageMarkup+'<div class="story-body"><div class="story-tags"><span class="tag">'+esc(x.category||"News")+'</span>'+(recent?'<span class="story-breaking">LATEST</span>':"")+'</div><h2>'+esc(x.title)+'</h2>'+(summary?'<p class="story-summary">'+esc(summary)+'</p>':"")+'<div class="meta"><span>'+esc(x.source||"Original source")+'</span><span>'+esc(date?date.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}):"")+'</span></div></div></a>';
+      const summary=String(x.previewSummary||x.summary||x.description||"").trim();
+      return '<a class="story" href="'+safe(x.publisherUrl||x.link)+'" target="_blank" rel="noopener noreferrer">'+imageMarkup+'<div class="story-body"><div class="story-tags"><span class="tag">'+esc(x.category||"News")+'</span>'+(recent?'<span class="story-breaking">LATEST</span>':"")+'</div><h2>'+esc(x.previewTitle||x.title)+'</h2>'+(summary?'<p class="story-summary">'+esc(summary)+'</p>':"")+'<div class="meta"><span>'+esc(x.source||"Original source")+'</span><span>'+esc(date?date.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}):"")+'</span></div></div></a>';
     }).join("");
   }
   function updateFilterCounts(){
