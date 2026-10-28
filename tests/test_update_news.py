@@ -120,6 +120,14 @@ class NewsLogicTests(unittest.TestCase):
             "World"
         )
 
+    def test_bbc_world_feed_is_classified_as_world(self):
+        self.assertEqual(
+            news.classify_direct_item("A new global development",
+                                      "https://www.bbc.co.uk/news/articles/example",
+                                      "BBC News World"),
+            "World"
+        )
+
     def test_bbc_bangla_local_headline_is_classified_as_bangladesh(self):
         self.assertEqual(
             news.classify_direct_item("ঢাকায় নতুন উন্নয়ন প্রকল্প",
