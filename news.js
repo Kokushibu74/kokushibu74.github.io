@@ -19,9 +19,8 @@
       const image=safe(x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const summary=x.description||x.summary||"Open the original report for the full story, context and latest developments.";
       const d=x._date;
-      const preview='<iframe class="top-slide-preview" src="'+safe(x.link)+'" title="Live website preview: '+esc(x.title)+'" loading="'+(i===0?"eager":"lazy")+'" referrerpolicy="no-referrer" tabindex="-1" aria-hidden="true"></iframe>';
-      const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=&quot;none&quot;">':'<div class="top-slide-image" aria-hidden="true"></div>';
-      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'">'+preview+bg+'<div class="top-slide-copy"><span class="top-slide-kicker">🔥 '+esc(x.category||"Top story")+' · LIVE PREVIEW</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">OPEN ORIGINAL WEBSITE <span aria-hidden="true">↗</span></a><span class="top-slide-preview-note">If the publisher blocks embedded previews, use “Open original website”.</span></div></article>';
+      const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.style.display=&quot;none&quot;">':'<div class="top-slide-image" aria-hidden="true"></div>';
+      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🔥 '+esc(x.category||"Top story")+' · FEATURED STORY</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">READ FULL STORY <span aria-hidden="true">↗</span></a></div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show top story '+(i+1)+'"></button>').join("");
     slideCount.textContent=String(topItems.length).padStart(2,"0")+" FEATURED HEADLINES";
@@ -37,12 +36,20 @@
       if(offset>topItems.length/2)offset-=topItems.length;
       const distance=Math.abs(offset);
       el.hidden=false;
+      const mobile=window.matchMedia("(max-width: 600px)").matches;
+      const cardWidth=el.getBoundingClientRect().width||slidesRoot.clientWidth*.32;
+      const step=cardWidth*(mobile?.88:.78)+(mobile?0:18);
+      const scale=distance===0?1:distance===1?.91:distance===2?.79:.68;
+      const opacity=distance===0?1:distance===1?.88:distance===2?.28:0;
+      const rotate=offset*(mobile?-11:-16);
       el.classList.toggle("active",distance===0);
       el.classList.toggle("is-prev",offset===-1);
       el.classList.toggle("is-next",offset===1);
       el.classList.toggle("is-far",distance>1);
       el.style.zIndex=String(20-distance);
+      el.style.opacity=String(opacity);
       el.style.pointerEvents=distance<=1?"auto":"none";
+      el.style.transform="translateX("+(offset*step)+"px) translateZ("+(-distance*(mobile?48:82))+"px) rotateY("+rotate+"deg) scale("+scale+")";
     });
     dotsRoot.querySelectorAll(".top-slide-dot").forEach((el,i)=>el.classList.toggle("active",i===slideIndex));
   }
