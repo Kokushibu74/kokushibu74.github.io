@@ -59,7 +59,7 @@ function render(projects){
  total.textContent=String(logicalCount).padStart(2,"0")+" PROJECTS";
  dots.innerHTML=originals.map((_,i)=>'<button type="button" class="gallery-dot" aria-label="Go to project '+(i+1)+'" aria-current="'+(i===0?'true':'false')+'" data-index="'+i+'"></button>').join("");
  dots.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>go(Number(b.dataset.index))));
- active=0;requestAnimationFrame(()=>go(0,"auto"));
+ active=0;requestAnimationFrame(()=>{syncSidePadding();go(0,"auto")});
 }
 function setClasses(physical){
  cards.forEach((c,i)=>{c.classList.toggle("is-active",i===physical);c.classList.toggle("is-prev",i===physical-1);c.classList.toggle("is-next",i===physical+1);c.classList.toggle("is-far",Math.abs(i-physical)>1)});
@@ -67,6 +67,7 @@ function setClasses(physical){
  count.textContent=String(logical+1).padStart(2,"0")+" / "+String(logicalCount).padStart(2,"0");
  dots.querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",String(i===logical)));
 }
+function syncSidePadding(){if(!cards.length)return;const width=cards[1].getBoundingClientRect().width,pad=Math.max(0,(gallery.clientWidth-width)/2);gallery.style.paddingLeft=pad+"px";gallery.style.paddingRight=pad+"px";}
 function centerCard(card,behavior){const left=card.offsetLeft-(gallery.clientWidth-card.clientWidth)/2;gallery.scrollTo({left:Math.max(0,left),behavior:behavior||"smooth"});}
 function update(){
  if(!cards.length||resetting)return;
@@ -87,7 +88,7 @@ prev.addEventListener("click",()=>go(active-1));next.addEventListener("click",()
 gallery.addEventListener("scroll",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(update)},{passive:true});
 gallery.addEventListener("scrollend",update);
 gallery.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(active+1)}if(e.key==="ArrowLeft"){e.preventDefault();go(active-1)}});
-window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>go(active,"auto"))});
+window.addEventListener("resize",()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{syncSidePadding();go(active,"auto")})});
 async function start(){try{const r=await fetch("site-data.json?projects="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("Project data unavailable");const data=await r.json();render(data.projects)}catch(e){console.warn("Using built-in project list:",e);render([
 {tag:"MULTI-MODEL AI",name:"Multi-AI — AI Chat & Memory",desc:"A multilingual AI chat interface with voice features, portfolio knowledge, and a backend for persistent memory.",link:"https://kokushibu74.github.io/Multi-Ai"},
 {tag:"DEVELOPER TOOL / API",name:"API Tester",desc:"A lightweight tool for testing AI API keys and models, with clear diagnostics for connection and response issues.",link:"https://github.com/Kokushibu74/API-TESTER-"},
