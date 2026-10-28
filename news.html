@@ -101,6 +101,45 @@
 /* Fix: keep neighboring slides rendered so their 3D transforms are visible. */
 #top-stories-slides .top-slide{display:flex!important;animation:none!important;visibility:visible!important}
 #top-stories-slides .top-slide.active{display:flex!important;animation:none!important}
+
+/* Clean full-width news carousel — shares the Projects page's cinematic 3D layout. */
+.news-hero-layout{display:block;padding:30px 0 8px}
+.news-hero-layout .hero{padding:24px 0 20px;max-width:820px}
+.news-hero-layout .intro{max-width:720px}
+.news-hero-note{margin-top:18px}
+#top-stories.top-stories{position:relative;margin:0 0 20px;padding:0;border:0;border-radius:0;overflow:visible;background:transparent;box-shadow:none;isolation:isolate}
+#top-stories .top-stories-head{padding:8px 4px 0;border:0;background:transparent}
+#top-stories .top-stories-label{font-size:11px;letter-spacing:.14em}
+#top-stories .top-stories-count{font-size:10px}
+#top-stories-slides{position:relative;display:grid;align-items:stretch;gap:0;min-height:560px;overflow:hidden;overflow:clip;overflow-y:visible;perspective:1600px;transform-style:preserve-3d;isolation:isolate;padding:28px 0 34px;margin:0;scrollbar-width:none;touch-action:pan-y}
+#top-stories-slides .top-slide{grid-area:1/1;position:relative;display:flex!important;justify-self:center;align-self:stretch;flex-direction:column;width:calc((100% - 36px)/3);min-width:0;min-height:510px;height:auto;margin:0;overflow:hidden;border:1px solid #ffffff18;border-radius:24px;background:linear-gradient(145deg,rgba(15,23,36,.98),rgba(6,11,20,.98));color:#f5f7fc;text-decoration:none;opacity:0;visibility:visible;pointer-events:none;transform-origin:center center;transform-style:preserve-3d;backface-visibility:hidden;box-shadow:0 20px 50px #0007;transition:transform .78s cubic-bezier(.2,.75,.2,1),opacity .58s ease,filter .58s ease,border-color .35s,box-shadow .58s;will-change:transform,opacity;animation:none!important}
+#top-stories-slides .top-slide.active{border-color:#72edffcc;box-shadow:0 28px 85px #00d9ff27,0 0 34px #5a5bff1b,inset 0 0 0 1px #ffffff08}
+#top-stories-slides .top-slide:before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,#7ceeff12,transparent 32%,transparent 70%,#9a70ff12)}
+#top-stories-slides .top-slide:after{content:none!important}
+#top-stories-slides .top-slide-visual{position:relative;flex:0 0 auto;aspect-ratio:16/10;overflow:hidden;background:radial-gradient(ellipse at 70% 30%,#123a50,#101226 48%,#05070b);border-bottom:1px solid #ffffff14}
+#top-stories-slides .top-slide-image{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:1;z-index:0;transform:scale(1);transition:transform 6s ease,filter .4s ease;background:transparent}
+#top-stories-slides .top-slide.active .top-slide-image{transform:scale(1.055)}
+#top-stories-slides .top-slide-visual:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#02060a05 30%,#02060a85 100%)}
+#top-stories-slides .top-slide-index{position:absolute;top:13px;left:13px;z-index:1;padding:6px 9px;border:1px solid #ffffff35;border-radius:99px;background:#05070bb8;color:#e4faff;font:9px 'JetBrains Mono',monospace;backdrop-filter:blur(10px)}
+#top-stories-slides .top-slide-kicker{display:inline-flex;align-items:center;gap:7px;max-width:100%;padding:6px 9px;border:1px solid #00f2fe45;border-radius:99px;background:#00f2fe0d;color:#8cf8ff;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+#top-stories-slides .top-slide-copy{position:relative;z-index:3;display:flex;flex:1;flex-direction:column;align-items:flex-start;width:100%;padding:20px}
+#top-stories-slides .top-slide h2{display:-webkit-box;max-width:100%;margin:13px 0 9px;overflow:hidden;-webkit-line-clamp:3;-webkit-box-orient:vertical;font-size:clamp(17px,1.65vw,21px);line-height:1.32;letter-spacing:-.025em;font-weight:900;text-wrap:pretty}
+#top-stories-slides .top-slide-summary{display:-webkit-box;max-width:100%;margin:0;color:#aebbd0;font-size:12px;line-height:1.65;overflow:hidden;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+#top-stories-slides .top-slide-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;color:#8999b1;font:9px 'JetBrains Mono',monospace}
+#top-stories-slides .top-slide-cta{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:10px 13px;border:1px solid #00f2fe42;border-radius:999px;background:linear-gradient(120deg,#00f2fe,#4facfe);color:#041018;font-size:10px;font-weight:900;text-decoration:none;box-shadow:0 7px 26px #00f2fe20}
+#top-stories-slides .top-slide-preview,#top-stories-slides .top-slide-preview-note{display:none!important}
+#top-stories-controls.top-slide-controls{position:relative;inset:auto;display:flex;justify-content:center;align-items:center;gap:10px;margin:0 auto 28px;padding:0;z-index:5}
+#top-stories-controls[hidden]{display:none!important}
+#top-stories-controls .top-slide-dots{gap:8px;margin-right:4px}
+#top-stories-controls .top-slide-dot{width:7px;height:7px;background:#536075;transition:width .35s ease,background .35s ease,box-shadow .35s ease}
+#top-stories-controls .top-slide-dot.active{width:24px;background:#00f2fe;box-shadow:0 0 14px #00f2fe85}
+#top-stories-controls .top-slide-arrow{width:40px;height:40px;border:1px solid #ffffff20;background:#0d1420;box-shadow:0 0 0 1px #ffffff04,inset 0 0 20px #65dfff05;transition:transform .25s,border-color .25s,color .25s,background .25s}
+#top-stories-controls .top-slide-arrow:hover{transform:translateY(-2px) scale(1.04);border-color:#00f2fe;color:#00f2fe}
+.top-stories-empty{grid-area:1/1;align-self:center;padding:30px 20px;border:1px solid #ffffff18;border-radius:20px;color:#8b98ad;font-size:13px;line-height:1.7}
+@media(max-width:900px){#top-stories-slides{min-height:550px}#top-stories-slides .top-slide{width:calc((100% - 18px)/2);min-height:500px}}
+@media(max-width:600px){.news-hero-layout{padding-top:16px}.news-hero-layout .hero{padding:26px 0 18px}.news-hero-layout .hero h1{font-size:clamp(38px,9vw,58px)}#top-stories .top-stories-head{padding:6px 2px 0}#top-stories-slides{min-height:535px;padding:20px 0 28px}#top-stories-slides .top-slide{width:min(82%,360px);min-height:485px;border-radius:21px}#top-stories-slides .top-slide-visual{aspect-ratio:16/9}#top-stories-slides .top-slide-copy{padding:18px}#top-stories-slides .top-slide h2{font-size:18px;line-height:1.35}#top-stories-slides .top-slide-summary{-webkit-line-clamp:3;font-size:12px}#top-stories-controls.top-slide-controls{margin-bottom:22px}#top-stories-controls .top-slide-arrow{width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){#top-stories-slides .top-slide,#top-stories-slides .top-slide-image{transition:none!important;animation:none!important}}
+
 </style>
 
 
@@ -109,7 +148,7 @@
 <body>
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a class="active" href="news.html" aria-current="page">News</a><a href="contact.html">Contact</a></nav></header>
   <main class="wrap">
-    <section class="news-hero-layout" aria-label="News introduction and featured stories"><div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Explore the latest stories and preview the publisher page right here before opening the original report.</p><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL SOURCE PREVIEWS</div></div>
+    <section class="news-hero-layout" aria-label="News introduction and featured stories"><div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Explore the latest stories and preview the publisher page right here before opening the original report.</p><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div></div></section>
     <section id="top-stories" class="top-stories" aria-label="Top and trending news">
       <div class="top-stories-head"><div class="top-stories-label"><span class="top-live-dot" aria-hidden="true"></span> TOP STORIES <span style="color:#00f2fe">/</span> HOT RIGHT NOW</div><span id="top-stories-count" class="top-stories-count">CURATING LIVE HEADLINES</span></div>
       <div id="top-stories-slides"><div class="top-stories-empty">Loading the top headlines…</div></div>
