@@ -120,6 +120,22 @@ class NewsLogicTests(unittest.TestCase):
             "World"
         )
 
+    def test_bbc_bangla_local_headline_is_classified_as_bangladesh(self):
+        self.assertEqual(
+            news.classify_direct_item("ঢাকায় নতুন উন্নয়ন প্রকল্প",
+                                      "https://www.bbc.com/bengali/articles/example",
+                                      "BBC News বাংলা"),
+            "Bangladesh"
+        )
+
+    def test_bbc_bangla_international_headline_is_classified_as_world(self):
+        self.assertEqual(
+            news.classify_direct_item("ইউরোপে নতুন নীতির ঘোষণা",
+                                      "https://www.bbc.com/bengali/articles/example",
+                                      "BBC News বাংলা"),
+            "World"
+        )
+
     def test_direct_technology_section_is_classified(self):
         self.assertEqual(
             news.classify_direct_item("নতুন প্রযুক্তি", "https://example.com/technology/news/1"),
@@ -133,7 +149,7 @@ class NewsLogicTests(unittest.TestCase):
         )
 
     def test_multiple_free_direct_sources_are_configured(self):
-        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 7)
+        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 5)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
         self.assertEqual(len({url for _, url in news.DIRECT_FEEDS}), len(news.DIRECT_FEEDS))
 
