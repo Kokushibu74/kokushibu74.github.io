@@ -192,18 +192,23 @@
       cards.forEach((card,i)=>{card.hidden=i!==target;card.classList.toggle("active",i===target)});
     }else{
       incoming.hidden=false;
-      incoming.classList.remove("active");
+      incoming.classList.remove("active","enter-from-top","enter-from-bottom");
       incoming.classList.add(direction==="up"?"enter-from-bottom":"enter-from-top");
+      // Commit the off-screen starting position before activating the incoming card.
       void incoming.offsetHeight;
       outgoing.classList.remove("active");
       outgoing.classList.add(direction==="up"?"exit-up":"exit-down");
-      incoming.classList.remove(direction==="up"?"enter-from-bottom":"enter-from-top");
-      incoming.classList.add("active");
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          incoming.classList.remove("enter-from-bottom","enter-from-top");
+          incoming.classList.add("active");
+        });
+      });
       weatherTransitionTimer=setTimeout(()=>{
         outgoing.hidden=true;
         outgoing.classList.remove("exit-up","exit-down");
         incoming.classList.remove("enter-from-top","enter-from-bottom");
-      },400);
+      },450);
     }
     weatherSlideIndex=target;
     weatherPosition.textContent=(weatherSlideIndex+1)+" / "+total;
