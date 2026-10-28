@@ -14,6 +14,27 @@ class NewsLogicTests(unittest.TestCase):
     def iso(self, delta):
         return (datetime.now(timezone.utc) + delta).isoformat()
 
+    def test_recent_weather_or_disaster_story_is_accepted(self):
+        self.assertTrue(news.is_weather_disaster_story(
+            "Cyclone warning issued as heavy rain approaches",
+            "Weather officials advise residents to prepare",
+            self.iso(timedelta(hours=-2))
+        ))
+
+    def test_old_or_undated_weather_story_is_rejected(self):
+        self.assertFalse(news.is_weather_disaster_story(
+            "Flood update", "Heavy rain continues", self.iso(timedelta(days=-9))
+        ))
+        self.assertFalse(news.is_weather_disaster_story(
+            "Flood update", "Heavy rain continues", None
+        ))
+
+    def test_unrelated_story_is_not_a_weather_disaster_story(self):
+        self.assertFalse(news.is_weather_disaster_story(
+            "AI investment expands", "A technology company announced a new product",
+            self.iso(timedelta(hours=-1))
+        ))
+
     def test_iso8601_dates_are_parsed(self):
         parsed = news.parse_date("2026-10-28T12:30:00+00:00")
         self.assertEqual(parsed, "2026-10-28T12:30:00+00:00")
