@@ -18,6 +18,10 @@ class NewsLogicTests(unittest.TestCase):
         parsed = news.parse_date("2026-10-28T12:30:00+00:00")
         self.assertEqual(parsed, "2026-10-28T12:30:00+00:00")
 
+    def test_malformed_ampersand_in_feed_xml_is_recovered(self):
+        root = news.parse_feed_xml(b"<rss><channel><item><title>A & B</title></item></channel></rss>")
+        self.assertEqual(root.findtext("./channel/item/title"), "A & B")
+
     def test_same_headline_deduplicates_across_sources(self):
         a = {"title": "ঢাকায় জরুরি সংবাদ!", "source": "Source A"}
         b = {"title": "ঢাকায় জরুরি সংবাদ!", "source": "Source B"}
