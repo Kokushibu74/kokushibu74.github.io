@@ -179,12 +179,51 @@
     const d=dateOf(x),age=d?Date.now()-d.getTime():Infinity;
     return !!d&&age>=-5*60*1000&&age<=7*24*60*60*1000&&/(weather|forecast|flood|cyclone|hurricane|typhoon|storm|heavy rain|rainfall|heatwave|heat wave|earthquake|landslide|wildfire|drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)/i.test([x.title,x.summary,x.previewTitle,x.previewSummary].join(" "));
   }
+  let weatherTransitionTimer=null;
   function showWeatherSlide(next,total){
-    const cards=weatherSlidesRoot.querySelectorAll(".weather-slide");if(!cards.length)return;
-    weatherSlideIndex=(next+total)%total;
-    cards.forEach((card,i)=>{card.hidden=i!==weatherSlideIndex;card.classList.toggle("active",i===weatherSlideIndex)});
+    const cards=Array.from(weatherSlidesRoot.querySelectorAll(".weather-slide"));if(!cards.length||!total)return;
+    const previous=weatherSlideIndex, target=(next+total)%total;
+    if(target===previous)return;
+    const direction=next>previous||next<0?"up":"down";
+    const outgoing=cards[previous],incoming=cards[target];
+    if(weatherTransitionTimer)clearTimeout(weatherTransitionTimer);
+    cards.forEach(card=>card.classList.remove("exit-up","exit-down","enter-from-top","enter-from-bottom"));
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      cards.forEach((card,i)=>{card.hidden=i!==target;card.classList.toggle("active",i===target)});
+    }else{
+      incoming.hidden=false;
+      incoming.classList.remove("active");
+      incoming.classList.add(direction==="up"?"enter-from-bottom":"enter-from-top");
+      void incoming.offsetHeight;
+      outgoing.classList.remove("active");
+      outgoing.classList.add(direction==="up"?"exit-up":"exit-down");
+      incoming.classList.remove(direction==="up"?"enter-from-bottom":"enter-from-top");
+      incoming.classList.add("active");
+      weatherTransitionTimer=setTimeout(()=>{
+        outgoing.hidden=true;
+        outgoing.classList.remove("exit-up","exit-down");
+        incoming.classList.remove("enter-from-top","enter-from-bottom");
+      },400);
+    }
+    weatherSlideIndex=target;
     weatherPosition.textContent=(weatherSlideIndex+1)+" / "+total;
   }
+  let weatherTouchStart=null;
+  weatherSlidesRoot.addEventListener("touchstart",e=>{
+    const touch=e.changedTouches&&e.changedTouches[0];if(!touch)return;
+    weatherTouchStart={x:touch.clientX,y:touch.clientY};
+  },{passive:true});
+  weatherSlidesRoot.addEventListener("touchend",e=>{
+    if(!weatherTouchStart)return;
+    const touch=e.changedTouches&&e.changedTouches[0],start=weatherTouchStart;weatherTouchStart=null;
+    if(!touch)return;
+    const dx=touch.clientX-start.x,dy=touch.clientY-start.y;
+    if(Math.abs(dy)<35||Math.abs(dy)<Math.abs(dx)*1.2)return;
+    const total=weatherSlidesRoot.querySelectorAll(".weather-slide").length;if(total<2)return;
+    showWeatherSlide(weatherSlideIndex+(dy<0?1:-1),total);
+    if(weatherSlideTimer)clearInterval(weatherSlideTimer);
+    weatherSlideTimer=!window.matchMedia("(prefers-reduced-motion: reduce)").matches?setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000):null;
+  },{passive:true});
   weatherControls.addEventListener("click",e=>{const button=e.target.closest("[data-weather-step]");if(!button)return;const total=weatherSlidesRoot.querySelectorAll(".weather-slide").length;showWeatherSlide(weatherSlideIndex+Number(button.dataset.weatherStep),total);if(weatherSlideTimer)clearInterval(weatherSlideTimer);weatherSlideTimer=total>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches?setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000):null});
   fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(data=>{items=Array.isArray(data.items)?data.items.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category})):[];weatherItems=Array.isArray(data.weatherItems)?data.weatherItems:[];window.newsUpdatedAt=data.updatedAt;updateFilterCounts();renderTopStories();renderWeatherStories();render()}).catch(()=>{status.textContent="Could not load the news feed. It will retry on your next visit.";grid.innerHTML="";slidesRoot.innerHTML='<div class="top-stories-empty">Could not load top stories right now. Please check back shortly.</div>'});
   setInterval(()=>location.reload(),10*60*1000);
