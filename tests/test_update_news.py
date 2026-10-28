@@ -87,9 +87,30 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
         ))
 
+    def test_namespaced_atom_feed_items_and_links_are_parsed(self):
+        root = news.parse_feed_xml(b"""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>ঢাকায় নতুন খবর</title>
+          <link href="https://example.com/story"/>
+          <updated>2026-10-28T12:00:00Z</updated></entry></feed>""")
+        items = news.feed_items(root)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(news.child_text(items[0], "title"), "ঢাকায় নতুন খবর")
+        self.assertEqual(news.child_text(items[0], "link"), "https://example.com/story")
+        self.assertEqual(news.child_text(items[0], "updated"), "2026-10-28T12:00:00Z")
+
+    def test_namespaced_rss_feed_items_are_parsed(self):
+        root = news.parse_feed_xml(b"""<rss xmlns="https://example.com/rss"><channel>
+          <item><title>Test headline</title><link>https://example.com/news</link></item>
+          </channel></rss>""")
+        items = news.feed_items(root)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(news.child_text(items[0], "title"), "Test headline")
+        self.assertEqual(news.child_text(items[0], "link"), "https://example.com/news")
+
     def test_multiple_free_direct_sources_are_configured(self):
-        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 3)
+        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 7)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
+        self.assertEqual(len({url for _, url in news.DIRECT_FEEDS}), len(news.DIRECT_FEEDS))
 
 
 if __name__ == "__main__":
