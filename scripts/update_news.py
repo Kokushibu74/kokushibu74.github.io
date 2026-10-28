@@ -49,7 +49,7 @@ DIRECT_FEEDS = [
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
 DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
 BREAKING_TITLE_RE = re.compile(
-    r"(?:breaking(?:\\s+news)?(?:\\s*[:!—–|]|\\s*$)|ব্রেকিং(?:\\s+নিউজ)?|"
+    r"(?:breaking(?:\s+news)?(?:\s*[:!—–|]|\s*$)|ব্রেকিং(?:\s+নিউজ)?|"
     r"জরুরি(?: খবর| সংবাদ)?|just in|developing story|সদ্যপ্রাপ্ত|"
     r"সর্বশেষ মুহূর্তে|এইমাত্র|জরুরি আপডেট)", re.I
 )
