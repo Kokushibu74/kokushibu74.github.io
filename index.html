@@ -604,8 +604,8 @@
     if (!ctx) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let w=0,h=0,dpr=1,raf=0,last=0,active=false;
-    const pointer={x:-9999,y:-9999,px:-9999,py:-9999,down:false,energy:0};
-    const sparks=[],bolts=[];
+    const pointer={x:-9999,y:-9999,sx:-9999,sy:-9999,energy:0,vx:0,vy:0};
+    const sparks=[];
     const rand=(a,b)=>a+Math.random()*(b-a);
     function resize(){
       const rect=footer.getBoundingClientRect();
@@ -618,23 +618,6 @@
       while(sparks.length<count)sparks.push({x:rand(0,w),y:rand(0,h),vx:rand(-.32,.32),vy:rand(-.42,.42),r:rand(.6,1.8),phase:rand(0,6.28),life:rand(.3,1)});
       sparks.length=count;
       sparks.forEach(p=>{p.x=Math.min(w,Math.max(0,p.x));p.y=Math.min(h,Math.max(0,p.y))});
-    }
-    function bolt(x1,y1,x2,y2,depth,spread){
-      const points=[{x:x1,y:y1}];
-      const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
-      const steps=Math.max(5,Math.floor(len/15));
-      for(let i=1;i<steps;i++){
-        const t=i/steps;
-        points.push({x:x1+dx*t+rand(-spread,spread),y:y1+dy*t+rand(-spread,spread)});
-      }
-      points.push({x:x2,y:y2});
-      ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);
-      points.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
-      ctx.stroke();
-      if(depth>0&&Math.random()<.72){
-        const p=points[Math.floor(rand(1,points.length-1))];
-        bolt(p.x,p.y,p.x+rand(-55,55),p.y+rand(-35,35),depth-1,spread*.55);
-      }
     }
     function draw(now){
       if(!footer.isConnected)return;
@@ -656,51 +639,52 @@
         ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=7;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
       }
       ctx.globalAlpha=1;ctx.shadowBlur=0;
-      // Occasional branching electrical arcs across the full section.
+      // Ambient cinematic energy arcs remain part of the background animation.
       if(Math.random()<(w<600?.055:.085)){
         const fromLeft=Math.random()<.5;
         const x1=fromLeft?rand(-20,w*.38):rand(w*.62,w+20);
         const y1=rand(0,h),x2=Math.max(0,Math.min(w,x1+rand(-w*.35,w*.35))),y2=rand(0,h);
-        ctx.save();ctx.globalCompositeOperation='lighter';
-        ctx.lineCap='round';ctx.strokeStyle='rgba(0,242,254,.17)';ctx.lineWidth=5;ctx.shadowColor='#00f2fe';ctx.shadowBlur=16;bolt(x1,y1,x2,y2,2,rand(8,18));
-        ctx.strokeStyle='rgba(140,245,255,.88)';ctx.lineWidth=1.15;ctx.shadowBlur=10;bolt(x1,y1,x2,y2,1,rand(5,11));
-        ctx.restore();
+        const points=[{x:x1,y:y1}],dx=x2-x1,dy=y2-y1,steps=Math.max(5,Math.floor(Math.hypot(dx,dy)/15));
+        for(let i=1;i<steps;i++){const q=i/steps;points.push({x:x1+dx*q+rand(-12,12),y:y1+dy*q+rand(-12,12)});}
+        points.push({x:x2,y:y2});
+        ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+        ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);points.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
+        ctx.strokeStyle='rgba(0,242,254,.17)';ctx.lineWidth=5;ctx.shadowColor='#00f2fe';ctx.shadowBlur=16;ctx.stroke();
+        ctx.strokeStyle='rgba(140,245,255,.88)';ctx.lineWidth=1.15;ctx.shadowBlur=10;ctx.stroke();ctx.restore();
       }
-      // Pointer/touch creates a local electric ripple and short branching arcs.
-      if(pointer.energy>.015){
-        pointer.energy*=.94;
-        const radius=34+(1-pointer.energy)*42;
-        ctx.save();ctx.globalCompositeOperation='lighter';
-        ctx.strokeStyle='rgba(0,242,254,'+(pointer.energy*.7)+')';ctx.lineWidth=1.3;ctx.shadowColor='#00f2fe';ctx.shadowBlur=15;
-        ctx.beginPath();ctx.arc(pointer.x,pointer.y,radius,0,Math.PI*2);ctx.stroke();
-        ctx.strokeStyle='rgba(191,130,255,'+(pointer.energy*.8)+')';ctx.lineWidth=1;
-        for(let i=0;i<5;i++){
-          const a=now*.002+i*Math.PI*2/5, r=radius*rand(.45,.9);
-          bolt(pointer.x+Math.cos(a)*radius*.45,pointer.y+Math.sin(a)*radius*.45,pointer.x+Math.cos(a)*r,pointer.y+Math.sin(a)*r,0,6*pointer.energy);
-        }
-        ctx.restore();
+      // Pointer/touch softly steers a broad energy field; no interaction lightning or ripple.
+      if(pointer.energy>.008 && pointer.sx>-900){
+        pointer.sx+=(pointer.x-pointer.sx)*.085;
+        pointer.sy+=(pointer.y-pointer.sy)*.085;
+        const speed=Math.min(1,Math.hypot(pointer.vx,pointer.vy)/22);
+        const angle=Math.atan2(pointer.vy,pointer.vx);
+        const radius=115+speed*55;
+        const gx=pointer.sx+Math.cos(angle)*radius*.35;
+        const gy=pointer.sy+Math.sin(angle)*radius*.35;
+        const flow=ctx.createRadialGradient(gx,gy,2,pointer.sx,pointer.sy,radius);
+        flow.addColorStop(0,'rgba(0,242,254,'+(pointer.energy*.20)+')');
+        flow.addColorStop(.38,'rgba(64,130,255,'+(pointer.energy*.12)+')');
+        flow.addColorStop(.72,'rgba(168,85,247,'+(pointer.energy*.075)+')');
+        flow.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.save();ctx.globalCompositeOperation='screen';ctx.fillStyle=flow;ctx.fillRect(0,0,w,h);ctx.restore();
+        pointer.energy*=.985;pointer.vx*=.88;pointer.vy*=.88;
       }
       ctx.globalAlpha=1;ctx.shadowBlur=0;
       if(!reduce)raf=requestAnimationFrame(draw);
     }
     function onPointer(e){
-      const r=footer.getBoundingClientRect();
-      pointer.px=pointer.x;pointer.py=pointer.y;
-      pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top;
-      pointer.energy=Math.min(1,pointer.energy+(e.type==='pointerdown'?.8:.28));
-      pointer.down=e.type==='pointerdown'||e.buttons>0;
-      if(pointer.down){
-        ctx.save();ctx.globalCompositeOperation='lighter';ctx.strokeStyle='rgba(0,242,254,.65)';ctx.lineWidth=1.4;ctx.shadowColor='#00f2fe';ctx.shadowBlur=12;
-        bolt(pointer.px<0?pointer.x:pointer.px,pointer.py<0?pointer.y:pointer.py,pointer.x,pointer.y,1,8);ctx.restore();
-      }
+      const r=footer.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+      if(pointer.x>-900){pointer.vx=x-pointer.x;pointer.vy=y-pointer.y;}
+      pointer.x=x;pointer.y=y;
+      if(pointer.sx<-900){pointer.sx=x;pointer.sy=y;}
+      pointer.energy=Math.min(1,pointer.energy+(e.type==='pointerdown'?.24:.08));
     }
     footer.addEventListener('pointermove',onPointer,{passive:true});
     footer.addEventListener('pointerdown',onPointer,{passive:true});
-    footer.addEventListener('pointerup',()=>{pointer.down=false},{passive:true});
-    footer.addEventListener('pointerleave',()=>{pointer.down=false;pointer.energy*=.5},{passive:true});
+    footer.addEventListener('pointerleave',()=>{pointer.energy*=.45},{passive:true});
     resize();
     if(reduce){draw(0);return;}
-    raf=requestAnimationFrame(draw);
+    active=true;raf=requestAnimationFrame(draw);
     const ro=typeof ResizeObserver!=='undefined'?new ResizeObserver(()=>resize()):null;
     if(ro)ro.observe(footer);else window.addEventListener('resize',resize,{passive:true});
     document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);active=false}else if(!active){active=true;last=0;raf=requestAnimationFrame(draw)}});
