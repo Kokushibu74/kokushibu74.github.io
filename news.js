@@ -21,17 +21,29 @@
       const d=x._date;
       const preview='<iframe class="top-slide-preview" src="'+safe(x.link)+'" title="Live website preview: '+esc(x.title)+'" loading="'+(i===0?"eager":"lazy")+'" referrerpolicy="no-referrer" tabindex="-1" aria-hidden="true"></iframe>';
       const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=&quot;none&quot;">':'<div class="top-slide-image" aria-hidden="true"></div>';
-      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" '+(i===slideIndex?'':'hidden')+'>'+preview+bg+'<div class="top-slide-copy"><span class="top-slide-kicker">🔥 '+esc(x.category||"Top story")+' · LIVE PREVIEW</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">OPEN ORIGINAL WEBSITE <span aria-hidden="true">↗</span></a><span class="top-slide-preview-note">If the publisher blocks embedded previews, use “Open original website”.</span></div></article>';
+      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'">'+preview+bg+'<div class="top-slide-copy"><span class="top-slide-kicker">🔥 '+esc(x.category||"Top story")+' · LIVE PREVIEW</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">OPEN ORIGINAL WEBSITE <span aria-hidden="true">↗</span></a><span class="top-slide-preview-note">If the publisher blocks embedded previews, use “Open original website”.</span></div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show top story '+(i+1)+'"></button>').join("");
     slideCount.textContent=String(topItems.length).padStart(2,"0")+" FEATURED HEADLINES";
     controls.hidden=topItems.length<2;
+    showSlide(slideIndex);
     startSlideTimer();
   }
   function showSlide(next){
     if(!topItems.length)return;
     slideIndex=(next+topItems.length)%topItems.length;
-    slidesRoot.querySelectorAll(".top-slide").forEach((el,i)=>{el.classList.toggle("active",i===slideIndex);el.hidden=i!==slideIndex});
+    slidesRoot.querySelectorAll(".top-slide").forEach((el,i)=>{
+      let offset=(i-slideIndex+topItems.length)%topItems.length;
+      if(offset>topItems.length/2)offset-=topItems.length;
+      const distance=Math.abs(offset);
+      el.hidden=false;
+      el.classList.toggle("active",distance===0);
+      el.classList.toggle("is-prev",offset===-1);
+      el.classList.toggle("is-next",offset===1);
+      el.classList.toggle("is-far",distance>1);
+      el.style.zIndex=String(20-distance);
+      el.style.pointerEvents=distance<=1?"auto":"none";
+    });
     dotsRoot.querySelectorAll(".top-slide-dot").forEach((el,i)=>el.classList.toggle("active",i===slideIndex));
   }
   function startSlideTimer(){
