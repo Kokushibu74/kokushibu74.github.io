@@ -531,14 +531,15 @@
       .social-footer-inner{position:relative}
       .social-footer nav[aria-label="Social profiles"]{position:relative;isolation:isolate;gap:1rem}
       .social-footer nav[aria-label="Social profiles"]::before{content:"";position:absolute;z-index:-1;inset:-24px -14px;border-radius:28px;background:radial-gradient(ellipse at 50% 50%,rgba(0,242,254,.10),rgba(127,0,255,.07) 44%,transparent 72%);filter:blur(10px);pointer-events:none;animation:orbitNebula 6s ease-in-out infinite alternate}
-      .social-footer .social-action{position:relative;isolation:isolate;overflow:hidden;min-height:72px;border:1px solid rgba(0,242,254,.22);background:linear-gradient(120deg,rgba(8,18,31,.96),rgba(19,13,38,.94),rgba(7,20,30,.96));box-shadow:inset 0 0 22px rgba(0,242,254,.025),0 8px 24px rgba(0,0,0,.2);animation:orbitFloat 5.5s ease-in-out infinite;will-change:transform}
+      .social-footer nav.social-icon-row{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,24px);flex-wrap:nowrap;max-width:720px;margin-inline:auto;padding:18px 8px}
+      .social-footer .social-action{display:grid;place-items:center;position:relative;isolation:isolate;overflow:hidden;width:clamp(48px,7vw,68px);height:clamp(48px,7vw,68px);min-height:0;flex:0 0 auto;border-radius:18px;padding:0;border:1px solid rgba(0,242,254,.22);background:linear-gradient(120deg,rgba(8,18,31,.96),rgba(19,13,38,.94),rgba(7,20,30,.96));box-shadow:inset 0 0 22px rgba(0,242,254,.025),0 8px 24px rgba(0,0,0,.2);animation:orbitFloat 5.5s ease-in-out infinite;will-change:transform}
       .social-footer .social-action:nth-child(2n){animation-delay:-2.7s}
       .social-footer .social-action:nth-child(3n){animation-delay:-1.3s}
       .social-footer .social-action::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:conic-gradient(from var(--orbit-angle,0deg),transparent 0 40%,rgba(0,242,254,.85) 48%,rgba(168,85,247,.9) 55%,transparent 65% 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;animation:orbitBorder 4.5s linear infinite;pointer-events:none}
       .social-footer .social-action::after{content:"";position:absolute;top:-60%;left:-70%;width:45%;height:220%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),rgba(0,242,254,.16),transparent);pointer-events:none;animation:orbitSweep 6.8s ease-in-out infinite}
       .social-footer .social-action:nth-child(2n)::after{animation-delay:-3.2s}
-      .social-footer .social-action .social-symbol{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,color .3s;border-color:rgba(0,242,254,.28);box-shadow:0 0 0 rgba(0,242,254,0)}
-      .social-footer .social-action .social-arrow{transition:transform .35s,color .35s}
+      .social-footer .social-action .social-symbol{display:grid;place-items:center;width:100%;height:100%;border:0;border-radius:inherit;background:transparent;font-size:clamp(19px,3vw,26px);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,color .3s;border-color:rgba(0,242,254,.28);box-shadow:0 0 0 rgba(0,242,254,0)}
+      .social-footer .social-action .social-arrow{display:none;transition:transform .35s,color .35s}
       .social-footer .social-action:hover,.social-footer .social-action:focus-visible{transform:translateY(-7px) scale(1.025);border-color:rgba(0,242,254,.7);box-shadow:0 16px 40px rgba(0,242,254,.13),0 0 28px rgba(127,0,255,.12);animation-play-state:paused}
       .social-footer .social-action:hover .social-symbol,.social-footer .social-action:focus-visible .social-symbol{transform:rotate(-9deg) scale(1.13);box-shadow:0 0 22px rgba(0,242,254,.24);color:#fff}
       .social-footer .social-action:hover .social-arrow,.social-footer .social-action:focus-visible .social-arrow{transform:translate(3px,-3px)}
@@ -546,7 +547,7 @@
       @keyframes orbitBorder{to{--orbit-angle:360deg}}
       @keyframes orbitSweep{0%,60%,100%{left:-70%;opacity:0}12%{opacity:1}35%{left:130%;opacity:0}}
       @keyframes orbitNebula{from{opacity:.55;transform:scale(.97)}to{opacity:1;transform:scale(1.03)}}
-      @media(max-width:640px){.social-footer .social-action{min-height:64px;animation-duration:6.5s}.social-footer nav[aria-label="Social profiles"]{gap:.7rem}.social-footer nav[aria-label="Social profiles"]::before{inset:-12px -5px}}
+      @media(max-width:640px){.social-footer nav.social-icon-row{gap:clamp(8px,2.8vw,14px);padding-inline:2px}.social-footer .social-action{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);animation-duration:6.5s;border-radius:15px}.social-footer nav[aria-label="Social profiles"]::before{inset:-12px -5px}}
       @media(prefers-reduced-motion:reduce){.social-footer nav[aria-label="Social profiles"]::before,.social-footer .social-action,.social-footer .social-action::before,.social-footer .social-action::after{animation:none!important}.social-footer .social-action{will-change:auto}}
 
       @media(prefers-reduced-motion:reduce){.social-footer:before,.social-footer-title{animation:none}.social-action,.social-action:before,.social-action .social-symbol,.social-action .social-arrow{transition:none}}
@@ -557,13 +558,13 @@
         <h2 class="social-footer-title text-2xl sm:text-3xl font-black tracking-tight">Let’s connect.</h2>
         <p class="mt-2 text-sm text-slate-400">Choose your favourite place to find me online.</p>
       </div>
-      <nav aria-label="Social profiles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-        <a class="social-action" href="https://facebook.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-f"></i></span><span>Facebook Profile</span><span class="social-arrow"></span></a>
-        <a class="social-action" href="https://m.me/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-messenger"></i></span><span>Messenger Chat</span><span class="social-arrow"></span></a>
-        <a class="social-action" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-whatsapp"></i></span><span>WhatsApp Chat</span><span class="social-arrow"></span></a>
-        <a class="social-action" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-github"></i></span><span>GitHub Profile</span><span class="social-arrow"></span></a>
-        <a class="social-action" href="https://instagram.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-instagram"></i></span><span>Instagram Profile</span><span class="social-arrow"></span></a>
-        <a class="social-action" href="https://www.youtube.com/@Lo-Fi_World-x3w" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-youtube"></i></span><span>YouTube Channel</span><span class="social-arrow"></span></a>
+      <nav aria-label="Social profiles" class="social-icon-row">
+        <a class="social-action" aria-label="Facebook Profile" title="Facebook" href="https://facebook.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span></a>
+        <a class="social-action" aria-label="Messenger Chat" title="Messenger" href="https://m.me/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i></span></a>
+        <a class="social-action" aria-label="WhatsApp Chat" title="WhatsApp" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span></a>
+        <a class="social-action" aria-label="GitHub Profile" title="GitHub" href="https://github.com/Kokushibu74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-github" aria-hidden="true"></i></span></a>
+        <a class="social-action" aria-label="Instagram Profile" title="Instagram" href="https://instagram.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span></a>
+        <a class="social-action" aria-label="YouTube Channel" title="YouTube" href="https://www.youtube.com/@Lo-Fi_World-x3w" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span></a>
       </nav>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-5 text-center sm:text-left">
         <p id="footer-text" class="text-[10px] text-zinc-500 font-mono">© 2026 SHIHABUL ISLAM. Built with curiosity.</p>
