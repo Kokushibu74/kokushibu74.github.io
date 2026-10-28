@@ -97,6 +97,10 @@
 @media(max-width:600px){#top-stories-slides{min-height:520px}#top-stories-slides .top-slide{width:91%;border-radius:18px}#top-stories-slides .top-slide.is-prev{transform:translateX(-54%) translateZ(-50px) rotateY(10deg) scale(.86)}#top-stories-slides .top-slide.is-next{transform:translateX(54%) translateZ(-50px) rotateY(-10deg) scale(.86)}#top-stories-slides .top-slide .top-slide-preview{opacity:.28}#top-stories-slides .top-slide .top-slide-copy{width:100%;padding:22px 18px 80px}}
 @media(prefers-reduced-motion:reduce){#top-stories-slides .top-slide{transition:none!important}}
 
+
+/* Fix: keep neighboring slides rendered so their 3D transforms are visible. */
+#top-stories-slides .top-slide{display:flex!important;animation:none!important;visibility:visible!important}
+#top-stories-slides .top-slide.active{display:flex!important;animation:none!important}
 </style>
 
 
