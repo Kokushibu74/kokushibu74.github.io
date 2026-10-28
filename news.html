@@ -306,10 +306,14 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 .weather-card-heading>span:first-child{display:flex;align-items:center;gap:8px}
 .weather-card-heading i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#00f2fe;box-shadow:0 0 12px #00f2fe;animation:weatherPulse 1.8s ease-in-out infinite}
 .weather-card-heading>span:last-child{color:#7d8ca5;font-size:8px;white-space:nowrap}
-.weather-slides{position:relative;min-height:164px;border:1px solid #00f2fe35;border-radius:17px;overflow:hidden;background:radial-gradient(ellipse at 90% 0%,#00f2fe12,transparent 50%),linear-gradient(145deg,#0c1421,#070b12);box-shadow:0 14px 35px #0004}
-.weather-slide{padding:17px 17px 14px}
+.weather-slides{position:relative;display:grid;min-height:164px;border:1px solid #00f2fe35;border-radius:17px;overflow:hidden;touch-action:pan-x;background:radial-gradient(ellipse at 90% 0%,#00f2fe12,transparent 50%),linear-gradient(145deg,#0c1421,#070b12);box-shadow:0 14px 35px #0004;user-select:none;-webkit-user-select:none}
+.weather-slide{grid-area:1/1;min-width:0;padding:17px 17px 14px;transform:translateY(100%);opacity:0;transition:transform .38s cubic-bezier(.22,.8,.25,1),opacity .32s ease;will-change:transform,opacity}
 .weather-slide[hidden]{display:none!important}
-.weather-slide.active{display:block}
+.weather-slide.active{display:block;transform:translateY(0);opacity:1}
+.weather-slide.exit-up{transform:translateY(-100%);opacity:0}
+.weather-slide.exit-down{transform:translateY(100%);opacity:0}
+.weather-slide.enter-from-top{transform:translateY(-100%);opacity:0}
+.weather-slide.enter-from-bottom{transform:translateY(100%);opacity:0}
 .weather-kicker{color:#8b9bb4;font:700 8px 'JetBrains Mono',monospace;letter-spacing:.1em}
 .weather-slide h3{margin:10px 0 7px;font-size:clamp(13px,1.1vw,16px);line-height:1.45;font-weight:850}
 .weather-slide h3 a{color:#f0f7ff;text-decoration:none}
@@ -325,7 +329,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 @media(min-width:851px){.news-hero-layout>.hero #weather-disaster:not([hidden]){display:block}}
 @media(max-width:850px){.weather-disaster{display:none!important}}
 @media(max-width:600px){.news-pagination{gap:6px;margin:22px 0 28px}.page-button{min-width:34px;height:35px;padding:0 9px;border-radius:9px}}
-@media(prefers-reduced-motion:reduce){.weather-card-heading i{animation:none!important}.page-button{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.weather-card-heading i{animation:none!important}.page-button{transition:none!important}.weather-slide{transition:none!important}}
 </style>
 
 </head>
@@ -333,8 +337,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a class="active" href="news.html" aria-current="page">News</a><a href="contact.html">Contact</a></nav></header>
   <main class="wrap">
     <section class="news-hero-layout" aria-label="News introduction and featured stories">
-      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international and technology headlines. Explore the latest headlines across Bangladesh, the world and technology, with every story linked to its original publisher.</p><nav class="news-hero-nav" aria-label="Explore news categories"><a href="#filters" data-hero-category="Bangladesh">Bangladesh</a><a href="#filters" data-hero-category="World">World</a><a href="#filters" data-hero-category="Technology">Technology</a><a href="#latest-feed" data-hero-category="All">All headlines</a></nav><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div>
-        <section id="weather-disaster" class="weather-disaster" aria-label="Latest weather and natural disaster news" hidden>
+      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international and technology headlines. Explore the latest headlines across Bangladesh, the world and technology, with every story linked to its original publisher.</p><nav class="news-hero-nav" aria-label="Explore news categories"><a href="#filters" data-hero-category="Bangladesh">Bangladesh</a><a href="#filters" data-hero-category="World">World</a><a href="#filters" data-hero-category="Technology">Technology</a><a href="#latest-feed" data-hero-category="All">All headlines</a></nav><section id="weather-disaster" class="weather-disaster" aria-label="Latest weather and natural disaster news" hidden>
           <div class="weather-card-heading"><span><i aria-hidden="true"></i> WEATHER / DISASTER WATCH</span><span id="weather-count">LOADING</span></div>
           <div id="weather-slides" class="weather-slides"><div class="weather-slide active">Loading recent weather and disaster headlines…</div></div>
           <div id="weather-controls" class="weather-controls" hidden><span id="weather-position">1 / 1</span><div><button type="button" data-weather-step="-1" aria-label="Previous weather or disaster story">‹</button><button type="button" data-weather-step="1" aria-label="Next weather or disaster story">›</button></div></div>
