@@ -79,6 +79,24 @@
   
 /* Donation button is intentionally Home-page only. */
 .subpage-donation{display:none!important}
+
+/* Cosmic Planet-inspired 3D news orbit — isolated to the Top Stories slider. */
+#top-stories-slides{position:relative;min-height:clamp(390px,39vw,500px);perspective:1600px;transform-style:preserve-3d;isolation:isolate;overflow:hidden;overflow:clip;border-radius:20px}
+#top-stories-slides .top-slide{display:flex;position:absolute;inset:0;width:86%;height:100%;min-height:100%;margin:auto;border:1px solid #ffffff20;border-radius:20px;overflow:hidden;transform-origin:center center;transform-style:preserve-3d;backface-visibility:hidden;opacity:0;visibility:visible;pointer-events:none;transition:transform .78s cubic-bezier(.2,.75,.2,1),opacity .58s ease,border-color .35s,box-shadow .58s;box-shadow:0 20px 60px #0008;will-change:transform,opacity}
+#top-stories-slides .top-slide.active{opacity:1;pointer-events:auto;border-color:#72edffb8;box-shadow:0 25px 75px #00d9ff20,0 0 28px #5a5bff18;transform:translateX(0) translateZ(48px) rotateY(0) scale(1)}
+#top-stories-slides .top-slide.is-prev{opacity:.72;transform:translateX(-47%) translateZ(-65px) rotateY(17deg) scale(.86);border-color:#00f2fe55}
+#top-stories-slides .top-slide.is-next{opacity:.72;transform:translateX(47%) translateZ(-65px) rotateY(-17deg) scale(.86);border-color:#00f2fe55}
+#top-stories-slides .top-slide.is-far{opacity:0;transform:translateX(0) translateZ(-180px) rotateY(0) scale(.72)}
+#top-stories-slides .top-slide .top-slide-image{transition:transform 6s ease,opacity .4s ease}
+#top-stories-slides .top-slide.active .top-slide-image{transform:scale(1.06)}
+#top-stories-slides .top-slide:after{border-radius:inherit}
+.top-slide-arrow{box-shadow:0 8px 24px #0008,inset 0 0 18px #65dfff08;transition:transform .25s,border-color .25s,color .25s,background .25s}
+.top-slide-arrow:hover{transform:translateY(-2px) scale(1.04)}
+.top-slide-dot.active{box-shadow:0 0 14px #00f2fe85}
+@media(max-width:850px){#top-stories-slides{min-height:460px}#top-stories-slides .top-slide{width:88%}#top-stories-slides .top-slide.is-prev{transform:translateX(-49%) translateZ(-55px) rotateY(13deg) scale(.87)}#top-stories-slides .top-slide.is-next{transform:translateX(49%) translateZ(-55px) rotateY(-13deg) scale(.87)}}
+@media(max-width:600px){#top-stories-slides{min-height:520px}#top-stories-slides .top-slide{width:91%;border-radius:18px}#top-stories-slides .top-slide.is-prev{transform:translateX(-54%) translateZ(-50px) rotateY(10deg) scale(.86)}#top-stories-slides .top-slide.is-next{transform:translateX(54%) translateZ(-50px) rotateY(-10deg) scale(.86)}#top-stories-slides .top-slide .top-slide-preview{opacity:.28}#top-stories-slides .top-slide .top-slide-copy{width:100%;padding:22px 18px 80px}}
+@media(prefers-reduced-motion:reduce){#top-stories-slides .top-slide{transition:none!important}}
+
 </style>
 
 
