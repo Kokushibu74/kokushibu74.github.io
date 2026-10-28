@@ -170,8 +170,9 @@
       const url=safe(x.publisherUrl||x.link),d=dateOf(x),publisher=x.publisherName||x.source||"Original publisher";
       const image=safe(x.previewScreenshot||x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const imageMarkup=image!=="#"?'<div class="weather-slide-visual"><img class="weather-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(\'no-image\');this.remove()"><span class="weather-image-shade"></span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>':'<div class="weather-slide-visual no-image"><span class="weather-image-fallback">WEATHER / DISASTER WATCH</span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>';
-      return '<article class="weather-slide'+(i===weatherSlideIndex?' active':'')+'" '+(i===weatherSlideIndex?'':'hidden')+'>'+imageMarkup+'<div class="weather-slide-copy"><span class="weather-kicker">WEATHER / NATURAL DISASTER</span><h3><a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(x.previewTitle||x.title)+'</a></h3>'+(x.previewSummary||x.summary||x.description?'<p>'+esc(x.previewSummary||x.summary||x.description)+'</p>':'')+'<div class="weather-meta"><span>'+esc(publisher)+'</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"Date unavailable")+'</span></div></div></article>';
+      return '<article class="weather-slide" data-weather-index="'+i+'">'+imageMarkup+'<div class="weather-slide-copy"><span class="weather-kicker">WEATHER / NATURAL DISASTER</span><h3><a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(x.previewTitle||x.title)+'</a></h3>'+(x.previewSummary||x.summary||x.description?'<p>'+esc(x.previewSummary||x.summary||x.description)+'</p>':'')+'<div class="weather-meta"><span>'+esc(publisher)+'</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"Date unavailable")+'</span></div></div></article>';
     }).join("");
+    syncWeatherDeck(weatherSlideIndex);
     weatherControls.hidden=stories.length<2;
     weatherPosition.textContent=(weatherSlideIndex+1)+" / "+stories.length;
     if(weatherSlideTimer)clearInterval(weatherSlideTimer);
@@ -182,37 +183,31 @@
     return !!d&&age>=-5*60*1000&&age<=7*24*60*60*1000&&/(weather|forecast|flood|cyclone|hurricane|typhoon|storm|heavy rain|rainfall|heatwave|heat wave|earthquake|landslide|wildfire|drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)/i.test([x.title,x.summary,x.previewTitle,x.previewSummary].join(" "));
   }
   let weatherTransitionTimer=null;
+  function syncWeatherDeck(activeIndex){
+    const cards=Array.from(weatherSlidesRoot.querySelectorAll(".weather-slide")),total=cards.length;
+    cards.forEach((card,i)=>{
+      let offset=(i-activeIndex+total)%total;
+      if(offset>total/2)offset-=total;
+      const distance=Math.abs(offset);
+      card.hidden=false;
+      card.classList.remove("deck-active","deck-prev","deck-next","deck-far-prev","deck-far-next","deck-back");
+      if(offset===0)card.classList.add("deck-active");
+      else if(offset===-1)card.classList.add("deck-prev");
+      else if(offset===1)card.classList.add("deck-next");
+      else if(offset===-2)card.classList.add("deck-far-prev");
+      else if(offset===2)card.classList.add("deck-far-next");
+      else card.classList.add("deck-back");
+      card.setAttribute("aria-hidden",offset===0?"false":"true");
+      card.style.zIndex=String(total-distance);
+    });
+  }
   function showWeatherSlide(next,total){
     const cards=Array.from(weatherSlidesRoot.querySelectorAll(".weather-slide"));if(!cards.length||!total)return;
-    const previous=weatherSlideIndex, target=(next+total)%total;
-    if(target===previous)return;
-    const direction=next-previous>=0?"up":"down";
-    const outgoing=cards[previous],incoming=cards[target];
+    const target=(next+total)%total;
+    if(target===weatherSlideIndex)return;
     if(weatherTransitionTimer)clearTimeout(weatherTransitionTimer);
-    cards.forEach(card=>card.classList.remove("exit-up","exit-down","enter-from-top","enter-from-bottom"));
-    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-      cards.forEach((card,i)=>{card.hidden=i!==target;card.classList.toggle("active",i===target)});
-    }else{
-      incoming.hidden=false;
-      incoming.classList.remove("active","enter-from-top","enter-from-bottom");
-      incoming.classList.add(direction==="up"?"enter-from-bottom":"enter-from-top");
-      // Commit the off-screen starting position before activating the incoming card.
-      void incoming.offsetHeight;
-      outgoing.classList.remove("active");
-      outgoing.classList.add(direction==="up"?"exit-up":"exit-down");
-      requestAnimationFrame(()=>{
-        requestAnimationFrame(()=>{
-          incoming.classList.remove("enter-from-bottom","enter-from-top");
-          incoming.classList.add("active");
-        });
-      });
-      weatherTransitionTimer=setTimeout(()=>{
-        outgoing.hidden=true;
-        outgoing.classList.remove("exit-up","exit-down");
-        incoming.classList.remove("enter-from-top","enter-from-bottom");
-      },450);
-    }
     weatherSlideIndex=target;
+    syncWeatherDeck(weatherSlideIndex);
     weatherPosition.textContent=(weatherSlideIndex+1)+" / "+total;
   }
   let weatherTouchStart=null;
