@@ -58,6 +58,11 @@ BREAKING_EVENT_RE = re.compile(
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"attack|shooting|arrested|evacuated)", re.I
 )
+BREAKING_FOLLOWUP_RE = re.compile(
+    r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
+    r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
+    r"investigation into)", re.I
+)
 MAX_PER_FEED = 25
 MAX_TOTAL = 220
 BANGLADESH_TARGET = 60
@@ -139,13 +144,17 @@ def is_recent_breaking(title, published, query, source=""):
         if not (timedelta(minutes=-5) <= age <= timedelta(hours=2)):
             return False
         explicit_alert = bool(BREAKING_TITLE_RE.search(title))
+        if explicit_alert:
+            return True
         if query in BREAKING_QUERY_TEXTS:
-            return explicit_alert
+            return False
         if source in DIRECT_SOURCE_NAMES:
-            # Explicit alerts can stay eligible for two hours; high-impact event wording
-            # gets a shorter 45-minute window to reduce false positives.
-            return explicit_alert or (
-                age <= timedelta(minutes=45) and bool(BREAKING_EVENT_RE.search(title))
+            # A recent high-impact event may qualify, but routine legal follow-ups
+            # about an older incident should not trigger the breaking ticker.
+            return (
+                age <= timedelta(minutes=45)
+                and bool(BREAKING_EVENT_RE.search(title))
+                and not BREAKING_FOLLOWUP_RE.search(title)
             )
         return False
     except (ValueError, TypeError):
@@ -386,7 +395,10 @@ def read_breaking_history():
             if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
                 continue
             # Purge entries misclassified by older, overly broad event keywords.
-            if not BREAKING_TITLE_RE.search(item["title"]) and not BREAKING_EVENT_RE.search(item["title"]):
+            if not BREAKING_TITLE_RE.search(item["title"]) and (
+                not BREAKING_EVENT_RE.search(item["title"])
+                or BREAKING_FOLLOWUP_RE.search(item["title"])
+            ):
                 continue
             stamp_text = item.get("detectedAt") or item.get("publishedAt")
             try:
