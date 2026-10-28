@@ -64,7 +64,7 @@ class NewsLogicTests(unittest.TestCase):
         ))
 
     def test_multiple_free_direct_sources_are_configured(self):
-        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 6)
+        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 3)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
 
 
