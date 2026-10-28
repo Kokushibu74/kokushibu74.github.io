@@ -33,6 +33,18 @@ class NewsLogicTests(unittest.TestCase):
             "Bangladesh breaking news"
         ))
 
+    def test_historical_anniversary_clash_is_not_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "লগি-বৈঠা সহিংসতার ২০ বছর: আওয়ামী লীগ ও জামায়াতের রক্তক্ষয়ী সংঘর্ষের আগে যা যা ঘটেছিল",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "BBC News বাংলা"
+        ))
+
+    def test_clash_without_fatalities_is_not_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "দুই দলের মধ্যে সংঘর্ষের ২০ বছর পূর্তি",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "BBC News বাংলা"
+        ))
+
     def test_old_breaking_alert_is_not_current(self):
         self.assertFalse(news.is_recent_breaking(
             "Breaking News: major update", self.iso(timedelta(hours=-3)),
