@@ -63,6 +63,18 @@ class NewsLogicTests(unittest.TestCase):
             "direct-rss", "The Daily Star"
         ))
 
+    def test_personal_story_mentioning_death_is_not_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "‘সবাই দোয়া করবেন’, মায়ের মৃত্যুতে যা বললেন পপি",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
+        ))
+
+    def test_recent_fatality_event_is_detected(self):
+        self.assertTrue(news.is_recent_breaking(
+            "ঘূর্ণিঝড়ের আঘাতে ৫ জনের মৃত্যু",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
+        ))
+
     def test_multiple_free_direct_sources_are_configured(self):
         self.assertGreaterEqual(len(news.DIRECT_FEEDS), 3)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))

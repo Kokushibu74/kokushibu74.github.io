@@ -46,9 +46,12 @@ BREAKING_TITLE_RE = re.compile(
     r"সর্বশেষ মুহূর্তে|এইমাত্র|জরুরি আপডেট)", re.I
 )
 BREAKING_EVENT_RE = re.compile(
-    r"(?:নিহত|মৃত্যু|মারা গেছেন|আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা|দুর্ঘটনা|ভূমিকম্প|"
-    r"ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|হামলা|সংঘর্ষ|গুলিতে|গুলি চালনা|গ্রেপ্তার|আটক|"
-    r"killed|death toll|dead|fire|explosion|blast|crash|earthquake|cyclone|flood|"
+    r"(?:নিহত|মারা গেছেন|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
+    r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
+    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|"
+    r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে)?|সংঘর্ষ(?:ে নিহত|ে আহত)?|গুলিতে নিহত|গুলি চালনা|"
+    r"গ্রেপ্তার(?: হয়েছেন| হয়েছেন| করা হয়েছে| করা হয়েছে)?|আটক(?: হয়েছেন| হয়েছেন| করা হয়েছে| করা হয়েছে)?|"
+    r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"attack|shooting|arrested|evacuated)", re.I
 )
 MAX_PER_FEED = 25
@@ -337,6 +340,9 @@ def read_breaking_history():
         retained = []
         for item in history:
             if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
+                continue
+            # Purge entries misclassified by older, overly broad event keywords.
+            if not BREAKING_TITLE_RE.search(item["title"]) and not BREAKING_EVENT_RE.search(item["title"]):
                 continue
             stamp_text = item.get("detectedAt") or item.get("publishedAt")
             try:
