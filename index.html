@@ -481,6 +481,7 @@
 
   <!-- Full-width animated social footer -->
   <footer class="social-footer relative overflow-hidden border-t border-cyan-300/20 bg-[#05070B] px-4 sm:px-6 pt-10 pb-6">
+    <canvas class="cyber-storm-canvas" aria-hidden="true"></canvas>
     <style>
       .social-footer:before{content:"";position:absolute;inset:-60% -20%;pointer-events:none;background:radial-gradient(ellipse at 15% 55%,rgba(0,242,254,.12),transparent 38%),radial-gradient(ellipse at 85% 30%,rgba(127,0,255,.13),transparent 36%);animation:footerGlow 12s ease-in-out infinite alternate}
       .social-footer-inner{position:relative;z-index:1;width:min(1100px,100%);margin-inline:auto}
@@ -526,29 +527,21 @@
       @keyframes footerGlow{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,-2%,0) scale(1.04)}}
       @keyframes footerTextShine{to{background-position:220% center}}
       
-      /* Cosmic Network — scoped only to the homepage Let’s connect section. */
-      .social-footer{position:relative;isolation:isolate}
-      .social-footer-inner{position:relative}
+      /* Cyber Energy Storm — animated only inside the Let’s connect footer. */
+      .social-footer{position:relative;isolation:isolate;overflow:hidden;background-color:#05070b}
+      .social-footer-inner{position:relative;z-index:2}
+      .social-footer .cyber-storm-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:.98}
       .social-footer nav[aria-label="Social profiles"]{position:relative;isolation:isolate;gap:1rem}
-      .social-footer nav[aria-label="Social profiles"]::before{content:"";position:absolute;z-index:-2;inset:-24px -14px;border-radius:28px;background:radial-gradient(ellipse at 50% 50%,rgba(0,242,254,.10),rgba(127,0,255,.07) 44%,transparent 72%);filter:blur(10px);pointer-events:none;animation:cosmicNebula 8s ease-in-out infinite alternate}
       .social-footer nav.social-icon-row{display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,24px);flex-wrap:nowrap;max-width:720px;margin-inline:auto;padding:18px 8px}
-      .social-footer .cosmic-network{position:absolute;z-index:0;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:.95}
-      .social-footer .cosmic-network .network-line{fill:none;stroke:rgba(92,222,255,.34);stroke-width:1;vector-effect:non-scaling-stroke}
-      .social-footer .cosmic-network .network-node{fill:#a9f6ff;filter:drop-shadow(0 0 4px rgba(0,242,254,.9));animation:cosmicPulse 4.8s ease-in-out infinite}
-      .social-footer .cosmic-network .network-node:nth-of-type(3n){animation-delay:-1.7s}
-      .social-footer .cosmic-network .network-node:nth-of-type(2n){animation-delay:-3.1s}
-      .social-footer .cosmic-network .network-particle{fill:#f4fdff;filter:drop-shadow(0 0 4px #00f2fe)}
-      .social-footer .social-action{display:grid;place-items:center;position:relative;z-index:1;isolation:isolate;overflow:hidden;width:clamp(48px,7vw,68px);height:clamp(48px,7vw,68px);min-height:0;flex:0 0 auto;border-radius:18px;padding:0;border:1px solid rgba(0,242,254,.28);background:linear-gradient(120deg,rgba(8,18,31,.94),rgba(19,13,38,.91),rgba(7,20,30,.94));box-shadow:inset 0 0 22px rgba(0,242,254,.04),0 0 16px rgba(0,242,254,.06),0 8px 24px rgba(0,0,0,.2);transition:transform .35s,border-color .35s,box-shadow .35s}
-      .social-footer .social-action::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:conic-gradient(from var(--orbit-angle,0deg),transparent 0 40%,rgba(0,242,254,.78) 48%,rgba(168,85,247,.85) 55%,transparent 65% 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.58;animation:orbitBorder 7s linear infinite;pointer-events:none}
+      .social-footer .social-action{display:grid;place-items:center;position:relative;z-index:1;isolation:isolate;overflow:hidden;width:clamp(48px,7vw,68px);height:clamp(48px,7vw,68px);min-height:0;flex:0 0 auto;border-radius:18px;padding:0;border:1px solid rgba(0,242,254,.38);background:linear-gradient(120deg,rgba(8,18,31,.88),rgba(19,13,38,.86),rgba(7,20,30,.88));box-shadow:inset 0 0 22px rgba(0,242,254,.07),0 0 18px rgba(0,242,254,.10),0 8px 24px rgba(0,0,0,.22);transition:transform .35s,border-color .35s,box-shadow .35s}
+      .social-footer .social-action::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:conic-gradient(from var(--orbit-angle,0deg),transparent 0 34%,rgba(0,242,254,.95) 45%,rgba(168,85,247,.95) 53%,rgba(255,255,255,.72) 57%,transparent 67% 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;animation:orbitBorder 4.5s linear infinite;pointer-events:none}
       .social-footer .social-action .social-symbol{display:grid;place-items:center;width:100%;height:100%;border:0;border-radius:inherit;background:transparent;font-size:clamp(19px,3vw,26px);transition:transform .4s,color .3s;box-shadow:0 0 0 rgba(0,242,254,0)}
       .social-footer .social-action .social-arrow{display:none}
-      .social-footer .social-action:hover,.social-footer .social-action:focus-visible{transform:translateY(-5px) scale(1.04);border-color:rgba(0,242,254,.78);box-shadow:0 12px 34px rgba(0,242,254,.16),0 0 28px rgba(127,0,255,.14);outline:none}
-      .social-footer .social-action:hover .social-symbol,.social-footer .social-action:focus-visible .social-symbol{transform:scale(1.12);color:#fff;text-shadow:0 0 16px rgba(0,242,254,.55)}
-      @keyframes cosmicPulse{0%,100%{opacity:.28;r:1.8}50%{opacity:1;r:3.1}}
-      @keyframes cosmicNebula{from{opacity:.48;transform:scale(.98)}to{opacity:.95;transform:scale(1.02)}}
+      .social-footer .social-action:hover,.social-footer .social-action:focus-visible{transform:translateY(-5px) scale(1.04);border-color:rgba(0,242,254,.9);box-shadow:0 12px 34px rgba(0,242,254,.22),0 0 30px rgba(127,0,255,.20);outline:none}
+      .social-footer .social-action:hover .social-symbol,.social-footer .social-action:focus-visible .social-symbol{transform:scale(1.12);color:#fff;text-shadow:0 0 16px rgba(0,242,254,.7)}
       @keyframes orbitBorder{to{--orbit-angle:360deg}}
-      @media(max-width:640px){.social-footer nav.social-icon-row{gap:clamp(8px,2.8vw,14px);padding-inline:2px}.social-footer .social-action{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);border-radius:15px}.social-footer .cosmic-network{opacity:.75}.social-footer nav[aria-label="Social profiles"]::before{inset:-12px -5px}}
-      @media(prefers-reduced-motion:reduce){.social-footer nav[aria-label="Social profiles"]::before,.social-footer .cosmic-network .network-node,.social-footer .social-action,.social-footer .social-action::before{animation:none!important}.social-footer .social-action{transition:none}}
+      @media(max-width:640px){.social-footer nav.social-icon-row{gap:clamp(8px,2.8vw,14px);padding-inline:2px}.social-footer .social-action{width:clamp(42px,12vw,54px);height:clamp(42px,12vw,54px);border-radius:15px}.social-footer .cyber-storm-canvas{opacity:.82}}
+      @media(prefers-reduced-motion:reduce){.social-footer .cyber-storm-canvas{display:none}.social-footer .social-action,.social-footer .social-action::before{animation:none!important;transition:none}}
     </style>
     <div class="social-footer-inner">
       <div class="mb-7 text-center">
@@ -557,26 +550,7 @@
         <p class="mt-2 text-sm text-slate-400">Choose your favourite place to find me online.</p>
       </div>
       <nav aria-label="Social profiles" class="social-icon-row">
-        <svg class="cosmic-network" viewBox="0 0 720 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <g class="network-line">
-            <path d="M12 72 L78 28 L150 66 L220 20 L292 70 L360 30 L430 70 L500 22 L570 65 L640 30 L708 72"/>
-            <path d="M78 28 L100 88 L220 20 L250 88 L360 30 L390 88 L500 22 L530 88 L640 30"/>
-            <path d="M12 72 L100 88 L150 66 L250 88 L292 70 L390 88 L430 70 L530 88 L570 65 L708 72"/>
-          </g>
-          <g>
-            <circle class="network-node" cx="12" cy="72" r="2.2"/><circle class="network-node" cx="78" cy="28" r="2.4"/>
-            <circle class="network-node" cx="100" cy="88" r="1.8"/><circle class="network-node" cx="150" cy="66" r="2"/>
-            <circle class="network-node" cx="220" cy="20" r="2.6"/><circle class="network-node" cx="250" cy="88" r="1.8"/>
-            <circle class="network-node" cx="292" cy="70" r="2.2"/><circle class="network-node" cx="360" cy="30" r="2.5"/>
-            <circle class="network-node" cx="390" cy="88" r="1.8"/><circle class="network-node" cx="430" cy="70" r="2.2"/>
-            <circle class="network-node" cx="500" cy="22" r="2.5"/><circle class="network-node" cx="530" cy="88" r="1.8"/>
-            <circle class="network-node" cx="570" cy="65" r="2.2"/><circle class="network-node" cx="640" cy="30" r="2.4"/>
-            <circle class="network-node" cx="708" cy="72" r="2.2"/>
-          </g>
-          <circle class="network-particle" r="2.1"><animateMotion dur="8s" repeatCount="indefinite" path="M12 72 L78 28 L150 66 L220 20 L292 70 L360 30 L430 70 L500 22 L570 65 L640 30 L708 72"/></circle>
-          <circle class="network-particle" r="1.6" opacity=".8"><animateMotion dur="11s" begin="-4s" repeatCount="indefinite" path="M100 88 L220 20 L360 30 L500 22 L640 30"/></circle>
-          <circle class="network-particle" r="1.5" opacity=".75"><animateMotion dur="9s" begin="-2s" repeatCount="indefinite" path="M12 72 L100 88 L250 88 L390 88 L530 88 L708 72"/></circle>
-        </svg>
+<canvas class="cyber-storm-canvas" aria-hidden="true"></canvas>
         <a class="social-action" aria-label="Facebook Profile" title="Facebook" href="https://facebook.com/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span></a>
         <a class="social-action" aria-label="Messenger Chat" title="Messenger" href="https://m.me/shihabul.islam.74" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i></span></a>
         <a class="social-action" aria-label="WhatsApp Chat" title="WhatsApp" href="https://wa.me/8801620107233" target="_blank" rel="noopener noreferrer"><span class="social-symbol"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span></a>
@@ -614,6 +588,117 @@
     </div>
   </footer>
 
+  <script id="cyber-energy-storm">
+  (() => {
+    const footer = document.querySelector('footer.social-footer');
+    const canvas = footer && footer.querySelector('.cyber-storm-canvas');
+    if (!footer || !canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let w=0,h=0,dpr=1,raf=0,last=0,active=false;
+    const pointer={x:-9999,y:-9999,px:-9999,py:-9999,down:false,energy:0};
+    const sparks=[],bolts=[];
+    const rand=(a,b)=>a+Math.random()*(b-a);
+    function resize(){
+      const rect=footer.getBoundingClientRect();
+      w=Math.max(1,rect.width);h=Math.max(1,rect.height);
+      dpr=Math.min(window.devicePixelRatio||1,1.5);
+      canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+      canvas.style.width=w+'px';canvas.style.height=h+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const count=Math.min(105,Math.max(36,Math.round(w*h/6800)));
+      while(sparks.length<count)sparks.push({x:rand(0,w),y:rand(0,h),vx:rand(-.32,.32),vy:rand(-.42,.42),r:rand(.6,1.8),phase:rand(0,6.28),life:rand(.3,1)});
+      sparks.length=count;
+      sparks.forEach(p=>{p.x=Math.min(w,Math.max(0,p.x));p.y=Math.min(h,Math.max(0,p.y))});
+    }
+    function bolt(x1,y1,x2,y2,depth,spread){
+      const points=[{x:x1,y:y1}];
+      const dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
+      const steps=Math.max(5,Math.floor(len/15));
+      for(let i=1;i<steps;i++){
+        const t=i/steps;
+        points.push({x:x1+dx*t+rand(-spread,spread),y:y1+dy*t+rand(-spread,spread)});
+      }
+      points.push({x:x2,y:y2});
+      ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);
+      points.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
+      ctx.stroke();
+      if(depth>0&&Math.random()<.72){
+        const p=points[Math.floor(rand(1,points.length-1))];
+        bolt(p.x,p.y,p.x+rand(-55,55),p.y+rand(-35,35),depth-1,spread*.55);
+      }
+    }
+    function draw(now){
+      if(!footer.isConnected)return;
+      const dt=Math.min(32,now-(last||now));last=now;
+      ctx.clearRect(0,0,w,h);
+      // Moving atmospheric energy fields stay inside this footer canvas.
+      const t=now*.00022;
+      const g1=ctx.createRadialGradient(w*(.18+Math.sin(t)*.08),h*(.34+Math.cos(t*.8)*.08),0,w*.22,h*.48,Math.max(w*.46,h*.9));
+      g1.addColorStop(0,'rgba(0,242,254,.16)');g1.addColorStop(.48,'rgba(0,110,255,.055)');g1.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g1;ctx.fillRect(0,0,w,h);
+      const g2=ctx.createRadialGradient(w*(.82+Math.cos(t*.75)*.06),h*(.62+Math.sin(t)*.07),0,w*.82,h*.58,Math.max(w*.38,h*.8));
+      g2.addColorStop(0,'rgba(168,85,247,.17)');g2.addColorStop(.55,'rgba(127,0,255,.055)');g2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g2;ctx.fillRect(0,0,w,h);
+      for(const p of sparks){
+        p.x+=p.vx*dt*.055;p.y+=p.vy*dt*.055;p.phase+=dt*.0017;
+        if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+        const alpha=.24+.52*(.5+.5*Math.sin(p.phase));
+        ctx.globalAlpha=alpha;ctx.fillStyle=Math.sin(p.phase)>0?'#8af7ff':'#c7a5ff';
+        ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=7;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+      }
+      ctx.globalAlpha=1;ctx.shadowBlur=0;
+      // Occasional branching electrical arcs across the full section.
+      if(Math.random()<(w<600?.055:.085)){
+        const fromLeft=Math.random()<.5;
+        const x1=fromLeft?rand(-20,w*.38):rand(w*.62,w+20);
+        const y1=rand(0,h),x2=Math.max(0,Math.min(w,x1+rand(-w*.35,w*.35))),y2=rand(0,h);
+        ctx.save();ctx.globalCompositeOperation='lighter';
+        ctx.lineCap='round';ctx.strokeStyle='rgba(0,242,254,.17)';ctx.lineWidth=5;ctx.shadowColor='#00f2fe';ctx.shadowBlur=16;bolt(x1,y1,x2,y2,2,rand(8,18));
+        ctx.strokeStyle='rgba(140,245,255,.88)';ctx.lineWidth=1.15;ctx.shadowBlur=10;bolt(x1,y1,x2,y2,1,rand(5,11));
+        ctx.restore();
+      }
+      // Pointer/touch creates a local electric ripple and short branching arcs.
+      if(pointer.energy>.015){
+        pointer.energy*=.94;
+        const radius=34+(1-pointer.energy)*42;
+        ctx.save();ctx.globalCompositeOperation='lighter';
+        ctx.strokeStyle='rgba(0,242,254,'+(pointer.energy*.7)+')';ctx.lineWidth=1.3;ctx.shadowColor='#00f2fe';ctx.shadowBlur=15;
+        ctx.beginPath();ctx.arc(pointer.x,pointer.y,radius,0,Math.PI*2);ctx.stroke();
+        ctx.strokeStyle='rgba(191,130,255,'+(pointer.energy*.8)+')';ctx.lineWidth=1;
+        for(let i=0;i<5;i++){
+          const a=now*.002+i*Math.PI*2/5, r=radius*rand(.45,.9);
+          bolt(pointer.x+Math.cos(a)*radius*.45,pointer.y+Math.sin(a)*radius*.45,pointer.x+Math.cos(a)*r,pointer.y+Math.sin(a)*r,0,6*pointer.energy);
+        }
+        ctx.restore();
+      }
+      ctx.globalAlpha=1;ctx.shadowBlur=0;
+      if(!reduce)raf=requestAnimationFrame(draw);
+    }
+    function onPointer(e){
+      const r=footer.getBoundingClientRect();
+      pointer.px=pointer.x;pointer.py=pointer.y;
+      pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top;
+      pointer.energy=Math.min(1,pointer.energy+(e.type==='pointerdown'?.8:.28));
+      pointer.down=e.type==='pointerdown'||e.buttons>0;
+      if(pointer.down){
+        ctx.save();ctx.globalCompositeOperation='lighter';ctx.strokeStyle='rgba(0,242,254,.65)';ctx.lineWidth=1.4;ctx.shadowColor='#00f2fe';ctx.shadowBlur=12;
+        bolt(pointer.px<0?pointer.x:pointer.px,pointer.py<0?pointer.y:pointer.py,pointer.x,pointer.y,1,8);ctx.restore();
+      }
+    }
+    footer.addEventListener('pointermove',onPointer,{passive:true});
+    footer.addEventListener('pointerdown',onPointer,{passive:true});
+    footer.addEventListener('pointerup',()=>{pointer.down=false},{passive:true});
+    footer.addEventListener('pointerleave',()=>{pointer.down=false;pointer.energy*=.5},{passive:true});
+    resize();
+    if(reduce){draw(0);return;}
+    raf=requestAnimationFrame(draw);
+    const ro=typeof ResizeObserver!=='undefined'?new ResizeObserver(()=>resize()):null;
+    if(ro)ro.observe(footer);else window.addEventListener('resize',resize,{passive:true});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);active=false}else if(!active){active=true;last=0;raf=requestAnimationFrame(draw)}});
+  })();
+  </script>
 
   <script>
     // Live visitor-local clock pinned beside the WhatsApp button.
