@@ -8,7 +8,7 @@ on:
       - "scripts/update_news.py"
       - "tests/test_update_news.py"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "0 * * * *"
 
 permissions:
   contents: write
