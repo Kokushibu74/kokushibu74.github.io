@@ -329,14 +329,28 @@ def main():
     preview_candidates = [x for x in sorted_items if x.get("category") == "Bangladesh"][:10]
     preview_candidates += [x for x in sorted_items if x.get("category") != "Bangladesh"][:4]
     enriched = 0
+    resolved_count = 0
     for item in preview_candidates:
         if item.get("previewTitle") and item.get("previewCheckedAt"):
             continue
-        metadata = publisher_metadata(item.get("link", ""))
+        source_link = item.get("link", "")
+        resolved_link = resolve_google_news_url(source_link) if urlparse(source_link).hostname and urlparse(source_link).hostname.endswith("news.google.com") else source_link
+        if resolved_link and resolved_link.startswith("https://"):
+            item["publisherUrl"] = resolved_link
+            resolved_count += int(resolved_link != source_link)
+            metadata = publisher_metadata(resolved_link)
+        else:
+            metadata = {}
         if metadata:
             item.update(metadata)
             enriched += 1
-    print("Publisher metadata enriched:", enriched, "articles.")
+        else:
+            # Keep the direct publisher link and RSS summary when publisher pages block bots.
+            item.setdefault("previewTitle", item.get("title", ""))
+            item.setdefault("previewSummary", item.get("summary", ""))
+            item.setdefault("previewImage", item.get("image", ""))
+            item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
+    print("Publisher URLs resolved:", resolved_count, "; metadata fetched:", enriched, "articles.")
 
     # Merge recent known-good items behind fresh results so a temporary RSS outage
     # doesn't shrink the feed or erase useful headlines.
