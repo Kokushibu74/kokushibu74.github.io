@@ -65,6 +65,12 @@ def image_for(node):
         kind = enclosure.attrib.get("type", "")
         if url.startswith("https://") and kind.startswith("image/"):
             return url
+    # Google News sometimes embeds its thumbnail inside the RSS description HTML.
+    raw = node.findtext("description") or ""
+    raw += " " + (node.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or "")
+    match = re.search(r'<img[^>]+src=["\\\'](https://[^"\\\']+)["\\\']', raw, re.I)
+    if match:
+        return html.unescape(match.group(1))
     return ""
 
 def key_for(item):
