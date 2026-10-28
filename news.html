@@ -225,6 +225,57 @@
 .publisher-embed iframe{position:absolute;z-index:80;left:0;bottom:calc(100% + 8px);width:min(420px,78vw);height:300px;border:1px solid #ffffff24;border-radius:12px;background:#fff;box-shadow:0 18px 45px #0008}
 .top-slide-copy h2{overflow-wrap:anywhere}
 
+
+/* News hero: editorial left rail, large publisher-preview slider on the right. */
+.news-hero-layout{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);align-items:center;gap:clamp(24px,3.2vw,46px);padding:30px 0 18px}
+.news-hero-layout>.hero{padding:24px 0;min-width:0}
+.news-hero-layout>.hero h1{font-size:clamp(36px,4vw,54px);line-height:1.04}
+.news-hero-layout>.hero .intro{max-width:430px}
+.news-hero-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;max-width:460px}
+.news-hero-nav a{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #ffffff1c;border-radius:9px;background:#ffffff06;color:#b9c7da;text-decoration:none;font-size:11px;font-weight:700;transition:border-color .2s,color .2s,background .2s}
+.news-hero-nav a:hover,.news-hero-nav a:focus-visible{border-color:#00f2fe85;background:#00f2fe12;color:#9cfaff;outline:none}
+.news-hero-nav a:last-child{border-color:#00f2fe45;color:#8cf8ff}
+.news-hero-layout>#top-stories.top-stories{min-width:0;width:100%;border:1px solid #00f2fe32;border-radius:22px;overflow:hidden;background:linear-gradient(145deg,#0b111d,#060a12);box-shadow:0 22px 65px #0007,0 0 28px #00f2fe08}
+.news-hero-layout #top-stories .top-stories-head{padding:15px 17px 0}
+.news-hero-layout #top-stories-slides{min-height:530px;padding:24px 0 30px;touch-action:pan-y;cursor:grab}
+.news-hero-layout #top-stories-slides.is-dragging{cursor:grabbing}
+.news-hero-layout #top-stories-slides .top-slide{width:82%;min-height:470px;border-radius:22px;cursor:pointer}
+.news-hero-layout #top-stories-slides .top-slide-visual{aspect-ratio:16/9}
+.news-hero-layout #top-stories-slides .top-slide-copy{padding:20px}
+.news-hero-layout #top-stories-slides .top-slide h2{font-size:clamp(18px,1.75vw,24px);-webkit-line-clamp:3}
+.news-hero-layout #top-stories-slides .top-slide-summary{font-size:12px;-webkit-line-clamp:4}
+.news-hero-layout #top-stories-slides .top-slide-meta{font-size:9px}
+.news-hero-layout #top-stories-controls.top-slide-controls{margin:0 auto 18px}
+#top-stories-slides .top-slide-visual.no-image{background:radial-gradient(ellipse at 72% 24%,#164c60 0,#18213b 43%,#080d17 100%)}
+#top-stories-slides .top-slide-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px;text-align:center;color:#a8f8ff;background:radial-gradient(ellipse at 72% 24%,#164c60 0,#18213b 43%,#080d17 100%)}
+#top-stories-slides .no-image .top-slide-fallback{display:flex}
+#top-stories-slides .top-slide-fallback strong{font:900 clamp(20px,3vw,34px) Outfit,sans-serif;letter-spacing:-.04em}
+#top-stories-slides .top-slide-fallback span{font:700 9px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#91a6c0}
+#top-stories-slides .top-slide:focus-visible{outline:2px solid #00f2fe;outline-offset:3px}
+@media(max-width:850px){
+ .news-hero-layout{grid-template-columns:1fr;gap:12px;padding-top:14px}
+ .news-hero-layout>.hero{padding:24px 0 10px}
+ .news-hero-layout>.hero h1{font-size:clamp(39px,7vw,58px)}
+ .news-hero-layout>.hero .intro{max-width:680px}
+ .news-hero-nav{max-width:680px;margin-top:18px}
+ .news-hero-layout #top-stories-slides{min-height:510px}
+ .news-hero-layout #top-stories-slides .top-slide{width:min(80%,440px);min-height:450px}
+}
+@media(max-width:600px){
+ .news-hero-layout{padding-top:8px}
+ .news-hero-layout>.hero{padding:21px 0 8px}
+ .news-hero-layout>.hero h1{font-size:clamp(37px,9vw,54px)}
+ .news-hero-nav{gap:7px;margin-top:18px}
+ .news-hero-nav a{padding:8px 10px;font-size:10px}
+ .news-hero-layout #top-stories .top-stories-head{padding:13px 13px 0}
+ .news-hero-layout #top-stories-slides{min-height:480px;padding:18px 0 24px}
+ .news-hero-layout #top-stories-slides .top-slide{width:min(84%,370px);min-height:435px}
+ .news-hero-layout #top-stories-slides .top-slide-copy{padding:17px}
+ .news-hero-layout #top-stories-slides .top-slide h2{font-size:19px}
+ .news-hero-layout #top-stories-slides .top-slide-summary{-webkit-line-clamp:3}
+}
+@media(prefers-reduced-motion:reduce){.news-hero-nav a{transition:none}}
+
 </style>
 
 
@@ -234,7 +285,7 @@
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a class="active" href="news.html" aria-current="page">News</a><a href="contact.html">Contact</a></nav></header>
   <main class="wrap">
     <section class="news-hero-layout" aria-label="News introduction and featured stories">
-      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Explore the latest headlines across Bangladesh, the world, technology and AI, with every story linked to its original publisher.</p><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div></div>
+      <div class="hero"><p class="kicker">LIVE / NEWS DESK</p><h1>Stay curious.<br><span class="accent">Stay informed.</span></h1><p class="intro">A rolling selection of Bangladesh, international, technology and AI headlines. Explore the latest headlines across Bangladesh, the world, technology and AI, with every story linked to its original publisher.</p><nav class="news-hero-nav" aria-label="Explore news categories"><a href="#filters" data-hero-category="Bangladesh">Bangladesh</a><a href="#filters" data-hero-category="World">World</a><a href="#filters" data-hero-category="Technology">Technology</a><a href="#filters" data-hero-category="AI">AI</a><a href="#latest-feed" data-hero-category="All">All headlines <span aria-hidden="true">↗</span></a></nav><div class="news-hero-note"><span class="top-live-dot" aria-hidden="true"></span> LIVE HEADLINES · ORIGINAL PUBLISHERS</div></div>
     <section id="top-stories" class="top-stories" aria-label="Top and trending news">
       <div class="top-stories-head"><div class="top-stories-label"><span class="top-live-dot" aria-hidden="true"></span> TOP STORIES <span style="color:#00f2fe">/</span> HOT RIGHT NOW</div><span id="top-stories-count" class="top-stories-count">CURATING LIVE HEADLINES</span></div>
       <div id="top-stories-slides"><div class="top-stories-empty">Loading the top headlines…</div></div>
@@ -243,7 +294,7 @@
     </section>
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY &nbsp; / &nbsp; ARTIFICIAL INTELLIGENCE</div>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
-    <div class="news-feed-heading"><div><p class="kicker">THE LATEST</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
+    <div id="latest-feed" class="news-feed-heading"><div><p class="kicker">THE LATEST</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
     <div id="news-grid" class="grid"></div>
     <div id="news-ad-slot" class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
@@ -254,7 +305,7 @@
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script src="news.js?v=8"></script>
+  <script src="news.js?v=9"></script>
 
 
 <script src="shared-shell.js?v=5" defer></script>
