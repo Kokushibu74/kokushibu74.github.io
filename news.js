@@ -3,7 +3,7 @@
   const grid=document.getElementById("news-grid"),status=document.getElementById("news-status"),filters=document.getElementById("filters");
   const pagination=document.getElementById("news-pagination");
   const weatherRoot=document.getElementById("weather-disaster"),weatherSlidesRoot=document.getElementById("weather-slides"),weatherControls=document.getElementById("weather-controls"),weatherCount=document.getElementById("weather-count"),weatherPosition=document.getElementById("weather-position");
-  const PAGE_SIZE=20;
+  const PAGE_SIZE=18;
   const searchInput=document.getElementById("news-search");
   const slidesRoot=document.getElementById("top-stories-slides"),slideCount=document.getElementById("top-stories-count"),controls=document.getElementById("top-stories-controls"),dotsRoot=document.getElementById("top-stories-dots");
   document.getElementById("year").textContent=new Date().getFullYear();
