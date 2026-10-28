@@ -33,14 +33,12 @@ QUERIES = [
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
-    # Public publisher RSS feeds; Google News queries remain as a fallback and for breadth.
+    # Public publisher RSS feeds; Google News searches remain a broad free fallback.
     ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
     ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
     ("Prothom Alo", "https://www.prothomalo.com/feed/"),
-    ("bdnews24.com", "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true"),
-    ("Banglanews24", "https://www.banglanews24.com/rss/rss.xml"),
-    ("Jugantor", "https://www.jugantor.com/feed/rss.xml"),
-    ("Kaler Kantho", "https://www.kalerkantho.com/rss.xml"),
+    ("BBC News বাংলা", "https://feeds.bbci.co.uk/bengali/rss.xml"),
+    ("Dhaka Tribune", "https://www.dhakatribune.com/rss/home"),
 ]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
 DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
@@ -363,10 +361,13 @@ def publisher_metadata(url):
         return {}
 
 
-def classify_direct_item(title, link):
-    """Infer a broad feed category from the publisher section and headline."""
+def classify_direct_item(title, link, source=""):
+    """Infer a broad feed category from publisher section, source, and headline."""
     path = urlparse(link).path.lower()
     text = (title or "").lower()
+    if source == "BBC News বাংলা":
+        local_terms = r"বাংলাদেশ|ঢাকা|চট্টগ্রাম|খুলনা|রাজশাহী|সিলেট|বরিশাল|রংপুর|কুমিল্লা|ময়মনসিংহ|ময়মনসিংহ|পদ্মা|যমুনা|সুন্দরবন|bangladesh|dhaka|chattogram"
+        return "Bangladesh" if re.search(local_terms, text, re.I) else "World"
     if re.search(r"/(?:international|world|global|foreign)(?:/|$)", path):
         return "World"
     if re.search(r"/(?:technology|tech|science|gadget|gadgets)(?:/|$)", path):
@@ -462,7 +463,7 @@ def main():
                 summary = clean(summary_raw)[:420]
                 if not title or not link.startswith("https://"):
                     continue
-                category = classify_direct_item(title, link)
+                category = classify_direct_item(title, link, source)
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": category,
