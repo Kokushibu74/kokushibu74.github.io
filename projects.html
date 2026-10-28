@@ -53,6 +53,21 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 @media(max-width:640px){body::before{opacity:.34;background-size:120% 120%;animation-duration:34s}body:has(#home)::before{opacity:.48;animation-duration:30s}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
 </style>
+
+<style id="projects-header-parity-v1">
+/* Keep Projects header identical to the shared secondary-page header. */
+header.site-shell-header{width:100%!important;max-width:none!important;margin:0!important}
+@media(max-width:760px){
+  header.site-shell-header{position:sticky!important;top:0;min-height:0!important;padding:10px 12px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:9px!important}
+  header.site-shell-header .brand{font-size:15px!important}
+  header.site-shell-header .links{grid-column:1/-1!important;grid-row:2!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;justify-content:flex-start!important;gap:19px!important;padding:8px 0 5px!important;scrollbar-width:none}
+  header.site-shell-header .links::-webkit-scrollbar{display:none}
+  header.site-shell-header .links a{font-size:11px!important}
+  header.site-shell-header .shell-tools{grid-column:2!important;grid-row:1!important}
+  header.site-shell-header .shell-wa{padding:8px 10px!important;font-size:10px!important}
+}
+</style>
+
 </head>
 <body>
 <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a class="active" href="projects.html" aria-current="page">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
