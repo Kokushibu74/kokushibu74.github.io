@@ -83,6 +83,7 @@ class PageMetadataParser(HTMLParser):
         self.meta = {}
         self.canonical = ""
         self.title_parts = []
+        self.links = []
         self.in_title = False
 
     def handle_starttag(self, tag, attrs):
@@ -96,6 +97,10 @@ class PageMetadataParser(HTMLParser):
             href = attrs.get("href", "").strip()
             if href.startswith("https://"):
                 self.canonical = href
+        elif tag.lower() == "a":
+            href = attrs.get("href", "").strip()
+            if href.startswith("https://"):
+                self.links.append(href)
         elif tag.lower() == "title":
             self.in_title = True
 
@@ -136,7 +141,7 @@ def publisher_metadata(url):
         with urllib.request.urlopen(request, timeout=6) as response:
             final_url = response.geturl()
             final = urlparse(final_url)
-            if final.scheme != "https" or not final.hostname or final.hostname.endswith("news.google.com"):
+            if final.scheme != "https" or not final.hostname:
                 return {}
             content_type = (response.headers.get("Content-Type") or "").lower()
             if "html" not in content_type:
@@ -145,6 +150,15 @@ def publisher_metadata(url):
             permission = frame_permission(response.headers)
         parser = PageMetadataParser()
         parser.feed(body)
+        # Google News sometimes serves an interstitial rather than redirecting.
+        # Extract the external publisher URL and fetch the publisher page itself.
+        if final.hostname.endswith("news.google.com"):
+            candidate = parser.canonical if parser.canonical.startswith("https://") and not urlparse(parser.canonical).hostname.endswith("news.google.com") else ""
+            if not candidate:
+                candidate = next((href for href in parser.links if urlparse(href).hostname and not urlparse(href).hostname.endswith(("news.google.com", "google.com"))), "")
+            if candidate:
+                return publisher_metadata(candidate)
+            return {}
         meta = parser.meta
         title = clean(meta.get("og:title") or meta.get("twitter:title") or " ".join(parser.title_parts))
         summary = clean(meta.get("og:description") or meta.get("description") or meta.get("twitter:description"))
