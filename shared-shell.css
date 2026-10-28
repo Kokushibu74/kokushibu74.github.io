@@ -19,3 +19,30 @@
 @media(max-width:760px){.site-shell-header{position:sticky!important;min-height:0!important;padding:10px 12px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:9px!important}.site-shell-header .brand{font-size:15px!important}.site-shell-header .links{grid-column:1/-1;grid-row:2;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;justify-content:flex-start;gap:19px!important;padding:8px 0 5px;scrollbar-width:none}.site-shell-header .links::-webkit-scrollbar{display:none}.site-shell-header .links a{font-size:11px!important}.site-shell-header .shell-tools{grid-column:2;grid-row:1}.site-shell-header .shell-wa{padding:8px 10px;font-size:10px}.site-shell-footer{padding:22px 14px 18px!important;gap:14px!important}.site-shell-footer>span{line-height:1.8}}
 @media(max-width:370px){.site-shell-header .shell-wa{padding:8px}}
 @media(prefers-reduced-motion:reduce){.site-shell-header .links a,.site-shell-header .links a:after,.site-shell-header .shell-wa{transition:none}}
+
+/* Shared one-time hero headline typing effect on secondary pages */
+.hero .accent.hero-typewriter-active,
+main .hero-typewriter-active{
+  filter:drop-shadow(0 0 5px rgba(0,229,255,.22));
+}
+.hero .accent.hero-typewriter-active::after,
+main .hero-typewriter-active::after{
+  content:"";
+  display:inline-block;
+  width:2px;
+  height:.82em;
+  margin-left:.08em;
+  vertical-align:-.03em;
+  background:#00e5ff;
+  box-shadow:0 0 9px rgba(0,229,255,.7);
+  animation:sharedHeroTypeCursor .72s steps(1,end) infinite;
+}
+.hero .accent.hero-typewriter-done,
+main .hero-typewriter-done{filter:none}
+@keyframes sharedHeroTypeCursor{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  .hero .accent.hero-typewriter-active,
+  main .hero-typewriter-active{filter:none}
+  .hero .accent.hero-typewriter-active::after,
+  main .hero-typewriter-active::after{display:none}
+}
