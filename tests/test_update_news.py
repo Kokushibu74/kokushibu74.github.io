@@ -75,6 +75,12 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "Bangladesh breaking news"
         ))
 
+    def test_remand_followup_to_an_incident_is_not_automatically_breaking(self):
+        self.assertFalse(news.is_recent_breaking(
+            "ককটেল বিস্ফোরণ: তন্বী ও সোহান ৫ দিনের রিমান্ডে",
+            self.iso(timedelta(minutes=-5)), "direct-rss", "Jago News 24"
+        ))
+
     def test_past_attack_case_headline_is_not_automatically_breaking(self):
         self.assertFalse(news.is_recent_breaking(
             "বিএনপি কার্যালয়ে হামলা-ভাঙচুরের ঘটনায় মামলা, আসামি ৮১",
