@@ -180,6 +180,42 @@
   .news-hero-layout #top-stories-controls.top-slide-controls{margin-bottom:14px}
 }
 
+
+/* News portal refresh: clearer hierarchy, readable controls, editorial cards. */
+.news-feed-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:42px 0 20px;padding-bottom:22px;border-bottom:1px solid #ffffff18}
+.news-feed-heading .kicker{margin:0 0 8px}
+.news-feed-heading h2{margin:0;font-size:clamp(30px,4vw,42px);line-height:1.05;letter-spacing:-.04em}
+.feed-subtitle{margin:10px 0 0;color:#929caf;font-size:13px;line-height:1.7}
+.news-search-wrap{display:flex;align-items:center;gap:10px;width:min(100%,340px);min-height:46px;padding:0 14px;border:1px solid #ffffff20;border-radius:12px;background:#0b1019;color:#9ba9bd}
+.news-search-wrap>span{font-size:22px;line-height:1;color:#00f2fe}
+.news-search-wrap input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#f5f7fc;font:500 12px Outfit,sans-serif}
+.news-search-wrap input::placeholder{color:#657188}
+#filters.toolbar{gap:9px;margin:18px 0 14px;padding:5px 0 12px}
+#filters .filter{border-radius:9px;padding:10px 13px;background:#0d121c;border-color:#ffffff16;color:#aab6c8}
+#filters .filter.active{background:#00f2fe16;border-color:#00f2fe70;color:#83f6ff;box-shadow:inset 0 0 0 1px #00f2fe10}
+#filters .filter:hover{border-color:#00f2fe70;color:#a5faff}
+#news-status.status{margin:14px 0 18px;color:#8390a5;font:10px 'JetBrains Mono',monospace;letter-spacing:.025em}
+#news-grid.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+#news-grid .story{display:flex;flex-direction:column;min-width:0;min-height:0;padding:0;overflow:hidden;border-radius:16px;background:linear-gradient(155deg,#101723,#090e16);border:1px solid #ffffff12;box-shadow:0 10px 30px #0002;transition:transform .22s,border-color .22s,box-shadow .22s}
+#news-grid .story:hover{transform:translateY(-4px);border-color:#00f2fe55;box-shadow:0 18px 40px #0005,0 0 22px #00f2fe08}
+.story-image{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/9;overflow:hidden;background:radial-gradient(ellipse at 70% 30%,#17354a,#11172b 55%,#090e16)}
+.story-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(0deg,#090e16b8,transparent);pointer-events:none}
+.story-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.story:hover .story-image img{transform:scale(1.045)}
+.story-image.no-image span{font:800 12px 'JetBrains Mono',monospace;letter-spacing:.22em;color:#00f2fe99}
+.story-body{display:flex;flex:1;flex-direction:column;padding:17px 17px 15px;min-width:0}
+.story-tags{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.story-tags .tag{font-size:9px;letter-spacing:.08em}
+.story-breaking{font:700 8px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#ff8192;border:1px solid #ff465d4a;background:#ff465d10;border-radius:4px;padding:4px 6px}
+#news-grid .story h2{font-size:16px;line-height:1.42;letter-spacing:-.015em;margin:11px 0 9px;font-weight:800;overflow-wrap:anywhere}
+.story-summary{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 16px;color:#9ca9bd;font-size:11px;line-height:1.7}
+#news-grid .story .meta{padding-top:12px;margin-top:auto;border-top:1px solid #ffffff10;font-size:9px;line-height:1.5;align-items:flex-start}
+#news-grid .story .meta span:first-child{max-width:65%;overflow-wrap:anywhere;color:#9baac0}
+#news-grid .story .meta span:last-child{white-space:nowrap;color:#728198}
+.news-date-heading{grid-column:1/-1;margin:18px 0 0;padding:0 0 10px;border-bottom:1px solid #ffffff14;color:#00f2fe;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em}
+@media(max-width:900px){#news-grid.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.news-feed-heading{align-items:flex-start;flex-direction:column}.news-search-wrap{width:100%}}
+@media(max-width:600px){.news-feed-heading{margin-top:30px;gap:16px}.news-feed-heading h2{font-size:32px}.feed-subtitle{font-size:12px}#filters.toolbar{display:flex;flex-wrap:nowrap;overflow-x:auto;padding:3px 0 12px;scrollbar-width:thin}#filters .filter{flex:0 0 auto}#news-grid.grid{grid-template-columns:1fr;gap:13px}#news-grid .story{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:stretch;min-height:148px}#news-grid .story-image{height:100%;min-height:148px;aspect-ratio:auto}#news-grid .story-body{padding:13px 12px}#news-grid .story h2{font-size:13px;line-height:1.42;margin:9px 0}#news-grid .story-summary{display:none}#news-grid .story .meta{font-size:8px;gap:7px;padding-top:9px}#news-grid .story .meta span:last-child{white-space:normal;text-align:right}}
+
 </style>
 
 
@@ -198,6 +234,7 @@
     </section>
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY &nbsp; / &nbsp; ARTIFICIAL INTELLIGENCE</div>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button><button class="filter" data-category="AI">AI</button></nav>
+    <div class="news-feed-heading"><div><p class="kicker">THE LATEST</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
     <div id="news-grid" class="grid"></div>
     <div id="news-ad-slot" class="ad" aria-label="Advertisement">ADVERTISEMENT · AdSense slot will appear after your publisher ID and ad-unit IDs are configured.</div>
@@ -208,7 +245,7 @@
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script src="news.js?v=6"></script>
+  <script src="news.js?v=7"></script>
 
 
 <script src="shared-shell.js?v=5" defer></script>
