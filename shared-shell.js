@@ -18,4 +18,25 @@ if(footer){
   footer.classList.add('site-shell-footer');
   footer.querySelectorAll('.shell-footer-links').forEach(el=>el.remove());
 }
+
+// One-time typing animation for each secondary page's existing hero accent.
+// Animate only the text inside the hero H1; do not alter layout or other scripts.
+const headline=document.querySelector('main h1 > .accent, .hero h1 > .accent');
+if(headline && !headline.dataset.typewriterDone){
+  const fullText=headline.textContent;
+  headline.dataset.typewriterDone='true';
+  headline.setAttribute('aria-label',fullText);
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    headline.classList.add('hero-typewriter-active');
+    headline.textContent='';
+    let index=0;
+    const typeNext=()=>{
+      index+=1;
+      headline.textContent=fullText.slice(0,index);
+      if(index<fullText.length) window.setTimeout(typeNext,48);
+      else headline.classList.replace('hero-typewriter-active','hero-typewriter-done');
+    };
+    window.setTimeout(typeNext,260);
+  }
+}
 })();
