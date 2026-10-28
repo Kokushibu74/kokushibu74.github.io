@@ -14,6 +14,9 @@ from urllib.parse import urlparse
 OUTPUT = "news-feed.json"
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
 QUERIES = [
+    # Search dedicated breaking-news feeds first so explicit fresh alerts can be tagged.
+    ("Bangladesh", "বাংলাদেশ ব্রেকিং নিউজ", "bn-BD", "BD", "BD:bn"),
+    ("Bangladesh", "Bangladesh breaking news", "en-US", "BD", "BD:en"),
     ("Bangladesh", "বাংলাদেশ সংবাদ", "bn-BD", "BD", "BD:bn"),
     ("Bangladesh", "বাংলাদেশের সর্বশেষ খবর", "bn-BD", "BD", "BD:bn"),
     ("Bangladesh", "Bangladesh latest news", "en-US", "BD", "BD:en"),
@@ -29,6 +32,8 @@ QUERIES = [
     ("AI", "artificial intelligence AI news", "en-US", "US", "US:en"),
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
+BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
+BREAKING_TITLE_RE = re.compile(r"(?:breaking(?: news)?|ব্রেকিং|জরুরি(?: খবর| সংবাদ)?|just in|developing story|সদ্যপ্রাপ্ত)", re.I)
 MAX_PER_FEED = 25
 MAX_TOTAL = 220
 BANGLADESH_TARGET = 60
@@ -54,6 +59,18 @@ def parse_date(value):
         return dt.astimezone(timezone.utc).isoformat()
     except Exception:
         return None
+
+def is_recent_breaking(title, published, query):
+    """Only mark explicit breaking alerts from dedicated searches, and only while fresh."""
+    if query not in BREAKING_QUERY_TEXTS or not published or not BREAKING_TITLE_RE.search(title):
+        return False
+    try:
+        stamp = datetime.fromisoformat(published.replace("Z", "+00:00"))
+        age = datetime.now(timezone.utc) - stamp
+        return timedelta(minutes=-5) <= age <= timedelta(hours=2)
+    except (ValueError, TypeError):
+        return False
+
 
 def image_for(node):
     for path in ("./media:content", "./media:thumbnail"):
@@ -279,6 +296,8 @@ def read_previous():
                     parsed = parsed.replace(tzinfo=timezone.utc)
             except (ValueError, AttributeError):
                 parsed = None
+            # Breaking status must be re-earned from a fresh feed query every run.
+            item.pop("isBreaking", None)
             if parsed is None or parsed >= cutoff:
                 retained.append(item)
         return retained
@@ -307,6 +326,7 @@ def main():
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": label,
+                    "isBreaking": is_recent_breaking(title, published, query),
                     "summary": clean(node.findtext("description"))[:420],
                     "image": image_for(node),
                 }
