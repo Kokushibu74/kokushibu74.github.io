@@ -6,8 +6,9 @@ on:
     paths:
       - ".github/workflows/update-news.yml"
       - "scripts/update_news.py"
+      - "tests/test_update_news.py"
   schedule:
-    - cron: "17 * * * *"
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: write
@@ -19,10 +20,12 @@ concurrency:
 jobs:
   refresh-news:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Run offline news logic tests
+        run: python3 tests/test_update_news.py -v
       - name: Generate feed from public RSS sources
         run: python3 scripts/update_news.py
       - name: Commit feed when changed

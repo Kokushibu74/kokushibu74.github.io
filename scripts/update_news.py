@@ -32,14 +32,36 @@ QUERIES = [
     ("AI", "artificial intelligence AI news", "en-US", "US", "US:en"),
     ("AI", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
+DIRECT_FEEDS = [
+    # These feeds were confirmed to parse successfully in GitHub Actions.
+    ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
+    ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
+    ("Prothom Alo", "https://www.prothomalo.com/feed/"),
+]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
-BREAKING_TITLE_RE = re.compile(r"(?:breaking(?: news)?|ব্রেকিং|জরুরি(?: খবর| সংবাদ)?|just in|developing story|সদ্যপ্রাপ্ত)", re.I)
+DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
+BREAKING_TITLE_RE = re.compile(
+    r"(?:breaking(?:\s+news)?(?:\s*[:!—–|]|\s*$)|ব্রেকিং(?:\s+নিউজ)?|"
+    r"জরুরি(?: খবর| সংবাদ)?|just in|developing story|সদ্যপ্রাপ্ত|"
+    r"সর্বশেষ মুহূর্তে|এইমাত্র|জরুরি আপডেট)", re.I
+)
+BREAKING_EVENT_RE = re.compile(
+    r"(?:নিহত|মৃত্যু|মারা গেছেন|আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা|দুর্ঘটনা|ভূমিকম্প|"
+    r"ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|হামলা|সংঘর্ষ|গুলিতে|গুলি চালনা|গ্রেপ্তার|আটক|"
+    r"killed|death toll|dead|fire|explosion|blast|crash|earthquake|cyclone|flood|"
+    r"attack|shooting|arrested|evacuated)", re.I
+)
 MAX_PER_FEED = 25
 MAX_TOTAL = 220
 BANGLADESH_TARGET = 60
 TOTAL_TARGET = 140
-RETENTION_DAYS = 14
-HEADERS = {"User-Agent": "Kokushibu74-NewsFeed/2.0 (+https://kokushibu74.github.io/)"}
+RETENTION_DAYS = 30
+BREAKING_HISTORY_DAYS = 30
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+    "Accept-Language": "en-US,en;q=0.9,bn;q=0.8",
+}
 NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -49,25 +71,51 @@ def clean(value):
     value = re.sub(r"<[^>]+>", " ", value or "")
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
+def parse_feed_xml(raw):
+    """Parse RSS/Atom XML and recover from common unescaped ampersands in feeds."""
+    try:
+        return ET.fromstring(raw)
+    except ET.ParseError:
+        text = raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else str(raw)
+        text = re.sub(r"&(?!amp;|lt;|gt;|apos;|quot;|#\d+;|#x[0-9a-fA-F]+;)", "&amp;", text)
+        text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
+        return ET.fromstring(text)
+
 def parse_date(value):
     if not value:
         return None
     try:
-        dt = parsedate_to_datetime(value)
+        try:
+            dt = parsedate_to_datetime(value)
+        except (TypeError, ValueError, OverflowError):
+            dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=timezone.utc)
         return dt.astimezone(timezone.utc).isoformat()
     except Exception:
         return None
 
-def is_recent_breaking(title, published, query):
-    """Only mark explicit breaking alerts from dedicated searches, and only while fresh."""
-    if query not in BREAKING_QUERY_TEXTS or not published or not BREAKING_TITLE_RE.search(title):
+def is_recent_breaking(title, published, query, source=""):
+    """Conservative, free rule-based detection; publisher/event signals must be recent."""
+    if not published:
         return False
     try:
         stamp = datetime.fromisoformat(published.replace("Z", "+00:00"))
-        age = datetime.now(timezone.utc) - stamp
-        return timedelta(minutes=-5) <= age <= timedelta(hours=2)
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        age = datetime.now(timezone.utc) - stamp.astimezone(timezone.utc)
+        if not (timedelta(minutes=-5) <= age <= timedelta(hours=2)):
+            return False
+        explicit_alert = bool(BREAKING_TITLE_RE.search(title))
+        if query in BREAKING_QUERY_TEXTS:
+            return explicit_alert
+        if source in DIRECT_SOURCE_NAMES:
+            # Explicit alerts can stay eligible for two hours; high-impact event wording
+            # gets a shorter 45-minute window to reduce false positives.
+            return explicit_alert or (
+                age <= timedelta(minutes=45) and bool(BREAKING_EVENT_RE.search(title))
+            )
+        return False
     except (ValueError, TypeError):
         return False
 
@@ -275,9 +323,34 @@ def publisher_metadata(url):
 
 
 def key_for(item):
+    """Deduplicate identical headlines across publishers, not just within one source."""
     title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
-    source = item.get("source", "").lower()
-    return (title, source)
+    return title
+
+def read_breaking_history():
+    """Load a 30-day archive of headlines previously detected as breaking."""
+    try:
+        with open(OUTPUT, "r", encoding="utf-8") as file:
+            payload = json.load(file)
+        history = payload.get("breakingHistory", []) if isinstance(payload, dict) else []
+        cutoff = datetime.now(timezone.utc) - timedelta(days=BREAKING_HISTORY_DAYS)
+        retained = []
+        for item in history:
+            if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
+                continue
+            stamp_text = item.get("detectedAt") or item.get("publishedAt")
+            try:
+                stamp = datetime.fromisoformat(stamp_text.replace("Z", "+00:00")) if stamp_text else None
+                if stamp and stamp.tzinfo is None:
+                    stamp = stamp.replace(tzinfo=timezone.utc)
+            except (ValueError, AttributeError):
+                stamp = None
+            if stamp and stamp >= cutoff:
+                retained.append(item)
+        return retained
+    except (OSError, json.JSONDecodeError, TypeError):
+        return []
+
 
 def read_previous():
     try:
@@ -306,8 +379,51 @@ def read_previous():
 
 def main():
     previous = read_previous()
+    breaking_history = read_breaking_history()
     collected, seen = [], set()
     successful_feeds = 0
+
+    # Direct publisher RSS feeds complement Google News and provide original article links.
+    for source, feed_url in DIRECT_FEEDS:
+        try:
+            request = urllib.request.Request(feed_url, headers=HEADERS)
+            with urllib.request.urlopen(request, timeout=10) as response:
+                root = parse_feed_xml(response.read())
+            nodes = root.findall("./channel/item")
+            if not nodes:
+                nodes = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+            successful_feeds += 1
+            for node in nodes[:MAX_PER_FEED]:
+                title = clean(node.findtext("title"))
+                link_node = node.find("link")
+                link = clean(link_node.attrib.get("href", "") if link_node is not None and link_node.attrib.get("href") else node.findtext("link"))
+                published_raw = (
+                    node.findtext("pubDate") or node.findtext("published")
+                    or node.findtext("updated") or node.findtext("{http://purl.org/dc/elements/1.1/}date")
+                )
+                published = parse_date(published_raw)
+                summary_raw = node.findtext("description") or node.findtext("summary") or node.findtext("{http://www.w3.org/2005/Atom}content") or ""
+                summary = clean(summary_raw)[:420]
+                if not title or not link.startswith("https://"):
+                    continue
+                item = {
+                    "title": title, "link": link, "source": source,
+                    "publishedAt": published, "category": "Bangladesh",
+                    "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
+                    "summary": summary, "image": image_for(node),
+                    "publisherUrl": link, "publisherName": source,
+                    "previewTitle": title, "previewSummary": summary,
+                    "previewImage": image_for(node),
+                    "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
+                }
+                key = key_for(item)
+                if not key or key in seen:
+                    continue
+                seen.add(key)
+                collected.append(item)
+        except Exception as exc:
+            print("Direct RSS error for", source, ":", type(exc).__name__, str(exc)[:180])
+
     for label, query, language, country, edition in QUERIES:
         params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
         request = urllib.request.Request("https://news.google.com/rss/search?" + params, headers=HEADERS)
@@ -433,7 +549,37 @@ def main():
         print("WARNING: all RSS requests failed; only retained headlines are available.")
     if len(selected) < 100 or bd_count < 50:
         print("WARNING: target not met by currently available sources. Total:", len(selected), "Bangladesh:", bd_count)
-    payload = {"updatedAt": datetime.now(timezone.utc).isoformat(), "items": selected}
+    now_iso = datetime.now(timezone.utc).isoformat()
+    history_by_title = {key_for(item): item for item in breaking_history}
+    for item in collected:
+        if not item.get("isBreaking"):
+            continue
+        key = key_for(item)
+        if not key:
+            continue
+        history_by_title[key] = {
+            "title": item.get("title", ""),
+            "link": item.get("link", ""),
+            "source": item.get("source", ""),
+            "category": item.get("category", "Bangladesh"),
+            "publishedAt": item.get("publishedAt"),
+            "detectedAt": history_by_title.get(key, {}).get("detectedAt", now_iso),
+            "isBreaking": True,
+        }
+    history_cutoff = datetime.now(timezone.utc) - timedelta(days=BREAKING_HISTORY_DAYS)
+    history = []
+    for item in history_by_title.values():
+        stamp_text = item.get("detectedAt") or item.get("publishedAt")
+        try:
+            stamp = datetime.fromisoformat(stamp_text.replace("Z", "+00:00")) if stamp_text else None
+            if stamp and stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=timezone.utc)
+        except (ValueError, AttributeError):
+            stamp = None
+        if stamp and stamp >= history_cutoff:
+            history.append(item)
+    history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
+    payload = {"updatedAt": now_iso, "items": selected, "breakingHistory": history[:500]}
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
         file.write("\n")
