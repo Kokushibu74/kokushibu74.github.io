@@ -10,10 +10,13 @@
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   function renderTopStories(){
     const now=Date.now();
-    const recent=sorted(items).filter(x=>safe(x.link)!=="#").map(x=>({...x,_date:dateOf(x)}));
-    const hot=recent.filter(x=>x._date&&now-x._date.getTime()>=-5*60*1000&&now-x._date.getTime()<=24*60*60*1000);
-    topItems=(hot.length?hot:recent).slice(0,5);
-    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">Top stories will appear here as soon as the live news feed is available.</div>';slideCount.textContent="WAITING FOR HEADLINES";controls.hidden=true;return}
+    // The hero carousel is reserved for recent Bangladesh breaking headlines only.
+    const bangladeshBreaking=sorted(items)
+      .filter(x=>String(x.category||"").trim().toLowerCase()==="bangladesh"&&safe(x.link)!=="#")
+      .map(x=>({...x,_date:dateOf(x)}))
+      .filter(x=>x._date&&now-x._date.getTime()>=-5*60*1000&&now-x._date.getTime()<=24*60*60*1000);
+    topItems=bangladeshBreaking.slice(0,5);
+    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No recent Bangladesh breaking headlines are available right now. New stories will appear here when the feed updates.</div>';slideCount.textContent="WAITING FOR HEADLINES";controls.hidden=true;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
       const image=safe(x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
@@ -23,7 +26,7 @@
       return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🔥 '+esc(x.category||"Top story")+' · FEATURED STORY</span><h2>'+esc(x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(x.source||"Original publisher")+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div><a class="top-slide-cta" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">READ FULL STORY <span aria-hidden="true">↗</span></a></div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show top story '+(i+1)+'"></button>').join("");
-    slideCount.textContent=String(topItems.length).padStart(2,"0")+" FEATURED HEADLINES";
+    slideCount.textContent=String(topItems.length).padStart(2,"0")+" BANGLADESH BREAKING";
     controls.hidden=topItems.length<2;
     showSlide(slideIndex);
     startSlideTimer();
