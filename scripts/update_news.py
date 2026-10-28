@@ -8,6 +8,8 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
+from html.parser import HTMLParser
+from urllib.parse import urlparse
 
 OUTPUT = "news-feed.json"
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
@@ -73,6 +75,102 @@ def image_for(node):
         return html.unescape(match.group(1))
     return ""
 
+
+class PageMetadataParser(HTMLParser):
+    """Extract standard publisher metadata without executing page scripts."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.meta = {}
+        self.canonical = ""
+        self.title_parts = []
+        self.in_title = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = {str(k).lower(): (v or "") for k, v in attrs}
+        if tag.lower() == "meta":
+            key = (attrs.get("property") or attrs.get("name") or "").strip().lower()
+            value = attrs.get("content", "").strip()
+            if key and value and key not in self.meta:
+                self.meta[key] = value
+        elif tag.lower() == "link" and "canonical" in attrs.get("rel", "").lower().split():
+            href = attrs.get("href", "").strip()
+            if href.startswith("https://"):
+                self.canonical = href
+        elif tag.lower() == "title":
+            self.in_title = True
+
+    def handle_endtag(self, tag):
+        if tag.lower() == "title":
+            self.in_title = False
+
+    def handle_data(self, data):
+        if self.in_title and data.strip():
+            self.title_parts.append(data.strip())
+
+
+def frame_permission(headers):
+    """Conservatively allow iframe only when response headers don't prohibit this site."""
+    xfo = (headers.get("X-Frame-Options") or "").strip().lower()
+    if xfo in ("deny", "sameorigin") or xfo.startswith("deny") or xfo.startswith("sameorigin"):
+        return False
+    csp = headers.get("Content-Security-Policy") or ""
+    for directive in csp.split(";"):
+        directive = directive.strip()
+        if directive.lower().startswith("frame-ancestors"):
+            sources = directive.split()[1:]
+            return any(source == "*" or "kokushibu74.github.io" in source or source in ("https:", "http:") for source in sources)
+    return not bool(xfo)
+
+
+def publisher_metadata(url):
+    """Fetch a public article's Open Graph metadata with strict time/size limits."""
+    try:
+        parsed = urlparse(url)
+        if parsed.scheme != "https" or not parsed.hostname:
+            return {}
+        request = urllib.request.Request(url, headers={
+            **HEADERS,
+            "User-Agent": "Mozilla/5.0 (compatible; NewsPreviewBot/1.0; +https://kokushibu74.github.io/)",
+            "Accept": "text/html,application/xhtml+xml",
+        })
+        with urllib.request.urlopen(request, timeout=6) as response:
+            final_url = response.geturl()
+            final = urlparse(final_url)
+            if final.scheme != "https" or not final.hostname or final.hostname.endswith("news.google.com"):
+                return {}
+            content_type = (response.headers.get("Content-Type") or "").lower()
+            if "html" not in content_type:
+                return {}
+            body = response.read(400_000).decode(response.headers.get_content_charset() or "utf-8", errors="replace")
+            permission = frame_permission(response.headers)
+        parser = PageMetadataParser()
+        parser.feed(body)
+        meta = parser.meta
+        title = clean(meta.get("og:title") or meta.get("twitter:title") or " ".join(parser.title_parts))
+        summary = clean(meta.get("og:description") or meta.get("description") or meta.get("twitter:description"))
+        image = meta.get("og:image:secure_url") or meta.get("og:image") or meta.get("twitter:image") or meta.get("twitter:image:src") or ""
+        if image.startswith("//"):
+            image = "https:" + image
+        elif image.startswith("/"):
+            image = final.scheme + "://" + final.netloc + image
+        if not image.startswith("https://"):
+            image = ""
+        canonical = parser.canonical or final_url
+        if not canonical.startswith("https://"):
+            canonical = final_url
+        return {
+            "publisherUrl": canonical,
+            "previewTitle": title[:260],
+            "previewSummary": summary[:700],
+            "previewImage": image,
+            "iframeAllowed": bool(permission),
+            "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
+        }
+    except Exception as exc:
+        print("Publisher preview unavailable:", type(exc).__name__, url[:120])
+        return {}
+
+
 def key_for(item):
     title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
     source = item.get("source", "").lower()
@@ -133,6 +231,30 @@ def main():
                 collected.append(item)
         except Exception as exc:
             print("Feed error for", label, repr(query), ":", exc)
+
+
+    # Reuse publisher metadata from the last feed run for unchanged stories.
+    old_metadata = {key_for(item): item for item in previous}
+    preview_fields = ("publisherUrl", "previewTitle", "previewSummary", "previewImage", "iframeAllowed", "previewCheckedAt")
+    for item in collected:
+        cached = old_metadata.get(key_for(item), {})
+        for field in preview_fields:
+            if cached.get(field) not in (None, ""):
+                item[field] = cached[field]
+
+    # Enrich the ten Bangladesh carousel candidates first; limit network work per run.
+    sorted_items = sorted(collected, key=lambda x: x.get("publishedAt") or "", reverse=True)
+    preview_candidates = [x for x in sorted_items if x.get("category") == "Bangladesh"][:10]
+    preview_candidates += [x for x in sorted_items if x.get("category") != "Bangladesh"][:4]
+    enriched = 0
+    for item in preview_candidates:
+        if item.get("previewTitle") and item.get("previewCheckedAt"):
+            continue
+        metadata = publisher_metadata(item.get("link", ""))
+        if metadata:
+            item.update(metadata)
+            enriched += 1
+    print("Publisher metadata enriched:", enriched, "articles.")
 
     # Merge recent known-good items behind fresh results so a temporary RSS outage
     # doesn't shrink the feed or erase useful headlines.
