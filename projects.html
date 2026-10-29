@@ -87,7 +87,8 @@ const known=[
 {name:"API Tester",match:/api tester/i,cover:"storage/projects/api-tester.svg",tag:"DEVELOPER TOOL",category:"02 / API UTILITIES",tags:["API testing","Diagnostics","Models"],linkFallback:"https://github.com/Kokushibu74/API-TESTER-",mark:"REQUEST · INSPECT · VERIFY"},
 {name:"MEMO — WhatsApp AI",match:/memo|whatsapp/i,cover:"storage/projects/memo.svg",tag:"AI ASSISTANT",category:"03 / MESSAGING",tags:["AI integration","Messaging","Automation"],linkFallback:"https://github.com/Kokushibu74/MEMO",mark:"PERSONAL AI · WHATSAPP"},
 {name:"Media Studio",match:/media studio/i,cover:"storage/projects/media-studio.svg",tag:"CREATIVE TOOLS",category:"04 / DIGITAL MEDIA",tags:["Media","Creative workflow","Web"],linkFallback:"https://github.com/Kokushibu74/media-studio",mark:"CREATE · EDIT · SHIP"},
-{name:"Lo-Fi World Automation",match:/lo.?fi|automation/i,cover:"storage/projects/lofi-automation.svg",tag:"VIDEO WORKFLOW",category:"05 / CONTENT AUTOMATION",tags:["Lo-fi","YouTube","Automation"],linkFallback:"https://www.youtube.com/@Lo-Fi_World-x3w",mark:"MUSIC · VIDEO · AUTOMATION"}
+{name:"Lo-Fi World Automation",match:/lo.?fi|automation/i,cover:"storage/projects/lofi-automation.svg",tag:"VIDEO WORKFLOW",category:"05 / CONTENT AUTOMATION",tags:["Lo-fi","YouTube","Automation"],linkFallback:"https://www.youtube.com/@Lo-Fi_World-x3w",mark:"MUSIC · VIDEO · AUTOMATION"},
+{name:"Sports Zone",match:/sports zone/i,cover:"storage/projects/sports-zone.svg",tag:"LIVE SPORTS",category:"06 / SPORTS",tags:["Football","Cricket","Low latency"],linkFallback:"sports-zone.html",mark:"FOOTBALL · CRICKET · LIVE"}
 ];
 let cards=[],active=0,resizeFrame=0;
 function getMeta(p){return known.find(k=>k.match.test(p.name||""))||{tag:p.tag||"PROJECT",category:"SELECTED WORK",tags:["Project","Development"],cover:"storage/projects/multi-ai.svg",linkFallback:"#",mark:"BUILD · TEST · REFINE"}}
@@ -140,7 +141,8 @@ async function start(){try{const r=await fetch("site-data.json?projects="+Date.n
 {tag:"DEVELOPER TOOL / API",name:"API Tester",desc:"A lightweight tool for testing AI API keys and models, with clear diagnostics for connection and response issues.",link:"https://github.com/Kokushibu74/API-TESTER-"},
 {tag:"AI ASSISTANT / WHATSAPP",name:"MEMO — WhatsApp AI",desc:"A personal WhatsApp AI assistant exploring model integrations, messaging, and automation.",link:"https://github.com/Kokushibu74/MEMO"},
 {tag:"CREATIVE TOOLS",name:"Media Studio",desc:"A creative project for digital media workflows and content experiences.",link:"https://github.com/Kokushibu74/media-studio"},
-{tag:"VIDEO / LO-FI WORKFLOW",name:"Lo-Fi World Automation",desc:"An ongoing workflow project around lo-fi music content and YouTube publishing.",link:"https://www.youtube.com/@lo-fi_world-x3w"}
+{tag:"VIDEO / LO-FI WORKFLOW",name:"Lo-Fi World Automation",desc:"An ongoing workflow project around lo-fi music content and YouTube publishing.",link:"https://www.youtube.com/@lo-fi_world-x3w"},
+{tag:"LIVE SPORTS / FOOTBALL + CRICKET",name:"Sports Zone",desc:"A dedicated sports hub for authorized live streams, football and cricket scores, and connection-aware stream selection.",link:"sports-zone.html"}
 ])}}
 start();
 })();
