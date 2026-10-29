@@ -1318,7 +1318,6 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*2;pointerY=((e.clientY-r.top)/r.height-.5)*2;},{passive:true});
   host.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;},{passive:true});
   resize();draw(performance.now());
-  if(!reduce)raf=requestAnimationFrame(draw);
   window.addEventListener('resize',resize,{passive:true});
 })();
 </script>
