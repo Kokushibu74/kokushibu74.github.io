@@ -251,6 +251,32 @@
     weatherSlideTimer=!window.matchMedia("(prefers-reduced-motion: reduce)").matches?setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000):null;
   },{passive:true});
   weatherControls.addEventListener("click",e=>{const button=e.target.closest("[data-weather-step]");if(!button)return;const total=weatherSlidesRoot.querySelectorAll(".weather-slide").length;showWeatherSlide(weatherSlideIndex+Number(button.dataset.weatherStep),total);if(weatherSlideTimer)clearInterval(weatherSlideTimer);weatherSlideTimer=total>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches?setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000):null});
-  fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(data=>{items=Array.isArray(data.items)?data.items.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category})):[];weatherItems=Array.isArray(data.weatherItems)?data.weatherItems:[];window.newsUpdatedAt=data.updatedAt;updateFilterCounts();renderTopStories();renderWeatherStories();render()}).catch(()=>{status.textContent="Could not load the news feed. It will retry on your next visit.";grid.innerHTML="";slidesRoot.innerHTML='<div class="top-stories-empty">Could not load top stories right now. Please check back shortly.</div>'});
+  window.addEventListener("error",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page script error: "+String(event.message||"unknown JavaScript error")+"."; }});
+  window.addEventListener("unhandledrejection",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page error: "+String(event.reason?.message||event.reason||"unknown error")+"."; }});
+  let feedRetryTimer=null;
+  async function loadNewsFeed(){
+    if(status)status.textContent="Loading headlines…";
+    try{
+      const feedUrl=new URL("./news-feed.json",document.baseURI);
+      feedUrl.searchParams.set("updated",String(Date.now()));
+      const response=await fetch(feedUrl.href,{cache:"no-store"});
+      if(!response.ok)throw new Error("Feed request failed (HTTP "+response.status+").");
+      const data=await response.json();
+      if(!data||!Array.isArray(data.items))throw new Error("Feed JSON is valid but has no items array.");
+      items=data.items.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category}));
+      weatherItems=Array.isArray(data.weatherItems)?data.weatherItems:[];
+      window.newsUpdatedAt=data.updatedAt||null;
+      updateFilterCounts();renderTopStories();renderWeatherStories();render();
+      if(feedRetryTimer){clearTimeout(feedRetryTimer);feedRetryTimer=null}
+    }catch(error){
+      if(grid)grid.innerHTML="";
+      if(pagination)pagination.innerHTML="";
+      if(status)status.textContent="Could not load news: "+String(error?.message||error)+". Retrying in 30 seconds.";
+      if(slidesRoot)slidesRoot.innerHTML='<div class="top-stories-empty">News feed temporarily unavailable. Retrying automatically.</div>';
+      if(feedRetryTimer)clearTimeout(feedRetryTimer);
+      feedRetryTimer=setTimeout(loadNewsFeed,30000);
+    }
+  }
+  loadNewsFeed();
   setInterval(()=>location.reload(),10*60*1000);
 })();
