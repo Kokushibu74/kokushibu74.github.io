@@ -365,9 +365,10 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     </section>
     </section>
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY</div>
+    <nav id="news-view-switch" class="toolbar" aria-label="Choose latest or archive"><button class="filter active" data-news-view="latest">Latest · 24 hours</button><button class="filter" data-news-view="archive">Archive News</button></nav>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button></nav>
     <div id="latest-feed" class="news-feed-heading"><div><p class="kicker">THE LATEST</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
-    <div class="news-date-filters" aria-label="Filter news by publication date"><label>From date <input id="news-date-from" type="date" aria-label="Publication date from"></label><label>To date <input id="news-date-to" type="date" aria-label="Publication date to"></label><button id="news-date-clear" type="button">Clear dates</button></div>
+    <div id="archive-tools" class="news-date-filters" aria-label="Filter archived news by publication date" hidden><label>From date <input id="news-date-from" type="date" aria-label="Archive publication date from"></label><label>To date <input id="news-date-to" type="date" aria-label="Archive publication date to"></label><button id="news-date-clear" type="button">Clear dates</button></div>
     <p id="news-status" class="status" aria-live="polite">Loading headlines…</p>
     <div id="news-grid" class="grid"></div>
     <nav id="news-pagination" class="news-pagination" aria-label="News feed pages"></nav>
@@ -379,7 +380,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script src="news.js?v=12"></script>
+  <script src="news.js?v=13"></script>
 
 
 <script src="shared-shell.js?v=6" defer></script>
