@@ -5,6 +5,7 @@
   const weatherRoot=document.getElementById("weather-disaster"),weatherSlidesRoot=document.getElementById("weather-slides"),weatherControls=document.getElementById("weather-controls"),weatherCount=document.getElementById("weather-count"),weatherPosition=document.getElementById("weather-position");
   const PAGE_SIZE=18;
   const searchInput=document.getElementById("news-search");
+  const dateFromInput=document.getElementById("news-date-from"),dateToInput=document.getElementById("news-date-to");
   const slidesRoot=document.getElementById("top-stories-slides"),slideCount=document.getElementById("top-stories-count"),controls=document.getElementById("top-stories-controls"),dotsRoot=document.getElementById("top-stories-dots");
   document.getElementById("year").textContent=new Date().getFullYear();
   let items=[],weatherItems=[],active="All",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
@@ -13,10 +14,14 @@
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   function renderTopStories(){
-    // Keep the carousel Bangladesh-only, with the ten newest valid headlines.
-    const bangladeshStories=sorted(items)
-      .filter(x=>String(x.category||"").trim().toLowerCase()==="bangladesh"&&safe(x.link)!=="#");
-    topItems=bangladeshStories.slice(0,10);
+    // Slider is exclusively the newest Bangladesh stories with a usable summary or image.
+    const bangladeshStories=sorted(items).filter(x=>{
+      const hasPreview=String(x.previewSummary||x.summary||x.description||"").trim().length>0||
+        safe(x.previewScreenshot||x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"")!=="#";
+      return String(x.category||"").trim().toLowerCase()==="bangladesh"&&
+        safe(x.link)!=="#"&&!!dateOf(x)&&!!String(x.previewTitle||x.title||"").trim()&&hasPreview;
+    });
+    topItems=bangladeshStories;
     if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">Bangladesh headlines are being collected. Please check back after the next feed refresh.</div>';slideCount.textContent="BANGLADESH NEWS";controls.hidden=true;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
@@ -73,6 +78,8 @@
     if(dot){showSlide(Number(dot.dataset.slideTo));startSlideTimer()}
   });
   searchInput?.addEventListener("input",()=>{currentPage=1;render()});
+  dateFromInput?.addEventListener("change",()=>{currentPage=1;render()});
+  dateToInput?.addEventListener("change",()=>{currentPage=1;render()});
   const slider=document.getElementById("top-stories");
   slider.addEventListener("mouseenter",()=>{if(slideTimer)clearInterval(slideTimer)});
   slider.addEventListener("mouseleave",startSlideTimer);
@@ -131,7 +138,15 @@
   }));
   function render(){
     const query=(searchInput?.value||"").trim().toLocaleLowerCase();
-    const visible=sorted(items.filter(x=>(active==="All"||x.category===active)&&(!query||[x.title,x.source,x.summary,x.description].some(v=>String(v||"").toLocaleLowerCase().includes(query)))));
+    const from=dateFromInput?.value?new Date(dateFromInput.value+"T00:00:00").getTime():-Infinity;
+    const to=dateToInput?.value?new Date(dateToInput.value+"T23:59:59.999").getTime():Infinity;
+    const dateFilterActive=!!(dateFromInput?.value||dateToInput?.value);
+    const visible=sorted(items.filter(x=>{
+      const date=dateOf(x),stamp=date?date.getTime():NaN;
+      const inDateRange=Number.isFinite(stamp)&&stamp>=from&&stamp<=to;
+      return (active==="All"||x.category===active)&&(!dateFilterActive||inDateRange)&&
+        (!query||[x.title,x.source,x.summary,x.description,x.previewTitle,x.previewSummary].some(v=>String(v||"").toLocaleLowerCase().includes(query)));
+    }));
     const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
     currentPage=Math.max(1,Math.min(currentPage,totalPages));
     if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?"No stories match this category or search.":"No headlines are available yet. The feed updater may still be running.";return}
@@ -159,6 +174,7 @@
     });
   }
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));render()});
+  document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
   pagination.addEventListener("click",e=>{const button=e.target.closest("button[data-page]");if(!button||button.disabled)return;currentPage=Number(button.dataset.page)||1;render();document.getElementById("latest-feed")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
   function renderWeatherStories(){
     const recent=sorted(weatherItems.filter(x=>isRecentWeatherStory(x)));
