@@ -482,7 +482,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <div class="flex items-center gap-3 min-w-0">
         <a id="nav-brand-intro" href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5" aria-label="Shihabul Islam — replay homepage intro" title="Click name to replay intro">
-          <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">Shihabul Islam</span>
+          <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">SHIHABUL ISLAM</span>
         </a>
       </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
@@ -1231,44 +1231,14 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     animation:navLetterAssemble 1.15s cubic-bezier(.18,.76,.22,1) both;
     animation-delay:var(--assemble-delay,0ms);
   }
-  #nav-name.nav-cosmic-floating .nav-cosmic-letter {
-    animation:navLetterDrift var(--float-duration,5.8s) ease-in-out infinite;
-    animation-delay:var(--float-delay,0ms);
-  }
-  #nav-name.nav-cosmic-floating .nav-cosmic-letter::after {
-    content:"";
-    position:absolute;
-    width:2px;height:2px;
-    left:50%;top:-.22em;
-    border-radius:50%;
-    background:#b7faff;
-    box-shadow:0 0 5px 1px rgba(0,242,254,.65),0 0 8px rgba(167,139,250,.45);
-    opacity:0;
-    pointer-events:none;
-    animation:navLetterSparkle 3.8s ease-in-out infinite;
-    animation-delay:var(--sparkle-delay,0ms);
-  }
   @keyframes navLetterAssemble {
     0% { opacity:0; transform:translate3d(var(--start-x,0px),var(--start-y,0px),0) rotate(var(--start-rotate,0deg)) scale(.55); filter:blur(4px); }
     68% { opacity:1; filter:blur(0); }
     84% { transform:translate3d(0,-2px,0) rotate(2deg) scale(1.035); }
     100% { opacity:1; transform:translate3d(0,0,0) rotate(0) scale(1); filter:blur(0); }
   }
-  @keyframes navLetterDrift {
-    0%,100% { transform:translate3d(0,0,0) rotate(0); }
-    28% { transform:translate3d(var(--drift-x,1px),-1.2px,0) rotate(.35deg); }
-    62% { transform:translate3d(calc(var(--drift-x,1px) * -0.65),.8px,0) rotate(-.3deg); }
-  }
-  @keyframes navLetterSparkle {
-    0%,72%,100% { opacity:0; transform:translate3d(0,2px,0) scale(.5); }
-    78% { opacity:.9; transform:translate3d(1px,-1px,0) scale(1); }
-    86% { opacity:.2; transform:translate3d(3px,-4px,0) scale(.6); }
-  }
   @media(prefers-reduced-motion:reduce) {
-    #nav-name .nav-cosmic-letter,
-    #nav-name.nav-cosmic-floating .nav-cosmic-letter,
-    #nav-name.nav-cosmic-floating .nav-cosmic-letter::after { animation:none!important; filter:none!important; transform:none!important; }
-    #nav-name .nav-cosmic-letter { opacity:1!important; }
+    #nav-name .nav-cosmic-letter { animation:none!important; filter:none!important; transform:none!important; opacity:1!important; }
   }
 </style>
 <script id="nav-cosmic-letter-animation-script">
@@ -1297,10 +1267,6 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
       letter.style.setProperty('--start-y', rand(-25, 25).toFixed(1) + 'px');
       letter.style.setProperty('--start-rotate', rand(-95, 95).toFixed(1) + 'deg');
       letter.style.setProperty('--assemble-delay', (letterIndex * 38 + Math.random() * 85).toFixed(0) + 'ms');
-      letter.style.setProperty('--float-duration', rand(4.8, 7.2).toFixed(2) + 's');
-      letter.style.setProperty('--float-delay', (-rand(0, 6)).toFixed(2) + 's');
-      letter.style.setProperty('--drift-x', rand(-1.25, 1.25).toFixed(2) + 'px');
-      letter.style.setProperty('--sparkle-delay', (-rand(0, 3.8)).toFixed(2) + 's');
       letter.setAttribute('aria-hidden', 'true');
       fragment.appendChild(letter);
       letterIndex++;
@@ -1309,10 +1275,6 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     name.setAttribute('aria-label', original);
     name.classList.add('nav-cosmic-ready');
 
-    const assembleDuration = 1150 + Math.max(0, letterIndex - 1) * 38 + 85;
-    window.setTimeout(() => {
-      if (name.isConnected) name.classList.add('nav-cosmic-floating');
-    }, assembleDuration);
   }
 
   // The full-screen moon intro covers the header during initial page load.
