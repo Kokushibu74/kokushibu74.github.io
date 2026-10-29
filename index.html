@@ -1295,17 +1295,23 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     }
     ctx.globalAlpha=1;ctx.shadowBlur=0;
     const beat=t%5.4;if(beat>4.72&&beat<4.88){ctx.globalAlpha=(1-Math.abs(beat-4.8)/.08)*.32;ctx.fillStyle='#e8fcff';ctx.fillRect(w*.36,h*.5,w*.28,1);ctx.globalAlpha=1;}
-    if(!reduce)raf=requestAnimationFrame(draw);
+    // Keep the cosmic rift running continuously; reduced-motion users still get a gentle loop.
+    raf=requestAnimationFrame(draw);
   }
   textNode.classList.add('nav-rift-reveal');
-  if(!reduce){
-    window.setTimeout(()=>textNode.classList.remove('nav-rift-reveal'),1400);
-    const glitch=()=>{if(!document.hidden){textNode.classList.remove('nav-rift-glitch');void textNode.offsetWidth;textNode.classList.add('nav-rift-glitch');window.setTimeout(()=>textNode.classList.remove('nav-rift-glitch'),240);}window.setTimeout(glitch,6200+Math.random()*3600);};
-    window.setTimeout(glitch,4600);
-  }
-  resize();if(!reduce)raf=requestAnimationFrame(draw);
+  window.setTimeout(()=>textNode.classList.remove('nav-rift-reveal'),1400);
+  const glitch=()=>{
+    if(!document.hidden){
+      textNode.classList.remove('nav-rift-glitch');void textNode.offsetWidth;
+      textNode.classList.add('nav-rift-glitch');
+      window.setTimeout(()=>textNode.classList.remove('nav-rift-glitch'),240);
+    }
+    window.setTimeout(glitch,reduce?11000:6200+Math.random()*3600);
+  };
+  window.setTimeout(glitch,reduce?9000:4600);
+  resize();raf=requestAnimationFrame(draw);
   window.addEventListener('resize',resize,{passive:true});
-  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible){if(raf)cancelAnimationFrame(raf);raf=0;}else if(!reduce&&!raf){last=0;raf=requestAnimationFrame(draw);}});
+  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible){if(raf)cancelAnimationFrame(raf);raf=0;}else if(!raf){last=0;raf=requestAnimationFrame(draw);}});
 })();
 </script>
 </body>
