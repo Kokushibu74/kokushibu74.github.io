@@ -73,11 +73,6 @@ BREAKING_FOLLOWUP_RE = re.compile(
     r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
     r"investigation into)", re.I
 )
-MAX_PER_FEED = 25
-MAX_TOTAL = 220
-BANGLADESH_TARGET = 60
-TOTAL_TARGET = 140
-RETENTION_DAYS = 30
 BREAKING_HISTORY_DAYS = 30
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
@@ -429,7 +424,6 @@ def read_previous():
         with open(OUTPUT, "r", encoding="utf-8") as file:
             payload = json.load(file)
         items = payload.get("items", []) if isinstance(payload, dict) else []
-        cutoff = datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)
         retained = []
         for item in items:
             if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
@@ -443,8 +437,8 @@ def read_previous():
                 parsed = None
             # Breaking status must be re-earned from a fresh feed query every run.
             item.pop("isBreaking", None)
-            if parsed is None or parsed >= cutoff:
-                retained.append(item)
+            # Keep the complete archive; date filtering happens in the browser.
+            retained.append(item)
         return retained
     except (OSError, json.JSONDecodeError, TypeError):
         return []
@@ -478,7 +472,7 @@ def main():
                 root = parse_feed_xml(response.read())
             nodes = feed_items(root)
             successful_feeds += 1
-            for node in nodes[:MAX_PER_FEED]:
+            for node in nodes:
                 title = clean(child_text(node, "title"))
                 link = clean(child_text(node, "link"))
                 published_raw = child_text(node, "pubDate", "published", "updated", "date")
@@ -513,7 +507,7 @@ def main():
             with urllib.request.urlopen(request, timeout=20) as response:
                 root = ET.fromstring(response.read())
             successful_feeds += 1
-            for node in root.findall("./channel/item")[:MAX_PER_FEED]:
+            for node in root.findall("./channel/item"):
                 title = clean(node.findtext("title"))
                 link = clean(node.findtext("link"))
                 source_node = node.find("source")
@@ -546,7 +540,7 @@ def main():
             with urllib.request.urlopen(request, timeout=20) as response:
                 root = parse_feed_xml(response.read())
             successful_feeds += 1
-            for node in feed_items(root)[:MAX_PER_FEED]:
+            for node in feed_items(root):
                 title = clean(child_text(node, "title"))
                 link = clean(child_text(node, "link"))
                 summary = clean(child_text(node, "description", "summary", "content"))[:420]
@@ -624,43 +618,19 @@ def main():
     if not collected and not previous:
         print("ERROR: no RSS items were collected; preserving the existing file.")
         return
-    # Keep fresh items first, then fill category targets with retained headlines.
-    by_category = {name: [] for name in ("Bangladesh", "World", "Technology")}
-    category_seen = {name: set() for name in by_category}
-    for item in merged:
-        category = item.get("category", "World")
-        if category not in by_category:
-            continue
-        key = key_for(item)
-        if key in category_seen[category]:
-            continue
-        category_seen[category].add(key)
-        by_category[category].append(item)
-
-    # Sort each category newest-first; keep Bangladesh prominent and plentiful.
-    for values in by_category.values():
-        values.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+    # Keep every unique collected and archived story; no age or total-count cap.
     selected = []
     selected_keys = set()
-    # Prioritize at least 60 Bangladesh items when the sources/retained feed provide them.
-    for category, quota in (("Bangladesh", BANGLADESH_TARGET), ("World", 30), ("Technology", 60)):
-        for item in by_category[category][:quota]:
-            key = key_for(item)
-            if key not in selected_keys:
-                selected.append(item)
-                selected_keys.add(key)
-    # If the category quotas do not reach 140, fill with the newest remaining headlines.
-    remaining = [x for values in by_category.values() for x in values if key_for(x) not in selected_keys]
-    remaining.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
-    for item in remaining:
-        if len(selected) >= min(TOTAL_TARGET, MAX_TOTAL):
-            break
+    for item in merged:
+        category = item.get("category", "World")
+        if category not in ("Bangladesh", "World", "Technology"):
+            continue
         key = key_for(item)
-        if key not in selected_keys:
-            selected.append(item)
-            selected_keys.add(key)
+        if not key or key in selected_keys:
+            continue
+        selected_keys.add(key)
+        selected.append(item)
     selected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
-    selected = selected[:MAX_TOTAL]
     bd_count = sum(1 for x in selected if x.get("category") == "Bangladesh")
     if successful_feeds == 0:
         print("WARNING: all RSS requests failed; only retained headlines are available.")
