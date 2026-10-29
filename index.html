@@ -1210,6 +1210,11 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   #nav-name.nav-cosmic-ready { display:inline-block; white-space:nowrap; }
   #nav-name .nav-cosmic-letter {
     display:inline-block;
+    color:transparent;
+    background:linear-gradient(90deg,#fff 0%,#00f2fe 38%,#a78bfa 68%,#fff 100%);
+    background-size:220% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
     position:relative;
     transform-origin:50% 65%;
     will-change:transform,opacity;
