@@ -1218,7 +1218,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <style id="nav-cosmic-rift-reveal">
   /* Deep-space rift renderer: the canvas is isolated to the brand label. */
   #nav-name.nav-electric-reveal{position:relative;display:inline-block;white-space:nowrap;isolation:isolate;overflow:visible;perspective:260px}
-  #nav-name .nav-rift-canvas{position:absolute;z-index:0;left:-18px;top:-15px;width:calc(100% + 36px);height:calc(100% + 30px);pointer-events:none;overflow:visible;transform:translateZ(-18px);opacity:.96}
+  #nav-name .nav-rift-canvas{position:absolute;z-index:0;left:-8px;top:-7px;width:calc(100% + 16px);height:calc(100% + 14px);pointer-events:none;overflow:hidden;transform:translateZ(-8px);opacity:.96;clip-path:inset(0 round 3px)}
   #nav-name .nav-electric-text{position:relative;z-index:1;display:inline-block;animation:navCosmicNameGlow 4.8s ease-in-out 1.25s infinite;will-change:filter}
   @keyframes navCosmicNameGlow{0%,100%{filter:drop-shadow(0 0 3px rgba(0,242,254,.25))}50%{filter:drop-shadow(0 0 8px rgba(0,242,254,.55)) drop-shadow(0 0 15px rgba(139,92,246,.34))}}
   @media(prefers-reduced-motion:reduce){#nav-name .nav-electric-text{animation:none!important;filter:drop-shadow(0 0 4px rgba(0,242,254,.28))}}
