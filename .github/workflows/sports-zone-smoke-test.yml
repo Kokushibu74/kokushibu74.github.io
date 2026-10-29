@@ -1,0 +1,59 @@
+name: Sports Zone API smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sports-zone.html'
+      - 'worker/**'
+      - '.github/workflows/sports-zone-smoke-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check deployed Worker health
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          curl --retry 3 --retry-delay 3 --retry-all-errors --fail --silent --show-error "$BASE/health" -o /tmp/health.json
+          python -c 'import json; d=json.load(open("/tmp/health.json")); assert d.get("status") == "ok", d; assert d.get("kvConfigured") is True, d; print("Health OK; KV binding configured.")'
+
+      - name: Check football scoreboard
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/football?league=eng.1" -o /tmp/football.json
+          python -c 'import json; d=json.load(open("/tmp/football.json")); assert d.get("ok") is True, d; assert isinstance(d.get("matches"), list), d; print("Football endpoint OK; matches returned:", len(d["matches"]))'
+
+      - name: Check stream configuration endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/streams" -o /tmp/streams.json
+          python -c 'import json; d=json.load(open("/tmp/streams.json")); assert d.get("ok") is True, d; assert isinstance(d.get("streams"), list), d; print("Streams endpoint OK; configured official sources:", len(d["streams"]))'
+
+      - name: Check cricket scoreboard (provider may be unavailable)
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          code="$(curl --silent --show-error --max-time 15 -o /tmp/cricket.json -w '%{http_code}' "$BASE/api/cricket" || true)"
+          if [ "$code" = "200" ]; then
+            python -c 'import json; d=json.load(open("/tmp/cricket.json")); assert d.get("ok") is True, d; assert isinstance(d.get("matches"), list), d; print("Cricket endpoint OK; matches returned:", len(d["matches"]))'
+          elif [ "$code" = "502" ]; then
+            echo "WARNING: Worker is reachable, but the public cricket provider did not return a supported scoreboard response:"
+            cat /tmp/cricket.json
+          else
+            echo "Unexpected cricket HTTP status: $code"
+            cat /tmp/cricket.json
+            exit 1
+          fi
