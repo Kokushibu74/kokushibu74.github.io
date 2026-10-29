@@ -1218,10 +1218,13 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <style id="nav-cosmic-rift-reveal">
   /* Cosmic Rift A: confined to the header brand label; no navbar-wide overlay. */
   #nav-name.nav-electric-reveal{position:relative;display:inline-block;white-space:nowrap;isolation:isolate;overflow:hidden;vertical-align:middle}
-  #nav-name .nav-rift-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;display:block;pointer-events:none;overflow:hidden;opacity:.92}
-  #nav-name .nav-electric-text{position:relative;z-index:1;display:inline-block;animation:navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important;will-change:filter,opacity;filter:drop-shadow(0 0 6px rgba(0,242,254,.42))}
+  /* CSS-only fallback guarantees a visible, endlessly pulsing rift even if canvas JS is blocked. */
+  #nav-name.nav-electric-reveal::before{content:"";position:absolute;z-index:0;left:-8%;right:-8%;top:8%;bottom:8%;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,.34) 0%,rgba(0,229,255,.16) 32%,rgba(112,54,255,.19) 58%,transparent 76%);opacity:.72;transform:scaleX(.82);animation:navRiftFallback 3.6s ease-in-out infinite!important}
+  #nav-name .nav-rift-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;display:block;pointer-events:none;overflow:hidden;opacity:1}
+  #nav-name .nav-electric-text{position:relative;z-index:1;display:inline-block;animation:navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important;will-change:filter,opacity;text-shadow:0 0 5px rgba(0,242,254,.5)}
   #nav-name .nav-electric-text.nav-rift-reveal{animation:navNameReveal 1.15s cubic-bezier(.2,.75,.2,1) both,navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important}
   #nav-name .nav-electric-text.nav-rift-glitch{animation:navNameGlitch .22s steps(2,end) both,navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important}
+  @keyframes navRiftFallback{0%,100%{opacity:.48;transform:scaleX(.72) scaleY(.88);filter:blur(2px)}50%{opacity:1;transform:scaleX(1) scaleY(1.12);filter:blur(0)}}
   @keyframes navNameReveal{0%{opacity:.12;filter:brightness(.35) drop-shadow(0 0 2px rgba(0,242,254,.2))}45%{opacity:.72;filter:brightness(1.5) drop-shadow(0 0 12px rgba(0,242,254,.8))}100%{opacity:1;filter:brightness(1) drop-shadow(0 0 4px rgba(0,242,254,.35))}}
   @keyframes navCosmicNameGlow{0%,100%{filter:drop-shadow(0 0 3px rgba(0,242,254,.25))}50%{filter:drop-shadow(0 0 8px rgba(0,242,254,.55)) drop-shadow(0 0 15px rgba(139,92,246,.34))}}
   @keyframes navNameGlitch{0%,100%{transform:translateX(0);clip-path:inset(0)}25%{transform:translateX(-1px);clip-path:inset(12% 0 58% 0);text-shadow:2px 0 #00e5ff,-2px 0 #a855f7}55%{transform:translateX(1px);clip-path:inset(62% 0 10% 0);text-shadow:-2px 0 #00e5ff,2px 0 #a855f7}}
