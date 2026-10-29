@@ -6,42 +6,47 @@
   const PAGE_SIZE=18;
   const searchInput=document.getElementById("news-search");
   const dateFromInput=document.getElementById("news-date-from"),dateToInput=document.getElementById("news-date-to");
+  const archiveTools=document.getElementById("archive-tools"),viewSwitch=document.getElementById("news-view-switch");
   const slidesRoot=document.getElementById("top-stories-slides"),slideCount=document.getElementById("top-stories-count"),controls=document.getElementById("top-stories-controls"),dotsRoot=document.getElementById("top-stories-dots");
   document.getElementById("year").textContent=new Date().getFullYear();
-  let items=[],weatherItems=[],active="All",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
+  let items=[],weatherItems=[],active="All",viewMode="latest",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
   const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safe=v=>{try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}};
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
-  function renderTopStories(){
-    // Slider is exclusively the newest Bangladesh stories with a usable summary or image.
-    const bangladeshStories=sorted(items).filter(x=>{
-      const hasPreview=String(x.previewSummary||x.summary||x.description||"").trim().length>0||
-        safe(x.previewScreenshot||x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"")!=="#";
-      return String(x.category||"").trim().toLowerCase()==="bangladesh"&&
-        safe(x.link)!=="#"&&!!dateOf(x)&&!!String(x.previewTitle||x.title||"").trim()&&hasPreview;
+  const PREVIEW_FIELDS=["previewScreenshot","previewImage","image","imageUrl","thumbnail","thumbnailUrl","enclosureUrl"];
+  const previewUrl=x=>safe(PREVIEW_FIELDS.map(k=>x[k]).find(Boolean)||"");
+  function imageLoads(url){
+    return new Promise(resolve=>{
+      if(!url||url==="#"){resolve(false);return}
+      const image=new Image();
+      image.referrerPolicy="no-referrer";
+      image.onload=()=>resolve(image.naturalWidth>0&&image.naturalHeight>0);
+      image.onerror=()=>resolve(false);
+      image.src=url;
     });
-    topItems=bangladeshStories;
-    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">Bangladesh headlines are being collected. Please check back after the next feed refresh.</div>';slideCount.textContent="BANGLADESH NEWS";controls.hidden=true;return}
+  }
+  async function renderTopStories(){
+    // Only recent Bangladesh stories with a successfully loaded preview image belong in this slider.
+    const cutoff=Date.now()-24*60*60*1000,now=Date.now();
+    const candidates=sorted(items).filter(x=>{
+      const d=dateOf(x),age=d?now-d.getTime():Infinity;
+      return String(x.category||"").trim().toLowerCase()==="bangladesh"&&!!d&&age>=-5*60*1000&&age<=24*60*60*1000&&safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#";
+    });
+    const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
+    topItems=checks.filter(x=>x.ok).map(x=>x.item);
+    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No recent Bangladesh stories with a working image preview are available yet. Please check after the next feed refresh.</div>';slideCount.textContent="LATEST BD · IMAGE PREVIEWS";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
-      const image=safe(x.previewScreenshot||x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
-      const title=x.previewTitle||x.title;
+      const image=previewUrl(x),title=x.previewTitle||x.title;
       const summary=x.previewSummary||x.summary||x.description||"Open the original report for the full story, context and latest developments.";
-      const publisherUrl=safe(x.publisherUrl||x.link);
-      const d=dateOf(x);
-      const bg=image!=="#"?'<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()">':'';
-      const recent=d&&(Date.now()-d.getTime()<=24*60*60*1000);
-      const publisher=String(x.publisherName||x.source||"Original publisher");
-      const fallback='<div class="top-slide-fallback" aria-hidden="true"><strong>'+esc(publisher)+'</strong><span>ORIGINAL NEWS SOURCE</span></div>';
-      const visualClass=image==="#"?"top-slide-visual no-image":"top-slide-visual";
-      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'" data-href="'+publisherUrl+'" tabindex="0" role="link" aria-label="Open news story: '+esc(x.previewTitle||x.title)+'"><div class="'+visualClass+'">'+bg+fallback+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🇧🇩 BANGLADESH · '+(recent?'LATEST':'NEWS')+'</span><h2>'+esc(x.previewTitle||x.title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(publisher)+'</span><span>•</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"LATEST UPDATE")+'</span></div>'+(x.iframeAllowed===true?'<div class="top-slide-actions"><details class="publisher-embed"><summary>Site preview</summary><iframe src="'+publisherUrl+'" title="Publisher page preview" loading="lazy" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></details></div>':'')+'</div></article>';
+      const publisherUrl=safe(x.publisherUrl||x.link),d=dateOf(x),publisher=String(x.publisherName||x.source||"Original publisher");
+      const bg='<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer">';
+      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'" data-href="'+publisherUrl+'" tabindex="0" role="link" aria-label="Open news story: '+esc(title)+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">🇧🇩 BANGLADESH · LATEST · IMAGE PREVIEW</span><h2>'+esc(title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(publisher)+'</span><span>•</span><span>'+esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}))+'</span></div>'+(x.iframeAllowed===true?'<div class="top-slide-actions"><details class="publisher-embed"><summary>Site preview</summary><iframe src="'+publisherUrl+'" title="Publisher page preview" loading="lazy" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></details></div>':'')+'</div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show Bangladesh story '+(i+1)+'"></button>').join("");
-    slideCount.textContent=String(topItems.length).padStart(2,"0")+" BANGLADESH HEADLINES";
-    controls.hidden=topItems.length<2;
-    showSlide(slideIndex);
-    startSlideTimer();
+    slideCount.textContent=String(topItems.length).padStart(2,"0")+" LATEST BD IMAGE STORIES";
+    controls.hidden=topItems.length<2;showSlide(slideIndex);startSlideTimer();
   }
   function showSlide(next){
     if(!topItems.length)return;
@@ -140,8 +145,10 @@
     const query=(searchInput?.value||"").trim().toLocaleLowerCase();
     const from=dateFromInput?.value?new Date(dateFromInput.value+"T00:00:00").getTime():-Infinity;
     const to=dateToInput?.value?new Date(dateToInput.value+"T23:59:59.999").getTime():Infinity;
-    const dateFilterActive=!!(dateFromInput?.value||dateToInput?.value);
-    const visible=sorted(items.filter(x=>{
+    const dateFilterActive=viewMode==="archive"&&!!(dateFromInput?.value||dateToInput?.value);
+    const now=Date.now(),cutoff=now-24*60*60*1000;
+    const scoped=items.filter(x=>{const d=dateOf(x);return viewMode==="latest"?(!!d&&d.getTime()<=now+5*60*1000&&d.getTime()>=cutoff):(!d||d.getTime()<cutoff)});
+    const visible=sorted(scoped.filter(x=>{
       const date=dateOf(x),stamp=date?date.getTime():NaN;
       const inDateRange=Number.isFinite(stamp)&&stamp>=from&&stamp<=to;
       return (active==="All"||x.category===active)&&(!dateFilterActive||inDateRange)&&
@@ -149,11 +156,11 @@
     }));
     const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
     currentPage=Math.max(1,Math.min(currentPage,totalPages));
-    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?"No stories match this category or search.":"No headlines are available yet. The feed updater may still be running.";return}
+    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="latest"?"No stories from the last 24 hours match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
     const start=(currentPage-1)*PAGE_SIZE;
     const pageItems=visible.slice(start,start+PAGE_SIZE);
     const end=start+pageItems.length;
-    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" headlines"+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
+    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest headlines (last 24 hours)":"archived headlines")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
     const now=Date.now();
     grid.innerHTML=pageItems.map((x,i)=>{
@@ -173,6 +180,7 @@
       button.textContent=label+" ("+count+")";
     });
   }
+  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="latest"?"THE LATEST · 24 HOURS":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="latest"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));render()});
   document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
   pagination.addEventListener("click",e=>{const button=e.target.closest("button[data-page]");if(!button||button.disabled)return;currentPage=Number(button.dataset.page)||1;render();document.getElementById("latest-feed")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
