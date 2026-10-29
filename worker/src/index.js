@@ -76,12 +76,120 @@ function validStream(s) {
     typeof s.youtubeId==="string" && YOUTUBE_ID_RE.test(s.youtubeId) && CATEGORIES.has(s.category) && s.isOfficial===true &&
     typeof s.officialUrl==="string" && /^https:\/\/(www\.)?(youtube\.com|youtube-nocookie\.com)\//i.test(s.officialUrl);
 }
+const AUTO_STREAMS_KEY = "auto:streams";
+const AUTO_SCHEDULE_KEY = "auto:schedule";
+const AUTO_STATUS_KEY = "auto:status";
+const YOUTUBE_DAILY_SEARCH_LIMIT = 70;
+const SCHEDULE_CACHE_SECONDS = 3 * 60 * 60;
+
+function youtubeChannelAllowlist(env) {
+  return new Set(String(env.YOUTUBE_OFFICIAL_CHANNEL_IDS || "").split(",").map(x=>x.trim()).filter(Boolean));
+}
+function utcDateStamp(date) {
+  return date.getUTCFullYear()+String(date.getUTCMonth()+1).padStart(2,"0")+String(date.getUTCDate()).padStart(2,"0");
+}
+async function getUpcomingEvents(env, now=new Date()) {
+  if(!env.SPORTS_ZONE) return [];
+  try {
+    const cached=await env.SPORTS_ZONE.get(AUTO_SCHEDULE_KEY,"json");
+    if(cached && Array.isArray(cached.events) && Date.now()-Number(cached.savedAt||0)<SCHEDULE_CACHE_SECONDS*1000) return cached.events;
+  } catch {}
+  const end=new Date(now.getTime()+7*24*60*60*1000);
+  const dates=utcDateStamp(now)+"-"+utcDateStamp(end);
+  const sources=[
+    ...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,url:"https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/scoreboard?dates="+dates})),
+    {sport:"cricket",league:"8039",url:"https://site.api.espn.com/apis/site/v2/sports/cricket/8039/scoreboard?dates="+dates}
+  ];
+  const batches=await Promise.all(sources.map(async source=>{
+    try {
+      const r=await fetch(source.url,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(7000)});
+      if(!r.ok) return [];
+      const data=await r.json();
+      if(!Array.isArray(data.events)) return [];
+      return data.events.map(event=>({...normalizeMatch(event),sport:source.sport,league:source.league}))
+        .filter(e=>e.id && e.startTime && e.homeTeam && e.awayTeam);
+    } catch { return []; }
+  }));
+  const events=[...new Map(batches.flat().map(e=>[e.sport+":"+e.id,e])).values()];
+  await env.SPORTS_ZONE.put(AUTO_SCHEDULE_KEY,JSON.stringify({savedAt:Date.now(),events}),{expirationTtl:SCHEDULE_CACHE_SECONDS+300}).catch(()=>{});
+  return events;
+}
+async function youtubeApi(env, endpoint, params) {
+  const u=new URL("https://www.googleapis.com/youtube/v3/"+endpoint);
+  for(const [k,v] of Object.entries(params)) if(v!==undefined&&v!==null) u.searchParams.set(k,String(v));
+  u.searchParams.set("key",env.YOUTUBE_API_KEY);
+  const r=await fetch(u.toString(),{headers:{Accept:"application/json"},signal:AbortSignal.timeout(8000)});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok) throw new Error("YouTube API HTTP "+r.status);
+  return data;
+}
+async function refreshAutoStreams(env) {
+  if(!env.SPORTS_ZONE) throw new Error("KV namespace is not configured");
+  if(!env.YOUTUBE_API_KEY) {
+    await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:false,reason:"YOUTUBE_API_KEY is not configured",checkedAt:new Date().toISOString()}),{expirationTtl:86400}).catch(()=>{});
+    return;
+  }
+  const allowlist=youtubeChannelAllowlist(env);
+  if(!allowlist.size) {
+    await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:false,reason:"YOUTUBE_OFFICIAL_CHANNEL_IDS is not configured",checkedAt:new Date().toISOString()}),{expirationTtl:86400}).catch(()=>{});
+    return;
+  }
+  const now=new Date(), dayKey="auto:youtube-searches:"+utcDateStamp(now);
+  let streams=[];
+  try { const saved=await env.SPORTS_ZONE.get(AUTO_STREAMS_KEY,"json"); if(Array.isArray(saved)) streams=saved.filter(validStream); } catch {}
+  if(streams.length) {
+    try {
+      const data=await youtubeApi(env,"videos",{part:"snippet",id:streams.map(s=>s.youtubeId).slice(0,50).join(",")});
+      const liveSet=new Set((data.items||[]).filter(v=>v.snippet?.liveBroadcastContent==="live").map(v=>v.id));
+      streams=streams.filter(s=>liveSet.has(s.youtubeId));
+    } catch (e) {
+      await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:"Could not refresh live status; retaining last known streams",checkedAt:now.toISOString()}),{expirationTtl:86400}).catch(()=>{});
+      return;
+    }
+  }
+  const events=await getUpcomingEvents(env,now);
+  let used=Number(await env.SPORTS_ZONE.get(dayKey)||0), searches=0;
+  const additions=[];
+  for(const event of events) {
+    const kickoff=new Date(event.startTime).getTime(), delta=(kickoff-now.getTime())/60000;
+    if(!Number.isFinite(kickoff)||event.status==="finished"||delta < -75||delta > 30) continue;
+    const stage=delta>5?1:delta>-15?2:3;
+    const stageKey="auto:searched:"+event.sport+":"+event.id+":"+stage;
+    if(await env.SPORTS_ZONE.get(stageKey)) continue;
+    if(used>=YOUTUBE_DAILY_SEARCH_LIMIT||searches>=3) break;
+    try {
+      searches++; used++;
+      const q='"'+event.homeTeam+'" "'+event.awayTeam+'"';
+      const data=await youtubeApi(env,"search",{part:"snippet",type:"video",eventType:"live",videoEmbeddable:"true",maxResults:10,order:"relevance",q});
+      await env.SPORTS_ZONE.put(stageKey,now.toISOString(),{expirationTtl:8*24*60*60});
+      const items=(data.items||[]).filter(item=>YOUTUBE_ID_RE.test(item.id?.videoId||"")&&allowlist.has(item.snippet?.channelId)&&item.snippet?.liveBroadcastContent==="live");
+      for(const item of items) {
+        const id=item.id.videoId;
+        additions.push({id:"auto-"+id,name:String(item.snippet.title||event.name).slice(0,80),youtubeId:id,category:event.sport,isOfficial:true,
+          officialUrl:"https://www.youtube.com/watch?v="+id,source:"youtube-auto",channelId:item.snippet.channelId,
+          channelTitle:String(item.snippet.channelTitle||"Verified channel").slice(0,100),eventId:event.id,matchName:event.name,startTime:event.startTime});
+      }
+    } catch (e) { console.error("Sports Zone YouTube discovery failed:",e?.message||"unknown"); }
+  }
+  await env.SPORTS_ZONE.put(dayKey,String(used),{expirationTtl:48*60*60}).catch(()=>{});
+  const merged=[...streams,...additions];
+  const deduped=[...new Map(merged.map(s=>[s.youtubeId,s])).values()].filter(s=>allowlist.has(s.channelId)||!s.source);
+  await env.SPORTS_ZONE.put(AUTO_STREAMS_KEY,JSON.stringify(deduped),{expirationTtl:2*60*60});
+  await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:"ok",checkedAt:now.toISOString(),scheduleEvents:events.length,
+    liveStreams:deduped.length,searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400});
+}
 async function getStreams(env) {
   if(!env.SPORTS_ZONE) return [];
-  const value=await env.SPORTS_ZONE.get("streams","json");
-  return Array.isArray(value)?value.filter(validStream).map(s=>({id:s.id,name:s.name,youtubeId:s.youtubeId,category:s.category,isOfficial:true,officialUrl:s.officialUrl})):[];
+  const manual=await env.SPORTS_ZONE.get("streams","json").catch(()=>[]);
+  const automatic=await env.SPORTS_ZONE.get(AUTO_STREAMS_KEY,"json").catch(()=>[]);
+  const combined=[...(Array.isArray(automatic)?automatic:[]),...(Array.isArray(manual)?manual:[])];
+  return [...new Map(combined.filter(validStream).map(s=>[s.youtubeId,{id:s.id,name:s.name,youtubeId:s.youtubeId,category:s.category,isOfficial:true,officialUrl:s.officialUrl,
+    ...(s.source?{source:s.source,channelTitle:s.channelTitle,channelId:s.channelId,eventId:s.eventId,matchName:s.matchName,startTime:s.startTime}:{})}])).values()];
 }
 export default {
+  async scheduled(controller,env,ctx) {
+    ctx.waitUntil(refreshAutoStreams(env).catch(async e=>{ console.error("Sports Zone scheduled discovery failed:",e?.message||"unknown"); if(env.SPORTS_ZONE) await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:!!env.YOUTUBE_API_KEY,reason:"Scheduled discovery failed; check Worker logs",checkedAt:new Date().toISOString()}),{expirationTtl:86400}).catch(()=>{}); }));
+  },
   async fetch(request,env,ctx) {
     const url=new URL(request.url), origin=request.headers.get("Origin");
     if(origin && origin!==ALLOWED_ORIGIN) return new Response(JSON.stringify({error:"origin not allowed"}),{status:403,headers:{"Content-Type":"application/json"}});
@@ -106,6 +214,11 @@ export default {
       try { return json({ok:true,status:"ok",streams:await getStreams(env)}); }
       catch { return json({ok:false,error:"stream configuration unavailable"},503); }
     }
+    if(url.pathname==="/api/streams/status"&&request.method==="GET") {
+      const status=env.SPORTS_ZONE?await env.SPORTS_ZONE.get(AUTO_STATUS_KEY,"json").catch(()=>null):null;
+      const hasKey=!!env.YOUTUBE_API_KEY,hasAllowlist=youtubeChannelAllowlist(env).size>0;
+      return json({ok:true,status:"ok",autoDiscovery:status||{configured:hasKey&&hasAllowlist,reason:!hasKey?"YOUTUBE_API_KEY is not configured":!hasAllowlist?"YOUTUBE_OFFICIAL_CHANNEL_IDS is not configured":"Waiting for first scheduled check"},searchLimitPerDay:YOUTUBE_DAILY_SEARCH_LIMIT});
+    }
     if(url.pathname==="/api/streams"&&request.method==="POST") {
       if(!env.ADMIN_KEY||request.headers.get("Authorization")!=="Bearer "+env.ADMIN_KEY) return json({error:"unauthorized"},401);
       if(!env.SPORTS_ZONE) return json({error:"KV namespace SPORTS_ZONE is not configured"},503);
@@ -119,4 +232,3 @@ export default {
     return json({error:"not found"},404);
   }
 };
-// Scheduled discovery implementation in progress.
