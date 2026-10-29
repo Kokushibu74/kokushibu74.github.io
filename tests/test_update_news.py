@@ -189,6 +189,24 @@ class NewsLogicTests(unittest.TestCase):
             "Technology"
         )
 
+    def test_previous_items_are_not_removed_by_age(self):
+        import json
+        from tempfile import TemporaryDirectory
+        old_output = news.OUTPUT
+        try:
+            with TemporaryDirectory() as folder:
+                path = Path(folder) / "news-feed.json"
+                path.write_text(json.dumps({"items": [{
+                    "title": "Old archived headline", "link": "https://example.com/old",
+                    "publishedAt": "2020-01-01T00:00:00+00:00", "category": "Bangladesh"
+                }]}), encoding="utf-8")
+                news.OUTPUT = str(path)
+                previous = news.read_previous()
+                self.assertEqual(len(previous), 1)
+                self.assertEqual(previous[0]["title"], "Old archived headline")
+        finally:
+            news.OUTPUT = old_output
+
     def test_multiple_free_direct_sources_are_configured(self):
         self.assertGreaterEqual(len(news.DIRECT_FEEDS), 5)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
