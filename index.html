@@ -1262,15 +1262,31 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineJoin='round';ctx.lineCap='round';ctx.shadowColor=color;ctx.shadowBlur=blur;
     ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.restore();
   }
+  // Precomputed branch geometry avoids per-frame random work and visual flicker.
+  const branchSeeds=Array.from({length:8},(_,seed)=>Array.from({length:7},(_,i)=>({
+    dx:((i+1)*(.032+(((seed*17+i*11)%13)/100)))*(i%2?-1:1),
+    dy:.035+(((seed*7+i*5)%11)/100),
+    wobble:.004+(((seed*3+i*9)%7)/1000)
+  })));
   function drawBranch(t,seed,side){
-    const pts=[],n=7,x0=w*.5+Math.sin(seed*8+t)*w*.018,y0=h*(.12+(seed%5)*.17);
-    let x=x0,y=y0,dir=side;
+    const pts=[],originX=w*.5+Math.sin(seed*8+t*.28)*w*.018,originY=h*(.12+(seed%5)*.17);
+    let x=originX,y=originY,dir=side;
     pts.push([x,y]);
-    for(let i=0;i<6;i++){x+=dir*w*rand(.035,.095);y+=h*rand(.035,.105);dir= i%2? -dir:dir;pts.push([x+Math.sin(t*1.8+seed+i)*w*.012,y]);}
-    strokeCrack(pts,'#6feaff',.45,5,.36);
-    strokeCrack(pts,'#e9fdff',.22,1.8,.78);
+    for(let i=0;i<6;i++){
+      const spec=branchSeeds[(seed-1)%branchSeeds.length][i];
+      x+=dir*w*(.035+Math.abs(spec.dx)*.42);
+      y+=h*spec.dy;
+      dir=i%2?-dir:dir;
+      pts.push([x+Math.sin(t*.7+seed+i)*w*spec.wobble,y]);
+    }
+    strokeCrack(pts,'#6feaff',.45,4,.32);
+    strokeCrack(pts,'#e9fdff',.22,1.5,.72);
   }
   function draw(now){
+    if(document.hidden)return;
+    // Cap the expensive glow renderer at ~30fps for smoother mobile performance.
+    if(now-last<32){raf=requestAnimationFrame(draw);return;}
+    last=now;
     const t=(now-start)/1000;
     ctx.clearRect(0,0,w,h);
     const intro=Math.min(1,t/.95),pulse=.65+.35*Math.sin(t*2.15);
@@ -1317,8 +1333,13 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   }
   host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*2;pointerY=((e.clientY-r.top)/r.height-.5)*2;},{passive:true});
   host.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;},{passive:true});
-  resize();draw(performance.now());
+  resize();
+  if(!reduce)raf=requestAnimationFrame(draw);else draw(performance.now());
   window.addEventListener('resize',resize,{passive:true});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){cancelAnimationFrame(raf);raf=0;}
+    else if(!reduce&&!raf){last=0;raf=requestAnimationFrame(draw);}
+  });
 })();
 </script>
 </body>
