@@ -33,6 +33,14 @@ jobs:
           curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/football?league=eng.1" -o /tmp/football.json
           python -c 'import json; d=json.load(open("/tmp/football.json")); assert d.get("ok") is True, d; assert isinstance(d.get("matches"), list), d; print("Football endpoint OK; matches returned:", len(d["matches"]))'
 
+      - name: Check automatic live discovery status endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          curl --retry 3 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/streams/status" -o /tmp/stream-status.json
+          python -c 'import json; d=json.load(open("/tmp/stream-status.json")); assert d.get("ok") is True, d; assert isinstance(d.get("autoDiscovery"), dict), d; print("Auto-discovery status endpoint OK; configured:", d["autoDiscovery"].get("configured"), "; reason:", d["autoDiscovery"].get("reason"))'
+
       - name: Check stream configuration endpoint
         shell: bash
         run: |
