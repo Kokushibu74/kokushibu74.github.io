@@ -1265,42 +1265,70 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 (() => {
   const name = document.getElementById('nav-name');
   if (!name || name.dataset.cosmicInitialized === 'true') return;
-  name.dataset.cosmicInitialized = 'true';
-  const original = name.textContent || 'Shihabul Islam';
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const fragment = document.createDocumentFragment();
-  let letterIndex = 0;
-  for (const char of original) {
-    if (/\s/.test(char)) {
-      fragment.appendChild(document.createTextNode(char));
-      continue;
+  function startCosmicAnimation() {
+    if (!name.isConnected || name.dataset.cosmicInitialized === 'true') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    name.dataset.cosmicInitialized = 'true';
+
+    const original = name.textContent || 'Shihabul Islam';
+    const fragment = document.createDocumentFragment();
+    let letterIndex = 0;
+    for (const char of original) {
+      if (/\s/.test(char)) {
+        fragment.appendChild(document.createTextNode(char));
+        continue;
+      }
+      const letter = document.createElement('span');
+      letter.className = 'nav-cosmic-letter';
+      letter.textContent = char;
+      const rand = (min, max) => min + Math.random() * (max - min);
+      letter.style.setProperty('--start-x', rand(-46, 46).toFixed(1) + 'px');
+      letter.style.setProperty('--start-y', rand(-25, 25).toFixed(1) + 'px');
+      letter.style.setProperty('--start-rotate', rand(-95, 95).toFixed(1) + 'deg');
+      letter.style.setProperty('--assemble-delay', (letterIndex * 38 + Math.random() * 85).toFixed(0) + 'ms');
+      letter.style.setProperty('--float-duration', rand(4.8, 7.2).toFixed(2) + 's');
+      letter.style.setProperty('--float-delay', (-rand(0, 6)).toFixed(2) + 's');
+      letter.style.setProperty('--drift-x', rand(-1.25, 1.25).toFixed(2) + 'px');
+      letter.style.setProperty('--sparkle-delay', (-rand(0, 3.8)).toFixed(2) + 's');
+      letter.setAttribute('aria-hidden', 'true');
+      fragment.appendChild(letter);
+      letterIndex++;
     }
-    const letter = document.createElement('span');
-    letter.className = 'nav-cosmic-letter';
-    letter.textContent = char;
-    const rand = (min, max) => min + Math.random() * (max - min);
-    letter.style.setProperty('--start-x', rand(-46, 46).toFixed(1) + 'px');
-    letter.style.setProperty('--start-y', rand(-25, 25).toFixed(1) + 'px');
-    letter.style.setProperty('--start-rotate', rand(-95, 95).toFixed(1) + 'deg');
-    letter.style.setProperty('--assemble-delay', (letterIndex * 38 + Math.random() * 85).toFixed(0) + 'ms');
-    letter.style.setProperty('--float-duration', rand(4.8, 7.2).toFixed(2) + 's');
-    letter.style.setProperty('--float-delay', (-rand(0, 6)).toFixed(2) + 's');
-    letter.style.setProperty('--drift-x', rand(-1.25, 1.25).toFixed(2) + 'px');
-    letter.style.setProperty('--sparkle-delay', (-rand(0, 3.8)).toFixed(2) + 's');
-    letter.setAttribute('aria-hidden', 'true');
-    fragment.appendChild(letter);
-    letterIndex++;
-  }
-  name.replaceChildren(fragment);
-  name.setAttribute('aria-label', original);
-  name.classList.add('nav-cosmic-ready');
+    name.replaceChildren(fragment);
+    name.setAttribute('aria-label', original);
+    name.classList.add('nav-cosmic-ready');
 
-  const assembleDuration = 1150 + Math.max(0, letterIndex - 1) * 38 + 85;
+    const assembleDuration = 1150 + Math.max(0, letterIndex - 1) * 38 + 85;
+    window.setTimeout(() => {
+      if (name.isConnected) name.classList.add('nav-cosmic-floating');
+    }, assembleDuration);
+  }
+
+  // The full-screen moon intro covers the header during initial page load.
+  // Start the letter assembly only after that overlay is removed, otherwise
+  // the entire assembly animation finishes invisibly underneath it.
+  const intro = document.getElementById('moon-intro');
+  if (!intro || !intro.isConnected) {
+    startCosmicAnimation();
+    return;
+  }
+
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById('moon-intro')) {
+      observer.disconnect();
+      startCosmicAnimation();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Fail-safe if a third-party intro script fails to remove its overlay.
   window.setTimeout(() => {
-    if (!name.isConnected) return;
-    name.classList.add('nav-cosmic-floating');
-  }, assembleDuration);
+    if (name.dataset.cosmicInitialized !== 'true') {
+      observer.disconnect();
+      startCosmicAnimation();
+    }
+  }, 6500);
 })();
 </script>
 
