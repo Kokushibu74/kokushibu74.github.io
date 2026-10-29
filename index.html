@@ -416,6 +416,11 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 </style>
 
 
+
+<style id="disable-moon-intro">
+  /* Keep the homepage immediately visible; the cinematic intro is intentionally disabled. */
+  #moon-intro { display:none !important; visibility:hidden !important; pointer-events:none !important; }
+</style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
@@ -801,7 +806,10 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
   (() => {
+    // Intro is intentionally disabled on every page load; do not initialize its canvas, audio, or GSAP timeline.
     const intro = document.getElementById('moon-intro');
+    if (intro) intro.remove();
+    return;
     const canvas = document.getElementById('moon-embers');
     const ctx = canvas.getContext('2d', { alpha: false });
     const spinner = document.getElementById('moon-spinner');
@@ -1079,13 +1087,15 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 </script>
 
 <script id="replay-home-intro-action">
+  // Intro replay is disabled. Keep the brand link useful without reloading the page.
   (() => {
     const brand = document.getElementById('nav-brand-intro');
     if (!brand) return;
+    brand.setAttribute('aria-label', 'Shihabul Islam — back to top');
+    brand.setAttribute('title', 'Back to top');
     brand.addEventListener('click', (event) => {
       event.preventDefault();
-      try { sessionStorage.removeItem('kokushibu-moon-intro-seen-v5'); } catch (_) {}
-      window.location.reload();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   })();
 </script>
