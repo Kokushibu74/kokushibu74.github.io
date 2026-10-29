@@ -162,9 +162,9 @@
     const end=start+pageItems.length;
     status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest headlines (last 24 hours)":"archived headlines")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
-    const now=Date.now();
+    const renderNow=Date.now();
     grid.innerHTML=pageItems.map((x,i)=>{
-      const date=dateOf(x),age=date?now-date.getTime():Infinity,recent=age>=-5*60*1000&&age<=24*60*60*1000;
+      const date=dateOf(x),age=date?renderNow-date.getTime():Infinity,recent=age>=-5*60*1000&&age<=24*60*60*1000;
       const image=safe(x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const imageMarkup=image!=="#"?'<div class="story-image"><img src="'+esc(image)+'" alt="" loading="'+(i<6?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()"></div>':'<div class="story-image no-image" aria-hidden="true"><span>NEWS</span></div>';
       const summary=String(x.previewSummary||x.summary||x.description||"").trim();
