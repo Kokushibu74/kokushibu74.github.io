@@ -7,21 +7,11 @@ GitHub Pages frontend + Cloudflare Worker API. Uses free, keyless public score e
 - `worker/src/index.js` — API, validation, cache, CORS, best-effort rate limiting, protected stream management.
 - `worker/wrangler.toml` — Wrangler and KV configuration.
 
-## 1. Create KV namespaces
+## 1. KV namespaces (already provisioned)
 
-Install Wrangler and log in:
+The production and preview KV namespaces have been created in the connected Cloudflare account and their IDs are already configured in `worker/wrangler.toml`. If deploying from a different Cloudflare account, create new namespaces and replace both IDs.
 
-```bash
-npm install -g wrangler
-wrangler login
-cd worker
-wrangler kv namespace create SPORTS_ZONE
-wrangler kv namespace create SPORTS_ZONE --preview
-```
-
-Copy the returned production ID to `id` and preview ID to `preview_id` in `worker/wrangler.toml`.
-
-## 2. Set the admin secret and deploy
+## 2. Set the admin secret (if managing streams) and deploy
 
 ```bash
 wrangler secret put ADMIN_KEY
