@@ -52,19 +52,24 @@ function normalizeMatch(event) {
     awayScore:away?.score==null?null:String(away.score)
   };
 }
-async function scoreboard(upstreamUrl,ctx) {
-  const cacheKey=new Request(upstreamUrl);
-  const cached=await caches.default.match(cacheKey);
-  if(cached) return new Response(cached.body,{status:cached.status,headers:cached.headers});
+async function scoreboard(upstreamUrl,ctx,env,cacheId) {
+  // Use the configured KV namespace for a short cache; this also works on workers.dev.
+  const cacheKey="score-cache:"+cacheId;
+  if(env.SPORTS_ZONE) {
+    try {
+      const cached=await env.SPORTS_ZONE.get(cacheKey,"json");
+      if(cached && Array.isArray(cached.matches)) return json(cached,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"HIT"});
+    } catch { /* Cache failures must not take down the score endpoint. */ }
+  }
   const response=await fetch(upstreamUrl,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0 (+https://kokushibu74.github.io)"},signal:AbortSignal.timeout(8000)});
   if(!response.ok) throw new Error("Provider HTTP "+response.status);
   const data=await response.json();
   if(!data||!Array.isArray(data.events)) throw new Error("Unexpected provider response");
   const order={live:0,scheduled:1,finished:2};
   const matches=data.events.map(normalizeMatch).sort((a,b)=>(order[a.status]??3)-(order[b.status]??3));
-  const result=json({ok:true,status:"ok",updated:new Date().toISOString(),matches},200,{"Cache-Control":"public, max-age=25"});
-  ctx.waitUntil(caches.default.put(cacheKey,result.clone()));
-  return result;
+  const payload={ok:true,status:"ok",updated:new Date().toISOString(),matches};
+  if(env.SPORTS_ZONE) ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:25}).catch(()=>{}));
+  return json(payload,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"MISS"});
 }
 function validStream(s) {
   return !!s && typeof s.id==="string" && typeof s.name==="string" && s.name.trim().length>0 && s.name.trim().length<=80 &&
@@ -88,13 +93,13 @@ export default {
     if(url.pathname==="/api/football"&&request.method==="GET") {
       const league=url.searchParams.get("league")||"eng.1";
       if(!FOOTBALL_LEAGUES.has(league)) return json({ok:false,error:"invalid league"},400);
-      try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/scoreboard",ctx); }
+      try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/scoreboard",ctx,env,"football:"+league); }
       catch { return json({ok:false,status:"error",message:"Football scores are temporarily unavailable."},502); }
     }
     if(url.pathname==="/api/cricket"&&request.method==="GET") {
       const league=url.searchParams.get("league")||"8039";
       if(!CRICKET_LEAGUE_RE.test(league)) return json({ok:false,error:"invalid league"},400);
-      try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/cricket/"+encodeURIComponent(league)+"/scoreboard",ctx); }
+      try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/cricket/"+encodeURIComponent(league)+"/scoreboard",ctx,env,"cricket:"+league); }
       catch { return json({ok:false,status:"error",message:"Cricket provider unavailable for this competition."},502); }
     }
     if(url.pathname==="/api/streams"&&request.method==="GET") {
