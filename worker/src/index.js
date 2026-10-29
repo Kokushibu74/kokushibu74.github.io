@@ -68,7 +68,7 @@ async function scoreboard(upstreamUrl,ctx,env,cacheId) {
   const order={live:0,scheduled:1,finished:2};
   const matches=data.events.map(normalizeMatch).sort((a,b)=>(order[a.status]??3)-(order[b.status]??3));
   const payload={ok:true,status:"ok",updated:new Date().toISOString(),matches};
-  if(env.SPORTS_ZONE) ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:25}).catch(()=>{}));
+  if(env.SPORTS_ZONE) ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
   return json(payload,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"MISS"});
 }
 function validStream(s) {
