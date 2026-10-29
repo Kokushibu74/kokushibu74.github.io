@@ -1,0 +1,12 @@
+name = "sports-zone-scores-api"
+main = "src/index.js"
+compatibility_date = "2026-10-30"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "SPORTS_ZONE"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_YOUR_PREVIEW_KV_NAMESPACE_ID"
+
+[observability]
+enabled = true
