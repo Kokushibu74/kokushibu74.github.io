@@ -482,7 +482,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <div class="flex items-center gap-3 min-w-0">
         <a id="nav-brand-intro" href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5" aria-label="Shihabul Islam — replay homepage intro" title="Click name to replay intro">
-          <span id="nav-name" class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">SHIHABUL ISLAM</span>
+          <span id="nav-name" class="nav-electric-reveal" aria-label="SHIHABUL ISLAM"><span class="nav-electric-text social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]">SHIHABUL ISLAM</span></span>
         </a>
       </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
@@ -1215,94 +1215,52 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 </script>
 
 
-<style id="nav-cosmic-letter-animation">
-  /* Keep the existing SHIHABUL ISLAM gradient shine; animate only its individual letters. */
-  #nav-name.nav-cosmic-ready { display:inline-block; white-space:nowrap; }
-  #nav-name .nav-cosmic-letter {
-    display:inline-block;
-    color:transparent;
-    background:linear-gradient(90deg,#fff 0%,#00f2fe 38%,#a78bfa 68%,#fff 100%);
-    background-size:220% auto;
-    -webkit-background-clip:text;
-    background-clip:text;
+<style id="nav-electric-spark-reveal">
+  /* Electric spark reveals the existing uppercase brand name on every page load. */
+  #nav-name.nav-electric-reveal {
     position:relative;
-    transform-origin:50% 65%;
-    will-change:transform,opacity;
-    animation:navLetterAssemble 1.15s cubic-bezier(.18,.76,.22,1) both;
-    animation-delay:var(--assemble-delay,0ms);
+    display:inline-block;
+    white-space:nowrap;
+    isolation:isolate;
   }
-  @keyframes navLetterAssemble {
-    0% { opacity:0; transform:translate3d(var(--start-x,0px),var(--start-y,0px),0) rotate(var(--start-rotate,0deg)) scale(.55); filter:blur(4px); }
-    68% { opacity:1; filter:blur(0); }
-    84% { transform:translate3d(0,-2px,0) rotate(2deg) scale(1.035); }
-    100% { opacity:1; transform:translate3d(0,0,0) rotate(0) scale(1); filter:blur(0); }
+  #nav-name .nav-electric-text {
+    display:inline-block;
+    clip-path:inset(0 100% 0 0);
+    animation:navElectricTextReveal 1.35s cubic-bezier(.2,.7,.2,1) both;
+    will-change:clip-path;
+  }
+  #nav-name.nav-electric-reveal::after {
+    content:"";
+    position:absolute;
+    z-index:2;
+    pointer-events:none;
+    left:-8%;
+    top:-18%;
+    width:15px;
+    height:136%;
+    opacity:0;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg,transparent 0%,rgba(255,255,255,.98) 24%,#00f2fe 48%,#8b5cf6 72%,transparent 100%);
+    clip-path:polygon(42% 0,100% 0,57% 35%,94% 35%,18% 100%,39% 53%,0 53%);
+    filter:drop-shadow(0 0 3px #00f2fe) drop-shadow(0 0 8px rgba(0,242,254,.9)) drop-shadow(0 0 13px rgba(139,92,246,.7));
+    animation:navElectricSparkTravel 1.35s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes navElectricTextReveal {
+    0% { clip-path:inset(0 100% 0 0); }
+    100% { clip-path:inset(0 0 0 0); }
+  }
+  @keyframes navElectricSparkTravel {
+    0% { left:-8%; opacity:0; }
+    5% { opacity:1; }
+    82% { opacity:1; }
+    96% { opacity:.65; }
+    100% { left:108%; opacity:0; }
   }
   @media(prefers-reduced-motion:reduce) {
-    #nav-name .nav-cosmic-letter { animation:none!important; filter:none!important; transform:none!important; opacity:1!important; }
+    #nav-name .nav-electric-text { animation:none!important; clip-path:none!important; will-change:auto; }
+    #nav-name.nav-electric-reveal::after { display:none!important; animation:none!important; }
   }
 </style>
-<script id="nav-cosmic-letter-animation-script">
-(() => {
-  const name = document.getElementById('nav-name');
-  if (!name || name.dataset.cosmicInitialized === 'true') return;
-
-  function startCosmicAnimation() {
-    if (!name.isConnected || name.dataset.cosmicInitialized === 'true') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    name.dataset.cosmicInitialized = 'true';
-
-    const original = name.textContent || 'Shihabul Islam';
-    const fragment = document.createDocumentFragment();
-    let letterIndex = 0;
-    for (const char of original) {
-      if (/\s/.test(char)) {
-        fragment.appendChild(document.createTextNode(char));
-        continue;
-      }
-      const letter = document.createElement('span');
-      letter.className = 'nav-cosmic-letter';
-      letter.textContent = char;
-      const rand = (min, max) => min + Math.random() * (max - min);
-      letter.style.setProperty('--start-x', rand(-46, 46).toFixed(1) + 'px');
-      letter.style.setProperty('--start-y', rand(-25, 25).toFixed(1) + 'px');
-      letter.style.setProperty('--start-rotate', rand(-95, 95).toFixed(1) + 'deg');
-      letter.style.setProperty('--assemble-delay', (letterIndex * 38 + Math.random() * 85).toFixed(0) + 'ms');
-      letter.setAttribute('aria-hidden', 'true');
-      fragment.appendChild(letter);
-      letterIndex++;
-    }
-    name.replaceChildren(fragment);
-    name.setAttribute('aria-label', original);
-    name.classList.add('nav-cosmic-ready');
-
-  }
-
-  // The full-screen moon intro covers the header during initial page load.
-  // Start the letter assembly only after that overlay is removed, otherwise
-  // the entire assembly animation finishes invisibly underneath it.
-  const intro = document.getElementById('moon-intro');
-  if (!intro || !intro.isConnected) {
-    startCosmicAnimation();
-    return;
-  }
-
-  const observer = new MutationObserver(() => {
-    if (!document.getElementById('moon-intro')) {
-      observer.disconnect();
-      startCosmicAnimation();
-    }
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  // Fail-safe if a third-party intro script fails to remove its overlay.
-  window.setTimeout(() => {
-    if (name.dataset.cosmicInitialized !== 'true') {
-      observer.disconnect();
-      startCosmicAnimation();
-    }
-  }, 6500);
-})();
-</script>
 
 </body>
 </html>
