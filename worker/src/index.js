@@ -80,7 +80,7 @@ const AUTO_STREAMS_KEY = "auto:streams";
 const AUTO_SCHEDULE_KEY = "auto:schedule";
 const AUTO_STATUS_KEY = "auto:status";
 const YOUTUBE_DAILY_SEARCH_LIMIT = 70;
-const SCHEDULE_CACHE_SECONDS = 3 * 60 * 60;
+const SCHEDULE_CACHE_SECONDS = 15 * 60;
 
 function youtubeChannelAllowlist(env) {
   return new Set(String(env.YOUTUBE_OFFICIAL_CHANNEL_IDS || "").split(",").map(x=>x.trim()).filter(Boolean));
@@ -89,30 +89,44 @@ function utcDateStamp(date) {
   return date.getUTCFullYear()+String(date.getUTCMonth()+1).padStart(2,"0")+String(date.getUTCDate()).padStart(2,"0");
 }
 async function getUpcomingEvents(env, now=new Date()) {
-  if(!env.SPORTS_ZONE) return [];
+  if(!env.SPORTS_ZONE) return {events:[],fetchErrors:[{source:"kv",message:"KV namespace is not configured"}],fetchCount:0};
   try {
     const cached=await env.SPORTS_ZONE.get(AUTO_SCHEDULE_KEY,"json");
-    if(cached && Array.isArray(cached.events) && Date.now()-Number(cached.savedAt||0)<SCHEDULE_CACHE_SECONDS*1000) return cached.events;
-  } catch {}
-  const end=new Date(now.getTime()+7*24*60*60*1000);
-  const dates=utcDateStamp(now)+"-"+utcDateStamp(end);
+    if(cached && Array.isArray(cached.events) && Date.now()-Number(cached.savedAt||0)<SCHEDULE_CACHE_SECONDS*1000) {
+      return {events:cached.events,fetchErrors:Array.isArray(cached.fetchErrors)?cached.fetchErrors:[],fetchCount:0,cached:true};
+    }
+  } catch (e) { console.error("Sports Zone schedule cache read failed:",e?.message||"unknown"); }
+
+  // ESPN Site Scoreboard no longer reliably accepts date ranges. Fetch each
+  // UTC calendar day separately, then merge and deduplicate event IDs.
+  const dates=[utcDateStamp(now),utcDateStamp(new Date(now.getTime()+24*60*60*1000))];
   const sources=[
-    ...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,url:"https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/scoreboard?dates="+dates})),
-    {sport:"cricket",league:"8039",url:"https://site.api.espn.com/apis/site/v2/sports/cricket/8039/scoreboard?dates="+dates}
+    ...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,path:"soccer/"+league})),
+    {sport:"cricket",league:"8039",path:"cricket/8039"}
   ];
-  const batches=await Promise.all(sources.map(async source=>{
+  const requests=sources.flatMap(source=>dates.map(date=>({source,date})));
+  const results=await Promise.all(requests.map(async ({source,date})=>{
+    const url="https://site.api.espn.com/apis/site/v2/sports/"+source.path+"/scoreboard?dates="+date;
     try {
-      const r=await fetch(source.url,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(7000)});
-      if(!r.ok) return [];
+      const r=await fetch(url,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(7000)});
+      if(!r.ok) return {events:[],error:{sport:source.sport,league:source.league,date,httpStatus:r.status}};
       const data=await r.json();
-      if(!Array.isArray(data.events)) return [];
-      return data.events.map(event=>({...normalizeMatch(event),sport:source.sport,league:source.league}))
-        .filter(e=>e.id && e.startTime && e.homeTeam && e.awayTeam);
-    } catch { return []; }
+      if(!data||!Array.isArray(data.events)) return {events:[],error:{sport:source.sport,league:source.league,date,message:"Unexpected ESPN response"}};
+      return {events:data.events.map(event=>({...normalizeMatch(event),sport:source.sport,league:source.league}))
+        .filter(e=>e.id&&e.startTime&&e.homeTeam&&e.awayTeam)};
+    } catch(e) {
+      return {events:[],error:{sport:source.sport,league:source.league,date,message:String(e?.message||"request failed").slice(0,160)}};
+    }
   }));
-  const events=[...new Map(batches.flat().map(e=>[e.sport+":"+e.id,e])).values()];
-  await env.SPORTS_ZONE.put(AUTO_SCHEDULE_KEY,JSON.stringify({savedAt:Date.now(),events}),{expirationTtl:SCHEDULE_CACHE_SECONDS+300}).catch(()=>{});
-  return events;
+  const fetchErrors=results.filter(x=>x.error).map(x=>x.error);
+  const successfulFetches=results.length-fetchErrors.length;
+  const events=[...new Map(results.flatMap(x=>x.events).map(e=>[e.sport+":"+e.id,e])).values()]
+    .sort((a,b)=>new Date(a.startTime)-new Date(b.startTime));
+  // Do not cache an all-failed result: the next cron run should retry.
+  if(successfulFetches>0) {
+    await env.SPORTS_ZONE.put(AUTO_SCHEDULE_KEY,JSON.stringify({savedAt:Date.now(),events,fetchErrors,fetchCount:results.length}),{expirationTtl:SCHEDULE_CACHE_SECONDS+60}).catch(e=>console.error("Sports Zone schedule cache write failed:",e?.message||"unknown"));
+  }
+  return {events,fetchErrors,fetchCount:results.length,cached:false};
 }
 async function youtubeApi(env, endpoint, params) {
   const u=new URL("https://www.googleapis.com/youtube/v3/"+endpoint);
@@ -147,7 +161,8 @@ async function refreshAutoStreams(env) {
       return;
     }
   }
-  const events=await getUpcomingEvents(env,now);
+  const schedule=await getUpcomingEvents(env,now);
+  const events=schedule.events;
   let used=Number(await env.SPORTS_ZONE.get(dayKey)||0), searches=0;
   const additions=[];
   for(const event of events) {
@@ -175,8 +190,13 @@ async function refreshAutoStreams(env) {
   const merged=[...streams,...additions];
   const deduped=[...new Map(merged.map(s=>[s.youtubeId,s])).values()].filter(s=>allowlist.has(s.channelId)||!s.source);
   await env.SPORTS_ZONE.put(AUTO_STREAMS_KEY,JSON.stringify(deduped),{expirationTtl:2*60*60});
-  await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:"ok",checkedAt:now.toISOString(),scheduleEvents:events.length,
-    liveStreams:deduped.length,searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400});
+  const scheduleReason=schedule.fetchErrors.length===schedule.fetchCount&&schedule.fetchCount>0
+    ?"ESPN schedule fetch failed"
+    :schedule.fetchErrors.length?"Partial ESPN schedule fetch errors"
+    :"ok";
+  await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:scheduleReason,checkedAt:now.toISOString(),
+    scheduleEvents:events.length,scheduleFetches:schedule.fetchCount,scheduleFetchErrors:schedule.fetchErrors.slice(0,8),
+    scheduleCached:!!schedule.cached,liveStreams:deduped.length,searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400});
 }
 async function getStreams(env) {
   if(!env.SPORTS_ZONE) return [];
