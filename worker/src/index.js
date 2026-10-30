@@ -99,7 +99,9 @@ async function getUpcomingEvents(env, now=new Date()) {
 
   // ESPN Site Scoreboard no longer reliably accepts date ranges. Fetch each
   // UTC calendar day separately, then merge and deduplicate event IDs.
-  const dates=[utcDateStamp(now),utcDateStamp(new Date(now.getTime()+24*60*60*1000))];
+  const dates=[utcDateStamp(now)];
+  // Tomorrow is only needed during the final 30 minutes before UTC midnight.
+  if(now.getUTCHours()===23&&now.getUTCMinutes()>=30) dates.push(utcDateStamp(new Date(now.getTime()+24*60*60*1000)));
   const sources=[
     ...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,path:"soccer/"+league})),
     {sport:"cricket",league:"8039",path:"cricket/8039"}
