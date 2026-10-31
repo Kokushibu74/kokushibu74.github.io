@@ -42,3 +42,8 @@ After verifying the new Worker, move the 15-minute Cron to it while keeping the 
 ## Existing issue found during audit
 
 In the audited seven-day Observability window, the old ESPN cricket endpoint recorded 15 HTTP 502 responses: 9 for `league=ipl` and 6 for `league=icc.t20`. These are pre-existing provider/league errors and need separate endpoint validation.
+
+
+### Live match handling
+- The Cricbuzz live feed marks a match as active only when its status/state explicitly indicates live play, an innings break, stumps, a playing day, or an in-play interval. Unknown and scheduled rows are excluded from LIVE NOW.
+- Expanded match details are lazy-loaded and refreshed with the 30-second match polling cycle while the panel is open.
