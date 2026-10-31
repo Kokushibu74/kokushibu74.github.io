@@ -1,5 +1,7 @@
 /* Shared header/footer polish on all secondary pages */
 (()=>{'use strict';
+// Load the lightweight visitor tracker on every page using the shared shell.
+if(!document.querySelector('script[data-k74-visitor]')){const s=document.createElement('script');s.src='/visitor-tracking.js?v=1';s.defer=true;s.dataset.k74Visitor='true';document.head.appendChild(s);}
 const header=document.querySelector('header');
 if(header){
   header.classList.add('site-shell-header');
