@@ -29,7 +29,8 @@ export default {
       const org=isp.toLowerCase();
       const carrierRules=[["Grameenphone",/grameenphone|gphone/],["Robi",/robi axiata|robi/],["Banglalink",/banglalink/],["Teletalk",/teletalk/],["Airtel",/airtel/]];
       const carrierMatch=carrierRules.find(([,pattern])=>pattern.test(org));
-      const networkType=carrierMatch||/mobile|cellular|wireless|gsm|lte|4g|5g/.test(org)?"Likely mobile network":/broadband|fiber|fibre|cable|telecom|internet|isp/.test(org)?"Likely ISP / broadband":"Unknown";
+      const browserNetworkType=String(data.connectionType||"").toLowerCase();
+      const networkType=browserNetworkType==="wifi"?"Wi-Fi (browser-reported)":browserNetworkType==="cellular"?"Mobile network (browser-reported)":browserNetworkType==="ethernet"?"Ethernet (browser-reported)":(carrierMatch||/mobile|cellular|wireless|gsm|lte|4g|5g/.test(org))?"Likely mobile network":/broadband|fiber|fibre|cable|telecom|internet|isp/.test(org)?"Likely ISP / broadband":"Unknown";
       const hostingSignal=/hosting|datacenter|data center|cloud|server|vps|vpn|proxy|amazon|aws|google cloud|microsoft azure|digitalocean/.test(org);
       const botManagement=cf.botManagement&&typeof cf.botManagement==="object"?cf.botManagement:{};
       const corporateProxy=botManagement.corporateProxy===true;
@@ -49,7 +50,7 @@ export default {
         lastSessionId:pageView?session:(old.lastSessionId||session),lastSessionAt:pageView&&newSession?now:(old.lastSessionAt||now),sessionPageViews:pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0),
         pages,events:[...(Array.isArray(old.events)?old.events.filter(e=>Number(e.at)>=cutoff):[]),...events].slice(-60),
         network:{ip,ipVersion:ip.includes(":")?"IPv6":ip.includes(".")?"IPv4":"Unknown",country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp,carrier:carrierMatch?carrierMatch[0]:"Not verified",networkType,hostingSignal:hostingSignal?"Possible hosting/cloud network":"No obvious hosting signal",corporateProxy:corporateProxy?"Cloudflare corporate-proxy signal":"Not exposed",colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
-        device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),deviceModel:clean(data.deviceModel,80),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
+        device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),deviceModel:clean(data.deviceModel,80),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40),connectionType:clean(browserNetworkType,20)},
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
