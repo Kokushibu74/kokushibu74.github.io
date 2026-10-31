@@ -19,7 +19,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: live-match-center-\${{ github.ref }}
+  group: live-match-center-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -39,14 +39,14 @@ jobs:
           if (!scripts.length) throw new Error('No inline scripts found');
           scripts.forEach((match, i) => {
             new Function(match[1]);
-            console.log(\`Inline script \${i + 1}: syntax OK\`);
+            console.log('Inline script ' + (i + 1) + ': syntax OK');
           });
           const ids = [...html.matchAll(/\bid=["']([^"']+)["']/g)].map(m => m[1]);
           if (new Set(ids).size !== ids.length) throw new Error('Duplicate HTML id found');
           const jsIds = [...html.matchAll(/\$\(["']([^"']+)["']\)/g)].map(m => m[1]);
           const missing = [...new Set(jsIds)].filter(id => !ids.includes(id));
           if (missing.length) throw new Error('Missing DOM IDs: ' + missing.join(', '));
-          console.log(\`DOM integrity OK: \${ids.length} unique IDs\`);
+          console.log('DOM integrity OK: ' + ids.length + ' unique IDs');
           NODE
       - name: Parse Worker modules
         working-directory: worker/unified-sports-api
