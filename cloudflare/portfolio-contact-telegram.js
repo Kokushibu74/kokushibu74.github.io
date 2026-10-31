@@ -23,7 +23,8 @@ export default {
       const now=Date.now(),sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
       const newSession=!sameSession;
-      const cutoff=now-31536000000;\n      const pages=Array.isArray(old.pages)?old.pages.filter(p=>Number(p.at)>=cutoff).slice(-39):[];
+      const cutoff=now-31536000000;
+      const pages=Array.isArray(old.pages)?old.pages.filter(p=>Number(p.at)>=cutoff).slice(-39):[];
       if(!pages.length||pages[pages.length-1].path!==page)pages.push({path:page,at:now});
       const events=Array.isArray(data.events)?data.events.slice(0,30).map(e=>({type:clean(e.type,30),value:clean(e.value,160),at:now})).filter(e=>e.type):[];
       const profile={
