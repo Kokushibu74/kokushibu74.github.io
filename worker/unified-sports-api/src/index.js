@@ -217,7 +217,7 @@ export default {
     const url=new URL(request.url), origin=request.headers.get("Origin");
     if(url.pathname==="/" && request.method==="GET") return cricketWorker.fetch(request);
     if(url.pathname.startsWith("/matches/")) return cricketWorker.fetch(request);
-    if(url.pathname==="/health" && request.method==="GET") return json({status:"ok",service:"unified-sports-api",time:new Date().toISOString(),kvConfigured:!!env.SPORTS_ZONE,routes:["/api/football","/api/cricket","/api/streams","/api/streams/status","/matches/live","/matches/scorecard?match=ID","/matches/full-commentary?match=ID&innings=1","/matches/ball-by-ball?match=ID&innings=1","/matches/commentary?match=ID&innings=1","/matches/live-score?match=ID","/matches/details?match=ID"]},200);
+    if(url.pathname==="/health" && request.method==="GET") return json({status:"ok",service:"unified-sports-api",time:new Date().toISOString(),kvConfigured:!!env.SPORTS_ZONE,routes:["/api/football","/api/football/details?league=eng.1&match=ID","/api/cricket","/api/streams","/api/streams/status","/matches/live","/matches/scorecard?match=ID","/matches/full-commentary?match=ID&innings=1","/matches/ball-by-ball?match=ID&innings=1","/matches/commentary?match=ID&innings=1","/matches/live-score?match=ID","/matches/details?match=ID"]},200);
     if(origin && origin!==ALLOWED_ORIGIN) return new Response(JSON.stringify({error:"origin not allowed"}),{status:403,headers:{"Content-Type":"application/json"}});
     const cors={"Access-Control-Allow-Origin":ALLOWED_ORIGIN,"Access-Control-Allow-Methods":"GET, POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type, Authorization","Access-Control-Max-Age":"86400","Vary":"Origin"};
     if(request.method==="OPTIONS") return new Response(null,{status:204,headers:cors});
@@ -229,6 +229,17 @@ export default {
       if(!FOOTBALL_LEAGUES.has(league)) return json({ok:false,error:"invalid league"},400);
       try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/scoreboard",ctx,env,"football:"+league); }
       catch { return json({ok:false,status:"error",message:"Football scores are temporarily unavailable."},502); }
+    }
+    if(url.pathname==="/api/football/details"&&request.method==="GET") {
+      const league=url.searchParams.get("league")||"eng.1", match=url.searchParams.get("match")||"";
+      if(!FOOTBALL_LEAGUES.has(league)||!/^\\d{5,20}$/.test(match)) return json({ok:false,error:"invalid league or match ID"},400);
+      try {
+        const upstream="https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/summary?event="+encodeURIComponent(match);
+        const response=await fetch(upstream,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok) throw new Error("ESPN summary HTTP "+response.status);
+        const data=await response.json();
+        return json({ok:true,matchId:match,league,updated:new Date().toISOString(),data},200,{"Cache-Control":"public, max-age=10"});
+      } catch(e) { return json({ok:false,error:"Football match details are temporarily unavailable.",detail:String(e?.message||e)},502); }
     }
     if(url.pathname==="/api/cricket"&&request.method==="GET") {
       const league=url.searchParams.get("league")||"8039";
