@@ -36,7 +36,7 @@ export default {
         network:{ip:clean(request.headers.get("CF-Connecting-IP"),64),country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp:clean(cf.asOrganization,120),colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
         device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
-        performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,cls:Number(data.performance.cls)||null}:null
+        performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
       // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
@@ -47,7 +47,7 @@ export default {
       if(traffic===40&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
-      const sessionViews=(Number(old.sessionPageViews)||0)+1;
+      const sessionViews=newSession?1:(Number(old.sessionPageViews)||0)+1;
       if(sessionViews>=30&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("security:"+id+":"+session,"⚠️ <b>UNUSUAL VISITOR ACTIVITY</b>\nVisitor: <code>"+id+"</code>\n30+ page views in one session.\nIP: <code>"+clean(profile.network.ip,64)+"</code>");
 
       const stamp=new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
