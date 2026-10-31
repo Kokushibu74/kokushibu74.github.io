@@ -63,14 +63,18 @@ function normalizeMatches(html) {
             }
           }
         }
+        const status = clean(info.status || node.status || "");
+        const state = clean(info.state || info.stateTitle || "");
+        const liveText = (status + " " + state).toLowerCase();
+        const isLive = /\blive\b|in progress|innings break|stumps|\bday [1-5]\b|lunch|tea break|drinks break|rain delay|bad light/.test(liveText);
         found.set(id, {
-          id, matchId: id,
+          id, matchId: id, isLive,
           title: clean(info.matchDescription || info.matchDesc || info.matchTitle || (clean(t1.teamName) + " vs " + clean(t2.teamName))),
           home: clean(t1.teamName || t1.teamSName || t1.name),
           away: clean(t2.teamName || t2.teamSName || t2.name),
           competition: clean(info.seriesName || info.series || info.matchFormat || "Cricket"),
-          status: clean(info.status || info.state || node.status || "MATCH"),
-          state: clean(info.state || info.stateTitle || ""),
+          status: status || "Unknown",
+          state,
           score: scoreText.filter(Boolean).join(" · "),
           venue: clean(info.venueInfo && (info.venueInfo.ground || info.venueInfo.city)),
           link: SITE + "/live-cricket-scores/" + id
