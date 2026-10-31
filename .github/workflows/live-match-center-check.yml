@@ -1,0 +1,101 @@
+name: Live Match Center checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'sports-zone.html'
+      - 'worker/unified-sports-api/**'
+      - '.github/workflows/live-match-center-check.yml'
+  push:
+    branches: [feature/unified-sports-api]
+    paths:
+      - 'sports-zone.html'
+      - 'worker/unified-sports-api/**'
+      - '.github/workflows/live-match-center-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-match-center-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Parse frontend inline JavaScript
+        run: |
+          node --input-type=commonjs <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync('sports-zone.html', 'utf8');
+          const scripts = [...html.matchAll(/<script\\b(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)<\\/script>/gi)];
+          if (!scripts.length) throw new Error('No inline scripts found');
+          scripts.forEach((match, i) => {
+            new Function(match[1]);
+            console.log(`Inline script ${i + 1}: syntax OK`);
+          });
+          const ids = [...html.matchAll(/\\bid=["']([^"']+)["']/g)].map(m => m[1]);
+          if (new Set(ids).size !== ids.length) throw new Error('Duplicate HTML id found');
+          const jsIds = [...html.matchAll(/\\$\\(["']([^"']+)["']\\)/g)].map(m => m[1]);
+          const missing = [...new Set(jsIds)].filter(id => !ids.includes(id));
+          if (missing.length) throw new Error('Missing DOM IDs: ' + missing.join(', '));
+          console.log(`DOM integrity OK: ${ids.length} unique IDs`);
+          NODE
+      - name: Parse Worker modules
+        working-directory: worker/unified-sports-api
+        run: |
+          node --check src/index.js
+          node --check src/cricket.js
+      - name: Check required routes and safeguards
+        run: |
+          node --input-type=commonjs <<'NODE'
+          const fs = require('node:fs');
+          const html = fs.readFileSync('sports-zone.html', 'utf8');
+          const worker = fs.readFileSync('worker/unified-sports-api/src/index.js', 'utf8');
+          const cricket = fs.readFileSync('worker/unified-sports-api/src/cricket.js', 'utf8');
+          const required = [
+            'https://unified-sports-api.mdshihab74.workers.dev',
+            '/api/football/details', '/matches/scorecard',
+            '/matches/full-commentary', '/matches/ball-by-ball',
+            '/matches/details', 'loadCricbuzzLive', 'loadExpanded'
+          ];
+          for (const token of required) {
+            if (!html.includes(token) && !worker.includes(token) && !cricket.includes(token))
+              throw new Error('Missing required integration: ' + token);
+          }
+          if (!html.includes('G-WXBD1454H8')) throw new Error('GA4 measurement ID missing');
+          if (!worker.includes('SPORTS_ZONE')) throw new Error('SPORTS_ZONE KV binding integration missing');
+          console.log('Integration and GA4 preservation checks OK');
+          NODE
+
+  deployed-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployed Worker health
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --retry-delay 5 \
+            https://unified-sports-api.mdshihab74.workers.dev/health \
+            -o /tmp/health.json
+          node -e "const d=require('/tmp/health.json'); if(d.status!=='ok'||d.service!=='unified-sports-api') process.exit(1); console.log('Worker health OK:',d.service)"
+      - name: Check football feed response contract
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 2 --retry-delay 5 \
+            'https://unified-sports-api.mdshihab74.workers.dev/api/football?league=eng.1' \
+            -o /tmp/football.json
+          node -e "const d=require('/tmp/football.json'); if(d.ok!==true||!Array.isArray(d.matches)) process.exit(1); console.log('Football feed OK:',d.matches.length,'matches')"
+      - name: Check cricket live feed response contract
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 2 --retry-delay 5 \
+            https://unified-sports-api.mdshihab74.workers.dev/matches/live \
+            -o /tmp/cricket-live.json
+          node -e "const d=require('/tmp/cricket-live.json'); if(!Array.isArray(d.matches)||typeof d.count!=='number') process.exit(1); console.log('Cricket live feed OK:',d.count,'matches')"
