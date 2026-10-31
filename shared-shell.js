@@ -19,6 +19,7 @@ const footer=document.querySelector('footer');
 if(footer){
   footer.classList.add('site-shell-footer');
   footer.querySelectorAll('.shell-footer-links').forEach(el=>el.remove());
+  if(!footer.querySelector('.k74-privacy-link')){const a=document.createElement('a');a.className='k74-privacy-link';a.href='/privacy.html';a.textContent='Privacy';a.style.cssText='margin-left:12px;color:inherit;text-decoration:underline;text-underline-offset:3px';footer.appendChild(a);}
 }
 
 // One-time typing animation for each secondary page's existing hero accent.
