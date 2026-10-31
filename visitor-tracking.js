@@ -15,7 +15,7 @@
  const ua=navigator.userAgent||"",platform=navigator.userAgentData?.platform||navigator.platform||"Unknown";
  const mobile=/Android|iPhone|iPod|Mobile/i.test(ua),tablet=/iPad|Tablet/i.test(ua);
  const deviceType=tablet?"Tablet":mobile?"Mobile":"Desktop";
- const modelMatch=ua.match(/Android[^;)]*;\\s*([^;)]+?)(?:\\sBuild\\/|[;)])/i);
+ const modelMatch=ua.match(/Android[^;]*;\s*([^;\s)]+)/i);
  const deviceModel=modelMatch?modelMatch[1].trim().slice(0,70):"";
  const browser=/Edg\//.test(ua)?"Edge":/Firefox\//.test(ua)?"Firefox":/CriOS\//.test(ua)?"Chrome iOS":/Chrome\//.test(ua)?"Chrome":/Safari\//.test(ua)?"Safari":"Other";
  const os=/Android/.test(ua)?"Android":/iPhone|iPad|iPod/.test(ua)?"iOS":/Windows/.test(ua)?"Windows":/Mac OS/.test(ua)?"macOS":/Linux/.test(ua)?"Linux":"Unknown";
