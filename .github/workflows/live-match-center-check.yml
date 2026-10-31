@@ -92,6 +92,14 @@ jobs:
             'https://unified-sports-api.mdshihab74.workers.dev/api/football?league=eng.1' \
             -o /tmp/football.json
           node -e "const d=require('/tmp/football.json'); if(d.ok!==true||!Array.isArray(d.matches)) process.exit(1); console.log('Football feed OK:',d.matches.length,'matches')"
+      - name: Check football match details response contract
+        run: |
+          set -euo pipefail
+          MATCH_ID="$(node -e "const d=require('/tmp/football.json'); const m=d.matches.find(x=>/^\\d{5,20}$/.test(String(x.id||''))); if(!m) process.exit(2); process.stdout.write(String(m.id))")"
+          curl --fail --silent --show-error --retry 2 --retry-delay 5 \
+            "https://unified-sports-api.mdshihab74.workers.dev/api/football/details?league=eng.1&match=${MATCH_ID}" \
+            -o /tmp/football-details.json
+          node -e "const d=require('/tmp/football-details.json'); if(d.ok!==true||!d.data||typeof d.data!=='object') process.exit(1); console.log('Football details OK:',d.matchId)"
       - name: Check cricket live feed response contract
         run: |
           set -euo pipefail
