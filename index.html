@@ -620,7 +620,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
               <p id="donation-copy-status" class="donation-copy-status" aria-live="polite"></p>
             </section>
           </div>
-          <a class="footer-bottom-link text-[10px] font-mono back-to-top-link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a>
+          <a class="footer-bottom-link text-[10px] font-mono back-to-top-link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a> · <a class="footer-bottom-link text-[10px] font-mono" href="privacy.html">PRIVACY</a>
         </div>
       </div>
     </div>
@@ -1321,5 +1321,5 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible){if(raf)cancelAnimationFrame(raf);raf=0;}else if(!raf){last=0;raf=requestAnimationFrame(draw);}});
 })();
 </script>
-</body>
+<script src="visitor-tracking.js?v=1" defer></script>\n</body>
 </html>
