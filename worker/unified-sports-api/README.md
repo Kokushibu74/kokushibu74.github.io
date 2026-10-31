@@ -10,6 +10,7 @@ Staged source for Cloudflare Worker `unified-sports-api`.
 ## Preserved routes
 
 - `/api/football`
+- `/api/football/details?league=eng.1&match=ID`
 - `/api/cricket`
 - `/api/streams`
 - `/api/streams/status`
@@ -27,6 +28,10 @@ Staged source for Cloudflare Worker `unified-sports-api`.
 - Plain-text variable `YOUTUBE_OFFICIAL_CHANNEL_IDS`.
 - Secret `ADMIN_KEY` — add manually; Cloudflare does not reveal existing secret values.
 - Secret `YOUTUBE_API_KEY` — add manually for the new Worker before transferring the Cron.
+
+## Live Match Center
+
+The Sports Zone frontend separates currently live matches into a dedicated LIVE NOW section. Selecting a live match expands an inline panel on the same page. Cricket panels load Cricbuzz scorecard/commentary/ball-by-ball data using Cricbuzz match IDs; football panels load ESPN summary, team/player statistics and match events through `/api/football/details`. Detail requests are made only for the expanded match.
 
 ## Rollout safety
 
