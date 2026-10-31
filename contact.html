@@ -46,8 +46,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <section class="panel"><h2>Send a message</h2><p class="muted">Fill out the details below. Provide an email address or phone number so the site owner can reply. You can attach up to 3 files, 20 MB each.</p>
 <form id="contact-form">
 <label class="field"><span>Your name</span><input name="name" autocomplete="name" maxlength="100" placeholder="Your name" required></label>
-<label class="field"><span>Your email (optional)</span><input name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com"></label>
-<label class="field"><span>Your phone (email or phone required)</span><input name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+880..."></label>
+<label class="field"><span>Email or phone</span><input name="contact" type="text" autocomplete="email" inputmode="email" maxlength="180" placeholder="you@example.com or +880..." required></label>
 <label class="field"><span>What is this about? (optional)</span><select name="topic"><option value="" selected>Select a topic</option><option>Job opportunity</option><option>Freelance project</option><option>Collaboration</option><option>Question about a project</option><option>Other</option></select></label>
 <label class="field"><span>Message</span><textarea name="message" minlength="10" maxlength="4000" placeholder="Tell me a little about it..." required></textarea></label>
 <label class="field"><span>Attachments (optional · up to 3 files · 20 MB each)</span><input name="attachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.rtf,.jpg,.jpeg,.png,.gif,.webp,.mp4,.mov,.webm,.mpeg,.3gp"></label>
@@ -74,9 +73,11 @@ form.addEventListener("submit",async function(event){
  event.preventDefault();
  if(!form.reportValidity()) return;
  const data=new FormData(form);
- const email=String(data.get("email")||"").trim(),phone=String(data.get("phone")||"").trim();
+ const contact=String(data.get("contact")||"").trim();
  const files=data.getAll("attachments").filter(file=>file&&file.size>0);
- if(!email&&!phone) throw new Error("Please provide an email address or phone number.");
+ if(!contact) throw new Error("Please provide your email address or phone number.");
+ data.delete("contact");
+ if(contact.includes("@")) data.set("email",contact); else data.set("phone",contact);
  if(files.length>3) throw new Error("You can attach up to 3 files.");
  if(files.some(file=>file.size>20*1024*1024)) throw new Error("Each attachment must be 20 MB or smaller.");
  status.textContent="Sending your message securely…";
