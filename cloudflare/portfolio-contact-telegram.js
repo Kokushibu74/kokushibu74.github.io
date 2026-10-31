@@ -23,7 +23,7 @@ export default {
       const org=isp.toLowerCase();
       const carrierRules=[["Grameenphone",/grameenphone|gphone/],["Robi",/robi axiata|robi/],["Banglalink",/banglalink/],["Teletalk",/teletalk/],["Airtel",/airtel/]];
       const carrierMatch=carrierRules.find(([,pattern])=>pattern.test(org));
-      const networkType=/mobile|cellular|wireless|gsm|lte|4g|5g/.test(org)?"Likely mobile network":/broadband|fiber|fibre|cable|telecom|internet|isp/.test(org)?"Likely ISP / broadband":"Unknown";
+      const networkType=carrierMatch||/mobile|cellular|wireless|gsm|lte|4g|5g/.test(org)?"Likely mobile network":/broadband|fiber|fibre|cable|telecom|internet|isp/.test(org)?"Likely ISP / broadband":"Unknown";
       const hostingSignal=/hosting|datacenter|data center|cloud|server|vps|vpn|proxy|amazon|aws|google cloud|microsoft azure|digitalocean/.test(org);
       const botManagement=cf.botManagement&&typeof cf.botManagement==="object"?cf.botManagement:{};
       const corporateProxy=botManagement.corporateProxy===true;
