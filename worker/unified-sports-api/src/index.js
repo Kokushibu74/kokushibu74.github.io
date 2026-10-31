@@ -232,7 +232,7 @@ export default {
     }
     if(url.pathname==="/api/football/details"&&request.method==="GET") {
       const league=url.searchParams.get("league")||"eng.1", match=url.searchParams.get("match")||"";
-      if(!FOOTBALL_LEAGUES.has(league)||!/^\\d{5,20}$/.test(match)) return json({ok:false,error:"invalid league or match ID"},400);
+      if(!FOOTBALL_LEAGUES.has(league)||!/^\d{5,20}$/.test(match)) return json({ok:false,error:"invalid league or match ID"},400);
       try {
         const upstream="https://site.api.espn.com/apis/site/v2/sports/soccer/"+league+"/summary?event="+encodeURIComponent(match);
         const response=await fetch(upstream,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
