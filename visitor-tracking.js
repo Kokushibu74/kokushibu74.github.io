@@ -12,6 +12,9 @@
  const now=Date.now();let sessionId=get(SESSION),last=Number(get(LAST)||0);
  if(!sessionId||!/^SES-[A-F0-9]{12}$/.test(sessionId)||now-last>TIMEOUT){sessionId="SES-"+hex();set(SESSION,sessionId)}
  set(LAST,String(now));
+ let lastTouch=now;const touch=()=>{const t=Date.now();if(t-lastTouch>30000){lastTouch=t;set(LAST,String(t))}};
+ ["pointerdown","keydown","scroll","touchstart"].forEach(type=>addEventListener(type,touch,{passive:true}));
+ setInterval(()=>{if(!document.hidden)touch()},60000);
  const ua=navigator.userAgent||"",platform=navigator.userAgentData?.platform||navigator.platform||"Unknown";
  const mobile=/Android|iPhone|iPod|Mobile/i.test(ua),tablet=/iPad|Tablet/i.test(ua);
  const deviceType=tablet?"Tablet":mobile?"Mobile":"Desktop";
@@ -35,7 +38,7 @@
  try{new PerformanceObserver(list=>{const e=list.getEntries().slice(-1)[0];if(e){data.performance.lcp=Math.round(e.startTime);record("lcp",data.performance.lcp+"ms")}}).observe({type:"largest-contentful-paint",buffered:true})}catch{}
  try{new PerformanceObserver(list=>{let sum=0;for(const e of list.getEntries())if(!e.hadRecentInput)sum+=e.value;data.performance.cls=Number(((data.performance.cls||0)+sum).toFixed(4))}).observe({type:"layout-shift",buffered:true})}catch{}
  try{new PerformanceObserver(list=>{for(const e of list.getEntries())data.performance.inp=Math.round(Math.max(data.performance.inp||0,e.duration))}).observe({type:"event",buffered:true,durationThreshold:40})}catch{}
- let sent=false;const flush=()=>{if(sent||!events.length)return;sent=true;const p=payload();p.events=events; p.performance=data.performance;send(p,true)};
+ let sent=false;const flush=()=>{if(sent||!events.length)return;sent=true;const p=payload();p.events=events;p.performance=data.performance;send(p,true);events=[];sent=false};
  addEventListener("pagehide",flush);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flush()});
  setTimeout(()=>{data.performance=perf()},2500);
 })();
