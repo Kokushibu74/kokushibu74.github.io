@@ -32,7 +32,7 @@
 <footer class="wrap footer"><span>© 2026 Shihabul Islam · Sports Zone</span><span><a href="projects.html">Back to Projects</a> · <a href="./">Home</a></span></footer>
 <script>
 (()=>{"use strict";
-const WORKER_URL="https://sports-zone-scores-api.mdshihab74.workers.dev",ID_RE=/^[a-zA-Z0-9_-]{11}$/,$=id=>document.getElementById(id);
+const WORKER_URL="https://unified-sports-api.mdshihab74.workers.dev",ID_RE=/^[a-zA-Z0-9_-]{11}$/,$=id=>document.getElementById(id);
 const state={tab:"football",football:[],cricket:[],selectedMatch:null,streams:[]};
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const url=(path,params={})=>{const u=new URL(path,WORKER_URL);Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));return u.toString()};
