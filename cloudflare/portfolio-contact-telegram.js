@@ -34,7 +34,7 @@ export default {
         lastSessionId:session,lastSessionAt:newSession?now:(old.lastSessionAt||now),sessionPageViews:newSession?1:(Number(old.sessionPageViews)||0)+1,
         pages,events:[...(Array.isArray(old.events)?old.events.filter(e=>Number(e.at)>=cutoff):[]),...events].slice(-60),
         network:{ip:clean(request.headers.get("CF-Connecting-IP"),64),country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp:clean(cf.asOrganization,120),colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
-        device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
+        device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),deviceModel:clean(data.deviceModel,80),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
@@ -54,7 +54,7 @@ export default {
       const esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       const ip=profile.network.ip||"Unavailable";
       const geo=[profile.network.city,profile.network.region,profile.network.country].filter(Boolean).join(", ")||"Unknown";
-      const device=[profile.device.deviceType,profile.device.os,profile.device.browser].filter(Boolean).join(" / ")||ua.slice(0,100);
+      const device=[profile.device.deviceType,profile.device.deviceModel,profile.device.os,profile.device.browser].filter(Boolean).join(" / ")||ua.slice(0,100);
       if(newSession&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const title=first?"🟢 <b>NEW VISITOR</b>":"🔵 <b>RETURNING VISITOR</b>";
         const text=[title,"🆔 <code>"+id+"</code>","🌍 Location: "+esc(geo),"🌐 IP: <code>"+esc(ip)+"</code>","📡 ISP: "+esc(profile.network.isp||"Unknown")+" · ASN: "+esc(profile.network.asn||"Unknown"),"📱 Device: "+esc(device),"🧩 Platform: "+esc(profile.device.platform||"Unknown"),"📶 Connection: "+esc(profile.device.connection||"Unknown"),"🔗 Page: "+esc(page),"↩️ Referrer: "+esc(profile.source.referrer||"Direct"),"📊 Visits: "+profile.totalSessions+" · Page views: "+profile.totalPageViews,"🕒 "+esc(stamp)+" (BDT)"].join("\n");
