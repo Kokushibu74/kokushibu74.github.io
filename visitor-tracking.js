@@ -26,7 +26,7 @@
  const params=new URLSearchParams(location.search);
  const cleanRef=(()=>{try{const u=new URL(document.referrer);return u.origin}catch{return ""}})();
  const perf=()=>{const nav=performance.getEntriesByType("navigation")[0];return {loadMs:nav?Math.round(nav.loadEventEnd):null,domMs:nav?Math.round(nav.domContentLoadedEventEnd):null,lcp:null,cls:null}};
- const payload=()=>({visitorId,sessionId,page:location.pathname,referrer:cleanRef,utmSource:params.get("utm_source")||"",utmMedium:params.get("utm_medium")||"",utmCampaign:params.get("utm_campaign")||"",platform,deviceType,deviceModel,language:navigator.language||"",screen:screen.width+"x"+screen.height,viewport:innerWidth+"x"+innerHeight,pixelRatio:devicePixelRatio||1,browser,os,connection:conn?(conn.effectiveType||conn.type||"Available"):"Not exposed",performance:perf(),events:[]});
+ const payload=()=>({visitorId,sessionId,page:location.pathname,referrer:cleanRef,utmSource:params.get("utm_source")||"",utmMedium:params.get("utm_medium")||"",utmCampaign:params.get("utm_campaign")||"",platform,deviceType,deviceModel,language:navigator.language||"",screen:screen.width+"x"+screen.height,viewport:innerWidth+"x"+innerHeight,pixelRatio:devicePixelRatio||1,browser,os,connection:conn?(conn.effectiveType||conn.type||"Available"):"Not exposed",connectionType:conn&&["wifi","cellular","ethernet"].includes(String(conn.type||"").toLowerCase())?String(conn.type).toLowerCase():"",performance:perf(),events:[]});
  const send=(body,keepalive=false)=>{try{return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive,credentials:"omit"}).catch(()=>{})}catch{return Promise.resolve()}};
  const data=payload();send(data);
  let scrollMarks=new Set(),events=[];
