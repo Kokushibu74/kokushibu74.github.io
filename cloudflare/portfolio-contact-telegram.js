@@ -14,7 +14,7 @@ export default {
       let data;try{data=await request.json()}catch{return respond({error:"Invalid JSON"},400)}
       const id=String(data.visitorId||"");const session=String(data.sessionId||"");
       if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({error:"Invalid visitor/session ID"},400);
-      const clean=(v,n=180)=>String(v||"").replace(/[\\u0000-\\u001f<>]/g," ").trim().slice(0,n);
+      const clean=(v,n=180)=>String(v||"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
       const page=clean(data.page,180).split("?")[0].split("#")[0]||"/";
       const ua=clean(request.headers.get("User-Agent"),300);
       const cf=request.cf||{};
@@ -23,21 +23,33 @@ export default {
       const now=Date.now(),sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
       const newSession=!sameSession;
-      const pages=Array.isArray(old.pages)?old.pages.slice(-39):[];
+      const cutoff=now-31536000000;\n      const pages=Array.isArray(old.pages)?old.pages.filter(p=>Number(p.at)>=cutoff).slice(-39):[];
       if(!pages.length||pages[pages.length-1].path!==page)pages.push({path:page,at:now});
       const events=Array.isArray(data.events)?data.events.slice(0,30).map(e=>({type:clean(e.type,30),value:clean(e.value,160),at:now})).filter(e=>e.type):[];
       const profile={
         visitorId:id,firstSeen:old.firstSeen||now,lastSeen:now,
         totalSessions:(Number(old.totalSessions)||0)+(newSession?1:0),
         totalPageViews:(Number(old.totalPageViews)||0)+1,
-        lastSessionId:session,lastSessionAt:newSession?now:(old.lastSessionAt||now),
-        pages,events:[...(Array.isArray(old.events)?old.events:[]),...events].slice(-60),
+        lastSessionId:session,lastSessionAt:newSession?now:(old.lastSessionAt||now),sessionPageViews:newSession?1:(Number(old.sessionPageViews)||0)+1,
+        pages,events:[...(Array.isArray(old.events)?old.events.filter(e=>Number(e.at)>=cutoff):[]),...events].slice(-60),
         network:{ip:clean(request.headers.get("CF-Connecting-IP"),64),country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp:clean(cf.asOrganization,120),colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
         device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,cls:Number(data.performance.cls)||null}:null
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
+      // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
+      const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
+      let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
+      traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});
+      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor alert failed",String(e))}};
+      if(traffic===40&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\\nAt least 40 page events in 5 minutes.\\nCurrent page: "+clean(page,120)+"\\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
+      const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
+      if(errorEvents.length&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\\nVisitor: <code>"+id+"</code>\\nPage: "+clean(page,120)+"\\nErrors reported: "+errorEvents.length+"\\nDetails: "+clean(errorEvents[0].value,160));
+      const sessionViews=(Number(old.sessionPageViews)||0)+(sameSession?1:1);
+      profile.sessionPageViews=sessionViews;
+      if(sessionViews>=30&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("security:"+id+":"+session,"⚠️ <b>UNUSUAL VISITOR ACTIVITY</b>\\nVisitor: <code>"+id+"</code>\\n30+ page views in one session.\\nIP: <code>"+clean(profile.network.ip,64)+"</code>");
+
       const stamp=new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
       const esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       const ip=profile.network.ip||"Unavailable";
