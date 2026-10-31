@@ -18,6 +18,15 @@ export default {
       const page=clean(data.page,180).split("?")[0].split("#")[0]||"/";
       const ua=clean(request.headers.get("User-Agent"),300);
       const cf=request.cf||{};
+      const ip=clean(request.headers.get("CF-Connecting-IP"),64);
+      const isp=clean(cf.asOrganization,120);
+      const org=isp.toLowerCase();
+      const carrierRules=[["Grameenphone",/grameenphone|gphone/],["Robi",/robi axiata|robi/],["Banglalink",/banglalink/],["Teletalk",/teletalk/],["Airtel",/airtel/]];
+      const carrierMatch=carrierRules.find(([,pattern])=>pattern.test(org));
+      const networkType=/mobile|cellular|wireless|gsm|lte|4g|5g/.test(org)?"Likely mobile network":/broadband|fiber|fibre|cable|telecom|internet|isp/.test(org)?"Likely ISP / broadband":"Unknown";
+      const hostingSignal=/hosting|datacenter|data center|cloud|server|vps|vpn|proxy|amazon|aws|google cloud|microsoft azure|digitalocean/.test(org);
+      const botManagement=cf.botManagement&&typeof cf.botManagement==="object"?cf.botManagement:{};
+      const corporateProxy=botManagement.corporateProxy===true;
       const profileKey="visitor:"+id;
       let old={};try{old=await env.VISITOR_KV.get(profileKey,"json")||{}}catch{}
       const now=Date.now(),pageView=data.eventBatch!==true,sameSession=old.lastSessionId===session;
@@ -33,7 +42,7 @@ export default {
         totalPageViews:(Number(old.totalPageViews)||0)+(pageView?1:0),
         lastSessionId:pageView?session:(old.lastSessionId||session),lastSessionAt:pageView&&newSession?now:(old.lastSessionAt||now),sessionPageViews:pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0),
         pages,events:[...(Array.isArray(old.events)?old.events.filter(e=>Number(e.at)>=cutoff):[]),...events].slice(-60),
-        network:{ip:clean(request.headers.get("CF-Connecting-IP"),64),country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp:clean(cf.asOrganization,120),colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
+        network:{ip,ipVersion:ip.includes(":")?"IPv6":ip.includes(".")?"IPv4":"Unknown",country:clean(cf.country||request.headers.get("CF-IPCountry"),80),region:clean(cf.region,100),city:clean(cf.city,100),timezone:clean(cf.timezone,80),asn:cf.asn||null,isp,carrier:carrierMatch?carrierMatch[0]:"Not verified",networkType,hostingSignal:hostingSignal?"Possible hosting/cloud network":"No obvious hosting signal",corporateProxy:corporateProxy?"Cloudflare corporate-proxy signal":"Not exposed",colo:clean(cf.colo,12),httpProtocol:clean(cf.httpProtocol,20)},
         device:{userAgent:ua,platform:clean(data.platform,80),deviceType:clean(data.deviceType,30),deviceModel:clean(data.deviceModel,80),language:clean(data.language,30),screen:clean(data.screen,30),viewport:clean(data.viewport,30),pixelRatio:Number(data.pixelRatio)||null,browser:clean(data.browser,80),os:clean(data.os,80),connection:clean(data.connection,40)},
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
@@ -57,7 +66,7 @@ export default {
       const device=[profile.device.deviceType,profile.device.deviceModel,profile.device.os,profile.device.browser].filter(Boolean).join(" / ")||ua.slice(0,100);
       if(pageView&&newSession&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const title=first?"🟢 <b>NEW VISITOR</b>":"🔵 <b>RETURNING VISITOR</b>";
-        const text=[title,"🆔 <code>"+id+"</code>","🌍 Location: "+esc(geo),"🌐 IP: <code>"+esc(ip)+"</code>","📡 ISP: "+esc(profile.network.isp||"Unknown")+" · ASN: "+esc(profile.network.asn||"Unknown"),"📱 Device: "+esc(device),"🧩 Platform: "+esc(profile.device.platform||"Unknown"),"📶 Connection: "+esc(profile.device.connection||"Unknown"),"🔗 Page: "+esc(page),"↩️ Referrer: "+esc(profile.source.referrer||"Direct"),"📊 Visits: "+profile.totalSessions+" · Page views: "+profile.totalPageViews,"🕒 "+esc(stamp)+" (BDT)"].join("\n");
+        const text=[title,"🆔 <code>"+id+"</code>","🌍 Location: "+esc(geo),"🌐 IP ("+esc(profile.network.ipVersion)+"): <code>"+esc(ip)+"</code>","📡 ISP: "+esc(profile.network.isp||"Unknown")+" · ASN: "+esc(profile.network.asn||"Unknown"),"📶 Network type: "+esc(profile.network.networkType),"📱 Carrier: "+esc(profile.network.carrier),"🛰️ Hosting/VPN hint: "+esc(profile.network.hostingSignal),"🛡️ Proxy signal: "+esc(profile.network.corporateProxy),"📱 Device: "+esc(device),"🧩 Platform: "+esc(profile.device.platform||"Unknown"),"📶 Browser connection hint: "+esc(profile.device.connection||"Unknown"),"🔗 Page: "+esc(page),"↩️ Referrer: "+esc(profile.source.referrer||"Direct"),"📊 Visits: "+profile.totalSessions+" · Page views: "+profile.totalPageViews,"🕒 "+esc(stamp)+" (BDT)"].join("\n");
         try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor Telegram alert failed",String(e))}
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
