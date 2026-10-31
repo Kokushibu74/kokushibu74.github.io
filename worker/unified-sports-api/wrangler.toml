@@ -1,0 +1,28 @@
+name = "unified-sports-api"
+main = "src/index.js"
+compatibility_date = "2026-10-29"
+workers_dev = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[[kv_namespaces]]
+binding = "SPORTS_ZONE"
+id = "a6cf1ebc4c2e499ca69fa88c10937317"
+
+[vars]
+YOUTUBE_OFFICIAL_CHANNEL_IDS = "UC1qkaS0OMSN7gb1RJLVL5Bg,UCnj0TjaM0wyxkAWW_nz8_1g,UCyGa1YEx9ST66rYrJTGIKOw,UCt2JXOLNxqry7B_4rRZME3Q"
+
+# Add these secrets through Cloudflare Dashboard or:
+# npx wrangler secret put ADMIN_KEY
+# npx wrangler secret put YOUTUBE_API_KEY
+#
+# Cron intentionally omitted until the old trigger is moved. Do not run
+# both 15-minute triggers against the same SPORTS_ZONE KV namespace.
