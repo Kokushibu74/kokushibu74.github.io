@@ -41,16 +41,14 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <body>
 <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a href="news.html">News</a><a class="active" href="contact.html">Contact</a></nav></header>
 <main class="wrap">
-<section class="hero"><p class="kicker">LET'S CONNECT / CONTACT</p><h1>Have a project<br><span class="accent">or opportunity?</span></h1><p class="intro">For job opportunities, collaborations, or questions about my projects, send me a message. Share a little context and attach up to three documents, images, or videos. Your message will be delivered directly to Telegram.</p></section>
+<section class="hero"><p class="kicker">LET'S CONNECT / CONTACT</p><h1>Have a project<br><span class="accent">or opportunity?</span></h1><p class="intro">For job opportunities, collaborations, or questions about my projects, send me a message. Share a little context and I’ll have the details ready in your email draft.</p></section>
 <div class="layout">
-<section class="panel"><h2>Send a message</h2><p class="muted">Your message goes directly to Telegram. Email or phone is enough to reach you.</p>
+<section class="panel"><h2>Send a message</h2><p class="muted">Fill out the details below. Your email app will open with a prepared message for you to review and send.</p>
 <form id="contact-form">
 <label class="field"><span>Your name</span><input name="name" autocomplete="name" maxlength="100" placeholder="Your name" required></label>
-<label class="field"><span>Your email (optional)</span><input name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com"></label>
-<label class="field"><span>Your phone (optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+880 1XXXXXXXXX"></label>
-<label class="field"><span>What is this about? (optional)</span><select name="topic"><option value="" selected>Select a topic (optional)</option><option>Job opportunity</option><option>Freelance project</option><option>Collaboration</option><option>Question about a project</option><option>Other</option></select></label>
-<label class="field"><span>Message (at least 10 characters)</span><textarea name="message" minlength="10" maxlength="4000" placeholder="Tell me a little about it..." required></textarea></label>
-<label class="field"><span>Attachments (optional · up to 3 files · 20 MB each)</span><input id="attachments" name="attachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.rtf,.jpg,.jpeg,.png,.gif,.webp,.mp4,.mov,.webm,.mpeg,.mpg,.3gp" style="padding:11px 12px"></label><p id="file-list" class="muted" aria-live="polite">PDF, documents, images and videos accepted. Maximum 20 MB per file.</p>
+<label class="field"><span>Your email</span><input name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com" required></label>
+<label class="field"><span>What is this about?</span><select name="topic" required><option value="" disabled selected>Select a topic</option><option>Job opportunity</option><option>Freelance project</option><option>Collaboration</option><option>Question about a project</option><option>Other</option></select></label>
+<label class="field"><span>Message</span><textarea name="message" maxlength="4000" placeholder="Tell me a little about it..." required></textarea></label>
 <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"><label>Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label></div>
 <button class="submit" type="submit">Send message </button><p id="form-status" class="muted" role="status" aria-live="polite"></p>
 </form>
@@ -67,11 +65,28 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <footer class="wrap footer"><span>© <span id="year"></span> Shihabul Islam</span><span><a href="./">Portfolio home</a> · <a href="projects.html">Explore projects</a></span></footer>
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
-const form=document.getElementById("contact-form"),status=document.getElementById("form-status"),submit=form.querySelector('button[type="submit"]'),picker=document.getElementById("attachments"),fileList=document.getElementById("file-list");
-const maxFile=20*1024*1024,allowed=new Set(["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.ms-powerpoint","application/vnd.openxmlformats-officedocument.presentationml.presentation","text/plain","text/csv","application/rtf","image/jpeg","image/png","image/gif","image/webp","video/mp4","video/quicktime","video/webm","video/mpeg","video/3gpp"]);
-function validateFiles(){const files=Array.from(picker.files||[]);picker.setCustomValidity("");if(files.length>3)picker.setCustomValidity("You can attach up to 3 files.");for(const f of files){if(picker.validationMessage)break;if(f.size>maxFile)picker.setCustomValidity(f.name+" is larger than 20 MB.");else if(!allowed.has(f.type))picker.setCustomValidity("Unsupported file type: "+f.name);}fileList.textContent=picker.validationMessage||(files.length?files.map(f=>f.name+" · "+(f.size/1048576).toFixed(2)+" MB").join(" | "):"PDF, documents, images and videos accepted. Maximum 20 MB per file.");return picker.validity.valid;}
-picker.addEventListener("change",validateFiles);
-form.addEventListener("submit",async event=>{event.preventDefault();if(!validateFiles()||!form.reportValidity())return;const data=new FormData(form);status.textContent="Sending your message and attachments securely…";submit.disabled=true;submit.textContent="Sending…";try{const response=await fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/submit",{method:"POST",body:data}),result=await response.json().catch(()=>({}));if(!response.ok||!result.ok)throw new Error(result.error||"Message could not be delivered.");form.reset();fileList.textContent="PDF, documents, images and videos accepted. Maximum 20 MB per file.";status.textContent="Message and attachments sent successfully. Thanks for reaching out!";}catch(error){status.textContent=error&&error.message?error.message:"Delivery failed. Please try again or email mdshihab74@gmail.com directly.";}finally{submit.disabled=false;submit.textContent="Send message";}});
+const form=document.getElementById("contact-form");
+const status=document.getElementById("form-status");
+const submit=form.querySelector('button[type="submit"]');
+form.addEventListener("submit",async function(event){
+ event.preventDefault();
+ if(!form.reportValidity()) return;
+ const values=Object.fromEntries(new FormData(form).entries());
+ status.textContent="Sending your message securely…";
+ submit.disabled=true;
+ try{
+  const response=await fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/submit",{
+   method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(values)
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||!result.ok) throw new Error(result.error||"Message could not be delivered.");
+  form.reset();
+  status.textContent="Message sent! Thanks for reaching out.";
+ }catch(error){
+  status.textContent="Telegram delivery is not ready or the connection failed. Please email mdshihab74@gmail.com directly.";
+ }
+ submit.disabled=false;
+});
 </script>
 <script src="shared-shell.js?v=6" defer></script>
   <script src="chatbot-widget.js?v=2" defer></script>
