@@ -22,6 +22,9 @@
   };
   const isLatestBatch=x=>!!window.newsLatestBatchAt&&String(x.latestBatchAt||"")===String(window.newsLatestBatchAt);
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
+  const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
+  const ageOf=x=>{const d=dateOf(x);return d?Date.now()-d.getTime():Infinity};
+  const isWithinLast24Hours=x=>{const age=ageOf(x);return age>=-5*60*1000&&age<24*60*60*1000};
   const PREVIEW_FIELDS=["previewScreenshot","previewImage","image","imageUrl","thumbnail","thumbnailUrl","enclosureUrl"];
   const previewUrl=x=>safe(PREVIEW_FIELDS.map(k=>x[k]).find(Boolean)||"");
   function imageLoads(url){
@@ -35,9 +38,10 @@
     });
   }
   async function renderTopStories(){
-    // Slider source is exclusively the RSS workflow's main items array.
-    // A story must have a valid publisher link, a title and a preview image that actually loads.
-    const candidates=sorted(items).filter(x=>
+    // The slider mirrors only the current 15-minute LATEST batch from Bangladesh.
+    // It never runs a separate news collection; every candidate comes from the main RSS items array.
+    const candidates=sortedNews(items).filter(x=>
+      isLatestBatch(x)&&x.category==="Bangladesh"&&isWithinLast24Hours(x)&&
       safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
     );
     const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
@@ -160,10 +164,12 @@
     const scoped=items.filter(x=>{
       const d=dateOf(x),key=d?bdDateKey(d):"";
       if(!key||key>todayBD||key<oldestBD)return false;
-      if(viewMode==="feed")return key===todayBD;
-      return key<todayBD;
+      const age=d?Date.now()-d.getTime():Infinity;
+      if(age< -5*60*1000)return false;
+      if(viewMode==="feed")return age<24*60*60*1000;
+      return age>=24*60*60*1000;
     });
-    const visible=sorted(scoped.filter(x=>{
+    const visible=(viewMode==="feed"?sortedNews(scoped):sorted(scoped)).filter(x=>{
       const date=dateOf(x),key=date?bdDateKey(date):"";
       const inDateRange=!!key&&(!dateFromInput?.value||key>=dateFromInput.value)&&(!dateToInput?.value||key<=dateToInput.value);
       return (active==="All"||x.category===active)&&(!dateFilterActive||inDateRange)&&
@@ -171,11 +177,11 @@
     }));
     const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
     currentPage=Math.max(1,Math.min(currentPage,totalPages));
-    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="feed"?"No stories from today match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
+    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="feed"?"No stories from the last 24 hours match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
     const start=(currentPage-1)*PAGE_SIZE;
     const pageItems=visible.slice(start,start+PAGE_SIZE);
     const end=start+pageItems.length;
-    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="feed"?"today’s news":"archived headlines (up to 90 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
+    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="feed"?"last 24 hours of news":"archived headlines (up to 90 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
     const renderNow=Date.now();
     let previousArchiveDate="";
@@ -198,7 +204,9 @@
     const scoped=items.filter(x=>{
       const d=dateOf(x),key=d?bdDateKey(d):"";
       if(!key||key>todayBD||key<oldestBD)return false;
-      return viewMode==="feed"?key===todayBD:key<todayBD;
+      const age=d?Date.now()-d.getTime():Infinity;
+      if(age< -5*60*1000)return false;
+      return viewMode==="feed"?age<24*60*60*1000:age>=24*60*60*1000;
     });
     filters.querySelectorAll("button[data-category]").forEach(button=>{
       const category=button.dataset.category;
