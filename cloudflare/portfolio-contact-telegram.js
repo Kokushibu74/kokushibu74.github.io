@@ -118,10 +118,12 @@ async function umHandleCommand(env,msg){
     }else if(cmd==="/usersearch"){
       const q=arg.toLowerCase();if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT");return true;}
       const found=[];for(const prefix of [UM_PREFIX+"telegram:",UM_PREFIX+"visitor:"]){for(const k of await umList(env,prefix)){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push((p.kind||"visitor")+" · "+(p.customId||p.id||p.visitorId));if(found.length>=20)break;}}
+      if(found.length<20)for(const k of await umList(env,"visitor:")){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push("visitor · "+(p.customId||p.visitorId||k.name.slice(8)));if(found.length>=20)break;}
       await umReply(env,chatId,"🔎 Search results\n"+(found.join("\n")||"কোনো match পাওয়া যায়নি."));
     }else if(cmd==="/userstats"){
-      const [tg,vis,blocks,hist]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
-      await umReply(env,chatId,"📊 USER STATS\nTelegram profiles: "+tg.length+"\nWebsite profiles: "+vis.length+"\nActive block records: "+blocks.length+"\nHistory records: "+hist.length);
+      const [tg,vis,legacy,blocks,hist]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
+      const websiteCount=new Set([...vis.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
+      await umReply(env,chatId,"📊 USER STATS\nTelegram profiles: "+tg.length+"\nWebsite profiles: "+websiteCount+"\nActive block records: "+blocks.length+"\nHistory records: "+hist.length);
     }
     await umHistory(env,"admin",sender,{type:"command",command:cmd,target:arg||null});
   }catch(e){console.error("User management command failed",String(e));await umReply(env,chatId,"⚠️ কমান্ডটি সম্পন্ন হয়নি। Worker log পরীক্ষা করতে হবে।");}
