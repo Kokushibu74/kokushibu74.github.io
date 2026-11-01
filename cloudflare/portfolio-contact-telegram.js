@@ -216,6 +216,15 @@ export default {
       if(!env.TELEGRAM_WEBHOOK_SECRET||request.headers.get("X-Telegram-Bot-Api-Secret-Token")!==env.TELEGRAM_WEBHOOK_SECRET)return new Response("Unauthorized",{status:401});
       let update;try{update=await request.json()}catch{return new Response("Bad request",{status:400})}
       const msg=update.message;if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
+      if(msg.chat.type==="private"&&msg.from?.id){
+        try{await umTelegramTouch(env,msg);}catch(e){console.error("Telegram user history write failed",String(e));}
+        const adminIds=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+        if(await umBlocked(env,"telegram",String(msg.from.id))&&!adminIds.has(String(msg.from.id))){
+          try{await umHistory(env,"telegram",String(msg.from.id),{type:"blocked_message_attempt"});}catch{}
+          return new Response("OK");
+        }
+        try{if(await umHandleCommand(env,msg))return new Response("OK");}catch(e){console.error("User management command dispatch failed",String(e));}
+      }
       if(String(msg.chat.id)!==String(env.TELEGRAM_CHAT_ID)||!/^\/info(?:@\w+)?(?:\s|$)/i.test(msg.text.trim()))return new Response("OK");
       const site="https://kokushibu74.github.io/",started=performance.now(),stamp=new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});let status="Error",elapsed=0,detail="";
       try{const res=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(15000)});status=String(res.status);elapsed=Math.round(performance.now()-started);detail=res.ok?"Site reachable":"Site returned HTTP "+res.status;await res.body?.cancel()}catch(e){elapsed=Math.round(performance.now()-started);detail=String(e&&e.message||e).slice(0,150)}
