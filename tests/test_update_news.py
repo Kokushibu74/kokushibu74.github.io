@@ -189,21 +189,43 @@ class NewsLogicTests(unittest.TestCase):
             "Technology"
         )
 
-    def test_previous_items_are_not_removed_by_age(self):
+    def test_feed_retention_accepts_six_days_and_rejects_expired_undated_or_future(self):
+        now = datetime(2026, 11, 1, 12, 0, tzinfo=timezone.utc)
+        item = {"publishedAt": (now - timedelta(days=6)).isoformat()}
+        self.assertTrue(news.within_feed_retention(item, now))
+        self.assertTrue(news.within_feed_retention(
+            {"publishedAt": (now - timedelta(days=7)).isoformat()}, now
+        ))
+        self.assertFalse(news.within_feed_retention(
+            {"publishedAt": (now - timedelta(days=7, seconds=1)).isoformat()}, now
+        ))
+        self.assertFalse(news.within_feed_retention({"publishedAt": None}, now))
+        self.assertFalse(news.within_feed_retention(
+            {"publishedAt": (now + timedelta(minutes=6)).isoformat()}, now
+        ))
+
+    def test_previous_items_are_pruned_after_seven_days(self):
         import json
         from tempfile import TemporaryDirectory
         old_output = news.OUTPUT
+        now = datetime.now(timezone.utc)
         try:
             with TemporaryDirectory() as folder:
                 path = Path(folder) / "news-feed.json"
-                path.write_text(json.dumps({"items": [{
-                    "title": "Old archived headline", "link": "https://example.com/old",
-                    "publishedAt": "2020-01-01T00:00:00+00:00", "category": "Bangladesh"
-                }]}), encoding="utf-8")
+                path.write_text(json.dumps({"items": [
+                    {"title": "Fresh headline", "link": "https://example.com/fresh",
+                     "publishedAt": (now - timedelta(hours=3)).isoformat(), "category": "Bangladesh"},
+                    {"title": "Six-day headline", "link": "https://example.com/six",
+                     "publishedAt": (now - timedelta(days=6)).isoformat(), "category": "World"},
+                    {"title": "Expired headline", "link": "https://example.com/old",
+                     "publishedAt": (now - timedelta(days=8)).isoformat(), "category": "Bangladesh"},
+                    {"title": "Undated headline", "link": "https://example.com/undated",
+                     "publishedAt": None, "category": "Technology"}
+                ]}), encoding="utf-8")
                 news.OUTPUT = str(path)
                 previous = news.read_previous()
-                self.assertEqual(len(previous), 1)
-                self.assertEqual(previous[0]["title"], "Old archived headline")
+                self.assertEqual({item["title"] for item in previous},
+                                 {"Fresh headline", "Six-day headline"})
         finally:
             news.OUTPUT = old_output
 
