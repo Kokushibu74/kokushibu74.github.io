@@ -29,3 +29,5 @@ jobs:
           python-version: "3.x"
       - name: Run offline news logic tests
         run: python3 tests/test_update_news.py -v
+      - name: Check browser JavaScript syntax
+        run: node --check news.js
