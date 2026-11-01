@@ -4,8 +4,8 @@ on:
   workflow_run:
     workflows:
       - Refresh live news feed
-      - Live Match Center Check
-      - Sports Zone Smoke Test
+      - Live Match Center checks
+      - Sports Zone API smoke test
     types: [completed]
 
 permissions:
