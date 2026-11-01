@@ -7,6 +7,12 @@ on:
       - 'sports-zone.html'
       - 'worker/**'
       - '.github/workflows/sports-zone-smoke-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'sports-zone.html'
+      - 'worker/**'
+      - '.github/workflows/sports-zone-smoke-test.yml'
   workflow_dispatch:
 
 permissions:
