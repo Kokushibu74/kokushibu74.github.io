@@ -5,9 +5,9 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
-      - '.github/workflows/telegram-worker-check.yml'
+      - '.github/workflows/telegram-worker-check.yml'\n      - 'miniapp/**'\n      - 'tests/miniapp-auth.test.mjs'
   push:
-    branches: [feature/telegram-button-upgrade]
+    branches: [feature/telegram-button-upgrade, feature/shihabul-control-center]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - '.github/workflows/telegram-worker-check.yml'
