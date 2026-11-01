@@ -6,6 +6,7 @@ on:
     paths:
       - 'sports-zone.html'
       - 'worker/unified-sports-api/**'
+      - 'tests/**'
       - '.github/workflows/live-match-center-check.yml'
   push:
     branches: [feature/unified-sports-api]
