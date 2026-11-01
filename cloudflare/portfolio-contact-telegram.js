@@ -231,9 +231,11 @@ async function botHandleCallback(env,query){
     if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
     if(action==="users:list"){await umHandleCommand(env,{text:"/userid 1",chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true}
     if(action==="users:stats"){await umHandleCommand(env,{text:"/userstats",chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true}
-    if(action==="users:search"||action==="users:history"||action==="users:link"||action==="users:block"||action==="users:rename"){
-      const cmd={search:"/usersearch TEXT",history:"/userhistory ID",link:"/userlink TELEGRAM_ID VISITOR_ID or /userunlink ID",block:"/userblock ID [both|telegram|website] or /userunblock ID",rename:"/userrename ID CUSTOM"}[action.split(":")[1]];
-      await botSend(env,chatId,"এই অপশনটি ব্যবহার করতে বর্তমান Text Command-টিও চালু আছে:\n"+cmd,botBackKeyboard());return true;
+    if(["search","history","link","block","rename"].includes(action.split(":")[1])&&action.startsWith("users:")){
+      if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is unavailable.",botBackKeyboard());return true;}
+      const mode=action.split(":")[1],prompts={search:"🔎 Search: নাম, Telegram ID বা Visitor ID পাঠান।",history:"🕘 History: Telegram ID বা Visitor ID পাঠান।",link:"🔗 Link/Unlink: TELEGRAM_ID VISITOR_ID লিখুন, অথবা unlink ID লিখুন।",block:"🚫 Block/Unblock: ID লিখুন; আনব্লক করতে unblock ID লিখুন।",rename:"✏️ Rename: ID CUSTOM_NAME লিখুন।"};
+      await env.BOT_CONFIG_KV.put("bot:user-input:"+sender,JSON.stringify({mode,createdAt:Date.now()}),{expirationTtl:600});
+      await botSend(env,chatId,prompts[mode]+"\n১০ মিনিটের মধ্যে উত্তর পাঠান।",botBackKeyboard());return true;
     }
     if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botSend(env,chatId,"⏳ Publishing approved hero image…");const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ GitHub updated: "+result.imagePath+"\nPages deployment may take a few moments. Verify the live homepage before considering it complete.",botBackKeyboard());return true;}
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
@@ -540,6 +542,21 @@ export default {
         }
       }
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
+      if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
+        const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
+        if(pending?.mode){
+          await env.BOT_CONFIG_KV.delete(inputKey);
+          const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
+          if(pending.mode==="search")command="/usersearch "+raw;
+          else if(pending.mode==="history")command="/userhistory "+parts[0];
+          else if(pending.mode==="link")command=/^unlink\s+/i.test(raw)?"/userunlink "+raw.replace(/^unlink\s+/i,""):"/userlink "+raw;
+          else if(pending.mode==="block")command=/^unblock\s+/i.test(raw)?"/userunblock "+raw.replace(/^unblock\s+/i,""):"/userblock "+raw;
+          else if(pending.mode==="rename")command="/userrename "+parts[0]+" "+parts.slice(1).join(" ");
+          if(!command.trim()||command.endsWith(" "))await botSend(env,msg.chat.id,"তথ্যটি অসম্পূর্ণ। আবার User Manager থেকে অপশনটি নির্বাচন করুন।",botBackKeyboard());
+          else {try{await umHandleCommand(env,{...msg,text:command})}catch(e){console.error("User Manager button action failed",String(e));await botSend(env,msg.chat.id,"⚠️ User action failed. Existing text commands remain available.",botBackKeyboard())}}
+          return new Response("OK");
+        }
+      }
       if(msg.chat.type==="private"&&msg.from?.id){
         try{await umTelegramTouch(env,msg);}catch(e){console.error("Telegram user history write failed",String(e));}
         const adminIds=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
