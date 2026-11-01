@@ -4,6 +4,114 @@ function previousBdDay(day){const d=new Date(day+"T00:00:00Z");d.setUTCDate(d.ge
 async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",rows=[];let cursor;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row)}cursor=page.list_complete?undefined:page.cursor;}while(cursor);const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};const pages={};let views=0,sessions=0,errors=0,returning=0;for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}return {day,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};}
 function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", "):"No data");const delta=(v,o)=>{const d=v-o;return (d>0?"+":"")+d+" vs yesterday"};const lines=["📅 Date: "+a.day+" (BDT)","👤 Unique visitors: "+a.unique+(p?" · "+delta(a.unique,p.unique):""),"🆕 New visitors: "+Math.max(0,a.unique-a.returning),"↩️ Returning visitors: "+a.returning,"🔁 Visits / sessions: "+a.sessions+(p?" · "+delta(a.sessions,p.sessions):""),"👁️ Page views: "+a.views+(p?" · "+delta(a.views,p.views):""),"⚠️ Client errors: "+a.errors,list("🔥 Popular pages",a.pages),list("🌍 Countries",a.countries),list("📍 Cities",a.cities),list("📡 ISPs",a.isps),list("📱 Devices",a.devices),list("🌐 Browsers",a.browsers),"","👥 VISITOR DETAILS"];for(const [i,v] of (a.visitors||[]).entries()){const pages=Object.entries(v.pages||{}).sort((x,y)=>y[1]-x[1]).map(([k,n])=>k+" ×"+n).join(", ")||"Page data unavailable";const device=[v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join(" / ")||"Unknown";const source=v.source?.utmSource||v.source?.referrer||"Direct";const seen=v.lastSeen?new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"}):"Unknown";lines.push((i+1)+". "+(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2")+" · "+(v.returning?"Returning":"New"),"   🕒 Last seen: "+seen+" BDT · Sessions today: "+(v.sessions||0)+" · Views: "+(v.pageViews||0),"   📄 Pages: "+pages,"   🔗 Source: "+source,"   📱 Device: "+device,"   📍 Location: "+[v.network?.city,v.network?.country].filter(Boolean).join(", ")+" · ISP: "+(v.network?.isp||"Unknown"));}if(!a.visitors?.length)lines.push("No visitor-level records available.");lines.push("","ℹ️ Active time, exact exit time and scroll/interaction duration are not measured in this report.");return lines;}
 
+
+const UM_PREFIX = "um:v1:";
+const umClean = (v,n=120) => String(v??"").replace(/[\\u0000-\\u001f<>]/g," ").trim().slice(0,n);
+const umDate = (ts=Date.now()) => new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));
+async function umList(env,prefix,limit=1000){
+  const out=[];let cursor;
+  do{const page=await env.VISITOR_KV.list({prefix,limit,cursor});out.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;}while(cursor);
+  return out;
+}
+async function umHistory(env,kind,id,event){
+  const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
+  const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+at+"-"+salt;
+  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}));
+}
+async function umTelegramTouch(env,msg){
+  const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
+  let old={};try{old=await env.VISITOR_KV.get(key,"json")||{}}catch{}
+  const profile={kind:"telegram",id,telegramId:id,firstSeen:old.firstSeen||now,lastSeen:now,
+    username:umClean(msg.from.username,80),firstName:umClean(msg.from.first_name,80),
+    lastName:umClean(msg.from.last_name,80),languageCode:umClean(msg.from.language_code,20),
+    isBot:!!msg.from.is_bot,customId:old.customId||null};
+  await env.VISITOR_KV.put(key,JSON.stringify(profile),{expirationTtl:31536000});
+  await umHistory(env,"telegram",id,{type:"message_received",command:/^\\//.test(String(msg.text||""))?String(msg.text).trim().split(/\\s+/)[0].slice(0,40):"message",chatType:msg.chat.type||"unknown"});
+}
+async function umResolve(env,input){
+  const raw=String(input||"").trim();if(!raw)return null;
+  if(/^\\d{5,20}$/.test(raw))return {kind:"telegram",id:raw};
+  if(/^VIS-[A-F0-9]{12}$/i.test(raw))return {kind:"visitor",id:raw.toUpperCase()};
+  let map;try{map=await env.VISITOR_KV.get(UM_PREFIX+"custom:"+encodeURIComponent(raw.toLowerCase()),"json")}catch{}
+  return map&&map.kind&&map.id?{kind:map.kind,id:String(map.id)}:null;
+}
+async function umProfile(env,user){
+  if(!user)return null;
+  if(user.kind==="telegram")return await env.VISITOR_KV.get(UM_PREFIX+"telegram:"+user.id,"json");
+  const current=await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+user.id,"json");
+  return current||await env.VISITOR_KV.get("visitor:"+user.id,"json");
+}
+async function umBlocked(env,kind,id){
+  try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
+}
+async function umReply(env,chatId,text){
+  if(!env.TELEGRAM_BOT_TOKEN)return;
+  await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,text,disable_web_page_preview:true})});
+}
+async function umHandleCommand(env,msg){
+  const text=String(msg.text||"").trim(),parts=text.split(/\\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
+  const commands=new Set(["/userid","/userinfo","/userrename","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  if(!commands.has(cmd))return false;
+  const chatId=msg.chat.id,sender=String(msg.from?.id||"");
+  if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য User Management কমান্ড শুধু Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
+  if(!admins.has(sender)){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
+  const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
+  try{
+    if(cmd==="/userid"){
+      const pageNo=Math.max(1,Math.min(999,Number(arg)||1)),limit=10,all=[];
+      const tg=await umList(env,UM_PREFIX+"telegram:"),vis=await umList(env,UM_PREFIX+"visitor:");
+      for(const k of tg){const p=await env.VISITOR_KV.get(k.name,"json");if(p)all.push({kind:"telegram",id:p.id,customId:p.customId,name:p.username?"@"+p.username:p.firstName||"Telegram user"});}
+      for(const k of vis){const p=await env.VISITOR_KV.get(k.name,"json");if(p)all.push({kind:"visitor",id:p.id||p.visitorId,customId:p.customId,name:p.device?.deviceModel||p.device?.deviceType||"Website visitor"});}
+      const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
+      all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
+      const start=(pageNo-1)*limit,items=all.slice(start,start+limit);
+      const lines=items.map((u,i)=>(start+i+1)+". "+(u.kind==="telegram"?"TG":"WEB")+" · "+(u.customId||u.id)+" · "+u.name);
+      await umReply(env,chatId,"👥 User list — page "+pageNo+"\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nমোট: "+all.length+" · পরের পৃষ্ঠা: /userid "+(pageNo+1)); 
+    }else if(cmd==="/userinfo"){
+      const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
+      const p=await umProfile(env,user)||{},blocked=await umBlocked(env,user.kind==="visitor"?"website":"telegram",user.id),custom=p.customId||"—";
+      const lines=["👤 USER INFO","Type: "+user.kind,"Original ID: "+user.id,"Custom ID: "+custom,"Name: "+(p.firstName||p.username||p.device?.deviceModel||"—"),"First seen: "+(p.firstSeen?new Date(p.firstSeen).toISOString():"—"),"Last seen: "+(p.lastSeen?new Date(p.lastSeen).toISOString():"—"),"Blocked: "+(blocked?"Yes":"No")];
+      if(user.kind==="visitor")lines.push("Sessions: "+(p.totalSessions||0),"Page views: "+(p.totalPageViews||0),"Device: "+[p.device?.deviceType,p.device?.os,p.device?.browser].filter(Boolean).join(" / "));
+      else lines.push("Username: "+(p.username?"@"+p.username:"—"),"Language: "+(p.languageCode||"—"));
+      await umReply(env,chatId,lines.join("\n"));
+    }else if(cmd==="/userrename"){
+      const user=await umResolve(env,arg),custom=String(parts[1]||"").trim();
+      if(!user||!custom||!/^[a-zA-Z0-9_-]{3,32}$/.test(custom)){await umReply(env,chatId,"ব্যবহার: /userrename ID CUSTOM (৩–৩২ অক্ষর; ইংরেজি, সংখ্যা, _ বা -)");return true;}
+      const mapKey=UM_PREFIX+"custom:"+encodeURIComponent(custom.toLowerCase()),existing=await env.VISITOR_KV.get(mapKey,"json");
+      if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id)){await umReply(env,chatId,"এই Custom ID আগে থেকেই ব্যবহৃত হচ্ছে।");return true;}
+      const p=await umProfile(env,user)||{};if(p.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(p.customId).toLowerCase()));
+      p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
+      await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});
+      await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
+    }else if(cmd==="/userblock"||cmd==="/userunblock"){
+      const user=await umResolve(env,arg),scope=["both","telegram","website"].includes(scopeArg)?scopeArg:"both";
+      if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
+      const scopes=scope==="both"?["telegram","website"]:[scope],active=cmd==="/userblock";
+      for(const kind of scopes){const key=UM_PREFIX+"block:"+kind+":"+user.id;if(active)await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:sender,reason:"Admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
+      await umHistory(env,"admin",sender,{type:active?"block":"unblock",target:user,scope});
+      await umReply(env,chatId,(active?"🚫 Blocked ":"✅ Unblocked ")+user.id+" · "+scope);
+    }else if(cmd==="/userhistory"){
+      const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
+      const pageNo=Math.max(1,Math.min(999,Number(parts[1])||1)),prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":",keys=await umList(env,prefix);
+      const rows=[];for(const k of keys){const v=await env.VISITOR_KV.get(k.name,"json");if(v)rows.push(v);}
+      rows.sort((a,b)=>(b.at||0)-(a.at||0));const start=(pageNo-1)*10;
+      const lines=rows.slice(start,start+10).map(e=>new Date(e.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+e.event.type+(e.event.command?" · "+e.event.command:"")+(e.event.path?" · "+e.event.path:""));
+      await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo);
+    }else if(cmd==="/usersearch"){
+      const q=arg.toLowerCase();if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT");return true;}
+      const found=[];for(const prefix of [UM_PREFIX+"telegram:",UM_PREFIX+"visitor:"]){for(const k of await umList(env,prefix)){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push((p.kind||"visitor")+" · "+(p.customId||p.id||p.visitorId));if(found.length>=20)break;}}
+      await umReply(env,chatId,"🔎 Search results\n"+(found.join("\n")||"কোনো match পাওয়া যায়নি."));
+    }else if(cmd==="/userstats"){
+      const [tg,vis,blocks,hist]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
+      await umReply(env,chatId,"📊 USER STATS\nTelegram profiles: "+tg.length+"\nWebsite profiles: "+vis.length+"\nActive block records: "+blocks.length+"\nHistory records: "+hist.length);
+    }
+    await umHistory(env,"admin",sender,{type:"command",command:cmd,target:arg||null});
+  }catch(e){console.error("User management command failed",String(e));await umReply(env,chatId,"⚠️ কমান্ডটি সম্পন্ন হয়নি। Worker log পরীক্ষা করতে হবে।");}
+  return true;
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -20,6 +128,7 @@ export default {
       let data;try{data=await request.json()}catch{return respond({error:"Invalid JSON"},400)}
       const id=String(data.visitorId||"");const session=String(data.sessionId||"");
       if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({error:"Invalid visitor/session ID"},400);
+      if(await umBlocked(env,"website",id))return respond({error:"Website access restricted",blocked:true},403);
       const clean=(v,n=180)=>String(v||"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
       const page=clean(data.page,180).split("?")[0].split("#")[0]||"/";
       const ua=clean(request.headers.get("User-Agent"),300);
@@ -55,6 +164,7 @@ export default {
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
+      try{await env.VISITOR_KV.put(UM_PREFIX+"visitor:"+id,JSON.stringify({...profile,kind:"visitor",id,customId:(await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+id,"json"))?.customId||null}),{expirationTtl:31536000});await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,value:e.value,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
       let dayRow={};try{dayRow=await env.VISITOR_KV.get(dailyKey,"json")||{}}catch{}
       const dayPages=dayRow.pages&&typeof dayRow.pages==="object"?dayRow.pages:{};
