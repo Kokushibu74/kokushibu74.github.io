@@ -316,10 +316,18 @@ export default {
       const league=url.searchParams.get("league")||"",match=url.searchParams.get("match")||"";
       if(!/^\d{4,12}$/.test(league)||!/^\d{4,20}$/.test(match))return json({ok:false,error:"invalid cricket league or match ID"},400);
       try {
-        const upstream="https://site.web.api.espn.com/apis/site/v2/sports/cricket/"+league+"/summary?contentorigin=espn&event="+encodeURIComponent(match)+"&lang=en&region=in";
-        const response=await fetch(upstream,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
-        if(!response.ok)throw new Error("ESPN cricket summary HTTP "+response.status);
-        const data=await response.json();
+        const query="?contentorigin=espn&event="+encodeURIComponent(match)+"&lang=en&region=in";
+        let data=null,lastStatus=0,lastError="";
+        for(const host of ["https://site.web.api.espn.com","https://site.api.espn.com"]) {
+          try {
+            const response=await fetch(host+"/apis/site/v2/sports/cricket/"+league+"/summary"+query,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
+            if(!response.ok){lastStatus=response.status;lastError=host+" HTTP "+response.status;continue;}
+            data=await response.json();
+            if(data&&typeof data==="object")break;
+            lastError=host+" returned invalid JSON";
+          } catch(e) {lastError=String(e?.message||e);}
+        }
+        if(!data)throw new Error(lastError||("ESPN cricket summary unavailable ("+lastStatus+")"));
         return json({ok:true,matchId:match,leagueId:league,updated:new Date().toISOString(),data},200,{"Cache-Control":"public, max-age=10"});
       }catch(e){return json({ok:false,error:"Cricket match details are temporarily unavailable.",detail:String(e?.message||e)},502);}
     }
