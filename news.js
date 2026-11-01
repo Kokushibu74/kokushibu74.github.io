@@ -35,21 +35,21 @@
     });
   }
   async function renderTopStories(){
-    // Only stories discovered in the current refresh batch, with working preview images, enter this slider.
-    const todayBD=bdDateKey(Date.now());
+    // Slider source is exclusively the RSS workflow's main items array.
+    // A story must have a valid publisher link, a title and a preview image that actually loads.
     const candidates=sorted(items).filter(x=>
-      isLatestBatch(x)&&bdDateKey(dateOf(x))===todayBD&&safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
+      safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
     );
     const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
     topItems=checks.filter(x=>x.ok).map(x=>x.item);
-    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No stories in the latest refresh batch have a working preview image yet. Please check after the next feed refresh.</div>';slideCount.textContent="LATEST IMAGE PREVIEWS";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);return}
+    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No RSS stories with a working preview image are available yet. Stories without images remain in the news feed.</div>';slideCount.textContent="IMAGE PREVIEW STORIES";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);slideTimer=null;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
       const image=previewUrl(x),title=x.previewTitle||x.title;
       const summary=x.previewSummary||x.summary||x.description||"Open the original report for the full story, context and latest developments.";
       const publisherUrl=safe(x.publisherUrl||x.link),d=dateOf(x),publisher=String(x.publisherName||x.source||"Original publisher");
       const bg='<img class="top-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer">';
-      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'" data-href="'+publisherUrl+'" tabindex="0" role="link" aria-label="Open news story: '+esc(title)+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">LATEST · IMAGE PREVIEW</span><h2>'+esc(title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(publisher)+'</span><span>•</span><span>'+esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}))+'</span></div>'+(x.iframeAllowed===true?'<div class="top-slide-actions"><details class="publisher-embed"><summary>Site preview</summary><iframe src="'+publisherUrl+'" title="Publisher page preview" loading="lazy" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></details></div>':'')+'</div></article>';
+      return '<article class="top-slide'+(i===slideIndex?' active':'')+'" data-slide-index="'+i+'" data-href="'+publisherUrl+'" tabindex="0" role="link" aria-label="Open news story: '+esc(title)+'"><div class="top-slide-visual">'+bg+'<span class="top-slide-index">'+String(i+1).padStart(2,"0")+' / '+String(topItems.length).padStart(2,"0")+'</span></div><div class="top-slide-copy"><span class="top-slide-kicker">LATEST · IMAGE PREVIEW</span><h2>'+esc(title)+'</h2><p class="top-slide-summary">'+esc(summary)+'</p><div class="top-slide-meta"><span>'+esc(publisher)+'</span><span>•</span><span>'+esc(d?d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}):"Date unavailable")+'</span></div>'+(x.iframeAllowed===true?'<div class="top-slide-actions"><details class="publisher-embed"><summary>Site preview</summary><iframe src="'+publisherUrl+'" title="Publisher page preview" loading="lazy" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></details></div>':'')+'</div></article>';
     }).join("");
     dotsRoot.innerHTML=topItems.map((x,i)=>'<button type="button" class="top-slide-dot'+(i===slideIndex?' active':'')+'" data-slide-to="'+i+'" aria-label="Show latest story '+(i+1)+'"></button>').join("");
     slideCount.textContent=String(topItems.length).padStart(2,"0")+" LATEST IMAGE STORIES";
