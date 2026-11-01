@@ -171,20 +171,38 @@ def image_for(node):
     for path in ("./media:content", "./media:thumbnail"):
         for el in node.findall(path, NS):
             url = el.attrib.get("url", "")
-            if url.startswith("https://"):
+            kind = (el.attrib.get("type") or "").lower()
+            medium = (el.attrib.get("medium") or "").lower()
+            if url.startswith("https://") and not kind.startswith("video/") and medium != "video":
                 return url
     enclosure = child_element(node, "enclosure")
     if enclosure is not None:
         url = enclosure.attrib.get("url", "")
-        kind = enclosure.attrib.get("type", "")
+        kind = (enclosure.attrib.get("type") or "").lower()
         if url.startswith("https://") and kind.startswith("image/"):
             return url
-    # Google News and namespaced Atom feeds may embed thumbnails in RSS/Atom HTML.
     raw = child_text(node, "description", "summary", "content")
     raw += " " + child_text(node, "encoded")
     match = re.search(r"<img[^>]+src=['\"](https://[^'\"]+)['\"]", raw, re.I)
     if match:
         return html.unescape(match.group(1))
+    return ""
+
+
+def video_for(node):
+    for path in ("./media:content", "./media:group/media:content"):
+        for el in node.findall(path, NS):
+            url = el.attrib.get("url", "")
+            kind = (el.attrib.get("type") or "").lower()
+            medium = (el.attrib.get("medium") or "").lower()
+            if url.startswith("https://") and (kind.startswith("video/") or medium == "video"):
+                return url
+    enclosure = child_element(node, "enclosure")
+    if enclosure is not None:
+        url = enclosure.attrib.get("url", "")
+        kind = (enclosure.attrib.get("type") or "").lower()
+        if url.startswith("https://") and kind.startswith("video/"):
+            return url
     return ""
 
 
@@ -611,6 +629,7 @@ def main():
                     "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "image": image_for(node), "previewImage": image_for(node),
+                    "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
                 }
                 key = key_for(item)
@@ -628,7 +647,7 @@ def main():
     for item in weather_collected:
         cached = old_weather_metadata.get(key_for(item), {})
         for field in ("publisherUrl", "publisherName", "previewTitle", "previewSummary",
-                      "previewImage", "previewScreenshot", "previewCheckedAt"):
+                      "previewImage", "previewScreenshot", "previewCheckedAt", "videoUrl"):
             if cached.get(field) not in (None, ""):
                 item[field] = cached[field]
     weather_preview_candidates = weather_collected[:12]
