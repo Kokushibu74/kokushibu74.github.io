@@ -110,7 +110,7 @@ async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
   await botEnsureStartKeyboard(env,msg.chat.id);
   const old=await botGetMenuAnchor(env,msg.chat.id);
-  const fresh=await botSend(env,msg.chat.id,"🤖 PORTFOLIO CONTROL CENTER\\n\\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\\n\\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন।",botMainKeyboard(),{forceNew:true});
+  const fresh=await botSend(env,msg.chat.id,"🤖 PORTFOLIO CONTROL CENTER\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন।",botMainKeyboard(),{forceNew:true});
   if(old?.messageId&&Number(old.messageId)!==Number(fresh?.message_id))await botTelegram(env,"deleteMessage",{chat_id:msg.chat.id,message_id:Number(old.messageId)});
   await botMarkMenuInteraction(env,msg.chat.id,fresh?.message_id,false);
   return true;
