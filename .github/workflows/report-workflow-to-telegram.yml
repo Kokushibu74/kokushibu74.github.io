@@ -78,7 +78,9 @@ jobs:
               value = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", " ", value)
               return value[:260]
 
-          excerpts, news_summary = [], []
+          excerpts = []
+          news_metrics = {"headlines": None, "bangladesh": None, "rss": None, "publisher_urls": None, "metadata_articles": None}
+          news_errors = []
           archive = None
           if os.environ["CONCLUSION"] != "success" or os.environ["WORKFLOW_NAME"] == "Refresh live news feed":
               try:
@@ -95,17 +97,26 @@ jobs:
                                   if clean and clean not in excerpts:
                                       excerpts.append(clean)
                               if os.environ["WORKFLOW_NAME"] == "Refresh live news feed" and os.environ["CONCLUSION"] == "success":
-                                  if "Wrote " in line and "headlines;" in line and "successful RSS queries" in line:
-                                      news_summary.append(scrub(line.strip()))
-                                  elif any(x in line for x in ("Publisher URLs resolved:", "Direct RSS error for", "Feed error for", "Weather/disaster feed error for")):
-                                      news_summary.append(scrub(line.strip()))
-                          if len(excerpts) >= 4 and len(news_summary) >= 8:
+                                  headline_match = re.search(r"Wrote\\s+(\\d+)\\s+headlines;\\s*Bangladesh:\\s*(\\d+)\\s+from\\s+(\\d+)\\s+successful RSS queries", line)
+                                  if headline_match:
+                                      news_metrics["headlines"] = int(headline_match.group(1))
+                                      news_metrics["bangladesh"] = int(headline_match.group(2))
+                                      news_metrics["rss"] = int(headline_match.group(3))
+                                  publisher_match = re.search(r"Publisher URLs resolved:\\s*(\\d+)\\s*;\\s*metadata fetched:\\s*(\\d+)\\s+articles", line)
+                                  if publisher_match:
+                                      news_metrics["publisher_urls"] = int(publisher_match.group(1))
+                                      news_metrics["metadata_articles"] = int(publisher_match.group(2))
+                                  if any(x in line for x in ("Direct RSS error for", "Feed error for", "Weather/disaster feed error for")):
+                                      clean = scrub(line.strip())
+                                      if clean and clean not in news_errors:
+                                          news_errors.append(clean)
+                          if len(excerpts) >= 4 and news_metrics["headlines"] is not None and news_metrics["publisher_urls"] is not None:
                               break
               except Exception:
                   if os.environ["CONCLUSION"] != "success":
                       excerpts = ["Log archive unavailable; see the GitHub run for full diagnostics."]
                   else:
-                      news_summary = ["News log summary unavailable; feed generation job completed successfully."]
+                      news_errors = ["News log summary unavailable; feed generation job completed successfully."]
 
           conclusion = os.environ["CONCLUSION"]
           status = "SUCCESS" if conclusion == "success" else conclusion.upper()
@@ -115,19 +126,34 @@ jobs:
           except Exception:
               stamp = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%Y-%m-%d %H:%M:%S BDT")
 
+          is_news = os.environ["WORKFLOW_NAME"] == "Refresh live news feed"
           lines = [
-              ("📰 NEWS REFRESH " if os.environ["WORKFLOW_NAME"] == "Refresh live news feed" else "🚨 GITHUB WORKFLOW ") + status,
-              f"Repository: {repo}",
-              f"Workflow: {scrub(os.environ['WORKFLOW_NAME'])}",
-              f"File: {scrub(os.environ.get('WORKFLOW_PATH') or 'not exposed')}",
-              f"Run ID: {run_id} · Attempt: {os.environ['RUN_ATTEMPT']}",
-              f"Branch/ref: {scrub(os.environ.get('BRANCH') or 'unknown')}",
-              f"Trigger: {scrub(os.environ.get('EVENT_NAME') or 'unknown')}",
-              f"Conclusion: {status}",
-              f"Time: {stamp}",
-              f"Run: {os.environ['RUN_URL']}",
-              f"Deduplication key: {run_id}-{os.environ['RUN_ATTEMPT']}",
+              ("📰 NEWS UPDATE — " if is_news else "🚨 WORKFLOW ALERT — ") + status,
+              f"📦 {repo}",
+              f"⚙️ {scrub(os.environ['WORKFLOW_NAME'])}",
+              f"🕒 {stamp}",
           ]
+          if is_news and news_metrics["headlines"] is not None:
+              lines.extend([
+                  "",
+                  "📊 NEWS FEED",
+                  f"• মোট শিরোনাম: {news_metrics['headlines']:,}",
+                  f"• বাংলাদেশ: {news_metrics['bangladesh']:,}",
+                  f"• সফল RSS query: {news_metrics['rss']}",
+              ])
+              if news_metrics["publisher_urls"] is not None:
+                  lines.extend([
+                      "",
+                      "🔎 PUBLISHER METADATA",
+                      f"• URL পাওয়া গেছে: {news_metrics['publisher_urls']}",
+                      f"• Metadata article: {news_metrics['metadata_articles']}",
+                      "• নোট: এটি অতিরিক্ত metadata সংগ্রহ; RSS headline সংগ্রহের ফল নয়।",
+                  ])
+          lines.extend([
+              "",
+              f"🆔 Run: {run_id} · Attempt {os.environ['RUN_ATTEMPT']}",
+              f"🔗 {os.environ['RUN_URL']}",
+          ])
           if failed:
               lines.append("Failed job/step:")
               for item in failed[:8]:
@@ -136,9 +162,9 @@ jobs:
           if excerpts:
               lines.append("Safe log excerpts:")
               lines.extend("- " + x for x in excerpts[:4])
-          if news_summary:
-              lines.append("News feed summary:")
-              lines.extend("- " + x for x in news_summary[:8])
+          if news_errors:
+              lines.extend(["", "⚠️ FEED WARNINGS"])
+              lines.extend("- " + x for x in news_errors[:3])
           if conclusion != "success" and not excerpts:
               lines.append("Cause not confirmed from available logs; inspect the linked run.")
           message = "\n".join(lines)[:3900]
