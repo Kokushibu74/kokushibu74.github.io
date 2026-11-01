@@ -22,15 +22,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Read Telegram automation settings
+        id: bot_config
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 2 --max-time 15 https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config -o /tmp/bot-config.json
+          enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsRefresh===true?'true':'false')")"
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
       - name: Check out latest main before refreshing the feed
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         uses: actions/checkout@v4
         with:
           ref: main
       - name: Run offline news logic tests
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_update_news.py -v
       - name: Generate feed from public RSS sources
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 scripts/update_news.py
       - name: Commit feed when changed
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
