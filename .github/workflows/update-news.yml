@@ -22,8 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out repository
+      - name: Check out latest main before refreshing the feed
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Run offline news logic tests
         run: python3 tests/test_update_news.py -v
       - name: Generate feed from public RSS sources
