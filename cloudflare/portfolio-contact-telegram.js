@@ -202,7 +202,7 @@ async function umHandleCommand(env,msg){
   const isAdmin=admins.has(sender);
   if(cmd==="/start"||cmd==="/menu"){await botShowMenu(env,chatId);return true;}
   if(cmd==="/cmd"){
-    const publicCommands=[{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
+    const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
       {command:"info",description:"সাইট ও Worker health check"},
       {command:"userid",description:"Telegram ও Website user list"},
@@ -249,7 +249,7 @@ async function umHandleCommand(env,msg){
       "",
       "ℹ️ নিরাপত্তা: এই গাইডে কোনো API token, secret বা credential প্রকাশ করা হয় না।"
     ];
-    await umReply(env,chatId,guide.join("\n"));
+    await botSend(env,chatId,guide.join("\n"),botMainKeyboard());
     return true;
   }
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
@@ -526,7 +526,7 @@ export default {
   },
   async scheduled(controller,env,ctx) {
     const cfg=await botConfig(env);
-    if(!cfg.scheduledChecks&&!cfg.emergencyProtection)return;
+    if((!cfg.monitoring||!cfg.scheduledChecks)&&!cfg.emergencyProtection)return;
     const site="https://kokushibu74.github.io/",started=performance.now(),now=new Date();
     const stamp=now.toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(now);
@@ -564,6 +564,6 @@ export default {
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
     if(failure&&cfg.emergencyProtection)await sendTelegram(["🚨 <b>URGENT WEBSITE ALERT</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,"❌ "+failure,responseMs===null?"":"⏱️ Check time: "+responseMs+" ms","","The site will be checked again on the next 30-minute run."].filter(Boolean).join("\n"));
-    if(daily&&cfg.dailyReport){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    if(daily&&cfg.dailyReport&&cfg.monitoring){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
   }
 };
