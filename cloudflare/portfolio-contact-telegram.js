@@ -71,7 +71,7 @@ async function umBlocked(env,kind,id){
 }
 async function umReply(env,chatId,text){
   if(!env.TELEGRAM_BOT_TOKEN)return;
-  await sendTelegramText(env,chatId,text);
+  await botSend(env,chatId,text,botBackKeyboard());
 }
 
 // Telegram inline-button navigation and persistent control settings.
@@ -92,14 +92,64 @@ async function botSaveConfig(env,cfg){
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is not deployed");
   await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify({...BOT_DEFAULTS,...cfg,updatedAt:Date.now()}));
 }
-async function botSend(env,chatId,text,keyboard){
-  if(!env.TELEGRAM_BOT_TOKEN)return;
-  const body={chat_id:chatId,text,disable_web_page_preview:true};
-  if(keyboard)body.reply_markup={inline_keyboard:keyboard};
-  const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+const BOT_MENU_KEY_PREFIX = "bot:menu:v1:";
+async function botTelegram(env,method,payload){
+  const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{
+    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
+  });
   const d=await r.json().catch(()=>({}));
-  if(!r.ok||!d.ok)throw new Error("Telegram message delivery failed");
-  return d.result;
+  return {ok:!!(r.ok&&d.ok),data:d,status:r.status};
+}
+async function botGetMenuAnchor(env,chatId){
+  if(!env.BOT_CONFIG_KV)return null;
+  try{return await env.BOT_CONFIG_KV.get(BOT_MENU_KEY_PREFIX+String(chatId),"json")}catch{return null}
+}
+async function botRememberMenu(env,chatId,messageId,onlyIfMissing=false){
+  if(!env.BOT_CONFIG_KV||!messageId)return;
+  const key=BOT_MENU_KEY_PREFIX+String(chatId);
+  if(onlyIfMissing){const old=await botGetMenuAnchor(env,chatId);if(old?.messageId)return;}
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
+}
+async function botAnswerCallback(env,query,text,showAlert=false){
+  if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
+  await botTelegram(env,"answerCallbackQuery",{callback_query_id:query.id,...(text?{text}:{}),...(showAlert?{show_alert:true}:{})});
+}
+async function botSend(env,chatId,text,keyboard,options={}){
+  if(!env.TELEGRAM_BOT_TOKEN)return;
+  const saved=await botGetMenuAnchor(env,chatId);
+  const messageId=saved?.messageId||options.messageId||null;
+  const payload={chat_id:chatId,text:String(text||"").slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]}};
+  if(messageId&&!options.forceNew){
+    const edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId});
+    if(edited.ok||String(edited.data?.description||"").toLowerCase().includes("message is not modified")){
+      await botRememberMenu(env,chatId,messageId);
+      return edited.data?.result||{message_id:messageId,chat:{id:chatId}};
+    }
+    const reason=String(edited.data?.description||"").toLowerCase();
+    const canFallback=reason.includes("message to edit not found")||reason.includes("message can't be edited")||reason.includes("message identifier is not specified")||reason.includes("message_id_invalid")||reason.includes("message to be edited not found");
+    if(!canFallback)throw new Error("Telegram menu update failed (HTTP "+edited.status+")");
+  }
+  const sent=await botTelegram(env,"sendMessage",payload);
+  if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+")");
+  await botRememberMenu(env,chatId,sent.data.result?.message_id);
+  return sent.data.result;
+}
+async function botSendChatAction(env,chatId){
+  try{await botTelegram(env,"sendChatAction",{chat_id:chatId,action:"typing"})}catch{}
+}
+async function botWithTyping(env,chatId,work){
+  let active=true;
+  const ticker=(async()=>{
+    while(active){
+      await botSendChatAction(env,chatId);
+      await new Promise(resolve=>setTimeout(resolve,4000));
+    }
+  })();
+  try{return await work()}finally{active=false;await ticker;}
+}
+async function botRunWithProgress(env,chatId,message,work){
+  await botSend(env,chatId,"⏳ "+message,botBackKeyboard());
+  return await botWithTyping(env,chatId,work);
 }
 function botMainKeyboard(){
   const rows=[];for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
@@ -217,16 +267,25 @@ async function botHandleCallback(env,query){
   if(!chatId||!data.startsWith("b1:"))return false;
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   if(query.message?.chat?.type!=="private"||!admins.has(sender)){
-    await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/answerCallbackQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callback_query_id:query.id,text:"Admin access required",show_alert:true})});
+    await botAnswerCallback(env,query,"Admin access required",true);
     return true;
   }
   const action=data.slice(3);
-  try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/answerCallbackQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callback_query_id:query.id})});
+  try{
+    const anchor=await botGetMenuAnchor(env,chatId);
+    if(anchor?.messageId&&Number(anchor.messageId)!==Number(query.message?.message_id)){
+      await botAnswerCallback(env,query,"Menu updated. Use the latest menu.",true);
+      return true;
+    }
+    await botRememberMenu(env,chatId,query.message?.message_id,true);
+    await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
-      const started=Date.now();let status="Unavailable";
-      try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(12000)});status="HTTP "+r.status+" · "+(Date.now()-started)+" ms";await r.body?.cancel()}catch(e){status="ERROR · "+String(e.message||e).slice(0,100)}
-      await botSend(env,chatId,"🔄 MANUAL REFRESH RESULT\nWebsite: "+status+"\n\nNo background refresh was started.",[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]);
+      await botRunWithProgress(env,chatId,"ওয়েবসাইটের অবস্থা পরীক্ষা করা হচ্ছে...",async()=>{
+        const started=Date.now();let status="Unavailable";
+        try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(12000)});status="HTTP "+r.status+" · "+(Date.now()-started)+" ms";await r.body?.cancel()}catch(e){status="ERROR · "+String(e.message||e).slice(0,100)}
+        await botSend(env,chatId,"🔄 MANUAL REFRESH RESULT\nWebsite: "+status+"\n\nNo background refresh was started.",[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]);
+      });
       return true;
     }
     if(action.startsWith("toggle:")){
@@ -246,11 +305,11 @@ async function botHandleCallback(env,query){
       await env.BOT_CONFIG_KV.put("bot:user-input:"+sender,JSON.stringify({mode,createdAt:Date.now()}),{expirationTtl:600});
       await botSend(env,chatId,prompts[mode]+"\n১০ মিনিটের মধ্যে উত্তর পাঠান।",botBackKeyboard());return true;
     }
-    if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botSend(env,chatId,"⏳ Publishing approved hero image…");const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ GitHub updated: "+result.imagePath+"\nPages deployment may take a few moments. Verify the live homepage before considering it complete.",botBackKeyboard());return true;}
+    if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botRunWithProgress(env,chatId,"অনুমোদিত Hero Image GitHub-এ প্রকাশ করা হচ্ছে...",async()=>{const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ GitHub updated: "+result.imagePath+"\nPages deployment may take a few moments. Verify the live homepage before considering it complete.",botBackKeyboard());});return true;}
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
-    if(action==="hero:current"){const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());return true}
-    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());return true;}
+    if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
   }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\n\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\n\nকরণীয়:\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}
   return true;
