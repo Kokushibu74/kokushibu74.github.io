@@ -93,7 +93,42 @@ async function botSaveConfig(env,cfg){
   await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify({...BOT_DEFAULTS,...cfg,updatedAt:Date.now()}));
 }
 const BOT_MENU_KEY_PREFIX = "bot:menu:v1:";
-async function botTelegram(env,method,payload){
+
+const BOT_START_LABEL = "🚀 START BOT";
+async function botMarkMenuInteraction(env,chatId,messageId,busy){
+  if(!env.BOT_CONFIG_KV)return;
+  const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId);
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
+}
+async function botEnsureStartKeyboard(env,chatId){
+  const key="bot:start-keyboard:v1:"+String(chatId);
+  if(await env.BOT_CONFIG_KV?.get(key))return;
+  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"কন্ট্রোল প্যানেল খুলতে নিচের START BOT বাটন ব্যবহার করুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
+  if(sent.ok)await env.BOT_CONFIG_KV?.put(key,"1");
+}
+async function botHandleStartButton(env,msg){
+  if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
+  await botEnsureStartKeyboard(env,msg.chat.id);
+  const old=await botGetMenuAnchor(env,msg.chat.id);
+  const fresh=await botSend(env,msg.chat.id,"🤖 PORTFOLIO CONTROL CENTER\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন।",botMainKeyboard(),{forceNew:true});
+  if(old?.messageId&&Number(old.messageId)!==Number(fresh?.message_id))await botTelegram(env,"deleteMessage",{chat_id:msg.chat.id,message_id:Number(old.messageId)});
+  await botMarkMenuInteraction(env,msg.chat.id,fresh?.message_id,false);
+  return true;
+}
+async function botExpireIdleMenu(env){
+  if(!env.BOT_CONFIG_KV)return;
+  const page=await env.BOT_CONFIG_KV.list({prefix:BOT_MENU_KEY_PREFIX,limit:100}),now=Date.now();
+  for(const item of page.keys||[]){
+    const a=await env.BOT_CONFIG_KV.get(item.name,"json");
+    if(!a?.messageId||a.busy)continue;
+    const last=Number(a.lastInteractionAt||a.updatedAt||0);
+    if(!last||now-last<900000)continue;
+    const chatId=a.chatId||item.name.slice(BOT_MENU_KEY_PREFIX.length);
+    const d=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(a.messageId)});
+    if(d.ok||String(d.data?.description||"").toLowerCase().includes("message to delete not found"))await env.BOT_CONFIG_KV.delete(item.name);
+  }
+}
+\nasync function botTelegram(env,method,payload){
   const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{
     method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
   });
@@ -108,7 +143,7 @@ async function botRememberMenu(env,chatId,messageId,onlyIfMissing=false){
   if(!env.BOT_CONFIG_KV||!messageId)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId);
   if(onlyIfMissing){const old=await botGetMenuAnchor(env,chatId);if(old?.messageId)return;}
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
+  const prior=await botGetMenuAnchor(env,chatId);await env.BOT_CONFIG_KV.put(key,JSON.stringify({...prior,chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
 }
 async function botAnswerCallback(env,query,text,showAlert=false){
   if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
@@ -331,7 +366,7 @@ async function botHandleCallback(env,query){
     if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
     if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\n\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\n\nকরণীয়:\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}
+  }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\n\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\n\nকরণীয়:\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}finally{await botMarkMenuInteraction(env,chatId,query.message?.message_id,false)}
   return true;
 }
 
@@ -343,7 +378,7 @@ async function umHandleCommand(env,msg){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){await botShowMenu(env,chatId);return true;}
+  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);return true;}
   if(cmd==="/cmd"){
     const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
@@ -631,7 +666,7 @@ export default {
       }
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
-        const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
+        const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
         if(pending?.mode){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
@@ -696,6 +731,8 @@ export default {
     return respond({ok:true});
   },
   async scheduled(controller,env,ctx) {
+    await botExpireIdleMenu(env);
+    if(controller.cron==="* * * * *")return;
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
     if(!runChecks&&!cfg.emergencyProtection)return;
