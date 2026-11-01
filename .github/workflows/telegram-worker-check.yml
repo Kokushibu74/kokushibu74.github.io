@@ -5,12 +5,16 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
-      - '.github/workflows/telegram-worker-check.yml'\n      - 'miniapp/**'\n      - 'tests/miniapp-auth.test.mjs'
+      - '.github/workflows/telegram-worker-check.yml'
+      - 'miniapp/**'
+      - 'tests/miniapp-auth.test.mjs'
   push:
     branches: [feature/telegram-button-upgrade, feature/shihabul-control-center]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - '.github/workflows/telegram-worker-check.yml'
+      - 'miniapp/**'
+      - 'tests/miniapp-auth.test.mjs'
 
 permissions:
   contents: read
@@ -25,6 +29,8 @@ jobs:
           node-version: 22
       - name: Parse Worker module
         run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Verify Telegram Mini App authentication and frontend contracts
+        run: node tests/miniapp-auth.test.mjs
       - name: Verify button and safety contracts
         run: |
           node --input-type=commonjs <<'NODE'
