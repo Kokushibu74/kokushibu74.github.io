@@ -80,7 +80,7 @@ function normalizeCricketEvent(event,league) {
     leagueId:String(league?.id||""),league:String(league?.name||league?.shortName||"Cricket"),
     competition:String(league?.name||league?.shortName||"Cricket"),
     status,statusDetail:String(statusType.shortDetail||statusType.detail||event?.statusDetail||event?.statusText||""),
-    startTime:date,homeTeam:homeTeam||"Team 1",awayTeam:awayTeam||"Team 2",
+    startTime:date,homeTeam,awayTeam,
     homeScore:home?.score==null?null:String(home.score),awayScore:away?.score==null?null:String(away.score),
     homeLogo:home?.team?.logo||home?.logo||null,awayLogo:away?.team?.logo||away?.logo||null
   };
