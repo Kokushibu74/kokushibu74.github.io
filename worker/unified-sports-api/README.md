@@ -41,9 +41,9 @@ Both required secret bindings (`ADMIN_KEY` and `YOUTUBE_API_KEY`) and the offici
 
 The smoke test targets the actual production Worker used by `sports-zone.html`, not the legacy Worker.
 
-## Existing issue found during audit
+## Cricket provider routing
 
-In the audited seven-day Observability window, the old ESPN cricket endpoint recorded 15 HTTP 502 responses: 9 for `league=ipl` and 6 for `league=icc.t20`. These are pre-existing provider/league errors and need separate endpoint validation.
+The ESPN Site Scoreboard path for cricket was returning 404/502 for the old `/api/cricket?league=ipl|icc.t20` requests. The unified Worker now uses ESPN's Personalized Scoreboard Header to discover active cricket series and their live/upcoming events, and the ESPN Web API match-summary route for scorecards. The existing Cricbuzz `/matches/live` and match-detail routes remain in place for the Live Match Center. The production smoke test checks all three cricket competition filters and the Cricbuzz live feed.
 
 
 ### Live match handling
