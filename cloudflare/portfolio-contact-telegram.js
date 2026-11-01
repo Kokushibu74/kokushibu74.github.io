@@ -166,23 +166,24 @@ function botFormatTelegramResponse(text,options={}) {
 }
 
 async function botSend(env,chatId,text,keyboard,options={}){
-  if(!env.TELEGRAM_BOT_TOKEN)return;
-  const saved=await botGetMenuAnchor(env,chatId);
+  if(!env.TELEGRAM_BOT_TOKEN)throw new Error("TELEGRAM_BOT_TOKEN secret is unavailable");
+  let saved=null;
+  try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
   const messageId=saved?.messageId||options.messageId||null;
   const payload={chat_id:chatId,text:botFormatTelegramResponse(text,options).slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]},...(options.parse_mode?{parse_mode:options.parse_mode}:{})};
   if(messageId&&!options.forceNew){
-    const edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId});
-    if(edited.ok||String(edited.data?.description||"").toLowerCase().includes("message is not modified")){
-      await botRememberMenu(env,chatId,messageId);
-      return edited.data?.result||{message_id:messageId,chat:{id:chatId}};
+    let edited;
+    try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
+    catch(e){console.error("Telegram menu edit request failed; falling back to a new message",String(e&&e.message||e).slice(0,240))}
+    if(edited?.ok||String(edited?.data?.description||"").toLowerCase().includes("message is not modified")){
+      try{await botRememberMenu(env,chatId,messageId)}catch(e){console.error("Telegram menu anchor refresh failed",String(e&&e.message||e).slice(0,240))}
+      return edited?.data?.result||{message_id:messageId,chat:{id:chatId}};
     }
-    const reason=String(edited.data?.description||"").toLowerCase();
-    const canFallback=reason.includes("message to edit not found")||reason.includes("message can't be edited")||reason.includes("message identifier is not specified")||reason.includes("message_id_invalid")||reason.includes("message to be edited not found");
-    if(!canFallback)throw new Error("Telegram menu update failed (HTTP "+edited.status+")");
+    console.error("Telegram menu edit rejected; sending a fresh message",JSON.stringify({status:edited?.status,description:String(edited?.data?.description||"").slice(0,240)}));
   }
   const sent=await botTelegram(env,"sendMessage",payload);
-  if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+")");
-  await botRememberMenu(env,chatId,sent.data.result?.message_id);
+  if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
+  try{await botRememberMenu(env,chatId,sent.data.result?.message_id)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
   return sent.data.result;
 }
 async function botSendChatAction(env,chatId){
