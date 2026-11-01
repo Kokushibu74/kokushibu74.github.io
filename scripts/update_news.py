@@ -7,6 +7,7 @@ import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from urllib.parse import urlparse
@@ -74,7 +75,8 @@ BREAKING_FOLLOWUP_RE = re.compile(
     r"investigation into)", re.I
 )
 BREAKING_HISTORY_DAYS = 30
-FEED_RETENTION_DAYS = 7
+FEED_RETENTION_DAYS = 90
+BANGLADESH_TZ = ZoneInfo("Asia/Dhaka")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
     "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
@@ -421,7 +423,7 @@ def read_breaking_history():
 
 
 def within_feed_retention(item, now=None):
-    """Keep only dated headlines published within the last seven days."""
+    """Keep dated stories from today and the previous 89 Bangladesh calendar days."""
     if not isinstance(item, dict):
         return False
     stamp = item.get("publishedAt")
@@ -431,11 +433,37 @@ def within_feed_retention(item, now=None):
             return False
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=timezone.utc)
+        parsed_utc = parsed.astimezone(timezone.utc)
         current = now or datetime.now(timezone.utc)
-        age = current - parsed.astimezone(timezone.utc)
-        return timedelta(minutes=-5) <= age <= timedelta(days=FEED_RETENTION_DAYS)
-    except (ValueError, TypeError, AttributeError):
+        if current.tzinfo is None:
+            current = current.replace(tzinfo=timezone.utc)
+        age = current.astimezone(timezone.utc) - parsed_utc
+        if age < timedelta(minutes=-5):
+            return False
+        today_bd = current.astimezone(BANGLADESH_TZ).date()
+        published_bd = parsed_utc.astimezone(BANGLADESH_TZ).date()
+        oldest_kept = today_bd - timedelta(days=FEED_RETENTION_DAYS - 1)
+        return oldest_kept <= published_bd <= today_bd
+    except (ValueError, TypeError, AttributeError, OverflowError):
         return False
+
+
+def annotate_seen_items(items, previous, now=None):
+    """Persist first discovery time and mark only newly discovered stories as this run's batch."""
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    now_iso = current.astimezone(timezone.utc).isoformat()
+    previous_by_key = {key_for(item): item for item in previous if key_for(item)}
+    for item in items:
+        old = previous_by_key.get(key_for(item))
+        if old:
+            item["firstSeenAt"] = old.get("firstSeenAt") or old.get("publishedAt") or now_iso
+            item["latestBatchAt"] = old.get("latestBatchAt") or ""
+        else:
+            item["firstSeenAt"] = now_iso
+            item["latestBatchAt"] = now_iso
+    return items
 
 
 def read_previous():
@@ -650,6 +678,8 @@ def main():
         selected_keys.add(key)
         selected.append(item)
     selected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+    now_iso = datetime.now(timezone.utc).isoformat()
+    annotate_seen_items(selected, previous, datetime.fromisoformat(now_iso))
     previous_by_key = {key_for(item): item for item in previous}
     meaningful_fields = ("title", "link", "source", "publishedAt", "category", "summary", "image",
                          "publisherUrl", "publisherName", "previewTitle", "previewSummary",
@@ -667,7 +697,6 @@ def main():
         print("WARNING: all RSS requests failed; only retained headlines are available.")
     if len(selected) < 100 or bd_count < 50:
         print("WARNING: target not met by currently available sources. Total:", len(selected), "Bangladesh:", bd_count)
-    now_iso = datetime.now(timezone.utc).isoformat()
     history_by_title = {key_for(item): item for item in breaking_history}
     for item in collected:
         if not item.get("isBreaking"):
@@ -697,7 +726,7 @@ def main():
         if stamp and stamp >= history_cutoff:
             history.append(item)
     history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
-    payload = {"updatedAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
+    payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
         file.write("\n")
