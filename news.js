@@ -186,7 +186,7 @@
     const renderNow=Date.now();
     let previousArchiveDate="";
     grid.innerHTML=pageItems.map((x,i)=>{
-      const date=dateOf(x),recent=isLatestBatch(x);
+      const date=dateOf(x),recent=viewMode==="feed"&&isLatestBatch(x);
       const archiveDate=date?bdDateKey(date):"";
       const archiveHeading=viewMode==="archive"&&archiveDate&&archiveDate!==previousArchiveDate?'<div class="archive-date-heading">'+new Date(archiveDate+"T00:00:00+06:00").toLocaleDateString("en-GB",{timeZone:"Asia/Dhaka",weekday:"long",day:"numeric",month:"long",year:"numeric"})+'</div>':"";
       if(archiveDate)previousArchiveDate=archiveDate;
