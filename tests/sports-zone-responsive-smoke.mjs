@@ -47,11 +47,15 @@ try {
         statusFilter: !!document.querySelector("#match-status-filter"),
         desktopNav: style(".arena-nav"),
         mobileNav: style(".arena-bottom-nav"),
-        scheduleCards: document.querySelectorAll("#schedule-preview .schedule-card").length
+        scheduleCards: document.querySelectorAll("#schedule-preview .schedule-card").length,
+        overflowing: [...document.querySelectorAll("body *")].map(el => {
+          const r = el.getBoundingClientRect();
+          return { tag: el.tagName, id: el.id, className: String(el.className || "").slice(0, 80), left: Math.round(r.left), right: Math.round(r.right), width: Math.round(r.width) };
+        }).filter(el => el.right > innerWidth + 1 || el.left < -1).slice(0, 12)
       };
     });
     if (state.documentWidth > state.width + 2) {
-      throw new Error(viewport.name + " horizontal overflow: viewport " + state.width + ", document " + state.documentWidth);
+      throw new Error(viewport.name + " horizontal overflow: viewport " + state.width + ", document " + state.documentWidth + "; elements: " + JSON.stringify(state.overflowing));
     }
     if (!state.hero || !state.console || !state.search || !state.statusFilter) {
       throw new Error(viewport.name + " missing a required Arena interface element");
