@@ -139,6 +139,15 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
         ))
 
+    def test_namespaced_atom_weather_image_is_extracted(self):
+        root = news.parse_feed_xml("""<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><title>Flood warning</title>
+          <link href="https://example.com/story"/>
+          <summary type="html">&lt;img src=&quot;https://example.com/weather.jpg&quot;&gt;</summary>
+          </entry></feed>""".encode("utf-8"))
+        item = news.feed_items(root)[0]
+        self.assertEqual(news.image_for(item), "https://example.com/weather.jpg")
+
     def test_namespaced_atom_feed_items_and_links_are_parsed(self):
         root = news.parse_feed_xml("""<feed xmlns="http://www.w3.org/2005/Atom">
           <entry><title>ঢাকায় নতুন খবর</title>
