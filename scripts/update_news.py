@@ -463,6 +463,7 @@ def main():
     breaking_history = read_breaking_history()
     collected, seen = [], set()
     successful_feeds = 0
+    feed_failures = []
 
     # Direct publisher RSS feeds complement Google News and provide original article links.
     for source, feed_url in DIRECT_FEEDS:
@@ -498,6 +499,7 @@ def main():
                 seen.add(key)
                 collected.append(item)
         except Exception as exc:
+            feed_failures.append(f"{source}: {type(exc).__name__}")
             print("Direct RSS error for", source, ":", type(exc).__name__, str(exc)[:180])
 
     for label, query, language, country, edition in QUERIES:
@@ -528,6 +530,7 @@ def main():
                 seen.add(key)
                 collected.append(item)
         except Exception as exc:
+            feed_failures.append(f"Google News {label} ({query}): {type(exc).__name__}")
             print("Feed error for", label, repr(query), ":", exc)
 
 
@@ -562,6 +565,7 @@ def main():
                 weather_seen.add(key)
                 weather_collected.append(item)
         except Exception as exc:
+            feed_failures.append(f"Weather/disaster ({query}): {type(exc).__name__}")
             print("Weather/disaster feed error for", repr(query), ":", type(exc).__name__, str(exc)[:180])
     weather_collected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
     weather_items = weather_collected[:12]
@@ -631,6 +635,18 @@ def main():
         selected_keys.add(key)
         selected.append(item)
     selected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+    previous_by_key = {key_for(item): item for item in previous}
+    meaningful_fields = ("title", "link", "source", "publishedAt", "category", "summary", "image",
+                         "publisherUrl", "publisherName", "previewTitle", "previewSummary",
+                         "previewImage", "iframeAllowed")
+    added_count = sum(1 for item in selected if key_for(item) not in previous_by_key)
+    updated_count = sum(
+        1 for item in selected
+        if key_for(item) in previous_by_key and any(
+            item.get(field) != previous_by_key[key_for(item)].get(field) for field in meaningful_fields
+        )
+    )
+    unchanged_count = max(0, len(selected) - added_count - updated_count)
     bd_count = sum(1 for x in selected if x.get("category") == "Bangladesh")
     if successful_feeds == 0:
         print("WARNING: all RSS requests failed; only retained headlines are available.")
@@ -671,6 +687,9 @@ def main():
         json.dump(payload, file, ensure_ascii=False, indent=2)
         file.write("\n")
     print("Wrote", len(selected), "headlines; Bangladesh:", bd_count, "from", successful_feeds, "successful RSS queries.")
+    print("Item changes: added:", added_count, "updated:", updated_count, "unchanged:", unchanged_count)
+    attempted_feeds = len(DIRECT_FEEDS) + len(QUERIES) + len(WEATHER_QUERIES)
+    print("Feed diagnostics:", successful_feeds, "/", attempted_feeds, "successful; failures:", " | ".join(feed_failures[:20]) or "none")
 
 if __name__ == "__main__":
     main()
