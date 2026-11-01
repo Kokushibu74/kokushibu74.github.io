@@ -138,14 +138,19 @@ async function botSendChatAction(env,chatId){
   try{await botTelegram(env,"sendChatAction",{chat_id:chatId,action:"typing"})}catch{}
 }
 async function botWithTyping(env,chatId,work){
-  let active=true;
+  let active=true,timer=null,wake=null;
   const ticker=(async()=>{
     while(active){
       await botSendChatAction(env,chatId);
-      await new Promise(resolve=>setTimeout(resolve,4000));
+      if(!active)break;
+      await new Promise(resolve=>{wake=resolve;timer=setTimeout(()=>{timer=null;wake=null;resolve()},4000)});
     }
   })();
-  try{return await work()}finally{active=false;await ticker;}
+  try{return await work()}finally{
+    active=false;
+    if(timer){clearTimeout(timer);timer=null;const resume=wake;wake=null;resume?.();}
+    await ticker;
+  }
 }
 async function botRunWithProgress(env,chatId,message,work){
   await botSend(env,chatId,"⏳ "+message,botBackKeyboard());
