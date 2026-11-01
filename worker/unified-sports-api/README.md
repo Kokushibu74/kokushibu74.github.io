@@ -43,7 +43,7 @@ The smoke test targets the actual production Worker used by `sports-zone.html`, 
 
 ## Cricket provider routing
 
-The ESPN Site Scoreboard path for cricket was returning 404/502 for the old `/api/cricket?league=ipl|icc.t20` requests. The unified Worker now uses ESPN's Personalized Scoreboard Header to discover active cricket series and their live/upcoming events, and the ESPN Web API match-summary route for scorecards. The existing Cricbuzz `/matches/live` and match-detail routes remain in place for the Live Match Center. The production smoke test checks all three cricket competition filters and the Cricbuzz live feed.
+The ESPN Site Scoreboard path for cricket was returning 404/502 for the old `/api/cricket?league=ipl|icc.t20` requests. The unified Worker now uses ESPN's Personalized Scoreboard Header to discover active cricket series and their live/upcoming events, and the ESPN Web API match-summary route for scorecards. The existing Cricbuzz `/matches/live` and match-detail routes remain in place for the Live Match Center. The production smoke test checks all three cricket competition filters, Cricket match summaries, the Cricbuzz live feed, the unified multi-sport schedule, official streams, CORS, and the actual Worker used by the public page.
 
 
 ### Live match handling
