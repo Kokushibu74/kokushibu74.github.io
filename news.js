@@ -191,15 +191,24 @@
     }).join("");
   }
   function updateFilterCounts(){
+    const todayBD=bdDateKey(Date.now());
+    const oldestDate=new Date(todayBD+"T00:00:00Z");
+    oldestDate.setUTCDate(oldestDate.getUTCDate()-89);
+    const oldestBD=oldestDate.toISOString().slice(0,10);
+    const scoped=items.filter(x=>{
+      const d=dateOf(x),key=d?bdDateKey(d):"";
+      if(!key||key>todayBD||key<oldestBD)return false;
+      return viewMode==="feed"?key===todayBD:key<todayBD;
+    });
     filters.querySelectorAll("button[data-category]").forEach(button=>{
       const category=button.dataset.category;
-      const count=category==="All"?items.length:items.filter(x=>x.category===category).length;
+      const count=category==="All"?scoped.length:scoped.filter(x=>x.category===category).length;
       const label=button.dataset.label||button.textContent.replace(/\s+\(\d+\)$/,"");
       button.dataset.label=label;
       button.textContent=label+" ("+count+")";
     });
   }
-  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
+  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;updateFilterCounts();viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));render()});
   document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
   pagination.addEventListener("click",e=>{const button=e.target.closest("button[data-page]");if(!button||button.disabled)return;currentPage=Number(button.dataset.page)||1;render();document.getElementById("latest-feed")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
