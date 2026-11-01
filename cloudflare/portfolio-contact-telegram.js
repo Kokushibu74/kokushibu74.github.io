@@ -84,18 +84,18 @@ async function umHandleCommand(env,msg){
       const p=await umProfile(env,user)||{};if(p.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(p.customId).toLowerCase()));
       p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
       await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});
-      await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
+      await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umHistory(env,user.kind,user.id,{type:"custom_id_changed",customId:custom,by:sender});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
     }else if(cmd==="/userlink"){
       const tg=await umResolve(env,arg),web=await umResolve(env,parts[1]||"");
       if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web))){await umReply(env,chatId,"ব্যবহার: /userlink TELEGRAM_ID VISITOR_ID — দুই ID-ই আগে /userid-তে থাকতে হবে।");return true;}
       await env.VISITOR_KV.put(UM_PREFIX+"link:telegram:"+tg.id,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
       await env.VISITOR_KV.put(UM_PREFIX+"link:visitor:"+web.id,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
-      await umHistory(env,"admin",sender,{type:"link",telegramId:tg.id,visitorId:web.id});
+      await umHistory(env,"admin",sender,{type:"link",telegramId:tg.id,visitorId:web.id});await umHistory(env,"telegram",tg.id,{type:"identity_linked",visitorId:web.id,by:sender});await umHistory(env,"visitor",web.id,{type:"identity_linked",telegramId:tg.id,by:sender});
       await umReply(env,chatId,"🔗 Telegram ও Website ID link হয়েছে।");
     }else if(cmd==="/userunlink"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
       const kind=user.kind==="telegram"?"telegram":"visitor",key=UM_PREFIX+"link:"+kind+":"+user.id,link=await env.VISITOR_KV.get(key,"json");
-      if(link){await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);}
+      if(link){await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);await umHistory(env,"telegram",kind==="telegram"?user.id:link.telegramId,{type:"identity_unlinked",by:sender});await umHistory(env,"visitor",kind==="visitor"?user.id:link.visitorId,{type:"identity_unlinked",by:sender});}
       await umHistory(env,"admin",sender,{type:"unlink",target:user});
       await umReply(env,chatId,link?"🔗 Link বিচ্ছিন্ন করা হয়েছে।":"এই ID-র কোনো link ছিল না।");
     }else if(cmd==="/userblock"||cmd==="/userunblock"){
@@ -106,8 +106,8 @@ async function umHandleCommand(env,msg){
       const scopes=scope==="both"?["telegram","website"]:[scope],active=cmd==="/userblock",available=scopes.filter(kind=>!!targets[kind]),missing=scopes.filter(kind=>!targets[kind]);
       if(missing.length&&scope!=="both"){await umReply(env,chatId,"এই User-এর linked "+missing[0]+" ID নেই। আগে /userlink TELEGRAM_ID VISITOR_ID দিয়ে link করুন।");return true;}
       for(const kind of available){const key=UM_PREFIX+"block:"+kind+":"+targets[kind];if(active)await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:sender,reason:"Admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
-      await umHistory(env,"admin",sender,{type:active?"block":"unblock",target:user,scope,targets});
-      await umReply(env,chatId,(active?"🚫 Blocked ":"✅ Unblocked ")+user.id+" · "+(missing.length?"শুধু "+available.join("+")+"; দুই scope-এর জন্য আগে ID link করুন":"both".includes(scope)?"both":scope));
+      await umHistory(env,"admin",sender,{type:active?"block":"unblock",target:user,scope,targets});for(const kind of available)await umHistory(env,kind==="website"?"visitor":"telegram",targets[kind],{type:active?"blocked":"unblocked",scope:kind,by:sender});
+      await umReply(env,chatId,(active?"🚫 Blocked ":"✅ Unblocked ")+user.id+" · "+(missing.length?"শুধু "+available.join("+")+"; দুই scope-এর জন্য আগে ID link করুন":scope==="both"?"both":scope));
     }else if(cmd==="/userhistory"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
       const pageNo=Math.max(1,Math.min(999,Number(parts[1])||1)),prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":",keys=await umList(env,prefix);
