@@ -189,43 +189,43 @@ class NewsLogicTests(unittest.TestCase):
             "Technology"
         )
 
-    def test_feed_retention_accepts_six_days_and_rejects_expired_undated_or_future(self):
+    def test_feed_retention_uses_90_bangladesh_calendar_days(self):
         now = datetime(2026, 11, 1, 12, 0, tzinfo=timezone.utc)
-        item = {"publishedAt": (now - timedelta(days=6)).isoformat()}
-        self.assertTrue(news.within_feed_retention(item, now))
-        self.assertTrue(news.within_feed_retention(
-            {"publishedAt": (now - timedelta(days=7)).isoformat()}, now
-        ))
-        self.assertFalse(news.within_feed_retention(
-            {"publishedAt": (now - timedelta(days=7, seconds=1)).isoformat()}, now
-        ))
+        self.assertTrue(news.within_feed_retention({"publishedAt": "2026-08-03T18:00:00+00:00"}, now))
+        self.assertFalse(news.within_feed_retention({"publishedAt": "2026-08-03T17:59:59+00:00"}, now))
+        self.assertTrue(news.within_feed_retention({"publishedAt": "2026-11-01T11:00:00+00:00"}, now))
         self.assertFalse(news.within_feed_retention({"publishedAt": None}, now))
-        self.assertFalse(news.within_feed_retention(
-            {"publishedAt": (now + timedelta(minutes=6)).isoformat()}, now
-        ))
+        self.assertFalse(news.within_feed_retention({"publishedAt": "2026-11-02T12:06:00+00:00"}, now))
 
-    def test_previous_items_are_pruned_after_seven_days(self):
+    def test_feed_retention_uses_dhaka_midnight_not_rolling_24_hours(self):
+        now = datetime(2026, 11, 1, 18, 30, tzinfo=timezone.utc)
+        self.assertTrue(news.within_feed_retention({"publishedAt": "2026-11-01T12:00:00+00:00"}, now))
+
+    def test_new_items_receive_first_seen_and_latest_batch_timestamps(self):
+        now = datetime(2026, 11, 1, 12, 0, tzinfo=timezone.utc)
+        old = {"title": "Known story", "publishedAt": "2026-11-01T10:00:00+00:00", "firstSeenAt": "2026-11-01T10:15:00+00:00", "latestBatchAt": "2026-11-01T10:15:00+00:00"}
+        items = [{"title": "Known story", "publishedAt": old["publishedAt"]}, {"title": "Brand new", "publishedAt": "2026-11-01T11:55:00+00:00"}]
+        news.annotate_seen_items(items, [old], now)
+        self.assertEqual(items[0]["firstSeenAt"], old["firstSeenAt"])
+        self.assertEqual(items[0]["latestBatchAt"], old["latestBatchAt"])
+        self.assertEqual(items[1]["firstSeenAt"], now.isoformat())
+        self.assertEqual(items[1]["latestBatchAt"], now.isoformat())
+
+    def test_previous_items_are_pruned_after_90_calendar_days(self):
         import json
         from tempfile import TemporaryDirectory
         old_output = news.OUTPUT
-        now = datetime.now(timezone.utc)
         try:
             with TemporaryDirectory() as folder:
                 path = Path(folder) / "news-feed.json"
+                now = datetime.now(timezone.utc)
                 path.write_text(json.dumps({"items": [
-                    {"title": "Fresh headline", "link": "https://example.com/fresh",
-                     "publishedAt": (now - timedelta(hours=3)).isoformat(), "category": "Bangladesh"},
-                    {"title": "Six-day headline", "link": "https://example.com/six",
-                     "publishedAt": (now - timedelta(days=6)).isoformat(), "category": "World"},
-                    {"title": "Expired headline", "link": "https://example.com/old",
-                     "publishedAt": (now - timedelta(days=8)).isoformat(), "category": "Bangladesh"},
-                    {"title": "Undated headline", "link": "https://example.com/undated",
-                     "publishedAt": None, "category": "Technology"}
+                    {"title": "Fresh headline", "link": "https://example.com/fresh", "publishedAt": now.isoformat(), "category": "Bangladesh"},
+                    {"title": "Undated headline", "link": "https://example.com/undated", "publishedAt": None, "category": "Technology"}
                 ]}), encoding="utf-8")
                 news.OUTPUT = str(path)
                 previous = news.read_previous()
-                self.assertEqual({item["title"] for item in previous},
-                                 {"Fresh headline", "Six-day headline"})
+                self.assertEqual({item["title"] for item in previous}, {"Fresh headline"})
         finally:
             news.OUTPUT = old_output
 
