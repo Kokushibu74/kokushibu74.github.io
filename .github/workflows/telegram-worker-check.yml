@@ -34,7 +34,7 @@ jobs:
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
-            'if(daily&&cfg.dailyReport)', 'cfg.emergencyProtection'
+            'if(daily&&cfg.dailyReport&&cfg.monitoring)', 'cfg.emergencyProtection'
           ];
           for (const item of required) {
             if (!source.includes(item)) throw new Error('Missing Telegram control contract: ' + item);
