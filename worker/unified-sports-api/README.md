@@ -33,11 +33,13 @@ Staged source for Cloudflare Worker `unified-sports-api`.
 
 The Sports Zone frontend separates currently live matches into a dedicated LIVE NOW section. Selecting a live match expands an inline panel on the same page. Cricket panels load Cricbuzz scorecard/commentary/ball-by-ball data using Cricbuzz match IDs; football panels load ESPN summary, team/player statistics and match events through `/api/football/details`. Detail requests are made only for the expanded match.
 
-## Rollout safety
+## Production schedule ownership
 
-Both legacy Workers remain deployed and enabled. The legacy scores Worker continues to own `*/15 * * * *` until the new Worker has both secrets and passes live verification. Do not attach the same Cron to both Workers at once; both would write to the same KV namespace and could double YouTube search usage.
+The production `unified-sports-api` Worker owns the `*/15 * * * *` Cron. The legacy `sports-zone-scores-api` Worker remains deployed and enabled for rollback, but has no Cron trigger. Both Workers share the same `SPORTS_ZONE` KV namespace, so never enable the same discovery Cron on both at once.
 
-After verifying the new Worker, move the 15-minute Cron to it while keeping the legacy scripts deployed for rollback.
+Both required secret bindings (`ADMIN_KEY` and `YOUTUBE_API_KEY`) and the official YouTube channel allowlist are present on the unified Worker. Keep secret values out of GitHub and public files.
+
+The smoke test targets the actual production Worker used by `sports-zone.html`, not the legacy Worker.
 
 ## Existing issue found during audit
 
