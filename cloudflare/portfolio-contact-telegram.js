@@ -108,7 +108,7 @@ function botMainKeyboard(){
 }
 function botBackKeyboard(){return [[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]}
 async function botShowMenu(env,chatId,title="🤖 PORTFOLIO CONTROL CENTER"){
-  await botSend(env,chatId,title+"\nএকটি বিভাগ নির্বাচন করুন:",botMainKeyboard());
+  await botSend(env,chatId,title+"\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন। কোনো সেটিংস পরিবর্তনের আগে তার ON/OFF অবস্থা দেখে নিন।",botMainKeyboard());
 }
 async function botCategory(env,chatId,category){
   const cfg=await botConfig(env);
@@ -146,34 +146,47 @@ async function botCategory(env,chatId,category){
     for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+(i+j)})));
   }
   rows.push(...botBackKeyboard());
-  await botSend(env,chatId,names[0]+"\nনিচের অপশন নির্বাচন করুন:",rows);
+  await botSend(env,chatId,names[0]+"\n\nএই বিভাগের অপশনগুলো নিচে দেওয়া হলো। প্রতিটি অপশনে চাপলে সংশ্লিষ্ট তথ্য বা নিয়ন্ত্রণ দেখানো হবে।\n\nকোনো সেটিংস ON/OFF করলে পরিবর্তনটি সংরক্ষিত হবে এবং মেনুতে নতুন অবস্থা দেখা যাবে।",rows);
 }
 
 async function botStatusText(env,category,index){
   const site="https://kokushibu74.github.io/";
+  const cfg=await botConfig(env);
+  const onOff=v=>v?"🟢 চালু (ON)":"⚪ বন্ধ (OFF)";
+  const section={
+    website:["ওয়েবসাইটের স্বাস্থ্য","হোমপেজের HTTP response, response time এবং Hero image configuration পরীক্ষা করা হয়েছে।"],
+    news:["News Feed-এর অবস্থা","লাইভ News Feed ফাইল পড়া হয়েছে; Feed-এর আকার, article count ও সর্বশেষ শিরোনাম দেখানো হচ্ছে।"],
+    analytics:["ভিজিটর অ্যানালিটিক্স","এই রিপোর্ট Cloudflare Visitor KV-তে সংরক্ষিত visitor activity থেকে তৈরি; এটি সরাসরি GA4-এর রিপোর্ট নয়।"],
+    security:["বেসিক নিরাপত্তা পরীক্ষা","হোমপেজের response headers পরীক্ষা করা হয়েছে। এটি পূর্ণাঙ্গ penetration test বা security audit নয়।"],
+    github:["GitHub Repository","GitHub API থেকে Repository ও সর্বশেষ commit-এর তথ্য নেওয়া হয়েছে।"],
+    reports:["রিপোর্ট কন্ট্রোল","Daily Report ও Monitoring-এর বর্তমান সেটিংস এবং আজকের visitor activity দেখানো হচ্ছে।"],
+    settings:["Bot Configuration","Bot-এর persistent configuration storage থেকে বর্তমান ON/OFF সেটিংস দেখানো হচ্ছে।"],
+    logs:["সাম্প্রতিক কার্যক্রম","Visitor/User Manager-এর সংরক্ষিত সাম্প্রতিক event দেখানো হচ্ছে; পূর্ণ Cloudflare runtime log Dashboard-এ থাকে।"],
+    recovery:["Recovery ও Backup তথ্য","বর্তমান backup branch এবং Worker rollback location-এর তথ্য দেখানো হচ্ছে।"]
+  };
+  const [heading,description]=section[category]||["সিস্টেমের অবস্থা","নির্বাচিত বিভাগের বর্তমান তথ্য।"];
+  const lines=["━━━━━━━━━━━━━━━━━━","📋 "+heading.toUpperCase(),"━━━━━━━━━━━━━━━━━━","", "ℹ️ "+description,""];
   if(category==="website"){
-    const started=Date.now(),r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
+    const started=Date.now();
+    const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
     const data=await fetch(site+"site-data.json",{signal:AbortSignal.timeout(8000)}).then(x=>x.json()).catch(()=>({}));
-    return "🌐 WEBSITE STATUS\\nHTTP: "+r.status+"\\nResponse: "+(Date.now()-started)+" ms\\nHero image: "+String(data.image||"Not set")+"\\nHero position: "+String(data.imagePos??"default");
-  }
-  if(category==="news"){
+    lines.push("🌐 ওয়েবসাইট: "+site,"📡 HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"⚡ Response Time: "+(Date.now()-started)+" ms","🖼️ Hero Image: "+String(data.image||"সেট করা নেই"),"📍 Hero Image Position: "+String(data.imagePos??"ডিফল্ট"),"","ব্যাখ্যা: HTTP 2xx/3xx হলে সার্ভার সাড়া দিচ্ছে। Response time বেশি হলে নেটওয়ার্ক বা hosting latency পরীক্ষা করা উচিত।");
+  }else if(category==="news"){
     const r=await fetch(site+"news-feed.json",{signal:AbortSignal.timeout(10000)});
     const raw=await r.text();let parsed;try{parsed=JSON.parse(raw)}catch{parsed=null}
     const arr=Array.isArray(parsed)?parsed:(parsed&&typeof parsed==="object"?Object.values(parsed).find(Array.isArray)||[]:[]);
     const latest=arr[0]||{};
-    return "📰 NEWS FEED STATUS\\nHTTP: "+r.status+"\\nFeed size: "+raw.length+" bytes\\nArticles detected: "+arr.length+"\\nLatest: "+String(latest.title||latest.headline||"No title detected").slice(0,180)+"\\nNews Refresh automation: "+((await botConfig(env)).newsRefresh?"ON":"OFF");
-  }
-  if(category==="analytics"){
+    lines.push("📡 Feed HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"📦 Feed Size: "+raw.length.toLocaleString("en-US")+" bytes","📰 পাওয়া Article: "+arr.length,"🕒 সর্বশেষ Article: "+String(latest.title||latest.headline||"শিরোনাম পাওয়া যায়নি").slice(0,220),"⚙️ Automatic News Refresh: "+onOff(cfg.newsRefresh),"","ব্যাখ্যা: Article count শূন্য হলে Feed ফাইলের গঠন, News workflow run এবং source fetch পরীক্ষা করতে হবে। News Refresh OFF থাকলে নির্ধারিত automatic refresh বন্ধ থাকে; manual workflow আলাদা।");
+  }else if(category==="analytics"){
     const day=bdDay(),a=await readDailyActivity(env,day),p=await readDailyActivity(env,previousBdDay(day));
-    return "📊 VISITOR ANALYTICS — "+day+" (BDT)\\nUnique visitors: "+a.unique+" ("+(a.unique-p.unique>=0?"+":"")+(a.unique-p.unique)+" vs yesterday)\\nSessions: "+a.sessions+"\\nPage views: "+a.views+"\\nClient errors: "+a.errors+"\\nPopular pages: "+(a.pages.join(", ")||"No data");
-  }
-  if(category==="security"){
+    const change=(v,old)=>{const d=v-old;return (d>0?"+":"")+d+" ("+(d>0?"বৃদ্ধি":d<0?"কমেছে":"পরিবর্তন নেই")+")"};
+    lines.push("📅 রিপোর্টের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 Unique Visitors: "+a.unique,"   গতকালের তুলনায়: "+change(a.unique,p.unique),"🔁 Sessions: "+a.sessions,"   গতকালের তুলনায়: "+change(a.sessions,p.sessions),"👁️ Page Views: "+a.views,"   গতকালের তুলনায়: "+change(a.views,p.views),"⚠️ Client Errors: "+a.errors,"","🔥 জনপ্রিয় পেজ:",...(a.pages.length?a.pages.map((x,i)=>(i+1)+". "+x):["   এখনো কোনো Page View data নেই"]),"","🌍 শীর্ষ দেশ:",...(a.countries.length?a.countries.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"📱 ডিভাইস:",...(a.devices.length?a.devices.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"","ডেটার উৎস: Cloudflare Visitor KV। GA4-এর Active Users বা GA4 Sessions-এর সঙ্গে এই সংখ্যাগুলো এক নয়।");
+  }else if(category==="security"){
     const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
-    const checks=[["CSP","content-security-policy"],["HSTS","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
-    const missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
-    return "🛡️ SECURITY QUICK CHECK\\nHomepage HTTP: "+r.status+"\\nMissing/not exposed headers: "+(missing.join(", ")||"None detected")+"\\nEmergency Protection: "+((await botConfig(env)).emergencyProtection?"ON":"OFF")+"\\nNote: This is a basic header check, not a full security audit.";
-  }
-  if(category==="github"){
+    const checks=[["Content-Security-Policy (CSP)","content-security-policy"],["Strict-Transport-Security (HSTS)","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
+    const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
+    lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
+  }else if(category==="github"){
     const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
     const [repoRes,commitRes]=await Promise.all([
@@ -182,27 +195,23 @@ async function botStatusText(env,category,index){
     ]);
     const repoData=await repoRes.json().catch(()=>({})),commits=await commitRes.json().catch(()=>[]);
     const commit=Array.isArray(commits)?commits[0]:null;
-    return "🐙 GITHUB STATUS\\nRepository: "+(repoData.full_name||"Unavailable")+"\\nDefault branch: "+(repoData.default_branch||"Unknown")+"\\nVisibility: "+(repoData.private?"Private":"Public")+"\\nLatest commit: "+String(commit?.sha||"Unavailable").slice(0,12)+"\\nMessage: "+String(commit?.commit?.message||"").split("\\n")[0].slice(0,160);
-  }
-  if(category==="reports"){
-    const cfg=await botConfig(env),day=bdDay(),a=await readDailyActivity(env,day);
-    return "📑 REPORT CONTROL\\nDaily Report: "+(cfg.dailyReport?"ON":"OFF")+"\\nMonitoring: "+(cfg.monitoring?"ON":"OFF")+"\\nToday: "+a.unique+" unique visitors · "+a.sessions+" sessions · "+a.views+" page views\\nNext report window: 11:00 PM Bangladesh time (Worker cron cadence applies).";
-  }
-  if(category==="settings"){
-    const cfg=await botConfig(env);
-    return "🔧 BOT SETTINGS\\n"+Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>(v?"🟢 ":"⚪ ")+k+": "+(v?"ON":"OFF")).join("\\n")+"\\nStorage: "+(env.BOT_CONFIG_KV?"Connected":"Not connected");
-  }
-  if(category==="logs"){
+    lines.push("📁 Repository: "+(repoData.full_name||"তথ্য পাওয়া যায়নি"),"🌿 Default Branch: "+(repoData.default_branch||"অজানা"),"🔐 Visibility: "+(repoData.private?"Private":"Public / অথবা API-তে private নয়"),"📡 Repository API: HTTP "+repoRes.status,"📡 Commit API: HTTP "+commitRes.status,"","🧾 সর্বশেষ Commit: "+String(commit?.sha||"তথ্য পাওয়া যায়নি").slice(0,12),"💬 Commit Message: "+String(commit?.commit?.message||"তথ্য পাওয়া যায়নি").split("\n")[0].slice(0,200),"","নোট: Workflow-এর বিস্তারিত Run History GitHub Actions পেজে দেখা যাবে।");
+  }else if(category==="reports"){
+    const day=bdDay(),a=await readDailyActivity(env,day);
+    lines.push("⚙️ Daily Report: "+onOff(cfg.dailyReport),"⚙️ Website Monitoring: "+onOff(cfg.monitoring),"📅 আজকের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 আজকের Unique Visitors: "+a.unique,"🔁 Sessions: "+a.sessions,"👁️ Page Views: "+a.views,"","🕚 নির্ধারিত রিপোর্ট সময়: রাত ১১টা (বাংলাদেশ সময়)","⏱️ Worker Cron: প্রতি ৩০ মিনিটে চলে; তাই রিপোর্ট নির্ধারিত সময়ের কাছাকাছি cron run-এ পাঠানো হয়।","ℹ️ Daily Report OFF করলে স্বয়ংক্রিয় দৈনিক রিপোর্ট তৈরি/পাঠানোর অংশ বন্ধ থাকবে।");
+  }else if(category==="settings"){
+    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
+    lines.push("🔧 বর্তমান সেটিংস:",...Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>(v?"🟢":"⚪")+" "+(names[k]||k)+": "+(v?"ON — চালু":"OFF — বন্ধ")),"","💾 Configuration Storage: "+(env.BOT_CONFIG_KV?"সংযুক্ত (Connected)":"সংযুক্ত নয়"),"ℹ️ Automation ও Alerts মেনু থেকে সমর্থিত সুইচগুলো পরিবর্তন করা যায়।");
+  }else if(category==="logs"){
     const keys=await umList(env,UM_PREFIX+"history:",12),rows=[];
-    for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push(new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
-    return "📜 RECENT USER EVENTS\\n"+(rows.join("\\n")||"No recent stored user events.")+"\\nNote: Cloudflare runtime logs remain available in the dashboard.";
+    for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push("• "+new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" (BDT) · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
+    lines.push("🧾 সর্বশেষ সংরক্ষিত User Events:",...(rows.length?rows:["• কোনো সাম্প্রতিক User Event পাওয়া যায়নি"]),"","📌 Log-এর সীমাবদ্ধতা: এখানে User Manager history দেখানো হয়। Cloudflare Worker-এর পূর্ণ runtime log দেখতে Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Logs খুলুন।");
+  }else if(category==="recovery"){
+    lines.push("🧷 GitHub Backup Branch:","backup/pre-telegram-button-upgrade-20261101","🔗 Backup URL:","https://github.com/Kokushibu74/kokushibu74.github.io/tree/backup/pre-telegram-button-upgrade-20261101","","☁️ Worker Rollback:","Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Deployments","📌 পুরোনো Worker Version 34 rollback point হিসেবে রাখা আছে।","⚠️ Recovery করার আগে বর্তমান deployment ও backup যাচাই করুন। Rollback করলে নতুন পরিবর্তন হারাতে পারে।");
   }
-  if(category==="recovery"){
-    return "♻️ RECOVERY POINTS\\nGitHub backup branch: backup/pre-telegram-button-upgrade-20261101\\nWorker rollback version: 34 (existing deployed version)\\nGitHub backup: https://github.com/Kokushibu74/kokushibu74.github.io/tree/backup/pre-telegram-button-upgrade-20261101\\nWorker versions: Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Deployments.";
-  }
-  return "Status unavailable for this section.";
+  lines.push("","━━━━━━━━━━━━━━━━━━","প্রয়োজনে Main Menu থেকে অন্য বিভাগ নির্বাচন করুন।");
+  return lines.join("\n");
 }
-
 async function botHandleCallback(env,query){
   const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
   if(!chatId||!data.startsWith("b1:"))return false;
@@ -241,9 +250,9 @@ async function botHandleCallback(env,query){
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
     if(action==="hero:current"){const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());return true}
-    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\\n"+result,botBackKeyboard());return true;}
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ এই কাজটি সম্পন্ন হয়নি। Worker logs পরীক্ষা করুন.",botBackKeyboard())}
+  }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\n\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\n\nকরণীয়:\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}
   return true;
 }
 
