@@ -16,7 +16,7 @@ async function umList(env,prefix,limit=1000){
 async function umHistory(env,kind,id,event){
   const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
   const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+at+"-"+salt;
-  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}));
+  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:34560000});
 }
 async function umTelegramTouch(env,msg){
   const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
@@ -50,7 +50,7 @@ async function umReply(env,chatId,text){
 }
 async function umHandleCommand(env,msg){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/userid","/userinfo","/userrename","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const commands=new Set(["/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য User Management কমান্ড শুধু Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
@@ -85,12 +85,28 @@ async function umHandleCommand(env,msg){
       p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
       await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});
       await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
+    }else if(cmd==="/userlink"){
+      const tg=await umResolve(env,arg),web=await umResolve(env,parts[1]||"");
+      if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"){await umReply(env,chatId,"ব্যবহার: /userlink TELEGRAM_ID VISITOR_ID");return true;}
+      await env.VISITOR_KV.put(UM_PREFIX+"link:telegram:"+tg.id,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
+      await env.VISITOR_KV.put(UM_PREFIX+"link:visitor:"+web.id,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
+      await umHistory(env,"admin",sender,{type:"link",telegramId:tg.id,visitorId:web.id});
+      await umReply(env,chatId,"🔗 Telegram ও Website ID link হয়েছে।");
+    }else if(cmd==="/userunlink"){
+      const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
+      const kind=user.kind==="telegram"?"telegram":"visitor",key=UM_PREFIX+"link:"+kind+":"+user.id,link=await env.VISITOR_KV.get(key,"json");
+      if(link){await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);}
+      await umHistory(env,"admin",sender,{type:"unlink",target:user});
+      await umReply(env,chatId,link?"🔗 Link বিচ্ছিন্ন করা হয়েছে।":"এই ID-র কোনো link ছিল না।");
     }else if(cmd==="/userblock"||cmd==="/userunblock"){
       const user=await umResolve(env,arg),scope=["both","telegram","website"].includes(scopeArg)?scopeArg:"both";
       if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
+      const link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+(user.kind==="telegram"?"telegram":"visitor")+":"+user.id,"json");
+      const targets=user.kind==="telegram"?{telegram:user.id,website:link?.visitorId}:{website:user.id,telegram:link?.telegramId};
       const scopes=scope==="both"?["telegram","website"]:[scope],active=cmd==="/userblock";
-      for(const kind of scopes){const key=UM_PREFIX+"block:"+kind+":"+user.id;if(active)await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:sender,reason:"Admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
-      await umHistory(env,"admin",sender,{type:active?"block":"unblock",target:user,scope});
+      if(scopes.some(kind=>!targets[kind])){await umReply(env,chatId,"এই User-এর linked "+(scopes.includes("telegram")?"Telegram":"Website")+" ID নেই। আগে /userlink TELEGRAM_ID VISITOR_ID দিয়ে link করুন।");return true;}
+      for(const kind of scopes){const key=UM_PREFIX+"block:"+kind+":"+targets[kind];if(active)await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:sender,reason:"Admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
+      await umHistory(env,"admin",sender,{type:active?"block":"unblock",target:user,scope,targets});
       await umReply(env,chatId,(active?"🚫 Blocked ":"✅ Unblocked ")+user.id+" · "+scope);
     }else if(cmd==="/userhistory"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
@@ -213,6 +229,8 @@ export default {
     if(!(request.headers.get("Content-Type")||"").toLowerCase().includes("multipart/form-data"))return respond({error:"Invalid form upload."},415);
     const length=Number(request.headers.get("Content-Length")||0);if(Number.isFinite(length)&&length>65*1024*1024)return respond({error:"Combined upload is too large; keep it below 60 MB."},413);
     let form;try{form=await request.formData()}catch{return respond({error:"Invalid form data."},400)}
+    const submittedVisitorId=String(form.get("visitorId")||"");
+    if(/^VIS-[A-F0-9]{12}$/.test(submittedVisitorId)&&await umBlocked(env,"website",submittedVisitorId))return respond({error:"Website access restricted",blocked:true},403);
     if(String(form.get("company")||"").trim())return respond({ok:true});
     const name=String(form.get("name")||"").trim().slice(0,100),email=String(form.get("email")||"").trim().slice(0,180),phone=String(form.get("phone")||"").trim().slice(0,40),topic=String(form.get("topic")||"").trim().slice(0,80),message=String(form.get("message")||"").trim().slice(0,4000);
     if(!name||(!email&&!phone)||(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))||!message||message.length<10)return respond({error:"Enter your name, a valid email or phone number, and a message of at least 10 characters."},400);
