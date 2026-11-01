@@ -77,6 +77,7 @@ form.addEventListener("submit",async function(event){
  const files=data.getAll("attachments").filter(file=>file&&file.size>0);
  if(!contact) throw new Error("Please provide your email address or phone number.");
  data.delete("contact");
+ try{const visitorId=localStorage.getItem("k74_visitor_id_v1")||"";if(/^VIS-[A-F0-9]{12}$/.test(visitorId))data.set("visitorId",visitorId);}catch{}
  if(contact.includes("@")) data.set("email",contact); else data.set("phone",contact);
  if(files.length>3) throw new Error("You can attach up to 3 files.");
  if(files.some(file=>file.size>20*1024*1024)) throw new Error("Each attachment must be 20 MB or smaller.");
