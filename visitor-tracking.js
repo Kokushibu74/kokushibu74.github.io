@@ -31,12 +31,12 @@
  const send=(body,keepalive=false)=>{try{return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive,credentials:"omit"}).then(res=>{if(res.status===403&&body.visitorId===visitorId)showBlockedNotice();return res}).catch(()=>{})}catch{return Promise.resolve()}};
  const data=payload();send(data);
  let scrollMarks=new Set(),events=[];
- const record=(type,value)=>{if(events.length<30)events.push({type,value:String(value||"").slice(0,140)})};
- addEventListener("scroll",()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max>0){const p=Math.min(100,Math.round(scrollY/max*100));for(const m of [25,50,75,100])if(p>=m&&!scrollMarks.has(m)){scrollMarks.add(m);record("scroll",m+"%")}}},{passive:true});
- addEventListener("click",e=>{const el=e.target.closest("a,button,[role=button]");if(!el)return;const label=(el.innerText||el.getAttribute("aria-label")||el.id||el.tagName||"control").trim().replace(/\s+/g," ").slice(0,100);record("click",label)},{capture:true});
- addEventListener("error",e=>record("js_error",(e.message||"Script error")+" @ "+location.pathname));
- addEventListener("unhandledrejection",e=>record("promise_error",String(e.reason||"Unhandled rejection").slice(0,120)));
- try{new PerformanceObserver(list=>{const e=list.getEntries().slice(-1)[0];if(e){data.performance.lcp=Math.round(e.startTime);record("lcp",data.performance.lcp+"ms")}}).observe({type:"largest-contentful-paint",buffered:true})}catch{}
+ const record=(type)=>{if(events.length<30)events.push({type})};
+ addEventListener("scroll",()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max>0){const p=Math.min(100,Math.round(scrollY/max*100));for(const m of [25,50,75,100])if(p>=m&&!scrollMarks.has(m)){scrollMarks.add(m);record("scroll")}}},{passive:true});
+ addEventListener("click",e=>{const el=e.target.closest("a,button,[role=button]");if(!el)return;const label=(el.innerText||el.getAttribute("aria-label")||el.id||el.tagName||"control").trim().replace(/\s+/g," ").slice(0,100);record("click")},{capture:true});
+ addEventListener("error",e=>record("js_error"));
+ addEventListener("unhandledrejection",e=>record("promise_error"));
+ try{new PerformanceObserver(list=>{const e=list.getEntries().slice(-1)[0];if(e){data.performance.lcp=Math.round(e.startTime);record("lcp")}}).observe({type:"largest-contentful-paint",buffered:true})}catch{}
  try{new PerformanceObserver(list=>{let sum=0;for(const e of list.getEntries())if(!e.hadRecentInput)sum+=e.value;data.performance.cls=Number(((data.performance.cls||0)+sum).toFixed(4))}).observe({type:"layout-shift",buffered:true})}catch{}
  try{new PerformanceObserver(list=>{for(const e of list.getEntries())data.performance.inp=Math.round(Math.max(data.performance.inp||0,e.duration))}).observe({type:"event",buffered:true,durationThreshold:40})}catch{}
  let sent=false;const flush=()=>{if(sent||!events.length)return;sent=true;const p=payload();p.eventBatch=true;p.events=events;p.performance=data.performance;send(p,true);events=[];sent=false};
