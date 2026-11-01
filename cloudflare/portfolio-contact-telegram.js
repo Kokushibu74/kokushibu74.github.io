@@ -6,7 +6,7 @@ function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", ")
 
 
 const UM_PREFIX = "um:v1:";
-const umClean = (v,n=120) => String(v??"").replace(/[\\u0000-\\u001f<>]/g," ").trim().slice(0,n);
+const umClean = (v,n=120) => String(v??"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
 const umDate = (ts=Date.now()) => new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));
 async function umList(env,prefix,limit=1000){
   const out=[];let cursor;
@@ -26,11 +26,11 @@ async function umTelegramTouch(env,msg){
     lastName:umClean(msg.from.last_name,80),languageCode:umClean(msg.from.language_code,20),
     isBot:!!msg.from.is_bot,customId:old.customId||null};
   await env.VISITOR_KV.put(key,JSON.stringify(profile),{expirationTtl:31536000});
-  await umHistory(env,"telegram",id,{type:"message_received",command:/^\\//.test(String(msg.text||""))?String(msg.text).trim().split(/\\s+/)[0].slice(0,40):"message",chatType:msg.chat.type||"unknown"});
+  await umHistory(env,"telegram",id,{type:"message_received",command:/^\//.test(String(msg.text||""))?String(msg.text).trim().split(/\s+/)[0].slice(0,40):"message",chatType:msg.chat.type||"unknown"});
 }
 async function umResolve(env,input){
   const raw=String(input||"").trim();if(!raw)return null;
-  if(/^\\d{5,20}$/.test(raw))return {kind:"telegram",id:raw};
+  if(/^\d{5,20}$/.test(raw))return {kind:"telegram",id:raw};
   if(/^VIS-[A-F0-9]{12}$/i.test(raw))return {kind:"visitor",id:raw.toUpperCase()};
   let map;try{map=await env.VISITOR_KV.get(UM_PREFIX+"custom:"+encodeURIComponent(raw.toLowerCase()),"json")}catch{}
   return map&&map.kind&&map.id?{kind:map.kind,id:String(map.id)}:null;
@@ -49,12 +49,12 @@ async function umReply(env,chatId,text){
   await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,text,disable_web_page_preview:true})});
 }
 async function umHandleCommand(env,msg){
-  const text=String(msg.text||"").trim(),parts=text.split(/\\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
+  const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
   const commands=new Set(["/userid","/userinfo","/userrename","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য User Management কমান্ড শুধু Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
-  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
   if(!admins.has(sender)){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
