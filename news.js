@@ -31,9 +31,12 @@
     return new Promise(resolve=>{
       if(!url||url==="#"){resolve(false);return}
       const image=new Image();
+      let settled=false;
+      const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);resolve(ok)};
+      const timer=setTimeout(()=>finish(false),8000);
       image.referrerPolicy="no-referrer";
-      image.onload=()=>resolve(image.naturalWidth>0&&image.naturalHeight>0);
-      image.onerror=()=>resolve(false);
+      image.onload=()=>finish(image.naturalWidth>0&&image.naturalHeight>0);
+      image.onerror=()=>finish(false);
       image.src=url;
     });
   }
@@ -253,6 +256,16 @@
       const visual='<div class="weather-slide-visual">'+mediaMarkup+'<span class="weather-image-shade"></span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>';
       return '<article class="weather-slide" data-weather-index="'+i+'">'+visual+'<div class="weather-slide-copy"><span class="weather-kicker">WEATHER / NATURAL DISASTER</span><h3><a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(x.previewTitle||x.title)+'</a></h3>'+(x.previewSummary||x.summary||x.description?'<p>'+esc(x.previewSummary||x.summary||x.description)+'</p>':'')+'<div class="weather-meta"><span>'+esc(publisher)+'</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"Date unavailable")+'</span></div></div></article>';
     }).join("");
+    weatherSlidesRoot.querySelectorAll("video.weather-slide-video").forEach(video=>{
+      video.addEventListener("play",()=>{if(weatherSlideTimer)clearInterval(weatherSlideTimer);weatherSlideTimer=null});
+      video.addEventListener("pause",()=>{
+        const total=weatherSlidesRoot.querySelectorAll(".weather-slide").length;
+        if(total>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+          if(weatherSlideTimer)clearInterval(weatherSlideTimer);
+          weatherSlideTimer=setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000);
+        }
+      });
+    });
     syncWeatherDeck(weatherSlideIndex);
     weatherControls.hidden=stories.length<2;
     weatherPosition.textContent=(weatherSlideIndex+1)+" / "+stories.length;
