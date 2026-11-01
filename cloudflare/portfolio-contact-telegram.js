@@ -50,13 +50,65 @@ async function umReply(env,chatId,text){
 }
 async function umHandleCommand(env,msg){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const commands=new Set(["/cmd","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
-  if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য User Management কমান্ড শুধু Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
+  if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  const isAdmin=admins.has(sender);
+  if(cmd==="/cmd"){
+    const publicCommands=[{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
+    const adminCommands=[
+      {command:"info",description:"সাইট ও Worker health check"},
+      {command:"userid",description:"Telegram ও Website user list"},
+      {command:"userinfo",description:"একজন user-এর বিস্তারিত তথ্য"},
+      {command:"userrename",description:"User-এর custom ID নির্ধারণ"},
+      {command:"userlink",description:"Telegram ও Website ID link"},
+      {command:"userunlink",description:"Linked ID বিচ্ছিন্ন করা"},
+      {command:"userblock",description:"Telegram/Website user block"},
+      {command:"userunblock",description:"User unblock"},
+      {command:"userhistory",description:"User-এর event history"},
+      {command:"usersearch",description:"User profile search"},
+      {command:"userstats",description:"User management statistics"}
+    ];
+    const menu=publicCommands.concat(isAdmin?adminCommands:[]);
+    try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/setMyCommands",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({commands:menu,scope:{type:"chat",chat_id:chatId}})});}catch(e){console.error("Telegram command menu setup failed",String(e));}
+    const guide=[
+      "📚 BOT COMMAND GUIDE",
+      "",
+      "/cmd — এই কমান্ড গাইড ও Telegram command menu দেখাবে।",
+      "",
+      "👤 সাধারণ ব্যবহারকারী",
+      "এই মুহূর্তে সাধারণ ব্যবহারকারীর জন্য কোনো অতিরিক্ত management command নেই।",
+      ...(isAdmin?[
+        "",
+        "🔐 ADMIN COMMANDS (শুধু অনুমোদিত Admin)",
+        "/info — Website ও Worker health check।",
+        "/userid [পৃষ্ঠা] — Telegram user ও Website visitor তালিকা; প্রতি পৃষ্ঠায় ১০টি।",
+        "/userinfo ID — নির্দিষ্ট user-এর profile, link ও status।",
+        "/userrename ID CUSTOM — ৩–৩২ অক্ষরের custom ID দিন (A-Z, 0-9, _ বা -)।",
+        "/userlink TELEGRAM_ID VISITOR_ID — দুই পরিচয় স্পষ্টভাবে link করুন।",
+        "/userunlink ID — link বিচ্ছিন্ন করুন।",
+        "/userblock ID [both|telegram|website] — user block করুন; default both।",
+        "/userunblock ID [both|telegram|website] — block তুলে দিন।",
+        "/userhistory ID [পৃষ্ঠা] — user-এর event history দেখুন।",
+        "/usersearch TEXT — profile তথ্য দিয়ে user খুঁজুন।",
+        "/userstats — Telegram, Website, block ও history totals।",
+        "",
+        "🛡️ Admin permission: ব্যক্তিগত Bot chat + ADMIN_TELEGRAM_IDS allowlist-এ থাকা Telegram ID আবশ্যক।",
+        "🔗 Telegram ও Website ID স্বয়ংক্রিয়ভাবে merge হয় না; /userlink দিয়ে Admin-কে link করতে হবে।"
+      ]:[
+        "",
+        "🔐 Admin-only management commands এই account-এ দেখানো হচ্ছে না।"
+      ]),
+      "",
+      "ℹ️ নিরাপত্তা: এই গাইডে কোনো API token, secret বা credential প্রকাশ করা হয় না।"
+    ];
+    await umReply(env,chatId,guide.join("\n"));
+    return true;
+  }
+  if(!isAdmin){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
-  if(!admins.has(sender)){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
   try{
     if(cmd==="/userid"){
