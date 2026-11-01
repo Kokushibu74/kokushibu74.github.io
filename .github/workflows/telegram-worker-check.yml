@@ -34,7 +34,7 @@ jobs:
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
-            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection', 'pathname==="/workflow-config"', 'newsRefresh:true', 'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;', 'async function botStatusText', 'action.startsWith("status:")', 'bot:user-input:', 'pending?.mode', 'slowCommands', 'botRunWithProgress(env,msg.chat.id', 'parse_mode:options.parse_mode', 'BOT_MENU_KEY_PREFIX', 'editMessageText', 'botGetMenuAnchor', 'sendChatAction', 'botRunWithProgress'
+            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection', 'pathname==="/workflow-config"', 'newsRefresh:true', 'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;', 'async function botStatusText', 'action.startsWith("status:")', 'bot:user-input:', 'pending?.mode', 'slowCommands', 'botRunWithProgress(env,msg.chat.id', 'parse_mode:options.parse_mode', 'BOT_MENU_KEY_PREFIX', 'editMessageText', 'botGetMenuAnchor', 'sendChatAction', 'botRunWithProgress', 'function botFormatTelegramResponse', 'ADMIN CONTROL CENTER', 'PRIVATE ADMIN SESSION', 'botFormatTelegramResponse(text,options)'
           ];
           for (const item of required) {
             if (!source.includes(item)) throw new Error('Missing Telegram control contract: ' + item);
