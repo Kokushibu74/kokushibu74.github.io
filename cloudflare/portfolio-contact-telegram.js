@@ -98,13 +98,13 @@ const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
   if(!env.BOT_CONFIG_KV)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId);
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
 }
 async function botEnsureStartKeyboard(env,chatId){
-  const key="bot:start-keyboard:v1:"+String(chatId);
-  if(await env.BOT_CONFIG_KV?.get(key))return;
+  // Re-send the reply keyboard on every /start or START BOT request.
+  // A KV "already sent" flag cannot prove Telegram still displays the keyboard.
   const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"কন্ট্রোল প্যানেল খুলতে নিচের START BOT বাটন ব্যবহার করুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
-  if(sent.ok)await env.BOT_CONFIG_KV?.put(key,"1");
+  if(!sent.ok)console.error("Telegram START BOT keyboard delivery failed",JSON.stringify({status:sent.status,description:String(sent.data?.description||"").slice(0,180)}));
 }
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
@@ -340,11 +340,9 @@ async function botHandleCallback(env,query){
   const action=data.slice(3);
   try{
     const anchor=await botGetMenuAnchor(env,chatId);
-    if(anchor?.messageId&&Number(anchor.messageId)!==Number(query.message?.message_id)){
-      await botAnswerCallback(env,query,"Menu updated. Use the latest menu.",true);
-      return true;
-    }
-    await botRememberMenu(env,chatId,query.message?.message_id,true);
+    // A callback may arrive from an older inline menu after a send/edit fallback.
+    // Treat the actual clicked message as the active menu instead of silently rejecting it.
+    await botRememberMenu(env,chatId,query.message?.message_id,false);
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
