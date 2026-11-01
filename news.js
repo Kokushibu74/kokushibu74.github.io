@@ -178,12 +178,16 @@
     status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest batch headlines":viewMode==="feed"?"today’s news":"archived headlines (up to 90 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
     const renderNow=Date.now();
+    let previousArchiveDate="";
     grid.innerHTML=pageItems.map((x,i)=>{
       const date=dateOf(x),recent=isLatestBatch(x);
+      const archiveDate=date?bdDateKey(date):"";
+      const archiveHeading=viewMode==="archive"&&archiveDate&&archiveDate!==previousArchiveDate?'<div class="archive-date-heading">'+new Date(archiveDate+"T00:00:00+06:00").toLocaleDateString("en-GB",{timeZone:"Asia/Dhaka",weekday:"long",day:"numeric",month:"long",year:"numeric"})+'</div>':"";
+      if(archiveDate)previousArchiveDate=archiveDate;
       const image=safe(x.previewImage||x.image||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
       const imageMarkup=image!=="#"?'<div class="story-image"><img src="'+esc(image)+'" alt="" loading="'+(i<6?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(&quot;no-image&quot;);this.remove()"></div>':'<div class="story-image no-image" aria-hidden="true"><span>NEWS</span></div>';
       const summary=String(x.previewSummary||x.summary||x.description||"").trim();
-      return '<a class="story" href="'+safe(x.publisherUrl||x.link)+'" target="_blank" rel="noopener noreferrer">'+imageMarkup+'<div class="story-body"><div class="story-tags"><span class="tag">'+esc(x.category||"News")+'</span>'+(recent?'<span class="story-breaking">LATEST</span>':"")+'</div><h2>'+esc(x.previewTitle||x.title)+'</h2>'+(summary?'<p class="story-summary">'+esc(summary)+'</p>':"")+'<div class="meta"><span>'+esc(x.source||"Original source")+'</span><span>'+esc(date?date.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}):"")+'</span></div></div></a>';
+      return archiveHeading+'<a class="story" href="'+safe(x.publisherUrl||x.link)+'" target="_blank" rel="noopener noreferrer">'+imageMarkup+'<div class="story-body"><div class="story-tags"><span class="tag">'+esc(x.category||"News")+'</span>'+(recent?'<span class="story-breaking">LATEST</span>':"")+'</div><h2>'+esc(x.previewTitle||x.title)+'</h2>'+(summary?'<p class="story-summary">'+esc(summary)+'</p>':"")+'<div class="meta"><span>'+esc(x.source||"Original source")+'</span><span>'+esc(date?date.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}):"")+'</span></div></div></a>';
     }).join("");
   }
   function updateFilterCounts(){
