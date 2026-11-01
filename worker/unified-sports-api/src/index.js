@@ -53,6 +53,73 @@ function normalizeMatch(event) {
     awayScore:away?.score==null?null:String(away.score)
   };
 }
+
+function cricketTeamName(team) {
+  return String(team?.team?.displayName||team?.team?.name||team?.displayName||team?.name||team?.teamName||team?.shortName||"").trim();
+}
+function normalizeCricketEvent(event,league) {
+  const competition=event?.competitions?.[0]||event?.competition||{};
+  const competitors=competition?.competitors||event?.competitors||event?.teams||[];
+  const home=competitors.find(x=>x?.homeAway==="home")||competitors[0]||{};
+  const away=competitors.find(x=>x?.homeAway==="away")||competitors[1]||{};
+  let homeTeam=cricketTeamName(home),awayTeam=cricketTeamName(away);
+  const name=String(event?.name||event?.shortName||"Cricket match");
+  if((!homeTeam||!awayTeam)&&/\s+v(?:s)?\s+/i.test(name)) {
+    const parts=name.split(/\s+v(?:s)?\s+/i);
+    if(!homeTeam)homeTeam=parts[0]?.trim()||"";
+    if(!awayTeam)awayTeam=parts[1]?.trim()||"";
+  }
+  const statusType=competition?.status?.type||event?.status?.type||{};
+  const rawState=String(statusType.state||event?.state||event?.status?.state||event?.status||"").toLowerCase();
+  const status=/^(in|live|in_progress)$/.test(rawState)||/live|in progress|innings break|stumps|day [1-5]/i.test(rawState)?"live":
+    /^(post|finished|complete|completed)$/.test(rawState)||/final|result|won by|drawn/i.test(String(statusType.detail||event?.statusDetail||""))?"finished":"scheduled";
+  const date=event?.date||event?.startDate||event?.startTime||event?.dateTime||null;
+  return {
+    id:String(event?.id||event?.uid?.split(":").pop()||""),
+    name,shortName:String(event?.shortName||name),sport:"cricket",provider:"espn",
+    leagueId:String(league?.id||""),league:String(league?.name||league?.shortName||"Cricket"),
+    competition:String(league?.name||league?.shortName||"Cricket"),
+    status,statusDetail:String(statusType.shortDetail||statusType.detail||event?.statusDetail||event?.statusText||""),
+    startTime:date,homeTeam:homeTeam||"Team 1",awayTeam:awayTeam||"Team 2",
+    homeScore:home?.score==null?null:String(home.score),awayScore:away?.score==null?null:String(away.score),
+    homeLogo:home?.team?.logo||home?.logo||null,awayLogo:away?.team?.logo||away?.logo||null
+  };
+}
+async function fetchCricketHeader() {
+  const url="https://site.api.espn.com/apis/personalized/v2/scoreboard/header?sport=cricket&region=in&tz=Asia%2FCalcutta";
+  const response=await fetch(url,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
+  if(!response.ok)throw new Error("ESPN cricket header HTTP "+response.status);
+  const data=await response.json();
+  const leagues=Array.isArray(data?.sports)?data.sports.flatMap(s=>Array.isArray(s?.leagues)?s.leagues:[]):Array.isArray(data?.leagues)?data.leagues:[];
+  if(!leagues.length)throw new Error("ESPN cricket header returned no active series");
+  return leagues;
+}
+function cricketLeagueMatches(league,selected) {
+  if(!selected||selected==="8039")return true;
+  const value=[league?.name,league?.shortName,league?.abbreviation,league?.slug].filter(Boolean).join(" ").toLowerCase();
+  if(selected==="ipl")return /\bipl\b|indian premier league/.test(value);
+  if(selected==="icc.t20")return /icc|t20|world cup/.test(value);
+  return value.includes(String(selected).toLowerCase());
+}
+async function cricketScoreboard(league,ctx,env) {
+  const cacheKey="score-cache:cricket:"+league;
+  if(env.SPORTS_ZONE) {
+    try {const cached=await env.SPORTS_ZONE.get(cacheKey,"json");if(cached&&Array.isArray(cached.matches))return json(cached,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"HIT"});} catch {}
+  }
+  const leagues=await fetchCricketHeader();
+  const matches=leagues.filter(item=>cricketLeagueMatches(item,league)).flatMap(item=>(Array.isArray(item.events)?item.events:[]).filter(event=>event&&typeof event==="object").map(event=>normalizeCricketEvent(event,item)))
+    .filter(match=>/^\d{4,20}$/.test(match.id)&&match.startTime&&match.homeTeam&&match.awayTeam);
+  const order={live:0,scheduled:1,finished:2};
+  matches.sort((a,b)=>(order[a.status]??3)-(order[b.status]??3)||new Date(a.startTime)-new Date(b.startTime));
+  const payload={ok:true,status:"ok",updated:new Date().toISOString(),matches};
+  if(env.SPORTS_ZONE)ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
+  return json(payload,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"MISS"});
+}
+async function getCricketScheduleEvents() {
+  const leagues=await fetchCricketHeader();
+  return leagues.flatMap(league=>(Array.isArray(league.events)?league.events:[]).filter(event=>event&&typeof event==="object").map(event=>normalizeCricketEvent(event,league)))
+    .filter(event=>/^\d{4,20}$/.test(event.id)&&event.startTime&&event.homeTeam&&event.awayTeam);
+}
 async function scoreboard(upstreamUrl,ctx,env,cacheId) {
   // Use the configured KV namespace for a short cache; this also works on workers.dev.
   const cacheKey="score-cache:"+cacheId;
@@ -103,24 +170,22 @@ async function getUpcomingEvents(env, now=new Date()) {
   const dates=[utcDateStamp(now)];
   // Tomorrow is only needed during the final 30 minutes before UTC midnight.
   if(now.getUTCHours()===23&&now.getUTCMinutes()>=30) dates.push(utcDateStamp(new Date(now.getTime()+24*60*60*1000)));
-  const sources=[
-    ...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,path:"soccer/"+league})),
-    {sport:"cricket",league:"8039",path:"cricket/8039"}
-  ];
+  const sources=[...[...FOOTBALL_LEAGUES].map(league=>({sport:"football",league,path:"soccer/"+league}))];
   const requests=sources.flatMap(source=>dates.map(date=>({source,date})));
-  const results=await Promise.all(requests.map(async ({source,date})=>{
+  const footballResults=await Promise.all(requests.map(async ({source,date})=>{
     const url="https://site.api.espn.com/apis/site/v2/sports/"+source.path+"/scoreboard?dates="+date;
     try {
       const r=await fetch(url,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(7000)});
-      if(!r.ok) return {events:[],error:{sport:source.sport,league:source.league,date,httpStatus:r.status}};
+      if(!r.ok)return {events:[],error:{sport:source.sport,league:source.league,date,httpStatus:r.status}};
       const data=await r.json();
-      if(!data||!Array.isArray(data.events)) return {events:[],error:{sport:source.sport,league:source.league,date,message:"Unexpected ESPN response"}};
-      return {events:data.events.map(event=>({...normalizeMatch(event),sport:source.sport,league:source.league}))
-        .filter(e=>e.id&&e.startTime&&e.homeTeam&&e.awayTeam)};
-    } catch(e) {
-      return {events:[],error:{sport:source.sport,league:source.league,date,message:String(e?.message||"request failed").slice(0,160)}};
-    }
+      if(!data||!Array.isArray(data.events))return {events:[],error:{sport:source.sport,league:source.league,date,message:"Unexpected ESPN response"}};
+      return {events:data.events.map(event=>({...normalizeMatch(event),sport:"football",league:source.league})).filter(e=>e.id&&e.startTime&&e.homeTeam&&e.awayTeam)};
+    } catch(e) {return {events:[],error:{sport:source.sport,league:source.league,date,message:String(e?.message||"request failed").slice(0,160)}};}
   }));
+  let cricketResult;
+  try {cricketResult={events:await getCricketScheduleEvents()};}
+  catch(e){cricketResult={events:[],error:{sport:"cricket",source:"ESPN personalized header",message:String(e?.message||"request failed").slice(0,160)}};}
+  const results=[...footballResults,cricketResult];
   const fetchErrors=results.filter(x=>x.error).map(x=>x.error);
   const successfulFetches=results.length-fetchErrors.length;
   const events=[...new Map(results.flatMap(x=>x.events).map(e=>[e.sport+":"+e.id,e])).values()]
@@ -244,8 +309,25 @@ export default {
     if(url.pathname==="/api/cricket"&&request.method==="GET") {
       const league=url.searchParams.get("league")||"8039";
       if(!CRICKET_LEAGUE_RE.test(league)) return json({ok:false,error:"invalid league"},400);
-      try { return await scoreboard("https://site.api.espn.com/apis/site/v2/sports/cricket/"+encodeURIComponent(league)+"/scoreboard",ctx,env,"cricket:"+league); }
-      catch { return json({ok:false,status:"error",message:"Cricket provider unavailable for this competition."},502); }
+      try { return await cricketScoreboard(league,ctx,env); }
+      catch(e) { return json({ok:false,status:"error",message:"Cricket fixtures are temporarily unavailable.",detail:String(e?.message||e)},502); }
+    }
+    if(url.pathname==="/api/cricket/details"&&request.method==="GET") {
+      const league=url.searchParams.get("league")||"",match=url.searchParams.get("match")||"";
+      if(!/^\d{4,12}$/.test(league)||!/^\d{4,20}$/.test(match))return json({ok:false,error:"invalid cricket league or match ID"},400);
+      try {
+        const upstream="https://site.web.api.espn.com/apis/site/v2/sports/cricket/"+league+"/summary?contentorigin=espn&event="+encodeURIComponent(match)+"&lang=en&region=in";
+        const response=await fetch(upstream,{headers:{Accept:"application/json","User-Agent":"SportsZone/1.0"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok)throw new Error("ESPN cricket summary HTTP "+response.status);
+        const data=await response.json();
+        return json({ok:true,matchId:match,leagueId:league,updated:new Date().toISOString(),data},200,{"Cache-Control":"public, max-age=10"});
+      }catch(e){return json({ok:false,error:"Cricket match details are temporarily unavailable.",detail:String(e?.message||e)},502);}
+    }
+    if(url.pathname==="/api/schedule"&&request.method==="GET") {
+      try {
+        const schedule=await getUpcomingEvents(env);
+        return json({ok:true,status:"ok",updated:new Date().toISOString(),events:schedule.events,fetchCount:schedule.fetchCount,fetchErrors:schedule.fetchErrors,cached:!!schedule.cached},200,{"Cache-Control":"public, max-age=60"});
+      }catch(e){return json({ok:false,error:"Sports schedule is temporarily unavailable.",detail:String(e?.message||e)},502);}
     }
     if(url.pathname==="/api/streams"&&request.method==="GET") {
       try { return json({ok:true,status:"ok",streams:await getStreams(env)}); }
