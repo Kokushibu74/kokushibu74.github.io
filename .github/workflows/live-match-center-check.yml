@@ -6,6 +6,7 @@ on:
     paths:
       - 'sports-zone.html'
       - 'worker/unified-sports-api/**'
+      - 'tests/**'
       - '.github/workflows/live-match-center-check.yml'
   push:
     branches: [feature/unified-sports-api]
@@ -107,3 +108,18 @@ jobs:
             https://unified-sports-api.mdshihab74.workers.dev/matches/live \
             -o /tmp/cricket-live.json
           node -e "const d=require('/tmp/cricket-live.json'); if(!Array.isArray(d.matches)||typeof d.count!=='number') process.exit(1); console.log('Cricket live feed OK:',d.count,'matches')"
+
+  responsive-browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Verify live Sports Arena across desktop, tablet and mobile widths
+        run: node tests/sports-zone-responsive-smoke.mjs
