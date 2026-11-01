@@ -143,11 +143,66 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
   }else{
-    for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:info:"+category+":"+i+j})));
+    for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+i})));
   }
   rows.push(...botBackKeyboard());
   await botSend(env,chatId,names[0]+"\nনিচের অপশন নির্বাচন করুন:",rows);
 }
+
+async function botStatusText(env,category,index){
+  const site="https://kokushibu74.github.io/";
+  if(category==="website"){
+    const started=Date.now(),r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
+    const data=await fetch(site+"site-data.json",{signal:AbortSignal.timeout(8000)}).then(x=>x.json()).catch(()=>({}));
+    return "🌐 WEBSITE STATUS\\nHTTP: "+r.status+"\\nResponse: "+(Date.now()-started)+" ms\\nHero image: "+String(data.image||"Not set")+"\\nHero position: "+String(data.imagePos??"default");
+  }
+  if(category==="news"){
+    const r=await fetch(site+"news-feed.json",{signal:AbortSignal.timeout(10000)});
+    const raw=await r.text();let parsed;try{parsed=JSON.parse(raw)}catch{parsed=null}
+    const arr=Array.isArray(parsed)?parsed:(parsed&&typeof parsed==="object"?Object.values(parsed).find(Array.isArray)||[]:[]);
+    const latest=arr[0]||{};
+    return "📰 NEWS FEED STATUS\\nHTTP: "+r.status+"\\nFeed size: "+raw.length+" bytes\\nArticles detected: "+arr.length+"\\nLatest: "+String(latest.title||latest.headline||"No title detected").slice(0,180)+"\\nNews Refresh automation: "+((await botConfig(env)).newsRefresh?"ON":"OFF");
+  }
+  if(category==="analytics"){
+    const day=bdDay(),a=await readDailyActivity(env,day),p=await readDailyActivity(env,previousBdDay(day));
+    return "📊 VISITOR ANALYTICS — "+day+" (BDT)\\nUnique visitors: "+a.unique+" ("+(a.unique-p.unique>=0?"+":"")+(a.unique-p.unique)+" vs yesterday)\\nSessions: "+a.sessions+"\\nPage views: "+a.views+"\\nClient errors: "+a.errors+"\\nPopular pages: "+(a.pages.join(", ")||"No data");
+  }
+  if(category==="security"){
+    const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
+    const checks=[["CSP","content-security-policy"],["HSTS","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
+    const missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
+    return "🛡️ SECURITY QUICK CHECK\\nHomepage HTTP: "+r.status+"\\nMissing/not exposed headers: "+(missing.join(", ")||"None detected")+"\\nEmergency Protection: "+((await botConfig(env)).emergencyProtection?"ON":"OFF")+"\\nNote: This is a basic header check, not a full security audit.";
+  }
+  if(category==="github"){
+    const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+    if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+    const [repoRes,commitRes]=await Promise.all([
+      fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io",{headers,signal:AbortSignal.timeout(10000)}),
+      fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/commits?per_page=1",{headers,signal:AbortSignal.timeout(10000)})
+    ]);
+    const repoData=await repoRes.json().catch(()=>({})),commits=await commitRes.json().catch(()=>[]);
+    const commit=Array.isArray(commits)?commits[0]:null;
+    return "🐙 GITHUB STATUS\\nRepository: "+(repoData.full_name||"Unavailable")+"\\nDefault branch: "+(repoData.default_branch||"Unknown")+"\\nVisibility: "+(repoData.private?"Private":"Public")+"\\nLatest commit: "+String(commit?.sha||"Unavailable").slice(0,12)+"\\nMessage: "+String(commit?.commit?.message||"").split("\\n")[0].slice(0,160);
+  }
+  if(category==="reports"){
+    const cfg=await botConfig(env),day=bdDay(),a=await readDailyActivity(env,day);
+    return "📑 REPORT CONTROL\\nDaily Report: "+(cfg.dailyReport?"ON":"OFF")+"\\nMonitoring: "+(cfg.monitoring?"ON":"OFF")+"\\nToday: "+a.unique+" unique visitors · "+a.sessions+" sessions · "+a.views+" page views\\nNext report window: 11:00 PM Bangladesh time (Worker cron cadence applies).";
+  }
+  if(category==="settings"){
+    const cfg=await botConfig(env);
+    return "🔧 BOT SETTINGS\\n"+Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>(v?"🟢 ":"⚪ ")+k+": "+(v?"ON":"OFF")).join("\\n")+"\\nStorage: "+(env.BOT_CONFIG_KV?"Connected":"Not connected");
+  }
+  if(category==="logs"){
+    const keys=await umList(env,UM_PREFIX+"history:",12),rows=[];
+    for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push(new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
+    return "📜 RECENT USER EVENTS\\n"+(rows.join("\\n")||"No recent stored user events.")+"\\nNote: Cloudflare runtime logs remain available in the dashboard.";
+  }
+  if(category==="recovery"){
+    return "♻️ RECOVERY POINTS\\nGitHub backup branch: backup/pre-telegram-button-upgrade-20261101\\nWorker rollback version: 34 (existing deployed version)\\nGitHub backup: https://github.com/Kokushibu74/kokushibu74.github.io/tree/backup/pre-telegram-button-upgrade-20261101\\nWorker versions: Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Deployments.";
+  }
+  return "Status unavailable for this section.";
+}
+
 async function botHandleCallback(env,query){
   const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
   if(!chatId||!data.startsWith("b1:"))return false;
@@ -184,10 +239,8 @@ async function botHandleCallback(env,query){
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
     if(action==="hero:current"){const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());return true}
-    if(action.startsWith("info:")){
-      const topic=action.slice(5);await botSend(env,chatId,"ℹ️ "+topic+"\nএই control-এর পূর্ণ backend action পরবর্তী implementation ধাপে যুক্ত হবে। কোনো live setting পরিবর্তন করা হয়নি.",botBackKeyboard());return true;
-    }
-    await botShowMenu(env,chatId);
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const result=await botStatusText(env,category,index);await botSend(env,chatId,result,botBackKeyboard());return true;}
+        await botShowMenu(env,chatId);
   }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ এই কাজটি সম্পন্ন হয়নি। Worker logs পরীক্ষা করুন.",botBackKeyboard())}
   return true;
 }
