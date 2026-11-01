@@ -36,8 +36,9 @@
   }
   async function renderTopStories(){
     // Only stories discovered in the current refresh batch, with working preview images, enter this slider.
+    const todayBD=bdDateKey(Date.now());
     const candidates=sorted(items).filter(x=>
-      isLatestBatch(x)&&safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
+      isLatestBatch(x)&&bdDateKey(dateOf(x))===todayBD&&safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
     );
     const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
     topItems=checks.filter(x=>x.ok).map(x=>x.item);
@@ -159,7 +160,7 @@
     const scoped=items.filter(x=>{
       const d=dateOf(x),key=d?bdDateKey(d):"";
       if(!key||key>todayBD||key<oldestBD)return false;
-      if(viewMode==="latest")return isLatestBatch(x);
+      if(viewMode==="latest")return key===todayBD&&isLatestBatch(x);
       if(viewMode==="feed")return key===todayBD;
       return key<todayBD;
     });
