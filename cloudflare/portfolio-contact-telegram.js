@@ -591,6 +591,72 @@ async function botHeroPreviewImage(env,token){
   catch{return new Response("Image unavailable",{status:502})}
 }
 
+const MINIAPP_RATE_PREFIX = "miniapp:rate:v1:";
+const MINIAPP_AUDIT_PREFIX = "miniapp:audit:v1:";
+async function miniAppHmac(keyBytes,data){
+  const key=await crypto.subtle.importKey("raw",keyBytes,{name:"HMAC",hash:"SHA-256"},false,["sign"]);
+  return new Uint8Array(await crypto.subtle.sign("HMAC",key,data));
+}
+function miniAppHex(bytes){return Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");}
+async function miniAppAuthorize(initData,env){
+  if(!env.TELEGRAM_BOT_TOKEN||!env.ADMIN_TELEGRAM_IDS)throw new Error("Admin authentication is not configured.");
+  if(typeof initData!=="string"||initData.length<20||initData.length>8192)throw new Error("Invalid Telegram authentication data.");
+  const params=new URLSearchParams(initData),received=params.get("hash");
+  if(!received||!/^[a-f0-9]{64}$/i.test(received))throw new Error("Invalid Telegram signature.");
+  const pairs=[];for(const [k,v] of params.entries())if(k!=="hash")pairs.push([k,v]);
+  pairs.sort((a,b)=>a[0].localeCompare(b[0]));
+  const check=pairs.map(([k,v])=>k+"="+v).join("\n");
+  const te=new TextEncoder(),secret=await miniAppHmac(te.encode("WebAppData"),te.encode(env.TELEGRAM_BOT_TOKEN));
+  const expected=miniAppHex(await miniAppHmac(secret,te.encode(check)));
+  let diff=expected.length^received.length;
+  for(let i=0;i<Math.max(expected.length,received.length);i++)diff|=(expected.charCodeAt(i)||0)^(received.toLowerCase().charCodeAt(i)||0);
+  if(diff!==0)throw new Error("Telegram signature verification failed.");
+  const authDate=Number(params.get("auth_date")),now=Math.floor(Date.now()/1000);
+  if(!Number.isInteger(authDate)||authDate>now+60||now-authDate>86400)throw new Error("Telegram session expired. Close and reopen the Mini App.");
+  let user;try{user=JSON.parse(params.get("user")||"null")}catch{throw new Error("Invalid Telegram user data.");}
+  if(!user||!/^\d{5,20}$/.test(String(user.id||"")))throw new Error("Telegram user identity is missing.");
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS).split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  if(!admins.has(String(user.id)))throw new Error("Access denied. This Mini App is restricted to the configured administrator.");
+  return user;
+}
+async function miniAppRateLimit(env,userId){
+  if(!env.BOT_CONFIG_KV)return;
+  const bucket=Math.floor(Date.now()/60000),key=MINIAPP_RATE_PREFIX+userId+":"+bucket;
+  const count=Number(await env.BOT_CONFIG_KV.get(key)||0);
+  if(count>=60)throw new Error("Too many requests. Wait one minute and try again.");
+  await env.BOT_CONFIG_KV.put(key,String(count+1),{expirationTtl:120});
+}
+async function miniAppAudit(env,userId,action,detail={}){
+  if(!env.BOT_CONFIG_KV)return;
+  const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
+}
+async function miniAppOverview(env,user){
+  const started=performance.now();
+  let site={ok:false,status:"UNKNOWN",detail:"Check unavailable",responseMs:null};
+  try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(10000)});site={ok:r.ok,status:"HTTP "+r.status,detail:r.ok?"Portfolio reachable":"Portfolio returned HTTP "+r.status,responseMs:Math.round(performance.now()-started)};await r.body?.cancel();}catch(e){site={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,120),responseMs:Math.round(performance.now()-started)};}
+  let news={ok:false,status:"UNKNOWN",detail:"Feed check unavailable"};
+  try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  let bot={ok:false,status:"UNKNOWN",detail:"Telegram Bot check unavailable"};
+  try{const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/getMe",{signal:AbortSignal.timeout(8000)});const d=await r.json();bot={ok:!!(r.ok&&d.ok),status:r.ok&&d.ok?"CONNECTED":"ERROR",detail:d.result?.username?"@"+d.result.username:"Telegram API check failed"};}catch(e){bot={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  const cfg=await botConfig(env);let activity=null;
+  try{activity=await readDailyActivity(env,bdDay());}catch{}
+  const keys=Object.keys(BOT_DEFAULTS),enabled=keys.filter(k=>!!cfg[k]).length;
+  return {
+    ok:true,user:{id:String(user.id),first_name:String(user.first_name||""),username:String(user.username||"")},
+    overview:{site:{status:site.status,detail:site.detail},visitors:{today:activity?.unique??null,views:activity?.views??null},automation:{enabled:enabled+"/"+keys.length}},
+    services:[
+      {name:"Portfolio Website",status:site.status,detail:site.responseMs===null?site.detail:site.detail+" · "+site.responseMs+" ms",ok:site.ok},
+      {name:"News Feed",status:news.status,detail:news.detail,ok:news.ok},
+      {name:"Telegram Bot API",status:bot.status,detail:bot.detail,ok:bot.ok},
+      {name:"Cloudflare KV",status:env.BOT_CONFIG_KV&&env.VISITOR_KV?"BOUND":"MISSING",detail:"Required control and visitor stores",ok:!!(env.BOT_CONFIG_KV&&env.VISITOR_KV)}
+    ],
+    activity:[],
+    config:Object.fromEntries(keys.map(k=>[k,!!cfg[k]])),
+    privacy:{visitorRecordsReturned:false,personalVisitorDataReturned:false}
+  };
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -603,6 +669,39 @@ export default {
     const routeUrl=new URL(request.url);
     if(pathname==="/hero-preview")return botHeroPreviewPage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/hero-preview-image")return botHeroPreviewImage(env,routeUrl.searchParams.get("token")||"");
+    if(pathname==="/miniapp/api"){
+      if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
+      if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
+      const length=Number(request.headers.get("Content-Length")||0);if(length>16384)return respond({ok:false,error:"Request too large"},413);
+      let body;try{body=await request.json()}catch{return respond({ok:false,error:"Invalid JSON"},400);}
+      try{
+        const user=await miniAppAuthorize(body?.initData,env);
+        await miniAppRateLimit(env,user.id);
+        const action=String(body?.action||"");
+        if(action==="overview"){
+          const result=await miniAppOverview(env,user);
+          await miniAppAudit(env,user.id,"overview");
+          return respond(result);
+        }
+        if(action==="getConfig"){
+          const cfg=await botConfig(env);
+          return respond({ok:true,config:Object.fromEntries(Object.keys(BOT_DEFAULTS).map(k=>[k,!!cfg[k]]))});
+        }
+        if(action==="setConfig"){
+          const key=String(body?.key||""),value=body?.value;
+          if(!Object.prototype.hasOwnProperty.call(BOT_DEFAULTS,key)||typeof value!=="boolean")return respond({ok:false,error:"Unsupported setting or invalid value."},400);
+          const cfg=await botConfig(env);cfg[key]=value;await botSaveConfig(env,cfg);
+          await miniAppAudit(env,user.id,"setConfig",{key,value});
+          return respond({ok:true,key,value});
+        }
+        return respond({ok:false,error:"Unknown Mini App action."},400);
+      }catch(e){
+        const message=String(e&&e.message||e).slice(0,220);
+        const status=/Access denied/.test(message)?403:/signature|authentication data|session expired|identity is missing/i.test(message)?401:/Too many requests/.test(message)?429:400;
+        return respond({ok:false,error:message},status);
+      }
+    }
+
     if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
     if(pathname==="/track"){
       const botCfg=await botConfig(env);
