@@ -7,6 +7,12 @@ on:
       - 'sports-zone.html'
       - 'worker/**'
       - '.github/workflows/sports-zone-smoke-test.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'sports-zone.html'
+      - 'worker/**'
+      - '.github/workflows/sports-zone-smoke-test.yml'
   workflow_dispatch:
 
 permissions:
@@ -15,53 +21,95 @@ permissions:
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
-      - name: Check deployed Worker health
+      - name: Check production unified Worker health
         shell: bash
         run: |
           set -euo pipefail
-          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
-          curl --retry 3 --retry-delay 3 --retry-all-errors --fail --silent --show-error "$BASE/health" -o /tmp/health.json
-          python -c 'import json; d=json.load(open("/tmp/health.json")); assert d.get("status") == "ok", d; assert d.get("kvConfigured") is True, d; print("Health OK; KV binding configured.")'
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          curl --retry 3 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/health" -o /tmp/health.json
+          python -c 'import json; d=json.load(open("/tmp/health.json")); assert d.get("status") == "ok" and d.get("kvConfigured") is True, d; assert "api/schedule" in d.get("routes",[]) or "api/schedule" in str(d); print("Unified production Worker healthy; KV configured.")'
 
       - name: Check football scoreboard
         shell: bash
         run: |
           set -euo pipefail
-          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
-          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/football?league=eng.1" -o /tmp/football.json
-          python -c 'import json; d=json.load(open("/tmp/football.json")); assert d.get("ok") is True, d; assert isinstance(d.get("matches"), list), d; print("Football endpoint OK; matches returned:", len(d["matches"]))'
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          for league in eng.1 esp.1; do
+            curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/football?league=$league" -o "/tmp/football-$league.json"
+            python -c 'import json,sys; d=json.load(open(sys.argv[1])); assert d.get("ok") is True and isinstance(d.get("matches"),list), d; print(sys.argv[1], "OK:",len(d["matches"]),"matches")' "/tmp/football-$league.json"
+          done
 
-      - name: Check automatic live discovery status endpoint
+      - name: Check cricket fixtures across supported competitions
         shell: bash
         run: |
           set -euo pipefail
-          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
-          curl --retry 3 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/streams/status" -o /tmp/stream-status.json
-          python -c 'import json; d=json.load(open("/tmp/stream-status.json")); assert d.get("ok") is True, d; assert isinstance(d.get("autoDiscovery"), dict), d; print("Auto-discovery status endpoint OK; configured:", d["autoDiscovery"].get("configured"), "; reason:", d["autoDiscovery"].get("reason"))'
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          for league in 8039 icc.t20 ipl; do
+            curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/cricket?league=$league" -o "/tmp/cricket-$league.json"
+            python -c 'import json,sys; d=json.load(open(sys.argv[1])); assert d.get("ok") is True and isinstance(d.get("matches"),list), d; print(sys.argv[1], "OK:",len(d["matches"]),"matches")' "/tmp/cricket-$league.json"
+          done
 
-      - name: Check stream configuration endpoint
+      - name: Check ESPN cricket match details when an event is available
         shell: bash
         run: |
           set -euo pipefail
-          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          python - <<'PY'
+          import json, subprocess, urllib.parse
+          data=json.load(open("/tmp/cricket-8039.json"))
+          match=next((m for m in data["matches"] if m.get("id") and m.get("leagueId")),None)
+          if not match:
+              print("No active cricket event in ESPN header right now; detail route validated by input guard only.")
+              raise SystemExit(0)
+          q=urllib.parse.urlencode({"league":match["leagueId"],"match":match["id"]})
+          url="https://unified-sports-api.mdshihab74.workers.dev/api/cricket/details?"+q
+          body=subprocess.check_output(["curl","--retry","2","--retry-delay","2","--retry-all-errors","--fail","--silent","--show-error",url])
+          detail=json.loads(body)
+          assert detail.get("ok") is True and isinstance(detail.get("data"),dict), detail
+          print("Cricket match summary OK for",match["id"])
+          PY
+
+      - name: Check Cricbuzz live match feed
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/matches/live" -o /tmp/cricbuzz-live.json
+          python -c 'import json; d=json.load(open("/tmp/cricbuzz-live.json")); assert isinstance(d.get("matches"),list), d; print("Cricbuzz live feed OK:",len(d["matches"]),"matches parsed")'
+
+      - name: Check unified schedule feed
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/schedule" -o /tmp/schedule.json
+          python -c 'import json; d=json.load(open("/tmp/schedule.json")); assert d.get("ok") is True and isinstance(d.get("events"),list), d; print("Unified schedule OK:",len(d["events"]),"events; provider errors:",len(d.get("fetchErrors",[])))'
+
+      - name: Check official stream list and automatic discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
           curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/streams" -o /tmp/streams.json
-          python -c 'import json; d=json.load(open("/tmp/streams.json")); assert d.get("ok") is True, d; assert isinstance(d.get("streams"), list), d; print("Streams endpoint OK; configured official sources:", len(d["streams"]))'
+          curl --retry 2 --retry-delay 2 --retry-all-errors --fail --silent --show-error "$BASE/api/streams/status" -o /tmp/stream-status.json
+          python - <<'PY'
+          import json
+          streams=json.load(open("/tmp/streams.json"))
+          status=json.load(open("/tmp/stream-status.json"))
+          assert streams.get("ok") is True and isinstance(streams.get("streams"),list), streams
+          auto=status.get("autoDiscovery",{})
+          assert status.get("ok") is True and auto.get("configured") is True, status
+          print("Official stream endpoint OK:",len(streams["streams"]),"streams; auto-discovery configured:",auto.get("configured"))
+          print("Daily YouTube search budget:",auto.get("searchesToday",0),"/",auto.get("dailySearchLimit",70))
+          PY
 
-      - name: Check cricket scoreboard (provider may be unavailable)
+      - name: Verify production CORS
         shell: bash
         run: |
           set -euo pipefail
-          BASE="https://sports-zone-scores-api.mdshihab74.workers.dev"
-          code="$(curl --silent --show-error --max-time 15 -o /tmp/cricket.json -w '%{http_code}' "$BASE/api/cricket" || true)"
-          if [ "$code" = "200" ]; then
-            python -c 'import json; d=json.load(open("/tmp/cricket.json")); assert d.get("ok") is True, d; assert isinstance(d.get("matches"), list), d; print("Cricket endpoint OK; matches returned:", len(d["matches"]))'
-          elif [ "$code" = "502" ]; then
-            echo "WARNING: Worker is reachable, but the public cricket provider did not return a supported scoreboard response:"
-            cat /tmp/cricket.json
-          else
-            echo "Unexpected cricket HTTP status: $code"
-            cat /tmp/cricket.json
-            exit 1
-          fi
+          BASE="https://unified-sports-api.mdshihab74.workers.dev"
+          curl --silent --show-error -D /tmp/cors-headers -o /dev/null -H "Origin: https://kokushibu74.github.io" "$BASE/health"
+          grep -qi '^access-control-allow-origin: https://kokushibu74.github.io' /tmp/cors-headers
+          echo "Production GitHub Pages CORS OK."

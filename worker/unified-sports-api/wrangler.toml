@@ -24,5 +24,5 @@ YOUTUBE_OFFICIAL_CHANNEL_IDS = "UC1qkaS0OMSN7gb1RJLVL5Bg,UCnj0TjaM0wyxkAWW_nz8_1
 # npx wrangler secret put ADMIN_KEY
 # npx wrangler secret put YOUTUBE_API_KEY
 #
-# Cron intentionally omitted until the old trigger is moved. Do not run
-# both 15-minute triggers against the same SPORTS_ZONE KV namespace.
+[triggers]
+crons = ["*/15 * * * *"]

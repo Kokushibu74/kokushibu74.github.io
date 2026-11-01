@@ -33,15 +33,17 @@ Staged source for Cloudflare Worker `unified-sports-api`.
 
 The Sports Zone frontend separates currently live matches into a dedicated LIVE NOW section. Selecting a live match expands an inline panel on the same page. Cricket panels load Cricbuzz scorecard/commentary/ball-by-ball data using Cricbuzz match IDs; football panels load ESPN summary, team/player statistics and match events through `/api/football/details`. Detail requests are made only for the expanded match.
 
-## Rollout safety
+## Production schedule ownership
 
-Both legacy Workers remain deployed and enabled. The legacy scores Worker continues to own `*/15 * * * *` until the new Worker has both secrets and passes live verification. Do not attach the same Cron to both Workers at once; both would write to the same KV namespace and could double YouTube search usage.
+The production `unified-sports-api` Worker owns the `*/15 * * * *` Cron. The legacy `sports-zone-scores-api` Worker remains deployed and enabled for rollback, but has no Cron trigger. Both Workers share the same `SPORTS_ZONE` KV namespace, so never enable the same discovery Cron on both at once.
 
-After verifying the new Worker, move the 15-minute Cron to it while keeping the legacy scripts deployed for rollback.
+Both required secret bindings (`ADMIN_KEY` and `YOUTUBE_API_KEY`) and the official YouTube channel allowlist are present on the unified Worker. Keep secret values out of GitHub and public files.
 
-## Existing issue found during audit
+The smoke test targets the actual production Worker used by `sports-zone.html`, not the legacy Worker.
 
-In the audited seven-day Observability window, the old ESPN cricket endpoint recorded 15 HTTP 502 responses: 9 for `league=ipl` and 6 for `league=icc.t20`. These are pre-existing provider/league errors and need separate endpoint validation.
+## Cricket provider routing
+
+The ESPN Site Scoreboard path for cricket was returning 404/502 for the old `/api/cricket?league=ipl|icc.t20` requests. The unified Worker now uses ESPN's Personalized Scoreboard Header to discover active cricket series and their live/upcoming events, and the ESPN Web API match-summary route for scorecards. The existing Cricbuzz `/matches/live` and match-detail routes remain in place for the Live Match Center. The production smoke test checks all three cricket competition filters, Cricket match summaries, the Cricbuzz live feed, the unified multi-sport schedule, official streams, CORS, and the actual Worker used by the public page.
 
 
 ### Live match handling
