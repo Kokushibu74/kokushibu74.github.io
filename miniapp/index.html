@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b16">
+  <meta name="color-scheme" content="dark">
+  <title>Kokushibu • Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./app.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Kokushibu Control Center">
+        <span class="brand-mark">K<span>◈</span></span>
+        <span><b>KOKUSHIBU</b><small>CONTROL CENTER</small></span>
+      </a>
+      <div class="side-caption">COMMAND DECK</div>
+      <nav id="side-nav" class="nav-list" aria-label="Control center sections"></nav>
+      <div class="sidebar-foot"><span class="pulse-dot"></span><span>PRIVATE ADMIN SESSION</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <button id="mobile-menu" class="icon-btn mobile-only" aria-label="Open navigation">☰</button>
+          <div><div class="eyebrow">KOKUSHIBU / <span id="crumb">OVERVIEW</span></div><h1 id="page-title">Command Center</h1></div>
+        </div>
+        <div class="top-actions">
+          <div class="live-chip"><i></i><span id="connection-label">CONNECTING</span></div>
+          <button id="refresh-btn" class="refresh-btn" type="button"><span>↻</span> Refresh</button>
+          <div class="avatar" id="admin-avatar">A</div>
+        </div>
+      </header>
+      <section class="welcome-row">
+        <div><div class="section-kicker">SYSTEM CONTROL / 01</div><h2>Welcome back, <span id="admin-name">Admin</span><span class="cyan">.</span></h2><p>One secure cockpit for your website, automation and bot operations.</p></div>
+        <div class="clock-card"><span>LOCAL SYSTEM TIME</span><b id="clock">--:--:--</b><small>ASIA / DHAKA</small></div>
+      </section>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section id="view-dashboard" class="view active">
+        <div class="section-heading"><div><span class="section-kicker">LIVE TELEMETRY</span><h3>System overview</h3></div><span class="updated" id="last-updated">Waiting for secure connection</span></div>
+        <div class="metrics-grid">
+          <article class="metric-card"><div class="metric-top"><span>WEBSITE</span><span class="metric-icon cyan">◉</span></div><strong id="metric-site">—</strong><small id="metric-site-sub">Awaiting authenticated data</small></article>
+          <article class="metric-card"><div class="metric-top"><span>VISITORS TODAY</span><span class="metric-icon violet">⌁</span></div><strong id="metric-visitors">—</strong><small>Live visitor telemetry</small></article>
+          <article class="metric-card"><div class="metric-top"><span>PAGE VIEWS</span><span class="metric-icon blue">▤</span></div><strong id="metric-views">—</strong><small>Today's page views</small></article>
+          <article class="metric-card"><div class="metric-top"><span>AUTOMATIONS</span><span class="metric-icon pink">⟳</span></div><strong id="metric-automation">—</strong><small>Configured scheduled tasks</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel system-panel"><div class="panel-head"><div><span class="section-kicker">SERVICE MATRIX</span><h3>Core services</h3></div><span class="tag">LIVE CHECKS</span></div><div id="service-list" class="service-list"><div class="empty-state">Secure connection required to load service status.</div></div></article>
+          <article class="panel activity-panel"><div class="panel-head"><div><span class="section-kicker">RECENT EVENTS</span><h3>Activity stream</h3></div><span class="tag muted-tag">AUDIT</span></div><div id="activity-list" class="activity-list"><div class="empty-state">No activity loaded yet.</div></div></article>
+        </div>
+        <div class="section-heading modules-heading"><div><span class="section-kicker">ALL SYSTEMS</span><h3>Control modules</h3></div></div>
+        <div id="module-grid" class="module-grid"></div>
+      </section>
+      <section id="view-module" class="view">
+        <div class="module-hero panel"><div class="module-orb" id="module-orb">◈</div><div><span class="section-kicker" id="module-kicker">CONTROL MODULE</span><h3 id="module-title">Module</h3><p id="module-description">Module information will appear here.</p></div></div>
+        <div class="module-content panel" id="module-content"><div class="empty-state">Choose a module to inspect its live controls.</div></div>
+      </section>
+      <footer class="footer"><span>◈ KOKUSHIBU INTELLIGENCE</span><span>SECURE TELEGRAM MINI APP · v1</span></footer>
+    </main>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"></nav>
+  <div id="drawer-scrim" class="drawer-scrim"></div>
+</body>
+</html>
