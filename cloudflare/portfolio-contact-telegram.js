@@ -205,7 +205,17 @@ async function botWithTyping(env,chatId,work){
 }
 async function botRunWithProgress(env,chatId,message,work){
   await botSend(env,chatId,"⏳ "+message,botBackKeyboard());
-  return await botWithTyping(env,chatId,work);
+  try{
+    return await botWithTyping(env,chatId,work);
+  }catch(error){
+    console.error("Telegram progress task failed",String(error&&error.stack||error).slice(0,1200));
+    try{
+      await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\nপ্রক্রিয়াটি মাঝপথে ব্যর্থ হয়েছে; একই কাজ আবার চালানোর আগে Worker Logs পরীক্ষা করুন।",botBackKeyboard());
+    }catch(deliveryError){
+      console.error("Telegram progress failure notice could not be delivered",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800));
+    }
+    return null;
+  }
 }
 function botMainKeyboard(){
   const rows=[];for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
