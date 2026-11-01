@@ -182,7 +182,7 @@ def image_for(node):
     # Google News and namespaced Atom feeds may embed thumbnails in RSS/Atom HTML.
     raw = child_text(node, "description", "summary", "content")
     raw += " " + child_text(node, "encoded")
-    match = re.search(r'<img[^>]+src=["\\'](https://[^"\\']+)["\\']', raw, re.I)
+    match = re.search(r"<img[^>]+src=['\"](https://[^'\"]+)['\"]", raw, re.I)
     if match:
         return html.unescape(match.group(1))
     return ""
