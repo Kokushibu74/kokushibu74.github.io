@@ -20,7 +20,7 @@
     const part=k=>parts.find(x=>x.type===k)?.value||"";
     return part("year")+"-"+part("month")+"-"+part("day");
   };
-  const firstSeenDate=x=>{const value=x.firstSeenAt||x.latestBatchAt||"";const d=value?new Date(value):null;return d&&!Number.isNaN(d.getTime())?d:null};
+  const firstSeenDate=x=>{const value=x.firstSeenAt||"";const d=value?new Date(value):null;return d&&!Number.isNaN(d.getTime())?d:null};
   const isLatestBatch=x=>{const d=firstSeenDate(x);if(!d)return false;const age=Date.now()-d.getTime();return age>=-5*60*1000&&age<60*60*1000};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
