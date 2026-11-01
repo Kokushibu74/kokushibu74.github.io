@@ -9,7 +9,7 @@
   const archiveTools=document.getElementById("archive-tools"),viewSwitch=document.getElementById("news-view-switch");
   const slidesRoot=document.getElementById("top-stories-slides"),slideCount=document.getElementById("top-stories-count"),controls=document.getElementById("top-stories-controls"),dotsRoot=document.getElementById("top-stories-dots");
   document.getElementById("year").textContent=new Date().getFullYear();
-  let items=[],weatherItems=[],active="All",viewMode="latest",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
+  let items=[],weatherItems=[],active="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
   const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safe=v=>{try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}};
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
@@ -160,7 +160,6 @@
     const scoped=items.filter(x=>{
       const d=dateOf(x),key=d?bdDateKey(d):"";
       if(!key||key>todayBD||key<oldestBD)return false;
-      if(viewMode==="latest")return key===todayBD&&isLatestBatch(x);
       if(viewMode==="feed")return key===todayBD;
       return key<todayBD;
     });
@@ -172,11 +171,11 @@
     }));
     const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
     currentPage=Math.max(1,Math.min(currentPage,totalPages));
-    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="latest"?"No stories were discovered in the latest refresh batch.":viewMode==="feed"?"No stories from today match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
+    if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="feed"?"No stories from today match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
     const start=(currentPage-1)*PAGE_SIZE;
     const pageItems=visible.slice(start,start+PAGE_SIZE);
     const end=start+pageItems.length;
-    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest batch headlines":viewMode==="feed"?"today’s news":"archived headlines (up to 90 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
+    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="feed"?"today’s news":"archived headlines (up to 90 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
     const renderNow=Date.now();
     let previousArchiveDate="";
@@ -200,7 +199,7 @@
       button.textContent=label+" ("+count+")";
     });
   }
-  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="latest"?"LATEST NEWS":viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="latest"?'Latest <span class="accent">news</span>':viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
+  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));render()});
   document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
   pagination.addEventListener("click",e=>{const button=e.target.closest("button[data-page]");if(!button||button.disabled)return;currentPage=Number(button.dataset.page)||1;render();document.getElementById("latest-feed")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
