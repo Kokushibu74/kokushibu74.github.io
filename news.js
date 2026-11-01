@@ -20,7 +20,8 @@
     const part=k=>parts.find(x=>x.type===k)?.value||"";
     return part("year")+"-"+part("month")+"-"+part("day");
   };
-  const isLatestBatch=x=>!!window.newsLatestBatchAt&&String(x.latestBatchAt||"")===String(window.newsLatestBatchAt);
+  const firstSeenDate=x=>{const value=x.firstSeenAt||x.latestBatchAt||"";const d=value?new Date(value):null;return d&&!Number.isNaN(d.getTime())?d:null};
+  const isLatestBatch=x=>{const d=firstSeenDate(x);if(!d)return false;const age=Date.now()-d.getTime();return age>=-5*60*1000&&age<60*60*1000};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const ageOf=x=>{const d=dateOf(x);return d?Date.now()-d.getTime():Infinity};
@@ -38,15 +39,15 @@
     });
   }
   async function renderTopStories(){
-    // The slider mirrors only the current 15-minute LATEST batch from Bangladesh.
+    // The slider mirrors Bangladesh stories first collected within the last hour.
     // It never runs a separate news collection; every candidate comes from the main RSS items array.
     const candidates=sortedNews(items).filter(x=>
-      isLatestBatch(x)&&x.category==="Bangladesh"&&isWithinLast24Hours(x)&&
+      isLatestBatch(x)&&x.category==="Bangladesh"&&
       safe(x.link)!=="#"&&!!String(x.previewTitle||x.title||"").trim()&&previewUrl(x)!=="#"
     );
     const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
     topItems=checks.filter(x=>x.ok).map(x=>x.item);
-    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No latest Bangladesh RSS stories with a working preview image are available yet. Stories without images remain in the news feed.</div>';slideCount.textContent="IMAGE PREVIEW STORIES";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);slideTimer=null;return}
+    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No Bangladesh stories first collected in the last hour have a working preview image yet. Stories without images remain in the news feed.</div>';slideCount.textContent="IMAGE PREVIEW STORIES";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);slideTimer=null;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
       const image=previewUrl(x),title=x.previewTitle||x.title;
