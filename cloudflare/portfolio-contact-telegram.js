@@ -115,7 +115,7 @@ const BOT_MENU_ACTIVE_PREFIX="bot:menu-active:v1:";
 async function botMenuIsBusy(env,chatId){
   if(!env.BOT_CONFIG_KV)return true;
   if(await env.BOT_CONFIG_KV.get(BOT_MENU_ACTIVE_PREFIX+String(chatId)))return true;
-  const ids=String(env.ADMIN_TELEGRAM_IDS||"").split(/[\\s,;]+/).filter(Boolean);
+  const ids=String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean);
   for(const id of ids)if(await env.BOT_CONFIG_KV.get("bot:user-input:"+id)||await env.BOT_CONFIG_KV.get("hero:uploading:"+id))return true;
   return false;
 }
