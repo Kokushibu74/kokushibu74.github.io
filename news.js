@@ -219,17 +219,39 @@
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));render()});
   document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
   pagination.addEventListener("click",e=>{const button=e.target.closest("button[data-page]");if(!button||button.disabled)return;currentPage=Number(button.dataset.page)||1;render();document.getElementById("latest-feed")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
-  function renderWeatherStories(){
+  function videoLoads(url){
+    return new Promise(resolve=>{
+      if(!url||url==="#"){resolve(false);return}
+      const video=document.createElement("video");
+      let settled=false;
+      const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);video.removeAttribute("src");video.load();resolve(ok)};
+      const timer=setTimeout(()=>finish(false),8000);
+      video.preload="metadata";video.muted=true;video.playsInline=true;
+      video.onloadedmetadata=()=>finish(video.videoWidth>0&&video.videoHeight>0);
+      video.onerror=()=>finish(false);
+      video.src=url;video.load();
+    });
+  }
+  async function renderWeatherStories(){
     const recent=sorted(weatherItems.filter(x=>isRecentWeatherStory(x)));
-    const stories=recent.slice(0,8);
+    const checked=await Promise.all(recent.map(async x=>{
+      const image=safe(x.previewImage||x.image||x.previewScreenshot||x.imageUrl||x.thumbnail||x.thumbnailUrl||"");
+      const video=safe(x.videoUrl||x.video||x.enclosureUrl||"");
+      if(image!=="#"&&await imageLoads(image))return {item:x,mediaType:"image",mediaUrl:image};
+      if(video!=="#"&&await videoLoads(video))return {item:x,mediaType:"video",mediaUrl:video};
+      return null;
+    }));
+    const stories=checked.filter(Boolean).slice(0,8);
     if(!stories.length){weatherRoot.hidden=true;if(weatherSlideTimer)clearInterval(weatherSlideTimer);weatherSlideTimer=null;return}
     weatherRoot.hidden=false;weatherSlideIndex=Math.min(weatherSlideIndex,stories.length-1);
-    weatherCount.textContent=stories.length+" RECENT STORIES";
-    weatherSlidesRoot.innerHTML=stories.map((x,i)=>{
-      const url=safe(x.publisherUrl||x.link),d=dateOf(x),publisher=x.publisherName||x.source||"Original publisher";
-      const image=safe(x.previewImage||x.image||x.previewScreenshot||x.imageUrl||x.thumbnail||x.thumbnailUrl||x.enclosureUrl||"");
-      const imageMarkup=image!=="#"?'<div class="weather-slide-visual"><img class="weather-slide-image" src="'+esc(image)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add(\'no-image\');this.remove()"><span class="weather-image-shade"></span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>':'<div class="weather-slide-visual no-image"><span class="weather-image-fallback">WEATHER / DISASTER WATCH</span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>';
-      return '<article class="weather-slide" data-weather-index="'+i+'">'+imageMarkup+'<div class="weather-slide-copy"><span class="weather-kicker">WEATHER / NATURAL DISASTER</span><h3><a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(x.previewTitle||x.title)+'</a></h3>'+(x.previewSummary||x.summary||x.description?'<p>'+esc(x.previewSummary||x.summary||x.description)+'</p>':'')+'<div class="weather-meta"><span>'+esc(publisher)+'</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"Date unavailable")+'</span></div></div></article>';
+    weatherCount.textContent=stories.length+" MEDIA-READY STORIES";
+    weatherSlidesRoot.innerHTML=stories.map((entry,i)=>{
+      const x=entry.item,url=safe(x.publisherUrl||x.link),d=dateOf(x),publisher=x.publisherName||x.source||"Original publisher";
+      const mediaMarkup=entry.mediaType==="image"
+        ?'<img class="weather-slide-image" src="'+esc(entry.mediaUrl)+'" alt="" loading="'+(i<2?"eager":"lazy")+'" referrerpolicy="no-referrer">'
+        :'<video class="weather-slide-image weather-slide-video" src="'+esc(entry.mediaUrl)+'" controls muted playsinline preload="metadata"></video>';
+      const visual='<div class="weather-slide-visual">'+mediaMarkup+'<span class="weather-image-shade"></span><span class="weather-image-index">'+String(i+1).padStart(2,"0")+' / '+String(stories.length).padStart(2,"0")+'</span></div>';
+      return '<article class="weather-slide" data-weather-index="'+i+'">'+visual+'<div class="weather-slide-copy"><span class="weather-kicker">WEATHER / NATURAL DISASTER</span><h3><a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(x.previewTitle||x.title)+'</a></h3>'+(x.previewSummary||x.summary||x.description?'<p>'+esc(x.previewSummary||x.summary||x.description)+'</p>':'')+'<div class="weather-meta"><span>'+esc(publisher)+'</span><span>'+(d?esc(d.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})):"Date unavailable")+'</span></div></div></article>';
     }).join("");
     syncWeatherDeck(weatherSlideIndex);
     weatherControls.hidden=stories.length<2;
