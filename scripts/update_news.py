@@ -74,6 +74,7 @@ BREAKING_FOLLOWUP_RE = re.compile(
     r"investigation into)", re.I
 )
 BREAKING_HISTORY_DAYS = 30
+FEED_RETENTION_DAYS = 7
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
     "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
@@ -419,6 +420,24 @@ def read_breaking_history():
         return []
 
 
+def within_feed_retention(item, now=None):
+    """Keep only dated headlines published within the last seven days."""
+    if not isinstance(item, dict):
+        return False
+    stamp = item.get("publishedAt")
+    try:
+        parsed = datetime.fromisoformat(str(stamp).replace("Z", "+00:00")) if stamp else None
+        if parsed is None:
+            return False
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        age = current - parsed.astimezone(timezone.utc)
+        return timedelta(minutes=-5) <= age <= timedelta(days=FEED_RETENTION_DAYS)
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+
 def read_previous():
     try:
         with open(OUTPUT, "r", encoding="utf-8") as file:
@@ -426,18 +445,12 @@ def read_previous():
         items = payload.get("items", []) if isinstance(payload, dict) else []
         retained = []
         for item in items:
-            if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
+            if (not isinstance(item, dict) or not item.get("title")
+                    or not item.get("link", "").startswith("https://")
+                    or not within_feed_retention(item)):
                 continue
-            stamp = item.get("publishedAt")
-            try:
-                parsed = datetime.fromisoformat(stamp.replace("Z", "+00:00")) if stamp else None
-                if parsed and parsed.tzinfo is None:
-                    parsed = parsed.replace(tzinfo=timezone.utc)
-            except (ValueError, AttributeError):
-                parsed = None
             # Breaking status must be re-earned from a fresh feed query every run.
             item.pop("isBreaking", None)
-            # Keep the complete archive; date filtering happens in the browser.
             retained.append(item)
         return retained
     except (OSError, json.JSONDecodeError, TypeError):
@@ -570,6 +583,9 @@ def main():
     weather_collected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
     weather_items = weather_collected[:12]
 
+    # Reject undated or older-than-seven-day headlines before preview enrichment.
+    collected = [item for item in collected if within_feed_retention(item)]
+
     # Reuse publisher metadata from the last feed run for unchanged stories.
     old_metadata = {key_for(item): item for item in previous}
     preview_fields = ("publisherUrl", "publisherName", "previewTitle", "previewSummary", "previewImage", "previewScreenshot", "iframeAllowed", "previewCheckedAt")
@@ -617,12 +633,11 @@ def main():
             continue
         if key not in seen:
             seen.add(key)
-        # Keep old items only when they are within the retention window.
-        merged.append(item)
-    if not collected and not previous:
-        print("ERROR: no RSS items were collected; preserving the existing file.")
-        return
-    # Keep every unique collected and archived story; no age or total-count cap.
+        # Only dated stories inside the seven-day window reach the public feed.
+        if within_feed_retention(item):
+            merged.append(item)
+    # An empty but fresh feed is safer than leaving expired headlines visible.
+    # Keep every unique story inside the configured retention window.
     selected = []
     selected_keys = set()
     for item in merged:

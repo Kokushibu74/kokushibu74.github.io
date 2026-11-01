@@ -146,8 +146,12 @@
     const from=dateFromInput?.value?new Date(dateFromInput.value+"T00:00:00").getTime():-Infinity;
     const to=dateToInput?.value?new Date(dateToInput.value+"T23:59:59.999").getTime():Infinity;
     const dateFilterActive=viewMode==="archive"&&!!(dateFromInput?.value||dateToInput?.value);
-    const now=Date.now(),cutoff=now-24*60*60*1000;
-    const scoped=items.filter(x=>{const d=dateOf(x);return viewMode==="latest"?(!!d&&d.getTime()<=now+5*60*1000&&d.getTime()>=cutoff):(!d||d.getTime()<cutoff)});
+    const now=Date.now(),cutoff=now-24*60*60*1000,archiveCutoff=now-7*24*60*60*1000;
+    const scoped=items.filter(x=>{
+      const d=dateOf(x),stamp=d?.getTime();
+      if(!Number.isFinite(stamp)||stamp>now+5*60*1000||stamp<archiveCutoff)return false;
+      return viewMode==="latest"?stamp>=cutoff:stamp<cutoff;
+    });
     const visible=sorted(scoped.filter(x=>{
       const date=dateOf(x),stamp=date?date.getTime():NaN;
       const inDateRange=Number.isFinite(stamp)&&stamp>=from&&stamp<=to;
@@ -160,7 +164,7 @@
     const start=(currentPage-1)*PAGE_SIZE;
     const pageItems=visible.slice(start,start+PAGE_SIZE);
     const end=start+pageItems.length;
-    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest headlines (last 24 hours)":"archived headlines")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
+    status.textContent="Showing "+(start+1)+"–"+end+" of "+visible.length+" "+(viewMode==="latest"?"latest headlines (last 24 hours)":"archived headlines (last 7 days)")+(active!=="All"?" · "+active:"")+" · Page "+currentPage+" of "+totalPages+" · Newest first · Feed updated "+(window.newsUpdatedAt?new Date(window.newsUpdatedAt).toLocaleString():"not available")+".";
     pagination.innerHTML=totalPages>1?'<button type="button" class="page-button page-arrow" data-page="'+Math.max(1,currentPage-1)+'" aria-label="Previous page" '+(currentPage===1?'disabled':'')+'>‹</button>'+Array.from({length:totalPages},(_,i)=>{const page=i+1;return '<button type="button" class="page-button'+(page===currentPage?' active':'')+'" data-page="'+page+'" '+(page===currentPage?'aria-current="page"':'')+'>'+page+'</button>'}).join("")+'<button type="button" class="page-button page-arrow" data-page="'+Math.min(totalPages,currentPage+1)+'" aria-label="Next page" '+(currentPage===totalPages?'disabled':'')+'>›</button>':"";
     const renderNow=Date.now();
     grid.innerHTML=pageItems.map((x,i)=>{
