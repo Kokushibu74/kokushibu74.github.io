@@ -128,7 +128,8 @@ async function botExpireIdleMenu(env){
     if(d.ok||String(d.data?.description||"").toLowerCase().includes("message to delete not found"))await env.BOT_CONFIG_KV.delete(item.name);
   }
 }
-\nasync function botTelegram(env,method,payload){
+
+async function botTelegram(env,method,payload){
   const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{
     method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
   });
