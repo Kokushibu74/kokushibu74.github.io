@@ -151,7 +151,7 @@ async function botCategory(env,chatId,category){
 async function botHandleCallback(env,query){
   const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
   if(!chatId||!data.startsWith("b1:"))return false;
-  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   if(query.message?.chat?.type!=="private"||!admins.has(sender)){
     await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/answerCallbackQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callback_query_id:query.id,text:"Admin access required",show_alert:true})});
     return true;
