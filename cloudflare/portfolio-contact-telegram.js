@@ -658,7 +658,7 @@ export default {
       });
       return new Response("OK");
     }
-        if(new URL(request.url).pathname!=="/submit")return respond({error:"Not found"},404);
+    if(new URL(request.url).pathname!=="/submit")return respond({error:"Not found"},404);
     if(request.method!=="POST")return respond({error:"Method not allowed"},405);
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return respond({error:"Contact service is not configured yet."},503);
     if(!(request.headers.get("Content-Type")||"").toLowerCase().includes("multipart/form-data"))return respond({error:"Invalid form upload."},415);
