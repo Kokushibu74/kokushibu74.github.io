@@ -97,12 +97,12 @@ jobs:
                                   if clean and clean not in excerpts:
                                       excerpts.append(clean)
                               if os.environ["WORKFLOW_NAME"] == "Refresh live news feed" and os.environ["CONCLUSION"] == "success":
-                                  headline_match = re.search(r"Wrote\\s+(\\d+)\\s+headlines;\\s*Bangladesh:\\s*(\\d+)\\s+from\\s+(\\d+)\\s+successful RSS queries", line)
+                                  headline_match = re.search(r"Wrote\s+(\d+)\s+headlines;\s*Bangladesh:\s*(\d+)\s+from\s+(\d+)\s+successful RSS queries", line)
                                   if headline_match:
                                       news_metrics["headlines"] = int(headline_match.group(1))
                                       news_metrics["bangladesh"] = int(headline_match.group(2))
                                       news_metrics["rss"] = int(headline_match.group(3))
-                                  publisher_match = re.search(r"Publisher URLs resolved:\\s*(\\d+)\\s*;\\s*metadata fetched:\\s*(\\d+)\\s+articles", line)
+                                  publisher_match = re.search(r"Publisher URLs resolved:\s*(\d+)\s*;\s*metadata fetched:\s*(\d+)\s+articles", line)
                                   if publisher_match:
                                       news_metrics["publisher_urls"] = int(publisher_match.group(1))
                                       news_metrics["metadata_articles"] = int(publisher_match.group(2))
