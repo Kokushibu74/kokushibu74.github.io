@@ -173,16 +173,16 @@ def image_for(node):
             url = el.attrib.get("url", "")
             if url.startswith("https://"):
                 return url
-    enclosure = node.find("enclosure")
+    enclosure = child_element(node, "enclosure")
     if enclosure is not None:
         url = enclosure.attrib.get("url", "")
         kind = enclosure.attrib.get("type", "")
         if url.startswith("https://") and kind.startswith("image/"):
             return url
-    # Google News sometimes embeds its thumbnail inside the RSS description HTML.
-    raw = node.findtext("description") or ""
-    raw += " " + (node.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or "")
-    match = re.search(r'<img[^>]+src=["\\\'](https://[^"\\\']+)["\\\']', raw, re.I)
+    # Google News and namespaced Atom feeds may embed thumbnails in RSS/Atom HTML.
+    raw = child_text(node, "description", "summary", "content")
+    raw += " " + child_text(node, "encoded")
+    match = re.search(r'<img[^>]+src=["\\'](https://[^"\\']+)["\\']', raw, re.I)
     if match:
         return html.unescape(match.group(1))
     return ""
@@ -631,7 +631,7 @@ def main():
                       "previewImage", "previewScreenshot", "previewCheckedAt"):
             if cached.get(field) not in (None, ""):
                 item[field] = cached[field]
-    weather_preview_candidates = weather_collected[:8]
+    weather_preview_candidates = weather_collected[:12]
     weather_enriched = 0
     for item in weather_preview_candidates:
         if item.get("previewImage") and item.get("previewCheckedAt"):
