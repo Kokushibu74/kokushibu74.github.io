@@ -1,0 +1,33 @@
+name: News feed logic tests
+
+on:
+  pull_request:
+    paths:
+      - "scripts/update_news.py"
+      - "tests/test_update_news.py"
+      - ".github/workflows/news-tests.yml"
+  push:
+    branches:
+      - "feat/news-bangladesh-daily-archive-90d"
+    paths:
+      - "scripts/update_news.py"
+      - "tests/test_update_news.py"
+      - ".github/workflows/news-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-news-logic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the tested commit
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Run offline news logic tests
+        run: python3 tests/test_update_news.py -v
+      - name: Check browser JavaScript syntax
+        run: node --check news.js
