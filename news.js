@@ -86,7 +86,7 @@
   }
   function startSlideTimer(){
     if(slideTimer)clearInterval(slideTimer);
-    if(topItems.length>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches)slideTimer=setInterval(()=>showSlide(slideIndex+1),6500);
+    if(topItems.length>1)slideTimer=setInterval(()=>showSlide(slideIndex+1),6500);
   }
   controls.addEventListener("click",e=>{
     const step=e.target.closest("[data-slide-step]"),dot=e.target.closest("[data-slide-to]");
@@ -97,8 +97,7 @@
   dateFromInput?.addEventListener("change",()=>{currentPage=1;render()});
   dateToInput?.addEventListener("change",()=>{currentPage=1;render()});
   const slider=document.getElementById("top-stories");
-  slider.addEventListener("mouseenter",()=>{if(slideTimer)clearInterval(slideTimer)});
-  slider.addEventListener("mouseleave",startSlideTimer);
+  // Auto-play intentionally continues while the pointer is over the slider.
 
   // Touch swipe plus mouse/pen drag; ordinary clicks still open the selected publisher.
   let pointerStartX=0,pointerStartY=0,pointerActive=false,dragged=false,suppressCardClick=false;
