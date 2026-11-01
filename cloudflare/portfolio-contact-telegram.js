@@ -3,7 +3,7 @@ function bdDay(ts=Date.now()){return new Intl.DateTimeFormat("en-CA",{timeZone:"
 function previousBdDay(day){const d=new Date(day+"T00:00:00Z");d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10);}
 async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",rows=[];let cursor;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row)}cursor=page.list_complete?undefined:page.cursor;}while(cursor);const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};const pages={};let views=0,sessions=0,errors=0,returning=0;for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}return {day,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};}
 async function sendTelegramText(env,chatId,text,options={}){
-  const max=3500,lines=String(text||"").split("\n"),chunks=[];let current="";
+  const max=3500,lines=botFormatTelegramResponse(text,options).split("\n"),chunks=[];let current="";
   for(const line of lines){
     if(line.length>max){
       if(current){chunks.push(current);current="";}
@@ -18,7 +18,7 @@ async function sendTelegramText(env,chatId,text,options={}){
     const extra={...options};if(i>0)delete extra.reply_to_message_id;
     const res=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
       method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({chat_id:chatId,text:botFormatTelegramResponse(chunks[i],options),disable_web_page_preview:true,...extra})
+      body:JSON.stringify({chat_id:chatId,text:chunks[i],disable_web_page_preview:true,...extra})
     });
     const data=await res.json().catch(()=>({}));
     if(!res.ok||!data.ok)throw new Error("Telegram message delivery failed (HTTP "+res.status+")");
