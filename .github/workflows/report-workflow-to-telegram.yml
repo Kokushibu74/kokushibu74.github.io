@@ -172,12 +172,20 @@ jobs:
               f.write("message<<EOF\n" + message + "\nEOF\n")
           PY
 
+      - name: Read Telegram automation settings
+        id: bot_config
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 2 --max-time 15 https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config -o /tmp/bot-config.json
+          enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.workflowAlerts===true?'true':'false')")"
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+
       - name: Send Telegram report
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MESSAGE: ${{ steps.report.outputs.message }}
-        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' }}
+        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && steps.bot_config.outputs.enabled == 'true' }}
         run: |
           set -euo pipefail
           curl -fsS --retry 2 --retry-all-errors --max-time 25 \

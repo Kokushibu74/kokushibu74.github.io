@@ -1,0 +1,49 @@
+name: Telegram Worker validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'cloudflare/portfolio-contact-telegram.js'
+      - '.github/workflows/telegram-worker-check.yml'
+  push:
+    branches: [feature/telegram-button-upgrade]
+    paths:
+      - 'cloudflare/portfolio-contact-telegram.js'
+      - '.github/workflows/telegram-worker-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Parse Worker module
+        run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Verify button and safety contracts
+        run: |
+          node --input-type=commonjs <<'NODE'
+          const fs = require('node:fs');
+          const source = fs.readFileSync('cloudflare/portfolio-contact-telegram.js', 'utf8');
+          const required = [
+            'callback_query', 'botHandleCallback', 'botMainKeyboard',
+            'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
+            'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
+            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection', 'pathname==="/workflow-config"', 'newsRefresh:true', 'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;', 'async function botStatusText', 'action.startsWith("status:")', 'bot:user-input:', 'pending?.mode'
+          ];
+          for (const item of required) {
+            if (!source.includes(item)) throw new Error('Missing Telegram control contract: ' + item);
+          }
+          if (!source.includes('if(msg.chat.type!=="private")')) throw new Error('Private-chat restriction missing');
+          if (!source.includes('!admins.has(sender)')) throw new Error('Admin allowlist check missing');
+          if (!source.includes('if(cmd==="/start"||cmd==="/menu")')) throw new Error('Menu entry commands missing');
+          if (source.includes('}\\n      const msg=update.message;')) throw new Error('Escaped webhook newline remains');
+          if (!source.includes('split(/[\\s,;]+/)')) throw new Error('Admin ID whitespace parsing missing');
+          if (source.includes('full backend action পরবর্তী')) throw new Error('Placeholder button action remains');
+          console.log('Telegram button, admin guard, manual refresh, live status actions, User Manager inputs and automation gates verified.');
+          NODE
