@@ -101,10 +101,10 @@ async function botMarkMenuInteraction(env,chatId,messageId,busy){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
 }
 async function botEnsureStartKeyboard(env,chatId){
-  const key="bot:start-keyboard:v1:"+String(chatId);
-  if(await env.BOT_CONFIG_KV?.get(key))return;
+  // Re-assert the persistent reply keyboard whenever /start, /menu or START BOT is used.
+  // A KV marker cannot prove that Telegram still displays the keyboard on the user's client.
   const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"কন্ট্রোল প্যানেল খুলতে নিচের START BOT বাটন ব্যবহার করুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
-  if(sent.ok)await env.BOT_CONFIG_KV?.put(key,"1");
+  if(!sent.ok)console.error("Telegram persistent START BOT keyboard restore failed",JSON.stringify({status:sent.status,description:String(sent.data?.description||"").slice(0,220)}));
 }
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
@@ -183,7 +183,16 @@ async function botSend(env,chatId,text,keyboard,options={}){
   }
   const sent=await botTelegram(env,"sendMessage",payload);
   if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
-  try{await botRememberMenu(env,chatId,sent.data.result?.message_id)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
+  const newMessageId=sent.data.result?.message_id;
+  // If editing the previous anchor failed, replace it instead of leaving duplicate menus in chat.
+  if(messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
+    try{
+      const removed=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)});
+      if(!removed.ok&&!String(removed.data?.description||"").toLowerCase().includes("message to delete not found"))
+        console.error("Telegram stale menu cleanup failed",JSON.stringify({status:removed.status,description:String(removed.data?.description||"").slice(0,180)}));
+    }catch(e){console.error("Telegram stale menu cleanup threw",String(e&&e.message||e).slice(0,220))}
+  }
+  try{await botRememberMenu(env,chatId,newMessageId)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
   return sent.data.result;
 }
 async function botSendChatAction(env,chatId){
