@@ -148,6 +148,23 @@ class NewsLogicTests(unittest.TestCase):
         item = news.feed_items(root)[0]
         self.assertEqual(news.image_for(item), "https://example.com/weather.jpg")
 
+    def test_video_enclosure_is_extracted_without_mislabeling_as_image(self):
+        root = news.parse_feed_xml("""<rss><channel><item>
+          <title>Storm video</title><link>https://example.com/story</link>
+          <enclosure url="https://cdn.example.com/storm.mp4" type="video/mp4"/>
+          </item></channel></rss>""".encode("utf-8"))
+        item = news.feed_items(root)[0]
+        self.assertEqual(news.image_for(item), "")
+        self.assertEqual(news.video_for(item), "https://cdn.example.com/storm.mp4")
+
+    def test_media_content_video_is_extracted(self):
+        root = news.parse_feed_xml("""<rss xmlns:media="http://search.yahoo.com/mrss/"><channel><item>
+          <title>Flood footage</title><link>https://example.com/story</link>
+          <media:content url="https://cdn.example.com/flood.mp4" type="video/mp4" medium="video"/>
+          </item></channel></rss>""".encode("utf-8"))
+        item = news.feed_items(root)[0]
+        self.assertEqual(news.video_for(item), "https://cdn.example.com/flood.mp4")
+
     def test_namespaced_atom_feed_items_and_links_are_parsed(self):
         root = news.parse_feed_xml("""<feed xmlns="http://www.w3.org/2005/Atom">
           <entry><title>ঢাকায় নতুন খবর</title>
