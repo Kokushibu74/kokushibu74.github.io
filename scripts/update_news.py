@@ -394,6 +394,17 @@ def key_for(item):
     title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
     return title
 
+def read_previous_weather():
+    """Load cached weather cards so preview metadata can be reused across RSS refreshes."""
+    try:
+        with open(OUTPUT, "r", encoding="utf-8") as file:
+            payload = json.load(file)
+        weather = payload.get("weatherItems", []) if isinstance(payload, dict) else []
+        return [item for item in weather if isinstance(item, dict) and item.get("title")]
+    except (OSError, json.JSONDecodeError, TypeError):
+        return []
+
+
 def read_breaking_history():
     """Load a 30-day archive of headlines previously detected as breaking."""
     try:
@@ -501,6 +512,7 @@ def is_weather_disaster_story(title, summary="", published=None, now=None):
 
 def main():
     previous = read_previous()
+    previous_weather = read_previous_weather()
     breaking_history = read_breaking_history()
     collected, seen = [], set()
     successful_feeds = 0
@@ -598,6 +610,7 @@ def main():
                     "publishedAt": published, "summary": summary,
                     "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
+                    "image": image_for(node), "previewImage": image_for(node),
                     "category": "Weather & Disasters",
                 }
                 key = key_for(item)
@@ -609,7 +622,31 @@ def main():
             feed_failures.append(f"Weather/disaster ({query}): {type(exc).__name__}")
             print("Weather/disaster feed error for", repr(query), ":", type(exc).__name__, str(exc)[:180])
     weather_collected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
+
+    # Reuse existing weather-card previews, then fetch Open Graph images for new stories.
+    old_weather_metadata = {key_for(item): item for item in previous_weather}
+    for item in weather_collected:
+        cached = old_weather_metadata.get(key_for(item), {})
+        for field in ("publisherUrl", "publisherName", "previewTitle", "previewSummary",
+                      "previewImage", "previewScreenshot", "previewCheckedAt"):
+            if cached.get(field) not in (None, ""):
+                item[field] = cached[field]
+    weather_preview_candidates = weather_collected[:8]
+    weather_enriched = 0
+    for item in weather_preview_candidates:
+        if item.get("previewImage") and item.get("previewCheckedAt"):
+            continue
+        metadata = publisher_metadata(item.get("link", ""))
+        if metadata:
+            item.update(metadata)
+            weather_enriched += 1
+        item.setdefault("publisherName", item.get("source", "Original publisher"))
+        item.setdefault("previewTitle", item.get("title", ""))
+        item.setdefault("previewSummary", item.get("summary", ""))
+        item.setdefault("previewImage", item.get("image", ""))
+        item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
     weather_items = weather_collected[:12]
+    print("Weather/disaster image previews enriched:", weather_enriched, "of", len(weather_preview_candidates), "priority stories.")
 
     # Reject undated or older-than-seven-day headlines before preview enrichment.
     collected = [item for item in collected if within_feed_retention(item)]
