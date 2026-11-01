@@ -5,6 +5,31 @@ async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",
 function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", "):"No data");const delta=(v,o)=>{const d=v-o;return (d>0?"+":"")+d+" vs yesterday"};const lines=["📅 Date: "+a.day+" (BDT)","👤 Unique visitors: "+a.unique+(p?" · "+delta(a.unique,p.unique):""),"🆕 New visitors: "+Math.max(0,a.unique-a.returning),"↩️ Returning visitors: "+a.returning,"🔁 Visits / sessions: "+a.sessions+(p?" · "+delta(a.sessions,p.sessions):""),"👁️ Page views: "+a.views+(p?" · "+delta(a.views,p.views):""),"⚠️ Client errors: "+a.errors,list("🔥 Popular pages",a.pages),list("🌍 Countries",a.countries),list("📍 Cities",a.cities),list("📡 ISPs",a.isps),list("📱 Devices",a.devices),list("🌐 Browsers",a.browsers),"","👥 VISITOR DETAILS"];for(const [i,v] of (a.visitors||[]).entries()){const pages=Object.entries(v.pages||{}).sort((x,y)=>y[1]-x[1]).map(([k,n])=>k+" ×"+n).join(", ")||"Page data unavailable";const device=[v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join(" / ")||"Unknown";const source=v.source?.utmSource||v.source?.referrer||"Direct";const seen=v.lastSeen?new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"}):"Unknown";lines.push((i+1)+". "+(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2")+" · "+(v.returning?"Returning":"New"),"   🕒 Last seen: "+seen+" BDT · Sessions today: "+(v.sessions||0)+" · Views: "+(v.pageViews||0),"   📄 Pages: "+pages,"   🔗 Source: "+source,"   📱 Device: "+device,"   📍 Location: "+[v.network?.city,v.network?.country].filter(Boolean).join(", ")+" · ISP: "+(v.network?.isp||"Unknown"));}if(!a.visitors?.length)lines.push("No visitor-level records available.");lines.push("","ℹ️ Active time, exact exit time and scroll/interaction duration are not measured in this report.");return lines;}
 
 
+async function sendTelegramText(env,chatId,text,options={}){
+  const max=3500,lines=String(text||"").split("\n"),chunks=[];let current="";
+  for(const line of lines){
+    if(line.length>max){
+      if(current){chunks.push(current);current="";}
+      for(let i=0;i<line.length;i+=max)chunks.push(line.slice(i,i+max));
+      continue;
+    }
+    const candidate=current?current+"\n"+line:line;
+    if(candidate.length>max){chunks.push(current);current=line;}else current=candidate;
+  }
+  if(current||!chunks.length)chunks.push(current);
+  for(let i=0;i<chunks.length;i++){
+    const extra={...options};if(i>0)delete extra.reply_to_message_id;
+    const res=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({chat_id:chatId,text:chunks[i],disable_web_page_preview:true,...extra})
+    });
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.ok)throw new Error("Telegram message delivery failed (HTTP "+res.status+")");
+  }
+  return true;
+}
+
+
 const UM_PREFIX = "um:v1:";
 const umClean = (v,n=120) => String(v??"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
 const umDate = (ts=Date.now()) => new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));
@@ -46,7 +71,7 @@ async function umBlocked(env,kind,id){
 }
 async function umReply(env,chatId,text){
   if(!env.TELEGRAM_BOT_TOKEN)return;
-  await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,text,disable_web_page_preview:true})});
+  await sendTelegramText(env,chatId,text);
 }
 async function umHandleCommand(env,msg){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
@@ -140,8 +165,20 @@ async function umHandleCommand(env,msg){
     }else if(cmd==="/userlink"){
       const tg=await umResolve(env,arg),web=await umResolve(env,parts[1]||"");
       if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web))){await umReply(env,chatId,"ব্যবহার: /userlink TELEGRAM_ID VISITOR_ID — দুই ID-ই আগে /userid-তে থাকতে হবে।");return true;}
-      await env.VISITOR_KV.put(UM_PREFIX+"link:telegram:"+tg.id,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
-      await env.VISITOR_KV.put(UM_PREFIX+"link:visitor:"+web.id,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
+      const tgLinkKey=UM_PREFIX+"link:telegram:"+tg.id,webLinkKey=UM_PREFIX+"link:visitor:"+web.id;
+      const [oldTgLink,oldWebLink]=await Promise.all([env.VISITOR_KV.get(tgLinkKey,"json"),env.VISITOR_KV.get(webLinkKey,"json")]);
+      if(oldTgLink?.visitorId&&oldTgLink.visitorId!==web.id){
+        const oldReverseKey=UM_PREFIX+"link:visitor:"+oldTgLink.visitorId,oldReverse=await env.VISITOR_KV.get(oldReverseKey,"json");
+        if(String(oldReverse?.telegramId)===tg.id)await env.VISITOR_KV.delete(oldReverseKey);
+        await umHistory(env,"visitor",oldTgLink.visitorId,{type:"identity_unlinked",telegramId:tg.id,by:sender,reason:"relinked"});
+      }
+      if(oldWebLink?.telegramId&&oldWebLink.telegramId!==tg.id){
+        const oldReverseKey=UM_PREFIX+"link:telegram:"+oldWebLink.telegramId,oldReverse=await env.VISITOR_KV.get(oldReverseKey,"json");
+        if(String(oldReverse?.visitorId)===web.id)await env.VISITOR_KV.delete(oldReverseKey);
+        await umHistory(env,"telegram",oldWebLink.telegramId,{type:"identity_unlinked",visitorId:web.id,by:sender,reason:"relinked"});
+      }
+      await env.VISITOR_KV.put(tgLinkKey,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
+      await env.VISITOR_KV.put(webLinkKey,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:sender}),{expirationTtl:31536000});
       await umHistory(env,"admin",sender,{type:"link",telegramId:tg.id,visitorId:web.id});await umHistory(env,"telegram",tg.id,{type:"identity_linked",visitorId:web.id,by:sender});await umHistory(env,"visitor",web.id,{type:"identity_linked",telegramId:tg.id,by:sender});
       await umReply(env,chatId,"🔗 Telegram ও Website ID link হয়েছে।");
     }else if(cmd==="/userunlink"){
@@ -285,7 +322,7 @@ export default {
       try{const res=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(15000)});status=String(res.status);elapsed=Math.round(performance.now()-started);detail=res.ok?"Site reachable":"Site returned HTTP "+res.status;await res.body?.cancel()}catch(e){elapsed=Math.round(performance.now()-started);detail=String(e&&e.message||e).slice(0,150)}
       const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       const today=bdDay(),yesterday=previousBdDay(today);let activity=null,prior=null;try{activity=await readDailyActivity(env,today);prior=await readDailyActivity(env,yesterday)}catch(e){detail+=" · Visitor report unavailable"}const text=["🌐 <b>Kokushibu74.github.io — Live Report</b>","🕒 Checked: "+esc(stamp)+" (Bangladesh time)","🔗 "+site,"📡 HTTP status: "+esc(status),"⏱️ Response time: "+elapsed+" ms",(status.startsWith("2")||status.startsWith("3")?"✅ ":"⚠️ ")+esc(detail),...(activity?["","📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(activity,prior).map(esc)]:[])].join("\n");
-      await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:msg.chat.id,text,parse_mode:"HTML",reply_to_message_id:msg.message_id,disable_web_page_preview:true})});return new Response("OK");
+      await sendTelegramText(env,msg.chat.id,text,{parse_mode:"HTML",reply_to_message_id:msg.message_id});return new Response("OK");
     }
     if(new URL(request.url).pathname!=="/submit")return respond({error:"Not found"},404);
     if(request.method!=="POST")return respond({error:"Method not allowed"},405);
@@ -323,10 +360,7 @@ export default {
       missing=checks.filter(x=>!x[1]).map(x=>x[0]);if(!res.ok)failure="Website returned HTTP "+res.status;
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");return}
-    const sendTelegram=async text=>{
-      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
-      const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
-    };
+    const sendTelegram=async text=>sendTelegramText(env,env.TELEGRAM_CHAT_ID,text,{parse_mode:"HTML"});
 
     const ga4Report=async()=>{
       if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing");
