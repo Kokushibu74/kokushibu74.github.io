@@ -143,7 +143,7 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
   }else{
-    for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+i})));
+    for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+(i+j)})));
   }
   rows.push(...botBackKeyboard());
   await botSend(env,chatId,names[0]+"\nনিচের অপশন নির্বাচন করুন:",rows);
@@ -213,7 +213,7 @@ async function botHandleCallback(env,query){
   }
   const action=data.slice(3);
   try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/answerCallbackQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({callback_query_id:query.id})});
-    if(action==="home"){await botShowMenu(env,chatId);return true}
+    if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
       const started=Date.now();let status="Unavailable";
       try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(12000)});status="HTTP "+r.status+" · "+(Date.now()-started)+" ms";await r.body?.cancel()}catch(e){status="ERROR · "+String(e.message||e).slice(0,100)}
@@ -241,7 +241,7 @@ async function botHandleCallback(env,query){
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
     if(action==="hero:current"){const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());return true}
-    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const result=await botStatusText(env,category,index);await botSend(env,chatId,result,botBackKeyboard());return true;}
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\\n"+result,botBackKeyboard());return true;}
         await botShowMenu(env,chatId);
   }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ এই কাজটি সম্পন্ন হয়নি। Worker logs পরীক্ষা করুন.",botBackKeyboard())}
   return true;
