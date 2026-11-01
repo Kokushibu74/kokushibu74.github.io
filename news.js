@@ -20,11 +20,7 @@
     const part=k=>parts.find(x=>x.type===k)?.value||"";
     return part("year")+"-"+part("month")+"-"+part("day");
   };
-  const isLatestBatch=x=>{
-    const stamp=Date.parse(x.latestBatchAt||"");
-    const age=Date.now()-stamp;
-    return Number.isFinite(stamp)&&age>=-5*60*1000&&age<=20*60*1000;
-  };
+  const isLatestBatch=x=>!!window.newsLatestBatchAt&&String(x.latestBatchAt||"")===String(window.newsLatestBatchAt);
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const PREVIEW_FIELDS=["previewScreenshot","previewImage","image","imageUrl","thumbnail","thumbnailUrl","enclosureUrl"];
   const previewUrl=x=>safe(PREVIEW_FIELDS.map(k=>x[k]).find(Boolean)||"");
@@ -285,6 +281,7 @@
       items=data.items.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category}));
       weatherItems=Array.isArray(data.weatherItems)?data.weatherItems:[];
       window.newsUpdatedAt=data.updatedAt||null;
+      window.newsLatestBatchAt=data.latestBatchAt||data.updatedAt||null;
       updateFilterCounts();renderTopStories();renderWeatherStories();render();
       if(feedRetryTimer){clearTimeout(feedRetryTimer);feedRetryTimer=null}
     }catch(error){
