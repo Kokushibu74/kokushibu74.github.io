@@ -143,7 +143,7 @@ async function botRememberMenu(env,chatId,messageId,onlyIfMissing=false){
   if(!env.BOT_CONFIG_KV||!messageId)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId);
   if(onlyIfMissing){const old=await botGetMenuAnchor(env,chatId);if(old?.messageId)return;}
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
+  const prior=await botGetMenuAnchor(env,chatId);await env.BOT_CONFIG_KV.put(key,JSON.stringify({...prior,chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
 }
 async function botAnswerCallback(env,query,text,showAlert=false){
   if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
@@ -378,7 +378,7 @@ async function umHandleCommand(env,msg){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){await botShowMenu(env,chatId);return true;}
+  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);return true;}
   if(cmd==="/cmd"){
     const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
