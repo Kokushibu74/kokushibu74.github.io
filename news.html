@@ -310,6 +310,28 @@
  #top-stories-slides .top-slide-summary{-webkit-line-clamp:3!important;font-size:11px!important}
 }
 
+
+/* Desktop-only Weather / Disaster Watch: full-bleed image with readable story overlay. */
+@media(min-width:851px){
+ #weather-disaster .weather-slides{min-height:clamp(330px,30vw,440px);overflow:hidden;isolation:isolate;border:1px solid #00f2fe48;border-radius:20px;background:#070b12;box-shadow:0 20px 58px #0008,0 0 28px #00f2fe12}
+ #weather-disaster .weather-slide{position:relative;min-height:clamp(330px,30vw,440px);height:100%;overflow:hidden;border:1px solid #ffffff18;border-radius:18px;background:#070b12;isolation:isolate}
+ #weather-disaster .weather-slide-visual{position:absolute;inset:0;width:100%;height:100%;min-height:100%;border:0;border-radius:inherit;z-index:0;background:radial-gradient(ellipse at 70% 25%,#15516b,#11162a 52%,#070b12)}
+ #weather-disaster .weather-slide-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:0;transform:scale(1.01)}
+ #weather-disaster .weather-slide.deck-active .weather-slide-image{transform:scale(1.055)}
+ #weather-disaster .weather-image-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,6,12,.02) 10%,rgba(2,6,12,.16) 35%,rgba(2,6,12,.72) 68%,rgba(2,6,12,.97) 100%)}
+ #weather-disaster .weather-image-index{top:13px;left:13px;z-index:2}
+ #weather-disaster .weather-slide-visual.no-image{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 70% 25%,#15516b,#11162a 52%,#070b12)}
+ #weather-disaster .weather-image-fallback{position:relative;z-index:2;color:#c5f8ff;font-size:11px;text-shadow:0 2px 12px #000}
+ #weather-disaster .weather-slide-copy{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:clamp(18px,2vw,25px);background:transparent}
+ #weather-disaster .weather-kicker{display:inline-flex;padding:6px 9px;border:1px solid #00f2fe55;border-radius:99px;background:#07131dcc;color:#9cf7ff;backdrop-filter:blur(8px)}
+ #weather-disaster .weather-slide h3{margin:11px 0 8px;font-size:clamp(17px,1.6vw,23px);line-height:1.3;text-shadow:0 2px 14px #000c}
+ #weather-disaster .weather-slide h3 a{color:#fff}
+ #weather-disaster .weather-slide p{color:#e1eaf6;font-size:12px;line-height:1.65;text-shadow:0 1px 9px #000c;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+ #weather-disaster .weather-meta{color:#d1dced;font-size:9px;text-shadow:0 1px 8px #000}
+ #weather-disaster .weather-slide.deck-prev,#weather-disaster .weather-slide.deck-next{opacity:.78}
+}
+@media(max-width:850px){#weather-disaster{display:none!important}}
+
 </style>
 
 
