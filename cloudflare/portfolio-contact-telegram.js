@@ -158,7 +158,7 @@ function botFormatTelegramResponse(text,options={}) {
     return "<b>◈ KOKUSHIBU74 INTELLIGENCE</b>\n<code>ADMIN CONTROL CENTER</code>\n\n"+body+"\n\n<i>CONTROL CENTER • PRIVATE ADMIN SESSION</i>";
   }
   if(body.includes("KOKUSHIBU74 INTELLIGENCE"))return body;
-  const progress=/^(?:⏳|⌛|🔄)\s/.test(body);
+  const progress=/^(?:⏳|⌛)\s/.test(body);
   const header="◈ KOKUSHIBU74 INTELLIGENCE\n━━━━━━━━━━━━━━━━━━━━";
   const footer=progress?"⌁ PROCESSING • PLEASE WAIT":"━━━━━━━━━━━━━━━━━━━━\n◈ ADMIN CONTROL CENTER • PRIVATE CHAT";
   const content=body.length>3650?body.slice(0,3640)+"\n… আরও তথ্য সংক্ষিপ্ত করা হয়েছে।":body;
@@ -337,12 +337,32 @@ async function botHandleCallback(env,query){
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
-      await botRunWithProgress(env,chatId,"ওয়েবসাইটের অবস্থা পরীক্ষা করা হচ্ছে...",async()=>{
-        const started=Date.now();let status="Unavailable";
-        try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(12000)});status="HTTP "+r.status+" · "+(Date.now()-started)+" ms";await r.body?.cancel()}catch(e){status="ERROR · "+String(e.message||e).slice(0,100)}
-        await botSend(env,chatId,"🔄 MANUAL REFRESH RESULT\nWebsite: "+status+"\n\nNo background refresh was started.",[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]);
-      });
-      return true;
+      await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
+        const site="https://kokushibu74.github.io/",started=Date.now();
+        let siteStatus="Unavailable",feedStatus="Not checked",articleCount=null,workflowStatus="Not started",workflowUrl="";
+        try{const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});siteStatus="HTTP "+r.status+" · "+(Date.now()-started)+" ms";await r.body?.cancel();}
+        catch(e){siteStatus="ERROR · "+String(e.message||e).slice(0,100)}
+        try{const r=await fetch(site+"news-feed.json",{signal:AbortSignal.timeout(15000)});const raw=await r.text();let parsed;try{parsed=JSON.parse(raw)}catch{parsed=null}
+          const list=Array.isArray(parsed)?parsed:(parsed&&typeof parsed==="object"?Object.values(parsed).find(Array.isArray)||[]:[]);
+          articleCount=list.length;feedStatus="HTTP "+r.status+" · "+articleCount+" articles · "+raw.length+" bytes";}
+        catch(e){feedStatus="ERROR · "+String(e.message||e).slice(0,100)}
+        if(!env.GITHUB_TOKEN)workflowStatus="FAILED — GitHub token is not configured";
+        else{const headers={Accept:"application/vnd.github+json","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+          try{const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
+            if(dispatch.status===204){workflowStatus="TRIGGER ACCEPTED";
+              for(let attempt=0;attempt<4;attempt++){await new Promise(resolve=>setTimeout(resolve,1200));
+                const runsRes=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?event=workflow_dispatch&branch=main&per_page=5",{headers:{Accept:"application/vnd.github+json",Authorization:"Bearer "+env.GITHUB_TOKEN,"X-GitHub-Api-Version":"2022-11-28"},signal:AbortSignal.timeout(10000)});
+                if(!runsRes.ok)break;const data=await runsRes.json().catch(()=>({}));
+                const run=(data.workflow_runs||[]).find(x=>Date.parse(x.created_at||"")>=started-5000);
+                if(run){workflowStatus=String(run.status||"queued").toUpperCase()+(run.conclusion?" · "+String(run.conclusion).toUpperCase():"");workflowUrl=String(run.html_url||"");break;}}
+              if(!workflowUrl)workflowStatus="TRIGGER ACCEPTED · GitHub run is being created";
+            }else{const detail=await dispatch.text().catch(()=>"");workflowStatus="FAILED · GitHub HTTP "+dispatch.status+(detail?" · "+detail.slice(0,180):"");}}
+          catch(e){workflowStatus="FAILED · "+String(e.message||e).slice(0,160)}}
+        const lines=["🔄 MANUAL REFRESH RESULT","🌐 Website: "+siteStatus,"📰 News Feed: "+feedStatus,"⚙️ News Refresh Workflow: "+workflowStatus];
+        if(workflowUrl)lines.push("🔗 Run: "+workflowUrl);if(articleCount===0)lines.push("⚠️ Feed-এ বর্তমানে কোনো Article পাওয়া যায়নি; Workflow শেষ হলে আবার পরীক্ষা করুন।");
+        lines.push("ℹ️ Workflow trigger accepted মানে GitHub কাজ শুরুর অনুরোধ গ্রহণ করেছে; সম্পূর্ণ refresh শেষ হয়েছে—এমন নয়।");
+        await botSend(env,chatId,lines.join("\n"),[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]);
+      });return true;
     }
     if(action.startsWith("toggle:")){
       const key=action.split(":")[1],cfg=await botConfig(env);
