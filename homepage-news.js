@@ -47,7 +47,7 @@
     function renderBreaking(){
       const t=track();if(!t||!breakingItems.length)return;
       // Newest valid breaking stories appear first; duplicate the sequence for a seamless marquee.
-      const content=breakingItems.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer" title="'+esc(x.title)+'">'+esc(x.title)+'</a>').join("");
+      const content=breakingItems.map(x=>'<a class="bnt-item" href="news.html" title="'+esc(x.title)+'">'+esc(x.title)+'</a>').join("");
       t.className="bnt-track";
       t.innerHTML=content+content;
       const halfWidth=t.scrollWidth/2;
@@ -97,7 +97,7 @@
           t.innerHTML='<span class="bnt-empty">No fresh headlines at the moment · <a style="color:#00f2fe" href="news.html">Open News</a></span>';
           return;
         }
-        const content=items.map(x=>'<a class="bnt-item" href="'+safe(x.link)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>').join("");
+        const content=items.map(x=>'<a class="bnt-item" href="news.html">'+esc(x.title)+'</a>').join("");
         t.className="bnt-track";t.innerHTML=content+content;
         const halfWidth=t.scrollWidth/2;
         t.style.animationDuration=Math.max(45,halfWidth/10)+"s";
