@@ -198,7 +198,8 @@ async function umHandleCommand(env,msg){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){await botShowMenu(env,chatId);return true;}\n  if(cmd==="/cmd"){
+  if(cmd==="/start"||cmd==="/menu"){await botShowMenu(env,chatId);return true;}
+  if(cmd==="/cmd"){
     const publicCommands=[{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
       {command:"info",description:"সাইট ও Worker health check"},
