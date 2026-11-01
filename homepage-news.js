@@ -3,7 +3,7 @@
   const css = `
     #breaking-news-ticker{position:fixed;top:72px;left:0;right:0;z-index:35;height:40px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(100deg,rgba(7,12,22,.98),rgba(9,17,29,.96) 55%,rgba(4,9,17,.98));border-bottom:1px solid rgba(0,242,254,.24);box-shadow:0 7px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.035);backdrop-filter:blur(14px)}
     #breaking-news-ticker:after{content:"";position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,242,254,.6),transparent);pointer-events:none}
-    #breaking-news-ticker .bnt-label{position:relative;z-index:1;align-self:stretch;flex:0 0 auto;display:flex;align-items:center;gap:9px;padding:0 18px 0 15px;background:linear-gradient(115deg,#d8fbff 0%,#35e8f8 48%,#00aeca 100%);color:#06202a;font:900 10px/1 'Outfit',system-ui,sans-serif;letter-spacing:.105em;text-shadow:0 1px rgba(255,255,255,.45);clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%);box-shadow:4px 0 18px rgba(0,242,254,.12)}
+    #breaking-news-ticker .bnt-label{position:relative;z-index:1;align-self:stretch;flex:0 0 auto;display:flex;align-items:center;gap:9px;padding:0 18px 0 15px;text-decoration:none;cursor:pointer;color:inherit}#breaking-news-ticker .bnt-label:focus-visible{outline:2px solid #fff;outline-offset:-3px}background:linear-gradient(115deg,#d8fbff 0%,#35e8f8 48%,#00aeca 100%);color:#06202a;font:900 10px/1 'Outfit',system-ui,sans-serif;letter-spacing:.105em;text-shadow:0 1px rgba(255,255,255,.45);clip-path:polygon(0 0,100% 0,calc(100% - 11px) 100%,0 100%);box-shadow:4px 0 18px rgba(0,242,254,.12)}
     #breaking-news-ticker .bnt-label:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fff;opacity:.9}
     #breaking-news-ticker .bnt-label-text{display:inline-block;white-space:nowrap}
     #breaking-news-ticker.is-breaking .bnt-label{gap:8px;padding-left:14px;padding-right:20px;background:linear-gradient(115deg,#ff718c 0%,#f5234f 52%,#b90835 100%);color:#fff;letter-spacing:.09em;text-shadow:0 1px 2px rgba(65,0,15,.35);box-shadow:4px 0 20px rgba(255,37,79,.22)}
@@ -40,7 +40,7 @@
     const header=document.querySelector("header");
     if(!header)return;
     const bar=document.createElement("div");bar.id="breaking-news-ticker";bar.setAttribute("aria-label","News headlines");
-    bar.innerHTML='<div class="bnt-label"><span class="bnt-dot"></span><span id="bnt-label-text" class="bnt-label-text">NEWS</span></div><div class="bnt-window"><div id="bnt-track" class="bnt-track"><span class="bnt-empty">Loading headlines…</span></div></div>';
+    bar.innerHTML='<a class="bnt-label" href="news.html" aria-label="Open News page"><span class="bnt-dot"></span><span id="bnt-label-text" class="bnt-label-text">NEWS</span></a><div class="bnt-window"><div id="bnt-track" class="bnt-track"><span class="bnt-empty">Loading headlines…</span></div></div>';
     header.insertAdjacentElement("afterend",bar);
     let breakingItems=[];
     const track=()=>document.getElementById("bnt-track");
