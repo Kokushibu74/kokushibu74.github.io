@@ -44,7 +44,7 @@
     if(!dashboard) renderModule(section);
     document.body.classList.remove("drawer-open");
   }
-  function renderModule(section) {
+  async function renderModule(section) {
     const labels={
       website:"Uptime checks, response time, security headers and live visitor telemetry.",
       news:"News feed health, last refresh result and source-level diagnostics.",
@@ -61,6 +61,15 @@
       recovery:"Verified backup references and safe recovery procedures."
     };
     const el=$("module-content");
+    if(["automation","alerts","settings"].includes(section)){
+      try{
+        const result=await api("getConfig"),cfg=result.config||{};
+        const groups=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:section==="alerts"?["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"]:Object.keys(cfg);
+        const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
+        el.innerHTML=`<div class="settings-intro"><b>Live Bot Configuration</b><span>Changes are saved to the existing Cloudflare KV settings.</span></div><div class="toggle-list">${groups.map(key=>`<div class="toggle-row"><div><b>${escapeHtml(names[key]||key)}</b><small>${cfg[key]?"Enabled":"Disabled"} · Existing Bot setting</small></div><button class="toggle ${cfg[key]?"on":""}" data-toggle="${escapeHtml(key)}" data-value="${cfg[key]?"true":"false"}" aria-pressed="${cfg[key]?"true":"false"}"><i></i><span>${cfg[key]?"ON":"OFF"}</span></button></div>`).join("")}</div><div class="security-note">◈ Every change is authenticated against Telegram Admin identity and recorded in the Mini App audit log.</div>`;
+        return;
+      }catch(e){el.innerHTML=`<div class="empty-state">${escapeHtml(e.message)}</div>`;return}
+    }
     const data=state.data?.modules?.[section];
     if(data?.html){el.innerHTML=data.html;return}
     el.innerHTML=`<div class="empty-state"><b>${escapeHtml(labels[section]||"")}</b><br><br>${state.data?"This module's live data is not exposed by the current API yet. No sample or fabricated status is shown.":"Secure Admin API connection is not available yet."}</div>`;
@@ -91,7 +100,19 @@
     finally{state.busy=false;$("refresh-btn").disabled=false;}
   }
   function tick(){const d=new Date();$("clock").textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(d);}
-  document.addEventListener("click",e=>{const b=e.target.closest("[data-section]");if(b)go(b.dataset.section);});
+  document.addEventListener("click",async e=>{
+    const toggle=e.target.closest("[data-toggle]");
+    if(toggle){
+      const key=toggle.dataset.toggle,value=toggle.dataset.value!=="true";
+      const proceed=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Change "+key+" to "+(value?"ON":"OFF")+"?",resolve)):window.confirm("Change "+key+" to "+(value?"ON":"OFF")+"?");
+      if(!proceed)return;
+      toggle.disabled=true;
+      try{await api("setConfig",{key,value});notice("Saved: "+key+" is now "+(value?"ON":"OFF")+".");await renderModule(state.section);}
+      catch(err){notice(err.message,true);toggle.disabled=false;}
+      return;
+    }
+    const b=e.target.closest("[data-section]");if(b)go(b.dataset.section);
+  });
   $("refresh-btn").addEventListener("click",refresh);
   $("mobile-menu").addEventListener("click",()=>document.body.classList.add("drawer-open"));
   $("drawer-scrim").addEventListener("click",()=>document.body.classList.remove("drawer-open"));
