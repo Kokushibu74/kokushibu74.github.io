@@ -180,7 +180,9 @@ async function botHandleCallback(env,query){
       const cmd={search:"/usersearch TEXT",history:"/userhistory ID",link:"/userlink TELEGRAM_ID VISITOR_ID or /userunlink ID",block:"/userblock ID [both|telegram|website] or /userunblock ID",rename:"/userrename ID CUSTOM"}[action.split(":")[1]];
       await botSend(env,chatId,"এই অপশনটি ব্যবহার করতে বর্তমান Text Command-টিও চালু আছে:\n"+cmd,botBackKeyboard());return true;
     }
-    if(action==="hero:upload"){await botSend(env,chatId,"Hero Image upload-এর Preview & Confirm pipeline এখনো যুক্ত হয়নি। আপলোড গ্রহণ করা হচ্ছে না; Live image অপরিবর্তিত আছে।",botBackKeyboard());return true}
+    if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botSend(env,chatId,"⏳ Publishing approved hero image…");const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ GitHub updated: "+result.imagePath+"\nPages deployment may take a few moments. Verify the live homepage before considering it complete.",botBackKeyboard());return true;}
+    if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
+    if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
     if(action==="hero:current"){const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());return true}
     if(action.startsWith("info:")){
       const topic=action.slice(5);await botSend(env,chatId,"ℹ️ "+topic+"\nএই control-এর পূর্ণ backend action পরবর্তী implementation ধাপে যুক্ত হবে। কোনো live setting পরিবর্তন করা হয়নি.",botBackKeyboard());return true;
@@ -337,6 +339,52 @@ async function umHandleCommand(env,msg){
   return true;
 }
 
+
+function botB64(bytes){let s="";for(let i=0;i<bytes.length;i+=0x8000)s+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(s)}
+async function botTelegramPhoto(env,fileId){
+  const g=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/getFile?file_id="+encodeURIComponent(fileId));
+  const gd=await g.json().catch(()=>({}));if(!g.ok||!gd.ok||!gd.result?.file_path)throw new Error("Telegram photo retrieval failed");
+  const r=await fetch("https://api.telegram.org/file/bot"+env.TELEGRAM_BOT_TOKEN+"/"+gd.result.file_path);
+  if(!r.ok)throw new Error("Telegram photo download failed");
+  const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.length>5*1024*1024)throw new Error("Hero image must be 5 MB or smaller");
+  return bytes;
+}
+async function botCommitHero(env,token){
+  if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("GitHub or configuration binding is unavailable");
+  const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV.get(key,"json");
+  if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
+  const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
+  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
+  const bytes=await botTelegramPhoto(env,pending.fileId),imagePath="storage/pictures/hero-telegram-"+Date.now()+".jpg";
+  const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
+  const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
+  const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json"}});
+  const current=await dataRes.json().catch(()=>({}));if(!dataRes.ok||!current.content||!current.sha)throw new Error("Could not read current site data from GitHub");
+  const raw=atob(current.content.replace(/\s/g,"")),data=JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
+  data.image=imagePath;
+  const content=botB64(new TextEncoder().encode(JSON.stringify(data,null,2)+"\n"));
+  const putData=await fetch(api+"site-data.json",{method:"PUT",headers,body:JSON.stringify({message:"chore: set portfolio hero image",content,sha:current.sha,branch:"main"})});
+  const dataResult=await putData.json().catch(()=>({}));if(!putData.ok)throw new Error("GitHub site-data update failed (HTTP "+putData.status+")");
+  await env.BOT_CONFIG_KV.delete(key);
+  return {imagePath,commit:dataResult.commit?.sha||imageResult.commit?.sha};
+}
+async function botHeroPreviewPage(env,token){
+  const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
+  if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
+  const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow"});
+  if(!r.ok)return new Response("Website preview unavailable",{status:502});
+  let html=await r.text();
+  const injected='<base href="https://kokushibu74.github.io/"><script>(function(){const original=window.fetch.bind(window);window.fetch=async function(input,init){const response=await original(input,init);if(String(input).includes("site-data.json")&&response.ok){const data=await response.clone().json();data.image="'+new URL("/hero-preview-image?token="+encodeURIComponent(token),"https://portfolio-contact-telegram.mdshihab74.workers.dev").href+'";return new Response(JSON.stringify(data),{status:response.status,headers:{"Content-Type":"application/json"}})}return response}})();</script>';
+  html=html.replace("</head>",injected+"</head>");
+  return new Response(html,{headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store","X-Robots-Tag":"noindex, nofollow"}});
+}
+async function botHeroPreviewImage(env,token){
+  const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
+  if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
+  try{const bytes=await botTelegramPhoto(env,pending.fileId);return new Response(bytes,{headers:{"Content-Type":"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}})}
+  catch{return new Response("Image unavailable",{status:502})}
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -346,6 +394,9 @@ export default {
     if(origin&&origin!==allowedOrigin)return new Response("Forbidden",{status:403});
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
+    const routeUrl=new URL(request.url);
+    if(pathname==="/hero-preview")return botHeroPreviewPage(env,routeUrl.searchParams.get("token")||"");
+    if(pathname==="/hero-preview-image")return botHeroPreviewImage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/track"){
       const botCfg=await botConfig(env);
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
@@ -425,7 +476,15 @@ export default {
       if(request.method!=="POST")return new Response("Method not allowed",{status:405});
       if(!env.TELEGRAM_WEBHOOK_SECRET||request.headers.get("X-Telegram-Bot-Api-Secret-Token")!==env.TELEGRAM_WEBHOOK_SECRET)return new Response("Unauthorized",{status:401});
       let update;try{update=await request.json()}catch{return new Response("Bad request",{status:400})}
-      if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}\n      const msg=update.message;if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
+      if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}\n      const msg=update.message;
+      if(msg?.chat?.type==="private"&&Array.isArray(msg.photo)&&msg.from?.id){
+        const sender=String(msg.from.id),admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+        if(admins.has(sender)&&env.BOT_CONFIG_KV){
+          const mode=await env.BOT_CONFIG_KV.get("hero:uploading:"+sender,"json");
+          if(mode){const photo=msg.photo[msg.photo.length-1],token=crypto.randomUUID();await env.BOT_CONFIG_KV.delete("hero:uploading:"+sender);await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({fileId:photo.file_id,adminId:sender,expiresAt:Date.now()+900000}),{expirationTtl:900});const preview="https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token);await botSend(env,msg.chat.id,"🖼️ HERO PREVIEW READY\nআগে ওয়েবসাইটের আসল Hero layout-এ ছবিটি দেখুন:\n"+preview+"\n\nPreview ১৫ মিনিটের জন্য সচল থাকবে।",[[{text:"✅ Confirm & Publish",callback_data:"b1:hero:confirm:"+token}],[{text:"✖️ Cancel",callback_data:"b1:hero:cancel:"+token}]]);return new Response("OK")}
+        }
+      }
+      if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id){
         try{await umTelegramTouch(env,msg);}catch(e){console.error("Telegram user history write failed",String(e));}
         const adminIds=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
