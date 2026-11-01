@@ -34,7 +34,7 @@ jobs:
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
-            'if(daily&&cfg.dailyReport&&cfg.monitoring)', 'cfg.emergencyProtection'
+            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection', 'pathname==="/workflow-config"', 'newsRefresh:true', 'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;'
           ];
           for (const item of required) {
             if (!source.includes(item)) throw new Error('Missing Telegram control contract: ' + item);
@@ -42,5 +42,7 @@ jobs:
           if (!source.includes('if(msg.chat.type!=="private")')) throw new Error('Private-chat restriction missing');
           if (!source.includes('!admins.has(sender)')) throw new Error('Admin allowlist check missing');
           if (!source.includes('if(cmd==="/start"||cmd==="/menu")')) throw new Error('Menu entry commands missing');
-          console.log('Telegram button, admin guard, manual refresh and config contracts verified.');
+          if (source.includes('}\\n      const msg=update.message;')) throw new Error('Escaped webhook newline remains');
+          if (!source.includes('split(/[\\s,;]+/)')) throw new Error('Admin ID whitespace parsing missing');
+          console.log('Telegram button, admin guard, manual refresh, workflow config and automation gates verified.');
           NODE
