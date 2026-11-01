@@ -14,6 +14,19 @@ class NewsLogicTests(unittest.TestCase):
     def iso(self, delta):
         return (datetime.now(timezone.utc) + delta).isoformat()
 
+    def test_previous_weather_loader_returns_cached_weather_items(self):
+        import json
+        import tempfile
+        from unittest.mock import patch
+        payload = {"weatherItems": [{"title": "Flood warning", "previewImage": "https://example.com/image.jpg"}]}
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8") as file:
+            json.dump(payload, file)
+            file.flush()
+            with patch.object(news, "OUTPUT", file.name):
+                previous = news.read_previous_weather()
+        self.assertEqual(len(previous), 1)
+        self.assertEqual(previous[0]["previewImage"], "https://example.com/image.jpg")
+
     def test_recent_weather_or_disaster_story_is_accepted(self):
         self.assertTrue(news.is_weather_disaster_story(
             "Cyclone warning issued as heavy rain approaches",
