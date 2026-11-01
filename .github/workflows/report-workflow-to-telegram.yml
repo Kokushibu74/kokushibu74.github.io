@@ -1,0 +1,99 @@
+name: Report workflow status to Telegram
+
+on:
+  workflow_run:
+    workflows:
+      - Refresh live news feed
+      - Live Match Center Check
+      - Sports Zone Smoke Test
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build safe workflow report
+        id: report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          WORKFLOW_PATH: ${{ github.event.workflow_run.path }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          EVENT_NAME: ${{ github.event.workflow_run.event }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, re, subprocess
+          run_id = os.environ["RUN_ID"]
+          repo = os.environ["REPOSITORY"]
+          jobs = subprocess.check_output([
+              "curl","-fsSL",
+              "-H","Authorization: Bearer "+os.environ["GH_TOKEN"],
+              "-H","Accept: application/vnd.github+json",
+              f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100"
+          ], text=True)
+          data = json.loads(jobs)
+          failed = []
+          for job in data.get("jobs", []):
+              if job.get("conclusion") == "failure":
+                  steps = [s for s in job.get("steps", []) if s.get("conclusion") == "failure"]
+                  failed.append({
+                      "job": job.get("name"),
+                      "step": steps[0].get("name") if steps else None,
+                      "job_url": job.get("html_url")
+                  })
+          conclusion = os.environ["CONCLUSION"]
+          status = "✅ SUCCESS" if conclusion == "success" else ("⚠️ CANCELLED" if conclusion == "cancelled" else "❌ FAILURE")
+          lines = [
+              f"{status} GitHub workflow",
+              f"Repository: {repo}",
+              f"Workflow: {os.environ['WORKFLOW_NAME']}",
+              f"File: {os.environ.get('WORKFLOW_PATH') or 'not exposed'}",
+              f"Run: #{run_id} (attempt {os.environ['RUN_ATTEMPT']})",
+              f"Branch: {os.environ.get('BRANCH') or 'unknown'}",
+              f"Event: {os.environ.get('EVENT_NAME') or 'unknown'}",
+              f"Conclusion: {conclusion}",
+              f"Link: {os.environ['RUN_URL']}",
+          ]
+          if failed:
+              lines.append("Failed jobs/steps:")
+              for item in failed[:8]:
+                  part = f"- {item['job']}"
+                  if item.get("step"): part += f" → {item['step']}"
+                  lines.append(part)
+          elif conclusion != "success":
+              lines.append("Failed job/step details were not exposed by the workflow API.")
+          # Keep the message bounded and remove control characters.
+          message = "\n".join(lines)
+          message = re.sub(r"[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]", "", message)[:3900]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              f.write("message<<EOF\n"+message+"\nEOF\n")
+          PY
+
+      - name: Send Telegram report
+        if: ${{ secrets.TELEGRAM_BOT_TOKEN != '' && secrets.TELEGRAM_CHAT_ID != '' }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          MESSAGE: ${{ steps.report.outputs.message }}
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 2 --max-time 20 \
+            -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE}" \
+            --data-urlencode "disable_web_page_preview=true" >/dev/null
+
+      - name: Report missing Telegram configuration without leaking secrets
+        if: ${{ secrets.TELEGRAM_BOT_TOKEN == '' || secrets.TELEGRAM_CHAT_ID == '' }}
+        run: |
+          echo "Telegram report skipped because one or more required repository secrets are not configured."
