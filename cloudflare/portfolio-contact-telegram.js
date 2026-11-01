@@ -339,10 +339,8 @@ async function botHandleCallback(env,query){
   }
   const action=data.slice(3);
   try{
-    const anchor=await botGetMenuAnchor(env,chatId);
-    // A callback may arrive from an older inline menu after a send/edit fallback.
-    // Treat the actual clicked message as the active menu instead of silently rejecting it.
-    await botRememberMenu(env,chatId,query.message?.message_id,false);
+    // Never overwrite the active menu anchor from a callback payload.
+    // botSend owns anchor updates after a successful edit/send.
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
@@ -396,7 +394,7 @@ async function botHandleCallback(env,query){
     if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
     if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed",String(e));await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\n\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\n\nকরণীয়:\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}finally{await botMarkMenuInteraction(env,chatId,query.message?.message_id,false)}
+  }catch(e){console.error("Telegram button action failed",String(e&&e.stack||e).slice(0,1600));try{await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\\n\\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\\n\\nকরণীয়:\\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}catch(deliveryError){console.error("Telegram callback error notice failed",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800))}}finally{try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
