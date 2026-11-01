@@ -332,7 +332,7 @@ async function botHandleCallbackInner(env,query){
       await botAnswerCallback(env,query,"Menu updated. Use the latest menu.",true);
       return true;
     }
-    await botRememberMenu(env,chatId,query.message?.message_id,true);
+    await botRememberMenu(env,chatId,query.message?.message_id,false);
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
