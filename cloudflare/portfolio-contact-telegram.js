@@ -620,14 +620,14 @@ async function miniAppAuthorize(initData,env){
   return user;
 }
 async function miniAppRateLimit(env,userId){
-  if(!env.BOT_CONFIG_KV)return;
+  if(!env.BOT_CONFIG_KV)throw new Error("Admin rate-limit storage is unavailable.");
   const bucket=Math.floor(Date.now()/60000),key=MINIAPP_RATE_PREFIX+userId+":"+bucket;
   const count=Number(await env.BOT_CONFIG_KV.get(key)||0);
   if(count>=60)throw new Error("Too many requests. Wait one minute and try again.");
   await env.BOT_CONFIG_KV.put(key,String(count+1),{expirationTtl:120});
 }
 async function miniAppAudit(env,userId,action,detail={}){
-  if(!env.BOT_CONFIG_KV)return;
+  if(!env.BOT_CONFIG_KV)throw new Error("Admin audit storage is unavailable.");
   const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
 }
@@ -672,8 +672,9 @@ export default {
     if(pathname==="/miniapp/api"){
       if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
       if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
-      const length=Number(request.headers.get("Content-Length")||0);if(length>16384)return respond({ok:false,error:"Request too large"},413);
-      let body;try{body=await request.json()}catch{return respond({ok:false,error:"Invalid JSON"},400);}
+      let raw;try{raw=await request.text()}catch{return respond({ok:false,error:"Invalid request body"},400);}
+      if(new TextEncoder().encode(raw).byteLength>16384)return respond({ok:false,error:"Request too large"},413);
+      let body;try{body=JSON.parse(raw)}catch{return respond({ok:false,error:"Invalid JSON"},400);}
       try{
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
