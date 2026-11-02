@@ -56,6 +56,7 @@ assert(worker.includes('if(action==="userLookup")') && worker.includes('if(actio
 assert(worker.includes('if(action==="recovery")') && worker.includes("async function miniAppRecovery"), "recovery view must verify backup branches from GitHub");
 assert(worker.includes("Access-Control-Allow-Origin") && worker.includes('origin!==allowedOrigin'), "Mini App API must enforce the GitHub Pages origin");
 assert(worker.includes("miniAppRateLimit") && worker.includes("miniAppAudit"), "Mini App API must rate-limit and audit authenticated actions");
+assert(worker.includes('setChatMenuButton') && worker.includes("https://kokushibu74.github.io/miniapp/"), "admin /start must configure the Telegram Mini App chat menu button");
 assert(app.includes('api("userLookup"') && app.includes('api("userHistory"'), "User Manager UI must use authenticated APIs");
 assert(app.includes('api("module"') && app.includes('api("setConfig"'), "module views and setting changes must use authenticated APIs");
 assert(!app.includes("innerHTML=result") && !app.includes("innerHTML=data"), "untrusted API data must not be inserted as HTML");
