@@ -101,9 +101,11 @@ async function botMarkMenuInteraction(env,chatId,messageId,busy){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
 }
 async function botEnsureStartKeyboard(env,chatId){
-  // Re-send the reply keyboard on every /start or START BOT request.
-  // A KV "already sent" flag cannot prove Telegram still displays the keyboard.
-  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"কন্ট্রোল প্যানেল খুলতে নিচের START BOT বাটন ব্যবহার করুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
+  // Set the Telegram chat menu to open the admin-only Mini App. The Worker API independently verifies Telegram initData and the admin allowlist.
+  const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
+  if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
+  // Keep the existing START BOT reply keyboard intact.
+  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"Mini App খুলতে chat input-এর পাশে Control Center menu ব্যবহার করুন, অথবা নিচের START BOT বাটন চাপুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
   if(!sent.ok)console.error("Telegram START BOT keyboard delivery failed",JSON.stringify({status:sent.status,description:String(sent.data?.description||"").slice(0,180)}));
 }
 async function botHandleStartButton(env,msg){
@@ -568,7 +570,9 @@ async function botCommitHero(env,token){
   if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
   const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
   const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
-  const bytes=await botTelegramPhoto(env,pending.fileId),imagePath="storage/pictures/hero-telegram-"+Date.now()+".jpg";
+  const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+  const ext=pending.mimeType==="image/png"?"png":pending.mimeType==="image/webp"?"webp":"jpg";
+  const imagePath="storage/pictures/hero-miniapp-"+Date.now()+"."+ext;
   const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
   const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
   const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json"}});
@@ -594,8 +598,253 @@ async function botHeroPreviewPage(env,token){
 async function botHeroPreviewImage(env,token){
   const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
   if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
-  try{const bytes=await botTelegramPhoto(env,pending.fileId);return new Response(bytes,{headers:{"Content-Type":"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}})}
-  catch{return new Response("Image unavailable",{status:502})}
+  try{
+    const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+    return new Response(bytes,{headers:{"Content-Type":pending.mimeType||"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
+  }catch{return new Response("Image unavailable",{status:502})}
+}
+
+const MINIAPP_RATE_PREFIX = "miniapp:rate:v1:";
+const MINIAPP_AUDIT_PREFIX = "miniapp:audit:v1:";
+async function miniAppHmac(keyBytes,data){
+  const key=await crypto.subtle.importKey("raw",keyBytes,{name:"HMAC",hash:"SHA-256"},false,["sign"]);
+  return new Uint8Array(await crypto.subtle.sign("HMAC",key,data));
+}
+function miniAppHex(bytes){return Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");}
+async function miniAppAuthorize(initData,env){
+  if(!env.TELEGRAM_BOT_TOKEN||!env.ADMIN_TELEGRAM_IDS)throw new Error("Admin authentication is not configured.");
+  if(typeof initData!=="string"||initData.length<20||initData.length>8192)throw new Error("Invalid Telegram authentication data.");
+  const params=new URLSearchParams(initData),received=params.get("hash");
+  if(!received||!/^[a-f0-9]{64}$/i.test(received))throw new Error("Invalid Telegram signature.");
+  const pairs=[];for(const [k,v] of params.entries())if(k!=="hash")pairs.push([k,v]);
+  pairs.sort((a,b)=>a[0].localeCompare(b[0]));
+  const check=pairs.map(([k,v])=>k+"="+v).join("\n");
+  const te=new TextEncoder(),secret=await miniAppHmac(te.encode("WebAppData"),te.encode(env.TELEGRAM_BOT_TOKEN));
+  const expected=miniAppHex(await miniAppHmac(secret,te.encode(check)));
+  let diff=expected.length^received.length;
+  for(let i=0;i<Math.max(expected.length,received.length);i++)diff|=(expected.charCodeAt(i)||0)^(received.toLowerCase().charCodeAt(i)||0);
+  if(diff!==0)throw new Error("Telegram signature verification failed.");
+  const authDate=Number(params.get("auth_date")),now=Math.floor(Date.now()/1000);
+  if(!Number.isInteger(authDate)||authDate>now+60||now-authDate>3600)throw new Error("Telegram session expired. Close and reopen the Mini App.");
+  let user;try{user=JSON.parse(params.get("user")||"null")}catch{throw new Error("Invalid Telegram user data.");}
+  if(!user||!/^\d{5,20}$/.test(String(user.id||"")))throw new Error("Telegram user identity is missing.");
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS).split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  if(!admins.has(String(user.id)))throw new Error("Access denied. This Mini App is restricted to the configured administrator.");
+  return user;
+}
+async function miniAppRateLimit(env,userId){
+  if(!env.BOT_CONFIG_KV)throw new Error("Admin rate-limit storage is unavailable.");
+  const bucket=Math.floor(Date.now()/60000),key=MINIAPP_RATE_PREFIX+userId+":"+bucket;
+  const count=Number(await env.BOT_CONFIG_KV.get(key)||0);
+  if(count>=60)throw new Error("Too many requests. Wait one minute and try again.");
+  await env.BOT_CONFIG_KV.put(key,String(count+1),{expirationTtl:120});
+}
+async function miniAppAudit(env,userId,action,detail={}){
+  if(!env.BOT_CONFIG_KV)throw new Error("Admin audit storage is unavailable.");
+  const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
+}
+const MINIAPP_CRON_PREFIX = "miniapp:cron:v1:";
+async function miniAppCronRecord(env,entry){
+  if(!env.BOT_CONFIG_KV)return null;
+  const at=Number(entry.at||Date.now()),id=String(entry.id||crypto.randomUUID());
+  const key=MINIAPP_CRON_PREFIX+String(at).padStart(13,"0")+":"+id;
+  const value={id,at,status:String(entry.status||"running"),cron:String(entry.cron||"unknown"),
+    durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
+    httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
+    detail:String(entry.detail||"").slice(0,180)};
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:2592000});
+  return value;
+}
+async function miniAppCronHistory(env){
+  if(!env.BOT_CONFIG_KV)return [];
+  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:100});
+  const rows=await Promise.all((page.keys||[]).map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
+  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,40).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
+}
+async function miniAppDispatchNews(env){
+  if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
+  const headers={Accept:"application/vnd.github+json","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+  const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
+  if(response.status!==204)throw new Error("News workflow dispatch failed (HTTP "+response.status+").");
+  return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
+}
+async function miniAppHeroPrepare(env,userId,body){
+  if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("Hero image storage is unavailable.");
+  const mime=String(body?.mimeType||""),data=String(body?.base64||"");
+  if(!["image/jpeg","image/png","image/webp"].includes(mime))throw new Error("Only JPEG, PNG and WebP images are supported.");
+  if(!data||data.length>Math.ceil(4*1024*1024*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 4 MB or smaller and valid base64.");
+  const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
+  if(bytes.length<16||bytes.length>4*1024*1024)throw new Error("Image must be between 16 bytes and 4 MB.");
+  const isJpeg=bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
+  const isPng=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47;
+  const isWebp=String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP";
+  if(!(mime==="image/jpeg"&&isJpeg||mime==="image/png"&&isPng||mime==="image/webp"&&isWebp))throw new Error("Image file content does not match its declared format.");
+  const token=crypto.randomUUID(),expiresAt=Date.now()+10*60*1000;
+  await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({base64:data,mimeType:mime,userId:String(userId),expiresAt}),{expirationTtl:600});
+  return {token,expiresAt,previewUrl:"https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token)};
+}
+async function miniAppHeroConfirm(env,userId,token){
+  if(!/^[0-9a-f-]{30,40}$/i.test(String(token||"")))throw new Error("Invalid or expired preview token.");
+  const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV?.get(key,"json");
+  if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired. Upload the image again.");
+  if(String(pending.userId)!==String(userId))throw new Error("This preview belongs to another admin session.");
+  const result=await botCommitHero(env,token);
+  return {ok:true,...result};
+}
+async function miniAppGa4Report(env){
+  if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing.");
+  let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("GA4 credentials secret is not valid JSON.");}
+  if(!sa.client_email||!sa.private_key)throw new Error("GA4 service-account credentials are incomplete.");
+  const enc=b=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");
+  const b64url=s=>btoa(s).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");
+  const te=new TextEncoder(),nowSec=Math.floor(Date.now()/1000);
+  const header=b64url(JSON.stringify({alg:"RS256",typ:"JWT"}));
+  const claim=b64url(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/analytics.readonly",aud:"https://oauth2.googleapis.com/token",iat:nowSec,exp:nowSec+3600}));
+  const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\s/g,"");
+  const keyBytes=Uint8Array.from(atob(pem),c=>c.charCodeAt(0));
+  const key=await crypto.subtle.importKey("pkcs8",keyBytes,{name:"RSASSA-PKCS1-v1_5",hash:"SHA-256"},false,["sign"]);
+  const input=header+"."+claim,signature=await crypto.subtle.sign("RSASSA-PKCS1-v1_5",key,te.encode(input));
+  const assertion=input+"."+enc(signature);
+  const tokenRes=await fetch("https://oauth2.googleapis.com/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer",assertion})});
+  const tokenData=await tokenRes.json().catch(()=>({}));
+  if(!tokenRes.ok||!tokenData.access_token)throw new Error("Google token request failed: "+String(tokenData.error_description||tokenData.error||("HTTP "+tokenRes.status)).slice(0,180));
+  const reportRes=await fetch("https://analyticsdata.googleapis.com/v1beta/properties/560673761:runReport",{method:"POST",headers:{"Authorization":"Bearer "+tokenData.access_token,"Content-Type":"application/json"},body:JSON.stringify({
+    dateRanges:[{startDate:"today",endDate:"today"},{startDate:"yesterday",endDate:"yesterday"}],
+    dimensions:[{name:"dateRange"}],metrics:[{name:"activeUsers"},{name:"sessions"},{name:"screenPageViews"},{name:"engagementRate"}]
+  }),signal:AbortSignal.timeout(20000)});
+  const report=await reportRes.json().catch(()=>({}));
+  if(!reportRes.ok)throw new Error("GA4 report failed: "+String(report.error?.message||("HTTP "+reportRes.status)).slice(0,220));
+  const result={today:null,yesterday:null,propertyId:"560673761",source:"Google Analytics Data API"};
+  for(const row of report.rows||[]){
+    const values=row.metricValues||[],key=row.dimensionValues?.[0]?.value==="date_range_1"?"yesterday":"today";
+    result[key]={activeUsers:values[0]?.value??"0",sessions:values[1]?.value??"0",pageViews:values[2]?.value??"0",engagementRate:values[3]?.value??"0"};
+  }
+  return result;
+}
+async function miniAppModule(env,section){
+  const allowed=["website","news","analytics","security","reports","settings"];
+  if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
+  if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
+  if(section==="automation"||section==="alerts"){
+    const cfg=await botConfig(env);
+    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
+    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
+    return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\\n"),source:"BOT_CONFIG_KV"};
+  }
+  if(section==="users"){
+    const [telegram,visitors,legacy,blocks,history]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
+    const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
+    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+"\\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
+  }
+  if(section==="recovery")return {section,...await miniAppRecovery(env)};
+  if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
+  
+  if(section==="github"){
+    const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+    if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=8",{headers,signal:AbortSignal.timeout(10000)});
+    const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error("GitHub Actions API returned HTTP "+r.status);
+    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,url:x.html_url})),source:"GitHub Actions API"};
+  }
+  throw new Error("Unsupported module.");
+}
+async function miniAppUserLookup(env,input){
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found. Use Telegram ID, Visitor ID or custom ID.");
+  const profile=await umProfile(env,user);if(!profile)throw new Error("User profile not found.");
+  const kind=user.kind==="telegram"?"telegram":"visitor",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+kind+":"+user.id,"json");
+  const blocked=await umBlocked(env,kind,user.id);
+  return {kind,id:user.id,customId:profile.customId||null,username:profile.username||null,firstName:profile.firstName||null,lastName:profile.lastName||null,firstSeen:profile.firstSeen||null,lastSeen:profile.lastSeen||null,blocked,linkedTelegramId:kind==="visitor"?link?.telegramId||null:link?.telegramId||user.id,linkedVisitorId:kind==="visitor"?user.id:link?.visitorId||null};
+}
+async function miniAppUserAction(env,adminId,operation,payload){
+  if(operation==="link"){
+    const tg=await umResolve(env,String(payload?.telegramId||"")),web=await umResolve(env,String(payload?.visitorId||""));
+    if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web)))throw new Error("Both existing Telegram ID and Visitor ID profiles are required.");
+    const tk=UM_PREFIX+"link:telegram:"+tg.id,wk=UM_PREFIX+"link:visitor:"+web.id;
+    const [oldT,oldW]=await Promise.all([env.VISITOR_KV.get(tk,"json"),env.VISITOR_KV.get(wk,"json")]);
+    if((oldT?.visitorId&&oldT.visitorId!==web.id)||(oldW?.telegramId&&oldW.telegramId!==tg.id))throw new Error("One of these profiles is already linked elsewhere. Unlink it first to avoid silently replacing an identity link.");
+    await miniAppAudit(env,adminId,"userLink_attempt",{telegramId:tg.id,visitorId:web.id});
+    await env.VISITOR_KV.put(tk,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await env.VISITOR_KV.put(wk,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await umHistory(env,"admin",String(adminId),{type:"link",telegramId:tg.id,visitorId:web.id});return {ok:true,message:"Telegram and Website identities linked."};
+  }
+  const input=String(payload?.query||payload?.id||"").trim();
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
+  const kind=user.kind==="telegram"?"telegram":"visitor",profile=await umProfile(env,user);if(!profile)throw new Error("User profile not found.");
+  if(operation==="rename"){
+    const custom=String(payload?.customId||"").trim();if(!/^[a-zA-Z0-9_-]{3,32}$/.test(custom))throw new Error("Custom ID must be 3–32 English letters, numbers, underscore or hyphen.");
+    const mapKey=UM_PREFIX+"custom:"+encodeURIComponent(custom.toLowerCase()),existing=await env.VISITOR_KV.get(mapKey,"json");
+    if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id))throw new Error("That Custom ID is already in use.");
+    await miniAppAudit(env,adminId,"userRename_attempt",{kind,userId:user.id,customId:custom});
+    if(profile.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(profile.customId).toLowerCase()));
+    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
+    await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});await umHistory(env,"admin",String(adminId),{type:"rename",target:user,customId:custom});
+    return {ok:true,message:"Custom ID updated.",user:await miniAppUserLookup(env,input)};
+  }
+  if(operation==="block"||operation==="unblock"){
+    const scope=["both","telegram","website"].includes(payload?.scope)?payload.scope:"both";
+    const link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+kind+":"+user.id,"json");
+    const targets=kind==="telegram"?{telegram:user.id,website:link?.visitorId}:{website:user.id,telegram:link?.telegramId};
+    const scopes=scope==="both"?["telegram","website"]:[scope],available=scopes.filter(k=>!!targets[k]),missing=scopes.filter(k=>!targets[k]);
+    if(!available.length)throw new Error("No linked account exists for the selected block scope.");
+    if(missing.length&&scope!=="both")throw new Error("The requested linked account does not exist.");
+    await miniAppAudit(env,adminId,"user"+operation+"_attempt",{kind,userId:user.id,scope});
+    for(const k of available){const key=UM_PREFIX+"block:"+k+":"+targets[k];if(operation==="block")await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:String(adminId),reason:"Mini App admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
+    await umHistory(env,"admin",String(adminId),{type:operation,target:user,scope,targets});
+    return {ok:true,message:operation+" completed.",user:await miniAppUserLookup(env,input)};
+  }
+  if(operation==="unlink"){
+    const key=UM_PREFIX+"link:"+kind+":"+user.id,link=await env.VISITOR_KV.get(key,"json");
+    if(!link)throw new Error("This profile has no linked identity.");
+    await miniAppAudit(env,adminId,"userUnlink_attempt",{kind,userId:user.id});
+    await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);
+    await umHistory(env,"admin",String(adminId),{type:"unlink",target:user});return {ok:true,message:"Identity link removed."};
+  }
+  throw new Error("Unsupported User Manager operation.");
+}
+async function miniAppUserHistory(env,input){
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
+  const prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":";const keys=await umList(env,prefix);const rows=[];
+  for(const key of keys){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push({at:row.at,event:row.event||{}});}
+  return rows.sort((a,b)=>b.at-a.at).slice(0,30);
+}
+async function miniAppRecovery(env){
+  const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+  const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/branches?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
+  if(!r.ok)throw new Error("GitHub branch verification failed (HTTP "+r.status+").");
+  const branches=await r.json(),backups=(Array.isArray(branches)?branches:[]).filter(x=>x.name.startsWith("backup/")).map(x=>({name:x.name,sha:x.commit?.sha||null}));
+  return {backups,source:"GitHub branches API",note:"Backup references are listed only when GitHub confirms they exist. No rollback is triggered from this read-only view."};
+}
+async function miniAppRecentAudit(env){
+  if(!env.BOT_CONFIG_KV)throw new Error("Audit storage is unavailable.");
+  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_AUDIT_PREFIX,limit:100}),rows=[];
+  for(const key of page.keys||[]){const item=await env.BOT_CONFIG_KV.get(key.name,"json");if(item)rows.push(item);}
+  return rows.sort((a,b)=>b.at-a.at).slice(0,30).map(x=>({at:x.at,userId:x.userId,action:x.action,detail:x.detail||{}}));
+}
+async function miniAppOverview(env,user){
+  const started=performance.now();
+  let site={ok:false,status:"UNKNOWN",detail:"Check unavailable",responseMs:null};
+  try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(10000)});site={ok:r.ok,status:"HTTP "+r.status,detail:r.ok?"Portfolio reachable":"Portfolio returned HTTP "+r.status,responseMs:Math.round(performance.now()-started)};await r.body?.cancel();}catch(e){site={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,120),responseMs:Math.round(performance.now()-started)};}
+  let news={ok:false,status:"UNKNOWN",detail:"Feed check unavailable"};
+  try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  let bot={ok:false,status:"UNKNOWN",detail:"Telegram Bot check unavailable"};
+  try{const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/getMe",{signal:AbortSignal.timeout(8000)});const d=await r.json();bot={ok:!!(r.ok&&d.ok),status:r.ok&&d.ok?"CONNECTED":"ERROR",detail:d.result?.username?"@"+d.result.username:"Telegram API check failed"};}catch(e){bot={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  const cfg=await botConfig(env);let activity=null;
+  try{activity=await readDailyActivity(env,bdDay());}catch{}
+  const keys=Object.keys(BOT_DEFAULTS),enabled=keys.filter(k=>!!cfg[k]).length;
+  return {
+    ok:true,user:{id:String(user.id),first_name:String(user.first_name||""),username:String(user.username||"")},
+    overview:{site:{status:site.status,detail:site.detail},visitors:{today:activity?.unique??null,views:activity?.views??null},automation:{enabled:enabled+"/"+keys.length}},
+    services:[
+      {name:"Portfolio Website",status:site.status,detail:site.responseMs===null?site.detail:site.detail+" · "+site.responseMs+" ms",ok:site.ok},
+      {name:"News Feed",status:news.status,detail:news.detail,ok:news.ok},
+      {name:"Telegram Bot API",status:bot.status,detail:bot.detail,ok:bot.ok},
+      {name:"Cloudflare KV",status:env.BOT_CONFIG_KV&&env.VISITOR_KV?"BOUND":"MISSING",detail:"Required control and visitor stores",ok:!!(env.BOT_CONFIG_KV&&env.VISITOR_KV)}
+    ],
+    activity:[],
+    config:Object.fromEntries(keys.map(k=>[k,!!cfg[k]])),
+    privacy:{visitorRecordsReturned:false,personalVisitorDataReturned:false}
+  };
 }
 
 export default {
@@ -610,6 +859,90 @@ export default {
     const routeUrl=new URL(request.url);
     if(pathname==="/hero-preview")return botHeroPreviewPage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/hero-preview-image")return botHeroPreviewImage(env,routeUrl.searchParams.get("token")||"");
+    if(pathname==="/miniapp/api"){
+      if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
+      if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
+      let raw;try{raw=await request.text()}catch{return respond({ok:false,error:"Invalid request body"},400);}
+      if(new TextEncoder().encode(raw).byteLength>6*1024*1024)return respond({ok:false,error:"Request too large"},413);
+      let body;try{body=JSON.parse(raw)}catch{return respond({ok:false,error:"Invalid JSON"},400);}
+      try{
+        const user=await miniAppAuthorize(body?.initData,env);
+        await miniAppRateLimit(env,user.id);
+        const action=String(body?.action||"");
+        if(action==="heroPrepare"){
+          const result=await miniAppHeroPrepare(env,user.id,body);
+          await miniAppAudit(env,user.id,"heroPrepare",{mimeType:String(body?.mimeType||""),bytes:Math.floor(String(body?.base64||"").length*3/4)});
+          return respond({ok:true,...result});
+        }
+        if(action==="heroConfirm"){
+          const result=await miniAppHeroConfirm(env,user.id,String(body?.token||""));
+          await miniAppAudit(env,user.id,"heroConfirm",{imagePath:result.imagePath,commit:result.commit});
+          return respond(result);
+        }
+        if(action==="heroCancel"){
+          const token=String(body?.token||""),key="hero:pending:"+token;
+          const pending=await env.BOT_CONFIG_KV?.get(key,"json");
+          if(pending&&String(pending.userId)===String(user.id))await env.BOT_CONFIG_KV.delete(key);
+          await miniAppAudit(env,user.id,"heroCancel");
+          return respond({ok:true});
+        }
+        if(action==="ga4Report"){
+          const result=await miniAppGa4Report(env);
+          await miniAppAudit(env,user.id,"ga4Report",{propertyId:result.propertyId});
+          return respond({ok:true,...result});
+        }
+        if(action==="cronHistory"){
+          const rows=await miniAppCronHistory(env);
+          await miniAppAudit(env,user.id,"cronHistory",{count:rows.length});
+          return respond({ok:true,rows});
+        }
+        if(action==="newsRefresh"){
+          const cfg=await botConfig(env);
+          if(!cfg.newsRefresh)return respond({ok:false,error:"Automatic News Refresh is OFF. Enable it in Automation before manual refresh."},409);
+          await miniAppAudit(env,user.id,"newsRefresh_attempt",{workflow:"update-news.yml",branch:"main"});
+          const result=await miniAppDispatchNews(env);
+          await miniAppAudit(env,user.id,"newsRefresh_dispatched",{workflow:result.workflow});
+          return respond({ok:true,...result});
+        }
+        if(action==="module"){
+          const section=String(body?.section||"");const result=await miniAppModule(env,section);
+          await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
+        }
+        if(action==="userLookup"){const result=await miniAppUserLookup(env,String(body?.query||""));await miniAppAudit(env,user.id,"userLookup",{kind:result.kind});return respond({ok:true,user:result});}
+        if(action==="userAction"){const result=await miniAppUserAction(env,user.id,String(body?.operation||""),body||{});return respond(result);}
+        if(action==="userHistory"){const rows=await miniAppUserHistory(env,String(body?.query||""));await miniAppAudit(env,user.id,"userHistory",{count:rows.length});return respond({ok:true,rows});}
+        if(action==="recovery"){const result=await miniAppRecovery(env);await miniAppAudit(env,user.id,"recovery");return respond({ok:true,...result});}
+        if(action==="audit"){
+          const rows=await miniAppRecentAudit(env);await miniAppAudit(env,user.id,"audit");return respond({ok:true,rows});
+        }
+        if(action==="workflowRuns"){
+          const result=await miniAppModule(env,"github");await miniAppAudit(env,user.id,"workflowRuns");return respond({ok:true,runs:result.runs||[]});
+        }
+        if(action==="overview"){
+          const result=await miniAppOverview(env,user);
+          await miniAppAudit(env,user.id,"overview");
+          return respond(result);
+        }
+        if(action==="getConfig"){
+          const cfg=await botConfig(env);
+          return respond({ok:true,config:Object.fromEntries(Object.keys(BOT_DEFAULTS).map(k=>[k,!!cfg[k]]))});
+        }
+        if(action==="setConfig"){
+          const key=String(body?.key||""),value=body?.value;
+          if(!Object.prototype.hasOwnProperty.call(BOT_DEFAULTS,key)||typeof value!=="boolean")return respond({ok:false,error:"Unsupported setting or invalid value."},400);
+          const cfg=await botConfig(env);cfg[key]=value;
+          await miniAppAudit(env,user.id,"setConfig_attempt",{key,value});
+          await botSaveConfig(env,cfg);
+          return respond({ok:true,key,value});
+        }
+        return respond({ok:false,error:"Unknown Mini App action."},400);
+      }catch(e){
+        const message=String(e&&e.message||e).slice(0,220);
+        const status=/Access denied/.test(message)?403:/signature|authentication data|session expired|identity is missing/i.test(message)?401:/Too many requests/.test(message)?429:400;
+        return respond({ok:false,error:message},status);
+      }
+    }
+
     if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
     if(pathname==="/track"){
       const botCfg=await botConfig(env);
@@ -768,9 +1101,14 @@ export default {
   async scheduled(controller,env,ctx) {
     await botExpireIdleMenu(env);
     if(controller.cron==="* * * * *")return;
+    const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);
+    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"running",cron:controller.cron});
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
-    if(!runChecks&&!cfg.emergencyProtection)return;
+    if(!runChecks&&!cfg.emergencyProtection){
+      await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"skipped",cron:controller.cron,detail:"Monitoring and emergency protection are disabled."});
+      return;
+    }
     const site="https://kokushibu74.github.io/",started=performance.now(),now=new Date();
     const stamp=now.toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(now);
@@ -809,5 +1147,6 @@ export default {
     };
     if(failure&&cfg.emergencyProtection)await sendTelegram(["🚨 <b>URGENT WEBSITE ALERT</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,"❌ "+failure,responseMs===null?"":"⏱️ Check time: "+responseMs+" ms","","The site will be checked again on the next 30-minute run."].filter(Boolean).join("\n"));
     if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:failure?"warning":"success",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:failure||("Site check completed; "+missing.length+" security headers missing.")});
   }
 };
