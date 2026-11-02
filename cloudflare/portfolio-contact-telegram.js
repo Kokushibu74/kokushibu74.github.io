@@ -183,7 +183,14 @@ async function botSend(env,chatId,text,keyboard,options={}){
   }
   const sent=await botTelegram(env,"sendMessage",payload);
   if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
-  try{await botRememberMenu(env,chatId,sent.data.result?.message_id)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
+  const newMessageId=sent.data.result?.message_id;
+  // If Telegram refuses an edit (for example, the anchor message was deleted),
+  // replace the stale menu instead of leaving a growing stack of old menus.
+  if(messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
+    try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
+    catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
+  }
+  try{await botRememberMenu(env,chatId,newMessageId)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
   return sent.data.result;
 }
 async function botSendChatAction(env,chatId){
