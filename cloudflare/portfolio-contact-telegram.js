@@ -765,8 +765,8 @@ async function miniAppModule(env,section){
   }
   if(section==="users"){
     const [telegram,visitors,legacy,blocks,history]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
-    const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
-    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+"\\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
+    const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size,limited=[telegram,visitors,legacy,blocks,history].some(list=>list.truncated);
+    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length,limited},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+(limited?"\\n\\n⚠️ Partial snapshot: each category is capped at 2,000 records per request to protect Free KV usage. Search by exact ID for a specific profile.":"")+"\\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
   }
   if(section==="recovery")return {section,...await miniAppRecovery(env)};
   if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
