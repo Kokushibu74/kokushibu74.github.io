@@ -631,6 +631,36 @@ async function miniAppAudit(env,userId,action,detail={}){
   const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
 }
+async function miniAppModule(env,section){
+  const allowed=["website","news","analytics","security","github","reports","settings","logs","recovery"];
+  if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
+  if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
+  if(section==="automation"||section==="alerts"){
+    const cfg=await botConfig(env);
+    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
+    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
+    return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\\n"),source:"BOT_CONFIG_KV"};
+  }
+  if(section==="users"){
+    const [telegram,visitors,legacy,blocks,history]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
+    const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
+    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+"\\n\\nPersonal visitor details are not returned in this summary.",source:"VISITOR_KV"};
+  }
+  if(section==="github"){
+    const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+    if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=8",{headers,signal:AbortSignal.timeout(10000)});
+    const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error("GitHub Actions API returned HTTP "+r.status);
+    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,url:x.html_url})),source:"GitHub Actions API"};
+  }
+  throw new Error("Unsupported module.");
+}
+async function miniAppRecentAudit(env){
+  if(!env.BOT_CONFIG_KV)throw new Error("Audit storage is unavailable.");
+  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_AUDIT_PREFIX,limit:100}),rows=[];
+  for(const key of page.keys||[]){const item=await env.BOT_CONFIG_KV.get(key.name,"json");if(item)rows.push(item);}
+  return rows.sort((a,b)=>b.at-a.at).slice(0,30).map(x=>({at:x.at,userId:x.userId,action:x.action,detail:x.detail||{}}));
+}
 async function miniAppOverview(env,user){
   const started=performance.now();
   let site={ok:false,status:"UNKNOWN",detail:"Check unavailable",responseMs:null};
@@ -679,6 +709,16 @@ export default {
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
         const action=String(body?.action||"");
+        if(action==="module"){
+          const section=String(body?.section||"");const result=await miniAppModule(env,section);
+          await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
+        }
+        if(action==="audit"){
+          const rows=await miniAppRecentAudit(env);await miniAppAudit(env,user.id,"audit");return respond({ok:true,rows});
+        }
+        if(action==="workflowRuns"){
+          const result=await miniAppModule(env,"github");await miniAppAudit(env,user.id,"workflowRuns");return respond({ok:true,runs:result.runs||[]});
+        }
         if(action==="overview"){
           const result=await miniAppOverview(env,user);
           await miniAppAudit(env,user.id,"overview");
