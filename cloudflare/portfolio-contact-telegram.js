@@ -757,8 +757,9 @@ export default {
         if(action==="setConfig"){
           const key=String(body?.key||""),value=body?.value;
           if(!Object.prototype.hasOwnProperty.call(BOT_DEFAULTS,key)||typeof value!=="boolean")return respond({ok:false,error:"Unsupported setting or invalid value."},400);
-          const cfg=await botConfig(env);cfg[key]=value;await botSaveConfig(env,cfg);
-          await miniAppAudit(env,user.id,"setConfig",{key,value});
+          const cfg=await botConfig(env);cfg[key]=value;
+          await miniAppAudit(env,user.id,"setConfig_attempt",{key,value});
+          await botSaveConfig(env,cfg);
           return respond({ok:true,key,value});
         }
         return respond({ok:false,error:"Unknown Mini App action."},400);
