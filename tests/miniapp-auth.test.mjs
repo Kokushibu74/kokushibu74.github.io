@@ -51,6 +51,14 @@ assert(html.includes("https://telegram.org/js/telegram-web-app.js"), "Telegram W
 assert(html.includes("./app.css") && html.includes("./app.js"), "Mini App assets must be linked");
 assert(app.includes("tg.initData") && app.includes("/miniapp/api"), "frontend must send Telegram initData to the Worker API");
 assert(!/TELEGRAM_BOT_TOKEN|GA4_SERVICE_ACCOUNT_JSON|GITHUB_TOKEN/.test(app + html), "frontend must not contain backend secrets");
+assert(worker.includes('if(action==="module")'), "authenticated module API action must exist");
+assert(worker.includes('if(action==="userLookup")') && worker.includes('if(action==="userHistory")'), "admin User Manager lookup and history endpoints must exist");
+assert(worker.includes('if(action==="recovery")') && worker.includes("async function miniAppRecovery"), "recovery view must verify backup branches from GitHub");
+assert(worker.includes("Access-Control-Allow-Origin") && worker.includes('origin!==allowedOrigin'), "Mini App API must enforce the GitHub Pages origin");
+assert(worker.includes("miniAppRateLimit") && worker.includes("miniAppAudit"), "Mini App API must rate-limit and audit authenticated actions");
+assert(app.includes('api("userLookup"') && app.includes('api("userHistory"'), "User Manager UI must use authenticated APIs");
+assert(app.includes('api("module"') && app.includes('api("setConfig"'), "module views and setting changes must use authenticated APIs");
+assert(!app.includes("innerHTML=result") && !app.includes("innerHTML=data"), "untrusted API data must not be inserted as HTML");
 for (const section of ["website","news","analytics","security","github","hero","automation","alerts","reports","users","settings","logs","recovery"]) {
   assert(app.includes('"'+section+'"'), "missing Mini App section: " + section);
 }
