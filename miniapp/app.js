@@ -70,9 +70,13 @@
         return;
       }catch(e){el.innerHTML=`<div class="empty-state">${escapeHtml(e.message)}</div>`;return}
     }
-    const data=state.data?.modules?.[section];
-    if(data?.html){el.innerHTML=data.html;return}
-    el.innerHTML=`<div class="empty-state"><b>${escapeHtml(labels[section]||"")}</b><br><br>${state.data?"This module's live data is not exposed by the current API yet. No sample or fabricated status is shown.":"Secure Admin API connection is not available yet."}</div>`;
+    el.textContent="Loading verified module data…";
+    try{
+      const result=await api("module",{section});
+      if(result.text){const pre=document.createElement("pre");pre.className="module-report";pre.textContent=result.text;el.replaceChildren(pre);}
+      else if(result.runs){const list=document.createElement("div");list.className="run-list";result.runs.forEach(run=>{const item=document.createElement("article");item.className="run-item";const title=document.createElement("b");title.textContent=run.name||"Workflow";const meta=document.createElement("small");meta.textContent=[run.status,run.conclusion,run.branch,run.createdAt?new Date(run.createdAt).toLocaleString():""].filter(Boolean).join(" · ");item.append(title,meta);if(run.url){const link=document.createElement("a");link.href=run.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open GitHub Run ↗";item.append(link);}list.append(item);});el.replaceChildren(list);if(!result.runs.length)el.textContent="No recent GitHub Actions runs were returned."; }
+      else{const pre=document.createElement("pre");pre.className="module-report";pre.textContent=JSON.stringify(result.stats||result.settings||result,null,2);el.replaceChildren(pre);}
+    }catch(e){el.textContent=e.message;}
   }
   async function api(action,payload={}) {
     if(!tg?.initData) throw new Error("Telegram Mini App authentication data is missing. Open this page from the Kokushibu Bot menu inside Telegram.");
