@@ -632,7 +632,7 @@ async function miniAppAudit(env,userId,action,detail={}){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
 }
 async function miniAppModule(env,section){
-  const allowed=["website","news","analytics","security","github","reports","settings","logs","recovery"];
+  const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
   if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
   if(section==="automation"||section==="alerts"){
