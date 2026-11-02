@@ -73,7 +73,28 @@
     el.textContent="Loading verified module data…";
     try{
       const result=await api("module",{section});
-      if(section==="analytics"||section==="reports"){
+      if(section==="hero"){
+        const wrap=document.createElement("div");wrap.className="user-tools";
+        const intro=document.createElement("small");intro.textContent="Choose a JPEG, PNG or WebP image (maximum 4 MB). The image is staged privately for 10 minutes; nothing is published until you confirm.";
+        const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";
+        const local=document.createElement("img");local.alt="Selected hero image preview";local.hidden=true;local.style.cssText="max-width:100%;max-height:240px;object-fit:contain;border-radius:12px;border:1px solid rgba(120,145,190,.2)";
+        const stage=document.createElement("button");stage.type="button";stage.textContent="Upload & Prepare Preview";stage.disabled=true;
+        const status=document.createElement("pre");status.className="module-report";status.textContent="No image selected.";
+        const frame=document.createElement("iframe");frame.title="Homepage hero preview";frame.hidden=true;frame.loading="lazy";frame.style.cssText="width:100%;height:560px;border:1px solid rgba(120,145,190,.2);border-radius:12px;background:#070b14";
+        const actions=document.createElement("div");actions.style.cssText="display:flex;gap:8px;flex-wrap:wrap";
+        const confirm=document.createElement("button");confirm.type="button";confirm.textContent="Confirm & Publish to Live Site";confirm.hidden=true;
+        const cancel=document.createElement("button");cancel.type="button";cancel.textContent="Cancel Preview";cancel.hidden=true;
+        let selected=null,token=null,previewUrl=null;
+        file.addEventListener("change",()=>{selected=file.files?.[0]||null;stage.disabled=!selected||selected.size>4*1024*1024;if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=selected?URL.createObjectURL(selected):null;local.src=previewUrl||"";local.hidden=!selected;status.textContent=selected?(selected.size>4*1024*1024?"Image exceeds the 4 MB limit.":selected.name+" · "+Math.ceil(selected.size/1024)+" KB"):"No image selected.";});
+        stage.addEventListener("click",async()=>{if(!selected)return;stage.disabled=true;status.textContent="Uploading image securely to temporary private storage…";try{
+          const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read selected image."));reader.readAsDataURL(selected);});
+          const base64=dataUrl.split(",")[1];const r=await api("heroPrepare",{mimeType:selected.type,base64});token=r.token;frame.src=r.previewUrl;frame.hidden=false;confirm.hidden=false;cancel.hidden=false;status.textContent="Private preview ready. Review the actual homepage below. This image is not live yet.";
+        }catch(err){status.textContent=err.message;notice(err.message,true);}finally{stage.disabled=!selected||selected.size>4*1024*1024;}});
+        confirm.addEventListener("click",async()=>{if(!token)return;const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Publish this hero image to the live website? This will update site-data.json on main.",resolve)):window.confirm("Publish this hero image to the live website?");if(!yes)return;confirm.disabled=true;try{const r=await api("heroConfirm",{token});status.textContent="Published successfully: "+r.imagePath+"\\nCommit: "+(r.commit||"accepted");notice("Hero image published to the live site.");token=null;frame.hidden=true;confirm.hidden=true;cancel.hidden=true;}catch(err){status.textContent=err.message;notice(err.message,true);}finally{confirm.disabled=false;}});
+        cancel.addEventListener("click",async()=>{if(token){try{await api("heroCancel",{token});}catch(err){notice(err.message,true);}}token=null;frame.hidden=true;confirm.hidden=true;cancel.hidden=true;status.textContent="Preview cancelled. Nothing was published.";});
+        actions.append(stage,confirm,cancel);wrap.append(intro,file,local,actions,status,frame);el.replaceChildren(wrap);
+      }
+      else if(section==="analytics"||section==="reports"){
         const wrap=document.createElement("div");wrap.className="user-tools";
         const title=document.createElement("b");title.textContent="Google Analytics 4 · Property 560673761";
         const status=document.createElement("pre");status.className="module-report";status.textContent="Loading verified GA4 metrics…";
