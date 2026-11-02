@@ -33,9 +33,10 @@ function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", ")
 const UM_PREFIX = "um:v1:";
 const umClean = (v,n=120) => String(v??"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
 const umDate = (ts=Date.now()) => new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));
-async function umList(env,prefix,limit=1000){
-  const out=[];let cursor;
-  do{const page=await env.VISITOR_KV.list({prefix,limit,cursor});out.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;}while(cursor);
+async function umList(env,prefix,limit=1000,maxPages=2){
+  const out=[];let cursor,pages=0;
+  do{const page=await env.VISITOR_KV.list({prefix,limit,cursor});out.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;pages++;}while(cursor&&pages<maxPages);
+  out.truncated=!!cursor;
   return out;
 }
 async function umHistory(env,kind,id,event){
