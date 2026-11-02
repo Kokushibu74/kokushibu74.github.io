@@ -73,7 +73,20 @@
     el.textContent="Loading verified module data…";
     try{
       const result=await api("module",{section});
-      if(section==="news"){
+      if(section==="analytics"||section==="reports"){
+        const wrap=document.createElement("div");wrap.className="user-tools";
+        const title=document.createElement("b");title.textContent="Google Analytics 4 · Property 560673761";
+        const status=document.createElement("pre");status.className="module-report";status.textContent="Loading verified GA4 metrics…";
+        const refresh=document.createElement("button");refresh.type="button";refresh.textContent="↻ Refresh GA4 Report";
+        const note=document.createElement("small");note.textContent="Metrics are fetched live from Google Analytics Data API using the existing Worker service-account secret. No metrics are estimated.";
+        const load=async()=>{refresh.disabled=true;status.textContent="Requesting GA4 report…";try{
+          const r=await api("ga4Report");
+          const fmt=x=>x?("Active users: "+x.activeUsers+"\\nSessions: "+x.sessions+"\\nPage views: "+x.pageViews+"\\nEngagement rate: "+(Number(x.engagementRate)*100).toFixed(2)+"%"):"No rows returned by GA4.";
+          status.textContent="TODAY\\n"+fmt(r.today)+"\\n\\nYESTERDAY\\n"+fmt(r.yesterday)+"\\n\\nSource: "+r.source+" · Property: "+r.propertyId;
+        }catch(err){status.textContent="GA4 report unavailable: "+err.message;}finally{refresh.disabled=false;}};
+        refresh.addEventListener("click",load);wrap.append(title,status,refresh,note);el.replaceChildren(wrap);await load();
+      }
+      else if(section==="news"){
         const wrap=document.createElement("div");wrap.className="user-tools";
         const report=document.createElement("pre");report.className="module-report";report.textContent=result.text||"News feed status loaded.";
         const refresh=document.createElement("button");refresh.type="button";refresh.textContent="↻ Refresh News Feed Now";
