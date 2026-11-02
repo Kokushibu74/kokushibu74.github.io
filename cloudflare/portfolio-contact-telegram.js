@@ -563,7 +563,9 @@ async function botCommitHero(env,token){
   if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
   const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
   const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
-  const bytes=await botTelegramPhoto(env,pending.fileId),imagePath="storage/pictures/hero-telegram-"+Date.now()+".jpg";
+  const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+  const ext=pending.mimeType==="image/png"?"png":pending.mimeType==="image/webp"?"webp":"jpg";
+  const imagePath="storage/pictures/hero-miniapp-"+Date.now()+"."+ext;
   const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
   const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
   const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json"}});
@@ -589,8 +591,10 @@ async function botHeroPreviewPage(env,token){
 async function botHeroPreviewImage(env,token){
   const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
   if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
-  try{const bytes=await botTelegramPhoto(env,pending.fileId);return new Response(bytes,{headers:{"Content-Type":"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}})}
-  catch{return new Response("Image unavailable",{status:502})}
+  try{
+    const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+    return new Response(bytes,{headers:{"Content-Type":pending.mimeType||"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
+  }catch{return new Response("Image unavailable",{status:502})}
 }
 
 const MINIAPP_RATE_PREFIX = "miniapp:rate:v1:";
@@ -657,6 +661,29 @@ async function miniAppDispatchNews(env){
   const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
   if(response.status!==204)throw new Error("News workflow dispatch failed (HTTP "+response.status+").");
   return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
+}
+async function miniAppHeroPrepare(env,userId,body){
+  if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("Hero image storage is unavailable.");
+  const mime=String(body?.mimeType||""),data=String(body?.base64||"");
+  if(!["image/jpeg","image/png","image/webp"].includes(mime))throw new Error("Only JPEG, PNG and WebP images are supported.");
+  if(!data||data.length>Math.ceil(4*1024*1024*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 4 MB or smaller and valid base64.");
+  const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
+  if(bytes.length<16||bytes.length>4*1024*1024)throw new Error("Image must be between 16 bytes and 4 MB.");
+  const isJpeg=bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
+  const isPng=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47;
+  const isWebp=String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP";
+  if(!(mime==="image/jpeg"&&isJpeg||mime==="image/png"&&isPng||mime==="image/webp"&&isWebp))throw new Error("Image file content does not match its declared format.");
+  const token=crypto.randomUUID(),expiresAt=Date.now()+10*60*1000;
+  await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({base64:data,mimeType:mime,userId:String(userId),expiresAt}),{expirationTtl:600});
+  return {token,expiresAt,previewUrl:"https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token)};
+}
+async function miniAppHeroConfirm(env,userId,token){
+  if(!/^[0-9a-f-]{30,40}$/i.test(String(token||"")))throw new Error("Invalid or expired preview token.");
+  const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV?.get(key,"json");
+  if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired. Upload the image again.");
+  if(String(pending.userId)!==String(userId))throw new Error("This preview belongs to another admin session.");
+  const result=await botCommitHero(env,token);
+  return {ok:true,...result};
 }
 async function miniAppGa4Report(env){
   if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing.");
@@ -829,12 +856,29 @@ export default {
       if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
       if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
       let raw;try{raw=await request.text()}catch{return respond({ok:false,error:"Invalid request body"},400);}
-      if(new TextEncoder().encode(raw).byteLength>16384)return respond({ok:false,error:"Request too large"},413);
+      if(new TextEncoder().encode(raw).byteLength>6*1024*1024)return respond({ok:false,error:"Request too large"},413);
       let body;try{body=JSON.parse(raw)}catch{return respond({ok:false,error:"Invalid JSON"},400);}
       try{
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
         const action=String(body?.action||"");
+        if(action==="heroPrepare"){
+          const result=await miniAppHeroPrepare(env,user.id,body);
+          await miniAppAudit(env,user.id,"heroPrepare",{mimeType:String(body?.mimeType||""),bytes:Math.floor(String(body?.base64||"").length*3/4)});
+          return respond({ok:true,...result});
+        }
+        if(action==="heroConfirm"){
+          const result=await miniAppHeroConfirm(env,user.id,String(body?.token||""));
+          await miniAppAudit(env,user.id,"heroConfirm",{imagePath:result.imagePath,commit:result.commit});
+          return respond(result);
+        }
+        if(action==="heroCancel"){
+          const token=String(body?.token||""),key="hero:pending:"+token;
+          const pending=await env.BOT_CONFIG_KV?.get(key,"json");
+          if(pending&&String(pending.userId)===String(user.id))await env.BOT_CONFIG_KV.delete(key);
+          await miniAppAudit(env,user.id,"heroCancel");
+          return respond({ok:true});
+        }
         if(action==="ga4Report"){
           const result=await miniAppGa4Report(env);
           await miniAppAudit(env,user.id,"ga4Report",{propertyId:result.propertyId});
