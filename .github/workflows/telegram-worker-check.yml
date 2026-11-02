@@ -50,7 +50,9 @@ jobs:
             'sendChatAction', 'botRunWithProgress', 'function botFormatTelegramResponse',
             'ADMIN CONTROL CENTER', 'PRIVATE ADMIN SESSION', 'botFormatTelegramResponse(text,options)',
             'setChatMenuButton', 'function miniAppAuthorize', 'function miniAppDispatchNews',
-            'function miniAppHeroPrepare', 'function miniAppUserAction'
+            'function miniAppHeroPrepare', 'function miniAppUserAction',
+            'async function miniAppCronAlert', 'async function miniAppCronHistory',
+            'expirationTtl:7776000', 'status:"failed",cron:controller.cron'
           ];
           for (const item of required) {
             if (!source.includes(item)) throw new Error('Missing Telegram/Mini App contract: ' + item);
