@@ -57,6 +57,12 @@ assert(worker.includes('if(action==="recovery")') && worker.includes("async func
 assert(worker.includes("Access-Control-Allow-Origin") && worker.includes('origin!==allowedOrigin'), "Mini App API must enforce the GitHub Pages origin");
 assert(worker.includes("miniAppRateLimit") && worker.includes("miniAppAudit"), "Mini App API must rate-limit and audit authenticated actions");
 assert(worker.includes("miniAppGa4Report") && worker.includes('if(action==="ga4Report")'), "GA4 report must use the authenticated Worker API");
+assert(worker.includes("miniAppHeroPrepare") && worker.includes("miniAppHeroConfirm"), "Hero upload must use a staged preview and explicit confirm flow");
+assert(worker.includes("pending.userId") && worker.includes("pending.expiresAt"), "Hero preview must be admin-bound and expire");
+assert(worker.includes("image/jpeg") && worker.includes("image/png") && worker.includes("image/webp"), "Hero upload must restrict supported image formats");
+assert(worker.includes('if(action==="heroPrepare")') && worker.includes('if(action==="heroConfirm")'), "Hero prepare and publish actions must be authenticated");
+assert(app.includes('api("heroPrepare"') && app.includes('api("heroConfirm"') && app.includes("Confirm & Publish to Live Site"), "Hero UI must upload, preview and require explicit publish confirmation");
+
 assert(worker.includes("miniAppCronHistory") && worker.includes('if(action==="cronHistory")'), "Cloudflare Cron run history API must exist");
 assert(worker.includes("miniAppDispatchNews") && worker.includes('if(action==="newsRefresh")'), "manual News Refresh must use the existing GitHub workflow dispatch");
 assert(worker.includes("cfg.newsRefresh") && worker.includes("update-news.yml"), "manual News Refresh must respect the existing automation setting and workflow");
