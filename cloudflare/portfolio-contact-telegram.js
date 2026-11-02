@@ -653,8 +653,24 @@ async function miniAppCronRecord(env,entry){
     durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
     httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
     detail:String(entry.detail||"").slice(0,180)};
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:2592000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:7776000});
   return value;
+}
+async function miniAppCronAlert(env,cron,status,detail){
+  if(!env.BOT_CONFIG_KV)return;
+  const key="miniapp:cron-alert:v1:"+String(cron||"unknown").replace(/[^a-zA-Z0-9*_-]/g,"_");
+  const previous=await env.BOT_CONFIG_KV.get(key,"json").catch(()=>null);
+  const failed=["warning","failed","failure","interrupted"].includes(String(status).toLowerCase());
+  const wasFailed=previous?.failed===true;
+  const shouldNotify=failed?!wasFailed:(!failed&&wasFailed&&status==="success");
+  if(!shouldNotify||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});return;}
+  const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
+  const title=failed?"🚨 <b>AUTOMATION FAILURE</b>":"✅ <b>AUTOMATION RECOVERED</b>";
+  const body=[title,"⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)",(failed?"❌ ":"✅ ")+escape(detail||status)].join("\n");
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const payload=await response.json().catch(()=>({}));
+  if(!response.ok||!payload.ok)throw new Error("Telegram automation alert failed (HTTP "+response.status+")");
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
@@ -1105,6 +1121,7 @@ export default {
     if(controller.cron==="* * * * *")return;
     const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"running",cron:controller.cron});
+    try {
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
     if(!runChecks&&!cfg.emergencyProtection){
@@ -1123,7 +1140,7 @@ export default {
       const h=res.headers,checks=[["Content-Security-Policy",h.get("content-security-policy")],["Strict-Transport-Security",h.get("strict-transport-security")],["X-Content-Type-Options",h.get("x-content-type-options")],["X-Frame-Options",h.get("x-frame-options")],["Referrer-Policy",h.get("referrer-policy")]];
       missing=checks.filter(x=>!x[1]).map(x=>x[0]);if(!res.ok)failure="Website returned HTTP "+res.status;
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
-    if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");return}
+    if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
       const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
@@ -1147,8 +1164,17 @@ export default {
       const report=await reportRes.json().catch(()=>({}));if(!reportRes.ok)throw new Error("GA4 report failed: "+String(report.error?.message||("HTTP "+reportRes.status)).slice(0,220));
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
-    if(failure&&cfg.emergencyProtection)await sendTelegram(["🚨 <b>URGENT WEBSITE ALERT</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,"❌ "+failure,responseMs===null?"":"⏱️ Check time: "+responseMs+" ms","","The site will be checked again on the next 30-minute run."].filter(Boolean).join("\n"));
+    if(failure&&(cfg.emergencyProtection||cfg.workflowAlerts))await miniAppCronAlert(env,controller.cron,"warning",failure);
     if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
-    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:failure?"warning":"success",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:failure||("Site check completed; "+missing.length+" security headers missing.")});
+    const terminalStatus=failure?"warning":"success";
+    const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
+    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
+    if(cfg.workflowAlerts||cfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,terminalStatus,terminalDetail);
+    } catch(error) {
+      const detail=String(error&&error.message||error).slice(0,180);
+      await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"failed",cron:controller.cron,durationMs:Date.now()-cronStartedAt,detail});
+      try { const failedCfg=await botConfig(env); if(failedCfg.workflowAlerts||failedCfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,"failed",detail); } catch(alertError) { console.error("Automation failure alert error:",String(alertError&&alertError.message||alertError).slice(0,160)); }
+      console.error("Scheduled automation failed:",detail);
+    }
   }
 };
