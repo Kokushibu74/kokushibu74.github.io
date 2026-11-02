@@ -644,8 +644,11 @@ async function miniAppModule(env,section){
   if(section==="users"){
     const [telegram,visitors,legacy,blocks,history]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
     const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
-    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+"\\n\\nPersonal visitor details are not returned in this summary.",source:"VISITOR_KV"};
+    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+"\\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
   }
+  if(section==="recovery")return {section,...await miniAppRecovery(env)};
+  if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
+  
   if(section==="github"){
     const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
@@ -654,6 +657,26 @@ async function miniAppModule(env,section){
     return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,url:x.html_url})),source:"GitHub Actions API"};
   }
   throw new Error("Unsupported module.");
+}
+async function miniAppUserLookup(env,input){
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found. Use Telegram ID, Visitor ID or custom ID.");
+  const profile=await umProfile(env,user);if(!profile)throw new Error("User profile not found.");
+  const kind=user.kind==="telegram"?"telegram":"visitor",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+kind+":"+user.id,"json");
+  const blocked=await umBlocked(env,kind,user.id);
+  return {kind,id:user.id,customId:profile.customId||null,username:profile.username||null,firstName:profile.firstName||null,lastName:profile.lastName||null,firstSeen:profile.firstSeen||null,lastSeen:profile.lastSeen||null,blocked,linkedTelegramId:kind==="visitor"?link?.telegramId||null:link?.telegramId||user.id,linkedVisitorId:kind==="visitor"?user.id:link?.visitorId||null};
+}
+async function miniAppUserHistory(env,input){
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
+  const prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":";const keys=await umList(env,prefix);const rows=[];
+  for(const key of keys){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push({at:row.at,event:row.event||{}});}
+  return rows.sort((a,b)=>b.at-a.at).slice(0,30);
+}
+async function miniAppRecovery(env){
+  const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+  const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/branches?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
+  if(!r.ok)throw new Error("GitHub branch verification failed (HTTP "+r.status+").");
+  const branches=await r.json(),backups=(Array.isArray(branches)?branches:[]).filter(x=>x.name.startsWith("backup/")).map(x=>({name:x.name,sha:x.commit?.sha||null}));
+  return {backups,source:"GitHub branches API",note:"Backup references are listed only when GitHub confirms they exist. No rollback is triggered from this read-only view."};
 }
 async function miniAppRecentAudit(env){
   if(!env.BOT_CONFIG_KV)throw new Error("Audit storage is unavailable.");
@@ -713,6 +736,9 @@ export default {
           const section=String(body?.section||"");const result=await miniAppModule(env,section);
           await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
         }
+        if(action==="userLookup"){const result=await miniAppUserLookup(env,String(body?.query||""));await miniAppAudit(env,user.id,"userLookup",{kind:result.kind});return respond({ok:true,user:result});}
+        if(action==="userHistory"){const rows=await miniAppUserHistory(env,String(body?.query||""));await miniAppAudit(env,user.id,"userHistory",{count:rows.length});return respond({ok:true,rows});}
+        if(action==="recovery"){const result=await miniAppRecovery(env);await miniAppAudit(env,user.id,"recovery");return respond({ok:true,...result});}
         if(action==="audit"){
           const rows=await miniAppRecentAudit(env);await miniAppAudit(env,user.id,"audit");return respond({ok:true,rows});
         }
