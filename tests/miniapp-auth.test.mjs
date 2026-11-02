@@ -56,6 +56,13 @@ assert(worker.includes('if(action==="userLookup")') && worker.includes('if(actio
 assert(worker.includes('if(action==="recovery")') && worker.includes("async function miniAppRecovery"), "recovery view must verify backup branches from GitHub");
 assert(worker.includes("Access-Control-Allow-Origin") && worker.includes('origin!==allowedOrigin'), "Mini App API must enforce the GitHub Pages origin");
 assert(worker.includes("miniAppRateLimit") && worker.includes("miniAppAudit"), "Mini App API must rate-limit and audit authenticated actions");
+assert(worker.includes("miniAppGa4Report") && worker.includes('if(action==="ga4Report")'), "GA4 report must use the authenticated Worker API");
+assert(worker.includes("miniAppCronHistory") && worker.includes('if(action==="cronHistory")'), "Cloudflare Cron run history API must exist");
+assert(worker.includes("miniAppDispatchNews") && worker.includes('if(action==="newsRefresh")'), "manual News Refresh must use the existing GitHub workflow dispatch");
+assert(worker.includes("cfg.newsRefresh") && worker.includes("update-news.yml"), "manual News Refresh must respect the existing automation setting and workflow");
+assert(app.includes('api("ga4Report")') && app.includes('api("cronHistory")'), "Analytics and Cron history views must call authenticated APIs");
+assert(app.includes('api("newsRefresh")') && app.includes("showConfirm"), "News Refresh must require confirmation in the Mini App");
+
 assert(worker.includes('setChatMenuButton') && worker.includes("https://kokushibu74.github.io/miniapp/"), "admin /start must configure the Telegram Mini App chat menu button");
 assert(app.includes('api("userLookup"') && app.includes('api("userHistory"'), "User Manager UI must use authenticated APIs");
 assert(app.includes('api("module"') && app.includes('api("setConfig"'), "module views and setting changes must use authenticated APIs");
