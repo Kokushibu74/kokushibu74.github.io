@@ -52,6 +52,7 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24%,rgba(0,242,254,.17) 0%,transparent 36%),radial-gradient(ellipse at 82% 44%,rgba(127,0,255,.15) 0%,transparent 38%),radial-gradient(ellipse at 48% 88%,rgba(79,172,254,.08) 0%,transparent 42%);background-size:150% 150%;animation-duration:22s}
 @media(max-width:640px){body::before{opacity:.34;background-size:120% 120%;animation-duration:34s}body:has(#home)::before{opacity:.48;animation-duration:30s}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none!important;will-change:auto}}
+.project-filter-status{margin:0 0 12px;padding:12px 15px;border:1px solid #00f2fe45;border-radius:12px;background:#00f2fe0b;color:#b9faff;font:11px 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:space-between;gap:12px}.project-filter-status[hidden]{display:none}.project-filter-status a{color:#00f2fe;text-decoration:none;white-space:nowrap}
 </style>
 
 <style id="projects-header-parity-v1">
@@ -75,6 +76,7 @@ header.site-shell-header{width:100%!important;max-width:none!important;margin:0!
 <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a class="active" href="projects.html" aria-current="page">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
 <main class="wrap">
 <section class="hero"><p class="kicker">03 / SELECTED WORK</p><h1>Projects I’m<br><span class="accent">building.</span></h1><p class="intro">A collection of experiments and practical tools across personal AI, developer utilities, digital media, and automation. Swipe through the work and open a project to explore it.</p></section>
+<div id="project-filter-status" class="project-filter-status" hidden></div>
 <div class="gallery-head"><span class="gallery-label">PROJECT GALLERY <span aria-hidden="true">/</span> <span id="project-total">LOADING</span></span><div class="slider-controls"><span class="slider-count" id="slider-count" aria-live="polite">01 / 05</span><button class="slider-btn" id="gallery-prev" type="button" aria-label="Previous projects"><i class="fa-solid fa-arrow-left"></i></button><button class="slider-btn" id="gallery-next" type="button" aria-label="Next projects"><i class="fa-solid fa-arrow-right"></i></button></div></div>
 <section class="project-gallery" id="project-gallery" aria-label="Project portfolio" tabindex="0"><div class="empty-state">Loading projects…</div></section><div class="gallery-dots" id="gallery-dots" aria-label="Choose project slide"></div>
 </main>
@@ -95,7 +97,13 @@ const known=[
 let cards=[],active=0,resizeFrame=0;
 function getMeta(p){return known.find(k=>k.match.test(p.name||""))||{tag:p.tag||"PROJECT",category:"SELECTED WORK",tags:["Project","Development"],cover:"storage/projects/multi-ai.svg",linkFallback:"#",mark:"BUILD · TEST · REFINE"}}
 function render(projects){
- if(!Array.isArray(projects)||!projects.length)throw new Error("No projects found");
+ const techLabels={web:"Web & UI",ai:"AI & Model Integration",api:"API & Developer Tools",automation:"Automation",media:"Digital Media",sports:"Sports & Live Data"};
+ const techMatchers={web:/multi.?ai|api tester|media studio|sports zone/i,ai:/multi.?ai|memo|whatsapp/i,api:/api tester/i,automation:/memo|lo.?fi|automation/i,media:/media studio|lo.?fi/i,sports:/sports zone/i};
+ const tech=(new URLSearchParams(location.search).get("tech")||"").toLowerCase();
+ const status=document.getElementById("project-filter-status");
+ if(techMatchers[tech]){projects=projects.filter(p=>techMatchers[tech].test((p.name||"")+" "+(p.tag||"")+" "+(p.desc||"")));status.hidden=false;status.innerHTML='<span>FILTERED BY: '+esc(techLabels[tech].toUpperCase())+'</span><a href="projects.html">Clear filter ×</a>';}
+ else status.hidden=true;
+ if(!Array.isArray(projects)||!projects.length){gallery.innerHTML='<div class="empty-state">No matching projects found for this category yet. <a href="projects.html">View all projects</a>.</div>';cards=[];total.textContent="00 PROJECTS";count.textContent="00 / 00";prev.disabled=true;next.disabled=true;dots.innerHTML="";return;}
  gallery.innerHTML=projects.map((p,i)=>{const m=getMeta(p),link=p.link||m.linkFallback;return '<article class="project-card" data-project-href="'+esc(link)+'" tabindex="0" role="link" aria-label="Explore project: '+esc(p.name||m.name||"Project")+'"><div class="project-cover"><img src="'+esc(m.cover)+'" alt="'+esc((p.name||m.tag)+" project cover")+'" loading="'+(i<2?"eager":"lazy")+'" width="1200" height="675"><span class="cover-overlay"></span><span class="cover-index">'+String(i+1).padStart(2,"0")+' / '+String(projects.length).padStart(2,"0")+'</span><span class="cover-mark">'+esc(m.mark)+'</span></div><div class="card-content"><span class="tag">'+esc(m.tag||p.tag||"PROJECT")+'</span><h2>'+esc(p.name||m.name||"Project")+'</h2><p class="desc">'+esc(p.desc||"A project exploring useful digital experiences.")+'</p><div class="project-tags">'+m.tags.map(t=>'<span>'+esc(t)+'</span>').join("")+'</div></div></article>'}).join("");
  cards=Array.from(gallery.querySelectorAll(".project-card"));cards.forEach(card=>{const openProject=()=>{try{const url=new URL(card.dataset.projectHref,location.href);if(url.protocol==="https:")window.open(url.href,"_blank","noopener,noreferrer")}catch(_){}};card.addEventListener("click",e=>{if(e.target.closest("a,button,summary,iframe,input"))return;openProject()});card.addEventListener("keydown",e=>{if(e.target!==card||(e.key!=="Enter"&&e.key!==" "))return;e.preventDefault();openProject()})});total.textContent=String(cards.length).padStart(2,"0")+" PROJECTS";
  dots.innerHTML=cards.map((_,i)=>'<button type="button" class="gallery-dot" aria-label="Go to project '+(i+1)+'" aria-current="'+(i===0?'true':'false')+'" data-index="'+i+'"></button>').join("");
