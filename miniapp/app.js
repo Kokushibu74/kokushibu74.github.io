@@ -29,7 +29,7 @@
     const item = m => `<button class="nav-item ${state.section===m[0]?"active":""}" data-section="${m[0]}"><span class="nav-icon">${m[1]}</span><span class="nav-label">${m[2]}</span></button>`;
     $("side-nav").innerHTML=modules.map(item).join("");
     $("mobile-nav").innerHTML=modules.filter(m=>["dashboard","website","analytics","automation","settings"].includes(m[0])).map(m=>`<button class="${state.section===m[0]?"active":""}" data-section="${m[0]}"><span>${m[1]}</span>${m[2]}</button>`).join("");
-    $("module-grid").innerHTML=modules.filter(m=>m[0]!=="dashboard").map(m=>`<button class="module-card" data-section="${m[0]}"><span class="arrow">↗</span><span class="module-symbol">${m[1]}</span><b>${m[2]}</b><small>${m[3]}</small></button>`).join("");
+    $("module-grid").innerHTML=modules.filter(m=>m[0]!=="dashboard").map(m=>`<button class="module-card" data-section="${m[0]}"><span class="arrow"></span><span class="module-symbol">${m[1]}</span><b>${m[2]}</b><small>${m[3]}</small></button>`).join("");
   }
   function go(section) {
     state.section=section; renderNav();
@@ -44,7 +44,9 @@
     if(!dashboard) renderModule(section);
     document.body.classList.remove("drawer-open");
   }
+  let automationRefreshTimer=null,automationClockTimer=null;
   async function renderModule(section) {
+    if(section!=="automation"){if(automationRefreshTimer){clearInterval(automationRefreshTimer);automationRefreshTimer=null;}if(automationClockTimer){clearInterval(automationClockTimer);automationClockTimer=null;}}
     const labels={
       website:"Uptime checks, response time, security headers and live visitor telemetry.",
       news:"News feed health, last refresh result and source-level diagnostics.",
@@ -61,6 +63,23 @@
       recovery:"Verified backup references and safe recovery procedures."
     };
     const el=$("module-content");
+    if(section==="automation"){
+      const el=$("module-content");if(automationRefreshTimer)clearInterval(automationRefreshTimer);if(automationClockTimer)clearInterval(automationClockTimer);
+      el.innerHTML='<div class="automation-wrap"><div class="automation-top"><div><span class="section-kicker">SCHEDULED OPERATIONS</span><h3>Recent automations</h3><p>Verified activity from Cloudflare Cron and GitHub Actions · last 24 hours</p></div><button type="button" id="automation-refresh">↻ Refresh</button></div><div class="automation-timers" id="automation-timers"></div><div class="automation-summary" id="automation-summary"></div><div class="automation-log-head"><div><span class="section-kicker">ACTIVITY TIMELINE</span><h3>Last 24 hours</h3></div><span class="tag" id="automation-count">0 EVENTS</span></div><div id="automation-events" class="automation-events"><div class="empty-state">Loading verified automation history…</div></div><p class="automation-footnote">The every-minute Worker Cron only performs idle-menu cleanup; it is intentionally not logged on every tick to avoid unnecessary KV writes. The 30-minute Cron performs the website health/security-header check and the daily report window at 23:00 Bangladesh time. GitHub News Refresh is scheduled every 15 minutes.</p></div>';
+      const timers=$("automation-timers"),summary=$("automation-summary"),events=$("automation-events"),count=$("automation-count"),refreshButton=$("automation-refresh");let snap={cfg:{},cron:[],runs:[]},loading=false;
+      const fmt=ts=>new Date(ts).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"});
+      const cd=ms=>{const s=Math.max(0,Math.floor(ms/1000));return [Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(v=>String(v).padStart(2,"0")).join(":");};
+      const aligned=m=>{const off=21600000,step=m*60000;return Math.ceil((Date.now()+off)/step)*step-off;};
+      const daily=()=>{const d=new Date(Date.now()+21600000),t=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),23)-21600000);if(t.getTime()<=Date.now())t.setUTCDate(t.getUTCDate()+1);return t.getTime();};
+      const label=s=>({success:"SUCCESS",warning:"WARNING",failure:"FAILED",failed:"FAILED",cancelled:"CANCELLED",skipped:"SKIPPED",in_progress:"RUNNING",queued:"QUEUED",running:"RUNNING",interrupted:"INTERRUPTED",completed:"COMPLETED"}[String(s||"").toLowerCase()]||String(s||"UNKNOWN").toUpperCase());
+      const drawTimers=()=>{const q=snap.cfg||{},d=[["WORKER HEALTH CHECK","Cloudflare · every 30 minutes",!!(q.monitoring&&q.scheduledChecks),aligned(30),"Cron */30"],["NEWS REFRESH","GitHub Actions · every 15 minutes",q.newsRefresh!==false,aligned(15),"update-news.yml"],["DAILY REPORT","Bangladesh time · 23:00",!!(q.dailyReport&&q.monitoring&&q.scheduledChecks),daily(),"23:00 BDT"]];timers.innerHTML=d.map(x=>'<div class="automation-card"><small>'+x[0]+'</small><b class="'+(x[2]?'':'is-disabled')+'">'+(x[2]?cd(x[3]-Date.now()):"DISABLED")+'</b><span>'+(x[2]?"Next run in · ":"Disabled · ")+x[1]+'</span><i>'+x[4]+'</i></div>').join("");};
+      const drawEvents=()=>{const cut=Date.now()-86400000,cr=snap.cron.filter(x=>Number(x.at)>=cut).map(x=>({kind:"Cloudflare Cron",name:x.cron==="*/30 * * * *"?"Website health & security check":"Worker scheduled task",status:x.status,at:x.at,detail:x.detail,duration:x.durationMs,http:x.httpStatus})),gh=snap.runs.filter(x=>Date.parse(x.createdAt||0)>=cut).map(x=>({kind:"GitHub Actions",name:x.name||"Workflow",status:x.status==="in_progress"?"running":x.conclusion||x.status,at:Date.parse(x.createdAt),detail:x.branch?"Branch "+x.branch:"",url:x.url})),all=[...cr,...gh].sort((x,y)=>y.at-x.at),ok=all.filter(x=>["success","completed"].includes(String(x.status).toLowerCase())).length,bad=all.filter(x=>["failure","failed","cancelled","timed_out","warning","interrupted"].includes(String(x.status).toLowerCase())).length,active=all.filter(x=>["running","in_progress","queued"].includes(String(x.status).toLowerCase())).length;
+        summary.innerHTML='<span>'+all.length+' events</span><span class="good">'+ok+' successful</span><span class="bad">'+bad+' issues</span><span>'+active+' active</span>';count.textContent=all.length+" EVENTS";events.replaceChildren();if(!all.length){events.innerHTML='<div class="empty-state">No recorded automation events in the last 24 hours. Future scheduled runs will appear here after completion.</div>';return;}
+        for(const x of all.slice(0,120)){const row=document.createElement("article");row.className="automation-event";const dot=document.createElement("span");dot.className="automation-dot "+(["success","completed"].includes(String(x.status).toLowerCase())?"ok":["failure","failed","cancelled","warning","interrupted","timed_out"].includes(String(x.status).toLowerCase())?"bad":"pending");const body=document.createElement("div");body.className="automation-event-body";const head=document.createElement("div");head.className="automation-event-title";const b=document.createElement("b");b.textContent=x.name;const st=document.createElement("span");st.className="automation-status";st.textContent=label(x.status);head.append(b,st);const meta=document.createElement("small");meta.textContent=x.kind+" · "+fmt(x.at)+(x.duration!=null?" · "+x.duration+" ms":"")+(x.http?" · HTTP "+x.http:"");const detail=document.createElement("p");detail.textContent=x.detail||"No additional details reported.";body.append(head,meta,detail);row.append(dot,body);if(x.url){const a=document.createElement("a");a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Open run";row.append(a);}events.append(row);}
+      };
+      const load=async()=>{if(loading)return;loading=true;refreshButton.disabled=true;try{const [cfg,cron,runs]=await Promise.all([api("getConfig"),api("cronHistory"),api("workflowRuns")]);snap={cfg:cfg.config||{},cron:cron.rows||[],runs:runs.runs||[]};drawEvents();drawTimers();}catch(e){events.textContent="Automation history unavailable: "+e.message;notice(e.message,true);}finally{loading=false;refreshButton.disabled=false;}};
+      refreshButton.addEventListener("click",load);await load();automationRefreshTimer=setInterval(()=>{drawTimers();if(!loading)load();},60000);automationClockTimer=setInterval(()=>{if(state.section!=="automation"){clearInterval(automationClockTimer);automationClockTimer=null;return;}drawTimers();},1000);return;
+    }
     if(["automation","alerts","settings"].includes(section)){
       try{
         const result=await api("getConfig"),cfg=result.config||{};
@@ -115,7 +134,7 @@
         refresh.addEventListener("click",async()=>{
           const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Start the live News Refresh workflow now?",resolve)):window.confirm("Start the live News Refresh workflow now?");
           if(!yes)return;refresh.disabled=true;
-          try{const r=await api("newsRefresh");notice("News workflow accepted by GitHub. Check the workflow run for its final result.");const link=document.createElement("a");link.href=r.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open News Refresh workflow ↗";wrap.append(link);}
+          try{const r=await api("newsRefresh");notice("News workflow accepted by GitHub. Check the workflow run for its final result.");const link=document.createElement("a");link.href=r.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open News Refresh workflow ";wrap.append(link);}
           catch(err){notice(err.message,true);}finally{refresh.disabled=false;}
         });
         wrap.append(report,refresh,note);el.replaceChildren(wrap);
@@ -148,7 +167,7 @@
         custom.hidden=true;scope.hidden=true;wrap.append(label,input,search,details,history,operation,custom,telegramId,visitorId,scope,apply);el.replaceChildren(wrap);
       }
       else if(result.text){const pre=document.createElement("pre");pre.className="module-report";pre.textContent=result.text;el.replaceChildren(pre);}
-      else if(result.runs){const list=document.createElement("div");list.className="run-list";result.runs.forEach(run=>{const item=document.createElement("article");item.className="run-item";const title=document.createElement("b");title.textContent=run.name||"Workflow";const meta=document.createElement("small");meta.textContent=[run.status,run.conclusion,run.branch,run.createdAt?new Date(run.createdAt).toLocaleString():""].filter(Boolean).join(" · ");item.append(title,meta);if(run.url){const link=document.createElement("a");link.href=run.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open GitHub Run ↗";item.append(link);}list.append(item);});el.replaceChildren(list);if(!result.runs.length)el.textContent="No recent GitHub Actions runs were returned."; }
+      else if(result.runs){const list=document.createElement("div");list.className="run-list";result.runs.forEach(run=>{const item=document.createElement("article");item.className="run-item";const title=document.createElement("b");title.textContent=run.name||"Workflow";const meta=document.createElement("small");meta.textContent=[run.status,run.conclusion,run.branch,run.createdAt?new Date(run.createdAt).toLocaleString():""].filter(Boolean).join(" · ");item.append(title,meta);if(run.url){const link=document.createElement("a");link.href=run.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open GitHub Run ";item.append(link);}list.append(item);});el.replaceChildren(list);if(!result.runs.length)el.textContent="No recent GitHub Actions runs were returned."; }
       else if(result.backups){const pre=document.createElement("pre");pre.className="module-report";pre.textContent=result.note+"\\n\\n"+result.backups.map(x=>x.name+" · "+(x.sha||"SHA unavailable")).join("\\n");el.replaceChildren(pre);}
       else{const pre=document.createElement("pre");pre.className="module-report";pre.textContent=JSON.stringify(result.stats||result.settings||result,null,2);el.replaceChildren(pre);}
     }catch(e){el.textContent=e.message;}

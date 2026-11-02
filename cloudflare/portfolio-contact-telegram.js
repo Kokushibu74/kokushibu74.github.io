@@ -658,9 +658,11 @@ async function miniAppCronRecord(env,entry){
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
-  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:100});
-  const rows=await Promise.all((page.keys||[]).map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
-  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,40).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
+  const cutoff=Date.now()-86400000,keys=[];let cursor;
+  do{const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000,cursor});keys.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;}while(cursor&&keys.length<5000);
+  const recent=keys.filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
+  const rows=await Promise.all(recent.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
+  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
 }
 async function miniAppDispatchNews(env){
   if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
@@ -743,9 +745,9 @@ async function miniAppModule(env,section){
   if(section==="github"){
     const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
-    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=8",{headers,signal:AbortSignal.timeout(10000)});
+    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
     const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error("GitHub Actions API returned HTTP "+r.status);
-    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,url:x.html_url})),source:"GitHub Actions API"};
+    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,updatedAt:x.updated_at,url:x.html_url})),source:"GitHub Actions API"};
   }
   throw new Error("Unsupported module.");
 }
