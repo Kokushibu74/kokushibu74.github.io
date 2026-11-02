@@ -658,9 +658,11 @@ async function miniAppCronRecord(env,entry){
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
-  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:100});
-  const rows=await Promise.all((page.keys||[]).map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
-  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,40).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
+  const cutoff=Date.now()-86400000,keys=[];let cursor;
+  do{const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000,cursor});keys.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;}while(cursor&&keys.length<5000);
+  const recent=keys.filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
+  const rows=await Promise.all(recent.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
+  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
 }
 async function miniAppDispatchNews(env){
   if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
