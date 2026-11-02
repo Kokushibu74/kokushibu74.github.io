@@ -645,15 +645,22 @@ async function miniAppAudit(env,userId,action,detail={}){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
 }
 const MINIAPP_CRON_PREFIX = "miniapp:cron:v1:";
+const MINIAPP_CRON_INDEX_KEY = "miniapp:cron:index:v1";
 async function miniAppCronRecord(env,entry){
   if(!env.BOT_CONFIG_KV)return null;
-  const at=Number(entry.at||Date.now()),id=String(entry.id||crypto.randomUUID());
-  const key=MINIAPP_CRON_PREFIX+String(at).padStart(13,"0")+":"+id;
-  const value={id,at,status:String(entry.status||"running"),cron:String(entry.cron||"unknown"),
+  const at=Number(entry.at||Date.now()),id=String(entry.id||crypto.randomUUID()),status=String(entry.status||"running");
+  const key=MINIAPP_CRON_PREFIX+String(at).padStart(13,"0")+":"+id+":"+status;
+  const value={id,at,status,cron:String(entry.cron||"unknown"),
     durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
     httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
     detail:String(entry.detail||"").slice(0,180)};
   await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:7776000});
+  if(status!=="running"){
+    const previous=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json").catch(()=>[]);
+    const rows=Array.isArray(previous)?previous:[];
+    const next=[value,...rows.filter(row=>row&&row.id!==id)].sort((a,b)=>b.at-a.at).slice(0,100);
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:7776000});
+  }
   return value;
 }
 async function miniAppCronAlert(env,cron,status,detail){
@@ -674,11 +681,16 @@ async function miniAppCronAlert(env,cron,status,detail){
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
-  const cutoff=Date.now()-86400000,keys=[];let cursor;
-  do{const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000,cursor});keys.push(...(page.keys||[]));cursor=page.list_complete?undefined:page.cursor;}while(cursor&&keys.length<5000);
-  const recent=keys.filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
-  const rows=await Promise.all(recent.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
-  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
+  const cutoff=Date.now()-86400000;
+  let rows=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json");
+  if(!Array.isArray(rows)){
+    const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000});
+    const keys=(page.keys||[]).filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
+    rows=(await Promise.all(keys.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")))).filter(Boolean);
+    rows=rows.sort((a,b)=>b.at-a.at).slice(0,100);
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(rows),{expirationTtl:7776000});
+  }
+  return rows.filter(x=>x&&Number(x.at)>=cutoff).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
 }
 async function miniAppDispatchNews(env){
   if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
@@ -762,7 +774,16 @@ async function miniAppModule(env,section){
     const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
     const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
-    const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error("GitHub Actions API returned HTTP "+r.status);
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok){
+      const message=String(d.message||"No error message returned").slice(0,180);
+      const remaining=r.headers.get("x-ratelimit-remaining"),limit=r.headers.get("x-ratelimit-limit"),reset=r.headers.get("x-ratelimit-reset");
+      const permission=r.headers.get("x-accepted-github-permissions"),diagnostics=[];
+      if(remaining!==null)diagnostics.push("rate limit "+remaining+"/"+(limit||"?"));
+      if(reset&&Number.isFinite(Number(reset)))diagnostics.push("reset "+new Date(Number(reset)*1000).toISOString());
+      if(permission)diagnostics.push("required permission "+permission.slice(0,120));
+      throw new Error("GitHub Actions API returned HTTP "+r.status+": "+message+(diagnostics.length?" · "+diagnostics.join(" · "):""));
+    }
     return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,updatedAt:x.updated_at,url:x.html_url})),source:"GitHub Actions API"};
   }
   throw new Error("Unsupported module.");
@@ -859,7 +880,6 @@ async function miniAppOverview(env,user){
       {name:"Telegram Bot API",status:bot.status,detail:bot.detail,ok:bot.ok},
       {name:"Cloudflare KV",status:env.BOT_CONFIG_KV&&env.VISITOR_KV?"BOUND":"MISSING",detail:"Required control and visitor stores",ok:!!(env.BOT_CONFIG_KV&&env.VISITOR_KV)}
     ],
-    activity:[],
     config:Object.fromEntries(keys.map(k=>[k,!!cfg[k]])),
     privacy:{visitorRecordsReturned:false,personalVisitorDataReturned:false}
   };
@@ -911,7 +931,6 @@ export default {
         }
         if(action==="cronHistory"){
           const rows=await miniAppCronHistory(env);
-          await miniAppAudit(env,user.id,"cronHistory",{count:rows.length});
           return respond({ok:true,rows});
         }
         if(action==="newsRefresh"){
@@ -924,7 +943,7 @@ export default {
         }
         if(action==="module"){
           const section=String(body?.section||"");const result=await miniAppModule(env,section);
-          await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
+          return respond({ok:true,...result});
         }
         if(action==="userLookup"){const result=await miniAppUserLookup(env,String(body?.query||""));await miniAppAudit(env,user.id,"userLookup",{kind:result.kind});return respond({ok:true,user:result});}
         if(action==="userAction"){const result=await miniAppUserAction(env,user.id,String(body?.operation||""),body||{});return respond(result);}
@@ -934,11 +953,10 @@ export default {
           const rows=await miniAppRecentAudit(env);await miniAppAudit(env,user.id,"audit");return respond({ok:true,rows});
         }
         if(action==="workflowRuns"){
-          const result=await miniAppModule(env,"github");await miniAppAudit(env,user.id,"workflowRuns");return respond({ok:true,runs:result.runs||[]});
+          const result=await miniAppModule(env,"github");return respond({ok:true,runs:result.runs||[]});
         }
         if(action==="overview"){
           const result=await miniAppOverview(env,user);
-          await miniAppAudit(env,user.id,"overview");
           return respond(result);
         }
         if(action==="getConfig"){
