@@ -658,6 +658,36 @@ async function miniAppDispatchNews(env){
   if(response.status!==204)throw new Error("News workflow dispatch failed (HTTP "+response.status+").");
   return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
 }
+async function miniAppGa4Report(env){
+  if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing.");
+  let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("GA4 credentials secret is not valid JSON.");}
+  if(!sa.client_email||!sa.private_key)throw new Error("GA4 service-account credentials are incomplete.");
+  const enc=b=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");
+  const b64url=s=>btoa(s).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");
+  const te=new TextEncoder(),nowSec=Math.floor(Date.now()/1000);
+  const header=b64url(JSON.stringify({alg:"RS256",typ:"JWT"}));
+  const claim=b64url(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/analytics.readonly",aud:"https://oauth2.googleapis.com/token",iat:nowSec,exp:nowSec+3600}));
+  const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\s/g,"");
+  const keyBytes=Uint8Array.from(atob(pem),c=>c.charCodeAt(0));
+  const key=await crypto.subtle.importKey("pkcs8",keyBytes,{name:"RSASSA-PKCS1-v1_5",hash:"SHA-256"},false,["sign"]);
+  const input=header+"."+claim,signature=await crypto.subtle.sign("RSASSA-PKCS1-v1_5",key,te.encode(input));
+  const assertion=input+"."+enc(signature);
+  const tokenRes=await fetch("https://oauth2.googleapis.com/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer",assertion})});
+  const tokenData=await tokenRes.json().catch(()=>({}));
+  if(!tokenRes.ok||!tokenData.access_token)throw new Error("Google token request failed: "+String(tokenData.error_description||tokenData.error||("HTTP "+tokenRes.status)).slice(0,180));
+  const reportRes=await fetch("https://analyticsdata.googleapis.com/v1beta/properties/560673761:runReport",{method:"POST",headers:{"Authorization":"Bearer "+tokenData.access_token,"Content-Type":"application/json"},body:JSON.stringify({
+    dateRanges:[{startDate:"today",endDate:"today"},{startDate:"yesterday",endDate:"yesterday"}],
+    dimensions:[{name:"dateRange"}],metrics:[{name:"activeUsers"},{name:"sessions"},{name:"screenPageViews"},{name:"engagementRate"}]
+  }),signal:AbortSignal.timeout(20000)});
+  const report=await reportRes.json().catch(()=>({}));
+  if(!reportRes.ok)throw new Error("GA4 report failed: "+String(report.error?.message||("HTTP "+reportRes.status)).slice(0,220));
+  const result={today:null,yesterday:null,propertyId:"560673761",source:"Google Analytics Data API"};
+  for(const row of report.rows||[]){
+    const values=row.metricValues||[],key=row.dimensionValues?.[0]?.value==="date_range_1"?"yesterday":"today";
+    result[key]={activeUsers:values[0]?.value??"0",sessions:values[1]?.value??"0",pageViews:values[2]?.value??"0",engagementRate:values[3]?.value??"0"};
+  }
+  return result;
+}
 async function miniAppModule(env,section){
   const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
@@ -805,6 +835,11 @@ export default {
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
         const action=String(body?.action||"");
+        if(action==="ga4Report"){
+          const result=await miniAppGa4Report(env);
+          await miniAppAudit(env,user.id,"ga4Report",{propertyId:result.propertyId});
+          return respond({ok:true,...result});
+        }
         if(action==="cronHistory"){
           const rows=await miniAppCronHistory(env);
           await miniAppAudit(env,user.id,"cronHistory",{count:rows.length});
