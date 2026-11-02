@@ -73,7 +73,28 @@
     el.textContent="Loading verified module data…";
     try{
       const result=await api("module",{section});
-      if(section==="users"){
+      if(section==="news"){
+        const wrap=document.createElement("div");wrap.className="user-tools";
+        const report=document.createElement("pre");report.className="module-report";report.textContent=result.text||"News feed status loaded.";
+        const refresh=document.createElement("button");refresh.type="button";refresh.textContent="↻ Refresh News Feed Now";
+        const note=document.createElement("small");note.textContent="Runs the existing GitHub Actions news workflow on main. It will update the live feed if new articles are found.";
+        refresh.addEventListener("click",async()=>{
+          const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Start the live News Refresh workflow now?",resolve)):window.confirm("Start the live News Refresh workflow now?");
+          if(!yes)return;refresh.disabled=true;
+          try{const r=await api("newsRefresh");notice("News workflow accepted by GitHub. Check the workflow run for its final result.");const link=document.createElement("a");link.href=r.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Open News Refresh workflow ↗";wrap.append(link);}
+          catch(err){notice(err.message,true);}finally{refresh.disabled=false;}
+        });
+        wrap.append(report,refresh,note);el.replaceChildren(wrap);
+      }
+      else if(section==="logs"){
+        const wrap=document.createElement("div");wrap.className="user-tools";
+        const audit=document.createElement("pre");audit.className="module-report";audit.textContent=result.text||"No recent Mini App activity.";
+        const historyButton=document.createElement("button");historyButton.type="button";historyButton.textContent="Load Cloudflare Cron Run History";
+        const history=document.createElement("pre");history.className="module-report";
+        historyButton.addEventListener("click",async()=>{historyButton.disabled=true;try{const r=await api("cronHistory");history.textContent=r.rows.length?r.rows.map(x=>[new Date(x.at).toLocaleString(),x.status,x.cron,x.durationMs===null?"":x.durationMs+" ms",x.httpStatus?"HTTP "+x.httpStatus:"",x.detail].filter(Boolean).join(" · ")).join("\\n"):"No scheduled run history recorded yet.";}catch(err){history.textContent=err.message;}finally{historyButton.disabled=false;}});
+        wrap.append(audit,historyButton,history);el.replaceChildren(wrap);
+      }
+      else if(section==="users"){
         const wrap=document.createElement("div");wrap.className="user-tools";
         const summary=document.createElement("pre");summary.className="module-report";summary.textContent=result.text||JSON.stringify(result.stats,null,2);wrap.append(summary);
         const label=document.createElement("label");label.textContent="Search Telegram ID / Visitor ID / Custom ID";
