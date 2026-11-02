@@ -642,7 +642,7 @@ async function miniAppRateLimit(env,userId){
 async function miniAppAudit(env,userId,action,detail={}){
   if(!env.BOT_CONFIG_KV)throw new Error("Admin audit storage is unavailable.");
   const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:2592000});
 }
 const MINIAPP_CRON_PREFIX = "miniapp:cron:v1:";
 async function miniAppCronRecord(env,entry){
