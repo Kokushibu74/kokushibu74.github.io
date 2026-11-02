@@ -31,13 +31,34 @@ jobs:
         run: node --check cloudflare/portfolio-contact-telegram.js
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
-      - name: Verify existing Bot entry points remain present
+      - name: Verify existing Bot entry points and safety contracts
         run: |
           node --input-type=commonjs <<'NODE'
           const fs = require('node:fs');
           const source = fs.readFileSync('cloudflare/portfolio-contact-telegram.js', 'utf8');
-          for (const item of ['ADMIN_TELEGRAM_IDS', 'BOT_CONFIG_KV', 'TELEGRAM_WEBHOOK_SECRET', 'telegram-webhook', 'workflow-config', 'callback_query']) {
-            if (!source.includes(item)) throw new Error('Existing Bot/Worker contract missing: ' + item);
+          const required = [
+            'callback_query', 'botHandleCallback', 'botMainKeyboard',
+            'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
+            'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
+            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection',
+            'pathname==="/workflow-config"', 'newsRefresh:true',
+            'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;',
+            'async function botStatusText', 'action.startsWith("status:")',
+            'bot:user-input:', 'pending?.mode', 'slowCommands',
+            'botRunWithProgress(env,msg.chat.id', 'parse_mode:options.parse_mode',
+            'BOT_MENU_KEY_PREFIX', 'editMessageText', 'botGetMenuAnchor',
+            'sendChatAction', 'botRunWithProgress', 'function botFormatTelegramResponse',
+            'ADMIN CONTROL CENTER', 'PRIVATE ADMIN SESSION', 'botFormatTelegramResponse(text,options)',
+            'setChatMenuButton', 'function miniAppAuthorize', 'function miniAppDispatchNews',
+            'function miniAppHeroPrepare', 'function miniAppUserAction'
+          ];
+          for (const item of required) {
+            if (!source.includes(item)) throw new Error('Missing Telegram/Mini App contract: ' + item);
           }
-          console.log('Existing Telegram webhook, admin allowlist, KV config and workflow-config routes remain in source.');
+          if (!source.includes('if(msg.chat.type!=="private")')) throw new Error('Private-chat restriction missing');
+          if (!source.includes('!admins.has(sender)')) throw new Error('Admin allowlist check missing');
+          if (!source.includes('if(cmd==="/start"||cmd==="/menu")')) throw new Error('Menu entry commands missing');
+          if (!source.includes('split(/[\\s,;]+/)')) throw new Error('Admin ID whitespace parsing missing');
+          if (source.includes('full backend action পরবর্তী')) throw new Error('Placeholder button action remains');
+          console.log('Existing Bot commands, private admin restrictions, safety contracts and Mini App integration verified.');
           NODE
