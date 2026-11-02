@@ -667,6 +667,52 @@ async function miniAppUserLookup(env,input){
   const blocked=await umBlocked(env,kind,user.id);
   return {kind,id:user.id,customId:profile.customId||null,username:profile.username||null,firstName:profile.firstName||null,lastName:profile.lastName||null,firstSeen:profile.firstSeen||null,lastSeen:profile.lastSeen||null,blocked,linkedTelegramId:kind==="visitor"?link?.telegramId||null:link?.telegramId||user.id,linkedVisitorId:kind==="visitor"?user.id:link?.visitorId||null};
 }
+async function miniAppUserAction(env,adminId,operation,payload){
+  const input=String(payload?.query||payload?.id||"").trim();
+  const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
+  const kind=user.kind==="telegram"?"telegram":"visitor",profile=await umProfile(env,user);if(!profile)throw new Error("User profile not found.");
+  if(operation==="rename"){
+    const custom=String(payload?.customId||"").trim();if(!/^[a-zA-Z0-9_-]{3,32}$/.test(custom))throw new Error("Custom ID must be 3–32 English letters, numbers, underscore or hyphen.");
+    const mapKey=UM_PREFIX+"custom:"+encodeURIComponent(custom.toLowerCase()),existing=await env.VISITOR_KV.get(mapKey,"json");
+    if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id))throw new Error("That Custom ID is already in use.");
+    await miniAppAudit(env,adminId,"userRename_attempt",{kind,userId:user.id,customId:custom});
+    if(profile.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(profile.customId).toLowerCase()));
+    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
+    await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});await umHistory(env,"admin",String(adminId),{type:"rename",target:user,customId:custom});
+    return {ok:true,message:"Custom ID updated.",user:await miniAppUserLookup(env,input)};
+  }
+  if(operation==="block"||operation==="unblock"){
+    const scope=["both","telegram","website"].includes(payload?.scope)?payload.scope:"both";
+    const link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+kind+":"+user.id,"json");
+    const targets=kind==="telegram"?{telegram:user.id,website:link?.visitorId}:{website:user.id,telegram:link?.telegramId};
+    const scopes=scope==="both"?["telegram","website"]:[scope],available=scopes.filter(k=>!!targets[k]),missing=scopes.filter(k=>!targets[k]);
+    if(!available.length)throw new Error("No linked account exists for the selected block scope.");
+    if(missing.length&&scope!=="both")throw new Error("The requested linked account does not exist.");
+    await miniAppAudit(env,adminId,"user"+operation+"_attempt",{kind,userId:user.id,scope});
+    for(const k of available){const key=UM_PREFIX+"block:"+k+":"+targets[k];if(operation==="block")await env.VISITOR_KV.put(key,JSON.stringify({blockedAt:Date.now(),by:String(adminId),reason:"Mini App admin action"}),{expirationTtl:31536000});else await env.VISITOR_KV.delete(key);}
+    await umHistory(env,"admin",String(adminId),{type:operation,target:user,scope,targets});
+    return {ok:true,message:operation+" completed.",user:await miniAppUserLookup(env,input)};
+  }
+  if(operation==="unlink"){
+    const key=UM_PREFIX+"link:"+kind+":"+user.id,link=await env.VISITOR_KV.get(key,"json");
+    if(!link)throw new Error("This profile has no linked identity.");
+    await miniAppAudit(env,adminId,"userUnlink_attempt",{kind,userId:user.id});
+    await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);
+    await umHistory(env,"admin",String(adminId),{type:"unlink",target:user});return {ok:true,message:"Identity link removed."};
+  }
+  if(operation==="link"){
+    const tg=await umResolve(env,String(payload?.telegramId||"")),web=await umResolve(env,String(payload?.visitorId||""));
+    if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web)))throw new Error("Both existing Telegram ID and Visitor ID profiles are required.");
+    const tk=UM_PREFIX+"link:telegram:"+tg.id,wk=UM_PREFIX+"link:visitor:"+web.id;
+    const [oldT,oldW]=await Promise.all([env.VISITOR_KV.get(tk,"json"),env.VISITOR_KV.get(wk,"json")]);
+    if((oldT?.visitorId&&oldT.visitorId!==web.id)||(oldW?.telegramId&&oldW.telegramId!==tg.id))throw new Error("One of these profiles is already linked elsewhere. Unlink it first to avoid silently replacing an identity link.");
+    await miniAppAudit(env,adminId,"userLink_attempt",{telegramId:tg.id,visitorId:web.id});
+    await env.VISITOR_KV.put(tk,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await env.VISITOR_KV.put(wk,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await umHistory(env,"admin",String(adminId),{type:"link",telegramId:tg.id,visitorId:web.id});return {ok:true,message:"Telegram and Website identities linked."};
+  }
+  throw new Error("Unsupported User Manager operation.");
+}
 async function miniAppUserHistory(env,input){
   const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
   const prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":";const keys=await umList(env,prefix);const rows=[];
@@ -739,6 +785,7 @@ export default {
           await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
         }
         if(action==="userLookup"){const result=await miniAppUserLookup(env,String(body?.query||""));await miniAppAudit(env,user.id,"userLookup",{kind:result.kind});return respond({ok:true,user:result});}
+        if(action==="userAction"){const result=await miniAppUserAction(env,user.id,String(body?.operation||""),body||{});return respond(result);}
         if(action==="userHistory"){const rows=await miniAppUserHistory(env,String(body?.query||""));await miniAppAudit(env,user.id,"userHistory",{count:rows.length});return respond({ok:true,rows});}
         if(action==="recovery"){const result=await miniAppRecovery(env);await miniAppAudit(env,user.id,"recovery");return respond({ok:true,...result});}
         if(action==="audit"){
