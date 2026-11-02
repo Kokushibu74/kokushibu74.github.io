@@ -101,9 +101,11 @@ async function botMarkMenuInteraction(env,chatId,messageId,busy){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
 }
 async function botEnsureStartKeyboard(env,chatId){
-  // Re-send the reply keyboard on every /start or START BOT request.
-  // A KV "already sent" flag cannot prove Telegram still displays the keyboard.
-  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"কন্ট্রোল প্যানেল খুলতে নিচের START BOT বাটন ব্যবহার করুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
+  // Set the Telegram chat menu to open the admin-only Mini App. The Worker API independently verifies Telegram initData and the admin allowlist.
+  const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
+  if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
+  // Keep the existing START BOT reply keyboard intact.
+  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"Mini App খুলতে chat input-এর পাশে Control Center menu ব্যবহার করুন, অথবা নিচের START BOT বাটন চাপুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
   if(!sent.ok)console.error("Telegram START BOT keyboard delivery failed",JSON.stringify({status:sent.status,description:String(sent.data?.description||"").slice(0,180)}));
 }
 async function botHandleStartButton(env,msg){
