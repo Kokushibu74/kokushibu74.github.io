@@ -633,6 +633,31 @@ async function miniAppAudit(env,userId,action,detail={}){
   const at=Date.now(),key=MINIAPP_AUDIT_PREFIX+at+":"+crypto.randomUUID();
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({at,userId:String(userId),action,detail}),{expirationTtl:7776000});
 }
+const MINIAPP_CRON_PREFIX = "miniapp:cron:v1:";
+async function miniAppCronRecord(env,entry){
+  if(!env.BOT_CONFIG_KV)return null;
+  const at=Number(entry.at||Date.now()),id=String(entry.id||crypto.randomUUID());
+  const key=MINIAPP_CRON_PREFIX+String(at).padStart(13,"0")+":"+id;
+  const value={id,at,status:String(entry.status||"running"),cron:String(entry.cron||"unknown"),
+    durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
+    httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
+    detail:String(entry.detail||"").slice(0,180)};
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:2592000});
+  return value;
+}
+async function miniAppCronHistory(env){
+  if(!env.BOT_CONFIG_KV)return [];
+  const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:100});
+  const rows=await Promise.all((page.keys||[]).map(k=>env.BOT_CONFIG_KV.get(k.name,"json")));
+  return rows.filter(Boolean).sort((a,b)=>b.at-a.at).slice(0,40).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
+}
+async function miniAppDispatchNews(env){
+  if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
+  const headers={Accept:"application/vnd.github+json","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+  const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
+  if(response.status!==204)throw new Error("News workflow dispatch failed (HTTP "+response.status+").");
+  return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
+}
 async function miniAppModule(env,section){
   const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
@@ -780,6 +805,19 @@ export default {
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
         const action=String(body?.action||"");
+        if(action==="cronHistory"){
+          const rows=await miniAppCronHistory(env);
+          await miniAppAudit(env,user.id,"cronHistory",{count:rows.length});
+          return respond({ok:true,rows});
+        }
+        if(action==="newsRefresh"){
+          const cfg=await botConfig(env);
+          if(!cfg.newsRefresh)return respond({ok:false,error:"Automatic News Refresh is OFF. Enable it in Automation before manual refresh."},409);
+          await miniAppAudit(env,user.id,"newsRefresh_attempt",{workflow:"update-news.yml",branch:"main"});
+          const result=await miniAppDispatchNews(env);
+          await miniAppAudit(env,user.id,"newsRefresh_dispatched",{workflow:result.workflow});
+          return respond({ok:true,...result});
+        }
         if(action==="module"){
           const section=String(body?.section||"");const result=await miniAppModule(env,section);
           await miniAppAudit(env,user.id,"module",{section});return respond({ok:true,...result});
@@ -977,9 +1015,14 @@ export default {
   async scheduled(controller,env,ctx) {
     await botExpireIdleMenu(env);
     if(controller.cron==="* * * * *")return;
+    const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);
+    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"running",cron:controller.cron});
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
-    if(!runChecks&&!cfg.emergencyProtection)return;
+    if(!runChecks&&!cfg.emergencyProtection){
+      await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"skipped",cron:controller.cron,detail:"Monitoring and emergency protection are disabled."});
+      return;
+    }
     const site="https://kokushibu74.github.io/",started=performance.now(),now=new Date();
     const stamp=now.toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(now);
@@ -1018,5 +1061,6 @@ export default {
     };
     if(failure&&cfg.emergencyProtection)await sendTelegram(["🚨 <b>URGENT WEBSITE ALERT</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,"❌ "+failure,responseMs===null?"":"⏱️ Check time: "+responseMs+" ms","","The site will be checked again on the next 30-minute run."].filter(Boolean).join("\n"));
     if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:failure?"warning":"success",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:failure||("Site check completed; "+missing.length+" security headers missing.")});
   }
 };
