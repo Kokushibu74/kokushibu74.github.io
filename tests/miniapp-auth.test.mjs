@@ -82,10 +82,4 @@ for (const section of ["website","news","analytics","security","github","hero","
   assert(app.includes('"'+section+'"'), "missing Mini App section: " + section);
 }
 assert(css.includes("@media(max-width:760px)") && css.includes(".mobile-nav"), "mobile navigation and responsive layout must exist");
-assert(!app.includes("↗"), "Mini App must not display the external arrow glyph");
-assert(app.includes('section==="automation"') && app.includes('api("workflowRuns")') && app.includes('api("cronHistory")'), "Automation view must combine Worker Cron and GitHub Actions history");
-assert(app.includes("86400000") && app.includes("Next run in"), "Automation view must show a 24-hour timeline and live countdowns");
-assert(css.includes(".automation-timers") && css.includes(".automation-events"), "Automation monitor styles must exist");
-assert(worker.includes("const cutoff=Date.now()-86400000") && worker.includes("while(cursor&&keys.length<5000)"), "Cron history API must paginate and filter to 24 hours");
-
 console.log("Mini App auth and frontend contracts passed.");

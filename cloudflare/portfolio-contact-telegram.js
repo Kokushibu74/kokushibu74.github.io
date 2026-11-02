@@ -745,9 +745,9 @@ async function miniAppModule(env,section){
   if(section==="github"){
     const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
-    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=8",{headers,signal:AbortSignal.timeout(10000)});
+    const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
     const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error("GitHub Actions API returned HTTP "+r.status);
-    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,url:x.html_url})),source:"GitHub Actions API"};
+    return {section,runs:(d.workflow_runs||[]).map(x=>({name:x.name,status:x.status,conclusion:x.conclusion||"pending",branch:x.head_branch,createdAt:x.created_at,updatedAt:x.updated_at,url:x.html_url})),source:"GitHub Actions API"};
   }
   throw new Error("Unsupported module.");
 }
