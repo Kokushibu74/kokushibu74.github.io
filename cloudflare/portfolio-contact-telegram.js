@@ -618,7 +618,7 @@ async function miniAppAuthorize(initData,env){
   for(let i=0;i<Math.max(expected.length,received.length);i++)diff|=(expected.charCodeAt(i)||0)^(received.toLowerCase().charCodeAt(i)||0);
   if(diff!==0)throw new Error("Telegram signature verification failed.");
   const authDate=Number(params.get("auth_date")),now=Math.floor(Date.now()/1000);
-  if(!Number.isInteger(authDate)||authDate>now+60||now-authDate>86400)throw new Error("Telegram session expired. Close and reopen the Mini App.");
+  if(!Number.isInteger(authDate)||authDate>now+60||now-authDate>3600)throw new Error("Telegram session expired. Close and reopen the Mini App.");
   let user;try{user=JSON.parse(params.get("user")||"null")}catch{throw new Error("Invalid Telegram user data.");}
   if(!user||!/^\d{5,20}$/.test(String(user.id||"")))throw new Error("Telegram user identity is missing.");
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS).split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
@@ -750,6 +750,17 @@ async function miniAppUserLookup(env,input){
   return {kind,id:user.id,customId:profile.customId||null,username:profile.username||null,firstName:profile.firstName||null,lastName:profile.lastName||null,firstSeen:profile.firstSeen||null,lastSeen:profile.lastSeen||null,blocked,linkedTelegramId:kind==="visitor"?link?.telegramId||null:link?.telegramId||user.id,linkedVisitorId:kind==="visitor"?user.id:link?.visitorId||null};
 }
 async function miniAppUserAction(env,adminId,operation,payload){
+  if(operation==="link"){
+    const tg=await umResolve(env,String(payload?.telegramId||"")),web=await umResolve(env,String(payload?.visitorId||""));
+    if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web)))throw new Error("Both existing Telegram ID and Visitor ID profiles are required.");
+    const tk=UM_PREFIX+"link:telegram:"+tg.id,wk=UM_PREFIX+"link:visitor:"+web.id;
+    const [oldT,oldW]=await Promise.all([env.VISITOR_KV.get(tk,"json"),env.VISITOR_KV.get(wk,"json")]);
+    if((oldT?.visitorId&&oldT.visitorId!==web.id)||(oldW?.telegramId&&oldW.telegramId!==tg.id))throw new Error("One of these profiles is already linked elsewhere. Unlink it first to avoid silently replacing an identity link.");
+    await miniAppAudit(env,adminId,"userLink_attempt",{telegramId:tg.id,visitorId:web.id});
+    await env.VISITOR_KV.put(tk,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await env.VISITOR_KV.put(wk,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
+    await umHistory(env,"admin",String(adminId),{type:"link",telegramId:tg.id,visitorId:web.id});return {ok:true,message:"Telegram and Website identities linked."};
+  }
   const input=String(payload?.query||payload?.id||"").trim();
   const user=await umResolve(env,input);if(!user)throw new Error("User not found.");
   const kind=user.kind==="telegram"?"telegram":"visitor",profile=await umProfile(env,user);if(!profile)throw new Error("User profile not found.");
@@ -781,17 +792,6 @@ async function miniAppUserAction(env,adminId,operation,payload){
     await miniAppAudit(env,adminId,"userUnlink_attempt",{kind,userId:user.id});
     await env.VISITOR_KV.delete(key);await env.VISITOR_KV.delete(kind==="telegram"?UM_PREFIX+"link:visitor:"+link.visitorId:UM_PREFIX+"link:telegram:"+link.telegramId);
     await umHistory(env,"admin",String(adminId),{type:"unlink",target:user});return {ok:true,message:"Identity link removed."};
-  }
-  if(operation==="link"){
-    const tg=await umResolve(env,String(payload?.telegramId||"")),web=await umResolve(env,String(payload?.visitorId||""));
-    if(!tg||!web||tg.kind!=="telegram"||web.kind!=="visitor"||!(await umProfile(env,tg))||!(await umProfile(env,web)))throw new Error("Both existing Telegram ID and Visitor ID profiles are required.");
-    const tk=UM_PREFIX+"link:telegram:"+tg.id,wk=UM_PREFIX+"link:visitor:"+web.id;
-    const [oldT,oldW]=await Promise.all([env.VISITOR_KV.get(tk,"json"),env.VISITOR_KV.get(wk,"json")]);
-    if((oldT?.visitorId&&oldT.visitorId!==web.id)||(oldW?.telegramId&&oldW.telegramId!==tg.id))throw new Error("One of these profiles is already linked elsewhere. Unlink it first to avoid silently replacing an identity link.");
-    await miniAppAudit(env,adminId,"userLink_attempt",{telegramId:tg.id,visitorId:web.id});
-    await env.VISITOR_KV.put(tk,JSON.stringify({visitorId:web.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
-    await env.VISITOR_KV.put(wk,JSON.stringify({telegramId:tg.id,linkedAt:Date.now(),by:String(adminId)}),{expirationTtl:31536000});
-    await umHistory(env,"admin",String(adminId),{type:"link",telegramId:tg.id,visitorId:web.id});return {ok:true,message:"Telegram and Website identities linked."};
   }
   throw new Error("Unsupported User Manager operation.");
 }
