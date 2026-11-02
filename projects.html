@@ -97,6 +97,7 @@ const known=[
 let cards=[],active=0,resizeFrame=0;
 function getMeta(p){return known.find(k=>k.match.test(p.name||""))||{tag:p.tag||"PROJECT",category:"SELECTED WORK",tags:["Project","Development"],cover:"storage/projects/multi-ai.svg",linkFallback:"#",mark:"BUILD · TEST · REFINE"}}
 function render(projects){
+ if(!Array.isArray(projects))projects=[];
  const techLabels={web:"Web & UI",ai:"AI & Model Integration",api:"API & Developer Tools",automation:"Automation",media:"Digital Media",sports:"Sports & Live Data"};
  const techMatchers={web:/multi.?ai|api tester|media studio|sports zone/i,ai:/multi.?ai|memo|whatsapp/i,api:/api tester/i,automation:/memo|lo.?fi|automation/i,media:/media studio|lo.?fi/i,sports:/sports zone/i};
  const tech=(new URLSearchParams(location.search).get("tech")||"").toLowerCase();
