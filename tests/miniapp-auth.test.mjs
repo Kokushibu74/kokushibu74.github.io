@@ -41,7 +41,7 @@ await assert.rejects(
   /Access denied/i,
   "non-admin Telegram users must be rejected"
 );
-const staleFields = { ...fields, auth_date: String(now - 90000) };
+const staleFields = { ...fields, auth_date: String(now - 7200) };
 const staleCheck = Object.keys(staleFields).sort().map(key => key + "=" + staleFields[key]).join("\n");
 const staleHash = helpers.miniAppHex(await helpers.miniAppHmac(secret, encoder.encode(staleCheck)));
 const stale = new URLSearchParams({ ...staleFields, hash: staleHash }).toString();
@@ -56,6 +56,11 @@ assert(worker.includes('if(action==="userLookup")') && worker.includes('if(actio
 assert(worker.includes('if(action==="recovery")') && worker.includes("async function miniAppRecovery"), "recovery view must verify backup branches from GitHub");
 assert(worker.includes("Access-Control-Allow-Origin") && worker.includes('origin!==allowedOrigin'), "Mini App API must enforce the GitHub Pages origin");
 assert(worker.includes("miniAppRateLimit") && worker.includes("miniAppAudit"), "Mini App API must rate-limit and audit authenticated actions");
+assert(worker.includes("now-authDate>3600"), "Telegram initData must expire after one hour");
+const userActionStart = worker.indexOf("async function miniAppUserAction(");
+const userActionEnd = worker.indexOf("async function miniAppUserHistory", userActionStart);
+const userActionSource = worker.slice(userActionStart, userActionEnd);
+assert(userActionSource.indexOf('if(operation==="link")') < userActionSource.indexOf("const user=await umResolve(env,input)"), "User linking must not require a previously selected single user");
 assert(worker.includes("miniAppGa4Report") && worker.includes('if(action==="ga4Report")'), "GA4 report must use the authenticated Worker API");
 assert(worker.includes("miniAppHeroPrepare") && worker.includes("miniAppHeroConfirm"), "Hero upload must use a staged preview and explicit confirm flow");
 assert(worker.includes("pending.userId") && worker.includes("pending.expiresAt"), "Hero preview must be admin-bound and expire");
