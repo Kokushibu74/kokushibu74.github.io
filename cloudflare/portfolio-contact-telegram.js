@@ -886,6 +886,23 @@ async function miniAppOverview(env,user){
   };
 }
 
+const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000;
+const CONTACT_RATE_LIMIT=new Map();
+function contactRateLimit(request,now=Date.now()){
+  const ip=request.headers.get("CF-Connecting-IP");
+  if(!ip)return {allowed:true};
+  let bucket=CONTACT_RATE_LIMIT.get(ip);
+  if(!bucket||bucket.resetAt<=now)bucket={count:0,resetAt:now+CONTACT_RATE_LIMIT_WINDOW_MS};
+  if(bucket.count>=CONTACT_RATE_LIMIT_MAX)return {allowed:false,retryAfter:Math.max(1,Math.ceil((bucket.resetAt-now)/1000))};
+  bucket.count++;
+  CONTACT_RATE_LIMIT.set(ip,bucket);
+  if(CONTACT_RATE_LIMIT.size>2048){
+    for(const [key,value] of CONTACT_RATE_LIMIT)if(value.resetAt<=now)CONTACT_RATE_LIMIT.delete(key);
+    if(CONTACT_RATE_LIMIT.size>2048)CONTACT_RATE_LIMIT.delete(CONTACT_RATE_LIMIT.keys().next().value);
+  }
+  return {allowed:true,remaining:CONTACT_RATE_LIMIT_MAX-bucket.count};
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -1118,6 +1135,8 @@ export default {
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return respond({error:"Contact service is not configured yet."},503);
     if(!(request.headers.get("Content-Type")||"").toLowerCase().includes("multipart/form-data"))return respond({error:"Invalid form upload."},415);
     const length=Number(request.headers.get("Content-Length")||0);if(Number.isFinite(length)&&length>65*1024*1024)return respond({error:"Combined upload is too large; keep it below 60 MB."},413);
+    const rate=contactRateLimit(request);
+    if(!rate.allowed)return new Response(JSON.stringify({error:"Too many contact submissions. Please wait before trying again."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
     let form;try{form=await request.formData()}catch{return respond({error:"Invalid form data."},400)}
     const submittedVisitorId=String(form.get("visitorId")||"");
     if(/^VIS-[A-F0-9]{12}$/.test(submittedVisitorId)&&await umBlocked(env,"website",submittedVisitorId))return respond({error:"Website access restricted",blocked:true},403);
