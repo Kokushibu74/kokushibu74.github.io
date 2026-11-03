@@ -1359,7 +1359,7 @@ async function newsBreakingAlertCheck(env){
       const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা";
       const title=escapeHtml(String(item.title||"").slice(0,160));
       const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,120));
-      const source=escapeHtml(String(item.source||item.publisherName||"Verified publishers").slice(0,60));
+      const source=escapeHtml(String((decision.trustedSources||decision.sources||[]).join(", ")||item.source||item.publisherName||"Verified publisher").slice(0,60));
       const officialLine=decision.official&&decision.official.confirmed
         ?"\n🏛️ Official confirmation: "+escapeHtml(String(decision.official.name).slice(0,60))+"\n🔎 "+escapeHtml(String(decision.official.url).slice(0,100))
         :"";
