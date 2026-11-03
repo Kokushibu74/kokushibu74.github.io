@@ -65,4 +65,4 @@ test("no-media alert uses text with the original article URL",async()=>{
 });
 
 test("dedup key is deterministic and normalized",async()=>assert.equal(await newsAlertKey("Dhaka — Crash!"),await newsAlertKey("dhaka crash")));
-test("dedup key normalizes headline word order and common verb forms",async()=>assert.equal(await newsAlertKey("Dhaka fire kills 3"),await newsAlertKey("3 killed in Dhaka fire")));
+test("dedup key normalizes headline word order and common verb forms",async()=>assert.equal(await newsAlertKey("Dhaka fire kills 3"),await newsAlertKey("3 killed in Dhaka fire")));\ntest("dedup key strips a publisher suffix from the headline",async()=>assert.equal(await newsAlertKey("Dhaka fire kills 3 - The Daily Star","The Daily Star"),await newsAlertKey("3 killed in Dhaka fire - Prothom Alo","Prothom Alo")));
