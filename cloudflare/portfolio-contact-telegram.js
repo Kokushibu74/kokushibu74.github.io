@@ -1168,6 +1168,28 @@ export default {
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
+    // Monitor the existing Sports Zone daily YouTube search budget without adding another service.
+    const checkYouTubeBudget=async()=>{
+      if(!env.SPORTS_ZONE||!env.BOT_CONFIG_KV)return;
+      const budget=await env.SPORTS_ZONE.get("auto:status","json");
+      const used=Number(budget?.searchesToday),limit=Number(budget?.dailySearchLimit);
+      if(!Number.isFinite(used)||!Number.isFinite(limit)||limit<=0)return;
+      const checkedAt=Date.parse(String(budget.checkedAt||""));
+      if(Number.isFinite(checkedAt)&&Date.now()-checkedAt>2*60*60*1000)return;
+      const day=now.getUTCFullYear()+String(now.getUTCMonth()+1).padStart(2,"0")+String(now.getUTCDate()).padStart(2,"0");
+      const key="resource-alert:youtube:"+day;
+      let sent=[];try{const saved=await env.BOT_CONFIG_KV.get(key,"json");if(Array.isArray(saved))sent=saved.filter(Number.isFinite)}catch{}
+      const thresholds=[50,70,85,95];
+      const crossed=thresholds.filter(p=>used>=Math.ceil(limit*p/100)&&!sent.includes(p));
+      if(!crossed.length)return;
+      const percent=Math.min(100,Math.round(used/limit*100));
+      await sendTelegram("⚠️ <b>Free-plan budget warning</b>\nYouTube search usage: <b>"+used+"/"+limit+"</b> ("+percent+"%)\nThreshold crossed: "+crossed.join("%, ")+"%\nCounter resets daily at 00:00 UTC.");
+      await env.BOT_CONFIG_KV.put(key,JSON.stringify([...new Set([...sent,...crossed])]),{expirationTtl:48*60*60});
+    };
+    if(runChecks&&cfg.trafficAlerts){
+      try{await checkYouTubeBudget()}catch(e){console.error("YouTube budget alert check failed",String(e&&e.message||e).slice(0,160))}
+    }
+
     const ga4Report=async()=>{
       if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing");
       let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("GA4 credentials secret is not valid JSON")}
