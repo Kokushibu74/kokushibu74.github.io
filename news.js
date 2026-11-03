@@ -20,7 +20,7 @@
     const part=k=>parts.find(x=>x.type===k)?.value||"";
     return part("year")+"-"+part("month")+"-"+part("day");
   };
-  const isLatestBatch=x=>{const d=dateOf(x);if(!d)return false;const age=Date.now()-d.getTime();return age>=-5*60*1000&&age<60*60*1000};
+  const isLatestBatch=x=>{const d=dateOf(x);if(!d)return false;const age=Date.now()-d.getTime();return age>=-5*60*1000&&age<15*60*1000};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const ageOf=x=>{const d=dateOf(x);return d?Date.now()-d.getTime():Infinity};
@@ -41,7 +41,7 @@
     });
   }
   async function renderTopStories(){
-    // The slider mirrors Bangladesh stories first collected within the last hour.
+    // The slider mirrors Bangladesh stories published within the last 15 minutes.
     // It never runs a separate news collection; every candidate comes from the main RSS items array.
     const candidates=sortedNews(items).filter(x=>
       isLatestBatch(x)&&x.category==="Bangladesh"&&
@@ -328,8 +328,7 @@
     if(status)status.textContent="Loading headlines…";
     try{
       const feedUrl=new URL("./news-feed.json",document.baseURI);
-      feedUrl.searchParams.set("updated",String(Date.now()));
-      const response=await fetch(feedUrl.href,{cache:"no-store"});
+      const response=await fetch(feedUrl.href,{cache:"no-cache"});
       if(!response.ok)throw new Error("Feed request failed (HTTP "+response.status+").");
       const data=await response.json();
       if(!data||!Array.isArray(data.items))throw new Error("Feed JSON is valid but has no items array.");
@@ -349,5 +348,5 @@
     }
   }
   loadNewsFeed();
-  setInterval(()=>location.reload(),10*60*1000);
+  setInterval(()=>location.reload(),15*60*1000);
 })();
