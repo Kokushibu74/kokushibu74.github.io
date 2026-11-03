@@ -91,6 +91,7 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("08 · GITHUB AUTOMATION DETAILS", message)
         self.assertIn("Extraction success rate: <b>7%</b> (1/14)", message)
         self.assertIn("Removed from feed: <b>0</b>", message)
+        self.assertIn("Net change = New − Removed.", message)
         self.assertIn("JSON/feed validation: <b>PASS</b>", message)
         self.assertIn("Some Weather/Disaster cards do not have a preview image URL.", message)
         self.assertLessEqual(len(message), report.MAX_TELEGRAM_TEXT)
@@ -114,5 +115,26 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertNotIn("<news>", message)
 
 
+
+
+    def test_zero_metadata_attempts_are_reported_as_cached_not_missing(self):
+        logs = """Publisher preview checks: attempted: 0 metadata fetched: 0 unavailable: 0 cached/reused: 14 Google News URLs resolved: 0
+"""
+        metrics = report.parse_news_metrics(logs)
+        context = {
+            "conclusion": "success",
+            "updated_at": "2026-11-03T18:13:56Z",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "workflow_name": "Refresh live news feed",
+            "branch": "main",
+            "event_name": "schedule",
+            "run_id": "41691677905",
+            "run_attempt": "1",
+            "run_url": "https://github.com/Kokushibu74/kokushibu74.github.io/actions/runs/41691677905",
+        }
+        message = report.build_news_report(metrics, context, {})
+        self.assertIn("N/A — no new metadata requests", message)
+        self.assertIn("Cached/reused: <b>14</b>", message)
+        self.assertNotIn("Not reported (attempt count unavailable)", message)
 if __name__ == "__main__":
     unittest.main()
