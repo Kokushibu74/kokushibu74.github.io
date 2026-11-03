@@ -1368,10 +1368,10 @@ async function newsBreakingAlertCheck(env){
         "🕒 "+when+" (BDT)",
         "",
         title,summary,"",
-        "🔗 <a href=\""+escapeHtml(link)+"\">মূল খবর / Original article</a>",
+        linkLine,
         "📰 "+source,
         "✔️ Corroborated by "+decision.sourceCount+" independent source(s)"+officialLine
-      ].filter(Boolean).join("\n").slice(0,1000);
+      ].filter(Boolean).join("\n");
       const media=await sendNewsAlertMedia(env,item,caption,link);
       const history={sentAt:now,title:String(item.title||""),link,category:decision.category,sourceEvidence:decision.sources,media,officialSource:decision.official&&decision.official.url||null};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
