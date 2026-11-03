@@ -42,7 +42,7 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         published = (datetime.now(timezone.utc) - timedelta(hours=3)).isoformat()
         self.assertFalse(news.is_recent_breaking("বাংলাদেশে গণভোটের ফলাফল ঘোষণা", published, "Bangladesh breaking news"))
 
-    def test_weather_items_include_alert_flag_and_video(self):
+    def test_recent_severe_weather_warning_remains_eligible_for_three_hours(self):\n        published = (datetime.now(timezone.utc) - timedelta(minutes=120)).isoformat()\n        self.assertTrue(news.is_recent_weather_alert("বাংলাদেশে ঘূর্ণিঝড়ের সতর্কবার্তা", "উপকূলে জরুরি সতর্কতা", published))\n\n    def test_ordinary_forecast_is_not_a_severe_weather_alert(self):\n        published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()\n        self.assertFalse(news.is_recent_weather_alert("আজকের আবহাওয়ার পূর্বাভাস", "সাধারণ আবহাওয়া", published))\n\n    def test_old_weather_warning_is_not_a_current_alert(self):\n        published = (datetime.now(timezone.utc) - timedelta(hours=4)).isoformat()\n        self.assertFalse(news.is_recent_weather_alert("বাংলাদেশে ঘূর্ণিঝড়ের সতর্কবার্তা", "উপকূলে জরুরি সতর্কতা", published))\n\n    def test_weather_items_include_alert_flag_and_video(self):
         source = SCRIPT.read_text(encoding="utf-8")
         self.assertIn('"videoUrl": video_for(node)', source)
         self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source)', source)
