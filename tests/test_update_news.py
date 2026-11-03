@@ -268,6 +268,31 @@ class NewsLogicTests(unittest.TestCase):
         finally:
             news.OUTPUT = old_output
 
+    def test_get_retry_uses_bounded_backoff_for_transient_http_errors(self):
+        import urllib.error
+        from email.message import Message
+        from unittest.mock import Mock, patch
+        request = news.urllib.request.Request("https://example.com/feed.xml")
+        error = urllib.error.HTTPError(request.full_url, 429, "Too Many Requests", Message(), None)
+        response = Mock()
+        with patch.object(news.urllib.request, "urlopen", side_effect=[error, response]) as opener, patch.object(news.time, "sleep") as sleep:
+            result = news.urlopen_with_retry(request, timeout=3, attempts=2)
+        self.assertIs(result, response)
+        self.assertEqual(opener.call_count, 2)
+        sleep.assert_called_once_with(0.5)
+
+    def test_post_requests_are_never_retried(self):
+        import urllib.error
+        from email.message import Message
+        from unittest.mock import patch
+        request = news.urllib.request.Request("https://example.com/submit", data=b"payload")
+        error = urllib.error.HTTPError(request.full_url, 503, "Unavailable", Message(), None)
+        with patch.object(news.urllib.request, "urlopen", side_effect=error) as opener, patch.object(news.time, "sleep") as sleep:
+            with self.assertRaises(urllib.error.HTTPError):
+                news.urlopen_with_retry(request, timeout=3, attempts=2)
+        opener.assert_called_once()
+        sleep.assert_not_called()
+
     def test_multiple_free_direct_sources_are_configured(self):
         self.assertGreaterEqual(len(news.DIRECT_FEEDS), 5)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
