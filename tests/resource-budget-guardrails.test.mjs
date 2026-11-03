@@ -26,5 +26,7 @@ assert.ok(rateLimit >= 0 && rateLimitCall > submitRoute && formParse > rateLimit
 assert.match(contact, /CF-Connecting-IP/, "Contact limiter must use Cloudflare's trusted client IP header");
 assert.match(contact, /Retry-After/, "Rate-limited contact requests must include Retry-After");
 assert.match(contact, /Too many contact submissions/, "Contact limiter must return a clear 429 response");
+assert.match(contact, /Sports Zone resource budget/, "Daily Telegram report must include the existing Sports Zone budget");
+assert.match(contact, /...budgetLines/, "Daily Telegram report must render resource budget metrics");
 
 console.log("Resource budget, YouTube backoff, and contact rate-limit contracts OK.");
