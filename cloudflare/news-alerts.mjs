@@ -18,7 +18,11 @@ function normalizeSources(item) {
     .map(x=>String(x||"").trim()).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];
 }
 export async function newsAlertKey(value) {
-  const normalized=String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+  const stop=new Set(["the","a","an","in","on","at","of","for","and","to","by","from","with","as","after","before","breaking","news","update"]);
+  const tokens=String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().split(/\s+/).filter(Boolean)
+    .map(token=>token.length>4&&/^[a-z]+$/.test(token)?token.replace(/(?:ing|ed|es|s)$/,""):token)
+    .filter(token=>!stop.has(token));
+  const normalized=[...new Set(tokens)].sort().join(" ");
   const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(normalized));
   return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);
 }
