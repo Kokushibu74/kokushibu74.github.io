@@ -33,7 +33,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
   const day=now.toISOString().slice(0,10),storageStart=new Date(now.getTime()-6*86400000).toISOString().slice(0,10);
   const query=[
-    "query ShihabFreeBudget($accountTag: String!, $start: Date, $end: Date, $storageStart: Date, $startTime: Time!, $endTime: Time!) {",
+    "query ShihabFreeBudget($accountTag: string!, $start: Date, $end: Date, $storageStart: Date, $startTime: Time!, $endTime: Time!) {",
     " viewer { accounts(filter: { accountTag: $accountTag }) {",
     "  workersInvocationsAdaptive(limit: 10000, filter: { datetime_geq: $startTime, datetime_leq: $endTime }) { sum { requests errors } }",
     "  kvBot: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[0].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
@@ -97,19 +97,30 @@ async function cfHistoricalExceptionAudit(env,sendTelegram) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
   const stateKey="cloudflare:exception-audit:2026-11-01:v1";
   const prior=await env.BOT_CONFIG_KV.get(stateKey,"json").catch(()=>null);
-  if(prior?.status==="complete"||prior?.status==="no_matching_logs")return prior;
+  if(prior?.status==="complete"||prior?.status==="no_matching_logs"||prior?.status==="metrics_only")return prior;
   const now=Date.now(),attemptKey=stateKey+":attempt";
   const last=await env.BOT_CONFIG_KV.get(attemptKey,"json").catch(()=>null);
   if(Number(last?.at)&&now-Number(last.at)<30*60*1000)return {status:"throttled"};
   await env.BOT_CONFIG_KV.put(attemptKey,JSON.stringify({at:now}),{expirationTtl:7*86400});
   const from=Date.UTC(2026,10,1,0,0,0),to=now,endpoint="/accounts/"+CF_MONITOR_ACCOUNT_ID+"/workers/observability/telemetry/query";
   const base={timeframe:{from,to},view:"events",limit:100,dry:true};
-  const queryA=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-script-threw-exception-nov1",parameters:{needle:{value:"scriptThrewException",isRegex:false,matchCase:false},limit:100}});
-  let rows=queryA?.events?.events||[],total=cfMonitorNumber(queryA?.events?.count);
-  if(!rows.length){
-    const queryB=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-worker-exception-outcome-nov1",parameters:{filters:[{key:"$workers.outcome",operation:"eq",type:"string",value:"exception"}],limit:100}});
-    rows=queryB?.events?.events||[];total=Math.max(total,cfMonitorNumber(queryB?.events?.count));
-  }
+  let rows=[],total=0,telemetryError="";
+  try{
+    const queryA=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-script-threw-exception-nov1",parameters:{needle:{value:"scriptThrewException",isRegex:false,matchCase:false},limit:100}});
+    rows=queryA?.events?.events||[];total=cfMonitorNumber(queryA?.events?.count);
+    if(!rows.length){
+      const queryB=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-worker-exception-outcome-nov1",parameters:{filters:[{key:"$workers.outcome",operation:"eq",type:"string",value:"exception"}],limit:100}});
+      rows=queryB?.events?.events||[];total=Math.max(total,cfMonitorNumber(queryB?.events?.count));
+    }
+  }catch(e){telemetryError=String(e&&e.message||e).slice(0,180);}
+  let metricRows=[],metricsError="";
+  try{
+    const metricsQuery="query ShihabHistoricalWorkerErrors($accountTag: string!, $startTime: Time!, $endTime: Time!) { viewer { accounts(filter: { accountTag: $accountTag }) { workersInvocationsAdaptive(limit: 10000, filter: { datetime_geq: $startTime, datetime_leq: $endTime }) { sum { requests errors } dimensions { scriptName status } } } } }";
+    const metricData=await cfMonitorGraphQL(env,metricsQuery,{accountTag:CF_MONITOR_ACCOUNT_ID,startTime:new Date(from).toISOString(),endTime:new Date(to).toISOString()});
+    metricRows=metricData?.viewer?.accounts?.[0]?.workersInvocationsAdaptive||[];
+  }catch(e){metricsError=String(e&&e.message||e).slice(0,180);}
+  const metricErrorRows=metricRows.filter(row=>cfMonitorNumber(row?.sum?.errors)>0||/exception|scriptthrew|internalerror|exceeded/i.test(String(row?.dimensions?.status||"")));
+  const metricErrorTotal=metricErrorRows.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.errors||row?.sum?.requests),0);
   const unique=new Map();
   for(const row of rows)unique.set(String(row?.$metadata?.id||row?.timestamp||unique.size),row);
   const events=[...unique.values()],groups=new Map(),scripts=new Map();
@@ -121,9 +132,20 @@ async function cfHistoricalExceptionAudit(env,sendTelegram) {
   }
   const top=[...groups.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8);
   if(!events.length&&!total){
-    const state={status:"no_matching_logs",at:now,timeframe:{from,to},note:"No matching persisted telemetry events were returned."};
+    if(metricsError&&!telemetryError)throw new Error("No exception events; historical metrics query failed: "+metricsError);
+    if(metricsError&&telemetryError)throw new Error("Telemetry query failed: "+telemetryError+"; historical metrics query failed: "+metricsError);
+    const state={status:metricErrorTotal>0?"metrics_only":"no_matching_logs",at:now,timeframe:{from,to},metricErrorTotal,metricErrorRows:metricErrorRows.map(row=>({scriptName:row?.dimensions?.scriptName||"Unknown Worker",status:row?.dimensions?.status||"Unknown",errors:cfMonitorNumber(row?.sum?.errors),requests:cfMonitorNumber(row?.sum?.requests)})),telemetryError};
     await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(state),{expirationTtl:365*86400});
-    await sendTelegram("⚠️ <b>HISTORICAL EXCEPTION INVESTIGATION</b>\nNo persisted telemetry event matching scriptThrewException or $workers.outcome=exception was returned for Nov 1–now. The previously observed 80 exception metrics cannot be root-caused from retained logs; this is not proof that the exceptions did not occur.");
+    const lines=["⚠️ <b>HISTORICAL EXCEPTION INVESTIGATION</b>","📅 Window: Nov 1, 2026 → now"];
+    if(metricErrorTotal>0){
+      lines.push("📊 Workers Analytics reports "+metricErrorTotal+" error invocations.");
+      for(const row of state.metricErrorRows.slice(0,10))lines.push("• "+row.scriptName+" — "+row.status+": "+(row.errors||row.requests));
+      lines.push("","⚠️ Detailed exception logs were not returned; this identifies affected Worker/status but cannot prove the root cause.");
+    }else{
+      lines.push("No matching persisted telemetry events or historical exception metric rows were returned. The previously observed 80 exception metrics cannot be root-caused from the available retained data; this is not proof that the exceptions did not occur.");
+    }
+    if(telemetryError)lines.push("","Telemetry query: "+telemetryError.replace(/[&<>]/g," "));
+    await sendTelegram(lines.join("\n"));
     return state;
   }
   const scriptLines=[...scripts.entries()].sort((a,b)=>b[1]-a[1]).map(([name,count])=>"• "+name+": "+count);
