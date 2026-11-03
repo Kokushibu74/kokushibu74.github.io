@@ -5,18 +5,22 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
       - 'tests/resource-budget-guardrails.test.mjs'
+      - 'tests/multi-ai-worker-contract.test.mjs'
   push:
     branches: [main, feature/kokushibu-telegram-miniapp]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
       - 'tests/resource-budget-guardrails.test.mjs'
+      - 'tests/multi-ai-worker-contract.test.mjs'
 
 permissions:
   contents: read
@@ -35,6 +39,10 @@ jobs:
         run: node tests/miniapp-auth.test.mjs
       - name: Verify Free-plan resource budget guardrails
         run: node tests/resource-budget-guardrails.test.mjs
+      - name: Validate Multi-AI Worker syntax
+        run: node --check cloudflare/multi-ai-memory-api.js
+      - name: Verify Multi-AI D1 and cache safeguards
+        run: node tests/multi-ai-worker-contract.test.mjs
       - name: Verify existing Bot entry points and safety contracts
         run: |
           node --input-type=commonjs <<'NODE'
@@ -85,4 +93,20 @@ jobs:
             if (typeof config[key] !== 'boolean') throw new Error('Missing boolean config field: ' + key);
           }
           console.log('Production Telegram Worker config endpoint: OK');
+          NODE
+      - name: Verify production Multi-AI Worker health endpoint
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --retry-delay 5 --max-time 20 \
+            https://multi-ai-memory-api.mdshihab74.workers.dev/health \
+            -o /tmp/multi-ai-health.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const health = JSON.parse(fs.readFileSync('/tmp/multi-ai-health.json', 'utf8'));
+          if (health.ok !== true || health.memoryConfigured !== true ||
+              health.memoryLimitPerClient !== 100 || health.searchCacheSeconds !== 300 ||
+              health.knowledgeCacheSeconds !== 3600) {
+            throw new Error('Multi-AI production health contract mismatch');
+          }
+          console.log('Production Multi-AI Worker health endpoint: OK');
           NODE
