@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, alertCategory, escapeHtml, mediaCandidates, parseOfficialDisasterSignal } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, alertCategory, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal } from "./news-alerts.mjs";
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -1305,24 +1305,23 @@ async function sendNewsAlertMedia(env,item,caption,link){
   const token=env.TELEGRAM_BOT_TOKEN,chatId=env.TELEGRAM_CHAT_ID;
   const candidates=mediaCandidates(item);
   const send=async(method,body)=>{
-    const response=await fetch("https://api.telegram.org/bot"+token+"/"+method,{
-      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...body}),
-      signal:AbortSignal.timeout(15000)
-    });
-    const result=await response.json().catch(()=>({}));
-    return response.ok&&result.ok===true;
+    try{
+      const response=await fetch("https://api.telegram.org/bot"+token+"/"+method,{
+        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...body}),
+        signal:AbortSignal.timeout(15000)
+      });
+      const result=await response.json().catch(()=>({}));
+      return response.ok&&result.ok===true;
+    }catch{return false;}
   };
-  for(const media of candidates){
-    const ok=await send(media.type==="video"?"sendVideo":"sendPhoto",media.type==="video"
-      ?{video:media.url,caption,parse_mode:"HTML"}
-      :{photo:media.url,caption,parse_mode:"HTML"});
-    if(ok)return media.type;
+  const result=await deliverWithMediaFallback(candidates,caption,link,send);
+  if(result!=="text"&&link.length>220){
+    if(!await send("sendMessage",{text:"🔗 "+escapeHtml(link),disable_web_page_preview:false}))
+      throw new Error("Telegram original article link delivery failed");
   }
-  const text=[caption,"","🔗 "+escapeHtml(link)].join("\n");
-  if(!await send("sendMessage",{text,parse_mode:"HTML",disable_web_page_preview:false}))
-    throw new Error("Telegram news alert delivery failed");
-  return "text";
+  return result;
 }
+
 async function newsBreakingAlertCheck(env){
   if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};
   const cfg=await botConfig(env);
@@ -1356,9 +1355,9 @@ async function newsBreakingAlertCheck(env){
     try{
       const published=Date.parse(item.publishedAt||item.pubDate||"");
       const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা";
-      const title=escapeHtml(String(item.title||"").slice(0,260));
-      const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,300));
-      const source=escapeHtml(String(item.source||item.publisherName||"Verified publishers").slice(0,120));
+      const title=escapeHtml(String(item.title||"").slice(0,160));
+      const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,120));
+      const source=escapeHtml(String(item.source||item.publisherName||"Verified publishers").slice(0,60));
       const officialLine=decision.official&&decision.official.confirmed
         ?"\n🏛️ Official confirmation: "+escapeHtml(decision.official.name)+"\n🔎 "+escapeHtml(decision.official.url)
         :"";
