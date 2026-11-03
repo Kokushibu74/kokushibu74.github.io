@@ -1,0 +1,42 @@
+name: Bangladesh alert offline tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "scripts/update_news.py"
+      - "tests/test_news_alerts.py"
+      - "tests/news-alerts.test.mjs"
+      - ".github/workflows/test-news-alerts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-news-alerts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out pull request source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate Python syntax
+        run: python -m py_compile scripts/update_news.py tests/test_news_alerts.py
+      - name: Validate Worker syntax
+        run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Run Python corroboration tests
+        run: python3 tests/test_news_alerts.py -v
+      - name: Run existing news regression tests
+        run: python3 tests/test_update_news.py -v
+      - name: Run JavaScript alert tests
+        run: node --test tests/news-alerts.test.mjs
