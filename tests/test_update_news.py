@@ -299,5 +299,77 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(len({url for _, url in news.DIRECT_FEEDS}), len(news.DIRECT_FEEDS))
 
 
+
+
+    def test_feed_change_tracker_separates_added_updated_unchanged_and_removed(self):
+        previous = [
+            {"title": "Story A", "summary": "same"},
+            {"title": "Story B", "summary": "old"},
+            {"title": "Story C", "summary": "removed"},
+        ]
+        current = [
+            {"title": "Story A", "summary": "same"},
+            {"title": "Story B", "summary": "new"},
+            {"title": "Story D", "summary": "new story"},
+        ]
+        changes = news.calculate_feed_changes(current, previous, previous, True)
+        self.assertEqual(changes["added"], 1)
+        self.assertEqual(changes["updated"], 1)
+        self.assertEqual(changes["unchanged"], 1)
+        self.assertEqual(changes["removed"], 1)
+        self.assertEqual(changes["previous"], 3)
+        self.assertEqual(changes["net_change"], 0)
+
+    def test_feed_change_tracker_does_not_invent_first_run_comparison(self):
+        current = [{"title": "Initial story", "summary": "first import"}]
+        changes = news.calculate_feed_changes(current, [], [], False)
+        self.assertFalse(changes["baseline_available"])
+        self.assertIsNone(changes["removed"])
+        self.assertIsNone(changes["net_change"])
+
+    def test_feed_content_metrics_match_live_news_time_windows_and_preview_fields(self):
+        now = datetime(2026, 11, 3, 12, 0, tzinfo=timezone.utc)
+        items = [
+            {"title": "BD latest", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "previewImage": "https://img.example/latest.jpg"},
+            {"title": "BD recent", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=20)).isoformat(), "image": "https://img.example/recent.jpg"},
+            {"title": "World recent", "category": "World", "publishedAt": (now - timedelta(hours=23)).isoformat()},
+            {"title": "Tech archive", "category": "Technology", "publishedAt": (now - timedelta(hours=25)).isoformat()},
+            {"title": "BD older archive", "category": "Bangladesh", "publishedAt": (now - timedelta(days=2)).isoformat()},
+            {"title": "Future item", "category": "World", "publishedAt": (now + timedelta(minutes=10)).isoformat(), "image": "https://img.example/future.jpg"},
+        ]
+        weather = [
+            {"title": "Flood alert", "previewImage": "https://img.example/flood.jpg"},
+            {"title": "Storm update"},
+        ]
+        metrics = news.feed_content_metrics(items, weather, now)
+        self.assertEqual(metrics["latest_24h"], 3)
+        self.assertEqual(metrics["archive"], 2)
+        self.assertEqual(metrics["latest_tag_15m"], 1)
+        self.assertEqual(metrics["image_preview_urls"], 2)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 1)
+        self.assertEqual(metrics["weather_cards"], 2)
+        self.assertEqual(metrics["weather_cards_with_preview"], 1)
+
+    def test_generated_feed_validator_accepts_valid_deduplicated_payload(self):
+        payload = {"items": [
+            {"title": "Story A", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh"},
+            {"title": "Story B", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-10)), "category": "World"},
+        ], "weatherItems": []}
+        result = news.validate_feed_payload(payload)
+        self.assertTrue(result["valid"])
+        self.assertEqual(result["invalid"], 0)
+        self.assertEqual(result["duplicates"], 0)
+
+    def test_generated_feed_validator_detects_invalid_and_duplicate_items(self):
+        payload = {"items": [
+            {"title": "Duplicate story", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh"},
+            {"title": "Duplicate story", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-4)), "category": "World"},
+            {"title": "Invalid category", "link": "http://example.com/c", "publishedAt": None, "category": "Other"},
+        ], "weatherItems": []}
+        result = news.validate_feed_payload(payload)
+        self.assertFalse(result["valid"])
+        self.assertEqual(result["invalid"], 1)
+        self.assertEqual(result["duplicates"], 1)
+
 if __name__ == "__main__":
     unittest.main()
