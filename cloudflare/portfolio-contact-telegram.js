@@ -886,16 +886,17 @@ async function miniAppOverview(env,user){
   };
 }
 
-const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000;
+const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000,TRACK_RATE_LIMIT_MAX=120,TRACK_RATE_LIMIT_WINDOW_MS=60*1000;
 const CONTACT_RATE_LIMIT=new Map();
-function contactRateLimit(request,now=Date.now()){
+function ipRateLimit(request,scope,max,windowMs,now=Date.now()){
   const ip=request.headers.get("CF-Connecting-IP");
   if(!ip)return {allowed:true};
-  let bucket=CONTACT_RATE_LIMIT.get(ip);
-  if(!bucket||bucket.resetAt<=now)bucket={count:0,resetAt:now+CONTACT_RATE_LIMIT_WINDOW_MS};
-  if(bucket.count>=CONTACT_RATE_LIMIT_MAX)return {allowed:false,retryAfter:Math.max(1,Math.ceil((bucket.resetAt-now)/1000))};
+  const key=scope+":"+ip;
+  let bucket=CONTACT_RATE_LIMIT.get(key);
+  if(!bucket||bucket.resetAt<=now)bucket={count:0,resetAt:now+windowMs};
+  if(bucket.count>=max)return {allowed:false,retryAfter:Math.max(1,Math.ceil((bucket.resetAt-now)/1000))};
   bucket.count++;
-  CONTACT_RATE_LIMIT.set(ip,bucket);
+  CONTACT_RATE_LIMIT.set(key,bucket);
   if(CONTACT_RATE_LIMIT.size>2048){
     for(const [key,value] of CONTACT_RATE_LIMIT)if(value.resetAt<=now)CONTACT_RATE_LIMIT.delete(key);
     if(CONTACT_RATE_LIMIT.size>2048)CONTACT_RATE_LIMIT.delete(CONTACT_RATE_LIMIT.keys().next().value);
@@ -1003,6 +1004,8 @@ export default {
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
       if(!env.VISITOR_KV)return respond({error:"Visitor tracking storage is not configured."},503);
       const len=Number(request.headers.get("Content-Length")||0);if(len>12000)return respond({error:"Payload too large"},413);
+      const rate=ipRateLimit(request,"track",TRACK_RATE_LIMIT_MAX,TRACK_RATE_LIMIT_WINDOW_MS);
+      if(!rate.allowed)return new Response(JSON.stringify({error:"Too many tracking requests. Retry shortly."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
       let data;try{data=await request.json()}catch{return respond({error:"Invalid JSON"},400)}
       const id=String(data.visitorId||"");const session=String(data.sessionId||"");
       if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({error:"Invalid visitor/session ID"},400);
@@ -1135,7 +1138,7 @@ export default {
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return respond({error:"Contact service is not configured yet."},503);
     if(!(request.headers.get("Content-Type")||"").toLowerCase().includes("multipart/form-data"))return respond({error:"Invalid form upload."},415);
     const length=Number(request.headers.get("Content-Length")||0);if(Number.isFinite(length)&&length>65*1024*1024)return respond({error:"Combined upload is too large; keep it below 60 MB."},413);
-    const rate=contactRateLimit(request);
+    const rate=ipRateLimit(request,"contact",CONTACT_RATE_LIMIT_MAX,CONTACT_RATE_LIMIT_WINDOW_MS);
     if(!rate.allowed)return new Response(JSON.stringify({error:"Too many contact submissions. Please wait before trying again."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
     let form;try{form=await request.formData()}catch{return respond({error:"Invalid form data."},400)}
     const submittedVisitorId=String(form.get("visitorId")||"");
