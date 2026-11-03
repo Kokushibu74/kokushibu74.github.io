@@ -1,8 +1,20 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import {readFile} from "node:fs/promises";
 import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
+
+test("Cloudflare Worker loads the alert helper module without invoking Telegram",async()=>{
+  const workerPath=new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url);
+  const helperUrl=new URL("../cloudflare/news-alerts.mjs",import.meta.url).href;
+  const source=(await readFile(workerPath,"utf8")).replace('"./news-alerts.mjs"',JSON.stringify(helperUrl));
+  const dataUrl="data:text/javascript;base64,"+Buffer.from(source,"utf8").toString("base64");
+  const worker=await import(dataUrl);
+  assert.equal(typeof worker.default.fetch,"function");
+  assert.equal(typeof worker.default.scheduled,"function");
+});
+
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
 test("two untrusted publishers are not sufficient corroboration",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["Random Blog","Unknown News"]}),{now}).reason,"untrusted_sources"));
 test("one trusted and one independent publisher can corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now}).eligible,true));
