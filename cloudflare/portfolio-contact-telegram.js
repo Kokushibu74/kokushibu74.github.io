@@ -904,6 +904,34 @@ function ipRateLimit(request,scope,max,windowMs,now=Date.now()){
   return {allowed:true,remaining:max-bucket.count};
 }
 
+async function newsRefreshWatchdog(env){
+  if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)return {skipped:true};
+  const cfg=await botConfig(env);
+  if(cfg.newsRefresh!==true)return {skipped:true,reason:"disabled"};
+  const now=Date.now(),cooldownKey="news-watchdog:last-dispatch";
+  const lastDispatch=Number(await env.BOT_CONFIG_KV.get(cooldownKey));
+  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<20*60*1000)return {skipped:true,reason:"cooldown"};
+  const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+  const statusResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?branch=main&per_page=1",{headers,signal:AbortSignal.timeout(10000)});
+  if(!statusResponse.ok)throw new Error("GitHub news workflow status check failed (HTTP "+statusResponse.status+")");
+  const data=await statusResponse.json().catch(()=>({}));
+  const latest=(data.workflow_runs||[])[0],created=Date.parse(latest?.created_at||""),age=Number.isFinite(created)?now-created:Infinity;
+  if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
+  if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
+  const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
+  if(dispatch.status!==204)throw new Error("GitHub news workflow dispatch failed (HTTP "+dispatch.status+")");
+  await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
+  return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null};
+}
+async function notifyNewsWatchdogFailure(env){
+  if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return;
+  const key="news-watchdog:last-error";
+  if(await env.BOT_CONFIG_KV.get(key))return;
+  await env.BOT_CONFIG_KV.put(key,"1",{expirationTtl:6*60*60});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:"⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow. Please check GitHub Actions permissions and recent workflow runs.",disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -1159,8 +1187,13 @@ export default {
   },
   async scheduled(controller,env,ctx) {
     if(controller.cron==="* * * * *"){
-      // Keep the existing minute Cron, but scan KV only four times per hour.
-      if(new Date().getUTCMinutes()%15===0)await botExpireIdleMenu(env);
+      // Keep the existing minute Cron; run KV cleanup on quarter-hours and watchdog five minutes later.
+      const minute=new Date().getUTCMinutes();
+      if(minute%15===0)await botExpireIdleMenu(env);
+      if(minute%15===5){
+        try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
+        catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env)}catch{}}
+      }
       return;
     }
     const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);

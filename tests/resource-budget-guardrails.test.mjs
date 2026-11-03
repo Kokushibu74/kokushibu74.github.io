@@ -50,4 +50,14 @@ assert.equal(ipRateLimit(client, "track", 120, 60000, 4000).allowed, false, "121
 assert.equal(ipRateLimit(client, "contact", 5, 600000, 601001).allowed, true, "Contact limit must reset after its window expires");
 assert.equal(ipRateLimit(fakeRequest(null), "contact", 5, 600000, 700000).allowed, true, "Missing trusted client IP must not create a shared global bucket");
 
-console.log("Resource budgets, YouTube backoff, contact abuse protection, and daily reporting contracts OK.");
+
+assert.match(contact, /async function newsRefreshWatchdog\(env\)/, "15-minute news watchdog must exist");
+assert.match(contact, /actions\/workflows\/update-news\.yml\/runs\?branch=main&per_page=1/, "News watchdog must inspect the latest GitHub workflow run");
+assert.match(contact, /actions\/workflows\/update-news\.yml\/dispatches/, "News watchdog must use the existing workflow_dispatch fallback");
+assert.match(contact, /news-watchdog:last-dispatch/, "News watchdog must deduplicate dispatches in existing KV");
+assert.match(contact, /now-lastDispatch<20\*60\*1000/, "News watchdog must avoid dispatching while a recent run exists");
+assert.match(contact, /minute%15===5/, "News watchdog must run five minutes after each scheduled boundary to avoid duplicate dispatch races");
+assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the news watchdog on its 15-minute maintenance tick");
+assert.match(contact, /notifyNewsWatchdogFailure\(env\)/, "News watchdog failures must send a deduplicated Telegram warning");
+
+console.log("Resource budgets, YouTube backoff, contact abuse protection, daily reporting, and news watchdog contracts OK.");
