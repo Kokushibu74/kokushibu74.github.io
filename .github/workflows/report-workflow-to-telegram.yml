@@ -4,8 +4,6 @@ on:
   workflow_run:
     workflows:
       - Refresh live news feed
-      - Live Match Center checks
-      - Sports Zone API smoke test
       - pages build and deployment
     types: [completed]
 
