@@ -31,7 +31,7 @@ function canonicalSource(value) {
   return name;
 }
 function isTrustedPublisher(source) {
-  return /(\\bbc\\b|the daily star|prothom alo|jago news|\\bbss\\b|\\bunb\\b|dhaka tribune|bdnews24|business standard|new age|financial express|ittefaq|jugantor|kaler kantho|samakal|daily observer|daily sun|channel 24|jamuna|somoy|ekattor|independent television|bangla tribune|banglanews24|dhaka post|risingbd|ntv|rtv|reuters|associated press|\\bap\\b|\\bafp\\b|al jazeera|\\bdw\\b|cnn|guardian|france 24|new york times|washington post|financial times|npr)/i.test(source);
+  return /(\bbc\b|the daily star|prothom alo|jago news|\bbss\b|\bunb\b|dhaka tribune|bdnews24|business standard|new age|financial express|ittefaq|jugantor|kaler kantho|samakal|daily observer|daily sun|channel 24|jamuna|somoy|ekattor|independent television|bangla tribune|banglanews24|dhaka post|risingbd|ntv|rtv|reuters|associated press|\bap\b|\bafp\b|al jazeera|\bdw\b|cnn|guardian|france 24|new york times|washington post|financial times|npr)/i.test(source);
 }
 function normalizeSources(item) {
   return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
