@@ -16,16 +16,16 @@ from urllib.parse import urlparse
 
 OUTPUT = "news-feed.json"
 WEATHER_QUERIES = [
-    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "bn-BD", "BD", "BD:bn"),
-    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "en-US", "BD", "BD:en"),
-    ("world weather OR flood OR cyclone OR earthquake OR landslide OR wildfire OR drought", "en-US", "US", "US:en"),
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "bn-BD", "BD", "BD:bn"),
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "en-US", "BD", "BD:en"),
+    ("world weather OR flood OR cyclone OR earthquake OR landslide OR wildfire OR drought OR tsunami OR lightning", "en-US", "US", "US:en"),
     ("natural disaster OR extreme weather OR major storm OR tsunami", "en-US", "US", "US:en"),
 ]
 WEATHER_DISASTER_RE = re.compile(
     r"(?:weather|forecast|flood|flooding|cyclone|hurricane|typhoon|storm|"
     r"heavy rain|rainfall|heatwave|heat wave|earthquake|landslide|wildfire|"
-    r"drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
-    r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)", re.I
+    r"drought|tsunami|tornado|wildfire|lightning|volcanic eruption|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
+    r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|বজ্রপাত|দাবানল|খরা)", re.I
 )
 WEATHER_SEVERITY_RE = re.compile(
     r"(?:সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|"
@@ -746,7 +746,7 @@ def main():
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
-                    "summary": summary, "image": image_for(node),
+                    "summary": summary, "image": image_for(node), "videoUrl": video_for(node),
                     "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "previewImage": image_for(node),
