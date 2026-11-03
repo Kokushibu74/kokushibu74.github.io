@@ -1091,7 +1091,7 @@ async function newsRefreshWatchdog(env){
   if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
   if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
   const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
-  if(dispatch.status!==204){
+  if(dispatch.status!==200&&dispatch.status!==204){
     const responseText=await dispatch.text().catch(()=> "");
     let detail=responseText;
     try{const payload=JSON.parse(responseText);detail=payload.message||(payload.errors||[]).map(x=>x.message||x.code).join("; ")||responseText}catch{}
