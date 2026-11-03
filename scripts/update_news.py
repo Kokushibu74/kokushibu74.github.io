@@ -483,6 +483,16 @@ def merge_source_evidence(item, source):
         name = "Prothom Alo"
     elif "jago news" in lower:
         name = "Jago News 24"
+    elif "bangladesh sangbad sangstha" in lower or lower == "bss":
+        name = "BSS"
+    elif "united news of bangladesh" in lower or lower == "unb":
+        name = "UNB"
+    elif "business standard" in lower or lower == "tbs":
+        name = "The Business Standard"
+    elif "associated press" in lower or lower == "ap news":
+        name = "AP"
+    elif "agence france" in lower or lower == "afp":
+        name = "AFP"
     ignored = {"", "google news", "original publisher", "unknown source"}
     sources = list(item.get("sourceEvidence") or [])
     if name and name.lower() not in ignored and name.lower() not in {x.lower() for x in sources}:
