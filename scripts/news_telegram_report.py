@@ -315,6 +315,7 @@ def build_news_report(metrics, context, verified_ids=None):
             f'🗑 Removed from feed: <b>{number(metrics.get("removed"))}</b>',
             f'📊 Net feed change: <b>{signed(metrics.get("net_change"))}</b>',
         ])
+    lines.append('<i>Net change = New − Removed. Removed includes stories leaving the 90-day retention window; Updated means tracked fields changed for an existing headline.</i>')
     lines.extend([
         '━━━━━━━━━━━━━━━━━━━━━━',
         f'{emoji("chart", verified_ids)} <b>03 · LIVE FEED & ARCHIVE</b>',
@@ -339,9 +340,12 @@ def build_news_report(metrics, context, verified_ids=None):
         f'📄 Metadata successfully extracted: <b>{number(metrics.get("metadata_fetched"))}</b>',
         f'⚠️ Metadata unavailable: <b>{number(metrics.get("metadata_unavailable"))}</b> · Cached/reused: <b>{number(metrics.get("metadata_cached"))}</b>',
     ])
-    if attempts and fetched is not None:
+    if attempts is not None and attempts > 0 and fetched is not None:
         coverage = round(100 * fetched / max(1, attempts))
         lines.append(f'📊 Extraction success rate: <b>{coverage}%</b> ({fetched}/{attempts})')
+    elif attempts == 0:
+        cached_count = metrics.get("metadata_cached") or 0
+        lines.append(f'📊 Extraction success rate: <b>N/A — no new metadata requests</b> · Cached/reused: <b>{cached_count}</b>')
     else:
         lines.append('📊 Extraction success rate: <b>Not reported (attempt count unavailable)</b>')
     if metrics.get("publisher_preview_unavailable"):
