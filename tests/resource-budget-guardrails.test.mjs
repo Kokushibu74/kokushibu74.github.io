@@ -69,6 +69,28 @@ assert.match(multiAi, /method!=="GET"&&method!=="HEAD"/, "Multi-AI retry helper 
 assert.match(multiAi, /\\[408,425,429,500,502,503,504\\]/, "Multi-AI retry helper must limit retries to transient HTTP statuses");
 assert.match(multiAi, /maxAttempts=2/, "Multi-AI retry helper must be bounded to two attempts");
 assert.match(multiAi, /fetchGetWithRetry\\(endpoint/, "Wikipedia search must use bounded GET retries");
+const retryHelperSource = multiAi.match(/async function fetchGetWithRetry\\(url, options = \\{\\}\\) \\{[\\s\\S]*?\\n\\}/);
+assert.ok(retryHelperSource, "Production GET retry helper must be extractable for behavior tests");
+let retryFetchCalls = 0;
+const fakeFetch = async (_url, _options) => {
+  retryFetchCalls++;
+  return retryFetchCalls === 1
+    ? {status:429,headers:{get:()=>null},body:{cancel:async()=>{}}}
+    : {status:200,headers:{get:()=>null},body:{cancel:async()=>{}}};
+};
+const retryFetchGet = new Function("fetch","AbortSignal","setTimeout", retryHelperSource[0] + "; return fetchGetWithRetry;")(
+  fakeFetch,
+  {timeout:()=>({})},
+  callback => { callback(); return 1; }
+);
+const retriedResponse = await retryFetchGet("https://example.com/search",{timeoutMs:8000});
+assert.equal(retriedResponse.status,200);
+assert.equal(retryFetchCalls,2,"Transient GET 429 must be retried once");
+retryFetchCalls=0;
+const postResponse = await retryFetchGet("https://example.com/submit",{method:"POST",body:"payload",timeoutMs:8000});
+assert.equal(postResponse.status,429);
+assert.equal(retryFetchCalls,1,"POST requests must never be replayed");
+
 assert.match(multiAi, /fetchGetWithRetry\\('https:\\/\\/r\\.jina\\.ai\\//, "Jina Reader must use bounded GET retries");
 
 console.log("Resource budgets, YouTube backoff, contact abuse protection, daily reporting, and news watchdog contracts OK.");
