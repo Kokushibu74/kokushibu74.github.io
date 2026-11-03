@@ -68,13 +68,15 @@ BREAKING_EVENT_RE = re.compile(
     r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
     r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
     r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
+    r"গণভোট|গণঅভ্যুত্থান|গণভোটের (?:তারিখ|ফল|সিদ্ধান্ত)|referendum (?:date|result|decision)|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
 )
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
     r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
-    r"investigation into)", re.I
+    r"investigation into|anniversary|years? ago|what happened|timeline|retrospective|"
+    r"বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে)", re.I
 )
 BREAKING_HISTORY_DAYS = 30
 FEED_RETENTION_DAYS = 90
