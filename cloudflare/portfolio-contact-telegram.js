@@ -1000,12 +1000,12 @@ export default {
 
     if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
     if(pathname==="/track"){
-      const botCfg=await botConfig(env);
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
       if(!env.VISITOR_KV)return respond({error:"Visitor tracking storage is not configured."},503);
       const len=Number(request.headers.get("Content-Length")||0);if(len>12000)return respond({error:"Payload too large"},413);
       const rate=ipRateLimit(request,"track",TRACK_RATE_LIMIT_MAX,TRACK_RATE_LIMIT_WINDOW_MS);
       if(!rate.allowed)return new Response(JSON.stringify({error:"Too many tracking requests. Retry shortly."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
+      const botCfg=await botConfig(env);
       let data;try{data=await request.json()}catch{return respond({error:"Invalid JSON"},400)}
       const id=String(data.visitorId||"");const session=String(data.sessionId||"");
       if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({error:"Invalid visitor/session ID"},400);
