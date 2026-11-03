@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, alertCategory, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, alertCategory, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate } from "./news-alerts.mjs";
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -1336,14 +1336,16 @@ async function newsBreakingAlertCheck(env){
   const now=Date.now(),sent=[];
   let officialPagesPromise=null;
   for(const item of items.slice(0,160)){
-    let decision=evaluateNewsAlert(item,{now,officialSignal:false});
-    if(!decision.eligible&&decision.reason==="needs_corroboration"&&decision.weather){
+    let official={confirmed:false};
+    const publishedAt=Date.parse(item.publishedAt||item.pubDate||"");
+    const publishedAge=(now-publishedAt)/60000;
+    if(isWeatherCandidate(item)&&Number.isFinite(publishedAt)&&publishedAge>=-5&&publishedAge<=180){
       if(!officialPagesPromise)officialPagesPromise=loadOfficialDisasterPages();
       const pages=await officialPagesPromise;
-      const official=officialDisasterConfirmation(item,now,pages);
-      decision=evaluateNewsAlert(item,{now,officialSignal:official.confirmed});
-      if(decision.eligible)decision.official=official;
+      official=officialDisasterConfirmation(item,now,pages);
     }
+    let decision=evaluateNewsAlert(item,{now,officialSignal:official.confirmed});
+    if(official.confirmed&&decision.eligible)decision.official=official;
     if(!decision.eligible)continue;
     const link=String(item.publisherUrl||item.link||"");
     const key=await newsAlertKey(String(item.title||"")+"|"+String(item.publishedAt||"").slice(0,10));
