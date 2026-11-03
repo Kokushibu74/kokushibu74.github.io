@@ -81,6 +81,8 @@ const BOT_MENU = [
   ["github","🐙 GitHub"],["hero","🖼️ Hero Image"],["automation","⚙️ Automation"],["alerts","🚨 Alerts"],
   ["reports","📑 Reports"],["users","👥 User Manager"],["settings","🔧 Settings"],["logs","📜 Logs"],["recovery","♻️ Recovery"]
 ];
+// Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
+const SPORTS_ZONE_MONITORING_ENABLED=false;
 const BOT_DEFAULTS = {
   monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, workflowAlerts:true,
   trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
@@ -1246,7 +1248,7 @@ export default {
       await sendTelegram("⚠️ <b>Free-plan budget warning</b>\nYouTube search usage: <b>"+used+"/"+limit+"</b> ("+percent+"%)\nThreshold crossed: "+crossed.join("%, ")+"%\nCounter resets daily at 00:00 UTC.");
       await env.BOT_CONFIG_KV.put(key,JSON.stringify([...new Set([...sent,...crossed])]),{expirationTtl:48*60*60});
     };
-    if(runChecks&&cfg.trafficAlerts){
+    if(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg.trafficAlerts){
       try{await checkYouTubeBudget()}catch(e){console.error("YouTube budget alert check failed",String(e&&e.message||e).slice(0,160))}
     }
 
@@ -1269,7 +1271,7 @@ export default {
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
     if(failure&&(cfg.emergencyProtection||cfg.workflowAlerts))await miniAppCronAlert(env,controller.cron,"warning",failure);
-    if(daily&&cfg.dailyReport&&runChecks){ let gaLines,budgetLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const b=env.SPORTS_ZONE?await env.SPORTS_ZONE.get("auto:status","json"):null,used=Number(b?.searchesToday),limit=Number(b?.dailySearchLimit); budgetLines=Number.isFinite(used)&&Number.isFinite(limit)&&limit>0?["🧮 <b>Sports Zone resource budget</b>","YouTube searches: "+used+"/"+limit+" ("+Math.round(used/limit*100)+"%)","Schedule events checked: "+Number(b.scheduleEvents||0)]:["⚠️ Sports Zone budget status unavailable"]; } catch(e) { budgetLines=["⚠️ Sports Zone budget status unavailable"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...budgetLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; }  try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
     const terminalStatus=failure?"warning":"success";
     const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
