@@ -27,6 +27,11 @@ WEATHER_DISASTER_RE = re.compile(
     r"drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
     r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)", re.I
 )
+WEATHER_SEVERITY_RE = re.compile(
+    r"(?:সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|"
+    r"নিহত|মৃত্যু|আহত|মাত্রা|ক্ষয়ক্ষতি|ক্ষয়ক্ষতি|major|severe|extreme|warning|alert|evacuat|"
+    r"landfall|danger level|signal|magnitude|fatal|killed|deadly|disrupts flights)", re.I
+)
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
 QUERIES = [
     # Search dedicated breaking-news feeds first so explicit fresh alerts can be tagged.
