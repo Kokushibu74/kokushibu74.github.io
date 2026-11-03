@@ -1540,7 +1540,8 @@ export default {
     return respond({ok:true});
   },
   async scheduled(controller,env,ctx) {
-    if(controller.cron==="* * * * *"){\n      if(new Date().getUTCMinutes()%15===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
+    if(controller.cron==="* * * * *"){
+      if(new Date().getUTCMinutes()%15===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
       // Keep the existing minute Cron; run KV cleanup on quarter-hours and watchdog five minutes later.
       const minute=new Date().getUTCMinutes();
       if(minute%15===0)await botExpireIdleMenu(env);
