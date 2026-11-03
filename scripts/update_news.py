@@ -435,7 +435,7 @@ def classify_direct_item(title, link, source=""):
 
 def key_for(item):
     """Deduplicate identical headlines across publishers, not just within one source."""
-    title = re.sub(r"[^\w]+", " ", item.get("title", "").lower()).strip()
+    title = re.sub(r"[^\w]+", " ", str(item.get("title") or "").lower()).strip()
     return title
 
 def read_previous_weather():
@@ -521,23 +521,35 @@ def annotate_seen_items(items, previous, now=None):
     return items
 
 
-def read_previous():
+def read_previous_snapshot():
+    """Read the raw prior feed so removals include stories pruned by the 90-day retention rule."""
     try:
         with open(OUTPUT, "r", encoding="utf-8") as file:
             payload = json.load(file)
-        items = payload.get("items", []) if isinstance(payload, dict) else []
-        retained = []
-        for item in items:
-            if (not isinstance(item, dict) or not item.get("title")
-                    or not item.get("link", "").startswith("https://")
-                    or not within_feed_retention(item)):
-                continue
-            # Breaking status must be re-earned from a fresh feed query every run.
-            item.pop("isBreaking", None)
-            retained.append(item)
-        return retained
+        if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
+            return [], False
+        return [dict(item) for item in payload["items"] if isinstance(item, dict)], True
     except (OSError, json.JSONDecodeError, TypeError):
-        return []
+        return [], False
+
+
+def retained_previous_items(items, now=None):
+    retained = []
+    for raw_item in items:
+        item = dict(raw_item)
+        if (not item.get("title")
+                or not str(item.get("link") or "").startswith("https://")
+                or not within_feed_retention(item, now)):
+            continue
+        # Breaking status must be re-earned from a fresh feed query every run.
+        item.pop("isBreaking", None)
+        retained.append(item)
+    return retained
+
+
+def read_previous():
+    items, _baseline_available = read_previous_snapshot()
+    return retained_previous_items(items)
 
 def is_weather_disaster_story(title, summary="", published=None, now=None):
     """Only accept weather/disaster stories with a credible, recent publication date."""
@@ -554,8 +566,118 @@ def is_weather_disaster_story(title, summary="", published=None, now=None):
         return False
 
 
+def calculate_feed_changes(current_items, previous_items, previous_raw_items, baseline_available):
+    """Compare headline identities and content without counting updates as additions."""
+    previous_by_key = {key_for(item): item for item in previous_items if key_for(item)}
+    previous_raw_keys = {key_for(item) for item in previous_raw_items if key_for(item)}
+    current_keys = {key_for(item) for item in current_items if key_for(item)}
+    meaningful_fields = ("title", "link", "source", "publishedAt", "category", "summary", "image",
+                         "publisherUrl", "publisherName", "previewTitle", "previewSummary",
+                         "previewImage", "iframeAllowed")
+    added = sum(1 for item in current_items if key_for(item) not in previous_by_key)
+    updated = sum(
+        1 for item in current_items
+        if key_for(item) in previous_by_key and any(
+            item.get(field) != previous_by_key[key_for(item)].get(field) for field in meaningful_fields
+        )
+    )
+    unchanged = max(0, len(current_items) - added - updated)
+    return {
+        "added": added,
+        "updated": updated,
+        "unchanged": unchanged,
+        "removed": len(previous_raw_keys - current_keys) if baseline_available else None,
+        "previous": len(previous_raw_keys) if baseline_available else None,
+        "net_change": len(current_keys) - len(previous_raw_keys) if baseline_available else None,
+        "baseline_available": bool(baseline_available),
+    }
+
+
+def feed_content_metrics(items, weather_items=None, now=None):
+    """Count the same time windows and image URL fields used by the live News page."""
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    preview_fields = ("previewScreenshot", "previewImage", "image", "imageUrl", "thumbnail", "thumbnailUrl", "enclosureUrl")
+    latest_24h = archive = latest_tag_15m = image_preview_urls = bd_slider_candidates = 0
+    for item in items:
+        try:
+            stamp = datetime.fromisoformat(str(item.get("publishedAt") or "").replace("Z", "+00:00"))
+            if stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=timezone.utc)
+            age_seconds = (current.astimezone(timezone.utc) - stamp.astimezone(timezone.utc)).total_seconds()
+        except (ValueError, TypeError, AttributeError, OverflowError):
+            continue
+        is_recent = -5 * 60 <= age_seconds < 24 * 60 * 60
+        is_latest_tag = -5 * 60 <= age_seconds < 15 * 60
+        has_preview_url = any(str(item.get(field) or "").startswith("https://") for field in preview_fields)
+        if is_recent:
+            latest_24h += 1
+        elif age_seconds >= 24 * 60 * 60:
+            archive += 1
+        if is_latest_tag:
+            latest_tag_15m += 1
+            if item.get("category") == "Bangladesh" and has_preview_url:
+                bd_slider_candidates += 1
+        if has_preview_url:
+            image_preview_urls += 1
+    weather_items = weather_items if isinstance(weather_items, list) else []
+    weather_cards_with_preview = sum(
+        1 for item in weather_items
+        if isinstance(item, dict) and any(str(item.get(field) or "").startswith("https://") for field in preview_fields)
+    )
+    return {
+        "latest_24h": latest_24h,
+        "archive": archive,
+        "latest_tag_15m": latest_tag_15m,
+        "image_preview_urls": image_preview_urls,
+        "bd_slider_preview_candidates": bd_slider_candidates,
+        "weather_cards": len(weather_items),
+        "weather_cards_with_preview": weather_cards_with_preview,
+    }
+
+
+def validate_feed_payload(payload):
+    """Validate the generated main feed before it can be committed."""
+    issues = []
+    if not isinstance(payload, dict):
+        return {"valid": False, "invalid": 1, "duplicates": 0, "issues": ["root is not an object"]}
+    items = payload.get("items")
+    if not isinstance(items, list):
+        return {"valid": False, "invalid": 1, "duplicates": 0, "issues": ["items is not an array"]}
+    seen = set()
+    invalid = 0
+    duplicates = 0
+    allowed_categories = {"Bangladesh", "World", "Technology"}
+    for item in items:
+        if not isinstance(item, dict):
+            invalid += 1
+            continue
+        key = key_for(item)
+        if not item.get("title") or not str(item.get("link") or "").startswith("https://") or not item.get("publishedAt") or item.get("category") not in allowed_categories:
+            invalid += 1
+        if not key or key in seen:
+            duplicates += 1
+        elif key:
+            seen.add(key)
+    if not isinstance(payload.get("weatherItems"), list):
+        issues.append("weatherItems is not an array")
+    if invalid:
+        issues.append("invalid main-feed items: " + str(invalid))
+    if duplicates:
+        issues.append("duplicate or empty headline keys: " + str(duplicates))
+    return {"valid": not issues and invalid == 0 and duplicates == 0, "invalid": invalid, "duplicates": duplicates, "issues": issues}
+
+
+def format_signed(value):
+    if value is None:
+        return "not_available"
+    return ("+" if value > 0 else "") + str(value)
+
+
 def main():
-    previous = read_previous()
+    previous_raw, baseline_available = read_previous_snapshot()
+    previous = retained_previous_items(previous_raw)
     previous_weather = read_previous_weather()
     breaking_history = read_breaking_history()
     collected, seen = [], set()
@@ -711,28 +833,37 @@ def main():
     preview_candidates += [x for x in sorted_items if x.get("category") != "Bangladesh"][:4]
     enriched = 0
     resolved_count = 0
+    metadata_attempts = 0
+    metadata_unavailable = 0
+    metadata_cached = 0
     for item in preview_candidates:
         if item.get("previewTitle") and item.get("previewCheckedAt"):
+            metadata_cached += 1
             continue
         source_link = item.get("link", "")
         resolved_link = resolve_google_news_url(source_link) if urlparse(source_link).hostname and urlparse(source_link).hostname.endswith("news.google.com") else source_link
         if resolved_link and resolved_link.startswith("https://"):
             item["publisherUrl"] = resolved_link
             resolved_count += int(resolved_link != source_link)
+            metadata_attempts += 1
             metadata = publisher_metadata(resolved_link)
         else:
+            metadata_attempts += 1
             metadata = {}
         if metadata:
             item.update(metadata)
             enriched += 1
         else:
+            metadata_unavailable += 1
             # Keep the direct publisher link and RSS summary when publisher pages block bots.
             item.setdefault("publisherName", item.get("source", "Original publisher"))
             item.setdefault("previewTitle", item.get("title", ""))
             item.setdefault("previewSummary", item.get("summary", ""))
             item.setdefault("previewImage", item.get("image", ""))
             item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
-    print("Publisher URLs resolved:", resolved_count, "; metadata fetched:", enriched, "articles.")
+    print("Publisher preview checks: attempted:", metadata_attempts, "metadata fetched:", enriched,
+          "unavailable:", metadata_unavailable, "cached/reused:", metadata_cached,
+          "Google News URLs resolved:", resolved_count)
 
     # Merge recent known-good items behind fresh results so a temporary RSS outage
     # doesn't shrink the feed or erase useful headlines.
@@ -743,7 +874,7 @@ def main():
             continue
         if key not in seen:
             seen.add(key)
-        # Only dated stories inside the seven-day window reach the public feed.
+        # Only dated stories inside the configured 90-day retention window reach the public feed.
         if within_feed_retention(item):
             merged.append(item)
     # An empty but fresh feed is safer than leaving expired headlines visible.
@@ -762,18 +893,13 @@ def main():
     selected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
     now_iso = datetime.now(timezone.utc).isoformat()
     annotate_seen_items(selected, previous, datetime.fromisoformat(now_iso))
-    previous_by_key = {key_for(item): item for item in previous}
-    meaningful_fields = ("title", "link", "source", "publishedAt", "category", "summary", "image",
-                         "publisherUrl", "publisherName", "previewTitle", "previewSummary",
-                         "previewImage", "iframeAllowed")
-    added_count = sum(1 for item in selected if key_for(item) not in previous_by_key)
-    updated_count = sum(
-        1 for item in selected
-        if key_for(item) in previous_by_key and any(
-            item.get(field) != previous_by_key[key_for(item)].get(field) for field in meaningful_fields
-        )
-    )
-    unchanged_count = max(0, len(selected) - added_count - updated_count)
+    change_metrics = calculate_feed_changes(selected, previous, previous_raw, baseline_available)
+    added_count = change_metrics["added"]
+    updated_count = change_metrics["updated"]
+    unchanged_count = change_metrics["unchanged"]
+    removed_count = change_metrics["removed"]
+    previous_count = change_metrics["previous"]
+    net_change = change_metrics["net_change"]
     bd_count = sum(1 for x in selected if x.get("category") == "Bangladesh")
     if successful_feeds == 0:
         print("WARNING: all RSS requests failed; only retained headlines are available.")
@@ -812,8 +938,35 @@ def main():
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
         file.write("\n")
+
+    with open(OUTPUT, "r", encoding="utf-8") as file:
+        written_payload = json.load(file)
+    validation = validate_feed_payload(written_payload)
+    if not validation["valid"]:
+        print("Feed validation: FAIL; items:", len(selected), "; invalid:", validation["invalid"],
+              "; duplicates:", validation["duplicates"])
+        raise ValueError("Generated news feed failed validation: " + "; ".join(validation["issues"]))
+
+    content_metrics = feed_content_metrics(selected, weather_items)
+    category_counts = {
+        "Bangladesh": sum(1 for item in selected if item.get("category") == "Bangladesh"),
+        "World": sum(1 for item in selected if item.get("category") == "World"),
+        "Technology": sum(1 for item in selected if item.get("category") == "Technology"),
+    }
     print("Wrote", len(selected), "headlines; Bangladesh:", bd_count, "from", successful_feeds, "successful RSS queries.")
-    print("Item changes: added:", added_count, "updated:", updated_count, "unchanged:", unchanged_count)
+    print("Item changes: added:", added_count, "updated:", updated_count, "unchanged:", unchanged_count,
+          "removed:", removed_count if removed_count is not None else "not_available",
+          "net:", format_signed(net_change), "baseline:", "available" if baseline_available else "establishing",
+          "previous:", previous_count if previous_count is not None else "not_available")
+    print("Category breakdown: Bangladesh:", category_counts["Bangladesh"], "World:", category_counts["World"],
+          "Technology:", category_counts["Technology"])
+    print("Feed breakdown: latest_24h:", content_metrics["latest_24h"], "archive:", content_metrics["archive"],
+          "latest_tag_15m:", content_metrics["latest_tag_15m"], "preview_image_urls:", content_metrics["image_preview_urls"],
+          "bd_latest_tag_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
+          "weather_cards:", content_metrics["weather_cards"],
+          "weather_cards_with_preview:", content_metrics["weather_cards_with_preview"])
+    print("Feed validation: PASS; items:", len(selected), "; invalid:", validation["invalid"],
+          "; duplicates:", validation["duplicates"])
     attempted_feeds = len(DIRECT_FEEDS) + len(QUERIES) + len(WEATHER_QUERIES)
     print("Feed diagnostics:", successful_feeds, "/", attempted_feeds, "successful; failures:", " | ".join(feed_failures[:20]) or "none")
 

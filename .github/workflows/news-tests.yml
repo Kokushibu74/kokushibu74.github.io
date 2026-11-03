@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - "scripts/update_news.py"
+      - "scripts/news_telegram_report.py"
+      - "tests/test_news_telegram_report.py"
+      - ".github/workflows/report-workflow-to-telegram.yml"
       - "tests/test_update_news.py"
       - "news.js"
       - "homepage-news.js"
@@ -11,11 +14,15 @@ on:
       - ".github/workflows/news-tests.yml"
   push:
     branches:
+      - "main"
       - "feat/news-bangladesh-daily-archive-90d"
     paths:
       - "scripts/update_news.py"
+      - "scripts/news_telegram_report.py"
       - "tests/test_update_news.py"
+      - "tests/test_news_telegram_report.py"
       - ".github/workflows/news-tests.yml"
+      - ".github/workflows/report-workflow-to-telegram.yml"
 
 permissions:
   contents: read
@@ -32,6 +39,8 @@ jobs:
           python-version: "3.x"
       - name: Run offline news logic tests
         run: python3 tests/test_update_news.py -v
+      - name: Run Telegram report formatter tests
+        run: python3 tests/test_news_telegram_report.py -v
       - name: Check browser JavaScript syntax and feed refresh contracts
         run: |
           node --check news.js
