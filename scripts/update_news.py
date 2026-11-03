@@ -5,6 +5,8 @@ import json
 import re
 import urllib.request
 import urllib.parse
+import urllib.error
+import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
@@ -86,6 +88,30 @@ NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
 }
+
+def urlopen_with_retry(request, timeout, attempts=2, base_delay=0.5):
+    """Retry transient GET failures only; never replay POST requests."""
+    method = request.get_method().upper()
+    retryable = method in {"GET", "HEAD"} and getattr(request, "data", None) is None
+    attempts = max(1, min(int(attempts), 2))
+    for attempt in range(attempts):
+        try:
+            return urllib.request.urlopen(request, timeout=timeout)
+        except urllib.error.HTTPError as exc:
+            if not retryable or exc.code not in {408, 425, 429, 500, 502, 503, 504} or attempt + 1 >= attempts:
+                raise
+            retry_after = (exc.headers or {}).get("Retry-After", "")
+            try:
+                delay = min(4.0, max(0.1, float(retry_after)))
+            except (TypeError, ValueError):
+                delay = min(4.0, base_delay * (2 ** attempt))
+            exc.close()
+            time.sleep(delay)
+        except (urllib.error.URLError, TimeoutError, OSError):
+            if not retryable or attempt + 1 >= attempts:
+                raise
+            time.sleep(min(4.0, base_delay * (2 ** attempt)))
+
 
 def clean(value):
     value = re.sub(r"<[^>]+>", " ", value or "")
@@ -276,7 +302,7 @@ def resolve_google_news_url(url):
             "https://news.google.com/rss/articles/" + article_id,
             headers=headers,
         )
-        with urllib.request.urlopen(page_request, timeout=8) as response:
+        with urlopen_with_retry(page_request, timeout=8) as response:
             page = response.read(1_200_000).decode("utf-8", errors="replace")
         signature = re.search(r'data-n-a-sg="([^"]+)"', page)
         timestamp = re.search(r'data-n-a-ts="([^"]+)"', page)
@@ -336,7 +362,7 @@ def publisher_metadata(url):
             "User-Agent": "Mozilla/5.0 (compatible; NewsPreviewBot/1.0; +https://kokushibu74.github.io/)",
             "Accept": "text/html,application/xhtml+xml",
         })
-        with urllib.request.urlopen(request, timeout=6) as response:
+        with urlopen_with_retry(request, timeout=6) as response:
             final_url = response.geturl()
             final = urlparse(final_url)
             if final.scheme != "https" or not final.hostname:
@@ -540,7 +566,7 @@ def main():
     for source, feed_url in DIRECT_FEEDS:
         try:
             request = urllib.request.Request(feed_url, headers=HEADERS)
-            with urllib.request.urlopen(request, timeout=10) as response:
+            with urlopen_with_retry(request, timeout=10) as response:
                 root = parse_feed_xml(response.read())
             nodes = feed_items(root)
             successful_feeds += 1

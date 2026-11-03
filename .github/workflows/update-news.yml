@@ -3,6 +3,7 @@ name: Refresh live news feed
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/update-news.yml"
       - "scripts/update_news.py"
