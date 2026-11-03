@@ -82,7 +82,8 @@ BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
     r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
     r"investigation into|anniversary|years? ago|what happened|timeline|retrospective|"
-    r"বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে)", re.I
+    r"বার্ষিকী|বছর আগে|বছর পরে|দশক পরে|পেছন ফিরে|স্মরণে|স্মৃতিচারণ|পুরোনো ঘটনা|পূর্বের ঘটনা|"
+    r"years? later|decades? later|from the archives|historical footage|old case|past incident)", re.I
 )
 BREAKING_HISTORY_DAYS = 30
 FEED_RETENTION_DAYS = 90
