@@ -54,6 +54,8 @@ jobs:
         run: |
           node --check src/index.js
           node --check src/cricket.js
+      - name: Verify Free-plan resource budget guardrails
+        run: node tests/resource-budget-guardrails.test.mjs
       - name: Check required routes and safeguards
         run: |
           node --input-type=commonjs <<'NODE'
