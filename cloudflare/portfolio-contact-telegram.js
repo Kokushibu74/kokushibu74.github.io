@@ -4,6 +4,9 @@ const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
 const CF_MONITOR_KV_NAMESPACES = [
   { id: "370c7ef8d3bd4c678243a2bd2a9c6f8c", label: "Bot config" },
   { id: "431208d4ca2646829178a9dd05f93c2f", label: "Remote bridge state" },
+  { id: "474c184970634e54bdf6d9a4cd6632a0", label: "Sports Zone backups" },
+  { id: "714fabb0634744ee9ee921c02f679f9f", label: "Sports Zone preview" },
+  { id: "a6cf1ebc4c2e499ca69fa88c10937317", label: "Sports Zone production" },
   { id: "f3333aa713ed4d258ada3b24b6bf2981", label: "Visitor intelligence" }
 ];
 const CF_MONITOR_D1_ID = "93f7c8c5-dc3a-4b42-82f4-22d8263884c4";
@@ -32,16 +35,15 @@ function cfMonitorAction(rows,action){return (rows||[]).reduce((total,row)=>tota
 async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
   const day=now.toISOString().slice(0,10),storageStart=new Date(now.getTime()-6*86400000).toISOString().slice(0,10);
+  const kvQueries=CF_MONITOR_KV_NAMESPACES.flatMap((namespace,index)=>[
+    "  kvOps"+index+": kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + namespace.id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
+    "  kvStorage"+index+": kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + namespace.id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }"
+  ]);
   const query=[
     "query ShihabFreeBudget($accountTag: string!, $start: Date, $end: Date, $storageStart: Date, $startTime: Time!, $endTime: Time!) {",
     " viewer { accounts(filter: { accountTag: $accountTag }) {",
     "  workersInvocationsAdaptive(limit: 10000, filter: { datetime_geq: $startTime, datetime_leq: $endTime }) { sum { requests errors } }",
-    "  kvBot: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[0].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
-    "  kvBridge: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[1].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
-    "  kvVisitor: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[2].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
-    "  kvBotStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[0].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
-    "  kvBridgeStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[1].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
-    "  kvVisitorStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[2].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
+    ...kvQueries,
     "  d1Usage: d1AnalyticsAdaptiveGroups(limit: 10000, filter: { databaseId: \"" + CF_MONITOR_D1_ID + "\", date_geq: $start, date_leq: $end }) { sum { rowsRead rowsWritten } dimensions { date databaseId } }",
     "  d1Storage: d1StorageAdaptiveGroups(limit: 10000, filter: { databaseId: \"" + CF_MONITOR_D1_ID + "\", date_geq: $storageStart, date_leq: $end }) { max { databaseSizeBytes } dimensions { date databaseId } }",
     " } }",
@@ -51,8 +53,8 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   const account=data?.viewer?.accounts?.[0];
   if(!account)throw new Error("Cloudflare Analytics returned no account data");
   const workers=(account.workersInvocationsAdaptive||[]).reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.requests),0);
-  const kvGroups=[account.kvBot||[],account.kvBridge||[],account.kvVisitor||[]];
-  const kvStorageGroups=[account.kvBotStorage||[],account.kvBridgeStorage||[],account.kvVisitorStorage||[]];
+  const kvGroups=CF_MONITOR_KV_NAMESPACES.map((namespace,index)=>account["kvOps"+index]||[]);
+  const kvStorageGroups=CF_MONITOR_KV_NAMESPACES.map((namespace,index)=>account["kvStorage"+index]||[]);
   const kvAction=action=>kvGroups.reduce((sum,rows)=>sum+cfMonitorAction(rows,action),0);
   const d1Usage=account.d1Usage||[];
   const d1RowsRead=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsRead),0);
@@ -61,14 +63,14 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   const d1Bytes=cfMonitorMax(account.d1Storage||[],"databaseSizeBytes");
   const metrics=[
     {key:"workers_requests",label:"Workers requests (account-wide)",used:workers,limit:100000,unit:"requests",daily:true},
-    {key:"kv_reads",label:"KV reads (non-Sports namespaces)",used:kvAction("read"),limit:100000,unit:"operations",daily:true},
-    {key:"kv_writes",label:"KV writes (non-Sports namespaces)",used:kvAction("write"),limit:1000,unit:"operations",daily:true},
-    {key:"kv_deletes",label:"KV deletes (non-Sports namespaces)",used:kvAction("delete"),limit:1000,unit:"operations",daily:true},
-    {key:"kv_lists",label:"KV list operations (non-Sports namespaces)",used:kvAction("list"),limit:1000,unit:"operations",daily:true},
-    {key:"kv_storage",label:"KV storage (non-Sports namespaces)",used:kvBytes,limit:1073741824,unit:"bytes",daily:false},
+    {key:"kv_reads",label:"KV reads (all 6 namespaces)",used:kvAction("read"),limit:100000,unit:"operations",daily:true},
+    {key:"kv_writes",label:"KV writes (all 6 namespaces)",used:kvAction("write"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_deletes",label:"KV deletes (all 6 namespaces)",used:kvAction("delete"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_lists",label:"KV list operations (all 6 namespaces)",used:kvAction("list"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_storage",label:"KV storage (all 6 namespaces)",used:kvBytes,limit:1073741824,unit:"bytes",daily:false},
     {key:"d1_rows_read",label:"D1 rows read",used:d1RowsRead,limit:5000000,unit:"rows",daily:true},
     {key:"d1_rows_written",label:"D1 rows written",used:d1RowsWritten,limit:100000,unit:"rows",daily:true},
-    {key:"d1_storage",label:"D1 database storage",used:d1Bytes,limit:5368709120,unit:"bytes",daily:false}
+    {key:"d1_storage",label:"D1 database storage (per-DB limit)",used:d1Bytes,limit:524288000,unit:"bytes",daily:false}
   ];
   const thresholds=[50,70,85,95],pending=[];
   for(const metric of metrics){
@@ -191,6 +193,167 @@ async function sendTelegramText(env,chatId,text,options={}){
 
 
 function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", "):"No data");const delta=(v,o)=>{const d=v-o;return (d>0?"+":"")+d+" vs yesterday"};const lines=["📅 Date: "+a.day+" (BDT)",...(a.partial?["⚠️ Partial sample: visitor scan capped at 2,000 records to protect Free KV usage."]:[]),"👤 Unique visitors: "+a.unique+(p?" · "+delta(a.unique,p.unique):""),"🆕 New visitors: "+Math.max(0,a.unique-a.returning),"↩️ Returning visitors: "+a.returning,"🔁 Visits / sessions: "+a.sessions+(p?" · "+delta(a.sessions,p.sessions):""),"👁️ Page views: "+a.views+(p?" · "+delta(a.views,p.views):""),"⚠️ Client errors: "+a.errors,list("🔥 Popular pages",a.pages),list("🌍 Countries",a.countries),list("📍 Cities",a.cities),list("📡 ISPs",a.isps),list("📱 Devices",a.devices),list("🌐 Browsers",a.browsers),"","👥 VISITOR DETAILS"];for(const [i,v] of (a.visitors||[]).entries()){const pages=Object.entries(v.pages||{}).sort((x,y)=>y[1]-x[1]).map(([k,n])=>k+" ×"+n).join(", ")||"Page data unavailable";const device=[v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join(" / ")||"Unknown";const source=v.source?.utmSource||v.source?.referrer||"Direct";const seen=v.lastSeen?new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"}):"Unknown";lines.push((i+1)+". "+(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2")+" · "+(v.returning?"Returning":"New"),"   🕒 Last seen: "+seen+" BDT · Sessions today: "+(v.sessions||0)+" · Views: "+(v.pageViews||0),"   📄 Pages: "+pages,"   🔗 Source: "+source,"   📱 Device: "+device,"   📍 Location: "+[v.network?.city,v.network?.country].filter(Boolean).join(", ")+" · ISP: "+(v.network?.isp||"Unknown"));}if(!a.visitors?.length)lines.push("No visitor-level records available.");lines.push("","ℹ️ Active time, exact exit time and scroll/interaction duration are not measured in this report.");return lines;}
+
+function dailyReportEscape(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function dailyReportShort(value,max=40){return String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim().slice(0,max)||"Unknown";}
+function dailyReportDelta(value,previous){const d=Number(value||0)-Number(previous||0);return (d>0?"+":"")+d;}
+function dailyReportVisitorAnalyticsLines(activity,prior){
+  if(!activity)return ["⚠️ Visitor Intelligence data unavailable."];
+  const delta=(label,key)=>prior?"   ↳ "+label+" vs yesterday: "+dailyReportDelta(activity[key],prior[key]):"";
+  const list=(label,items)=>label+": "+((items||[]).length?items.join(", "):"No data");
+  return [
+    "📅 Date: "+activity.day+" (Bangladesh time)",
+    (activity.partial?"⚠️ Visitor list was capped to protect KV usage.":""),
+    "👤 Unique visitors: "+activity.unique,
+    delta("Unique visitors","unique"),
+    "🆕 New visitors: "+Math.max(0,activity.unique-activity.returning),
+    "↩️ Returning visitors: "+activity.returning,
+    "🔁 Sessions: "+activity.sessions,
+    delta("Sessions","sessions"),
+    "👁️ Page views: "+activity.views,
+    delta("Page views","views"),
+    "⚠️ Client errors: "+activity.errors,
+    list("🔥 Popular pages",activity.pages),
+    list("🌍 Countries",activity.countries),
+    list("📍 Cities",activity.cities),
+    list("📱 Devices",activity.devices),
+    list("🌐 Browsers",activity.browsers),
+    list("📡 ISPs",activity.isps)
+  ].filter(Boolean);
+}
+function dailyReportVisitorDetailsLines(activity){
+  const visitors=activity?.visitors||[];
+  const lines=["<b>03/05 · INDIVIDUAL VISITOR DETAILS</b>","📅 "+(activity?.day||"Date unavailable")+" (BDT)"];
+  if(!visitors.length){lines.push("No visitor-level records available.");return lines;}
+  lines.push("Profiles shown: "+visitors.length+" of "+Number(activity.unique||visitors.length)+" unique visitors (maximum 20 detailed profiles).");
+  for(let i=0;i<visitors.length;i++){
+    const v=visitors[i]||{};
+    const id=dailyReportShort(String(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2"),18);
+    const kind=v.returning?"Returning":"New";
+    let seen="Unknown";
+    if(v.lastSeen){try{seen=new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"})}catch{}}
+    const location=dailyReportShort([v.network?.city,v.network?.country].filter(Boolean).join("/"),20);
+    const device=dailyReportShort([v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join("/"),34);
+    const isp=dailyReportShort(v.network?.isp||"Unknown",22);
+    const pages=Object.entries(v.pages||{}).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([path,count])=>dailyReportShort(path,20)+"×"+count).join(",")||"No page data";
+    let source=dailyReportShort(v.source?.utmSource||"",18);
+    if(!source){
+      try{source=v.source?.referrer?dailyReportShort(new URL(v.source.referrer).hostname,18):"Direct"}catch{source="Referral"}
+    }
+    const raw=(String(i+1).padStart(2,"0")+" "+id+" | "+kind+" | "+seen+" | "+location+" | "+device+" | ISP "+isp+" | "+(v.sessions||0)+"S/"+(v.pageViews||0)+"V | "+pages+" | Ref "+source);
+    lines.push(dailyReportEscape(raw.length>178?raw.slice(0,175)+"…":raw));
+  }
+  if(activity.partial)lines.push("⚠️ Visitor scan was partial; counts may exclude records beyond the configured safety cap.");
+  lines.push("ℹ️ Active duration, exact exit time and scroll duration are not measured.");
+  return lines;
+}
+function dailyReportRecommendations(input){
+  const out=[];
+  if(input.failure)out.push("CRITICAL: Website check failed. Verify GitHub Pages availability and the latest deployment.");
+  if(input.missing?.length)out.push("Security headers are missing or not exposed. Configure them at the hosting/CDN layer; test CSP carefully to preserve GA4 and AdSense.");
+  if(input.activity&&input.prior&&(input.activity.unique<input.prior.unique||input.activity.views<input.prior.views))out.push("Traffic is lower than yesterday. Compare the 7-day trend before deciding on a cause.");
+  if(input.activity?.errors>0)out.push("Visitor tracking recorded "+input.activity.errors+" client errors. Inspect the affected pages and browser console reports.");
+  if(!input.ga4)out.push("GA4 data was unavailable. Check the existing service-account permission and Analytics property access.");
+  const metrics=input.resourceSnapshot?.metrics||[];
+  for(const metric of metrics){
+    if(metric.percent>=85)out.push("Resource pressure: "+metric.label+" is at "+metric.percent+"%. Reduce usage before the daily limit is reached.");
+    else if(metric.percent>=70)out.push("Monitor "+metric.label+": usage has reached "+metric.percent+"% of its limit.");
+  }
+  if(input.youtubeBudget?.available&&input.youtubeBudget.percent>=70)out.push("Sports Zone YouTube search budget is at "+input.youtubeBudget.percent+"%. Review search cadence.");
+  if(!out.length)out.push("No urgent action detected. Keep the current monitoring and review the 7-day trend.");
+  return out.slice(0,6).map((item,index)=>(index+1)+". "+dailyReportEscape(item));
+}
+function buildDailyReportMessages(input){
+  const id=input.reportId,site=dailyReportEscape(input.site);
+  const online=!input.failure&&String(input.status||"").startsWith("2");
+  const health= input.failure?"CRITICAL":(input.missing?.length?"NEEDS ATTENTION":"HEALTHY");
+  const activity=input.activity;
+  const summary=[
+    "<b>01/05 · WEBSITE HEALTH & EXECUTIVE SUMMARY</b>",
+    "🆔 Report ID: "+dailyReportEscape(id),
+    "🕒 Generated: "+dailyReportEscape(input.stamp)+" (Bangladesh time)",
+    "🌐 Website: "+site,
+    (online?"🟢":"🔴")+" Status: "+(input.failure?"DOWN / ERROR — "+dailyReportEscape(input.failure):"HTTP "+dailyReportEscape(input.status)+" — ONLINE"),
+    "⚡ Response time: "+(input.responseMs===null?"Unavailable":input.responseMs+" ms"),
+    "👥 Visitors today: "+(activity?activity.unique:"Unavailable")+" · Page views: "+(activity?activity.views:"Unavailable"),
+    "⚠️ Client errors: "+(activity?activity.errors:"Unavailable"),
+    "🔐 Security: "+(input.missing?.length?input.missing.length+" header(s) need review":"No missing checked headers"),
+    "📌 Overall status: <b>"+health+"</b>",
+    "➡️ Detailed analytics: message 02/05 · Security actions: message 05/05"
+  ];
+  const ga4=input.ga4?[
+    "<b>📈 GOOGLE ANALYTICS 4</b>",
+    "👥 Active users: "+dailyReportEscape(input.ga4.users),
+    "🔁 Sessions: "+dailyReportEscape(input.ga4.sessions),
+    "👁️ Page views: "+dailyReportEscape(input.ga4.views),
+    "💬 Engagement rate: "+(Number(input.ga4.engagement)*100).toFixed(2)+"%"
+  ]:[
+    "<b>📈 GOOGLE ANALYTICS 4</b>",
+    "⚠️ Report unavailable: "+dailyReportEscape(input.ga4Error||"Unknown error")
+  ];
+  const analytics=[
+    "<b>02/05 · GA4 & VISITOR ANALYTICS</b>",
+    "🆔 Report ID: "+dailyReportEscape(id),
+    ...ga4,
+    "",
+    "<b>👥 VISITOR INTELLIGENCE</b>",
+    ...dailyReportVisitorAnalyticsLines(activity,input.prior).map(dailyReportEscape)
+  ];
+  const visitors=[
+    "<b>03/05 · INDIVIDUAL VISITOR DETAILS</b>",
+    "🆔 Report ID: "+dailyReportEscape(id),
+    ...dailyReportVisitorDetailsLines(activity).slice(1)
+  ];
+  const resource=[
+    "<b>04/05 · CLOUDFLARE RESOURCE USAGE</b>",
+    "🆔 Report ID: "+dailyReportEscape(id),
+    "📅 Usage day: "+dailyReportEscape(input.resourceSnapshot?.day||"Unavailable")+" UTC",
+    ...(input.resourceSnapshot?.metrics||[]).map(metric=>{
+      const used=metric.unit==="bytes"?(metric.used/1073741824).toFixed(3)+" GiB":Math.round(metric.used).toLocaleString("en-US")+" "+metric.unit;
+      const limit=metric.unit==="bytes"?(metric.limit/1073741824).toFixed(3)+" GiB":Math.round(metric.limit).toLocaleString("en-US")+" "+metric.unit;
+      const icon=metric.percent>=95?"🚨":metric.percent>=70?"⚠️":"✅";
+      return icon+" "+dailyReportEscape(metric.label)+": "+used+" / "+limit+" ("+metric.percent+"%)";
+    }),
+    input.resourceSnapshot?.metrics?.length?"🗂️ KV coverage: all 6 existing namespaces":"⚠️ Resource metrics unavailable",
+    input.youtubeBudget?.available?"🎥 Sports Zone YouTube searches: "+input.youtubeBudget.used+"/"+input.youtubeBudget.limit+" ("+input.youtubeBudget.percent+"%)":"🎥 Sports Zone YouTube usage: unavailable or stale",
+    "ℹ️ Workers requests are account-wide; D1 storage is checked against the per-database limit."
+  ];
+  const security=[
+    "<b>05/05 · SECURITY ISSUES & AI RECOMMENDATIONS</b>",
+    "🆔 Report ID: "+dailyReportEscape(id),
+    "<b>🔐 SECURITY HEADER CHECK</b>",
+    ...(input.missing?.length?input.missing.map(name=>"⚠️ "+dailyReportEscape(name)):["✅ All checked response headers were present."]),
+    "",
+    "<b>🤖 AI RECOMMENDATIONS</b>",
+    ...dailyReportRecommendations(input),
+    "",
+    "ℹ️ Recommendations use deterministic health rules; no external AI API or paid service is called.",
+    "ℹ️ This is a basic uptime/header check, not a complete penetration or security audit."
+  ];
+  return [summary.join("\n"),analytics.join("\n"),visitors.join("\n"),resource.join("\n"),security.join("\n")];
+}
+async function sendTelegramReportBatch(env,chatId,messages,reportId){
+  if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable for report delivery state");
+  const stateKey="daily-report:delivery:v2:"+reportId;
+  let state=null;
+  try{state=await env.BOT_CONFIG_KV.get(stateKey,"json")}catch{}
+  if(state?.status==="complete")return {status:"complete",sent:messages.length,alreadySent:true};
+  let sent=Math.max(0,Math.min(messages.length,Number(state?.sent)||0));
+  for(let i=sent;i<messages.length;i++){
+    const text=botFormatTelegramResponse(messages[i],{parse_mode:"HTML"});
+    if(text.length>3900)throw new Error("Daily report section "+(i+1)+" exceeds the safe Telegram message length.");
+    const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({chat_id:chatId,text,parse_mode:"HTML",disable_web_page_preview:true})
+    });
+    const payload=await response.json().catch(()=>({}));
+    if(!response.ok||!payload.ok)throw new Error("Daily report message "+(i+1)+"/"+messages.length+" failed (HTTP "+response.status+"): "+String(payload.description||"Telegram delivery error").slice(0,120));
+    sent=i+1;
+    await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify({reportId,sent,status:sent===messages.length?"complete":"partial",updatedAt:Date.now()}),{expirationTtl:3*86400});
+  }
+  return {status:"complete",sent,alreadySent:false};
+}
+
 
 
 const UM_PREFIX = "um:v1:";
@@ -1391,7 +1554,11 @@ export default {
     const stamp=now.toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(now);
     const hour=Number(parts.find(p=>p.type==="hour")?.value),minute=Number(parts.find(p=>p.type==="minute")?.value);
-    const daily=hour===23&&minute<30;
+    const daily=hour===23;
+    const reportDay=bdDay(now),reportId=reportDay+"-2300";
+    let existingDailyState=null;
+    if(daily&&cfg.dailyReport&&runChecks&&env.BOT_CONFIG_KV){try{existingDailyState=await env.BOT_CONFIG_KV.get("daily-report:delivery:v2:"+reportId,"json")}catch{}}
+    const shouldSendDailyReport=!!(daily&&cfg.dailyReport&&runChecks&&existingDailyState?.status!=="complete");
     let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null;
     try{
       const res=await fetch(site,{method:"GET",redirect:"follow",signal:AbortSignal.timeout(15000)});
@@ -1405,7 +1572,7 @@ export default {
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
-    if(runChecks&&(cfg.trafficAlerts||(daily&&cfg.dailyReport))){
+    if(runChecks&&(cfg.trafficAlerts||shouldSendDailyReport)){
       try{resourceSnapshot=await cfResourceBudgetCheck(env,cfg.trafficAlerts?sendTelegram:null,now);}
       catch(e){
         console.error("Cloudflare resource budget monitor failed:",String(e&&e.message||e).slice(0,220));
@@ -1423,13 +1590,15 @@ export default {
     }
 
     // Monitor the existing Sports Zone daily YouTube search budget without adding another service.
+    let youtubeBudgetSnapshot=null;
     const checkYouTubeBudget=async()=>{
       if(!env.SPORTS_ZONE||!env.BOT_CONFIG_KV)return;
       const budget=await env.SPORTS_ZONE.get("auto:status","json");
       const used=Number(budget?.searchesToday),limit=Number(budget?.dailySearchLimit);
       if(!Number.isFinite(used)||!Number.isFinite(limit)||limit<=0)return;
       const checkedAt=Date.parse(String(budget.checkedAt||""));
-      if(Number.isFinite(checkedAt)&&Date.now()-checkedAt>2*60*60*1000)return;
+      if(Number.isFinite(checkedAt)&&Date.now()-checkedAt>2*60*60*1000){youtubeBudgetSnapshot=null;return;}
+      youtubeBudgetSnapshot={available:true,used,limit,percent:Math.round(used/limit*100),checkedAt:Number.isFinite(checkedAt)?new Date(checkedAt).toISOString():null};
       const day=now.getUTCFullYear()+String(now.getUTCMonth()+1).padStart(2,"0")+String(now.getUTCDate()).padStart(2,"0");
       const key="resource-alert:youtube:"+day;
       let sent=[];try{const saved=await env.BOT_CONFIG_KV.get(key,"json");if(Array.isArray(saved))sent=saved.filter(Number.isFinite)}catch{}
@@ -1463,41 +1632,29 @@ export default {
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
     if(failure&&(cfg.emergencyProtection||cfg.workflowAlerts))await miniAppCronAlert(env,controller.cron,"warning",failure);
-    if(daily&&cfg.dailyReport&&runChecks){
-      let gaLines,visitorLines,resourceUsageLines;
+    if(shouldSendDailyReport){
+      let ga4Data=null,ga4Error="",activity=null,prior=null;
+      try{ga4Data=await ga4Report();}
+      catch(e){ga4Error=String(e&&e.message||e).slice(0,220);}
       try{
-        const g=await ga4Report();
-        gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"];
-      }catch(e){
-        gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"];
+        activity=await readDailyActivity(env,reportDay);
+        prior=await readDailyActivity(env,previousBdDay(reportDay));
+      }catch(e){console.error("Daily Visitor Intelligence read failed:",String(e&&e.message||e).slice(0,180));}
+      if(!youtubeBudgetSnapshot&&env.SPORTS_ZONE){
+        try{
+          const budget=await env.SPORTS_ZONE.get("auto:status","json");
+          const used=Number(budget?.searchesToday),limit=Number(budget?.dailySearchLimit),checkedAt=Date.parse(String(budget?.checkedAt||""));
+          if(Number.isFinite(used)&&Number.isFinite(limit)&&limit>0&&(!Number.isFinite(checkedAt)||Date.now()-checkedAt<=2*60*60*1000)){
+            youtubeBudgetSnapshot={available:true,used,limit,percent:Math.round(used/limit*100),checkedAt:Number.isFinite(checkedAt)?new Date(checkedAt).toISOString():null};
+          }
+        }catch(e){console.error("Daily Sports Zone budget read failed:",String(e&&e.message||e).slice(0,120));}
       }
-      try{
-        const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d));
-        visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))];
-      }catch(e){
-        visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)];
-      }
-      if(resourceSnapshot&&Array.isArray(resourceSnapshot.metrics)){
-        resourceUsageLines=["☁️ <b>Cloudflare Free-plan resource usage</b>","📅 Usage day: "+resourceSnapshot.day+" UTC",
-          ...resourceSnapshot.metrics.map(m=>{
-            const label=String(m.label||m.key).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-            const used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":Math.round(m.used).toLocaleString("en-US")+" "+m.unit;
-            const limit=m.unit==="bytes"?(m.limit/1073741824).toFixed(3)+" GiB":Math.round(m.limit).toLocaleString("en-US")+" "+m.unit;
-            return "• "+label+": "+used+" / "+limit+" ("+m.percent+"%)";
-          }),
-          "ℹ️ KV usage excludes Sports Zone; Workers requests are account-wide; D1 is Multi-AI memory."
-        ];
-      }else{
-        resourceUsageLines=["⚠️ Cloudflare resource usage unavailable for this report window."];
-      }
-      await sendTelegramText(env,env.TELEGRAM_CHAT_ID,[
-        "📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,
-        failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,
-        responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",
-        missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present",
-        "",...gaLines,"",...visitorLines,"",...resourceUsageLines,"",
-        "ℹ️ Basic uptime/header check, not a full security audit."
-      ].filter(Boolean).join("\n"),{parse_mode:"HTML"});
+      const messages=buildDailyReportMessages({
+        reportId,stamp,site,status,responseMs,failure,missing,
+        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot,youtubeBudget:youtubeBudgetSnapshot
+      });
+      const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId);
+      console.log("Daily Telegram report delivery:",JSON.stringify(delivery));
     }
     const terminalStatus=failure?"warning":"success";
     const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
