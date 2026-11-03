@@ -18,12 +18,13 @@ const videosRequest = sports.indexOf('youtubeApi(env,"videos"');
 assert.ok(cooldownCheck >= 0 && videosRequest > cooldownCheck, "Persisted cooldown must be checked before another YouTube API request");
 
 
-const rateLimit = contact.indexOf("const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000;");
+const rateLimit = contact.indexOf("const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000,TRACK_RATE_LIMIT_MAX=120,TRACK_RATE_LIMIT_WINDOW_MS=60*1000;");
 const submitRoute = contact.indexOf('if(new URL(request.url).pathname!=="/submit")');
-const rateLimitCall = contact.indexOf("contactRateLimit(request)", submitRoute);
+const rateLimitCall = contact.indexOf('ipRateLimit(request,"contact",CONTACT_RATE_LIMIT_MAX,CONTACT_RATE_LIMIT_WINDOW_MS)', submitRoute);
 const formParse = contact.indexOf("request.formData()", submitRoute);
 assert.ok(rateLimit >= 0 && rateLimitCall > submitRoute && formParse > rateLimitCall, "Contact submissions must be rate-limited before parsing large multipart bodies");
-assert.match(contact, /CF-Connecting-IP/, "Contact limiter must use Cloudflare's trusted client IP header");
+assert.match(contact, /CF-Connecting-IP/, "Contact/API limiter must use Cloudflare trusted client IP header");
+assert.match(contact, /ipRateLimit\(request,"track",TRACK_RATE_LIMIT_MAX,TRACK_RATE_LIMIT_WINDOW_MS\)/, "Visitor tracking API must have a per-IP rate limit");
 assert.match(contact, /Retry-After/, "Rate-limited contact requests must include Retry-After");
 assert.match(contact, /Too many contact submissions/, "Contact limiter must return a clear 429 response");
 assert.match(contact, /Sports Zone resource budget/, "Daily Telegram report must include the existing Sports Zone budget");
