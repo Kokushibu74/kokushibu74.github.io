@@ -82,7 +82,9 @@ export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DD
   if(!/(warning|alert|bulletin|সতর্ক|বুলেটিন|ঝুঁকি)/i.test(raw))return {confirmed:false};
   const dates=[...raw.matchAll(/(?:last update|updated|bulletin|সতর্কবার্তা|বন্যা সতর্কবার্তা)[^0-9]{0,60}(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}(?::\d{2})?)?)?/gi)];
   const fresh=dates.some(match=>{
-    const stamp=Date.parse(match[1]+"T"+(match[2]||"12:00")+":00+06:00");
+    const time=match[2]||"12:00";
+    const clock=time.length===5?time+":00":time;
+    const stamp=Date.parse(match[1]+"T"+clock+"+06:00");
     const age=(now-stamp)/3600000;
     return Number.isFinite(stamp)&&age>=-6&&age<=36;
   });
