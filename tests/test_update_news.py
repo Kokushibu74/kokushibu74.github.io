@@ -335,7 +335,7 @@ class NewsLogicTests(unittest.TestCase):
             {"title": "World recent", "category": "World", "publishedAt": (now - timedelta(hours=23)).isoformat()},
             {"title": "Tech archive", "category": "Technology", "publishedAt": (now - timedelta(hours=25)).isoformat()},
             {"title": "BD older archive", "category": "Bangladesh", "publishedAt": (now - timedelta(days=2)).isoformat()},
-            {"title": "Future item", "category": "World", "publishedAt": (now + timedelta(minutes=10)).isoformat(), "image": "https://img.example/future.jpg"},
+            {"title": "Future item", "category": "World", "publishedAt": (now + timedelta(minutes=10)).isoformat()},
         ]
         weather = [
             {"title": "Flood alert", "previewImage": "https://img.example/flood.jpg"},
