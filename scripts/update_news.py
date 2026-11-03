@@ -69,6 +69,7 @@ BREAKING_EVENT_RE = re.compile(
     r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
     r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
     r"গণভোট|গণঅভ্যুত্থান|গণভোটের (?:তারিখ|ফল|সিদ্ধান্ত)|referendum (?:date|result|decision)|"
+    r"পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|কালবৈশাখী|জলোচ্ছ্বাস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|storm surge|landslide|heatwave|heat wave|heavy rain|tornado|tsunami|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
 )
@@ -580,6 +581,21 @@ def is_weather_disaster_story(title, summary="", published=None, now=None):
         current = now or datetime.now(timezone.utc)
         age = current - stamp.astimezone(timezone.utc)
         return timedelta(minutes=-5) <= age <= timedelta(days=7)
+    except (ValueError, TypeError, AttributeError):
+        return False
+
+def is_recent_weather_alert(title, summary="", published=None, now=None):
+    """Allow current severe weather/disaster warnings to stay eligible for up to three hours."""
+    text = (title or "") + " " + (summary or "")
+    if not WEATHER_DISASTER_RE.search(text) or not WEATHER_SEVERITY_RE.search(text) or not published:
+        return False
+    try:
+        stamp = datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        age = current - stamp.astimezone(timezone.utc)
+        return timedelta(minutes=-5) <= age <= timedelta(minutes=180)
     except (ValueError, TypeError, AttributeError):
         return False
 
