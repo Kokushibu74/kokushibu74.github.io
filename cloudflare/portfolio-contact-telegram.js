@@ -1078,7 +1078,9 @@ async function newsRefreshWatchdog(env){
   if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)return {skipped:true};
   const cfg=await botConfig(env);
   if(cfg.newsRefresh!==true)return {skipped:true,reason:"disabled"};
-  const now=Date.now(),cooldownKey="news-watchdog:last-dispatch";
+  const now=Date.now(),cooldownKey="news-watchdog:last-dispatch",dispatchBlockedKey="news-watchdog:dispatch-blocked";
+  const blocked=await env.BOT_CONFIG_KV.get(dispatchBlockedKey,"json").catch(()=>null);
+  if(Number(blocked?.at)>0&&now-Number(blocked.at)<60*60*1000)return {skipped:true,reason:"dispatch-backoff",status:Number(blocked.status)||403};
   const lastDispatch=Number(await env.BOT_CONFIG_KV.get(cooldownKey));
   if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<20*60*1000)return {skipped:true,reason:"cooldown"};
   const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
@@ -1089,16 +1091,26 @@ async function newsRefreshWatchdog(env){
   if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
   if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
   const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
-  if(dispatch.status!==204)throw new Error("GitHub news workflow dispatch failed (HTTP "+dispatch.status+")");
+  if(dispatch.status!==204){
+    const responseText=await dispatch.text().catch(()=> "");
+    let detail=responseText;
+    try{const payload=JSON.parse(responseText);detail=payload.message||(payload.errors||[]).map(x=>x.message||x.code).join("; ")||responseText}catch{}
+    detail=String(detail||"").replace(/[\\r\\n\\t]+/g," ").slice(0,160);
+    if(dispatch.status===403)await env.BOT_CONFIG_KV.put(dispatchBlockedKey,JSON.stringify({status:403,at:now}),{expirationTtl:3600});
+    throw new Error("GitHub news workflow dispatch failed (HTTP "+dispatch.status+")"+(detail?": "+detail:""));
+  }
+  await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
   await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
   return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null};
 }
-async function notifyNewsWatchdogFailure(env){
+async function notifyNewsWatchdogFailure(env,error){
   if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return;
   const key="news-watchdog:last-error";
   if(await env.BOT_CONFIG_KV.get(key))return;
   await env.BOT_CONFIG_KV.put(key,"1",{expirationTtl:6*60*60});
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:"⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow. Please check GitHub Actions permissions and recent workflow runs.",disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const detail=String(error?.message||"").replace(/[\\r\\n\\t]+/g," ").slice(0,220);
+  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\\nGitHub response: "+detail:"")+"\\nCheck the Worker GITHUB_TOKEN permission and repository Actions policy.";
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
@@ -1362,7 +1374,7 @@ export default {
       if(minute%15===0)await botExpireIdleMenu(env);
       if(minute%15===5){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
-        catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env)}catch{}}
+        catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
       }
       return;
     }
