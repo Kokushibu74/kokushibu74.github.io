@@ -1420,7 +1420,9 @@ export default {
         console.error("Historical Cloudflare exception audit failed:",String(e&&e.message||e).slice(0,220));
         try{const key="cloudflare:exception-audit-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Historical exception log query failed</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Exception audit warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
       }
-    } daily YouTube search budget without adding another service.
+    }
+
+    // Monitor the existing Sports Zone daily YouTube search budget without adding another service.
     const checkYouTubeBudget=async()=>{
       if(!env.SPORTS_ZONE||!env.BOT_CONFIG_KV)return;
       const budget=await env.SPORTS_ZONE.get("auto:status","json");
