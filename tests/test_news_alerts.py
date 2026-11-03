@@ -34,7 +34,7 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
         self.assertTrue(news.is_recent_breaking("ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত", published, "Bangladesh breaking news"))
 
-    def test_referendum_decision_can_be_marked_breaking(self):
+    def test_major_accident_without_casualty_count_can_be_marked_breaking(self):\n        published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()\n        self.assertTrue(news.is_recent_breaking("নারায়ণগঞ্জে গুরুতর বাস দুর্ঘটনা", published, "Bangladesh breaking news"))\n\n    def test_murder_can_be_marked_breaking_without_casualty_count(self):\n        published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()\n        self.assertTrue(news.is_recent_breaking("ঢাকায় ব্যবসায়ীকে হত্যা", published, "Bangladesh breaking news"))\n\n    def test_referendum_decision_can_be_marked_breaking(self):
         published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
         self.assertTrue(news.is_recent_breaking("বাংলাদেশে গণভোটের ফলাফল ঘোষণা", published, "Bangladesh breaking news"))
 
