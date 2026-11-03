@@ -354,6 +354,22 @@ def resolve_google_news_url(url):
         print("Google News URL resolution failed:", type(exc).__name__)
         return ""
 
+def resolve_alert_publisher_url(item, budget):
+    """Resolve only fresh breaking candidates, with a strict per-refresh network budget."""
+    link = clean(item.get("link") or "")
+    if not item.get("isBreaking") or not link.startswith("https://"):
+        return ""
+    host = (urlparse(link).hostname or "").lower()
+    if host in ("news.google.com", "www.news.google.com"):
+        if budget.get("remaining", 0) <= 0:
+            return ""
+        budget["remaining"] -= 1
+        resolved = resolve_google_news_url(link)
+        parsed = urlparse(resolved)
+        return resolved if parsed.scheme == "https" and parsed.hostname and not parsed.hostname.endswith("google.com") else ""
+    return link
+
+
 
 def publisher_metadata(url):
     """Fetch a public article's Open Graph metadata with strict time/size limits."""
@@ -760,7 +776,7 @@ def main():
                     "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
                     "summary": summary, "image": image_for(node), "videoUrl": video_for(node),
-                    "publisherUrl": link, "publisherName": source,
+                    "publisherUrl": "", "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "previewImage": image_for(node),
                     "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
@@ -775,6 +791,7 @@ def main():
                     if existing:
                         merge_source_evidence(existing, source)
                     continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
@@ -802,7 +819,8 @@ def main():
                     "publishedAt": published, "category": label,
                     "isBreaking": is_recent_breaking(title, published, query),
                     "summary": clean(node.findtext("description"))[:420],
-                    "image": image_for(node),
+                    "image": image_for(node), "previewImage": image_for(node),
+                    "videoUrl": video_for(node), "publisherUrl": "", "publisherName": source,
                     "sourceEvidence": [],
                 }
                 merge_source_evidence(item, source)
@@ -823,7 +841,7 @@ def main():
 
 
     # Keep a separate, date-checked stream for the desktop weather/disaster cards.
-    weather_collected, weather_seen = [], set()
+    weather_collected, weather_seen = [], set()\n    weather_by_key = {}
     for query, language, country, edition in WEATHER_QUERIES:
         params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
         request = urllib.request.Request("https://news.google.com/rss/search?" + params, headers=HEADERS)
@@ -848,14 +866,21 @@ def main():
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
-                    "isBreaking": is_recent_breaking(title, published, query, source),
+                    "isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published),
                     "sourceEvidence": [],
                 }
                 merge_source_evidence(item, source)
                 key = key_for(item)
-                if not key or key in weather_seen:
+                if not key:
                     continue
+                if key in weather_seen:
+                    existing = weather_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
+                    continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
+                weather_by_key[key] = item
                 weather_collected.append(item)
         except Exception as exc:
             feed_failures.append(f"Weather/disaster ({query}): {type(exc).__name__}")
