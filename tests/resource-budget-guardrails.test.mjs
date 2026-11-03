@@ -34,4 +34,20 @@ assert.match(contact, /Too many contact submissions/, "Contact limiter must retu
 assert.match(contact, /Sports Zone resource budget/, "Daily Telegram report must include the existing Sports Zone budget");
 assert.match(contact, /...budgetLines/, "Daily Telegram report must render resource budget metrics");
 
+
+// Exercise the actual Worker rate-limit helper with a fake Cloudflare request.
+const limiterSource = contact.match(/function ipRateLimit\(request,scope,max,windowMs,now=Date\.now\(\)\)\{[\s\S]*?\n\}/);
+assert.ok(limiterSource, "Production IP rate-limit helper must be extractable for unit testing");
+const ipRateLimit = new Function("CONTACT_RATE_LIMIT", limiterSource[0] + "; return ipRateLimit;")(new Map());
+const fakeRequest = ip => ({ headers: { get: name => name === "CF-Connecting-IP" ? ip : null } });
+const client = fakeRequest("203.0.113.10");
+for (let i = 0; i < 5; i++) assert.equal(ipRateLimit(client, "contact", 5, 600000, 1000 + i).allowed, true);
+const blockedContact = ipRateLimit(client, "contact", 5, 600000, 2000);
+assert.equal(blockedContact.allowed, false, "Sixth contact submission in 10 minutes must be blocked");
+assert.equal(blockedContact.retryAfter, 599, "Blocked contact request must receive an accurate Retry-After window");
+for (let i = 0; i < 120; i++) assert.equal(ipRateLimit(client, "track", 120, 60000, 3000 + i).allowed, true);
+assert.equal(ipRateLimit(client, "track", 120, 60000, 4000).allowed, false, "121st tracking request in one minute must be blocked");
+assert.equal(ipRateLimit(client, "contact", 5, 600000, 601001).allowed, true, "Contact limit must reset after its window expires");
+assert.equal(ipRateLimit(fakeRequest(null), "contact", 5, 600000, 700000).allowed, true, "Missing trusted client IP must not create a shared global bucket");
+
 console.log("Resource budgets, YouTube backoff, contact abuse protection, and daily reporting contracts OK.");
