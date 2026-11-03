@@ -23,7 +23,15 @@ function canonicalSource(value) {
   if(/daily star/.test(lower))return "The Daily Star";
   if(/prothom alo|প্রথম আলো/.test(lower))return "Prothom Alo";
   if(/jago news/.test(lower))return "Jago News 24";
+  if(/bangladesh sangbad sangstha|^bss$/.test(lower))return "BSS";
+  if(/united news of bangladesh|^unb$/.test(lower))return "UNB";
+  if(/business standard|^tbs$/.test(lower))return "The Business Standard";
+  if(/associated press|^ap news$/.test(lower))return "AP";
+  if(/agence france|^afp$/.test(lower))return "AFP";
   return name;
+}
+function isTrustedPublisher(source) {
+  return /(\\bbc\\b|the daily star|prothom alo|jago news|\\bbss\\b|\\bunb\\b|dhaka tribune|bdnews24|business standard|new age|financial express|ittefaq|jugantor|kaler kantho|samakal|daily observer|daily sun|channel 24|jamuna|somoy|ekattor|independent television|bangla tribune|banglanews24|dhaka post|risingbd|ntv|rtv|reuters|associated press|\\bap\\b|\\bafp\\b|al jazeera|\\bdw\\b|cnn|guardian|france 24|new york times|washington post|financial times|npr)/i.test(source);
 }
 function normalizeSources(item) {
   return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
@@ -93,6 +101,8 @@ export function evaluateNewsAlert(item={},options={}) {
   const event=classifyEvent(text);
   if(!event)return fail("not_significant");
   const sources=normalizeSources(item),sourceCount=sources.length;
+  const trustedSources=sources.filter(isTrustedPublisher);
+  if(!trustedSources.length)return {eligible:false,reason:"untrusted_sources",weather:event.weather,category:alertCategory(text),sourceCount,sources,trustedSources};
   const age=(now-published)/60000;
   const maxAge=event.weather&&(official||sourceCount>=2)?180:60;
   if(age < -5 || age > maxAge)return fail("stale");
@@ -106,7 +116,7 @@ export function evaluateNewsAlert(item={},options={}) {
   if(sourceCount<2 && !(official&&event.weather&&sourceCount>=1)) {
     return {eligible:false,reason:"needs_corroboration",weather:event.weather,category:alertCategory(text),sourceCount,sources};
   }
-  return {eligible:true,reason:"verified",weather:event.weather,category:alertCategory(text),sourceCount,sources,publishedAt:published,link};
+  return {eligible:true,reason:"verified",weather:event.weather,category:alertCategory(text),sourceCount,sources,trustedSources,publishedAt:published,link};
 }
 export async function deliverWithMediaFallback(candidates,caption,link,send) {
   for(const media of candidates) {
