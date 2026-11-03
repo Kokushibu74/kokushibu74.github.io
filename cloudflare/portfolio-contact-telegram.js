@@ -855,11 +855,16 @@ async function miniAppRecovery(env){
   const branches=await r.json(),backups=(Array.isArray(branches)?branches:[]).filter(x=>x.name.startsWith("backup/")).map(x=>({name:x.name,sha:x.commit?.sha||null}));
   return {backups,source:"GitHub branches API",note:"Backup references are listed only when GitHub confirms they exist. No rollback is triggered from this read-only view."};
 }
+let miniAppAuditCache={expiresAt:0,rows:[]};
 async function miniAppRecentAudit(env){
   if(!env.BOT_CONFIG_KV)throw new Error("Audit storage is unavailable.");
+  const now=Date.now();
+  if(miniAppAuditCache.expiresAt>now)return miniAppAuditCache.rows;
   const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_AUDIT_PREFIX,limit:100}),rows=[];
   for(const key of page.keys||[]){const item=await env.BOT_CONFIG_KV.get(key.name,"json");if(item)rows.push(item);}
-  return rows.sort((a,b)=>b.at-a.at).slice(0,30).map(x=>({at:x.at,userId:x.userId,action:x.action,detail:x.detail||{}}));
+  const result=rows.sort((a,b)=>b.at-a.at).slice(0,30).map(x=>({at:x.at,userId:x.userId,action:x.action,detail:x.detail||{}}));
+  miniAppAuditCache={expiresAt:now+30_000,rows:result};
+  return result;
 }
 async function miniAppOverview(env,user){
   const started=performance.now();
