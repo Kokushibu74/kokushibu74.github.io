@@ -36,6 +36,12 @@ class NewsAlertEvidenceTests(unittest.TestCase):
             news.key_for({"title": "ঢাকায় বাস দুর্ঘটনায় নিহত", "source": "Prothom Alo"})
         )
 
+    def test_google_news_en_dash_publisher_suffix_deduplicates(self):
+        self.assertEqual(
+            news.key_for({"title": "ঢাকায় বাস দুর্ঘটনায় নিহত – The Daily Star", "source": "The Daily Star"}),
+            news.key_for({"title": "ঢাকায় বাস দুর্ঘটনায় নিহত", "source": "Prothom Alo"})
+        )
+
     def test_recent_breaking_event_remains_supported(self):
         published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
         self.assertTrue(news.is_recent_breaking("ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত", published, "Bangladesh breaking news"))
