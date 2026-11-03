@@ -926,15 +926,15 @@ async function miniAppModule(env,section){
     const cfg=await botConfig(env);
     const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
     const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
-    return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\\n"),source:"BOT_CONFIG_KV"};
+    return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\n"),source:"BOT_CONFIG_KV"};
   }
   if(section==="users"){
     const [telegram,visitors,legacy,blocks,history]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
     const websiteCount=new Set([...visitors.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size,limited=[telegram,visitors,legacy,blocks,history].some(list=>list.truncated);
-    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length,limited},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\\nWebsite profiles: "+websiteCount+"\\nActive block records: "+blocks.length+"\\nHistory records: "+history.length+(limited?"\\n\\n⚠️ Partial snapshot: each category is capped at 2,000 records per request to protect Free KV usage. Search by exact ID for a specific profile.":"")+"\\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
+    return {section,stats:{telegramProfiles:telegram.length,websiteProfiles:websiteCount,blockedRecords:blocks.length,historyRecords:history.length,limited},text:"USER MANAGER SUMMARY\\n\\nTelegram profiles: "+telegram.length+"\nWebsite profiles: "+websiteCount+"\nActive block records: "+blocks.length+"\nHistory records: "+history.length+(limited?"\n\\n⚠️ Partial snapshot: each category is capped at 2,000 records per request to protect Free KV usage. Search by exact ID for a specific profile.":"")+"\n\\nSearch a Telegram ID, Visitor ID or custom ID below to inspect a profile.",source:"VISITOR_KV"};
   }
   if(section==="recovery")return {section,...await miniAppRecovery(env)};
-  if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
+  if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
   
   if(section==="github"){
     const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
@@ -1095,7 +1095,7 @@ async function newsRefreshWatchdog(env){
     const responseText=await dispatch.text().catch(()=> "");
     let detail=responseText;
     try{const payload=JSON.parse(responseText);detail=payload.message||(payload.errors||[]).map(x=>x.message||x.code).join("; ")||responseText}catch{}
-    detail=String(detail||"").replace(/[\\r\\n\\t]+/g," ").slice(0,160);
+    detail=String(detail||"").replace(/[\r\n\t]+/g," ").slice(0,160);
     if(dispatch.status===403)await env.BOT_CONFIG_KV.put(dispatchBlockedKey,JSON.stringify({status:403,at:now}),{expirationTtl:3600});
     throw new Error("GitHub news workflow dispatch failed (HTTP "+dispatch.status+")"+(detail?": "+detail:""));
   }
@@ -1108,8 +1108,8 @@ async function notifyNewsWatchdogFailure(env,error){
   const key="news-watchdog:last-error";
   if(await env.BOT_CONFIG_KV.get(key))return;
   await env.BOT_CONFIG_KV.put(key,"1",{expirationTtl:6*60*60});
-  const detail=String(error?.message||"").replace(/[\\r\\n\\t]+/g," ").slice(0,220);
-  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\\nGitHub response: "+detail:"")+"\\nCheck the Worker GITHUB_TOKEN permission and repository Actions policy.";
+  const detail=String(error?.message||"").replace(/[\r\n\t]+/g," ").slice(0,220);
+  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\nCheck the Worker GITHUB_TOKEN permission and repository Actions policy.";
   const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
