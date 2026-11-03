@@ -886,6 +886,24 @@ async function miniAppOverview(env,user){
   };
 }
 
+const CONTACT_RATE_LIMIT_MAX=5,CONTACT_RATE_LIMIT_WINDOW_MS=10*60*1000,TRACK_RATE_LIMIT_MAX=120,TRACK_RATE_LIMIT_WINDOW_MS=60*1000;
+const CONTACT_RATE_LIMIT=new Map();
+function ipRateLimit(request,scope,max,windowMs,now=Date.now()){
+  const ip=request.headers.get("CF-Connecting-IP");
+  if(!ip)return {allowed:true};
+  const key=scope+":"+ip;
+  let bucket=CONTACT_RATE_LIMIT.get(key);
+  if(!bucket||bucket.resetAt<=now)bucket={count:0,resetAt:now+windowMs};
+  if(bucket.count>=max)return {allowed:false,retryAfter:Math.max(1,Math.ceil((bucket.resetAt-now)/1000))};
+  bucket.count++;
+  CONTACT_RATE_LIMIT.set(key,bucket);
+  if(CONTACT_RATE_LIMIT.size>2048){
+    for(const [key,value] of CONTACT_RATE_LIMIT)if(value.resetAt<=now)CONTACT_RATE_LIMIT.delete(key);
+    if(CONTACT_RATE_LIMIT.size>2048)CONTACT_RATE_LIMIT.delete(CONTACT_RATE_LIMIT.keys().next().value);
+  }
+  return {allowed:true,remaining:max-bucket.count};
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -982,10 +1000,12 @@ export default {
 
     if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
     if(pathname==="/track"){
-      const botCfg=await botConfig(env);
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
       if(!env.VISITOR_KV)return respond({error:"Visitor tracking storage is not configured."},503);
       const len=Number(request.headers.get("Content-Length")||0);if(len>12000)return respond({error:"Payload too large"},413);
+      const rate=ipRateLimit(request,"track",TRACK_RATE_LIMIT_MAX,TRACK_RATE_LIMIT_WINDOW_MS);
+      if(!rate.allowed)return new Response(JSON.stringify({error:"Too many tracking requests. Retry shortly."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
+      const botCfg=await botConfig(env);
       let data;try{data=await request.json()}catch{return respond({error:"Invalid JSON"},400)}
       const id=String(data.visitorId||"");const session=String(data.sessionId||"");
       if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({error:"Invalid visitor/session ID"},400);
@@ -1118,6 +1138,8 @@ export default {
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return respond({error:"Contact service is not configured yet."},503);
     if(!(request.headers.get("Content-Type")||"").toLowerCase().includes("multipart/form-data"))return respond({error:"Invalid form upload."},415);
     const length=Number(request.headers.get("Content-Length")||0);if(Number.isFinite(length)&&length>65*1024*1024)return respond({error:"Combined upload is too large; keep it below 60 MB."},413);
+    const rate=ipRateLimit(request,"contact",CONTACT_RATE_LIMIT_MAX,CONTACT_RATE_LIMIT_WINDOW_MS);
+    if(!rate.allowed)return new Response(JSON.stringify({error:"Too many contact submissions. Please wait before trying again."}),{status:429,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","Retry-After":String(rate.retryAfter)}});
     let form;try{form=await request.formData()}catch{return respond({error:"Invalid form data."},400)}
     const submittedVisitorId=String(form.get("visitorId")||"");
     if(/^VIS-[A-F0-9]{12}$/.test(submittedVisitorId)&&await umBlocked(env,"website",submittedVisitorId))return respond({error:"Website access restricted",blocked:true},403);
@@ -1209,7 +1231,7 @@ export default {
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
     if(failure&&(cfg.emergencyProtection||cfg.workflowAlerts))await miniAppCronAlert(env,controller.cron,"warning",failure);
-    if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    if(daily&&cfg.dailyReport&&runChecks){ let gaLines,budgetLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; } try { const b=env.SPORTS_ZONE?await env.SPORTS_ZONE.get("auto:status","json"):null,used=Number(b?.searchesToday),limit=Number(b?.dailySearchLimit); budgetLines=Number.isFinite(used)&&Number.isFinite(limit)&&limit>0?["🧮 <b>Sports Zone resource budget</b>","YouTube searches: "+used+"/"+limit+" ("+Math.round(used/limit*100)+"%)","Schedule events checked: "+Number(b.scheduleEvents||0)]:["⚠️ Sports Zone budget status unavailable"]; } catch(e) { budgetLines=["⚠️ Sports Zone budget status unavailable"]; } try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...budgetLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
     const terminalStatus=failure?"warning":"success";
     const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
