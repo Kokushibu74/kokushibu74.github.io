@@ -56,7 +56,7 @@ jobs:
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
-            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection',
+            'if(shouldSendDailyReport)', 'cfg.emergencyProtection',
             'pathname==="/workflow-config"', 'newsRefresh:true',
             'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;',
             'async function botStatusText', 'action.startsWith("status:")',
