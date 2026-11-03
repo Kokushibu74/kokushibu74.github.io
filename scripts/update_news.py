@@ -70,7 +70,7 @@ BREAKING_TITLE_RE = re.compile(
 BREAKING_EVENT_RE = re.compile(
     r"(?:নিহত|মারা গেছেন|খুন|হত্যা|murder|homicide|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
     r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
-    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|বড় দুর্ঘটনা|বৃহৎ দুর্ঘটনা|গুরুতর দুর্ঘটনা|ভয়াবহ দুর্ঘটনা|major accident|mass accident|train derailment|launch capsized|building collapse|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
+    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|বড়.{0,12}দুর্ঘটনা|বৃহৎ.{0,12}দুর্ঘটনা|গুরুতর.{0,12}দুর্ঘটনা|ভয়াবহ.{0,12}দুর্ঘটনা|major.{0,20}(?:accident|crash|collision)|mass accident|train derailment|launch capsized|building collapse|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
     r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সশস্ত্র সংঘর্ষ|গুলিবর্ষণ|পুলিশের গুলি|armed clash|police firing|shooting|riot|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
     r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
     r"গণভোট|গণঅভ্যুত্থান|গণভোটের (?:তারিখ|ফল|সিদ্ধান্ত)|referendum (?:date|result|decision)|"
@@ -452,8 +452,17 @@ def key_for(item):
 
 
 def merge_source_evidence(item, source):
-    """Keep unique publisher names for independent corroboration."""
+    """Keep unique publisher groups for independent corroboration."""
     name = clean(source)
+    lower = name.lower()
+    if "bbc" in lower:
+        name = "BBC"
+    elif "daily star" in lower:
+        name = "The Daily Star"
+    elif "prothom alo" in lower or "প্রথম আলো" in name:
+        name = "Prothom Alo"
+    elif "jago news" in lower:
+        name = "Jago News 24"
     ignored = {"", "google news", "original publisher", "unknown source"}
     sources = list(item.get("sourceEvidence") or [])
     if name and name.lower() not in ignored and name.lower() not in {x.lower() for x in sources}:
