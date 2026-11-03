@@ -24,7 +24,7 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         news.merge_source_evidence(item, "Original publisher")
         self.assertEqual(item["corroborationCount"], 0)
 
-    def test_google_news_publisher_suffix_deduplicates(self):
+    def test_same_publisher_aliases_are_not_independent_sources(self):\n        item = {"sourceEvidence": []}\n        news.merge_source_evidence(item, "BBC News বাংলা")\n        news.merge_source_evidence(item, "BBC News World")\n        self.assertEqual(item["corroborationCount"], 1)\n\n    def test_google_news_publisher_suffix_deduplicates(self):
         self.assertEqual(
             news.key_for({"title": "ঢাকায় বাস দুর্ঘটনায় নিহত - The Daily Star", "source": "The Daily Star"}),
             news.key_for({"title": "ঢাকায় বাস দুর্ঘটনায় নিহত", "source": "Prothom Alo"})
