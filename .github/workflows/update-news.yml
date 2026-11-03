@@ -43,6 +43,9 @@ jobs:
       - name: Run Bangladesh alert safeguards
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_news_alerts.py -v
+      - name: Run Telegram alert module tests
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        run: node --test tests/news-alerts.test.mjs
       - name: Run offline news logic tests
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_update_news.py -v

@@ -16,16 +16,21 @@ from urllib.parse import urlparse
 
 OUTPUT = "news-feed.json"
 WEATHER_QUERIES = [
-    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "bn-BD", "BD", "BD:bn"),
-    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm", "en-US", "BD", "BD:en"),
-    ("world weather OR flood OR cyclone OR earthquake OR landslide OR wildfire OR drought", "en-US", "US", "US:en"),
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "bn-BD", "BD", "BD:bn"),
+    ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "en-US", "BD", "BD:en"),
+    ("world weather OR flood OR cyclone OR earthquake OR landslide OR wildfire OR drought OR tsunami OR lightning", "en-US", "US", "US:en"),
     ("natural disaster OR extreme weather OR major storm OR tsunami", "en-US", "US", "US:en"),
 ]
 WEATHER_DISASTER_RE = re.compile(
     r"(?:weather|forecast|flood|flooding|cyclone|hurricane|typhoon|storm|"
     r"heavy rain|rainfall|heatwave|heat wave|earthquake|landslide|wildfire|"
-    r"drought|tsunami|tornado|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
-    r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস)", re.I
+    r"drought|tsunami|tornado|wildfire|lightning|volcanic eruption|natural disaster|monsoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়|"
+    r"বন্যা|ভূমিকম্প|আবহাওয়া|আবহাওয়া|দুর্যোগ|বৃষ্টি|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|বজ্রপাত|দাবানল|খরা)", re.I
+)
+WEATHER_SEVERITY_RE = re.compile(
+    r"(?:সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|"
+    r"নিহত|মৃত্যু|আহত|মাত্রা|ক্ষয়ক্ষতি|ক্ষয়ক্ষতি|ধ্বংস|উচ্ছেদ|major|severe|extreme|warning|alert|evacuat|destroy|"
+    r"landfall|danger level|signal|magnitude|fatal|killed|deadly|disrupts flights)", re.I
 )
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
 QUERIES = [
@@ -63,18 +68,22 @@ BREAKING_TITLE_RE = re.compile(
     r"সর্বশেষ মুহূর্তে|এইমাত্র|জরুরি আপডেট)", re.I
 )
 BREAKING_EVENT_RE = re.compile(
-    r"(?:নিহত|মারা গেছেন|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
+    r"(?:নিহত|মারা গেছেন|খুন|হত্যা|murder|homicide|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
     r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
-    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
-    r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
+    r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|বড়.{0,12}দুর্ঘটনা|বৃহৎ.{0,12}দুর্ঘটনা|গুরুতর.{0,12}দুর্ঘটনা|ভয়াবহ.{0,12}দুর্ঘটনা|major.{0,20}(?:accident|crash|collision)|mass accident|train derailment|launch capsized|building collapse|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
+    r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সশস্ত্র সংঘর্ষ|গুলিবর্ষণ|পুলিশের গুলি|armed clash|police firing|shooting|riot|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
     r"জরুরি অবস্থা|ক্ষমতাচ্যুত|পদত্যাগ করেছেন|পদত্যাগের ঘোষণা|নির্বাচন স্থগিত|সরকার ভেঙে|"
+    r"গণভোট|গণঅভ্যুত্থান|গণভোটের (?:তারিখ|ফল|সিদ্ধান্ত)|referendum (?:date|result|decision)|"
+    r"পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|কালবৈশাখী|জলোচ্ছ্বাস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|storm surge|landslide|heatwave|heat wave|heavy rain|tornado|tsunami|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
-    r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
+    r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war|armed conflict|airstrike|invasion|ceasefire|embassy evacuation|Bangladeshi nationals|Bangladesh embassy|terror attack|bombing|hostage|attack on|evacuated)", re.I
 )
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
-    r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
-    r"investigation into)", re.I
+    r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|গ্রেপ্তার|গ্রেফতার|আটক|মামলার শুনানি|আদালতে হাজির|remanded|arrested|arrest in|trial|hearing|convicted|sentenced|case update|charges? filed|case filed|court orders|"
+    r"investigation into|anniversary|years? ago|what happened|timeline|retrospective|"
+    r"বার্ষিকী|বছর আগে|বছর পরে|দশক পরে|পেছন ফিরে|স্মরণে|স্মৃতিচারণ|পুরোনো ঘটনা|পূর্বের ঘটনা|"
+    r"years? later|decades? later|from the archives|historical footage|old case|past incident)", re.I
 )
 BREAKING_HISTORY_DAYS = 30
 FEED_RETENTION_DAYS = 90
@@ -345,6 +354,22 @@ def resolve_google_news_url(url):
         print("Google News URL resolution failed:", type(exc).__name__)
         return ""
 
+def resolve_alert_publisher_url(item, budget):
+    """Resolve only fresh breaking candidates, with a strict per-refresh network budget."""
+    link = clean(item.get("link") or "")
+    if not item.get("isBreaking") or not link.startswith("https://"):
+        return ""
+    host = (urlparse(link).hostname or "").lower()
+    if host in ("news.google.com", "www.news.google.com"):
+        if budget.get("remaining", 0) <= 0:
+            return ""
+        budget["remaining"] -= 1
+        resolved = resolve_google_news_url(link)
+        parsed = urlparse(resolved)
+        return resolved if parsed.scheme == "https" and parsed.hostname and not parsed.hostname.endswith("google.com") else ""
+    return link
+
+
 
 def publisher_metadata(url):
     """Fetch a public article's Open Graph metadata with strict time/size limits."""
@@ -434,9 +459,47 @@ def classify_direct_item(title, link, source=""):
 
 
 def key_for(item):
-    """Deduplicate identical headlines across publishers, not just within one source."""
-    title = re.sub(r"[^\w]+", " ", str(item.get("title") or "").lower()).strip()
-    return title
+    """Deduplicate identical headlines across publishers, including RSS publisher suffixes."""
+    title = str(item.get("title") or "").strip()
+    source = str(item.get("source") or "").strip()
+    if source:
+        for separator in (" - ", " – ", " — ", " | "):
+            suffix = separator + source
+            if title.lower().endswith(suffix.lower()):
+                title = title[:-len(suffix)]
+                break
+    return re.sub(r"[^\w]+", " ", title.lower()).strip()
+
+
+def merge_source_evidence(item, source):
+    """Keep unique publisher groups for independent corroboration."""
+    name = clean(source)
+    lower = name.lower()
+    if "bbc" in lower:
+        name = "BBC"
+    elif "daily star" in lower:
+        name = "The Daily Star"
+    elif "prothom alo" in lower or "প্রথম আলো" in name:
+        name = "Prothom Alo"
+    elif "jago news" in lower:
+        name = "Jago News 24"
+    elif "bangladesh sangbad sangstha" in lower or lower == "bss":
+        name = "BSS"
+    elif "united news of bangladesh" in lower or lower == "unb":
+        name = "UNB"
+    elif "business standard" in lower or lower == "tbs":
+        name = "The Business Standard"
+    elif "associated press" in lower or lower == "ap news":
+        name = "AP"
+    elif "agence france" in lower or lower == "afp":
+        name = "AFP"
+    ignored = {"", "google news", "original publisher", "unknown source"}
+    sources = list(item.get("sourceEvidence") or [])
+    if name and name.lower() not in ignored and name.lower() not in {x.lower() for x in sources}:
+        sources.append(name[:120])
+    item["sourceEvidence"] = sources[:12]
+    item["corroborationCount"] = len(item["sourceEvidence"])
+    return item
 
 def read_previous_weather():
     """Load cached weather cards so preview metadata can be reused across RSS refreshes."""
@@ -565,6 +628,21 @@ def is_weather_disaster_story(title, summary="", published=None, now=None):
     except (ValueError, TypeError, AttributeError):
         return False
 
+def is_recent_weather_alert(title, summary="", published=None, now=None):
+    """Allow current severe weather/disaster warnings to stay eligible for up to three hours."""
+    text = (title or "") + " " + (summary or "")
+    if not WEATHER_DISASTER_RE.search(text) or not WEATHER_SEVERITY_RE.search(text) or not published:
+        return False
+    try:
+        stamp = datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        current = now or datetime.now(timezone.utc)
+        age = current - stamp.astimezone(timezone.utc)
+        return timedelta(minutes=-5) <= age <= timedelta(minutes=180)
+    except (ValueError, TypeError, AttributeError):
+        return False
+
 
 def calculate_feed_changes(current_items, previous_items, previous_raw_items, baseline_available):
     """Compare headline identities and content without counting updates as additions."""
@@ -681,6 +759,9 @@ def main():
     previous_weather = read_previous_weather()
     breaking_history = read_breaking_history()
     collected, seen = [], set()
+    collected_by_key = {}
+    breaking_url_budget = {"remaining": 3}
+    weather_url_budget = {"remaining": 3}
     successful_feeds = 0
     feed_failures = []
 
@@ -706,16 +787,24 @@ def main():
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
-                    "summary": summary, "image": image_for(node),
+                    "summary": summary, "image": image_for(node), "videoUrl": video_for(node),
                     "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "previewImage": image_for(node),
                     "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
-                if not key or key in seen:
+                if not key:
+                    continue
+                if key in seen:
+                    existing = collected_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
                     continue
                 seen.add(key)
+                collected_by_key[key] = item
                 collected.append(item)
         except Exception as exc:
             feed_failures.append(f"{source}: {type(exc).__name__}")
@@ -741,12 +830,22 @@ def main():
                     "publishedAt": published, "category": label,
                     "isBreaking": is_recent_breaking(title, published, query),
                     "summary": clean(node.findtext("description"))[:420],
-                    "image": image_for(node),
+                    "image": image_for(node), "previewImage": image_for(node),
+                    "videoUrl": video_for(node), "publisherUrl": "", "publisherName": source,
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
-                if key in seen:
+                if not key:
                     continue
+                if key in seen:
+                    existing = collected_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
+                    continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
+                collected_by_key[key] = item
                 collected.append(item)
         except Exception as exc:
             feed_failures.append(f"Google News {label} ({query}): {type(exc).__name__}")
@@ -755,6 +854,7 @@ def main():
 
     # Keep a separate, date-checked stream for the desktop weather/disaster cards.
     weather_collected, weather_seen = [], set()
+    weather_by_key = {}
     for query, language, country, edition in WEATHER_QUERIES:
         params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
         request = urllib.request.Request("https://news.google.com/rss/search?" + params, headers=HEADERS)
@@ -774,16 +874,26 @@ def main():
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "summary": summary,
-                    "publisherUrl": link, "publisherName": source,
+                    "publisherUrl": "", "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
+                    "isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published),
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
-                if not key or key in weather_seen:
+                if not key:
                     continue
+                if key in weather_seen:
+                    existing = weather_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
+                    continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
+                weather_by_key[key] = item
                 weather_collected.append(item)
         except Exception as exc:
             feed_failures.append(f"Weather/disaster ({query}): {type(exc).__name__}")

@@ -1,3 +1,4 @@
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate } from "./news-alerts.mjs";
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -1278,13 +1279,113 @@ async function notifyNewsWatchdogFailure(env,error){
 
 
 const NEWS_ALERT_TTL=14*86400;
-const NEWS_ALERT_TERMS=/(নিহত|মৃত্যু|মারা গেছেন|খুন|হত্যা|মার্ডার|সংঘর্ষ|গুলিতে|বিক্ষোভ|গণঅভ্যুত্থান|গণভোট|নির্বাচন স্থগিত|জরুরি অবস্থা|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|অতিবৃষ্টি|তাপপ্রবাহ|killed|murder|clash|riot|uprising|referendum|cyclone|flood|earthquake|landslide|storm|disaster)/i;
-const NEWS_BD_TERMS=/(বাংলাদেশ|ঢাকা|চট্টগ্রাম|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|bangladesh|dhaka|chattogram|sylhet|khulna|rajshahi|barishal|rangpur)/i;
-async function newsAlertKey(value){const data=new TextEncoder().encode(value);const digest=await crypto.subtle.digest("SHA-256",data);return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);}
-function newsAlertCategory(t){if(/ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|cyclone|flood|earthquake|landslide|storm|disaster|weather|আবহাওয়া|আবহাওয়া/i.test(t))return "Weather / Disaster";if(/গণভোট|referendum/i.test(t))return "গণভোট";if(/গণঅভ্যুত্থান|uprising|riot|বিক্ষোভ|protest/i.test(t))return "গণঅভ্যুত্থান / সংঘাত";if(/খুন|হত্যা|murder/i.test(t))return "হত্যা / গুরুতর সহিংসতা";if(/নিহত|মৃত্যু|মারা গেছেন|killed|death|দুর্ঘটনা|crash/i.test(t))return "মৃত্যু / বড় দুর্ঘটনা";return "গুরুতর ব্রেকিং নিউজ";}
-async function sendNewsAlertMedia(env,item,caption){const chatId=env.TELEGRAM_CHAT_ID,token=env.TELEGRAM_BOT_TOKEN,url=String(item.video||""),method=url?"sendVideo":(item.previewImage||item.image?"sendPhoto":"sendMessage");const body=url?{chat_id:chatId,video:url,caption,parse_mode:"HTML"}:(method==="sendPhoto"?{chat_id:chatId,photo:item.previewImage||item.image,caption,parse_mode:"HTML"}:{chat_id:chatId,text:caption,parse_mode:"HTML",disable_web_page_preview:false});const r=await fetch("https://api.telegram.org/bot"+token+"/"+method,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),signal:AbortSignal.timeout(15000)});const d=await r.json().catch(()=>({}));if(!r.ok||!d.ok)throw new Error("news alert Telegram delivery failed HTTP "+r.status);}
-async function newsBreakingAlertCheck(env){if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};const cfg=await botConfig(env);if(cfg.newsRefresh===false||cfg.newsAlerts===false)return {skipped:"disabled"};let feed;try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{signal:AbortSignal.timeout(10000)});if(!r.ok)return {skipped:"feed http "+r.status};feed=await r.json();}catch{return {skipped:"feed unavailable"}}const arr=Array.isArray(feed)?feed:(feed&&typeof feed==="object"?Object.values(feed).find(Array.isArray)||[]:[]),now=Date.now(),sent=[];for(const item of arr.slice(0,80)){const title=String(item.title||""),published=Date.parse(item.publishedAt||item.pubDate||""),age=Number.isFinite(published)?(now-published)/60000:9999,text=title+" "+String(item.summary||"")+" "+String(item.category||"");if(!(item.isBreaking&&NEWS_ALERT_TERMS.test(text)&&NEWS_BD_TERMS.test(text)&&age>=-5&&age<=60))continue;const key=await newsAlertKey(String(item.publisherUrl||item.link||"")+"|"+title.trim().toLowerCase()),stateKey="news-alert:v1:"+key;if(await env.BOT_CONFIG_KV.get(stateKey))continue;const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা",link=String(item.publisherUrl||item.link||"");const caption=["🚨 <b>BANGLADESH BREAKING & DISASTER ALERT</b>","🏷️ "+newsAlertCategory(text),"📍 Dhaka / Bangladesh","🕒 "+when+" (BDT)","",title.slice(0,500),String(item.summary||"").slice(0,700),"","🔗 <a href=\""+link.replace(/&/g,"&amp;").replace(/"/g,"&quot;")+"\">মূল খবর / Original news</a>","📰 "+String(item.source||item.publisherName||"Unknown source")].filter(Boolean).join("\n");await sendNewsAlertMedia(env,item,caption);await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify({sentAt:now,title,link}),{expirationTtl:NEWS_ALERT_TTL});sent.push(title);}return {sent:sent.length};}
+const OFFICIAL_DISASTER_PAGES=[
+  {name:"Department of Disaster Management (DDM)",url:"https://rapid.ddm.gov.bd/home/weather/"},
+  {name:"Bangladesh Meteorological Department (BMD)",url:"https://www.bmd.gov.bd/web/en/warning"},
+  {name:"Flood Forecasting & Warning Centre (FFWC)",url:"https://ffwc.gov.bd/"}
+];
+async function loadOfficialDisasterPages(){
+  return Promise.all(OFFICIAL_DISASTER_PAGES.map(async source=>{
+    try{
+      const response=await fetch(source.url,{headers:{"Accept":"text/html,application/xhtml+xml"},signal:AbortSignal.timeout(8000)});
+      if(!response.ok)return null;
+      return {...source,html:await response.text()};
+    }catch{return null;}
+  }));
+}
+function officialDisasterConfirmation(item,now,pages){
+  for(const source of pages||[]){
+    if(!source)continue;
+    const evidence=parseOfficialDisasterSignal(source.html,item,now,source.name,source.url);
+    if(evidence.confirmed)return evidence;
+  }
+  return {confirmed:false};
+}
+async function sendNewsAlertMedia(env,item,caption,link){
+  const token=env.TELEGRAM_BOT_TOKEN,chatId=env.TELEGRAM_CHAT_ID;
+  const candidates=mediaCandidates(item);
+  const send=async(method,body)=>{
+    try{
+      const response=await fetch("https://api.telegram.org/bot"+token+"/"+method,{
+        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...body}),
+        signal:AbortSignal.timeout(15000)
+      });
+      const result=await response.json().catch(()=>({}));
+      return response.ok&&result.ok===true;
+    }catch{return false;}
+  };
+  const result=await deliverWithMediaFallback(candidates,caption,link,send);
+  if(result!=="text"&&link.length>220){
+    if(!await send("sendMessage",{text:"🔗 "+escapeHtml(link),disable_web_page_preview:false}))
+      throw new Error("Telegram original article link delivery failed");
+  }
+  return result;
+}
 
+async function newsBreakingAlertCheck(env){
+  if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};
+  const cfg=await botConfig(env);
+  if(cfg.newsAlerts===false)return {skipped:"disabled"};
+  let feed;
+  try{
+    const response=await fetch("https://kokushibu74.github.io/news-feed.json",{signal:AbortSignal.timeout(10000)});
+    if(!response.ok)return {skipped:"feed http "+response.status};
+    feed=await response.json();
+  }catch{return {skipped:"feed unavailable"}}
+  const items=Array.isArray(feed)?feed:[...(Array.isArray(feed?.items)?feed.items:[]),...(Array.isArray(feed?.weatherItems)?feed.weatherItems:[])];
+  const now=Date.now(),sent=[];
+  let officialPagesPromise=null;
+  for(const item of items.slice(0,160)){
+    let official={confirmed:false};
+    const publishedAt=Date.parse(item.publishedAt||item.pubDate||"");
+    const publishedAge=(now-publishedAt)/60000;
+    if(isWeatherCandidate(item)&&Number.isFinite(publishedAt)&&publishedAge>=-5&&publishedAge<=180){
+      if(!officialPagesPromise)officialPagesPromise=loadOfficialDisasterPages();
+      const pages=await officialPagesPromise;
+      official=officialDisasterConfirmation(item,now,pages);
+    }
+    let decision=evaluateNewsAlert(item,{now,officialSignal:official.confirmed});
+    if(official.confirmed&&decision.eligible)decision.official=official;
+    if(!decision.eligible)continue;
+    const link=String(item.publisherUrl||item.link||"");
+    const key=await newsAlertKey(String(item.title||""),String(item.source||item.publisherName||""));
+    const stateKey="news-alert:v2:"+key;
+    if(await env.BOT_CONFIG_KV.get(stateKey))continue;
+    const lockKey="news-alert-lock:v1:"+key;
+    if(await env.BOT_CONFIG_KV.get(lockKey))continue;
+    await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
+    try{
+      const published=Date.parse(item.publishedAt||item.pubDate||"");
+      const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা";
+      const title=escapeHtml(String(item.title||"").slice(0,160));
+      const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,120));
+      const source=escapeHtml(String((decision.trustedSources||decision.sources||[]).join(", ")||item.source||item.publisherName||"Verified publisher").slice(0,60));
+      const officialLine=decision.official&&decision.official.confirmed
+        ?"\n🏛️ Official confirmation: "+escapeHtml(String(decision.official.name).slice(0,60))+"\n🔎 "+escapeHtml(String(decision.official.url).slice(0,100))
+        :"";
+      const linkLine=link.length<=220?"🔗 <a href=\""+escapeHtml(link)+"\">মূল খবর / Original article</a>":"🔗 Original article link sent separately";
+      const caption=[
+        "🚨 <b>BANGLADESH BREAKING & DISASTER ALERT</b>",
+        "🏷️ "+escapeHtml(decision.category),
+        "📍 Dhaka / Bangladesh",
+        "🕒 "+when+" (BDT)",
+        "",
+        title,summary,"",
+        linkLine,
+        "📰 "+source,
+        "✔️ Corroborated by "+decision.sourceCount+" independent source(s)"+officialLine
+      ].filter(Boolean).join("\n");
+      const media=await sendNewsAlertMedia(env,item,caption,link);
+      const history={sentAt:now,title:String(item.title||""),link,category:decision.category,sourceEvidence:decision.sources,media,officialSource:decision.official&&decision.official.url||null};
+      await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+      await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+      sent.push(String(item.title||""));
+    }finally{
+      await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
+    }
+  }
+  return {sent:sent.length};
+}
 
 export default {
   async fetch(request, env) {
