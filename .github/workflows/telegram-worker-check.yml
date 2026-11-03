@@ -8,6 +8,7 @@ on:
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
+      - 'tests/resource-budget-guardrails.test.mjs'
   push:
     branches: [feature/kokushibu-telegram-miniapp]
     paths:
@@ -31,6 +32,8 @@ jobs:
         run: node --check cloudflare/portfolio-contact-telegram.js
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
+      - name: Verify Free-plan resource budget guardrails
+        run: node tests/resource-budget-guardrails.test.mjs
       - name: Verify existing Bot entry points and safety contracts
         run: |
           node --input-type=commonjs <<'NODE'
