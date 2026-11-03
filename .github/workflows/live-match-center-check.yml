@@ -9,7 +9,7 @@ on:
       - 'tests/**'
       - '.github/workflows/live-match-center-check.yml'
   push:
-    branches: [feature/unified-sports-api]
+    branches: [main, feature/unified-sports-api]
     paths:
       - 'sports-zone.html'
       - 'worker/unified-sports-api/**'
