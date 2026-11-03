@@ -250,6 +250,7 @@ function dailyReportVisitorDetailsLines(activity){
 function dailyReportRecommendations(input){
   const out=[];
   if(input.failure)out.push("CRITICAL: Website check failed. Verify GitHub Pages availability and the latest deployment.");
+  if(!input.headersChecked&&input.failure)out.push("Security headers could not be inspected while the site request was failing; rerun the check after recovery.");
   if(input.missing?.length)out.push("Security headers are missing or not exposed. Configure them at the hosting/CDN layer; test CSP carefully to preserve GA4 and AdSense.");
   if(input.activity&&input.prior&&(input.activity.unique<input.prior.unique||input.activity.views<input.prior.views))out.push("Traffic is lower than yesterday. Compare the 7-day trend before deciding on a cause.");
   if(input.activity?.errors>0)out.push("Visitor tracking recorded "+input.activity.errors+" client errors. Inspect the affected pages and browser console reports.");
@@ -265,7 +266,7 @@ function dailyReportRecommendations(input){
 function buildDailyReportMessages(input){
   const id=input.reportId,site=dailyReportEscape(input.site);
   const online=!input.failure&&String(input.status||"").startsWith("2");
-  const health= input.failure?"CRITICAL":(input.missing?.length?"NEEDS ATTENTION":"HEALTHY");
+  const health= input.failure?"CRITICAL":(input.missing?.length||!input.headersChecked?"NEEDS ATTENTION":"HEALTHY");
   const activity=input.activity;
   const summary=[
     "<b>01/05 · WEBSITE HEALTH & EXECUTIVE SUMMARY</b>",
@@ -276,7 +277,7 @@ function buildDailyReportMessages(input){
     "⚡ Response time: "+(input.responseMs===null?"Unavailable":input.responseMs+" ms"),
     "👥 Visitors today: "+(activity?activity.unique:"Unavailable")+" · Page views: "+(activity?activity.views:"Unavailable"),
     "⚠️ Client errors: "+(activity?activity.errors:"Unavailable"),
-    "🔐 Security: "+(input.missing?.length?input.missing.length+" header(s) need review":"No missing checked headers"),
+    "🔐 Security: "+(!input.headersChecked?"Header check unavailable":(input.missing?.length?input.missing.length+" header(s) need review":"No missing checked headers")),
     "📌 Overall status: <b>"+health+"</b>",
     "➡️ Detailed analytics: message 02/05 · Security actions: message 05/05"
   ];
@@ -320,7 +321,7 @@ function buildDailyReportMessages(input){
     "<b>05/05 · SECURITY ISSUES & AI RECOMMENDATIONS</b>",
     "🆔 Report ID: "+dailyReportEscape(id),
     "<b>🔐 SECURITY HEADER CHECK</b>",
-    ...(input.missing?.length?input.missing.map(name=>"⚠️ "+dailyReportEscape(name)):["✅ All checked response headers were present."]),
+    ...(!input.headersChecked?["⚠️ Header inspection unavailable because the site request failed."]:(input.missing?.length?input.missing.map(name=>"⚠️ "+dailyReportEscape(name)):["✅ All checked response headers were present."])),
     "",
     "<b>🤖 AI RECOMMENDATIONS</b>",
     ...dailyReportRecommendations(input),
@@ -1557,12 +1558,12 @@ export default {
     let existingDailyState=null;
     if(daily&&cfg.dailyReport&&runChecks&&env.BOT_CONFIG_KV){try{existingDailyState=await env.BOT_CONFIG_KV.get("daily-report:delivery:v2:"+reportId,"json")}catch{}}
     const shouldSendDailyReport=!!(daily&&cfg.dailyReport&&runChecks&&existingDailyState?.status!=="complete");
-    let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null;
+    let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null,headersChecked=false;
     try{
       const res=await fetch(site,{method:"GET",redirect:"follow",signal:AbortSignal.timeout(15000)});
       status=res.status;responseMs=Math.round(performance.now()-started);
       const h=res.headers,checks=[["Content-Security-Policy",h.get("content-security-policy")],["Strict-Transport-Security",h.get("strict-transport-security")],["X-Content-Type-Options",h.get("x-content-type-options")],["X-Frame-Options",h.get("x-frame-options")],["Referrer-Policy",h.get("referrer-policy")]];
-      missing=checks.filter(x=>!x[1]).map(x=>x[0]);if(!res.ok)failure="Website returned HTTP "+res.status;
+      missing=checks.filter(x=>!x[1]).map(x=>x[0]);headersChecked=true;if(!res.ok)failure="Website returned HTTP "+res.status;
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
@@ -1637,7 +1638,7 @@ export default {
         prior=await readDailyActivity(env,previousBdDay(reportDay));
       }catch(e){console.error("Daily Visitor Intelligence read failed:",String(e&&e.message||e).slice(0,180));}
       const messages=buildDailyReportMessages({
-        reportId,stamp,site,status,responseMs,failure,missing,
+        reportId,stamp,site,status,responseMs,failure,missing,headersChecked,
         activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot
       });
       const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId);
