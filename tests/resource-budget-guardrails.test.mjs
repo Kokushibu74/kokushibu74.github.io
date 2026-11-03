@@ -56,6 +56,7 @@ assert.match(contact, /actions\/workflows\/update-news\.yml\/runs\?branch=main&p
 assert.match(contact, /actions\/workflows\/update-news\.yml\/dispatches/, "News watchdog must use the existing workflow_dispatch fallback");
 assert.match(contact, /news-watchdog:last-dispatch/, "News watchdog must deduplicate dispatches in existing KV");
 assert.match(contact, /now-lastDispatch<20\*60\*1000/, "News watchdog must avoid dispatching while a recent run exists");
+assert.match(contact, /minute%15===5/, "News watchdog must run five minutes after each scheduled boundary to avoid duplicate dispatch races");
 assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the news watchdog on its 15-minute maintenance tick");
 assert.match(contact, /notifyNewsWatchdogFailure\(env\)/, "News watchdog failures must send a deduplicated Telegram warning");
 
