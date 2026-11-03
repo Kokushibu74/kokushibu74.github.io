@@ -62,7 +62,10 @@ assert.match(contact, /news-watchdog:last-dispatch/, "News watchdog must dedupli
 assert.match(contact, /now-lastDispatch<20\*60\*1000/, "News watchdog must avoid dispatching while a recent run exists");
 assert.match(contact, /minute%15===5/, "News watchdog must run five minutes after each scheduled boundary to avoid duplicate dispatch races");
 assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the news watchdog on its 15-minute maintenance tick");
-assert.match(contact, /notifyNewsWatchdogFailure\(env\)/, "News watchdog failures must send a deduplicated Telegram warning");
+assert.match(contact, /notifyNewsWatchdogFailure\(env,error\)/, "News watchdog failures must send a deduplicated Telegram warning with safe error details");
+assert.ok(contact.includes("news-watchdog:dispatch-blocked"), "Repeated GitHub 403 dispatch failures must use a bounded backoff");
+assert.ok(contact.includes("await dispatch.text()"), "GitHub dispatch failures must capture the API explanation");
+assert.ok(contact.includes("notifyNewsWatchdogFailure(env,e)"), "Telegram watchdog warning must include the safe GitHub error detail");
 assert.match(contact, /let miniAppAuditCache=\{expiresAt:0,rows:\[\]\}/, "Audit list cache must be isolate-local and start empty");
 assert.match(contact, /miniAppAuditCache\.expiresAt>now/, "Recent audit reads must reuse the short-lived in-memory cache");
 assert.match(contact, /expiresAt:now\+30_000/, "Audit cache must expire within 30 seconds to keep admin logs fresh");

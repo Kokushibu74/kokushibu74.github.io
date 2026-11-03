@@ -129,6 +129,8 @@ export default {
     const data=await resp.json(), text=data?.choices?.[0]?.message?.content;
     if(!text) throw new Error(name+' returned no message'); return json({text:String(text),provider:name});
    }catch(e){errors.push(e.message)}}
+   const safeErrors=errors.map(error=>String(error).replace(/Bearer\s+[A-Za-z0-9._-]+/gi,'Bearer [redacted]').replace(/[\r\n\t]+/g,' ').slice(0,100));
+   console.error('Multi-AI provider fallback exhausted:',safeErrors.join(' | '));
    return json({error:'AI provider is temporarily unavailable. Please try again.'},502);
   }
 

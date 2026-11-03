@@ -9,6 +9,7 @@ assert.match(source, /memoryLimitPerClient:100/, "Health endpoint must expose th
 assert.match(source, /max-age=3600/, "Public knowledge endpoint must be cacheable for one hour");
 assert.match(source, /max-age=300, stale-while-revalidate=60/, "Public search endpoint must be cacheable for five minutes");
 assert.match(source, /AbortSignal\.timeout\(12000\)/, "External chat provider requests must have a bounded timeout");
+assert.ok(source.includes("Multi-AI provider fallback exhausted:"), "Provider failures must be visible in sanitized Worker logs");
 assert.match(source, /rateLimit\(ip,bucket,max\)/, "Existing per-IP rate limiting must remain enabled");
 assert.match(source, /steps:4/, "Image generation must retain its low-step FLUX setting");
 
