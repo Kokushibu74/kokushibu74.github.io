@@ -728,11 +728,19 @@ def main():
                     "previewTitle": title, "previewSummary": summary,
                     "previewImage": image_for(node),
                     "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
-                if not key or key in seen:
+                if not key:
+                    continue
+                if key in seen:
+                    existing = collected_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
                     continue
                 seen.add(key)
+                collected_by_key[key] = item
                 collected.append(item)
         except Exception as exc:
             feed_failures.append(f"{source}: {type(exc).__name__}")
@@ -759,11 +767,19 @@ def main():
                     "isBreaking": is_recent_breaking(title, published, query),
                     "summary": clean(node.findtext("description"))[:420],
                     "image": image_for(node),
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
+                if not key:
+                    continue
                 if key in seen:
+                    existing = collected_by_key.get(key)
+                    if existing:
+                        merge_source_evidence(existing, source)
                     continue
                 seen.add(key)
+                collected_by_key[key] = item
                 collected.append(item)
         except Exception as exc:
             feed_failures.append(f"Google News {label} ({query}): {type(exc).__name__}")
@@ -796,7 +812,10 @@ def main():
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
+                    "isBreaking": is_recent_breaking(title, published, query, source),
+                    "sourceEvidence": [],
                 }
+                merge_source_evidence(item, source)
                 key = key_for(item)
                 if not key or key in weather_seen:
                     continue
