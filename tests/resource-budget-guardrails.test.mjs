@@ -71,6 +71,7 @@ assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the
 assert.match(contact, /notifyNewsWatchdogFailure\(env,error\)/, "News watchdog failures must send a deduplicated Telegram warning with safe error details");
 assert.ok(contact.includes("news-watchdog:dispatch-blocked"), "Repeated GitHub 403 dispatch failures must use a bounded backoff");
 assert.ok(contact.includes("await dispatch.text()"), "GitHub dispatch failures must capture the API explanation");
+assert.ok(contact.includes("dispatch.status!==200&&dispatch.status!==204"), "GitHub workflow dispatch must accept both documented success codes");
 assert.ok(contact.includes("notifyNewsWatchdogFailure(env,e)"), "Telegram watchdog warning must include the safe GitHub error detail");
 assert.match(contact, /let miniAppAuditCache=\{expiresAt:0,rows:\[\]\}/, "Audit list cache must be isolate-local and start empty");
 assert.match(contact, /miniAppAuditCache\.expiresAt>now/, "Recent audit reads must reuse the short-lived in-memory cache");
