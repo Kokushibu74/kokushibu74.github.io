@@ -1187,9 +1187,10 @@ export default {
   },
   async scheduled(controller,env,ctx) {
     if(controller.cron==="* * * * *"){
-      // Keep the existing minute Cron, but scan KV only four times per hour.
-      if(new Date().getUTCMinutes()%15===0){
-        await botExpireIdleMenu(env);
+      // Keep the existing minute Cron; run KV cleanup on quarter-hours and watchdog five minutes later.
+      const minute=new Date().getUTCMinutes();
+      if(minute%15===0)await botExpireIdleMenu(env);
+      if(minute%15===5){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
         catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env)}catch{}}
       }
