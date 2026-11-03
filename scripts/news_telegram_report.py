@@ -174,7 +174,7 @@ def parse_news_metrics(log_text):
     if weather:
         metrics["weather_enriched"], metrics["weather_priority"] = map(int, weather.groups())
 
-    validation = re.search(r"Feed validation:\s*(PASS|FAIL);\s*items:\s*(\d+);\s*invalid:\s*(\d+);\s*duplicates:\s*(\d+)", log_text, re.I)
+    validation = re.search(r"Feed validation:\s*(PASS|FAIL);\s*items:\s*(\d+)\s*;\s*invalid:\s*(\d+)\s*;\s*duplicates:\s*(\d+)", log_text, re.I)
     if validation:
         metrics["validation"] = validation.group(1).upper()
         metrics["invalid_items"] = int(validation.group(3))
@@ -252,6 +252,10 @@ def build_news_report(metrics, context, verified_ids=None):
         warnings.append("Publisher metadata extraction coverage is low.")
     if metrics.get("validation") == "FAIL":
         warnings.append("Generated feed validation failed.")
+    weather_total = metrics.get("weather_cards")
+    weather_with_preview = metrics.get("weather_cards_with_preview")
+    if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
+        warnings.append("Some Weather/Disaster cards do not have a preview image URL.")
     if metrics.get("baseline") == "establishing":
         warnings.append("The comparison baseline is being established.")
     if conclusion != "success":
@@ -344,7 +348,7 @@ def build_news_report(metrics, context, verified_ids=None):
         hosts = ", ".join(metrics.get("publisher_unavailable_hosts") or [])
         lines.append(f'🌐 Publisher preview fetch unavailable: <b>{metrics["publisher_preview_unavailable"]}</b>' + (f' · {html.escape(hosts)}' if hosts else ''))
     if metrics.get("weather_enriched") is not None:
-        lines.append(f'🌦 Weather preview enrichment: <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority stories')
+        lines.append(f'🌦 New Weather preview metadata fetched: <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority candidates (existing preview URLs counted above)')
     lines.extend([
         '━━━━━━━━━━━━━━━━━━━━━━',
         '🧪 <b>06 · FEED QUALITY & VALIDATION</b>',
@@ -368,6 +372,9 @@ def build_news_report(metrics, context, verified_ids=None):
             lines.append('💡 Inspect failed feeds and retry only affected sources on the next scheduled refresh.')
         if metrics.get("baseline") == "establishing":
             lines.append('💡 The next successful refresh will provide the first reliable change comparison.')
+        if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
+            missing_previews = weather_total - weather_with_preview
+            lines.append(f'💡 Review {missing_previews} Weather/Disaster cards without preview URLs; retain RSS image fallbacks where available.')
     else:
         lines.append('✅ No collection or feed-validation issues were reported in this run.')
     lines.extend([
@@ -447,6 +454,7 @@ def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_erro
         "disable_web_page_preview": True,
     }
     result = telegram_call(token, "sendMessage", payload)
+    custom_emoji_used = bool(custom_count)
     if not result.get("ok") and custom_count:
         # Telegram may reject custom emoji when the bot owner lacks the required Premium entitlement.
         fallback = re.sub(r'<tg-emoji[^>]*>(.*?)</tg-emoji>', r'\1', message)
@@ -455,10 +463,13 @@ def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_erro
             "disable_web_page_preview": True,
         })
         if result.get("ok"):
+            custom_emoji_used = False
             print("Telegram custom emoji send was rejected; report delivered with Unicode fallback.")
     if not result.get("ok"):
         raise RuntimeError("Telegram sendMessage failed: " + scrub(result.get("description") or "unknown Telegram error", 180))
-    print("Telegram report delivered. Verified animated custom emoji IDs used: " + str(custom_count))
+    message_id = (result.get("result") or {}).get("message_id")
+    emoji_status = (str(custom_count) + " animated custom emoji IDs accepted") if custom_emoji_used else "Unicode emoji fallback"
+    print("Telegram report delivered. " + emoji_status + "; message_id: " + str(message_id or "not returned"))
     if lookup_error:
         print("Custom emoji lookup note: " + lookup_error)
 

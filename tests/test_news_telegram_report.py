@@ -16,7 +16,7 @@ Item changes: added: 57 updated: 24 unchanged: 8504 removed: 0 net: +57 baseline
 Category breakdown: Bangladesh: 5116 World: 2600 Technology: 869
 Feed breakdown: latest_24h: 125 archive: 8460 latest_tag_15m: 2 preview_image_urls: 140 bd_latest_tag_preview_candidates: 1 weather_cards: 12 weather_cards_with_preview: 2
 Publisher preview checks: attempted: 14 metadata fetched: 1 unavailable: 13 cached/reused: 0 Google News URLs resolved: 5
-Feed validation: PASS; items: 8585; invalid: 0; duplicates: 0
+Feed validation: PASS; items: 8585 ; invalid: 0 ; duplicates: 0
 Feed diagnostics: 25 / 25 successful; failures: none
 Weather/disaster image previews enriched: 2 of 12 priority stories.
 Publisher preview unavailable: HTTPError https://blocked.example/story
@@ -63,7 +63,7 @@ Item changes: added: 57 updated: 24 unchanged: 8504 removed: 0 net: +57 baseline
 Category breakdown: Bangladesh: 5116 World: 2600 Technology: 869
 Feed breakdown: latest_24h: 125 archive: 8460 latest_tag_15m: 2 preview_image_urls: 140 bd_latest_tag_preview_candidates: 1 weather_cards: 12 weather_cards_with_preview: 2
 Publisher preview checks: attempted: 14 metadata fetched: 1 unavailable: 13 cached/reused: 0 Google News URLs resolved: 5
-Feed validation: PASS; items: 8585; invalid: 0; duplicates: 0
+Feed validation: PASS; items: 8585 ; invalid: 0 ; duplicates: 0
 Feed diagnostics: 25 / 25 successful; failures: none
 """
         metrics = report.parse_news_metrics(logs)
@@ -91,6 +91,8 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("08 · GITHUB AUTOMATION DETAILS", message)
         self.assertIn("Extraction success rate: <b>7%</b> (1/14)", message)
         self.assertIn("Removed from feed: <b>0</b>", message)
+        self.assertIn("JSON/feed validation: <b>PASS</b>", message)
+        self.assertIn("Some Weather/Disaster cards do not have a preview image URL.", message)
         self.assertLessEqual(len(message), report.MAX_TELEGRAM_TEXT)
 
     def test_report_uses_html_escaping_for_dynamic_values(self):
