@@ -1,4 +1,25 @@
 const rateBuckets = new Map();
+async function fetchGetWithRetry(url, options = {}) {
+ const {timeoutMs=8000,maxAttempts=2,...init}=options;
+ const method=String(init.method||"GET").toUpperCase();
+ if(method!=="GET"&&method!=="HEAD")return fetch(url,init);
+ const attempts=Math.max(1,Math.min(2,Number(maxAttempts)||2));
+ for(let attempt=0;attempt<attempts;attempt++){
+  try{
+   const response=await fetch(url,{...init,signal:AbortSignal.timeout(timeoutMs)});
+   if(![408,425,429,500,502,503,504].includes(response.status)||attempt+1>=attempts)return response;
+   const retryAfter=Number(response.headers?.get?.("Retry-After"));
+   try{await response.body?.cancel()}catch{}
+   const delay=Number.isFinite(retryAfter)&&retryAfter>0?Math.min(2000,retryAfter*1000):300*(2**attempt);
+   await new Promise(resolve=>setTimeout(resolve,delay));
+  }catch(error){
+   if(attempt+1>=attempts)throw error;
+   await new Promise(resolve=>setTimeout(resolve,300*(2**attempt)));
+  }
+ }
+ throw new Error("GET retry attempts exhausted");
+}
+
 function rateLimit(ip, bucket, max, windowMs = 60000) {
  const now = Date.now(), key = ip + ":" + bucket;
  let item = rateBuckets.get(key);
@@ -118,11 +139,11 @@ export default {
    const results=[];
    try{
     const endpoint='https://'+lang+'.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:q,format:'json',origin:'*',srlimit:'5',srprop:'snippet'});
-    const r=await fetch(endpoint,{headers:{Accept:'application/json','User-Agent':'MultiAI/1.0'},signal:AbortSignal.timeout(8000)});
+    const r=await fetchGetWithRetry(endpoint,{headers:{Accept:'application/json','User-Agent':'MultiAI/1.0'},timeoutMs:8000});
     if(r.ok){const d=await r.json();for(const x of d.query?.search||[])results.push({title:x.title,url:'https://'+lang+'.wikipedia.org/wiki/'+encodeURIComponent(x.title.replace(/ /g,'_')),snippet:String(x.snippet||'').replace(/<[^>]*>/g,' ').replace(/&quot;/g,'"').replace(/&amp;/g,'&').slice(0,700)});}
    }catch(e){}
    if(results.length<3){
-    try{const r=await fetch('https://html.duckduckgo.com/html/?q='+encodeURIComponent(q),{headers:{'User-Agent':'Mozilla/5.0 (compatible; MultiAI/1.0)','Accept':'text/html'},signal:AbortSignal.timeout(8000)});
+    try{const r=await fetchGetWithRetry('https://html.duckduckgo.com/html/?q='+encodeURIComponent(q),{headers:{'User-Agent':'Mozilla/5.0 (compatible; MultiAI/1.0)','Accept':'text/html'},timeoutMs:8000});
      if(r.ok){const html=(await r.text()).slice(0,120000);const re=/<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<a[^>]+class="result__snippet"[^>]*>([\s\S]*?)<\/a>/gi;let m;while((m=re.exec(html))&&results.length<8){let href=m[1];try{const u=new URL(href,'https://duckduckgo.com');const real=u.searchParams.get('uddg');if(real)href=real;}catch(e){}const clean=x=>x.replace(/<[^>]*>/g,' ').replace(/&amp;/g,'&').replace(/&#x27;/g,"'").replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();if(/^https?:\/\//i.test(href))results.push({title:clean(m[2]),url:href,snippet:clean(m[3]).slice(0,700)});}}
     }catch(e){}
    }
@@ -134,7 +155,7 @@ export default {
    let parsed;try{parsed=new URL(target)}catch{return json({error:'A valid webpage URL is required.'},400)}
    if(!['http:','https:'].includes(parsed.protocol)||!parsed.hostname||parsed.username||parsed.password) return json({error:'Only public HTTP(S) webpages can be read.'},400);
    if(/^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[01])\.|\[?::1\]?$)/i.test(parsed.hostname))return json({error:'Private/local addresses are blocked.'},403);
-   try{const r=await fetch('https://r.jina.ai/'+parsed.href,{headers:{Accept:'text/plain','User-Agent':'MultiAI/1.0'},signal:AbortSignal.timeout(12000)});if(!r.ok)return json({error:'Webpage reader returned HTTP '+r.status},502);const text=(await r.text()).slice(0,30000);return json({url:parsed.href,title:parsed.hostname,text,provider:'Jina Reader',retrievedAt:new Date().toISOString()});}catch(e){return json({error:'Could not fetch webpage: '+String(e.message||e)},502)}
+   try{const r=await fetchGetWithRetry('https://r.jina.ai/'+parsed.href,{headers:{Accept:'text/plain','User-Agent':'MultiAI/1.0'},timeoutMs:12000});if(!r.ok)return json({error:'Webpage reader returned HTTP '+r.status},502);const text=(await r.text()).slice(0,30000);return json({url:parsed.href,title:parsed.hostname,text,provider:'Jina Reader',retrievedAt:new Date().toISOString()});}catch(e){return json({error:'Could not fetch webpage: '+String(e.message||e)},502)}
   }
  
   return json({error:'Not found'},404);
