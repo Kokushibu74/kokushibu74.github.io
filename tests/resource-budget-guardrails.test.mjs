@@ -64,13 +64,17 @@ assert.match(contact, /let miniAppAuditCache=\{expiresAt:0,rows:\[\]\}/, "Audit 
 assert.match(contact, /miniAppAuditCache\.expiresAt>now/, "Recent audit reads must reuse the short-lived in-memory cache");
 assert.match(contact, /expiresAt:now\+30_000/, "Audit cache must expire within 30 seconds to keep admin logs fresh");
 
-assert.match(multiAi, /async function fetchGetWithRetry\\(url, options = \\{\\}\\)/, "Multi-AI GET retry helper must exist");
-assert.match(multiAi, /method!=="GET"&&method!=="HEAD"/, "Multi-AI retry helper must never replay non-idempotent requests");
-assert.match(multiAi, /\\[408,425,429,500,502,503,504\\]/, "Multi-AI retry helper must limit retries to transient HTTP statuses");
-assert.match(multiAi, /maxAttempts=2/, "Multi-AI retry helper must be bounded to two attempts");
-assert.match(multiAi, /fetchGetWithRetry\\(endpoint/, "Wikipedia search must use bounded GET retries");
-const retryHelperSource = multiAi.match(/async function fetchGetWithRetry\\(url, options = \\{\\}\\) \\{[\\s\\S]*?\\n\\}/);
-assert.ok(retryHelperSource, "Production GET retry helper must be extractable for behavior tests");
+assert.ok(multiAi.includes("async function fetchGetWithRetry(url, options = {})"), "Multi-AI GET retry helper must exist");
+assert.ok(multiAi.includes('method!=="GET"&&method!=="HEAD"'), "Multi-AI retry helper must never replay non-idempotent requests");
+assert.ok(multiAi.includes("[408,425,429,500,502,503,504]"), "Multi-AI retry helper must limit retries to transient HTTP statuses");
+assert.ok(multiAi.includes("maxAttempts=2"), "Multi-AI retry helper must be bounded to two attempts");
+assert.ok(multiAi.includes("fetchGetWithRetry(endpoint"), "Wikipedia search must use bounded GET retries");
+assert.ok(multiAi.includes("fetchGetWithRetry('https://r.jina.ai/'"), "Jina Reader must use bounded GET retries");
+
+const retryStart = multiAi.indexOf("async function fetchGetWithRetry(");
+const retryEnd = multiAi.indexOf("\n}\n", retryStart) + 2;
+assert.ok(retryStart >= 0 && retryEnd > retryStart, "Production GET retry helper must be extractable for behavior tests");
+const retryHelperSource = multiAi.slice(retryStart, retryEnd);
 let retryFetchCalls = 0;
 const fakeFetch = async (_url, _options) => {
   retryFetchCalls++;
@@ -78,7 +82,7 @@ const fakeFetch = async (_url, _options) => {
     ? {status:429,headers:{get:()=>null},body:{cancel:async()=>{}}}
     : {status:200,headers:{get:()=>null},body:{cancel:async()=>{}}};
 };
-const retryFetchGet = new Function("fetch","AbortSignal","setTimeout", retryHelperSource[0] + "; return fetchGetWithRetry;")(
+const retryFetchGet = new Function("fetch","AbortSignal","setTimeout", retryHelperSource + "; return fetchGetWithRetry;")(
   fakeFetch,
   {timeout:()=>({})},
   callback => { callback(); return 1; }
@@ -90,7 +94,5 @@ retryFetchCalls=0;
 const postResponse = await retryFetchGet("https://example.com/submit",{method:"POST",body:"payload",timeoutMs:8000});
 assert.equal(postResponse.status,429);
 assert.equal(retryFetchCalls,1,"POST requests must never be replayed");
-
-assert.match(multiAi, /fetchGetWithRetry\\('https:\\/\\/r\\.jina\\.ai\\//, "Jina Reader must use bounded GET retries");
 
 console.log("Resource budgets, YouTube backoff, contact abuse protection, daily reporting, and news watchdog contracts OK.");
