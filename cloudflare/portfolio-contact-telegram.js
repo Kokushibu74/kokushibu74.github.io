@@ -1347,7 +1347,7 @@ async function newsBreakingAlertCheck(env){
     }
     if(!decision.eligible)continue;
     const link=String(item.publisherUrl||item.link||"");
-    const key=await newsAlertKey(String(item.title||""));
+    const key=await newsAlertKey(String(item.title||"")+"|"+String(item.publishedAt||"").slice(0,10));
     const stateKey="news-alert:v2:"+key;
     if(await env.BOT_CONFIG_KV.get(stateKey))continue;
     const lockKey="news-alert-lock:v1:"+key;
