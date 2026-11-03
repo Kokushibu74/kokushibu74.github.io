@@ -61,6 +61,7 @@ function classifyEvent(text) {
   if(UPRISING.test(text)&&UPRISING_DEVELOPMENT.test(text))return {weather:false};
   if(MURDER.test(text))return {weather:false};
   if(CLASH.test(text)&&SERIOUS.test(text))return {weather:false};
+  if(INTERNATIONAL_CRISIS.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||DIRECT_BD_IMPACT.test(text)))return {weather:false};
   if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||MAJOR_ACCIDENT.test(text)))return {weather:false};
   return null;
 }
@@ -68,24 +69,25 @@ export function evaluateNewsAlert(item={},options={}) {
   const now=Number(options.now??Date.now()),official=options.officialSignal===true;
   const title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||"");
   const text=title+" "+summary+" "+String(item.category||"");
+  const localityText=title+" "+summary;
   const fail=reason=>({eligible:false,reason,weather:false,sourceCount:0,sources:[]});
   if(!title||item.isBreaking!==true)return fail("not_breaking");
   if(FOLLOW_UP.test(text))return fail("follow_up");
   const published=Date.parse(item.publishedAt||item.pubDate||"");
   if(!Number.isFinite(published))return fail("undated");
-  const age=(now-published)/60000;
-  if(age < -5 || age > (official?180:60))return fail("stale");
   const event=classifyEvent(text);
   if(!event)return fail("not_significant");
-  const category=String(item.category||"");
-  const local=BD.test(text)||/bangladesh/i.test(category);
-  const internationalImpact=DIRECT_BD_IMPACT.test(text);
+  const sources=normalizeSources(item),sourceCount=sources.length;
+  const age=(now-published)/60000;
+  const maxAge=event.weather&&(official||sourceCount>=2)?180:60;
+  if(age < -5 || age > maxAge)return fail("stale");
+  const local=BD.test(localityText)||(official&&event.weather);
+  const internationalImpact=DIRECT_BD_IMPACT.test(localityText);
   if(!local&&!internationalImpact)return fail("not_bangladesh_related");
   const link=String(item.publisherUrl||item.link||"");
   let parsed;
   try{parsed=new URL(link);}catch{return fail("missing_original_url");}
   if(parsed.protocol!=="https:"||parsed.hostname==="news.google.com"||parsed.hostname.endsWith(".news.google.com"))return fail("not_original_url");
-  const sources=normalizeSources(item),sourceCount=sources.length;
   if(sourceCount<2 && !(official&&event.weather&&sourceCount>=1)) {
     return {eligible:false,reason:"needs_corroboration",weather:event.weather,category:alertCategory(text),sourceCount,sources};
   }
@@ -119,5 +121,9 @@ export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DD
   });
   if(!fresh)return {confirmed:false};
   if(!BD.test(raw)&&!/(Bangladesh|বাংলাদেশ|district|জেলা)/i.test(raw))return {confirmed:false};
+  const places=["Dhaka","ঢাকা","Sylhet","সিলেট","Sunamganj","সুনামগঞ্জ","Chattogram","চট্টগ্রাম","Cox's Bazar","কক্সবাজার","Khulna","খুলনা","Rangpur","রংপুর","Kurigram","কুড়িগ্রাম","Satkhira","সাতক্ষীরা","Narayanganj","নারায়ণগঞ্জ","Gazipur","গাজীপুর","Cumilla","কুমিল্লা","Noakhali","নোয়াখালী","Bandarban","বান্দরবান","Rangamati","রাঙামাটি","Bhola","ভোলা","Patuakhali","পটুয়াখালী","Brahmanbaria","ব্রাহ্মণবাড়িয়া","Rajshahi","রাজশাহী","Barishal","বরিশাল","Mymensingh","ময়মনসিংহ","Dinajpur","দিনাজপুর","Jashore","যশোর","Tangail","টাঙ্গাইল","Feni","ফেনী","Chandpur","চাঁদপুর","Pabna","পাবনা","Bogura","বগুড়া"];
+  const candidate=String(item.title||"")+" "+String(item.summary||"");
+  const candidatePlaces=places.filter(place=>candidate.toLowerCase().includes(place.toLowerCase()));
+  if(candidatePlaces.length&&!candidatePlaces.some(place=>raw.toLowerCase().includes(place.toLowerCase())))return {confirmed:false};
   return {confirmed:true,name,url};
 }
