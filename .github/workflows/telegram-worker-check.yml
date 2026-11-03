@@ -110,3 +110,53 @@ jobs:
           }
           console.log('Production Multi-AI Worker health endpoint: OK');
           NODE
+      - name: Verify production D1 memory read, write, and cleanup
+        env:
+          WORKER_URL: https://multi-ai-memory-api.mdshihab74.workers.dev
+        run: |
+          node <<'NODE'
+          const base = process.env.WORKER_URL;
+          const clientId = crypto.randomUUID();
+          const text = 'GitHub Actions D1 smoke test ' + crypto.randomUUID();
+          let memoryId = null;
+          async function listMemory() {
+            const response = await fetch(base + '/api/memory?clientId=' + encodeURIComponent(clientId));
+            if (!response.ok) throw new Error('D1 memory read failed: HTTP ' + response.status);
+            const data = await response.json();
+            if (!Array.isArray(data.items)) throw new Error('D1 memory response did not include an items array');
+            return data.items;
+          }
+          try {
+            const before = await listMemory();
+            if (before.length !== 0) throw new Error('Random smoke-test client ID was not empty');
+            const saved = await fetch(base + '/api/memory', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ clientId, text })
+            });
+            if (!saved.ok) throw new Error('D1 memory write failed: HTTP ' + saved.status);
+            const after = await listMemory();
+            const item = after.find(entry => entry.text === text);
+            if (!item || !item.id) throw new Error('D1 memory write could not be read back');
+            memoryId = item.id;
+            console.log('Production D1 memory write/read: OK');
+          } finally {
+            if (!memoryId) {
+              try {
+                const pending = await listMemory();
+                memoryId = pending.find(entry => entry.text === text)?.id || null;
+              } catch {}
+            }
+            if (memoryId) {
+              const removed = await fetch(base + '/api/memory/' + encodeURIComponent(memoryId), {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ clientId })
+              });
+              if (!removed.ok) throw new Error('D1 smoke-test cleanup failed: HTTP ' + removed.status);
+              const remaining = await listMemory();
+              if (remaining.some(entry => entry.id === memoryId)) throw new Error('D1 smoke-test record remained after cleanup');
+              console.log('Production D1 memory cleanup: OK');
+            }
+          }
+          NODE
