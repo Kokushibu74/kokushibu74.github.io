@@ -1,6 +1,6 @@
 const DEATH = /(নিহত|মারা গেছেন|মৃত্যু|killed|dead|death toll|fatal)/i;
 const MURDER = /(খুন|হত্যা|murder|homicide|assassinat)/i;
-const ACCIDENT = /(দুর্ঘটনা|বাস দুর্ঘটনা|ট্রেন দুর্ঘটনা|লঞ্চ দুর্ঘটনা|নৌকাডুবি|ভবন ধস|ধসে পড়|বিস্ফোরণ|অগ্নিকাণ্ড|আগুনে পুড়ে|crash|collision|derailment|capsiz|collapse|explosion|major fire|stampede)/i;
+const ACCIDENT = /(দুর্ঘটনা|বাস দুর্ঘটনা|ট্রেন দুর্ঘটনা|লঞ্চ দুর্ঘটনা|নৌকাডুবি|ভবন ধস|ধসে পড়|বিস্ফোরণ|অগ্নিকাণ্ড|আগুনে পুড়ে|crash|collision|derailment|capsiz|collapse|explosion|major fire|stampede)/i;\nconst MAJOR_ACCIDENT = /(major|mass|multiple vehicles|catastrophic|severe|large[- ]scale|ভয়াবহ|ভয়াবহ|গুরুতর|বড় দুর্ঘটনা|বৃহৎ|বহু যানবাহন)/i;
 const CLASH = /(সংঘর্ষ|গুলিবর্ষণ|গুলি চালনা|সশস্ত্র হামলা|হামলা|clash|shooting|armed attack|riot|violence|police firing)/i;
 const SERIOUS = /(নিহত|মৃত্যু|আহত|গুলিবর্ষণ|গুলি|সশস্ত্র|কারফিউ|জরুরি অবস্থা|সেনা মোতায়েন|army deployed|curfew|fatal|killed|injured|mass casualty|armed|emergency)/i;
 const UPRISING = /(গণঅভ্যুত্থান|mass uprising|uprising)/i;
@@ -45,7 +45,7 @@ function classifyEvent(text) {
   if(UPRISING.test(text)&&UPRISING_DEVELOPMENT.test(text))return {weather:false};
   if(MURDER.test(text))return {weather:false};
   if(CLASH.test(text)&&SERIOUS.test(text))return {weather:false};
-  if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)))return {weather:false};
+  if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||MAJOR_ACCIDENT.test(text)))return {weather:false};
   return null;
 }
 export function evaluateNewsAlert(item={},options={}) {
