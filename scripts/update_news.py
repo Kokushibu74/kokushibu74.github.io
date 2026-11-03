@@ -841,7 +841,8 @@ def main():
 
 
     # Keep a separate, date-checked stream for the desktop weather/disaster cards.
-    weather_collected, weather_seen = [], set()\n    weather_by_key = {}
+    weather_collected, weather_seen = [], set()
+    weather_by_key = {}
     for query, language, country, edition in WEATHER_QUERIES:
         params = urllib.parse.urlencode({"q": query, "hl": language, "gl": country, "ceid": edition})
         request = urllib.request.Request("https://news.google.com/rss/search?" + params, headers=HEADERS)
