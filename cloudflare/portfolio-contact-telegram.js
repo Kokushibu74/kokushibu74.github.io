@@ -1359,8 +1359,9 @@ async function newsBreakingAlertCheck(env){
       const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,120));
       const source=escapeHtml(String(item.source||item.publisherName||"Verified publishers").slice(0,60));
       const officialLine=decision.official&&decision.official.confirmed
-        ?"\n🏛️ Official confirmation: "+escapeHtml(decision.official.name)+"\n🔎 "+escapeHtml(decision.official.url)
+        ?"\n🏛️ Official confirmation: "+escapeHtml(String(decision.official.name).slice(0,60))+"\n🔎 "+escapeHtml(String(decision.official.url).slice(0,100))
         :"";
+      const linkLine=link.length<=220?"🔗 <a href=\""+escapeHtml(link)+"\">মূল খবর / Original article</a>":"🔗 Original article link sent separately";
       const caption=[
         "🚨 <b>BANGLADESH BREAKING & DISASTER ALERT</b>",
         "🏷️ "+escapeHtml(decision.category),
