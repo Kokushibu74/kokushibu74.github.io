@@ -434,9 +434,25 @@ def classify_direct_item(title, link, source=""):
 
 
 def key_for(item):
-    """Deduplicate identical headlines across publishers, not just within one source."""
-    title = re.sub(r"[^\w]+", " ", str(item.get("title") or "").lower()).strip()
-    return title
+    """Deduplicate identical headlines across publishers, including RSS publisher suffixes."""
+    title = str(item.get("title") or "").strip()
+    source = str(item.get("source") or "").strip()
+    suffix = " - " + source
+    if source and title.lower().endswith(suffix.lower()):
+        title = title[:-len(suffix)]
+    return re.sub(r"[^\w]+", " ", title.lower()).strip()
+
+
+def merge_source_evidence(item, source):
+    """Keep unique publisher names for independent corroboration."""
+    name = clean(source)
+    ignored = {"", "google news", "original publisher", "unknown source"}
+    sources = list(item.get("sourceEvidence") or [])
+    if name and name.lower() not in ignored and name.lower() not in {x.lower() for x in sources}:
+        sources.append(name[:120])
+    item["sourceEvidence"] = sources[:12]
+    item["corroborationCount"] = len(item["sourceEvidence"])
+    return item
 
 def read_previous_weather():
     """Load cached weather cards so preview metadata can be reused across RSS refreshes."""
@@ -681,6 +697,7 @@ def main():
     previous_weather = read_previous_weather()
     breaking_history = read_breaking_history()
     collected, seen = [], set()
+    collected_by_key = {}
     successful_feeds = 0
     feed_failures = []
 
