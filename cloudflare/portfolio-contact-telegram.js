@@ -409,7 +409,7 @@ const BOT_MENU = [
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
 const BOT_DEFAULTS = {
-  monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, workflowAlerts:true,
+  monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, newsAlerts:true, workflowAlerts:true,
   trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
 };
 async function botConfig(env){
@@ -1276,6 +1276,16 @@ async function notifyNewsWatchdogFailure(env,error){
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
+
+const NEWS_ALERT_TTL=14*86400;
+const NEWS_ALERT_TERMS=/(নিহত|মৃত্যু|মারা গেছেন|খুন|হত্যা|মার্ডার|সংঘর্ষ|গুলিতে|বিক্ষোভ|গণঅভ্যুত্থান|গণভোট|নির্বাচন স্থগিত|জরুরি অবস্থা|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|অতিবৃষ্টি|তাপপ্রবাহ|killed|murder|clash|riot|uprising|referendum|cyclone|flood|earthquake|landslide|storm|disaster)/i;
+const NEWS_BD_TERMS=/(বাংলাদেশ|ঢাকা|চট্টগ্রাম|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|bangladesh|dhaka|chattogram|sylhet|khulna|rajshahi|barishal|rangpur)/i;
+async function newsAlertKey(value){const data=new TextEncoder().encode(value);const digest=await crypto.subtle.digest("SHA-256",data);return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);}
+function newsAlertCategory(t){if(/ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|জলোচ্ছ্বাস|পাহাড়ধস|পাহাড়ধস|cyclone|flood|earthquake|landslide|storm|disaster|weather|আবহাওয়া|আবহাওয়া/i.test(t))return "Weather / Disaster";if(/গণভোট|referendum/i.test(t))return "গণভোট";if(/গণঅভ্যুত্থান|uprising|riot|বিক্ষোভ|protest/i.test(t))return "গণঅভ্যুত্থান / সংঘাত";if(/খুন|হত্যা|murder/i.test(t))return "হত্যা / গুরুতর সহিংসতা";if(/নিহত|মৃত্যু|মারা গেছেন|killed|death|দুর্ঘটনা|crash/i.test(t))return "মৃত্যু / বড় দুর্ঘটনা";return "গুরুতর ব্রেকিং নিউজ";}
+async function sendNewsAlertMedia(env,item,caption){const chatId=env.TELEGRAM_CHAT_ID,token=env.TELEGRAM_BOT_TOKEN,url=String(item.video||""),method=url?"sendVideo":(item.previewImage||item.image?"sendPhoto":"sendMessage");const body=url?{chat_id:chatId,video:url,caption,parse_mode:"HTML"}:(method==="sendPhoto"?{chat_id:chatId,photo:item.previewImage||item.image,caption,parse_mode:"HTML"}:{chat_id:chatId,text:caption,parse_mode:"HTML",disable_web_page_preview:false});const r=await fetch("https://api.telegram.org/bot"+token+"/"+method,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),signal:AbortSignal.timeout(15000)});const d=await r.json().catch(()=>({}));if(!r.ok||!d.ok)throw new Error("news alert Telegram delivery failed HTTP "+r.status);}
+async function newsBreakingAlertCheck(env){if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};const cfg=await botConfig(env);if(cfg.newsRefresh===false||cfg.newsAlerts===false)return {skipped:"disabled"};let feed;try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{signal:AbortSignal.timeout(10000)});if(!r.ok)return {skipped:"feed http "+r.status};feed=await r.json();}catch{return {skipped:"feed unavailable"}}const arr=Array.isArray(feed)?feed:(feed&&typeof feed==="object"?Object.values(feed).find(Array.isArray)||[]:[]),now=Date.now(),sent=[];for(const item of arr.slice(0,80)){const title=String(item.title||""),published=Date.parse(item.publishedAt||item.pubDate||""),age=Number.isFinite(published)?(now-published)/60000:9999,text=title+" "+String(item.summary||"")+" "+String(item.category||"");if(!(item.isBreaking&&NEWS_ALERT_TERMS.test(text)&&NEWS_BD_TERMS.test(text)&&age>=-5&&age<=60))continue;const key=await newsAlertKey(String(item.publisherUrl||item.link||"")+"|"+title.trim().toLowerCase()),stateKey="news-alert:v1:"+key;if(await env.BOT_CONFIG_KV.get(stateKey))continue;const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা",link=String(item.publisherUrl||item.link||"");const caption=["🚨 <b>BANGLADESH BREAKING & DISASTER ALERT</b>","🏷️ "+newsAlertCategory(text),"📍 Dhaka / Bangladesh","🕒 "+when+" (BDT)","",title.slice(0,500),String(item.summary||"").slice(0,700),"","🔗 <a href=\""+link.replace(/&/g,"&amp;").replace(/"/g,"&quot;")+"\">মূল খবর / Original news</a>","📰 "+String(item.source||item.publisherName||"Unknown source")].filter(Boolean).join("\n");await sendNewsAlertMedia(env,item,caption);await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify({sentAt:now,title,link}),{expirationTtl:NEWS_ALERT_TTL});sent.push(title);}return {sent:sent.length};}
+
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -1370,7 +1380,7 @@ export default {
       }
     }
 
-    if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
+    if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,newsAlerts:!!cfg.newsAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
     if(pathname==="/track"){
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
       if(!env.VISITOR_KV)return respond({error:"Visitor tracking storage is not configured."},503);
@@ -1531,6 +1541,7 @@ export default {
   },
   async scheduled(controller,env,ctx) {
     if(controller.cron==="* * * * *"){
+      if(new Date().getUTCMinutes()%15===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
       // Keep the existing minute Cron; run KV cleanup on quarter-hours and watchdog five minutes later.
       const minute=new Date().getUTCMinutes();
       if(minute%15===0)await botExpireIdleMenu(env);
