@@ -65,6 +65,7 @@ const messages = buildDailyReportMessages({
   responseMs: 229,
   failure: "",
   missing: ["Content-Security-Policy", "X-Content-Type-Options"],
+  headersChecked: true,
   activity: {day:"2026-11-03",unique:20,returning:10,sessions:20,views:40,errors:0,partial:false,
     pages:["/news.html (20)"],countries:["BD (20)"],cities:["Dhaka (20)"],devices:["Mobile (20)"],
     browsers:["Chrome (20)"],isps:["Info Link (20)"],visitors},
@@ -80,6 +81,8 @@ assert.ok(messages[2].includes("Galaxy A34"), "Visitor details must include devi
 assert.ok(messages[2].includes("Info Link"), "Visitor details must include ISP information");
 assert.ok(messages[3].includes("all 6 existing namespaces"), "Cloudflare section must show namespace coverage");
 assert.ok(messages[4].includes("Content-Security-Policy"), "Security section must list missing headers");
+const unavailableHeaders = buildDailyReportMessages({reportId:"test",stamp:"test",site:"https://example.com",status:null,responseMs:10,failure:"Network timeout",missing:[],headersChecked:false,activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null});
+assert.ok(unavailableHeaders[4].includes("Header inspection unavailable"), "Failed site checks must not be mislabeled as healthy security headers");
 assert.ok(messages[4].includes("no external AI API or paid service is called"), "Recommendations must disclose their deterministic source");
 
 console.log("Five-part Telegram report, delivery retry state, visitor privacy, all six KV namespaces, D1 quota and message-size behavior verified.");
