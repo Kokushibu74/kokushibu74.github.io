@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
@@ -42,5 +42,25 @@ test("official DDM signal requires a recent dated warning",()=>assert.equal(pars
 test("stale official warning is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Flood Alert Warning Last update: 2026-10-20 20:00:00 Bangladesh district flood warning",item({title:"Bangladesh severe flood warning"}),now).confirmed,false));
 test("official page without matching hazard is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Heat wave warning Last update: 2026-11-03 20:00:00 Bangladesh",item({title:"Bangladesh severe flood warning"}),now).confirmed,false));
 test("official bulletin for a different district is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Flood Alert Warning Last update: 2026-11-03 20:00:00 Bangladesh district flood warning Sylhet",item({title:"Dhaka flood warning"}),now).confirmed,false));
+
+test("video failure falls back to photo",async()=>{
+  const calls=[];
+  const result=await deliverWithMediaFallback([{type:"video",url:"https://cdn.example/v.mp4"},{type:"photo",url:"https://cdn.example/p.jpg"}],"caption","https://news.example/a",async method=>{calls.push(method);return method==="sendPhoto";});
+  assert.equal(result,"photo");
+  assert.deepEqual(calls,["sendVideo","sendPhoto"]);
+});
+test("media transport exceptions still fall back to text",async()=>{
+  const calls=[];
+  const result=await deliverWithMediaFallback([{type:"video",url:"https://cdn.example/v.mp4"},{type:"photo",url:"https://cdn.example/p.jpg"}],"caption","https://news.example/a",async method=>{calls.push(method);if(method==="sendVideo")throw new Error("network timeout");return method==="sendMessage";});
+  assert.equal(result,"text");
+  assert.deepEqual(calls,["sendVideo","sendPhoto","sendMessage"]);
+});
+test("no-media alert uses text with the original article URL",async()=>{
+  let body;
+  const result=await deliverWithMediaFallback([],"caption","https://news.example/original",async(method,payload)=>{body=payload;return method==="sendMessage";});
+  assert.equal(result,"text");
+  assert.match(body.text,/https:\/\/news\.example\/original/);
+});
+
 test("dedup key is deterministic and normalized",async()=>assert.equal(await newsAlertKey("Dhaka — Crash!"),await newsAlertKey("dhaka crash")));
 test("dedup key normalizes headline word order and common verb forms",async()=>assert.equal(await newsAlertKey("Dhaka fire kills 3"),await newsAlertKey("3 killed in Dhaka fire")));
