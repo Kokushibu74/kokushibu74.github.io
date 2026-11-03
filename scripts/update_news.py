@@ -446,9 +446,12 @@ def key_for(item):
     """Deduplicate identical headlines across publishers, including RSS publisher suffixes."""
     title = str(item.get("title") or "").strip()
     source = str(item.get("source") or "").strip()
-    suffix = " - " + source
-    if source and title.lower().endswith(suffix.lower()):
-        title = title[:-len(suffix)]
+    if source:
+        for separator in (" - ", " – ", " — ", " | "):
+            suffix = separator + source
+            if title.lower().endswith(suffix.lower()):
+                title = title[:-len(suffix)]
+                break
     return re.sub(r"[^\w]+", " ", title.lower()).strip()
 
 
