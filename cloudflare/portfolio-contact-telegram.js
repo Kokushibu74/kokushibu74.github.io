@@ -259,7 +259,6 @@ function dailyReportRecommendations(input){
     if(metric.percent>=85)out.push("Resource pressure: "+metric.label+" is at "+metric.percent+"%. Reduce usage before the daily limit is reached.");
     else if(metric.percent>=70)out.push("Monitor "+metric.label+": usage has reached "+metric.percent+"% of its limit.");
   }
-  if(input.youtubeBudget?.available&&input.youtubeBudget.percent>=70)out.push("Sports Zone YouTube search budget is at "+input.youtubeBudget.percent+"%. Review search cadence.");
   if(!out.length)out.push("No urgent action detected. Keep the current monitoring and review the 7-day trend.");
   return out.slice(0,6).map((item,index)=>(index+1)+". "+dailyReportEscape(item));
 }
@@ -315,7 +314,6 @@ function buildDailyReportMessages(input){
       return icon+" "+dailyReportEscape(metric.label)+": "+used+" / "+limit+" ("+metric.percent+"%)";
     }),
     input.resourceSnapshot?.metrics?.length?"🗂️ KV coverage: all 6 existing namespaces":"⚠️ Resource metrics unavailable",
-    input.youtubeBudget?.available?"🎥 Sports Zone YouTube searches: "+input.youtubeBudget.used+"/"+input.youtubeBudget.limit+" ("+input.youtubeBudget.percent+"%)":"🎥 Sports Zone YouTube usage: unavailable or stale",
     "ℹ️ Workers requests are account-wide; D1 storage is checked against the per-database limit."
   ];
   const security=[
@@ -1590,15 +1588,13 @@ export default {
     }
 
     // Monitor the existing Sports Zone daily YouTube search budget without adding another service.
-    let youtubeBudgetSnapshot=null;
     const checkYouTubeBudget=async()=>{
       if(!env.SPORTS_ZONE||!env.BOT_CONFIG_KV)return;
       const budget=await env.SPORTS_ZONE.get("auto:status","json");
       const used=Number(budget?.searchesToday),limit=Number(budget?.dailySearchLimit);
       if(!Number.isFinite(used)||!Number.isFinite(limit)||limit<=0)return;
       const checkedAt=Date.parse(String(budget.checkedAt||""));
-      if(Number.isFinite(checkedAt)&&Date.now()-checkedAt>2*60*60*1000){youtubeBudgetSnapshot=null;return;}
-      youtubeBudgetSnapshot={available:true,used,limit,percent:Math.round(used/limit*100),checkedAt:Number.isFinite(checkedAt)?new Date(checkedAt).toISOString():null};
+      if(Number.isFinite(checkedAt)&&Date.now()-checkedAt>2*60*60*1000)return;
       const day=now.getUTCFullYear()+String(now.getUTCMonth()+1).padStart(2,"0")+String(now.getUTCDate()).padStart(2,"0");
       const key="resource-alert:youtube:"+day;
       let sent=[];try{const saved=await env.BOT_CONFIG_KV.get(key,"json");if(Array.isArray(saved))sent=saved.filter(Number.isFinite)}catch{}
@@ -1640,18 +1636,9 @@ export default {
         activity=await readDailyActivity(env,reportDay);
         prior=await readDailyActivity(env,previousBdDay(reportDay));
       }catch(e){console.error("Daily Visitor Intelligence read failed:",String(e&&e.message||e).slice(0,180));}
-      if(!youtubeBudgetSnapshot&&env.SPORTS_ZONE){
-        try{
-          const budget=await env.SPORTS_ZONE.get("auto:status","json");
-          const used=Number(budget?.searchesToday),limit=Number(budget?.dailySearchLimit),checkedAt=Date.parse(String(budget?.checkedAt||""));
-          if(Number.isFinite(used)&&Number.isFinite(limit)&&limit>0&&(!Number.isFinite(checkedAt)||Date.now()-checkedAt<=2*60*60*1000)){
-            youtubeBudgetSnapshot={available:true,used,limit,percent:Math.round(used/limit*100),checkedAt:Number.isFinite(checkedAt)?new Date(checkedAt).toISOString():null};
-          }
-        }catch(e){console.error("Daily Sports Zone budget read failed:",String(e&&e.message||e).slice(0,120));}
-      }
       const messages=buildDailyReportMessages({
         reportId,stamp,site,status,responseMs,failure,missing,
-        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot,youtubeBudget:youtubeBudgetSnapshot
+        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot
       });
       const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId);
       console.log("Daily Telegram report delivery:",JSON.stringify(delivery));
