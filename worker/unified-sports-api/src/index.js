@@ -148,6 +148,7 @@ const AUTO_STREAMS_KEY = "auto:streams";
 const AUTO_SCHEDULE_KEY = "auto:schedule";
 const AUTO_STATUS_KEY = "auto:status";
 const YOUTUBE_DAILY_SEARCH_LIMIT = 70;
+const YOUTUBE_BACKOFF_SECONDS = 60 * 60;
 const SCHEDULE_CACHE_SECONDS = 15 * 60;
 
 function youtubeChannelAllowlist(env) {
@@ -202,7 +203,7 @@ async function youtubeApi(env, endpoint, params) {
   u.searchParams.set("key",env.YOUTUBE_API_KEY);
   const r=await fetch(u.toString(),{headers:{Accept:"application/json"},signal:AbortSignal.timeout(8000)});
   const data=await r.json().catch(()=>({}));
-  if(!r.ok) throw new Error("YouTube API HTTP "+r.status);
+  if(!r.ok) { const error=new Error("YouTube API HTTP "+r.status); error.status=r.status; error.reason=String(data.error?.errors?.[0]?.reason||""); throw error; }
   return data;
 }
 async function refreshAutoStreams(env) {
@@ -216,8 +217,14 @@ async function refreshAutoStreams(env) {
     await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:false,reason:"YOUTUBE_OFFICIAL_CHANNEL_IDS is not configured",checkedAt:new Date().toISOString()}),{expirationTtl:86400}).catch(()=>{});
     return;
   }
-  const now=new Date(), dayKey="auto:youtube-searches:"+utcDateStamp(now);
-  let streams=[];
+  const now=new Date(), dayKey="auto:youtube-searches:"+utcDateStamp(now), backoffKey="auto:youtube-backoff:"+utcDateStamp(now);
+  let used=Number(await env.SPORTS_ZONE.get(dayKey)||0), streams=[];
+  let backoff=null;try{backoff=await env.SPORTS_ZONE.get(backoffKey,"json")}catch{}
+  if(Number(backoff?.until)>Date.now()){
+    const schedule=await getUpcomingEvents(env,now);
+    await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:"YouTube API cooldown active until "+new Date(backoff.until).toISOString(),checkedAt:now.toISOString(),scheduleEvents:schedule.events.length,scheduleFetches:schedule.fetchCount,scheduleFetchErrors:schedule.fetchErrors.slice(0,8),scheduleCached:!!schedule.cached,liveStreams:null,searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400});
+    return;
+  }
   try { const saved=await env.SPORTS_ZONE.get(AUTO_STREAMS_KEY,"json"); if(Array.isArray(saved)) streams=saved.filter(validStream); } catch {}
   if(streams.length) {
     try {
@@ -225,13 +232,14 @@ async function refreshAutoStreams(env) {
       const liveSet=new Set((data.items||[]).filter(v=>v.snippet?.liveBroadcastContent==="live").map(v=>v.id));
       streams=streams.filter(s=>liveSet.has(s.youtubeId));
     } catch (e) {
-      await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:"Could not refresh live status; retaining last known streams",checkedAt:now.toISOString()}),{expirationTtl:86400}).catch(()=>{});
+      if(Number(e?.status)===429){backoff={until:Date.now()+YOUTUBE_BACKOFF_SECONDS*1000,reason:e.reason||"HTTP 429"};await env.SPORTS_ZONE.put(backoffKey,JSON.stringify({...backoff,checkedAt:now.toISOString()}),{expirationTtl:YOUTUBE_BACKOFF_SECONDS}).catch(()=>{});}
+      await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:Number(e?.status)===429?"YouTube API rate limited; 60-minute cooldown active":"Could not refresh live status; retaining last known streams",checkedAt:now.toISOString(),searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400}).catch(()=>{});
       return;
     }
   }
   const schedule=await getUpcomingEvents(env,now);
   const events=schedule.events;
-  let used=Number(await env.SPORTS_ZONE.get(dayKey)||0), searches=0;
+  let searches=0;
   const additions=[];
   for(const event of events) {
     const kickoff=new Date(event.startTime).getTime(), delta=(kickoff-now.getTime())/60000;
@@ -252,7 +260,10 @@ async function refreshAutoStreams(env) {
           officialUrl:"https://www.youtube.com/watch?v="+id,source:"youtube-auto",channelId:item.snippet.channelId,
           channelTitle:String(item.snippet.channelTitle||"Verified channel").slice(0,100),eventId:event.id,matchName:event.name,startTime:event.startTime});
       }
-    } catch (e) { console.error("Sports Zone YouTube discovery failed:",e?.message||"unknown"); }
+    } catch (e) {
+      console.error("Sports Zone YouTube discovery failed:",(e?.message||"unknown")+(e?.reason?" ("+e.reason+")":""));
+      if(Number(e?.status)===429){backoff={until:Date.now()+YOUTUBE_BACKOFF_SECONDS*1000,reason:e.reason||"HTTP 429"};await env.SPORTS_ZONE.put(backoffKey,JSON.stringify({...backoff,checkedAt:now.toISOString()}),{expirationTtl:YOUTUBE_BACKOFF_SECONDS}).catch(()=>{});break;}
+    }
   }
   await env.SPORTS_ZONE.put(dayKey,String(used),{expirationTtl:48*60*60}).catch(()=>{});
   const merged=[...streams,...additions];
@@ -262,7 +273,8 @@ async function refreshAutoStreams(env) {
     ?"ESPN schedule fetch failed"
     :schedule.fetchErrors.length?"Partial ESPN schedule fetch errors"
     :"ok";
-  await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:scheduleReason,checkedAt:now.toISOString(),
+  const statusReason=Number(backoff?.until)>Date.now()?"YouTube API cooldown active until "+new Date(backoff.until).toISOString():scheduleReason;
+  await env.SPORTS_ZONE.put(AUTO_STATUS_KEY,JSON.stringify({configured:true,reason:statusReason,checkedAt:now.toISOString(),
     scheduleEvents:events.length,scheduleFetches:schedule.fetchCount,scheduleFetchErrors:schedule.fetchErrors.slice(0,8),
     scheduleCached:!!schedule.cached,liveStreams:deduped.length,searchesToday:used,dailySearchLimit:YOUTUBE_DAILY_SEARCH_LIMIT}),{expirationTtl:86400});
 }
