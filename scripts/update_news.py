@@ -882,7 +882,6 @@ def main():
                         merge_source_evidence(existing, source)
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
-                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
                 weather_by_key[key] = item
                 weather_collected.append(item)
