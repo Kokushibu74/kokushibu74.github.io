@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
@@ -10,7 +10,7 @@ test("corroborated severe weather alert may be up to three hours old",()=>assert
 test("single-source weather alert still needs an official source after one hour",()=>assert.equal(evaluateNewsAlert(item({title:"Sylhet flood warning issued",summary:"Severe flooding near danger level",category:"Weather & Disasters",sourceEvidence:["The Daily Star"],publishedAt:new Date(now-120*60000).toISOString()}),{now}).reason,"stale"));
 test("earthquake magnitude is treated as a significant natural disaster",()=>assert.equal(evaluateNewsAlert(item({title:"Sylhet earthquake reaches magnitude 5.8",summary:"Magnitude 5.8 earthquake",category:"Bangladesh"}),{now}).eligible,true));
 test("heavy rainfall warning is classified as severe weather",()=>assert.equal(evaluateNewsAlert(item({title:"Bangladesh heavy rainfall warning",summary:"Severe heavy rain alert",category:"Weather & Disasters"}),{now}).eligible,true));
-test("weather alert requires severe wording",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় আজ আবহাওয়া কেমন",summary:"weather forecast",category:"Bangladesh"}),{now}).reason,"not_significant"));
+test("severe weather candidates are selected for official checks",()=>assert.equal(isWeatherCandidate(item({title:"Bangladesh severe cyclone warning",summary:"Emergency evacuation alert"})),true));\ntest("ordinary weather forecast is not sent for official disaster checks",()=>assert.equal(isWeatherCandidate(item({title:"Bangladesh weekly weather forecast",summary:"Sunny and warm"})),false));\ntest("weather alert requires severe wording",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় আজ আবহাওয়া কেমন",summary:"weather forecast",category:"Bangladesh"}),{now}).reason,"not_significant"));
 test("major accident qualifies even when no casualty count is reported",()=>assert.equal(evaluateNewsAlert(item({title:"Dhaka major accident closes airport road",summary:"Major accident in Dhaka",sourceEvidence:["The Daily Star","Prothom Alo"]}),{now}).eligible,true));
 test("BBC regional editions count as one publisher group",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["BBC News বাংলা","BBC News World"]}),{now}).reason,"needs_corroboration"));
 test("referendum result qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"বাংলাদেশে গণভোটের ফলাফল ঘোষণা",summary:"চূড়ান্ত সিদ্ধান্ত জানানো হয়েছে"}),{now}).eligible,true));
