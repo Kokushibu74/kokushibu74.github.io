@@ -195,7 +195,7 @@ async function sendTelegramText(env,chatId,text,options={}){
 function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", "):"No data");const delta=(v,o)=>{const d=v-o;return (d>0?"+":"")+d+" vs yesterday"};const lines=["📅 Date: "+a.day+" (BDT)",...(a.partial?["⚠️ Partial sample: visitor scan capped at 2,000 records to protect Free KV usage."]:[]),"👤 Unique visitors: "+a.unique+(p?" · "+delta(a.unique,p.unique):""),"🆕 New visitors: "+Math.max(0,a.unique-a.returning),"↩️ Returning visitors: "+a.returning,"🔁 Visits / sessions: "+a.sessions+(p?" · "+delta(a.sessions,p.sessions):""),"👁️ Page views: "+a.views+(p?" · "+delta(a.views,p.views):""),"⚠️ Client errors: "+a.errors,list("🔥 Popular pages",a.pages),list("🌍 Countries",a.countries),list("📍 Cities",a.cities),list("📡 ISPs",a.isps),list("📱 Devices",a.devices),list("🌐 Browsers",a.browsers),"","👥 VISITOR DETAILS"];for(const [i,v] of (a.visitors||[]).entries()){const pages=Object.entries(v.pages||{}).sort((x,y)=>y[1]-x[1]).map(([k,n])=>k+" ×"+n).join(", ")||"Page data unavailable";const device=[v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join(" / ")||"Unknown";const source=v.source?.utmSource||v.source?.referrer||"Direct";const seen=v.lastSeen?new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"}):"Unknown";lines.push((i+1)+". "+(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2")+" · "+(v.returning?"Returning":"New"),"   🕒 Last seen: "+seen+" BDT · Sessions today: "+(v.sessions||0)+" · Views: "+(v.pageViews||0),"   📄 Pages: "+pages,"   🔗 Source: "+source,"   📱 Device: "+device,"   📍 Location: "+[v.network?.city,v.network?.country].filter(Boolean).join(", ")+" · ISP: "+(v.network?.isp||"Unknown"));}if(!a.visitors?.length)lines.push("No visitor-level records available.");lines.push("","ℹ️ Active time, exact exit time and scroll/interaction duration are not measured in this report.");return lines;}
 
 function dailyReportEscape(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
-function dailyReportShort(value,max=40){return String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim().slice(0,max)||"Unknown";}
+function dailyReportShort(value,max=40){return String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/&/g," and ").replace(/\s+/g," ").trim().slice(0,max)||"Unknown";}
 function dailyReportDelta(value,previous){const d=Number(value||0)-Number(previous||0);return (d>0?"+":"")+d;}
 function dailyReportVisitorAnalyticsLines(activity,prior){
   if(!activity)return ["⚠️ Visitor Intelligence data unavailable."];
@@ -241,7 +241,7 @@ function dailyReportVisitorDetailsLines(activity){
       try{source=v.source?.referrer?dailyReportShort(new URL(v.source.referrer).hostname,18):"Direct"}catch{source="Referral"}
     }
     const raw=(String(i+1).padStart(2,"0")+" "+id+" | "+kind+" | "+seen+" | "+location+" | "+device+" | ISP "+isp+" | "+(v.sessions||0)+"S/"+(v.pageViews||0)+"V | "+pages+" | Ref "+source);
-    lines.push(dailyReportEscape(raw.length>178?raw.slice(0,175)+"…":raw));
+    lines.push(dailyReportEscape(raw.length>162?raw.slice(0,159)+"…":raw));
   }
   if(activity.partial)lines.push("⚠️ Visitor scan was partial; counts may exclude records beyond the configured safety cap.");
   lines.push("ℹ️ Active duration, exact exit time and scroll duration are not measured.");
