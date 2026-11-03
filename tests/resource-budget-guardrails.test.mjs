@@ -15,6 +15,12 @@ assert.ok(!contact.includes("budgetLines"), "Daily Telegram report must not read
 assert.match(contact, /const SPORTS_ZONE_MONITORING_ENABLED=false/, "Sports Zone monitoring must remain explicitly paused");
 assert.match(contact, /if\(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg\.trafficAlerts\)/, "Sports Zone budget alerts must remain gated off");
 assert.doesNotMatch(contact, /budgetLines/, "Daily Telegram report must not include Sports Zone budget while paused");
+assert.match(contact, /resourceSnapshot=await cfResourceBudgetCheck/, "Daily report must reuse the current non-Sports Cloudflare resource snapshot");
+assert.match(contact, /Cloudflare Free-plan resource usage/, "Daily report must include Cloudflare resource usage");
+assert.match(contact, /KV usage excludes Sports Zone/, "Daily resource report must explicitly exclude paused Sports Zone KV usage");
+assert.match(contact, /if\(pending\.length&&typeof sendTelegram==="function"\)/, "Budget thresholds must not be marked sent when alert delivery is disabled");
+assert.ok(contact.includes("resourceUsageLines"), "Daily report must render the non-Sports resource summary");
+assert.ok(contact.includes("cfg.trafficAlerts?sendTelegram:null"), "Resource usage can be read for the daily report without enabling alert notifications");
 assert.match(sports, /const YOUTUBE_BACKOFF_SECONDS = 60 \* 60;/, "YouTube 429 cooldown must be one hour");
 assert.match(sports, /auto:youtube-backoff:/, "YouTube backoff must persist across Cron invocations");
 assert.match(sports, /error\.status=r\.status/, "YouTube API errors must preserve HTTP status");
