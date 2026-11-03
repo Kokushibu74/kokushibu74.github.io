@@ -76,7 +76,7 @@ BREAKING_EVENT_RE = re.compile(
     r"গণভোট|গণঅভ্যুত্থান|গণভোটের (?:তারিখ|ফল|সিদ্ধান্ত)|referendum (?:date|result|decision)|"
     r"পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|কালবৈশাখী|জলোচ্ছ্বাস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|storm surge|landslide|heatwave|heat wave|heavy rain|tornado|tsunami|"
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
-    r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war declared|ceasefire|evacuated)", re.I
+    r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war|armed conflict|airstrike|invasion|ceasefire|embassy evacuation|Bangladeshi nationals|Bangladesh embassy|terror attack|bombing|hostage|attack on|evacuated)", re.I
 )
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
