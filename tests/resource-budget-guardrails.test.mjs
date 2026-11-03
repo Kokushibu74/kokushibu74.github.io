@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 const contact = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
+const multiAi = readFileSync(new URL("../cloudflare/multi-ai-memory-api.js", import.meta.url), "utf8");
 const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js", import.meta.url), "utf8");
 
 assert.match(contact, /env\.SPORTS_ZONE\.get\("auto:status","json"\)/, "Telegram monitor must read the existing Sports Zone budget status");
@@ -62,5 +63,12 @@ assert.match(contact, /notifyNewsWatchdogFailure\(env\)/, "News watchdog failure
 assert.match(contact, /let miniAppAuditCache=\{expiresAt:0,rows:\[\]\}/, "Audit list cache must be isolate-local and start empty");
 assert.match(contact, /miniAppAuditCache\.expiresAt>now/, "Recent audit reads must reuse the short-lived in-memory cache");
 assert.match(contact, /expiresAt:now\+30_000/, "Audit cache must expire within 30 seconds to keep admin logs fresh");
+
+assert.match(multiAi, /async function fetchGetWithRetry\\(url, options = \\{\\}\\)/, "Multi-AI GET retry helper must exist");
+assert.match(multiAi, /method!=="GET"&&method!=="HEAD"/, "Multi-AI retry helper must never replay non-idempotent requests");
+assert.match(multiAi, /\\[408,425,429,500,502,503,504\\]/, "Multi-AI retry helper must limit retries to transient HTTP statuses");
+assert.match(multiAi, /maxAttempts=2/, "Multi-AI retry helper must be bounded to two attempts");
+assert.match(multiAi, /fetchGetWithRetry\\(endpoint/, "Wikipedia search must use bounded GET retries");
+assert.match(multiAi, /fetchGetWithRetry\\('https:\\/\\/r\\.jina\\.ai\\//, "Jina Reader must use bounded GET retries");
 
 console.log("Resource budgets, YouTube backoff, contact abuse protection, daily reporting, and news watchdog contracts OK.");
