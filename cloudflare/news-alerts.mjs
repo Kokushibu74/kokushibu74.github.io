@@ -91,6 +91,19 @@ export function evaluateNewsAlert(item={},options={}) {
   }
   return {eligible:true,reason:"verified",weather:event.weather,category:alertCategory(text),sourceCount,sources,publishedAt:published,link};
 }
+export async function deliverWithMediaFallback(candidates,caption,link,send) {
+  for(const media of candidates) {
+    try {
+      const method=media.type==="video"?"sendVideo":"sendPhoto";
+      const body=media.type==="video"?{video:media.url,caption,parse_mode:"HTML"}:{photo:media.url,caption,parse_mode:"HTML"};
+      if(await send(method,body))return media.type;
+    } catch {}
+  }
+  const text=[caption,"","🔗 "+escapeHtml(link)].join("\n");
+  if(!await send("sendMessage",{text,parse_mode:"HTML",disable_web_page_preview:false}))
+    throw new Error("Telegram news alert delivery failed");
+  return "text";
+}
 export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/") {
   const raw=String(html||"").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]*>/g," ").replace(/&nbsp;|&#160;/gi," ").replace(/&amp;/gi,"&").replace(/\s+/g," ");
   const hazard=String(item.title||"")+" "+String(item.summary||"");
