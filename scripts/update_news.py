@@ -710,6 +710,8 @@ def feed_content_metrics(items, weather_items=None, now=None):
         "latest_tag_15m": latest_tag_15m,
         "image_preview_urls": image_preview_urls,
         "bd_slider_preview_candidates": bd_slider_candidates,
+        "bd_slider_window_minutes": 30,
+        "bd_slider_media_required": True,
         "weather_cards": len(weather_items),
         "weather_cards_with_preview": weather_cards_with_preview,
     }
