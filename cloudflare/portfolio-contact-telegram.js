@@ -81,7 +81,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     if(crossed.length)pending.push({metric,pct,crossed,stateKey,sent});
     else if(!metric.daily&&pct<50&&sent.length===0){try{await env.BOT_CONFIG_KV.put(stateKey,"[]",{expirationTtl:365*86400})}catch{}}
   }
-  if(pending.length){
+  if(pending.length&&typeof sendTelegram==="function"){
     const lines=["⚠️ <b>CLOUDFLARE FREE-PLAN RESOURCE ALERT</b>","🕒 "+now.toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","📅 Usage day: "+day+" UTC",""];
     for(const item of pending){
       const m=item.metric,used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":Math.round(m.used).toLocaleString("en-US")+" "+m.unit;
@@ -91,7 +91,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     await sendTelegram(lines.join("\n"));
     for(const item of pending){try{await env.BOT_CONFIG_KV.put(item.stateKey,JSON.stringify([...new Set([...item.sent,...item.crossed])]),{expirationTtl:item.metric.daily?48*3600:365*86400})}catch(e){console.error("Cloudflare resource alert state save failed:",String(e&&e.message||e).slice(0,120));}}
   }
-  return {day,metrics:metrics.map(m=>({key:m.key,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100)})),alerts:pending.length};
+  return {day,metrics:metrics.map(m=>({key:m.key,label:m.label,unit:m.unit,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100),daily:m.daily})),alerts:pending.length};
 }
 async function cfHistoricalExceptionAudit(env,sendTelegram) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
@@ -1392,7 +1392,7 @@ export default {
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(now);
     const hour=Number(parts.find(p=>p.type==="hour")?.value),minute=Number(parts.find(p=>p.type==="minute")?.value);
     const daily=hour===23&&minute<30;
-    let status=null,responseMs=null,missing=[],failure="";
+    let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null;
     try{
       const res=await fetch(site,{method:"GET",redirect:"follow",signal:AbortSignal.timeout(15000)});
       status=res.status;responseMs=Math.round(performance.now()-started);
@@ -1405,12 +1405,16 @@ export default {
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
-    if(runChecks&&cfg.trafficAlerts){
-      try{await cfResourceBudgetCheck(env,sendTelegram,now);}
+    if(runChecks&&(cfg.trafficAlerts||(daily&&cfg.dailyReport))){
+      try{resourceSnapshot=await cfResourceBudgetCheck(env,cfg.trafficAlerts?sendTelegram:null,now);}
       catch(e){
         console.error("Cloudflare resource budget monitor failed:",String(e&&e.message||e).slice(0,220));
-        try{const key="cloudflare:budget-monitor-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Cloudflare resource monitor unavailable</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Cloudflare budget monitor warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
+        if(cfg.trafficAlerts){
+          try{const key="cloudflare:budget-monitor-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Cloudflare resource monitor unavailable</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Cloudflare budget monitor warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
+        }
       }
+    }
+    if(runChecks&&cfg.trafficAlerts){
       try{await cfHistoricalExceptionAudit(env,sendTelegram);}
       catch(e){
         console.error("Historical Cloudflare exception audit failed:",String(e&&e.message||e).slice(0,220));
@@ -1459,7 +1463,42 @@ export default {
       const v=report.rows?.[0]?.metricValues||[];return {users:v[0]?.value??"0",sessions:v[1]?.value??"0",views:v[2]?.value??"0",engagement:v[3]?.value??"0"};
     };
     if(failure&&(cfg.emergencyProtection||cfg.workflowAlerts))await miniAppCronAlert(env,controller.cron,"warning",failure);
-    if(daily&&cfg.dailyReport&&runChecks){ let gaLines,visitorLines; try { const g=await ga4Report(); gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"]; } catch(e) { gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"]; }  try { const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d)); visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))]; } catch(e) { visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)]; } await sendTelegramText(env,env.TELEGRAM_CHAT_ID,["📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present","",...gaLines,"",...visitorLines,"","ℹ️ Basic uptime/header check, not a full security audit."].filter(Boolean).join("\n"),{parse_mode:"HTML"});}
+    if(daily&&cfg.dailyReport&&runChecks){
+      let gaLines,visitorLines,resourceUsageLines;
+      try{
+        const g=await ga4Report();
+        gaLines=["📈 <b>GA4 — Today (Bangladesh time; through report time)</b>","👥 Active users: "+g.users,"🔁 Sessions: "+g.sessions,"👁️ Page views: "+g.views,"💬 Engagement rate: "+(Number(g.engagement)*100).toFixed(2)+"%"];
+      }catch(e){
+        gaLines=["⚠️ <b>GA4 report unavailable</b>","<code>"+String(e&&e.message||e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,280)+"</code>"];
+      }
+      try{
+        const d=bdDay(),x=await readDailyActivity(env,d),p=await readDailyActivity(env,previousBdDay(d));
+        visitorLines=["📊 <b>Visitor Activity Summary — Today</b>",...dailyActivityLines(x,p).map(v=>v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"))];
+      }catch(e){
+        visitorLines=["⚠️ Visitor Activity Summary unavailable: "+String(e&&e.message||e).slice(0,140)];
+      }
+      if(resourceSnapshot&&Array.isArray(resourceSnapshot.metrics)){
+        resourceUsageLines=["☁️ <b>Cloudflare Free-plan resource usage</b>","📅 Usage day: "+resourceSnapshot.day+" UTC",
+          ...resourceSnapshot.metrics.map(m=>{
+            const label=String(m.label||m.key).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+            const used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":Math.round(m.used).toLocaleString("en-US")+" "+m.unit;
+            const limit=m.unit==="bytes"?(m.limit/1073741824).toFixed(3)+" GiB":Math.round(m.limit).toLocaleString("en-US")+" "+m.unit;
+            return "• "+label+": "+used+" / "+limit+" ("+m.percent+"%)";
+          }),
+          "ℹ️ KV usage excludes Sports Zone; Workers requests are account-wide; D1 is Multi-AI memory."
+        ];
+      }else{
+        resourceUsageLines=["⚠️ Cloudflare resource usage unavailable for this report window."];
+      }
+      await sendTelegramText(env,env.TELEGRAM_CHAT_ID,[
+        "📊 <b>Website Daily Health Report</b>","🕒 "+stamp+" (Bangladesh time)","🌐 "+site,
+        failure?"🚨 Site status: DOWN / ERROR — "+failure:"✅ Site response: HTTP "+status,
+        responseMs===null?"":"⏱️ Response time: "+responseMs+" ms",
+        missing.length?"🔎 Security headers missing/not exposed: "+missing.join(", "):"🛡️ Basic security headers: present",
+        "",...gaLines,"",...visitorLines,"",...resourceUsageLines,"",
+        "ℹ️ Basic uptime/header check, not a full security audit."
+      ].filter(Boolean).join("\n"),{parse_mode:"HTML"});
+    }
     const terminalStatus=failure?"warning":"success";
     const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
