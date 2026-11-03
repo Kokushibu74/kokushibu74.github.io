@@ -11,7 +11,7 @@ const WEATHER = /(ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্
 const WEATHER_SEVERITY = /(সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|evacuat|warning|alert|severe|extreme|landfall|danger level|signal|emergency)/i;
 const BD = /(বাংলাদেশ|ঢাকা|চট্টগ্রাম|চাট্টোগ্রাম|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|ময়মনসিংহ|কক্সবাজার|কুড়িগ্রাম|কুড়িগ্রাম|সুনামগঞ্জ|সাতক্ষীরা|bangladesh|dhaka|chattogram|chittagong|sylhet|khulna|rajshahi|barishal|rangpur|mymensingh|cox'?s bazar|bay of bengal|bangladesh coast)/i;
 const DIRECT_BD_IMPACT = /(bangladeshi nationals|bangladeshis|bangladesh embassy|bangladesh-bound|flights? (?:to|from) bangladesh|affect(?:s|ing) bangladesh|impact on bangladesh|bangladesh coast|bay of bengal|বাংলাদেশি নাগরিক|বাংলাদেশের নাগরিক|বাংলাদেশ দূতাবাস|বাংলাদেশগামী)/i;
-const FOLLOW_UP = /(বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে|তদন্ত চলছে|মামলার অগ্রগতি|রিমান্ডে|চার্জশিট|anniversary|years? ago|look back|retrospective|investigation into|remanded|charges? filed|case filed|court orders|follow[- ]?up|what happened after)/i;
+const FOLLOW_UP = /(বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে|তদন্ত চলছে|মামলার অগ্রগতি|রিমান্ডে|চার্জশিট|anniversary|years? ago|look back|retrospective|investigation into|remanded|charges? filed|case filed|court orders|follow[- ]?up|what happened after)/i;\nconst HAZARD_GROUPS = [/(বন্যা|জলোচ্ছ্বাস|flood|flash ?flood)/i,/(ঘূর্ণিঝড়|ঘূর্ণিঝড়|cyclone|hurricane|typhoon)/i,/(ভূমিকম্প|earthquake)/i,/(পাহাড়ধস|পাহাড়ধস|landslide)/i,/(তাপপ্রবাহ|heat ?wave)/i,/(কালবৈশাখী|ঝড়|storm|tornado|tsunami|extreme rainfall|heavy rain)/i];
 const GENERIC_SOURCES = new Set(["google news","original publisher","unknown source","news feed",""]);
 function normalizeSources(item) {
   return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
@@ -78,7 +78,7 @@ export function evaluateNewsAlert(item={},options={}) {
 export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/") {
   const raw=String(html||"").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]*>/g," ").replace(/&nbsp;|&#160;/gi," ").replace(/&amp;/gi,"&").replace(/\s+/g," ");
   const hazard=String(item.title||"")+" "+String(item.summary||"");
-  if(!WEATHER.test(hazard)||!WEATHER.test(raw))return {confirmed:false};
+  if(!WEATHER.test(hazard)||!HAZARD_GROUPS.some(group=>group.test(hazard)&&group.test(raw)))return {confirmed:false};
   if(!/(warning|alert|bulletin|সতর্ক|বুলেটিন|ঝুঁকি)/i.test(raw))return {confirmed:false};
   const dates=[...raw.matchAll(/(?:last update|updated|bulletin|সতর্কবার্তা|বন্যা সতর্কবার্তা)[^0-9]{0,60}(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}(?::\d{2})?)?)?/gi)];
   const fresh=dates.some(match=>{
