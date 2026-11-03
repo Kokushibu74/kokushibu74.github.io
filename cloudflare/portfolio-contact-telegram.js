@@ -1,4 +1,139 @@
 
+
+const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
+const CF_MONITOR_KV_NAMESPACES = [
+  { id: "370c7ef8d3bd4c678243a2bd2a9c6f8c", label: "Bot config" },
+  { id: "431208d4ca2646829178a9dd05f93c2f", label: "Remote bridge state" },
+  { id: "f3333aa713ed4d258ada3b24b6bf2981", label: "Visitor intelligence" }
+];
+const CF_MONITOR_D1_ID = "93f7c8c5-dc3a-4b42-82f4-22d8263884c4";
+async function cfMonitorRequest(env,path,body) {
+  if (!env.CLOUDFLARE_API_TOKEN) throw new Error("CLOUDFLARE_API_TOKEN secret is unavailable");
+  const response = await fetch("https://api.cloudflare.com/client/v4" + path, {
+    method:"POST",
+    headers:{Authorization:"Bearer "+env.CLOUDFLARE_API_TOKEN,"Content-Type":"application/json"},
+    body:JSON.stringify(body),signal:AbortSignal.timeout(20000)
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || data.success === false) {
+    const detail=(data.errors||[]).map(x=>x.message||x.code).join("; ")||("HTTP "+response.status);
+    throw new Error("Cloudflare API request failed: "+detail.slice(0,220));
+  }
+  return data.result ?? data;
+}
+async function cfMonitorGraphQL(env,query,variables) {
+  const data=await cfMonitorRequest(env,"/graphql",{query,variables});
+  if(Array.isArray(data.errors)&&data.errors.length)throw new Error("Cloudflare Analytics GraphQL: "+data.errors.map(x=>x.message).join("; ").slice(0,220));
+  return data.data||data;
+}
+function cfMonitorNumber(value){const n=Number(value);return Number.isFinite(n)?n:0;}
+function cfMonitorMax(rows,path){return (rows||[]).reduce((max,row)=>Math.max(max,cfMonitorNumber(row?.max?.[path])),0);}
+function cfMonitorAction(rows,action){return (rows||[]).reduce((total,row)=>total+(String(row?.dimensions?.actionType||"").toLowerCase()===action?cfMonitorNumber(row?.sum?.requests):0),0);}
+async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
+  if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
+  const day=now.toISOString().slice(0,10),storageStart=new Date(now.getTime()-6*86400000).toISOString().slice(0,10);
+  const query=[
+    "query ShihabFreeBudget($accountTag: String!, $start: Date, $end: Date, $storageStart: Date, $startTime: Time!, $endTime: Time!) {",
+    " viewer { accounts(filter: { accountTag: $accountTag }) {",
+    "  workersInvocationsAdaptive(limit: 10000, filter: { datetime_geq: $startTime, datetime_leq: $endTime }) { sum { requests errors } }",
+    "  kvBot: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[0].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
+    "  kvBridge: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[1].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
+    "  kvVisitor: kvOperationsAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[2].id + "\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
+    "  kvBotStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[0].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
+    "  kvBridgeStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[1].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
+    "  kvVisitorStorage: kvStorageAdaptiveGroups(limit: 10000, filter: { namespaceId: \"" + CF_MONITOR_KV_NAMESPACES[2].id + "\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }",
+    "  d1Usage: d1AnalyticsAdaptiveGroups(limit: 10000, filter: { databaseId: \"" + CF_MONITOR_D1_ID + "\", date_geq: $start, date_leq: $end }) { sum { rowsRead rowsWritten } dimensions { date databaseId } }",
+    "  d1Storage: d1StorageAdaptiveGroups(limit: 10000, filter: { databaseId: \"" + CF_MONITOR_D1_ID + "\", date_geq: $storageStart, date_leq: $end }) { max { databaseSizeBytes } dimensions { date databaseId } }",
+    " } }",
+    "}"
+  ].join("\n");
+  const data=await cfMonitorGraphQL(env,query,{accountTag:CF_MONITOR_ACCOUNT_ID,start:day,end:day,storageStart,startTime:day+"T00:00:00Z",endTime:now.toISOString()});
+  const account=data?.viewer?.accounts?.[0];
+  if(!account)throw new Error("Cloudflare Analytics returned no account data");
+  const workers=(account.workersInvocationsAdaptive||[]).reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.requests),0);
+  const kvGroups=[account.kvBot||[],account.kvBridge||[],account.kvVisitor||[]];
+  const kvStorageGroups=[account.kvBotStorage||[],account.kvBridgeStorage||[],account.kvVisitorStorage||[]];
+  const kvAction=action=>kvGroups.reduce((sum,rows)=>sum+cfMonitorAction(rows,action),0);
+  const d1Usage=account.d1Usage||[];
+  const d1RowsRead=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsRead),0);
+  const d1RowsWritten=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsWritten),0);
+  const kvBytes=kvStorageGroups.reduce((sum,rows)=>sum+cfMonitorMax(rows,"byteCount"),0);
+  const d1Bytes=cfMonitorMax(account.d1Storage||[],"databaseSizeBytes");
+  const metrics=[
+    {key:"workers_requests",label:"Workers requests (account-wide)",used:workers,limit:100000,unit:"requests",daily:true},
+    {key:"kv_reads",label:"KV reads (non-Sports namespaces)",used:kvAction("read"),limit:100000,unit:"operations",daily:true},
+    {key:"kv_writes",label:"KV writes (non-Sports namespaces)",used:kvAction("write"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_deletes",label:"KV deletes (non-Sports namespaces)",used:kvAction("delete"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_lists",label:"KV list operations (non-Sports namespaces)",used:kvAction("list"),limit:1000,unit:"operations",daily:true},
+    {key:"kv_storage",label:"KV storage (non-Sports namespaces)",used:kvBytes,limit:1073741824,unit:"bytes",daily:false},
+    {key:"d1_rows_read",label:"D1 rows read",used:d1RowsRead,limit:5000000,unit:"rows",daily:true},
+    {key:"d1_rows_written",label:"D1 rows written",used:d1RowsWritten,limit:100000,unit:"rows",daily:true},
+    {key:"d1_storage",label:"D1 database storage",used:d1Bytes,limit:5368709120,unit:"bytes",daily:false}
+  ];
+  const thresholds=[50,70,85,95],pending=[];
+  for(const metric of metrics){
+    const pct=metric.limit>0?metric.used/metric.limit*100:0;
+    const stateKey="resource-alert:v2:"+(metric.daily?day+":":"storage:")+metric.key;
+    let sent=[];
+    try{const old=await env.BOT_CONFIG_KV.get(stateKey,"json");if(Array.isArray(old))sent=old.filter(Number.isFinite)}catch{}
+    if(!metric.daily&&pct<50)sent=[];
+    const crossed=thresholds.filter(level=>pct>=level&&!sent.includes(level));
+    if(crossed.length)pending.push({metric,pct,crossed,stateKey,sent});
+    else if(!metric.daily&&pct<50&&sent.length===0){try{await env.BOT_CONFIG_KV.put(stateKey,"[]",{expirationTtl:365*86400})}catch{}}
+  }
+  if(pending.length){
+    const lines=["⚠️ <b>CLOUDFLARE FREE-PLAN RESOURCE ALERT</b>","🕒 "+now.toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","📅 Usage day: "+day+" UTC",""];
+    for(const item of pending){
+      const m=item.metric,used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":Math.round(m.used).toLocaleString("en-US")+" "+m.unit;
+      const limit=m.unit==="bytes"?(m.limit/1073741824).toFixed(3)+" GiB":m.limit.toLocaleString("en-US")+" "+m.unit;
+      lines.push((item.pct>=95?"🚨 ":"⚠️ ")+"<b>"+m.label+"</b>","Usage: "+used+" / "+limit+" ("+Math.round(item.pct)+"%)","Threshold crossed: "+item.crossed.join("%, ")+"%");
+    }
+    await sendTelegram(lines.join("\n"));
+    for(const item of pending){try{await env.BOT_CONFIG_KV.put(item.stateKey,JSON.stringify([...new Set([...item.sent,...item.crossed])]),{expirationTtl:item.metric.daily?48*3600:365*86400})}catch(e){console.error("Cloudflare resource alert state save failed:",String(e&&e.message||e).slice(0,120));}}
+  }
+  return {day,metrics:metrics.map(m=>({key:m.key,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100)})),alerts:pending.length};
+}
+async function cfHistoricalExceptionAudit(env,sendTelegram) {
+  if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
+  const stateKey="cloudflare:exception-audit:2026-11-01:v1";
+  const prior=await env.BOT_CONFIG_KV.get(stateKey,"json").catch(()=>null);
+  if(prior?.status==="complete"||prior?.status==="no_matching_logs")return prior;
+  const now=Date.now(),attemptKey=stateKey+":attempt";
+  const last=await env.BOT_CONFIG_KV.get(attemptKey,"json").catch(()=>null);
+  if(Number(last?.at)&&now-Number(last.at)<30*60*1000)return {status:"throttled"};
+  await env.BOT_CONFIG_KV.put(attemptKey,JSON.stringify({at:now}),{expirationTtl:7*86400});
+  const from=Date.UTC(2026,10,1,0,0,0),to=now,endpoint="/accounts/"+CF_MONITOR_ACCOUNT_ID+"/workers/observability/telemetry/query";
+  const base={timeframe:{from,to},view:"events",limit:100,dry:true};
+  const queryA=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-script-threw-exception-nov1",parameters:{needle:{value:"scriptThrewException",isRegex:false,matchCase:false},limit:100}});
+  let rows=queryA?.events?.events||[],total=cfMonitorNumber(queryA?.events?.count);
+  if(!rows.length){
+    const queryB=await cfMonitorRequest(env,endpoint,{...base,queryId:"shihab-worker-exception-outcome-nov1",parameters:{filters:[{key:"$workers.outcome",operation:"eq",type:"string",value:"exception"}],limit:100}});
+    rows=queryB?.events?.events||[];total=Math.max(total,cfMonitorNumber(queryB?.events?.count));
+  }
+  const unique=new Map();
+  for(const row of rows)unique.set(String(row?.$metadata?.id||row?.timestamp||unique.size),row);
+  const events=[...unique.values()],groups=new Map(),scripts=new Map();
+  for(const row of events){
+    const meta=row?.$metadata||{},worker=row?.$workers||{},script=String(worker.scriptName||"Unknown Worker").slice(0,80);
+    scripts.set(script,(scripts.get(script)||0)+1);
+    const message=String(meta.errorTemplate||meta.messageTemplate||meta.error||meta.message||"Exception event without an error message").replace(/[\r\n\t]+/g," ").slice(0,160);
+    const key=script+" — "+message;groups.set(key,(groups.get(key)||0)+1);
+  }
+  const top=[...groups.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8);
+  if(!events.length&&!total){
+    const state={status:"no_matching_logs",at:now,timeframe:{from,to},note:"No matching persisted telemetry events were returned."};
+    await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(state),{expirationTtl:365*86400});
+    await sendTelegram("⚠️ <b>HISTORICAL EXCEPTION INVESTIGATION</b>\nNo persisted telemetry event matching scriptThrewException or $workers.outcome=exception was returned for Nov 1–now. The previously observed 80 exception metrics cannot be root-caused from retained logs; this is not proof that the exceptions did not occur.");
+    return state;
+  }
+  const scriptLines=[...scripts.entries()].sort((a,b)=>b[1]-a[1]).map(([name,count])=>"• "+name+": "+count);
+  const errorLines=top.map(([name,count],i)=>(i+1)+". ("+count+"×) "+name);
+  const state={status:"complete",at:now,total:Math.max(total,events.length),returned:events.length,scripts:Object.fromEntries(scripts),top:top.map(([message,count])=>({message,count}))};
+  await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(state),{expirationTtl:365*86400});
+  await sendTelegram(["🔎 <b>HISTORICAL EXCEPTION INVESTIGATION</b>","📅 Window: Nov 1, 2026 → now","📊 Matching telemetry events: "+Math.max(total,events.length)+" (returned "+events.length+")","","<b>By Worker</b>",...(scriptLines.length?scriptLines:["No Worker name in returned events."]),"","<b>Most common exception signatures</b>",...(errorLines.length?errorLines:["No error message was persisted."])].join("\n"));
+  return state;
+}
+
 function bdDay(ts=Date.now()){return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));}
 function previousBdDay(day){const d=new Date(day+"T00:00:00Z");d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10);}
 async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",rows=[];let cursor,pageCount=0;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row)}cursor=page.list_complete?undefined:page.cursor;pageCount++;}while(cursor&&pageCount<2);const partial=!!cursor;const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};const pages={};let views=0,sessions=0,errors=0,returning=0;for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}return {day,partial,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};}
@@ -1229,6 +1364,19 @@ export default {
       const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
+
+    if(runChecks&&cfg.trafficAlerts){
+      try{await cfResourceBudgetCheck(env,sendTelegram,now);}
+      catch(e){
+        console.error("Cloudflare resource budget monitor failed:",String(e&&e.message||e).slice(0,220));
+        try{const key="cloudflare:budget-monitor-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Cloudflare resource monitor unavailable</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Cloudflare budget monitor warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
+      }
+      try{await cfHistoricalExceptionAudit(env,sendTelegram);}
+      catch(e){
+        console.error("Historical Cloudflare exception audit failed:",String(e&&e.message||e).slice(0,220));
+        try{const key="cloudflare:exception-audit-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Historical exception log query failed</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Exception audit warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
+      }
+    }
 
     // Monitor the existing Sports Zone daily YouTube search budget without adding another service.
     const checkYouTubeBudget=async()=>{
