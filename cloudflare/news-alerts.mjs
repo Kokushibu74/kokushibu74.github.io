@@ -16,9 +16,18 @@ const DIRECT_BD_IMPACT = /(bangladeshi nationals|bangladeshis|bangladesh embassy
 const FOLLOW_UP = /(বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে|তদন্ত চলছে|মামলার অগ্রগতি|রিমান্ডে|চার্জশিট|anniversary|years? ago|look back|retrospective|investigation into|remanded|charges? filed|case filed|court orders|follow[- ]?up|what happened after)/i;
 const HAZARD_GROUPS = [/(বন্যা|জলোচ্ছ্বাস|flood|flash ?flood)/i,/(ঘূর্ণিঝড়|ঘূর্ণিঝড়|cyclone|hurricane|typhoon)/i,/(ভূমিকম্প|earthquake)/i,/(পাহাড়ধস|পাহাড়ধস|landslide)/i,/(তাপপ্রবাহ|heat ?wave)/i,/(দাবানল|wildfire)/i,/(খরা|drought)/i,/(বজ্রপাত|lightning)/i,/(কালবৈশাখী|ঝড়|storm|tornado|tsunami|extreme rainfall|heavy rain|rainfall)/i];
 const GENERIC_SOURCES = new Set(["google news","original publisher","unknown source","news feed",""]);
+function canonicalSource(value) {
+  const name=String(value||"").trim();
+  const lower=name.toLowerCase();
+  if(/bbc/.test(lower))return "BBC";
+  if(/daily star/.test(lower))return "The Daily Star";
+  if(/prothom alo|প্রথম আলো/.test(lower))return "Prothom Alo";
+  if(/jago news/.test(lower))return "Jago News 24";
+  return name;
+}
 function normalizeSources(item) {
   return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
-    .map(x=>String(x||"").trim()).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];
+    .map(canonicalSource).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];
 }
 export async function newsAlertKey(value) {
   const stop=new Set(["the","a","an","in","on","at","of","for","and","to","by","from","with","as","after","before","breaking","news","update"]);
