@@ -750,6 +750,8 @@ def main():
     breaking_history = read_breaking_history()
     collected, seen = [], set()
     collected_by_key = {}
+    breaking_url_budget = {"remaining": 3}
+    weather_url_budget = {"remaining": 3}
     successful_feeds = 0
     feed_failures = []
 
@@ -776,7 +778,7 @@ def main():
                     "publishedAt": published, "category": category,
                     "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
                     "summary": summary, "image": image_for(node), "videoUrl": video_for(node),
-                    "publisherUrl": "", "publisherName": source,
+                    "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "previewImage": image_for(node),
                     "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
@@ -791,7 +793,6 @@ def main():
                     if existing:
                         merge_source_evidence(existing, source)
                     continue
-                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
@@ -832,6 +833,7 @@ def main():
                     if existing:
                         merge_source_evidence(existing, source)
                     continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
@@ -862,7 +864,7 @@ def main():
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "summary": summary,
-                    "publisherUrl": link, "publisherName": source,
+                    "publisherUrl": "", "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node),
@@ -879,6 +881,7 @@ def main():
                     if existing:
                         merge_source_evidence(existing, source)
                     continue
+                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
                 weather_by_key[key] = item
