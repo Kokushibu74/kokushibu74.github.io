@@ -5,6 +5,9 @@ on:
     paths:
       - "scripts/update_news.py"
       - "tests/test_update_news.py"
+      - "news.js"
+      - "homepage-news.js"
+      - "tests/news-client-optimization.test.mjs"
       - ".github/workflows/news-tests.yml"
   push:
     branches:
@@ -29,5 +32,8 @@ jobs:
           python-version: "3.x"
       - name: Run offline news logic tests
         run: python3 tests/test_update_news.py -v
-      - name: Check browser JavaScript syntax
-        run: node --check news.js
+      - name: Check browser JavaScript syntax and feed refresh contracts
+        run: |
+          node --check news.js
+          node --check homepage-news.js
+          node tests/news-client-optimization.test.mjs

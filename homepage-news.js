@@ -55,7 +55,7 @@
     }
     async function loadHeadlines(){
       try{
-        const response=await fetch("news-feed.json?updated="+Date.now(),{cache:"no-store"});
+        const response=await fetch("news-feed.json",{cache:"no-cache"});
         if(!response.ok)throw Error("feed unavailable");
         const data=await response.json();
         const now=Date.now();
