@@ -134,8 +134,7 @@ async function cfHistoricalExceptionAudit(env,sendTelegram) {
   if(!events.length&&!total){
     if(metricsError&&!telemetryError)throw new Error("No exception events; historical metrics query failed: "+metricsError);
     if(metricsError&&telemetryError)throw new Error("Telemetry query failed: "+telemetryError+"; historical metrics query failed: "+metricsError);
-    const state={status:metricErrorTotal>0?"metrics_only":"no_matching_logs",at:now,timeframe:{from,to},metricErrorTotal,metricErrorRows:metricErrorRows.map(row=>({scriptName:row?.dimensions?.scriptName||"Unknown Worker",status:row?.dimensions?.status||"Unknown",errors:cfMonitorNumber(row?.sum?.errors),requests:cfMonitorNumber(row?.sum?.requests)})),telemetryError};
-    await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(state),{expirationTtl:365*86400});
+    const state={status:telemetryError?"telemetry_unavailable":(metricErrorTotal>0?"metrics_only":"no_matching_logs"),at:now,timeframe:{from,to},metricErrorTotal,metricErrorRows:metricErrorRows.map(row=>({scriptName:row?.dimensions?.scriptName||"Unknown Worker",status:row?.dimensions?.status||"Unknown",errors:cfMonitorNumber(row?.sum?.errors),requests:cfMonitorNumber(row?.sum?.requests)})),telemetryError};
     const lines=["⚠️ <b>HISTORICAL EXCEPTION INVESTIGATION</b>","📅 Window: Nov 1, 2026 → now"];
     if(metricErrorTotal>0){
       lines.push("📊 Workers Analytics reports "+metricErrorTotal+" error invocations.");
@@ -144,7 +143,14 @@ async function cfHistoricalExceptionAudit(env,sendTelegram) {
     }else{
       lines.push("No matching persisted telemetry events or historical exception metric rows were returned. The previously observed 80 exception metrics cannot be root-caused from the available retained data; this is not proof that the exceptions did not occur.");
     }
-    if(telemetryError)lines.push("","Telemetry query: "+telemetryError.replace(/[&<>]/g," "));
+    if(telemetryError){
+      lines.push("","⚠️ Detailed telemetry access is currently unavailable; this is NOT a confirmed no-logs result.");
+      lines.push("The audit will retry automatically on a later scheduled check.");
+      lines.push("Telemetry query: "+telemetryError.replace(/[&<>]/g," "));
+      await sendTelegram(lines.join("\n"));
+      return state;
+    }
+    await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(state),{expirationTtl:365*86400});
     await sendTelegram(lines.join("\n"));
     return state;
   }
