@@ -49,7 +49,7 @@
     );
     const checks=await Promise.all(candidates.map(async x=>({item:x,ok:await imageLoads(previewUrl(x))})));
     topItems=checks.filter(x=>x.ok).map(x=>x.item);
-    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No Bangladesh stories first collected in the last hour have a working preview image yet. Stories without images remain in the news feed.</div>';slideCount.textContent="IMAGE PREVIEW STORIES";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);slideTimer=null;return}
+    if(!topItems.length){slidesRoot.innerHTML='<div class="top-stories-empty">No Bangladesh stories published in the last 15 minutes have a working preview image yet. Stories without images remain in the news feed.</div>';slideCount.textContent="IMAGE PREVIEW STORIES";controls.hidden=true;if(slideTimer)clearInterval(slideTimer);slideTimer=null;return}
     slideIndex=Math.min(slideIndex,topItems.length-1);
     slidesRoot.innerHTML=topItems.map((x,i)=>{
       const image=previewUrl(x),title=x.previewTitle||x.title;
@@ -323,8 +323,10 @@
   weatherControls.addEventListener("click",e=>{const button=e.target.closest("[data-weather-step]");if(!button)return;const total=weatherSlidesRoot.querySelectorAll(".weather-slide").length;showWeatherSlide(weatherSlideIndex+Number(button.dataset.weatherStep),total);if(weatherSlideTimer)clearInterval(weatherSlideTimer);weatherSlideTimer=total>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches?setInterval(()=>showWeatherSlide(weatherSlideIndex+1,total),7000):null});
   window.addEventListener("error",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page script error: "+String(event.message||"unknown JavaScript error")+"."; }});
   window.addEventListener("unhandledrejection",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page error: "+String(event.reason?.message||event.reason||"unknown error")+"."; }});
-  let feedRetryTimer=null;
+  let feedRetryTimer=null,feedLoading=false;
   async function loadNewsFeed(){
+    if(feedLoading)return;
+    feedLoading=true;
     if(status)status.textContent="Loading headlines…";
     try{
       const feedUrl=new URL("./news-feed.json",document.baseURI);
@@ -345,8 +347,10 @@
       if(slidesRoot)slidesRoot.innerHTML='<div class="top-stories-empty">News feed temporarily unavailable. Retrying automatically.</div>';
       if(feedRetryTimer)clearTimeout(feedRetryTimer);
       feedRetryTimer=setTimeout(loadNewsFeed,30000);
+    }finally{
+      feedLoading=false;
     }
   }
   loadNewsFeed();
-  setInterval(()=>location.reload(),15*60*1000);
+  setInterval(loadNewsFeed,15*60*1000);
 })();
