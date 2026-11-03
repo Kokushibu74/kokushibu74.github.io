@@ -29,11 +29,22 @@ function normalizeSources(item) {
   return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
     .map(canonicalSource).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];
 }
-export async function newsAlertKey(value) {
+export async function newsAlertKey(value,source="") {
+  let title=String(value||"");
+  const publisher=String(source||"").trim();
+  if(publisher){
+    for(const separator of [" - "," – "," — "," | "]){
+      const suffix=separator+publisher;
+      if(title.toLowerCase().endsWith(suffix.toLowerCase())){
+        title=title.slice(0,-suffix.length);
+        break;
+      }
+    }
+  }
   const stop=new Set(["the","a","an","in","on","at","of","for","and","to","by","from","with","as","after","before","breaking","news","update"]);
-  const tokens=String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().split(/\s+/).filter(Boolean)
+  const tokens=title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().split(/\s+/).filter(Boolean)
     .map(token=>token.length>4&&/^[a-z]+$/.test(token)?token.replace(/(?:ing|ed|es|s)$/,""):token)
-    .filter(token=>!stop.has(token));
+    .filter(token=>!stop.has(token)&&!/^\d+$/.test(token));
   const normalized=[...new Set(tokens)].sort().join(" ");
   const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(normalized));
   return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);
