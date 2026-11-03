@@ -13,5 +13,8 @@ assert.match(sports, /const YOUTUBE_BACKOFF_SECONDS = 60 \* 60;/, "YouTube 429 c
 assert.match(sports, /auto:youtube-backoff:/, "YouTube backoff must persist across Cron invocations");
 assert.match(sports, /error\.status=r\.status/, "YouTube API errors must preserve HTTP status");
 assert.match(sports, /YouTube API cooldown active until/, "Cooldown state must be exposed in existing status data");
+const cooldownCheck = sports.indexOf("if(Number(backoff?.until)>Date.now())");
+const videosRequest = sports.indexOf('youtubeApi(env,"videos"');
+assert.ok(cooldownCheck >= 0 && videosRequest > cooldownCheck, "Persisted cooldown must be checked before another YouTube API request");
 
 console.log("Resource budget and YouTube backoff contracts OK.");

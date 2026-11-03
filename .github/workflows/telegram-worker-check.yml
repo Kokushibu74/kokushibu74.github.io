@@ -10,12 +10,13 @@ on:
       - 'tests/miniapp-auth.test.mjs'
       - 'tests/resource-budget-guardrails.test.mjs'
   push:
-    branches: [feature/kokushibu-telegram-miniapp]
+    branches: [main, feature/kokushibu-telegram-miniapp]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
+      - 'tests/resource-budget-guardrails.test.mjs'
 
 permissions:
   contents: read
@@ -66,4 +67,22 @@ jobs:
           if (!source.includes('split(/[\\s,;]+/)')) throw new Error('Admin ID whitespace parsing missing');
           if (source.includes('full backend action পরবর্তী')) throw new Error('Placeholder button action remains');
           console.log('Existing Bot commands, private admin restrictions, safety contracts and Mini App integration verified.');
+          NODE
+  deployed-smoke-test:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify production Telegram Worker configuration endpoint
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --retry-delay 5 --max-time 20 \
+            https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config \
+            -o /tmp/worker-config.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const config = JSON.parse(fs.readFileSync('/tmp/worker-config.json', 'utf8'));
+          for (const key of ['monitoring', 'dailyReport', 'scheduledChecks', 'trafficAlerts', 'workflowAlerts']) {
+            if (typeof config[key] !== 'boolean') throw new Error('Missing boolean config field: ' + key);
+          }
+          console.log('Production Telegram Worker config endpoint: OK');
           NODE
