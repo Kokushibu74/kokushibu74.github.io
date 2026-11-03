@@ -65,6 +65,10 @@ function classifyEvent(text) {
   if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||MAJOR_ACCIDENT.test(text)))return {weather:false};
   return null;
 }
+export function isWeatherCandidate(item={}) {
+  const text=String(item.title||"")+" "+String(item.summary||item.previewSummary||"");
+  return item.isBreaking===true&&!FOLLOW_UP.test(text)&&WEATHER.test(text)&&WEATHER_SEVERITY.test(text);
+}
 export function evaluateNewsAlert(item={},options={}) {
   const now=Number(options.now??Date.now()),official=options.officialSignal===true;
   const title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||"");
