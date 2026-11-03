@@ -10,6 +10,7 @@ on:
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
       - 'tests/resource-budget-guardrails.test.mjs'
+      - 'tests/telegram-daily-report.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
   push:
     branches: [main, feature/kokushibu-telegram-miniapp]
@@ -20,6 +21,7 @@ on:
       - 'miniapp/**'
       - 'tests/miniapp-auth.test.mjs'
       - 'tests/resource-budget-guardrails.test.mjs'
+      - 'tests/telegram-daily-report.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
 
 permissions:
@@ -39,6 +41,8 @@ jobs:
         run: node tests/miniapp-auth.test.mjs
       - name: Verify Free-plan resource budget guardrails
         run: node tests/resource-budget-guardrails.test.mjs
+      - name: Verify five-part Telegram daily report
+        run: node tests/telegram-daily-report.test.mjs
       - name: Validate Multi-AI Worker syntax
         run: node --check cloudflare/multi-ai-memory-api.js
       - name: Verify Multi-AI D1 and cache safeguards
@@ -52,7 +56,7 @@ jobs:
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
-            'if(daily&&cfg.dailyReport&&runChecks)', 'cfg.emergencyProtection',
+            'if(shouldSendDailyReport)', 'cfg.emergencyProtection',
             'pathname==="/workflow-config"', 'newsRefresh:true',
             'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;',
             'async function botStatusText', 'action.startsWith("status:")',
