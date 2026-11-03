@@ -29,7 +29,7 @@ WEATHER_DISASTER_RE = re.compile(
 )
 WEATHER_SEVERITY_RE = re.compile(
     r"(?:সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|"
-    r"নিহত|মৃত্যু|আহত|মাত্রা|ক্ষয়ক্ষতি|ক্ষয়ক্ষতি|major|severe|extreme|warning|alert|evacuat|"
+    r"নিহত|মৃত্যু|আহত|মাত্রা|ক্ষয়ক্ষতি|ক্ষয়ক্ষতি|ধ্বংস|উচ্ছেদ|major|severe|extreme|warning|alert|evacuat|destroy|"
     r"landfall|danger level|signal|magnitude|fatal|killed|deadly|disrupts flights)", re.I
 )
 # Multiple independent Bangladesh searches provide enough breadth to target 50+ local headlines.
@@ -80,7 +80,7 @@ BREAKING_EVENT_RE = re.compile(
 )
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
-    r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|remanded|charges? filed|case filed|court orders|"
+    r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|গ্রেপ্তার|গ্রেফতার|আটক|মামলার শুনানি|আদালতে হাজির|remanded|arrested|arrest in|trial|hearing|convicted|sentenced|case update|charges? filed|case filed|court orders|"
     r"investigation into|anniversary|years? ago|what happened|timeline|retrospective|"
     r"বার্ষিকী|বছর আগে|বছর পরে|দশক পরে|পেছন ফিরে|স্মরণে|স্মৃতিচারণ|পুরোনো ঘটনা|পূর্বের ঘটনা|"
     r"years? later|decades? later|from the archives|historical footage|old case|past incident)", re.I
