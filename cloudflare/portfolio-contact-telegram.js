@@ -314,7 +314,7 @@ async function botStatusText(env,category,index){
     const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
     lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
   }else if(category==="github"){
-    const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+    const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
     const [repoRes,commitRes]=await Promise.all([
       fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io",{headers,signal:AbortSignal.timeout(10000)}),
@@ -364,11 +364,11 @@ async function botHandleCallback(env,query){
           articleCount=list.length;feedStatus="HTTP "+r.status+" · "+articleCount+" articles · "+raw.length+" bytes";}
         catch(e){feedStatus="ERROR · "+String(e.message||e).slice(0,100)}
         if(!env.GITHUB_TOKEN)workflowStatus="FAILED — GitHub token is not configured";
-        else{const headers={Accept:"application/vnd.github+json","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+        else{const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
           try{const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
             if(dispatch.status===204){workflowStatus="TRIGGER ACCEPTED";
               for(let attempt=0;attempt<4;attempt++){await new Promise(resolve=>setTimeout(resolve,1200));
-                const runsRes=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?event=workflow_dispatch&branch=main&per_page=5",{headers:{Accept:"application/vnd.github+json",Authorization:"Bearer "+env.GITHUB_TOKEN,"X-GitHub-Api-Version":"2022-11-28"},signal:AbortSignal.timeout(10000)});
+                const runsRes=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?event=workflow_dispatch&branch=main&per_page=5",{headers:{Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp",Authorization:"Bearer "+env.GITHUB_TOKEN,"X-GitHub-Api-Version":"2022-11-28"},signal:AbortSignal.timeout(10000)});
                 if(!runsRes.ok)break;const data=await runsRes.json().catch(()=>({}));
                 const run=(data.workflow_runs||[]).find(x=>Date.parse(x.created_at||"")>=started-5000);
                 if(run){workflowStatus=String(run.status||"queued").toUpperCase()+(run.conclusion?" · "+String(run.conclusion).toUpperCase():"");workflowUrl=String(run.html_url||"");break;}}
@@ -570,13 +570,13 @@ async function botCommitHero(env,token){
   const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV.get(key,"json");
   if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
   const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
-  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
+  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
   const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
   const ext=pending.mimeType==="image/png"?"png":pending.mimeType==="image/webp"?"webp":"jpg";
   const imagePath="storage/pictures/hero-miniapp-"+Date.now()+"."+ext;
   const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
   const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
-  const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json"}});
+  const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp"}});
   const current=await dataRes.json().catch(()=>({}));if(!dataRes.ok||!current.content||!current.sha)throw new Error("Could not read current site data from GitHub");
   const raw=atob(current.content.replace(/\s/g,"")),data=JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
   data.image=imagePath;
@@ -695,7 +695,7 @@ async function miniAppCronHistory(env){
 }
 async function miniAppDispatchNews(env){
   if(!env.GITHUB_TOKEN)throw new Error("GitHub workflow dispatch is not configured.");
-  const headers={Accept:"application/vnd.github+json","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
+  const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","Content-Type":"application/json","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
   const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
   if(response.status!==204)throw new Error("News workflow dispatch failed (HTTP "+response.status+").");
   return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
@@ -772,7 +772,7 @@ async function miniAppModule(env,section){
   if(section==="logs"){const rows=await miniAppRecentAudit(env);return {section,rows,text:rows.length?rows.map(x=>new Date(x.at).toISOString()+" · "+x.action+" · admin "+x.userId).join("\\n"):"No Mini App audit events recorded yet.",source:"BOT_CONFIG_KV audit log"};}
   
   if(section==="github"){
-    const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+    const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
     const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
     const d=await r.json().catch(()=>({}));
@@ -849,7 +849,7 @@ async function miniAppUserHistory(env,input){
   return rows.sort((a,b)=>b.at-a.at).slice(0,30);
 }
 async function miniAppRecovery(env){
-  const headers={Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+  const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
   const r=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/branches?per_page=100",{headers,signal:AbortSignal.timeout(10000)});
   if(!r.ok)throw new Error("GitHub branch verification failed (HTTP "+r.status+").");
   const branches=await r.json(),backups=(Array.isArray(branches)?branches:[]).filter(x=>x.name.startsWith("backup/")).map(x=>({name:x.name,sha:x.commit?.sha||null}));
