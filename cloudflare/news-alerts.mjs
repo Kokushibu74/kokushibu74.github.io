@@ -1,0 +1,92 @@
+const DEATH = /(নিহত|মারা গেছেন|মৃত্যু|killed|dead|death toll|fatal)/i;
+const MURDER = /(খুন|হত্যা|murder|homicide|assassinat)/i;
+const ACCIDENT = /(দুর্ঘটনা|বাস দুর্ঘটনা|ট্রেন দুর্ঘটনা|লঞ্চ দুর্ঘটনা|নৌকাডুবি|ভবন ধস|ধসে পড়|বিস্ফোরণ|অগ্নিকাণ্ড|আগুনে পুড়ে|crash|collision|derailment|capsiz|collapse|explosion|major fire|stampede)/i;
+const CLASH = /(সংঘর্ষ|গুলিবর্ষণ|গুলি চালনা|সশস্ত্র হামলা|হামলা|clash|shooting|armed attack|riot|violence|police firing)/i;
+const SERIOUS = /(নিহত|মৃত্যু|আহত|গুলিবর্ষণ|গুলি|সশস্ত্র|কারফিউ|জরুরি অবস্থা|সেনা মোতায়েন|army deployed|curfew|fatal|killed|injured|mass casualty|armed|emergency)/i;
+const UPRISING = /(গণঅভ্যুত্থান|mass uprising|uprising)/i;
+const UPRISING_DEVELOPMENT = /(পদত্যাগ|ক্ষমতাচ্যুত|সরকার পতন|কারফিউ|সংসদ ভেঙে|সেনা মোতায়েন|জরুরি অবস্থা|অন্তর্বর্তী সরকার|resign|ousted|government falls|curfew|parliament dissolved|army deployed|emergency declared|interim government|major verdict)/i;
+const REFERENDUM = /(গণভোট|referendum)/i;
+const REFERENDUM_CHANGE = /(তারিখ|ফলাফল|ফল|সিদ্ধান্ত|অনুমোদন|প্রত্যাখ্যান|স্থগিত|ঘোষণা|date|result|decision|approved|rejected|postponed|rescheduled|announced|vote count)/i;
+const WEATHER = /(ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|অতিবৃষ্টি|তাপপ্রবাহ|কালবৈশাখী|cyclone|flood|storm surge|earthquake|landslide|extreme rainfall|heat ?wave|severe storm|flash ?flood|tornado|tsunami)/i;
+const WEATHER_SEVERITY = /(সতর্কবার্তা|বিপদ সংকেত|বিপদসীমা|জরুরি সতর্কতা|চরম|ভয়াবহ|ভয়াবহ|অতি ভারী|অত্যন্ত ভারী|evacuat|warning|alert|severe|extreme|landfall|danger level|signal|emergency)/i;
+const BD = /(বাংলাদেশ|ঢাকা|চট্টগ্রাম|চাট্টোগ্রাম|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|ময়মনসিংহ|কক্সবাজার|কুড়িগ্রাম|কুড়িগ্রাম|সুনামগঞ্জ|সাতক্ষীরা|bangladesh|dhaka|chattogram|chittagong|sylhet|khulna|rajshahi|barishal|rangpur|mymensingh|cox'?s bazar|bay of bengal|bangladesh coast)/i;
+const DIRECT_BD_IMPACT = /(bangladeshi nationals|bangladeshis|bangladesh embassy|bangladesh-bound|flights? (?:to|from) bangladesh|affect(?:s|ing) bangladesh|impact on bangladesh|bangladesh coast|bay of bengal|বাংলাদেশি নাগরিক|বাংলাদেশের নাগরিক|বাংলাদেশ দূতাবাস|বাংলাদেশগামী)/i;
+const FOLLOW_UP = /(বার্ষিকী|বছর আগে|পেছন ফিরে|স্মরণে|তদন্ত চলছে|মামলার অগ্রগতি|রিমান্ডে|চার্জশিট|anniversary|years? ago|look back|retrospective|investigation into|remanded|charges? filed|case filed|court orders|follow[- ]?up|what happened after)/i;
+const GENERIC_SOURCES = new Set(["google news","original publisher","unknown source","news feed",""]);
+function normalizeSources(item) {
+  return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[])
+    .map(x=>String(x||"").trim()).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];
+}
+export async function newsAlertKey(value) {
+  const normalized=String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(normalized));
+  return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);
+}
+export function escapeHtml(value) {
+  return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+export function alertCategory(text) {
+  if(WEATHER.test(text))return "Severe Weather / Disaster";
+  if(REFERENDUM.test(text))return "গণভোটের সিদ্ধান্ত / ফলাফল";
+  if(UPRISING.test(text))return "গণঅভ্যুত্থানের গুরুত্বপূর্ণ ঘটনা";
+  if(MURDER.test(text))return "হত্যা / গুরুতর সহিংসতা";
+  if(CLASH.test(text))return "গুরুতর সংঘর্ষ / সহিংসতা";
+  return "মৃত্যু / বড় দুর্ঘটনা";
+}
+export function mediaCandidates(item={}) {
+  const valid=value=>{try{const u=new URL(String(value||""));return u.protocol==="https:"?u.href:"";}catch{return "";}};
+  const video=valid(item.videoUrl||item.video);
+  const image=valid(item.previewImage||item.image);
+  return [...(video?[{type:"video",url:video}]:[]),...(image?[{type:"photo",url:image}]:[])];
+}
+function classifyEvent(text) {
+  if(WEATHER.test(text)&&WEATHER_SEVERITY.test(text))return {weather:true};
+  if(REFERENDUM.test(text)&&REFERENDUM_CHANGE.test(text))return {weather:false};
+  if(UPRISING.test(text)&&UPRISING_DEVELOPMENT.test(text))return {weather:false};
+  if(MURDER.test(text))return {weather:false};
+  if(CLASH.test(text)&&SERIOUS.test(text))return {weather:false};
+  if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)))return {weather:false};
+  return null;
+}
+export function evaluateNewsAlert(item={},options={}) {
+  const now=Number(options.now??Date.now()),official=options.officialSignal===true;
+  const title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||"");
+  const text=title+" "+summary+" "+String(item.category||"");
+  const fail=reason=>({eligible:false,reason,weather:false,sourceCount:0,sources:[]});
+  if(!title||item.isBreaking!==true)return fail("not_breaking");
+  if(FOLLOW_UP.test(text))return fail("follow_up");
+  const published=Date.parse(item.publishedAt||item.pubDate||"");
+  if(!Number.isFinite(published))return fail("undated");
+  const age=(now-published)/60000;
+  if(age < -5 || age > (official?180:60))return fail("stale");
+  const event=classifyEvent(text);
+  if(!event)return fail("not_significant");
+  const category=String(item.category||"");
+  const local=BD.test(text)||/bangladesh/i.test(category);
+  const internationalImpact=DIRECT_BD_IMPACT.test(text);
+  if(!local&&!internationalImpact)return fail("not_bangladesh_related");
+  const link=String(item.publisherUrl||item.link||"");
+  let parsed;
+  try{parsed=new URL(link);}catch{return fail("missing_original_url");}
+  if(parsed.protocol!=="https:"||parsed.hostname==="news.google.com"||parsed.hostname.endsWith(".news.google.com"))return fail("not_original_url");
+  const sources=normalizeSources(item),sourceCount=sources.length;
+  if(sourceCount<2 && !(official&&event.weather&&sourceCount>=1)) {
+    return {eligible:false,reason:"needs_corroboration",weather:event.weather,category:alertCategory(text),sourceCount,sources};
+  }
+  return {eligible:true,reason:"verified",weather:event.weather,category:alertCategory(text),sourceCount,sources,publishedAt:published,link};
+}
+export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/") {
+  const raw=String(html||"").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]*>/g," ").replace(/&nbsp;|&#160;/gi," ").replace(/&amp;/gi,"&").replace(/\s+/g," ");
+  const hazard=String(item.title||"")+" "+String(item.summary||"");
+  if(!WEATHER.test(hazard)||!WEATHER.test(raw))return {confirmed:false};
+  if(!/(warning|alert|bulletin|সতর্ক|বুলেটিন|ঝুঁকি)/i.test(raw))return {confirmed:false};
+  const dates=[...raw.matchAll(/(?:last update|updated|bulletin|সতর্কবার্তা|বন্যা সতর্কবার্তা)[^0-9]{0,60}(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}(?::\d{2})?)?)?/gi)];
+  const fresh=dates.some(match=>{
+    const stamp=Date.parse(match[1]+"T"+(match[2]||"12:00")+":00+06:00");
+    const age=(now-stamp)/3600000;
+    return Number.isFinite(stamp)&&age>=-6&&age<=36;
+  });
+  if(!fresh)return {confirmed:false};
+  if(!BD.test(raw)&&!/(Bangladesh|বাংলাদেশ|district|জেলা)/i.test(raw))return {confirmed:false};
+  return {confirmed:true,name,url};
+}
