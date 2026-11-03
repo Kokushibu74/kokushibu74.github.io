@@ -9,6 +9,9 @@ assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must us
 assert.match(contact, /resource-alert:youtube:/, "Budget alert deduplication must be persisted");
 assert.match(contact, /Math\.ceil\(limit\*p\/100\)/, "Thresholds must round up to a whole request");
 assert.match(contact, /cfg\.trafficAlerts/, "Budget alerts must respect the existing traffic alert setting");
+assert.ok(contact.includes("const SPORTS_ZONE_MONITORING_ENABLED=false"), "Sports Zone monitoring must remain explicitly paused");
+assert.ok(contact.includes("if(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg.trafficAlerts)"), "Sports Zone budget alerts must remain gated off");
+assert.ok(!contact.includes("budgetLines"), "Daily Telegram report must not read or report Sports Zone budget while paused");
 assert.match(contact, /const SPORTS_ZONE_MONITORING_ENABLED=false/, "Sports Zone monitoring must remain explicitly paused");
 assert.match(contact, /if\(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg\.trafficAlerts\)/, "Sports Zone budget alerts must remain gated off");
 assert.doesNotMatch(contact, /budgetLines/, "Daily Telegram report must not include Sports Zone budget while paused");
@@ -34,7 +37,6 @@ const trackConfigRead = contact.indexOf("const botCfg=await botConfig(env)", tra
 assert.ok(trackRateCall >= 0 && trackConfigRead > trackRateCall, "Tracking requests must be rate-limited before reading Bot Config KV");
 assert.match(contact, /Retry-After/, "Rate-limited contact and tracking requests must include Retry-After");
 assert.match(contact, /Too many contact submissions/, "Contact limiter must return a clear 429 response");
-assert.match(contact, /...budgetLines/, "Daily Telegram report must render resource budget metrics");
 
 
 // Exercise the actual Worker rate-limit helper with a fake Cloudflare request.
