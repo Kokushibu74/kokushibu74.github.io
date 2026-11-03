@@ -3,6 +3,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import importlib.util
+from unittest.mock import patch
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "update_news.py"
 SPEC = importlib.util.spec_from_file_location("update_news", SCRIPT)
@@ -74,10 +75,30 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         published = (datetime.now(timezone.utc) - timedelta(hours=4)).isoformat()
         self.assertFalse(news.is_recent_weather_alert("বাংলাদেশে ঘূর্ণিঝড়ের সতর্কবার্তা", "উপকূলে জরুরি সতর্কতা", published))
 
+    def test_google_news_alert_url_is_resolved_with_a_bounded_budget(self):
+        item = {"link": "https://news.google.com/rss/articles/example", "isBreaking": True}
+        budget = {"remaining": 1}
+        with patch.object(news, "resolve_google_news_url", return_value="https://publisher.example/article") as resolver:
+            self.assertEqual(news.resolve_alert_publisher_url(item, budget), "https://publisher.example/article")
+            resolver.assert_called_once_with(item["link"])
+        self.assertEqual(budget["remaining"], 0)
+
+    def test_google_news_alert_url_is_not_resolved_after_budget_exhaustion(self):
+        item = {"link": "https://news.google.com/rss/articles/example", "isBreaking": True}
+        with patch.object(news, "resolve_google_news_url") as resolver:
+            self.assertEqual(news.resolve_alert_publisher_url(item, {"remaining": 0}), "")
+            resolver.assert_not_called()
+
+    def test_non_breaking_google_news_url_is_not_resolved(self):
+        item = {"link": "https://news.google.com/rss/articles/example", "isBreaking": False}
+        with patch.object(news, "resolve_google_news_url") as resolver:
+            self.assertEqual(news.resolve_alert_publisher_url(item, {"remaining": 1}), "")
+            resolver.assert_not_called()
+
     def test_weather_items_include_alert_flag_and_video(self):
         source = SCRIPT.read_text(encoding="utf-8")
         self.assertIn('"videoUrl": video_for(node)', source)
-        self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source)', source)
+        self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published)', source)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
