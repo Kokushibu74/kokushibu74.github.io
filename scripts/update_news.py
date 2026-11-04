@@ -687,17 +687,16 @@ def feed_content_metrics(items, weather_items=None, now=None):
         except (ValueError, TypeError, AttributeError, OverflowError):
             continue
         is_recent = -5 * 60 <= age_seconds < 24 * 60 * 60
-        is_latest_tag = -5 * 60 <= age_seconds < 15 * 60
+        is_latest_tag = -5 * 60 <= age_seconds <= 15 * 60
         has_preview_url = any(str(item.get(field) or "").startswith("https://") for field in preview_fields)
-        has_video_url = any(str(item.get(field) or "").startswith("https://") for field in ("videoUrl", "video", "video_url"))
-        is_slider_age = -5 * 60 <= age_seconds < 30 * 60
+        is_slider_age = -5 * 60 <= age_seconds <= 60 * 60
         if is_recent:
             latest_24h += 1
         elif age_seconds >= 24 * 60 * 60:
             archive += 1
         if is_latest_tag:
             latest_tag_15m += 1
-        if is_slider_age and item.get("category") == "Bangladesh" and (has_preview_url or has_video_url):
+        if is_slider_age and item.get("category") == "Bangladesh" and has_preview_url:
             bd_slider_candidates += 1
         if has_preview_url:
             image_preview_urls += 1
@@ -712,7 +711,7 @@ def feed_content_metrics(items, weather_items=None, now=None):
         "latest_tag_15m": latest_tag_15m,
         "image_preview_urls": image_preview_urls,
         "bd_slider_preview_candidates": bd_slider_candidates,
-        "bd_slider_window_minutes": 30,
+        "bd_slider_window_minutes": 60,
         "bd_slider_media_required": True,
         "weather_cards": len(weather_items),
         "weather_cards_with_preview": weather_cards_with_preview,
