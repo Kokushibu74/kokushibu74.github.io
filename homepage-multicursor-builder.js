@@ -43,7 +43,7 @@
 
     const style = document.createElement("style");
     style.id = "homepage-multicursor-builder-styles";
-    style.textContent = \`
+    style.textContent = `
       #homepage-multicursor-layer{position:fixed;inset:0;z-index:99960;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout style}
       #homepage-multicursor-layer *{box-sizing:border-box}
       .mc-origin{position:absolute;left:0;top:0;transform:translate(-50%,-50%);font:900 clamp(58px,11vw,116px)/1 'Outfit',sans-serif;letter-spacing:-.08em;color:#00f2fe;text-shadow:0 0 12px rgba(0,242,254,.85),0 0 38px rgba(0,242,254,.48),0 0 72px rgba(127,0,255,.32);will-change:transform,opacity;white-space:nowrap}
@@ -67,7 +67,7 @@
       #homepage-multicursor-layer.mc-complete .mc-origin{opacity:0!important;transition:opacity .25s ease}
       @media(max-width:640px){.mc-origin{top:0;font-size:clamp(54px,18vw,82px);text-shadow:0 0 10px rgba(0,242,254,.8),0 0 26px rgba(0,242,254,.35)}.mc-cursor-label{font-size:7px;padding:3px 5px;left:15px;top:17px}.mc-cursor svg{width:20px;height:25px}.mc-target-active{outline-offset:3px}}
       @media(prefers-reduced-motion:reduce){#homepage-multicursor-layer{display:none!important}}
-    \`;
+    `;
     document.head.appendChild(style);
 
     const layer = document.createElement("div");
