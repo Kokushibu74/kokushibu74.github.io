@@ -1,3 +1,4 @@
+import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./news-slider-rules.mjs";
 (() => {
   "use strict";
   const grid=document.getElementById("news-grid"),status=document.getElementById("news-status"),filters=document.getElementById("filters");
@@ -20,15 +21,13 @@
     const part=k=>parts.find(x=>x.type===k)?.value||"";
     return part("year")+"-"+part("month")+"-"+part("day");
   };
-  const ageMinutes=x=>{const d=dateOf(x);return d?(Date.now()-d.getTime())/60000:Infinity};
-  const isLatestBatch=x=>{const age=ageMinutes(x);return age>=-5&&age<15};
-  const isSliderEligibleAge=x=>{const age=ageMinutes(x);return age>=-5&&age<=60};
+  const isLatestBatch=x=>isLatestTagItem(x);
+  const isSliderEligibleAge=x=>isSliderEligibleItem(x);
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const ageOf=x=>{const d=dateOf(x);return d?Date.now()-d.getTime():Infinity};
   const isWithinLast24Hours=x=>{const age=ageOf(x);return age>=-5*60*1000&&age<24*60*60*1000};
-  const PREVIEW_FIELDS=["previewScreenshot","previewImage","image","imageUrl","thumbnail","thumbnailUrl","enclosureUrl"];
-  const previewUrl=x=>safe(PREVIEW_FIELDS.map(k=>x[k]).find(Boolean)||"");
+  const previewUrl=x=>safe(getImagePreviewUrl(x));
   function imageLoads(url){
     return new Promise(resolve=>{
       if(!url||url==="#"){resolve(false);return}
