@@ -119,6 +119,7 @@
     };
     window.addEventListener("mousemove", trackPointer, { passive: true });
     window.addEventListener("touchstart", trackPointer, { passive: true });
+    window.addEventListener("touchmove", trackPointer, { passive: true });
 
     function pointFor(selector) {
       const element = $(selector);
@@ -204,6 +205,7 @@
           layer.remove(); style.remove();
           window.removeEventListener("mousemove", trackPointer);
           window.removeEventListener("touchstart", trackPointer);
+          window.removeEventListener("touchmove", trackPointer);
           window.removeEventListener("scroll", onScroll);
           window.removeEventListener("resize", requestRender);
         }, 520);
