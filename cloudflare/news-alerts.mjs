@@ -136,7 +136,7 @@ export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DD
   const hazard=String(item.title||"")+" "+String(item.summary||"");
   if(!WEATHER.test(hazard)||!HAZARD_GROUPS.some(group=>group.test(hazard)&&group.test(raw)))return {confirmed:false};
   if(!/(warning|alert|bulletin|সতর্ক|বুলেটিন|ঝুঁকি)/i.test(raw))return {confirmed:false};
-  const dates=[...raw.matchAll(/(?:last update|updated|bulletin|সতর্কবার্তা|বন্যা সতর্কবার্তা)[^0-9]{0,60}(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}(?::\d{2})?)?)?/gi)];
+  const dates=[...raw.matchAll(/(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}(?::\d{2})?)?)?/g)];
   const fresh=dates.some(match=>{
     const time=match[2]||"12:00";
     const clock=time.length===5?time+":00":time;

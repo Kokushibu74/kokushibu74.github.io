@@ -330,14 +330,15 @@ class NewsLogicTests(unittest.TestCase):
     def test_feed_content_metrics_match_live_news_time_windows_and_preview_fields(self):
         now = datetime(2026, 11, 3, 12, 0, tzinfo=timezone.utc)
         items = [
-            {"title": "BD latest", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "previewImage": "https://img.example/latest.jpg"},
-            {"title": "BD recent", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=20)).isoformat(), "image": "https://img.example/recent.jpg"},
-            {"title": "BD 60m", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=60)).isoformat(), "previewImage": "https://img.example/60m.jpg"},
-            {"title": "BD 61m", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=61)).isoformat(), "previewImage": "https://img.example/61m.jpg"},
-            {"title": "BD video only", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=10)).isoformat(), "videoUrl": "https://video.example/only.mp4"},
-            {"title": "World recent", "category": "World", "publishedAt": (now - timedelta(hours=23)).isoformat()},
+            {"title": "BD five minutes", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "previewImage": "https://img.example/5.jpg"},
+            {"title": "BD exactly fifteen minutes", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=15)).isoformat(), "previewImage": "https://img.example/15.jpg"},
+            {"title": "BD sixteen minutes", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=16)).isoformat(), "image": "https://img.example/16.jpg"},
+            {"title": "BD exactly sixty minutes", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=60)).isoformat(), "thumbnail": "https://img.example/60.jpg"},
+            {"title": "BD sixty-one minutes", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=61)).isoformat(), "previewImage": "https://img.example/61.jpg"},
+            {"title": "BD video only", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "videoUrl": "https://video.example/clip.mp4"},
+            {"title": "BD no media", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat()},
+            {"title": "World image", "category": "World", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "previewImage": "https://img.example/world.jpg"},
             {"title": "Tech archive", "category": "Technology", "publishedAt": (now - timedelta(hours=25)).isoformat()},
-            {"title": "BD older archive", "category": "Bangladesh", "publishedAt": (now - timedelta(days=2)).isoformat()},
             {"title": "Future item", "category": "World", "publishedAt": (now + timedelta(minutes=10)).isoformat()},
         ]
         weather = [
@@ -345,12 +346,13 @@ class NewsLogicTests(unittest.TestCase):
             {"title": "Storm update"},
         ]
         metrics = news.feed_content_metrics(items, weather, now)
-        self.assertEqual(metrics["latest_24h"], 6)
-        self.assertEqual(metrics["archive"], 2)
-        self.assertEqual(metrics["latest_tag_15m"], 2)
-        self.assertEqual(metrics["image_preview_urls"], 4)
-        self.assertEqual(metrics["bd_slider_preview_candidates"], 3)
+        self.assertEqual(metrics["latest_24h"], 8)
+        self.assertEqual(metrics["archive"], 1)
+        self.assertEqual(metrics["latest_tag_15m"], 5)
+        self.assertEqual(metrics["image_preview_urls"], 6)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 4)
         self.assertEqual(metrics["bd_slider_window_minutes"], 60)
+        self.assertTrue(metrics["bd_slider_image_required"])
         self.assertEqual(metrics["weather_cards"], 2)
         self.assertEqual(metrics["weather_cards_with_preview"], 1)
 

@@ -9,6 +9,9 @@ on:
       - "scripts/update_news.py"
       - "tests/test_news_alerts.py"
       - "tests/news-alerts.test.mjs"
+      - "news.js"
+      - "news-slider-rules.mjs"
+      - "tests/news-slider-rules.test.mjs"
       - ".github/workflows/test-news-alerts.yml"
   workflow_dispatch:
 
@@ -40,3 +43,5 @@ jobs:
         run: python3 tests/test_update_news.py -v
       - name: Run JavaScript alert tests
         run: node --test tests/news-alerts.test.mjs
+      - name: Run news slider rule tests
+        run: node --test tests/news-slider-rules.test.mjs
