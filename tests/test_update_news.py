@@ -27,6 +27,22 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(len(previous), 1)
         self.assertEqual(previous[0]["previewImage"], "https://example.com/image.jpg")
 
+    def test_weather_preview_falls_back_when_preview_image_is_empty(self):
+        item = {
+            "previewImage": "",
+            "image": "https://cdn.example.com/weather.jpg",
+            "previewCheckedAt": "2026-11-04T00:00:00+00:00",
+        }
+        self.assertEqual(news.weather_preview_image(item), "https://cdn.example.com/weather.jpg")
+
+    def test_weather_preview_ignores_non_https_and_uses_thumbnail_fallback(self):
+        item = {
+            "previewImage": "http://insecure.example.com/a.jpg",
+            "image": "",
+            "thumbnailUrl": "https://cdn.example.com/thumb.jpg",
+        }
+        self.assertEqual(news.weather_preview_image(item), "https://cdn.example.com/thumb.jpg")
+
     def test_recent_weather_or_disaster_story_is_accepted(self):
         self.assertTrue(news.is_weather_disaster_story(
             "Cyclone warning issued as heavy rain approaches",
