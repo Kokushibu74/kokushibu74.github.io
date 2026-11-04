@@ -848,6 +848,8 @@ def main():
                     existing = collected_by_key.get(key)
                     if existing:
                         merge_source_evidence(existing, source)
+                        if country != "BD":
+                            existing["alertScope"] = "global"
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
