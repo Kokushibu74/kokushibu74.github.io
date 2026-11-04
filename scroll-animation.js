@@ -31,7 +31,7 @@
     const attempt = () => {
       if (started) return;
       const home = $("#home");
-      const brand = $("#nav-name");
+      const brand = $("#nav-brand-intro");
       const footer = $("footer.social-footer");
       const main = $("#sections-wrapper");
       if (!home || !brand || !footer || !main) return;
@@ -137,7 +137,9 @@
     });
 
     const revealSpecs = [
-      [brand, .105, .19, "brand"],
+      [brand, .09, .19, "brand"],
+      [$("#nav-name .nav-initial-letter"), .14, .18, "normal"],
+      [$("#nav-name .nav-name-rest"), .16, .24, "normal"],
       [navLinks, .19, .32, "normal"],
       [clock, .20, .33, "normal"],
       [whatsapp, .22, .35, "normal"],
