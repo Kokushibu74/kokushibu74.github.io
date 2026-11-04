@@ -46,7 +46,7 @@
     style.textContent = \`
       #homepage-multicursor-layer{position:fixed;inset:0;z-index:99960;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout style}
       #homepage-multicursor-layer *{box-sizing:border-box}
-      .mc-origin{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font:900 clamp(58px,11vw,116px)/1 'Outfit',sans-serif;letter-spacing:-.08em;color:#00f2fe;text-shadow:0 0 12px rgba(0,242,254,.85),0 0 38px rgba(0,242,254,.48),0 0 72px rgba(127,0,255,.32);will-change:transform,opacity;white-space:nowrap}
+      .mc-origin{position:absolute;left:0;top:0;transform:translate(-50%,-50%);font:900 clamp(58px,11vw,116px)/1 'Outfit',sans-serif;letter-spacing:-.08em;color:#00f2fe;text-shadow:0 0 12px rgba(0,242,254,.85),0 0 38px rgba(0,242,254,.48),0 0 72px rgba(127,0,255,.32);will-change:transform,opacity;white-space:nowrap}
       .mc-origin:after{content:"";position:absolute;inset:-18% -28%;z-index:-1;border-radius:50%;background:radial-gradient(ellipse,rgba(0,242,254,.16),rgba(127,0,255,.08) 42%,transparent 72%);filter:blur(13px)}
       .mc-brand-name{display:inline;background:linear-gradient(90deg,#fff,#00f2fe,#a78bfa,#fff);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:footerTextShine 7s linear infinite}
       .mc-brand-initial,.mc-brand-rest{display:inline}
