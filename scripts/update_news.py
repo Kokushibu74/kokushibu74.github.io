@@ -202,6 +202,16 @@ def is_recent_breaking(title, published, query, source=""):
         return False
 
 
+def weather_preview_image(item):
+    """Return the first usable HTTPS image from publisher metadata or RSS media fields."""
+    for field in ("previewImage", "image", "imageUrl", "thumbnail", "thumbnailUrl",
+                  "enclosureUrl", "previewScreenshot"):
+        value = item.get(field)
+        if isinstance(value, str) and value.startswith("https://"):
+            return value
+    return ""
+
+
 def image_for(node):
     for path in ("./media:content", "./media:thumbnail"):
         for el in node.findall(path, NS):
@@ -929,7 +939,9 @@ def main():
     weather_unavailable = 0
     weather_rss_fallback = 0
     for item in weather_preview_candidates:
-        if item.get("previewImage") and item.get("previewCheckedAt"):
+        cached_image = weather_preview_image(item)
+        if cached_image and item.get("previewCheckedAt"):
+            item["previewImage"] = cached_image
             weather_cached += 1
             continue
         metadata = publisher_metadata(item.get("link", ""))
@@ -941,9 +953,12 @@ def main():
         item.setdefault("publisherName", item.get("source", "Original publisher"))
         item.setdefault("previewTitle", item.get("title", ""))
         item.setdefault("previewSummary", item.get("summary", ""))
-        item.setdefault("previewImage", item.get("image", ""))
-        if item.get("previewImage"):
-            weather_rss_fallback += 1
+        # Empty metadata fields must not suppress a usable RSS image fallback.
+        fallback_image = weather_preview_image(item)
+        if fallback_image:
+            if not item.get("previewImage"):
+                weather_rss_fallback += 1
+            item["previewImage"] = fallback_image
         item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
     weather_items = weather_collected[:12]
     weather_with_preview = sum(1 for item in weather_items if item.get("previewImage"))
