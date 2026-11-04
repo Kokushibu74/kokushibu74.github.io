@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -1350,35 +1350,30 @@ async function newsBreakingAlertCheck(env){
     const link=String(item.publisherUrl||item.link||"");
     const key=await newsAlertKey(String(item.title||""),String(item.source||item.publisherName||""));
     const stateKey="news-alert:v2:"+key;
-    if(await env.BOT_CONFIG_KV.get(stateKey))continue;
+    const previous=await env.BOT_CONFIG_KV.get(stateKey,"json");
+    let updateNo=0,updateStateKey="";
+    if(previous){
+      const titleChanged=String(previous.title||"").trim()!==String(item.title||"").trim();
+      const summaryChanged=String(previous.summary||"").trim()!==String(item.summary||item.previewSummary||"").trim();
+      const oldSources=Array.isArray(previous.trustedSources)?previous.trustedSources:[];
+      const newSources=decision.trustedSources||[];
+      const sourceExpanded=newSources.some(source=>!oldSources.includes(source));
+      if(!titleChanged&&!summaryChanged&&!sourceExpanded)continue;
+      const updateKey=await newsAlertKey(String(item.title||"")+" "+String(item.summary||item.previewSummary||""));
+      updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
+      if(await env.BOT_CONFIG_KV.get(updateStateKey))continue;
+      updateNo=Math.max(2,Number(previous.updateCount||1)+1);
+    }
     const lockKey="news-alert-lock:v1:"+key;
     if(await env.BOT_CONFIG_KV.get(lockKey))continue;
     await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
     try{
-      const published=Date.parse(item.publishedAt||item.pubDate||"");
-      const when=Number.isFinite(published)?new Date(published).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}):"সময় অজানা";
-      const title=escapeHtml(String(item.title||"").slice(0,160));
-      const summary=escapeHtml(String(item.summary||item.previewSummary||"").slice(0,120));
-      const source=escapeHtml(String((decision.trustedSources||decision.sources||[]).join(", ")||item.source||item.publisherName||"Verified publisher").slice(0,60));
-      const officialLine=decision.official&&decision.official.confirmed
-        ?"\n🏛️ Official confirmation: "+escapeHtml(String(decision.official.name).slice(0,60))+"\n🔎 "+escapeHtml(String(decision.official.url).slice(0,100))
-        :"";
-      const linkLine=link.length<=220?"🔗 <a href=\""+escapeHtml(link)+"\">মূল খবর / Original article</a>":"🔗 Original article link sent separately";
-      const caption=[
-        "🚨 <b>BANGLADESH BREAKING & DISASTER ALERT</b>",
-        "🏷️ "+escapeHtml(decision.category),
-        "📍 Dhaka / Bangladesh",
-        "🕒 "+when+" (BDT)",
-        "",
-        title,summary,"",
-        linkLine,
-        "📰 "+source,
-        "✔️ Corroborated by "+decision.sourceCount+" independent source(s)"+officialLine
-      ].filter(Boolean).join("\n");
+      const caption=formatAlertMessage(item,decision,{key,updateNo});
       const media=await sendNewsAlertMedia(env,item,caption,link);
-      const history={sentAt:now,title:String(item.title||""),link,category:decision.category,sourceEvidence:decision.sources,media,officialSource:decision.official&&decision.official.url||null};
+      const history={sentAt:now,title:String(item.title||""),summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
-      await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+      if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
+      await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       sent.push(String(item.title||""));
     }finally{
       await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
