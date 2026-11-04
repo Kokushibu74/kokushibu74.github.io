@@ -102,6 +102,8 @@
       "#scroll-build-overlay .sb-cursor[data-kind='media'] svg path{fill:#4facfe;stroke:#eaf7ff}",
       "#scroll-build-overlay .sb-cursor[data-kind='nav'] svg path{fill:#22d3ee;stroke:#e5fcff}",
       "#scroll-build-overlay .sb-trail{position:absolute;left:0;top:0;width:36px;height:2px;transform-origin:left center;border-radius:4px;background:linear-gradient(90deg,rgba(0,242,254,.75),rgba(127,0,255,0));opacity:0;will-change:transform,opacity}",
+      "#scroll-build-overlay .sb-typing-caret{position:absolute;left:0;top:0;width:2px;height:24px;border-radius:2px;background:#c8fbff;box-shadow:0 0 9px #00f2fe,0 0 20px rgba(127,0,255,.58);opacity:0;will-change:transform,opacity;animation:sb-caret-blink .72s steps(1,end) infinite}",
+      "@keyframes sb-caret-blink{50%{filter:brightness(.72);opacity:.5}}",
       "@media(max-width:640px){#scroll-build-overlay .sb-cursor{width:22px;height:28px}#scroll-build-overlay .sb-cursor svg{width:20px;height:25px}#scroll-build-overlay .sb-cursor-label{font-size:7px;padding:3px 5px;left:15px;top:17px}}"
     ].join("\n");
     document.head.appendChild(style);
@@ -122,6 +124,9 @@
 
     const cursors = [];
     const trails = [];
+    const caret = document.createElement("span");
+    caret.className = "sb-typing-caret";
+    overlay.appendChild(caret);
     cursorDefs.forEach(def => {
       const node = document.createElement("div");
       node.className = "sb-cursor";
@@ -291,6 +296,18 @@
         trails[index].style.transform = "translate3d(" + point.x + "px," + point.y + "px,0) rotate(" + angle + "rad) scaleX(" + (clamp(Math.hypot(x - point.x, y - point.y), 0, 48) / 36).toFixed(3) + ")";
         trails[index].style.opacity = String(visible * .34 * (1 - fusion));
       });
+      const heading = $("#home h1");
+      if (heading && progress >= .37 && progress <= .57) {
+        const rect = heading.getBoundingClientRect();
+        const typeProgress = clamp((progress - .38) / .16, 0, 1);
+        const caretX = clamp(rect.left + Math.max(8, rect.width * typeProgress), 8, window.innerWidth - 8);
+        const caretY = clamp(rect.top + rect.height * (mobile ? .74 : .78), 16, window.innerHeight - 16);
+        caret.style.transform = "translate3d(" + caretX + "px," + caretY + "px,0)";
+        caret.style.height = clamp(rect.height * (mobile ? .24 : .30), 16, 34) + "px";
+        caret.style.opacity = String(smooth((progress - .37) / .035) * (1 - smooth((progress - .545) / .03)));
+      } else {
+        caret.style.opacity = "0";
+      }
     }
 
     let raf = 0;
