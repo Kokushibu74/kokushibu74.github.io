@@ -99,6 +99,8 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         source = SCRIPT.read_text(encoding="utf-8")
         self.assertIn('"videoUrl": video_for(node)', source)
         self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published)', source)
+        self.assertIn('"alertScope": "global" if country != "BD" else "bangladesh_candidate"', source)
+        self.assertIn('existing["alertScope"] = "global"', source)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
