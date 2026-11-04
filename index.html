@@ -390,8 +390,67 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4984469946659633" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="ZXwfWWUSzpDJy3HRD9pgEHOoRw9eXzsUWurCVQ5U6EE" />
 
+  <style id="scroll-animation-bootstrap-styles">
+    /* Keep the first frame clean: only the neon S is visible before scrolling. */
+    html.scroll-build-pending body > :not(#scroll-build-overlay):not(.ambient-glow-1):not(.ambient-glow-2):not(script):not(style) {
+      visibility: hidden;
+    }
+    html.scroll-build-pending body > header {
+      background: transparent !important;
+      border-color: transparent !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+    #scroll-build-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      overflow: hidden;
+      pointer-events: none;
+      isolation: isolate;
+      opacity: 1;
+      transition: opacity .12s linear;
+    }
+    #scroll-build-overlay[hidden] { display: none !important; }
+    html:not(.scroll-build-pending) #scroll-build-overlay { opacity: 0; }
+    #scroll-build-s {
+      position: absolute;
+      left: 50%;
+      top: 49%;
+      transform: translate(-50%, -50%);
+      color: #00f2fe;
+      font: 900 clamp(100px, 18vw, 190px)/.9 'Outfit', sans-serif;
+      letter-spacing: -.09em;
+      text-shadow: 0 0 14px rgba(0,242,254,.92), 0 0 42px rgba(0,242,254,.55), 0 0 88px rgba(127,0,255,.42);
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+    @media(max-width:640px) {
+      #scroll-build-s { font-size: clamp(82px, 24vw, 132px); }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #scroll-build-overlay { display: none !important; }
+      html.scroll-build-pending body > * { visibility: visible !important; }
+    }
+  </style>
+  <script id="scroll-animation-bootstrap">
+    (() => {
+      const root = document.documentElement;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      root.classList.add('scroll-build-pending');
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+      window.__scrollBuildBootTimer = window.setTimeout(() => {
+        if (!window.__scrollAnimationStarted) {
+          root.classList.remove('scroll-build-pending');
+          document.getElementById('scroll-build-overlay')?.remove();
+        }
+      }, 12000);
+    })();
+  </script>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
+<div id="scroll-build-overlay" aria-hidden="true"><span id="scroll-build-s">S</span></div>
+
 
 <!-- Ambient Background Orbs -->
   <div class="ambient-glow-1"></div>
@@ -946,6 +1005,6 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 
 
 <script src="visitor-tracking.js?v=1" defer></script>
-<script src="homepage-multicursor-builder.js?v=1" defer></script>
+<script src="scroll-animation.js?v=1" defer></script>
 \n</body>
 </html>
