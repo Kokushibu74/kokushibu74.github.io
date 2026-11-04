@@ -219,10 +219,10 @@
 
       const headerAlpha = smooth((progress - .13) / .16);
       if (header) {
-        header.style.backgroundColor = "rgba(5,7,11," + (headerAlpha * .85).toFixed(3) + ")";
-        header.style.borderBottomColor = "rgba(255,255,255," + (headerAlpha * .10).toFixed(3) + ")";
-        header.style.backdropFilter = "blur(" + (headerAlpha * 16).toFixed(1) + "px)";
-        header.style.webkitBackdropFilter = "blur(" + (headerAlpha * 16).toFixed(1) + "px)";
+        setImportant(header, "background-color", "rgba(5,7,11," + (headerAlpha * .85).toFixed(3) + ")");
+        setImportant(header, "border-bottom-color", "rgba(255,255,255," + (headerAlpha * .10).toFixed(3) + ")");
+        setImportant(header, "backdrop-filter", "blur(" + (headerAlpha * 16).toFixed(1) + "px)");
+        setImportant(header, "-webkit-backdrop-filter", "blur(" + (headerAlpha * 16).toFixed(1) + "px)");
       }
 
       revealStates.forEach(state => {
