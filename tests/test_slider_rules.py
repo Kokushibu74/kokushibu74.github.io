@@ -17,11 +17,6 @@ class SliderRuleTests(unittest.TestCase):
         age = self.age_minutes(item["published"])
         return -5 <= age <= 15
 
-    def test_15m_boundary_latest_removed_after_15(self):
-        item = {"published": self.now - timedelta(minutes=15), "category":"Bangladesh", "image":"https://img"}
-        self.assertFalse(self.latest(item))
-        self.assertTrue(self.eligible(item))
-
     def test_15m_boundary_latest_included(self):
         item = {"published": self.now - timedelta(minutes=15), "category":"Bangladesh", "image":"https://img"}
         self.assertTrue(self.latest(item))
