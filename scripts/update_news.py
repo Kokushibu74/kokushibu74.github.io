@@ -501,6 +501,16 @@ def merge_source_evidence(item, source):
     item["corroborationCount"] = len(item["sourceEvidence"])
     return item
 
+
+def merge_duplicate_source(existing, source, *, country=None, category=None):
+    """Merge duplicate evidence without relying on a loop-local country variable."""
+    merge_source_evidence(existing, source)
+    is_global = country != "BD" if country is not None else category != "Bangladesh"
+    if is_global:
+        existing["alertScope"] = "global"
+    return existing
+
+
 def read_previous_weather():
     """Load cached weather cards so preview metadata can be reused across RSS refreshes."""
     try:
@@ -776,7 +786,6 @@ def main():
             with urlopen_with_retry(request, timeout=10) as response:
                 root = parse_feed_xml(response.read())
             nodes = feed_items(root)
-            successful_feeds += 1
             for node in nodes:
                 title = clean(child_text(node, "title"))
                 link = clean(child_text(node, "link"))
@@ -805,13 +814,12 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_source_evidence(existing, source)
-                        if country != "BD":
-                            existing["alertScope"] = "global"
+                        merge_duplicate_source(existing, source, category=item["category"])
                     continue
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
+            successful_feeds += 1
         except Exception as exc:
             feed_failures.append(f"{source}: {type(exc).__name__}")
             print("Direct RSS error for", source, ":", type(exc).__name__, str(exc)[:180])
@@ -822,7 +830,6 @@ def main():
         try:
             with urllib.request.urlopen(request, timeout=20) as response:
                 root = ET.fromstring(response.read())
-            successful_feeds += 1
             for node in root.findall("./channel/item"):
                 title = clean(node.findtext("title"))
                 link = clean(node.findtext("link"))
@@ -847,14 +854,13 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_source_evidence(existing, source)
-                        if country != "BD":
-                            existing["alertScope"] = "global"
+                        merge_duplicate_source(existing, source, country=country)
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
+            successful_feeds += 1
         except Exception as exc:
             feed_failures.append(f"Google News {label} ({query}): {type(exc).__name__}")
             print("Feed error for", label, repr(query), ":", exc)
@@ -869,7 +875,6 @@ def main():
         try:
             with urllib.request.urlopen(request, timeout=20) as response:
                 root = parse_feed_xml(response.read())
-            successful_feeds += 1
             for node in feed_items(root):
                 title = clean(child_text(node, "title"))
                 link = clean(child_text(node, "link"))
@@ -904,6 +909,7 @@ def main():
                 weather_seen.add(key)
                 weather_by_key[key] = item
                 weather_collected.append(item)
+            successful_feeds += 1
         except Exception as exc:
             feed_failures.append(f"Weather/disaster ({query}): {type(exc).__name__}")
             print("Weather/disaster feed error for", repr(query), ":", type(exc).__name__, str(exc)[:180])
@@ -919,20 +925,32 @@ def main():
                 item[field] = cached[field]
     weather_preview_candidates = weather_collected[:12]
     weather_enriched = 0
+    weather_cached = 0
+    weather_unavailable = 0
+    weather_rss_fallback = 0
     for item in weather_preview_candidates:
         if item.get("previewImage") and item.get("previewCheckedAt"):
+            weather_cached += 1
             continue
         metadata = publisher_metadata(item.get("link", ""))
         if metadata:
             item.update(metadata)
             weather_enriched += 1
+        else:
+            weather_unavailable += 1
         item.setdefault("publisherName", item.get("source", "Original publisher"))
         item.setdefault("previewTitle", item.get("title", ""))
         item.setdefault("previewSummary", item.get("summary", ""))
         item.setdefault("previewImage", item.get("image", ""))
+        if item.get("previewImage"):
+            weather_rss_fallback += 1
         item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
     weather_items = weather_collected[:12]
-    print("Weather/disaster image previews enriched:", weather_enriched, "of", len(weather_preview_candidates), "priority stories.")
+    weather_with_preview = sum(1 for item in weather_items if item.get("previewImage"))
+    print("Weather/disaster previews: candidates:", len(weather_preview_candidates),
+          "metadata_fetched:", weather_enriched, "cached/reused:", weather_cached,
+          "publisher_unavailable:", weather_unavailable, "RSS_image_fallback:", weather_rss_fallback,
+          "with_preview_total:", weather_with_preview)
 
     # Reject undated or older-than-seven-day headlines before preview enrichment.
     collected = [item for item in collected if within_feed_retention(item)]
