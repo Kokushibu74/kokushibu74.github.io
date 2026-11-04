@@ -332,6 +332,9 @@ class NewsLogicTests(unittest.TestCase):
         items = [
             {"title": "BD latest", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=5)).isoformat(), "previewImage": "https://img.example/latest.jpg"},
             {"title": "BD recent", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=20)).isoformat(), "image": "https://img.example/recent.jpg"},
+            {"title": "BD 60m", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=60)).isoformat(), "previewImage": "https://img.example/60m.jpg"},
+            {"title": "BD 61m", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=61)).isoformat(), "previewImage": "https://img.example/61m.jpg"},
+            {"title": "BD video only", "category": "Bangladesh", "publishedAt": (now - timedelta(minutes=10)).isoformat(), "videoUrl": "https://video.example/only.mp4"},
             {"title": "World recent", "category": "World", "publishedAt": (now - timedelta(hours=23)).isoformat()},
             {"title": "Tech archive", "category": "Technology", "publishedAt": (now - timedelta(hours=25)).isoformat()},
             {"title": "BD older archive", "category": "Bangladesh", "publishedAt": (now - timedelta(days=2)).isoformat()},
@@ -344,10 +347,10 @@ class NewsLogicTests(unittest.TestCase):
         metrics = news.feed_content_metrics(items, weather, now)
         self.assertEqual(metrics["latest_24h"], 3)
         self.assertEqual(metrics["archive"], 2)
-        self.assertEqual(metrics["latest_tag_15m"], 1)
+        self.assertEqual(metrics["latest_tag_15m"], 2)
         self.assertEqual(metrics["image_preview_urls"], 2)
-        self.assertEqual(metrics["bd_slider_preview_candidates"], 2)
-        self.assertEqual(metrics["bd_slider_window_minutes"], 30)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 3)
+        self.assertEqual(metrics["bd_slider_window_minutes"], 60)
         self.assertEqual(metrics["weather_cards"], 2)
         self.assertEqual(metrics["weather_cards_with_preview"], 1)
 
