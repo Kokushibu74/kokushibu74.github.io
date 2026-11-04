@@ -21,7 +21,7 @@
     return part("year")+"-"+part("month")+"-"+part("day");
   };
   const ageMinutes=x=>{const d=dateOf(x);return d?(Date.now()-d.getTime())/60000:Infinity};
-  const isLatestBatch=x=>{const age=ageMinutes(x);return age>=-5&&age<15};
+  const isLatestBatch=x=>{const age=ageMinutes(x);return age>=-5&&age<=15};
   const isSliderEligibleAge=x=>{const age=ageMinutes(x);return age>=-5&&age<=60};
   const sorted=arr=>arr.slice().sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
   const sortedNews=arr=>arr.slice().sort((a,b)=>Number(isLatestBatch(b))-Number(isLatestBatch(a))||(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
