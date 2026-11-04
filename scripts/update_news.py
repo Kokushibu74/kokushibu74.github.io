@@ -1076,7 +1076,7 @@ def main():
           "Technology:", category_counts["Technology"])
     print("Feed breakdown: latest_24h:", content_metrics["latest_24h"], "archive:", content_metrics["archive"],
           "latest_tag_15m:", content_metrics["latest_tag_15m"], "preview_image_urls:", content_metrics["image_preview_urls"],
-          "bd_latest_tag_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
+          "bd_slider_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
           "weather_cards:", content_metrics["weather_cards"],
           "weather_cards_with_preview:", content_metrics["weather_cards_with_preview"])
     print("Feed validation: PASS; items:", len(selected), "; invalid:", validation["invalid"],
