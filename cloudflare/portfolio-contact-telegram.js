@@ -85,12 +85,35 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     else if(!metric.daily&&pct<50&&sent.length===0){try{await env.BOT_CONFIG_KV.put(stateKey,"[]",{expirationTtl:365*86400})}catch{}}
   }
   if(pending.length&&typeof sendTelegram==="function"){
-    const lines=["⚠️ <b>CLOUDFLARE FREE-PLAN RESOURCE ALERT</b>","🕒 "+now.toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","📅 Usage day: "+day+" UTC",""];
+    const highestPct=Math.max(...pending.map(item=>item.pct));
+    const severity=highestPct>=95?{icon:"🚨",label:"CRITICAL"}:highestPct>=85?{icon:"🔴",label:"HIGH"}:highestPct>=70?{icon:"🟠",label:"ELEVATED"}:{icon:"⚠️",label:"WARNING"};
+    const progressBar=pct=>{const filled=Math.max(0,Math.min(10,Math.round(pct/10)));return "█".repeat(filled)+"░".repeat(10-filled);};
+    const formatResource=value=>Number(value).toLocaleString("en-US");
+    const lines=[
+      severity.icon+" <b>CLOUDFLARE RESOURCE ALERT</b>",
+      "<b>"+severity.label+" · "+Math.round(highestPct)+"% usage</b>",
+      "🕒 Checked: "+now.toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT",
+      "📅 Usage day: "+day+" UTC",
+      ""
+    ];
     for(const item of pending){
-      const m=item.metric,used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":Math.round(m.used).toLocaleString("en-US")+" "+m.unit;
-      const limit=m.unit==="bytes"?(m.limit/1073741824).toFixed(3)+" GiB":m.limit.toLocaleString("en-US")+" "+m.unit;
-      lines.push((item.pct>=95?"🚨 ":"⚠️ ")+"<b>"+m.label+"</b>","Usage: "+used+" / "+limit+" ("+Math.round(item.pct)+"%)","Threshold crossed: "+item.crossed.join("%, ")+"%");
+      const m=item.metric,percent=Math.round(item.pct);
+      const used=m.unit==="bytes"?(m.used/1073741824).toFixed(3)+" GiB":formatResource(Math.round(m.used))+" "+m.unit;
+      const limit=m.unit==="bytes"?(m.limit/1073741824).toFixed(3)+" GiB":formatResource(m.limit)+" "+m.unit;
+      const remaining=Math.max(0,m.limit-m.used);
+      const remainingText=m.unit==="bytes"?(remaining/1073741824).toFixed(3)+" GiB":formatResource(Math.floor(remaining))+" "+m.unit;
+      const itemSeverity=item.pct>=95?"🚨":item.pct>=85?"🔴":item.pct>=70?"🟠":"⚠️";
+      lines.push(
+        itemSeverity+" <b>"+m.label+"</b>",
+        "<code>"+progressBar(item.pct)+"</code> <b>"+percent+"%</b>",
+        "📊 Usage: "+used+" / "+limit,
+        "🎯 Threshold reached: "+item.crossed.join("% · ")+"%",
+        remaining>0?"🟢 Remaining: "+remainingText:"🔴 Limit reached or exceeded"+(m.used>m.limit?" by "+(m.unit==="bytes"?((m.used-m.limit)/1073741824).toFixed(3)+" GiB":formatResource(Math.floor(m.used-m.limit))+" "+m.unit):"")
+      );
+      if(m.label.includes("all 6 namespaces"))lines.push("📦 Scope: 6 KV namespaces");
+      lines.push("");
     }
+    lines.push("<i>AUTOMATED MONITOR · CLOUDFLARE FREE PLAN</i>");
     await sendTelegram(lines.join("\n"));
     for(const item of pending){try{await env.BOT_CONFIG_KV.put(item.stateKey,JSON.stringify([...new Set([...item.sent,...item.crossed])]),{expirationTtl:item.metric.daily?48*3600:365*86400})}catch(e){console.error("Cloudflare resource alert state save failed:",String(e&&e.message||e).slice(0,120));}}
   }
