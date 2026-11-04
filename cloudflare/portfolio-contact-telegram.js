@@ -1582,7 +1582,6 @@ export default {
       const uaText=String(profile.device.userAgent||ua);
       const crawlerCandidate=/googlebot|google-inspectiontool|bingbot|bingpreview|duckduckbot|yandexbot|baiduspider|applebot/i.test(uaText);
       const botStatus=crawlerCandidate?"Crawler candidate · not verified":"Browser UA · not verified";
-      const sessionViews=pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0);
       const risk=sessionViews>=30?"Elevated activity · review":"No tracked risk rule triggered";
       const performance=profile.performance||{};
       const lines=[
