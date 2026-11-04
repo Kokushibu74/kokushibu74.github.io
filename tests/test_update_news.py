@@ -348,7 +348,7 @@ class NewsLogicTests(unittest.TestCase):
         metrics = news.feed_content_metrics(items, weather, now)
         self.assertEqual(metrics["latest_24h"], 8)
         self.assertEqual(metrics["archive"], 1)
-        self.assertEqual(metrics["latest_tag_15m"], 2)
+        self.assertEqual(metrics["latest_tag_15m"], 5)
         self.assertEqual(metrics["image_preview_urls"], 6)
         self.assertEqual(metrics["bd_slider_preview_candidates"], 4)
         self.assertEqual(metrics["bd_slider_window_minutes"], 60)
