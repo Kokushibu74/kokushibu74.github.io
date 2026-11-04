@@ -389,24 +389,15 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <!-- Google AdSense Auto ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4984469946659633" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="ZXwfWWUSzpDJy3HRD9pgEHOoRw9eXzsUWurCVQ5U6EE" />
-<style id="cursor-swarm-preloader-styles">
-#cursor-swarm-preloader{position:fixed;inset:0;z-index:100000;background:#05070b;display:grid;place-items:center;overflow:hidden;isolation:isolate;opacity:1;visibility:visible;pointer-events:auto}
-#cursor-swarm-preloader.is-leaving{opacity:0;transition:opacity .48s ease;pointer-events:none}
-#cursor-swarm-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-#cursor-preloader-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:900 clamp(68px,13vw,112px)/1 system-ui,sans-serif;letter-spacing:-.09em;color:#eafcff;text-shadow:0 0 8px rgba(0,229,255,.95),0 0 26px rgba(0,229,255,.65),0 0 48px rgba(168,85,247,.5);will-change:transform,opacity;pointer-events:none}
-#nav-name .nav-initial-letter{opacity:0;display:inline-block;min-width:.57em}
-#nav-name .nav-name-rest{display:inline}
-#nav-name.logo-transfer-complete .nav-initial-letter{opacity:1;transition:opacity .12s ease}
+<style id="homepage-scroll-reveal-styles">
 [data-cursor-reveal]{opacity:0;transform:translate3d(0,24px,0);filter:blur(3px);transition:opacity .65s ease,transform .72s cubic-bezier(.2,.75,.2,1),filter .65s ease;will-change:opacity,transform,filter}
 [data-cursor-reveal].is-cursor-visible{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
-@media(prefers-reduced-motion:reduce){#cursor-swarm-preloader{transition:none!important}#cursor-swarm-canvas{display:none}[data-cursor-reveal]{opacity:1;transform:none;filter:none;transition:none}}
+@media(prefers-reduced-motion:reduce){[data-cursor-reveal]{opacity:1;transform:none;filter:none;transition:none}}
 </style>
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
-  <div id="cursor-swarm-preloader" role="status" aria-label="Loading Shihabul Islam portfolio"><canvas id="cursor-swarm-canvas" aria-hidden="true"></canvas><span id="cursor-preloader-logo" aria-hidden="true">S</span></div>
 
-
-  <!-- Ambient Background Orbs -->
+<!-- Ambient Background Orbs -->
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
 
@@ -1057,5 +1048,5 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 })();
 </script>
 <script src="visitor-tracking.js?v=1" defer></script>
-<script src="cursor-swarm-preloader.js?v=1" defer></script>\n</body>
+<script src="homepage-scroll-reveal.js?v=1" defer></script>\n</body>
 </html>
