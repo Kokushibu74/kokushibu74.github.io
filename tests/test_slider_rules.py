@@ -10,20 +10,33 @@ class SliderRuleTests(unittest.TestCase):
 
     def eligible(self, item):
         age = self.age_minutes(item["published"])
-        return (-5 <= age < 30 and item["category"] == "Bangladesh"
-                and bool(item.get("image") or item.get("video")))
+        return (-5 <= age <= 60 and item["category"] == "Bangladesh"
+                and bool(item.get("image")))
 
     def latest(self, item):
         age = self.age_minutes(item["published"])
-        return -5 <= age < 15
+        return -5 <= age <= 15
 
     def test_15m_boundary_latest_removed_after_15(self):
         item = {"published": self.now - timedelta(minutes=15), "category":"Bangladesh", "image":"https://img"}
         self.assertFalse(self.latest(item))
         self.assertTrue(self.eligible(item))
 
-    def test_30m_boundary_removed(self):
-        item = {"published": self.now - timedelta(minutes=30), "category":"Bangladesh", "image":"https://img"}
+    def test_15m_boundary_latest_included(self):
+        item = {"published": self.now - timedelta(minutes=15), "category":"Bangladesh", "image":"https://img"}
+        self.assertTrue(self.latest(item))
+
+    def test_16m_boundary_latest_removed_but_slider_kept(self):
+        item = {"published": self.now - timedelta(minutes=16), "category":"Bangladesh", "image":"https://img"}
+        self.assertFalse(self.latest(item))
+        self.assertTrue(self.eligible(item))
+
+    def test_60m_boundary_kept(self):
+        item = {"published": self.now - timedelta(minutes=60), "category":"Bangladesh", "image":"https://img"}
+        self.assertTrue(self.eligible(item))
+
+    def test_61m_boundary_removed(self):
+        item = {"published": self.now - timedelta(minutes=61), "category":"Bangladesh", "image":"https://img"}
         self.assertFalse(self.eligible(item))
 
     def test_bangladesh_only(self):
@@ -34,9 +47,9 @@ class SliderRuleTests(unittest.TestCase):
         item = {"published": self.now - timedelta(minutes=5), "category":"Bangladesh"}
         self.assertFalse(self.eligible(item))
 
-    def test_video_only_media_accepted(self):
+    def test_video_only_media_rejected(self):
         item = {"published": self.now - timedelta(minutes=5), "category":"Bangladesh", "video":"https://cdn/video.mp4"}
-        self.assertTrue(self.eligible(item))
+        self.assertFalse(self.eligible(item))
 
     def test_future_edge_within_tolerance(self):
         item = {"published": self.now + timedelta(minutes=5), "category":"Bangladesh", "image":"https://img"}
