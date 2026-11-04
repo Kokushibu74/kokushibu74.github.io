@@ -1565,15 +1565,91 @@ export default {
       const sessionViews=pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0);
       if(pageView&&sessionViews>=30&&botCfg.securityAlerts&&botCfg.emergencyProtection&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("security:"+id+":"+session,"⚠️ <b>UNUSUAL VISITOR ACTIVITY</b>\nVisitor: <code>"+id+"</code>\n30+ page views in one session.\nIP: <code>"+clean(profile.network.ip,64)+"</code>");
 
-      const stamp=new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
-      const esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-      const displayIp=profile.network.ip||"Unavailable";
-      const geo=[profile.network.city,profile.network.region,profile.network.country].filter(Boolean).join(", ")||"Unknown";
-      const device=[profile.device.deviceType,profile.device.deviceModel,profile.device.os,profile.device.browser].filter(Boolean).join(" / ")||ua.slice(0,100);
+      const stamp=new Date(now).toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});
+      const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+      const cleanValue=(value,max=42)=>{const s=String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim();return s?s.slice(0,max):"Unknown";};
+      const row=(label,value)=>"│ "+esc(label.padEnd(17).slice(0,17))+" <code>"+esc(cleanValue(value,42))+"</code>";
+      const section=(number,icon,label,rows)=>["","<b>"+number+" · "+icon+" "+label+"</b>",...rows.map(([k,v])=>row(k,v))];
+      const firstPage=profile.pages?.[0]?.path||page;
+      const currentPage=page;
+      const referrer=profile.source.referrer||"Direct";
+      let trafficSource="Direct";
+      if(profile.source.utmSource)trafficSource="Campaign: "+profile.source.utmSource;
+      else if(referrer!=="Direct"){try{trafficSource=new URL(referrer).hostname}catch{trafficSource="Referral"}}
+      const sessionDuration=Math.max(0,Math.floor((now-(Number(profile.lastSessionAt)||now))/1000));
+      const durationText=sessionDuration<60?sessionDuration+" sec":Math.floor(sessionDuration/60)+" min "+sessionDuration%60+" sec";
+      const pathText=(profile.pages||[]).slice(-8).map(x=>x.path).join(" → ")||currentPage;
+      const uaText=String(profile.device.userAgent||ua);
+      const crawlerCandidate=/googlebot|google-inspectiontool|bingbot|bingpreview|duckduckbot|yandexbot|baiduspider|applebot/i.test(uaText);
+      const botStatus=crawlerCandidate?"Crawler candidate · not verified":"Browser UA · not verified";
+      const sessionViews=pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0);
+      const risk=sessionViews>=30?"Elevated activity · review":"No tracked risk rule triggered";
+      const performance=profile.performance||{};
+      const lines=[
+        "🛰️ <b>VISITOR INTELLIGENCE</b>",
+        first?"🟢 <b>NEW VISITOR DETECTED</b>":"🔵 <b>RETURNING VISITOR DETECTED</b>",
+        "🆔 <code>"+esc(id)+"</code>",
+        "━━━━━━━━━━━━━━━━━━━━",
+        ...section("01","📍","LOCATION INTELLIGENCE",[
+          ["Country",profile.network.country],
+          ["Region",profile.network.region],
+          ["City",profile.network.city],
+          ["Location Source","IP-based · Estimated"],
+          ["IP Version",profile.network.ipVersion],
+          ["Timezone",profile.network.timezone]
+        ]),
+        ...section("02","📱","DEVICE PROFILE",[
+          ["Device Type",profile.device.deviceType],
+          ["Manufacturer / Model",profile.device.deviceModel],
+          ["Platform",profile.device.platform],
+          ["Operating System",profile.device.os],
+          ["Browser",profile.device.browser],
+          ["Screen Resolution",profile.device.screen],
+          ["Viewport",profile.device.viewport],
+          ["Language",profile.device.language],
+          ["Connection Hint",profile.device.connection]
+        ]),
+        ...section("03","🌐","NETWORK PROFILE",[
+          ["IP Address",profile.network.ip],
+          ["ISP / Organization",profile.network.isp],
+          ["ASN",profile.network.asn],
+          ["Network Type",profile.network.networkType],
+          ["Hosting Signal",profile.network.hostingSignal],
+          ["Proxy Signal",profile.network.corporateProxy],
+          ["HTTP Protocol",profile.network.httpProtocol],
+          ["Cloudflare Colo",profile.network.colo]
+        ]),
+        ...section("04","📊","VISITOR ACTIVITY",[
+          ["Visitor Status",first?"New Visitor":"Returning Visitor"],
+          ["Total Visits",profile.totalSessions],
+          ["Total Page Views",profile.totalPageViews],
+          ["Entry Page",firstPage],
+          ["Current Page",currentPage],
+          ["Traffic Source",trafficSource],
+          ["Referrer",referrer],
+          ["UTM Medium",profile.source.utmMedium],
+          ["UTM Campaign",profile.source.utmCampaign],
+          ["Session Duration",durationText],
+          ["Navigation Path",pathText]
+        ]),
+        ...section("05","🛡️","SECURITY ANALYSIS",[
+          ["Bot Classification",botStatus],
+          ["Risk Classification",risk],
+          ["Session Page Views",sessionViews],
+          ["Security Alert Rule",sessionViews>=30?"30+ views · threshold reached":"No threshold reached"]
+        ])
+      ];
+      const perfRows=[];
+      if(performance.loadMs)perfRows.push(["Page Load",Math.round(performance.loadMs)+" ms"]);
+      if(performance.domMs)perfRows.push(["DOM Ready",Math.round(performance.domMs)+" ms"]);
+      if(performance.lcp)perfRows.push(["LCP",Math.round(performance.lcp)+" ms"]);
+      if(performance.inp)perfRows.push(["INP",Math.round(performance.inp)+" ms"]);
+      if(performance.cls!==null&&performance.cls!==undefined)perfRows.push(["CLS",Number(performance.cls).toFixed(3)]);
+      if(perfRows.length)lines.push(...section("06","⚡","PERFORMANCE SNAPSHOT",perfRows));
+      lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&newSession&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
-        const title=first?"🟢 <b>NEW VISITOR</b>":"🔵 <b>RETURNING VISITOR</b>";
-        const text=[title,"🆔 <code>"+id+"</code>","🌍 Location: "+esc(geo),"🌐 IP ("+esc(profile.network.ipVersion)+"): <code>"+esc(displayIp)+"</code>","📡 ISP: "+esc(profile.network.isp||"Unknown")+" · ASN: "+esc(profile.network.asn||"Unknown"),"📶 Network type: "+esc(profile.network.networkType),"📱 Carrier: "+esc(profile.network.carrier),"🛰️ Hosting/VPN hint: "+esc(profile.network.hostingSignal),"🛡️ Proxy signal: "+esc(profile.network.corporateProxy),"📱 Device: "+esc(device),"🧩 Platform: "+esc(profile.device.platform||"Unknown"),"📶 Browser connection hint: "+esc(profile.device.connection||"Unknown"),"🔗 Page: "+esc(page),"↩️ Referrer: "+esc(profile.source.referrer||"Direct"),"📊 Visits: "+profile.totalSessions+" · Page views: "+profile.totalPageViews,"🕒 "+esc(stamp)+" (BDT)"].join("\n");
-        try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor Telegram alert failed",String(e))}
+        const text=lines.join("\n");
+        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
     }
