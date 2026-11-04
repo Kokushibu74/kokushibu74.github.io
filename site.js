@@ -21,7 +21,8 @@ function render(raw) {
  document.documentElement.style.setProperty("--text-color","#F5F7FC");
  document.documentElement.style.setProperty("--accent-color",theme.neon1||"#00F2FE");
  document.title=(d.seo&&d.seo.title)||"Shihabul Islam | Web Developer, UI/UX Designer & AI Developer in Bangladesh";
- $("nav-name").textContent=d.name||fallback.name;
+ const navName=$("nav-name"),navText=navName&&navName.querySelector(".nav-electric-text"),displayName=d.name||fallback.name;
+ if(navText){const initial=document.createElement("span"),rest=document.createElement("span");initial.className="nav-initial-letter";initial.setAttribute("aria-hidden","true");initial.textContent=displayName.charAt(0);rest.className="nav-name-rest";rest.textContent=displayName.slice(1);navText.replaceChildren(initial,rest);}else if(navName){navName.textContent=displayName;}
  $("footer-text").textContent="© "+new Date().getFullYear()+" "+(d.name||fallback.name)+". Built with curiosity.";
  $("nav-links").innerHTML=[["about.html","About"],["expertise.html","Expertise"],["projects.html","Projects"],["contact.html","Contact"],["news.html","News"]].map(a=>'<a class="hover:text-[#00F2FE] transition-colors" href="'+a[0]+'">'+a[1]+'</a>').join("");
  const skills=Array.isArray(d.skills)&&d.skills.length?d.skills:fallback.skills;
@@ -40,6 +41,7 @@ function render(raw) {
  const contactSection=$("contact"), footer=document.querySelector("footer"), slot=$("footer-contact-slot");
  if(contactSection&&footer&&slot){contactSection.classList.add("footer-contact-section");slot.appendChild(contactSection);}
  const effects=d.effects||{}; if(effects.liquid===false){document.querySelectorAll(".liquid-orb").forEach(el=>el.remove());} if(effects.glow===false){document.querySelectorAll(".glass-card").forEach(el=>el.style.boxShadow="none");}
+ window.__portfolioRendered=true;window.dispatchEvent(new Event("portfolio:rendered"));
 }
 
 function installPortraitReveal(){
