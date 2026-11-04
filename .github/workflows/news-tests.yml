@@ -11,6 +11,7 @@ on:
       - "tests/news-client-optimization.test.mjs"
       - ".github/workflows/report-workflow-to-telegram.yml"
       - "tests/test_update_news.py"
+      - "tests/test_slider_rules.py"
       - "news.js"
       - "homepage-news.js"
       - "tests/news-client-optimization.test.mjs"
@@ -23,6 +24,8 @@ on:
       - "scripts/update_news.py"
       - "scripts/news_telegram_report.py"
       - "tests/test_update_news.py"
+      - "tests/test_slider_rules.py"
+      - "news.js"
       - "tests/test_news_telegram_report.py"
       - ".github/workflows/news-tests.yml"
       - ".github/workflows/report-workflow-to-telegram.yml"
@@ -41,7 +44,9 @@ jobs:
         with:
           python-version: "3.x"
       - name: Run offline news logic tests
-        run: python3 tests/test_update_news.py -v
+        run: |
+          python3 tests/test_update_news.py -v
+          python3 tests/test_slider_rules.py -v
       - name: Run Telegram report formatter tests
         run: python3 tests/test_news_telegram_report.py -v
       - name: Check browser JavaScript syntax and feed refresh contracts
