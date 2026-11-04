@@ -41,6 +41,7 @@ function render(raw) {
  const contactSection=$("contact"), footer=document.querySelector("footer"), slot=$("footer-contact-slot");
  if(contactSection&&footer&&slot){contactSection.classList.add("footer-contact-section");slot.appendChild(contactSection);}
  const effects=d.effects||{}; if(effects.liquid===false){document.querySelectorAll(".liquid-orb").forEach(el=>el.remove());} if(effects.glow===false){document.querySelectorAll(".glass-card").forEach(el=>el.style.boxShadow="none");}
+ window.__portfolioRendered=true;window.dispatchEvent(new Event("portfolio:rendered"));
 }
 
 function installPortraitReveal(){
