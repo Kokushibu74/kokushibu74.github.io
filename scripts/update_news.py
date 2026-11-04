@@ -806,6 +806,8 @@ def main():
                     existing = collected_by_key.get(key)
                     if existing:
                         merge_source_evidence(existing, source)
+                        if country != "BD":
+                            existing["alertScope"] = "global"
                     continue
                 seen.add(key)
                 collected_by_key[key] = item
@@ -883,6 +885,7 @@ def main():
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
+                    "alertScope": "global" if country != "BD" else "bangladesh_candidate",
                     "isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published),
                     "sourceEvidence": [],
                 }
