@@ -217,8 +217,10 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       const stories=grouped.get(category)||[];
       return '<section class="newspaper-section" aria-label="'+esc(category)+' news"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+stories.map((item,index)=>renderNewspaperStory(item,{index})).join("")+'</section>';
     }).join("");
+    const sectionCount=order.length;
+    const columnClass=sectionCount===1?" single-section":sectionCount===2?" two-sections":"";
     grid.classList.add("newspaper-feed");
-    grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+'<div class="newspaper-columns">'+sections+'</div>';
+    grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+'<div class="newspaper-columns'+columnClass+'">'+sections+'</div>';
     grid.querySelectorAll(".newspaper-image img").forEach(img=>img.addEventListener("error",()=>{
       const story=img.closest(".newspaper-story");
       story?.classList.remove("has-image");
@@ -277,6 +279,8 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       renderLegacyNews(pageItems);
     }
   }
+  const newspaperViewport=window.matchMedia("(max-width: 600px)");
+  newspaperViewport.addEventListener("change",()=>{if(viewMode==="feed")render()});
   function updateFilterCounts(){
     const todayBD=bdDateKey(Date.now());
     const oldestDate=new Date(todayBD+"T00:00:00Z");
