@@ -389,11 +389,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 <!-- Google AdSense Auto ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4984469946659633" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="ZXwfWWUSzpDJy3HRD9pgEHOoRw9eXzsUWurCVQ5U6EE" />
-<style id="homepage-scroll-reveal-styles">
-[data-cursor-reveal]{opacity:0;transform:translate3d(0,24px,0);filter:blur(3px);transition:opacity .65s ease,transform .72s cubic-bezier(.2,.75,.2,1),filter .65s ease;will-change:opacity,transform,filter}
-[data-cursor-reveal].is-cursor-visible{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
-@media(prefers-reduced-motion:reduce){[data-cursor-reveal]{opacity:1;transform:none;filter:none;transition:none}}
-</style>
+
 </head>
 <body class="selection:bg-[#00F2FE] selection:text-black min-h-screen flex flex-col justify-between relative">
 
@@ -412,7 +408,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
       <div class="flex items-center gap-3 min-w-0">
         <a id="nav-brand-intro" href="#" class="font-extrabold text-xl tracking-wider text-white flex items-center gap-2.5" aria-label="Shihabul Islam — back to top" title="Back to top">
-          <span id="nav-name" class="nav-electric-reveal" aria-label="SHIHABUL ISLAM"><span class="nav-electric-text social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]"><span class="nav-initial-letter" aria-hidden="true">S</span><span class="nav-name-rest">HIHABUL ISLAM</span></span></span>
+          <span id="nav-name" aria-label="SHIHABUL ISLAM"><span class="social-footer-title bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-[#00F2FE]"><span class="nav-initial-letter" aria-hidden="true">S</span><span class="nav-name-rest">HIHABUL ISLAM</span></span></span>
         </a>
       </div>
       <nav id="nav-links" class="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-300"></nav>
@@ -945,108 +941,10 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 </script>
 
 
-<style id="nav-cosmic-rift-reveal">
-  /* Cosmic Rift A: confined to the header brand label; no navbar-wide overlay. */
-  #nav-name.nav-electric-reveal{position:relative;display:inline-block;white-space:nowrap;isolation:isolate;overflow:hidden;vertical-align:middle}
-  /* CSS-only fallback guarantees a visible, endlessly pulsing rift even if canvas JS is blocked. */
-  #nav-name.nav-electric-reveal::before{content:"";position:absolute;z-index:0;left:-8%;right:-8%;top:8%;bottom:8%;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,229,255,.34) 0%,rgba(0,229,255,.16) 32%,rgba(112,54,255,.19) 58%,transparent 76%);opacity:.72;transform:scaleX(.82);animation:navRiftFallback 3.6s ease-in-out infinite!important}
-  #nav-name .nav-rift-canvas{position:absolute;z-index:0;inset:0;width:100%;height:100%;display:block;pointer-events:none;overflow:hidden;opacity:1}
-  #nav-name .nav-electric-text{position:relative;z-index:1;display:inline-block;animation:navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important;will-change:filter,opacity;text-shadow:0 0 5px rgba(0,242,254,.5)}
-  #nav-name .nav-electric-text.nav-rift-reveal{animation:navNameReveal 1.15s cubic-bezier(.2,.75,.2,1) both,navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important}
-  #nav-name .nav-electric-text.nav-rift-glitch{animation:navNameGlitch .22s steps(2,end) both,navCosmicNameGlow 4.8s ease-in-out 1.25s infinite!important}
-  @keyframes navRiftFallback{0%,100%{opacity:.48;transform:scaleX(.72) scaleY(.88);filter:blur(2px)}50%{opacity:1;transform:scaleX(1) scaleY(1.12);filter:blur(0)}}
-  @keyframes navNameReveal{0%{opacity:.12;filter:brightness(.35) drop-shadow(0 0 2px rgba(0,242,254,.2))}45%{opacity:.72;filter:brightness(1.5) drop-shadow(0 0 12px rgba(0,242,254,.8))}100%{opacity:1;filter:brightness(1) drop-shadow(0 0 4px rgba(0,242,254,.35))}}
-  @keyframes navCosmicNameGlow{0%,100%{filter:drop-shadow(0 0 3px rgba(0,242,254,.25))}50%{filter:drop-shadow(0 0 8px rgba(0,242,254,.55)) drop-shadow(0 0 15px rgba(139,92,246,.34))}}
-  @keyframes navNameGlitch{0%,100%{transform:translateX(0);clip-path:inset(0)}25%{transform:translateX(-1px);clip-path:inset(12% 0 58% 0);text-shadow:2px 0 #00e5ff,-2px 0 #a855f7}55%{transform:translateX(1px);clip-path:inset(62% 0 10% 0);text-shadow:-2px 0 #00e5ff,2px 0 #a855f7}}
-  /* The requested header effect intentionally keeps looping even when system reduced-motion is enabled. */
-</style>
 
 
-<script id="nav-cosmic-rift-engine">
-(()=> {
-  const host=document.getElementById('nav-name');
-  const textNode=host&&host.querySelector('.nav-electric-text');
-  if(!host||!textNode||host.querySelector('.nav-rift-canvas'))return;
-  const canvas=document.createElement('canvas');
-  canvas.className='nav-rift-canvas';canvas.setAttribute('aria-hidden','true');
-  host.insertBefore(canvas,textNode);
-  const ctx=canvas.getContext('2d',{alpha:true});
-  if(!ctx)return;
-  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w=1,h=1,dpr=1,raf=0,last=0,start=performance.now(),visible=true;
-  const particles=[];
-  const rand=(a,b)=>a+Math.random()*(b-a);
-  function resize(){
-    const r=host.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);
-    dpr=Math.min(window.devicePixelRatio||1,1.5);
-    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    particles.length=0;
-    for(let i=0;i<Math.min(34,Math.max(14,Math.round(w/5)));i++)particles.push({x:rand(0,w),y:rand(0,h),vx:rand(-.12,.12),vy:rand(-.15,.15),size:rand(.35,1),phase:rand(0,6.28)});
-  }
-  function spine(t,spread=1){
-    const pts=[];
-    for(let i=0;i<=18;i++){
-      const y=h*i/18;
-      const x=w*.5+Math.sin(i*1.8+t*.9)*w*.035+Math.sin(i*3.2-t*.5)*w*.015;
-      pts.push([w*.5+(x-w*.5)*spread,y]);
-    }
-    return pts;
-  }
-  function stroke(pts,color,width,blur,alpha){
-    ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.shadowColor=color;ctx.shadowBlur=blur;ctx.beginPath();
-    pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.restore();
-  }
-  const branches=Array.from({length:7},(_,s)=>Array.from({length:5},(_,i)=>({dx:(((s*7+i*11)%9)-4)*.018,dy:.08+((s*3+i*5)%5)*.025})));
-  function drawBranch(t,s){
-    let x=w*.5+Math.sin(s*2.1+t*.18)*w*.015,y=h*(.08+(s%4)*.23);const pts=[[x,y]];
-    for(let i=0;i<5;i++){const b=branches[s][i];x+=w*b.dx;y+=h*b.dy;pts.push([x+Math.sin(t*.6+s+i)*w*.004,y]);}
-    stroke(pts,'#6feaff',.5,4,.26);stroke(pts,'#dffcff',.24,1.5,.68);
-  }
-  function draw(now){
-    raf=0;if(!visible||document.hidden)return;
-    if(now-last<32){raf=requestAnimationFrame(draw);return;}last=now;
-    const t=(now-start)/1000,opening=Math.min(1,Math.max(0,(t-.18)/.85)),pulse=.72+.28*Math.sin(t*2.2);
-    ctx.clearRect(0,0,w,h);
-    const halo=ctx.createRadialGradient(w*.5,h*.5,1,w*.5,h*.5,Math.max(w*.62,h*1.6));
-    halo.addColorStop(0,'rgba(0,220,255,'+((.28+.12*pulse)*Math.min(1,t/.45))+')');
-    halo.addColorStop(.42,'rgba(112,54,255,'+(.18*pulse)+')');halo.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=halo;ctx.fillRect(0,0,w,h);
-    if(t>.42){
-      const pts=spine(t,1),wide=spine(t,2.1);
-      stroke(wide,'#5425ff',3.5,12,.22*opening*pulse);
-      stroke(pts,'#00dfff',1.45,8,.98*opening*pulse);
-      stroke(pts.map((p,i)=>[p[0]+Math.sin(i*2+t)*.5,p[1]]),'#e9fdff',.42,3,.92*opening*pulse);
-      for(let i=0;i<branches.length;i++)drawBranch(t,i);
-    }
-    for(const p of particles){
-      p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
-      p.x+=(w*.5-p.x)*.0007;p.y+=(h*.5-p.y)*.0007;
-      ctx.globalAlpha=(.15+.35*(.5+.5*Math.sin(t*1.4+p.phase)))*Math.min(1,t/.35);
-      ctx.fillStyle=p.phase%2?'#8af5ff':'#bda4ff';ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=4;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
-    }
-    ctx.globalAlpha=1;ctx.shadowBlur=0;
-    const beat=t%5.4;if(beat>4.72&&beat<4.88){ctx.globalAlpha=(1-Math.abs(beat-4.8)/.08)*.32;ctx.fillStyle='#e8fcff';ctx.fillRect(w*.36,h*.5,w*.28,1);ctx.globalAlpha=1;}
-    // Keep the cosmic rift running continuously; reduced-motion users still get a gentle loop.
-    raf=requestAnimationFrame(draw);
-  }
-  textNode.classList.add('nav-rift-reveal');
-  window.setTimeout(()=>textNode.classList.remove('nav-rift-reveal'),1400);
-  const glitch=()=>{
-    if(!document.hidden){
-      textNode.classList.remove('nav-rift-glitch');void textNode.offsetWidth;
-      textNode.classList.add('nav-rift-glitch');
-      window.setTimeout(()=>textNode.classList.remove('nav-rift-glitch'),240);
-    }
-    window.setTimeout(glitch,reduce?11000:6200+Math.random()*3600);
-  };
-  window.setTimeout(glitch,reduce?9000:4600);
-  resize();raf=requestAnimationFrame(draw);
-  window.addEventListener('resize',resize,{passive:true});
-  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(!visible){if(raf)cancelAnimationFrame(raf);raf=0;}else if(!raf){last=0;raf=requestAnimationFrame(draw);}});
-})();
-</script>
+
+
 <script src="visitor-tracking.js?v=1" defer></script>
-<script src="homepage-scroll-reveal.js?v=1" defer></script>\n</body>
+\n</body>
 </html>
