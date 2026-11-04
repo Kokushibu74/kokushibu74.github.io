@@ -346,7 +346,8 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(metrics["archive"], 2)
         self.assertEqual(metrics["latest_tag_15m"], 1)
         self.assertEqual(metrics["image_preview_urls"], 2)
-        self.assertEqual(metrics["bd_slider_preview_candidates"], 1)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 2)
+        self.assertEqual(metrics["bd_slider_window_minutes"], 30)
         self.assertEqual(metrics["weather_cards"], 2)
         self.assertEqual(metrics["weather_cards_with_preview"], 1)
 
