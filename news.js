@@ -9,7 +9,7 @@
   const archiveTools=document.getElementById("archive-tools"),viewSwitch=document.getElementById("news-view-switch");
   const slidesRoot=document.getElementById("top-stories-slides"),slideCount=document.getElementById("top-stories-count"),controls=document.getElementById("top-stories-controls"),dotsRoot=document.getElementById("top-stories-dots");
   document.getElementById("year").textContent=new Date().getFullYear();
-  let items=[],weatherItems=[],active="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null;
+  let items=[],weatherItems=[],active="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null,ageBoundaryTimer=null;
   const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safe=v=>{try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}};
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
@@ -29,6 +29,28 @@
   const isWithinLast24Hours=x=>{const age=ageOf(x);return age>=-5*60*1000&&age<24*60*60*1000};
   const PREVIEW_FIELDS=["previewScreenshot","previewImage","image","imageUrl","thumbnail","thumbnailUrl","enclosureUrl"];
   const previewUrl=x=>safe(PREVIEW_FIELDS.map(k=>x[k]).find(Boolean)||"");
+  function scheduleAgeBoundaryRefresh(){
+    if(ageBoundaryTimer)clearTimeout(ageBoundaryTimer);
+    const now=Date.now();
+    let nextBoundary=Infinity;
+    for(const item of items){
+      const date=dateOf(item);
+      if(!date)continue;
+      const published=date.getTime();
+      const latestBoundary=published+15*60*1000+1;
+      if(latestBoundary>now)nextBoundary=Math.min(nextBoundary,latestBoundary);
+      if(item.category==="Bangladesh"&&previewUrl(item)!=="#"){
+        const sliderBoundary=published+60*60*1000+1;
+        if(sliderBoundary>now)nextBoundary=Math.min(nextBoundary,sliderBoundary);
+      }
+    }
+    if(Number.isFinite(nextBoundary)){
+      ageBoundaryTimer=setTimeout(()=>{
+        render();
+        renderTopStories();
+      },Math.max(0,nextBoundary-Date.now()));
+    }
+  }
   function imageLoads(url){
     return new Promise(resolve=>{
       if(!url||url==="#"){resolve(false);return}
@@ -43,6 +65,7 @@
     });
   }
   async function renderTopStories(){
+    scheduleAgeBoundaryRefresh();
     // Final slider rules: Bangladesh only, age <=60m, verified preview image required.
     const candidates=sortedNews(items).filter(x=>
       isSliderEligibleAge(x)&&x.category==="Bangladesh"&&
