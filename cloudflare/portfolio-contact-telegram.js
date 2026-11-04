@@ -426,7 +426,7 @@ async function umReply(env,chatId,text){
 
 function umValue(value,fallback="Unknown"){const s=String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim();return s||fallback;}
 function umTime(value){if(!value)return "Unknown";const t=Date.parse(String(value));if(!Number.isFinite(t))return umValue(value);return new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(t))+" BDT";}
-function umVisitorReport(id,p){const n=p?.network||{},d=p?.device||,src=p?.source||{},perf=p?.performance||{};return [
+function umVisitorReport(id,p){const n=p?.network||{},d=p?.device||{},src=p?.source||{},perf=p?.performance||{};return [
 "🔍 VISITOR INTELLIGENCE","🆔 "+umValue(id),"━━━━━━━━━━━━━━━━━━━━",
 "01 · 📍 LOCATION PROFILE","Country: "+umValue(n.country),"Region: "+umValue(n.region),"City: "+umValue(n.city),"Timezone: "+umValue(n.timezone),"Cloudflare Location: "+umValue(n.colo),"Location Source: IP-based · Estimated","",
 "02 · 📱 DEVICE PROFILE","Device: "+umValue(d.deviceType),"Model: "+umValue(d.deviceModel),"OS: "+umValue(d.os),"Browser: "+umValue(d.browser),"Platform: "+umValue(d.platform),"Screen: "+umValue(d.screen),"Viewport: "+umValue(d.viewport),"Language: "+umValue(d.language),"Pixel Ratio: "+umValue(d.pixelRatio),"",
