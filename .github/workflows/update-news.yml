@@ -10,6 +10,7 @@ on:
       - "tests/test_news_alerts.py"
       - "scripts/update_news.py"
       - "tests/test_update_news.py"
+      - "tests/test_slider_rules.py"
   schedule:
     - cron: "*/15 * * * *"
 
@@ -49,6 +50,9 @@ jobs:
       - name: Run offline news logic tests
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_update_news.py -v
+      - name: Run Bangladesh slider boundary tests
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        run: python3 tests/test_slider_rules.py -v
       - name: Generate feed from public RSS sources
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 scripts/update_news.py
