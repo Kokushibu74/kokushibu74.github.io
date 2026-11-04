@@ -61,6 +61,23 @@ class NewsLogicTests(unittest.TestCase):
         b = {"title": "ঢাকায় জরুরি সংবাদ!", "source": "Source B"}
         self.assertEqual(news.key_for(a), news.key_for(b))
 
+    def test_duplicate_direct_rss_merge_does_not_reference_google_country_variable(self):
+        existing = {"sourceEvidence": [], "category": "Bangladesh"}
+        merged = news.merge_duplicate_source(existing, "Prothom Alo", category="Bangladesh")
+        self.assertEqual(merged["sourceEvidence"], ["Prothom Alo"])
+        self.assertNotIn("alertScope", merged)
+
+    def test_duplicate_direct_international_story_is_marked_global(self):
+        existing = {"sourceEvidence": [], "category": "World"}
+        merged = news.merge_duplicate_source(existing, "BBC News World", category="World")
+        self.assertEqual(merged["alertScope"], "global")
+
+    def test_duplicate_google_news_merge_uses_explicit_country(self):
+        domestic = news.merge_duplicate_source({"sourceEvidence": []}, "Source A", country="BD")
+        international = news.merge_duplicate_source({"sourceEvidence": []}, "Source B", country="US")
+        self.assertNotIn("alertScope", domestic)
+        self.assertEqual(international["alertScope"], "global")
+
     def test_explicit_recent_high_impact_breaking_alert_is_detected(self):
         self.assertTrue(news.is_recent_breaking(
             "Breaking News: major fire breaks out in Dhaka", self.iso(timedelta(minutes=-10)),
