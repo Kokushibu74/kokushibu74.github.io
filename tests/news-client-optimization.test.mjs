@@ -30,6 +30,10 @@ assert.doesNotMatch(ticker, /news-feed\.json\?updated=/, "Avoid unique cache-bus
 
 
 assert.match(news, /function renderMobileNewsFeed\(pageItems\)/, "Mobile News Feed must use its dedicated reader renderer");
+assert.match(news, /function estimateNewspaperStoryHeight\(item\)/, "Desktop newspaper stories must be balanced by estimated editorial height");
+assert.match(news, /newspaper-column/, "Desktop newspaper renderer must distribute stories into balanced lanes");
+assert.match(news, /class="mobile-list-story\x27\+\(image===\x22#\x22\?\x27 text-only\x27:/, "Stories without images must render as text-only cards");
+assert.match(news, /story\?\.classList\.add\("text-only"\)/, "Failed mobile image loads must convert the story into text-only layout");
 assert.match(news, /renderMobileNewsFeed\(pageItems\)/, "Mobile viewport must route feed stories through the dedicated reader");
 assert.match(news, /grid\.classList\.add\("mobile-news-feed"\)/, "Mobile feed must apply its own layout class");
 assert.match(news, /grid\.classList\.remove\("mobile-news-feed"\)[\s\S]*?grid\.classList\.add\("newspaper-feed"\)/, "Desktop rendering must clear the mobile layout class");
