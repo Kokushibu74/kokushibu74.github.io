@@ -716,7 +716,7 @@ export function getNearbyDistricts(latitude, longitude, localDistrictId, radiusK
 function matchesPlace(text, place) {
   const term = normalize(place);
   if (!term || term.length < 2) return false;
-  if (/[\\u0980-\\u09FF]/.test(term)) return text.includes(term);
+  if (/[\u0980-\u09FF]/.test(term)) return text.includes(term);
   return new RegExp("(^|[^a-z0-9])" + escapeRegExp(term) + "([^a-z0-9]|$)", "i").test(text);
 }
 
