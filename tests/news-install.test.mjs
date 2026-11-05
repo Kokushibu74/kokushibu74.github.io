@@ -30,7 +30,7 @@ assert.ok(manifest.icons.some(icon=>icon.purpose==="maskable"));
 const page=readFileSync(new URL("../news.html",import.meta.url),"utf8");
 assert.match(page,/<link rel="manifest" href="\.\/manifest\.webmanifest">/);
 assert.match(page,/<link rel="stylesheet" href="\.\/news-install\.css\?v=1">/);
-assert.match(page,/<script type="module" src="news-install\.mjs\?v=1"><\/script>/);
+assert.match(page,/<script type="module" src="news-install\.mjs\?v=2"><\/script>/);
 const css=readFileSync(new URL("../news-install.css",import.meta.url),"utf8");
 assert.match(css,/env\(safe-area-inset-bottom\)/);
 assert.match(css,/prefers-reduced-motion:reduce/);
