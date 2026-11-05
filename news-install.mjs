@@ -103,7 +103,7 @@ function showManualInstructions(){
 }
 async function handleInstallAction(){
   const instructions=document.querySelector("[data-news-install-instructions]");
-  if(instructions&&!instructions.hidden){hideSheet(true);return}
+  if(instructions&&!instructions.hidden){hideSheet();return}
   if(!deferredInstallPrompt){showManualInstructions();return}
   const promptEvent=deferredInstallPrompt;
   deferredInstallPrompt=null;
