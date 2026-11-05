@@ -1479,7 +1479,7 @@ async function newsBreakingAlertCheck(env){
   const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
   const items=Array.isArray(feed)?mainItems:[...mainItems,...weatherItems];
   const now=Date.now(),sent=[],rejected={},auditTtl=7*86400;
-  const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
+  const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
   const feedAgeMinutes=Number.isFinite(feedUpdatedMs)?Math.round((now-feedUpdatedMs)/60000):null;
@@ -1510,7 +1510,7 @@ async function newsBreakingAlertCheck(env){
       rejected[reason]=(rejected[reason]||0)+1;
       const sourceEvidence=Array.isArray(item.sourceEvidence)?item.sourceEvidence.slice(0,12).map(value=>String(value).slice(0,120)):[];
       const record={
-        at:now,title:title.slice(0,240),
+        at:now,title:title.slice(0,240),summary:summary.slice(0,420),
         itemId:String(item.id||item.guid||"").slice(0,160)||null,
         link:link.slice(0,500)||null,
         isBreaking:item.isBreaking===true,

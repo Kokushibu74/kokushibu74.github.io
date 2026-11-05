@@ -135,3 +135,13 @@ test("worker scans main and weather candidates on a five-minute cadence and pers
   assert.match(alertSource,/news-alert-reject:v1:/);
   assert.doesNotMatch(alertSource,/for\\(const item of items\\.slice\\(0,160\\)\\)/);
 });
+
+
+test("fatal bus-arson headline is classified as a serious local incident",()=>{
+  const x=item({
+    title:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
+    summary:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়"
+  });
+  const decision=evaluateNewsAlert(x,{now});
+  assert.equal(decision.eligible,true);
+});
