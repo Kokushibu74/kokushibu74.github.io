@@ -8,6 +8,10 @@ const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js",
 
 assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must use 50/70/85/95 percent thresholds");
 assert.match(contact, /for\(let start=0;start<CF_MONITOR_KV_NAMESPACES\.length;start\+=3\)/, "KV analytics must be split into bounded namespace batches");
+assert.match(contact, /dimensions \{ actionType date \}/, "KV usage must be grouped by UTC date");
+assert.match(contact, /function cfMonitorAction\(rows,action,date=null\)/, "KV action totals must support daily filtering");
+assert.match(contact, /kv_deletes.*limit:1000,unit:"operations",period:"daily"/, "KV deletes must use the 1,000 daily allowance");
+assert.match(contact, /kv_lists.*limit:1000,unit:"operations",period:"daily"/, "KV list operations must use the 1,000 daily allowance");
 assert.match(contact, /Promise\.all\(\[/, "Workers, KV, and D1 analytics must be fetched concurrently to avoid monolithic query timeouts");
 assert.match(contact, /accountTag: string!/, "Cloudflare Analytics GraphQL accountTag scalar must retain Cloudflare's lowercase string type");
 assert.match(contact, /sum \{ requests errors cpuTimeUs \}/, "Workers requests and CPU time must be measured together");
@@ -15,8 +19,8 @@ assert.match(contact, /workers_requests.*limit:10000000,unit:"requests",period:"
 assert.match(contact, /workers_cpu_ms.*limit:30000000,unit:"ms",period:"monthly"/, "Standard plan Workers CPU must use the 30 million CPU-ms monthly allowance");
 assert.match(contact, /aiInferenceAdaptiveGroups.*totalNeurons/, "Workers AI neuron usage must be included when the AI binding is active");
 assert.match(contact, /workers_ai_neurons.*limit:10000,unit:"neurons",period:"daily"/, "Workers AI must use the 10,000-neuron daily free allocation");
-assert.match(contact, /kv_reads.*limit:10000000,unit:"operations",period:"monthly"/, "Standard plan KV reads must use the 10 million monthly allowance");
-assert.match(contact, /kv_writes.*limit:1000000,unit:"operations",period:"monthly"/, "Standard plan KV writes must use the 1 million monthly allowance");
+assert.match(contact, /kv_reads.*limit:100000,unit:"operations",period:"daily"/, "KV reads must use the 100,000 daily allowance");
+assert.match(contact, /kv_writes.*limit:1000,unit:"operations",period:"daily"/, "KV writes must use the 1,000 daily allowance matching the live quota error");
 assert.match(contact, /d1_rows_read.*limit:25000000000,unit:"rows",period:"monthly"/, "Standard plan D1 reads must use the 25 billion monthly allowance");
 assert.match(contact, /d1_rows_written.*limit:50000000,unit:"rows",period:"monthly"/, "Standard plan D1 writes must use the 50 million monthly allowance");
 assert.match(contact, /cfMonitorGraphQL\(env,workersQuery/, "Workers request usage must be fetched in its own bounded analytics query");
@@ -31,8 +35,9 @@ assert.match(contact, /if\(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg\.traff
 assert.doesNotMatch(contact, /budgetLines/, "Daily Telegram report must not include Sports Zone budget while paused");
 assert.match(contact, /resourceSnapshot=await cfResourceBudgetCheck/, "Daily report must reuse the current non-Sports Cloudflare resource snapshot");
 assert.match(contact, /04\/05 · INFRASTRUCTURE INTELLIGENCE/, "Daily report must include a dedicated infrastructure and Cloudflare resource section");
-assert.match(contact, /KV reads \(all 6 namespaces, monthly\)/, "Daily resource report must include all six existing KV namespaces without enabling Sports Zone API monitoring");
+assert.match(contact, /KV reads \(all 6 namespaces, daily Free allowance\)/, "Daily resource report must include all six existing KV namespaces without enabling Sports Zone API monitoring");
 assert.match(contact, /if\(pending\.length&&typeof sendTelegram==="function"\)/, "Budget thresholds must not be marked sent when alert delivery is disabled");
+assert.match(contact, /kvAction\("write",day\)/, "KV writes must be measured for the current UTC day");
 assert.match(contact, /buildDailyReportMessages/, "Daily report must render the separated resource summary");
 assert.ok(contact.includes("cfg.trafficAlerts?sendTelegram:null"), "Resource usage can be read for the daily report without enabling alert notifications");
 assert.match(sports, /const YOUTUBE_BACKOFF_SECONDS = 60 \* 60;/, "YouTube 429 cooldown must be one hour");
