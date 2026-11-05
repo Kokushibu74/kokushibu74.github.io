@@ -161,6 +161,7 @@ def parse_news_metrics(log_text):
         "world": None, "technology": None,
         "publisher_urls_resolved": None, "metadata_attempts": None,
         "metadata_fetched": None, "metadata_unavailable": None, "metadata_cached": None,
+        "metadata_cached_success": None, "metadata_cached_fallback": None,
         "weather_enriched": None, "weather_priority": None,
         "weather_cached": None, "weather_unavailable": None, "weather_rss_fallback": None,
         "validation": None, "invalid_items": None, "duplicate_items": None,
@@ -222,13 +223,21 @@ def parse_news_metrics(log_text):
         metrics["bangladesh"], metrics["world"], metrics["technology"] = map(int, categories.groups())
 
     checks = re.search(
-        r"Publisher preview checks:\s*attempted:\s*(\d+)\s+metadata fetched:\s*(\d+)\s+unavailable:\s*(\d+)\s+cached/reused:\s*(\d+)\s+Google News URLs resolved:\s*(\d+)",
+        r"Publisher preview checks:\s*attempted:\s*(\d+)\s+metadata fetched:\s*(\d+)\s+unavailable:\s*(\d+)\s+cached/reused:\s*(\d+)(?:\s+cached_success:\s*(\d+)\s+cached_fallback:\s*(\d+))?\s+Google News URLs resolved:\s*(\d+)",
         log_text,
     )
     if checks:
+        values = checks.groups()
         (metrics["metadata_attempts"], metrics["metadata_fetched"],
-         metrics["metadata_unavailable"], metrics["metadata_cached"],
-         metrics["publisher_urls_resolved"]) = map(int, checks.groups())
+         metrics["metadata_unavailable"], metrics["metadata_cached"]) = map(int, values[:4])
+        if values[4] is not None:
+            metrics["metadata_cached_success"] = int(values[4])
+            metrics["metadata_cached_fallback"] = int(values[5])
+        else:
+            # Older generator logs did not distinguish verified metadata from RSS fallbacks.
+            metrics["metadata_cached_success"] = 0
+            metrics["metadata_cached_fallback"] = metrics["metadata_cached"]
+        metrics["publisher_urls_resolved"] = int(values[6])
     else:
         legacy = re.search(r"Publisher URLs resolved:\s*(\d+)\s*;\s*metadata fetched:\s*(\d+)\s+articles", log_text)
         if legacy:
