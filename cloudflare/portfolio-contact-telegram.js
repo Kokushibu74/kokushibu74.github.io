@@ -1,8 +1,11 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
+import { normalizeTelegramCommand, parseTelegramCommand, getTelegramCommandMenu } from "./telegram-command-utils.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
+const UM_CONFIRM_PREFIX = "um:confirm:v1:";
+const UM_CONFIRM_COMMANDS = new Set(["/userrename","/userlink","/userunlink","/userblock","/userunblock"]);
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -648,50 +651,43 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
 
 // Telegram inline-button navigation and persistent control settings.
 const BOT_MENU = [
-  ["website","🌐 Website"],["news","📰 News"],["analytics","📊 Analytics"],["security","🛡️ Security"],
-  ["github","🐙 GitHub"],["hero","🖼️ Hero Image"],["automation","⚙️ Automation"],["alerts","🚨 Alerts"],
-  ["reports","📑 Reports"],["users","👥 User Manager"],["settings","🔧 Settings"],["logs","📜 Logs"],["recovery","♻️ Recovery"]
+  ["website","🌐 Website"],["news","📰 News Center"],["analytics","📊 Analytics"],
+  ["security","🛡️ Security"],["automation","⚙️ Automation"],["users","👥 User Manager"]
 ];
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
-const BOT_DEFAULTS = {
-  monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, newsAlerts:true, workflowAlerts:true,
-  trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
-};
-async function botConfig(env){
-  if(!env.BOT_CONFIG_KV)return {...BOT_DEFAULTS};
-  try{return {...BOT_DEFAULTS,...(await env.BOT_CONFIG_KV.get("settings:v1","json")||{})}}catch{return {...BOT_DEFAULTS}}
+const BOT_CONTEXT_KEY_PREFIX = "bot:context:v1:";
+const BOT_CALLBACK_SEEN = new Map();
+async function botSetContext(env,chatId,category,messageId,actionId){
+  if(!env.BOT_CONFIG_KV)return null;const key=BOT_CONTEXT_KEY_PREFIX+String(chatId);let old={};try{old=await env.BOT_CONFIG_KV.get(key,"json")||{}}catch{}
+  const next={chatId:String(chatId),category:String(category||old.category||"website"),messageId:Number(messageId||old.messageId||0)||null,actionId:String(actionId||old.actionId||"menu:home").slice(0,96),updatedAt:Date.now()};
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(next),{expirationTtl:21600});return next;
 }
-async function botSaveConfig(env,cfg){
-  if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is not deployed");
-  await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify({...BOT_DEFAULTS,...cfg,updatedAt:Date.now()}));
+async function botRegisterCommands(env,chatId,isAdmin){
+  if(!env.TELEGRAM_BOT_TOKEN||!chatId)return false;const scope={type:"chat",chat_id:chatId},expected=getTelegramCommandMenu(!!isAdmin);
+  const registered=await botTelegram(env,"setMyCommands",{commands:expected,scope});
+  if(!registered?.ok){console.error("Telegram command registration failed",JSON.stringify({chatId:String(chatId),status:registered?.status||0,description:String(registered?.data?.description||"unknown").slice(0,180)}));return false;}
+  const verified=await botTelegram(env,"getMyCommands",{scope});
+  if(!verified?.ok||!Array.isArray(verified.data?.result)){console.error("Telegram command registration verification failed",JSON.stringify({chatId:String(chatId),status:verified?.status||0,description:String(verified?.data?.description||"unknown").slice(0,180)}));return false;}
+  const actual=verified.data.result.map(item=>String(item.command||"")),missing=expected.map(item=>item.command).filter(name=>!actual.includes(name)),unexpected=actual.filter(name=>!expected.some(item=>item.command===name));
+  if(missing.length||unexpected.length){console.error("Telegram command menu mismatch",JSON.stringify({chatId:String(chatId),missing,unexpected}));return false;}return true;
 }
-const BOT_MENU_KEY_PREFIX = "bot:menu:v1:";
-
-const BOT_START_LABEL = "🚀 START BOT";
-async function botMarkMenuInteraction(env,chatId,messageId,busy){
-  if(!env.BOT_CONFIG_KV)return;
-  const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId),now=Date.now();
-  const last=Number(old?.lastInteractionAt||0);
-  if(last&&now-last<5*60*1000&&old?.busy===!!busy)return;
-  try{await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:now,busy:!!busy}));}
-  catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
+async function botShowPublicWelcome(env,chatId,commandsOk=true){
+  const note=commandsOk?"":"\n\n⚠️ Telegram Command Menu registration could not be verified. Send /help to retry.";
+  await botSend(env,chatId,"👋 Welcome to KOKUSHIBU74.\n\nThis bot provides public information and a secure admin-only Control Center.\n\nAvailable commands:\n/start — Welcome\n/menu — Open menu\n/help — Help\n/cmd — Command list"+note,[],{forceNew:true});
+}
+async function botMarkMenuInteraction(env,chatId,messageId,busy,actionId){
+  if(!env.BOT_CONFIG_KV)return;const key=BOT_MENU_KEY_PREFIX+String(chatId),now=Date.now();let old={};try{old=await botGetMenuAnchor(env,chatId)||{}}catch{}
+  const last=Number(old.lastInteractionAt)||0;
+  if(last&&now-last<5*60*1000&&old.busy===!!busy&&(!messageId||Number(old.messageId||0)===Number(messageId))&&(!actionId||old.actionId===actionId))return;
+  const next={...old,chatId:String(chatId),messageId:Number(old.messageId||messageId||0),lastInteractionAt:now,busy:!!busy,actionId:actionId?String(actionId).slice(0,96):(old.actionId||"menu:home")};
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(next),{expirationTtl:21600});
 }
 async function botEnsureStartKeyboard(env,chatId){
-  // Keep the Control Center menu button available without sending another chat message on every /start.
-  const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
-  if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
-}
-const BOT_START_MENU_COOLDOWN_MS=5000;
-const BOT_START_MENU_LAST=new Map();
-function botAllowStartMenu(chatId,now=Date.now()){
-  const key=String(chatId),last=Number(BOT_START_MENU_LAST.get(key)||0);
-  if(now-last<BOT_START_MENU_COOLDOWN_MS)return false;
-  BOT_START_MENU_LAST.set(key,now);
-  if(BOT_START_MENU_LAST.size>1000){
-    for(const [id,at] of BOT_START_MENU_LAST)if(now-at>60000)BOT_START_MENU_LAST.delete(id);
-  }
-  return true;
+  const commandsOk=await botRegisterCommands(env,chatId,true);
+  try{const result=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});if(!result?.ok)console.error("Telegram Mini App menu button registration failed",JSON.stringify({status:result?.status||0,description:String(result?.data?.description||"unknown").slice(0,180)}));}
+  catch(error){console.error("Telegram Mini App menu button registration failed",String(error?.message||error).slice(0,180))}
+  return commandsOk;
 }
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
@@ -716,11 +712,9 @@ async function botExpireIdleMenu(env){
 }
 
 async function botTelegram(env,method,payload){
-  const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{
-    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
-  });
-  const d=await r.json().catch(()=>({}));
-  return {ok:!!(r.ok&&d.ok),data:d,status:r.status};
+  if(!env.TELEGRAM_BOT_TOKEN)return {ok:false,status:0,data:{description:"TELEGRAM_BOT_TOKEN is unavailable"}};
+  try{const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload||{}),signal:AbortSignal.timeout(12000)});const data=await response.json().catch(()=>({}));return {ok:response.ok&&data.ok===true,status:response.status,data};}
+  catch(error){return {ok:false,status:0,data:{description:String(error?.message||error).slice(0,180)}}}
 }
 async function botGetMenuAnchor(env,chatId){
   if(!env.BOT_CONFIG_KV)return null;
@@ -753,43 +747,13 @@ function botFormatTelegramResponse(text,options={}) {
 }
 
 async function botSend(env,chatId,text,keyboard,options={}){
-  if(!env.TELEGRAM_BOT_TOKEN)throw new Error("TELEGRAM_BOT_TOKEN secret is unavailable");
-  let saved=null;
-  try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
-  const messageId=saved?.messageId||options.messageId||null;
-  const payload={chat_id:chatId,text:botFormatTelegramResponse(text,options).slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]},...(options.parse_mode?{parse_mode:options.parse_mode}:{})};
-  if(messageId&&!options.forceNew){
-    let edited;
-    try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
-    catch(e){console.error("Telegram menu edit request failed; falling back to a new message",String(e&&e.message||e).slice(0,240))}
-    if(edited?.ok||String(edited?.data?.description||"").toLowerCase().includes("message is not modified")){
-      return edited?.data?.result||{message_id:messageId,chat:{id:chatId}};
-    }
-  }
-  const sent=await botTelegram(env,"sendMessage",payload);
-  if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
-  const newMessageId=sent.data.result?.message_id;
-  // If Telegram refuses an edit (for example, the anchor message was deleted),
-  // replace the stale menu instead of leaving a growing stack of old menus.
-  if(messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
-    try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
-    catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
-  }
-  try{
-    if(options.persistentMenu&&!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
-    await botRememberMenu(env,chatId,newMessageId);
-  }catch(e){
-    console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
-    if(options.persistentMenu&&newMessageId){
-      try{
-        const removed=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)});
-        if(!removed.ok&&!String(removed.data?.description||"").toLowerCase().includes("message to delete not found")){
-          console.error("Telegram unpersistable menu cleanup failed",JSON.stringify({status:removed.status,description:String(removed.data?.description||"").slice(0,180)}));
-        }
-      }catch(cleanupError){console.error("Telegram unpersistable menu cleanup request failed",String(cleanupError&&cleanupError.message||cleanupError).slice(0,180))}
-      throw new Error("The menu could not be saved because its storage is unavailable. Use the Control Center chat menu button for now.");
-    }
-  }
+  if(!env.TELEGRAM_BOT_TOKEN)throw new Error("TELEGRAM_BOT_TOKEN secret is unavailable");let saved=null;try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
+  const messageId=options.forceNew?null:(options.messageId||saved?.messageId||null),payload={chat_id:chatId,text:botFormatTelegramResponse(text,options).slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]},...(options.parse_mode?{parse_mode:options.parse_mode}:{})};
+  if(messageId&&!options.forceNew){let edited;try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}catch(e){console.error("Telegram menu edit request failed; falling back to a new message",String(e&&e.message||e).slice(0,240))}if(edited?.ok||String(edited?.data?.description||"").toLowerCase().includes("message is not modified"))return edited?.data?.result||{message_id:messageId,chat:{id:chatId}};}
+  const sent=await botTelegram(env,"sendMessage",payload);if(!sent.ok)throw new Error("Telegram message delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
+  const newMessageId=sent.data.result?.message_id,shouldRemember=!!options.persistentMenu||(!options.forceNew&&!options.messageId);
+  if(shouldRemember&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}}
+  if(shouldRemember){try{if(options.persistentMenu&&!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");await botRememberMenu(env,chatId,newMessageId);}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));if(options.persistentMenu&&newMessageId){try{const removed=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)});if(!removed.ok&&!String(removed.data?.description||"").toLowerCase().includes("message to delete not found"))console.error("Telegram unpersistable menu cleanup failed",JSON.stringify({status:removed.status,description:String(removed.data?.description||"").slice(0,180)}));}catch(cleanupError){console.error("Telegram unpersistable menu cleanup request failed",String(cleanupError&&cleanupError.message||cleanupError).slice(0,180))}throw new Error("The menu could not be saved because its storage is unavailable. Use the Control Center chat menu button for now.");}}}
   return sent.data.result;
 }
 async function botSendChatAction(env,chatId){
@@ -824,59 +788,41 @@ async function botRunWithProgress(env,chatId,message,work){
     return null;
   }
 }
-function botMainKeyboard(){
-  const rows=[];for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
-  rows.push([{text:"🔄 Manual Refresh",callback_data:"b1:refresh"}]);
-  return rows;
-}
+function botMainKeyboard(){return [[{text:"🌐 Website",callback_data:"b1:website"},{text:"📰 News Center",callback_data:"b1:news"}],[{text:"📊 Analytics",callback_data:"b1:analytics"},{text:"🛡️ Security",callback_data:"b1:security"}],[{text:"⚙️ Automation",callback_data:"b1:automation"},{text:"👥 User Manager",callback_data:"b1:users"}],[{text:"🧰 More Controls",callback_data:"b1:more"},{text:"🔄 Refresh Now",callback_data:"b1:refresh"}]]}
+function botMoreKeyboard(){return [[{text:"🐙 GitHub & Deploy",callback_data:"b1:github"},{text:"🖼️ Hero Image",callback_data:"b1:hero"}],[{text:"📜 Logs & Recovery",callback_data:"b1:logs"},{text:"⚙️ Settings",callback_data:"b1:settings"}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]}
 function botBackKeyboard(){return [[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]}
-async function botShowMenu(env,chatId,title="🤖 PORTFOLIO CONTROL CENTER"){
-  return await botSend(env,chatId,title+"\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন। কোনো সেটিংস পরিবর্তনের আগে তার ON/OFF অবস্থা দেখে নিন।",botMainKeyboard(),{persistentMenu:true});
-}
+async function botShowMoreMenu(env,chatId){await botSend(env,chatId,"🧰 MORE CONTROLS\n\nSecondary tools for deployment, media, diagnostics, recovery and configuration.",botMoreKeyboard());const anchor=await botGetMenuAnchor(env,chatId);await botSetContext(env,chatId,"menu",anchor?.messageId,"menu:more");}
+async function botShowMenu(env,chatId,title="🤖 KOKUSHIBU74 INTELLIGENCE"){await botSend(env,chatId,title+"\n\nChoose one of the six main sections. Use More Controls for GitHub, Hero Image, Logs & Recovery and Settings.\n\n/help · /cmd · /details",botMainKeyboard(),{persistentMenu:true});const anchor=await botGetMenuAnchor(env,chatId);await botSetContext(env,chatId,"menu",anchor?.messageId,"menu:home");}
 async function botCategory(env,chatId,category){
-  const cfg=await botConfig(env);
-  const labels={
-    website:["🌐 WEBSITE CONTROL","Site Health","Page Status","Manual Refresh"],
-    news:["📰 NEWS CONTROL","Latest Feed","News Refresh Status","Source Health"],
-    analytics:["📊 ANALYTICS","GA4 Status","Visitor Summary","Traffic Overview"],
-    security:["🛡️ SECURITY CENTER","Security Status","Critical Protection","Recent Security Events"],
-    github:["🐙 GITHUB","Repository Status","Latest Commit","Workflow Status"],
-    hero:["🖼️ HERO IMAGE MANAGER","Upload from Telegram","Current Hero Image","Preview & Confirm"],
-    automation:["⚙️ AUTOMATION CONTROL","Monitoring","Daily Report","Scheduled Checks"],
-    alerts:["🚨 ALERT CONTROL","Workflow Alerts","Traffic Alerts","Client Error Alerts","Security Alerts","Emergency Protection"],
-    reports:["📑 REPORTS","Daily Report Status","Latest Report","Report History"],
-    users:["👥 USER MANAGER","All Users","Search Users","User Stats","Link / Unlink","Block / Unblock","Rename User","User History","Visitor Information"],
-    settings:["🔧 SETTINGS","Configuration Status","Admin Access","Bot Menu"],
-    logs:["📜 LOGS","Recent Worker Events","Workflow Logs","Security Logs"],
-    recovery:["♻️ RECOVERY","Backup Branch","Worker Rollback Point","Recovery Guide"]
-  };
-  const names=labels[category];if(!names){await botShowMenu(env,chatId);return}
-  const rows=[];
-  if(category==="automation"||category==="alerts"){
-    const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
-    const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
-    for(const k of keys)rows.push([{text:(cfg[k]?"🟢 ":"⚪ ")+pretty[k]+" · "+(cfg[k]?"ON":"OFF"),callback_data:"b1:toggle:"+k}]);
-    rows.push([{text:"ℹ️ Refresh is always manual",callback_data:"b1:info:manual"}]);
-  }else if(category==="users"){
-    rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Search",callback_data:"b1:users:search"}]);
-    rows.push([{text:"📊 Stats",callback_data:"b1:users:stats"},{text:"🕘 History",callback_data:"b1:users:history"}]);
-    rows.push([{text:"🔗 Link / Unlink",callback_data:"b1:users:link"},{text:"🚫 Block / Unblock",callback_data:"b1:users:block"}]);
-    rows.push([{text:"✏️ Rename",callback_data:"b1:users:rename"}]);
-    rows.push([{text:"🔎 Visitor Information",callback_data:"b1:users:visitorinfo"}]);
-  }else if(category==="hero"){
-    rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
-    rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
-  }else{
-    for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+(i+j)})));
-  }
-  rows.push(...botBackKeyboard());
-  await botSend(env,chatId,names[0]+"\n\nএই বিভাগের অপশনগুলো নিচে দেওয়া হলো। প্রতিটি অপশনে চাপলে সংশ্লিষ্ট তথ্য বা নিয়ন্ত্রণ দেখানো হবে।\n\nকোনো সেটিংস ON/OFF করলে পরিবর্তনটি সংরক্ষিত হবে এবং মেনুতে নতুন অবস্থা দেখা যাবে।",rows);
+  if(category==="alerts")category="automation";if(category==="reports")category="analytics";
+  const cfg=await botConfig(env),labels={website:["🌐 WEBSITE","Health, visitor overview, contact form, Worker status and diagnostics."],news:["📰 NEWS CENTER","Latest feed, source health, refresh, errors and refresh history."],analytics:["📊 ANALYTICS","GA4 data and Cloudflare Visitor KV are shown as separate sources."],security:["🛡️ SECURITY","Protection controls, recent tracked security events and diagnostics."],automation:["⚙️ AUTOMATION","Scheduled checks, alert switches and manual actions."],users:["👥 USER MANAGER","Select a user first, then view or manage that profile."],github:["🐙 GITHUB & DEPLOY","Repository, workflow runs and GitHub Pages deployment status."],hero:["🖼️ HERO IMAGE","Upload, preview and confirm a new homepage Hero Image."],logs:["📜 LOGS & RECOVERY","User history, GitHub workflow logs, security events and Worker log availability."],settings:["⚙️ SETTINGS","Bot configuration and command registration status."],recovery:["🧯 RECOVERY GUIDE","Read-only recovery locations and rollback guidance."],reports:["📊 ANALYTICS","Legacy Reports shortcut — now grouped under Analytics."]};
+  const info=labels[category]||["CONTROL CENTER","Choose an action."],rows=[];
+  if(category==="website"){rows.push([{text:"Site Health",callback_data:"b1:status:website:1"},{text:"Visitor Overview",callback_data:"b1:status:website:2"}],[{text:"Contact Form",callback_data:"b1:status:website:3"},{text:"Worker Status",callback_data:"b1:status:website:4"}],[{text:"Diagnostics",callback_data:"b1:status:website:5"}]);}
+  else if(category==="news"){rows.push([{text:"Latest Feed",callback_data:"b1:status:news:1"},{text:"Source Health",callback_data:"b1:command:/sources"}],[{text:"Refresh Now",callback_data:"b1:news:refresh"},{text:"News Errors",callback_data:"b1:command:/errors"}],[{text:"Refresh History",callback_data:"b1:news:history"}]);}
+  else if(category==="analytics"){rows.push([{text:"Visitor Summary · KV",callback_data:"b1:status:analytics:1"},{text:"GA4 Full Report",callback_data:"b1:command:/ga4"}],[{text:"Traffic Overview",callback_data:"b1:command:/traffic"},{text:"Daily Report",callback_data:"b1:command:/report"}]);}
+  else if(category==="security"){rows.push([{text:"Security Status",callback_data:"b1:status:security:1"},{text:"Critical Protection",callback_data:"b1:status:security:2"}],[{text:"Recent Security Events",callback_data:"b1:logs:security"},{text:"Security Diagnostics",callback_data:"b1:status:security:4"}]);}
+  else if(category==="automation"){const keys=["monitoring","dailyReport","scheduledChecks","newsRefresh","newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"],names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",newsAlerts:"News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};for(let i=0;i<keys.length;i+=2)rows.push(keys.slice(i,i+2).map(key=>({text:(cfg[key]?"🟢 ":"⚪ ")+names[key],callback_data:"b1:toggle:"+key})));rows.push([{text:"Scheduled Tasks",callback_data:"b1:automation:scheduled"},{text:"Manual Actions",callback_data:"b1:automation:manual"}]);}
+  else if(category==="users"){rows.push([{text:"All Users",callback_data:"b1:users:list:1"},{text:"Find User",callback_data:"b1:users:search"}],[{text:"Linked Users",callback_data:"b1:users:linked"},{text:"Blocked Users",callback_data:"b1:users:blocked"}],[{text:"Statistics",callback_data:"b1:users:stats"},{text:"History",callback_data:"b1:users:history"}]);}
+  else if(category==="github"){rows.push([{text:"Repository Status",callback_data:"b1:status:github:1"},{text:"Workflow Runs",callback_data:"b1:github:runs"}],[{text:"Pages Deployment",callback_data:"b1:github:deploy"}]);}
+  else if(category==="hero"){rows.push([{text:"Upload Hero Image",callback_data:"b1:hero:upload"},{text:"Current Hero Image",callback_data:"b1:hero:current"}]);}
+  else if(category==="logs"){rows.push([{text:"User History",callback_data:"b1:logs:user"},{text:"Workflow Logs",callback_data:"b1:logs:workflow"}],[{text:"Security Logs",callback_data:"b1:logs:security"},{text:"Worker Events",callback_data:"b1:logs:worker"}],[{text:"Recovery Guide",callback_data:"b1:recovery"}]);}
+  else if(category==="settings"){rows.push([{text:"Configuration Status",callback_data:"b1:status:settings:1"},{text:"Command Menu Check",callback_data:"b1:command:/cmd"}]);}
+  else if(category==="recovery"){rows.push([{text:"Recovery Details",callback_data:"b1:status:recovery:1"}]);}
+  else{rows.push([{text:"Open Details",callback_data:"b1:command:/details"}]);}
+  rows.push([{text:"⬅️ Main Menu",callback_data:"b1:home"}]);await botSend(env,chatId,info[0]+"\n\n"+info[1],rows);const anchor=await botGetMenuAnchor(env,chatId);await botSetContext(env,chatId,category,anchor?.messageId,"section:"+category);
 }
-
 async function botStatusText(env,category,index){
   const site="https://kokushibu74.github.io/";
   const cfg=await botConfig(env);
   const onOff=v=>v?"🟢 চালু (ON)":"⚪ বন্ধ (OFF)";
+  const workerBase="https://portfolio-contact-telegram.mdshihab74.workers.dev";
+  if(category==="website"&&index===2){try{const day=bdDay(),today=await readDailyActivity(env,day),yesterday=await readDailyActivity(env,previousBdDay(day));return ["VISITOR OVERVIEW","Source: Cloudflare Visitor KV (not GA4)","Date: "+day+" BDT","Unique visitors: "+today.unique+" · Previous day: "+yesterday.unique,"Sessions: "+today.sessions+" · Page views: "+today.views,"Client errors: "+today.errors].join("\n")}catch(error){return "Visitor data: Not Available · "+String(error.message||error).slice(0,120)}}
+  if(category==="website"&&index===3){try{const r=await fetch(workerBase+"/submit",{method:"GET",signal:AbortSignal.timeout(8000)});await r.body?.cancel();return ["CONTACT FORM ENDPOINT","POST route check: HTTP "+r.status,(r.status===405?"The POST-only route is present; no message was submitted.":"Route response does not confirm form delivery."),"Telegram delivery configuration is not exposed here; submit a real test message to verify end-to-end delivery."].join("\n")}catch(error){return "Contact Form endpoint: Not Available · "+String(error.message||error).slice(0,140)}}
+  if(category==="website"&&index===4){try{const r=await fetch(workerBase+"/workflow-config",{signal:AbortSignal.timeout(10000)}),data=await r.json().catch(()=>({}));return ["CLOUDFLARE WORKER STATUS","Worker endpoint: HTTP "+r.status,(r.ok?"Worker route is responding.":"Worker route returned an error."),"Automation config response: "+(r.ok?"Available":"Not Available"),"Public config fields: "+Object.keys(data).filter(k=>typeof data[k]==="boolean").join(", ")].join("\n")}catch(error){return "Worker status: Not Available · "+String(error.message||error).slice(0,140)}}
+  if(category==="website"&&index===5){const checks=await Promise.allSettled([fetch(site,{signal:AbortSignal.timeout(10000)}),fetch(site+"news-feed.json",{signal:AbortSignal.timeout(10000)}),fetch(workerBase+"/workflow-config",{signal:AbortSignal.timeout(10000)})]),names=["Website","News Feed","Worker"];return ["WEBSITE DIAGNOSTICS",...checks.map((item,i)=>names[i]+": "+(item.status==="fulfilled"?"HTTP "+item.value.status:"Not Available · "+String(item.reason?.message||item.reason).slice(0,100))),"Contact form delivery was not tested; no live submission was sent."].join("\n")}
+  if(category==="security"&&index===2)return ["CRITICAL PROTECTION","Emergency Protection: "+onOff(cfg.emergencyProtection),"Security Alerts: "+onOff(cfg.securityAlerts),"News Alerts: "+onOff(cfg.newsAlerts),"Source: BOT_CONFIG_KV settings.","This is the Worker configuration state, not a full Cloudflare WAF/rules audit."].join("\n");
+  if(category==="security"&&index===3){try{const keys=await umList(env,UM_PREFIX+"history:",500,2),events=[];for(const key of keys.slice(-100).reverse()){const value=await env.VISITOR_KV.get(key.name,"json").catch(()=>null);if(value&&/security|blocked|unauthori[sz]ed|admin_command_rejected|permission_denied/i.test(JSON.stringify(value.event||{})))events.push(value);if(events.length>=8)break;}return ["RECENT TRACKED SECURITY EVENTS","Source: User Manager history (VISITOR_KV), not Cloudflare Security Events.",...(events.length?events.map(x=>new Date(x.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+x.kind+" · "+String(x.event?.type||"event")+" · "+String(x.id||"")):["No matching tracked security/admin events were found."]),"Dedicated Cloudflare Security Logs: Not Connected to this bot."].join("\n")}catch(error){return "Security event history: Not Available · "+String(error.message||error).slice(0,120)}}
+  if(category==="security"&&index===4)index=1;
   const section={
     website:["ওয়েবসাইটের স্বাস্থ্য","হোমপেজের HTTP response, response time এবং Hero image configuration পরীক্ষা করা হয়েছে।"],
     news:["News Feed-এর অবস্থা","লাইভ News Feed ফাইল পড়া হয়েছে; Feed-এর আকার, article count ও সর্বশেষ শিরোনাম দেখানো হচ্ছে।"],
@@ -885,6 +831,7 @@ async function botStatusText(env,category,index){
     github:["GitHub Repository","GitHub API থেকে Repository ও সর্বশেষ commit-এর তথ্য নেওয়া হয়েছে।"],
     reports:["রিপোর্ট কন্ট্রোল","Daily Report ও Monitoring-এর বর্তমান সেটিংস এবং আজকের visitor activity দেখানো হচ্ছে।"],
     settings:["Bot Configuration","Bot-এর persistent configuration storage থেকে বর্তমান ON/OFF সেটিংস দেখানো হচ্ছে।"],
+    automation:["Automation ও Alert Settings","সকল বিদ্যমান Automation ও Alert toggle-এর বর্তমান অবস্থা দেখানো হচ্ছে।"],
     logs:["সাম্প্রতিক কার্যক্রম","Visitor/User Manager-এর সংরক্ষিত সাম্প্রতিক event দেখানো হচ্ছে; পূর্ণ Cloudflare runtime log Dashboard-এ থাকে।"],
     recovery:["Recovery ও Backup তথ্য","বর্তমান backup branch এবং Worker rollback location-এর তথ্য দেখানো হচ্ছে।"]
   };
@@ -983,19 +930,23 @@ async function botHandleCallback(env,query){
       const key=action.split(":")[1],cfg=await botConfig(env);
       if(!(key in BOT_DEFAULTS)){await botSend(env,chatId,"Unknown setting.",botBackKeyboard());return true}
       cfg[key]=!cfg[key];await botSaveConfig(env,cfg);
-      await botCategory(env,chatId,["monitoring","dailyReport","scheduledChecks"].includes(key)?"automation":"alerts");
+      await botCategory(env,chatId,"automation");
       return true;
     }
+    if(["github","settings","logs","recovery","reports"].includes(action)){await botCategory(env,chatId,action);return true}
     if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action);return true}
     if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
     if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
+    if(action.startsWith("users:profile:telegram:")){const bits=action.split(":"),id=String(bits[3]||""),page=Math.max(1,Number(bits[4])||1);if(!/^\d{5,20}$/.test(id)){await botSend(env,chatId,"Invalid Telegram User ID.",botBackKeyboard());return true;}const user={kind:"telegram",id},profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"Telegram profile not found.",botBackKeyboard());return true;}const link=await env.VISITOR_KV.get(UM_PREFIX+"link:telegram:"+id,"json"),blocked=await umBlocked(env,"telegram",id);const lines=["👤 TELEGRAM USER PROFILE","ID: "+id,"Name: "+String(profile.firstName||profile.username||"Telegram user"),"Username: "+(profile.username?"@"+profile.username:"—"),"Custom ID: "+String(profile.customId||"—"),"Linked Website ID: "+String(link?.visitorId||"—"),"Blocked: "+(blocked?"Yes":"No"),"First Seen: "+(profile.firstSeen?new Date(profile.firstSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—"),"Last Seen: "+(profile.lastSeen?new Date(profile.lastSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—")];const keyboard=[[{text:"User History",callback_data:"b1:users:history:telegram:"+id+":1"}],[{text:blocked?"Unblock User":"Block User",callback_data:"b1:users:action:"+(blocked?"userunblock":"userblock")+":telegram:"+id},{text:"Unlink",callback_data:"b1:users:action:userunlink:telegram:"+id}],[{text:"⬅️ User Directory",callback_data:"b1:users:list:"+page}]];await botSend(env,chatId,lines.join("\n"),keyboard);return true}
+    if(action.startsWith("users:history:")){const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),page=Math.max(1,Number(bits[4])||1);if(!((kind==="telegram"&&/^\d{5,20}$/.test(id))||(kind==="visitor"&&/^VIS-[A-F0-9]{12}$/i.test(id)))){await botSend(env,chatId,"Invalid user history target.",botBackKeyboard());return true;}await umHandleCommand(env,{text:"/userhistory "+id+" "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true}
+    if(action.startsWith("users:action:")){const bits=action.split(":"),operation=bits[2],kind=bits[3],id=String(bits[4]||"");if(!["userblock","userunblock","userunlink"].includes(operation)){await botSend(env,chatId,"Unsupported user action.",botBackKeyboard());return true;}if(!((kind==="telegram"&&/^\d{5,20}$/.test(id))||(kind==="visitor"&&/^VIS-[A-F0-9]{12}$/i.test(id)))){await botSend(env,chatId,"Invalid user action target.",botBackKeyboard());return true;}await umHandleCommand(env,{text:"/"+operation+" "+id,chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true}
     if(action.startsWith("users:visitor:")){
       const parts=action.split(":"),id=String(parts[2]||"").toUpperCase(),page=Math.max(1,Math.min(999,Number(parts[3])||1)),directoryPage=Math.max(1,Math.min(999,Number(parts[4])||1));
       if(!/^VIS-[A-F0-9]{12}$/.test(id)){await botSend(env,chatId,"Invalid Visitor ID.",botBackKeyboard());return true}
       const profile=await umProfile(env,{kind:"visitor",id});
       if(!profile){await botSend(env,chatId,"Visitor profile not found.",botBackKeyboard());return true}
       const history=await umLocationHistory(env,id,page);
-      await botSend(env,chatId,umVisitorReport(id,profile,history),umLocationReportKeyboard(id,history,directoryPage));
+      const keyboard=umLocationReportKeyboard(id,history,directoryPage);keyboard.unshift([{text:"Block Visitor",callback_data:"b1:users:action:userblock:visitor:"+id},{text:"Unlink",callback_data:"b1:users:action:userunlink:visitor:"+id}]);await botSend(env,chatId,umVisitorReport(id,profile,history),keyboard);
       return true;
     }
     if(action==="users:stats"){await botRunWithProgress(env,chatId,"User Manager-এর পরিসংখ্যান সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userstats",chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
@@ -1072,12 +1023,22 @@ async function umHandleCommand(env,msg){
       "",
       "ℹ️ নিরাপত্তা: এই গাইডে কোনো API token, secret বা credential প্রকাশ করা হয় না।"
     ];
-    await botSend(env,chatId,guide.join("\n"),botMainKeyboard());
+    await botSend(env,chatId,guide.join("\n"),isAdmin?botMainKeyboard():[]);
     return true;
   }
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
   if(!isAdmin){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
+  if(UM_CONFIRM_COMMANDS.has(cmd)&&arg&&!msg.confirmed){
+    try{await umRequestConfirmation(env,msg,text)}
+    catch(error){console.error("User action confirmation could not be created",String(error&&error.message||error).slice(0,180));await umReply(env,chatId,"⚠️ নিরাপদ Confirmation তৈরি করা যায়নি; কোনো পরিবর্তন করা হয়নি।")}
+    return true;
+  }
+  if(["/details","/health","/ga4","/errors","/logs","/history","/sources","/traffic","/report"].includes(cmd)){
+    try{await botHandleContextCommand(env,msg,cmd,arg,parts.slice(1));}
+    catch(e){console.error("Telegram context command failed",String(e&&e.stack||e).slice(0,1000));await umReply(env,chatId,"⚠️ এই রিপোর্টটি তৈরি করা যায়নি। কিছুক্ষণ পর আবার চেষ্টা করুন।");}
+    return true;
+  }
   try{
     if(cmd==="/userid"){
       const pageNo=Math.max(1,Math.min(999,Number(arg)||1)),limit=10,all=[];
@@ -1095,7 +1056,7 @@ async function umHandleCommand(env,msg){
           ?"*"+label+"* · "+mdSafe(u.name)+(u.customId?" · "+mdSafe(u.customId):"")
           :"*"+label+"* · "+mdSafe(u.id)+" · "+mdSafe(u.name);
       });
-      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]);
+      const keyboard=items.map(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))?[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]:u.kind==="telegram"&&/^\d{5,20}$/.test(String(u.id||""))?[{text:"TG · "+String(u.id),callback_data:"b1:users:profile:telegram:"+String(u.id)+":"+pageNo}]:null).filter(Boolean);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
       const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
@@ -1157,12 +1118,17 @@ async function umHandleCommand(env,msg){
       const rows=[];for(const k of keys){const v=await env.VISITOR_KV.get(k.name,"json");if(v)rows.push(v);}
       rows.sort((a,b)=>(b.at||0)-(a.at||0));const start=(pageNo-1)*10;
       const lines=rows.slice(start,start+10).map(e=>new Date(e.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+e.event.type+(e.event.command?" · "+e.event.command:"")+(e.event.path?" · "+e.event.path:""));
-      await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo);
+      const totalPages=Math.max(1,Math.ceil(rows.length/10)),nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:history:"+user.kind+":"+user.id+":"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:history:"+user.kind+":"+user.id+":"+(pageNo+1)});const keyboard=[];if(nav.length)keyboard.push(nav);keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo,keyboard);
     }else if(cmd==="/usersearch"){
-      const q=arg.toLowerCase();if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT");return true;}
-      const found=[];for(const prefix of [UM_PREFIX+"telegram:",UM_PREFIX+"visitor:"]){for(const k of await umList(env,prefix)){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push((p.kind||"visitor")+" · "+(p.customId||p.id||p.visitorId));if(found.length>=20)break;}}
-      if(found.length<20)for(const k of await umList(env,"visitor:")){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push("visitor · "+(p.customId||p.visitorId||k.name.slice(8)));if(found.length>=20)break;}
-      await umReply(env,chatId,"🔎 Search results\n"+(found.join("\n")||"কোনো match পাওয়া যায়নি."));
+      const q=parts.join(" ").trim().toLowerCase();if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT");return true;}
+      const found=[],seen=new Set(),add=(kind,id,profile)=>{const key=kind+":"+id;if(!id||seen.has(key))return;seen.add(key);found.push({kind,id,label:(kind==="telegram"?"TG":"WEB")+" · "+String(profile?.customId||profile?.username||profile?.firstName||id)});};
+      for(const [kind,prefix] of [["telegram",UM_PREFIX+"telegram:"],["visitor",UM_PREFIX+"visitor:"]]){
+        for(const key of await umList(env,prefix)){const profile=await env.VISITOR_KV.get(key.name,"json");if(profile&&JSON.stringify(profile).toLowerCase().includes(q))add(kind,String(profile.id||profile.visitorId||key.name.slice(prefix.length)),profile);if(found.length>=20)break;}
+        if(found.length>=20)break;
+      }
+      if(found.length<20)for(const key of await umList(env,"visitor:")){const id=key.name.slice(8);if(seen.has("visitor:"+id))continue;const profile=await env.VISITOR_KV.get(key.name,"json");if(profile&&JSON.stringify(profile).toLowerCase().includes(q))add("visitor",String(profile.visitorId||profile.id||id),profile);if(found.length>=20)break;}
+      const buttons=found.map(user=>[{text:user.label.slice(0,60),callback_data:user.kind==="telegram"?"b1:users:profile:telegram:"+user.id+":1":"b1:users:visitor:"+user.id+":1:1"}]);
+      await umReply(env,chatId,"🔎 SEARCH RESULTS\n"+(found.map((user,i)=>(i+1)+". "+user.label).join("\n")||"কোনো match পাওয়া যায়নি.")+"\n\nনির্বাচিত User-এর Profile খুলতে নিচের বাটন চাপুন।",buttons.length?buttons:botBackKeyboard());
     }else if(cmd==="/userstats"){
       const [tg,vis,legacy,blocks,hist]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
       const websiteCount=new Set([...vis.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
@@ -1378,8 +1344,8 @@ async function miniAppModule(env,section){
   if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
   if(section==="automation"||section==="alerts"){
     const cfg=await botConfig(env);
-    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
-    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
+    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
+    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",newsAlerts:"News Alerts",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
     return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\n"),source:"BOT_CONFIG_KV"};
   }
   if(section==="users"){
@@ -1566,7 +1532,7 @@ async function notifyNewsWatchdogFailure(env,error){
   const transient=/temporarily failed|temporary GitHub API/i.test(detail);
   const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
   const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Workflow Runs",callback_data:"b1:github:runs"},{text:"News Center",callback_data:"b1:news"}],[{text:"Details",callback_data:"b1:command:/details"}]]}}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
@@ -1905,7 +1871,7 @@ export default {
       let adminNotified=false;
       if(env.TELEGRAM_BOT_TOKEN&&admins.length){
         const message="🗑 GPS HISTORY DELETION REQUEST\nVisitor ID: "+id+"\nRequested: "+bdt+"\nScope: GPS location history only\nReview the loc:v1:delete-request record and remove the matching loc:v1:history:visitor records after verification.";
-        const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true}).catch(()=>({ok:false}))));
+        const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"User Manager",callback_data:"b1:users"},{text:"Details",callback_data:"b1:command:/details"}]]}}).catch(()=>({ok:false}))));
         adminNotified=sent.some(result=>result?.ok);
       }
       return respond({ok:true,requestSubmitted:true,adminNotified},200);
@@ -1968,7 +1934,7 @@ export default {
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
       if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
-      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor alert failed",String(e))}};
+      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Traffic",callback_data:"b1:command:/traffic"},{text:"Errors",callback_data:"b1:command:/errors"}],[{text:"Security Center",callback_data:"b1:status:security:1"}]]}})})}catch(e){console.error("Visitor alert failed",String(e))}};
       if(pageView&&traffic===40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
@@ -2058,7 +2024,7 @@ export default {
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&newSession&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
-        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
+        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Visitor Profile",callback_data:"b1:users:visitor:"+id+":1:1"},{text:"Traffic Summary",callback_data:"b1:command:/traffic"}],[{text:"Security",callback_data:"b1:status:security:1"}]]}})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
     }
@@ -2079,6 +2045,7 @@ export default {
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
         const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
+        if(pending?.mode && String(msg.text||"").trim().startsWith("/"))await env.BOT_CONFIG_KV.delete(inputKey);
         if(pending?.mode && !String(msg.text||"").trim().startsWith("/")){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
@@ -2102,8 +2069,8 @@ export default {
           return new Response("OK");
         }
         try{
-          const commandName=(String(msg.text||"").trim().split(/\s+/)[0]||"").split("@")[0].toLowerCase();
-          const slowCommands=new Set(["/userid","/userinfo","/userhistory","/usersearch","/userstats"]);
+          const commandName=normalizeTelegramCommand(msg.text);
+          const slowCommands=new Set(["/userid","/userinfo","/userhistory","/usersearch","/userstats","/userrename","/userlink","/userunlink","/userblock","/userunblock","/details","/health","/ga4","/errors","/logs","/history","/sources","/traffic","/report"]);
           if(adminIds.has(String(msg.from.id))&&slowCommands.has(commandName)){
             await botRunWithProgress(env,msg.chat.id,"User Manager থেকে তথ্য সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,msg)});
             return new Response("OK");
@@ -2112,7 +2079,7 @@ export default {
         }catch(e){console.error("User management command dispatch failed",String(e));}
       }
       const infoAdmins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
-      if(msg.chat.type!=="private"||!infoAdmins.has(String(msg.from?.id||""))||!/^\/info(?:@\w+)?(?:\s|$)/i.test(msg.text.trim()))return new Response("OK");
+      if(msg.chat.type!=="private"||!infoAdmins.has(String(msg.from?.id||""))||normalizeTelegramCommand(msg.text)!=="/info")return new Response("OK");
       await botRunWithProgress(env,msg.chat.id,"ওয়েবসাইট ও Visitor Activity-এর তথ্য সংগ্রহ করা হচ্ছে...",async()=>{
         const site="https://kokushibu74.github.io/",started=performance.now(),stamp=new Date().toLocaleString("en-US",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"});let status="Error",elapsed=0,detail="";
         try{const res=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(15000)});status=String(res.status);elapsed=Math.round(performance.now()-started);detail=res.ok?"Site reachable":"Site returned HTTP "+res.status;await res.body?.cancel()}catch(e){elapsed=Math.round(performance.now()-started);detail=String(e&&e.message||e).slice(0,150)}
@@ -2193,7 +2160,7 @@ export default {
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
-      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
+      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:command:/health"},{text:"Errors",callback_data:"b1:command:/errors"},{text:"Logs",callback_data:"b1:command:/logs"}]]}})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
