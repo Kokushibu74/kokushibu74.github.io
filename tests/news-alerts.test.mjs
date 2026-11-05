@@ -145,3 +145,11 @@ test("fatal bus-arson headline is classified as a serious local incident",()=>{
   const decision=evaluateNewsAlert(x,{now});
   assert.equal(decision.eligible,true);
 });
+
+
+test("rejection audits refresh when summary or source counts change",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.match(source,/old\\.summary!==record\\.summary/);
+  assert.match(source,/old\\.sourceCount!==record\\.sourceCount/);
+  assert.match(source,/old\\.trustedSourceCount!==record\\.trustedSourceCount/);
+});
