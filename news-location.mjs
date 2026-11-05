@@ -721,7 +721,7 @@ function matchesPlace(text, place) {
 }
 
 function itemText(item) {
-  return normalize([item?.title, item?.summary, item?.description, item?.previewTitle, item?.previewSummary, item?.source, item?.publisherName].filter(Boolean).join(" "));
+  return normalize([item?.title, item?.summary, item?.description, item?.previewTitle, item?.previewSummary].filter(Boolean).join(" "));
 }
 
 function storyTier(item, context) {
