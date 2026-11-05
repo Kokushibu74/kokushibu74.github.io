@@ -221,6 +221,7 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
     }).join("");
     const sectionCount=order.length;
     const columnClass=sectionCount===1?" single-section":sectionCount===2?" two-sections":"";
+    grid.classList.remove("mobile-news-feed");
     grid.classList.add("newspaper-feed");
     grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+'<div class="newspaper-columns'+columnClass+'">'+sections+'</div>';
     grid.querySelectorAll(".newspaper-image img").forEach(img=>img.addEventListener("error",()=>{
