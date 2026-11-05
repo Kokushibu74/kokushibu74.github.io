@@ -239,14 +239,14 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
         measure.innerHTML='<section class="newspaper-section"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+
           renderNewspaperStory(item,{index:storyIndex})+'</section>';
         const measuredSection=measure.firstElementChild;
-        const storyHeight=measuredSection.getBoundingClientRect().height;
+        const storyHeight=measuredSection.querySelector(".newspaper-story").getBoundingClientRect().height;
         const headingHeight=measuredSection.querySelector(".newspaper-section-title").getBoundingClientRect().height;
         let laneIndex=0;
         let shortest=Infinity;
         columns.forEach((column,index)=>{
           const hasCategory=categorySections[index].has(category);
           const currentHeight=column.getBoundingClientRect().height;
-          const candidateHeight=currentHeight+(hasCategory?0:headingHeight)+storyHeight;
+          const candidateHeight=currentHeight+(hasCategory?storyHeight:headingHeight+storyHeight+28);
           if(candidateHeight<shortest){shortest=candidateHeight;laneIndex=index;}
         });
         let section=categorySections[laneIndex].get(category);
