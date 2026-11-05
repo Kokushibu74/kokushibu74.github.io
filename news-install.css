@@ -1,0 +1,27 @@
+/* KOKUSHIBU74 NEWS · Android PWA installation sheet */
+.news-install-overlay{position:fixed;inset:0;z-index:10050;display:flex;align-items:flex-end;justify-content:center;padding:16px 12px max(12px,env(safe-area-inset-bottom));background:rgba(1,4,10,.72);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);opacity:0;transition:opacity .28s ease}
+.news-install-overlay[hidden]{display:none}
+.news-install-overlay.is-visible{opacity:1}
+.news-install-sheet{position:relative;width:min(100%,480px);max-height:min(88dvh,720px);overflow:auto;border:1px solid rgba(0,229,255,.28);border-radius:26px;background:radial-gradient(ellipse at 8% 0,rgba(0,229,255,.13),transparent 45%),radial-gradient(ellipse at 100% 25%,rgba(168,85,247,.13),transparent 42%),#0b111c;color:#f5f8ff;padding:25px 22px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -18px 70px rgba(0,0,0,.55),0 0 42px rgba(0,229,255,.10);transform:translateY(28px);transition:transform .34s cubic-bezier(.2,.8,.2,1);font-family:Outfit,system-ui,sans-serif}
+.news-install-overlay.is-visible .news-install-sheet{transform:translateY(0)}
+.news-install-close{position:absolute;top:15px;right:15px;width:36px;height:36px;border:1px solid #ffffff20;border-radius:50%;background:#ffffff08;color:#cbd5e1;font-size:22px;line-height:1;cursor:pointer}
+.news-install-brand{display:flex;align-items:center;gap:13px;padding-right:38px}
+.news-install-icon{width:58px;height:58px;flex:0 0 58px;border-radius:17px;box-shadow:0 0 24px rgba(0,229,255,.15)}
+.news-install-brand strong{display:block;font-size:14px;letter-spacing:.075em;font-weight:900}
+.news-install-brand small{display:block;margin-top:5px;color:#7ddff0;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.12em}
+.news-install-title{margin:22px 0 8px;font-size:clamp(25px,7vw,32px);line-height:1.08;font-weight:900;letter-spacing:-.035em}
+.news-install-title span{color:#00e5ff;text-shadow:0 0 22px rgba(0,229,255,.25)}
+.news-install-copy{margin:0;color:#aab7ca;font-size:13px;line-height:1.7}
+.news-install-benefits{display:grid;gap:11px;margin:19px 0 22px;padding:0;list-style:none}
+.news-install-benefits li{display:flex;align-items:center;gap:10px;color:#d8e4f2;font-size:12px}
+.news-install-benefits svg{width:17px;height:17px;flex:0 0 17px;color:#00e5ff}
+.news-install-actions{display:grid;gap:10px}
+.news-install-primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:49px;border:0;border-radius:14px;background:linear-gradient(100deg,#00e5ff,#55d7f4);color:#041019;font:900 12px Outfit,system-ui,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 9px 26px rgba(0,229,255,.18)}
+.news-install-primary:active{transform:scale(.985)}
+.news-install-secondary{min-height:42px;border:1px solid #ffffff1b;border-radius:13px;background:#ffffff06;color:#aab7ca;font:700 11px Outfit,system-ui,sans-serif;cursor:pointer}
+.news-install-primary:focus-visible,.news-install-secondary:focus-visible,.news-install-close:focus-visible{outline:2px solid #00e5ff;outline-offset:3px}
+.news-install-instructions{margin-top:15px;padding:13px 14px;border:1px solid #00e5ff35;border-radius:13px;background:#00e5ff09;color:#c9d8e8;font-size:12px;line-height:1.65}
+.news-install-instructions[hidden]{display:none}
+.news-install-instructions strong{color:#8cf5ff}
+@media(prefers-reduced-motion:reduce){.news-install-overlay,.news-install-sheet{transition:none}}
+@media(min-width:601px){.news-install-overlay{padding-bottom:24px}.news-install-sheet{border-radius:26px}}
