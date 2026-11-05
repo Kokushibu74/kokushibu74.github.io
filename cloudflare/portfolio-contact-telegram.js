@@ -1,5 +1,6 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
+import { normalizeTelegramCommand, getTelegramCommandMenu } from "./telegram-command-utils.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -646,6 +647,16 @@ const BOT_MENU = [
 ];
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
+const BOT_CONTEXT_KEY_PREFIX = "bot:context:v1:";
+async function botRegisterCommands(env,chatId,isAdmin){
+  if(!env.TELEGRAM_BOT_TOKEN||!chatId)return false;
+  const result=await botTelegram(env,"setMyCommands",{commands:getTelegramCommandMenu(!!isAdmin),scope:{type:"chat",chat_id:chatId}});
+  if(!result.ok){console.error("Telegram command menu registration failed",JSON.stringify({status:result.status,description:String(result.data?.description||"").slice(0,180),admin:!!isAdmin}));return false;}
+  return true;
+}
+async function botShowPublicWelcome(env,chatId){
+  await botSend(env,chatId,"স্বাগতম! এটি Kokushibu74 Bot। Help ও উপলভ্য Public Command দেখতে /help ব্যবহার করুন। Admin Control Center শুধু অনুমোদিত Admin-এর জন্য।",[]);
+}
 const BOT_DEFAULTS = {
   monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, newsAlerts:true, workflowAlerts:true,
   trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
@@ -667,6 +678,7 @@ async function botMarkMenuInteraction(env,chatId,messageId,busy){
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
 }
 async function botEnsureStartKeyboard(env,chatId){
+  await botRegisterCommands(env,chatId,true);
   // Set the Telegram chat menu to open the admin-only Mini App. The Worker API independently verifies Telegram initData and the admin allowlist.
   const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
   if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
@@ -984,35 +996,20 @@ async function botHandleCallback(env,query){
 }
 
 async function umHandleCommand(env,msg){
-  const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/start","/menu","/cmd","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=normalizeTelegramCommand(text);parts.shift();
+  const commands=new Set(["/start","/menu","/cmd","/help","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);return true;}
-  if(cmd==="/cmd"){
-    const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
-    const adminCommands=[
-      {command:"info",description:"সাইট ও Worker health check"},
-      {command:"userid",description:"Telegram ও Website user list"},
-      {command:"userinfo",description:"একজন user-এর বিস্তারিত তথ্য"},
-      {command:"userrename",description:"User-এর custom ID নির্ধারণ"},
-      {command:"userlink",description:"Telegram ও Website ID link"},
-      {command:"userunlink",description:"Linked ID বিচ্ছিন্ন করা"},
-      {command:"userblock",description:"Telegram/Website user block"},
-      {command:"userunblock",description:"User unblock"},
-      {command:"userhistory",description:"User-এর event history"},
-      {command:"usersearch",description:"User profile search"},
-      {command:"userstats",description:"User management statistics"}
-    ];
-    const menu=publicCommands.concat(isAdmin?adminCommands:[]);
-    try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/setMyCommands",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({commands:menu,scope:{type:"chat",chat_id:chatId}})});}catch(e){console.error("Telegram command menu setup failed",String(e));}
+  if(cmd==="/start"||cmd==="/menu"){if(isAdmin){await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);}else{await botRegisterCommands(env,chatId,false);await botShowPublicWelcome(env,chatId);}return true;}
+  if(cmd==="/cmd"||cmd==="/help"){
+    await botRegisterCommands(env,chatId,isAdmin);
     const guide=[
       "📚 BOT COMMAND GUIDE",
       "",
-      "/cmd — এই কমান্ড গাইড ও Telegram command menu দেখাবে।",
+      "/help বা /cmd — কমান্ড গাইড ও Telegram command menu দেখাবে।"
       "",
       "👤 সাধারণ ব্যবহারকারী",
       "এই মুহূর্তে সাধারণ ব্যবহারকারীর জন্য কোনো অতিরিক্ত management command নেই।",
@@ -1040,7 +1037,7 @@ async function umHandleCommand(env,msg){
       "",
       "ℹ️ নিরাপত্তা: এই গাইডে কোনো API token, secret বা credential প্রকাশ করা হয় না।"
     ];
-    await botSend(env,chatId,guide.join("\n"),botMainKeyboard());
+    await botSend(env,chatId,guide.join("\n"),isAdmin?botMainKeyboard():[]);
     return true;
   }
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
