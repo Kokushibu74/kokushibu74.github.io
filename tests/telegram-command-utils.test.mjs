@@ -39,5 +39,9 @@ assert(adminMenu.length <= 100, "Telegram command menu must remain within Telegr
 
 const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
 assert(worker.includes("parseTelegramCommand(text)"), "Worker must use the tested argument-aware command parser");
+assert(worker.includes("UM_CONFIRM_PREFIX"), "State-changing User Manager commands must use expiring confirmations");
+assert(worker.includes("newsAlerts"), "News Alerts must be exposed in the Automation settings");
+assert(worker.includes('action.startsWith("command:")'), "Inline report actions must route to the command handler");
+assert(worker.includes("users:profile:telegram:"), "Telegram directory entries must open their profile");
 assert(worker.includes('if(cmd==="/ga4")'), "Worker must route the GA4 command");
 console.log("Telegram command parsing, argument handling and scoped command menus passed.");
