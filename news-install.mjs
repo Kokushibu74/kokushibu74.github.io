@@ -114,7 +114,7 @@ async function handleInstallAction(){
   }
 }
 
-async function isRelatedAppInstalled(nav=typeof navigator!=="undefined"?navigator:{},manifestUrl="https://kokushibu74.github.io/manifest.webmanifest"){
+export async function isRelatedAppInstalled(nav=typeof navigator!=="undefined"?navigator:{},manifestUrl="https://kokushibu74.github.io/manifest.webmanifest"){
   if(typeof nav.getInstalledRelatedApps!=="function")return false;
   try{
     const apps=await nav.getInstalledRelatedApps();
