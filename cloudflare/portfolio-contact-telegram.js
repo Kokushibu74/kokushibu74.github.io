@@ -641,9 +641,8 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
 
 // Telegram inline-button navigation and persistent control settings.
 const BOT_MENU = [
-  ["website","🌐 Website"],["news","📰 News"],["analytics","📊 Analytics"],["security","🛡️ Security"],
-  ["github","🐙 GitHub"],["hero","🖼️ Hero Image"],["automation","⚙️ Automation"],["alerts","🚨 Alerts"],
-  ["reports","📑 Reports"],["users","👥 User Manager"],["settings","🔧 Settings"],["logs","📜 Logs"],["recovery","♻️ Recovery"]
+  ["website","🌐 Website"],["news","📰 News Center"],["analytics","📊 Analytics"],
+  ["security","🛡️ Security"],["automation","⚙️ Automation"],["users","👥 User Manager"]
 ];
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
@@ -807,29 +806,40 @@ async function botRunWithProgress(env,chatId,message,work){
 }
 function botMainKeyboard(){
   const rows=[];for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
-  rows.push([{text:"🔄 Manual Refresh",callback_data:"b1:refresh"}]);
+  rows.push([{text:"🧰 More Controls",callback_data:"b1:more"},{text:"🔄 Refresh Now",callback_data:"b1:refresh"}]);
   return rows;
+}
+function botMoreKeyboard(){
+  return [
+    [{text:"🐙 GitHub & Deploy",callback_data:"b1:github"},{text:"🖼️ Hero Image",callback_data:"b1:hero"}],
+    [{text:"📜 Logs",callback_data:"b1:logs"},{text:"♻️ Recovery",callback_data:"b1:recovery"}],
+    [{text:"🔧 Settings",callback_data:"b1:settings"},{text:"📑 Reports",callback_data:"b1:reports"}],
+    ...botBackKeyboard()
+  ];
+}
+async function botShowMoreMenu(env,chatId){
+  await botSend(env,chatId,"MORE CONTROLS\n\nঅতিরিক্ত ব্যবস্থাপনা ও Diagnostics-এর বিভাগগুলো এখানে রাখা হয়েছে।",botMoreKeyboard());
 }
 function botBackKeyboard(){return [[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]}
 async function botShowMenu(env,chatId,title="🤖 PORTFOLIO CONTROL CENTER"){
-  await botSend(env,chatId,title+"\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন। কোনো সেটিংস পরিবর্তনের আগে তার ON/OFF অবস্থা দেখে নিন।",botMainKeyboard());
+  await botSend(env,chatId,title+"\n\nএকটি বিভাগ বেছে নিন। অতিরিক্ত Tools পেতে More Controls ব্যবহার করুন। বিস্তারিত দেখতে /details, /health বা /help ব্যবহার করতে পারবেন।",botMainKeyboard());
 }
 async function botCategory(env,chatId,category){
   const cfg=await botConfig(env);
+  if(category==="alerts")category="automation";
+  if(category==="reports")category="analytics";
   const labels={
-    website:["🌐 WEBSITE CONTROL","Site Health","Page Status","Manual Refresh"],
-    news:["📰 NEWS CONTROL","Latest Feed","News Refresh Status","Source Health"],
-    analytics:["📊 ANALYTICS","GA4 Status","Visitor Summary","Traffic Overview"],
-    security:["🛡️ SECURITY CENTER","Security Status","Critical Protection","Recent Security Events"],
-    github:["🐙 GITHUB","Repository Status","Latest Commit","Workflow Status"],
-    hero:["🖼️ HERO IMAGE MANAGER","Upload from Telegram","Current Hero Image","Preview & Confirm"],
-    automation:["⚙️ AUTOMATION CONTROL","Monitoring","Daily Report","Scheduled Checks"],
-    alerts:["🚨 ALERT CONTROL","Workflow Alerts","Traffic Alerts","Client Error Alerts","Security Alerts","Emergency Protection"],
-    reports:["📑 REPORTS","Daily Report Status","Latest Report","Report History"],
+    website:["🌐 WEBSITE CONTROL","Website Overview"],
+    news:["📰 NEWS CENTER","Feed Overview"],
+    analytics:["📊 ANALYTICS","Visitor Overview"],
+    security:["🛡️ SECURITY CENTER","Security Overview"],
+    github:["🐙 GITHUB & DEPLOY","Repository Overview"],
+    hero:["🖼️ HERO IMAGE MANAGER","Upload from Telegram","Current Hero Image"],
+    automation:["⚙️ AUTOMATION CONTROL","Monitoring","Daily Report","Scheduled Checks","News Refresh","Workflow Alerts","Traffic Alerts","Client Error Alerts","Security Alerts","Emergency Protection"],
     users:["👥 USER MANAGER","All Users","Search Users","User Stats","Link / Unlink","Block / Unblock","Rename User","User History","Visitor Information"],
-    settings:["🔧 SETTINGS","Configuration Status","Admin Access","Bot Menu"],
-    logs:["📜 LOGS","Recent Worker Events","Workflow Logs","Security Logs"],
-    recovery:["♻️ RECOVERY","Backup Branch","Worker Rollback Point","Recovery Guide"]
+    settings:["🔧 SETTINGS","Configuration Status"],
+    logs:["📜 LOGS & ACTIVITY","Recent User Events"],
+    recovery:["♻️ RECOVERY","Recovery Guide"]
   };
   const names=labels[category];if(!names){await botShowMenu(env,chatId);return}
   const rows=[];
@@ -931,6 +941,7 @@ async function botHandleCallback(env,query){
     // botSend owns anchor updates after a successful edit/send.
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
+    if(action==="more"){await botShowMoreMenu(env,chatId);return true}
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
         const site="https://kokushibu74.github.io/",started=Date.now();
@@ -966,6 +977,7 @@ async function botHandleCallback(env,query){
       await botCategory(env,chatId,["monitoring","dailyReport","scheduledChecks"].includes(key)?"automation":"alerts");
       return true;
     }
+    if(["github","settings","logs","recovery","reports"].includes(action)){await botCategory(env,chatId,action);return true}
     if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action);return true}
     if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
     if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
