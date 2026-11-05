@@ -205,7 +205,7 @@ def parse_news_metrics(log_text):
 
     # Also parse the generator's detailed weather line, used by current refresh runs.
     weather_detail = re.search(
-        r"Weather/disaster previews:\\s*candidates:\\s*(\\d+)\\s+metadata_fetched:\\s*(\\d+)\\s+cached/reused:\\s*(\\d+)\\s+publisher_unavailable:\\s*(\\d+)\\s+RSS_image_fallback:\\s*(\\d+)\\s+with_preview_total:\\s*(\\d+)",
+        r"Weather/disaster previews:\s*candidates:\s*(\d+)\s+metadata_fetched:\s*(\d+)\s+cached/reused:\s*(\d+)\s+publisher_unavailable:\s*(\d+)\s+RSS_image_fallback:\s*(\d+)\s+with_preview_total:\s*(\d+)",
         log_text,
     )
     if weather_detail:
