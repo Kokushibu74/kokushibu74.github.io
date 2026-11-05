@@ -172,6 +172,36 @@ class NewsLogicTests(unittest.TestCase):
             self.iso(timedelta(minutes=-5)), "direct-rss", "The Daily Star"
         ))
 
+    def test_protocol_relative_rss_image_is_upgraded_to_https(self):
+        import xml.etree.ElementTree as ET
+        item = ET.fromstring("<item><description>&lt;img src='//cdn.example.com/weather.jpg'&gt;</description></item>")
+        self.assertEqual(news.image_for(item), "https://cdn.example.com/weather.jpg")
+
+    def test_publisher_metadata_uses_standard_browser_user_agent(self):
+        from email.message import Message
+        from unittest.mock import patch
+
+        class FakeResponse:
+            headers = Message()
+            headers["Content-Type"] = "text/html; charset=utf-8"
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def geturl(self): return "https://publisher.example/story"
+            def read(self, limit): return b"<html><head><meta property='og:title' content='Story'></head></html>"
+
+        captured = {}
+        def fake_open(request, timeout):
+            captured["request"] = request
+            return FakeResponse()
+
+        with patch.object(news, "urlopen_with_retry", side_effect=fake_open):
+            metadata = news.publisher_metadata("https://publisher.example/story")
+
+        self.assertEqual(metadata.get("previewTitle"), "Story")
+        user_agent = captured["request"].get_header("User-agent") or ""
+        self.assertIn("Chrome/", user_agent)
+        self.assertNotIn("NewsPreviewBot", user_agent)
+
     def test_namespaced_atom_weather_image_is_extracted(self):
         root = news.parse_feed_xml("""<feed xmlns="http://www.w3.org/2005/Atom">
           <entry><title>Flood warning</title>

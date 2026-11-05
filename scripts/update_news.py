@@ -243,9 +243,12 @@ def image_for(node):
             return url
     raw = child_text(node, "description", "summary", "content")
     raw += " " + child_text(node, "encoded")
-    match = re.search(r"<img[^>]+src=['\"](https://[^'\"]+)['\"]", raw, re.I)
+    match = re.search(r"<img[^>]+src=['\"]((?:https:)?//[^'\"]+)['\"]", raw, re.I)
     if match:
-        return html.unescape(match.group(1))
+        image_url = html.unescape(match.group(1))
+        if image_url.startswith("//"):
+            image_url = "https:" + image_url
+        return image_url
     return ""
 
 
@@ -430,10 +433,12 @@ def publisher_metadata(url):
             if resolved_url:
                 return publisher_metadata(resolved_url)
             return {}
+        # Use ordinary browser-like headers consistently with RSS collection. The
+        # explicit NewsPreviewBot identity caused avoidable publisher-level rejections.
         request = urllib.request.Request(url, headers={
             **HEADERS,
-            "User-Agent": "Mozilla/5.0 (compatible; NewsPreviewBot/1.0; +https://kokushibu74.github.io/)",
-            "Accept": "text/html,application/xhtml+xml",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9,bn;q=0.7",
         })
         with urlopen_with_retry(request, timeout=6) as response:
             final_url = response.geturl()
@@ -481,8 +486,12 @@ def publisher_metadata(url):
             "iframeAllowed": bool(permission),
             "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
         }
+    except urllib.error.HTTPError as exc:
+        # Preserve publisher access controls while reporting actionable status diagnostics.
+        print("Publisher preview unavailable:", "HTTP", exc.code, clean(str(exc.reason))[:100], url[:120])
+        return {}
     except Exception as exc:
-        print("Publisher preview unavailable:", type(exc).__name__, url[:120])
+        print("Publisher preview unavailable:", type(exc).__name__, clean(str(exc))[:100], url[:120])
         return {}
 
 
