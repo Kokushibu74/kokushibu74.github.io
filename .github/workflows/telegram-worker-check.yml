@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
+      - 'tests/telegram-control-center.test.mjs'
+      - 'tests/news-alerts.test.mjs'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
@@ -14,6 +18,10 @@ on:
       - 'tests/resource-budget-guardrails.test.mjs'
       - 'tests/telegram-daily-report.test.mjs'
       - 'tests/telegram-bot-regression.test.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
+      - 'tests/telegram-control-center.test.mjs'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/news-alerts.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
   push:
     branches: [main, feature/kokushibu-telegram-miniapp, test/visitor-location-runtime-20261105]
@@ -21,6 +29,10 @@ on:
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
+      - 'tests/telegram-control-center.test.mjs'
+      - 'tests/news-alerts.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -28,6 +40,10 @@ on:
       - 'tests/resource-budget-guardrails.test.mjs'
       - 'tests/telegram-daily-report.test.mjs'
       - 'tests/telegram-bot-regression.test.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
+      - 'tests/telegram-control-center.test.mjs'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/news-alerts.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
 
 permissions:
@@ -43,6 +59,16 @@ jobs:
           node-version: 22
       - name: Parse Worker module
         run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Parse Telegram command utility
+        run: node --check cloudflare/telegram-command-utils.mjs
+      - name: Verify Telegram command parsing and scoped registration menus
+        run: node tests/telegram-command-utils.test.mjs
+      - name: Verify Telegram Control Center actions and message safety
+        run: node tests/telegram-control-center.test.mjs
+      - name: Verify News alert helper compatibility
+        run: node tests/news-alerts.test.mjs
+      - name: Verify Android News install contracts
+        run: node tests/news-install.test.mjs
       - name: Verify Telegram menu and KV write regressions
         run: node tests/telegram-bot-regression.test.mjs
       - name: Verify visitor location consent and Telegram directory contracts
