@@ -55,7 +55,7 @@ assert.match(news, /function renderSubcategoryFilters\(scoped\)/, "Subcategory n
 assert.match(news, /activeSubcategory==="All"\|\|getSubcategory\(x\)===activeSubcategory/, "Subcategory selection must filter the news feed");
 assert.match(news, /data-subcategory/, "Subcategory controls must have delegated click targets");
 assert.match(news, /getSubcategory\(item\)/, "Mobile and desktop renderers must display the assigned subcategory");
-assert.match(page, /news-categories\.json/, "The page must load the shared category taxonomy");
+assert.match(news, /news-categories\.json/, "The News module must load the shared category taxonomy");
 assert.match(page, /news\.js\?v=27/, "News module cache must be refreshed after category navigation changes");
 
 console.log("News client optimization contracts OK.");
