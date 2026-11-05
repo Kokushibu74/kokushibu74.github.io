@@ -7,7 +7,6 @@ on:
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
-      - 'tests/visitor-location.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -16,8 +15,10 @@ on:
       - 'tests/telegram-daily-report.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
   push:
-    branches: [main, feature/kokushibu-telegram-miniapp]
+    branches: [main, feature/kokushibu-telegram-miniapp, test/visitor-location-runtime-20261105]
     paths:
+      - 'tests/visitor-location.test.mjs'
+      - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
