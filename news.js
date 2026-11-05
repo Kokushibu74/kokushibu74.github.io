@@ -674,7 +674,13 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
       closeLocationCards();
       if(historyConsent==="yes"){
         try{await saveGpsHistory(position);setLocationStatus("Nearby news priority active · "+area+". GPS history saved for up to 90 days.");}
-        catch(error){setLocationStatus("Nearby news is active; GPS history was not saved: "+String(error.message||error));}
+        catch(error){
+          const message=String(error.message||error);
+          if(message.includes("Separate GPS History consent")){
+            historyConsent=null;try{localStorage.removeItem(LOCATION_HISTORY_KEY)}catch{}
+            showHistoryPrompt();setLocationStatus("GPS History consent has expired. Please review the separate consent again.");
+          }else setLocationStatus("Nearby news is active; GPS history was not saved: "+message);
+        }
       }else if(historyConsent!=="no"){
         showHistoryPrompt();
       }
