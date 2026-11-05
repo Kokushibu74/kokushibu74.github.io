@@ -49,8 +49,9 @@ def github_get(url, token):
 
 
 def should_suppress_scheduled_success(context, token, window_minutes=15, fetcher=None):
-    """Suppress a successful scheduled refresh report when a successful manual refresh
-    completed within the preceding window. API errors fail open so alerts are not lost.
+    """Suppress a scheduled success report after a recent successful push/manual refresh.
+    A scheduled refresh still runs, but its redundant Telegram report is omitted.
+    API errors fail open so genuine alerts are not lost.
     """
     if (
         str(context.get("workflow_name") or "") != "Refresh live news feed"
@@ -70,7 +71,7 @@ def should_suppress_scheduled_success(context, token, window_minutes=15, fetcher
         url = (
             "https://api.github.com/repos/" + str(context.get("repository") or "")
             + "/actions/workflows/" + urllib.parse.quote(workflow_file, safe="")
-            + "/runs?branch=" + branch + "&event=workflow_dispatch&per_page=100"
+            + "/runs?branch=" + branch + "&per_page=100"
         )
         get_bytes = fetcher or github_get
         payload = json.loads(get_bytes(url, token).decode("utf-8"))
@@ -80,13 +81,15 @@ def should_suppress_scheduled_success(context, token, window_minutes=15, fetcher
         for run in payload.get("workflow_runs", []):
             if str(run.get("id") or "") == current_run_id:
                 continue
+            if str(run.get("event") or "").lower() not in ("push", "workflow_dispatch"):
+                continue
             if str(run.get("conclusion") or "").lower() != "success":
                 continue
             completed_at = run.get("updated_at")
             if not completed_at:
                 continue
-            manual_completed = datetime.fromisoformat(str(completed_at).replace("Z", "+00:00"))
-            age = scheduled_completed - manual_completed
+            prior_completed = datetime.fromisoformat(str(completed_at).replace("Z", "+00:00"))
+            age = scheduled_completed - prior_completed
             if timedelta(0) <= age <= window:
                 return True
         return False
@@ -94,7 +97,6 @@ def should_suppress_scheduled_success(context, token, window_minutes=15, fetcher
         # Fail open: a GitHub API/metadata issue must never hide a workflow alert.
         print("Duplicate-report check unavailable; sending report (fail-open): " + scrub(type(exc).__name__, 80))
         return False
-
 
 def telegram_call(token, method, payload):
     request = urllib.request.Request(
