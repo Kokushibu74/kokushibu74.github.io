@@ -189,10 +189,10 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
 
         def fake_get(url, _token):
             captured["url"] = url
-            return b'{"workflow_runs":[{"id":41981409979,"conclusion":"success","updated_at":"2026-11-05T06:36:04Z"}]}'
+            return b'{"workflow_runs":[{"id":41981409979,"event":"push","conclusion":"success","updated_at":"2026-11-05T06:36:04Z"}]}'
 
         self.assertTrue(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
-        self.assertIn("event=workflow_dispatch", captured["url"])
+        self.assertIn("per_page=100", captured["url"])
         self.assertIn("update-news.yml", captured["url"])
 
     def test_manual_run_older_than_window_does_not_suppress(self):
@@ -207,7 +207,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
             "updated_at": "2026-11-05T06:50:00Z",
         }
         def fake_get(_url, _token):
-            return b'{"workflow_runs":[{"id":1,"conclusion":"success","updated_at":"2026-11-05T06:34:59Z"}]}'
+            return b'{"workflow_runs":[{"id":1,"event":"push","conclusion":"success","updated_at":"2026-11-05T06:34:59Z"}]}'
         self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
 
     def test_failed_manual_run_does_not_suppress_successful_schedule(self):
@@ -222,7 +222,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
             "updated_at": "2026-11-05T06:37:10Z",
         }
         def fake_get(_url, _token):
-            return b'{"workflow_runs":[{"id":1,"conclusion":"failure","updated_at":"2026-11-05T06:36:04Z"}]}'
+            return b'{"workflow_runs":[{"id":1,"event":"push","conclusion":"failure","updated_at":"2026-11-05T06:36:04Z"}]}'
         self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
 
     def test_failures_and_manual_reports_are_never_suppressed(self):
