@@ -534,8 +534,8 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
   let feedRetryTimer=null,feedLoading=false;
   async function loadNewsFeed(){
     if(feedLoading)return;
-    await categoryTaxonomyReady;
     feedLoading=true;
+    await categoryTaxonomyReady;
     if(status)status.textContent="Loading headlines…";
     try{
       const feedUrl=new URL("./news-feed.json",document.baseURI);
