@@ -513,11 +513,14 @@ def merge_source_evidence(item, source):
     return item
 
 
-def merge_duplicate_source(existing, source, *, country=None, category=None, is_breaking=None):
-    """Merge duplicate evidence and preserve a breaking signal from any publisher."""
+def merge_duplicate_source(existing, source, *, country=None, category=None, is_breaking=None, summary=None):
+    """Merge source evidence and retain the summary that established a breaking signal."""
     merge_source_evidence(existing, source)
+    was_breaking = bool(existing.get("isBreaking"))
     if is_breaking is not None:
-        existing["isBreaking"] = bool(existing.get("isBreaking") or is_breaking)
+        existing["isBreaking"] = bool(was_breaking or is_breaking)
+        if is_breaking and not was_breaking and summary:
+            existing["summary"] = str(summary)[:420]
     is_global = country != "BD" if country is not None else category != "Bangladesh"
     if is_global:
         existing["alertScope"] = "global"
@@ -828,7 +831,7 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, category=item["category"], is_breaking=item.get("isBreaking"))
+                        merge_duplicate_source(existing, source, category=item["category"], is_breaking=item.get("isBreaking"), summary=item.get("summary"))
                     continue
                 seen.add(key)
                 collected_by_key[key] = item
@@ -869,7 +872,7 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, country=country, is_breaking=item.get("isBreaking"))
+                        merge_duplicate_source(existing, source, country=country, is_breaking=item.get("isBreaking"), summary=item.get("summary"))
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
@@ -919,7 +922,10 @@ def main():
                     existing = weather_by_key.get(key)
                     if existing:
                         merge_source_evidence(existing, source)
-                        existing["isBreaking"] = bool(existing.get("isBreaking") or item.get("isBreaking"))
+                        was_breaking = bool(existing.get("isBreaking"))
+                        if item.get("isBreaking") and not was_breaking and item.get("summary"):
+                            existing["summary"] = str(item["summary"])[:420]
+                        existing["isBreaking"] = bool(was_breaking or item.get("isBreaking"))
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)

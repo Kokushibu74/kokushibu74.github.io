@@ -130,5 +130,15 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         news.merge_duplicate_source(item, "Prothom Alo", category="Bangladesh", is_breaking=False)
         self.assertTrue(item["isBreaking"])
 
+    def test_duplicate_merge_carries_the_summary_that_made_the_story_breaking(self):
+        item = {"isBreaking": False, "summary": "Routine local update", "sourceEvidence": []}
+        breaking_summary = "ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো"
+        news.merge_duplicate_source(
+            item, "Jago News 24", category="Bangladesh",
+            is_breaking=True, summary=breaking_summary
+        )
+        self.assertTrue(item["isBreaking"])
+        self.assertEqual(item["summary"], breaking_summary)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
