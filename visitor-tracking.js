@@ -32,7 +32,7 @@
  const data=payload();
  window.__K74_VISITOR_ID__=visitorId;
  window.__K74_SESSION_ID__=sessionId;
- window.__K74_TRACKING_READY__=send(data).then(response=>{
+ window.__K74_TRACKING_READY__=send(data,true).then(response=>{
   window.dispatchEvent(new CustomEvent("k74:visitor-tracked",{detail:{visitorId,sessionId,ok:!!response?.ok}}));
   return response;
  });
