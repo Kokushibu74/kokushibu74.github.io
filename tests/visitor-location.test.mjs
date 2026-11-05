@@ -73,6 +73,16 @@ test("User Directory Visitor IDs are clickable callback buttons with pagination"
   assert.match(worker, /if\(query\.message\?\.chat\?\.type!=="private"\|\|!admins\.has\(sender\)\)/);
 });
 
+test("Visitor identity wait resolves the stored identity without recursive self-calls", () => {
+  const start = news.indexOf("const waitForVisitorIdentity=async()=>{");
+  const end = news.indexOf("const locationPost=", start);
+  assert.ok(start >= 0 && end > start);
+  const helper = news.slice(start, end);
+  assert.match(helper, /const identity=visitorIdentity\(\)/);
+  assert.doesNotMatch(helper, /await waitForVisitorIdentity\(\)/);
+  assert.match(helper, /if\(!response\?\.ok\)return null/);
+});
+
 test("News Page requests GPS only after a user click and preserves default feed on failure", () => {
   assert.ok(tracker.includes("window.__K74_TRACKING_READY__"));
   assert.ok(tracker.includes("k74:visitor-tracked"));
@@ -82,5 +92,7 @@ test("News Page requests GPS only after a user click and preserves default feed 
   assert.match(news, /historyConsent==="yes"/);
   assert.match(news, /rankNewsByLocation\(visible,locationContext\)/);
   assert.match(newsHtml, /আপনার এলাকার খবর দেখতে চান\?/);
+  assert.ok(newsHtml.includes("আপনার আশেপাশের গুরুত্বপূর্ণ খবর এবং স্থানীয় আপডেটগুলো দেখানোর জন্য News Page-এর আপনার লোকেশন ব্যবহারের অনুমতি প্রয়োজন। আপনার এলাকার প্রাসঙ্গিক খবর পেতে Location Access চালু করুন।"));
   assert.match(newsHtml, /GPS History is stored only if you separately consent/);
+  assert.doesNotMatch(tracker, /navigator\.geolocation/);
 });
