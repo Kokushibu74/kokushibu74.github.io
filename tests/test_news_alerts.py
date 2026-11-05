@@ -98,9 +98,47 @@ class NewsAlertEvidenceTests(unittest.TestCase):
     def test_weather_items_include_alert_flag_and_video(self):
         source = SCRIPT.read_text(encoding="utf-8")
         self.assertIn('"videoUrl": video_for(node)', source)
-        self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published)', source)
+        self.assertIn('"isBreaking": is_recent_breaking(title, published, query, source, summary) or is_recent_weather_alert(title, summary, published)', source)
         self.assertIn('"alertScope": "global" if country != "BD" else "bangladesh_candidate"', source)
         self.assertIn('existing["alertScope"] = "global"', source)
+
+    def test_recent_death_phrases_are_breaking_within_one_hour(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=50)).isoformat()
+        for phrase in ("মারা গেলো", "মারা গেছে", "মারা গেলেন"):
+            with self.subTest(phrase=phrase):
+                self.assertTrue(news.is_recent_breaking("ঢাকায় সংঘর্ষে আহত শ্রমিক " + phrase, published, "direct-rss"))
+
+    def test_breaking_event_is_not_extended_beyond_one_hour(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=61)).isoformat()
+        self.assertFalse(news.is_recent_breaking("ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো", published, "direct-rss"))
+
+    def test_recent_breaking_signal_in_summary_is_detected(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
+        self.assertTrue(news.is_recent_breaking(
+            "শ্রমিকের অবস্থা সংকটাপন্ন", published, "direct-rss",
+            "Jago News 24", "ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো"
+        ))
+
+    def test_duplicate_merge_promotes_breaking_flag_from_later_source(self):
+        item = {"isBreaking": False, "sourceEvidence": []}
+        news.merge_duplicate_source(item, "Jago News 24", category="Bangladesh", is_breaking=True)
+        self.assertTrue(item["isBreaking"])
+        self.assertEqual(item["sourceEvidence"], ["Jago News 24"])
+
+    def test_duplicate_merge_never_downgrades_existing_breaking_flag(self):
+        item = {"isBreaking": True, "sourceEvidence": []}
+        news.merge_duplicate_source(item, "Prothom Alo", category="Bangladesh", is_breaking=False)
+        self.assertTrue(item["isBreaking"])
+
+    def test_duplicate_merge_carries_the_summary_that_made_the_story_breaking(self):
+        item = {"isBreaking": False, "summary": "Routine local update", "sourceEvidence": []}
+        breaking_summary = "ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো"
+        news.merge_duplicate_source(
+            item, "Jago News 24", category="Bangladesh",
+            is_breaking=True, summary=breaking_summary
+        )
+        self.assertTrue(item["isBreaking"])
+        self.assertEqual(item["summary"], breaking_summary)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

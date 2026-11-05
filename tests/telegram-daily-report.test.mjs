@@ -4,11 +4,11 @@ import fs from "node:fs";
 const source = fs.readFileSync("cloudflare/portfolio-contact-telegram.js", "utf8");
 
 for (const section of [
-  "01/05 · WEBSITE HEALTH & EXECUTIVE SUMMARY",
-  "02/05 · GA4 & VISITOR ANALYTICS",
-  "03/05 · INDIVIDUAL VISITOR DETAILS",
-  "04/05 · CLOUDFLARE RESOURCE USAGE",
-  "05/05 · SECURITY ISSUES & AI RECOMMENDATIONS"
+  "01/05 · SYSTEM INTELLIGENCE",
+  "02/05 · TRAFFIC INTELLIGENCE",
+  "03/05 · VISITOR INTELLIGENCE",
+  "04/05 · INFRASTRUCTURE INTELLIGENCE",
+  "05/05 · SECURITY & ACTION PLAN"
 ]) {
   assert.ok(source.includes(section), "Missing Telegram report section: " + section);
 }
@@ -32,16 +32,16 @@ const expectedNamespaces = [
 for (const id of expectedNamespaces) {
   assert.ok(source.includes(id), "Missing existing KV namespace from resource accounting: " + id);
 }
-assert.match(source, /CF_MONITOR_KV_NAMESPACES\.flatMap/);
-assert.match(source, /label:"KV writes \(all 6 namespaces\)"/);
-assert.match(source, /label:"D1 database storage \(per-DB limit\)",used:d1Bytes,limit:524288000/);
-assert.match(source, /Profiles shown:/);
-assert.match(source, /maximum 20 detailed profiles/);
+assert.match(source, /CF_MONITOR_KV_NAMESPACES\.slice\(start,start\+3\)/, "KV resource analytics must use bounded namespace batches");
+assert.match(source, /label:"KV writes \(all 6 namespaces, monthly\)"/);
+assert.match(source, /label:"D1 storage \(account included allowance\)",used:d1Bytes,limit:5368709120/);
+assert.match(source, /Showing .* compact profiles of /);
+assert.ok(source.includes(".slice(0,20)"), "Visitor details must remain capped at 20 compact profiles");
 assert.match(source, /Active duration, exact exit time and scroll duration are not measured|Active duration|not measured/);
 assert.match(source, /no external AI API or paid service is called/i);
 
 // Execute the real report builder with representative data, including the maximum 20 visitor cards.
-const helperStart = source.indexOf("function dailyReportEscape");
+const helperStart = source.indexOf("function dailyReportMarkdownEscape");
 const helperEnd = source.indexOf("async function sendTelegramReportBatch", helperStart);
 assert.ok(helperStart >= 0 && helperEnd > helperStart, "Daily report builder helpers must be extractable");
 const helperSource = source.slice(helperStart, helperEnd);
@@ -76,11 +76,11 @@ const messages = buildDailyReportMessages({
 });
 assert.equal(messages.length, 5, "The daily report must create exactly five messages");
 for (const message of messages) assert.ok(message.length < 3900, "Each report section must fit in one Telegram message");
-assert.ok(messages[2].includes("VIS-••••••••0000"), "Visitor IDs must remain partially masked");
+assert.ok(messages[2].includes("VIS\\-••••••••0000") || messages[2].includes("VIS-••••••••0000"), "Visitor IDs must remain partially masked after Markdown escaping");
 assert.ok(messages[2].includes("Galaxy A34"), "Visitor details must include device information");
-assert.ok(messages[2].includes("Info Link"), "Visitor details must include ISP information");
-assert.ok(messages[3].includes("all 6 existing namespaces"), "Cloudflare section must show namespace coverage");
-assert.ok(messages[4].includes("Content-Security-Policy"), "Security section must list missing headers");
+assert.ok(messages[2].includes("Dhaka/BD"), "Compact visitor profiles must include location context");
+assert.ok(messages[3].includes("6 existing KV namespaces"), "Cloudflare section must show namespace coverage");
+assert.ok(messages[4].includes("Content\\-Security\\-Policy") || messages[4].includes("Content-Security-Policy"), "Security section must list missing headers after Markdown escaping");
 const unavailableHeaders = buildDailyReportMessages({reportId:"test",stamp:"test",site:"https://example.com",status:null,responseMs:10,failure:"Network timeout",missing:[],headersChecked:false,activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null});
 assert.ok(unavailableHeaders[4].includes("Header inspection unavailable"), "Failed site checks must not be mislabeled as healthy security headers");
 assert.ok(messages[4].includes("no external AI API or paid service is called"), "Recommendations must disclose their deterministic source");

@@ -7,6 +7,8 @@ on:
     paths:
       - ".github/workflows/update-news.yml"
       - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "tests/news-alerts.test.mjs"
       - "tests/test_news_alerts.py"
       - "scripts/update_news.py"
       - "tests/test_update_news.py"

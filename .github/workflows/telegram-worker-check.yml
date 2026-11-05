@@ -39,7 +39,7 @@ jobs:
         run: node --check cloudflare/portfolio-contact-telegram.js
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
-      - name: Verify Free-plan resource budget guardrails
+      - name: Verify Cloudflare Standard resource budget guardrails
         run: node tests/resource-budget-guardrails.test.mjs
       - name: Verify five-part Telegram daily report
         run: node tests/telegram-daily-report.test.mjs

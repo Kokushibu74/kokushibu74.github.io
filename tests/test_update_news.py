@@ -301,6 +301,21 @@ class NewsLogicTests(unittest.TestCase):
         finally:
             news.OUTPUT = old_output
 
+    def test_retained_recent_fatal_clash_recomputes_breaking_status(self):
+        now = datetime(2026, 11, 5, 7, 54, 55, tzinfo=timezone.utc)
+        item = {
+            "title": "জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
+            "link": "https://www.jagonews24.com/country/news/1175881",
+            "publishedAt": "2026-11-05T07:03:58+00:00",
+            "category": "Bangladesh",
+            "source": "Jago News 24",
+            "summary": "জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়",
+            "isBreaking": False,
+        }
+        retained = news.retained_previous_items([item], now)
+        self.assertEqual(len(retained), 1)
+        self.assertTrue(retained[0]["isBreaking"])
+
     def test_get_retry_uses_bounded_backoff_for_transient_http_errors(self):
         import urllib.error
         from email.message import Message

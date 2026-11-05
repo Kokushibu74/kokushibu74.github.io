@@ -54,7 +54,10 @@ test("follow-up and investigation stories are rejected",()=>assert.equal(evaluat
 test("undated stories are rejected",()=>assert.equal(evaluateNewsAlert(item({publishedAt:""}),{now}).reason,"undated"));
 test("stories older than one hour are rejected",()=>assert.equal(evaluateNewsAlert(item({publishedAt:new Date(now-61*60000).toISOString()}),{now}).reason,"stale"));
 test("future stories beyond five minutes are rejected",()=>assert.equal(evaluateNewsAlert(item({publishedAt:new Date(now+6*60000).toISOString()}),{now}).reason,"stale"));
-test("breaking flag is mandatory",()=>assert.equal(evaluateNewsAlert(item({isBreaking:false}),{now}).reason,"not_breaking"));
+test("breaking flag alone cannot make an ordinary headline eligible",()=>{
+  const decision=evaluateNewsAlert(item({title:"ঢাকায় নিয়মিত সংবাদ",summary:"সাধারণ আপডেট",isBreaking:true}),{now});
+  assert.equal(decision.reason,"not_significant");
+});
 test("Google News redirect is not accepted as original article URL",()=>assert.equal(evaluateNewsAlert(item({publisherUrl:"https://news.google.com/rss/articles/abc"}),{now}).reason,"not_original_url"));
 test("photo is preferred over video when both are available",()=>assert.deepEqual(mediaCandidates({videoUrl:"https://cdn.example/video.mp4",previewImage:"https://cdn.example/photo.jpg",image:"javascript:bad"}),[{type:"photo",url:"https://cdn.example/photo.jpg"},{type:"video",url:"https://cdn.example/video.mp4"}]));
 test("photo-only media falls back cleanly",()=>assert.deepEqual(mediaCandidates({image:"https://cdn.example/a.png"}),[{type:"photo",url:"https://cdn.example/a.png"}]));
@@ -99,3 +102,72 @@ test("global weather alert requires explicit non-Bangladesh region evidence",()=
 
 test("ordinary single-victim murder abroad is not a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Man murdered in Paris",summary:"Police investigating the incident",category:"World"}),{now}).reason,"not_significant"));
 test("mass-casualty massacre abroad qualifies as a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Massacre kills dozens in Paris",summary:"Dozens killed in mass casualty attack",category:"World"}),{now}).scope,"global"));
+
+
+test("Bangla death verb variants qualify in a corroborated Bangladesh clash alert",()=>{
+  for(const phrase of ["মারা গেলো","মারা গেছে","মারা গেলেন"]){
+    const x=item({title:"ঢাকায় সংঘর্ষে আহত শ্রমিক "+phrase,summary:"ঢাকায় শ্রমিকদের সংঘর্ষে আহত"});
+    const decision=evaluateNewsAlert(x,{now});
+    assert.equal(decision.eligible,true,phrase);
+  }
+});
+
+test("upstream non-breaking flag does not block a significant corroborated event",()=>{
+  const decision=evaluateNewsAlert(item({isBreaking:false,sourceEvidence:["The Daily Star","Prothom Alo"]}),{now});
+  assert.equal(decision.eligible,true);
+  assert.equal(decision.sourceCount,2);
+  assert.equal(decision.trustedSources.length,2);
+});
+
+test("one trusted Jago publisher is visible but does not bypass corroboration",()=>{
+  const decision=evaluateNewsAlert(item({sourceEvidence:["Jago News 24"],source:"Jago News 24"}),{now});
+  assert.equal(decision.reason,"needs_trusted_corroboration");
+  assert.equal(decision.sourceCount,1);
+  assert.equal(decision.trustedSources.length,1);
+});
+
+test("worker keeps a bounded main scan and weather candidates on a five-minute cadence",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  const start=source.indexOf("async function newsBreakingAlertCheck(env){");
+  const end=source.indexOf("\n\nexport default {",start);
+  assert.ok(start>=0&&end>start);
+  const alertSource=source.slice(start,end);
+  assert.match(source,/minute%5===0/);
+  assert.ok(alertSource.includes("feed.slice(0,160)"));
+  assert.ok(alertSource.includes("feed.items.slice(0,160)"));
+  assert.ok(alertSource.includes("weatherItems.slice(0,12)"));
+  assert.ok(alertSource.includes("news-alert-reject:v1:"));
+});
+
+
+test("fatal bus-arson headline is classified as a serious local incident",()=>{
+  const x=item({
+    title:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
+    summary:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়"
+  });
+  const decision=evaluateNewsAlert(x,{now});
+  assert.equal(decision.eligible,true);
+});
+
+
+test("single trusted publisher can trigger a fresh local fatal-clash alert",()=>{
+  const decision=evaluateNewsAlert(item({
+    title:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
+    summary:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়",
+    category:"Bangladesh",isBreaking:false,
+    publishedAt:new Date(now-61.3*60000).toISOString(),
+    sourceEvidence:["Jago News 24"],source:"Jago News 24",
+    publisherUrl:"https://www.jagonews24.com/country/news/1175881"
+  }),{now});
+  assert.equal(decision.eligible,true);
+  assert.equal(decision.sourceCount,1);
+  assert.equal(decision.trustedSources.length,1);
+  assert.equal(decision.verificationMode,"single_source_life_safety");
+});
+
+test("rejection audits refresh when summary or source counts change",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.ok(source.includes("old.summary!==record.summary"));
+  assert.ok(source.includes("old.sourceCount!==record.sourceCount"));
+  assert.ok(source.includes("old.trustedSourceCount!==record.trustedSourceCount"));
+});

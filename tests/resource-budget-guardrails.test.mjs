@@ -6,6 +6,19 @@ const multiAi = readFileSync(new URL("../cloudflare/multi-ai-memory-api.js", imp
 const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js", import.meta.url), "utf8");
 
 assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must use 50/70/85/95 percent thresholds");
+assert.match(contact, /for\(let start=0;start<CF_MONITOR_KV_NAMESPACES\.length;start\+=3\)/, "KV analytics must be split into bounded namespace batches");
+assert.match(contact, /Promise\.all\(\[/, "Workers, KV, and D1 analytics must be fetched concurrently to avoid monolithic query timeouts");
+assert.match(contact, /accountTag: string!/, "Cloudflare Analytics GraphQL accountTag scalar must retain Cloudflare's lowercase string type");
+assert.match(contact, /sum \{ requests errors cpuTimeUs \}/, "Workers requests and CPU time must be measured together");
+assert.match(contact, /workers_requests.*limit:10000000,unit:"requests",period:"monthly"/, "Standard plan Workers requests must use the 10 million monthly allowance");
+assert.match(contact, /workers_cpu_ms.*limit:30000000,unit:"ms",period:"monthly"/, "Standard plan Workers CPU must use the 30 million CPU-ms monthly allowance");
+assert.match(contact, /aiInferenceAdaptiveGroups.*totalNeurons/, "Workers AI neuron usage must be included when the AI binding is active");
+assert.match(contact, /workers_ai_neurons.*limit:10000,unit:"neurons",period:"daily"/, "Workers AI must use the 10,000-neuron daily free allocation");
+assert.match(contact, /kv_reads.*limit:10000000,unit:"operations",period:"monthly"/, "Standard plan KV reads must use the 10 million monthly allowance");
+assert.match(contact, /kv_writes.*limit:1000000,unit:"operations",period:"monthly"/, "Standard plan KV writes must use the 1 million monthly allowance");
+assert.match(contact, /d1_rows_read.*limit:25000000000,unit:"rows",period:"monthly"/, "Standard plan D1 reads must use the 25 billion monthly allowance");
+assert.match(contact, /d1_rows_written.*limit:50000000,unit:"rows",period:"monthly"/, "Standard plan D1 writes must use the 50 million monthly allowance");
+assert.match(contact, /cfMonitorGraphQL\(env,workersQuery/, "Workers request usage must be fetched in its own bounded analytics query");
 assert.match(contact, /resource-alert:youtube:/, "Budget alert deduplication must be persisted");
 assert.match(contact, /Math\.ceil\(limit\*p\/100\)/, "Thresholds must round up to a whole request");
 assert.match(contact, /cfg\.trafficAlerts/, "Budget alerts must respect the existing traffic alert setting");
@@ -16,8 +29,8 @@ assert.match(contact, /const SPORTS_ZONE_MONITORING_ENABLED=false/, "Sports Zone
 assert.match(contact, /if\(SPORTS_ZONE_MONITORING_ENABLED&&runChecks&&cfg\.trafficAlerts\)/, "Sports Zone budget alerts must remain gated off");
 assert.doesNotMatch(contact, /budgetLines/, "Daily Telegram report must not include Sports Zone budget while paused");
 assert.match(contact, /resourceSnapshot=await cfResourceBudgetCheck/, "Daily report must reuse the current non-Sports Cloudflare resource snapshot");
-assert.match(contact, /04\/05 · CLOUDFLARE RESOURCE USAGE/, "Daily report must include a dedicated Cloudflare resource section");
-assert.match(contact, /KV reads \(all 6 namespaces\)/, "Daily resource report must include all six existing KV namespaces without enabling Sports Zone API monitoring");
+assert.match(contact, /04\/05 · INFRASTRUCTURE INTELLIGENCE/, "Daily report must include a dedicated infrastructure and Cloudflare resource section");
+assert.match(contact, /KV reads \(all 6 namespaces, monthly\)/, "Daily resource report must include all six existing KV namespaces without enabling Sports Zone API monitoring");
 assert.match(contact, /if\(pending\.length&&typeof sendTelegram==="function"\)/, "Budget thresholds must not be marked sent when alert delivery is disabled");
 assert.match(contact, /buildDailyReportMessages/, "Daily report must render the separated resource summary");
 assert.ok(contact.includes("cfg.trafficAlerts?sendTelegram:null"), "Resource usage can be read for the daily report without enabling alert notifications");
