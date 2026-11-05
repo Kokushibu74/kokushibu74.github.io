@@ -56,6 +56,6 @@ assert.match(news, /activeSubcategory==="All"\|\|getSubcategory\(x\)===activeSub
 assert.match(news, /data-subcategory/, "Subcategory controls must have delegated click targets");
 assert.match(news, /getSubcategory\(item\)/, "Mobile and desktop renderers must display the assigned subcategory");
 assert.match(news, /news-categories\.json/, "The News module must load the shared category taxonomy");
-assert.match(page, /news\.js\?v=31/, "News module cache must be refreshed after category navigation changes");
+assert.match(page, /news\.js\?v=32/, "News module cache must be refreshed after category navigation changes");
 
 console.log("News client optimization contracts OK.");
