@@ -666,7 +666,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
       const coords=position.coords;
       const ip=await getIpLocation();
       locationContext=buildLocationContext({latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,...ip});
-      render();
+      currentPage=1;render();
       localSet(LOCATION_PROMPT_KEY,"1");
       if(locationTrigger)locationTrigger.textContent="📍 Refresh Nearby News";
       const area=locationContext.district?"Approx. "+locationContext.district.name+" District":(locationContext.city||locationContext.region||"your area");
