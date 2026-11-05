@@ -35,6 +35,7 @@ assert.match(news, /grid\.classList\.add\("mobile-news-feed"\)/, "Mobile feed mu
 assert.match(news, /grid\.classList\.remove\("mobile-news-feed"\)[\s\S]*?grid\.classList\.add\("newspaper-feed"\)/, "Desktop rendering must clear the mobile layout class");
 assert.match(page, /news-edition-strip/, "News page must include the editorial edition masthead");
 assert.match(page, /@media\(max-width:600px\)[\s\S]*?mobile-news-feed/, "Mobile reader styles must be isolated to small screens");
-assert.match(page, /@media\(min-width:601px\)[\s\S]*?newspaper-feed/, "Newspaper styles must be available above the mobile breakpoint");
+assert.match(page, /#news-grid\.grid\.newspaper-feed/, "Desktop newspaper layout rules must be present");
+assert.match(page, /@media\(min-width:601px\) and \(max-width:1100px\)/, "Tablet newspaper layout must have its own two-column breakpoint");
 
 console.log("News client optimization contracts OK.");
