@@ -102,5 +102,15 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         self.assertIn('"alertScope": "global" if country != "BD" else "bangladesh_candidate"', source)
         self.assertIn('existing["alertScope"] = "global"', source)
 
+    def test_recent_death_phrases_are_breaking_within_one_hour(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=50)).isoformat()
+        for phrase in ("মারা গেলো", "মারা গেছে", "মারা গেলেন"):
+            with self.subTest(phrase=phrase):
+                self.assertTrue(news.is_recent_breaking("ঢাকায় সংঘর্ষে আহত শ্রমিক " + phrase, published, "direct-rss"))
+
+    def test_breaking_event_is_not_extended_beyond_one_hour(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=61)).isoformat()
+        self.assertFalse(news.is_recent_breaking("ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো", published, "direct-rss"))
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -68,7 +68,7 @@ BREAKING_TITLE_RE = re.compile(
     r"সর্বশেষ মুহূর্তে|এইমাত্র|জরুরি আপডেট)", re.I
 )
 BREAKING_EVENT_RE = re.compile(
-    r"(?:নিহত|মারা গেছেন|খুন|হত্যা|murder|homicide|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
+    r"(?:নিহত|মারা (?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ (?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|খুন|হত্যা|murder|homicide|[\d০-৯]+\s*জনের মৃত্যু|মৃত্যু(?: হয়েছে| হয়েছে| হলো| বেড়েছে| বেড়েছে| বাড়ছে| বাড়ছে)|"
     r"আগুন(?:ে(?: পুড়ে| পুড়ে| নিহত| আহত)| লেগেছে| ছড়িয়ে পড়েছে| ছড়িয়ে পড়েছে)|অগ্নিকাণ্ড|বিস্ফোরণ|বোমা হামলা|"
     r"দুর্ঘটনায় নিহত|দুর্ঘটনায় নিহত|বড়.{0,12}দুর্ঘটনা|বৃহৎ.{0,12}দুর্ঘটনা|গুরুতর.{0,12}দুর্ঘটনা|ভয়াবহ.{0,12}দুর্ঘটনা|major.{0,20}(?:accident|crash|collision)|mass accident|train derailment|launch capsized|building collapse|ভূমিকম্প|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|জলোচ্ছ্বাস|"
     r"হামলা(?: হয়েছে| হয়েছে| চালানো হয়েছে| চালানো হয়েছে|য় নিহত|য় নিহত|য় আহত|য় আহত)|সশস্ত্র সংঘর্ষ|গুলিবর্ষণ|পুলিশের গুলি|armed clash|police firing|shooting|riot|সংঘর্ষে নিহত|সংঘর্ষে আহত|গুলিতে নিহত|গুলি চালনা|"
@@ -184,9 +184,9 @@ def is_recent_breaking(title, published, query, source=""):
         if stamp.tzinfo is None:
             stamp = stamp.replace(tzinfo=timezone.utc)
         age = datetime.now(timezone.utc) - stamp.astimezone(timezone.utc)
-        # Keep the threshold deliberately strict; feed labels and search query names
+        # Keep the threshold aligned with the Worker's 60-minute alert freshness gate; feed labels and search query names
         # are not evidence that a story itself is genuinely breaking.
-        if not (timedelta(minutes=-5) <= age <= timedelta(minutes=45)):
+        if not (timedelta(minutes=-5) <= age <= timedelta(minutes=60)):
             return False
         if BREAKING_FOLLOWUP_RE.search(title):
             return False

@@ -99,3 +99,39 @@ test("global weather alert requires explicit non-Bangladesh region evidence",()=
 
 test("ordinary single-victim murder abroad is not a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Man murdered in Paris",summary:"Police investigating the incident",category:"World"}),{now}).reason,"not_significant"));
 test("mass-casualty massacre abroad qualifies as a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Massacre kills dozens in Paris",summary:"Dozens killed in mass casualty attack",category:"World"}),{now}).scope,"global"));
+
+
+test("Bangla death verb variants qualify in a corroborated Bangladesh clash alert",()=>{
+  for(const phrase of ["মারা গেলো","মারা গেছে","মারা গেলেন"]){
+    const x=item({title:"ঢাকায় সংঘর্ষে আহত শ্রমিক "+phrase,summary:"ঢাকায় শ্রমিকদের সংঘর্ষে আহত"});
+    const decision=evaluateNewsAlert(x,{now});
+    assert.equal(decision.eligible,true,phrase);
+  }
+});
+
+test("non-breaking rejection preserves real source evidence counts",()=>{
+  const decision=evaluateNewsAlert(item({isBreaking:false,sourceEvidence:["The Daily Star","Prothom Alo"]}),{now});
+  assert.equal(decision.reason,"not_breaking");
+  assert.equal(decision.sourceCount,2);
+  assert.equal(decision.trustedSources.length,2);
+});
+
+test("one trusted Jago publisher is visible but does not bypass corroboration",()=>{
+  const decision=evaluateNewsAlert(item({sourceEvidence:["Jago News 24"],source:"Jago News 24"}),{now});
+  assert.equal(decision.reason,"needs_trusted_corroboration");
+  assert.equal(decision.sourceCount,1);
+  assert.equal(decision.trustedSources.length,1);
+});
+
+test("worker scans main and weather candidates on a five-minute cadence and persists rejection reasons",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  const start=source.indexOf("async function newsBreakingAlertCheck(env){");
+  const end=source.indexOf("\n\nexport default {",start);
+  assert.ok(start>=0&&end>start);
+  const alertSource=source.slice(start,end);
+  assert.match(source,/minute%5===0/);
+  assert.match(alertSource,/feed\\.items\\.slice\\(0,160\\)/);
+  assert.match(alertSource,/weatherItems\\.slice\\(0,12\\)/);
+  assert.match(alertSource,/news-alert-reject:v1:/);
+  assert.doesNotMatch(alertSource,/for\\(const item of items\\.slice\\(0,160\\)\\)/);
+});
