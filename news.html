@@ -540,20 +540,19 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
 }
 @media(prefers-reduced-motion:reduce){.subcategory-filter{transition:none}}
 
-.news-location-tools{display:flex;flex-direction:column;gap:10px;margin:12px 0 18px;padding:11px 12px;border:1px solid #ffffff20;border-radius:14px;background:linear-gradient(110deg,#0b1420e8,#100d1ce8)}
-.news-location-tools-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.news-location-trigger,.news-location-settings-trigger,.news-location-actions button{min-height:36px;padding:8px 12px;border:1px solid #00d7e85c;border-radius:999px;background:#00d7e812;color:#8cf5ff;font:700 11px Outfit,sans-serif;cursor:pointer}
-.news-location-settings-trigger,.news-location-secondary{border-color:#ffffff2c;background:#ffffff08;color:#c3cde0}
-#news-location-status{flex:1 1 220px;color:#9eacc0;font-size:11px;line-height:1.5}
-.news-location-card{padding:13px 14px;border:1px solid #00d7e84d;border-radius:12px;background:linear-gradient(135deg,#071522,#100e1d);color:#e9f2ff}
-.news-location-card[hidden]{display:none!important}
-.news-location-card p{margin:0 0 9px;color:#c7d2e2;font-size:12px;line-height:1.7}
-.news-location-card .news-location-card-title{color:#8cf5ff;font-weight:800;font-size:13px}
-.news-location-card .news-location-card-note{color:#8e9db2;font-size:10px}
-.news-location-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.news-location-modal{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:rgba(2,5,12,.78);backdrop-filter:blur(12px)}
+.news-location-modal[hidden]{display:none!important}
+.news-location-dialog{width:min(440px,100%);padding:24px;border:1px solid #00d7e86b;border-radius:20px;background:linear-gradient(145deg,#101a2a,#0a0d18);box-shadow:0 24px 90px #000b,0 0 34px #00d7e81a;color:#f2f7ff}
+.news-location-dialog h2{margin:0 0 12px;color:#91f5ff;font-size:19px;line-height:1.35;font-weight:900}
+.news-location-dialog p{margin:0;color:#c4cfdf;font-size:13px;line-height:1.75}
+.news-location-dialog .privacy-note{margin-top:9px;color:#8796ac;font-size:10px;line-height:1.6}
+.news-location-actions{display:flex;gap:10px;margin-top:20px}
+.news-location-actions button{flex:1;min-height:42px;padding:10px 14px;border:1px solid #00d7e85c;border-radius:11px;background:#00d7e812;color:#8cf5ff;font:800 12px Outfit,sans-serif;cursor:pointer}
 .news-location-actions button:disabled{opacity:.55;cursor:wait}
-.news-location-primary{background:linear-gradient(110deg,#00d7e8,#7658ff)!important;border-color:transparent!important;color:#041019!important}
-@media(max-width:600px){.news-location-tools-head{align-items:stretch}.news-location-trigger,.news-location-settings-trigger{flex:1 1 auto}.news-location-actions button{flex:1 1 140px}.news-location-card{padding:12px}}
+.news-location-actions .news-location-primary{background:linear-gradient(110deg,#00d7e8,#7658ff);border-color:transparent;color:#041019}
+.news-location-actions .news-location-secondary{border-color:#ffffff2c;background:#ffffff08;color:#c3cde0}
+body.location-consent-open{overflow:hidden}
+@media(max-width:600px){.news-location-dialog{padding:21px 18px;border-radius:17px}.news-location-dialog h2{font-size:17px}.news-location-actions button{min-height:44px}}
 </style>
 </head>
 <body>
@@ -575,30 +574,14 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY</div>
     <nav id="news-view-switch" class="toolbar" aria-label="Choose news feed or archive"><button class="filter active" data-news-view="feed">News Feed</button><button class="filter" data-news-view="archive">Archive · 90 Days</button></nav>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button></nav>
-    <div id="news-location-tools" class="news-location-tools" aria-label="Nearby news and location privacy">
-      <div class="news-location-tools-head">
-        <button id="news-location-trigger" class="news-location-trigger" type="button">📍 Location Access</button>
-        <button id="news-location-settings-trigger" class="news-location-settings-trigger" type="button">Location History Settings</button>
-        <span id="news-location-status" aria-live="polite">Location access is optional. Without it, the default News Feed stays unchanged.</span>
+    <section id="news-location-modal" class="news-location-modal" role="dialog" aria-modal="true" aria-labelledby="news-location-title" hidden>
+      <div class="news-location-dialog">
+        <h2 id="news-location-title">আপনার এলাকার খবর দেখাতে লোকেশন প্রয়োজন</h2>
+        <p>Allow করলে আপনার লোকেশন দিয়ে কাছাকাছি খবর দেখানো হবে। আপনার লোকেশন, সময় ও নির্ভুলতা অনুমোদিত Telegram Admin-দের জন্য সর্বোচ্চ ৯০ দিন সংরক্ষিত থাকবে।</p>
+        <p class="privacy-note">পরবর্তী ভিজিটে ব্রাউজারের অনুমতি চালু থাকলে নতুন লোকেশন রেকর্ড হতে পারে। চাইলে ব্রাউজারের Site Settings থেকে Location বন্ধ করতে পারবেন।</p>
+        <div class="news-location-actions"><button id="news-location-allow" class="news-location-primary" type="button">Allow</button><button id="news-location-not-now" class="news-location-secondary" type="button">Not now</button></div>
       </div>
-      <section id="news-location-card" class="news-location-card" aria-label="Location access invitation" hidden>
-        <p class="news-location-card-title">আপনার এলাকার খবর দেখতে চান?</p>
-        <p>আপনার আশেপাশের গুরুত্বপূর্ণ খবর এবং স্থানীয় আপডেটগুলো দেখানোর জন্য News Page-এর আপনার লোকেশন ব্যবহারের অনুমতি প্রয়োজন। আপনার এলাকার প্রাসঙ্গিক খবর পেতে Location Access চালু করুন।</p>
-        <p class="news-location-card-note">Location is used only to prioritize nearby news during this page session. GPS History is stored only if you separately consent.</p>
-        <div class="news-location-actions"><button id="news-location-allow" class="news-location-primary" type="button">Location Access</button><button id="news-location-later" class="news-location-secondary" type="button">এখন নয়</button></div>
-      </section>
-      <section id="news-location-history-card" class="news-location-card" aria-label="Separate GPS history consent" hidden>
-        <p class="news-location-card-title">GPS Location History — Separate Consent</p>
-        <p>আপনি সম্মতি দিলে আপনার GPS coordinates, accuracy, সময় এবং Visitor ID সর্বোচ্চ ৯০ দিন সংরক্ষণ করা হবে। এই history শুধু অনুমোদিত Telegram admins দেখতে পারবেন। প্রতিবার আপনি Location Access চাপলে নতুন record যোগ হবে; পুরোনো record overwrite হবে না।</p>
-        <p class="news-location-card-note">You can stop future saving at any time and submit a request to delete saved history. If you do not agree, nearby-news personalization still works for this page session and no GPS history is stored.</p>
-        <div class="news-location-actions"><button id="news-history-allow" class="news-location-primary" type="button">GPS History সংরক্ষণ করুন</button><button id="news-history-skip" class="news-location-secondary" type="button">সংরক্ষণ করবেন না</button></div>
-      </section>
-      <section id="news-location-settings-card" class="news-location-card" aria-label="GPS history settings" hidden>
-        <p class="news-location-card-title">Location History Settings</p>
-        <p id="news-location-settings-text"></p>
-        <div class="news-location-actions"><button id="news-history-enable" class="news-location-primary" type="button" hidden>GPS History চালু করুন</button><button id="news-history-stop" class="news-location-secondary" type="button" hidden>সংরক্ষণ বন্ধ করুন</button><button id="news-history-delete" class="news-location-secondary" type="button">আমার GPS History মুছে দেওয়ার অনুরোধ পাঠান</button><button id="news-location-settings-close" class="news-location-secondary" type="button">বন্ধ করুন</button></div>
-      </section>
-    </div>
+    </section>
     <nav id="subcategories" class="subcategory-toolbar" aria-label="Filter by subcategory" hidden></nav>
     <div class="news-edition-strip" aria-label="News edition information"><strong>KOKUSHIBU74 · NEWS DESK</strong><time id="news-edition-date">BANGLADESH EDITION</time><span class="edition-live">LIVE EDITION</span></div>
     <div id="latest-feed" class="news-feed-heading"><div><p class="kicker">NEWS FEED</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
@@ -614,7 +597,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
   <script type="module" src="news-install.mjs?v=3"></script>
-  <script type="module" src="news.js?v=29"></script>
+  <script type="module" src="news.js?v=30"></script>
 
 
 <script src="shared-shell.js?v=8" defer></script>
