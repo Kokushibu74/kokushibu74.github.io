@@ -36,7 +36,7 @@ async function cfMonitorGraphQL(env,query,variables) {
 }
 function cfMonitorNumber(value){const n=Number(value);return Number.isFinite(n)?n:0;}
 function cfMonitorMax(rows,path){return (rows||[]).reduce((max,row)=>Math.max(max,cfMonitorNumber(row?.max?.[path])),0);}
-function cfMonitorAction(rows,action){return (rows||[]).reduce((total,row)=>total+(String(row?.dimensions?.actionType||"").toLowerCase()===action?cfMonitorNumber(row?.sum?.requests):0),0);}
+function cfMonitorAction(rows,action,date=null){return (rows||[]).reduce((total,row)=>total+(String(row?.dimensions?.actionType||"").toLowerCase()===action&&(!date||String(row?.dimensions?.date||"").slice(0,10)===date)?cfMonitorNumber(row?.sum?.requests):0),0);}
 async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
   const day=now.toISOString().slice(0,10),month=day.slice(0,7),monthStart=month+"-01",
@@ -47,7 +47,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     const fields=batch.flatMap((namespace,offset)=>{
       const index=start+offset;
       return [
-        "  kvOps"+index+": kvOperationsAdaptiveGroups(limit: 1000, filter: { namespaceId: \""+namespace.id+"\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType } }",
+        "  kvOps"+index+": kvOperationsAdaptiveGroups(limit: 1000, filter: { namespaceId: \""+namespace.id+"\", date_geq: $start, date_leq: $end }) { sum { requests } dimensions { actionType date } }",
         "  kvStorage"+index+": kvStorageAdaptiveGroups(limit: 1000, filter: { namespaceId: \""+namespace.id+"\", date_geq: $storageStart, date_leq: $end }) { max { byteCount keyCount } dimensions { date } }"
       ];
     });
@@ -101,7 +101,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
       kvStorageRows.push(account["kvStorage"+(start+offset)]||[]);
     }
   }
-  const kvAction=action=>kvOpsRows.reduce((sum,rows)=>sum+cfMonitorAction(rows,action),0);
+  const kvAction=(action,date=null)=>kvOpsRows.reduce((sum,rows)=>sum+cfMonitorAction(rows,action,date),0);
   const d1Usage=d1Account.d1Usage||[];
   const d1RowsRead=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsRead),0);
   const d1RowsWritten=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsWritten),0);
@@ -111,10 +111,10 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     {key:"workers_requests",label:"Workers requests (account-wide, monthly)",used:workers,limit:10000000,unit:"requests",period:"monthly"},
     {key:"workers_cpu_ms",label:"Workers CPU time (account-wide, monthly)",used:workersCpuMs,limit:30000000,unit:"ms",period:"monthly"},
     {key:"workers_ai_neurons",label:"Workers AI neurons (daily free allocation, sampled estimate)",used:aiNeurons,limit:10000,unit:"neurons",period:"daily"},
-    {key:"kv_reads",label:"KV reads (all 6 namespaces, monthly)",used:kvAction("read"),limit:10000000,unit:"operations",period:"monthly"},
-    {key:"kv_writes",label:"KV writes (all 6 namespaces, monthly)",used:kvAction("write"),limit:1000000,unit:"operations",period:"monthly"},
-    {key:"kv_deletes",label:"KV deletes (all 6 namespaces, monthly)",used:kvAction("delete"),limit:1000000,unit:"operations",period:"monthly"},
-    {key:"kv_lists",label:"KV list operations (all 6 namespaces, monthly)",used:kvAction("list"),limit:1000000,unit:"operations",period:"monthly"},
+    {key:"kv_reads",label:"KV reads (all 6 namespaces, daily Free allowance)",used:kvAction("read",day),limit:100000,unit:"operations",period:"daily"},
+    {key:"kv_writes",label:"KV writes (all 6 namespaces, daily Free allowance)",used:kvAction("write",day),limit:1000,unit:"operations",period:"daily"},
+    {key:"kv_deletes",label:"KV deletes (all 6 namespaces, daily Free allowance)",used:kvAction("delete",day),limit:1000,unit:"operations",period:"daily"},
+    {key:"kv_lists",label:"KV list operations (all 6 namespaces, daily Free allowance)",used:kvAction("list",day),limit:1000,unit:"operations",period:"daily"},
     {key:"kv_storage",label:"KV storage (all 6 namespaces)",used:kvBytes,limit:1073741824,unit:"bytes",period:"storage"},
     {key:"d1_rows_read",label:"D1 rows read (monthly)",used:d1RowsRead,limit:25000000000,unit:"rows",period:"monthly"},
     {key:"d1_rows_written",label:"D1 rows written (monthly)",used:d1RowsWritten,limit:50000000,unit:"rows",period:"monthly"},
@@ -142,6 +142,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
       "<b>"+severity.label+" · "+Math.round(highestPct)+"% usage</b>",
       "🕒 Checked: "+now.toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT",
       "📅 Billing month: "+month+" UTC",
+      "🗃️ KV daily allowance resets at 00:00 UTC.",
       "🤖 Workers AI allocation day: "+day+" UTC",
       "ℹ️ Usage is a Cloudflare Analytics estimate, not a billing statement.",
       ""
@@ -165,7 +166,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
       if(m.label.includes("all 6 namespaces"))lines.push("📦 Scope: 6 KV namespaces");
       lines.push("");
     }
-    lines.push("<i>AUTOMATED MONITOR · CLOUDFLARE STANDARD PLAN</i>");
+    lines.push("<i>AUTOMATED MONITOR · CLOUDFLARE RESOURCE BUDGET</i>");
     await sendTelegram(lines.join("\n"));
     for(const item of pending){
       const ttl=item.metric.period==="daily"?48*3600:item.metric.period==="monthly"?45*86400:365*86400;
@@ -517,12 +518,19 @@ async function umHistory(env,kind,id,event){
 async function umTelegramTouch(env,msg){
   const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
   let old={};try{old=await env.VISITOR_KV.get(key,"json")||{}}catch{}
+  const username=umClean(msg.from.username,80),firstName=umClean(msg.from.first_name,80),
+    lastName=umClean(msg.from.last_name,80),languageCode=umClean(msg.from.language_code,20);
   const profile={kind:"telegram",id,telegramId:id,firstSeen:old.firstSeen||now,lastSeen:now,
-    username:umClean(msg.from.username,80),firstName:umClean(msg.from.first_name,80),
-    lastName:umClean(msg.from.last_name,80),languageCode:umClean(msg.from.language_code,20),
-    isBot:!!msg.from.is_bot,customId:old.customId||null};
-  await env.VISITOR_KV.put(key,JSON.stringify(profile),{expirationTtl:31536000});
-  await umHistory(env,"telegram",id,{type:"message_received",command:/^\//.test(String(msg.text||""))?String(msg.text).trim().split(/\s+/)[0].slice(0,40):"message",chatType:msg.chat.type||"unknown"});
+    username,firstName,lastName,languageCode,isBot:!!msg.from.is_bot,customId:old.customId||null};
+  const metadataChanged=old.kind!=="telegram"||old.username!==username||old.firstName!==firstName||
+    old.lastName!==lastName||old.languageCode!==languageCode||old.isBot!==!!msg.from.is_bot;
+  if(metadataChanged||!Number(old.lastSeen)||now-Number(old.lastSeen)>=15*60*1000){
+    await env.VISITOR_KV.put(key,JSON.stringify(profile),{expirationTtl:31536000});
+  }
+  const command=(String(msg.text||"").trim().split(/\s+/)[0]||"").split("@")[0].toLowerCase();
+  if(command.startsWith("/")&&!["/start","/menu","/cmd"].includes(command)){
+    await umHistory(env,"telegram",id,{type:"command_received",command:command.slice(0,40),chatType:msg.chat.type||"unknown"});
+  }
 }
 async function umResolve(env,input){
   const raw=String(input||"").trim();if(!raw)return null;
@@ -663,24 +671,22 @@ const BOT_MENU_KEY_PREFIX = "bot:menu:v1:";
 const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
   if(!env.BOT_CONFIG_KV)return;
-  const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId);
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:Date.now(),busy:!!busy}));
+  const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId),now=Date.now();
+  const last=Number(old?.lastInteractionAt||0);
+  if(last&&now-last<5*60*1000&&old?.busy===!!busy)return;
+  try{await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:now,busy:!!busy}));}
+  catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
 }
 async function botEnsureStartKeyboard(env,chatId){
-  // Set the Telegram chat menu to open the admin-only Mini App. The Worker API independently verifies Telegram initData and the admin allowlist.
+  // Keep the Control Center menu button available without sending another chat message on every /start.
   const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
   if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
-  // Keep the existing START BOT reply keyboard intact.
-  const sent=await botTelegram(env,"sendMessage",{chat_id:chatId,text:"Mini App খুলতে chat input-এর পাশে Control Center menu ব্যবহার করুন, অথবা নিচের START BOT বাটন চাপুন।",reply_markup:{keyboard:[[{text:BOT_START_LABEL}]],resize_keyboard:true,is_persistent:true,one_time_keyboard:false}});
-  if(!sent.ok)console.error("Telegram START BOT keyboard delivery failed",JSON.stringify({status:sent.status,description:String(sent.data?.description||"").slice(0,180)}));
 }
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
   await botEnsureStartKeyboard(env,msg.chat.id);
-  const old=await botGetMenuAnchor(env,msg.chat.id);
-  const fresh=await botSend(env,msg.chat.id,"🤖 PORTFOLIO CONTROL CENTER\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন।",botMainKeyboard(),{forceNew:true});
-  if(old?.messageId&&Number(old.messageId)!==Number(fresh?.message_id))await botTelegram(env,"deleteMessage",{chat_id:msg.chat.id,message_id:Number(old.messageId)});
-  await botMarkMenuInteraction(env,msg.chat.id,fresh?.message_id,false);
+  await botShowMenu(env,msg.chat.id);
+  await botMarkMenuInteraction(env,msg.chat.id,null,false);
   return true;
 }
 async function botExpireIdleMenu(env){
@@ -744,10 +750,8 @@ async function botSend(env,chatId,text,keyboard,options={}){
     try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
     catch(e){console.error("Telegram menu edit request failed; falling back to a new message",String(e&&e.message||e).slice(0,240))}
     if(edited?.ok||String(edited?.data?.description||"").toLowerCase().includes("message is not modified")){
-      try{await botRememberMenu(env,chatId,messageId)}catch(e){console.error("Telegram menu anchor refresh failed",String(e&&e.message||e).slice(0,240))}
       return edited?.data?.result||{message_id:messageId,chat:{id:chatId}};
     }
-    console.error("Telegram menu edit rejected; sending a fresh message",JSON.stringify({status:edited?.status,description:String(edited?.data?.description||"").slice(0,240)}));
   }
   const sent=await botTelegram(env,"sendMessage",payload);
   if(!sent.ok)throw new Error("Telegram menu delivery failed (HTTP "+sent.status+"): "+String(sent.data?.description||"unknown Telegram API error").slice(0,180));
@@ -758,7 +762,16 @@ async function botSend(env,chatId,text,keyboard,options={}){
     try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
     catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
   }
-  try{await botRememberMenu(env,chatId,newMessageId)}catch(e){console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240))}
+  try{
+    if(options.persistentMenu&&!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
+    await botRememberMenu(env,chatId,newMessageId);
+  }catch(e){
+    console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
+    if(options.persistentMenu&&newMessageId){
+      try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)})}catch{}
+      throw new Error("The menu could not be saved because its storage is unavailable. Use the Control Center chat menu button for now.");
+    }
+  }
   return sent.data.result;
 }
 async function botSendChatAction(env,chatId){
@@ -800,7 +813,7 @@ function botMainKeyboard(){
 }
 function botBackKeyboard(){return [[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]}
 async function botShowMenu(env,chatId,title="🤖 PORTFOLIO CONTROL CENTER"){
-  await botSend(env,chatId,title+"\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন। কোনো সেটিংস পরিবর্তনের আগে তার ON/OFF অবস্থা দেখে নিন।",botMainKeyboard());
+  return await botSend(env,chatId,title+"\n\nস্বাগতম! এখান থেকে ওয়েবসাইটের অবস্থা, News Feed, Visitor Analytics, Security, GitHub, Hero Image এবং Automation নিয়ন্ত্রণ করতে পারবেন।\n\nনিচের মেনু থেকে একটি বিভাগ বেছে নিন। কোনো সেটিংস পরিবর্তনের আগে তার ON/OFF অবস্থা দেখে নিন।",botMainKeyboard(),{persistentMenu:true});
 }
 async function botCategory(env,chatId,category){
   const cfg=await botConfig(env);
@@ -916,8 +929,9 @@ async function botHandleCallback(env,query){
   const action=data.slice(3);
   try{
     // Never overwrite the active menu anchor from a callback payload.
-    // botSend owns anchor updates after a successful edit/send.
+    // Limit persistent menu state writes while keeping idle cleanup accurate.
     await botAnswerCallback(env,query);
+    await botMarkMenuInteraction(env,chatId,query.message?.message_id,false);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
@@ -991,7 +1005,7 @@ async function umHandleCommand(env,msg){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);return true;}
+  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);await botMarkMenuInteraction(env,chatId,null,false);return true;}
   if(cmd==="/cmd"){
     const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
@@ -1257,7 +1271,8 @@ async function miniAppCronAlert(env,cron,status,detail){
   const failed=["warning","failed","failure","interrupted"].includes(String(status).toLowerCase());
   const wasFailed=previous?.failed===true;
   const shouldNotify=failed?!wasFailed:(!failed&&wasFailed&&status==="success");
-  if(!shouldNotify||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});return;}
+  if(!shouldNotify)return;
+  if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Mini App cron alert could not be delivered: Telegram configuration unavailable");return;}
   const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
   const title=failed?"🚨 <b>AUTOMATION FAILURE</b>":"✅ <b>AUTOMATION RECOVERED</b>";
   const body=[title,"⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)",(failed?"❌ ":"✅ ")+escape(detail||status)].join("\n");
