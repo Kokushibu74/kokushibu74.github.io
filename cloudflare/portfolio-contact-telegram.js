@@ -1464,7 +1464,7 @@ async function notifyNewsWatchdogFailure(env,error){
   const detail=String(error?.message||"").replace(/[\r\n\t]+/g," ").slice(0,220);
   const transient=/temporarily failed|temporary GitHub API/i.test(detail);
   const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
-  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\\nGitHub response: "+detail:"")+"\\n"+guidance;
+  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
   const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
