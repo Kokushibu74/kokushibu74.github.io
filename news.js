@@ -585,7 +585,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
     if(identity)await locationPost("/location-consent",{...identity,consent:false,policyVersion:"2026-11-06"}).catch(()=>{});
   };
   if(locationAllow)locationAllow.addEventListener("click",requestLocation);
-  if(locationNotNow)locationNotNow.addEventListener("click",async()=>{writeCookie(LOCATION_DECLINED_COOKIE,"later",7*24*60*60);await revokeLocationConsent();closeLocationPrompt()});
+  if(locationNotNow)locationNotNow.addEventListener("click",()=>{writeCookie(LOCATION_DECLINED_COOKIE,"later",7*24*60*60);closeLocationPrompt();revokeLocationConsent()});
   const priorHistoryConsent=(()=>{try{return localStorage.getItem("k74_location_history_consent_v1")}catch{return null}})();
   if(readCookie(LOCATION_CONSENT_COOKIE)==="yes"||priorHistoryConsent==="yes"){if(priorHistoryConsent==="yes"&&readCookie(LOCATION_CONSENT_COOKIE)!=="yes"){writeCookie(LOCATION_CONSENT_COOKIE,"yes",90*24*60*60);try{localStorage.removeItem("k74_location_history_consent_v1")}catch{}}if(navigator.permissions?.query)navigator.permissions.query({name:"geolocation"}).then(permission=>{if(permission.state==="granted")recordPreviouslyConsentedVisit();else if(permission.state==="prompt")showLocationPrompt()}).catch(showLocationPrompt);else showLocationPrompt()}else if(!readCookie(LOCATION_DECLINED_COOKIE))showLocationPrompt();
 
