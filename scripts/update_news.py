@@ -88,6 +88,7 @@ BREAKING_FOLLOWUP_RE = re.compile(
 )
 BREAKING_HISTORY_DAYS = 30
 FEED_RETENTION_DAYS = 90
+PREVIEW_FALLBACK_RETRY_HOURS = 6
 BANGLADESH_TZ = ZoneInfo("Asia/Dhaka")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
@@ -393,6 +394,29 @@ def resolve_alert_publisher_url(item, budget):
         return resolved if parsed.scheme == "https" and parsed.hostname and not parsed.hostname.endswith("google.com") else ""
     return link
 
+
+
+def preview_cache_is_fresh(item, now=None):
+    """Reuse successful publisher metadata indefinitely; retry fallback-only cache every six hours.
+    Legacy cache entries without an explicit status are retried once to establish their status.
+    """
+    status = str(item.get("previewMetadataStatus") or "").lower()
+    if status == "success":
+        return True
+    if status != "fallback":
+        return False
+    checked_text = item.get("previewCheckedAt")
+    try:
+        checked = datetime.fromisoformat(str(checked_text).replace("Z", "+00:00"))
+        if checked.tzinfo is None:
+            checked = checked.replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return False
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    age = current - checked
+    return timedelta(0) <= age < timedelta(hours=PREVIEW_FALLBACK_RETRY_HOURS)
 
 
 def publisher_metadata(url):
@@ -1108,7 +1132,7 @@ def main():
     for item in weather_collected:
         cached = old_weather_metadata.get(key_for(item), {})
         for field in ("publisherUrl", "publisherName", "previewTitle", "previewSummary",
-                      "previewImage", "previewScreenshot", "previewCheckedAt", "videoUrl"):
+                      "previewImage", "previewScreenshot", "previewCheckedAt", "previewMetadataStatus", "videoUrl"):
             if cached.get(field) not in (None, ""):
                 item[field] = cached[field]
     weather_preview_candidates = weather_collected[:12]
@@ -1118,15 +1142,17 @@ def main():
     weather_rss_fallback = 0
     for item in weather_preview_candidates:
         cached_image = weather_preview_image(item)
-        if cached_image and item.get("previewCheckedAt"):
+        if cached_image and preview_cache_is_fresh(item):
             item["previewImage"] = cached_image
             weather_cached += 1
             continue
         metadata = publisher_metadata(item.get("link", ""))
         if metadata:
             item.update(metadata)
+            item["previewMetadataStatus"] = "success"
             weather_enriched += 1
         else:
+            item["previewMetadataStatus"] = "fallback"
             weather_unavailable += 1
         item.setdefault("publisherName", item.get("source", "Original publisher"))
         item.setdefault("previewTitle", item.get("title", ""))
@@ -1150,7 +1176,7 @@ def main():
 
     # Reuse publisher metadata from the last feed run for unchanged stories.
     old_metadata = {key_for(item): item for item in previous}
-    preview_fields = ("publisherUrl", "publisherName", "previewTitle", "previewSummary", "previewImage", "previewScreenshot", "iframeAllowed", "previewCheckedAt")
+    preview_fields = ("publisherUrl", "publisherName", "previewTitle", "previewSummary", "previewImage", "previewScreenshot", "iframeAllowed", "previewCheckedAt", "previewMetadataStatus")
     for item in collected:
         cached = old_metadata.get(key_for(item), {})
         for field in preview_fields:
@@ -1166,9 +1192,15 @@ def main():
     metadata_attempts = 0
     metadata_unavailable = 0
     metadata_cached = 0
+    metadata_cached_success = 0
+    metadata_cached_fallback = 0
     for item in preview_candidates:
-        if item.get("previewTitle") and item.get("previewCheckedAt"):
+        if preview_cache_is_fresh(item):
             metadata_cached += 1
+            if item.get("previewMetadataStatus") == "success":
+                metadata_cached_success += 1
+            else:
+                metadata_cached_fallback += 1
             continue
         source_link = item.get("link", "")
         resolved_link = resolve_google_news_url(source_link) if urlparse(source_link).hostname and urlparse(source_link).hostname.endswith("news.google.com") else source_link
@@ -1182,9 +1214,11 @@ def main():
             metadata = {}
         if metadata:
             item.update(metadata)
+            item["previewMetadataStatus"] = "success"
             enriched += 1
         else:
             metadata_unavailable += 1
+            item["previewMetadataStatus"] = "fallback"
             # Keep the direct publisher link and RSS summary when publisher pages block bots.
             item.setdefault("publisherName", item.get("source", "Original publisher"))
             item.setdefault("previewTitle", item.get("title", ""))
@@ -1193,6 +1227,7 @@ def main():
             item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
     print("Publisher preview checks: attempted:", metadata_attempts, "metadata fetched:", enriched,
           "unavailable:", metadata_unavailable, "cached/reused:", metadata_cached,
+          "cached_success:", metadata_cached_success, "cached_fallback:", metadata_cached_fallback,
           "Google News URLs resolved:", resolved_count)
 
     # Merge recent known-good items behind fresh results so a temporary RSS outage

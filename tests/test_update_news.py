@@ -500,5 +500,28 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(missing["invalid"], 1)
         self.assertEqual(wrong["invalid"], 1)
 
+
+    def test_successful_publisher_metadata_cache_is_reused(self):
+        now = datetime(2026, 11, 5, 12, 0, tzinfo=timezone.utc)
+        item = {"previewMetadataStatus": "success", "previewCheckedAt": "2026-10-01T00:00:00+00:00"}
+        self.assertTrue(news.preview_cache_is_fresh(item, now))
+
+    def test_fallback_publisher_metadata_cache_is_retried_after_six_hours(self):
+        now = datetime(2026, 11, 5, 12, 0, tzinfo=timezone.utc)
+        recent = {"previewMetadataStatus": "fallback", "previewCheckedAt": "2026-11-05T08:30:00+00:00"}
+        expired = {"previewMetadataStatus": "fallback", "previewCheckedAt": "2026-11-05T05:30:00+00:00"}
+        self.assertTrue(news.preview_cache_is_fresh(recent, now))
+        self.assertFalse(news.preview_cache_is_fresh(expired, now))
+
+    def test_legacy_publisher_cache_without_status_is_retried_for_classification(self):
+        now = datetime(2026, 11, 5, 12, 0, tzinfo=timezone.utc)
+        legacy = {"previewTitle": "RSS title fallback", "previewCheckedAt": "2026-11-05T11:55:00+00:00"}
+        self.assertFalse(news.preview_cache_is_fresh(legacy, now))
+
+    def test_malformed_fallback_cache_timestamp_is_not_reused(self):
+        now = datetime(2026, 11, 5, 12, 0, tzinfo=timezone.utc)
+        item = {"previewMetadataStatus": "fallback", "previewCheckedAt": "not-a-date"}
+        self.assertFalse(news.preview_cache_is_fresh(item, now))
+
 if __name__ == "__main__":
     unittest.main()
