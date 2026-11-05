@@ -136,5 +136,88 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("N/A — no new metadata requests", message)
         self.assertIn("Cached/reused: <b>14</b>", message)
         self.assertNotIn("Not reported (attempt count unavailable)", message)
+
+    def test_scheduled_success_is_suppressed_after_recent_successful_manual_refresh(self):
+        context = {
+            "workflow_name": "Refresh live news feed",
+            "event_name": "schedule",
+            "conclusion": "success",
+            "run_id": "scheduled-2",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-05T06:37:10Z",
+        }
+        captured = {}
+
+        def fake_get(url, _token):
+            captured["url"] = url
+            return b'{"workflow_runs":[{"id":41981409979,"conclusion":"success","updated_at":"2026-11-05T06:36:04Z"}]}'
+
+        self.assertTrue(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
+        self.assertIn("event=workflow_dispatch", captured["url"])
+        self.assertIn("update-news.yml", captured["url"])
+
+    def test_manual_run_older_than_window_does_not_suppress(self):
+        context = {
+            "workflow_name": "Refresh live news feed",
+            "event_name": "schedule",
+            "conclusion": "success",
+            "run_id": "scheduled-2",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-05T06:50:00Z",
+        }
+        def fake_get(_url, _token):
+            return b'{"workflow_runs":[{"id":1,"conclusion":"success","updated_at":"2026-11-05T06:34:59Z"}]}'
+        self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
+
+    def test_failed_manual_run_does_not_suppress_successful_schedule(self):
+        context = {
+            "workflow_name": "Refresh live news feed",
+            "event_name": "schedule",
+            "conclusion": "success",
+            "run_id": "scheduled-2",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-05T06:37:10Z",
+        }
+        def fake_get(_url, _token):
+            return b'{"workflow_runs":[{"id":1,"conclusion":"failure","updated_at":"2026-11-05T06:36:04Z"}]}'
+        self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=fake_get))
+
+    def test_failures_and_manual_reports_are_never_suppressed(self):
+        base = {
+            "workflow_name": "Refresh live news feed",
+            "run_id": "123",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-05T06:37:10Z",
+        }
+        def unexpected_get(_url, _token):
+            raise AssertionError("API should not be called for excluded events")
+        for event, conclusion in (("workflow_dispatch", "success"), ("schedule", "failure")):
+            context = dict(base, event_name=event, conclusion=conclusion)
+            self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=unexpected_get))
+
+    def test_github_api_error_fails_open_and_keeps_report(self):
+        context = {
+            "workflow_name": "Refresh live news feed",
+            "event_name": "schedule",
+            "conclusion": "success",
+            "run_id": "scheduled-2",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-05T06:37:10Z",
+        }
+        def broken_get(_url, _token):
+            raise OSError("offline")
+        self.assertFalse(report.should_suppress_scheduled_success(context, "fake-token", fetcher=broken_get))
+
+
 if __name__ == "__main__":
     unittest.main()
