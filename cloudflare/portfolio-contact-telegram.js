@@ -718,7 +718,8 @@ async function botRememberMenu(env,chatId,messageId,onlyIfMissing=false){
   if(!env.BOT_CONFIG_KV||!messageId)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId);
   if(onlyIfMissing){const old=await botGetMenuAnchor(env,chatId);if(old?.messageId)return;}
-  const prior=await botGetMenuAnchor(env,chatId);await env.BOT_CONFIG_KV.put(key,JSON.stringify({...prior,chatId:String(chatId),messageId:Number(messageId),updatedAt:Date.now()}));
+  const prior=await botGetMenuAnchor(env,chatId),now=Date.now();
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({...prior,chatId:String(chatId),messageId:Number(messageId),updatedAt:now,lastInteractionAt:now}));
 }
 async function botAnswerCallback(env,query,text,showAlert=false){
   if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
