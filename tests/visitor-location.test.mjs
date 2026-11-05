@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
 const news = readFileSync(new URL("../news.js", import.meta.url), "utf8");
 const newsHtml = readFileSync(new URL("../news.html", import.meta.url), "utf8");
+const tracker = readFileSync(new URL("../visitor-tracking.js", import.meta.url), "utf8");
 
 test("deployed User Manager hotfixes are preserved in the repository source", () => {
   assert.match(worker, /const UM_PREFIX = "um:v1:"/);
