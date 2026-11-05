@@ -112,5 +112,23 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         published = (datetime.now(timezone.utc) - timedelta(minutes=61)).isoformat()
         self.assertFalse(news.is_recent_breaking("ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো", published, "direct-rss"))
 
+    def test_recent_breaking_signal_in_summary_is_detected(self):
+        published = (datetime.now(timezone.utc) - timedelta(minutes=10)).isoformat()
+        self.assertTrue(news.is_recent_breaking(
+            "শ্রমিকের অবস্থা সংকটাপন্ন", published, "direct-rss",
+            "Jago News 24", "ঢাকায় সংঘর্ষে আহত শ্রমিক মারা গেলো"
+        ))
+
+    def test_duplicate_merge_promotes_breaking_flag_from_later_source(self):
+        item = {"isBreaking": False, "sourceEvidence": []}
+        news.merge_duplicate_source(item, "Jago News 24", category="Bangladesh", is_breaking=True)
+        self.assertTrue(item["isBreaking"])
+        self.assertEqual(item["sourceEvidence"], ["Jago News 24"])
+
+    def test_duplicate_merge_never_downgrades_existing_breaking_flag(self):
+        item = {"isBreaking": True, "sourceEvidence": []}
+        news.merge_duplicate_source(item, "Prothom Alo", category="Bangladesh", is_breaking=False)
+        self.assertTrue(item["isBreaking"])
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
