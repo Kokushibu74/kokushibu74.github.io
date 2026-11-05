@@ -6,6 +6,7 @@ const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js
 const news = readFileSync(new URL("../news.js", import.meta.url), "utf8");
 const newsHtml = readFileSync(new URL("../news.html", import.meta.url), "utf8");
 const tracker = readFileSync(new URL("../visitor-tracking.js", import.meta.url), "utf8");
+const sharedShell = readFileSync(new URL("../shared-shell.js", import.meta.url), "utf8");
 
 test("deployed User Manager hotfixes are preserved in the repository source", () => {
   assert.match(worker, /const UM_PREFIX = "um:v1:"/);
@@ -87,6 +88,9 @@ test("Visitor identity wait resolves the stored identity without recursive self-
 
 test("News Page requests GPS only after a user click and preserves default feed on failure", () => {
   assert.ok(tracker.includes("window.__K74_TRACKING_READY__"));
+  assert.ok(tracker.includes("send(data,true)"));
+  assert.ok(sharedShell.includes("visitor-tracking.js?v=3"));
+  assert.ok(newsHtml.includes("shared-shell.js?v=8"));
   assert.ok(tracker.includes("k74:visitor-tracked"));
   assert.match(news, /navigator\.geolocation\.getCurrentPosition/);
   assert.match(news, /locationAllow\.addEventListener\("click",requestLocation\)/);

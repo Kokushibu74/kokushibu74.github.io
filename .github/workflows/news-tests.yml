@@ -12,6 +12,7 @@ on:
       - "shared-shell.js"
       - "news-location.mjs"
       - "tests/news-location.test.mjs"
+      - "tests/visitor-location.test.mjs"
       - "news.html"
       - "manifest.webmanifest"
       - "news-install.mjs"
@@ -77,8 +78,10 @@ jobs:
       - name: Check browser JavaScript syntax and feed refresh contracts
         run: |
           node --check news.js
+          node --check visitor-tracking.js
           node --check news-location.mjs
           node --test tests/news-location.test.mjs
+          node tests/visitor-location.test.mjs
           node --check news-install.mjs
           node --check homepage-news.js
           node tests/news-client-optimization.test.mjs
