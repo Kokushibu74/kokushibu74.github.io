@@ -563,6 +563,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
     }
   }
 
+  // Cookies remember consent only; browser geolocation permission is still required.
   const LOCATION_API="https://portfolio-contact-telegram.mdshihab74.workers.dev";
   const LOCATION_CONSENT_COOKIE="k74_location_consent_v2",LOCATION_DECLINED_COOKIE="k74_location_declined_v2";
   const locationModal=document.getElementById("news-location-modal"),locationAllow=document.getElementById("news-location-allow"),locationNotNow=document.getElementById("news-location-not-now");
