@@ -1,6 +1,9 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 
+// Shared namespace prefix for User Manager profiles and event history.
+const UM_PREFIX = "um:v1:";
+
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
 const CF_MONITOR_KV_NAMESPACES = [
@@ -480,6 +483,28 @@ async function umList(env,prefix,limit=1000,maxPages=2){
   out.truncated=!!cursor;
   return out;
 }
+
+async function umLocationHistory(env,id,pageNo=1){
+  const prefix="loc:v1:history:visitor:"+id+":";
+  const keys=await umList(env,prefix,1000,20);
+  const sorted=keys.slice().sort((a,b)=>String(b.name).localeCompare(String(a.name)));
+  const pageSize=4,total=keys.length,totalPages=Math.max(1,Math.ceil(total/pageSize));
+  const page=Math.max(1,Math.min(totalPages,Number(pageNo)||1)),start=(page-1)*pageSize;
+  const selected=sorted.slice(start,start+pageSize);
+  const records=(await Promise.all(selected.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
+  return {records,total,page,pageSize,totalPages,truncated:!!keys.truncated};
+}
+function umLocationReportKeyboard(id,history,directoryPage=1){
+  const rows=[];
+  if(history?.totalPages>1){
+    const nav=[];
+    if(history.page>1)nav.push({text:"⬅️ Newer locations",callback_data:"b1:users:visitor:"+id+":"+(history.page-1)+":"+directoryPage});
+    if(history.page<history.totalPages)nav.push({text:"Older locations ➡️",callback_data:"b1:users:visitor:"+id+":"+(history.page+1)+":"+directoryPage});
+    if(nav.length)rows.push(nav);
+  }
+  rows.push([{text:"⬅️ User Directory",callback_data:"b1:users:list:"+directoryPage}]);
+  return rows;
+}
 async function umHistory(env,kind,id,event){
   const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
   const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+at+"-"+salt;
@@ -511,14 +536,16 @@ async function umProfile(env,user){
 async function umBlocked(env,kind,id){
   try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
 }
-async function umReply(env,chatId,text){
+async function umReply(env,chatId,text,keyboard=botBackKeyboard(),options={}){
   if(!env.TELEGRAM_BOT_TOKEN)return;
-  await botSend(env,chatId,text,botBackKeyboard());
+  await botSend(env,chatId,text,keyboard,options);
 }
 
+function umClean(value,max=120){return umValue(value,"").slice(0,Math.max(0,Number(max)||120));}
+function umDate(value=Date.now()){const d=new Date(value);if(!Number.isFinite(d.getTime()))return "unknown";const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(d);const pick=t=>parts.find(p=>p.type===t)?.value||"00";return pick("year")+"-"+pick("month")+"-"+pick("day");}
 function umValue(value,fallback="Unknown"){const s=String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim();return s||fallback;}
 function umTime(value){if(!value)return "Unknown";const t=Date.parse(String(value));if(!Number.isFinite(t))return umValue(value);return new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(t))+" BDT";}
-function umVisitorReport(id,p){
+function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,truncated:false}){
   const n=p?.network||{},d=p?.device||{},src=p?.source||{},perf=p?.performance||{};
   const value=(v,fallback="Not available")=>umValue(v,fallback);
   const time=v=>{
@@ -550,6 +577,21 @@ function umVisitorReport(id,p){
       ["Country",n.country],["Region",n.region],["City",n.city],
       ["Timezone",n.timezone],["Cloudflare PoP",n.colo],
       ["Location accuracy","IP-based estimate"]
+    ]),
+    section("01A","🗺️","LOCATION HISTORY",[
+      ...(history.total?[[ "Saved records",String(history.total)+(history.truncated?"+":"")+" · Page "+history.page+"/"+history.totalPages ]]:[]),
+      ...(history.records||[]).map((record,index)=>{
+        const lat=Number(record.latitude),lon=Number(record.longitude);
+        const coordinates=Number.isFinite(lat)&&Number.isFinite(lon)?lat.toFixed(5)+", "+lon.toFixed(5):"Not available";
+        const accuracy=Number.isFinite(Number(record.accuracyMeters))?"±"+Math.round(Number(record.accuracyMeters))+" m":"Not available";
+        const map=Number.isFinite(lat)&&Number.isFinite(lon)?"https://www.google.com/maps?q="+lat.toFixed(6)+","+lon.toFixed(6):"Not available";
+        const bdt=value(record.capturedAtBdt||time(record.capturedAtUtc));
+        const utc=value(record.capturedAtUtc);
+        const area=record.locality?" · Area: "+value(record.locality):"";
+        return ["GPS "+((history.page-1)*history.pageSize+index+1)+" · "+bdt,"UTC: "+utc+" · Coordinates: "+coordinates+" · Accuracy: "+accuracy+" · Source: "+value(record.source,"browser-geolocation")+area+" · Map: "+map];
+      }),
+      ...(!(history.records||[]).length?[[ "GPS History","No GPS location history saved (separate consent required)." ]]:[]),
+      ...(history.truncated?[[ "History note","KV scan reached its safety limit; older records may not be listed." ]]:[])
     ]),
     "",
     section("02","📱","DEVICE",[
@@ -587,7 +629,7 @@ function umVisitorReport(id,p){
     ]),
     "",
     "ⓘ  LOCATION & PRIVACY",
-    "IP-based location is approximate. Device and network details depend on browser-provided signals. VPN, Tor and bot identity are not confirmed."
+    "IP-based location is approximate. GPS History is stored only with separate consent, retained up to 90 days, and visible only to authorized Telegram admins. Device and network details depend on browser-provided signals; VPN, Tor and bot identity are not confirmed."
   ];
   return lines.join("\n");
 }
@@ -910,7 +952,16 @@ async function botHandleCallback(env,query){
     }
     if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action);return true}
     if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
-    if(action==="users:list"){await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid 1",chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
+    if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
+    if(action.startsWith("users:visitor:")){
+      const parts=action.split(":"),id=String(parts[2]||"").toUpperCase(),page=Math.max(1,Math.min(999,Number(parts[3])||1)),directoryPage=Math.max(1,Math.min(999,Number(parts[4])||1));
+      if(!/^VIS-[A-F0-9]{12}$/.test(id)){await botSend(env,chatId,"Invalid Visitor ID.",botBackKeyboard());return true}
+      const profile=await umProfile(env,{kind:"visitor",id});
+      if(!profile){await botSend(env,chatId,"Visitor profile not found.",botBackKeyboard());return true}
+      const history=await umLocationHistory(env,id,page);
+      await botSend(env,chatId,umVisitorReport(id,profile,history),umLocationReportKeyboard(id,history,directoryPage));
+      return true;
+    }
     if(action==="users:stats"){await botRunWithProgress(env,chatId,"User Manager-এর পরিসংখ্যান সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userstats",chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
     if(["search","history","link","block","rename","visitorinfo"].includes(action.split(":")[1])&&action.startsWith("users:")){
       if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is unavailable.",botBackKeyboard());return true;}
@@ -999,14 +1050,23 @@ async function umHandleCommand(env,msg){
       for(const k of vis){const p=await env.VISITOR_KV.get(k.name,"json");if(p)all.push({kind:"visitor",id:p.id||p.visitorId,customId:p.customId,name:p.device?.deviceModel||p.device?.deviceType||"Website visitor"});}
       const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
       all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
-      const start=(pageNo-1)*limit,items=all.slice(start,start+limit);
-      const lines=items.map((u,i)=>(start+i+1)+". "+(u.kind==="telegram"?"TG":"WEB")+" · "+(u.customId||u.id)+" · "+u.name);
-      await umReply(env,chatId,"👥 User list — page "+pageNo+"\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nমোট: "+all.length+" · পরের পৃষ্ঠা: /userid "+(pageNo+1)); 
+      const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
+      const htmlSafe=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      const lines=items.map((u,i)=>u.kind==="visitor"
+        ?"<b>"+(start+i+1)+". WEB</b> · "+htmlSafe(u.name)+(u.customId?" · "+htmlSafe(u.customId):"")
+        :"<b>"+(start+i+1)+". TG</b> · <code>"+htmlSafe(u.id)+"</code> · "+htmlSafe(u.name));
+      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]);
+      const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
+      keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
+      const body="<b>👥 USER DIRECTORY</b>\n<code>Page "+pageNo+" / "+totalPages+" · "+all.length+" users</code>\n\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
+      await umReply(env,chatId,body,keyboard,{parse_mode:"HTML"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
       const p=await umProfile(env,user)||{};
-      if(user.kind==="visitor"){await umReply(env,chatId,umVisitorReport(user.id,p));}
-      else{const blocked=await umBlocked(env,"telegram",user.id),custom=p.customId||"—",link=await env.VISITOR_KV.get(UM_PREFIX+"link:telegram:"+user.id,"json");const lines=["👤 USER INFO","Type: telegram","Original ID: "+user.id,"Custom ID: "+custom,"Linked ID: "+(link?.visitorId||"—"),"Name: "+(p.firstName||p.username||"—"),"First seen: "+(p.firstSeen?new Date(p.firstSeen).toISOString():"—"),"Last seen: "+(p.lastSeen?new Date(p.lastSeen).toISOString():"—"),"Blocked: "+(blocked?"Yes":"No"),"Username: "+(p.username?"@"+p.username:"—"),"Language: "+(p.languageCode||"—")];await umReply(env,chatId,lines.join("\n"));}
+      if(user.kind==="visitor"){
+        const history=await umLocationHistory(env,user.id,Number(parts[1])||1);
+        await umReply(env,chatId,umVisitorReport(user.id,p,history),umLocationReportKeyboard(user.id,history));
+      }else{const blocked=await umBlocked(env,"telegram",user.id),custom=p.customId||"—",link=await env.VISITOR_KV.get(UM_PREFIX+"link:telegram:"+user.id,"json");const lines=["👤 USER INFO","Type: telegram","Original ID: "+user.id,"Custom ID: "+custom,"Linked ID: "+(link?.visitorId||"—"),"Name: "+(p.firstName||p.username||"—"),"First seen: "+(p.firstSeen?new Date(p.firstSeen).toISOString():"—"),"Last seen: "+(p.lastSeen?new Date(p.lastSeen).toISOString():"—"),"Blocked: "+(blocked?"Yes":"No"),"Username: "+(p.username?"@"+p.username:"—"),"Language: "+(p.languageCode||"—")];await umReply(env,chatId,lines.join("\n"));}
     }else if(cmd==="/userrename"){
       const user=await umResolve(env,arg),custom=String(parts[1]||"").trim();
       if(!user||!custom||!/^[a-zA-Z0-9_-]{3,32}$/.test(custom)){await umReply(env,chatId,"ব্যবহার: /userrename ID CUSTOM (৩–৩২ অক্ষর; ইংরেজি, সংখ্যা, _ বা -)");return true;}
@@ -1645,7 +1705,7 @@ export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
     const allowedOrigin = "https://kokushibu74.github.io";
-    const cors = {"Access-Control-Allow-Origin":allowedOrigin,"Access-Control-Allow-Methods":"POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Vary":"Origin"};
+    const cors = {"Access-Control-Allow-Origin":allowedOrigin,"Access-Control-Allow-Methods":"GET, POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Vary":"Origin"};
     const respond = (body,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"}});
     if(origin&&origin!==allowedOrigin)return new Response("Forbidden",{status:403});
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
@@ -1736,6 +1796,79 @@ export default {
     }
 
     if(pathname==="/workflow-config"){const cfg=await botConfig(env);return respond({monitoring:!!cfg.monitoring,dailyReport:!!cfg.dailyReport,scheduledChecks:!!cfg.scheduledChecks,newsRefresh:!!cfg.newsRefresh,workflowAlerts:!!cfg.workflowAlerts,newsAlerts:!!cfg.newsAlerts,trafficAlerts:!!cfg.trafficAlerts,clientErrorAlerts:!!cfg.clientErrorAlerts,securityAlerts:!!cfg.securityAlerts,emergencyProtection:!!cfg.emergencyProtection});}
+
+    if(pathname==="/location-context"){
+      if(request.method!=="GET")return respond({ok:false,error:"Method not allowed"},405);
+      const cf=request.cf||{},clean=(v,n=100)=>String(v||"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
+      return respond({ok:true,city:clean(cf.city),region:clean(cf.region),country:clean(cf.country||request.headers.get("CF-IPCountry")),timezone:clean(cf.timezone,80)},200);
+    }
+    if(pathname==="/location-consent"){
+      if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
+      if(!env.VISITOR_KV)return respond({ok:false,error:"Visitor storage is unavailable"},503);
+      const rate=ipRateLimit(request,"location-consent",8,60000);
+      if(!rate.allowed)return respond({ok:false,error:"Too many consent changes. Retry shortly."},429);
+      const len=Number(request.headers.get("Content-Length")||0);if(len>4096)return respond({ok:false,error:"Payload too large"},413);
+      let data;try{data=await request.json()}catch{return respond({ok:false,error:"Invalid JSON"},400)}
+      const id=String(data.visitorId||""),session=String(data.sessionId||"");
+      if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({ok:false,error:"Invalid visitor/session ID"},400);
+      if(await umBlocked(env,"website",id))return respond({ok:false,error:"Website access restricted"},403);
+      const consent=data.consent===true,now=Date.now(),key="loc:v1:consent:"+id;
+      let previous={};try{previous=await env.VISITOR_KV.get(key,"json")||{}}catch{}
+      const record={visitorId:id,consent,policyVersion:String(data.policyVersion||"2026-11-05").slice(0,32),acceptedAtUtc:consent?(previous.acceptedAtUtc||new Date(now).toISOString()):(previous.acceptedAtUtc||null),updatedAtUtc:new Date(now).toISOString(),withdrawnAtUtc:consent?null:new Date(now).toISOString()};
+      await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
+      return respond({ok:true,consent,retentionDays:90},200);
+    }
+    if(pathname==="/location-history"){
+      if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
+      if(!env.VISITOR_KV)return respond({ok:false,error:"Visitor storage is unavailable"},503);
+      const rate=ipRateLimit(request,"location-history",6,60000);
+      if(!rate.allowed)return respond({ok:false,error:"Too many location updates. Retry shortly."},429);
+      const len=Number(request.headers.get("Content-Length")||0);if(len>4096)return respond({ok:false,error:"Payload too large"},413);
+      let data;try{data=await request.json()}catch{return respond({ok:false,error:"Invalid JSON"},400)}
+      const id=String(data.visitorId||""),session=String(data.sessionId||"");
+      if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({ok:false,error:"Invalid visitor/session ID"},400);
+      if(await umBlocked(env,"website",id))return respond({ok:false,error:"Website access restricted"},403);
+      const latitude=Number(data.latitude),longitude=Number(data.longitude),accuracy=Number(data.accuracyMeters);
+      if(!Number.isFinite(latitude)||latitude < -90||latitude > 90||!Number.isFinite(longitude)||longitude < -180||longitude > 180||!Number.isFinite(accuracy)||accuracy<0||accuracy>100000)return respond({ok:false,error:"Invalid coordinates or accuracy"},400);
+      const consent=await env.VISITOR_KV.get("loc:v1:consent:"+id,"json").catch(()=>null);
+      if(consent?.consent!==true)return respond({ok:false,error:"Separate GPS History consent is required"},403);
+      const profile=await env.VISITOR_KV.get("visitor:"+id,"json").catch(()=>null)||await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+id,"json").catch(()=>null);
+      if(!profile)return respond({ok:false,error:"Visitor profile is not ready; retry after the page tracker loads"},409);
+      if(profile.lastSessionId&&String(profile.lastSessionId)!==session)return respond({ok:false,error:"Visitor session mismatch"},403);
+      const now=Date.now(),utc=new Date(now).toISOString();
+      const bdt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"medium"}).format(new Date(now))+" BDT";
+      const salt=crypto.randomUUID?crypto.randomUUID().replace(/-/g,""):Math.random().toString(36).slice(2);
+      const key="loc:v1:history:visitor:"+id+":"+String(now).padStart(13,"0")+":"+salt;
+      const record={visitorId:id,latitude,longitude,accuracyMeters:Math.round(accuracy),source:"browser-geolocation",capturedAt:now,capturedAtUtc:utc,capturedAtBdt:bdt,locality:null,retentionDays:90};
+      await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
+      return respond({ok:true,recorded:true,retentionDays:90},200);
+    }
+    if(pathname==="/location-delete-request"){
+      if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
+      if(!env.VISITOR_KV)return respond({ok:false,error:"Visitor storage is unavailable"},503);
+      const rate=ipRateLimit(request,"location-delete-request",3,3600000);
+      if(!rate.allowed)return respond({ok:false,error:"A deletion request was recently submitted. Please wait before retrying."},429);
+      const len=Number(request.headers.get("Content-Length")||0);if(len>4096)return respond({ok:false,error:"Payload too large"},413);
+      let data;try{data=await request.json()}catch{return respond({ok:false,error:"Invalid JSON"},400)}
+      const id=String(data.visitorId||""),session=String(data.sessionId||"");
+      if(!/^VIS-[A-F0-9]{12}$/.test(id)||!/^SES-[A-F0-9]{12}$/.test(session))return respond({ok:false,error:"Invalid visitor/session ID"},400);
+      if(await umBlocked(env,"website",id))return respond({ok:false,error:"Website access restricted"},403);
+      const profile=await env.VISITOR_KV.get("visitor:"+id,"json").catch(()=>null)||await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+id,"json").catch(()=>null);
+      if(!profile)return respond({ok:false,error:"Visitor profile was not found"},404);
+      if(profile.lastSessionId&&String(profile.lastSessionId)!==session)return respond({ok:false,error:"Visitor session mismatch"},403);
+      const now=Date.now(),utc=new Date(now).toISOString(),salt=crypto.randomUUID?crypto.randomUUID().replace(/-/g,""):Math.random().toString(36).slice(2);
+      const key="loc:v1:delete-request:"+id+":"+String(now).padStart(13,"0")+":"+salt;
+      const bdt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(now))+" BDT";
+      await env.VISITOR_KV.put(key,JSON.stringify({visitorId:id,requestedAt:now,requestedAtUtc:utc,requestedAtBdt:bdt,status:"pending",scope:"gps-location-history-only"}),{expirationTtl:7776000});
+      const admins=[...new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(x=>/^\d{5,20}$/.test(x)))];
+      let adminNotified=false;
+      if(env.TELEGRAM_BOT_TOKEN&&admins.length){
+        const message="🗑 GPS HISTORY DELETION REQUEST\nVisitor ID: "+id+"\nRequested: "+bdt+"\nScope: GPS location history only\nReview the loc:v1:delete-request record and remove the matching loc:v1:history:visitor records after verification.";
+        const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true}).catch(()=>({ok:false}))));
+        adminNotified=sent.some(result=>result?.ok);
+      }
+      return respond({ok:true,requestSubmitted:true,adminNotified},200);
+    }
     if(pathname==="/track"){
       if(request.method!=="POST")return respond({error:"Method not allowed"},405);
       if(!env.VISITOR_KV)return respond({error:"Visitor tracking storage is not configured."},503);
@@ -1904,7 +2037,7 @@ export default {
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
         const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
-        if(pending?.mode){
+        if(pending?.mode && !String(msg.text||"").trim().startsWith("/")){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
           if(!adminSet.has(String(msg.from.id))){await botSend(env,msg.chat.id,"⛔ Admin access required.",botBackKeyboard());return new Response("OK");}
@@ -2103,3 +2236,4 @@ export default {
     }
   }
 };
+

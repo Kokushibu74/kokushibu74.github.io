@@ -8,6 +8,10 @@ on:
       - "scripts/news_telegram_report.py"
       - "tests/test_news_telegram_report.py"
       - "news.js"
+      - "visitor-tracking.js"
+      - "shared-shell.js"
+      - "news-location.mjs"
+      - "tests/news-location.test.mjs"
       - "news.html"
       - "manifest.webmanifest"
       - "news-install.mjs"
@@ -73,6 +77,8 @@ jobs:
       - name: Check browser JavaScript syntax and feed refresh contracts
         run: |
           node --check news.js
+          node --check news-location.mjs
+          node --test tests/news-location.test.mjs
           node --check news-install.mjs
           node --check homepage-news.js
           node tests/news-client-optimization.test.mjs

@@ -29,7 +29,13 @@
  const payload=()=>({visitorId,sessionId,page:location.pathname,referrer:cleanRef,utmSource:params.get("utm_source")||"",utmMedium:params.get("utm_medium")||"",utmCampaign:params.get("utm_campaign")||"",platform,deviceType,deviceModel,language:navigator.language||"",screen:screen.width+"x"+screen.height,viewport:innerWidth+"x"+innerHeight,pixelRatio:devicePixelRatio||1,browser,os,connection:conn?(conn.effectiveType||conn.type||"Available"):"Not exposed",connectionType:conn&&["wifi","cellular","ethernet"].includes(String(conn.type||"").toLowerCase())?String(conn.type).toLowerCase():"",performance:perf(),events:[]});
  const showBlockedNotice=()=>{if(document.getElementById("k74-visitor-blocked"))return;const box=document.createElement("div");box.id="k74-visitor-blocked";box.setAttribute("role","alert");box.textContent="এই Visitor ID-র জন্য ওয়েবসাইটের কিছু সেবা সীমাবদ্ধ করা হয়েছে।";box.style.cssText="position:fixed;z-index:2147483647;left:12px;right:12px;bottom:12px;padding:14px 16px;border:1px solid #f87171;border-radius:12px;background:#180b12;color:#fff;font:14px/1.5 system-ui,sans-serif;box-shadow:0 8px 28px #0008";document.documentElement.appendChild(box)};
  const send=(body,keepalive=false)=>{try{return fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive,credentials:"omit"}).then(res=>{if(res.status===403&&body.visitorId===visitorId)showBlockedNotice();return res}).catch(()=>{})}catch{return Promise.resolve()}};
- const data=payload();send(data);
+ const data=payload();
+ window.__K74_VISITOR_ID__=visitorId;
+ window.__K74_SESSION_ID__=sessionId;
+ window.__K74_TRACKING_READY__=send(data).then(response=>{
+  window.dispatchEvent(new CustomEvent("k74:visitor-tracked",{detail:{visitorId,sessionId,ok:!!response?.ok}}));
+  return response;
+ });
  let scrollMarks=new Set(),events=[];
  const record=(type)=>{if(events.length<30)events.push({type})};
  addEventListener("scroll",()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max>0){const p=Math.min(100,Math.round(scrollY/max*100));for(const m of [25,50,75,100])if(p>=m&&!scrollMarks.has(m)){scrollMarks.add(m);record("scroll")}}},{passive:true});
