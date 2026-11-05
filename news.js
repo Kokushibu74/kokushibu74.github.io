@@ -202,6 +202,15 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       '<h3>'+esc(title)+'</h3>'+(summary?'<p class="newspaper-summary">'+esc(summary)+'</p>':"")+
       '<div class="newspaper-metadata"><div class="newspaper-date-time">'+localPublishedMeta(date)+'</div>'+(source?'<div class="newspaper-source"><span class="newspaper-source-label">SOURCE</span><strong>'+esc(source)+'</strong></div>':"")+'</div></div>'+imageMarkup+'</a>';
   }
+  function estimateNewspaperStoryHeight(item){
+    const title=String(item.previewTitle||item.title||"Untitled news story");
+    const summary=String(item.previewSummary||item.summary||item.description||"").trim();
+    const hasImage=previewUrl(item)!=="#";
+    const hasSource=!!String(item.publisherName||item.source||"").trim();
+    const titleLines=Math.min(5,Math.max(1,Math.ceil(title.length/34)));
+    const summaryLines=summary?Math.min(3,Math.max(1,Math.ceil(summary.length/58))):0;
+    return 48+titleLines*25+summaryLines*18+(hasImage?76:0)+(hasSource?15:0);
+  }
   function renderNewspaperFeed(pageItems){
     const lead=pageItems[0];
     const remaining=pageItems.slice(1);
@@ -215,15 +224,31 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
     const order=viewMode==="feed"&&active==="All"
       ?[...preferred.filter(category=>grouped.has(category)),...Array.from(grouped.keys()).filter(category=>!preferred.includes(category))]
       :Array.from(grouped.keys());
-    const sections=order.map(category=>{
-      const stories=grouped.get(category)||[];
-      return '<section class="newspaper-section" aria-label="'+esc(category)+' news"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+stories.map((item,index)=>renderNewspaperStory(item,{index})).join("")+'</section>';
+    const requestedColumns=window.matchMedia("(max-width: 1100px)").matches?2:3;
+    const columnCount=remaining.length<3?Math.max(1,remaining.length):Math.min(requestedColumns,remaining.length);
+    const lanes=Array.from({length:columnCount},()=>({groups:new Map(),height:0}));
+    order.forEach(category=>{
+      (grouped.get(category)||[]).forEach(item=>{
+        let laneIndex=0;
+        for(let i=1;i<lanes.length;i++)if(lanes[i].height<lanes[laneIndex].height)laneIndex=i;
+        const lane=lanes[laneIndex];
+        if(!lane.groups.has(category)){lane.groups.set(category,[]);lane.height+=38;}
+        lane.groups.get(category).push(item);
+        lane.height+=estimateNewspaperStoryHeight(item);
+      });
+    });
+    const columns=lanes.map((lane,laneIndex)=>{
+      const sections=Array.from(lane.groups.entries()).map(([category,stories])=>
+        '<section class="newspaper-section" aria-label="'+esc(category)+' news"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+
+        stories.map((item,index)=>renderNewspaperStory(item,{index})).join("")+'</section>'
+      ).join("");
+      return '<div class="newspaper-column" data-column="'+(laneIndex+1)+'">'+sections+'</div>';
     }).join("");
-    const sectionCount=order.length;
-    const columnClass=sectionCount===1?" single-section":sectionCount===2?" two-sections":"";
+    const columnClass=" columns-"+columnCount;
     grid.classList.remove("mobile-news-feed");
     grid.classList.add("newspaper-feed");
-    grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+'<div class="newspaper-columns'+columnClass+'">'+sections+'</div>';
+    grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+
+      (remaining.length?'<div class="newspaper-columns'+columnClass+'">'+columns+'</div>':"");
     grid.querySelectorAll(".newspaper-image img").forEach(img=>img.addEventListener("error",()=>{
       const story=img.closest(".newspaper-story");
       story?.classList.remove("has-image");
@@ -242,23 +267,29 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
     const leadImage=previewUrl(lead);
     const leadVisual=leadImage!=="#"
       ?'<div class="mobile-lead-image"><img src="'+esc(leadImage)+'" alt="" loading="eager" referrerpolicy="no-referrer"></div>'
-      :'<div class="mobile-lead-image mobile-no-image" aria-hidden="true"></div>';
+      :"";
     const leadSummary=String(lead.previewSummary||lead.summary||lead.description||"").trim();
-    const leadMarkup='<a class="mobile-lead-story" href="'+safe(lead.publisherUrl||lead.link)+'" target="_blank" rel="noopener noreferrer">'+leadVisual+'<div class="mobile-lead-copy">'+mobileTags(lead)+'<h3>'+esc(lead.previewTitle||lead.title||"Untitled news story")+'</h3>'+(leadSummary?'<p class="mobile-story-summary">'+esc(leadSummary)+'</p>':"")+mobileMeta(lead)+'</div></a>';
-    const listMarkup=pageItems.slice(1).map((item,index)=>{
+    const leadMarkup='<a class="mobile-lead-story'+(leadImage==="#"?' text-only':'')+'" href="'+safe(lead.publisherUrl||lead.link)+'" target="_blank" rel="noopener noreferrer">'+leadVisual+'<div class="mobile-lead-copy">'+mobileTags(lead)+'<h3>'+esc(lead.previewTitle||lead.title||"Untitled news story")+'</h3>'+(leadSummary?'<p class="mobile-story-summary">'+esc(leadSummary)+'</p>':"")+mobileMeta(lead)+'</div></a>';
+    const listMarkup=pageItems.slice(1).map(item=>{
       const image=previewUrl(item);
       const visual=image!=="#"
         ?'<div class="mobile-list-image"><img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer"></div>'
-        :'<div class="mobile-list-image mobile-no-image" aria-hidden="true"></div>';
+        :"";
       const summary=String(item.previewSummary||item.summary||item.description||"").trim();
-      return '<a class="mobile-list-story" href="'+safe(item.publisherUrl||item.link)+'" target="_blank" rel="noopener noreferrer">'+visual+'<div class="mobile-list-copy">'+mobileTags(item)+'<h3>'+esc(item.previewTitle||item.title||"Untitled news story")+'</h3>'+(summary?'<p class="mobile-story-summary">'+esc(summary)+'</p>':"")+mobileMeta(item)+'</div></a>';
+      return '<a class="mobile-list-story'+(image==="#"?' text-only':'')+'" href="'+safe(item.publisherUrl||item.link)+'" target="_blank" rel="noopener noreferrer">'+visual+'<div class="mobile-list-copy">'+mobileTags(item)+'<h3>'+esc(item.previewTitle||item.title||"Untitled news story")+'</h3>'+(summary?'<p class="mobile-story-summary">'+esc(summary)+'</p>':"")+mobileMeta(item)+'</div></a>';
     }).join("");
     grid.classList.remove("newspaper-feed");
     grid.classList.add("mobile-news-feed");
     grid.innerHTML=leadMarkup+'<div class="mobile-story-list">'+listMarkup+'</div>';
-    grid.querySelectorAll(".mobile-lead-image img,.mobile-list-image img").forEach(img=>img.addEventListener("error",()=>{
-      img.closest(".mobile-lead-image,.mobile-list-image")?.classList.add("mobile-no-image");
-      img.remove();
+    grid.querySelectorAll(".mobile-lead-image img").forEach(img=>img.addEventListener("error",()=>{
+      const story=img.closest(".mobile-lead-story");
+      story?.classList.add("text-only");
+      img.closest(".mobile-lead-image")?.remove();
+    },{once:true}));
+    grid.querySelectorAll(".mobile-list-image img").forEach(img=>img.addEventListener("error",()=>{
+      const story=img.closest(".mobile-list-story");
+      story?.classList.add("text-only");
+      img.closest(".mobile-list-image")?.remove();
     },{once:true}));
   }
   function renderLegacyNews(pageItems){

@@ -485,6 +485,29 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
  #news-grid.newspaper-feed .newspaper-image img{transition:none!important}
  #news-grid.mobile-news-feed *{scroll-behavior:auto!important;transition:none!important}
 }
+
+/* Balanced newspaper lanes: distribute stories by estimated editorial height. */
+#news-grid.newspaper-feed .newspaper-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;align-items:start}
+#news-grid.newspaper-feed .newspaper-columns.columns-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+#news-grid.newspaper-feed .newspaper-columns.columns-1{grid-template-columns:minmax(0,1fr)}
+#news-grid.newspaper-feed .newspaper-column{min-width:0;padding:0 22px 0 0;margin:0 22px 0 0;border-right:1px solid rgba(255,255,255,.15)}
+#news-grid.newspaper-feed .newspaper-column:last-child{padding-right:0;margin-right:0;border-right:0}
+#news-grid.newspaper-feed .newspaper-column .newspaper-section{padding:0;margin:0 0 28px;border:0;min-width:0}
+#news-grid.newspaper-feed .newspaper-column .newspaper-section:last-child{margin-bottom:0}
+#news-grid.newspaper-feed .newspaper-story.no-image{grid-template-columns:minmax(0,1fr)!important}
+#news-grid.newspaper-feed .newspaper-column .newspaper-story.no-image{grid-template-columns:minmax(0,1fr)!important}
+@media(min-width:601px) and (max-width:1100px){
+ #news-grid.newspaper-feed .newspaper-column{padding-right:18px;margin-right:18px}
+ #news-grid.newspaper-feed .newspaper-column:nth-child(2n){padding-right:0;margin-right:0;border-right:0}
+}
+@media(max-width:600px){
+ #news-grid.mobile-news-feed .mobile-lead-story.text-only{padding-top:0}
+ #news-grid.mobile-news-feed .mobile-lead-story.text-only .mobile-lead-copy{padding:18px 0 0}
+ #news-grid.mobile-news-feed .mobile-list-story.text-only{grid-template-columns:minmax(0,1fr);padding:16px 0}
+ #news-grid.mobile-news-feed .mobile-list-story.text-only .mobile-list-copy{grid-column:1}
+ #news-grid.mobile-news-feed .mobile-list-story.text-only h3{margin-top:2px;font-size:17px;line-height:1.35}
+ #news-grid.mobile-news-feed .mobile-list-story.text-only .mobile-story-summary{font-size:11px;-webkit-line-clamp:3}
+}
 </style>
 </head>
 <body>
@@ -519,7 +542,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script type="module" src="news.js?v=23"></script>
+  <script type="module" src="news.js?v=24"></script>
 
 
 <script src="shared-shell.js?v=6" defer></script>
