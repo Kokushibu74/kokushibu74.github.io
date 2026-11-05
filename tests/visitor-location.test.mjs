@@ -72,6 +72,8 @@ test("User Directory Visitor IDs are clickable callback buttons with pagination"
 });
 
 test("News Page requests GPS only after a user click and preserves default feed on failure", () => {
+  assert.match(tracker, /window\\.__K74_TRACKING_READY__/);
+  assert.match(tracker, /k74:visitor-tracked/);
   assert.match(news, /navigator\.geolocation\.getCurrentPosition/);
   assert.match(news, /locationAllow\.addEventListener\("click",requestLocation\)/);
   assert.match(news, /locationContext=null;render\(\)/);
