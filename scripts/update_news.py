@@ -1132,7 +1132,7 @@ def main():
     for item in weather_collected:
         cached = old_weather_metadata.get(key_for(item), {})
         for field in ("publisherUrl", "publisherName", "previewTitle", "previewSummary",
-                      "previewImage", "previewScreenshot", "previewCheckedAt", "videoUrl"):
+                      "previewImage", "previewScreenshot", "previewCheckedAt", "previewMetadataStatus", "videoUrl"):
             if cached.get(field) not in (None, ""):
                 item[field] = cached[field]
     weather_preview_candidates = weather_collected[:12]
@@ -1142,15 +1142,17 @@ def main():
     weather_rss_fallback = 0
     for item in weather_preview_candidates:
         cached_image = weather_preview_image(item)
-        if cached_image and item.get("previewCheckedAt"):
+        if cached_image and preview_cache_is_fresh(item):
             item["previewImage"] = cached_image
             weather_cached += 1
             continue
         metadata = publisher_metadata(item.get("link", ""))
         if metadata:
             item.update(metadata)
+            item["previewMetadataStatus"] = "success"
             weather_enriched += 1
         else:
+            item["previewMetadataStatus"] = "fallback"
             weather_unavailable += 1
         item.setdefault("publisherName", item.get("source", "Original publisher"))
         item.setdefault("previewTitle", item.get("title", ""))
