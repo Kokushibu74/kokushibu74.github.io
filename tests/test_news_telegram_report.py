@@ -82,7 +82,7 @@ Feed diagnostics: 25 / 25 successful; failures: none
         message = report.build_news_report(metrics, context, verified)
         self.assertIn('<tg-emoji emoji-id="5445284980978621387">🚀</tg-emoji>', message)
         self.assertIn('<tg-emoji emoji-id="5433982607035474385">📰</tg-emoji>', message)
-        self.assertIn("SUCCESS WITH WARNINGS", message)
+        self.assertIn("SUCCESS · WARNINGS", message)
         self.assertIn("NEWS DATABASE", message)
         self.assertIn("LIVE FEED", message)
         self.assertIn("COLLECTION HEALTH", message)
@@ -133,8 +133,8 @@ Feed diagnostics: 25 / 25 successful; failures: none
             "run_url": "https://github.com/Kokushibu74/kokushibu74.github.io/actions/runs/41691677905",
         }
         message = report.build_news_report(metrics, context, {})
-        self.assertIn("N/A — no new metadata requests", message)
-        self.assertIn("Cached/reused: <b>14</b>", message)
+        self.assertIn("N/A</b> · No new requests", message)
+        self.assertIn("cached <b>14</b>", message)
         self.assertNotIn("Not reported (attempt count unavailable)", message)
 
     def test_scheduled_success_is_suppressed_after_recent_successful_manual_refresh(self):
