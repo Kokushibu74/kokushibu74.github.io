@@ -1525,7 +1525,7 @@ async function newsBreakingAlertCheck(env){
       };
       try{
         const old=await env.BOT_CONFIG_KV.get(rejectAuditKey,"json");
-        if(!old||old.reason!==record.reason||old.isBreaking!==record.isBreaking||old.publishedAt!==record.publishedAt||JSON.stringify(old.sourceEvidence||[])!==JSON.stringify(record.sourceEvidence)){
+        if(!old||old.reason!==record.reason||old.isBreaking!==record.isBreaking||old.publishedAt!==record.publishedAt||old.summary!==record.summary||old.sourceCount!==record.sourceCount||old.trustedSourceCount!==record.trustedSourceCount||JSON.stringify(old.sourceEvidence||[])!==JSON.stringify(record.sourceEvidence)){
           await env.BOT_CONFIG_KV.put(rejectAuditKey,JSON.stringify(record),{expirationTtl:auditTtl});
           audited++;
         }
