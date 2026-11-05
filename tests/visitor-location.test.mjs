@@ -67,7 +67,7 @@ test("User Directory Visitor IDs are clickable callback buttons with pagination"
   assert.match(worker, /callback_data:"b1:users:visitor:"/);
   assert.match(worker, /if\(action\.startsWith\("users:visitor:"\)\)/);
   assert.match(worker, /if\(action==="users:list"\|\|action\.startsWith\("users:list:"\)\)/);
-  assert.match(worker, /!\/^VIS-\[A-F0-9\]\{12\}\$\//);
+  assert.ok(worker.includes("if(!/^VIS-[A-F0-9]{12}$/.test(id))"));
   assert.match(worker, /if\(query\.message\?\.chat\?\.type!=="private"\|\|!admins\.has\(sender\)\)/);
 });
 
