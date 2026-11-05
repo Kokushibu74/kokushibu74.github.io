@@ -628,7 +628,8 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Search",callback_data:"b1:users:search"}]);
     rows.push([{text:"📊 Stats",callback_data:"b1:users:stats"},{text:"🕘 History",callback_data:"b1:users:history"}]);
     rows.push([{text:"🔗 Link / Unlink",callback_data:"b1:users:link"},{text:"🚫 Block / Unblock",callback_data:"b1:users:block"}]);
-    rows.push([{text:"✏️ Rename",callback_data:"b1:users:rename"},{text:"🔎 Visitor Information",callback_data:"b1:users:visitorinfo"}]);
+    rows.push([{text:"✏️ Rename",callback_data:"b1:users:rename"}]);
+    rows.push([{text:"🔎 Visitor Information",callback_data:"b1:users:visitorinfo"}]);
   }else if(category==="hero"){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
