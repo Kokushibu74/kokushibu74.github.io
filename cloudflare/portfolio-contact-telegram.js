@@ -769,7 +769,12 @@ async function botSend(env,chatId,text,keyboard,options={}){
   }catch(e){
     console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
     if(options.persistentMenu&&newMessageId){
-      try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)})}catch{}
+      try{
+        const removed=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)});
+        if(!removed.ok&&!String(removed.data?.description||"").toLowerCase().includes("message to delete not found")){
+          console.error("Telegram unpersistable menu cleanup failed",JSON.stringify({status:removed.status,description:String(removed.data?.description||"").slice(0,180)}));
+        }
+      }catch(cleanupError){console.error("Telegram unpersistable menu cleanup request failed",String(cleanupError&&cleanupError.message||cleanupError).slice(0,180))}
       throw new Error("The menu could not be saved because its storage is unavailable. Use the Control Center chat menu button for now.");
     }
   }
@@ -2049,6 +2054,7 @@ export default {
       if(request.method!=="POST")return new Response("Method not allowed",{status:405});
       if(!env.TELEGRAM_WEBHOOK_SECRET||request.headers.get("X-Telegram-Bot-Api-Secret-Token")!==env.TELEGRAM_WEBHOOK_SECRET)return new Response("Unauthorized",{status:401});
       let update;try{update=await request.json()}catch{return new Response("Bad request",{status:400})}
+      try{
       if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
       const msg=update.message;
       if(msg?.chat?.type==="private"&&Array.isArray(msg.photo)&&msg.from?.id){
@@ -2103,6 +2109,14 @@ export default {
         await botSend(env,msg.chat.id,lines.join("\n"),botBackKeyboard(),{parse_mode:"HTML"});
       });
       return new Response("OK");
+      }catch(e){
+        console.error("Telegram webhook update processing failed",JSON.stringify({
+          updateId:Number.isSafeInteger(update?.update_id)?update.update_id:null,
+          updateType:update?.callback_query?"callback_query":update?.message?"message":"unknown",
+          error:String(e&&e.stack||e).slice(0,800)
+        }));
+        return new Response("OK");
+      }
     }
     if(new URL(request.url).pathname!=="/submit")return respond({error:"Not found"},404);
     if(request.method!=="POST")return respond({error:"Method not allowed"},405);

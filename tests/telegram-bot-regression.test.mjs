@@ -32,6 +32,13 @@ assert.match(touch, /15\*60\*1000/, "Telegram profile writes must be throttled")
 assert.match(touch, /command_received/, "Useful command history must remain available");
 assert.match(touch, /\["\/start","\/menu","\/cmd"\]/, "Noisy menu commands must not create history writes");
 
+
+const webhook = section('if(new URL(request.url).pathname==="/telegram-webhook"){', 'if(new URL(request.url).pathname!=="/submit")');
+assert.match(webhook, /try\{\s*if\(update\.callback_query\)/, "All Telegram update processing must be inside a retry-safe boundary");
+assert.match(webhook, /Telegram webhook update processing failed/, "Webhook exceptions must be logged with update metadata");
+assert.match(webhook, /updateId:Number\.isSafeInteger\(update\?\.update_id\)/, "Webhook error logs must include Telegram update_id for diagnosis");
+assert.match(webhook, /return new Response\("OK"\)/, "Application errors must be acknowledged to prevent Telegram retry loops");
+
 const cronAlert = section("async function miniAppCronAlert", "async function miniAppCronHistory");
 assert.match(cronAlert, /if\(!shouldNotify\)return/, "Stable cron success states must not write to KV every 30 minutes");
 
