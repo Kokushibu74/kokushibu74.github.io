@@ -732,23 +732,16 @@ function storyTier(item, context) {
   const nearbyIds = new Set((context?.nearbyDistricts || []).map(district => String(district.id)));
   if (matched.some(district => nearbyIds.has(district.id))) return 1;
 
-  const country = String(context?.country || "").toUpperCase();
-  if (country === "BD" || localId) {
-    if (matchesPlace(text, context?.city)) return 0;
-    if (matchesPlace(text, context?.region)) return 1;
-    if (String(item?.category || "").toLowerCase() === "bangladesh") return 2;
-    return 3;
-  }
   if (matchesPlace(text, context?.city)) return 0;
   if (matchesPlace(text, context?.region)) return 1;
-  if (context?.countryName && matchesPlace(text, context.countryName)) return 2;
+  if (String(item?.category || "").toLowerCase() === "bangladesh") return 2;
   return 3;
 }
 
 export function rankNewsByLocation(items, context) {
   if (!Array.isArray(items) || !items.length || !context) return items;
   const ranked = items.map((item, index) => ({ item, index, tier: storyTier(item, context) }));
-  if (!ranked.some(row => row.tier <= 1)) return items;
+  // Always apply the fallback tiers: local, nearby, Bangladesh national, then international.
   ranked.sort((a, b) => a.tier - b.tier || a.index - b.index);
   return ranked.map(row => row.item);
 }
