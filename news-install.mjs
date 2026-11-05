@@ -1,5 +1,5 @@
 const STORAGE_KEY="k74-news-install-dismissed-until-v1";
-const SNOOZE_MS=7*24*60*60*1000;
+const SNOOZE_MS=24*60*60*1000;
 const RETRY_AFTER_DECLINE_MS=24*60*60*1000;
 const SHOW_DELAY_MS=4000;
 
