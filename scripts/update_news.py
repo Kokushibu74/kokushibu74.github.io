@@ -487,7 +487,7 @@ SUBCATEGORY_RULES = {
     "Bangladesh": [
         ("Politics & Government", re.compile(
             r"\b(?:politic\w*|election\w*|parliament|government|minister|prime minister|president|"
-            r"lawmakers?|mp\b|cabinet|opposition|referendum|political party|bn p|awami league|jamaat|"
+            r"lawmakers?|mp\b|cabinet|opposition|referendum|political party|bnp|awami league|jamaat|"
             r"jatiya party|mayor|mayoral|councilor)\b|রাজনীতি|নির্বাচন|সংসদ|সরকার|মন্ত্রী|প্রধানমন্ত্রী|"
             r"রাষ্ট্রপতি|রাজনৈতিক|দলীয়|দলীয়|বিএনপি|আওয়ামী লীগ|আওয়ামী লীগ|জামায়াত|জামায়াত|"
             r"জাতীয় পার্টি|জাতীয় পার্টি|মেয়র|মেয়র|উপদেষ্টা পরিষদ", re.I
