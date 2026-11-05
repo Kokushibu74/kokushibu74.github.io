@@ -548,7 +548,7 @@ SUBCATEGORY_RULES = {
         )),
         ("Diplomacy & Relations", re.compile(
             r"\b(?:diplomac\w*|diplomatic|summit|bilateral|treaty|foreign minister|embassy|"
-            r"ambassador|relations|peace talks|negotiat\w*|united nations|\\bun\\b|nato|g7|"
+            r"ambassador|relations|peace talks|negotiat\w*|united nations|\bun\b|nato|g7|"
             r"european union|international agreement|sanctions)\b|কূটনীতি|কূটনৈতিক|সম্মেলন|"
             r"দ্বিপাক্ষিক|চুক্তি|পররাষ্ট্রমন্ত্রী|দূতাবাস|রাষ্ট্রদূত|সম্পর্ক|শান্তি আলোচনা|"
             r"আলোচনা|জাতিসংঘ|নিষেধাজ্ঞা", re.I
@@ -563,7 +563,7 @@ SUBCATEGORY_RULES = {
     ],
     "Technology": [
         ("Artificial Intelligence", re.compile(
-            r"\b(?:artificial intelligence|generative ai|\\bai\\b|llm\\w*|chatgpt|openai|gemini|"
+            r"\b(?:artificial intelligence|generative ai|\bai\b|llm\\w*|chatgpt|openai|gemini|"
             r"claude|copilot|machine learning|deep learning|neural network|large language model|"
             r"ai model|ai tool)\b|কৃত্রিম বুদ্ধিমত্তা|এআই|এ আই|চ্যাটজিপিটি|জেমিনি", re.I
         )),
