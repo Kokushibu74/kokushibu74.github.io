@@ -45,4 +45,17 @@ assert.match(page, /@media\(max-width:600px\)[\s\S]*?mobile-news-feed/, "Mobile 
 assert.match(page, /#news-grid\.grid\.newspaper-feed/, "Desktop newspaper layout rules must be present");
 assert.match(page, /@media\(min-width:601px\) and \(max-width:1100px\)/, "Tablet newspaper layout must have its own two-column breakpoint");
 
+
+const taxonomy = JSON.parse(readFileSync(new URL("../news-categories.json", import.meta.url), "utf8"));
+assert.deepEqual(Object.keys(taxonomy.categories).sort(), ["Bangladesh", "Technology", "World"]);
+assert.ok(Object.values(taxonomy.categories).every(topics => topics.length === 5), "Each main category must expose five subcategories");
+assert.equal(taxonomy.defaultSubcategory, "Other / Unclassified");
+assert.match(page, /id="subcategories"/, "News page must expose the subcategory navigation root");
+assert.match(news, /function renderSubcategoryFilters\(scoped\)/, "Subcategory navigation must be generated from scoped feed items");
+assert.match(news, /activeSubcategory==="All"\|\|getSubcategory\(x\)===activeSubcategory/, "Subcategory selection must filter the news feed");
+assert.match(news, /data-subcategory/, "Subcategory controls must have delegated click targets");
+assert.match(news, /getSubcategory\(item\)/, "Mobile and desktop renderers must display the assigned subcategory");
+assert.match(page, /news-categories\.json/, "The page must load the shared category taxonomy");
+assert.match(page, /news\.js\?v=27/, "News module cache must be refreshed after category navigation changes");
+
 console.log("News client optimization contracts OK.");
