@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "scripts/update_news.py"
+      - "news-categories.json"
       - "scripts/news_telegram_report.py"
       - "tests/test_news_telegram_report.py"
       - "news.js"
@@ -23,6 +24,7 @@ on:
       - "feat/news-bangladesh-daily-archive-90d"
     paths:
       - "scripts/update_news.py"
+      - "news-categories.json"
       - "scripts/news_telegram_report.py"
       - "tests/test_update_news.py"
       - "tests/test_slider_rules.py"

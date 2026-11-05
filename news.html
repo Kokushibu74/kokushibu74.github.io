@@ -509,6 +509,33 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
  #news-grid.mobile-news-feed .mobile-list-story.text-only .mobile-story-summary{font-size:11px;-webkit-line-clamp:3}
 }
 </style>
+
+<style id="news-subcategory-navigation">
+/* Three main editions with context-aware topic filters. */
+#filters{gap:10px;margin-bottom:12px}
+#filters .filter{min-height:42px;padding:11px 17px;font-size:12px;letter-spacing:.035em}
+#filters .filter[data-category="Bangladesh"]{border-color:#00d7e8;color:#76f1ff}
+#filters .filter[data-category="World"]{border-color:#579cff;color:#9bc5ff}
+#filters .filter[data-category="Technology"]{border-color:#9b76ff;color:#c3aaff}
+#filters .filter.active{background:linear-gradient(110deg,#00d7e81c,#8c5cff1c);box-shadow:0 0 18px #00d7e80c}
+.subcategory-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 22px;padding:11px 12px;border:1px solid #ffffff18;border-radius:14px;background:linear-gradient(110deg,#0b1420e8,#100d1ce8)}
+.subcategory-toolbar[hidden]{display:none!important}
+.subcategory-filter{display:inline-flex;align-items:center;gap:9px;min-height:34px;padding:8px 11px;border:1px solid #ffffff20;border-radius:999px;background:#ffffff06;color:#b8c6d8;font:600 10px Outfit,sans-serif;white-space:nowrap;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.subcategory-filter small{color:#8192a8;font:10px 'JetBrains Mono',monospace}
+.subcategory-filter:hover,.subcategory-filter.active{border-color:#00d7e8a8;background:#00d7e812;color:#8cf5ff}
+.subcategory-filter.active small{color:#8cf5ff}
+.story-subcategory,.newspaper-subcategory,.mobile-subcategory{display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:3px 7px;border:1px solid #8c78ff35;border-radius:5px;background:#8c78ff0c;color:#c4b3ff;font:700 8px 'JetBrains Mono',monospace;letter-spacing:.035em}
+.newspaper-subcategory{margin-left:2px}
+.mobile-subcategory{font-size:8px}
+@media(max-width:600px){
+  #filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  #filters::-webkit-scrollbar,.subcategory-toolbar::-webkit-scrollbar{display:none}
+  #filters .filter{flex:0 0 auto}
+  .subcategory-toolbar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:9px 8px;margin-bottom:17px}
+  .subcategory-filter{flex:0 0 auto}
+}
+@media(prefers-reduced-motion:reduce){.subcategory-filter{transition:none}}
+</style>
 </head>
 <body>
   <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a class="active" href="news.html" aria-current="page">News</a><a href="contact.html">Contact</a></nav></header>
@@ -529,6 +556,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
     <div class="ticker" aria-label="News update ticker">● LIVE FEED &nbsp; / &nbsp; BANGLADESH &nbsp; / &nbsp; WORLD &nbsp; / &nbsp; TECHNOLOGY</div>
     <nav id="news-view-switch" class="toolbar" aria-label="Choose news feed or archive"><button class="filter active" data-news-view="feed">News Feed</button><button class="filter" data-news-view="archive">Archive · 90 Days</button></nav>
     <nav id="filters" class="toolbar" aria-label="Filter news"><button class="filter active" data-category="All">All news</button><button class="filter" data-category="Bangladesh">Bangladesh</button><button class="filter" data-category="World">World</button><button class="filter" data-category="Technology">Technology</button></nav>
+    <nav id="subcategories" class="subcategory-toolbar" aria-label="Filter by subcategory" hidden></nav>
     <div class="news-edition-strip" aria-label="News edition information"><strong>KOKUSHIBU74 · NEWS DESK</strong><time id="news-edition-date">BANGLADESH EDITION</time><span class="edition-live">LIVE EDITION</span></div>
     <div id="latest-feed" class="news-feed-heading"><div><p class="kicker">NEWS FEED</p><h2>News <span class="accent">feed</span></h2><p class="feed-subtitle">Browse verified headlines by topic, search a story, and open the original publisher.</p></div><label class="news-search-wrap"><span aria-hidden="true">⌕</span><input id="news-search" type="search" placeholder="Search headlines, sources…" autocomplete="off" aria-label="Search headlines and sources"></label></div>
     <div id="archive-tools" class="news-date-filters" aria-label="Filter archived news by publication date" hidden><label>From date <input id="news-date-from" type="date" aria-label="Archive publication date from"></label><label>To date <input id="news-date-to" type="date" aria-label="Archive publication date to"></label><button id="news-date-clear" type="button">Clear dates</button></div>
@@ -542,7 +570,7 @@ body:has(#home)::before{opacity:.78;background:radial-gradient(ellipse at 18% 24
   <script src="ads-config.js"></script>
   <script src="ads.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => { if (window.mountShihabAd) window.mountShihabAd(document.getElementById("news-ad-slot"), "news"); });</script>
-  <script type="module" src="news.js?v=26"></script>
+  <script type="module" src="news.js?v=27"></script>
 
 
 <script src="shared-shell.js?v=6" defer></script>
