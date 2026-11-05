@@ -136,6 +136,8 @@ function init(){
     deferredInstallPrompt=event;
     const button=document.querySelector("[data-news-install-action]");
     if(button)button.textContent="INSTALL NOW";
+    const instructions=document.querySelector("[data-news-install-instructions]");
+    if(instructions)instructions.hidden=true;
   });
   window.addEventListener("appinstalled",()=>{
     if(sheetTimer)window.clearTimeout(sheetTimer);
