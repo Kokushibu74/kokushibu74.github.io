@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 
 const contact = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
 const multiAi = readFileSync(new URL("../cloudflare/multi-ai-memory-api.js", import.meta.url), "utf8");
+const watchdog = readFileSync(new URL("../cloudflare/news-watchdog.mjs", import.meta.url), "utf8");
 const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js", import.meta.url), "utf8");
 
 assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must use 50/70/85/95 percent thresholds");
@@ -83,8 +84,10 @@ assert.match(contact, /minute%15===5/, "News watchdog must run five minutes afte
 assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the news watchdog on its 15-minute maintenance tick");
 assert.match(contact, /notifyNewsWatchdogFailure\(env,error\)/, "News watchdog failures must send a deduplicated Telegram warning with safe error details");
 assert.ok(contact.includes("news-watchdog:dispatch-blocked"), "Repeated GitHub 403 dispatch failures must use a bounded backoff");
-assert.ok(contact.includes("await dispatch.text()"), "GitHub dispatch failures must capture the API explanation");
-assert.ok(contact.includes("dispatch.status!==200&&dispatch.status!==204"), "GitHub workflow dispatch must accept both documented success codes");
+assert.ok(watchdog.includes("response.text()"), "GitHub dispatch failures must capture the API explanation");
+assert.ok(watchdog.includes("new Set([200,204])"), "GitHub workflow dispatch must accept both documented success codes");
+assert.ok(watchdog.includes("response.status>=500"), "GitHub server failures must use bounded retries");
+assert.ok(watchdog.includes("verifyRecentRun"), "Ambiguous dispatch responses must be checked for a created run before retrying");
 assert.ok(contact.includes("notifyNewsWatchdogFailure(env,e)"), "Telegram watchdog warning must include the safe GitHub error detail");
 assert.match(contact, /let miniAppAuditCache=\{expiresAt:0,rows:\[\]\}/, "Audit list cache must be isolate-local and start empty");
 assert.match(contact, /miniAppAuditCache\.expiresAt>now/, "Recent audit reads must reuse the short-lived in-memory cache");

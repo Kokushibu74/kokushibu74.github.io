@@ -1,4 +1,5 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
+import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
@@ -1440,20 +1441,20 @@ async function newsRefreshWatchdog(env){
   if(!statusResponse.ok)throw new Error("GitHub news workflow status check failed (HTTP "+statusResponse.status+")");
   const data=await statusResponse.json().catch(()=>({}));
   const latest=(data.workflow_runs||[])[0],created=Date.parse(latest?.created_at||""),age=Number.isFinite(created)?now-created:Infinity;
+  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
   if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
   if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
-  const dispatch=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/dispatches",{method:"POST",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
-  if(dispatch.status!==200&&dispatch.status!==204){
-    const responseText=await dispatch.text().catch(()=> "");
-    let detail=responseText;
-    try{const payload=JSON.parse(responseText);detail=payload.message||(payload.errors||[]).map(x=>x.message||x.code).join("; ")||responseText}catch{}
-    detail=String(detail||"").replace(/[\r\n\t]+/g," ").slice(0,160);
-    if(dispatch.status===403)await env.BOT_CONFIG_KV.put(dispatchBlockedKey,JSON.stringify({status:403,at:now}),{expirationTtl:3600});
-    throw new Error("GitHub news workflow dispatch failed (HTTP "+dispatch.status+")"+(detail?": "+detail:""));
+  let dispatchResult;
+  try{
+    dispatchResult=await dispatchNewsWorkflow(env.GITHUB_TOKEN);
+  }catch(error){
+    if(Number(error?.status)===403)await env.BOT_CONFIG_KV.put(dispatchBlockedKey,JSON.stringify({status:403,at:now}),{expirationTtl:3600});
+    throw error;
   }
   await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
+  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
   await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
-  return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null};
+  return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null,dispatchAttempts:dispatchResult.attempts,verifiedAfterAmbiguousResponse:!!dispatchResult.verified};
 }
 async function notifyNewsWatchdogFailure(env,error){
   if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return;
@@ -1461,7 +1462,9 @@ async function notifyNewsWatchdogFailure(env,error){
   if(await env.BOT_CONFIG_KV.get(key))return;
   await env.BOT_CONFIG_KV.put(key,"1",{expirationTtl:6*60*60});
   const detail=String(error?.message||"").replace(/[\r\n\t]+/g," ").slice(0,220);
-  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\nCheck the Worker GITHUB_TOKEN permission and repository Actions policy.";
+  const transient=/temporarily failed|temporary GitHub API/i.test(detail);
+  const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
+  const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
   const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }

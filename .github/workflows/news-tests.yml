@@ -24,6 +24,9 @@ on:
       - "homepage-news.js"
       - "tests/news-client-optimization.test.mjs"
       - ".github/workflows/news-tests.yml"
+      - "cloudflare/news-watchdog.mjs"
+      - "tests/news-watchdog.test.mjs"
+      - "cloudflare/portfolio-contact-telegram.js"
   push:
     branches:
       - "main"
@@ -65,6 +68,8 @@ jobs:
           python3 tests/test_slider_rules.py -v
       - name: Run Telegram report formatter tests
         run: python3 tests/test_news_telegram_report.py -v
+      - name: Run GitHub watchdog dispatch tests
+        run: node --test tests/news-watchdog.test.mjs
       - name: Check browser JavaScript syntax and feed refresh contracts
         run: |
           node --check news.js
