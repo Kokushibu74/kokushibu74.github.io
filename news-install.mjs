@@ -103,7 +103,6 @@ function showManualInstructions(){
     :'<strong>Add KOKUSHIBU74 NEWS to your Home Screen</strong><br>Open your browser menu (⋮ or ☰), then choose “Install app” or “Add to Home screen”. The wording can vary by browser.';
   box.hidden=false;
   button.textContent="GOT IT";
-  button.onclick=()=>hideSheet(true);
 }
 async function handleInstallAction(){
   const instructions=document.querySelector("[data-news-install-instructions]");
@@ -140,7 +139,7 @@ function init(){
   });
   window.addEventListener("appinstalled",()=>{
     if(sheetTimer)window.clearTimeout(sheetTimer);
-    setDismissedUntil(Number.MAX_SAFE_INTEGER);
+    setDismissedUntil(Date.now()+365*24*60*60*1000);
     hideSheet(false);
   });
 }
