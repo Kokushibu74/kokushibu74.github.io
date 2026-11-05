@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { dispatchNewsWorkflow } from "../cloudflare/news-watchdog.mjs";
 
-const response=(status,body="",headers={})=>new Response(body,{status,headers});
+const response=(status,body="",headers={})=>status===204?new Response(null,{status}):new Response(body,{status,headers});
 
 test("retries a transient GitHub 500 and accepts a later 204",async()=>{
   let dispatches=0;
