@@ -4,6 +4,7 @@ import { isLatestTagItem, isSliderEligibleItem } from "../news-slider-rules.mjs"
 
 const news = readFileSync(new URL("../news.js", import.meta.url), "utf8");
 const ticker = readFileSync(new URL("../homepage-news.js", import.meta.url), "utf8");
+const page = readFileSync(new URL("../news.html", import.meta.url), "utf8");
 
 const now = Date.parse("2026-11-04T12:00:00Z");
 const story = (minutes, overrides = {}) => ({
@@ -26,5 +27,14 @@ assert.doesNotMatch(news, /setInterval\(\(\)=>location\.reload\(\),15\*60\*1000\
 assert.match(news, /if\(feedLoading\)return/, "Prevent overlapping feed refreshes");
 assert.match(ticker, /fetch\("news-feed\.json",\{cache:"no-cache"\}\)/, "Ticker should revalidate the shared feed without cache-busting query strings");
 assert.doesNotMatch(ticker, /news-feed\.json\?updated=/, "Avoid unique cache-busting URLs for the shared feed");
+
+
+assert.match(news, /function renderMobileNewsFeed\(pageItems\)/, "Mobile News Feed must use its dedicated reader renderer");
+assert.match(news, /renderMobileNewsFeed\(pageItems\)/, "Mobile viewport must route feed stories through the dedicated reader");
+assert.match(news, /grid\.classList\.add\("mobile-news-feed"\)/, "Mobile feed must apply its own layout class");
+assert.match(news, /grid\.classList\.remove\("mobile-news-feed"\)[\s\S]*?grid\.classList\.add\("newspaper-feed"\)/, "Desktop rendering must clear the mobile layout class");
+assert.match(page, /news-edition-strip/, "News page must include the editorial edition masthead");
+assert.match(page, /@media\(max-width:600px\)[\s\S]*?mobile-news-feed/, "Mobile reader styles must be isolated to small screens");
+assert.match(page, /@media\(min-width:601px\)[\s\S]*?newspaper-feed/, "Newspaper styles must be available above the mobile breakpoint");
 
 console.log("News client optimization contracts OK.");
