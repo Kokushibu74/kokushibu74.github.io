@@ -1156,11 +1156,8 @@ async function umHandleCommand(env,msg){
   if(!isAdmin){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
   if(UM_CONFIRM_COMMANDS.has(cmd)&&arg&&!msg.confirmed){
-    if(!env.BOT_CONFIG_KV){await umReply(env,chatId,"⚠️ নিরাপদ Confirmation Storage unavailable; কোনো পরিবর্তন করা হয়নি।");return true;}
-    const token=crypto.randomUUID(),expiresAt=Date.now()+300000;
-    await env.BOT_CONFIG_KV.put(UM_CONFIRM_PREFIX+token,JSON.stringify({adminId:sender,chatId:String(chatId),command:text,expiresAt}),{expirationTtl:300});
-    const label=cmd.slice(1).toUpperCase(),target=parts.slice(1).join(" ");
-    await botSend(env,chatId,"⚠️ CONFIRM USER ACTION\n\nAction: "+label+"\nTarget: "+(arg+(target?" "+target:""))+"\n\nএটি User data পরিবর্তন করবে। ৫ মিনিটের মধ্যে নিশ্চিত করুন।",[[{text:"✅ Confirm",callback_data:"b1:confirm:"+token},{text:"✖️ Cancel",callback_data:"b1:cancel:"+token}]],{forceNew:true});
+    try{await umRequestConfirmation(env,msg,text)}
+    catch(error){console.error("User action confirmation could not be created",String(error&&error.message||error).slice(0,180));await umReply(env,chatId,"⚠️ নিরাপদ Confirmation তৈরি করা যায়নি; কোনো পরিবর্তন করা হয়নি।")}
     return true;
   }
   if(["/details","/health","/ga4","/errors","/logs","/history","/sources","/traffic","/report"].includes(cmd)){
@@ -1660,7 +1657,7 @@ async function notifyNewsWatchdogFailure(env,error){
   const transient=/temporarily failed|temporary GitHub API/i.test(detail);
   const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
   const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Workflow Runs",callback_data:"b1:github:runs"},{text:"News Center",callback_data:"b1:news"}],[{text:"Details",callback_data:"b1:command:/details"}]]}}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
@@ -1999,7 +1996,7 @@ export default {
       let adminNotified=false;
       if(env.TELEGRAM_BOT_TOKEN&&admins.length){
         const message="🗑 GPS HISTORY DELETION REQUEST\nVisitor ID: "+id+"\nRequested: "+bdt+"\nScope: GPS location history only\nReview the loc:v1:delete-request record and remove the matching loc:v1:history:visitor records after verification.";
-        const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true}).catch(()=>({ok:false}))));
+        const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"User Manager",callback_data:"b1:users"},{text:"Details",callback_data:"b1:command:/details"}]]}}).catch(()=>({ok:false}))));
         adminNotified=sent.some(result=>result?.ok);
       }
       return respond({ok:true,requestSubmitted:true,adminNotified},200);
@@ -2062,7 +2059,7 @@ export default {
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
       if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
-      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor alert failed",String(e))}};
+      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Traffic",callback_data:"b1:command:/traffic"},{text:"Errors",callback_data:"b1:command:/errors"}],[{text:"Security Center",callback_data:"b1:status:security:1"}]]}})})}catch(e){console.error("Visitor alert failed",String(e))}};
       if(pageView&&traffic===40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
@@ -2152,7 +2149,7 @@ export default {
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&newSession&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
-        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
+        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Visitor Profile",callback_data:"b1:users:visitor:"+id+":1:1"},{text:"Traffic Summary",callback_data:"b1:command:/traffic"}],[{text:"Security",callback_data:"b1:status:security:1"}]]}})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
     }
@@ -2279,7 +2276,7 @@ export default {
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
-      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
+      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:command:/health"},{text:"Errors",callback_data:"b1:command:/errors"},{text:"Logs",callback_data:"b1:command:/logs"}]]}})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
