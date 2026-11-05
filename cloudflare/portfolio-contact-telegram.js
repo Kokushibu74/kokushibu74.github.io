@@ -633,7 +633,7 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
     ]),
     "",
     "ⓘ  LOCATION & PRIVACY",
-    "IP-based location is approximate. GPS History is stored only with separate consent, retained up to 90 days, and visible only to authorized Telegram admins. Device and network details depend on browser-provided signals; VPN, Tor and bot identity are not confirmed."
+    "IP-based location is approximate. GPS coordinates are stored only after the visitor explicitly allows location access, retained up to 90 days, and visible only to authorized Telegram admins. Device and network details depend on browser-provided signals; VPN, Tor and bot identity are not confirmed."
   ];
   return lines.join("\n");
 }
