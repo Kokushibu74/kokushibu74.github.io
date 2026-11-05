@@ -1,6 +1,9 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 
+// Shared namespace prefix for User Manager profiles and event history.
+const UM_PREFIX = "um:v1:";
+
 
 const CF_MONITOR_ACCOUNT_ID = "2eb330a662bfe3c78e68f3ba517aef54";
 const CF_MONITOR_KV_NAMESPACES = [
@@ -516,6 +519,8 @@ async function umReply(env,chatId,text){
   await botSend(env,chatId,text,botBackKeyboard());
 }
 
+function umClean(value,max=120){return umValue(value,"").slice(0,Math.max(0,Number(max)||120));}
+function umDate(value=Date.now()){const d=new Date(value);if(!Number.isFinite(d.getTime()))return "unknown";const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(d);const pick=t=>parts.find(p=>p.type===t)?.value||"00";return pick("year")+"-"+pick("month")+"-"+pick("day");}
 function umValue(value,fallback="Unknown"){const s=String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim();return s||fallback;}
 function umTime(value){if(!value)return "Unknown";const t=Date.parse(String(value));if(!Number.isFinite(t))return umValue(value);return new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(t))+" BDT";}
 function umVisitorReport(id,p){
@@ -1904,7 +1909,7 @@ export default {
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
         const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
-        if(pending?.mode){
+        if(pending?.mode && !String(msg.text||"").trim().startsWith("/")){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
           if(!adminSet.has(String(msg.from.id))){await botSend(env,msg.chat.id,"⛔ Admin access required.",botBackKeyboard());return new Response("OK");}
@@ -2103,3 +2108,4 @@ export default {
     }
   }
 };
+
