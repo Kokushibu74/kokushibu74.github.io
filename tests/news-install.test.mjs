@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { isAndroidMobile, isStandaloneDisplay, shouldOfferInstall } from "../news-install.js";
+import { isAndroidMobile, isStandaloneDisplay, shouldOfferInstall } from "../news-install.mjs";
 
 const androidChrome={userAgent:"Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36"};
 const androidTablet={userAgent:"Mozilla/5.0 (Linux; Android 14; Tablet) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36"};
