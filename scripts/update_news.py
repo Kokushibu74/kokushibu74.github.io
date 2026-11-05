@@ -510,7 +510,7 @@ SUBCATEGORY_RULES = {
         ("Society & Education", re.compile(
             r"\b(?:education|school|college|universit\w*|student\w*|teacher\w*|exam\w*|admission|"
             r"curriculum|scholarship|societ\w*|community|culture|festival|transport|road|railway|"
-            r"bridge|public service|housing|urban|rural|social|sports?|cricket|football)\b|শিক্ষা|"
+            r"bridge|public service|housing|urban|rural|social)\b|শিক্ষা|"
             r"বিদ্যালয়|বিদ্যালয়|স্কুল|কলেজ|বিশ্ববিদ্যালয়|বিশ্ববিদ্যালয়|শিক্ষার্থী|শিক্ষক|পরীক্ষা|"
             r"ভর্তি|পাঠ্যক্রম|বৃত্তি|সমাজ|সংস্কৃতি|উৎসব|পরিবহন|সড়ক|সড়ক|রেল|সেতু|"
             r"জনসেবা|আবাসন|গ্রাম|নগর|ক্রিকেট|ফুটবল|খেলাধুলা|ক্রীড়া|ক্রীড়া", re.I
