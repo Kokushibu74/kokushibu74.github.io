@@ -6,6 +6,7 @@ on:
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'tests/visitor-location.test.mjs'
+      - 'tests/visitor-location.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -38,6 +39,8 @@ jobs:
           node-version: 22
       - name: Parse Worker module
         run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Verify visitor location consent and Telegram directory contracts
+        run: node tests/visitor-location.test.mjs
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
       - name: Verify Cloudflare Standard resource budget guardrails
