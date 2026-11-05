@@ -162,6 +162,7 @@ def parse_news_metrics(log_text):
         "publisher_urls_resolved": None, "metadata_attempts": None,
         "metadata_fetched": None, "metadata_unavailable": None, "metadata_cached": None,
         "weather_enriched": None, "weather_priority": None,
+        "weather_cached": None, "weather_unavailable": None, "weather_rss_fallback": None,
         "validation": None, "invalid_items": None, "duplicate_items": None,
         "publisher_preview_unavailable": 0, "publisher_unavailable_hosts": [],
     }
@@ -192,7 +193,7 @@ def parse_news_metrics(log_text):
             metrics["rss_failure_details"] = [scrub(x.strip(), 180) for x in raw_failures.split(" | ") if x.strip()][:8]
 
     breakdown = re.search(
-        r"Feed breakdown:\s*latest_24h:\s*(\d+)\s+archive:\s*(\d+)\s+latest_tag_15m:\s*(\d+)\s+preview_image_urls:\s*(\d+)\s+bd_latest_tag_preview_candidates:\s*(\d+)\s+weather_cards:\s*(\d+)\s+weather_cards_with_preview:\s*(\d+)",
+        r"Feed breakdown:\s*latest_24h:\s*(\d+)\s+archive:\s*(\d+)\s+latest_tag_15m:\s*(\d+)\s+preview_image_urls:\s*(\d+)\s+(?:bd_slider_preview_candidates|bd_latest_tag_preview_candidates):\s*(\d+)\s+weather_cards:\s*(\d+)\s+weather_cards_with_preview:\s*(\d+)",
         log_text,
     )
     if breakdown:
@@ -200,6 +201,21 @@ def parse_news_metrics(log_text):
                 "bd_slider_preview_candidates", "weather_cards", "weather_cards_with_preview")
         for key, value in zip(keys, breakdown.groups()):
             metrics[key] = int(value)
+
+    # Also parse the generator's detailed weather line, used by current refresh runs.
+    weather_detail = re.search(
+        r"Weather/disaster previews:\\s*candidates:\\s*(\\d+)\\s+metadata_fetched:\\s*(\\d+)\\s+cached/reused:\\s*(\\d+)\\s+publisher_unavailable:\\s*(\\d+)\\s+RSS_image_fallback:\\s*(\\d+)\\s+with_preview_total:\\s*(\\d+)",
+        log_text,
+    )
+    if weather_detail:
+        candidates, fetched, cached, unavailable, rss_fallback, with_preview = map(int, weather_detail.groups())
+        metrics["weather_cards"] = candidates
+        metrics["weather_cards_with_preview"] = with_preview
+        metrics["weather_enriched"] = fetched
+        metrics["weather_priority"] = candidates
+        metrics["weather_cached"] = cached
+        metrics["weather_unavailable"] = unavailable
+        metrics["weather_rss_fallback"] = rss_fallback
 
     categories = re.search(r"Category breakdown:\s*Bangladesh:\s*(\d+)\s+World:\s*(\d+)\s+Technology:\s*(\d+)", log_text)
     if categories:
@@ -297,8 +313,12 @@ def build_news_report(metrics, context, verified_ids=None):
         warnings.append("Some RSS/feed queries failed.")
     attempts = metrics.get("metadata_attempts")
     fetched = metrics.get("metadata_fetched")
-    if attempts and fetched is not None and fetched / max(1, attempts) < 0.5:
-        warnings.append("Publisher metadata extraction coverage is low.")
+    cached_success = metrics.get("metadata_cached_success") or 0
+    cached_fallback = metrics.get("metadata_cached_fallback") or 0
+    checked_total = (attempts or 0) + cached_success + cached_fallback
+    verified_total = (fetched or 0) + cached_success
+    if checked_total and verified_total / checked_total < 0.5:
+        warnings.append("Publisher metadata coverage is low, including cached publisher previews.")
     if metrics.get("validation") == "FAIL":
         warnings.append("Generated feed validation failed.")
     weather_total = metrics.get("weather_cards")
@@ -373,9 +393,13 @@ def build_news_report(metrics, context, verified_ids=None):
         f'⚠️ Unavailable <b>{number(metrics.get("metadata_unavailable"))}</b>  ·  Cached <b>{number(metrics.get("metadata_cached"))}</b>',
     ])
     if attempts is not None and attempts > 0 and fetched is not None:
-        lines.append(f'📊 Metadata success rate <b>{round(100 * fetched / max(1, attempts))}%</b> ({fetched}/{attempts})')
+        lines.append(f'📊 New fetch success <b>{round(100 * fetched / max(1, attempts))}%</b> ({fetched}/{attempts})')
+        if cached_success or cached_fallback:
+            lines.append(f'📦 Cached previews <b>{number(metrics.get("metadata_cached"))}</b> · Verified <b>{number(cached_success)}</b> · Fallback <b>{number(cached_fallback)}</b>')
+        if checked_total:
+            lines.append(f'📊 Overall preview coverage <b>{round(100 * verified_total / checked_total)}%</b> ({verified_total}/{checked_total})')
     elif attempts == 0:
-        lines.append(f'📊 Metadata success rate <b>N/A</b> · No new requests; cached <b>{number(metrics.get("metadata_cached"))}</b>')
+        lines.append(f'📊 New fetch success <b>N/A</b> · No new requests; cached <b>{number(metrics.get("metadata_cached"))}</b>')
     else:
         lines.append('📊 Metadata success rate <b>Not reported</b>')
     if metrics.get("publisher_preview_unavailable"):
@@ -383,7 +407,10 @@ def build_news_report(metrics, context, verified_ids=None):
         suffix = f' · {html.escape(hosts)}' if hosts else ''
         lines.append(f'🌐 Publisher preview unavailable <b>{metrics["publisher_preview_unavailable"]}</b>{suffix}')
     if metrics.get("weather_enriched") is not None:
-        lines.append(f'🌦 New Weather preview metadata <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority stories')
+        weather_suffix = ''
+        if metrics.get("weather_cached") is not None:
+            weather_suffix = f' · Cached {number(metrics.get("weather_cached"))} · Unavailable {number(metrics.get("weather_unavailable"))} · RSS fallback {number(metrics.get("weather_rss_fallback"))}'
+        lines.append(f'🌦 New Weather preview metadata <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority stories{weather_suffix}')
 
     lines.extend([
         "",
