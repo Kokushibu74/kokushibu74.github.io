@@ -13,6 +13,7 @@ from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from urllib.parse import urlparse
+from pathlib import Path
 
 OUTPUT = "news-feed.json"
 WEATHER_QUERIES = [
@@ -96,6 +97,15 @@ HEADERS = {
 NS = {
     "media": "http://search.yahoo.com/mrss/",
     "content": "http://purl.org/rss/1.0/modules/content/",
+}
+
+CATEGORY_CONFIG_PATH = Path(__file__).resolve().parents[1] / "news-categories.json"
+with CATEGORY_CONFIG_PATH.open("r", encoding="utf-8") as category_file:
+    CATEGORY_CONFIG = json.load(category_file)
+DEFAULT_SUBCATEGORY = str(CATEGORY_CONFIG.get("defaultSubcategory") or "Other / Unclassified")
+SUBCATEGORY_NAMES = {
+    str(category): tuple(str(name) for name in names)
+    for category, names in CATEGORY_CONFIG.get("categories", {}).items()
 }
 
 def urlopen_with_retry(request, timeout, attempts=2, base_delay=0.5):
@@ -472,6 +482,144 @@ def classify_direct_item(title, link, source=""):
     return "Bangladesh"
 
 
+
+SUBCATEGORY_RULES = {
+    "Bangladesh": [
+        ("Politics & Government", re.compile(
+            r"\b(?:politic\w*|election\w*|parliament|government|minister|prime minister|president|"
+            r"lawmakers?|mp\b|cabinet|opposition|referendum|political party|bn p|awami league|jamaat|"
+            r"jatiya party|mayor|mayoral|councilor)\b|রাজনীতি|নির্বাচন|সংসদ|সরকার|মন্ত্রী|প্রধানমন্ত্রী|"
+            r"রাষ্ট্রপতি|রাজনৈতিক|দলীয়|দলীয়|বিএনপি|আওয়ামী লীগ|আওয়ামী লীগ|জামায়াত|জামায়াত|"
+            r"জাতীয় পার্টি|জাতীয় পার্টি|মেয়র|মেয়র|উপদেষ্টা পরিষদ", re.I
+        )),
+        ("Economy & Business", re.compile(
+            r"\b(?:econom\w*|business|bank(?:ing)?|inflation|budget|market|trade|export\w*|import\w*|"
+            r"investment|investor|stock market|share market|remittance|gdp|currency|tax|revenue|loan|"
+            r"finance|financial|startup|company|corporate|price hike|cost of living)\b|অর্থনীতি|অর্থনৈতিক|"
+            r"ব্যবসা|ব্যাংক|মূল্যস্ফীতি|বাজেট|বাজার|বাণিজ্য|রপ্তানি|আমদানি|বিনিয়োগ|বিনিয়োগ|"
+            r"শেয়ার বাজার|শেয়ার বাজার|রেমিট্যান্স|মুদ্রা|কর আদায়|কর আদায়|রাজস্ব|ঋণ|দাম বৃদ্ধি|"
+            r"দ্রব্যমূল্য|পুঁজিবাজার", re.I
+        )),
+        ("Crime & Law", re.compile(
+            r"\b(?:crime|criminal|police|murder|homicide|arrest\w*|court|judiciar\w*|lawsuit|trial|"
+            r"verdict|convict\w*|charged|robbery|theft|fraud|rape|assault|kidnap\w*|corruption|"
+            r"law enforcement|prison|jail|detained|prosecut\w*)\b|অপরাধ|পুলিশ|হত্যা|খুন|গ্রেপ্তার|গ্রেফতার|"
+            r"আটক|আদালত|মামলা|বিচার|রায়|রায়|দণ্ড|কারাদণ্ড|চুরি|ডাকাতি|প্রতারণা|ধর্ষণ|"
+            r"দুর্নীতি|কারাগার|জেল|আইনশৃঙ্খলা|আইন-শৃঙ্খলা", re.I
+        )),
+        ("Society & Education", re.compile(
+            r"\b(?:education|school|college|universit\w*|student\w*|teacher\w*|exam\w*|admission|"
+            r"curriculum|scholarship|societ\w*|community|culture|festival|transport|road|railway|"
+            r"bridge|public service|housing|urban|rural|social|sports?|cricket|football)\b|শিক্ষা|"
+            r"বিদ্যালয়|বিদ্যালয়|স্কুল|কলেজ|বিশ্ববিদ্যালয়|বিশ্ববিদ্যালয়|শিক্ষার্থী|শিক্ষক|পরীক্ষা|"
+            r"ভর্তি|পাঠ্যক্রম|বৃত্তি|সমাজ|সংস্কৃতি|উৎসব|পরিবহন|সড়ক|সড়ক|রেল|সেতু|"
+            r"জনসেবা|আবাসন|গ্রাম|নগর|ক্রিকেট|ফুটবল|খেলাধুলা|ক্রীড়া|ক্রীড়া", re.I
+        )),
+        ("Health & Environment", re.compile(
+            r"\b(?:health|hospital|doctor|medical|medicine|disease|dengue|virus|vaccine|outbreak|"
+            r"patient|healthcare|clinic|epidemic|climate|environment|pollution|river|forest|wildlife|"
+            r"biodiversity|flood\w*|cyclone|earthquake|landslide|heatwave|storm|disaster|weather|"
+            r"rainfall|drought|waterlogging|air quality)\b|স্বাস্থ্য|হাসপাতাল|চিকিৎসা|ডাক্তার|ওষুধ|"
+            r"রোগ|ডেঙ্গু|ভাইরাস|টিকা|সংক্রমণ|রোগী|জলবায়ু|জলবায়ু|পরিবেশ|দূষণ|নদী|বন|বন্যপ্রাণী|"
+            r"বন্যা|ঘূর্ণিঝড়|ঘূর্ণিঝড়|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|দুর্যোগ|আবহাওয়া|"
+            r"আবহাওয়া|বৃষ্টিপাত|খরা|জলাবদ্ধতা", re.I
+        )),
+    ],
+    "World": [
+        ("International Politics", re.compile(
+            r"\b(?:election\w*|president|prime minister|government|parliament|congress|senate|"
+            r"politic\w*|opposition|minister|cabinet|coup|referendum|policy|ruling party|"
+            r"general election|vote|voting)\b|নির্বাচন|রাষ্ট্রপতি|প্রধানমন্ত্রী|সরকার|সংসদ|রাজনীতি|"
+            r"রাজনৈতিক|অভ্যুত্থান|গণভোট|ক্ষমতাসীন দল|বিরোধী দল", re.I
+        )),
+        ("War & Conflict", re.compile(
+            r"\b(?:war|armed conflict|airstrike\w*|missile\w*|invasion|military|ceasefire|battlefield|"
+            r"troops|bombing|conflict|combat|frontline|hostage|weapon\w*|drone strike|shelling|"
+            r"gaza|ukraine|israel|palestine|iran war)\b|যুদ্ধ|সশস্ত্র সংঘাত|বিমান হামলা|ক্ষেপণাস্ত্র|"
+            r"আক্রমণ|হামলা|সামরিক|যুদ্ধবিরতি|সেনা|বোমা হামলা|সংঘাত|যুদ্ধক্ষেত্র|জিম্মি|"
+            r"অস্ত্র|গাজা|ইউক্রেন|ইসরায়েল|ইসরায়েল|ফিলিস্তিন", re.I
+        )),
+        ("Global Economy", re.compile(
+            r"\b(?:global economy|world economy|econom\w*|inflation|central bank|interest rate|"
+            r"global trade|tariff\w*|stock market|oil price|gdp|recession|market|export\w*|import\w*|"
+            r"investment|finance|currency|debt|business|banking|supply chain)\b|বিশ্ব অর্থনীতি|"
+            r"বৈশ্বিক অর্থনীতি|মুদ্রাস্ফীতি|কেন্দ্রীয় ব্যাংক|কেন্দ্রীয় ব্যাংক|সুদের হার|বাণিজ্য|"
+            r"শুল্ক|তেলের দাম|মন্দা|বিনিয়োগ|বিনিয়োগ|বৈদেশিক মুদ্রা|ঋণ|ব্যবসা", re.I
+        )),
+        ("Diplomacy & Relations", re.compile(
+            r"\b(?:diplomac\w*|diplomatic|summit|bilateral|treaty|foreign minister|embassy|"
+            r"ambassador|relations|peace talks|negotiat\w*|united nations|\\bun\\b|nato|g7|"
+            r"european union|international agreement|sanctions)\b|কূটনীতি|কূটনৈতিক|সম্মেলন|"
+            r"দ্বিপাক্ষিক|চুক্তি|পররাষ্ট্রমন্ত্রী|দূতাবাস|রাষ্ট্রদূত|সম্পর্ক|শান্তি আলোচনা|"
+            r"আলোচনা|জাতিসংঘ|নিষেধাজ্ঞা", re.I
+        )),
+        ("Climate & Disaster", re.compile(
+            r"\b(?:climate|environment|pollution|flood\w*|cyclone|hurricane|typhoon|earthquake|"
+            r"landslide|wildfire|storm|drought|tsunami|heatwave|weather|rainfall|volcano|"
+            r"eruption|emissions|natural disaster|extreme weather)\b|জলবায়ু|জলবায়ু|পরিবেশ|"
+            r"দূষণ|বন্যা|ঘূর্ণিঝড়|ঘূর্ণিঝড়|ভূমিকম্প|ভূমিধস|দাবানল|ঝড়|ঝড়|খরা|সুনামি|"
+            r"তাপপ্রবাহ|আবহাওয়া|আবহাওয়া|বৃষ্টিপাত|আগ্নেয়গিরি|আগ্নেয়গিরি|দুর্যোগ", re.I
+        )),
+    ],
+    "Technology": [
+        ("Artificial Intelligence", re.compile(
+            r"\b(?:artificial intelligence|generative ai|\\bai\\b|llm\\w*|chatgpt|openai|gemini|"
+            r"claude|copilot|machine learning|deep learning|neural network|large language model|"
+            r"ai model|ai tool)\b|কৃত্রিম বুদ্ধিমত্তা|এআই|এ আই|চ্যাটজিপিটি|জেমিনি", re.I
+        )),
+        ("Science & Space", re.compile(
+            r"\b(?:science|scientific|research|study|discovery|nasa|space|astronaut|satellite|"
+            r"rocket|moon|mars|telescope|physics|biology|genetic\w*|quantum|laboratory|particle)\b|"
+            r"বিজ্ঞান|গবেষণা|আবিষ্কার|মহাকাশ|মহাকাশচারী|উপগ্রহ|রকেট|চাঁদ|মঙ্গল|দূরবীক্ষণ|"
+            r"পদার্থবিজ্ঞান|জীববিজ্ঞান|জিন|কোয়ান্টাম|কোয়ান্টাম", re.I
+        )),
+        ("Gadgets & Devices", re.compile(
+            r"\b(?:smartphone|mobile phone|iphone|ipad|macbook|samsung galaxy|pixel phone|"
+            r"laptop|computer|tablet|smartwatch|gadget\w*|device\w*|processor|chipset|gpu|"
+            r"hardware|camera|wearable|headphone\w*|earbud\w*)\b|স্মার্টফোন|মোবাইল ফোন|ল্যাপটপ|"
+            r"কম্পিউটার|ট্যাবলেট|স্মার্টওয়াচ|স্মার্টওয়াচ|গ্যাজেট|ডিভাইস|প্রসেসর|চিপসেট|"
+            r"ক্যামেরা|হেডফোন|ইয়ারবাড|ইয়ারবাড", re.I
+        )),
+        ("Software & Apps", re.compile(
+            r"\b(?:software|app(?:lication)?s?|android|ios|windows|operating system|browser|"
+            r"platform|app store|website|web app|cloud service|social media|developer|programming|"
+            r"coding|software update|app update|release)\b|সফটওয়্যার|সফটওয়্যার|অ্যাপ|অ্যাপ্লিকেশন|"
+            r"অ্যান্ড্রয়েড|অ্যান্ড্রয়েড|আইওএস|উইন্ডোজ|ব্রাউজার|প্ল্যাটফর্ম|ওয়েবসাইট|ওয়েবসাইট|"
+            r"ডেভেলপার|প্রোগ্রামিং|কোডিং|আপডেট", re.I
+        )),
+        ("Cybersecurity", re.compile(
+            r"\b(?:cyber ?security|cyber ?attack|hacker\w*|hacking|data breach|breach|ransomware|"
+            r"malware|phishing|vulnerabilit\w*|exploit\w*|spyware|data leak|security flaw|"
+            r"privacy|identity theft|zero.day)\b|সাইবার নিরাপত্তা|সাইবার হামলা|হ্যাকার|হ্যাকিং|"
+            r"তথ্য ফাঁস|ডেটা ফাঁস|ম্যালওয়্যার|ম্যালওয়্যার|ফিশিং|নিরাপত্তা ত্রুটি|গোপনীয়তা|গোপনীয়তা", re.I
+        )),
+    ],
+}
+
+
+def classify_subcategory(item):
+    """Classify a story into one precise subcategory; leave ambiguous stories unclassified."""
+    category = str(item.get("category") or "").strip()
+    rules = SUBCATEGORY_RULES.get(category)
+    if not rules:
+        return DEFAULT_SUBCATEGORY
+    title = clean(str(item.get("previewTitle") or item.get("title") or ""))
+    summary = clean(str(item.get("previewSummary") or item.get("summary") or item.get("description") or ""))
+    ranked = []
+    for label, pattern in rules:
+        title_score = sum(1 for _ in pattern.finditer(title)) * 3
+        summary_score = sum(1 for _ in pattern.finditer(summary))
+        score = title_score + summary_score
+        if score:
+            ranked.append((score, label))
+    if not ranked:
+        return DEFAULT_SUBCATEGORY
+    highest = max(score for score, _label in ranked)
+    winners = [label for score, label in ranked if score == highest]
+    return winners[0] if len(winners) == 1 else DEFAULT_SUBCATEGORY
+
+
+
 def key_for(item):
     """Deduplicate identical headlines across publishers, including RSS publisher suffixes."""
     title = str(item.get("title") or "").strip()
@@ -636,6 +784,7 @@ def retained_previous_items(items, now=None):
             continue
         # Re-evaluate retained headlines instead of clearing the flag. A story can
         # remain in the feed after it falls out of a publisher's short RSS window.
+        item["subCategory"] = classify_subcategory(item)
         item["isBreaking"] = is_recent_breaking(
             item.get("title", ""),
             item.get("publishedAt"),
@@ -687,7 +836,7 @@ def calculate_feed_changes(current_items, previous_items, previous_raw_items, ba
     previous_by_key = {key_for(item): item for item in previous_items if key_for(item)}
     previous_raw_keys = {key_for(item) for item in previous_raw_items if key_for(item)}
     current_keys = {key_for(item) for item in current_items if key_for(item)}
-    meaningful_fields = ("title", "link", "source", "publishedAt", "category", "summary", "image",
+    meaningful_fields = ("title", "link", "source", "publishedAt", "category", "subCategory", "summary", "image",
                          "publisherUrl", "publisherName", "previewTitle", "previewSummary",
                          "previewImage", "iframeAllowed")
     added = sum(1 for item in current_items if key_for(item) not in previous_by_key)
@@ -769,12 +918,18 @@ def validate_feed_payload(payload):
     invalid = 0
     duplicates = 0
     allowed_categories = {"Bangladesh", "World", "Technology"}
+    allowed_subcategories = {
+        category: set(SUBCATEGORY_NAMES.get(category, ())) | {DEFAULT_SUBCATEGORY}
+        for category in allowed_categories
+    }
     for item in items:
         if not isinstance(item, dict):
             invalid += 1
             continue
         key = key_for(item)
-        if not item.get("title") or not str(item.get("link") or "").startswith("https://") or not item.get("publishedAt") or item.get("category") not in allowed_categories:
+        if (not item.get("title") or not str(item.get("link") or "").startswith("https://")
+                or not item.get("publishedAt") or item.get("category") not in allowed_categories
+                or item.get("subCategory") not in allowed_subcategories.get(item.get("category"), set())):
             invalid += 1
         if not key or key in seen:
             duplicates += 1
@@ -1063,6 +1218,7 @@ def main():
         key = key_for(item)
         if not key or key in selected_keys:
             continue
+        item["subCategory"] = classify_subcategory(item)
         selected_keys.add(key)
         selected.append(item)
     selected.sort(key=lambda x: x.get("publishedAt") or "", reverse=True)
@@ -1128,6 +1284,11 @@ def main():
         "World": sum(1 for item in selected if item.get("category") == "World"),
         "Technology": sum(1 for item in selected if item.get("category") == "Technology"),
     }
+    subcategory_counts = {
+        category: {name: sum(1 for item in selected if item.get("category") == category and item.get("subCategory") == name)
+                   for name in (*SUBCATEGORY_NAMES.get(category, ()), DEFAULT_SUBCATEGORY)}
+        for category in ("Bangladesh", "World", "Technology")
+    }
     print("Wrote", len(selected), "headlines; Bangladesh:", bd_count, "from", successful_feeds, "successful RSS queries.")
     print("Item changes: added:", added_count, "updated:", updated_count, "unchanged:", unchanged_count,
           "removed:", removed_count if removed_count is not None else "not_available",
@@ -1135,6 +1296,8 @@ def main():
           "previous:", previous_count if previous_count is not None else "not_available")
     print("Category breakdown: Bangladesh:", category_counts["Bangladesh"], "World:", category_counts["World"],
           "Technology:", category_counts["Technology"])
+    for category, counts in subcategory_counts.items():
+        print("Subcategory breakdown:", category, "; ".join(f"{name}: {count}" for name, count in counts.items()))
     print("Feed breakdown: latest_24h:", content_metrics["latest_24h"], "archive:", content_metrics["archive"],
           "latest_tag_15m:", content_metrics["latest_tag_15m"], "preview_image_urls:", content_metrics["image_preview_urls"],
           "bd_slider_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
