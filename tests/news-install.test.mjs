@@ -1,0 +1,44 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { isAndroidMobile, isStandaloneDisplay, shouldOfferInstall } from "../news-install.js";
+
+const androidChrome={userAgent:"Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36"};
+const androidTablet={userAgent:"Mozilla/5.0 (Linux; Android 14; Tablet) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36"};
+const ios={userAgent:"Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15"};
+const desktop={userAgent:"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0.0.0 Safari/537.36"};
+assert.equal(isAndroidMobile(androidChrome),true,"Android mobile should qualify");
+assert.equal(isAndroidMobile(androidTablet),false,"Android tablet should not qualify as mobile");
+assert.equal(isAndroidMobile(ios),false,"iOS must never qualify");
+assert.equal(isAndroidMobile(desktop),false,"Desktop must never qualify");
+assert.equal(isAndroidMobile({userAgent:"Mozilla/5.0 (Linux; Android 15) Mobile",userAgentData:{platform:"Android",mobile:false}}),false,"Explicit UA Client Hints mobile=false must be respected");
+assert.equal(isStandaloneDisplay({standalone:true},{}),true,"iOS standalone flag must be recognized");
+assert.equal(isStandaloneDisplay({}, {matchMedia:q=>({matches:q.includes("standalone")})}),true,"Standalone display mode must be recognized");
+assert.equal(shouldOfferInstall({androidMobile:true,standalone:false,dismissedUntil:0,now:100}),true);
+assert.equal(shouldOfferInstall({androidMobile:false,standalone:false,dismissedUntil:0,now:100}),false);
+assert.equal(shouldOfferInstall({androidMobile:true,standalone:true,dismissedUntil:0,now:100}),false);
+assert.equal(shouldOfferInstall({androidMobile:true,standalone:false,dismissedUntil:200,now:100}),false);
+assert.equal(shouldOfferInstall({androidMobile:true,standalone:false,dismissedUntil:100,now:100}),true);
+
+const manifest=JSON.parse(readFileSync(new URL("../manifest.webmanifest",import.meta.url),"utf8"));
+assert.equal(manifest.name,"KOKUSHIBU74 NEWS");
+assert.equal(manifest.start_url,"/news.html?source=pwa");
+assert.equal(manifest.scope,"/news.html");
+assert.equal(manifest.display,"standalone");
+assert.ok(manifest.icons.some(icon=>icon.sizes==="192x192"&&icon.type==="image/svg+xml"));
+assert.ok(manifest.icons.some(icon=>icon.sizes==="512x512"&&icon.type==="image/svg+xml"));
+assert.ok(manifest.icons.some(icon=>icon.purpose==="maskable"));
+
+const page=readFileSync(new URL("../news.html",import.meta.url),"utf8");
+assert.match(page,/<link rel="manifest" href="\.\/manifest\.webmanifest">/);
+assert.match(page,/<link rel="stylesheet" href="\.\/news-install\.css\?v=1">/);
+assert.match(page,/<script type="module" src="news-install\.js\?v=1"><\/script>/);
+const css=readFileSync(new URL("../news-install.css",import.meta.url),"utf8");
+assert.match(css,/env\(safe-area-inset-bottom\)/);
+assert.match(css,/prefers-reduced-motion:reduce/);
+const js=readFileSync(new URL("../news-install.js",import.meta.url),"utf8");
+assert.match(js,/beforeinstallprompt/);
+assert.match(js,/appinstalled/);
+assert.match(js,/SHOW_DELAY_MS=4000/);
+assert.match(js,/SNOOZE_MS=7\*24\*60\*60\*1000/);
+assert.doesNotMatch(js,/serviceWorker\.register/,"Do not introduce a Service Worker that could cache stale live news");
+console.log("Android News PWA installation tests OK.");
