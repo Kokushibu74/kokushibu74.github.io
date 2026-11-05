@@ -1055,15 +1055,19 @@ async function umHandleCommand(env,msg){
       const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
       all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
       const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
-      const htmlSafe=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-      const lines=items.map((u,i)=>u.kind==="visitor"
-        ?"<b>"+(start+i+1)+". WEB</b> · "+htmlSafe(u.name)+(u.customId?" · "+htmlSafe(u.customId):"")
-        :"<b>"+(start+i+1)+". TG</b> · <code>"+htmlSafe(u.id)+"</code> · "+htmlSafe(u.name));
+            const mdSpecial=new Set(["_","*","[","]","(",")","~",String.fromCharCode(96),">","#","+","-","=","|","{","}",".","!","\\"]);
+      const mdSafe=v=>Array.from(String(v??"")).map(ch=>mdSpecial.has(ch)?"\\"+ch:ch).join("");
+      const lines=items.map((u,i)=>{
+        const label=mdSafe((start+i+1)+". "+(u.kind==="visitor"?"WEB":"TG"));
+        return u.kind==="visitor"
+          ?"*"+label+"* · "+mdSafe(u.name)+(u.customId?" · "+mdSafe(u.customId):"")
+          :"*"+label+"* · "+mdSafe(u.id)+" · "+mdSafe(u.name);
+      });
       const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
-      const body="<b>👥 USER DIRECTORY</b>\n<code>Page "+pageNo+" / "+totalPages+" · "+all.length+" users</code>\n\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
-      await umReply(env,chatId,body,keyboard,{parse_mode:"HTML"});
+      const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
+      await umReply(env,chatId,body,keyboard,{parse_mode:"MarkdownV2"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
       const p=await umProfile(env,user)||{};

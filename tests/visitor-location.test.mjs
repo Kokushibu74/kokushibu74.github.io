@@ -68,6 +68,8 @@ test("Visitor Intelligence inserts GPS history immediately after IP Location", (
 
 test("User Directory Visitor IDs are clickable callback buttons with pagination", () => {
   assert.match(worker, /callback_data:"b1:users:visitor:"/);
+  assert.ok(worker.includes('await umReply(env,chatId,body,keyboard,{parse_mode:"MarkdownV2"});'));
+  assert.ok(worker.includes("const mdSafe="));
   assert.match(worker, /if\(action\.startsWith\("users:visitor:"\)\)/);
   assert.ok(worker.includes('callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo'));
   assert.ok(worker.includes('callback_data:"b1:users:list:"+directoryPage'));
