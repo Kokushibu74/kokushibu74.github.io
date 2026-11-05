@@ -89,12 +89,49 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("Metadata attempts", message)
         self.assertIn("FEED QUALITY", message)
         self.assertIn("RUN DETAILS", message)
-        self.assertIn("Metadata success rate <b>7%</b> (1/14)", message)
+        self.assertIn("New fetch success <b>7%</b> (1/14)", message)
         self.assertIn("Removed <b>0</b>", message)
         self.assertIn("Net = Added − Removed", message)
         self.assertIn("Validation <b>PASS</b>", message)
         self.assertIn("Some Weather/Disaster cards do not have a preview image URL.", message)
         self.assertLessEqual(len(message), report.MAX_TELEGRAM_TEXT)
+
+
+    def test_current_feed_breakdown_alias_and_weather_detail_are_parsed(self):
+        logs = """Feed breakdown: latest_24h: 1468 archive: 9333 latest_tag_15m: 15 preview_image_urls: 3049 bd_slider_preview_candidates: 14 weather_cards: 12 weather_cards_with_preview: 10
+Weather/disaster previews: candidates: 12 metadata_fetched: 0 cached/reused: 10 publisher_unavailable: 2 RSS_image_fallback: 0 with_preview_total: 10
+Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached/reused: 13 cached_success: 9 cached_fallback: 4 Google News URLs resolved: 1
+"""
+        metrics = report.parse_news_metrics(logs)
+        self.assertEqual(metrics["latest_24h"], 1468)
+        self.assertEqual(metrics["archive"], 9333)
+        self.assertEqual(metrics["latest_tag_15m"], 15)
+        self.assertEqual(metrics["image_preview_urls"], 3049)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 14)
+        self.assertEqual(metrics["weather_cards"], 12)
+        self.assertEqual(metrics["weather_cards_with_preview"], 10)
+        self.assertEqual(metrics["weather_enriched"], 0)
+        self.assertEqual(metrics["weather_cached"], 10)
+        self.assertEqual(metrics["weather_unavailable"], 2)
+        self.assertEqual(metrics["metadata_attempts"], 1)
+        self.assertEqual(metrics["metadata_cached_success"], 9)
+        self.assertEqual(metrics["metadata_cached_fallback"], 4)
+
+    def test_legacy_feed_breakdown_key_remains_supported(self):
+        logs = """Feed breakdown: latest_24h: 20 archive: 100 latest_tag_15m: 2 preview_image_urls: 30 bd_latest_tag_preview_candidates: 3 weather_cards: 4 weather_cards_with_preview: 2
+"""
+        metrics = report.parse_news_metrics(logs)
+        self.assertEqual(metrics["bd_slider_preview_candidates"], 3)
+        self.assertEqual(metrics["weather_cards"], 4)
+
+    def test_cached_success_counts_toward_overall_metadata_coverage(self):
+        logs = """Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached/reused: 13 cached_success: 13 cached_fallback: 0 Google News URLs resolved: 1
+"""
+        metrics = report.parse_news_metrics(logs)
+        message = report.build_news_report(metrics, {"conclusion": "success", "updated_at": "2026-11-05T12:00:00Z"})
+        self.assertIn("New fetch success <b>0%</b> (0/1)", message)
+        self.assertIn("Overall preview coverage <b>93%</b> (13/14)", message)
+        self.assertNotIn("Publisher metadata coverage is low", message)
 
     def test_report_uses_html_escaping_for_dynamic_values(self):
         metrics = report.parse_news_metrics("")
