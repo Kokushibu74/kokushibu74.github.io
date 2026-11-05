@@ -406,8 +406,8 @@ class NewsLogicTests(unittest.TestCase):
 
     def test_generated_feed_validator_accepts_valid_deduplicated_payload(self):
         payload = {"items": [
-            {"title": "Story A", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh"},
-            {"title": "Story B", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-10)), "category": "World"},
+            {"title": "Story A", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh", "subCategory": "Politics & Government"},
+            {"title": "Story B", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-10)), "category": "World", "subCategory": "War & Conflict"},
         ], "weatherItems": []}
         result = news.validate_feed_payload(payload)
         self.assertTrue(result["valid"])
@@ -416,14 +416,89 @@ class NewsLogicTests(unittest.TestCase):
 
     def test_generated_feed_validator_detects_invalid_and_duplicate_items(self):
         payload = {"items": [
-            {"title": "Duplicate story", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh"},
-            {"title": "Duplicate story", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-4)), "category": "World"},
-            {"title": "Invalid category", "link": "http://example.com/c", "publishedAt": None, "category": "Other"},
+            {"title": "Duplicate story", "link": "https://example.com/a", "publishedAt": self.iso(timedelta(minutes=-5)), "category": "Bangladesh", "subCategory": "Politics & Government"},
+            {"title": "Duplicate story", "link": "https://example.com/b", "publishedAt": self.iso(timedelta(minutes=-4)), "category": "World", "subCategory": "War & Conflict"},
+            {"title": "Invalid category", "link": "http://example.com/c", "publishedAt": None, "category": "Other", "subCategory": "Other / Unclassified"},
         ], "weatherItems": []}
         result = news.validate_feed_payload(payload)
         self.assertFalse(result["valid"])
         self.assertEqual(result["invalid"], 1)
         self.assertEqual(result["duplicates"], 1)
+
+
+    def test_taxonomy_has_three_main_categories_and_five_topics_each(self):
+        self.assertEqual(set(news.SUBCATEGORY_NAMES), {"Bangladesh", "World", "Technology"})
+        self.assertTrue(all(len(topics) == 5 for topics in news.SUBCATEGORY_NAMES.values()))
+        self.assertEqual(news.DEFAULT_SUBCATEGORY, "Other / Unclassified")
+
+    def test_bangladesh_subcategory_classifier(self):
+        cases = [
+            ("সংসদে নির্বাচন নিয়ে রাজনৈতিক দলগুলোর আলোচনা", "Politics & Government"),
+            ("বাংলাদেশে মূল্যস্ফীতি ও রপ্তানি আয় নিয়ে নতুন প্রতিবেদন", "Economy & Business"),
+            ("ঢাকায় ডাকাতির ঘটনায় পুলিশ তিনজনকে গ্রেপ্তার করেছে", "Crime & Law"),
+            ("বিশ্ববিদ্যালয়ে ভর্তি পরীক্ষা শুরু, অংশ নিচ্ছে হাজারো শিক্ষার্থী", "Society & Education"),
+            ("ডেঙ্গু রোগীর সংখ্যা বাড়ছে, হাসপাতালে নতুন চাপ", "Health & Environment"),
+        ]
+        for title, expected in cases:
+            with self.subTest(title=title):
+                self.assertEqual(news.classify_subcategory({"category": "Bangladesh", "title": title}), expected)
+
+    def test_world_subcategory_classifier(self):
+        cases = [
+            ("President wins national election amid political uncertainty", "International Politics"),
+            ("Missile strikes and airstrikes intensify as war spreads", "War & Conflict"),
+            ("Global economy faces inflation as oil prices rise", "Global Economy"),
+            ("UN summit opens with a new diplomatic treaty", "Diplomacy & Relations"),
+            ("Major earthquake triggers flood and climate disaster warnings", "Climate & Disaster"),
+        ]
+        for title, expected in cases:
+            with self.subTest(title=title):
+                self.assertEqual(news.classify_subcategory({"category": "World", "title": title}), expected)
+
+    def test_technology_subcategory_classifier(self):
+        cases = [
+            ("OpenAI unveils a new ChatGPT AI model", "Artificial Intelligence"),
+            ("NASA research discovers a new planet beyond the solar system", "Science & Space"),
+            ("Samsung Galaxy smartphone gets a new camera and processor", "Gadgets & Devices"),
+            ("Android app and software update adds new features", "Software & Apps"),
+            ("Ransomware hackers expose data in major cybersecurity breach", "Cybersecurity"),
+        ]
+        for title, expected in cases:
+            with self.subTest(title=title):
+                self.assertEqual(news.classify_subcategory({"category": "Technology", "title": title}), expected)
+
+    def test_ambiguous_and_sports_stories_use_unclassified_fallback(self):
+        ambiguous = {"category": "Bangladesh", "title": "বাংলাদেশে নির্বাচন ও মূল্যস্ফীতি নিয়ে আলোচনা"}
+        sports = {"category": "Bangladesh", "title": "Bangladesh cricket team wins the final"}
+        self.assertEqual(news.classify_subcategory(ambiguous), news.DEFAULT_SUBCATEGORY)
+        self.assertEqual(news.classify_subcategory(sports), news.DEFAULT_SUBCATEGORY)
+
+    def test_retained_previous_items_backfill_subcategory(self):
+        now = datetime(2026, 11, 5, 12, 0, tzinfo=timezone.utc)
+        item = {
+            "title": "ঢাকায় ডাকাতির ঘটনায় পুলিশ গ্রেপ্তার করেছে",
+            "link": "https://example.com/crime",
+            "publishedAt": "2026-11-05T07:00:00+00:00",
+            "category": "Bangladesh",
+            "source": "Example News",
+        }
+        retained = news.retained_previous_items([item], now)
+        self.assertEqual(len(retained), 1)
+        self.assertEqual(retained[0]["subCategory"], "Crime & Law")
+
+    def test_feed_validator_rejects_missing_or_wrong_subcategory(self):
+        base = {
+            "title": "A headline",
+            "link": "https://example.com/story",
+            "publishedAt": self.iso(timedelta(minutes=-5)),
+            "category": "Bangladesh",
+        }
+        missing = news.validate_feed_payload({"items": [base], "weatherItems": []})
+        wrong = news.validate_feed_payload({"items": [{**base, "subCategory": "War & Conflict"}], "weatherItems": []})
+        self.assertFalse(missing["valid"])
+        self.assertFalse(wrong["valid"])
+        self.assertEqual(missing["invalid"], 1)
+        self.assertEqual(wrong["invalid"], 1)
 
 if __name__ == "__main__":
     unittest.main()
