@@ -1,5 +1,5 @@
 import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./news-slider-rules.mjs";
-import { buildLocationContext, rankNewsByLocation } from "./news-location.js";
+import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
 (() => {
   "use strict";
   const grid=document.getElementById("news-grid"),status=document.getElementById("news-status"),filters=document.getElementById("filters");
