@@ -289,6 +289,7 @@ def signed(value):
 
 
 def build_news_report(metrics, context, verified_ids=None):
+    """Render a compact Telegram report while retaining every available diagnostic."""
     verified_ids = verified_ids or {}
     conclusion = str(context.get("conclusion") or "unknown").lower()
     warnings = []
@@ -306,18 +307,13 @@ def build_news_report(metrics, context, verified_ids=None):
         warnings.append("Some Weather/Disaster cards do not have a preview image URL.")
     if metrics.get("baseline") == "establishing":
         warnings.append("The comparison baseline is being established.")
-    if conclusion != "success":
-        status = conclusion.upper()
-    elif warnings:
-        status = "SUCCESS WITH WARNINGS"
-    else:
-        status = "SUCCESS"
 
+    status = conclusion.upper() if conclusion != "success" else ("SUCCESS · WARNINGS" if warnings else "SUCCESS")
     stamp_value = context.get("updated_at") or context.get("created_at") or ""
     try:
-        stamp = datetime.fromisoformat(stamp_value.replace("Z", "+00:00")).astimezone(BDT).strftime("%d %b %Y · %I:%M:%S %p BDT")
+        stamp = datetime.fromisoformat(stamp_value.replace("Z", "+00:00")).astimezone(BDT).strftime("%d %b %Y · %I:%M %p BDT")
     except Exception:
-        stamp = datetime.now(BDT).strftime("%d %b %Y · %I:%M:%S %p BDT")
+        stamp = datetime.now(BDT).strftime("%d %b %Y · %I:%M %p BDT")
 
     repo = html.escape(str(context.get("repository") or "Unknown repository"))
     workflow = html.escape(scrub(context.get("workflow_name") or "Unknown workflow", 120))
@@ -331,127 +327,107 @@ def build_news_report(metrics, context, verified_ids=None):
     run_url = html.escape(run_url, quote=True)
 
     lines = [
-        f'{emoji("rocket", verified_ids)} <b>KOKUSHIBU74 · NEWS INTELLIGENCE</b>',
-        f'{emoji("success", verified_ids)} <b>NEWS REFRESH — {html.escape(status)}</b>',
-        f'📅 {html.escape(stamp)}',
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        f'{emoji("news", verified_ids)} <b>01 · NEWS DATABASE</b>',
-        f'🗞 <b>Total stored headlines:</b> {number(metrics.get("headlines"))}',
-        f'🇧🇩 Bangladesh: <b>{number(metrics.get("bangladesh"))}</b>',
+        f'{emoji("rocket", verified_ids)} <b>KOKUSHIBU74 · NEWS REPORT</b>',
+        f'{emoji("success", verified_ids)} <b>{html.escape(status)}</b>  ·  {html.escape(stamp)}',
+        "",
+        f'{emoji("news", verified_ids)} <b>NEWS DATABASE</b>',
+        f'🗞 Total <b>{number(metrics.get("headlines"))}</b>   🇧🇩 BD <b>{number(metrics.get("bangladesh"))}</b>',
     ]
     if metrics.get("world") is not None and metrics.get("technology") is not None:
-        lines.extend([
-            f'🌍 World: <b>{number(metrics.get("world"))}</b>',
-            f'💻 Technology: <b>{number(metrics.get("technology"))}</b>',
-        ])
+        lines.append(f'🌍 World <b>{number(metrics.get("world"))}</b>   💻 Tech <b>{number(metrics.get("technology"))}</b>')
     elif metrics.get("headlines") is not None and metrics.get("bangladesh") is not None:
-        lines.append(f'🌐 World + Technology: <b>{number(metrics["headlines"] - metrics["bangladesh"])}</b>')
-    lines.extend([
-        '<i>Main News Feed: Latest 24 hours + Archive (up to 90-day retention). Weather/Disaster cards are separate.</i>',
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        f'{emoji("trend", verified_ids)} <b>02 · NEWS CHANGE TRACKER</b>',
-    ])
+        lines.append(f'🌐 World + Tech <b>{number(metrics["headlines"] - metrics["bangladesh"])}</b>')
+
     if metrics.get("baseline") == "establishing":
-        lines.append('🧭 Comparison baseline: <b>Establishing — first comparable snapshot pending</b>')
-        lines.append('🆕 New / 🔄 Updated / 🗑 Removed / 📊 Net change: <b>Not comparable yet</b>')
+        lines.append('📊 Change tracking <b>Baseline is being established</b>')
     else:
-        lines.extend([
-            f'📦 Previous stored headlines: <b>{number(metrics.get("previous_headlines"))}</b>',
-            f'🆕 New headlines added: <b>{number(metrics.get("added"))}</b>',
-            f'🔄 Updated headlines: <b>{number(metrics.get("updated"))}</b>',
-            f'➖ Unchanged headlines: <b>{number(metrics.get("unchanged"))}</b>',
-            f'🗑 Removed from feed: <b>{number(metrics.get("removed"))}</b>',
-            f'📊 Net feed change: <b>{signed(metrics.get("net_change"))}</b>',
-        ])
-    lines.append('<i>Net change = New − Removed. Removed includes stories leaving the 90-day retention window; Updated means tracked fields changed for an existing headline.</i>')
+        lines.append(
+            f'📦 Previous <b>{number(metrics.get("previous_headlines"))}</b>  ·  '
+            f'🆕 Added <b>{number(metrics.get("added"))}</b>  ·  '
+            f'🔄 Updated <b>{number(metrics.get("updated"))}</b>'
+        )
+        lines.append(
+            f'➖ Unchanged <b>{number(metrics.get("unchanged"))}</b>  ·  '
+            f'🗑 Removed <b>{number(metrics.get("removed"))}</b>  ·  '
+            f'📈 Net <b>{signed(metrics.get("net_change"))}</b>'
+        )
+        lines.append('<i>Net = Added − Removed; removed also includes stories outside the 90-day retention window.</i>')
+
     lines.extend([
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        f'{emoji("chart", verified_ids)} <b>03 · LIVE FEED & ARCHIVE</b>',
-        f'🕓 Published in last 24 hours: <b>{number(metrics.get("latest_24h"))}</b>',
-        f'🗄 Archived (older than 24h): <b>{number(metrics.get("archive"))}</b>',
-        f'🏷 15-minute Latest-tag candidates: <b>{number(metrics.get("latest_tag_15m"))}</b>',
-        f'🖼 Image preview URLs available: <b>{number(metrics.get("image_preview_urls"))}</b>',
-        f'🇧🇩 Bangladesh 15-minute slider candidates with image URL: <b>{number(metrics.get("bd_slider_preview_candidates"))}</b>',
-        f'🌦 Weather/Disaster cards (separate): <b>{number(metrics.get("weather_cards"))}</b> · with preview: <b>{number(metrics.get("weather_cards_with_preview"))}</b>',
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        f'{emoji("refresh", verified_ids)} <b>04 · RSS COLLECTION PERFORMANCE</b>',
-        f'📡 Feed/query attempts: <b>{number(metrics.get("rss_attempted"))}</b>',
-        f'🟢 Successful: <b>{number(metrics.get("rss_success"))}</b> · 🔴 Failed: <b>{number(metrics.get("rss_failed"))}</b>',
+        "",
+        f'{emoji("chart", verified_ids)} <b>LIVE FEED</b>',
+        f'🕓 Last 24h <b>{number(metrics.get("latest_24h"))}</b>  ·  🗄 Archive <b>{number(metrics.get("archive"))}</b>',
+        f'🏷 Latest-tag (15m) <b>{number(metrics.get("latest_tag_15m"))}</b>  ·  🖼 Image URLs <b>{number(metrics.get("image_preview_urls"))}</b>',
+        f'🇧🇩 BD slider candidates <b>{number(metrics.get("bd_slider_preview_candidates"))}</b>',
+        f'🌦 Weather/Disaster cards <b>{number(metrics.get("weather_cards"))}</b>  ·  Preview <b>{number(metrics.get("weather_cards_with_preview"))}</b>',
+        "",
+        f'{emoji("refresh", verified_ids)} <b>COLLECTION HEALTH</b>',
+        f'📡 RSS queries <b>{number(metrics.get("rss_success"))}/{number(metrics.get("rss_attempted"))}</b> successful  ·  Failed <b>{number(metrics.get("rss_failed"))}</b>',
     ])
     for detail in metrics.get("rss_failure_details", [])[:3]:
         lines.append('⚠️ ' + html.escape(detail))
+
     lines.extend([
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        f'{emoji("search", verified_ids)} <b>05 · PUBLISHER METADATA</b>',
-        f'🔗 Google News publisher URLs resolved: <b>{number(metrics.get("publisher_urls_resolved"))}</b>',
-        f'🔎 Metadata extraction attempts: <b>{number(metrics.get("metadata_attempts"))}</b>',
-        f'📄 Metadata successfully extracted: <b>{number(metrics.get("metadata_fetched"))}</b>',
-        f'⚠️ Metadata unavailable: <b>{number(metrics.get("metadata_unavailable"))}</b> · Cached/reused: <b>{number(metrics.get("metadata_cached"))}</b>',
+        f'🔗 Publisher URLs resolved <b>{number(metrics.get("publisher_urls_resolved"))}</b>',
+        f'🔎 Metadata attempts <b>{number(metrics.get("metadata_attempts"))}</b>  ·  Extracted <b>{number(metrics.get("metadata_fetched"))}</b>',
+        f'⚠️ Unavailable <b>{number(metrics.get("metadata_unavailable"))}</b>  ·  Cached <b>{number(metrics.get("metadata_cached"))}</b>',
     ])
     if attempts is not None and attempts > 0 and fetched is not None:
-        coverage = round(100 * fetched / max(1, attempts))
-        lines.append(f'📊 Extraction success rate: <b>{coverage}%</b> ({fetched}/{attempts})')
+        lines.append(f'📊 Metadata success rate <b>{round(100 * fetched / max(1, attempts))}%</b> ({fetched}/{attempts})')
     elif attempts == 0:
-        cached_count = metrics.get("metadata_cached") or 0
-        lines.append(f'📊 Extraction success rate: <b>N/A — no new metadata requests</b> · Cached/reused: <b>{cached_count}</b>')
+        lines.append(f'📊 Metadata success rate <b>N/A</b> · No new requests; cached <b>{number(metrics.get("metadata_cached"))}</b>')
     else:
-        lines.append('📊 Extraction success rate: <b>Not reported (attempt count unavailable)</b>')
+        lines.append('📊 Metadata success rate <b>Not reported</b>')
     if metrics.get("publisher_preview_unavailable"):
         hosts = ", ".join(metrics.get("publisher_unavailable_hosts") or [])
-        lines.append(f'🌐 Publisher preview fetch unavailable: <b>{metrics["publisher_preview_unavailable"]}</b>' + (f' · {html.escape(hosts)}' if hosts else ''))
+        suffix = f' · {html.escape(hosts)}' if hosts else ''
+        lines.append(f'🌐 Publisher preview unavailable <b>{metrics["publisher_preview_unavailable"]}</b>{suffix}')
     if metrics.get("weather_enriched") is not None:
-        lines.append(f'🌦 New Weather preview metadata fetched: <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority candidates (existing preview URLs counted above)')
+        lines.append(f'🌦 New Weather preview metadata <b>{number(metrics["weather_enriched"])}/{number(metrics.get("weather_priority"))}</b> priority stories')
+
     lines.extend([
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        '🧪 <b>06 · FEED QUALITY & VALIDATION</b>',
-        f'🧾 JSON/feed validation: <b>{html.escape(metrics.get("validation") or "Not reported")}</b>',
-        f'🚫 Invalid items: <b>{number(metrics.get("invalid_items"))}</b> · Duplicate headlines: <b>{number(metrics.get("duplicate_items"))}</b>',
+        "",
+        "🧪 <b>FEED QUALITY</b>",
+        f'Validation <b>{html.escape(metrics.get("validation") or "Not reported")}</b>  ·  Invalid <b>{number(metrics.get("invalid_items"))}</b>  ·  Duplicates <b>{number(metrics.get("duplicate_items"))}</b>',
     ])
     if metrics.get("validation") == "PASS":
-        lines.append('✅ Required fields and category structure: <b>Passed</b>')
+        lines.append('✅ Required fields and category structure passed.')
     else:
-        lines.append('ℹ️ Validation detail: <b>Only checks reported by the generator are shown.</b>')
-    lines.extend([
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        '⚠️ <b>07 · ISSUES & RECOMMENDED ACTIONS</b>',
-    ])
+        lines.append('ℹ️ Validation details are limited to checks reported by the generator.')
+
     if warnings:
-        for index, warning in enumerate(warnings[:4], 1):
-            lines.append(f'{index}. {html.escape(warning)}')
+        lines.extend(["", f'⚠️ <b>NEEDS ATTENTION · {len(warnings)} item(s)</b>'])
+        for warning in warnings[:5]:
+            lines.append('• ' + html.escape(warning))
         if attempts and fetched is not None and fetched < attempts:
-            lines.append('💡 Review publishers that block preview requests; preserve RSS title/summary/image as fallback.')
+            lines.append('↳ Review publishers that block preview requests; keep RSS fallbacks.')
         if metrics.get("rss_failure_details"):
-            lines.append('💡 Inspect failed feeds and retry only affected sources on the next scheduled refresh.')
+            lines.append('↳ Check failed feeds; retry affected sources on the next refresh.')
         if metrics.get("baseline") == "establishing":
-            lines.append('💡 The next successful refresh will provide the first reliable change comparison.')
+            lines.append('↳ The next successful refresh will establish the comparison baseline.')
         if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
-            missing_previews = weather_total - weather_with_preview
-            lines.append(f'💡 Review {missing_previews} Weather/Disaster cards without preview URLs; retain RSS image fallbacks where available.')
+            lines.append(f'↳ Review {weather_total - weather_with_preview} Weather/Disaster cards without preview images.')
     else:
-        lines.append('✅ No collection or feed-validation issues were reported in this run.')
+        lines.extend(["", "✅ <b>ALL CHECKS CLEAR</b> · No reported feed or collection issues."])
+
     lines.extend([
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        '⚙️ <b>08 · GITHUB AUTOMATION DETAILS</b>',
-        f'📁 Repository: <code>{repo}</code>',
-        f'🔄 Workflow: <code>{workflow}</code>',
-        f'🌿 Branch: <code>{branch}</code> · Event: <code>{event}</code>',
-        f'🆔 Run ID: <code>{run_id}</code> · Attempt: <code>{attempt}</code>',
-        f'🔗 <a href="{run_url}">OPEN GITHUB ACTION RUN</a>',
-        '━━━━━━━━━━━━━━━━━━━━━━',
-        '<b>KOKUSHIBU74 · AUTOMATED NEWS MONITORING</b>',
+        "",
+        f'⚙️ <b>RUN DETAILS</b>  ·  <a href="{run_url}">OPEN ACTION RUN ↗</a>',
+        f'<code>{repo}</code>',
+        f'{workflow}  ·  {branch}  ·  {event}',
+        f'Run <code>{run_id}</code>  ·  Attempt <b>{attempt}</b>',
+        "",
+        '<i>KOKUSHIBU74 · AUTOMATED NEWS MONITORING</i>',
     ])
     message = "\n".join(lines)
     plain_length = len(re.sub(r"<[^>]+>", "", message))
     if plain_length > MAX_TELEGRAM_TEXT:
-        # Keep the complete report structure; only trim optional source-host details.
-        lines = [line for line in lines if not line.startswith("🌐 Publisher preview fetch unavailable:")]
+        lines = [line for line in lines if not line.startswith("🌐 Publisher preview unavailable")]
         message = "\n".join(lines)
         plain_length = len(re.sub(r"<[^>]+>", "", message))
     if plain_length > MAX_TELEGRAM_TEXT:
         raise ValueError("Telegram report exceeds the safe message length: " + str(plain_length))
     return message
-
-
 def build_failure_report(context, failed, excerpts):
     stamp_value = context.get("updated_at") or context.get("created_at") or ""
     try:
