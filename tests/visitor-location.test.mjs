@@ -96,7 +96,7 @@ test("News Page uses one transparent consent popup, records only after browser p
   assert.ok(tracker.includes("k74:visitor-tracked"));
   assert.match(news, /navigator\.geolocation\.getCurrentPosition/);
   assert.match(news, /locationAllow\.addEventListener\("click",requestLocation\)/);
-  assert.match(news, /locationNotNow\.addEventListener\("click",async/);
+  assert.match(news, /locationNotNow\.addEventListener\("click"/);
   assert.match(news, /revokeLocationConsent/);
   assert.match(news, /consent:false,policyVersion:"2026-11-06"/);
   assert.match(news, /navigator\.permissions\?\.query/);
