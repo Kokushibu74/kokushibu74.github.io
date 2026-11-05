@@ -1,5 +1,5 @@
 import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./news-slider-rules.mjs";
-import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
+import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=2";
 (() => {
   "use strict";
   const grid=document.getElementById("news-grid"),status=document.getElementById("news-status"),filters=document.getElementById("filters");
@@ -597,11 +597,11 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
         setTimeout(done,2500);
       });
     }
-    const identity=await waitForVisitorIdentity();
+    const identity=visitorIdentity();
     if(!identity)return null;
     if(window.__K74_TRACKING_READY__){
       const response=await window.__K74_TRACKING_READY__;
-      if(response&&!response.ok)return null;
+      if(!response?.ok)return null;
     }
     return identity;
   };

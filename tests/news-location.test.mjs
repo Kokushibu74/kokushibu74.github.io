@@ -41,21 +41,23 @@ test("Bengali district names are matched in story text", () => {
   assert.equal(rankNewsByLocation(items, context)[0].id, "local");
 });
 
-test("when no local or nearby coverage matches, the existing feed order is unchanged", () => {
+test("when local and nearby coverage is sparse, Bangladesh national news precedes international stories", () => {
   const context = buildLocationContext({ latitude: 23.7115253, longitude: 90.4111451, accuracyMeters: 20, country: "BD" });
   const items = [
-    { id: "older", title: "National policy update", category: "Bangladesh" },
-    { id: "newer", title: "World technology update", category: "Technology" }
+    { id: "world", title: "World technology update", category: "World" },
+    { id: "national", title: "National policy update", category: "Bangladesh" },
+    { id: "technology", title: "Global technology update", category: "Technology" }
   ];
-  assert.strictEqual(rankNewsByLocation(items, context), items);
+  assert.deepEqual(rankNewsByLocation(items, context).map(x => x.id), ["national", "world", "technology"]);
 });
 
-test("international visitors use explicit city and region mentions only", () => {
+test("international visitors see local city and region first, Bangladesh national next, then international", () => {
   const context = buildLocationContext({ latitude: 40.7128, longitude: -74.006, accuracyMeters: 20, city: "London", region: "England", country: "GB", countryName: "United Kingdom" });
   const items = [
     { id: "global", title: "Global markets", category: "World" },
+    { id: "bangladesh", title: "Bangladesh parliament approves a budget", category: "Bangladesh" },
     { id: "region", title: "England weather update", category: "World" },
     { id: "city", title: "London local transport update", category: "World" }
   ];
-  assert.deepEqual(rankNewsByLocation(items, context).map(x => x.id), ["city", "region", "global"]);
+  assert.deepEqual(rankNewsByLocation(items, context).map(x => x.id), ["city", "region", "bangladesh", "global"]);
 });
