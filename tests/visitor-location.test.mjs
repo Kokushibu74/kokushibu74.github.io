@@ -88,7 +88,7 @@ test("Visitor identity wait resolves the stored identity without recursive self-
   assert.match(helper, /if\(!response\?\.ok\)return null/);
 });
 
-test("News Page requests GPS only after a user click and preserves default feed on failure", () => {
+test("News Page uses one transparent consent popup, records only after browser permission, and keeps the default feed on failure", () => {
   assert.ok(tracker.includes("window.__K74_TRACKING_READY__"));
   assert.ok(tracker.includes("send(data,true)"));
   assert.ok(sharedShell.includes("visitor-tracking.js?v=3"));
@@ -96,11 +96,18 @@ test("News Page requests GPS only after a user click and preserves default feed 
   assert.ok(tracker.includes("k74:visitor-tracked"));
   assert.match(news, /navigator\.geolocation\.getCurrentPosition/);
   assert.match(news, /locationAllow\.addEventListener\("click",requestLocation\)/);
+  assert.match(news, /locationNotNow\.addEventListener\("click"/);
+  assert.match(news, /navigator\.permissions\?\.query/);
+  assert.match(news, /LOCATION_CONSENT_COOKIE/);
+  assert.match(news, /locationPost\("\/location-consent",\{\.\.\.identity,consent:true/);
+  assert.match(news, /locationPost\("\/location-history",payload\)/);
   assert.match(news, /locationContext=null;render\(\)/);
-  assert.match(news, /historyConsent==="yes"/);
   assert.match(news, /rankNewsByLocation\(visible,locationContext\)/);
-  assert.match(newsHtml, /আপনার এলাকার খবর দেখতে চান\?/);
-  assert.ok(newsHtml.includes("আপনার আশেপাশের গুরুত্বপূর্ণ খবর এবং স্থানীয় আপডেটগুলো দেখানোর জন্য News Page-এর আপনার লোকেশন ব্যবহারের অনুমতি প্রয়োজন। আপনার এলাকার প্রাসঙ্গিক খবর পেতে Location Access চালু করুন।"));
-  assert.match(newsHtml, /GPS History is stored only if you separately consent/);
+  assert.match(newsHtml, /id="news-location-modal"[^>]*role="dialog"[^>]*aria-modal="true"/);
+  assert.match(newsHtml, />Allow<\/button>/);
+  assert.match(newsHtml, />Not now<\/button>/);
+  assert.match(newsHtml, /অনুমোদিত Telegram Admin-দের জন্য সর্বোচ্চ ৯০ দিন সংরক্ষিত থাকবে/);
+  assert.match(newsHtml, /পরবর্তী ভিজিটে ব্রাউজারের অনুমতি চালু থাকলে নতুন লোকেশন রেকর্ড হতে পারে/);
+  assert.doesNotMatch(newsHtml, /news-location-settings-trigger|news-history-delete|Refresh Nearby News|Location History Settings/);
   assert.doesNotMatch(tracker, /navigator\.geolocation/);
 });
