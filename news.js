@@ -586,8 +586,24 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
   const localGet=key=>{try{return localStorage.getItem(key)}catch{return null}};
   const localSet=(key,value)=>{try{localStorage.setItem(key,value)}catch{}};
   const visitorIdentity=()=>{
-    const visitorId=localGet("k74_visitor_id_v1"),sessionId=localGet("k74_session_v1");
+    const visitorId=window.__K74_VISITOR_ID__||localGet("k74_visitor_id_v1"),sessionId=window.__K74_SESSION_ID__||localGet("k74_session_v1");
     return /^VIS-[A-F0-9]{12}$/.test(visitorId||"")&&/^SES-[A-F0-9]{12}$/.test(sessionId||"")?{visitorId,sessionId}:null;
+  };
+  const waitForVisitorIdentity=async()=>{
+    if(!visitorIdentity()){
+      await new Promise(resolve=>{
+        const done=()=>{window.removeEventListener("k74:visitor-tracked",done);resolve()};
+        window.addEventListener("k74:visitor-tracked",done,{once:true});
+        setTimeout(done,2500);
+      });
+    }
+    const identity=await waitForVisitorIdentity();
+    if(!identity)return null;
+    if(window.__K74_TRACKING_READY__){
+      const response=await window.__K74_TRACKING_READY__;
+      if(response&&!response.ok)return null;
+    }
+    return identity;
   };
   const locationPost=async(path,payload)=>{
     const response=await fetch(LOCATION_API+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),credentials:"omit",cache:"no-store"});
@@ -623,7 +639,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
     }catch{return {}}
   };
   const saveGpsHistory=async position=>{
-    const identity=visitorIdentity();
+    const identity=await waitForVisitorIdentity();
     if(!identity)throw new Error("Visitor session is not ready; reload the News Page and try again.");
     const coords=position.coords;
     return locationPost("/location-history",{...identity,latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,source:"browser-geolocation"});
@@ -661,7 +677,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
     },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
   };
   const acceptHistoryConsent=async()=>{
-    const identity=visitorIdentity();
+    const identity=await waitForVisitorIdentity();
     if(!identity){setLocationStatus("Visitor session is not ready. Reload the page and try again.");return}
     if(historyAllow)historyAllow.disabled=true;
     try{
@@ -673,13 +689,13 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
     finally{if(historyAllow)historyAllow.disabled=false}
   };
   const declineHistoryConsent=async()=>{
-    const identity=visitorIdentity();
+    const identity=await waitForVisitorIdentity();
     historyConsent="no";localSet(LOCATION_HISTORY_KEY,"no");closeLocationCards();
     if(identity){try{await locationPost("/location-consent",{...identity,consent:false,policyVersion:"2026-11-05"});}catch{}}
     setLocationStatus("Nearby news is active. GPS History is OFF; no GPS history is stored.");
   };
   const stopHistorySaving=async()=>{
-    const identity=visitorIdentity();
+    const identity=await waitForVisitorIdentity();
     if(!identity){setLocationStatus("Visitor session is not ready; reload and try again.");return}
     try{
       await locationPost("/location-consent",{...identity,consent:false,policyVersion:"2026-11-05"});
@@ -688,7 +704,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
     }catch(error){setLocationStatus("Could not update the history preference: "+String(error.message||error));}
   };
   const requestHistoryDeletion=async()=>{
-    const identity=visitorIdentity();
+    const identity=await waitForVisitorIdentity();
     if(!identity){setLocationStatus("Visitor session is not ready; reload and try again.");return}
     if(historyDelete)historyDelete.disabled=true;
     try{
