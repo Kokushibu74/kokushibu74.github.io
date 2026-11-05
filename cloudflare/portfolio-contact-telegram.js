@@ -426,15 +426,79 @@ async function umReply(env,chatId,text){
 
 function umValue(value,fallback="Unknown"){const s=String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/\s+/g," ").trim();return s||fallback;}
 function umTime(value){if(!value)return "Unknown";const t=Date.parse(String(value));if(!Number.isFinite(t))return umValue(value);return new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(t))+" BDT";}
-function umVisitorReport(id,p){const n=p?.network||{},d=p?.device||{},src=p?.source||{},perf=p?.performance||{};return [
-"🔍 VISITOR INTELLIGENCE","🆔 "+umValue(id),"━━━━━━━━━━━━━━━━━━━━",
-"01 · 📍 LOCATION PROFILE","Country: "+umValue(n.country),"Region: "+umValue(n.region),"City: "+umValue(n.city),"Timezone: "+umValue(n.timezone),"Cloudflare Location: "+umValue(n.colo),"Location Source: IP-based · Estimated","",
-"02 · 📱 DEVICE PROFILE","Device: "+umValue(d.deviceType),"Model: "+umValue(d.deviceModel),"OS: "+umValue(d.os),"Browser: "+umValue(d.browser),"Platform: "+umValue(d.platform),"Screen: "+umValue(d.screen),"Viewport: "+umValue(d.viewport),"Language: "+umValue(d.language),"Pixel Ratio: "+umValue(d.pixelRatio),"",
-"03 · 🌐 NETWORK PROFILE","IP Address: "+umValue(n.ip),"IP Version: "+umValue(n.ipVersion),"ISP / Organization: "+umValue(n.isp),"ASN: "+umValue(n.asn),"Network Type: "+umValue(n.networkType),"Carrier: "+umValue(n.carrier,"Not verified"),"Hosting / Cloud Signal: "+umValue(n.hostingSignal),"Corporate Proxy: "+umValue(n.corporateProxy),"VPN / Tor: Not verified","HTTP Protocol: "+umValue(n.httpProtocol),"",
-"04 · 📊 VISITOR ACTIVITY","Visitor Status: "+(p?.returning?"Returning":"Not stored"),"Total Sessions: "+umValue(p?.totalSessions,"0"),"Total Page Views: "+umValue(p?.totalPageViews,"0"),"Current Session Views: "+umValue(p?.sessionPageViews,"0"),"Last Session: "+umValue(p?.lastSessionId),"Recent Pages: "+(Array.isArray(p?.pages)?p.pages.slice(-8).map(x=>umValue(x?.path||x)).join(" → "):"Unknown"),"Recent Events: "+(Array.isArray(p?.events)?p.events.slice(-8).map(x=>umValue(x?.type||x)).join(", "):"Unknown"),"Referrer: "+umValue(src.referrer,"Direct"),"UTM Source: "+umValue(src.utmSource),"UTM Medium: "+umValue(src.utmMedium),"UTM Campaign: "+umValue(src.utmCampaign),"",
-"05 · 🛡️ SECURITY ANALYSIS","Hosting / Organization Signal: "+umValue(n.hostingSignal),"Corporate Proxy: "+umValue(n.corporateProxy),"VPN / Tor: Not verified","Bot Identity: "+(/bot|spider|crawler|inspectiontool/i.test(String(d.userAgent||""))?"Crawler candidate · not verified":"Not verified"),"Risk Assessment: "+(Number(p?.sessionPageViews)>=30?"Elevated activity · review":"Insufficient evidence"),"",
-"06 · 🕒 VISIT TIMESTAMP","First Seen: "+umTime(p?.firstSeen),"Last Seen: "+umTime(p?.lastSeen),"Last Session At: "+umTime(p?.lastSessionAt),"Profile Retention: 365 Days",perf.loadMs?"Performance Load: "+Math.round(perf.loadMs)+" ms":"",perf.domMs?"DOM Ready: "+Math.round(perf.domMs)+" ms":"",perf.lcp?"LCP: "+Math.round(perf.lcp)+" ms":"", "","ℹ️ IP location is approximate. Browser/device signals may be unavailable or user-agent supplied."
-].filter(Boolean).join("\n");}
+function umVisitorReport(id,p){
+  const n=p?.network||{},d=p?.device||{},src=p?.source||{},perf=p?.performance||{};
+  const value=(v,fallback="Not available")=>umValue(v,fallback);
+  const time=v=>{
+    if(v===null||v===undefined||v==="")return "Not available";
+    let t;
+    if(typeof v==="number"||(typeof v==="string"&&/^\\d{10,13}$/.test(v))){
+      const num=Number(v);t=new Date(num<1e12?num*1000:num);
+    }else t=new Date(v);
+    if(!Number.isFinite(t.getTime()))return value(v);
+    return new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",hour12:true}).format(t)+" BDT";
+  };
+  const section=(number,emoji,title,rows)=>[
+    "┏━━━━━━━━━━━━━━━━━━━━",
+    number+"  "+emoji+"  "+title,
+    "┗━━━━━━━━━━━━━━━━━━━━",
+    ...rows.map(([label,val])=>"  "+label+"\n  └ "+value(val))
+  ].join("\n");
+  const pages=Array.isArray(p?.pages)?p.pages.slice(-8).map(x=>value(x?.path||x)).join("  ›  "):"Not available";
+  const events=Array.isArray(p?.events)?p.events.slice(-8).map(x=>value(x?.type||x)).join("  ·  "):"Not available";
+  const botSignal=/bot|spider|crawler|inspectiontool/i.test(String(d.userAgent||""))?"Crawler candidate · unverified":"Not verified";
+  const activityRisk=Number(p?.sessionPageViews)>=30?"Elevated activity · review recommended":"Insufficient evidence";
+  const lines=[
+    "🔎  VISITOR INTELLIGENCE",
+    "━━━━━━━━━━━━━━━━━━━━",
+    "🆔  "+value(id),
+    "PROFILE  ·  WEBSITE VISITOR",
+    "",
+    section("01","📍","LOCATION",[
+      ["Country",n.country],["Region",n.region],["City",n.city],
+      ["Timezone",n.timezone],["Cloudflare PoP",n.colo],
+      ["Location accuracy","IP-based estimate"]
+    ]),
+    "",
+    section("02","📱","DEVICE",[
+      ["Device",d.deviceType],["Model",d.deviceModel],["Operating system",d.os],
+      ["Browser",d.browser],["Platform",d.platform],["Screen",d.screen],
+      ["Viewport",d.viewport],["Language",d.language],["Pixel ratio",d.pixelRatio]
+    ]),
+    "",
+    section("03","🌐","NETWORK",[
+      ["IP address",n.ip],["IP version",n.ipVersion],["ISP / organization",n.isp],
+      ["ASN",n.asn],["Network type",n.networkType],["Carrier",n.carrier||"Not verified"],
+      ["Hosting signal",n.hostingSignal],["Corporate proxy",n.corporateProxy],
+      ["VPN / Tor","Not verified"],["HTTP protocol",n.httpProtocol]
+    ]),
+    "",
+    section("04","📊","VISITOR ACTIVITY",[
+      ["Visitor status",p?.returning===true?"Returning":p?.returning===false?"First visit":"Not recorded"],
+      ["Total sessions",p?.totalSessions??"0"],["Total page views",p?.totalPageViews??"0"],
+      ["Current session views",p?.sessionPageViews??"0"],["Last session ID",p?.lastSessionId],
+      ["Recent pages",pages],["Recent events",events],["Referrer",src.referrer||"Direct"],
+      ["UTM source",src.utmSource],["UTM medium",src.utmMedium],["UTM campaign",src.utmCampaign]
+    ]),
+    "",
+    section("05","🛡️","SECURITY ANALYSIS",[
+      ["Hosting / organization",n.hostingSignal],["Corporate proxy",n.corporateProxy],
+      ["VPN / Tor","Not verified"],["Bot identity",botSignal],["Risk assessment",activityRisk]
+    ]),
+    "",
+    section("06","🕒","VISIT TIMESTAMP",[
+      ["First seen",time(p?.firstSeen)],["Last seen",time(p?.lastSeen)],
+      ["Last session",time(p?.lastSessionAt)],["Profile retention","365 days"],
+      ["Page load",perf.loadMs!=null?Math.round(Number(perf.loadMs))+" ms":null],
+      ["DOM ready",perf.domMs!=null?Math.round(Number(perf.domMs))+" ms":null],
+      ["Largest contentful paint",perf.lcp!=null?Math.round(Number(perf.lcp))+" ms":null]
+    ]),
+    "",
+    "ⓘ  LOCATION & PRIVACY",
+    "IP-based location is approximate. Device and network details depend on browser-provided signals. VPN, Tor and bot identity are not confirmed."
+  ];
+  return lines.join("\n");
+}
 
 // Telegram inline-button navigation and persistent control settings.
 const BOT_MENU = [
