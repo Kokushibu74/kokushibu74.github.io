@@ -1,3 +1,5 @@
+// Temporary switch: keep the News PWA install invitation disabled.
+const INSTALL_PROMPT_ENABLED=false;
 const SHOW_DELAY_MS=4000;
 
 export function isAndroidMobile(nav=typeof navigator!=="undefined"?navigator:{}) {
@@ -124,6 +126,9 @@ export async function isRelatedAppInstalled(nav=typeof navigator!=="undefined"?n
 
 async function init(){
   if(!isAndroidMobile()||isStandaloneDisplay())return;
+  // Suppress both the custom install sheet and the browser's native install mini-prompt.
+  window.addEventListener("beforeinstallprompt",event=>event.preventDefault());
+  if(!INSTALL_PROMPT_ENABLED)return;
   const installed=await isRelatedAppInstalled();
   if(!shouldOfferInstall({androidMobile:true,standalone:false,installed}))return;
   mountInstallSheet();
