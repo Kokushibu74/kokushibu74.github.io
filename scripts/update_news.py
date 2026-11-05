@@ -175,7 +175,7 @@ def parse_date(value):
     except Exception:
         return None
 
-def is_recent_breaking(title, published, query, source=""):
+def is_recent_breaking(title, published, query, source="", summary=""):
     """Only fresh, high-impact events qualify; a 'breaking' label alone is insufficient."""
     if not published:
         return False
@@ -188,14 +188,15 @@ def is_recent_breaking(title, published, query, source=""):
         # are not evidence that a story itself is genuinely breaking.
         if not (timedelta(minutes=-5) <= age <= timedelta(minutes=60)):
             return False
-        if BREAKING_FOLLOWUP_RE.search(title):
+        story_text = str(title or "") + " " + str(summary or "")
+        if BREAKING_FOLLOWUP_RE.search(story_text):
             return False
         # Anniversary/retrospective coverage is not a live breaking event.
-        if re.search(r"(?:বার্ষিকী|২০\s*বছর|বিশ\s*বছর|আগে যা যা ঘটেছিল|পেছন ফিরে|স্মরণে|anniversary|years? ago|what happened before|look back)", title, re.I):
+        if re.search(r"(?:বার্ষিকী|২০\s*বছর|বিশ\s*বছর|আগে যা যা ঘটেছিল|পেছন ফিরে|স্মরণে|anniversary|years? ago|what happened before|look back)", story_text, re.I):
             return False
         # Google News query results are noisy: require an actual high-impact event
         # phrase, even when the query or title says "breaking news".
-        if not BREAKING_EVENT_RE.search(title):
+        if not BREAKING_EVENT_RE.search(story_text):
             return False
         return True
     except (ValueError, TypeError):
@@ -512,9 +513,11 @@ def merge_source_evidence(item, source):
     return item
 
 
-def merge_duplicate_source(existing, source, *, country=None, category=None):
-    """Merge duplicate evidence without relying on a loop-local country variable."""
+def merge_duplicate_source(existing, source, *, country=None, category=None, is_breaking=None):
+    """Merge duplicate evidence and preserve a breaking signal from any publisher."""
     merge_source_evidence(existing, source)
+    if is_breaking is not None:
+        existing["isBreaking"] = bool(existing.get("isBreaking") or is_breaking)
     is_global = country != "BD" if country is not None else category != "Bangladesh"
     if is_global:
         existing["alertScope"] = "global"
@@ -544,7 +547,8 @@ def read_breaking_history():
             if not isinstance(item, dict) or not item.get("title") or not item.get("link", "").startswith("https://"):
                 continue
             # Purge entries misclassified by older, overly broad event keywords.
-            if not BREAKING_EVENT_RE.search(item["title"]) or BREAKING_FOLLOWUP_RE.search(item["title"]):
+            story_text = str(item.get("title") or "") + " " + str(item.get("summary") or item.get("previewSummary") or "")
+            if not BREAKING_EVENT_RE.search(story_text) or BREAKING_FOLLOWUP_RE.search(story_text):
                 continue
             stamp_text = item.get("detectedAt") or item.get("publishedAt")
             try:
@@ -809,7 +813,7 @@ def main():
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": category,
-                    "isBreaking": is_recent_breaking(title, published, "direct-rss", source),
+                    "isBreaking": is_recent_breaking(title, published, "direct-rss", source, summary),
                     "summary": summary, "image": image_for(node), "videoUrl": video_for(node),
                     "publisherUrl": link, "publisherName": source,
                     "previewTitle": title, "previewSummary": summary,
@@ -824,7 +828,7 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, category=item["category"])
+                        merge_duplicate_source(existing, source, category=item["category"], is_breaking=item.get("isBreaking"))
                     continue
                 seen.add(key)
                 collected_by_key[key] = item
@@ -848,11 +852,12 @@ def main():
                 published = parse_date(node.findtext("pubDate"))
                 if not title or not link.startswith("https://"):
                     continue
+                summary = clean(node.findtext("description"))[:420]
                 item = {
                     "title": title, "link": link, "source": source,
                     "publishedAt": published, "category": label,
-                    "isBreaking": is_recent_breaking(title, published, query),
-                    "summary": clean(node.findtext("description"))[:420],
+                    "isBreaking": is_recent_breaking(title, published, query, summary=summary),
+                    "summary": summary,
                     "image": image_for(node), "previewImage": image_for(node),
                     "videoUrl": video_for(node), "publisherUrl": "", "publisherName": source,
                     "sourceEvidence": [],
@@ -864,7 +869,7 @@ def main():
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, country=country)
+                        merge_duplicate_source(existing, source, country=country, is_breaking=item.get("isBreaking"))
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
@@ -903,7 +908,7 @@ def main():
                     "videoUrl": video_for(node),
                     "category": "Weather & Disasters",
                     "alertScope": "global" if country != "BD" else "bangladesh_candidate",
-                    "isBreaking": is_recent_breaking(title, published, query, source) or is_recent_weather_alert(title, summary, published),
+                    "isBreaking": is_recent_breaking(title, published, query, source, summary) or is_recent_weather_alert(title, summary, published),
                     "sourceEvidence": [],
                 }
                 merge_source_evidence(item, source)
@@ -914,6 +919,7 @@ def main():
                     existing = weather_by_key.get(key)
                     if existing:
                         merge_source_evidence(existing, source)
+                        existing["isBreaking"] = bool(existing.get("isBreaking") or item.get("isBreaking"))
                     continue
                 item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
