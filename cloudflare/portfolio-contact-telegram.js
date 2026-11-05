@@ -647,6 +647,7 @@ const BOT_MENU = [
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
 const BOT_CONTEXT_KEY_PREFIX = "bot:context:v1:";
+async function botSetContext(env,chatId,category){if(env.BOT_CONFIG_KV)await env.BOT_CONFIG_KV.put(BOT_CONTEXT_KEY_PREFIX+String(chatId),JSON.stringify({category,at:Date.now()}),{expirationTtl:21600});}
 async function botRegisterCommands(env,chatId,isAdmin){
   if(!env.TELEGRAM_BOT_TOKEN||!chatId)return false;
   const result=await botTelegram(env,"setMyCommands",{commands:getTelegramCommandMenu(!!isAdmin),scope:{type:"chat",chat_id:chatId}});
@@ -828,6 +829,9 @@ async function botCategory(env,chatId,category){
   const cfg=await botConfig(env);
   if(category==="alerts")category="automation";
   if(category==="reports")category="analytics";
+  await botSetContext(env,chatId,category);
+  if(category==="alerts")category="automation";
+  if(category==="reports")category="analytics";
   const labels={
     website:["🌐 WEBSITE CONTROL","Website Overview"],
     news:["📰 NEWS CENTER","Feed Overview"],
@@ -854,6 +858,9 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"🔗 Link / Unlink",callback_data:"b1:users:link"},{text:"🚫 Block / Unblock",callback_data:"b1:users:block"}]);
     rows.push([{text:"✏️ Rename",callback_data:"b1:users:rename"}]);
     rows.push([{text:"🔎 Visitor Information",callback_data:"b1:users:visitorinfo"}]);
+  }else if(category==="news"){
+    rows.push([{text:"📰 Feed Overview",callback_data:"b1:status:news:1"}]);
+    rows.push([{text:"🔄 Refresh News",callback_data:"b1:news:refresh"}]);
   }else if(category==="hero"){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
@@ -942,6 +949,13 @@ async function botHandleCallback(env,query){
     await botAnswerCallback(env,query);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
     if(action==="more"){await botShowMoreMenu(env,chatId);return true}
+    if(action==="news:refresh"){
+      await botRunWithProgress(env,chatId,"News Refresh Workflow যাচাই করে চালু করা হচ্ছে...",async()=>{
+        const result=await dispatchNewsWorkflow(env.GITHUB_TOKEN);
+        await botSend(env,chatId,"📰 NEWS REFRESH\n"+(result.verified?"Existing run verified.":"GitHub accepted the request.")+"\nAttempts: "+result.attempts+"\n\nসম্পূর্ণ ফলাফল জানতে /details দেখুন।",botBackKeyboard());
+      });
+      return true;
+    }
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
         const site="https://kokushibu74.github.io/",started=Date.now();
@@ -1001,15 +1015,53 @@ async function botHandleCallback(env,query){
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard());return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard());return true}
     if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
-    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};const label=names[category]?.[index]||"Status";await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Website Overview"],news:["","News Feed Overview"],analytics:["","Visitor Overview"],security:["","Security Overview"],github:["","Repository Overview"],reports:["","Daily Report"],settings:["","Configuration Status"],logs:["","Recent User Events"],recovery:["","Recovery Guide"]};const label=names[category]?.[index]||"Status";await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
   }catch(e){console.error("Telegram button action failed",String(e&&e.stack||e).slice(0,1600));try{await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\\n\\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\\n\\nকরণীয়:\\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}catch(deliveryError){console.error("Telegram callback error notice failed",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800))}}finally{try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
+async function botHandleContextCommand(env,msg,cmd,arg,parts){
+  const chatId=msg.chat.id;
+  if(cmd==="/details"){
+    const context=await env.BOT_CONFIG_KV?.get(BOT_CONTEXT_KEY_PREFIX+String(chatId),"json").catch(()=>null);
+    const category=context?.category||"website";
+    const mapped=category==="automation"?"settings":category==="users"?"logs":category;
+    await botSend(env,chatId,"📋 "+mapped.toUpperCase()+" · DETAILS\n"+await botStatusText(env,mapped,0),botBackKeyboard());return;
+  }
+  if(cmd==="/health"){
+    const checks=await Promise.allSettled([fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(10000)}),fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config",{signal:AbortSignal.timeout(10000)})]);
+    const site=checks[0].status==="fulfilled"?"HTTP "+checks[0].value.status+(checks[0].value.ok?" · OK":" · WARNING"):"UNAVAILABLE";
+    const worker=checks[1].status==="fulfilled"?"HTTP "+checks[1].value.status+(checks[1].value.ok?" · OK":" · WARNING"):"UNAVAILABLE";
+    await botSend(env,chatId,"🩺 QUICK HEALTH\nWebsite: "+site+"\nTelegram Worker Config: "+worker+"\n\nএটি Quick Check; পূর্ণ Security Audit নয়।",botBackKeyboard());return;
+  }
+  if(cmd==="/errors"){
+    const keys=await umList(env,UM_PREFIX+"history:",100),events=[];
+    for(const key of keys.slice(-100).reverse()){const row=await env.VISITOR_KV.get(key.name,"json"),event=row?.event||{};if(/error|fail|exception|reject/i.test(String(event.type||"")+" "+String(event.message||"")))events.push({at:row.at,type:event.type||"event",command:event.command||""});if(events.length>=8)break;}
+    const rows=events.map(x=>"• "+new Date(x.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+x.type+(x.command?" · "+x.command:""));
+    await botSend(env,chatId,"⚠️ RECORDED EVENTS\n"+(rows.join("\n")||"No matching failures in tracked User Manager history.")+"\n\nএটি Cloudflare Runtime Logs নয়; পূর্ণ Worker Errors Dashboard-এ দেখুন।",botBackKeyboard());return;
+  }
+  if(cmd==="/logs"){await botSend(env,chatId,await botStatusText(env,"logs",0),botBackKeyboard());return;}
+  if(cmd==="/history"){
+    if(!arg){await botSend(env,chatId,"ব্যবহার: /history USER_ID [PAGE]",botBackKeyboard());return;}
+    await umHandleCommand(env,{...msg,text:"/userhistory "+arg+(parts[1]?" "+parts[1]:"")});return;
+  }
+  if(cmd==="/sources"){
+    const response=await fetch("https://kokushibu74.github.io/news-feed.json",{signal:AbortSignal.timeout(12000)}),raw=await response.text();let data;try{data=JSON.parse(raw)}catch{data=null}
+    const items=Array.isArray(data)?data:(data&&typeof data==="object"?Object.values(data).find(Array.isArray)||[]:[]),counts=new Map();
+    for(const item of items){const source=String(item.source||item.publisher||item.source_name||item.site||"Unknown").slice(0,80);counts.set(source,(counts.get(source)||0)+1);}
+    await botSend(env,chatId,"📰 NEWS SOURCES\nHTTP: "+response.status+" · Articles: "+items.length+"\n"+([...counts.entries()].sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>"• "+k+": "+v).join("\n")||"Source metadata unavailable."),botBackKeyboard());return;
+  }
+  if(cmd==="/traffic"||cmd==="/report"){
+    const day=bdDay(),a=await readDailyActivity(env,day),p=cmd==="/report"?await readDailyActivity(env,previousBdDay(day)):null;
+    const lines=["📊 "+(cmd==="/report"?"DAILY REPORT":"TRAFFIC SUMMARY"),"Date: "+day+" BDT","Unique Visitors: "+a.unique,"Sessions: "+a.sessions,"Page Views: "+a.views,"Client Errors: "+a.errors];
+    if(p)lines.push("Yesterday Visitors: "+p.unique,"Yesterday Sessions: "+p.sessions,"Yesterday Page Views: "+p.views);
+    lines.push("Source: Cloudflare Visitor KV · Not GA4");await botSend(env,chatId,lines.join("\n"),botBackKeyboard());return;
+  }
+}
 async function umHandleCommand(env,msg){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=normalizeTelegramCommand(text);parts.shift();
-  const commands=new Set(["/start","/menu","/cmd","/help","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const commands=new Set(["/start","/menu","/cmd","/help","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
@@ -1021,7 +1073,7 @@ async function umHandleCommand(env,msg){
     const guide=[
       "📚 BOT COMMAND GUIDE",
       "",
-      "/help বা /cmd — কমান্ড গাইড ও Telegram command menu দেখাবে।"
+      "/help বা /cmd — কমান্ড গাইড ও Telegram command menu দেখাবে।",
       "",
       "👤 সাধারণ ব্যবহারকারী",
       "এই মুহূর্তে সাধারণ ব্যবহারকারীর জন্য কোনো অতিরিক্ত management command নেই।",
@@ -1055,6 +1107,11 @@ async function umHandleCommand(env,msg){
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
   if(!isAdmin){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
+  if(["/details","/health","/errors","/logs","/history","/sources","/traffic","/report"].includes(cmd)){
+    try{await botHandleContextCommand(env,msg,cmd,arg,parts.slice(1));}
+    catch(e){console.error("Telegram context command failed",String(e&&e.stack||e).slice(0,1000));await umReply(env,chatId,"⚠️ এই রিপোর্টটি তৈরি করা যায়নি। কিছুক্ষণ পর আবার চেষ্টা করুন।");}
+    return true;
+  }
   try{
     if(cmd==="/userid"){
       const pageNo=Math.max(1,Math.min(999,Number(arg)||1)),limit=10,all=[];
