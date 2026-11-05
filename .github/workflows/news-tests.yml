@@ -8,6 +8,12 @@ on:
       - "scripts/news_telegram_report.py"
       - "tests/test_news_telegram_report.py"
       - "news.js"
+      - "news.html"
+      - "manifest.webmanifest"
+      - "news-install.mjs"
+      - "news-install.css"
+      - "assets/pwa/**"
+      - "tests/news-install.test.mjs"
       - "homepage-news.js"
       - "tests/news-client-optimization.test.mjs"
       - ".github/workflows/report-workflow-to-telegram.yml"
@@ -30,6 +36,12 @@ on:
       - "tests/test_slider_rules.py"
       - "tests/news-client-optimization.test.mjs"
       - "news.js"
+      - "news.html"
+      - "manifest.webmanifest"
+      - "news-install.mjs"
+      - "news-install.css"
+      - "assets/pwa/**"
+      - "tests/news-install.test.mjs"
       - "tests/test_news_telegram_report.py"
       - ".github/workflows/news-tests.yml"
       - ".github/workflows/report-workflow-to-telegram.yml"
@@ -56,5 +68,7 @@ jobs:
       - name: Check browser JavaScript syntax and feed refresh contracts
         run: |
           node --check news.js
+          node --check news-install.mjs
           node --check homepage-news.js
           node tests/news-client-optimization.test.mjs
+          node tests/news-install.test.mjs
