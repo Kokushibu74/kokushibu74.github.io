@@ -682,8 +682,20 @@ async function botEnsureStartKeyboard(env,chatId){
   const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
   if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
 }
+const BOT_START_MENU_COOLDOWN_MS=5000;
+const BOT_START_MENU_LAST=new Map();
+function botAllowStartMenu(chatId,now=Date.now()){
+  const key=String(chatId),last=Number(BOT_START_MENU_LAST.get(key)||0);
+  if(now-last<BOT_START_MENU_COOLDOWN_MS)return false;
+  BOT_START_MENU_LAST.set(key,now);
+  if(BOT_START_MENU_LAST.size>1000){
+    for(const [id,at] of BOT_START_MENU_LAST)if(now-at>60000)BOT_START_MENU_LAST.delete(id);
+  }
+  return true;
+}
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
+  if(!botAllowStartMenu(msg.chat.id))return true;
   await botEnsureStartKeyboard(env,msg.chat.id);
   await botShowMenu(env,msg.chat.id);
   await botMarkMenuInteraction(env,msg.chat.id,null,false);
@@ -1011,7 +1023,7 @@ async function umHandleCommand(env,msg){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);await botMarkMenuInteraction(env,chatId,null,false);return true;}
+  if(cmd==="/start"||cmd==="/menu"){if(!botAllowStartMenu(chatId))return true;if(isAdmin)await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId);await botMarkMenuInteraction(env,chatId,null,false);return true;}
   if(cmd==="/cmd"){
     const publicCommands=[{command:"start",description:"Admin control center খুলুন"},{command:"menu",description:"Admin control center খুলুন"},{command:"cmd",description:"সব উপলভ্য কমান্ড ও ব্যবহারবিধি"}];
     const adminCommands=[
