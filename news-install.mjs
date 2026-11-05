@@ -1,6 +1,4 @@
-const STORAGE_KEY="k74-news-install-dismissed-until-v1";
-const SNOOZE_MS=7*24*60*60*1000;
-const RETRY_AFTER_DECLINE_MS=24*60*60*1000;
+const INSTALLED_KEY="k74-news-app-installed-v1";
 const SHOW_DELAY_MS=4000;
 
 export function isAndroidMobile(nav=typeof navigator!=="undefined"?navigator:{}) {
@@ -17,15 +15,15 @@ export function isStandaloneDisplay(nav=typeof navigator!=="undefined"?navigator
   try{return Boolean(win.matchMedia?.("(display-mode: standalone)").matches||win.matchMedia?.("(display-mode: fullscreen)").matches)}catch(_){return false}
 }
 
-export function shouldOfferInstall({androidMobile,standalone,dismissedUntil=0,now=Date.now()}) {
-  return Boolean(androidMobile&&!standalone&&Number(dismissedUntil)<=now);
+export function shouldOfferInstall({androidMobile,standalone,installed=false}) {
+  return Boolean(androidMobile&&!standalone&&!installed);
 }
 
-function readDismissedUntil(){
-  try{return Number(localStorage.getItem(STORAGE_KEY)||0)||0}catch(_){return 0}
+function isAppInstalled(){
+  try{return localStorage.getItem(INSTALLED_KEY)==="1"}catch(_){return false}
 }
-function setDismissedUntil(timestamp){
-  try{localStorage.setItem(STORAGE_KEY,String(timestamp))}catch(_){}
+function markAppInstalled(){
+  try{localStorage.setItem(INSTALLED_KEY,"1")}catch(_){}
 }
 function isInAppBrowser(){
   return /;\s*wv\)|\bwv\b|Instagram|FBAN|FBAV|Line\/|Telegram|TikTok|Twitter/i.test(navigator.userAgent||"");
@@ -66,7 +64,7 @@ function mountInstallSheet(){
       <div class="news-install-instructions" data-news-install-instructions hidden aria-live="polite"></div>
     </section>`;
   document.body.appendChild(overlay);
-  const close=()=>hideSheet(true);
+  const close=()=>hideSheet();
   overlay.querySelector(".news-install-close").addEventListener("click",close);
   overlay.querySelector("[data-news-install-dismiss]").addEventListener("click",close);
   overlay.addEventListener("click",event=>{if(event.target===overlay)close()});
@@ -86,10 +84,9 @@ function showSheet(){
   requestAnimationFrame(()=>overlay.classList.add("is-visible"));
   overlay.querySelector(".news-install-close")?.focus();
 }
-function hideSheet(snooze){
+function hideSheet(){
   const overlay=document.getElementById("news-install-overlay");
   if(!overlay||overlay.hidden)return;
-  if(snooze)setDismissedUntil(Date.now()+SNOOZE_MS);
   overlay.classList.remove("is-visible");
   window.setTimeout(()=>{overlay.hidden=true;previousFocus?.focus?.()},300);
 }
@@ -106,7 +103,7 @@ function showManualInstructions(){
 }
 async function handleInstallAction(){
   const instructions=document.querySelector("[data-news-install-instructions]");
-  if(instructions&&!instructions.hidden){hideSheet(true);return}
+  if(instructions&&!instructions.hidden){hideSheet();return}
   if(!deferredInstallPrompt){showManualInstructions();return}
   const promptEvent=deferredInstallPrompt;
   deferredInstallPrompt=null;
@@ -114,11 +111,11 @@ async function handleInstallAction(){
     await promptEvent.prompt();
     const choice=await promptEvent.userChoice;
     if(choice?.outcome==="accepted"){
-      setDismissedUntil(Date.now()+365*24*60*60*1000);
-      hideSheet(false);
+      markAppInstalled();
+      hideSheet();
     }else{
-      setDismissedUntil(Date.now()+RETRY_AFTER_DECLINE_MS);
-      hideSheet(false);
+      
+      hideSheet();
     }
   }catch(_){
     showManualInstructions();
@@ -127,7 +124,7 @@ async function handleInstallAction(){
 
 function init(){
   if(!isAndroidMobile()||isStandaloneDisplay())return;
-  if(!shouldOfferInstall({androidMobile:true,standalone:false,dismissedUntil:readDismissedUntil()}))return;
+  if(!shouldOfferInstall({androidMobile:true,standalone:false,installed:isAppInstalled()}))return;
   mountInstallSheet();
   sheetTimer=window.setTimeout(showSheet,SHOW_DELAY_MS);
   window.addEventListener("beforeinstallprompt",event=>{
@@ -141,8 +138,8 @@ function init(){
   });
   window.addEventListener("appinstalled",()=>{
     if(sheetTimer)window.clearTimeout(sheetTimer);
-    setDismissedUntil(Date.now()+365*24*60*60*1000);
-    hideSheet(false);
+    markAppInstalled();
+    hideSheet();
   });
 }
 
