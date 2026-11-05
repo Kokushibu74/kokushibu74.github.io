@@ -641,8 +641,17 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
   const saveGpsHistory=async position=>{
     const identity=await waitForVisitorIdentity();
     if(!identity)throw new Error("Visitor session is not ready; reload the News Page and try again.");
-    const coords=position.coords;
-    return locationPost("/location-history",{...identity,latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,source:"browser-geolocation"});
+    const coords=position.coords,payload={...identity,latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,source:"browser-geolocation"};
+    let lastError;
+    for(let attempt=0;attempt<4;attempt++){
+      try{return await locationPost("/location-history",payload)}
+      catch(error){
+        lastError=error;
+        if(!String(error.message||error).includes("profile is not ready")||attempt===3)throw error;
+        await new Promise(resolve=>setTimeout(resolve,350));
+      }
+    }
+    throw lastError;
   };
   const requestLocation=()=>{
     if(!navigator.geolocation){
@@ -708,8 +717,10 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs";
     if(!identity){setLocationStatus("Visitor session is not ready; reload and try again.");return}
     if(historyDelete)historyDelete.disabled=true;
     try{
-      await locationPost("/location-delete-request",identity);
-      setLocationStatus("Your GPS History deletion request was sent to the site administrator for review.");
+      const result=await locationPost("/location-delete-request",identity);
+      setLocationStatus(result.adminNotified
+        ?"Your GPS History deletion request was recorded and the authorized Telegram admin was notified."
+        :"Your GPS History deletion request was recorded, but automatic admin notification is unavailable. Please also use the Contact page.");
     }catch(error){setLocationStatus("Could not send the deletion request: "+String(error.message||error));}
     finally{if(historyDelete)historyDelete.disabled=false}
   };
