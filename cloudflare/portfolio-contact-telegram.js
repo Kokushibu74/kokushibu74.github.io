@@ -1053,12 +1053,12 @@ async function umHandleCommand(env,msg){
       const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
       const htmlSafe=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       const lines=items.map((u,i)=>u.kind==="visitor"
-        ?"<b>"+(start+i+1)+". WEB</b> · <code>"+htmlSafe(u.id)+"</code> · "+htmlSafe(u.name)+(u.customId?" · "+htmlSafe(u.customId):"")
+        ?"<b>"+(start+i+1)+". WEB</b> · "+htmlSafe(u.name)+(u.customId?" · "+htmlSafe(u.customId):"")
         :"<b>"+(start+i+1)+". TG</b> · <code>"+htmlSafe(u.id)+"</code> · "+htmlSafe(u.name));
       const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1"}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
-      const body="<b>👥 USER DIRECTORY</b>\n<code>Page "+pageNo+" / "+totalPages+" · "+all.length+" users</code>\n\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nTap a Visitor ID button below to open that visitor's report.";
+      const body="<b>👥 USER DIRECTORY</b>\n<code>Page "+pageNo+" / "+totalPages+" · "+all.length+" users</code>\n\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
       await umReply(env,chatId,body,keyboard,{parse_mode:"HTML"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
@@ -1799,7 +1799,7 @@ export default {
 
     if(pathname==="/location-context"){
       if(request.method!=="GET")return respond({ok:false,error:"Method not allowed"},405);
-      const cf=request.cf||{},clean=(v,n=100)=>String(v||"").replace(/[\\u0000-\\u001f<>]/g," ").trim().slice(0,n);
+      const cf=request.cf||{},clean=(v,n=100)=>String(v||"").replace(/[\u0000-\u001f<>]/g," ").trim().slice(0,n);
       return respond({ok:true,city:clean(cf.city),region:clean(cf.region),country:clean(cf.country||request.headers.get("CF-IPCountry")),timezone:clean(cf.timezone,80)},200);
     }
     if(pathname==="/location-consent"){
@@ -1860,10 +1860,10 @@ export default {
       const key="loc:v1:delete-request:"+id+":"+String(now).padStart(13,"0")+":"+salt;
       const bdt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(now))+" BDT";
       await env.VISITOR_KV.put(key,JSON.stringify({visitorId:id,requestedAt:now,requestedAtUtc:utc,requestedAtBdt:bdt,status:"pending",scope:"gps-location-history-only"}),{expirationTtl:7776000});
-      const admins=[...new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\\s,;]+/).map(x=>x.trim()).filter(x=>/^\\d{5,20}$/.test(x)))];
+      const admins=[...new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(x=>/^\d{5,20}$/.test(x)))];
       let adminNotified=false;
       if(env.TELEGRAM_BOT_TOKEN&&admins.length){
-        const message="🗑 GPS HISTORY DELETION REQUEST\\nVisitor ID: "+id+"\\nRequested: "+bdt+"\\nScope: GPS location history only\\nReview the loc:v1:delete-request record and remove the matching loc:v1:history:visitor records after verification.";
+        const message="🗑 GPS HISTORY DELETION REQUEST\nVisitor ID: "+id+"\nRequested: "+bdt+"\nScope: GPS location history only\nReview the loc:v1:delete-request record and remove the matching loc:v1:history:visitor records after verification.";
         const sent=await Promise.all(admins.map(admin=>botTelegram(env,"sendMessage",{chat_id:admin,text:message,disable_web_page_preview:true}).catch(()=>({ok:false}))));
         adminNotified=sent.some(result=>result?.ok);
       }
