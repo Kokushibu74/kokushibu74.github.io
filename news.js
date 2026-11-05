@@ -1,4 +1,5 @@
 import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./news-slider-rules.mjs";
+import { buildLocationContext, rankNewsByLocation } from "./news-location.js";
 (() => {
   "use strict";
   const grid=document.getElementById("news-grid"),status=document.getElementById("news-status"),filters=document.getElementById("filters");
@@ -29,7 +30,7 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       categoryTaxonomy=data.categories;
     }catch(error){console.warn("Using built-in news category taxonomy:",error?.message||error)}
   })();
-  let items=[],weatherItems=[],active="All",activeSubcategory="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null,ageBoundaryTimer=null;
+  let items=[],weatherItems=[],active="All",activeSubcategory="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null,ageBoundaryTimer=null,locationContext=null;
   const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safe=v=>{try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}};
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
@@ -360,7 +361,7 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       if(viewMode==="feed")return age<24*60*60*1000;
       return age>=24*60*60*1000;
     });
-    const visible=(viewMode==="feed"?sortedNews(scoped):sorted(scoped)).filter(x=>{
+    let visible=(viewMode==="feed"?sortedNews(scoped):sorted(scoped)).filter(x=>{
       const date=dateOf(x),key=date?bdDateKey(date):"";
       const inDateRange=!!key&&(!dateFromInput?.value||key>=dateFromInput.value)&&(!dateToInput?.value||key<=dateToInput.value);
       return (active==="All"||x.category===active)&&
@@ -368,6 +369,7 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
         (!dateFilterActive||inDateRange)&&
         (!query||[x.title,x.source,x.summary,x.description,x.previewTitle,x.previewSummary,getSubcategory(x)].some(v=>String(v||"").toLocaleLowerCase().includes(query)));
     });
+    if(viewMode==="feed"&&locationContext)visible=rankNewsByLocation(visible,locationContext);
     const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
     currentPage=Math.max(1,Math.min(currentPage,totalPages));
     if(!visible.length){grid.innerHTML="";pagination.innerHTML="";status.textContent=items.length?(viewMode==="feed"?"No stories from the last 24 hours match this category or search.":"No archived stories match this category, search or date range."):"No headlines are available yet. The feed updater may still be running.";return}
@@ -560,6 +562,153 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       feedLoading=false;
     }
   }
+
+  const LOCATION_API="https://portfolio-contact-telegram.mdshihab74.workers.dev";
+  const LOCATION_HISTORY_KEY="k74_location_history_consent_v1";
+  const LOCATION_PROMPT_KEY="k74_location_prompt_dismissed_v1";
+  const locationTrigger=document.getElementById("news-location-trigger");
+  const locationSettingsTrigger=document.getElementById("news-location-settings-trigger");
+  const locationStatus=document.getElementById("news-location-status");
+  const locationCard=document.getElementById("news-location-card");
+  const locationHistoryCard=document.getElementById("news-location-history-card");
+  const locationSettingsCard=document.getElementById("news-location-settings-card");
+  const locationAllow=document.getElementById("news-location-allow");
+  const locationLater=document.getElementById("news-location-later");
+  const historyAllow=document.getElementById("news-history-allow");
+  const historySkip=document.getElementById("news-history-skip");
+  const historyEnable=document.getElementById("news-history-enable");
+  const historyStop=document.getElementById("news-history-stop");
+  const historyDelete=document.getElementById("news-history-delete");
+  const settingsClose=document.getElementById("news-location-settings-close");
+  const settingsText=document.getElementById("news-location-settings-text");
+  let historyConsent=(()=>{try{return localStorage.getItem(LOCATION_HISTORY_KEY)}catch{return null}})();
+  let lastPosition=null;
+  const localGet=key=>{try{return localStorage.getItem(key)}catch{return null}};
+  const localSet=(key,value)=>{try{localStorage.setItem(key,value)}catch{}};
+  const visitorIdentity=()=>{
+    const visitorId=localGet("k74_visitor_id_v1"),sessionId=localGet("k74_session_v1");
+    return /^VIS-[A-F0-9]{12}$/.test(visitorId||"")&&/^SES-[A-F0-9]{12}$/.test(sessionId||"")?{visitorId,sessionId}:null;
+  };
+  const locationPost=async(path,payload)=>{
+    const response=await fetch(LOCATION_API+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),credentials:"omit",cache:"no-store"});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok||result.ok===false)throw new Error(result.error||("HTTP "+response.status));
+    return result;
+  };
+  const closeLocationCards=()=>{
+    if(locationCard)locationCard.hidden=true;
+    if(locationHistoryCard)locationHistoryCard.hidden=true;
+    if(locationSettingsCard)locationSettingsCard.hidden=true;
+  };
+  const showLocationPrompt=()=>{closeLocationCards();if(locationCard)locationCard.hidden=false;};
+  const showHistoryPrompt=()=>{closeLocationCards();if(locationHistoryCard)locationHistoryCard.hidden=false;};
+  const showLocationSettings=()=>{
+    closeLocationCards();
+    if(settingsText)settingsText.textContent=historyConsent==="yes"
+      ?"GPS History is ON. New records are added only when you press Location Access. Records are kept for up to 90 days and are visible to authorized Telegram admins."
+      :"GPS History is OFF. Your location can still prioritize nearby news for this page session; no GPS history is stored unless you separately enable it.";
+    if(locationSettingsCard)locationSettingsCard.hidden=false;
+    if(historyEnable)historyEnable.hidden=historyConsent==="yes";
+    if(historyStop)historyStop.hidden=historyConsent!=="yes";
+  };
+  const setLocationStatus=message=>{if(locationStatus)locationStatus.textContent=message};
+  const getIpLocation=async()=>{
+    try{
+      const response=await fetch(LOCATION_API+"/location-context",{cache:"no-store",credentials:"omit"});
+      if(!response.ok)return {};
+      const data=await response.json();
+      let countryName="";
+      try{if(data.country)countryName=new Intl.DisplayNames([navigator.language||"en"],{type:"region"}).of(data.country)||""}catch{}
+      return {city:data.city||"",region:data.region||"",country:data.country||"",countryName};
+    }catch{return {}}
+  };
+  const saveGpsHistory=async position=>{
+    const identity=visitorIdentity();
+    if(!identity)throw new Error("Visitor session is not ready; reload the News Page and try again.");
+    const coords=position.coords;
+    return locationPost("/location-history",{...identity,latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,source:"browser-geolocation"});
+  };
+  const requestLocation=()=>{
+    if(!navigator.geolocation){
+      setLocationStatus("This browser does not support location access. The default News Feed is unchanged.");
+      closeLocationCards();localSet(LOCATION_PROMPT_KEY,"1");return;
+    }
+    if(locationAllow)locationAllow.disabled=true;
+    setLocationStatus("Requesting location permission…");
+    navigator.geolocation.getCurrentPosition(async position=>{
+      if(locationAllow)locationAllow.disabled=false;
+      lastPosition=position;
+      const coords=position.coords;
+      const ip=await getIpLocation();
+      locationContext=buildLocationContext({latitude:coords.latitude,longitude:coords.longitude,accuracyMeters:coords.accuracy,...ip});
+      render();
+      localSet(LOCATION_PROMPT_KEY,"1");
+      if(locationTrigger)locationTrigger.textContent="📍 Refresh Nearby News";
+      const area=locationContext.district?"Approx. "+locationContext.district.name+" District":(locationContext.city||locationContext.region||"your area");
+      setLocationStatus("Nearby news priority active · "+area+". Location is held in this page session.");
+      closeLocationCards();
+      if(historyConsent==="yes"){
+        try{await saveGpsHistory(position);setLocationStatus("Nearby news priority active · "+area+". GPS history saved for up to 90 days.");}
+        catch(error){setLocationStatus("Nearby news is active; GPS history was not saved: "+String(error.message||error));}
+      }else if(historyConsent!=="no"){
+        showHistoryPrompt();
+      }
+    },error=>{
+      if(locationAllow)locationAllow.disabled=false;
+      locationContext=null;render();closeLocationCards();localSet(LOCATION_PROMPT_KEY,"1");
+      const message=error?.code===1?"Location permission was denied. The default News Feed remains unchanged; allow location in browser settings to try again.":error?.code===3?"Location request timed out. The default News Feed remains unchanged.":"Location is unavailable. The default News Feed remains unchanged.";
+      setLocationStatus(message);
+    },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+  };
+  const acceptHistoryConsent=async()=>{
+    const identity=visitorIdentity();
+    if(!identity){setLocationStatus("Visitor session is not ready. Reload the page and try again.");return}
+    if(historyAllow)historyAllow.disabled=true;
+    try{
+      await locationPost("/location-consent",{...identity,consent:true,policyVersion:"2026-11-05"});
+      historyConsent="yes";localSet(LOCATION_HISTORY_KEY,"yes");closeLocationCards();
+      if(lastPosition){try{await saveGpsHistory(lastPosition);setLocationStatus("Nearby news is active and this GPS location was added to your 90-day history.");}catch(error){setLocationStatus("History consent saved, but this location was not recorded: "+String(error.message||error));}}
+      showLocationSettings();
+    }catch(error){setLocationStatus("GPS History consent could not be saved; no GPS history was stored. "+String(error.message||error));}
+    finally{if(historyAllow)historyAllow.disabled=false}
+  };
+  const declineHistoryConsent=async()=>{
+    const identity=visitorIdentity();
+    historyConsent="no";localSet(LOCATION_HISTORY_KEY,"no");closeLocationCards();
+    if(identity){try{await locationPost("/location-consent",{...identity,consent:false,policyVersion:"2026-11-05"});}catch{}}
+    setLocationStatus("Nearby news is active. GPS History is OFF; no GPS history is stored.");
+  };
+  const stopHistorySaving=async()=>{
+    const identity=visitorIdentity();
+    if(!identity){setLocationStatus("Visitor session is not ready; reload and try again.");return}
+    try{
+      await locationPost("/location-consent",{...identity,consent:false,policyVersion:"2026-11-05"});
+      historyConsent="no";localSet(LOCATION_HISTORY_KEY,"no");showLocationSettings();
+      setLocationStatus("GPS History saving is OFF. Existing records remain until expiry or an approved deletion request.");
+    }catch(error){setLocationStatus("Could not update the history preference: "+String(error.message||error));}
+  };
+  const requestHistoryDeletion=async()=>{
+    const identity=visitorIdentity();
+    if(!identity){setLocationStatus("Visitor session is not ready; reload and try again.");return}
+    if(historyDelete)historyDelete.disabled=true;
+    try{
+      await locationPost("/location-delete-request",identity);
+      setLocationStatus("Your GPS History deletion request was sent to the site administrator for review.");
+    }catch(error){setLocationStatus("Could not send the deletion request: "+String(error.message||error));}
+    finally{if(historyDelete)historyDelete.disabled=false}
+  };
+  if(locationTrigger)locationTrigger.addEventListener("click",showLocationPrompt);
+  if(locationSettingsTrigger)locationSettingsTrigger.addEventListener("click",showLocationSettings);
+  if(locationAllow)locationAllow.addEventListener("click",requestLocation);
+  if(locationLater)locationLater.addEventListener("click",()=>{closeLocationCards();localSet(LOCATION_PROMPT_KEY,"1");setLocationStatus("Location access skipped. The default News Feed remains unchanged.");});
+  if(historyAllow)historyAllow.addEventListener("click",acceptHistoryConsent);
+  if(historySkip)historySkip.addEventListener("click",declineHistoryConsent);
+  if(historyEnable)historyEnable.addEventListener("click",showHistoryPrompt);
+  if(historyStop)historyStop.addEventListener("click",stopHistorySaving);
+  if(historyDelete)historyDelete.addEventListener("click",requestHistoryDeletion);
+  if(settingsClose)settingsClose.addEventListener("click",closeLocationCards);
+  if(localGet(LOCATION_PROMPT_KEY)!=="1")showLocationPrompt();
+
   loadNewsFeed();
   setInterval(loadNewsFeed,15*60*1000);
 })();
