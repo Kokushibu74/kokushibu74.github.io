@@ -20,6 +20,12 @@ assert.match(startButton, /botShowMenu\(env,msg\.chat\.id\)/);
 assert.doesNotMatch(startButton, /forceNew:true/, "START BOT must reuse/edit the current menu");
 
 const commandBranch = section('if(cmd==="/start"||cmd==="/menu"){', 'if(cmd==="/cmd"){');
+const cooldown = section("const BOT_START_MENU_COOLDOWN_MS=5000;", "async function botHandleStartButton");
+assert.match(cooldown, /new Map\(\)/, "Burst cooldown must not consume KV writes");
+assert.match(cooldown, /now-last<BOT_START_MENU_COOLDOWN_MS/, "Repeated start requests must be throttled per chat");
+assert.match(startButton, /botAllowStartMenu\(msg\.chat\.id\)/, "START BOT must use the burst cooldown");
+assert.match(commandBranch, /botAllowStartMenu\(chatId\)/, "/start and /menu must use the burst cooldown");
+
 assert.match(commandBranch, /botMarkMenuInteraction/, "Repeated /start must update the existing menu activity state");
 
 const send = section("async function botSend", "async function botSendChatAction");
