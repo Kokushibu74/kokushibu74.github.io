@@ -61,6 +61,8 @@ test("Visitor Intelligence inserts GPS history immediately after IP Location", (
   assert.ok(location >= 0 && history > location && device > history);
   assert.match(report, /https:\/\/www\.google\.com\/maps\?q=/);
   assert.match(report, /authorized Telegram admins/);
+  assert.match(worker, /unavailable:true/);
+  assert.match(report, /GPS History temporarily unavailable/);
 });
 
 test("User Directory Visitor IDs are clickable callback buttons with pagination", () => {
