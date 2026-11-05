@@ -202,15 +202,6 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       '<h3>'+esc(title)+'</h3>'+(summary?'<p class="newspaper-summary">'+esc(summary)+'</p>':"")+
       '<div class="newspaper-metadata"><div class="newspaper-date-time">'+localPublishedMeta(date)+'</div>'+(source?'<div class="newspaper-source"><span class="newspaper-source-label">SOURCE</span><strong>'+esc(source)+'</strong></div>':"")+'</div></div>'+imageMarkup+'</a>';
   }
-  function estimateNewspaperStoryHeight(item){
-    const title=String(item.previewTitle||item.title||"Untitled news story");
-    const summary=String(item.previewSummary||item.summary||item.description||"").trim();
-    const hasImage=previewUrl(item)!=="#";
-    const hasSource=!!String(item.publisherName||item.source||"").trim();
-    const titleLines=Math.min(5,Math.max(1,Math.ceil(title.length/34)));
-    const summaryLines=summary?Math.min(3,Math.max(1,Math.ceil(summary.length/58))):0;
-    return 48+titleLines*25+summaryLines*18+(hasImage?76:0)+(hasSource?15:0);
-  }
   function renderNewspaperFeed(pageItems){
     const lead=pageItems[0];
     const remaining=pageItems.slice(1);
@@ -226,29 +217,58 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
       :Array.from(grouped.keys());
     const requestedColumns=window.matchMedia("(max-width: 1100px)").matches?2:3;
     const columnCount=remaining.length<3?Math.max(1,remaining.length):Math.min(requestedColumns,remaining.length);
-    const lanes=Array.from({length:columnCount},()=>({groups:new Map(),height:0}));
-    order.forEach(category=>{
-      (grouped.get(category)||[]).forEach(item=>{
-        let laneIndex=0;
-        for(let i=1;i<lanes.length;i++)if(lanes[i].height<lanes[laneIndex].height)laneIndex=i;
-        const lane=lanes[laneIndex];
-        if(!lane.groups.has(category)){lane.groups.set(category,[]);lane.height+=38;}
-        lane.groups.get(category).push(item);
-        lane.height+=estimateNewspaperStoryHeight(item);
-      });
-    });
-    const columns=lanes.map((lane,laneIndex)=>{
-      const sections=Array.from(lane.groups.entries()).map(([category,stories])=>
-        '<section class="newspaper-section" aria-label="'+esc(category)+' news"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+
-        stories.map((item,index)=>renderNewspaperStory(item,{index})).join("")+'</section>'
-      ).join("");
-      return '<div class="newspaper-column" data-column="'+(laneIndex+1)+'">'+sections+'</div>';
-    }).join("");
-    const columnClass=" columns-"+columnCount;
     grid.classList.remove("mobile-news-feed");
     grid.classList.add("newspaper-feed");
     grid.innerHTML=renderNewspaperStory(lead,{lead:true,index:0})+
-      (remaining.length?'<div class="newspaper-columns'+columnClass+'">'+columns+'</div>':"");
+      (remaining.length?'<div class="newspaper-columns columns-'+columnCount+'">'+
+        Array.from({length:columnCount},(_,i)=>'<div class="newspaper-column" data-column="'+(i+1)+'"></div>').join("")+
+      '</div>':"");
+    const columns=Array.from(grid.querySelectorAll(".newspaper-column"));
+    if(!columns.length)return;
+    const categorySections=columns.map(()=>new Map());
+    const measure=document.createElement("div");
+    measure.className="newspaper-column newspaper-measure-column";
+    measure.setAttribute("aria-hidden","true");
+    measure.style.cssText="position:absolute;left:-10000px;top:0;visibility:hidden;pointer-events:none;margin:0!important;";
+    const columnWidth=columns[0].getBoundingClientRect().width;
+    measure.style.width=columnWidth+"px";
+    grid.appendChild(measure);
+    let storyIndex=1;
+    order.forEach(category=>{
+      (grouped.get(category)||[]).forEach(item=>{
+        measure.innerHTML='<section class="newspaper-section"><h3 class="newspaper-section-title">'+esc(category)+'</h3>'+
+          renderNewspaperStory(item,{index:storyIndex})+'</section>';
+        const measuredSection=measure.firstElementChild;
+        const storyHeight=measuredSection.querySelector(".newspaper-story").getBoundingClientRect().height;
+        const headingHeight=measuredSection.querySelector(".newspaper-section-title").getBoundingClientRect().height;
+        let laneIndex=0;
+        let shortest=Infinity;
+        columns.forEach((column,index)=>{
+          const hasCategory=categorySections[index].has(category);
+          const currentHeight=column.getBoundingClientRect().height;
+          const candidateHeight=currentHeight+(hasCategory?storyHeight:headingHeight+storyHeight+28);
+          if(candidateHeight<shortest){shortest=candidateHeight;laneIndex=index;}
+        });
+        let section=categorySections[laneIndex].get(category);
+        if(!section){
+          section=document.createElement("section");
+          section.className="newspaper-section";
+          section.setAttribute("aria-label",category+" news");
+          const heading=document.createElement("h3");
+          heading.className="newspaper-section-title";
+          heading.textContent=category;
+          section.appendChild(heading);
+          columns[laneIndex].appendChild(section);
+          categorySections[laneIndex].set(category,section);
+        }
+        const storyHolder=document.createElement("div");
+        storyHolder.innerHTML=renderNewspaperStory(item,{index:storyIndex});
+        const story=storyHolder.firstElementChild;
+        section.appendChild(story);
+        storyIndex++;
+      });
+    });
+    measure.remove();
     grid.querySelectorAll(".newspaper-image img").forEach(img=>img.addEventListener("error",()=>{
       const story=img.closest(".newspaper-story");
       story?.classList.remove("has-image");
