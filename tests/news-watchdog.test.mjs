@@ -36,6 +36,21 @@ test("does not dispatch twice when a 500 is followed by a newly-created run",asy
   assert.equal(result.runId,123);
 });
 
+test("verifies an ambiguous network failure before attempting another dispatch",async()=>{
+  let dispatches=0;
+  const result=await dispatchNewsWorkflow("test-token",{
+    wait:async()=>{},
+    now:()=>Date.parse("2026-11-05T16:00:00Z"),
+    fetchImpl:async(url,options)=>{
+      if(options.method==="POST"){dispatches++;throw new Error("socket reset");}
+      return response(200,JSON.stringify({workflow_runs:[{id:456,event:"workflow_dispatch",head_branch:"main",created_at:"2026-11-05T16:00:02Z"}]}),{"Content-Type":"application/json"});
+    }
+  });
+  assert.equal(dispatches,1);
+  assert.equal(result.verified,true);
+  assert.equal(result.runId,456);
+});
+
 test("does not retry a permission or policy error",async()=>{
   let calls=0;
   await assert.rejects(()=>dispatchNewsWorkflow("test-token",{
