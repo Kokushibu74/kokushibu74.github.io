@@ -1055,7 +1055,8 @@ async function umHandleCommand(env,msg){
       const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
       all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
       const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
-      const mdSafe=v=>String(v??"").replace(/([_*\\[\\]()~\`>#+\\-=|{}.!\\\\])/g,"\\\\$1");
+            const mdSpecial=new Set(["_","*","[","]","(",")","~",String.fromCharCode(96),">","#","+","-","=","|","{","}",".","!","\\"]);
+      const mdSafe=v=>Array.from(String(v??"")).map(ch=>mdSpecial.has(ch)?"\\"+ch:ch).join("");
       const lines=items.map((u,i)=>{
         const label=mdSafe((start+i+1)+". "+(u.kind==="visitor"?"WEB":"TG"));
         return u.kind==="visitor"
