@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
@@ -19,6 +21,8 @@ on:
     paths:
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
+      - 'cloudflare/telegram-command-utils.mjs'
+      - 'tests/telegram-command-utils.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
@@ -41,6 +45,8 @@ jobs:
           node-version: 22
       - name: Parse Worker module
         run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Verify Telegram command parsing and scoped command menus
+        run: node tests/telegram-command-utils.test.mjs
       - name: Verify visitor location consent and Telegram directory contracts
         run: node tests/visitor-location.test.mjs
       - name: Run Worker location endpoint runtime tests
@@ -62,6 +68,7 @@ jobs:
           const source = fs.readFileSync('cloudflare/portfolio-contact-telegram.js', 'utf8');
           const required = [
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
+            'parseTelegramCommand(text)', 'UM_CONFIRM_PREFIX', 'newsAlerts', 'action.startsWith("command:")', 'users:profile:telegram:', 'if(cmd==="/ga4")',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
             'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
             'if(shouldSendDailyReport)', 'cfg.emergencyProtection',

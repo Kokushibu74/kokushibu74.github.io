@@ -9,9 +9,11 @@ test("Cloudflare Worker loads the alert helper module without invoking Telegram"
   const workerPath=new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url);
   const helperUrl=new URL("../cloudflare/news-alerts.mjs",import.meta.url).href;
   const watchdogUrl=new URL("../cloudflare/news-watchdog.mjs",import.meta.url).href;
+  const commandUtilsUrl=new URL("../cloudflare/telegram-command-utils.mjs",import.meta.url).href;
   const source=(await readFile(workerPath,"utf8"))
     .replace('"./news-alerts.mjs"',JSON.stringify(helperUrl))
-    .replace('"./news-watchdog.mjs"',JSON.stringify(watchdogUrl));
+    .replace('"./news-watchdog.mjs"',JSON.stringify(watchdogUrl))
+    .replace('"./telegram-command-utils.mjs"',JSON.stringify(commandUtilsUrl));
   const dataUrl="data:text/javascript;base64,"+Buffer.from(source,"utf8").toString("base64");
   const worker=await import(dataUrl);
   assert.equal(typeof worker.default.fetch,"function");
