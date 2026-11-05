@@ -869,9 +869,9 @@ async function botShowMenu(env,chatId,title="🤖 KOKUSHIBU74 INTELLIGENCE"){
   await botSetContext(env,chatId,"menu",sent?.message_id,"menu:home","");
   return sent;
 }
-async function botShowMoreMenu(env,chatId){
+async function botShowMoreMenu(env,chatId,callbackQueryId=""){
   const sent=await botSend(env,chatId,"🧰 MORE CONTROLS\n\nGitHub & Deploy, Hero Image, Logs & Recovery এবং Settings.",botMoreKeyboard());
-  await botSetContext(env,chatId,"menu",sent?.message_id,"menu:more","");
+  await botSetContext(env,chatId,"menu",sent?.message_id,"menu:more",callbackQueryId);
   return sent;
 }
 async function botCategory(env,chatId,category,context={}){
@@ -1067,7 +1067,7 @@ async function botHandleCallback(env,query){
     const contextCategory=action.startsWith("status:")?action.split(":")[1]:action.startsWith("users:")?"users":action.startsWith("logs:")?"logs":action.startsWith("automation:")?"automation":action.startsWith("github:")?"github":action.startsWith("news:")?"news":(["website","news","analytics","security","automation","users","github","hero","logs","settings"].includes(action)?action:null);
     if(contextCategory)await botSetContext(env,chatId,contextCategory,query.message?.message_id,data,callbackId);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
-    if(action==="more"){await botShowMoreMenu(env,chatId);return true}
+    if(action==="more"){await botShowMoreMenu(env,chatId,callbackId);return true}
     if(action.startsWith("command:")){const command=action.slice("command:".length),allowed=new Set(["/cmd","/help","/details","/health","/ga4","/errors","/logs","/sources","/traffic","/report","/history"]);if(!allowed.has(command)){await botAnswerCallback(env,query,"Unknown action",true);return true;}await botRunWithProgress(env,chatId,"নির্বাচিত রিপোর্ট তৈরি করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:command,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
     if(action==="github:runs"){await botRunWithProgress(env,chatId,"GitHub Actions workflow history আনা হচ্ছে...",async()=>{const result=await miniAppModule(env,"github"),runs=(result.runs||[]).slice(0,6),lines=["⚙️ GITHUB WORKFLOW RUNS","Source: GitHub Actions API","",...(runs.length?runs.map(x=>"• "+x.name+" · "+String(x.status||"unknown").toUpperCase()+" / "+String(x.conclusion||"pending").toUpperCase()+"\n  "+String(x.branch||"")+" · "+String(x.createdAt||"")):["No workflow runs returned."])];const latest=runs.find(x=>x.url);const keyboard=latest?[[{text:"Open Latest Run",url:latest.url}],[{text:"Repository Status",callback_data:"b1:status:github:1"}]]:botBackKeyboard();await botSend(env,chatId,lines.join("\n"),keyboard,{forceNew:true})});return true}
     if(action.startsWith("confirm:")||action.startsWith("cancel:")){const token=action.slice(action.indexOf(":")+1),key=UM_CONFIRM_PREFIX+token,claimKey=UM_CONFIRM_PREFIX+"claim:"+token;
@@ -1082,14 +1082,14 @@ async function botHandleCallback(env,query){
       if(kind==="workflow"){const result=await miniAppModule(env,"github"),runs=(result.runs||[]).slice(0,8),lines=["GITHUB WORKFLOW HISTORY","Source: GitHub Actions API","Step-level logs: Open the run URL in GitHub.",...(runs.length?runs.map(x=>"• "+x.name+" · "+String(x.status||"unknown").toUpperCase()+" / "+String(x.conclusion||"pending").toUpperCase()+" · "+String(x.createdAt||"")):["No workflow runs returned."])];const latest=runs.find(x=>x.url),keyboard=latest?[[{text:"Open Latest Run",url:latest.url}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]:botBackKeyboard();await botSend(env,chatId,lines.join("\n"),keyboard,{forceNew:true});return true;}
       if(kind==="recovery"){const result=await miniAppRecovery(env);const lines=["RECOVERY GUIDE","Source: GitHub Branches API","",...(result.backups||[]).map(x=>"• "+x.name+" · "+String(x.sha||"").slice(0,12)),result.backups?.length?"":"No backup branch returned by GitHub.",result.note||"No rollback action was performed."];await botSend(env,chatId,lines.join("\n"),botBackKeyboard(),{forceNew:true});return true;}
     }
-    if(action==="automation:scheduled"){const rows=await miniAppCronHistory(env),lines=["SCHEDULED TASK HISTORY","Source: BOT_CONFIG_KV · last 24 hours","",...(rows.slice(0,8).map(x=>"• "+new Date(x.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+String(x.status||"unknown").toUpperCase()+" · "+String(x.cron||"schedule")+" · "+String(x.detail||"").slice(0,100))||["No scheduled runs recorded."])];await botSend(env,chatId,lines.join("\n"),botBackKeyboard(),{forceNew:true});return true;}
+    if(action==="automation:scheduled"){const rows=await miniAppCronHistory(env),runLines=rows.slice(0,8).map(x=>"• "+new Date(x.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+String(x.status||"unknown").toUpperCase()+" · "+String(x.cron||"schedule")+" · "+String(x.detail||"").slice(0,100));const lines=["SCHEDULED TASK HISTORY","Source: BOT_CONFIG_KV · last 24 hours","",...(runLines.length?runLines:["No scheduled runs recorded."])];await botSend(env,chatId,lines.join("\n"),botBackKeyboard(),{forceNew:true});return true;}
     if(action==="automation:manual"){await botSend(env,chatId,"MANUAL ACTIONS\n\nChoose an action. A workflow trigger being accepted does not mean its refresh has completed.",[[{text:"Refresh News",callback_data:"b1:news:refresh"},{text:"Run Health Check",callback_data:"b1:command:/health"}],[{text:"View Automation Status",callback_data:"b1:status:settings:1"}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});return true;}
     if(action==="news:history"){const result=await miniAppModule(env,"github"),runs=(result.runs||[]).filter(x=>/news|update/i.test(String(x.name||""))).slice(0,8),lines=["NEWS REFRESH HISTORY","Source: GitHub Actions API","",...(runs.length?runs.map(x=>"• "+String(x.status||"unknown").toUpperCase()+" / "+String(x.conclusion||"pending").toUpperCase()+" · "+String(x.createdAt||"")):["No matching News workflow runs returned."])];const latest=runs.find(x=>x.url),keyboard=latest?[[{text:"Open Latest Run",url:latest.url}],[{text:"Retry Refresh",callback_data:"b1:news:refresh"}]]:botBackKeyboard();await botSend(env,chatId,lines.join("\n"),keyboard,{forceNew:true});return true;}
     if(action==="github:deploy"){const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/pages/builds/latest",{headers,signal:AbortSignal.timeout(10000)});const data=await response.json().catch(()=>({}));const body=response.ok?["GITHUB PAGES DEPLOYMENT","Source: GitHub Pages Builds API","Status: "+String(data.status||"Unknown"),"Created: "+String(data.created_at||"Unavailable"),"Updated: "+String(data.updated_at||"Unavailable"),"Commit: "+String(data.commit||"Unavailable").slice(0,12)].join("\n"):["GITHUB PAGES DEPLOYMENT","Source: GitHub Pages Builds API","Status: Not Available (HTTP "+response.status+")","Details: "+String(data.message||"The Pages build endpoint did not return deployment data.").slice(0,160),"Live site: https://kokushibu74.github.io/"].join("\n");await botSend(env,chatId,body,botBackKeyboard(),{forceNew:true});return true;}
     if(action==="news:refresh"){
       await botRunWithProgress(env,chatId,"News Refresh Workflow যাচাই করে চালু করা হচ্ছে...",async()=>{
         const result=await dispatchNewsWorkflow(env.GITHUB_TOKEN);
-        await botSend(env,chatId,"📰 NEWS REFRESH\n"+(result.verified?"Existing run verified.":"GitHub accepted the request.")+"\nAttempts: "+result.attempts+"\n\nসম্পূর্ণ ফলাফল জানতে /details দেখুন।",botBackKeyboard());
+        await botSend(env,chatId,"📰 NEWS REFRESH\n"+(result.verified?"Existing run verified.":"GitHub accepted the request.")+"\nAttempts: "+result.attempts+"\n\nসম্পূর্ণ ফলাফল জানতে /details দেখুন।",botBackKeyboard(),{forceNew:true});
       });
       return true;
     }
@@ -1118,7 +1118,7 @@ async function botHandleCallback(env,query){
         const lines=["🔄 MANUAL REFRESH RESULT","🌐 Website: "+siteStatus,"📰 News Feed: "+feedStatus,"⚙️ News Refresh Workflow: "+workflowStatus];
         if(workflowUrl)lines.push("🔗 Run: "+workflowUrl);if(articleCount===0)lines.push("⚠️ Feed-এ বর্তমানে কোনো Article পাওয়া যায়নি; Workflow শেষ হলে আবার পরীক্ষা করুন।");
         lines.push("ℹ️ Workflow trigger accepted মানে GitHub কাজ শুরুর অনুরোধ গ্রহণ করেছে; সম্পূর্ণ refresh শেষ হয়েছে—এমন নয়।");
-        await botSend(env,chatId,lines.join("\n"),[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]]);
+        await botSend(env,chatId,lines.join("\n"),[[{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});
       });return true;
     }
     if(action.startsWith("toggle:")){
@@ -1128,12 +1128,12 @@ async function botHandleCallback(env,query){
       await botCategory(env,chatId,"automation");
       return true;
     }
-    if(["github","settings","logs","recovery","reports"].includes(action)){await botCategory(env,chatId,action);return true}
-    if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action);return true}
-    if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
+    if(["github","settings","logs","recovery","reports"].includes(action)){await botCategory(env,chatId,action,{callbackQueryId:callbackId});return true}
+    if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action,{callbackQueryId:callbackId});return true}
+    if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action,{callbackQueryId:callbackId});return true}
     if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
     if(action.startsWith("users:linked")||action.startsWith("users:blocked")){const bits=action.split(":"),mode=bits[1],page=Math.max(1,Number(bits[2])||1);const result=await botUserIndex(env,mode,page);await botSend(env,chatId,result.text,result.keyboard,{forceNew:true});return true}
-    if(action.startsWith("users:profile:telegram:")){const bits=action.split(":"),id=String(bits[3]||""),page=Math.max(1,Number(bits[4])||1);if(!/^\d{5,20}$/.test(id)){await botSend(env,chatId,"Invalid Telegram User ID.",botBackKeyboard());return true;}const user={kind:"telegram",id},profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"Telegram profile not found.",botBackKeyboard());return true;}const link=await env.VISITOR_KV.get(UM_PREFIX+"link:telegram:"+id,"json"),blocked=await umBlocked(env,"telegram",id);const lines=["👤 TELEGRAM USER PROFILE","ID: "+id,"Name: "+String(profile.firstName||profile.username||"Telegram user"),"Username: "+(profile.username?"@"+profile.username:"—"),"Custom ID: "+String(profile.customId||"—"),"Linked Website ID: "+String(link?.visitorId||"—"),"Blocked: "+(blocked?"Yes":"No"),"First Seen: "+(profile.firstSeen?new Date(profile.firstSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—"),"Last Seen: "+(profile.lastSeen?new Date(profile.lastSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—")];const keyboard=[[{text:"User History",callback_data:"b1:users:history:telegram:"+id+":1"}],[{text:blocked?"Unblock User":"Block User",callback_data:"b1:users:action:"+(blocked?"userunblock":"userblock")+":telegram:"+id},{text:"Unlink",callback_data:"b1:users:action:userunlink:telegram:"+id}],[{text:"⬅️ User Directory",callback_data:"b1:users:list:"+page}]];await botSend(env,chatId,lines.join("\n"),keyboard);return true}
+    if(action.startsWith("users:profile:telegram:")){const bits=action.split(":"),id=String(bits[3]||""),page=Math.max(1,Number(bits[4])||1);if(!/^\d{5,20}$/.test(id)){await botSend(env,chatId,"Invalid Telegram User ID.",botBackKeyboard());return true;}const user={kind:"telegram",id},profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"Telegram profile not found.",botBackKeyboard());return true;}const link=await env.VISITOR_KV.get(UM_PREFIX+"link:telegram:"+id,"json"),blocked=await umBlocked(env,"telegram",id);const lines=["👤 TELEGRAM USER PROFILE","ID: "+id,"Name: "+String(profile.firstName||profile.username||"Telegram user"),"Username: "+(profile.username?"@"+profile.username:"—"),"Custom ID: "+String(profile.customId||"—"),"Linked Website ID: "+String(link?.visitorId||"—"),"Blocked: "+(blocked?"Yes":"No"),"First Seen: "+(profile.firstSeen?new Date(profile.firstSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—"),"Last Seen: "+(profile.lastSeen?new Date(profile.lastSeen).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—")];const keyboard=botUserProfileKeyboard("telegram",id,blocked,!!link?.visitorId,page);await botSend(env,chatId,lines.join("\n"),keyboard);return true}
     if(action.startsWith("users:history:")){const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),page=Math.max(1,Number(bits[4])||1);if(!((kind==="telegram"&&/^\d{5,20}$/.test(id))||(kind==="visitor"&&/^VIS-[A-F0-9]{12}$/i.test(id)))){await botSend(env,chatId,"Invalid user history target.",botBackKeyboard());return true;}await umHandleCommand(env,{text:"/userhistory "+id+" "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true}
     if(action.startsWith("users:action:")){
       const bits=action.split(":"),operation=bits[2],kind=bits[3],id=String(bits[4]||"");
@@ -1155,8 +1155,7 @@ async function botHandleCallback(env,query){
       if(!/^VIS-[A-F0-9]{12}$/.test(id)){await botSend(env,chatId,"Invalid Visitor ID.",botBackKeyboard());return true}
       const profile=await umProfile(env,{kind:"visitor",id});
       if(!profile){await botSend(env,chatId,"Visitor profile not found.",botBackKeyboard());return true}
-      const history=await umLocationHistory(env,id,page);
-      const keyboard=umLocationReportKeyboard(id,history,directoryPage);keyboard.unshift([{text:"Block Visitor",callback_data:"b1:users:action:userblock:visitor:"+id},{text:"Unlink",callback_data:"b1:users:action:userunlink:visitor:"+id}]);await botSend(env,chatId,umVisitorReport(id,profile,history),keyboard);
+      const history=await umLocationHistory(env,id,page),link=await env.VISITOR_KV.get(UM_PREFIX+"link:visitor:"+id,"json"),blocked=await umBlocked(env,"website",id);const keyboard=botUserProfileKeyboard("visitor",id,blocked,!!link?.telegramId,directoryPage);keyboard.push(...umLocationReportKeyboard(id,history,directoryPage));await botSend(env,chatId,umVisitorReport(id,profile,history),keyboard);
       return true;
     }
     if(action==="users:stats"){await botRunWithProgress(env,chatId,"User Manager-এর পরিসংখ্যান সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userstats",chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
@@ -1214,7 +1213,7 @@ async function botHandleContextCommand(env,msg,cmd,arg,parts){
     const response=await fetch("https://kokushibu74.github.io/news-feed.json",{signal:AbortSignal.timeout(12000)}),raw=await response.text();let data;try{data=JSON.parse(raw)}catch{data=null}
     const items=Array.isArray(data)?data:(data&&typeof data==="object"?Object.values(data).find(Array.isArray)||[]:[]),counts=new Map();
     for(const item of items){const source=String(item.source||item.publisher||item.source_name||item.site||"Unknown").slice(0,80);counts.set(source,(counts.get(source)||0)+1);}
-    await botSend(env,chatId,"📰 NEWS SOURCES\nHTTP: "+response.status+" · Articles: "+items.length+"\n"+([...counts.entries()].sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>"• "+k+": "+v).join("\n")||"Source metadata unavailable."),[[{text:"Feed Details",callback_data:"b1:status:news:1"},{text:"Refresh News",callback_data:"b1:news:refresh"}]]);return;
+    await botSend(env,chatId,"📰 NEWS SOURCES\nHTTP: "+response.status+" · Articles: "+items.length+"\n"+([...counts.entries()].sort((a,b)=>b[1]-a[1]).slice(0,12).map(([k,v])=>"• "+k+": "+v).join("\n")||"Source metadata unavailable."),[[{text:"Feed Details",callback_data:"b1:status:news:1"},{text:"Refresh News",callback_data:"b1:news:refresh"}]],{forceNew:true});return;
   }
   if(cmd==="/traffic"||cmd==="/report"){
     const day=bdDay(),a=await readDailyActivity(env,day),p=cmd==="/report"?await readDailyActivity(env,previousBdDay(day)):null;
@@ -1610,7 +1609,7 @@ async function miniAppModule(env,section){
   if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
   if(section==="automation"||section==="alerts"){
     const cfg=await botConfig(env);
-    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
+    const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
     const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Health Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"GitHub Workflow Alerts",trafficAlerts:"Traffic Spike Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Visitor Security Alerts",emergencyProtection:"Emergency Protection"};
     return {section,settings:keys.map(key=>({key,label:names[key],enabled:!!cfg[key]})),text:keys.map(key=>(cfg[key]?"ON":"OFF")+" · "+names[key]).join("\n"),source:"BOT_CONFIG_KV"};
   }
