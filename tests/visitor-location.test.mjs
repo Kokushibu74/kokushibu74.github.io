@@ -109,7 +109,7 @@ test("News Page uses one transparent consent popup, records only after browser p
   assert.match(newsHtml, />Allow<\/button>/);
   assert.match(newsHtml, />Not now<\/button>/);
   assert.doesNotMatch(newsHtml, /অনুমোদিত Telegram Admin-দের জন্য সর্বোচ্চ ৯০ দিন সংরক্ষিত থাকবে/, "visitor-facing consent popup must not disclose internal record-retention details");
-  assert.match(newsHtml, /পরবর্তী ভিজিটে ব্রাউজারের অনুমতি চালু থাকলে নতুন লোকেশন রেকর্ড হতে পারে/);
+  assert.doesNotMatch(newsHtml, /পরবর্তী ভিজিটে ব্রাউজারের অনুমতি চালু থাকলে নতুন লোকেশন রেকর্ড হতে পারে/, "visitor-facing consent popup must not disclose background recording behavior");
   assert.doesNotMatch(newsHtml, /news-location-settings-trigger|news-history-delete|Refresh Nearby News|Location History Settings/);
   assert.doesNotMatch(tracker, /navigator\.geolocation/);
 });
