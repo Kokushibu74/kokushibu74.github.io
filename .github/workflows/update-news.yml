@@ -7,6 +7,8 @@ on:
     paths:
       - ".github/workflows/update-news.yml"
       - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-watchdog.mjs"
+      - "tests/news-watchdog.test.mjs"
       - "cloudflare/news-alerts.mjs"
       - "tests/news-alerts.test.mjs"
       - "tests/test_news_alerts.py"
@@ -43,7 +45,12 @@ jobs:
           ref: main
       - name: Check Telegram Worker syntax
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
-        run: node --check cloudflare/portfolio-contact-telegram.js
+        run: |
+          node --check cloudflare/portfolio-contact-telegram.js
+          node --check cloudflare/news-watchdog.mjs
+      - name: Run GitHub watchdog dispatch tests
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        run: node --test tests/news-watchdog.test.mjs
       - name: Run Bangladesh alert safeguards
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_news_alerts.py -v
