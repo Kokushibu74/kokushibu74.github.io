@@ -494,15 +494,15 @@ async function umLocationHistory(env,id,pageNo=1){
   const records=(await Promise.all(selected.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
   return {records,total,page,pageSize,totalPages,truncated:!!keys.truncated};
 }
-function umLocationReportKeyboard(id,history){
+function umLocationReportKeyboard(id,history,directoryPage=1){
   const rows=[];
   if(history?.totalPages>1){
     const nav=[];
-    if(history.page>1)nav.push({text:"⬅️ Newer locations",callback_data:"b1:users:visitor:"+id+":"+(history.page-1)});
-    if(history.page<history.totalPages)nav.push({text:"Older locations ➡️",callback_data:"b1:users:visitor:"+id+":"+(history.page+1)});
+    if(history.page>1)nav.push({text:"⬅️ Newer locations",callback_data:"b1:users:visitor:"+id+":"+(history.page-1)+":"+directoryPage});
+    if(history.page<history.totalPages)nav.push({text:"Older locations ➡️",callback_data:"b1:users:visitor:"+id+":"+(history.page+1)+":"+directoryPage});
     if(nav.length)rows.push(nav);
   }
-  rows.push([{text:"⬅️ User Directory",callback_data:"b1:users:list:1"}]);
+  rows.push([{text:"⬅️ User Directory",callback_data:"b1:users:list:"+directoryPage}]);
   return rows;
 }
 async function umHistory(env,kind,id,event){
@@ -954,12 +954,12 @@ async function botHandleCallback(env,query){
     if(BOT_MENU.some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
     if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
     if(action.startsWith("users:visitor:")){
-      const parts=action.split(":"),id=String(parts[2]||"").toUpperCase(),page=Math.max(1,Math.min(999,Number(parts[3])||1));
+      const parts=action.split(":"),id=String(parts[2]||"").toUpperCase(),page=Math.max(1,Math.min(999,Number(parts[3])||1)),directoryPage=Math.max(1,Math.min(999,Number(parts[4])||1));
       if(!/^VIS-[A-F0-9]{12}$/.test(id)){await botSend(env,chatId,"Invalid Visitor ID.",botBackKeyboard());return true}
       const profile=await umProfile(env,{kind:"visitor",id});
       if(!profile){await botSend(env,chatId,"Visitor profile not found.",botBackKeyboard());return true}
       const history=await umLocationHistory(env,id,page);
-      await botSend(env,chatId,umVisitorReport(id,profile,history),umLocationReportKeyboard(id,history));
+      await botSend(env,chatId,umVisitorReport(id,profile,history),umLocationReportKeyboard(id,history,directoryPage));
       return true;
     }
     if(action==="users:stats"){await botRunWithProgress(env,chatId,"User Manager-এর পরিসংখ্যান সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userstats",chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
@@ -1055,7 +1055,7 @@ async function umHandleCommand(env,msg){
       const lines=items.map((u,i)=>u.kind==="visitor"
         ?"<b>"+(start+i+1)+". WEB</b> · "+htmlSafe(u.name)+(u.customId?" · "+htmlSafe(u.customId):"")
         :"<b>"+(start+i+1)+". TG</b> · <code>"+htmlSafe(u.id)+"</code> · "+htmlSafe(u.name));
-      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1"}]);
+      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
       const body="<b>👥 USER DIRECTORY</b>\n<code>Page "+pageNo+" / "+totalPages+" · "+all.length+" users</code>\n\n"+(lines.join("\n")||"কোনো User পাওয়া যায়নি.")+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
