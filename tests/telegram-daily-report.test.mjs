@@ -33,7 +33,7 @@ for (const id of expectedNamespaces) {
   assert.ok(source.includes(id), "Missing existing KV namespace from resource accounting: " + id);
 }
 assert.match(source, /CF_MONITOR_KV_NAMESPACES\.slice\(start,start\+3\)/, "KV resource analytics must use bounded namespace batches");
-assert.match(source, /label:"KV writes \(all 6 namespaces, monthly\)"/);
+assert.match(source, /label:"KV writes \(all 6 namespaces, daily Free allowance\)"/);
 assert.match(source, /label:"D1 storage \(account included allowance\)",used:d1Bytes,limit:5368709120/);
 assert.match(source, /Showing .* compact profiles of /);
 assert.ok(source.includes(".slice(0,20)"), "Visitor details must remain capped at 20 compact profiles");
@@ -72,7 +72,7 @@ const messages = buildDailyReportMessages({
   prior: {unique:22,sessions:23,views:44},
   ga4: {users:"10",sessions:"20",views:"40",engagement:"0.25"},
   ga4Error: "",
-  resourceSnapshot: {day:"2026-11-03",metrics:[{label:"KV writes (all 6 namespaces)",used:250,limit:1000,unit:"operations",percent:25}]}
+  resourceSnapshot: {day:"2026-11-03",metrics:[{label:"KV writes (all 6 namespaces, daily Free allowance)",used:250,limit:1000,unit:"operations",percent:25}]}
 });
 assert.equal(messages.length, 5, "The daily report must create exactly five messages");
 for (const message of messages) assert.ok(message.length < 3900, "Each report section must fit in one Telegram message");
