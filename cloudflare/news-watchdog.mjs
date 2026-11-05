@@ -3,7 +3,7 @@ const ACCEPTED_STATUSES=new Set([200,204]);
 const RETRYABLE_STATUSES=new Set([408,429]);
 
 function safeDetail(value){
-  return String(value||"").replace(/[\\r\\n\\t]+/g," ").slice(0,180);
+  return String(value||"").replace(/[\r\n\t]+/g," ").slice(0,180);
 }
 
 export async function dispatchNewsWorkflow(token,{fetchImpl=fetch,wait=(ms)=>new Promise(resolve=>setTimeout(resolve,ms)),now=()=>Date.now()}={}){
@@ -13,13 +13,24 @@ export async function dispatchNewsWorkflow(token,{fetchImpl=fetch,wait=(ms)=>new
   const runsUrl=API_ROOT+"/runs?event=workflow_dispatch&branch=main&per_page=10";
   const startedAt=now();
   let lastStatus=0,lastDetail="";
+  const verifyRecentRun=async()=>{
+    try{
+      const verification=await fetchImpl(runsUrl,{headers,signal:AbortSignal.timeout(10000)});
+      if(!verification.ok)return null;
+      const payload=await verification.json().catch(()=>({}));
+      return (payload.workflow_runs||[]).find(run=>run?.event==="workflow_dispatch"&&run?.head_branch==="main"&&Date.parse(run?.created_at||"")>=startedAt-10000)||null;
+    }catch{return null;}
+  };
   for(let attempt=1;attempt<=3;attempt++){
     let response;
     try{
       response=await fetchImpl(dispatchUrl,{method:"POST",headers,body:JSON.stringify({ref:"main"}),signal:AbortSignal.timeout(15000)});
     }catch(error){
       lastStatus=0;lastDetail=safeDetail(error?.message||error);
-      if(attempt<3){await wait(500*attempt);continue;}
+      await wait(500*attempt);
+      const recent=await verifyRecentRun();
+      if(recent)return {accepted:true,attempts:attempt,verified:true,runId:recent.id};
+      if(attempt<3)continue;
       throw new Error("GitHub workflow dispatch network failure after "+attempt+" attempts: "+lastDetail);
     }
     if(ACCEPTED_STATUSES.has(response.status))return {accepted:true,attempts:attempt,verified:false};
@@ -35,14 +46,8 @@ export async function dispatchNewsWorkflow(token,{fetchImpl=fetch,wait=(ms)=>new
       throw error;
     }
     await wait(500*attempt);
-    try{
-      const verification=await fetchImpl(runsUrl,{headers,signal:AbortSignal.timeout(10000)});
-      if(verification.ok){
-        const payload=await verification.json().catch(()=>({}));
-        const recent=(payload.workflow_runs||[]).find(run=>run?.event==="workflow_dispatch"&&run?.head_branch==="main"&&Date.parse(run?.created_at||"")>=startedAt-10000);
-        if(recent)return {accepted:true,attempts:attempt,verified:true,runId:recent.id};
-      }
-    }catch{}
+    const recent=await verifyRecentRun();
+    if(recent)return {accepted:true,attempts:attempt,verified:true,runId:recent.id};
     if(attempt<3)await wait(500*attempt);
   }
   const error=new Error("GitHub workflow dispatch temporarily failed (HTTP "+(lastStatus||"network")+") after 3 attempts"+(lastDetail?": "+lastDetail:""));
