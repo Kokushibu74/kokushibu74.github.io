@@ -1,4 +1,3 @@
-const INSTALLED_KEY="k74-news-app-installed-v1";
 const SHOW_DELAY_MS=4000;
 
 export function isAndroidMobile(nav=typeof navigator!=="undefined"?navigator:{}) {
@@ -19,12 +18,6 @@ export function shouldOfferInstall({androidMobile,standalone,installed=false}) {
   return Boolean(androidMobile&&!standalone&&!installed);
 }
 
-function isAppInstalled(){
-  try{return localStorage.getItem(INSTALLED_KEY)==="1"}catch(_){return false}
-}
-function markAppInstalled(){
-  try{localStorage.setItem(INSTALLED_KEY,"1")}catch(_){}
-}
 function isInAppBrowser(){
   return /;\s*wv\)|\bwv\b|Instagram|FBAN|FBAV|Line\/|Telegram|TikTok|Twitter/i.test(navigator.userAgent||"");
 }
@@ -111,7 +104,6 @@ async function handleInstallAction(){
     await promptEvent.prompt();
     const choice=await promptEvent.userChoice;
     if(choice?.outcome==="accepted"){
-      markAppInstalled();
       hideSheet();
     }else{
       
@@ -122,9 +114,18 @@ async function handleInstallAction(){
   }
 }
 
-function init(){
+async function isRelatedAppInstalled(nav=typeof navigator!=="undefined"?navigator:{},manifestUrl="https://kokushibu74.github.io/manifest.webmanifest"){
+  if(typeof nav.getInstalledRelatedApps!=="function")return false;
+  try{
+    const apps=await nav.getInstalledRelatedApps();
+    return Array.isArray(apps)&&apps.some(app=>app?.platform==="webapp"&&(!app.url||app.url===manifestUrl));
+  }catch(_){return false}
+}
+
+async function init(){
   if(!isAndroidMobile()||isStandaloneDisplay())return;
-  if(!shouldOfferInstall({androidMobile:true,standalone:false,installed:isAppInstalled()}))return;
+  const installed=await isRelatedAppInstalled();
+  if(!shouldOfferInstall({androidMobile:true,standalone:false,installed}))return;
   mountInstallSheet();
   sheetTimer=window.setTimeout(showSheet,SHOW_DELAY_MS);
   window.addEventListener("beforeinstallprompt",event=>{
@@ -138,7 +139,6 @@ function init(){
   });
   window.addEventListener("appinstalled",()=>{
     if(sheetTimer)window.clearTimeout(sheetTimer);
-    markAppInstalled();
     hideSheet();
   });
 }
