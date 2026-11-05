@@ -485,14 +485,18 @@ async function umList(env,prefix,limit=1000,maxPages=2){
 }
 
 async function umLocationHistory(env,id,pageNo=1){
-  const prefix="loc:v1:history:visitor:"+id+":";
-  const keys=await umList(env,prefix,1000,20);
-  const sorted=keys.slice().sort((a,b)=>String(b.name).localeCompare(String(a.name)));
-  const pageSize=4,total=keys.length,totalPages=Math.max(1,Math.ceil(total/pageSize));
-  const page=Math.max(1,Math.min(totalPages,Number(pageNo)||1)),start=(page-1)*pageSize;
-  const selected=sorted.slice(start,start+pageSize);
-  const records=(await Promise.all(selected.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
-  return {records,total,page,pageSize,totalPages,truncated:!!keys.truncated};
+  try{
+    const prefix="loc:v1:history:visitor:"+id+":";
+    const keys=await umList(env,prefix,1000,20);
+    const sorted=keys.slice().sort((a,b)=>String(b.name).localeCompare(String(a.name)));
+    const pageSize=4,total=keys.length,totalPages=Math.max(1,Math.ceil(total/pageSize));
+    const page=Math.max(1,Math.min(totalPages,Number(pageNo)||1)),start=(page-1)*pageSize;
+    const selected=sorted.slice(start,start+pageSize);
+    const records=(await Promise.all(selected.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
+    return {records,total,page,pageSize,totalPages,truncated:!!keys.truncated,unavailable:false};
+  }catch(error){
+    return {records:[],total:0,page:1,pageSize:4,totalPages:1,truncated:false,unavailable:true};
+  }
 }
 function umLocationReportKeyboard(id,history,directoryPage=1){
   const rows=[];
@@ -590,7 +594,7 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
         const area=record.locality?" · Area: "+value(record.locality):"";
         return ["GPS "+((history.page-1)*history.pageSize+index+1)+" · "+bdt,"UTC: "+utc+" · Coordinates: "+coordinates+" · Accuracy: "+accuracy+" · Source: "+value(record.source,"browser-geolocation")+area+" · Map: "+map];
       }),
-      ...(!(history.records||[]).length?[[ "GPS History","No GPS location history saved (separate consent required)." ]]:[]),
+      ...(!(history.records||[]).length?[[ "GPS History",history.unavailable?"GPS History temporarily unavailable; retry the report later.":"No GPS History records saved." ]]:[]),
       ...(history.truncated?[[ "History note","KV scan reached its safety limit; older records may not be listed." ]]:[])
     ]),
     "",
