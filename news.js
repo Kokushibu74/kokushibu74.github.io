@@ -345,7 +345,9 @@ import { isLatestTagItem, isSliderEligibleItem, getImagePreviewUrl } from "./new
     }
   }
   const newspaperViewport=window.matchMedia("(max-width: 600px)");
+  const newspaperColumnsViewport=window.matchMedia("(max-width: 1100px)");
   newspaperViewport.addEventListener("change",()=>{if(viewMode==="feed")render()});
+  newspaperColumnsViewport.addEventListener("change",()=>{if(viewMode==="feed"&&!newspaperViewport.matches)render()});
   function updateFilterCounts(){
     const todayBD=bdDateKey(Date.now());
     const oldestDate=new Date(todayBD+"T00:00:00Z");
