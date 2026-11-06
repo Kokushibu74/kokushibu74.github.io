@@ -767,7 +767,12 @@ async function botRegisterCommands(env,chatId,isAdmin){
   if(!env.TELEGRAM_BOT_TOKEN)throw new Error("Telegram bot token is unavailable.");
   const defaults=await botTelegram(env,"setMyCommands",{commands:BOT_PUBLIC_COMMANDS,scope:{type:"default"}});
   if(!defaults.ok)throw new Error("Default command registration failed (HTTP "+defaults.status+"): "+String(defaults.data?.description||"Telegram API error").slice(0,140));
-  if(chatId===undefined||chatId===null)return {count:BOT_PUBLIC_COMMANDS.length,verified:true};
+  const defaultCheck=await botTelegram(env,"getMyCommands",{scope:{type:"default"}});
+  if(!defaultCheck.ok)throw new Error("Default command verification failed (HTTP "+defaultCheck.status+"): "+String(defaultCheck.data?.description||"Telegram API error").slice(0,140));
+  const defaultActual=new Set((Array.isArray(defaultCheck.data?.result)?defaultCheck.data.result:[]).map(x=>String(x.command||"")));
+  const missingDefault=BOT_PUBLIC_COMMANDS.map(x=>x.command).filter(x=>!defaultActual.has(x));
+  if(missingDefault.length)throw new Error("Default command verification missing: "+missingDefault.join(", "));
+  if(chatId===undefined||chatId===null)return {count:defaultActual.size,verified:true};
   const expected=BOT_PUBLIC_COMMANDS.concat(isAdmin?BOT_ADMIN_COMMANDS:[]);
   const scoped=await botTelegram(env,"setMyCommands",{commands:expected,scope:{type:"chat",chat_id:chatId}});
   if(!scoped.ok)throw new Error("Chat command registration failed (HTTP "+scoped.status+"): "+String(scoped.data?.description||"Telegram API error").slice(0,140));
