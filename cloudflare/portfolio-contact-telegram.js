@@ -2374,7 +2374,8 @@ export default {
       const profileKey="visitor:"+id;
       let old={};try{old=await env.VISITOR_KV.get(profileKey,"json")||{}}catch{}
       const userManagerProfileKey=UM_PREFIX+"visitor:"+id;
-      let userManagerOld=null;try{userManagerOld=await env.VISITOR_KV.get(userManagerProfileKey,"json")}catch{}
+      let userManagerOld=null;
+      if(old.profileSchemaVersion!==2){try{userManagerOld=await env.VISITOR_KV.get(userManagerProfileKey,"json")}catch{}}
       const now=Date.now(),pageView=data.eventBatch!==true,sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
       // Enforce the 30-minute inactivity boundary server-side too; browser session IDs can remain unchanged.
@@ -2385,7 +2386,7 @@ export default {
       if(pageView&&(!pages.length||pages[pages.length-1].path!==page))pages.push({path:page,at:now});
       const events=Array.isArray(data.events)?data.events.slice(0,30).map(e=>({type:clean(e.type,30),at:now})).filter(e=>e.type):[];
       const profile={
-        visitorId:id,kind:"visitor",id,customId:old.customId||userManagerOld?.customId||null,firstSeen:old.firstSeen||now,lastSeen:now,
+        visitorId:id,kind:"visitor",id,profileSchemaVersion:2,customId:old.customId||userManagerOld?.customId||null,firstSeen:old.firstSeen||now,lastSeen:now,
         totalSessions:(Number(old.totalSessions)||0)+(pageView&&newSession?1:0),
         totalPageViews:(Number(old.totalPageViews)||0)+(pageView?1:0),
         lastSessionId:pageView?session:(old.lastSessionId||session),lastSessionAt:pageView&&newSession?now:(old.lastSessionAt||now),sessionPageViews:pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0),
