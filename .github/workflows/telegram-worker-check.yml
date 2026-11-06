@@ -1,6 +1,7 @@
 name: Telegram Worker and Mini App validation
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
     paths:
@@ -93,7 +94,7 @@ jobs:
           console.log('Existing Bot commands, private admin restrictions, safety contracts and Mini App integration verified.');
           NODE
   deployed-smoke-test:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     steps:
       - name: Verify production Telegram Worker configuration endpoint
@@ -105,7 +106,7 @@ jobs:
           node - <<'NODE'
           const fs = require('node:fs');
           const config = JSON.parse(fs.readFileSync('/tmp/worker-config.json', 'utf8'));
-          for (const key of ['monitoring', 'dailyReport', 'scheduledChecks', 'trafficAlerts', 'workflowAlerts']) {
+          for (const key of ['monitoring', 'dailyReport', 'scheduledChecks', 'newsRefresh', 'newsAlerts', 'trafficAlerts', 'workflowAlerts']) {
             if (typeof config[key] !== 'boolean') throw new Error('Missing boolean config field: ' + key);
           }
           console.log('Production Telegram Worker config endpoint: OK');
