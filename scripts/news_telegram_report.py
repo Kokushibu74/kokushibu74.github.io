@@ -583,7 +583,7 @@ def main():
         if run_url.startswith("https://github.com/Kokushibu74/kokushibu74.github.io/actions/runs/") and run_id.isdigit():
             reply_markup = {"inline_keyboard": [[
                 {"text": "Open Workflow", "url": run_url},
-                {"text": "Retry Failed Jobs", "callback_data": "b1:github:retry:" + run_id},
+                {"text": "Retry Failed Jobs", "callback_data": "b1:alert:github:retry:" + run_id},
             ]]}
         send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, reply_markup=reply_markup)
 
