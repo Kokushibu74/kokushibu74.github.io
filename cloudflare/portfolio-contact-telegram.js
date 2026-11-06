@@ -1302,7 +1302,7 @@ async function botHandleCallback(env,query){
        const label=names[category]?.[index]||"Status";
        await botSetContext(env,chatId,{section:category,view:"status",index,actionId:action,messageId:Number(query.message?.message_id||0)});await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed",String(e&&e.stack||e).slice(0,1600));await botAnswerCallback(env,query,"এই পুরোনো/অপরিবর্তনযোগ্য মেসেজটি আপডেট করা যায়নি। মূল মেসেজ রাখা হয়েছে; Control Center-এর সর্বশেষ মেনু ব্যবহার করুন।",true)}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
+  }catch(e){console.error("Telegram button action failed; original message preserved and no replacement sent",String(e&&e.stack||e).slice(0,1600))}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
