@@ -61,7 +61,12 @@ assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration fa
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
 
 const mainKeyboard = section("function botMainKeyboard(){", "function botBackKeyboard()");
-assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:home"\}\]\)/, "The main menu must always expose START BOT as a working home callback");
+assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:start"\}\]\)/, "START BOT must use its explicit callback route");
+const startCallback = section("async function botHandleCallback", "async function umHandleCommand");
+assert.match(startCallback, /action==="home"\|\|action==="start"/, "START BOT must route to the home menu handler");
+assert.match(startCallback, /botRegisterCommands\(env,chatId,true\)/, "START BOT must verify/register admin commands");
+assert.match(startCallback, /botShowMenu\(env,chatId,undefined,registrationError\)/, "START BOT must render the main menu in the clicked message");
+assert.match(startCallback, /Telegram button action failed; original message preserved and no replacement sent/);
 assert.match(source, /const BOT_START_LABEL = "🚀 START BOT"/, "The START BOT label must remain stable");
 
 const compactMenu = section("const BOT_MENU = [", "const BOT_DEFAULTS = {");
@@ -172,3 +177,13 @@ const callbackFailure = section("async function botHandleCallback", "async funct
 assert.match(callbackFailure, /original message preserved and no replacement sent/, "Uneditable historical notifications must be preserved without sending a duplicate");
 assert.doesNotMatch(callbackFailure.slice(callbackFailure.indexOf("}catch(e){")), /botSend\(/, "Callback failures must not create a replacement chat message");
 console.log("Telegram callbacks preserve the clicked message and never create replacement messages when edit is unavailable.");
+
+
+const startMain = section("function botMainKeyboard(){", "function botBackKeyboard()");
+assert.match(startMain, /callback_data:"b1:start"/, "The visible START BOT button must invoke the explicit start action");
+assert.match(source, /if\(action==="home"\|\|action==="start"\)/, "Start and Home must share the verified navigation flow");
+assert.match(source, /await botEnsureStartKeyboard\(env,chatId\)/, "Start action must restore the Telegram Mini App menu button");
+const helpBranch = section('if(cmd==="/help"||cmd==="/cmd"){', 'if(["/details","/health"');
+assert.doesNotMatch(helpBranch, /forceNew:true/, "Help/command guide should reuse the existing menu anchor");
+assert.match(startCallback, /botSend\(env,chatId,lines\.join\("\\n"\)/, "Button-driven status results must render through the shared edit-in-place sender");
+console.log("Start Bot explicit route and no-message-stack navigation regression checks verified.");
