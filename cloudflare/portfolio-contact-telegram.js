@@ -127,10 +127,13 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     const stateKey="resource-alert:v3:"+periodKey+":"+metric.key;
     let sent=[];
     try{const old=await env.BOT_CONFIG_KV.get(stateKey,"json");if(Array.isArray(old))sent=old.filter(Number.isFinite)}catch{}
-    if(metric.period==="storage"&&pct<50)sent=[];
+    if(metric.period==="storage"&&pct<50&&sent.length){
+      // Clear only an actual prior threshold state; never write an empty marker every 30-minute check.
+      await env.BOT_CONFIG_KV.delete(stateKey).catch(()=>{});
+      sent=[];
+    }
     const crossed=thresholds.filter(level=>pct>=level&&!sent.includes(level));
     if(crossed.length)pending.push({metric,pct,crossed,stateKey,sent});
-    else if(metric.period==="storage"&&pct<50&&sent.length===0){try{await env.BOT_CONFIG_KV.put(stateKey,"[]",{expirationTtl:365*86400})}catch{}}
   }
   if(pending.length&&typeof sendTelegram==="function"){
     const highestPct=Math.max(...pending.map(item=>item.pct));
