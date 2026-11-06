@@ -1276,7 +1276,8 @@ async function umHandleCommand(env,msg,options={}){
           ?"*"+label+"* · "+mdSafe(u.name)+(u.customId?" · "+mdSafe(u.customId):"")
           :"*"+label+"* · "+mdSafe(u.id)+" · "+mdSafe(u.name);
       });
-      const keyboard=items.filter(u=>u.id).map(u=>[{text:String((u.kind==="visitor"?"WEB ":"TG ")+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:"+u.kind+":"+String(u.id)+":"+pageNo}]);
+      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo},{text:"Manage",callback_data:"b1:users:profile:visitor:"+String(u.id)+":"+pageNo}]);
+       for(const u of items.filter(u=>u.kind==="telegram"&&u.id))keyboard.push([{text:String("TG "+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:telegram:"+String(u.id)+":"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
       const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
