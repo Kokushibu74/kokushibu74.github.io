@@ -1989,8 +1989,8 @@ async function newsRefreshWatchdog(env){
     throw error;
   }
   await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
-  const priorError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
-  if(priorError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
+  const dispatchError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
+  if(dispatchError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
   await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
   return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null,dispatchAttempts:dispatchResult.attempts,verifiedAfterAmbiguousResponse:!!dispatchResult.verified};
 }
