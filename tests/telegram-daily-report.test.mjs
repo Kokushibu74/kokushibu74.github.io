@@ -89,7 +89,7 @@ const hostLimited = buildDailyReportMessages({
   failure:"",missing:[],platformLimitations:["X-Content-Type-Options","X-Frame-Options"],headersChecked:true,
   activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null
 });
-assert.ok(hostLimited[0].includes("HOST-LIMITED"), "GitHub Pages response-header limits must not be reported as fully healthy");
-assert.ok(hostLimited[4].includes("X-Frame-Options"), "Security report must disclose host-managed response-header limitations");
+assert.ok(hostLimited[0].includes("HOST-LIMITED")||hostLimited[0].includes("HOST\\-LIMITED"), "GitHub Pages response-header limits must not be reported as fully healthy");
+assert.ok(hostLimited[4].includes("X-Frame-Options")||hostLimited[4].includes("X\\-Frame\\-Options"), "Security report must disclose host-managed response-header limitations");
 
 console.log("Five-part Telegram report, delivery retry state, visitor privacy, all six KV namespaces, D1 quota and message-size behavior verified.");
