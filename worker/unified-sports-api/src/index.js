@@ -10,6 +10,8 @@ const CRICKET_LEAGUE_RE = /^[a-zA-Z0-9._-]{1,40}$/;
 const YOUTUBE_ID_RE = /^[a-zA-Z0-9_-]{11}$/;
 const CATEGORIES = new Set(["football","cricket","general"]);
 const RATE_LIMIT = 60, RATE_WINDOW_MS = 60_000;
+// Temporary pause: bypass Sports Zone response/schedule caches without deleting KV data.
+const SPORTS_CACHE_ENABLED = false;
 const buckets = new Map();
 
 function json(data, status=200, extra={}) {
@@ -103,7 +105,7 @@ function cricketLeagueMatches(league,selected) {
 }
 async function cricketScoreboard(league,ctx,env) {
   const cacheKey="score-cache:cricket:"+league;
-  if(env.SPORTS_ZONE) {
+  if(SPORTS_CACHE_ENABLED && env.SPORTS_ZONE) {
     try {const cached=await env.SPORTS_ZONE.get(cacheKey,"json");if(cached&&Array.isArray(cached.matches))return json(cached,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"HIT"});} catch {}
   }
   const leagues=await fetchCricketHeader();
@@ -112,7 +114,7 @@ async function cricketScoreboard(league,ctx,env) {
   const order={live:0,scheduled:1,finished:2};
   matches.sort((a,b)=>(order[a.status]??3)-(order[b.status]??3)||new Date(a.startTime)-new Date(b.startTime));
   const payload={ok:true,status:"ok",updated:new Date().toISOString(),matches};
-  if(env.SPORTS_ZONE)ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
+  if(SPORTS_CACHE_ENABLED && env.SPORTS_ZONE)ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
   return json(payload,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"MISS"});
 }
 async function getCricketScheduleEvents() {
@@ -123,7 +125,7 @@ async function getCricketScheduleEvents() {
 async function scoreboard(upstreamUrl,ctx,env,cacheId) {
   // Use the configured KV namespace for a short cache; this also works on workers.dev.
   const cacheKey="score-cache:"+cacheId;
-  if(env.SPORTS_ZONE) {
+  if(SPORTS_CACHE_ENABLED && env.SPORTS_ZONE) {
     try {
       const cached=await env.SPORTS_ZONE.get(cacheKey,"json");
       if(cached && Array.isArray(cached.matches)) return json(cached,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"HIT"});
@@ -136,7 +138,7 @@ async function scoreboard(upstreamUrl,ctx,env,cacheId) {
   const order={live:0,scheduled:1,finished:2};
   const matches=data.events.map(normalizeMatch).sort((a,b)=>(order[a.status]??3)-(order[b.status]??3));
   const payload={ok:true,status:"ok",updated:new Date().toISOString(),matches};
-  if(env.SPORTS_ZONE) ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
+  if(SPORTS_CACHE_ENABLED && env.SPORTS_ZONE) ctx.waitUntil(env.SPORTS_ZONE.put(cacheKey,JSON.stringify(payload),{expirationTtl:60}).catch(()=>{}));
   return json(payload,200,{"Cache-Control":"public, max-age=25","X-Sports-Zone-Cache":"MISS"});
 }
 function validStream(s) {
@@ -159,7 +161,7 @@ function utcDateStamp(date) {
 }
 async function getUpcomingEvents(env, now=new Date()) {
   if(!env.SPORTS_ZONE) return {events:[],fetchErrors:[{source:"kv",message:"KV namespace is not configured"}],fetchCount:0};
-  try {
+  if(SPORTS_CACHE_ENABLED) try {
     const cached=await env.SPORTS_ZONE.get(AUTO_SCHEDULE_KEY,"json");
     if(cached && Array.isArray(cached.events) && Date.now()-Number(cached.savedAt||0)<SCHEDULE_CACHE_SECONDS*1000) {
       return {events:cached.events,fetchErrors:Array.isArray(cached.fetchErrors)?cached.fetchErrors:[],fetchCount:0,cached:true};
@@ -192,7 +194,7 @@ async function getUpcomingEvents(env, now=new Date()) {
   const events=[...new Map(results.flatMap(x=>x.events).map(e=>[e.sport+":"+e.id,e])).values()]
     .sort((a,b)=>new Date(a.startTime)-new Date(b.startTime));
   // Do not cache an all-failed result: the next cron run should retry.
-  if(successfulFetches>0) {
+  if(SPORTS_CACHE_ENABLED && successfulFetches>0) {
     await env.SPORTS_ZONE.put(AUTO_SCHEDULE_KEY,JSON.stringify({savedAt:Date.now(),events,fetchErrors,fetchCount:results.length}),{expirationTtl:SCHEDULE_CACHE_SECONDS+60}).catch(e=>console.error("Sports Zone schedule cache write failed:",e?.message||"unknown"));
   }
   return {events,fetchErrors,fetchCount:results.length,cached:false};
