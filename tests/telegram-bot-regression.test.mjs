@@ -227,5 +227,6 @@ const trackingDelivery = section('if(pathname==="/track"){', 'if(new URL(request
 assert.ok(trackingDelivery.includes("if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)"), "A failed first visitor alert must be retried on a later page view in the same session");
 assert.ok(trackingDelivery.includes('sendVisitorAlertOnce(env,"visitor:"+id+":"+session'), "New-session visitor alerts must be deduplicated by visitor and session");
 assert.ok(trackingDelivery.includes("traffic>=40"), "Traffic-spike delivery must retry on subsequent events until Telegram confirms it");
+assert.ok(trackingDelivery.includes('const eventKey="security:event:v1:"+id+":"+session'), "Security events must not be duplicated while a failed alert is retried");
 assert.ok(!trackingDelivery.includes('await env.VISITOR_KV.put(marker,"1"'), "Visitor alerts must not be marked delivered before Telegram confirms success");
 console.log("Visitor alert delivery confirmation, retry, lock cleanup and deduplication verified.");
