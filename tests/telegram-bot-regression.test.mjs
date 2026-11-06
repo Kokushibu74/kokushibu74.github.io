@@ -149,3 +149,17 @@ assert.match(source, /b1:status:automation:3/, "Automation must expose manual ac
 console.log("Website diagnostics, News Center history and Automation schedule contracts verified.");
 
 assert.match(source, /mdSafe\("Visitor IDs are the clickable buttons below; tap one to open its report\."\)/, "The /userid MarkdownV2 footer must escape reserved punctuation");
+
+
+const callbackEdit = section("async function botHandleCallback", "async function umHandleCommand");
+assert.match(source, /const BOT_CALLBACK_MESSAGE_ANCHORS=new Map\(\)/, "Inline callbacks must keep the clicked message as the temporary edit target");
+assert.match(source, /const BOT_CALLBACK_ACTIVE=new Set\(\)/, "Only one callback action per chat may own the edit target at a time");
+assert.match(callbackEdit, /BOT_CALLBACK_MESSAGE_ANCHORS\.set\(String\(chatId\),callbackMessageId\)/, "Every inline button must bind its clicked message as the edit target");
+assert.match(callbackEdit, /BOT_CALLBACK_MESSAGE_ANCHORS\.delete\(String\(chatId\)\)/, "Callback edit context must always be cleared");
+assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.delete\(String\(chatId\)\)/, "Callback lock must always be released");
+assert.match(send, /const callbackMessageId=Number\(BOT_CALLBACK_MESSAGE_ANCHORS\.get\(String\(chatId\)\)\|\|0\)\|\|null/, "Button responses must target the message that was clicked");
+assert.match(send, /if\(messageId&&\(!options\.forceNew\|\|callbackMessageId\)\)/, "Inline button actions must edit in place even when nested command handlers request a new message");
+assert.match(send, /options\.persistentMenu\|\|callbackMessageId/, "If Telegram rejects an edit and fallback is needed, the replacement must become the next active menu anchor");
+assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.has\(String\(chatId\)\)/, "Concurrent callback actions in one chat must not race over the same edit target");
+
+console.log("All Telegram inline-button callbacks are bound to the clicked message for edit-in-place navigation.");
