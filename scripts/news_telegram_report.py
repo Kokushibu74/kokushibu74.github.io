@@ -510,7 +510,7 @@ def build_failure_report(context, failed, excerpts):
     return message
 
 
-def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_error=""):
+def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_error="", reply_markup=None):
     verified_ids = verified_ids or {}
     custom_count = len(verified_ids)
     payload = {
@@ -519,6 +519,8 @@ def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_erro
         "parse_mode": "HTML",
         "disable_web_page_preview": True,
     }
+    if reply_markup:
+        payload["reply_markup"] = reply_markup
     result = telegram_call(token, "sendMessage", payload)
     custom_emoji_used = bool(custom_count)
     if not result.get("ok") and custom_count:
@@ -527,6 +529,7 @@ def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_erro
         result = telegram_call(token, "sendMessage", {
             "chat_id": chat_id, "text": fallback, "parse_mode": "HTML",
             "disable_web_page_preview": True,
+            **({"reply_markup": reply_markup} if reply_markup else {}),
         })
         if result.get("ok"):
             custom_emoji_used = False
@@ -574,7 +577,15 @@ def main():
             print("Custom emoji lookup fallback: " + lookup_error)
     else:
         message = build_failure_report(context, failed, excerpts)
-        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message)
+        run_url = str(context.get("run_url") or "")
+        run_id = str(context.get("run_id") or "")
+        reply_markup = None
+        if run_url.startswith("https://github.com/Kokushibu74/kokushibu74.github.io/actions/runs/") and run_id.isdigit():
+            reply_markup = {"inline_keyboard": [[
+                {"text": "Open Workflow", "url": run_url},
+                {"text": "Retry Failed Jobs", "callback_data": "b1:github:retry:" + run_id},
+            ]]}
+        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, reply_markup=reply_markup)
 
 
 if __name__ == "__main__":
