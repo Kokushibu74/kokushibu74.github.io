@@ -328,8 +328,8 @@ function dailyReportVisitorDetailsLines(activity){
 async function inspectPortfolioSecurity(response){
   const headers=response.headers||new Headers();
   const html=await response.clone().text().catch(()=> "");
-  const cspMeta=/<meta\\b[^>]*http-equiv\\s*=\\s*["']content-security-policy["'][^>]*>/i.test(html);
-  const referrerMeta=/<meta\\b[^>]*name\\s*=\\s*["']referrer["'][^>]*>/i.test(html);
+  const cspMeta=/<meta\b[^>]*http-equiv\s*=\s*["']content-security-policy["'][^>]*>/i.test(html);
+  const referrerMeta=/<meta\b[^>]*name\s*=\s*["']referrer["'][^>]*>/i.test(html);
   const isGitHubPages=(()=>{try{return new URL(response.url).hostname.endsWith(".github.io")}catch{return false}})();
   const checks=[["Content-Security-Policy",!!headers.get("content-security-policy")||cspMeta],["Strict-Transport-Security",!!headers.get("strict-transport-security")],["Referrer-Policy",!!headers.get("referrer-policy")||referrerMeta]];
   const missing=checks.filter(([,ok])=>!ok).map(([name])=>name);
