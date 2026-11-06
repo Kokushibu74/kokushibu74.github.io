@@ -16,7 +16,7 @@ assert.match(startKeyboard, /setChatMenuButton/);
 assert.doesNotMatch(startKeyboard, /botTelegram\(env,"sendMessage"/, "A /start must not send another persistent reply-keyboard message");
 
 const startButton = section("async function botHandleStartButton", "async function botExpireIdleMenu");
-assert.match(startButton, /botShowMenu\(env,msg\.chat\.id\)/);
+assert.match(startButton, /botShowMenu\(env,msg\.chat\.id,undefined,registrationError\)/);
 assert.doesNotMatch(startButton, /forceNew:true/, "START BOT must reuse/edit the current menu");
 
 const commandBranch = section('if(cmd==="/start"||cmd==="/menu"){', 'if(cmd==="/help"||cmd==="/cmd"){');
