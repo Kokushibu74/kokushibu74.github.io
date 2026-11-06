@@ -896,6 +896,9 @@ async function botRunWithProgress(env,chatId,message,work){
 }
 function botMainKeyboard(){
   const rows=[];
+  // Keep an explicit, always-visible START BOT entry above the category controls.
+  // The callback reuses the existing menu message and returns to the Control Center home.
+  rows.push([{text:BOT_START_LABEL,callback_data:"b1:home"}]);
   for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
   for(let i=0;i<BOT_SECONDARY_MENU.length;i+=2)rows.push(BOT_SECONDARY_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
   return rows;

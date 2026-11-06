@@ -60,6 +60,10 @@ assert.match(commandRegistration, /if\(!defaults\.ok\)/, "Default command regist
 assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration failures must be surfaced");
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
 
+const mainKeyboard = section("function botMainKeyboard(){", "function botBackKeyboard()");
+assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:home"\}\]\)/, "The main menu must always expose START BOT as a working home callback");
+assert.match(source, /const BOT_START_LABEL = "🚀 START BOT"/, "The START BOT label must remain stable");
+
 const compactMenu = section("const BOT_MENU = [", "const BOT_DEFAULTS = {");
 assert.match(compactMenu, /\["website"/);
 assert.match(compactMenu, /\["news"/);
