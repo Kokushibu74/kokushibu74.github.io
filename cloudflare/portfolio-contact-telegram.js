@@ -1094,6 +1094,55 @@ async function botHandleCallback(env,query){
     if(action==="automation"||action==="alerts"||action==="users"||action==="hero"){await botCategory(env,chatId,action);return true}
     if(BOT_MENU.concat(BOT_SECONDARY_MENU).some(([id])=>id===action)){await botCategory(env,chatId,action);return true}
     if(action==="users:list"||action.startsWith("users:list:")){const page=action.split(":")[2]||"1";await botRunWithProgress(env,chatId,"User Manager থেকে ব্যবহারকারীর তালিকা আনা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userid "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true}
+    if(action==="users:linked"||action.startsWith("users:linked:")||action==="users:blocked"||action.startsWith("users:blocked:")){
+      const mode=action.split(":")[1],pageNo=Math.max(1,Math.min(999,Number(action.split(":")[2])||1));
+      const prefix=mode==="linked"?UM_PREFIX+"link:telegram:":UM_PREFIX+"block:";
+      const keys=await umList(env,prefix,1000,5),limit=10,totalPages=Math.max(1,Math.ceil(keys.length/limit)),items=keys.slice((pageNo-1)*limit,pageNo*limit),rows=[];
+      for(const key of items){
+        if(mode==="linked"){
+          const id=key.name.slice(prefix.length),link=await env.VISITOR_KV.get(key.name,"json"),profile=await umProfile(env,{kind:"telegram",id});
+          rows.push({kind:"telegram",id,label:(profile?.username?"@"+profile.username:profile?.firstName||id)+" ↔ "+String(link?.visitorId||"unknown")});
+        }else{
+          const bits=key.name.slice(prefix.length).split(":"),kind=bits.shift()==="website"?"visitor":"telegram",id=bits.join(":"),profile=await umProfile(env,{kind,id});
+          rows.push({kind,id,label:(profile?.username?"@"+profile.username:profile?.firstName||profile?.device?.deviceModel||id)+" · "+kind});
+        }
+      }
+      const keyboard=rows.map(item=>[{text:String(item.label).slice(0,55),callback_data:"b1:users:profile:"+item.kind+":"+item.id+":"+pageNo}]);
+      const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:"+mode+":"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:"+mode+":"+(pageNo+1)});if(nav.length)keyboard.push(nav);
+      keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
+      await botSend(env,chatId,(mode==="linked"?"🔗 LINKED USERS":"🚫 BLOCKED USERS")+"\nPage "+pageNo+" / "+totalPages+" · "+keys.length+" records\n\n"+(rows.map((x,i)=>(i+1)+". "+x.label).join("\n")||"No records found.")+(keys.truncated?"\n\n⚠️ Listing capped at 5,000 records.":"")+"\n\nSelect a profile below.",keyboard,{forceNew:true});return true;
+    }
+    if(action==="users:history"){
+      const keys=await umList(env,UM_PREFIX+"history:",1000,5),rows=[];
+      for(const key of keys.slice(-15).reverse()){const event=await env.VISITOR_KV.get(key.name,"json");if(event)rows.push("• "+new Date(event.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+event.kind+" · "+String(event.event?.type||event.event?.command||"event"));}
+      await botSend(env,chatId,"🕘 USER MANAGER HISTORY\n"+(rows.join("\n")||"No history records found.")+(keys.truncated?"\n\n⚠️ History listing is capped at 5,000 records.":""),[[{text:"⬅️ User Manager",callback_data:"b1:users"}]],{forceNew:true});return true;
+    }
+    if(action.startsWith("users:profile:")){
+      const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),pageNo=Math.max(1,Number(bits[4])||1),user=await umResolve(id);
+      if(!user||user.kind!==kind){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
+      const profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
+      const type=kind==="visitor"?"website":"telegram",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+type+":"+id,"json"),blocked=await umBlocked(env,type,id);
+      const body=kind==="telegram"?["👤 USER PROFILE","Type: Telegram","Original ID: "+id,"Name: "+(profile.firstName||profile.username||"—"),"Custom ID: "+(profile.customId||"—"),"Linked Visitor ID: "+(link?.visitorId||"—"),"Blocked: "+(blocked?"Yes":"No"),"First seen: "+umTime(profile.firstSeen),"Last seen: "+umTime(profile.lastSeen)].join("\n"):umVisitorReport(id,profile);
+      const keyboard=[[{text:"🕘 View History",callback_data:"b1:users:history:"+kind+":"+id+":1"}],[{text:"✏️ Rename",callback_data:"b1:users:rename:"+kind+":"+id}]];
+      keyboard.push(link?.visitorId||link?.telegramId?[{text:"🔗 Unlink",callback_data:"b1:users:unlink:"+kind+":"+id}]:[{text:"🔗 Link",callback_data:"b1:users:link:"+kind+":"+id}]);
+      keyboard.push(blocked?[{text:"✅ Unblock",callback_data:"b1:users:unblock:"+kind+":"+id}]:[{text:"🚫 Block",callback_data:"b1:users:block:"+kind+":"+id}]);
+      keyboard.push([{text:"⬅️ Back to Directory",callback_data:"b1:users:list:"+pageNo}]);
+      await botSend(env,chatId,body,keyboard,{forceNew:true});return true;
+    }
+    if(action.startsWith("users:history:")){
+      const bits=action.split(":"),id=String(bits[3]||"");
+      await botRunWithProgress(env,chatId,"নির্বাচিত User-এর history সংগ্রহ করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/userhistory "+id+" "+(bits[4]||"1"),chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true;
+    }
+    if(["rename","link","unlink","block","unblock"].includes(action.split(":")[1])&&action.startsWith("users:")&&action.split(":").length>=4){
+      const bits=action.split(":"),mode=bits[1],kind=bits[2],id=String(bits[3]||"");
+      if(mode==="unlink"||mode==="block"||mode==="unblock"){
+        await botRunWithProgress(env,chatId,"নির্বাচিত User-এর পরিবর্তন নিশ্চিতকরণ তৈরি হচ্ছে...",async()=>{await umHandleCommand(env,{text:"/"+(mode==="unlink"?"userunlink":mode==="block"?"userblock":"userunblock")+" "+id,chat:{id:chatId,type:"private"},from:{id:Number(sender)}})});return true;
+      }
+      if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Input storage is unavailable.",botBackKeyboard());return true;}
+      const prompt=mode==="rename"?"নতুন Custom ID পাঠান (৩–৩২ অক্ষর)।":(kind==="telegram"?"এই Telegram ID-এর সঙ্গে Visitor ID পাঠান।":"এই Visitor ID-এর সঙ্গে Telegram ID পাঠান।");
+      await env.BOT_CONFIG_KV.put("bot:user-input:"+sender,JSON.stringify({mode,targetId:id,createdAt:Date.now()}),{expirationTtl:600});
+      await botSend(env,chatId,prompt+"\n১০ মিনিটের মধ্যে উত্তর পাঠান।",botBackKeyboard(),{forceNew:true});return true;
+    }
     if(action.startsWith("users:visitor:")){
       const parts=action.split(":"),id=String(parts[2]||"").toUpperCase(),page=Math.max(1,Math.min(999,Number(parts[3])||1)),directoryPage=Math.max(1,Math.min(999,Number(parts[4])||1));
       if(!/^VIS-[A-F0-9]{12}$/.test(id)){await botSend(env,chatId,"Invalid Visitor ID.",botBackKeyboard());return true}
@@ -1226,7 +1275,7 @@ async function umHandleCommand(env,msg,options={}){
           ?"*"+label+"* · "+mdSafe(u.name)+(u.customId?" · "+mdSafe(u.customId):"")
           :"*"+label+"* · "+mdSafe(u.id)+" · "+mdSafe(u.name);
       });
-      const keyboard=items.filter(u=>u.kind==="visitor"&&/^VIS-[A-F0-9]{12}$/.test(String(u.id||""))).map(u=>[{text:String(u.id),callback_data:"b1:users:visitor:"+String(u.id)+":1:"+pageNo}]);
+      const keyboard=items.filter(u=>u.id).map(u=>[{text:String((u.kind==="visitor"?"WEB ":"TG ")+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:"+u.kind+":"+String(u.id)+":"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
       const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
