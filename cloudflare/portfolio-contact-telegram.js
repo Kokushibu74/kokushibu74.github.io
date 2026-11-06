@@ -1347,9 +1347,11 @@ async function umHandleCommand(env,msg,options={}){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি।");return true;}
       const pageNo=Math.max(1,Math.min(999,Number(parts[1])||1)),prefix=UM_PREFIX+"history:"+user.kind+":"+user.id+":",keys=await umList(env,prefix);
       const rows=[];for(const k of keys){const v=await env.VISITOR_KV.get(k.name,"json");if(v)rows.push(v);}
-      rows.sort((a,b)=>(b.at||0)-(a.at||0));const start=(pageNo-1)*10;
-      const lines=rows.slice(start,start+10).map(e=>new Date(e.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+e.event.type+(e.event.command?" · "+e.event.command:"")+(e.event.path?" · "+e.event.path:""));
-      await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo,botBackKeyboard(),{forceNew:true});
+      rows.sort((a,b)=>(b.at||0)-(a.at||0));const pageSize=10,start=(pageNo-1)*pageSize,totalPages=Math.max(1,Math.ceil(rows.length/pageSize));
+      const lines=rows.slice(start,start+pageSize).map(e=>new Date(e.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+e.event.type+(e.event.command?" · "+e.event.command:"")+(e.event.path?" · "+e.event.path:""));
+      const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:history:"+user.kind+":"+user.id+":"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:history:"+user.kind+":"+user.id+":"+(pageNo+1)});
+      const keyboard=[];if(nav.length)keyboard.push(nav);keyboard.push([{text:"⬅️ User Profile",callback_data:"b1:users:profile:"+user.kind+":"+user.id+":1"}]);
+      await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo+" / "+totalPages,keyboard,{forceNew:true});
     }else if(cmd==="/usersearch"){
       const hasPage=parts.length>1&&/^\d+$/.test(parts[parts.length-1]),pageNo=Math.max(1,Math.min(999,hasPage?Number(parts[parts.length-1]):1)),query=(hasPage?parts.slice(0,-1):parts).join(" ").trim(),q=query.toLowerCase();
       if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT [PAGE]");return true;}
