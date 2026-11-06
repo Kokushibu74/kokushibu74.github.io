@@ -15,9 +15,13 @@ const startKeyboard = section("async function botEnsureStartKeyboard", "async fu
 assert.match(startKeyboard, /setChatMenuButton/);
 assert.doesNotMatch(startKeyboard, /botTelegram\(env,"sendMessage"/, "A /start must not send another persistent reply-keyboard message");
 
-const startButton = section("async function botHandleStartButton", "async function botExpireIdleMenu");
-assert.match(startButton, /botShowMenu\(env,msg\.chat\.id,undefined,registrationError\)/);
+const startButton = section("async function botHandleStartButton", "const BOT_MENU_IDLE_TIMEOUT_MS");
+assert.match(startButton, /botActivateMenu\(env,msg\.chat\.id,true\)/);
 assert.doesNotMatch(startButton, /forceNew:true/, "START BOT must reuse/edit the current menu");
+const activateMenu = section("async function botActivateMenu", "async function botHandleStartButton");
+assert.match(activateMenu, /botRegisterCommands\(env,chatId,!!isAdmin\)/);
+assert.match(activateMenu, /botEnsureStartKeyboard\(env,chatId\)/);
+assert.match(activateMenu, /botShowMenu\(env,chatId,undefined,registrationError\)/);
 
 const commandBranch = section('if(cmd==="/start"||cmd==="/menu"){', 'if(cmd==="/help"||cmd==="/cmd"){');
 const cooldown = section("const BOT_START_MENU_COOLDOWN_MS=5000;", "async function botHandleStartButton");
@@ -37,6 +41,18 @@ const touch = section("async function umTelegramTouch", "async function umResolv
 assert.match(touch, /15\*60\*1000/, "Telegram profile writes must be throttled");
 assert.match(touch, /command_received/, "Useful command history must remain available");
 assert.match(touch, /\["\/start","\/menu","\/cmd"\]/, "Noisy menu commands must not create history writes");
+
+
+const menuTouch = section("async function botMarkMenuInteraction", "async function botEnsureStartKeyboard");
+assert.match(menuTouch, /lastInteractionAt:now/, "Every real menu interaction must refresh the idle timer");
+assert.doesNotMatch(menuTouch, /5\*60\*1000/, "Menu activity must not be throttled by a five-minute KV write guard");
+const idleExpiry = section("const BOT_MENU_IDLE_TIMEOUT_MS", "async function botTelegram");
+assert.match(idleExpiry, /15\*60\*1000/, "Idle menu lifetime must be exactly 15 minutes");
+assert.match(idleExpiry, /setChatMenuButton.*type:"default"/s, "Idle expiry must restore Telegram's default menu button");
+assert.match(idleExpiry, /deleteMessage/, "Idle expiry must remove the old inline menu message");
+const minuteScheduler = section('if(controller.cron==="* * * * *"){', 'const cronStartedAt=');
+assert.match(minuteScheduler, /botExpireIdleMenu\(env\)/, "Idle expiry must be checked on the minute Cron");
+assert.doesNotMatch(minuteScheduler, /minute%15===0.*botExpireIdleMenu/s, "Idle expiry must not wait for quarter-hour boundaries");
 
 
 const webhook = section('if(new URL(request.url).pathname==="/telegram-webhook"){', 'if(new URL(request.url).pathname!=="/submit")');
@@ -63,13 +79,16 @@ assert.match(commandRegistration, /getMyCommands/, "Registration must be verifie
 assert.match(commandRegistration, /if\(!defaults\.ok\)/, "Default command registration failures must be surfaced");
 assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration failures must be surfaced");
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
+assert.match(commandRegistration, /const expected=BOT_PUBLIC_COMMANDS/);
+assert.doesNotMatch(commandRegistration, /BOT_PUBLIC_COMMANDS\.concat\(isAdmin\?BOT_ADMIN_COMMANDS/,
+  "Admin-only functions must not flood Telegram's top-level command menu");
 
 const mainKeyboard = section("function botMainKeyboard(){", "function botBackKeyboard()");
 assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:start"\}\]\)/, "START BOT must use its explicit callback route");
 const startCallback = section("async function botHandleCallback", "async function umHandleCommand");
 assert.match(startCallback, /action==="home"\|\|action==="start"/, "START BOT must route to the home menu handler");
-assert.match(startCallback, /botRegisterCommands\(env,chatId,true\)/, "START BOT must verify/register admin commands");
-assert.match(startCallback, /botShowMenu\(env,chatId,undefined,registrationError\)/, "START BOT must render the main menu in the clicked message");
+assert.match(startCallback, /botActivateMenu\(env,chatId,true\)/, "START BOT must use the shared activation path");
+assert.match(startCallback, /action==="home"\|\|action==="start"/, "Home and START BOT callbacks must remain connected");
 assert.match(startCallback, /Telegram button action failed; original message preserved and no replacement sent/);
 assert.match(source, /const BOT_START_LABEL = "🚀 START BOT"/, "The START BOT label must remain stable");
 
