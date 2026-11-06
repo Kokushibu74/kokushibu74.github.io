@@ -7,6 +7,8 @@ const watchdog = readFileSync(new URL("../cloudflare/news-watchdog.mjs", import.
 const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js", import.meta.url), "utf8");
 
 assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must use 50/70/85/95 percent thresholds");
+assert.match(contact, /metric\.period==="storage"&&pct<50&&sent\.length/, "Storage alert state must reset only after a real prior threshold crossing");
+assert.doesNotMatch(contact, /put\(stateKey,"\[\]"/, "Resource checks must not write empty storage-alert markers on every scheduled run");
 assert.match(contact, /for\(let start=0;start<CF_MONITOR_KV_NAMESPACES\.length;start\+=3\)/, "KV analytics must be split into bounded namespace batches");
 assert.match(contact, /dimensions \{ actionType date \}/, "KV usage must be grouped by UTC date");
 assert.match(contact, /function cfMonitorAction\(rows,action,date=null\)/, "KV action totals must support daily filtering");
