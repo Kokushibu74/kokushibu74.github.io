@@ -1184,10 +1184,9 @@ async function botStatusText(env,category,index){
       const events=await botSecurityEvents(env,12);
       lines.push("🛡️ RECENT SECURITY EVENTS",...(events.length?events.map(e=>"• "+new Date(e.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT · "+String(e.type||"event")+" · "+String(e.visitorId||"Unknown visitor")+" · "+String(e.page||"Page unavailable")):["• No security event records are available yet."]),"","Source: append-only Visitor KV security:event:v1 records. This is not a full Cloudflare WAF or runtime audit log.");
     }else{
-      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
-      const checks=[["Content-Security-Policy (CSP)","content-security-policy"],["Strict-Transport-Security (HSTS)","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
-      const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
-      lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
+      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
+      const security=await inspectPortfolioSecurity(r);
+      lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Policies:",...(security.present.length?security.present.map(x=>"• "+x):["• কোনো enforceable policy পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(security.missing.length?security.missing.map(x=>"• "+x):["• enforceable policy গুলো পাওয়া গেছে"]),"","ℹ️ Hosting limitation:",...(security.platformLimitations.length?security.platformLimitations.map(x=>"• "+x+" · GitHub Pages থেকে custom response header সেট করা যায় না"):["• কোনো platform limitation ধরা পড়েনি"]),"","গুরুত্বপূর্ণ: CSP ও Referrer Policy meta policy-ও যাচাই করা হয়। এই quick check পূর্ণ security audit নয়.");
     }
   }else if(category==="github"){
     const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
