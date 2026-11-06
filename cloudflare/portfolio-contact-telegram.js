@@ -1121,7 +1121,7 @@ async function botHandleCallback(env,query){
       const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),pageNo=Math.max(1,Number(bits[4])||1),user=await umResolve(id);
       if(!user||user.kind!==kind){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
       const profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
-      const type=kind==="visitor"?"website":"telegram",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+type+":"+id,"json"),blocked=await umBlocked(env,type,id);
+      const type=kind==="visitor"?"website":"telegram",linkKind=kind==="visitor"?"visitor":"telegram",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+linkKind+":"+id,"json"),blocked=await umBlocked(env,type,id);
       const body=kind==="telegram"?["👤 USER PROFILE","Type: Telegram","Original ID: "+id,"Name: "+(profile.firstName||profile.username||"—"),"Custom ID: "+(profile.customId||"—"),"Linked Visitor ID: "+(link?.visitorId||"—"),"Blocked: "+(blocked?"Yes":"No"),"First seen: "+umTime(profile.firstSeen),"Last seen: "+umTime(profile.lastSeen)].join("\n"):umVisitorReport(id,profile);
       const keyboard=[[{text:"🕘 View History",callback_data:"b1:users:history:"+kind+":"+id+":1"}],[{text:"✏️ Rename",callback_data:"b1:users:rename:"+kind+":"+id}]];
       keyboard.push(link?.visitorId||link?.telegramId?[{text:"🔗 Unlink",callback_data:"b1:users:unlink:"+kind+":"+id}]:[{text:"🔗 Link",callback_data:"b1:users:link:"+kind+":"+id}]);
