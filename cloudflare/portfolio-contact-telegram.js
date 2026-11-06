@@ -548,6 +548,44 @@ async function umProfile(env,user){
 async function umBlocked(env,kind,id){
   try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
 }
+async function sendVisitorAlertOnce(env,key,text,markup,now=Date.now()){
+  if(!env.VISITOR_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return false;
+  const marker="alert:"+key,lock="alert:lock:"+key;
+  try{
+    if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock))return false;
+    await env.VISITOR_KV.put(lock,String(now),{expirationTtl:90});
+  }catch(error){
+    console.error("Visitor alert deduplication state unavailable",String(error&&error.message||error).slice(0,160));
+    return false;
+  }
+  try{
+    const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        chat_id:env.TELEGRAM_CHAT_ID,
+        text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),
+        parse_mode:"HTML",disable_web_page_preview:true,
+        ...(markup?{reply_markup:markup}:{})
+      }),
+      signal:AbortSignal.timeout(10000)
+    });
+    const payload=await response.json().catch(()=>({}));
+    if(!response.ok||payload.ok!==true){
+      throw new Error("Telegram rejected the alert (HTTP "+response.status+"): "+String(payload.description||"unknown Telegram API error").slice(0,140));
+    }
+    try{
+      await env.VISITOR_KV.put(marker,JSON.stringify({sentAt:now,messageId:payload.result?.message_id||null}),{expirationTtl:86400});
+    }catch(error){
+      console.error("Visitor alert delivered but deduplication marker could not be saved",String(error&&error.message||error).slice(0,160));
+    }
+    return true;
+  }catch(error){
+    console.error("Visitor alert delivery failed",JSON.stringify({key:String(key).slice(0,140),error:String(error&&error.message||error).slice(0,180)}));
+    return false;
+  }finally{
+    await env.VISITOR_KV.delete(lock).catch(error=>console.error("Visitor alert lock cleanup failed",String(error&&error.message||error).slice(0,120)));
+  }
+}
 async function umReply(env,chatId,text,keyboard=botBackKeyboard(),options={}){
   if(!env.TELEGRAM_BOT_TOKEN)return;
   await botSend(env,chatId,text,keyboard,options);
@@ -2303,8 +2341,8 @@ export default {
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
       if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
-      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});if(key.startsWith("security:"))await env.VISITOR_KV.put("security:event:v1:"+String(now).padStart(13,"0")+":"+crypto.randomUUID(),JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:alert:status:security:3"},{text:"Security Center",callback_data:"b1:alert:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:website"},{text:"Logs",callback_data:"b1:alert:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]};try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:markup})})}catch(e){console.error("Visitor alert failed",String(e))}};
-      if(pageView&&traffic===40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
+      const sendAlert=async(key,text)=>{const marker="alert:"+key,lock="alert:lock:"+key;if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock))return;if(key.startsWith("security:")){const eventKey="security:event:v1:"+id+":"+session;if(!await env.VISITOR_KV.get(eventKey))await env.VISITOR_KV.put(eventKey,JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});}const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:alert:status:security:3"},{text:"Security Center",callback_data:"b1:alert:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:website"},{text:"Logs",callback_data:"b1:alert:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]};await sendVisitorAlertOnce(env,key,text,markup,now)};
+      if(pageView&&traffic>=40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
       const sessionViews=pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0);
@@ -2391,9 +2429,9 @@ export default {
       if(performance.cls!==null&&performance.cls!==undefined)perfRows.push(["CLS",Number(performance.cls).toFixed(3)]);
       if(perfRows.length)lines.push(...section("06","⚡","PERFORMANCE SNAPSHOT",perfRows));
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
-      if(pageView&&newSession&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
+      if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
-        try{const telegramResponse=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});if(!telegramResponse.ok)console.error("Visitor Telegram alert HTTP error",telegramResponse.status)}catch(e){console.error("Visitor Telegram alert failed",String(e))}
+        await sendVisitorAlertOnce(env,"visitor:"+id+":"+session,text,null,now);
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
     }

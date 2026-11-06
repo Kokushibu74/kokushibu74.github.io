@@ -215,3 +215,18 @@ assert.match(source, /callback_data:"b1:alert:status:analytics:3"/);
 const workflowReportSource=readFileSync(new URL("../scripts/news_telegram_report.py", import.meta.url), "utf8");
 assert.match(workflowReportSource, /"callback_data": "b1:alert:github:retry:/, "GitHub failure retry must preserve the original notification");
 console.log("Notification action callbacks preserve the original alert/report while rendering results in the existing Control Center menu.");
+
+
+const visitorDelivery = section("async function sendVisitorAlertOnce", "async function umReply");
+assert.ok(visitorDelivery.includes('const marker="alert:"+key'), "Visitor alert deduplication must use a stable marker");
+assert.ok(visitorDelivery.includes('lock="alert:lock:"+key'), "Concurrent visitor alert attempts must use a short-lived lock");
+assert.ok(visitorDelivery.includes("payload.ok!==true"), "HTTP success alone must not count as successful Telegram delivery");
+assert.ok(visitorDelivery.includes("await env.VISITOR_KV.put(marker,JSON.stringify"), "The deduplication marker must be written after Telegram confirms delivery");
+assert.ok(visitorDelivery.includes("await env.VISITOR_KV.delete(lock)"), "The in-flight lock must be cleared after success or failure");
+const trackingDelivery = section('if(pathname==="/track"){', 'if(new URL(request.url).pathname==="/telegram-webhook"){');
+assert.ok(trackingDelivery.includes("if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)"), "A failed first visitor alert must be retried on a later page view in the same session");
+assert.ok(trackingDelivery.includes('sendVisitorAlertOnce(env,"visitor:"+id+":"+session'), "New-session visitor alerts must be deduplicated by visitor and session");
+assert.ok(trackingDelivery.includes("traffic>=40"), "Traffic-spike delivery must retry on subsequent events until Telegram confirms it");
+assert.ok(trackingDelivery.includes('const eventKey="security:event:v1:"+id+":"+session'), "Security events must not be duplicated while a failed alert is retried");
+assert.ok(!trackingDelivery.includes('await env.VISITOR_KV.put(marker,"1"'), "Visitor alerts must not be marked delivered before Telegram confirms success");
+console.log("Visitor alert delivery confirmation, retry, lock cleanup and deduplication verified.");
