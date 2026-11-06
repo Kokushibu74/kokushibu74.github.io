@@ -1185,6 +1185,9 @@ async function botHandleCallback(env,query){
         else{const detail=await retry.text().catch(()=>"");await botSend(env,chatId,"⚠️ GitHub did not accept the retry. HTTP "+retry.status+" · "+detail.slice(0,180),botBackKeyboard(),{forceNew:true});}
       });return true;
     }
+    if(action==="info:manual"){
+      await botSend(env,chatId,"ℹ️ MANUAL REFRESH\n\nNews Refresh-এর জন্য Automation-এর newsRefresh schedule ON থাকা বাধ্যতামূলক নয়। Refresh Now বাটন প্রতিবার সরাসরি GitHub News Workflow চালু করার চেষ্টা করে এবং ফলাফল এই একই Message-এ দেখায়।",[[{text:"🔄 Refresh Now",callback_data:"b1:refresh"},{text:"⬅️ Automation",callback_data:"b1:automation"}]]);return true;
+    }
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
         const site="https://kokushibu74.github.io/",started=Date.now();
