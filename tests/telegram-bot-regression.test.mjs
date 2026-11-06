@@ -19,7 +19,7 @@ const startButton = section("async function botHandleStartButton", "async functi
 assert.match(startButton, /botShowMenu\(env,msg\.chat\.id\)/);
 assert.doesNotMatch(startButton, /forceNew:true/, "START BOT must reuse/edit the current menu");
 
-const commandBranch = section('if(cmd==="/start"||cmd==="/menu"){', 'if(cmd==="/cmd"){');
+const commandBranch = section('if(cmd==="/start"||cmd==="/menu"){', 'if(cmd==="/help"||cmd==="/cmd"){');
 const cooldown = section("const BOT_START_MENU_COOLDOWN_MS=5000;", "async function botHandleStartButton");
 assert.match(cooldown, /new Map\(\)/, "Burst cooldown must not consume KV writes");
 assert.match(cooldown, /now-last<BOT_START_MENU_COOLDOWN_MS/, "Repeated start requests must be throttled per chat");
@@ -49,3 +49,35 @@ const cronAlert = section("async function miniAppCronAlert", "async function min
 assert.match(cronAlert, /if\(!shouldNotify\)return/, "Stable cron success states must not write to KV every 30 minutes");
 
 console.log("Telegram menu reuse, KV write throttling and cron alert state transitions verified.");
+
+
+const publicCommands = section("const BOT_PUBLIC_COMMANDS=[", "const BOT_ADMIN_COMMANDS=[");
+assert.match(publicCommands, /command:"help"/, "/help must be part of public command registration");
+const commandRegistration = section("async function botRegisterCommands", "async function botGetMenuAnchor");
+assert.match(commandRegistration, /setMyCommands/);
+assert.match(commandRegistration, /getMyCommands/, "Registration must be verified against Telegram");
+assert.match(commandRegistration, /if\(!defaults\.ok\)/, "Default command registration failures must be surfaced");
+assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration failures must be surfaced");
+assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
+
+const compactMenu = section("const BOT_MENU = [", "const BOT_DEFAULTS = {");
+assert.match(compactMenu, /\["website"/);
+assert.match(compactMenu, /\["news"/);
+assert.match(compactMenu, /\["analytics"/);
+assert.match(compactMenu, /\["security"/);
+assert.match(compactMenu, /\["automation"/);
+assert.match(compactMenu, /\["users"/);
+assert.match(compactMenu, /BOT_SECONDARY_MENU/);
+assert.match(source, /"newsAlerts","workflowAlerts"/, "newsAlerts must be available in the alert toggle list");
+
+const commandHandler = section("async function umHandleCommand", "function botB64");
+assert.match(commandHandler, /"\/help"/, "/help must be dispatched");
+assert.match(commandHandler, /"\/details"/, "Context-aware detail shortcut must be dispatched");
+assert.match(commandHandler, /botRegisterCommands\(env,chatId,isAdmin\)/, "Startup path must register commands");
+assert.match(commandHandler, /botGetContext\(env,chatId\)/, "/details must use persisted context");
+
+const analytics = section('}else if(category==="analytics"){', '}else if(category==="security"){');
+assert.match(analytics, /miniAppGa4Report\(env\)/, "GA4 status must use the GA4 Data API report");
+assert.match(analytics, /Cloudflare Visitor KV/, "Visitor KV must remain identified separately from GA4");
+
+console.log("Telegram command registration, compact menu, contextual shortcuts and analytics source separation verified.");
