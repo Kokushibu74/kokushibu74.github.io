@@ -2594,7 +2594,7 @@ export default {
       return;
     }
     const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);
-    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"running",cron:controller.cron});
+    // Persist only the terminal result; a separate running record doubled each scheduled run write.
     try {
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
