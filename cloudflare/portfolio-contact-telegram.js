@@ -2647,8 +2647,8 @@ export default {
       const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId,{failure,missing});
       console.log("Daily Telegram report delivery:",JSON.stringify(delivery));
     }
-    const terminalStatus=failure?"warning":"success";
-    const terminalDetail=failure||("Site check completed; "+missing.length+" security headers missing.");
+    const terminalStatus=failure||missing.length?"warning":"success";
+    const terminalDetail=failure|| (missing.length?"Site check completed; "+missing.length+" security headers missing: "+missing.join(", ")+".":"Site check completed; all security headers present.");
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
     if(cfg.workflowAlerts||cfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,terminalStatus,terminalDetail);
     } catch(error) {
