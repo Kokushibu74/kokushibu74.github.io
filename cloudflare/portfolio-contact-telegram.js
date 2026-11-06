@@ -468,7 +468,7 @@ async function sendTelegramReportBatch(env,chatId,messages,reportId,reportInput=
     if(!response){
       response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
         method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({chat_id:chatId,text,parse_mode:"MarkdownV2",disable_web_page_preview:true})
+        body:JSON.stringify({chat_id:chatId,text,parse_mode:"MarkdownV2",disable_web_page_preview:true,...(i===messages.length-1?{reply_markup:{inline_keyboard:[[{text:"Full Report",callback_data:"b1:status:reports:1"},{text:"Traffic",callback_data:"b1:status:analytics:3"}]]}}:{})})
       });
       payload=await response.json().catch(()=>({}));
     }
@@ -2411,7 +2411,7 @@ export default {
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
-      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true})});
+      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Usage",callback_data:"b1:status:analytics:3"},{text:"Details",callback_data:"b1:analytics"}]]}})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
