@@ -1295,7 +1295,7 @@ async function botHandleCallback(env,query){
       await botSend(env,chatId,"🕘 USER MANAGER HISTORY\n"+(rows.join("\n")||"No history records found.")+(keys.truncated?"\n\n⚠️ History listing is capped at 5,000 records.":""),[[{text:"⬅️ User Manager",callback_data:"b1:users"}]],{forceNew:true});return true;
     }
     if(action.startsWith("users:profile:")){
-      const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),pageNo=Math.max(1,Number(bits[4])||1),user=await umResolve(id);
+      const bits=action.split(":"),kind=bits[2],id=String(bits[3]||""),pageNo=Math.max(1,Number(bits[4])||1),user=await umResolve(env,id);
       if(!user||user.kind!==kind){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
       const profile=await umProfile(env,user);if(!profile){await botSend(env,chatId,"User profile not found.",botBackKeyboard(),{forceNew:true});return true;}
       const type=kind==="visitor"?"website":"telegram",linkKind=kind==="visitor"?"visitor":"telegram",link=await env.VISITOR_KV.get(UM_PREFIX+"link:"+linkKind+":"+id,"json"),blocked=await umBlocked(env,type,id);
