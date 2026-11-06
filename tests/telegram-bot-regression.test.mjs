@@ -175,7 +175,7 @@ assert.match(editInPlace, /Only recover automatically when Telegram confirms tha
 assert.doesNotMatch(editInPlace.slice(editInPlace.indexOf("if(callbackMessageId)"), editInPlace.indexOf('const sent=await botTelegram(env,"sendMessage"')), /sendMessage/, "A failed callback edit must stop before sendMessage");
 const callbackFailure = section("async function botHandleCallback", "async function umHandleCommand");
 assert.match(callbackFailure, /original message preserved and no replacement sent/, "Uneditable historical notifications must be preserved without sending a duplicate");
-const callbackCatchStart=callbackFailure.lastIndexOf("}catch(e){");
+const callbackCatchStart=callbackFailure.indexOf("}catch(e){const reason=");
 const callbackCatchEnd=callbackFailure.indexOf("}finally{",callbackCatchStart);
 const callbackCatch=callbackFailure.slice(callbackCatchStart,callbackCatchEnd>callbackCatchStart?callbackCatchEnd:undefined);
 assert.doesNotMatch(callbackCatch, /botSend\(/, "Callback failures must not replace the clicked message through the shared menu sender");
