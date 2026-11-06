@@ -913,15 +913,19 @@ async function botCategory(env,chatId,category){
   const rows=[];
   if(category==="automation"||category==="alerts"){
     const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
-    const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
+    const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",newsAlerts:"Bangladesh News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     for(const k of keys)rows.push([{text:(cfg[k]?"🟢 ":"⚪ ")+pretty[k]+" · "+(cfg[k]?"ON":"OFF"),callback_data:"b1:toggle:"+k}]);
     rows.push([{text:"ℹ️ Refresh is always manual",callback_data:"b1:info:manual"}]);
   }else if(category==="users"){
-    rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Search",callback_data:"b1:users:search"}]);
-    rows.push([{text:"📊 Stats",callback_data:"b1:users:stats"},{text:"🕘 History",callback_data:"b1:users:history"}]);
+    rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Find User",callback_data:"b1:users:search"}]);
+    rows.push([{text:"🔗 Linked Users",callback_data:"b1:users:linked"},{text:"🚫 Blocked Users",callback_data:"b1:users:blocked"}]);
+    rows.push([{text:"📊 Statistics",callback_data:"b1:users:stats"},{text:"🕘 History",callback_data:"b1:users:history"}]);
     rows.push([{text:"🔗 Link / Unlink",callback_data:"b1:users:link"},{text:"🚫 Block / Unblock",callback_data:"b1:users:block"}]);
     rows.push([{text:"✏️ Rename",callback_data:"b1:users:rename"}]);
     rows.push([{text:"🔎 Visitor Information",callback_data:"b1:users:visitorinfo"}]);
+  }else if(category==="logs"){
+    rows.push([{text:"Worker Events",callback_data:"b1:status:logs:1"},{text:"Workflow Logs",callback_data:"b1:status:logs:2"}]);
+    rows.push([{text:"Security Logs",callback_data:"b1:status:logs:3"},{text:"Recovery Guide",callback_data:"b1:status:recovery:1"}]);
   }else if(category==="hero"){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
@@ -1003,9 +1007,24 @@ async function botStatusText(env,category,index){
     const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     lines.push("🔧 বর্তমান সেটিংস:",...Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>(v?"🟢":"⚪")+" "+(names[k]||k)+": "+(v?"ON — চালু":"OFF — বন্ধ")),"","💾 Configuration Storage: "+(env.BOT_CONFIG_KV?"সংযুক্ত (Connected)":"সংযুক্ত নয়"),"ℹ️ Automation ও Alerts মেনু থেকে সমর্থিত সুইচগুলো পরিবর্তন করা যায়।");
   }else if(category==="logs"){
-    const keys=await umList(env,UM_PREFIX+"history:",12),rows=[];
-    for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push("• "+new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" (BDT) · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
-    lines.push("🧾 সর্বশেষ সংরক্ষিত User Events:",...(rows.length?rows:["• কোনো সাম্প্রতিক User Event পাওয়া যায়নি"]),"","📌 Log-এর সীমাবদ্ধতা: এখানে User Manager history দেখানো হয়। Cloudflare Worker-এর পূর্ণ runtime log দেখতে Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Logs খুলুন।");
+    if(index===1){
+      lines.push("🧩 WORKER EVENTS","Status: NOT AVAILABLE through the Telegram Bot data source.","Source: Cloudflare Workers → portfolio-contact-telegram → Observability → Logs.","User Manager History is not being presented as Worker Runtime Events.");
+    }else if(index===2){
+      if(!env.GITHUB_TOKEN)lines.push("⚠️ WORKFLOW LOGS: NOT CONNECTED","GitHub token binding unavailable.");
+      else{
+        const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Control-Center",Authorization:"Bearer "+env.GITHUB_TOKEN,"X-GitHub-Api-Version":"2022-11-28"};
+        const response=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=6",{headers,signal:AbortSignal.timeout(10000)});
+        const data=await response.json().catch(()=>({}));
+        if(!response.ok)lines.push("⚠️ WORKFLOW LOGS: NOT AVAILABLE","GitHub API HTTP "+response.status);
+        else lines.push("⚙️ GITHUB ACTIONS · LATEST RUNS",...(data.workflow_runs||[]).map(run=>"• "+String(run.name||"Workflow")+" · "+String(run.status||"unknown")+(run.conclusion?" / "+run.conclusion:"")+" · "+String(run.head_branch||"")+" · "+String(run.html_url||"")));
+      }
+    }else if(index===3){
+      lines.push("🛡️ SECURITY LOGS","Status: NOT AVAILABLE as a separate persistent security-event stream.","Mini App audit events and User Manager history are separate sources; neither is being labelled as Worker security logs.");
+    }else{
+      const keys=await umList(env,UM_PREFIX+"history:",12),rows=[];
+      for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push("• "+new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" (BDT) · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
+      lines.push("🧾 USER MANAGER HISTORY:",...(rows.length?rows:["• কোনো সাম্প্রতিক User Event পাওয়া যায়নি"]));
+    }
   }else if(category==="recovery"){
     lines.push("🧷 GitHub Backup Branch:","backup/pre-telegram-button-upgrade-20261101","🔗 Backup URL:","https://github.com/Kokushibu74/kokushibu74.github.io/tree/backup/pre-telegram-button-upgrade-20261101","","☁️ Worker Rollback:","Cloudflare Dashboard → Workers & Pages → portfolio-contact-telegram → Deployments","📌 পুরোনো Worker Version 34 rollback point হিসেবে রাখা আছে।","⚠️ Recovery করার আগে বর্তমান deployment ও backup যাচাই করুন। Rollback করলে নতুন পরিবর্তন হারাতে পারে।");
   }
