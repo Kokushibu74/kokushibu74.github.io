@@ -1387,7 +1387,7 @@ async function umHandleCommand(env,msg,options={}){
        for(const u of items.filter(u=>u.kind==="telegram"&&u.id))keyboard.push([{text:String("TG "+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:telegram:"+String(u.id)+":"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
-      const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\nVisitor IDs are the clickable buttons below; tap one to open its report.";
+      const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\n"+mdSafe("Visitor IDs are the clickable buttons below; tap one to open its report.");
       await umReply(env,chatId,body,keyboard,{parse_mode:"MarkdownV2"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
