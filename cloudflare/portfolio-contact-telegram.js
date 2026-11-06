@@ -680,6 +680,8 @@ async function botGetContext(env,chatId){
   try{return await env.BOT_CONFIG_KV.get(BOT_CONTEXT_KEY_PREFIX+String(chatId),"json")}catch{return null}
 }
 const BOT_CALLBACK_LAST=new Map();
+const BOT_CALLBACK_MESSAGE_ANCHORS=new Map();
+const BOT_CALLBACK_ACTIVE=new Set();
 function botClaimCallback(query,action,now=Date.now()){
   const key=String(query.message?.chat?.id||"")+":"+String(query.message?.message_id||0)+":"+String(action||"");
   const last=BOT_CALLBACK_LAST.get(key)||0;
@@ -826,9 +828,10 @@ async function botSend(env,chatId,text,keyboard,options={}){
   if(!env.TELEGRAM_BOT_TOKEN)throw new Error("TELEGRAM_BOT_TOKEN secret is unavailable");
   let saved=null;
   try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
-  const messageId=saved?.messageId||options.messageId||null;
+  const callbackMessageId=Number(BOT_CALLBACK_MESSAGE_ANCHORS.get(String(chatId))||0)||null;
+  const messageId=callbackMessageId||saved?.messageId||options.messageId||null;
   const payload={chat_id:chatId,text:botFormatTelegramResponse(text,options).slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]},...(options.parse_mode?{parse_mode:options.parse_mode}:{})};
-  if(messageId&&!options.forceNew){
+  if(messageId&&(!options.forceNew||callbackMessageId)){
     let edited;
     try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
     catch(e){console.error("Telegram menu edit request failed; falling back to a new message",String(e&&e.message||e).slice(0,240))}
@@ -841,13 +844,13 @@ async function botSend(env,chatId,text,keyboard,options={}){
   const newMessageId=sent.data.result?.message_id;
   // If Telegram refuses an edit (for example, the anchor message was deleted),
   // replace the stale menu instead of leaving a growing stack of old menus.
-  if(!options.forceNew&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
+  if((!options.forceNew||callbackMessageId)&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
     try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
     catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
   }
   try{
     if(options.persistentMenu&&!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
-    if(!options.forceNew||options.persistentMenu)await botRememberMenu(env,chatId,newMessageId);
+    if(!options.forceNew||options.persistentMenu||callbackMessageId)await botRememberMenu(env,chatId,newMessageId);
   }catch(e){
     console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
     if(options.persistentMenu&&newMessageId){
@@ -1131,6 +1134,14 @@ async function botHandleCallback(env,query){
   const action=data.slice(3);
   try{
     if(!botClaimCallback(query,action)){await botAnswerCallback(env,query,"এই Action ইতিমধ্যে প্রক্রিয়াধীন। একটু অপেক্ষা করুন।",true);return true;}
+    if(BOT_CALLBACK_ACTIVE.has(String(chatId))){await botAnswerCallback(env,query,"এই চ্যাটে আরেকটি Action চলছে। একটু অপেক্ষা করুন।",true);return true;}
+    BOT_CALLBACK_ACTIVE.add(String(chatId));
+    const callbackMessageId=Number(query.message?.message_id||0);
+    if(callbackMessageId){
+      BOT_CALLBACK_MESSAGE_ANCHORS.set(String(chatId),callbackMessageId);
+      const currentAnchor=await botGetMenuAnchor(env,chatId);
+      if(Number(currentAnchor?.messageId||0)!==callbackMessageId)await botRememberMenu(env,chatId,callbackMessageId);
+    }
     if(action.startsWith("confirm:")||action.startsWith("cancel:")){
       await botAnswerCallback(env,query);
       const confirming=action.startsWith("confirm:"),token=action.slice(confirming?8:7),key="bot:confirm:v1:"+token;
@@ -1142,8 +1153,8 @@ async function botHandleCallback(env,query){
       await botRunWithProgress(env,chatId,"Confirmed User Manager action যাচাই ও সম্পন্ন করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:String(pending.command||""),chat:{id:chatId,type:"private"},from:{id:Number(sender)}},{confirmed:true});});
       return true;
     }
-    // Never overwrite the active menu anchor from a callback payload.
-    // Limit persistent menu state writes while keeping idle cleanup accurate.
+    // The clicked inline message is now the active menu anchor for this callback.
+    // Keep interaction metadata writes throttled while preserving idle cleanup.
     await botAnswerCallback(env,query);
     await botMarkMenuInteraction(env,chatId,query.message?.message_id,false);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
@@ -1279,7 +1290,7 @@ async function botHandleCallback(env,query){
        const label=names[category]?.[index]||"Status";
        await botSetContext(env,chatId,{section:category,view:"status",index,actionId:action,messageId:Number(query.message?.message_id||0)});await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed",String(e&&e.stack||e).slice(0,1600));try{await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\\n\\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\\n\\nকরণীয়:\\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}catch(deliveryError){console.error("Telegram callback error notice failed",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800))}}finally{try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
+  }catch(e){console.error("Telegram button action failed",String(e&&e.stack||e).slice(0,1600));try{await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\\n\\nসম্ভাব্য কারণ: সংযোগে সমস্যা, প্রয়োজনীয় তথ্য পাওয়া যায়নি, অথবা Worker/API থেকে error এসেছে।\\n\\nকরণীয়:\\n1. কিছুক্ষণ পর আবার চেষ্টা করুন।\\n2. একই সমস্যা হলে Cloudflare Worker → Logs থেকে সংশ্লিষ্ট error পরীক্ষা করুন।\\n3. Hero Image বা User Manager-এর মতো পরিবর্তনকারী কাজ হলে আগে বর্তমান অবস্থা যাচাই করুন।",botBackKeyboard())}catch(deliveryError){console.error("Telegram callback error notice failed",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800))}}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
