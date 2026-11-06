@@ -679,6 +679,15 @@ async function botGetContext(env,chatId){
   if(!env.BOT_CONFIG_KV)return null;
   try{return await env.BOT_CONFIG_KV.get(BOT_CONTEXT_KEY_PREFIX+String(chatId),"json")}catch{return null}
 }
+const BOT_CALLBACK_LAST=new Map();
+function botClaimCallback(query,action,now=Date.now()){
+  const key=String(query.message?.chat?.id||"")+":"+String(query.message?.message_id||0)+":"+String(action||"");
+  const last=BOT_CALLBACK_LAST.get(key)||0;
+  if(now-last<1400)return false;
+  BOT_CALLBACK_LAST.set(key,now);
+  if(BOT_CALLBACK_LAST.size>500)for(const [k,t] of BOT_CALLBACK_LAST)if(now-t>10000)BOT_CALLBACK_LAST.delete(k);
+  return true;
+}
 
 const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
@@ -1046,6 +1055,7 @@ async function botHandleCallback(env,query){
   }
   const action=data.slice(3);
   try{
+    if(!botClaimCallback(query,action)){await botAnswerCallback(env,query,"এই Action ইতিমধ্যে প্রক্রিয়াধীন। একটু অপেক্ষা করুন।",true);return true;}
     if(action.startsWith("confirm:")||action.startsWith("cancel:")){
       await botAnswerCallback(env,query);
       const confirming=action.startsWith("confirm:"),token=action.slice(confirming?8:7),key="bot:confirm:v1:"+token;
