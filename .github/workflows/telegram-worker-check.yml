@@ -15,6 +15,7 @@ on:
       - 'tests/resource-budget-guardrails.test.mjs'
       - 'tests/telegram-daily-report.test.mjs'
       - 'tests/telegram-bot-regression.test.mjs'
+      - 'tests/kv-alert-optimization.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
   push:
     branches: [main, feature/kokushibu-telegram-miniapp, test/visitor-location-runtime-20261105]
@@ -29,6 +30,7 @@ on:
       - 'tests/resource-budget-guardrails.test.mjs'
       - 'tests/telegram-daily-report.test.mjs'
       - 'tests/telegram-bot-regression.test.mjs'
+      - 'tests/kv-alert-optimization.test.mjs'
       - 'tests/multi-ai-worker-contract.test.mjs'
 
 permissions:
@@ -46,6 +48,8 @@ jobs:
         run: node --check cloudflare/portfolio-contact-telegram.js
       - name: Verify Telegram menu and KV write regressions
         run: node tests/telegram-bot-regression.test.mjs
+      - name: Verify KV optimization and alert security contracts
+        run: node tests/kv-alert-optimization.test.mjs
       - name: Verify visitor location consent and Telegram directory contracts
         run: node tests/visitor-location.test.mjs
       - name: Run Worker location endpoint runtime tests

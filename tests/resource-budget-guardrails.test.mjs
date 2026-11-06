@@ -7,6 +7,8 @@ const watchdog = readFileSync(new URL("../cloudflare/news-watchdog.mjs", import.
 const sports = readFileSync(new URL("../worker/unified-sports-api/src/index.js", import.meta.url), "utf8");
 
 assert.match(contact, /const thresholds=\[50,70,85,95\]/, "Budget alerts must use 50/70/85/95 percent thresholds");
+assert.match(contact, /metric\.period==="storage"&&pct<50&&sent\.length/, "Storage alert state must reset only after a real prior threshold crossing");
+assert.doesNotMatch(contact, /put\(stateKey,"\[\]"/, "Resource checks must not write empty storage-alert markers on every scheduled run");
 assert.match(contact, /for\(let start=0;start<CF_MONITOR_KV_NAMESPACES\.length;start\+=3\)/, "KV analytics must be split into bounded namespace batches");
 assert.match(contact, /dimensions \{ actionType date \}/, "KV usage must be grouped by UTC date");
 assert.match(contact, /function cfMonitorAction\(rows,action,date=null\)/, "KV action totals must support daily filtering");
@@ -84,8 +86,8 @@ assert.match(contact, /async function newsRefreshWatchdog\(env\)/, "15-minute ne
 assert.match(contact, /actions\/workflows\/update-news\.yml\/runs\?branch=main&per_page=1/, "News watchdog must inspect the latest GitHub workflow run");
 assert.match(contact, /actions\/workflows\/update-news\.yml\/dispatches/, "News watchdog must use the existing workflow_dispatch fallback");
 assert.match(contact, /news-watchdog:last-dispatch/, "News watchdog must deduplicate dispatches in existing KV");
-assert.match(contact, /now-lastDispatch<20\*60\*1000/, "News watchdog must avoid dispatching while a recent run exists");
-assert.match(contact, /minute%15===5/, "News watchdog must run five minutes after each scheduled boundary to avoid duplicate dispatch races");
+assert.match(contact, /now-lastDispatch<15\*60\*1000/, "News watchdog must avoid dispatching while a recent run exists");
+assert.match(contact, /minute%5===0/, "News watchdog must check every five minutes to reduce stale-feed recovery delay");
 assert.match(contact, /newsRefreshWatchdog\(env\)/, "Minute Cron must invoke the news watchdog on its 15-minute maintenance tick");
 assert.match(contact, /notifyNewsWatchdogFailure\(env,error\)/, "News watchdog failures must send a deduplicated Telegram warning with safe error details");
 assert.ok(contact.includes("news-watchdog:dispatch-blocked"), "Repeated GitHub 403 dispatch failures must use a bounded backoff");

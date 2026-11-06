@@ -127,10 +127,13 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     const stateKey="resource-alert:v3:"+periodKey+":"+metric.key;
     let sent=[];
     try{const old=await env.BOT_CONFIG_KV.get(stateKey,"json");if(Array.isArray(old))sent=old.filter(Number.isFinite)}catch{}
-    if(metric.period==="storage"&&pct<50)sent=[];
+    if(metric.period==="storage"&&pct<50&&sent.length){
+      // Clear only an actual prior threshold state; never write an empty marker every 30-minute check.
+      await env.BOT_CONFIG_KV.delete(stateKey).catch(()=>{});
+      sent=[];
+    }
     const crossed=thresholds.filter(level=>pct>=level&&!sent.includes(level));
     if(crossed.length)pending.push({metric,pct,crossed,stateKey,sent});
-    else if(metric.period==="storage"&&pct<50&&sent.length===0){try{await env.BOT_CONFIG_KV.put(stateKey,"[]",{expirationTtl:365*86400})}catch{}}
   }
   if(pending.length&&typeof sendTelegram==="function"){
     const highestPct=Math.max(...pending.map(item=>item.pct));
@@ -325,11 +328,28 @@ function dailyReportVisitorDetailsLines(activity){
   lines.push(dailyReportMarkdownEscape("Active duration, exact exit time and scroll duration are not measured."));
   return lines;
 }
+async function inspectPortfolioSecurity(response){
+  const headers=response.headers||new Headers();
+  const html=await response.clone().text().catch(()=> "");
+  const cspMeta=/<meta\b[^>]*http-equiv\s*=\s*["']content-security-policy["'][^>]*>/i.test(html);
+  const referrerMeta=/<meta\b[^>]*name\s*=\s*["']referrer["'][^>]*>/i.test(html);
+  const isGitHubPages=(()=>{try{return new URL(response.url).hostname.endsWith(".github.io")}catch{return false}})();
+  const checks=[["Content-Security-Policy",!!headers.get("content-security-policy")||cspMeta],["Strict-Transport-Security",!!headers.get("strict-transport-security")],["Referrer-Policy",!!headers.get("referrer-policy")||referrerMeta]];
+  const missing=checks.filter(([,ok])=>!ok).map(([name])=>name);
+  const present=checks.filter(([,ok])=>ok).map(([name])=>name);
+  const platformLimitations=[];
+  for(const [name,header] of [["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"]]){
+    if(!headers.get(header)){if(isGitHubPages)platformLimitations.push(name);else missing.push(name);}
+    else present.push(name);
+  }
+  return {present,missing,platformLimitations};
+}
 function dailyReportRecommendations(input){
   const out=[];
   if(input.failure)out.push("CRITICAL: Website check failed. Verify GitHub Pages availability and the latest deployment.");
   if(!input.headersChecked)out.push("Security headers could not be inspected; rerun the check after the website responds normally.");
-  if(input.missing?.length)out.push("Missing security headers: "+input.missing.join(", ")+". Configure at the hosting/CDN layer and test CSP carefully to preserve GA4 and AdSense.");
+  if(input.missing?.length)out.push("Missing enforceable security policies: "+input.missing.join(", ")+". Review the hosting/CDN configuration.");
+  if(input.platformLimitations?.length)out.push("GitHub Pages cannot configure these response headers: "+input.platformLimitations.join(", ")+". A custom domain behind Cloudflare or another header-capable host is required to enforce them.");
   if(input.activity&&input.prior&&(input.activity.unique<input.prior.unique||input.activity.views<input.prior.views))out.push("Traffic is lower than yesterday. Compare the 7-day trend before deciding on a cause.");
   if(input.activity?.errors>0)out.push("Visitor tracking recorded "+input.activity.errors+" client errors. Inspect affected pages and browser console reports.");
   if(!input.ga4)out.push("GA4 data was unavailable. Check the existing service-account permission and Analytics property access.");
@@ -343,7 +363,7 @@ function dailyReportRecommendations(input){
 function buildDailyReportMessages(input){
   const id=String(input.reportId||"Unavailable");
   const online=!input.failure&&String(input.status||"").startsWith("2");
-  const health=!online?"CRITICAL":(!input.headersChecked||input.missing?.length)?"NEEDS ATTENTION":"HEALTHY";
+  const health=!online?"CRITICAL":(!input.headersChecked||input.missing?.length)?"NEEDS ATTENTION":input.platformLimitations?.length?"HOST-LIMITED":"HEALTHY";
   const activity=input.activity;
   const plain=dailyReportMarkdownEscape;
   const bold=dailyReportBold;
@@ -362,7 +382,7 @@ function buildDailyReportMessages(input){
     "⚡ "+plain("Response: "+(input.responseMs===null?"Unavailable":input.responseMs+" ms")),
     "👥 "+plain("Visitors: "+(activity?activity.unique:"Unavailable")+" · Page views: "+(activity?activity.views:"Unavailable")),
     "⚠️ "+plain("Client errors: "+(activity?activity.errors:"Unavailable")),
-    "🔐 "+plain("Security headers: "+(!input.headersChecked?"Check unavailable":(input.missing?.length?input.missing.length+" need review":"All checked headers present"))),
+    "🔐 "+plain("Security policies: "+(!input.headersChecked?"Check unavailable":(input.missing?.length?input.missing.length+" need review":input.platformLimitations?.length?input.platformLimitations.length+" host limitations":"Enforceable policies verified"))),
     "",
     row("OVERALL HEALTH",health),
     plain("Traffic details: 02/05 · Visitor profiles: 03/05 · Actions: 05/05")
@@ -411,14 +431,15 @@ function buildDailyReportMessages(input){
     metrics.length?plain("Coverage: 3 Workers · 6 existing KV namespaces · 1 D1 database · Workers AI binding"):"⚠️ "+plain("Cloudflare resource metrics unavailable."),
     plain("Workers requests/CPU and KV usage are account-wide; D1 usage covers the account’s only database. Analytics values are estimates, not the billing ledger; Workers AI usage is adaptively sampled.")
   ];
-  const securityStatus=!input.headersChecked?"CHECK UNAVAILABLE":input.missing?.length?"REVIEW REQUIRED":"STABLE";
+  const securityStatus=!input.headersChecked?"CHECK UNAVAILABLE":input.missing?.length?"REVIEW REQUIRED":input.platformLimitations?.length?"HOST-LIMITED":"STABLE";
   const security=[
     bold("05/05 · SECURITY & ACTION PLAN"),
     plain("REPORT ID: "+id),
     row("Security status",securityStatus),
     "",
     bold("SECURITY HEADER CHECK"),
-    ...(!input.headersChecked?[plain("⚠️ Header inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 All checked response headers are present.")]),
+    ...(!input.headersChecked?[plain("⚠️ Header inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 Enforceable policies verified.")]),
+    ...(input.platformLimitations||[]).map(name=>"ℹ️ "+plain("Hosting limitation: "+name)),
     "",
     bold("RECOMMENDED ACTIONS"),
     ...dailyReportRecommendations(input).map((item,index)=>plain((index+1)+". "+item)),
@@ -512,8 +533,13 @@ function umLocationReportKeyboard(id,history,directoryPage=1){
 }
 async function umHistory(env,kind,id,event){
   const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
-  const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+at+"-"+salt;
-  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:34560000});
+  const sampled=kind==="visitor"&&["page_view","event_batch"].includes(String(event?.type||""));
+  const slot=Math.floor(at/(15*60*1000))*15*60*1000;
+  const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+(sampled?String(slot).padStart(13,"0")+":sample":String(at).padStart(13,"0")+"-"+salt);
+  if(sampled&&await env.VISITOR_KV.get(key))return false;
+  const retentionSeconds=kind==="admin"?365*86400:90*86400;
+  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:retentionSeconds});
+  return true;
 }
 async function umTelegramTouch(env,msg){
   const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
@@ -542,8 +568,8 @@ async function umResolve(env,input){
 async function umProfile(env,user){
   if(!user)return null;
   if(user.kind==="telegram")return await env.VISITOR_KV.get(UM_PREFIX+"telegram:"+user.id,"json");
-  const current=await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+user.id,"json");
-  return current||await env.VISITOR_KV.get("visitor:"+user.id,"json");
+  const current=await env.VISITOR_KV.get("visitor:"+user.id,"json");
+  return current||await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+user.id,"json");
 }
 async function umBlocked(env,kind,id){
   try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
@@ -733,12 +759,13 @@ const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
   if(!env.BOT_CONFIG_KV)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId),now=Date.now();
+  const nextMessageId=Number(messageId||old?.messageId||0),nextBusy=!!busy;
+  const last=Number(old?.lastInteractionAt||old?.updatedAt||0);
+  if(old&&Number(old.messageId||0)===nextMessageId&&old.busy===nextBusy&&last>0&&now-last<30_000)return false;
   try{
-    await env.BOT_CONFIG_KV.put(key,JSON.stringify({
-      ...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),
-      lastInteractionAt:now,busy:!!busy
-    }));
-  }catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
+    await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:nextMessageId,lastInteractionAt:now,busy:nextBusy}));
+    return true;
+  }catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));return false;}
 }
 async function botEnsureStartKeyboard(env,chatId){
   // /start restores the per-chat Mini App launcher after the idle timeout reset it.
@@ -1160,10 +1187,9 @@ async function botStatusText(env,category,index){
       const events=await botSecurityEvents(env,12);
       lines.push("🛡️ RECENT SECURITY EVENTS",...(events.length?events.map(e=>"• "+new Date(e.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT · "+String(e.type||"event")+" · "+String(e.visitorId||"Unknown visitor")+" · "+String(e.page||"Page unavailable")):["• No security event records are available yet."]),"","Source: append-only Visitor KV security:event:v1 records. This is not a full Cloudflare WAF or runtime audit log.");
     }else{
-      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
-      const checks=[["Content-Security-Policy (CSP)","content-security-policy"],["Strict-Transport-Security (HSTS)","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
-      const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
-      lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
+      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
+      const security=await inspectPortfolioSecurity(r);
+      lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Policies:",...(security.present.length?security.present.map(x=>"• "+x):["• কোনো enforceable policy পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(security.missing.length?security.missing.map(x=>"• "+x):["• enforceable policy গুলো পাওয়া গেছে"]),"","ℹ️ Hosting limitation:",...(security.platformLimitations.length?security.platformLimitations.map(x=>"• "+x+" · GitHub Pages থেকে custom response header সেট করা যায় না"):["• কোনো platform limitation ধরা পড়েনি"]),"","গুরুত্বপূর্ণ: CSP ও Referrer Policy meta policy-ও যাচাই করা হয়। এই quick check পূর্ণ security audit নয়.");
     }
   }else if(category==="github"){
     const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
@@ -1509,7 +1535,7 @@ async function umHandleCommand(env,msg,options={}){
       const mapKey=UM_PREFIX+"custom:"+encodeURIComponent(custom.toLowerCase()),existing=await env.VISITOR_KV.get(mapKey,"json");
       if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id)){await umReply(env,chatId,"এই Custom ID আগে থেকেই ব্যবহৃত হচ্ছে।");return true;}
       const p=await umProfile(env,user)||{};if(p.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(p.customId).toLowerCase()));
-      p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
+      p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
       await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});
       await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umHistory(env,user.kind,user.id,{type:"custom_id_changed",customId:custom,by:sender});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
     }else if(cmd==="/userlink"){
@@ -1685,12 +1711,12 @@ async function miniAppCronRecord(env,entry){
     durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
     httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
     detail:String(entry.detail||"").slice(0,180)};
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:7776000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:14*86400});
   if(status!=="running"){
     const previous=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json").catch(()=>[]);
     const rows=Array.isArray(previous)?previous:[];
     const next=[value,...rows.filter(row=>row&&row.id!==id)].sort((a,b)=>b.at-a.at).slice(0,100);
-    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:7776000});
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:14*86400});
   }
   return value;
 }
@@ -1709,18 +1735,18 @@ async function miniAppCronAlert(env,cron,status,detail){
   const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true,...(failed?{reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:status:website:1"},{text:"Diagnostics",callback_data:"b1:logs"}],[{text:"Automation",callback_data:"b1:automation"}]]}}:{})}),signal:AbortSignal.timeout(10000)});
   const payload=await response.json().catch(()=>({}));
   if(!response.ok||!payload.ok)throw new Error("Telegram automation alert failed (HTTP "+response.status+")");
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
-  const cutoff=Date.now()-86400000;
+  const cutoff=Date.now()-14*86400000;
   let rows=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json");
   if(!Array.isArray(rows)){
     const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000});
     const keys=(page.keys||[]).filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
     rows=(await Promise.all(keys.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")))).filter(Boolean);
     rows=rows.sort((a,b)=>b.at-a.at).slice(0,100);
-    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(rows),{expirationTtl:7776000});
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(rows),{expirationTtl:14*86400});
   }
   return rows.filter(x=>x&&Number(x.at)>=cutoff).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
 }
@@ -1848,7 +1874,7 @@ async function miniAppUserAction(env,adminId,operation,payload){
     if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id))throw new Error("That Custom ID is already in use.");
     await miniAppAudit(env,adminId,"userRename_attempt",{kind,userId:user.id,customId:custom});
     if(profile.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(profile.customId).toLowerCase()));
-    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
+    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
     await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});await umHistory(env,"admin",String(adminId),{type:"rename",target:user,customId:custom});
     return {ok:true,message:"Custom ID updated.",user:await miniAppUserLookup(env,input)};
   }
@@ -1948,14 +1974,15 @@ async function newsRefreshWatchdog(env){
   const blocked=await env.BOT_CONFIG_KV.get(dispatchBlockedKey,"json").catch(()=>null);
   if(Number(blocked?.at)>0&&now-Number(blocked.at)<60*60*1000)return {skipped:true,reason:"dispatch-backoff",status:Number(blocked.status)||403};
   const lastDispatch=Number(await env.BOT_CONFIG_KV.get(cooldownKey));
-  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<20*60*1000)return {skipped:true,reason:"cooldown"};
+  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<15*60*1000)return {skipped:true,reason:"cooldown"};
   const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
   const statusResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?branch=main&per_page=1",{headers,signal:AbortSignal.timeout(10000)});
   if(!statusResponse.ok)throw new Error("GitHub news workflow status check failed (HTTP "+statusResponse.status+")");
   const data=await statusResponse.json().catch(()=>({}));
   const latest=(data.workflow_runs||[])[0],created=Date.parse(latest?.created_at||""),age=Number.isFinite(created)?now-created:Infinity;
-  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
-  if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
+  const priorError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
+  if(priorError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
+  if(latest&&age<15*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
   if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
   let dispatchResult;
   try{
@@ -1965,7 +1992,8 @@ async function newsRefreshWatchdog(env){
     throw error;
   }
   await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
-  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
+  const dispatchError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
+  if(dispatchError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
   await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
   return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null,dispatchAttempts:dispatchResult.attempts,verifiedAfterAmbiguousResponse:!!dispatchResult.verified};
 }
@@ -2046,7 +2074,7 @@ async function newsBreakingAlertCheck(env){
   const mainItems=Array.isArray(feed)?feed.slice(0,160):(Array.isArray(feed?.items)?feed.items.slice(0,160):[]);
   const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
   const items=Array.isArray(feed)?mainItems:[...mainItems,...weatherItems];
-  const now=Date.now(),sent=[],rejected={},auditTtl=7*86400;
+  const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
@@ -2348,6 +2376,9 @@ export default {
       const corporateProxy=botManagement.corporateProxy===true;
       const profileKey="visitor:"+id;
       let old={};try{old=await env.VISITOR_KV.get(profileKey,"json")||{}}catch{}
+      const userManagerProfileKey=UM_PREFIX+"visitor:"+id;
+      let userManagerOld=null;
+      if(old.profileSchemaVersion!==2){try{userManagerOld=await env.VISITOR_KV.get(userManagerProfileKey,"json")}catch{}}
       const now=Date.now(),pageView=data.eventBatch!==true,sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
       // Enforce the 30-minute inactivity boundary server-side too; browser session IDs can remain unchanged.
@@ -2358,7 +2389,7 @@ export default {
       if(pageView&&(!pages.length||pages[pages.length-1].path!==page))pages.push({path:page,at:now});
       const events=Array.isArray(data.events)?data.events.slice(0,30).map(e=>({type:clean(e.type,30),at:now})).filter(e=>e.type):[];
       const profile={
-        visitorId:id,firstSeen:old.firstSeen||now,lastSeen:now,
+        visitorId:id,kind:"visitor",id,profileSchemaVersion:2,customId:old.customId||userManagerOld?.customId||null,firstSeen:old.firstSeen||now,lastSeen:now,
         totalSessions:(Number(old.totalSessions)||0)+(pageView&&newSession?1:0),
         totalPageViews:(Number(old.totalPageViews)||0)+(pageView?1:0),
         lastSessionId:pageView?session:(old.lastSessionId||session),lastSessionAt:pageView&&newSession?now:(old.lastSessionAt||now),sessionPageViews:pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0),
@@ -2369,14 +2400,15 @@ export default {
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
-      try{await env.VISITOR_KV.put(UM_PREFIX+"visitor:"+id,JSON.stringify({...profile,kind:"visitor",id,customId:(await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+id,"json"))?.customId||null}),{expirationTtl:31536000});await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
+      if(userManagerOld)await env.VISITOR_KV.delete(userManagerProfileKey).catch(error=>console.warn("Duplicate visitor profile cleanup failed",String(error&&error.message||error).slice(0,100)));
+      try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
       let dayRow={};try{dayRow=await env.VISITOR_KV.get(dailyKey,"json")||{}}catch{}
       const dayPages=dayRow.pages&&typeof dayRow.pages==="object"?dayRow.pages:{};
       if(pageView)dayPages[page]=(Number(dayPages[page])||0)+1;
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
       const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),navigationSequence:profile.pages.slice(-12)};
-      await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:34560000});
+      await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
       // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
@@ -2576,14 +2608,14 @@ export default {
         const menuCleanup=await botExpireIdleMenu(env);
         if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
       }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
-      if(minute%15===5){
+      if(minute%5===0){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
         catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
       }
       return;
     }
     const cronStartedAt=Date.now(),cronRunId=crypto.randomUUID?crypto.randomUUID():String(cronStartedAt);
-    await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"running",cron:controller.cron});
+    // Persist only the terminal result; a separate running record doubled each scheduled run write.
     try {
     const cfg=await botConfig(env);
     const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;
@@ -2600,12 +2632,12 @@ export default {
     let existingDailyState=null;
     if(daily&&cfg.dailyReport&&runChecks&&env.BOT_CONFIG_KV){try{existingDailyState=await env.BOT_CONFIG_KV.get("daily-report:delivery:v2:"+reportId,"json")}catch{}}
     const shouldSendDailyReport=!!(daily&&cfg.dailyReport&&runChecks&&existingDailyState?.status!=="complete");
-    let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null,headersChecked=false;
+    let status=null,responseMs=null,missing=[],platformLimitations=[],failure="",resourceSnapshot=null,headersChecked=false;
     try{
       const res=await fetch(site,{method:"GET",redirect:"follow",signal:AbortSignal.timeout(15000)});
       status=res.status;responseMs=Math.round(performance.now()-started);
-      const h=res.headers,checks=[["Content-Security-Policy",h.get("content-security-policy")],["Strict-Transport-Security",h.get("strict-transport-security")],["X-Content-Type-Options",h.get("x-content-type-options")],["X-Frame-Options",h.get("x-frame-options")],["Referrer-Policy",h.get("referrer-policy")]];
-      missing=checks.filter(x=>!x[1]).map(x=>x[0]);headersChecked=true;if(!res.ok)failure="Website returned HTTP "+res.status;
+      const security=await inspectPortfolioSecurity(res);
+      missing=security.missing;platformLimitations=security.platformLimitations;headersChecked=true;if(!res.ok)failure="Website returned HTTP "+res.status;
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
@@ -2685,13 +2717,13 @@ export default {
       }catch(e){console.error("Daily Visitor Intelligence read failed:",String(e&&e.message||e).slice(0,180));}
       const messages=buildDailyReportMessages({
         reportId,stamp,site,status,responseMs,failure,missing,headersChecked,
-        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot
+        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot,platformLimitations
       });
       const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId,{failure,missing});
       console.log("Daily Telegram report delivery:",JSON.stringify(delivery));
     }
     const terminalStatus=failure||missing.length?"warning":"success";
-    const terminalDetail=failure|| (missing.length?"Site check completed; "+missing.length+" security headers missing: "+missing.join(", ")+".":"Site check completed; all security headers present.");
+    const terminalDetail=failure||(missing.length?"Site check completed; "+missing.length+" enforceable security policies missing: "+missing.join(", ")+".":(platformLimitations.length?"Site check completed; GitHub Pages cannot expose these response headers: "+platformLimitations.join(", ")+".":"Site check completed; enforceable security policies verified."));
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
     if(cfg.workflowAlerts||cfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,terminalStatus,terminalDetail);
     } catch(error) {
