@@ -229,7 +229,9 @@ assert.ok(visitorDelivery.includes("await env.VISITOR_KV.put(marker,JSON.stringi
 assert.ok(visitorDelivery.includes("await env.VISITOR_KV.delete(lock)"), "The in-flight lock must be cleared after success or failure");
 const trackingDelivery = section('if(pathname==="/track"){', 'if(new URL(request.url).pathname==="/telegram-webhook"){');
 assert.ok(trackingDelivery.includes("if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)"), "A failed first visitor alert must be retried on a later page view in the same session");
-assert.ok(trackingDelivery.includes('sendVisitorAlertOnce(env,"visitor:"+id+":"+session'), "New-session visitor alerts must be deduplicated by visitor and session");
+assert.ok(trackingDelivery.includes("inactivityExpired=pageView&&Number(old.lastSeen)>0"), "Worker must detect return sessions after 30 minutes even if the browser reuses its session ID");
+assert.ok(trackingDelivery.includes("newSession=pageView&&(!sameSession||inactivityExpired)"), "A page view after the inactivity boundary must start a new server-side session");
+assert.ok(trackingDelivery.includes('sendVisitorAlertOnce(env,"visitor:"+id+":"+session+":"+profile.totalSessions'), "Visitor alerts must use the server-side session counter so reused browser session IDs cannot suppress return alerts");
 assert.ok(trackingDelivery.includes("traffic>=40"), "Traffic-spike delivery must retry on subsequent events until Telegram confirms it");
 assert.ok(trackingDelivery.includes('const eventKey="security:event:v1:"+id+":"+session'), "Security events must not be duplicated while a failed alert is retried");
 assert.ok(!trackingDelivery.includes('await env.VISITOR_KV.put(marker,"1"'), "Visitor alerts must not be marked delivered before Telegram confirms success");
