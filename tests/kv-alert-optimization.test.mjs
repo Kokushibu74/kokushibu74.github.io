@@ -46,5 +46,13 @@ assert.match(security, /referrerMeta/, "Security check must inspect Referrer Pol
 assert.match(security, /platformLimitations/, "GitHub Pages response-header limitations must be explicit");
 assert.match(html, /http-equiv="Content-Security-Policy"/, "Portfolio must include a browser-enforced CSP meta policy");
 assert.match(html, /name="referrer" content="strict-origin-when-cross-origin"/, "Portfolio must include a Referrer Policy meta policy");
+const inspectPortfolioSecurity = new Function("URL", "Headers", security + "; return inspectPortfolioSecurity;")(URL, Headers);
+const hostCheck = await inspectPortfolioSecurity({
+  url: "https://kokushibu74.github.io/",
+  headers: new Headers({"strict-transport-security":"max-age=31536000; includeSubDomains"}),
+  clone: () => new Response(html)
+});
+assert.deepEqual(hostCheck.missing, [], "CSP and Referrer meta policies plus HSTS must satisfy enforceable checks");
+assert.deepEqual(hostCheck.platformLimitations, ["X-Content-Type-Options","X-Frame-Options"], "GitHub Pages header limitations must remain explicit, not false failures");
 
 console.log("KV history, Visitor profile consolidation, callback write throttling, news watchdog and host-aware security checks verified.");
