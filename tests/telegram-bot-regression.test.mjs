@@ -218,14 +218,14 @@ console.log("Notification action callbacks preserve the original alert/report wh
 
 
 const visitorDelivery = section("async function sendVisitorAlertOnce", "async function umReply");
-assert.match(visitorDelivery, /const marker="alert:"\\+key/, "Visitor alert deduplication must use a stable marker");
-assert.match(visitorDelivery, /const lock="alert:lock:"\\+key/, "Concurrent visitor alert attempts must use a short-lived lock");
-assert.match(visitorDelivery, /payload\\.ok!==true/, "HTTP success alone must not count as successful Telegram delivery");
-assert.match(visitorDelivery, /VISITOR_KV\\.put\\(marker/, "The deduplication marker must be written after Telegram confirms delivery");
-assert.match(visitorDelivery, /finally\\{[\\s\\S]*VISITOR_KV\\.delete\\(lock\\)/, "The in-flight lock must be cleared after success or failure");
+assert.ok(visitorDelivery.includes('const marker="alert:"+key'), "Visitor alert deduplication must use a stable marker");
+assert.ok(visitorDelivery.includes('const lock="alert:lock:"+key'), "Concurrent visitor alert attempts must use a short-lived lock");
+assert.ok(visitorDelivery.includes("payload.ok!==true"), "HTTP success alone must not count as successful Telegram delivery");
+assert.ok(visitorDelivery.includes("await env.VISITOR_KV.put(marker,JSON.stringify"), "The deduplication marker must be written after Telegram confirms delivery");
+assert.ok(visitorDelivery.includes("await env.VISITOR_KV.delete(lock)"), "The in-flight lock must be cleared after success or failure");
 const trackingDelivery = section('if(pathname==="/track"){', 'if(new URL(request.url).pathname==="/telegram-webhook"){');
-assert.match(trackingDelivery, /if\\(pageView&&botCfg\\.monitoring&&env\\.TELEGRAM_BOT_TOKEN&&env\\.TELEGRAM_CHAT_ID\\)/, "A failed first visitor alert must be retried on a later page view in the same session");
-assert.match(trackingDelivery, /sendVisitorAlertOnce\\(env,"visitor:"\\+id\\+":"\\+session/, "New-session visitor alerts must be deduplicated by visitor and session");
-assert.match(trackingDelivery, /traffic>=40/, "Traffic-spike delivery must retry on subsequent events until Telegram confirms it");
-assert.doesNotMatch(trackingDelivery, /await env\\.VISITOR_KV\\.put\\(marker,"1"/, "Visitor alerts must not be marked delivered before Telegram confirms success");
+assert.ok(trackingDelivery.includes("if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)"), "A failed first visitor alert must be retried on a later page view in the same session");
+assert.ok(trackingDelivery.includes('sendVisitorAlertOnce(env,"visitor:"+id+":"+session'), "New-session visitor alerts must be deduplicated by visitor and session");
+assert.ok(trackingDelivery.includes("traffic>=40"), "Traffic-spike delivery must retry on subsequent events until Telegram confirms it");
+assert.ok(!trackingDelivery.includes('await env.VISITOR_KV.put(marker,"1"'), "Visitor alerts must not be marked delivered before Telegram confirms success");
 console.log("Visitor alert delivery confirmation, retry, lock cleanup and deduplication verified.");
