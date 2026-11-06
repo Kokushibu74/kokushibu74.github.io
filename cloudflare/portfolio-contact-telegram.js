@@ -909,27 +909,36 @@ async function botCategory(env,chatId,category){
   const cfg=await botConfig(env);
   await botSetContext(env,chatId,{section:category,view:"category",actionId:"category:"+category});
   const labels={
-    website:["🌐 WEBSITE CONTROL","Site Health","Page Status","Manual Refresh"],
-    news:["📰 NEWS CONTROL","Latest Feed","News Refresh Status","Source Health"],
+    website:["🌐 WEBSITE CONTROL","Site Health","Worker Status","Contact Form","Diagnostics","Visitor Overview"],
+    news:["📰 NEWS CONTROL","Latest Feed","Refresh Status","Source Health","News Errors","Refresh History"],
     analytics:["📊 ANALYTICS","GA4 Status","Visitor Summary","Traffic Overview"],
     security:["🛡️ SECURITY CENTER","Security Status","Critical Protection","Recent Security Events"],
-    github:["🐙 GITHUB","Repository Status","Latest Commit","Workflow Status"],
+    github:["🐙 GITHUB & DEPLOY","Repository Status","Latest Commit","Workflow Status"],
     hero:["🖼️ HERO IMAGE MANAGER","Upload from Telegram","Current Hero Image","Preview & Confirm"],
-    automation:["⚙️ AUTOMATION CONTROL","Monitoring","Daily Report","Scheduled Checks"],
+    automation:["⚙️ AUTOMATION CONTROL","Automation Status","Scheduled Tasks","Manual Actions"],
     alerts:["🚨 ALERT CONTROL","Workflow Alerts","Traffic Alerts","Client Error Alerts","Security Alerts","Emergency Protection"],
     reports:["📑 REPORTS","Daily Report Status","Latest Report","Report History"],
     users:["👥 USER MANAGER","All Users","Search Users","User Stats","Link / Unlink","Block / Unblock","Rename User","User History","Visitor Information"],
     settings:["🔧 SETTINGS","Configuration Status","Admin Access","Bot Menu"],
-    logs:["📜 LOGS","Recent Worker Events","Workflow Logs","Security Logs"],
+    logs:["📜 LOGS & RECOVERY","Recent Worker Events","Workflow Logs","Security Logs"],
     recovery:["♻️ RECOVERY","Backup Branch","Worker Rollback Point","Recovery Guide"]
   };
   const names=labels[category];if(!names){await botShowMenu(env,chatId);return}
   const rows=[];
-  if(category==="automation"||category==="alerts"){
+  if(category==="website"){
+    rows.push([{text:"🌐 Site Health",callback_data:"b1:status:website:1"},{text:"⚙️ Worker Status",callback_data:"b1:status:website:2"}]);
+    rows.push([{text:"✉️ Contact Form",callback_data:"b1:status:website:3"},{text:"👥 Visitor Overview",callback_data:"b1:status:analytics:2"}]);
+    rows.push([{text:"🧪 Diagnostics",callback_data:"b1:status:website:4"},{text:"🔄 Refresh Now",callback_data:"b1:refresh"}]);
+  }else if(category==="news"){
+    rows.push([{text:"📰 Latest Feed",callback_data:"b1:status:news:1"},{text:"🔄 Refresh Status",callback_data:"b1:status:news:2"}]);
+    rows.push([{text:"🌍 Source Health",callback_data:"b1:status:news:3"},{text:"⚠️ News Errors",callback_data:"b1:status:news:4"}]);
+    rows.push([{text:"🕘 Refresh History",callback_data:"b1:status:news:5"},{text:"🔁 Refresh Now",callback_data:"b1:refresh"}]);
+  }else if(category==="automation"||category==="alerts"){
     const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh","newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
     const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",newsAlerts:"Bangladesh News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     for(const k of keys)rows.push([{text:(cfg[k]?"🟢 ":"⚪ ")+pretty[k]+" · "+(cfg[k]?"ON":"OFF"),callback_data:"b1:toggle:"+k}]);
-    rows.push([{text:"ℹ️ Refresh is always manual",callback_data:"b1:info:manual"}]);
+    rows.push([{text:"🗓 Scheduled Tasks",callback_data:"b1:status:automation:2"},{text:"▶️ Manual Actions",callback_data:"b1:status:automation:3"}]);
+     rows.push([{text:"🔄 Refresh Now",callback_data:"b1:refresh"}]);
   }else if(category==="users"){
     rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Find User",callback_data:"b1:users:search"}]);
     rows.push([{text:"🔗 Linked Users",callback_data:"b1:users:linked"},{text:"🚫 Blocked Users",callback_data:"b1:users:blocked"}]);
@@ -971,22 +980,55 @@ async function botStatusText(env,category,index){
     github:["GitHub Repository","GitHub API থেকে Repository ও সর্বশেষ commit-এর তথ্য নেওয়া হয়েছে।"],
     reports:["রিপোর্ট কন্ট্রোল","Daily Report ও Monitoring-এর বর্তমান সেটিংস এবং আজকের visitor activity দেখানো হচ্ছে।"],
     settings:["Bot Configuration","Bot-এর persistent configuration storage থেকে বর্তমান ON/OFF সেটিংস দেখানো হচ্ছে।"],
+    automation:["Automation Status","বর্তমান Automation Toggles এবং Cloudflare Cron Schedule দেখানো হচ্ছে."],
     logs:["সাম্প্রতিক কার্যক্রম","Visitor/User Manager-এর সংরক্ষিত সাম্প্রতিক event দেখানো হচ্ছে; পূর্ণ Cloudflare runtime log Dashboard-এ থাকে।"],
     recovery:["Recovery ও Backup তথ্য","বর্তমান backup branch এবং Worker rollback location-এর তথ্য দেখানো হচ্ছে।"]
   };
   const [heading,description]=section[category]||["সিস্টেমের অবস্থা","নির্বাচিত বিভাগের বর্তমান তথ্য।"];
   const lines=["━━━━━━━━━━━━━━━━━━","📋 "+heading.toUpperCase(),"━━━━━━━━━━━━━━━━━━","", "ℹ️ "+description,""];
   if(category==="website"){
-    const started=Date.now();
-    const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
-    const data=await fetch(site+"site-data.json",{signal:AbortSignal.timeout(8000)}).then(x=>x.json()).catch(()=>({}));
-    lines.push("🌐 ওয়েবসাইট: "+site,"📡 HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"⚡ Response Time: "+(Date.now()-started)+" ms","🖼️ Hero Image: "+String(data.image||"সেট করা নেই"),"📍 Hero Image Position: "+String(data.imagePos??"ডিফল্ট"),"","ব্যাখ্যা: HTTP 2xx/3xx হলে সার্ভার সাড়া দিচ্ছে। Response time বেশি হলে নেটওয়ার্ক বা hosting latency পরীক্ষা করা উচিত।");
+    const started=Date.now(),workerUrl="https://portfolio-contact-telegram.mdshihab74.workers.dev";
+    if(index===2||index===3||index===4){
+      const [worker,contact,siteResponse]=await Promise.all([
+        fetch(workerUrl+"/workflow-config",{signal:AbortSignal.timeout(10000)}).catch(()=>null),
+        index===3||index===4?fetch(workerUrl+"/submit",{method:"GET",signal:AbortSignal.timeout(8000)}).catch(()=>null):Promise.resolve(null),
+        index===4?fetch(site,{signal:AbortSignal.timeout(10000)}).catch(()=>null):Promise.resolve(null)
+      ]);
+      const config=worker?await worker.json().catch(()=>null):null;
+      if(index===2){
+        lines.push("⚙️ WORKER STATUS","Worker endpoint: "+(worker?"HTTP "+worker.status:"NOT AVAILABLE"),"Config endpoint: "+(worker?.ok&&config?"Connected":"Not Connected"),"Website Monitoring: "+onOff(config?.monitoring),"Scheduled Checks: "+onOff(config?.scheduledChecks),"News Alerts: "+onOff(config?.newsAlerts),"Workflow Alerts: "+onOff(config?.workflowAlerts),"","Source: portfolio-contact-telegram /workflow-config.");
+      }else if(index===3){
+        lines.push("✉️ CONTACT FORM BACKEND","Contact route: "+(contact?.status===405?"Present · POST only":contact?"HTTP "+contact.status:"NOT AVAILABLE"),"Worker configuration: "+(worker?.ok&&config?"Connected":"Not Connected"),"Submission test: NOT RUN (read-only check; no test message was sent).","A GET request is expected to return HTTP 405 because /submit accepts multipart POST only.");
+      }else{
+        const siteData=await fetch(site+"site-data.json",{signal:AbortSignal.timeout(8000)}).then(x=>x.json()).catch(()=>({}));
+        lines.push("🧪 WEBSITE DIAGNOSTICS","Homepage: "+(siteResponse?"HTTP "+siteResponse.status:"NOT AVAILABLE"),"Worker config: "+(worker?"HTTP "+worker.status:"NOT AVAILABLE"),"Contact route: "+(contact?.status===405?"Present · POST only":contact?"HTTP "+contact.status:"NOT AVAILABLE"),"Hero image configured: "+(siteData.image?"Yes":"Not Available"),"Elapsed: "+(Date.now()-started)+" ms");
+      }
+    }else{
+      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)});
+      const data=await fetch(site+"site-data.json",{signal:AbortSignal.timeout(8000)}).then(x=>x.json()).catch(()=>({}));
+      lines.push("🌐 ওয়েবসাইট: "+site,"📡 HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"⚡ Response Time: "+(Date.now()-started)+" ms","🖼️ Hero Image: "+String(data.image||"সেট করা নেই"),"📍 Hero Image Position: "+String(data.imagePos??"ডিফল্ট"),"","ব্যাখ্যা: HTTP 2xx/3xx হলে সার্ভার সাড়া দিচ্ছে। Response time বেশি হলে নেটওয়ার্ক বা hosting latency পরীক্ষা করা উচিত।");
+    }
   }else if(category==="news"){
     const r=await fetch(site+"news-feed.json",{signal:AbortSignal.timeout(10000)});
     const raw=await r.text();let parsed;try{parsed=JSON.parse(raw)}catch{parsed=null}
     const arr=Array.isArray(parsed)?parsed:(parsed&&typeof parsed==="object"?Object.values(parsed).find(Array.isArray)||[]:[]);
     const latest=arr[0]||{};
-    lines.push("📡 Feed HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"📦 Feed Size: "+raw.length.toLocaleString("en-US")+" bytes","📰 পাওয়া Article: "+arr.length,"🕒 সর্বশেষ Article: "+String(latest.title||latest.headline||"শিরোনাম পাওয়া যায়নি").slice(0,220),"⚙️ Automatic News Refresh: "+onOff(cfg.newsRefresh),"","ব্যাখ্যা: Article count শূন্য হলে Feed ফাইলের গঠন, News workflow run এবং source fetch পরীক্ষা করতে হবে। News Refresh OFF থাকলে নির্ধারিত automatic refresh বন্ধ থাকে; manual workflow আলাদা।");
+    const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Control-Center","X-GitHub-Api-Version":"2022-11-28"};if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
+    const runsResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?per_page=10",{headers,signal:AbortSignal.timeout(10000)}).catch(()=>null);
+    const runsData=runsResponse?await runsResponse.json().catch(()=>({})): {},runs=runsData.workflow_runs||[];
+    if(index===1)lines.push("📡 Feed HTTP Status: "+r.status+" "+(r.ok?"(সফল response)":"(সমস্যা আছে)"),"📦 Feed Size: "+raw.length.toLocaleString("en-US")+" bytes","📰 Stored Articles: "+arr.length,"🕒 Latest Article: "+String(latest.title||latest.headline||"Not Available").slice(0,220),"⚙️ Automatic News Refresh: "+onOff(cfg.newsRefresh));
+    else if(index===2){const last=runs[0];lines.push("🔄 NEWS REFRESH STATUS","Workflow API: "+(runsResponse?"HTTP "+runsResponse.status:"NOT AVAILABLE"),"Latest Run: "+String(last?.status||"Not Available"),"Conclusion: "+String(last?.conclusion||"Not Available"),"Branch: "+String(last?.head_branch||"Not Available"),"Started: "+String(last?.created_at||"Not Available"),"Run URL: "+String(last?.html_url||"Not Available"));}
+    else if(index===3){
+      const counts=new Map();
+      for(const item of arr){let source=String(item.source||item.source_name||item.publisher||"").trim();if(!source){try{source=new URL(String(item.url||item.link||"")).hostname.replace(/^www\./,"")}catch{source="Unknown Source"}}counts.set(source,(counts.get(source)||0)+1);}
+      const sources=[...counts.entries()].sort((a,b)=>b[1]-a[1]).slice(0,12);
+      lines.push("🌍 NEWS SOURCE HEALTH","Sources detected: "+counts.size,"Articles checked: "+arr.length,...sources.map(([name,count])=>"• "+name+" · "+count+" articles"),"","Source availability is inferred from the stored feed; this is not a live publisher uptime test.");
+    }else if(index===4){
+      const failed=runs.filter(run=>run.conclusion==="failure"||run.conclusion==="timed_out");
+      lines.push("⚠️ NEWS ERRORS","Workflow API: "+(runsResponse?"HTTP "+runsResponse.status:"NOT AVAILABLE"),...(failed.length?failed.slice(0,8).map(run=>"• "+run.name+" · "+run.conclusion+" · "+run.created_at+" · "+run.html_url):["• No failed News Refresh workflow runs in the latest 10 results."]));
+    }else if(index===5){
+      lines.push("🕘 NEWS REFRESH HISTORY","Workflow API: "+(runsResponse?"HTTP "+runsResponse.status:"NOT AVAILABLE"),...(runs.length?runs.slice(0,8).map(run=>"• "+run.created_at+" · "+run.status+(run.conclusion?" / "+run.conclusion:"")+" · "+run.head_branch+" · "+run.html_url):["• No workflow history available."]));
+    }
   }else if(category==="analytics"){
     if(index===1){
       try{
@@ -1007,6 +1049,20 @@ async function botStatusText(env,category,index){
       const day=bdDay(),a=await readDailyActivity(env,day),p=await readDailyActivity(env,previousBdDay(day));
       const change=(v,old)=>{const d=v-old;return (d>0?"+":"")+d+" ("+(d>0?"বৃদ্ধি":d<0?"কমেছে":"পরিবর্তন নেই")+")"};
       lines.push("📅 রিপোর্টের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 Unique Visitors: "+a.unique,"   গতকালের তুলনায়: "+change(a.unique,p.unique),"🔁 Sessions: "+a.sessions,"   গতকালের তুলনায়: "+change(a.sessions,p.sessions),"👁️ Page Views: "+a.views,"   গতকালের তুলনায়: "+change(a.views,p.views),"⚠️ Client Errors: "+a.errors,"","🔥 জনপ্রিয় পেজ:",...(a.pages.length?a.pages.map((x,i)=>(i+1)+". "+x):["   এখনো কোনো Page View data নেই"]),"","🌍 শীর্ষ দেশ:",...(a.countries.length?a.countries.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"📱 ডিভাইস:",...(a.devices.length?a.devices.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"","ডেটার উৎস: Cloudflare Visitor KV। এটি GA4-এর Active Users বা GA4 Sessions নয়।");
+    }
+  }else if(category==="automation"){
+    if(index===2){
+      if(!env.CLOUDFLARE_API_TOKEN)lines.push("⚠️ Scheduled task source: NOT CONNECTED","CLOUDFLARE_API_TOKEN is unavailable.");
+      else{
+        const response=await fetch("https://api.cloudflare.com/client/v4/accounts/"+CF_MONITOR_ACCOUNT_ID+"/workers/scripts/portfolio-contact-telegram/schedules",{headers:{Authorization:"Bearer "+env.CLOUDFLARE_API_TOKEN},signal:AbortSignal.timeout(10000)}).catch(()=>null);
+        const data=response?await response.json().catch(()=>({})): {};
+        if(!response?.ok||data.success===false)lines.push("⚠️ Scheduled tasks: NOT AVAILABLE","Cloudflare API: "+(response?"HTTP "+response.status:"No response"),...(data.errors||[]).map(e=>String(e.message||e.code)));
+        else lines.push("🗓 CLOUDFLARE CRON SCHEDULES",...(Array.isArray(data.result)&&data.result.length?data.result.map(x=>"• "+String(x.cron||"Unknown cron")):["• No cron schedules configured."]),"","Source: Cloudflare Workers Schedules API.");
+      }
+    }else if(index===3){
+      lines.push("▶️ MANUAL ACTIONS","• Refresh Now: website/news refresh workflow dispatch","• News Refresh: can run even when automatic News Refresh is paused","• Automation switches: changes are stored in BOT_CONFIG_KV","No action was started from this information screen.");
+    }else{
+      lines.push("⚙️ AUTOMATION STATUS",...Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>"• "+k+": "+onOff(v)));
     }
   }else if(category==="security"){
     if(index===3){
@@ -1215,7 +1271,7 @@ async function botHandleCallback(env,query){
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard(),{forceNew:true});return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard(),{forceNew:true});return true}
     if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
-    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Page Status","Manual Refresh"],news:["","Latest Feed","News Refresh Status","Source Health"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs","Recovery Guide"],recovery:["","Backup Branch","Worker Rollback Point","Recovery Guide"]};
+    if(action.startsWith("status:")){const bits=action.split(":");const category=bits[1],index=Number(bits[2]||0);const names={website:["","Site Health","Worker Status","Contact Form","Diagnostics"],news:["","Latest Feed","Refresh Status","Source Health","News Errors","Refresh History"],analytics:["","GA4 Status","Visitor Summary","Traffic Overview"],security:["","Security Status","Critical Protection","Recent Security Events"],github:["","Repository Status","Latest Commit","Workflow Status"],automation:["","Automation Status","Scheduled Tasks","Manual Actions"],reports:["","Daily Report Status","Latest Report","Report History"],settings:["","Configuration Status","Admin Access","Bot Menu"],logs:["","Recent Worker Events","Workflow Logs","Security Logs","Recovery Guide"]};
        if(category==="logs"&&index===4)category="recovery";
        const label=names[category]?.[index]||"Status";
        await botSetContext(env,chatId,{section:category,view:"status",index,actionId:action,messageId:Number(query.message?.message_id||0)});await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}

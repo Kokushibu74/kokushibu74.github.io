@@ -130,3 +130,16 @@ assert.match(source, /reply_markup:markup/, "Visitor alerts must include context
 assert.match(source, /Full Report.*Traffic/s, "Daily report notifications must expose report and traffic actions");
 
 console.log("Notification actions, exact GitHub retry, security event storage and callback deduplication verified.");
+
+
+assert.match(source, /b1:status:website:2/, "Website section must expose Worker Status");
+assert.match(source, /b1:status:website:3/, "Website section must expose Contact Form diagnostics");
+assert.match(source, /b1:status:website:4/, "Website section must expose combined diagnostics");
+assert.match(source, /Contact route: .*POST only/s, "Contact form route must be checked without sending a test submission");
+assert.match(source, /b1:status:news:4/, "News Center must expose error history");
+assert.match(source, /b1:status:news:5/, "News Center must expose refresh history");
+assert.match(source, /Source availability is inferred from the stored feed/, "Source health must not claim a live publisher uptime test");
+assert.match(source, /workers\/scripts\/portfolio-contact-telegram\/schedules/, "Automation must read actual Cloudflare cron schedules");
+assert.match(source, /b1:status:automation:3/, "Automation must expose manual action details");
+
+console.log("Website diagnostics, News Center history and Automation schedule contracts verified.");
