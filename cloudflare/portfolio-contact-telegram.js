@@ -2312,7 +2312,9 @@ export default {
       let old={};try{old=await env.VISITOR_KV.get(profileKey,"json")||{}}catch{}
       const now=Date.now(),pageView=data.eventBatch!==true,sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
-      const newSession=!sameSession;
+      // Enforce the 30-minute inactivity boundary server-side too; browser session IDs can remain unchanged.
+      const inactivityExpired=pageView&&Number(old.lastSeen)>0&&now-Number(old.lastSeen)>30*60*1000;
+      const newSession=pageView&&(!sameSession||inactivityExpired);
       const cutoff=now-31536000000;
       const pages=Array.isArray(old.pages)?old.pages.filter(p=>Number(p.at)>=cutoff).slice(-39):[];
       if(pageView&&(!pages.length||pages[pages.length-1].path!==page))pages.push({path:page,at:now});
@@ -2431,7 +2433,7 @@ export default {
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
-        await sendVisitorAlertOnce(env,"visitor:"+id+":"+session,text,null,now);
+        await sendVisitorAlertOnce(env,"visitor:"+id+":"+session+":"+profile.totalSessions,text,null,now);
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
     }
