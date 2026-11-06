@@ -191,3 +191,13 @@ const helpBranch = section('if(cmd==="/help"||cmd==="/cmd"){', 'if(["/details","
 assert.doesNotMatch(helpBranch, /forceNew:true/, "Help/command guide should reuse the existing menu anchor");
 assert.match(startCallback, /botSend\(env,chatId,lines\.join\("\\n"\)/, "Button-driven status results must render through the shared edit-in-place sender");
 console.log("Start Bot explicit route and no-message-stack navigation regression checks verified.");
+
+
+assert.match(source, /if\(action==="info:manual"\)/, "Automation manual-refresh info button must have a real handler");
+assert.match(source, /callback_data:"b1:refresh"/, "Manual refresh buttons and alert retry actions must resolve to the real refresh handler");
+assert.match(callbackEdit, /action==="home"\|\|action==="start"/, "Both Start Bot and Home callbacks must resolve");
+assert.match(callbackEdit, /answerCallbackQuery/, "Every button interaction must be acknowledged");
+assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.delete\(String\(chatId\)\)/, "Button action lock must be released even after failures");
+assert.match(callbackEdit, /botTelegram\(env,"sendMessage"/, "Only a real callback failure may send a separate reply");
+assert.match(source, /callback_data:"b1:start"/, "Visible Start Bot must not share a generic Home callback");
+console.log("Button route audit: Start, home, status, User Manager, toggles, refresh, logs, recovery and notification callbacks have handlers.");
