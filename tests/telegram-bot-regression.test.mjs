@@ -81,3 +81,26 @@ assert.match(analytics, /miniAppGa4Report\(env\)/, "GA4 status must use the GA4 
 assert.match(analytics, /Cloudflare Visitor KV/, "Visitor KV must remain identified separately from GA4");
 
 console.log("Telegram command registration, compact menu, contextual shortcuts and analytics source separation verified.");
+
+
+const menuAnchorRules = section("async function botSend", "async function botSendChatAction");
+assert.match(menuAnchorRules, /if\(!options\.forceNew&&messageId/, "A new alert/report must not delete the active menu anchor");
+assert.match(menuAnchorRules, /if\(!options\.forceNew\|\|options\.persistentMenu\)/, "Preserved messages must not become the menu anchor");
+
+const confirmationHandler = section("async function umHandleCommand", "function botB64");
+assert.match(confirmationHandler, /options\.confirmed/);
+assert.match(confirmationHandler, /bot:confirm:v1:/, "State-changing commands must create a short-lived confirmation record");
+assert.match(confirmationHandler, /userrename.*userlink.*userunlink.*userblock.*userunblock/, "Sensitive user changes must be gated by confirmation");
+const callbackHandler = section("async function botHandleCallback", "async function umHandleCommand");
+assert.match(callbackHandler, /action\.startsWith\("confirm:"\)/);
+assert.match(callbackHandler, /pending\.adminId/);
+assert.match(callbackHandler, /pending\.expiresAt/);
+assert.match(callbackHandler, /\{confirmed:true\}/, "Only the matching admin can consume a confirmation");
+
+assert.match(source, /b1:users:linked/);
+assert.match(source, /b1:users:blocked/);
+assert.match(source, /b1:users:profile:/);
+assert.match(source, /b1:status:recovery:1/);
+assert.match(source, /NOT AVAILABLE through the Telegram Bot data source/, "Unavailable Worker logs must not be misrepresented as User Manager history");
+
+console.log("Sensitive action confirmations, persistent menu isolation and User Manager navigation verified.");
