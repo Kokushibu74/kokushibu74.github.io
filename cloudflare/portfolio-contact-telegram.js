@@ -547,8 +547,8 @@ async function umResolve(env,input){
 async function umProfile(env,user){
   if(!user)return null;
   if(user.kind==="telegram")return await env.VISITOR_KV.get(UM_PREFIX+"telegram:"+user.id,"json");
-  const current=await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+user.id,"json");
-  return current||await env.VISITOR_KV.get("visitor:"+user.id,"json");
+  const current=await env.VISITOR_KV.get("visitor:"+user.id,"json");
+  return current||await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+user.id,"json");
 }
 async function umBlocked(env,kind,id){
   try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
@@ -2356,6 +2356,8 @@ export default {
       const corporateProxy=botManagement.corporateProxy===true;
       const profileKey="visitor:"+id;
       let old={};try{old=await env.VISITOR_KV.get(profileKey,"json")||{}}catch{}
+      const userManagerProfileKey=UM_PREFIX+"visitor:"+id;
+      let userManagerOld=null;try{userManagerOld=await env.VISITOR_KV.get(userManagerProfileKey,"json")}catch{}
       const now=Date.now(),pageView=data.eventBatch!==true,sameSession=old.lastSessionId===session;
       const first=!old.visitorId;
       // Enforce the 30-minute inactivity boundary server-side too; browser session IDs can remain unchanged.
@@ -2366,7 +2368,7 @@ export default {
       if(pageView&&(!pages.length||pages[pages.length-1].path!==page))pages.push({path:page,at:now});
       const events=Array.isArray(data.events)?data.events.slice(0,30).map(e=>({type:clean(e.type,30),at:now})).filter(e=>e.type):[];
       const profile={
-        visitorId:id,firstSeen:old.firstSeen||now,lastSeen:now,
+        visitorId:id,kind:"visitor",id,customId:old.customId||userManagerOld?.customId||null,firstSeen:old.firstSeen||now,lastSeen:now,
         totalSessions:(Number(old.totalSessions)||0)+(pageView&&newSession?1:0),
         totalPageViews:(Number(old.totalPageViews)||0)+(pageView?1:0),
         lastSessionId:pageView?session:(old.lastSessionId||session),lastSessionAt:pageView&&newSession?now:(old.lastSessionAt||now),sessionPageViews:pageView?(newSession?1:(Number(old.sessionPageViews)||0)+1):(Number(old.sessionPageViews)||0),
@@ -2377,7 +2379,8 @@ export default {
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
-      try{await env.VISITOR_KV.put(UM_PREFIX+"visitor:"+id,JSON.stringify({...profile,kind:"visitor",id,customId:(await env.VISITOR_KV.get(UM_PREFIX+"visitor:"+id,"json"))?.customId||null}),{expirationTtl:31536000});await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
+      if(userManagerOld)await env.VISITOR_KV.delete(userManagerProfileKey).catch(error=>console.warn("Duplicate visitor profile cleanup failed",String(error&&error.message||error).slice(0,100)));
+      try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
       let dayRow={};try{dayRow=await env.VISITOR_KV.get(dailyKey,"json")||{}}catch{}
       const dayPages=dayRow.pages&&typeof dayRow.pages==="object"?dayRow.pages:{};
