@@ -512,8 +512,13 @@ function umLocationReportKeyboard(id,history,directoryPage=1){
 }
 async function umHistory(env,kind,id,event){
   const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
-  const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+at+"-"+salt;
-  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:34560000});
+  const sampled=kind==="visitor"&&["page_view","event_batch"].includes(String(event?.type||""));
+  const slot=Math.floor(at/(15*60*1000))*15*60*1000;
+  const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+(sampled?String(slot).padStart(13,"0")+":sample":String(at).padStart(13,"0")+"-"+salt);
+  if(sampled&&await env.VISITOR_KV.get(key))return false;
+  const retentionSeconds=kind==="admin"?365*86400:90*86400;
+  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:retentionSeconds});
+  return true;
 }
 async function umTelegramTouch(env,msg){
   const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
@@ -733,12 +738,13 @@ const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
   if(!env.BOT_CONFIG_KV)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId),now=Date.now();
+  const nextMessageId=Number(messageId||old?.messageId||0),nextBusy=!!busy;
+  const last=Number(old?.lastInteractionAt||old?.updatedAt||0);
+  if(old&&Number(old.messageId||0)===nextMessageId&&old.busy===nextBusy&&last>0&&now-last<30_000)return false;
   try{
-    await env.BOT_CONFIG_KV.put(key,JSON.stringify({
-      ...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),
-      lastInteractionAt:now,busy:!!busy
-    }));
-  }catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
+    await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:nextMessageId,lastInteractionAt:now,busy:nextBusy}));
+    return true;
+  }catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));return false;}
 }
 async function botEnsureStartKeyboard(env,chatId){
   // /start restores the per-chat Mini App launcher after the idle timeout reset it.
@@ -1509,7 +1515,7 @@ async function umHandleCommand(env,msg,options={}){
       const mapKey=UM_PREFIX+"custom:"+encodeURIComponent(custom.toLowerCase()),existing=await env.VISITOR_KV.get(mapKey,"json");
       if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id)){await umReply(env,chatId,"এই Custom ID আগে থেকেই ব্যবহৃত হচ্ছে।");return true;}
       const p=await umProfile(env,user)||{};if(p.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(p.customId).toLowerCase()));
-      p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
+      p.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:"visitor:"+user.id,JSON.stringify(p),{expirationTtl:31536000});
       await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});
       await umHistory(env,"admin",sender,{type:"rename",target:user,customId:custom});await umHistory(env,user.kind,user.id,{type:"custom_id_changed",customId:custom,by:sender});await umReply(env,chatId,"✅ Custom ID সেট হয়েছে: "+custom);
     }else if(cmd==="/userlink"){
@@ -1685,12 +1691,12 @@ async function miniAppCronRecord(env,entry){
     durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
     httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
     detail:String(entry.detail||"").slice(0,180)};
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:7776000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:14*86400});
   if(status!=="running"){
     const previous=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json").catch(()=>[]);
     const rows=Array.isArray(previous)?previous:[];
     const next=[value,...rows.filter(row=>row&&row.id!==id)].sort((a,b)=>b.at-a.at).slice(0,100);
-    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:7776000});
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:14*86400});
   }
   return value;
 }
@@ -1709,18 +1715,18 @@ async function miniAppCronAlert(env,cron,status,detail){
   const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true,...(failed?{reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:status:website:1"},{text:"Diagnostics",callback_data:"b1:logs"}],[{text:"Automation",callback_data:"b1:automation"}]]}}:{})}),signal:AbortSignal.timeout(10000)});
   const payload=await response.json().catch(()=>({}));
   if(!response.ok||!payload.ok)throw new Error("Telegram automation alert failed (HTTP "+response.status+")");
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});
+  await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
 }
 async function miniAppCronHistory(env){
   if(!env.BOT_CONFIG_KV)return [];
-  const cutoff=Date.now()-86400000;
+  const cutoff=Date.now()-14*86400000;
   let rows=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json");
   if(!Array.isArray(rows)){
     const page=await env.BOT_CONFIG_KV.list({prefix:MINIAPP_CRON_PREFIX,limit:1000});
     const keys=(page.keys||[]).filter(k=>{const stamp=Number(k.name.slice(MINIAPP_CRON_PREFIX.length).split(":")[0]);return Number.isFinite(stamp)&&stamp>=cutoff;});
     rows=(await Promise.all(keys.map(k=>env.BOT_CONFIG_KV.get(k.name,"json")))).filter(Boolean);
     rows=rows.sort((a,b)=>b.at-a.at).slice(0,100);
-    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(rows),{expirationTtl:7776000});
+    await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(rows),{expirationTtl:14*86400});
   }
   return rows.filter(x=>x&&Number(x.at)>=cutoff).sort((a,b)=>b.at-a.at).slice(0,100).map(x=>({...x,status:x.status==="running"&&Date.now()-x.at>900000?"interrupted":x.status}));
 }
@@ -1848,7 +1854,7 @@ async function miniAppUserAction(env,adminId,operation,payload){
     if(existing&&(existing.kind!==user.kind||String(existing.id)!==user.id))throw new Error("That Custom ID is already in use.");
     await miniAppAudit(env,adminId,"userRename_attempt",{kind,userId:user.id,customId:custom});
     if(profile.customId)await env.VISITOR_KV.delete(UM_PREFIX+"custom:"+encodeURIComponent(String(profile.customId).toLowerCase()));
-    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:UM_PREFIX+"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
+    profile.customId=custom;await env.VISITOR_KV.put(user.kind==="telegram"?UM_PREFIX+"telegram:"+user.id:"visitor:"+user.id,JSON.stringify(profile),{expirationTtl:31536000});
     await env.VISITOR_KV.put(mapKey,JSON.stringify(user),{expirationTtl:31536000});await umHistory(env,"admin",String(adminId),{type:"rename",target:user,customId:custom});
     return {ok:true,message:"Custom ID updated.",user:await miniAppUserLookup(env,input)};
   }
@@ -1948,14 +1954,15 @@ async function newsRefreshWatchdog(env){
   const blocked=await env.BOT_CONFIG_KV.get(dispatchBlockedKey,"json").catch(()=>null);
   if(Number(blocked?.at)>0&&now-Number(blocked.at)<60*60*1000)return {skipped:true,reason:"dispatch-backoff",status:Number(blocked.status)||403};
   const lastDispatch=Number(await env.BOT_CONFIG_KV.get(cooldownKey));
-  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<20*60*1000)return {skipped:true,reason:"cooldown"};
+  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<15*60*1000)return {skipped:true,reason:"cooldown"};
   const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
   const statusResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?branch=main&per_page=1",{headers,signal:AbortSignal.timeout(10000)});
   if(!statusResponse.ok)throw new Error("GitHub news workflow status check failed (HTTP "+statusResponse.status+")");
   const data=await statusResponse.json().catch(()=>({}));
   const latest=(data.workflow_runs||[])[0],created=Date.parse(latest?.created_at||""),age=Number.isFinite(created)?now-created:Infinity;
-  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
-  if(latest&&age<20*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
+  const priorError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
+  if(priorError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
+  if(latest&&age<15*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
   if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
   let dispatchResult;
   try{
@@ -1965,7 +1972,8 @@ async function newsRefreshWatchdog(env){
     throw error;
   }
   await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
-  await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
+  const priorError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
+  if(priorError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
   await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
   return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null,dispatchAttempts:dispatchResult.attempts,verifiedAfterAmbiguousResponse:!!dispatchResult.verified};
 }
@@ -2046,7 +2054,7 @@ async function newsBreakingAlertCheck(env){
   const mainItems=Array.isArray(feed)?feed.slice(0,160):(Array.isArray(feed?.items)?feed.items.slice(0,160):[]);
   const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
   const items=Array.isArray(feed)?mainItems:[...mainItems,...weatherItems];
-  const now=Date.now(),sent=[],rejected={},auditTtl=7*86400;
+  const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
@@ -2376,7 +2384,7 @@ export default {
       if(pageView)dayPages[page]=(Number(dayPages[page])||0)+1;
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
       const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),navigationSequence:profile.pages.slice(-12)};
-      await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:34560000});
+      await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
       // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
@@ -2576,7 +2584,7 @@ export default {
         const menuCleanup=await botExpireIdleMenu(env);
         if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
       }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
-      if(minute%15===5){
+      if(minute%5===0){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
         catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
       }
