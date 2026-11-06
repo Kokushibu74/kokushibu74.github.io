@@ -212,5 +212,6 @@ assert.match(source, /callback_data:"b1:alert:refresh"/);
 assert.match(source, /callback_data:"b1:alert:status:security:3"/);
 assert.match(source, /callback_data:"b1:alert:status:reports:1"/);
 assert.match(source, /callback_data:"b1:alert:status:analytics:3"/);
-assert.match(source, /callback_data:"b1:alert:github:retry:/, "GitHub failure retry must preserve the original notification");
+const workflowReportSource=readFileSync(new URL("../scripts/news_telegram_report.py", import.meta.url), "utf8");
+assert.match(workflowReportSource, /"callback_data": "b1:alert:github:retry:/, "GitHub failure retry must preserve the original notification");
 console.log("Notification action callbacks preserve the original alert/report while rendering results in the existing Control Center menu.");
