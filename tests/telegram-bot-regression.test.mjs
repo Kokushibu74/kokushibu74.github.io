@@ -143,3 +143,5 @@ assert.match(source, /workers\/scripts\/portfolio-contact-telegram\/schedules/, 
 assert.match(source, /b1:status:automation:3/, "Automation must expose manual action details");
 
 console.log("Website diagnostics, News Center history and Automation schedule contracts verified.");
+
+assert.match(source, /mdSafe\("Visitor IDs are the clickable buttons below; tap one to open its report\."\)/, "The /userid MarkdownV2 footer must escape reserved punctuation");
