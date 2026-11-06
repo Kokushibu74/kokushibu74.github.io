@@ -84,5 +84,12 @@ assert.ok(messages[4].includes("Content\\-Security\\-Policy") || messages[4].inc
 const unavailableHeaders = buildDailyReportMessages({reportId:"test",stamp:"test",site:"https://example.com",status:null,responseMs:10,failure:"Network timeout",missing:[],headersChecked:false,activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null});
 assert.ok(unavailableHeaders[4].includes("Header inspection unavailable"), "Failed site checks must not be mislabeled as healthy security headers");
 assert.ok(messages[4].includes("no external AI API or paid service is called"), "Recommendations must disclose their deterministic source");
+const hostLimited = buildDailyReportMessages({
+  reportId:"host-limit",stamp:"test",site:"https://kokushibu74.github.io/",status:"200",responseMs:100,
+  failure:"",missing:[],platformLimitations:["X-Content-Type-Options","X-Frame-Options"],headersChecked:true,
+  activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null
+});
+assert.ok(hostLimited[0].includes("HOST-LIMITED"), "GitHub Pages response-header limits must not be reported as fully healthy");
+assert.ok(hostLimited[4].includes("X-Frame-Options"), "Security report must disclose host-managed response-header limitations");
 
 console.log("Five-part Telegram report, delivery retry state, visitor privacy, all six KV namespaces, D1 quota and message-size behavior verified.");
