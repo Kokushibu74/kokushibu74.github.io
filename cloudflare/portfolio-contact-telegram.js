@@ -2430,7 +2430,7 @@ export default {
       if(perfRows.length)lines.push(...section("06","⚡","PERFORMANCE SNAPSHOT",perfRows));
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
-        const text=lines.join("\\n");
+        const text=lines.join("\n");
         await sendVisitorAlertOnce(env,"visitor:"+id+":"+session,text,null,now);
       }
       return respond({ok:true,visitorId:id,firstVisit:first,newSession,totalSessions:profile.totalSessions,totalPageViews:profile.totalPageViews});
