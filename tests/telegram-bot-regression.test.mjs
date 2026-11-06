@@ -104,3 +104,17 @@ assert.match(source, /b1:status:recovery:1/);
 assert.match(source, /NOT AVAILABLE through the Telegram Bot data source/, "Unavailable Worker logs must not be misrepresented as User Manager history");
 
 console.log("Sensitive action confirmations, persistent menu isolation and User Manager navigation verified.");
+
+
+assert.match(source, /users:searchpage:/, "User Manager search results must support pagination");
+assert.match(source, /\.join\(" "\)\.trim\(\)/, "User Manager search must accept multi-word terms");
+assert.match(source, /b1:users:history:/, "Selected-user history must have pagination callbacks");
+assert.match(source, /b1:users:profile:/, "Telegram and visitor directory entries must open profiles");
+const miniAppSource = readFileSync(new URL("../miniapp/app.js", import.meta.url), "utf8");
+assert.match(miniAppSource, /"newsAlerts","workflowAlerts"/, "Mini App must expose the existing Bangladesh news alert toggle");
+assert.match(miniAppSource, /newsAlerts:"Bangladesh News Alerts"/);
+const miniAppApi = section('if(pathname==="/miniapp/api"){', 'if(pathname==="/workflow-config"){');
+assert.doesNotMatch(miniAppApi, /if\(!cfg\.newsRefresh\)/, "Manual refresh must remain available when automatic refresh is paused");
+assert.match(miniAppApi, /newsRefresh_manual_attempt/);
+
+console.log("User Manager search/history pagination and Mini App alert/manual refresh contracts verified.");
