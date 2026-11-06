@@ -1971,9 +1971,8 @@ export default {
           return respond({ok:true,rows});
         }
         if(action==="newsRefresh"){
-          const cfg=await botConfig(env);
-          if(!cfg.newsRefresh)return respond({ok:false,error:"Automatic News Refresh is OFF. Enable it in Automation before manual refresh."},409);
-          await miniAppAudit(env,user.id,"newsRefresh_attempt",{workflow:"update-news.yml",branch:"main"});
+          // Manual dispatch is independent of the Automatic News Refresh schedule toggle.
+          await miniAppAudit(env,user.id,"newsRefresh_manual_attempt",{workflow:"update-news.yml",branch:"main",manual:true});
           const result=await miniAppDispatchNews(env);
           await miniAppAudit(env,user.id,"newsRefresh_dispatched",{workflow:result.workflow});
           return respond({ok:true,...result});
