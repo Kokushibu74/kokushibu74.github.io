@@ -733,15 +733,18 @@ const BOT_START_LABEL = "🚀 START BOT";
 async function botMarkMenuInteraction(env,chatId,messageId,busy){
   if(!env.BOT_CONFIG_KV)return;
   const key=BOT_MENU_KEY_PREFIX+String(chatId),old=await botGetMenuAnchor(env,chatId),now=Date.now();
-  const last=Number(old?.lastInteractionAt||0);
-  if(last&&now-last<5*60*1000&&old?.busy===!!busy)return;
-  try{await env.BOT_CONFIG_KV.put(key,JSON.stringify({...old,chatId:String(chatId),messageId:Number(old?.messageId||messageId||0),lastInteractionAt:now,busy:!!busy}));}
-  catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
+  try{
+    await env.BOT_CONFIG_KV.put(key,JSON.stringify({
+      ...old,chatId:String(chatId),messageId:Number(messageId||old?.messageId||0),
+      lastInteractionAt:now,busy:!!busy
+    }));
+  }catch(e){console.warn("Telegram menu interaction state could not be saved",String(e&&e.message||e).slice(0,120));}
 }
 async function botEnsureStartKeyboard(env,chatId){
-  // Keep the Control Center menu button available without sending another chat message on every /start.
+  // /start restores the per-chat Mini App launcher after the idle timeout reset it.
   const menu=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"web_app",text:"Control Center",web_app:{url:"https://kokushibu74.github.io/miniapp/"}}});
   if(!menu.ok)console.error("Telegram Mini App menu button setup failed",JSON.stringify({status:menu.status,description:String(menu.data?.description||"").slice(0,180)}));
+  return !!menu.ok;
 }
 const BOT_START_MENU_COOLDOWN_MS=5000;
 const BOT_START_MENU_LAST=new Map();
@@ -754,28 +757,55 @@ function botAllowStartMenu(chatId,now=Date.now()){
   }
   return true;
 }
+async function botActivateMenu(env,chatId,isAdmin){
+  let registrationError="";
+  try{await botRegisterCommands(env,chatId,!!isAdmin);}
+  catch(e){registrationError=String(e&&e.message||e).slice(0,180);console.error("Telegram command registration failed",registrationError);}
+  if(isAdmin)await botEnsureStartKeyboard(env,chatId);
+  const menu=await botShowMenu(env,chatId,undefined,registrationError);
+  await botMarkMenuInteraction(env,chatId,menu?.message_id||null,false);
+  return menu;
+}
 async function botHandleStartButton(env,msg){
   if(String(msg.text||"").trim()!==BOT_START_LABEL)return false;
   if(!botAllowStartMenu(msg.chat.id))return true;
-  let registrationError="";
-  try{await botRegisterCommands(env,msg.chat.id,true);}catch(e){registrationError=String(e&&e.message||e).slice(0,180);console.error("Telegram command registration failed",registrationError);}
-  await botEnsureStartKeyboard(env,msg.chat.id);
-  await botShowMenu(env,msg.chat.id,undefined,registrationError);
-  await botMarkMenuInteraction(env,msg.chat.id,null,false);
+  await botActivateMenu(env,msg.chat.id,true);
   return true;
 }
+const BOT_MENU_IDLE_TIMEOUT_MS=15*60*1000;
 async function botExpireIdleMenu(env){
-  if(!env.BOT_CONFIG_KV)return;
-  const page=await env.BOT_CONFIG_KV.list({prefix:BOT_MENU_KEY_PREFIX,limit:100}),now=Date.now();
-  for(const item of page.keys||[]){
-    const a=await env.BOT_CONFIG_KV.get(item.name,"json");
-    if(!a?.messageId||a.busy)continue;
-    const last=Number(a.lastInteractionAt||a.updatedAt||0);
-    if(!last||now-last<900000)continue;
-    const chatId=a.chatId||item.name.slice(BOT_MENU_KEY_PREFIX.length);
-    const d=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(a.messageId)});
-    if(d.ok||String(d.data?.description||"").toLowerCase().includes("message to delete not found"))await env.BOT_CONFIG_KV.delete(item.name);
-  }
+  if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN)return {checked:0,expired:0};
+  const now=Date.now();
+  let cursor=null,checked=0,expired=0;
+  do{
+    const options={prefix:BOT_MENU_KEY_PREFIX,limit:100};
+    if(cursor)options.cursor=cursor;
+    const page=await env.BOT_CONFIG_KV.list(options);
+    for(const item of page.keys||[]){
+      checked++;
+      const a=await env.BOT_CONFIG_KV.get(item.name,"json");
+      if(!a?.messageId||a.busy)continue;
+      const last=Number(a.lastInteractionAt||a.updatedAt||0);
+      if(!last||now-last<BOT_MENU_IDLE_TIMEOUT_MS)continue;
+      const chatId=a.chatId||item.name.slice(BOT_MENU_KEY_PREFIX.length);
+      const deleted=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(a.messageId)});
+      const deleteReason=String(deleted.data?.description||"").toLowerCase();
+      const messageGone=deleted.ok||deleteReason.includes("message to delete not found");
+      if(!messageGone){
+        console.warn("Idle Telegram menu could not be deleted",JSON.stringify({chatId,status:deleted.status,description:deleteReason.slice(0,160)}));
+        continue;
+      }
+      const reset=await botTelegram(env,"setChatMenuButton",{chat_id:chatId,menu_button:{type:"default"}});
+      if(!reset.ok){
+        console.warn("Idle Telegram Mini App menu button could not be reset",JSON.stringify({chatId,status:reset.status,description:String(reset.data?.description||"").slice(0,160)}));
+        continue;
+      }
+      await env.BOT_CONFIG_KV.delete(item.name);
+      expired++;
+    }
+    cursor=page.list_complete?null:(page.cursor||null);
+  }while(cursor);
+  return {checked,expired};
 }
 
 async function botTelegram(env,method,payload){
@@ -822,7 +852,7 @@ async function botRegisterCommands(env,chatId,isAdmin){
   const missingDefault=BOT_PUBLIC_COMMANDS.map(x=>x.command).filter(x=>!defaultActual.has(x));
   if(missingDefault.length)throw new Error("Default command verification missing: "+missingDefault.join(", "));
   if(chatId===undefined||chatId===null)return {count:defaultActual.size,verified:true};
-  const expected=BOT_PUBLIC_COMMANDS.concat(isAdmin?BOT_ADMIN_COMMANDS:[]);
+  const expected=BOT_PUBLIC_COMMANDS;
   const scoped=await botTelegram(env,"setMyCommands",{commands:expected,scope:{type:"chat",chat_id:chatId}});
   if(!scoped.ok)throw new Error("Chat command registration failed (HTTP "+scoped.status+"): "+String(scoped.data?.description||"Telegram API error").slice(0,140));
   const check=await botTelegram(env,"getMyCommands",{scope:{type:"chat",chat_id:chatId}});
@@ -934,17 +964,22 @@ async function botWithTyping(env,chatId,work){
   }
 }
 async function botRunWithProgress(env,chatId,message,work){
-  await botSend(env,chatId,"⏳ "+message,botBackKeyboard());
+  await botMarkMenuInteraction(env,chatId,null,true);
   try{
-    return await botWithTyping(env,chatId,work);
-  }catch(error){
-    console.error("Telegram progress task failed",String(error&&error.stack||error).slice(0,1200));
+    await botSend(env,chatId,"⏳ "+message,botBackKeyboard());
     try{
-      await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\nপ্রক্রিয়াটি মাঝপথে ব্যর্থ হয়েছে; একই কাজ আবার চালানোর আগে Worker Logs পরীক্ষা করুন।",botBackKeyboard());
-    }catch(deliveryError){
-      console.error("Telegram progress failure notice could not be delivered",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800));
+      return await botWithTyping(env,chatId,work);
+    }catch(error){
+      console.error("Telegram progress task failed",String(error&&error.stack||error).slice(0,1200));
+      try{
+        await botSend(env,chatId,"⚠️ কাজটি সম্পন্ন করা যায়নি।\nপ্রক্রিয়াটি মাঝপথে ব্যর্থ হয়েছে; একই কাজ আবার চালানোর আগে Worker Logs পরীক্ষা করুন।",botBackKeyboard());
+      }catch(deliveryError){
+        console.error("Telegram progress failure notice could not be delivered",String(deliveryError&&deliveryError.stack||deliveryError).slice(0,800));
+      }
+      return null;
     }
-    return null;
+  }finally{
+    await botMarkMenuInteraction(env,chatId,null,false);
   }
 }
 function botMainKeyboard(){
@@ -1208,8 +1243,12 @@ async function botHandleCallback(env,query){
     // The clicked inline message is now the active menu anchor for this callback.
     // Keep interaction metadata writes throttled while preserving idle cleanup.
     await botAnswerCallback(env,query);
+    if(action==="home"||action==="start"){
+      await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);
+      await botActivateMenu(env,chatId,true);
+      return true;
+    }
     await botMarkMenuInteraction(env,chatId,notificationAction?null:query.message?.message_id,false);
-    if(action==="home"||action==="start"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);let registrationError="";try{await botRegisterCommands(env,chatId,true)}catch(e){registrationError=String(e&&e.message||e).slice(0,180);console.error("Telegram Start button command registration failed",registrationError)}await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId,undefined,registrationError);return true}
     if(action.startsWith("github:retry:")){
       const runId=action.slice("github:retry:".length);
       if(!/^\d{1,20}$/.test(runId)){await botSend(env,chatId,"Invalid GitHub workflow run ID.",botBackKeyboard(),{forceNew:true});return true;}
@@ -1357,12 +1396,11 @@ async function umHandleCommand(env,msg,options={}){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
-  if(cmd==="/start"||cmd==="/menu"){if(!botAllowStartMenu(chatId))return true;
-    let registrationError="";
-    try{await botRegisterCommands(env,chatId,isAdmin);}catch(e){registrationError=String(e&&e.message||e).slice(0,180);console.error("Telegram command registration failed",registrationError);}
-    if(isAdmin)await botEnsureStartKeyboard(env,chatId);
-    await botShowMenu(env,chatId,undefined,registrationError);
-    await botMarkMenuInteraction(env,chatId,null,false);return true;}
+  if(cmd==="/start"||cmd==="/menu"){
+    if(!botAllowStartMenu(chatId))return true;
+    await botActivateMenu(env,chatId,isAdmin);
+    return true;
+  }
   if(cmd==="/help"||cmd==="/cmd"){
     let registrationStatus="❌ Telegram command registration failed.";
     try{const registration=await botRegisterCommands(env,chatId,isAdmin);registrationStatus="✅ Telegram command menu registered and verified ("+registration.count+" commands).";}
@@ -2533,8 +2571,11 @@ export default {
     if(controller.cron==="* * * * *"){
       const minute=new Date().getUTCMinutes();
       if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
-      // Keep the existing minute Cron; run KV cleanup on quarter-hours and watchdog five minutes later.
-      if(minute%15===0)await botExpireIdleMenu(env);
+      // Check idle menus every minute so the 15-minute expiry is not delayed by another quarter-hour.
+      try{
+        const menuCleanup=await botExpireIdleMenu(env);
+        if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
+      }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
       if(minute%15===5){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
         catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
