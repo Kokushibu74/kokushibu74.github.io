@@ -88,8 +88,8 @@ console.log("Telegram command registration, compact menu, contextual shortcuts a
 
 
 const menuAnchorRules = section("async function botSend", "async function botSendChatAction");
-assert.match(menuAnchorRules, /if\(!options\.forceNew&&messageId/, "A new alert/report must not delete the active menu anchor");
-assert.match(menuAnchorRules, /if\(!options\.forceNew\|\|options\.persistentMenu\)/, "Preserved messages must not become the menu anchor");
+assert.match(menuAnchorRules, /if\(\(!options\.forceNew\|\|callbackMessageId\)&&messageId/, "Only callback edit fallbacks may clean up the clicked stale message");
+assert.match(menuAnchorRules, /if\(!options\.forceNew\|\|options\.persistentMenu\|\|callbackMessageId\)/, "Preserved non-callback messages must not become the menu anchor; callback fallback replacements must");
 
 const confirmationHandler = section("async function umHandleCommand", "function botB64");
 assert.match(confirmationHandler, /options\.confirmed/);
