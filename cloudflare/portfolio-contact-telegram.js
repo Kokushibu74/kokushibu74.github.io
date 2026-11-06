@@ -2629,12 +2629,12 @@ export default {
     let existingDailyState=null;
     if(daily&&cfg.dailyReport&&runChecks&&env.BOT_CONFIG_KV){try{existingDailyState=await env.BOT_CONFIG_KV.get("daily-report:delivery:v2:"+reportId,"json")}catch{}}
     const shouldSendDailyReport=!!(daily&&cfg.dailyReport&&runChecks&&existingDailyState?.status!=="complete");
-    let status=null,responseMs=null,missing=[],failure="",resourceSnapshot=null,headersChecked=false;
+    let status=null,responseMs=null,missing=[],platformLimitations=[],failure="",resourceSnapshot=null,headersChecked=false;
     try{
       const res=await fetch(site,{method:"GET",redirect:"follow",signal:AbortSignal.timeout(15000)});
       status=res.status;responseMs=Math.round(performance.now()-started);
-      const h=res.headers,checks=[["Content-Security-Policy",h.get("content-security-policy")],["Strict-Transport-Security",h.get("strict-transport-security")],["X-Content-Type-Options",h.get("x-content-type-options")],["X-Frame-Options",h.get("x-frame-options")],["Referrer-Policy",h.get("referrer-policy")]];
-      missing=checks.filter(x=>!x[1]).map(x=>x[0]);headersChecked=true;if(!res.ok)failure="Website returned HTTP "+res.status;
+      const security=await inspectPortfolioSecurity(res);
+      missing=security.missing;platformLimitations=security.platformLimitations;headersChecked=true;if(!res.ok)failure="Website returned HTTP "+res.status;
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
@@ -2714,13 +2714,13 @@ export default {
       }catch(e){console.error("Daily Visitor Intelligence read failed:",String(e&&e.message||e).slice(0,180));}
       const messages=buildDailyReportMessages({
         reportId,stamp,site,status,responseMs,failure,missing,headersChecked,
-        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot
+        activity,prior,ga4:ga4Data,ga4Error,resourceSnapshot,platformLimitations
       });
       const delivery=await sendTelegramReportBatch(env,env.TELEGRAM_CHAT_ID,messages,reportId,{failure,missing});
       console.log("Daily Telegram report delivery:",JSON.stringify(delivery));
     }
     const terminalStatus=failure||missing.length?"warning":"success";
-    const terminalDetail=failure|| (missing.length?"Site check completed; "+missing.length+" security headers missing: "+missing.join(", ")+".":"Site check completed; all security headers present.");
+    const terminalDetail=failure||(missing.length?"Site check completed; "+missing.length+" enforceable security policies missing: "+missing.join(", ")+".":(platformLimitations.length?"Site check completed; GitHub Pages cannot expose these response headers: "+platformLimitations.join(", ")+".":"Site check completed; enforceable security policies verified."));
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
     if(cfg.workflowAlerts||cfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,terminalStatus,terminalDetail);
     } catch(error) {
