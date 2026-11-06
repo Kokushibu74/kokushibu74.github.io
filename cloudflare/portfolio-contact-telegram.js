@@ -827,13 +827,13 @@ async function botSend(env,chatId,text,keyboard,options={}){
   const newMessageId=sent.data.result?.message_id;
   // If Telegram refuses an edit (for example, the anchor message was deleted),
   // replace the stale menu instead of leaving a growing stack of old menus.
-  if(messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
+  if(!options.forceNew&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
     try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
     catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
   }
   try{
     if(options.persistentMenu&&!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
-    await botRememberMenu(env,chatId,newMessageId);
+    if(!options.forceNew||options.persistentMenu)await botRememberMenu(env,chatId,newMessageId);
   }catch(e){
     console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
     if(options.persistentMenu&&newMessageId){
@@ -1022,6 +1022,16 @@ async function botHandleCallback(env,query){
   }
   const action=data.slice(3);
   try{
+    if(action.startsWith("confirm:")||action.startsWith("cancel:")){
+      const confirming=action.startsWith("confirm:"),token=action.slice(confirming?8:7),key="bot:confirm:v1:"+token;
+      const pending=await env.BOT_CONFIG_KV?.get(key,"json");
+      if(!pending||Number(pending.expiresAt)<Date.now()){await env.BOT_CONFIG_KV?.delete(key);await botSend(env,chatId,"⚠️ Confirmation expired or already used. Select the action again.",botBackKeyboard(),{forceNew:true});return true;}
+      if(String(pending.adminId)!==sender||String(pending.chatId)!==String(chatId)){await botAnswerCallback(env,query,"This confirmation belongs to another admin session.",true);return true;}
+      await env.BOT_CONFIG_KV.delete(key);
+      if(!confirming){await botSend(env,chatId,"Action cancelled. No change was made.",botBackKeyboard(),{forceNew:true});return true;}
+      await botRunWithProgress(env,chatId,"Confirmed User Manager action যাচাই ও সম্পন্ন করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:String(pending.command||""),chat:{id:chatId,type:"private"},from:{id:Number(sender)}},{confirmed:true});});
+      return true;
+    }
     // Never overwrite the active menu anchor from a callback payload.
     // Limit persistent menu state writes while keeping idle cleanup accurate.
     await botAnswerCallback(env,query);
@@ -1094,7 +1104,7 @@ async function botHandleCallback(env,query){
   return true;
 }
 
-async function umHandleCommand(env,msg){
+async function umHandleCommand(env,msg,options={}){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
   const commands=new Set(["/start","/menu","/help","/cmd","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
@@ -1172,6 +1182,14 @@ async function umHandleCommand(env,msg){
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
   if(!isAdmin){await umHistory(env,"telegram",sender,{type:"admin_command_rejected",command:cmd});await umReply(env,chatId,"⛔ এই কমান্ড ব্যবহারের অনুমতি নেই।");return true;}
   const arg=parts[0]||"",scopeArg=(parts[1]||"both").toLowerCase();
+  if(!options.confirmed&&["/userrename","/userlink","/userunlink","/userblock","/userunblock"].includes(cmd)){
+    if(!env.BOT_CONFIG_KV){await umReply(env,chatId,"⚠️ Confirmation storage unavailable. Action was not performed.");return true;}
+    const token=crypto.randomUUID(),key="bot:confirm:v1:"+token,expiresAt=Date.now()+300000;
+    await env.BOT_CONFIG_KV.put(key,JSON.stringify({adminId:sender,chatId:String(chatId),command:text,expiresAt}),{expirationTtl:300});
+    const descriptions={"/userrename":"Custom ID পরিবর্তন","/userlink":"Telegram ও Website identity link/relink","/userunlink":"Identity link বিচ্ছিন্ন","/userblock":"User block","/userunblock":"User unblock"};
+    await umReply(env,chatId,"⚠️ CONFIRM ADMIN ACTION\n"+descriptions[cmd]+"\n\nTarget: "+(arg||"Not specified")+"\n\nএটি সম্পন্ন করতে Confirm চাপুন। ৫ মিনিটের মধ্যে নিশ্চিত না করলে বাতিল হবে।",[[{text:"✅ Confirm",callback_data:"b1:confirm:"+token},{text:"✖️ Cancel",callback_data:"b1:cancel:"+token}]],{forceNew:true});
+    return true;
+  }
   try{
     if(cmd==="/userid"){
       const pageNo=Math.max(1,Math.min(999,Number(arg)||1)),limit=10,all=[];
