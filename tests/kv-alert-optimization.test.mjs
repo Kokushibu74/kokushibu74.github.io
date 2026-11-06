@@ -22,7 +22,7 @@ assert.match(tracking, /profileSchemaVersion:2/, "Visitor profile consolidation 
 assert.match(tracking, /old\.customId\|\|userManagerOld\?\.customId/, "Custom IDs must survive legacy profile consolidation");
 assert.match(tracking, /delete\(userManagerProfileKey\)/, "Old duplicate User Manager profile must be removed after migration");
 assert.doesNotMatch(tracking, /put\(UM_PREFIX\+"visitor:"\+id/, "New tracking events must not write a second visitor profile");
-assert.match(tracking, /expirationTtl:90\*86400/, "Daily visitor aggregates must expire after 90 days");
+assert.match(worker, /put\(dailyKey,JSON\.stringify\(dayRecord\),\{expirationTtl:90\*86400\}\)/, "Daily visitor aggregates must expire after 90 days");
 
 const menu = section("async function botMarkMenuInteraction", "async function botEnsureStartKeyboard");
 assert.match(menu, /now-last<30_000/, "Duplicate callback activity writes must be suppressed for 30 seconds");
