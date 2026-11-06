@@ -844,7 +844,7 @@ async function botSend(env,chatId,text,keyboard,options={}){
   const newMessageId=sent.data.result?.message_id;
   // If Telegram refuses an edit (for example, the anchor message was deleted),
   // replace the stale menu instead of leaving a growing stack of old menus.
-  if(!options.forceNew&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
+  if((!options.forceNew||callbackMessageId)&&messageId&&newMessageId&&Number(messageId)!==Number(newMessageId)){
     try{await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(messageId)})}
     catch(e){console.error("Telegram stale menu cleanup failed",String(e&&e.message||e).slice(0,240))}
   }
