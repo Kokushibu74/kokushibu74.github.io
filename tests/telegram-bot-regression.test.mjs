@@ -163,3 +163,11 @@ assert.match(send, /options\.persistentMenu\|\|callbackMessageId/, "If Telegram 
 assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.has\(String\(chatId\)\)/, "Concurrent callback actions in one chat must not race over the same edit target");
 
 console.log("All Telegram inline-button callbacks are bound to the clicked message for edit-in-place navigation.");
+
+const editInPlace = section("async function botSend", "async function botSendChatAction");
+assert.match(editInPlace, /if\(callbackMessageId\)\{\s*throw new Error\("Telegram could not edit the clicked message/, "Callback edit failures must not send replacement messages");
+assert.match(editInPlace, /Only recover automatically when Telegram confirms that the stored anchor/, "Persistent menu fallback must be limited to a deleted or missing anchor");
+assert.doesNotMatch(editInPlace.slice(editInPlace.indexOf("if(callbackMessageId)"), editInPlace.indexOf('const sent=await botTelegram(env,"sendMessage"')), /sendMessage/, "A failed callback edit must stop before sendMessage");
+const callbackFailure = section("async function botHandleCallback", "async function umHandleCommand");
+assert.match(callbackFailure, /await botAnswerCallback\(env,query,"এই পুরোনো\/অপরিবর্তনযোগ্য মেসেজটি আপডেট করা যায়নি/, "Uneditable historical notifications must fail with a callback toast, not a new chat message");
+console.log("Telegram callbacks preserve the clicked message and never create replacement messages when edit is unavailable.");
