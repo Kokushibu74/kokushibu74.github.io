@@ -30,7 +30,7 @@ assert.match(cooldown, /now-last<BOT_START_MENU_COOLDOWN_MS/, "Repeated start re
 assert.match(startButton, /botAllowStartMenu\(msg\.chat\.id\)/, "START BOT must use the burst cooldown");
 assert.match(commandBranch, /botAllowStartMenu\(chatId\)/, "/start and /menu must use the burst cooldown");
 
-assert.match(commandBranch, /botMarkMenuInteraction/, "Repeated /start must update the existing menu activity state");
+assert.match(commandBranch, /botActivateMenu\(env,chatId,isAdmin\)/, "Repeated /start must use the shared menu activation and refresh activity state");
 
 const send = section("async function botSend", "async function botSendChatAction");
 const edit = send.slice(send.indexOf("if(messageId&&!options.forceNew)"), send.indexOf('const sent=await botTelegram(env,"sendMessage"'));
