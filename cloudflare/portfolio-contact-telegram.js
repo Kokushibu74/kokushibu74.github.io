@@ -2264,10 +2264,10 @@ export default {
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
           if(!adminSet.has(String(msg.from.id))){await botSend(env,msg.chat.id,"⛔ Admin access required.",botBackKeyboard());return new Response("OK");}
           if(pending.mode==="search")command="/usersearch "+raw;
-          else if(pending.mode==="history")command="/userhistory "+parts[0];
-          else if(pending.mode==="link")command=/^unlink\s+/i.test(raw)?"/userunlink "+raw.replace(/^unlink\s+/i,""):"/userlink "+raw;
-          else if(pending.mode==="block")command=/^unblock\s+/i.test(raw)?"/userunblock "+raw.replace(/^unblock\s+/i,""):"/userblock "+raw;
-          else if(pending.mode==="rename")command="/userrename "+parts[0]+" "+parts.slice(1).join(" ");
+          else if(pending.mode==="history")command="/userhistory "+(pending.targetId||parts[0]);
+          else if(pending.mode==="link")command=pending.targetId?(/^\d{5,20}$/.test(pending.targetId)?"/userlink "+pending.targetId+" "+raw:"/userlink "+raw+" "+pending.targetId):(/^unlink\s+/i.test(raw)?"/userunlink "+raw.replace(/^unlink\s+/i,""):"/userlink "+raw);
+          else if(pending.mode==="block")command=pending.targetId?(/^unblock$/i.test(raw)?"/userunblock "+pending.targetId:"/userblock "+pending.targetId):(/^unblock\s+/i.test(raw)?"/userunblock "+raw.replace(/^unblock\s+/i,""):"/userblock "+raw);
+          else if(pending.mode==="rename")command=pending.targetId?"/userrename "+pending.targetId+" "+raw:"/userrename "+parts[0]+" "+parts.slice(1).join(" ");
           else if(pending.mode==="visitorinfo")command="/userinfo "+parts[0];
           if(!command.trim()||command.endsWith(" "))await botSend(env,msg.chat.id,"তথ্যটি অসম্পূর্ণ। আবার User Manager থেকে অপশনটি নির্বাচন করুন।",botBackKeyboard());
           else {try{await botRunWithProgress(env,msg.chat.id,"User Manager-এর তথ্য যাচাই ও প্রক্রিয়া করা হচ্ছে...",async()=>{await umHandleCommand(env,{...msg,text:command})})}catch(e){console.error("User Manager button action failed",String(e));await botSend(env,msg.chat.id,"⚠️ User action failed. Existing text commands remain available.",botBackKeyboard())}}
