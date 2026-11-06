@@ -1073,6 +1073,21 @@ async function botHandleCallback(env,query){
     await botAnswerCallback(env,query);
     await botMarkMenuInteraction(env,chatId,query.message?.message_id,false);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
+    if(action.startsWith("github:retry:")){
+      const runId=action.slice("github:retry:".length);
+      if(!/^\d{1,20}$/.test(runId)){await botSend(env,chatId,"Invalid GitHub workflow run ID.",botBackKeyboard(),{forceNew:true});return true;}
+      if(!env.GITHUB_TOKEN){await botSend(env,chatId,"Retry unavailable: GitHub Actions write access is not connected to this Worker.",botBackKeyboard(),{forceNew:true});return true;}
+      await botRunWithProgress(env,chatId,"GitHub-এর নির্দিষ্ট failed workflow run যাচাই করা হচ্ছে...",async()=>{
+        const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Control-Center",Authorization:"Bearer "+env.GITHUB_TOKEN,"X-GitHub-Api-Version":"2022-11-28"};
+        const check=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs/"+runId,{headers,signal:AbortSignal.timeout(10000)}),run=await check.json().catch(()=>({}));
+        if(!check.ok||run.status!=="completed"||run.conclusion!=="failure"||!String(run.path||"").startsWith(".github/workflows/")){
+          await botSend(env,chatId,"⚠️ Retry was not started. The run could not be verified as a completed failed workflow in this repository.\nGitHub HTTP: "+check.status,botBackKeyboard(),{forceNew:true});return;
+        }
+        const retry=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs/"+runId+"/rerun-failed-jobs",{method:"POST",headers,signal:AbortSignal.timeout(12000)});
+        if(retry.status===201||retry.status===200)await botSend(env,chatId,"✅ GitHub accepted the failed-job retry.\nWorkflow: "+String(run.name||"Workflow")+"\nRun: "+String(run.html_url||"")+"\nThe retry is queued; completion is not yet verified.",botBackKeyboard(),{forceNew:true});
+        else{const detail=await retry.text().catch(()=>"");await botSend(env,chatId,"⚠️ GitHub did not accept the retry. HTTP "+retry.status+" · "+detail.slice(0,180),botBackKeyboard(),{forceNew:true});}
+      });return true;
+    }
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
         const site="https://kokushibu74.github.io/",started=Date.now();
