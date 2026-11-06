@@ -219,7 +219,7 @@ console.log("Notification action callbacks preserve the original alert/report wh
 
 const visitorDelivery = section("async function sendVisitorAlertOnce", "async function umReply");
 assert.ok(visitorDelivery.includes('const marker="alert:"+key'), "Visitor alert deduplication must use a stable marker");
-assert.ok(visitorDelivery.includes('const lock="alert:lock:"+key'), "Concurrent visitor alert attempts must use a short-lived lock");
+assert.ok(visitorDelivery.includes('lock="alert:lock:"+key'), "Concurrent visitor alert attempts must use a short-lived lock");
 assert.ok(visitorDelivery.includes("payload.ok!==true"), "HTTP success alone must not count as successful Telegram delivery");
 assert.ok(visitorDelivery.includes("await env.VISITOR_KV.put(marker,JSON.stringify"), "The deduplication marker must be written after Telegram confirms delivery");
 assert.ok(visitorDelivery.includes("await env.VISITOR_KV.delete(lock)"), "The in-flight lock must be cleared after success or failure");
