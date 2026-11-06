@@ -201,3 +201,17 @@ assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.delete\(String\(chatId\)\)/, "B
 assert.match(callbackEdit, /botTelegram\(env,"sendMessage"/, "Only a real callback failure may send a separate reply");
 assert.match(source, /callback_data:"b1:start"/, "Visible Start Bot must not share a generic Home callback");
 console.log("Button route audit: Start, home, status, User Manager, toggles, refresh, logs, recovery and notification callbacks have handlers.");
+
+
+assert.match(callbackEdit, /const notificationAction=action\.startsWith\("alert:"\)/, "Notification callbacks must be identified independently of menu callbacks");
+assert.match(callbackEdit, /if\(notificationAction\)action=action\.slice\(6\)/, "Notification callback actions must reuse the same real backend handlers");
+assert.match(callbackEdit, /if\(callbackMessageId&&!notificationAction\)/, "Critical notifications must not become the edit target");
+assert.match(callbackEdit, /notificationAction\?null:query\.message\?\.message_id/, "Notification clicks must not replace the active menu anchor");
+assert.match(source, /callback_data:"b1:alert:news"/);
+assert.match(source, /callback_data:"b1:alert:refresh"/);
+assert.match(source, /callback_data:"b1:alert:status:security:3"/);
+assert.match(source, /callback_data:"b1:alert:status:reports:1"/);
+assert.match(source, /callback_data:"b1:alert:status:analytics:3"/);
+const workflowReportSource=readFileSync(new URL("../scripts/news_telegram_report.py", import.meta.url), "utf8");
+assert.match(workflowReportSource, /"callback_data": "b1:alert:github:retry:/, "GitHub failure retry must preserve the original notification");
+console.log("Notification action callbacks preserve the original alert/report while rendering results in the existing Control Center menu.");

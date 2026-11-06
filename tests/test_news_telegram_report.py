@@ -264,7 +264,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
         try:
             markup = {"inline_keyboard": [[
                 {"text": "Open Workflow", "url": "https://github.com/Kokushibu74/kokushibu74.github.io/actions/runs/123456"},
-                {"text": "Retry Failed Jobs", "callback_data": "b1:github:retry:123456"},
+                {"text": "Retry Failed Jobs", "callback_data": "b1:alert:github:retry:123456"},
             ]]}
             result = report.send_telegram_report("fake-token", "12345", "Failure report", reply_markup=markup)
             self.assertIsNone(result)
@@ -281,7 +281,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
             return {"ok": False, "description": "custom emoji rejected"} if len(calls) == 1 else {"ok": True, "result": {"message_id": 8}}
         report.telegram_call = fake_call
         try:
-            markup = {"inline_keyboard": [[{"text": "Retry", "callback_data": "b1:github:retry:123456"}]]}
+            markup = {"inline_keyboard": [[{"text": "Retry", "callback_data": "b1:alert:github:retry:123456"}]]}
             report.send_telegram_report("fake-token", "12345", '<tg-emoji emoji-id="1">🚀</tg-emoji>', {"rocket": "1"}, reply_markup=markup)
             self.assertEqual(len(calls), 2)
             self.assertEqual(calls[0]["reply_markup"], markup)
