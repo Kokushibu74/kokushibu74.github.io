@@ -1118,6 +1118,11 @@ async function botHandleCallback(env,query){
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
       await botSend(env,chatId,(mode==="linked"?"🔗 LINKED USERS":"🚫 BLOCKED USERS")+"\nPage "+pageNo+" / "+totalPages+" · "+keys.length+" records\n\n"+(rows.map((x,i)=>(i+1)+". "+x.label).join("\n")||"No records found.")+(keys.truncated?"\n\n⚠️ Listing capped at 5,000 records.":"")+"\n\nSelect a profile below.",keyboard,{forceNew:true});return true;
     }
+    if(action.startsWith("users:searchpage:")){
+      const bits=action.split(":"),token=bits[2],page=Math.max(1,Number(bits[3])||1),stored=await env.BOT_CONFIG_KV?.get("bot:user-search:"+token,"json");
+      if(!stored||Number(stored.expiresAt)<Date.now()){await botSend(env,chatId,"Search session expired. Search again.",botBackKeyboard(),{forceNew:true});return true;}
+      await umHandleCommand(env,{text:"/usersearch "+String(stored.query||"")+" "+page,chat:{id:chatId,type:"private"},from:{id:Number(sender)}});return true;
+    }
     if(action==="users:history"){
       const keys=await umList(env,UM_PREFIX+"history:",1000,5),rows=[];
       for(const key of keys.slice(-15).reverse()){const event=await env.VISITOR_KV.get(key.name,"json");if(event)rows.push("• "+new Date(event.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+event.kind+" · "+String(event.event?.type||event.event?.command||"event"));}
@@ -1346,10 +1351,24 @@ async function umHandleCommand(env,msg,options={}){
       const lines=rows.slice(start,start+10).map(e=>new Date(e.at).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" · "+e.event.type+(e.event.command?" · "+e.event.command:"")+(e.event.path?" · "+e.event.path:""));
       await umReply(env,chatId,"🕘 History "+user.id+" · "+rows.length+" events\n"+(lines.join("\n")||"কোনো history নেই.")+"\nPage "+pageNo,botBackKeyboard(),{forceNew:true});
     }else if(cmd==="/usersearch"){
-      const q=arg.toLowerCase();if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT");return true;}
-      const found=[];for(const prefix of [UM_PREFIX+"telegram:",UM_PREFIX+"visitor:"]){for(const k of await umList(env,prefix)){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push((p.kind||"visitor")+" · "+(p.customId||p.id||p.visitorId));if(found.length>=20)break;}}
-      if(found.length<20)for(const k of await umList(env,"visitor:")){const p=await env.VISITOR_KV.get(k.name,"json");if(p&&JSON.stringify(p).toLowerCase().includes(q))found.push("visitor · "+(p.customId||p.visitorId||k.name.slice(8)));if(found.length>=20)break;}
-      await umReply(env,chatId,"🔎 Search results\n"+(found.join("\n")||"কোনো match পাওয়া যায়নি."));
+      const hasPage=parts.length>1&&/^\d+$/.test(parts[parts.length-1]),pageNo=Math.max(1,Math.min(999,hasPage?Number(parts[parts.length-1]):1)),query=(hasPage?parts.slice(0,-1):parts).join(" ").trim(),q=query.toLowerCase();
+      if(!q){await umReply(env,chatId,"ব্যবহার: /usersearch TEXT [PAGE]");return true;}
+      const found=[],seen=new Set();
+      for(const prefix of [UM_PREFIX+"telegram:",UM_PREFIX+"visitor:","visitor:"]){
+        const keys=await umList(env,prefix,1000,5);
+        for(const k of keys){
+          const p=await env.VISITOR_KV.get(k.name,"json");if(!p||!JSON.stringify(p).toLowerCase().includes(q))continue;
+          const kind=prefix==="visitor:"?"visitor":(prefix===UM_PREFIX+"telegram:"?"telegram":"visitor"),id=String(p.id||p.visitorId||k.name.slice(prefix.length)),identity=kind+":"+id;
+          if(!id||seen.has(identity))continue;seen.add(identity);
+          found.push({kind,id,label:String(p.customId||(p.username?"@"+p.username:"")||p.firstName||p.device?.deviceModel||id)});
+        }
+      }
+      const pageSize=10,totalPages=Math.max(1,Math.ceil(found.length/pageSize)),items=found.slice((pageNo-1)*pageSize,pageNo*pageSize),token=crypto.randomUUID();
+      if(env.BOT_CONFIG_KV)await env.BOT_CONFIG_KV.put("bot:user-search:"+token,JSON.stringify({query,expiresAt:Date.now()+600000}),{expirationTtl:600});
+      const keyboard=items.map(u=>[{text:String((u.kind==="visitor"?"WEB ":"TG ")+u.label).slice(0,55),callback_data:"b1:users:profile:"+u.kind+":"+u.id+":1"}]);
+      const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:searchpage:"+token+":"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:searchpage:"+token+":"+(pageNo+1)});if(nav.length)keyboard.push(nav);
+      keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
+      await umReply(env,chatId,"🔎 SEARCH RESULTS · "+found.length+" matches\nQuery: "+query+"\nPage "+pageNo+" / "+totalPages+"\n\n"+(items.map((u,i)=>(i+1)+". "+u.kind+" · "+u.label).join("\n")||"কোনো match পাওয়া যায়নি."),keyboard,{forceNew:true});
     }else if(cmd==="/userstats"){
       const [tg,vis,legacy,blocks,hist]=await Promise.all([umList(env,UM_PREFIX+"telegram:"),umList(env,UM_PREFIX+"visitor:"),umList(env,"visitor:"),umList(env,UM_PREFIX+"block:"),umList(env,UM_PREFIX+"history:")]);
       const websiteCount=new Set([...vis.map(k=>k.name.slice((UM_PREFIX+"visitor:").length)),...legacy.map(k=>k.name.slice(8))]).size;
