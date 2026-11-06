@@ -123,6 +123,7 @@ assert.match(source, /users:searchpage:/, "User Manager search results must supp
 assert.match(source, /\.join\(" "\)\.trim\(\)/, "User Manager search must accept multi-word terms");
 assert.match(source, /b1:users:history:/, "Selected-user history must have pagination callbacks");
 assert.match(source, /b1:users:profile:/, "Telegram and visitor directory entries must open profiles");
+assert.match(callbackHandler, /user=await umResolve\(env,id\)/, "Manage profile callbacks must pass the Worker environment to umResolve");
 const miniAppSource = readFileSync(new URL("../miniapp/app.js", import.meta.url), "utf8");
 assert.match(miniAppSource, /"newsAlerts","workflowAlerts"/, "Mini App must expose the existing Bangladesh news alert toggle");
 assert.match(miniAppSource, /newsAlerts:"Bangladesh News Alerts"/);
