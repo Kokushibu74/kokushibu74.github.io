@@ -1007,13 +1007,14 @@ async function botStatusText(env,category,index){
   }else if(category==="github"){
     const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
-    const [repoRes,commitRes]=await Promise.all([
+    const [repoRes,commitRes,runsRes]=await Promise.all([
       fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io",{headers,signal:AbortSignal.timeout(10000)}),
-      fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/commits?per_page=1",{headers,signal:AbortSignal.timeout(10000)})
+      fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/commits?per_page=1",{headers,signal:AbortSignal.timeout(10000)}),
+      fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/runs?per_page=5",{headers,signal:AbortSignal.timeout(10000)})
     ]);
-    const repoData=await repoRes.json().catch(()=>({})),commits=await commitRes.json().catch(()=>[]);
-    const commit=Array.isArray(commits)?commits[0]:null;
-    lines.push("📁 Repository: "+(repoData.full_name||"তথ্য পাওয়া যায়নি"),"🌿 Default Branch: "+(repoData.default_branch||"অজানা"),"🔐 Visibility: "+(repoData.private?"Private":"Public / অথবা API-তে private নয়"),"📡 Repository API: HTTP "+repoRes.status,"📡 Commit API: HTTP "+commitRes.status,"","🧾 সর্বশেষ Commit: "+String(commit?.sha||"তথ্য পাওয়া যায়নি").slice(0,12),"💬 Commit Message: "+String(commit?.commit?.message||"তথ্য পাওয়া যায়নি").split("\n")[0].slice(0,200),"","নোট: Workflow-এর বিস্তারিত Run History GitHub Actions পেজে দেখা যাবে।");
+    const repoData=await repoRes.json().catch(()=>({})),commits=await commitRes.json().catch(()=>[]),runsData=await runsRes.json().catch(()=>({}));
+    const commit=Array.isArray(commits)?commits[0]:null,workflowRows=(runsData.workflow_runs||[]).slice(0,5).map(run=>"• "+String(run.name||"Workflow")+" · "+String(run.status||"unknown")+(run.conclusion?" / "+run.conclusion:"")+" · "+String(run.head_branch||"")+" · "+String(run.html_url||""));
+    lines.push("📁 Repository: "+(repoData.full_name||"তথ্য পাওয়া যায়নি"),"🌿 Default Branch: "+(repoData.default_branch||"অজানা"),"🔐 Visibility: "+(repoData.private?"Private":"Public / অথবা API-তে private নয়"),"📡 Repository API: HTTP "+repoRes.status,"📡 Commit API: HTTP "+commitRes.status,"📡 Workflow API: HTTP "+runsRes.status,"","🧾 সর্বশেষ Commit: "+String(commit?.sha||"তথ্য পাওয়া যায়নি").slice(0,12),"💬 Commit Message: "+String(commit?.commit?.message||"তথ্য পাওয়া যায়নি").split("\n")[0].slice(0,200),"","⚙️ Latest GitHub Actions:",...(workflowRows.length?workflowRows:["• Workflow run data unavailable"]));
   }else if(category==="reports"){
     const day=bdDay(),a=await readDailyActivity(env,day);
     lines.push("⚙️ Daily Report: "+onOff(cfg.dailyReport),"⚙️ Website Monitoring: "+onOff(cfg.monitoring),"📅 আজকের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 আজকের Unique Visitors: "+a.unique,"🔁 Sessions: "+a.sessions,"👁️ Page Views: "+a.views,"","🕚 নির্ধারিত রিপোর্ট সময়: রাত ১১টা (বাংলাদেশ সময়)","⏱️ Worker Cron: প্রতি ৩০ মিনিটে চলে; তাই রিপোর্ট নির্ধারিত সময়ের কাছাকাছি cron run-এ পাঠানো হয়।","ℹ️ Daily Report OFF করলে স্বয়ংক্রিয় দৈনিক রিপোর্ট তৈরি/পাঠানোর অংশ বন্ধ থাকবে।");
@@ -1512,7 +1513,7 @@ async function miniAppCronAlert(env,cron,status,detail){
   const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
   const title=failed?"🚨 <b>AUTOMATION FAILURE</b>":"✅ <b>AUTOMATION RECOVERED</b>";
   const body=[title,"⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)",(failed?"❌ ":"✅ ")+escape(detail||status)].join("\n");
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true,...(failed?{reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:status:website:1"},{text:"Diagnostics",callback_data:"b1:logs"}],[{text:"Automation",callback_data:"b1:automation"}]]}}:{})}),signal:AbortSignal.timeout(10000)});
   const payload=await response.json().catch(()=>({}));
   if(!response.ok||!payload.ok)throw new Error("Telegram automation alert failed (HTTP "+response.status+")");
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:7776000});
@@ -1784,7 +1785,7 @@ async function notifyNewsWatchdogFailure(env,error){
   const transient=/temporarily failed|temporary GitHub API/i.test(detail);
   const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
   const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true}),signal:AbortSignal.timeout(10000)});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Details",callback_data:"b1:news"},{text:"Logs",callback_data:"b1:logs"}],[{text:"Retry News Refresh",callback_data:"b1:refresh"}]]}}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
@@ -2185,7 +2186,7 @@ export default {
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
       if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
-      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true})})}catch(e){console.error("Visitor alert failed",String(e))}};
+      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:status:security:3"},{text:"Security Center",callback_data:"b1:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:website"},{text:"Logs",callback_data:"b1:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:status:analytics:3"},{text:"Details",callback_data:"b1:analytics"}]]};try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:markup})})}catch(e){console.error("Visitor alert failed",String(e))}};
       if(pageView&&traffic===40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
