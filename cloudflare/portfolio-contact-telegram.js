@@ -937,7 +937,8 @@ async function botCategory(env,chatId,category){
     const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh","newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
     const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",newsAlerts:"Bangladesh News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     for(const k of keys)rows.push([{text:(cfg[k]?"🟢 ":"⚪ ")+pretty[k]+" · "+(cfg[k]?"ON":"OFF"),callback_data:"b1:toggle:"+k}]);
-    rows.push([{text:"🗓 Scheduled Tasks",callback_data:"b1:status:automation:2"},{text:"▶️ Refresh Now",callback_data:"b1:refresh"}]);
+    rows.push([{text:"🗓 Scheduled Tasks",callback_data:"b1:status:automation:2"},{text:"▶️ Manual Actions",callback_data:"b1:status:automation:3"}]);
+     rows.push([{text:"🔄 Refresh Now",callback_data:"b1:refresh"}]);
   }else if(category==="users"){
     rows.push([{text:"👥 All Users",callback_data:"b1:users:list"},{text:"🔎 Find User",callback_data:"b1:users:search"}]);
     rows.push([{text:"🔗 Linked Users",callback_data:"b1:users:linked"},{text:"🚫 Blocked Users",callback_data:"b1:users:blocked"}]);
