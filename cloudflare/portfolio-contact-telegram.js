@@ -950,6 +950,15 @@ async function botCategory(env,chatId,category){
   await botSend(env,chatId,names[0]+"\n\nএই বিভাগের অপশনগুলো নিচে দেওয়া হলো। প্রতিটি অপশনে চাপলে সংশ্লিষ্ট তথ্য বা নিয়ন্ত্রণ দেখানো হবে।\n\nকোনো সেটিংস ON/OFF করলে পরিবর্তনটি সংরক্ষিত হবে এবং মেনুতে নতুন অবস্থা দেখা যাবে।",rows);
 }
 
+async function botSecurityEvents(env,limit=10){
+  if(!env.VISITOR_KV)return [];
+  const keys=await umList(env,"security:event:v1:",1000,2),rows=[];
+  for(const key of keys.slice(-Math.max(1,Math.min(50,limit))).reverse()){
+    const event=await env.VISITOR_KV.get(key.name,"json");
+    if(event)rows.push(event);
+  }
+  return rows.sort((a,b)=>Number(b.at||0)-Number(a.at||0));
+}
 async function botStatusText(env,category,index){
   const site="https://kokushibu74.github.io/";
   const cfg=await botConfig(env);
@@ -1000,10 +1009,15 @@ async function botStatusText(env,category,index){
       lines.push("📅 রিপোর্টের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 Unique Visitors: "+a.unique,"   গতকালের তুলনায়: "+change(a.unique,p.unique),"🔁 Sessions: "+a.sessions,"   গতকালের তুলনায়: "+change(a.sessions,p.sessions),"👁️ Page Views: "+a.views,"   গতকালের তুলনায়: "+change(a.views,p.views),"⚠️ Client Errors: "+a.errors,"","🔥 জনপ্রিয় পেজ:",...(a.pages.length?a.pages.map((x,i)=>(i+1)+". "+x):["   এখনো কোনো Page View data নেই"]),"","🌍 শীর্ষ দেশ:",...(a.countries.length?a.countries.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"📱 ডিভাইস:",...(a.devices.length?a.devices.map(x=>"• "+x):["• তথ্য পাওয়া যায়নি"]),"","ডেটার উৎস: Cloudflare Visitor KV। এটি GA4-এর Active Users বা GA4 Sessions নয়।");
     }
   }else if(category==="security"){
-    const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
-    const checks=[["Content-Security-Policy (CSP)","content-security-policy"],["Strict-Transport-Security (HSTS)","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
-    const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
-    lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
+    if(index===3){
+      const events=await botSecurityEvents(env,12);
+      lines.push("🛡️ RECENT SECURITY EVENTS",...(events.length?events.map(e=>"• "+new Date(e.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT · "+String(e.type||"event")+" · "+String(e.visitorId||"Unknown visitor")+" · "+String(e.page||"Page unavailable")):["• No security event records are available yet."]),"","Source: append-only Visitor KV security:event:v1 records. This is not a full Cloudflare WAF or runtime audit log.");
+    }else{
+      const r=await fetch(site,{redirect:"follow",signal:AbortSignal.timeout(12000)}),h=r.headers;
+      const checks=[["Content-Security-Policy (CSP)","content-security-policy"],["Strict-Transport-Security (HSTS)","strict-transport-security"],["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"],["Referrer-Policy","referrer-policy"]];
+      const present=checks.filter(x=>h.get(x[1])).map(x=>x[0]),missing=checks.filter(x=>!h.get(x[1])).map(x=>x[0]);
+      lines.push("🌐 Homepage HTTP: "+r.status,"🛡️ Emergency Protection: "+onOff(cfg.emergencyProtection),"","✅ পাওয়া Security Headers:",...(present.length?present.map(x=>"• "+x):["• কোনো তালিকাভুক্ত Header পাওয়া যায়নি"]),"","⚠️ অনুপস্থিত / response-এ প্রকাশিত নয়:",...(missing.length?missing.map(x=>"• "+x):["• তালিকাভুক্ত সব Header পাওয়া গেছে"]),"","গুরুত্বপূর্ণ: Proxy বা hosting layer header যোগ/পরিবর্তন করতে পারে। এই quick check দিয়ে সাইট সম্পূর্ণ নিরাপদ—এমন সিদ্ধান্ত দেওয়া যায় না।");
+    }
   }else if(category==="github"){
     const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28"};
     if(env.GITHUB_TOKEN)headers.Authorization="Bearer "+env.GITHUB_TOKEN;
@@ -1034,7 +1048,8 @@ async function botStatusText(env,category,index){
         else lines.push("⚙️ GITHUB ACTIONS · LATEST RUNS",...(data.workflow_runs||[]).map(run=>"• "+String(run.name||"Workflow")+" · "+String(run.status||"unknown")+(run.conclusion?" / "+run.conclusion:"")+" · "+String(run.head_branch||"")+" · "+String(run.html_url||"")));
       }
     }else if(index===3){
-      lines.push("🛡️ SECURITY LOGS","Status: NOT AVAILABLE as a separate persistent security-event stream.","Mini App audit events and User Manager history are separate sources; neither is being labelled as Worker security logs.");
+      const events=await botSecurityEvents(env,12);
+      lines.push("🛡️ SECURITY LOGS",...(events.length?events.map(e=>"• "+new Date(e.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT · "+String(e.type||"event")+" · "+String(e.visitorId||"Unknown visitor")+" · "+String(e.page||"Page unavailable")):["• No persistent security event records are available yet."]),"","Source: Visitor KV security:event:v1. Worker Runtime Logs remain a separate Cloudflare Observability source.");
     }else{
       const keys=await umList(env,UM_PREFIX+"history:",12),rows=[];
       for(const key of keys.slice(-8).reverse()){const v=await env.VISITOR_KV.get(key.name,"json");if(v)rows.push("• "+new Date(v.at||0).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" (BDT) · "+v.kind+" · "+String(v.event?.type||v.event?.command||"event"));}
@@ -2201,7 +2216,7 @@ export default {
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
       if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
-      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:status:security:3"},{text:"Security Center",callback_data:"b1:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:website"},{text:"Logs",callback_data:"b1:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:status:analytics:3"},{text:"Details",callback_data:"b1:analytics"}]]};try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:markup})})}catch(e){console.error("Visitor alert failed",String(e))}};
+      const sendAlert=async(key,text)=>{const marker="alert:"+key;const seen=await env.VISITOR_KV.get(marker);if(seen)return;await env.VISITOR_KV.put(marker,"1",{expirationTtl:86400});if(key.startsWith("security:"))await env.VISITOR_KV.put("security:event:v1:"+String(now).padStart(13,"0")+":"+crypto.randomUUID(),JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:status:security:3"},{text:"Security Center",callback_data:"b1:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:website"},{text:"Logs",callback_data:"b1:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:status:analytics:3"},{text:"Details",callback_data:"b1:analytics"}]]};try{await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:botFormatTelegramResponse(text,{parse_mode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:markup})})}catch(e){console.error("Visitor alert failed",String(e))}};
       if(pageView&&traffic===40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
