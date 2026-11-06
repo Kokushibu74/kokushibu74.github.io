@@ -118,3 +118,15 @@ assert.doesNotMatch(miniAppApi, /if\(!cfg\.newsRefresh\)/, "Manual refresh must 
 assert.match(miniAppApi, /newsRefresh_manual_attempt/);
 
 console.log("User Manager search/history pagination and Mini App alert/manual refresh contracts verified.");
+
+
+assert.match(source, /function botClaimCallback/, "Rapid duplicate callbacks must be suppressed");
+assert.match(source, /github:retry:/);
+assert.match(source, /rerun-failed-jobs/, "GitHub Retry must rerun the exact failed run, not a generic workflow");
+assert.match(source, /security:event:v1:/, "Security alert events must be persisted as their own source");
+assert.match(source, /botSecurityEvents\(env,12\)/, "Security Center and Security Logs must use the persisted security-event source");
+assert.match(source, /Retry News Refresh/, "News watchdog failures must expose a working retry callback");
+assert.match(source, /reply_markup:markup/, "Visitor alerts must include contextual actions");
+assert.match(source, /Full Report.*Traffic/s, "Daily report notifications must expose report and traffic actions");
+
+console.log("Notification actions, exact GitHub retry, security event storage and callback deduplication verified.");
