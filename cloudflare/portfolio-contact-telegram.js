@@ -325,11 +325,28 @@ function dailyReportVisitorDetailsLines(activity){
   lines.push(dailyReportMarkdownEscape("Active duration, exact exit time and scroll duration are not measured."));
   return lines;
 }
+async function inspectPortfolioSecurity(response){
+  const headers=response.headers||new Headers();
+  const html=await response.clone().text().catch(()=> "");
+  const cspMeta=/<meta\\b[^>]*http-equiv\\s*=\\s*["']content-security-policy["'][^>]*>/i.test(html);
+  const referrerMeta=/<meta\\b[^>]*name\\s*=\\s*["']referrer["'][^>]*>/i.test(html);
+  const isGitHubPages=(()=>{try{return new URL(response.url).hostname.endsWith(".github.io")}catch{return false}})();
+  const checks=[["Content-Security-Policy",!!headers.get("content-security-policy")||cspMeta],["Strict-Transport-Security",!!headers.get("strict-transport-security")],["Referrer-Policy",!!headers.get("referrer-policy")||referrerMeta]];
+  const missing=checks.filter(([,ok])=>!ok).map(([name])=>name);
+  const present=checks.filter(([,ok])=>ok).map(([name])=>name);
+  const platformLimitations=[];
+  for(const [name,header] of [["X-Content-Type-Options","x-content-type-options"],["X-Frame-Options","x-frame-options"]]){
+    if(!headers.get(header)){if(isGitHubPages)platformLimitations.push(name);else missing.push(name);}
+    else present.push(name);
+  }
+  return {present,missing,platformLimitations};
+}
 function dailyReportRecommendations(input){
   const out=[];
   if(input.failure)out.push("CRITICAL: Website check failed. Verify GitHub Pages availability and the latest deployment.");
   if(!input.headersChecked)out.push("Security headers could not be inspected; rerun the check after the website responds normally.");
-  if(input.missing?.length)out.push("Missing security headers: "+input.missing.join(", ")+". Configure at the hosting/CDN layer and test CSP carefully to preserve GA4 and AdSense.");
+  if(input.missing?.length)out.push("Missing enforceable security policies: "+input.missing.join(", ")+". Review the hosting/CDN configuration.");
+  if(input.platformLimitations?.length)out.push("GitHub Pages cannot configure these response headers: "+input.platformLimitations.join(", ")+". A custom domain behind Cloudflare or another header-capable host is required to enforce them.");
   if(input.activity&&input.prior&&(input.activity.unique<input.prior.unique||input.activity.views<input.prior.views))out.push("Traffic is lower than yesterday. Compare the 7-day trend before deciding on a cause.");
   if(input.activity?.errors>0)out.push("Visitor tracking recorded "+input.activity.errors+" client errors. Inspect affected pages and browser console reports.");
   if(!input.ga4)out.push("GA4 data was unavailable. Check the existing service-account permission and Analytics property access.");
@@ -343,7 +360,7 @@ function dailyReportRecommendations(input){
 function buildDailyReportMessages(input){
   const id=String(input.reportId||"Unavailable");
   const online=!input.failure&&String(input.status||"").startsWith("2");
-  const health=!online?"CRITICAL":(!input.headersChecked||input.missing?.length)?"NEEDS ATTENTION":"HEALTHY";
+  const health=!online?"CRITICAL":(!input.headersChecked||input.missing?.length)?"NEEDS ATTENTION":input.platformLimitations?.length?"HOST-LIMITED":"HEALTHY";
   const activity=input.activity;
   const plain=dailyReportMarkdownEscape;
   const bold=dailyReportBold;
@@ -362,7 +379,7 @@ function buildDailyReportMessages(input){
     "⚡ "+plain("Response: "+(input.responseMs===null?"Unavailable":input.responseMs+" ms")),
     "👥 "+plain("Visitors: "+(activity?activity.unique:"Unavailable")+" · Page views: "+(activity?activity.views:"Unavailable")),
     "⚠️ "+plain("Client errors: "+(activity?activity.errors:"Unavailable")),
-    "🔐 "+plain("Security headers: "+(!input.headersChecked?"Check unavailable":(input.missing?.length?input.missing.length+" need review":"All checked headers present"))),
+    "🔐 "+plain("Security policies: "+(!input.headersChecked?"Check unavailable":(input.missing?.length?input.missing.length+" need review":input.platformLimitations?.length?input.platformLimitations.length+" host limitations":"Enforceable policies verified"))),
     "",
     row("OVERALL HEALTH",health),
     plain("Traffic details: 02/05 · Visitor profiles: 03/05 · Actions: 05/05")
@@ -411,14 +428,15 @@ function buildDailyReportMessages(input){
     metrics.length?plain("Coverage: 3 Workers · 6 existing KV namespaces · 1 D1 database · Workers AI binding"):"⚠️ "+plain("Cloudflare resource metrics unavailable."),
     plain("Workers requests/CPU and KV usage are account-wide; D1 usage covers the account’s only database. Analytics values are estimates, not the billing ledger; Workers AI usage is adaptively sampled.")
   ];
-  const securityStatus=!input.headersChecked?"CHECK UNAVAILABLE":input.missing?.length?"REVIEW REQUIRED":"STABLE";
+  const securityStatus=!input.headersChecked?"CHECK UNAVAILABLE":input.missing?.length?"REVIEW REQUIRED":input.platformLimitations?.length?"HOST-LIMITED":"STABLE";
   const security=[
     bold("05/05 · SECURITY & ACTION PLAN"),
     plain("REPORT ID: "+id),
     row("Security status",securityStatus),
     "",
     bold("SECURITY HEADER CHECK"),
-    ...(!input.headersChecked?[plain("⚠️ Header inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 All checked response headers are present.")]),
+    ...(!input.headersChecked?[plain("⚠️ Policy inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 Enforceable policies verified.")]),
+    ...(input.platformLimitations||[]).map(name=>"ℹ️ "+plain("Hosting limitation: "+name)),
     "",
     bold("RECOMMENDED ACTIONS"),
     ...dailyReportRecommendations(input).map((item,index)=>plain((index+1)+". "+item)),
