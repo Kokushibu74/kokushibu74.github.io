@@ -912,7 +912,7 @@ async function botCategory(env,chatId,category){
   const names=labels[category];if(!names){await botShowMenu(env,chatId);return}
   const rows=[];
   if(category==="automation"||category==="alerts"){
-    const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
+    const keys=category==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh","newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"]:["newsAlerts","workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
     const pretty={monitoring:"Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"News Refresh",newsAlerts:"Bangladesh News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     for(const k of keys)rows.push([{text:(cfg[k]?"🟢 ":"⚪ ")+pretty[k]+" · "+(cfg[k]?"ON":"OFF"),callback_data:"b1:toggle:"+k}]);
     rows.push([{text:"ℹ️ Refresh is always manual",callback_data:"b1:info:manual"}]);
@@ -1004,7 +1004,7 @@ async function botStatusText(env,category,index){
     const day=bdDay(),a=await readDailyActivity(env,day);
     lines.push("⚙️ Daily Report: "+onOff(cfg.dailyReport),"⚙️ Website Monitoring: "+onOff(cfg.monitoring),"📅 আজকের তারিখ: "+day+" (বাংলাদেশ সময়)","👤 আজকের Unique Visitors: "+a.unique,"🔁 Sessions: "+a.sessions,"👁️ Page Views: "+a.views,"","🕚 নির্ধারিত রিপোর্ট সময়: রাত ১১টা (বাংলাদেশ সময়)","⏱️ Worker Cron: প্রতি ৩০ মিনিটে চলে; তাই রিপোর্ট নির্ধারিত সময়ের কাছাকাছি cron run-এ পাঠানো হয়।","ℹ️ Daily Report OFF করলে স্বয়ংক্রিয় দৈনিক রিপোর্ট তৈরি/পাঠানোর অংশ বন্ধ থাকবে।");
   }else if(category==="settings"){
-    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"Automatic News Refresh",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
+    const names={monitoring:"Website Monitoring",dailyReport:"Daily Report",scheduledChecks:"Scheduled Checks",newsRefresh:"Automatic News Refresh",newsAlerts:"Bangladesh News Alerts",workflowAlerts:"Workflow Alerts",trafficAlerts:"Traffic Alerts",clientErrorAlerts:"Client Error Alerts",securityAlerts:"Security Alerts",emergencyProtection:"Emergency Protection"};
     lines.push("🔧 বর্তমান সেটিংস:",...Object.entries(cfg).filter(([k,v])=>typeof v==="boolean").map(([k,v])=>(v?"🟢":"⚪")+" "+(names[k]||k)+": "+(v?"ON — চালু":"OFF — বন্ধ")),"","💾 Configuration Storage: "+(env.BOT_CONFIG_KV?"সংযুক্ত (Connected)":"সংযুক্ত নয়"),"ℹ️ Automation ও Alerts মেনু থেকে সমর্থিত সুইচগুলো পরিবর্তন করা যায়।");
   }else if(category==="logs"){
     if(index===1){
@@ -1042,6 +1042,7 @@ async function botHandleCallback(env,query){
   const action=data.slice(3);
   try{
     if(action.startsWith("confirm:")||action.startsWith("cancel:")){
+      await botAnswerCallback(env,query);
       const confirming=action.startsWith("confirm:"),token=action.slice(confirming?8:7),key="bot:confirm:v1:"+token;
       const pending=await env.BOT_CONFIG_KV?.get(key,"json");
       if(!pending||Number(pending.expiresAt)<Date.now()){await env.BOT_CONFIG_KV?.delete(key);await botSend(env,chatId,"⚠️ Confirmation expired or already used. Select the action again.",botBackKeyboard(),{forceNew:true});return true;}
@@ -1240,7 +1241,7 @@ async function umHandleCommand(env,msg,options={}){
       section=context.section||"website";index=Number(context.index)||1;
       if(context.view==="category"){await botCategory(env,chatId,section);return true;}
     }else{
-      const map={"/health":["website",1],"/errors":["logs",1],"/logs":["logs",1],"/history":["logs",1],"/sources":["news",3],"/traffic":["analytics",3],"/report":["reports",1]};
+      const map={"/health":["website",1],"/errors":["logs",1],"/logs":["logs",1],"/history":["logs",4],"/sources":["news",3],"/traffic":["analytics",3],"/report":["reports",1]};
       [section,index]=map[cmd];
     }
     await botSetContext(env,chatId,{section,view:"status",index,actionId:"shortcut:"+cmd});
