@@ -47,7 +47,7 @@ assert.match(webhook, /return new Response\("OK"\)/, "Application errors must be
 
 const cronAlert = section("async function miniAppCronAlert", "async function miniAppCronHistory");
 assert.match(cronAlert, /if\(!shouldNotify\)return/, "Stable cron success states must not write to KV every 30 minutes");
-const scheduledHealth = section('const terminalStatus=failure?"warning":"success";', 'await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus');
+const scheduledHealth = section('const terminalStatus=failure||missing.length?"warning":"success";', 'await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus');
 assert.ok(scheduledHealth.includes('failure||missing.length?"warning":"success"'), "Missing security headers must trigger a warning alert even when the website returns HTTP 200");
 assert.ok(scheduledHealth.includes('missing.join(", ")'), "Security header warnings must identify the missing headers");
 
