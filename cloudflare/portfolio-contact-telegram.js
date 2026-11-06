@@ -1153,8 +1153,8 @@ async function botHandleCallback(env,query){
       await botRunWithProgress(env,chatId,"Confirmed User Manager action যাচাই ও সম্পন্ন করা হচ্ছে...",async()=>{await umHandleCommand(env,{text:String(pending.command||""),chat:{id:chatId,type:"private"},from:{id:Number(sender)}},{confirmed:true});});
       return true;
     }
-    // Never overwrite the active menu anchor from a callback payload.
-    // Limit persistent menu state writes while keeping idle cleanup accurate.
+    // The clicked inline message is now the active menu anchor for this callback.
+    // Keep interaction metadata writes throttled while preserving idle cleanup.
     await botAnswerCallback(env,query);
     await botMarkMenuInteraction(env,chatId,query.message?.message_id,false);
     if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
