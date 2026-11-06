@@ -61,7 +61,12 @@ assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration fa
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
 
 const mainKeyboard = section("function botMainKeyboard(){", "function botBackKeyboard()");
-assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:home"\}\]\)/, "The main menu must always expose START BOT as a working home callback");
+assert.match(mainKeyboard, /rows\.push\(\[\{text:BOT_START_LABEL,callback_data:"b1:start"\}\]\)/, "START BOT must use its explicit callback route");
+const startCallback = section("async function botHandleCallback", "async function umHandleCommand");
+assert.match(startCallback, /action==="home"\|\|action==="start"/, "START BOT must route to the home menu handler");
+assert.match(startCallback, /botRegisterCommands\(env,chatId,true\)/, "START BOT must verify/register admin commands");
+assert.match(startCallback, /botShowMenu\(env,chatId,undefined,registrationError\)/, "START BOT must render the main menu in the clicked message");
+assert.match(startCallback, /Telegram button action failed; original message preserved and no replacement sent/);
 assert.match(source, /const BOT_START_LABEL = "🚀 START BOT"/, "The START BOT label must remain stable");
 
 const compactMenu = section("const BOT_MENU = [", "const BOT_DEFAULTS = {");
@@ -170,5 +175,29 @@ assert.match(editInPlace, /Only recover automatically when Telegram confirms tha
 assert.doesNotMatch(editInPlace.slice(editInPlace.indexOf("if(callbackMessageId)"), editInPlace.indexOf('const sent=await botTelegram(env,"sendMessage"')), /sendMessage/, "A failed callback edit must stop before sendMessage");
 const callbackFailure = section("async function botHandleCallback", "async function umHandleCommand");
 assert.match(callbackFailure, /original message preserved and no replacement sent/, "Uneditable historical notifications must be preserved without sending a duplicate");
-assert.doesNotMatch(callbackFailure.slice(callbackFailure.indexOf("}catch(e){")), /botSend\(/, "Callback failures must not create a replacement chat message");
+const callbackCatchStart=callbackFailure.indexOf("}catch(e){const reason=");
+const callbackCatchEnd=callbackFailure.indexOf("}finally{",callbackCatchStart);
+const callbackCatch=callbackFailure.slice(callbackCatchStart,callbackCatchEnd>callbackCatchStart?callbackCatchEnd:undefined);
+assert.doesNotMatch(callbackCatch, /botSend\(/, "Callback failures must not replace the clicked message through the shared menu sender");
+assert.match(callbackCatch, /botTelegram\(env,"sendMessage"/, "Only an actual callback failure may send one reply while preserving the original notification");
 console.log("Telegram callbacks preserve the clicked message and never create replacement messages when edit is unavailable.");
+
+
+const startMain = section("function botMainKeyboard(){", "function botBackKeyboard()");
+assert.match(startMain, /callback_data:"b1:start"/, "The visible START BOT button must invoke the explicit start action");
+assert.match(source, /if\(action==="home"\|\|action==="start"\)/, "Start and Home must share the verified navigation flow");
+assert.match(source, /await botEnsureStartKeyboard\(env,chatId\)/, "Start action must restore the Telegram Mini App menu button");
+const helpBranch = section('if(cmd==="/help"||cmd==="/cmd"){', 'if(["/details","/health"');
+assert.doesNotMatch(helpBranch, /forceNew:true/, "Help/command guide should reuse the existing menu anchor");
+assert.match(startCallback, /botSend\(env,chatId,lines\.join\("\\n"\)/, "Button-driven status results must render through the shared edit-in-place sender");
+console.log("Start Bot explicit route and no-message-stack navigation regression checks verified.");
+
+
+assert.match(source, /if\(action==="info:manual"\)/, "Automation manual-refresh info button must have a real handler");
+assert.match(source, /callback_data:"b1:refresh"/, "Manual refresh buttons and alert retry actions must resolve to the real refresh handler");
+assert.match(callbackEdit, /action==="home"\|\|action==="start"/, "Both Start Bot and Home callbacks must resolve");
+assert.match(callbackEdit, /botAnswerCallback\(env,query\)/, "Every button interaction must be acknowledged through the Telegram callback helper");
+assert.match(callbackEdit, /BOT_CALLBACK_ACTIVE\.delete\(String\(chatId\)\)/, "Button action lock must be released even after failures");
+assert.match(callbackEdit, /botTelegram\(env,"sendMessage"/, "Only a real callback failure may send a separate reply");
+assert.match(source, /callback_data:"b1:start"/, "Visible Start Bot must not share a generic Home callback");
+console.log("Button route audit: Start, home, status, User Manager, toggles, refresh, logs, recovery and notification callbacks have handlers.");

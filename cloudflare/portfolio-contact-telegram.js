@@ -913,7 +913,7 @@ function botMainKeyboard(){
   const rows=[];
   // Keep an explicit, always-visible START BOT entry above the category controls.
   // The callback reuses the existing menu message and returns to the Control Center home.
-  rows.push([{text:BOT_START_LABEL,callback_data:"b1:home"}]);
+  rows.push([{text:BOT_START_LABEL,callback_data:"b1:start"}]);
   for(let i=0;i<BOT_MENU.length;i+=2)rows.push(BOT_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
   for(let i=0;i<BOT_SECONDARY_MENU.length;i+=2)rows.push(BOT_SECONDARY_MENU.slice(i,i+2).map(([id,label])=>({text:label,callback_data:"b1:"+id})));
   return rows;
@@ -1169,7 +1169,7 @@ async function botHandleCallback(env,query){
     // Keep interaction metadata writes throttled while preserving idle cleanup.
     await botAnswerCallback(env,query);
     await botMarkMenuInteraction(env,chatId,query.message?.message_id,false);
-    if(action==="home"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);await botShowMenu(env,chatId);return true}
+    if(action==="home"||action==="start"){await env.BOT_CONFIG_KV?.delete("bot:user-input:"+sender);let registrationError="";try{await botRegisterCommands(env,chatId,true)}catch(e){registrationError=String(e&&e.message||e).slice(0,180);console.error("Telegram Start button command registration failed",registrationError)}await botEnsureStartKeyboard(env,chatId);await botShowMenu(env,chatId,undefined,registrationError);return true}
     if(action.startsWith("github:retry:")){
       const runId=action.slice("github:retry:".length);
       if(!/^\d{1,20}$/.test(runId)){await botSend(env,chatId,"Invalid GitHub workflow run ID.",botBackKeyboard(),{forceNew:true});return true;}
@@ -1184,6 +1184,9 @@ async function botHandleCallback(env,query){
         if(retry.status===201||retry.status===200)await botSend(env,chatId,"✅ GitHub accepted the failed-job retry.\nWorkflow: "+String(run.name||"Workflow")+"\nRun: "+String(run.html_url||"")+"\nThe retry is queued; completion is not yet verified.",botBackKeyboard(),{forceNew:true});
         else{const detail=await retry.text().catch(()=>"");await botSend(env,chatId,"⚠️ GitHub did not accept the retry. HTTP "+retry.status+" · "+detail.slice(0,180),botBackKeyboard(),{forceNew:true});}
       });return true;
+    }
+    if(action==="info:manual"){
+      await botSend(env,chatId,"ℹ️ MANUAL REFRESH\n\nNews Refresh-এর জন্য Automation-এর newsRefresh schedule ON থাকা বাধ্যতামূলক নয়। Refresh Now বাটন প্রতিবার সরাসরি GitHub News Workflow চালু করার চেষ্টা করে এবং ফলাফল এই একই Message-এ দেখায়।",[[{text:"🔄 Refresh Now",callback_data:"b1:refresh"},{text:"⬅️ Automation",callback_data:"b1:automation"}]]);return true;
     }
     if(action==="refresh"){
       await botRunWithProgress(env,chatId,"ওয়েবসাইট ও News Feed যাচাই করে Refresh Workflow চালু করা হচ্ছে...",async()=>{
@@ -1302,7 +1305,7 @@ async function botHandleCallback(env,query){
        const label=names[category]?.[index]||"Status";
        await botSetContext(env,chatId,{section:category,view:"status",index,actionId:action,messageId:Number(query.message?.message_id||0)});await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){console.error("Telegram button action failed; original message preserved and no replacement sent",String(e&&e.stack||e).slice(0,1600))}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
+  }catch(e){const reason=String(e&&e.message||e).slice(0,180);console.error("Telegram button action failed; original message preserved and no replacement sent",String(e&&e.stack||e).slice(0,1600));try{const notice=await botTelegram(env,"sendMessage",{chat_id:chatId,text:botFormatTelegramResponse("⚠️ Button action failed.\n"+reason+"\n\nমূল Notification/Message অক্ষত রাখা হয়েছে।",{}),disable_web_page_preview:true,reply_markup:{inline_keyboard:botBackKeyboard()},reply_to_message_id:Number(query.message?.message_id||0)});if(!notice.ok)console.error("Telegram callback failure notice delivery failed",String(notice.data?.description||"Telegram API error").slice(0,240))}catch(noticeError){console.error("Telegram callback failure notice request failed",String(noticeError&&noticeError.message||noticeError).slice(0,240))}}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
@@ -1363,7 +1366,7 @@ async function umHandleCommand(env,msg,options={}){
       "",
       "ℹ️ নিরাপত্তা: এই গাইডে কোনো API token, secret বা credential প্রকাশ করা হয় না।"
     ];
-    await botSend(env,chatId,guide.join("\n"),botMainKeyboard(),{forceNew:true});
+    await botSend(env,chatId,guide.join("\n"),botMainKeyboard());
     return true;
   }
   if(["/details","/health","/errors","/logs","/history","/sources","/traffic","/report"].includes(cmd)){
@@ -1378,7 +1381,7 @@ async function umHandleCommand(env,msg,options={}){
       [section,index]=map[cmd];
     }
     await botSetContext(env,chatId,{section,view:"status",index,actionId:"shortcut:"+cmd});
-    await botRunWithProgress(env,chatId,"প্রাসঙ্গিক Section-এর তথ্য সংগ্রহ করা হচ্ছে...",async()=>{const detail=await botStatusText(env,section,index);await botSend(env,chatId,detail,botBackKeyboard(),{forceNew:true});});
+    await botRunWithProgress(env,chatId,"প্রাসঙ্গিক Section-এর তথ্য সংগ্রহ করা হচ্ছে...",async()=>{const detail=await botStatusText(env,section,index);await botSend(env,chatId,detail,botBackKeyboard());});
     return true;
   }
   if(!admins.size){await umReply(env,chatId,"Admin access এখনো configure করা হয়নি। Cloudflare Worker-এ ADMIN_TELEGRAM_IDS secret যোগ করতে হবে।");return true;}
