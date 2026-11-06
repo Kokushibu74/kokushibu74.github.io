@@ -435,7 +435,7 @@ function buildDailyReportMessages(input){
     row("Security status",securityStatus),
     "",
     bold("SECURITY HEADER CHECK"),
-    ...(!input.headersChecked?[plain("⚠️ Policy inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 Enforceable policies verified.")]),
+    ...(!input.headersChecked?[plain("⚠️ Header inspection unavailable.")]:input.missing?.length?input.missing.map(name=>"⚠️ "+plain(name)):[plain("🟢 Enforceable policies verified.")]),
     ...(input.platformLimitations||[]).map(name=>"ℹ️ "+plain("Hosting limitation: "+name)),
     "",
     bold("RECOMMENDED ACTIONS"),
