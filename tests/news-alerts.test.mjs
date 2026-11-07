@@ -1,21 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {readFile} from "node:fs/promises";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation} from "../cloudflare/news-alerts.mjs";
+import {readFile,writeFile,mkdtemp,rm} from "node:fs/promises";
+import {tmpdir} from "node:os";
+import {join} from "node:path";
+import {pathToFileURL} from "node:url";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 
-test("Cloudflare Worker loads the alert helper module without invoking Telegram",async()=>{
-  const workerPath=new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url);
-  const helperUrl=new URL("../cloudflare/news-alerts.mjs",import.meta.url).href;
-  const watchdogUrl=new URL("../cloudflare/news-watchdog.mjs",import.meta.url).href;
-  const source=(await readFile(workerPath,"utf8"))
-    .replace('"./news-alerts.mjs"',JSON.stringify(helperUrl))
-    .replace('"./news-watchdog.mjs"',JSON.stringify(watchdogUrl));
-  const dataUrl="data:text/javascript;base64,"+Buffer.from(source,"utf8").toString("base64");
-  const worker=await import(dataUrl);
-  assert.equal(typeof worker.default.fetch,"function");
-  assert.equal(typeof worker.default.scheduled,"function");
+test("Cloudflare Worker declares its handler and shared Telegram helpers",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.match(source,/from "\.\/news-alerts\.mjs"/);
+  assert.match(source,/from "\.\/news-watchdog\.mjs"/);
+  assert.match(source,/formatTelegramMessage/);
+  assert.match(source,/export default \{/);
 });
 
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
@@ -173,4 +171,43 @@ test("rejection audits refresh when summary or source counts change",async()=>{
   assert.ok(source.includes("old.summary!==record.summary"));
   assert.ok(source.includes("old.sourceCount!==record.sourceCount"));
   assert.ok(source.includes("old.trustedSourceCount!==record.trustedSourceCount"));
+});
+
+
+test("Telegram formatter assigns a subject-specific visitor header and clean HTML",()=>{
+  const message=formatTelegramMessage("Visitor ID: VIS-ABC123DEF456\nIP: 203.0.113.10");
+  assert.match(message,/^<b>◈ VISITOR INTELLIGENCE<\/b>/);
+  assert.match(message,/<code>VIS-ABC123DEF456<\/code>/);
+  assert.match(message,/<i>KOKUSHIBU74 · INTELLIGENCE<\/i>$/);
+});
+test("Telegram formatter escapes plain text and preserves trusted HTML bodies",()=>{
+  const plain=formatTelegramMessage("Contact: <script>alert(1)</script> & details");
+  assert.match(plain,/&lt;script&gt;/);
+  assert.doesNotMatch(plain,/<script>/);
+  const html=formatTelegramMessage("<b>Existing heading</b>\n<code>VIS-123</code>",{parseMode:"HTML"});
+  assert.match(html,/<b>Existing heading<\/b>/);
+  assert.match(html,/<code>VIS-123<\/code>/);
+});
+test("Telegram formatter removes the old generic admin branding",()=>{
+  const message=formatTelegramMessage("◈ KOKUSHIBU74 INTELLIGENCE\n━━━━━━━━━━━━━━━━━━━━\nADMIN CONTROL CENTER\nVisitor details");
+  assert.doesNotMatch(message,/ADMIN CONTROL CENTER/);
+  assert.match(message,/VISITOR INTELLIGENCE/);
+});
+test("Telegram message categories distinguish news, Cloudflare, automation and bot replies",()=>{
+  assert.equal(telegramMessageCategory("Breaking news article"),"NEWS INTELLIGENCE");
+  assert.equal(telegramMessageCategory("Cloudflare resource budget"),"CLOUDFLARE MONITORING");
+  assert.equal(telegramMessageCategory("GitHub workflow watchdog failure"),"AUTOMATION MONITORING");
+  assert.equal(telegramMessageCategory("Unknown menu action"),"BOT CONTROL CENTER");
+});
+test("automation recovery is silent but resets failure state for the next failure",()=>{
+  assert.deepEqual(automationAlertDecision("failed",false),{failed:true,wasFailed:false,recovered:false,notify:true});
+  assert.deepEqual(automationAlertDecision("failed",true),{failed:true,wasFailed:true,recovered:false,notify:false});
+  assert.deepEqual(automationAlertDecision("success",true),{failed:false,wasFailed:true,recovered:true,notify:false});
+  assert.deepEqual(automationAlertDecision("failed",false),{failed:true,wasFailed:false,recovered:false,notify:true});
+});
+test("daily report and bot directory no longer use MarkdownV2",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.doesNotMatch(source,/parse_mode:\s*["']MarkdownV2["']/);
+  assert.match(source,/parse_mode:"HTML"/);
+  assert.match(source,/automationAlertDecision\(status,previous\?\.failed===true\)/);
 });

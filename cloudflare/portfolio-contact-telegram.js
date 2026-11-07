@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
@@ -252,7 +252,7 @@ function bdDay(ts=Date.now()){return new Intl.DateTimeFormat("en-CA",{timeZone:"
 function previousBdDay(day){const d=new Date(day+"T00:00:00Z");d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10);}
 async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",rows=[];let cursor,pageCount=0;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row)}cursor=page.list_complete?undefined:page.cursor;pageCount++;}while(cursor&&pageCount<2);const partial=!!cursor;const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};const pages={};let views=0,sessions=0,errors=0,returning=0;for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}return {day,partial,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};}
 async function sendTelegramText(env,chatId,text,options={}){
-  const max=3500,lines=botFormatTelegramResponse(text,options).split("\n"),chunks=[];let current="";
+  const max=3500,formatted=botFormatTelegramResponse(text,{parse_mode:options.parse_mode==="HTML"?"HTML":"PLAIN"}),lines=formatted.split("\n"),chunks=[];let current="";
   for(const line of lines){
     if(line.length>max){
       if(current){chunks.push(current);current="";}
@@ -264,7 +264,7 @@ async function sendTelegramText(env,chatId,text,options={}){
   }
   if(current||!chunks.length)chunks.push(current);
   for(let i=0;i<chunks.length;i++){
-    const extra={...options};if(i>0)delete extra.reply_to_message_id;
+    const extra={...options,parse_mode:"HTML"};if(i>0)delete extra.reply_to_message_id;
     const res=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
       method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({chat_id:chatId,text:chunks[i],disable_web_page_preview:true,...extra})
@@ -278,11 +278,8 @@ async function sendTelegramText(env,chatId,text,options={}){
 
 function dailyActivityLines(a,p){const list=(n,v)=>n+": "+(v.length?v.join(", "):"No data");const delta=(v,o)=>{const d=v-o;return (d>0?"+":"")+d+" vs yesterday"};const lines=["📅 Date: "+a.day+" (BDT)",...(a.partial?["⚠️ Partial sample: visitor scan capped at 2,000 records to protect Free KV usage."]:[]),"👤 Unique visitors: "+a.unique+(p?" · "+delta(a.unique,p.unique):""),"🆕 New visitors: "+Math.max(0,a.unique-a.returning),"↩️ Returning visitors: "+a.returning,"🔁 Visits / sessions: "+a.sessions+(p?" · "+delta(a.sessions,p.sessions):""),"👁️ Page views: "+a.views+(p?" · "+delta(a.views,p.views):""),"⚠️ Client errors: "+a.errors,list("🔥 Popular pages",a.pages),list("🌍 Countries",a.countries),list("📍 Cities",a.cities),list("📡 ISPs",a.isps),list("📱 Devices",a.devices),list("🌐 Browsers",a.browsers),"","👥 VISITOR DETAILS"];for(const [i,v] of (a.visitors||[]).entries()){const pages=Object.entries(v.pages||{}).sort((x,y)=>y[1]-x[1]).map(([k,n])=>k+" ×"+n).join(", ")||"Page data unavailable";const device=[v.device?.deviceType,v.device?.deviceModel,v.device?.os,v.device?.browser].filter(Boolean).join(" / ")||"Unknown";const source=v.source?.utmSource||v.source?.referrer||"Direct";const seen=v.lastSeen?new Date(v.lastSeen).toLocaleTimeString("en-US",{timeZone:"Asia/Dhaka",hour:"2-digit",minute:"2-digit"}):"Unknown";lines.push((i+1)+". "+(v.visitorId||"Visitor").replace(/(VIS-)[A-F0-9]{8}([A-F0-9]{4})/,"$1••••••••$2")+" · "+(v.returning?"Returning":"New"),"   🕒 Last seen: "+seen+" BDT · Sessions today: "+(v.sessions||0)+" · Views: "+(v.pageViews||0),"   📄 Pages: "+pages,"   🔗 Source: "+source,"   📱 Device: "+device,"   📍 Location: "+[v.network?.city,v.network?.country].filter(Boolean).join(", ")+" · ISP: "+(v.network?.isp||"Unknown"));}if(!a.visitors?.length)lines.push("No visitor-level records available.");lines.push("","ℹ️ Active time, exact exit time and scroll/interaction duration are not measured in this report.");return lines;}
 
-function dailyReportMarkdownEscape(value){
-  const special=new Set(["\\","_","*","[","]","(",")","~",String.fromCharCode(96),">","#","+","-","=","|","{","}",".","!"]);
-  return Array.from(String(value??""),ch=>special.has(ch)?"\\"+ch:ch).join("");
-}
-function dailyReportBold(value){return "*"+dailyReportMarkdownEscape(value)+"*";}
+function dailyReportMarkdownEscape(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/\'/g,"&#39;");}
+function dailyReportBold(value){return "<b>"+dailyReportMarkdownEscape(value)+"</b>";}
 function dailyReportShort(value,max=40){return String(value??"").replace(/[\u0000-\u001f<>]/g," ").replace(/&/g," and ").replace(/\s+/g," ").trim().slice(0,max)||"Unknown";}
 function dailyReportVisitorAnalyticsLines(activity,prior){
   if(!activity)return [dailyReportMarkdownEscape("⚠️ Visitor Intelligence data unavailable.")];
@@ -472,12 +469,13 @@ async function sendTelegramReportBatch(env,chatId,messages,reportId,reportInput=
   const imageId=sent===0?await dailyReportVisualFileId(env,{...reportInput,reportId}):null;
   for(let i=sent;i<messages.length;i++){
     const text=String(messages[i]||"");
-    if(text.length>3900)throw new Error("Daily report section "+(i+1)+" exceeds the safe Telegram message length.");
+    const formattedText=formatTelegramMessage(text,{parseMode:"HTML",category:"DAILY INTELLIGENCE"});
+    if(text.length>3900||formattedText.length>3900)throw new Error("Daily report section "+(i+1)+" exceeds the safe Telegram message length.");
     let response,payload;
-    if(i===0&&imageId&&text.length<=1000){
+    if(i===0&&imageId&&formattedText.length<=950){
       response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendPhoto",{
         method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({chat_id:chatId,photo:imageId,caption:text,parse_mode:"MarkdownV2"})
+        body:JSON.stringify({chat_id:chatId,photo:imageId,caption:formattedText,parse_mode:"HTML"})
       });
       payload=await response.json().catch(()=>({}));
       if(response.ok&&payload.ok)imageSent=true;
@@ -489,7 +487,7 @@ async function sendTelegramReportBatch(env,chatId,messages,reportId,reportInput=
     if(!response){
       response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
         method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({chat_id:chatId,text,parse_mode:"MarkdownV2",disable_web_page_preview:true,...(i===messages.length-1?{reply_markup:{inline_keyboard:[[{text:"Full Report",callback_data:"b1:alert:status:reports:1"},{text:"Traffic",callback_data:"b1:alert:status:analytics:3"}]]}}:{})})
+        body:JSON.stringify({chat_id:chatId,text:formattedText,parse_mode:"HTML",disable_web_page_preview:true,...(i===messages.length-1?{reply_markup:{inline_keyboard:[[{text:"Full Report",callback_data:"b1:alert:status:reports:1"},{text:"Traffic",callback_data:"b1:alert:status:analytics:3"}]]}}:{})})
       });
       payload=await response.json().catch(()=>({}));
     }
@@ -836,8 +834,12 @@ async function botExpireIdleMenu(env){
 }
 
 async function botTelegram(env,method,payload){
+  let requestPayload=payload;
+  if((method==="sendMessage"||method==="editMessageText")&&typeof payload?.text==="string"&&!payload.text.includes("<i>KOKUSHIBU74 · INTELLIGENCE</i>")){
+    requestPayload={...payload,text:formatTelegramMessage(payload.text,{parseMode:payload.parse_mode==="HTML"?"HTML":"PLAIN"}),parse_mode:"HTML"};
+  }
   const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/"+method,{
-    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:AbortSignal.timeout(12000)
+    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(requestPayload),signal:AbortSignal.timeout(12000)
   });
   const d=await r.json().catch(()=>({}));
   return {ok:!!(r.ok&&d.ok),data:d,status:r.status};
@@ -904,19 +906,9 @@ async function botAnswerCallback(env,query,text,showAlert=false){
   if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
   await botTelegram(env,"answerCallbackQuery",{callback_query_id:query.id,...(text?{text}:{}),...(showAlert?{show_alert:true}:{})});
 }
+// Legacy "ADMIN CONTROL CENTER" and "PRIVATE ADMIN SESSION" labels are intentionally stripped, never emitted.
 function botFormatTelegramResponse(text,options={}) {
-  const body=String(text||"").trim();
-  if(!body)return "◈ KOKUSHIBU74 INTELLIGENCE";
-  if(options.parse_mode==="HTML"){
-    if(body.includes("KOKUSHIBU74 INTELLIGENCE"))return body;
-    return "<b>◈ KOKUSHIBU74 INTELLIGENCE</b>\n<code>ADMIN CONTROL CENTER</code>\n\n"+body+"\n\n<i>CONTROL CENTER • PRIVATE ADMIN SESSION</i>";
-  }
-  if(body.includes("KOKUSHIBU74 INTELLIGENCE"))return body;
-  const progress=/^(?:⏳|⌛)\s/.test(body);
-  const header="◈ KOKUSHIBU74 INTELLIGENCE\n━━━━━━━━━━━━━━━━━━━━";
-  const footer=progress?"⌁ PROCESSING • PLEASE WAIT":"━━━━━━━━━━━━━━━━━━━━\n◈ ADMIN CONTROL CENTER • PRIVATE CHAT";
-  const content=body.length>3650?body.slice(0,3640)+"\n… আরও তথ্য সংক্ষিপ্ত করা হয়েছে।":body;
-  return header+"\n\n"+content+"\n\n"+footer;
+  return formatTelegramMessage(text,{parseMode:options.parse_mode==="HTML"?"HTML":"PLAIN"});
 }
 
 async function botSend(env,chatId,text,keyboard,options={}){
@@ -925,7 +917,8 @@ async function botSend(env,chatId,text,keyboard,options={}){
   try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
   const callbackMessageId=Number(BOT_CALLBACK_MESSAGE_ANCHORS.get(String(chatId))||0)||null;
   const messageId=callbackMessageId||saved?.messageId||options.messageId||null;
-  const payload={chat_id:chatId,text:botFormatTelegramResponse(text,options).slice(0,3900),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]},...(options.parse_mode?{parse_mode:options.parse_mode}:{})};
+  const formatted=botFormatTelegramResponse(text,options);
+  const payload={chat_id:chatId,text:formatted.slice(0,3900),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]}};
   if(messageId&&(!options.forceNew||callbackMessageId)){
     let edited;
     try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
@@ -1508,8 +1501,7 @@ async function umHandleCommand(env,msg,options={}){
       const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
       all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
       const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
-            const mdSpecial=new Set(["_","*","[","]","(",")","~",String.fromCharCode(96),">","#","+","-","=","|","{","}",".","!","\\"]);
-      const mdSafe=v=>Array.from(String(v??"")).map(ch=>mdSpecial.has(ch)?"\\"+ch:ch).join("");
+            const mdSafe=v=>escapeHtml(String(v??""));
       const lines=items.map((u,i)=>{
         const label=mdSafe((start+i+1)+". "+(u.kind==="visitor"?"WEB":"TG"));
         return u.kind==="visitor"
@@ -1520,8 +1512,8 @@ async function umHandleCommand(env,msg,options={}){
        for(const u of items.filter(u=>u.kind==="telegram"&&u.id))keyboard.push([{text:String("TG "+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:telegram:"+String(u.id)+":"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
-      const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\n"+mdSafe("Visitor IDs are the clickable buttons below; tap one to open its report.");
-      await umReply(env,chatId,body,keyboard,{parse_mode:"MarkdownV2"});
+      const body="<b>👥 USER DIRECTORY</b>\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\n"+mdSafe("Visitor IDs are the clickable buttons below; tap one to open its report.");
+      await umReply(env,chatId,body,keyboard,{parse_mode:"HTML"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
       const p=await umProfile(env,user)||{};
@@ -1724,15 +1716,19 @@ async function miniAppCronAlert(env,cron,status,detail){
   if(!env.BOT_CONFIG_KV)return;
   const key="miniapp:cron-alert:v1:"+String(cron||"unknown").replace(/[^a-zA-Z0-9*_-]/g,"_");
   const previous=await env.BOT_CONFIG_KV.get(key,"json").catch(()=>null);
-  const failed=["warning","failed","failure","interrupted"].includes(String(status).toLowerCase());
-  const wasFailed=previous?.failed===true;
-  const shouldNotify=failed?!wasFailed:(!failed&&wasFailed&&status==="success");
+  const decision=automationAlertDecision(status,previous?.failed===true);
+  const {failed,wasFailed}=decision;
+  if(decision.recovered){
+    // Recovery is persisted silently: no success notification, but future failures can alert again.
+    await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed:false,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
+    return;
+  }
+  const shouldNotify=decision.notify;
   if(!shouldNotify)return;
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Mini App cron alert could not be delivered: Telegram configuration unavailable");return;}
   const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
-  const title=failed?"🚨 <b>AUTOMATION FAILURE</b>":"✅ <b>AUTOMATION RECOVERED</b>";
-  const body=[title,"⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)",(failed?"❌ ":"✅ ")+escape(detail||status)].join("\n");
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:body,parse_mode:"HTML",disable_web_page_preview:true,...(failed?{reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:status:website:1"},{text:"Diagnostics",callback_data:"b1:logs"}],[{text:"Automation",callback_data:"b1:automation"}]]}}:{})}),signal:AbortSignal.timeout(10000)});
+  const body=["🚨 <b>AUTOMATION FAILURE</b>","⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","❌ "+escape(detail||status)].join("\n");
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:formatTelegramMessage(body,{parseMode:"HTML",category:"AUTOMATION MONITORING"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Health",callback_data:"b1:status:website:1"},{text:"Diagnostics",callback_data:"b1:logs"}],[{text:"Automation",callback_data:"b1:automation"}]]}}),signal:AbortSignal.timeout(10000)});
   const payload=await response.json().catch(()=>({}));
   if(!response.ok||!payload.ok)throw new Error("Telegram automation alert failed (HTTP "+response.status+")");
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
@@ -2006,7 +2002,7 @@ async function notifyNewsWatchdogFailure(env,error){
   const transient=/temporarily failed|temporary GitHub API/i.test(detail);
   const guidance=transient?"GitHub returned a temporary server error. Token permission is not confirmed as the cause; the watchdog will retry on its next check.":"For HTTP 401/403/404/422, verify the Worker GITHUB_TOKEN and repository Actions workflow permissions.";
   const message="⚠️ News refresh watchdog could not verify or trigger the GitHub refresh workflow."+(detail?"\nGitHub response: "+detail:"")+"\n"+guidance;
-  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:message,disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:news"},{text:"Logs",callback_data:"b1:alert:logs"}],[{text:"Retry News Refresh",callback_data:"b1:alert:refresh"}]]}}),signal:AbortSignal.timeout(10000)});
+  const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:formatTelegramMessage(message,{parseMode:"PLAIN",category:"AUTOMATION MONITORING"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:news"},{text:"Logs",callback_data:"b1:alert:logs"}],[{text:"Retry News Refresh",callback_data:"b1:alert:refresh"}]]}}),signal:AbortSignal.timeout(10000)});
   if(!response.ok)throw new Error("Telegram watchdog warning delivery failed (HTTP "+response.status+")");
 }
 
@@ -2039,8 +2035,11 @@ async function sendNewsAlertMedia(env,item,caption,link){
   const candidates=mediaCandidates(item);
   const send=async(method,body)=>{
     try{
+      const formattedBody={...body,parse_mode:"HTML"};
+      if(typeof body.caption==="string")formattedBody.caption=formatTelegramMessage(body.caption,{parseMode:"HTML",category:"NEWS INTELLIGENCE"});
+      if(typeof body.text==="string")formattedBody.text=formatTelegramMessage(body.text,{parseMode:body.parse_mode==="HTML"?"HTML":"PLAIN",category:"NEWS INTELLIGENCE"});
       const response=await fetch("https://api.telegram.org/bot"+token+"/"+method,{
-        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...body}),
+        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...formattedBody}),
         signal:AbortSignal.timeout(15000)
       });
       const result=await response.json().catch(()=>({}));
@@ -2594,9 +2593,9 @@ export default {
     for(const f of files){if(f.size>max)return respond({error:"Each file must be 20 MB or smaller: "+String(f.name||"file").slice(0,100)},413);if(!allowed.has(String(f.type||"").toLowerCase()))return respond({error:"Unsupported file type: "+String(f.name||"file").slice(0,100)},415);}
     const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
     const lines=["📩 <b>New Portfolio Contact</b>","","<b>Name:</b> "+esc(name),email?"<b>Email:</b> "+esc(email):"",phone?"<b>Phone:</b> "+esc(phone):"",topic?"<b>Topic:</b> "+esc(topic):"","<b>Message:</b>",esc(message),files.length?"<b>Attachments ("+files.length+"):</b> "+files.map(f=>esc(String(f.name||"file").slice(0,100))).join(", "):"<b>Attachments:</b> none"].filter(Boolean);
-    const api="https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/",msg=await fetch(api+"sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:lines.join("\n"),parse_mode:"HTML",disable_web_page_preview:true})}),mr=await msg.json().catch(()=>({}));
+    const api="https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/",msg=await fetch(api+"sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:formatTelegramMessage(lines.join("\n"),{parseMode:"HTML",category:"CONTACT INTELLIGENCE"}),parse_mode:"HTML",disable_web_page_preview:true})}),mr=await msg.json().catch(()=>({}));
     if(!msg.ok||!mr.ok)return respond({error:"Telegram could not deliver your message. Please try again."},502);
-    for(const f of files){const body=new FormData();body.set("chat_id",String(env.TELEGRAM_CHAT_ID));body.set("document",f,String(f.name||"attachment"));let r,d;try{r=await fetch(api+"sendDocument",{method:"POST",body});d=await r.json().catch(()=>({}));}catch(e){console.error("Attachment upload failed:",String(e&&e.message||e));return respond({error:"Message delivered, but an attachment upload failed. Please retry with smaller files."},502);}if(!r.ok||!d.ok){console.error("Telegram attachment failure:",String(d.description||r.status));return respond({error:"Message delivered, but Telegram could not accept an attachment."},502);}}
+    for(const f of files){const body=new FormData();body.set("chat_id",String(env.TELEGRAM_CHAT_ID));body.set("document",f,String(f.name||"attachment"));body.set("caption",formatTelegramMessage("📎 Attachment: "+String(f.name||"attachment"),{parseMode:"PLAIN",category:"CONTACT INTELLIGENCE"}));body.set("parse_mode","HTML");let r,d;try{r=await fetch(api+"sendDocument",{method:"POST",body});d=await r.json().catch(()=>({}));}catch(e){console.error("Attachment upload failed:",String(e&&e.message||e));return respond({error:"Message delivered, but an attachment upload failed. Please retry with smaller files."},502);}if(!r.ok||!d.ok){console.error("Telegram attachment failure:",String(d.description||r.status));return respond({error:"Message delivered, but Telegram could not accept an attachment."},502);}}
     return respond({ok:true});
   },
   async scheduled(controller,env,ctx) {
@@ -2641,7 +2640,7 @@ export default {
     }catch(e){failure=String(e&&e.message||e).slice(0,180);responseMs=Math.round(performance.now()-started)}
     if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Telegram secrets missing; monitor could not send messages.");await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"warning",cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:"Telegram credentials missing; monitoring message could not be sent."});await miniAppCronAlert(env,controller.cron,"warning","Telegram credentials missing; monitor message not sent.");return}
     const sendTelegram=async text=>{
-      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text,parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]}})});
+      const tg=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:formatTelegramMessage(text,{parseMode:"HTML"}),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]}})});
       const payload=await tg.json().catch(()=>({}));if(!tg.ok||!payload.ok)throw new Error("Telegram message delivery failed (HTTP "+tg.status+")");
     };
 
