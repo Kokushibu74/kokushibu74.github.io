@@ -1,0 +1,24 @@
+/* Lightweight mobile-only scroll reveal. Desktop styling is intentionally untouched. */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  [data-scroll-reveal] {
+    opacity: 0;
+    translate: 0 18px;
+    transition:
+      opacity 560ms cubic-bezier(.22,.68,0,1),
+      translate 650ms cubic-bezier(.22,.68,0,1);
+    transition-delay: var(--scroll-reveal-delay, 0ms);
+  }
+
+  [data-scroll-reveal].is-scroll-visible {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal] {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
+}
