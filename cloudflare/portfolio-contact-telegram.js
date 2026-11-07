@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
@@ -1499,8 +1499,7 @@ async function umHandleCommand(env,msg,options={}){
       const legacy=await umList(env,"visitor:");for(const k of legacy){const id=k.name.slice(8);if(!all.some(x=>x.kind==="visitor"&&x.id===id))all.push({kind:"visitor",id,name:"Website visitor"});}
       all.sort((a,b)=>String(a.id).localeCompare(String(b.id)));
       const start=(pageNo-1)*limit,items=all.slice(start,start+limit),totalPages=Math.max(1,Math.ceil(all.length/limit));
-            const mdSpecial=new Set(["_","*","[","]","(",")","~",String.fromCharCode(96),">","#","+","-","=","|","{","}",".","!","\\"]);
-      const mdSafe=v=>Array.from(String(v??"")).map(ch=>mdSpecial.has(ch)?"\\"+ch:ch).join("");
+            const mdSafe=v=>escapeHtml(String(v??""));
       const lines=items.map((u,i)=>{
         const label=mdSafe((start+i+1)+". "+(u.kind==="visitor"?"WEB":"TG"));
         return u.kind==="visitor"
@@ -1511,8 +1510,8 @@ async function umHandleCommand(env,msg,options={}){
        for(const u of items.filter(u=>u.kind==="telegram"&&u.id))keyboard.push([{text:String("TG "+(u.customId||u.name||u.id)).slice(0,55),callback_data:"b1:users:profile:telegram:"+String(u.id)+":"+pageNo}]);
       const nav=[];if(pageNo>1)nav.push({text:"⬅️ Previous",callback_data:"b1:users:list:"+(pageNo-1)});if(pageNo<totalPages)nav.push({text:"Next ➡️",callback_data:"b1:users:list:"+(pageNo+1)});if(nav.length)keyboard.push(nav);
       keyboard.push([{text:"⬅️ User Manager",callback_data:"b1:users"}]);
-      const body="*👥 USER DIRECTORY*\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\n"+mdSafe("Visitor IDs are the clickable buttons below; tap one to open its report.");
-      await umReply(env,chatId,body,keyboard,{parse_mode:"MarkdownV2"});
+      const body="<b>👥 USER DIRECTORY</b>\nPage "+pageNo+" / "+totalPages+" · "+all.length+" users\n\n"+(lines.join("\n")||mdSafe("কোনো User পাওয়া যায়নি."))+"\n\n"+mdSafe("Visitor IDs are the clickable buttons below; tap one to open its report.");
+      await umReply(env,chatId,body,keyboard,{parse_mode:"HTML"});
     }else if(cmd==="/userinfo"){
       const user=await umResolve(env,arg);if(!user){await umReply(env,chatId,"User পাওয়া যায়নি। Original ID বা Custom ID দিন।");return true;}
       const p=await umProfile(env,user)||{};
@@ -1715,15 +1714,14 @@ async function miniAppCronAlert(env,cron,status,detail){
   if(!env.BOT_CONFIG_KV)return;
   const key="miniapp:cron-alert:v1:"+String(cron||"unknown").replace(/[^a-zA-Z0-9*_-]/g,"_");
   const previous=await env.BOT_CONFIG_KV.get(key,"json").catch(()=>null);
-  const failed=["warning","failed","failure","interrupted"].includes(String(status).toLowerCase());
-  const wasFailed=previous?.failed===true;
-  if(!failed&&wasFailed&&status==="success"){
+  const decision=automationAlertDecision(status,previous?.failed===true);
+  const {failed,wasFailed}=decision;
+  if(decision.recovered){
     // Recovery is persisted silently: no success notification, but future failures can alert again.
     await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed:false,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
     return;
   }
-  const shouldNotify=failed&&!wasFailed;
-  if(!shouldNotify)return;
+  if(!decision.notify)return;
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Mini App cron alert could not be delivered: Telegram configuration unavailable");return;}
   const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
   const body=["🚨 <b>AUTOMATION FAILURE</b>","⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","❌ "+escape(detail||status)].join("\n");
