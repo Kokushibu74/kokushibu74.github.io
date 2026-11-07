@@ -1,0 +1,21 @@
+name: Temporary Swarm live browser smoke test
+
+on:
+  push:
+    branches:
+      - swarm-rebuild-header-trigger
+
+jobs:
+  live-browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Test live homepage on mobile and desktop
+        run: node .github/swarm-live-smoke.cjs
