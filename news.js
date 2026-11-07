@@ -30,7 +30,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
       categoryTaxonomy=data.categories;
     }catch(error){console.warn("Using built-in news category taxonomy:",error?.message||error)}
   })();
-  let items=[],weatherItems=[],active="All",activeSubcategory="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null,ageBoundaryTimer=null,locationContext=null;
+  let items=[],latestItems=[],archiveItems=[],archiveLoaded=false,archiveLoading=null,weatherItems=[],active="All",activeSubcategory="All",viewMode="feed",topItems=[],slideIndex=0,slideTimer=null,currentPage=1,weatherSlideIndex=0,weatherSlideTimer=null,ageBoundaryTimer=null,locationContext=null;
   const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safe=v=>{try{const u=new URL(v);return u.protocol==="https:"?u.href:"#"}catch(_){return "#"}};
   const dateOf=x=>{const d=x.publishedAt?new Date(x.publishedAt):null;return d&&!Number.isNaN(d.getTime())?d:null};
@@ -427,7 +427,27 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
     });
     renderSubcategoryFilters(scoped);
   }
-  viewSwitch?.addEventListener("click",e=>{const button=e.target.closest("button[data-news-view]");if(!button)return;viewMode=button.dataset.newsView;currentPage=1;updateFilterCounts();viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));if(archiveTools)archiveTools.hidden=viewMode!=="archive";const heading=document.querySelector("#latest-feed .kicker");if(heading)heading.textContent=viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";const title=document.querySelector("#latest-feed h2");if(title)title.innerHTML=viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';render()});
+  viewSwitch?.addEventListener("click",async e=>{
+    const button=e.target.closest("button[data-news-view]");
+    if(!button)return;
+    viewMode=button.dataset.newsView;
+    currentPage=1;
+    viewSwitch.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));
+    if(archiveTools)archiveTools.hidden=viewMode!=="archive";
+    const heading=document.querySelector("#latest-feed .kicker");
+    if(heading)heading.textContent=viewMode==="feed"?"NEWS FEED":"ARCHIVE NEWS";
+    const title=document.querySelector("#latest-feed h2");
+    if(title)title.innerHTML=viewMode==="feed"?'News <span class="accent">feed</span>':'Archive <span class="accent">news</span>';
+    if(viewMode==="archive"&&!archiveLoaded){
+      status.textContent="Loading archive headlines…";
+      try{await loadArchiveFeed()}catch(error){
+        status.textContent="Could not load archive: "+String(error?.message||error)+". Tap Archive again to retry.";
+        return;
+      }
+    }
+    updateFilterCounts();
+    render();
+  });
   filters.addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(!button)return;active=button.dataset.category;activeSubcategory="All";currentPage=1;filters.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===button));updateFilterCounts();render()});
   subcategoryFilters?.addEventListener("click",e=>{const button=e.target.closest("button[data-subcategory]");if(!button)return;activeSubcategory=button.dataset.subcategory;currentPage=1;updateFilterCounts();render()});
   document.getElementById("news-date-clear")?.addEventListener("click",()=>{if(dateFromInput)dateFromInput.value="";if(dateToInput)dateToInput.value="";currentPage=1;render()});
@@ -534,18 +554,36 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
   window.addEventListener("error",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page script error: "+String(event.message||"unknown JavaScript error")+"."; }});
   window.addEventListener("unhandledrejection",event=>{if(status&&status.textContent==="Loading headlines…"){status.textContent="News page error: "+String(event.reason?.message||event.reason||"unknown error")+"."; }});
   let feedRetryTimer=null,feedLoading=false;
+  const normalizeNewsItems=rows=>rows.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category,subCategory:item.subCategory||DEFAULT_SUBCATEGORY}));
+  async function loadArchiveFeed(){
+    if(archiveLoaded)return archiveItems;
+    if(archiveLoading)return archiveLoading;
+    archiveLoading=(async()=>{
+      const archiveUrl=new URL("./news-archive.json",document.baseURI);
+      const response=await fetch(archiveUrl.href,{cache:"no-cache"});
+      if(!response.ok)throw new Error("Archive request failed (HTTP "+response.status+").");
+      const data=await response.json();
+      if(!data||!Array.isArray(data.items))throw new Error("Archive JSON is valid but has no items array.");
+      archiveItems=normalizeNewsItems(data.items);
+      archiveLoaded=true;
+      items=latestItems.concat(archiveItems);
+      return archiveItems;
+    })();
+    try{return await archiveLoading}finally{archiveLoading=null}
+  }
   async function loadNewsFeed(){
     if(feedLoading)return;
     feedLoading=true;
     await categoryTaxonomyReady;
-    if(status)status.textContent="Loading headlines…";
+    if(status&&viewMode==="feed")status.textContent="Loading headlines…";
     try{
       const feedUrl=new URL("./news-feed.json",document.baseURI);
       const response=await fetch(feedUrl.href,{cache:"no-cache"});
       if(!response.ok)throw new Error("Feed request failed (HTTP "+response.status+").");
       const data=await response.json();
       if(!data||!Array.isArray(data.items))throw new Error("Feed JSON is valid but has no items array.");
-      items=data.items.map(item=>({...item,category:String(item.category||"").toLowerCase()==="ai"?"Technology":item.category,subCategory:item.subCategory||DEFAULT_SUBCATEGORY}));
+      latestItems=normalizeNewsItems(data.items);
+      items=latestItems.concat(archiveItems);
       weatherItems=Array.isArray(data.weatherItems)?data.weatherItems:[];
       window.newsUpdatedAt=data.updatedAt||null;
       window.newsLatestBatchAt=data.latestBatchAt||data.updatedAt||null;
