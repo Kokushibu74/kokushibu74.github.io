@@ -1292,9 +1292,9 @@ def main():
         else:
             item["previewMetadataStatus"] = "fallback"
             weather_unavailable += 1
-        item.setdefault("publisherName", item.get("source", "Original publisher"))
-        item.setdefault("previewTitle", item.get("title", ""))
-        item.setdefault("previewSummary", item.get("summary", ""))
+        item["publisherName"] = clean(item.get("publisherName") or item.get("source") or "Original publisher")
+        item["previewTitle"] = clean(item.get("previewTitle") or item.get("title") or "")
+        item["previewSummary"] = clean(item.get("previewSummary") or item.get("summary") or "")
         # RSS, Open Graph, Twitter Card, and structured metadata all remain valid preview sources.
         fallback_image = weather_preview_image(item)
         if fallback_image:
@@ -1352,6 +1352,9 @@ def main():
             metadata = {}
         if metadata:
             item.update(metadata)
+            # Prefer publisher metadata, but never discard an image already supplied by RSS.
+            if not item.get("previewImage"):
+                item["previewImage"] = weather_preview_image(item)
             item["previewMetadataStatus"] = "success"
             enriched += 1
         else:
