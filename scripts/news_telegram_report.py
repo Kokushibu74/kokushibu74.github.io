@@ -352,6 +352,8 @@ def build_news_report(metrics, context, verified_ids=None):
     cached_fallback = metrics.get("metadata_cached_fallback") or 0
     checked_total = (attempts or 0) + cached_success + cached_fallback
     verified_total = (fetched or 0) + cached_success
+    weather_total = metrics.get("weather_cards")
+    weather_with_preview = metrics.get("weather_cards_with_preview")
     status = conclusion.upper() if conclusion != "success" else ("WARNING · " + str(len(warnings)) + " ITEM(S)" if warnings else "SUCCESS")
     stamp_value = context.get("updated_at") or context.get("created_at") or ""
     try:
