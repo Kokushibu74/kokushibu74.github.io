@@ -316,7 +316,7 @@ class NewsLogicTests(unittest.TestCase):
     def test_previous_snapshot_bootstraps_legacy_archive_only_when_requested(self):
         import json
         from tempfile import TemporaryDirectory
-        from unittest.mock import Mock, patch
+        from unittest.mock import MagicMock, patch
         with TemporaryDirectory() as folder:
             latest_path = Path(folder) / "news-feed.json"
             archive_path = Path(folder) / "news-archive.json"
@@ -327,9 +327,8 @@ class NewsLogicTests(unittest.TestCase):
             legacy = {"items": [
                 {"title": "Old story", "link": "https://example.com/old", "publishedAt": (datetime.now(timezone.utc) - timedelta(days=4)).isoformat()}
             ]}
-            response = Mock()
-            response.__enter__ = Mock(return_value=response)
-            response.__exit__ = Mock(return_value=False)
+            response = MagicMock()
+            response.__enter__.return_value = response
             response.read.return_value = json.dumps(legacy).encode("utf-8")
             with patch.object(news, "OUTPUT", str(latest_path)), \
                  patch.object(news, "ARCHIVE_OUTPUT", str(archive_path)), \
