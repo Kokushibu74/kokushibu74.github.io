@@ -3193,44 +3193,9 @@
       return g;
     }
 
-    // Glass piano: a few sine partials (one inharmonic, for the glass) with a
-    // soft felt-hammer tick, long exponential ring.
+    // Musical piano notes are intentionally disabled. Keep percussion SFX below.
     piano(midi, when, vel, pan, ring = 2.4) {
-      const now = this.now();
-      this.ends = this.ends.filter((e) => e > now);
-      if (this.ends.length >= 28) return;
-      const ctx = this.ctx;
-      const f = mtof(midi);
-      const v = this.bus(when, pan, 0.85);
-      v.gain.value = 0.3 * vel;
-      const hi = f > 900;
-      const parts = [
-        [1, 1, 1],
-        [2, 0.38, 0.55],
-        [3, 0.12, 0.32],
-        [2.756, 0.16, 0.42],
-        [5.4, 0.05, 0.16],
-      ];
-      let last = null;
-      for (const [r, a, d] of parts) {
-        if (f * r > 15000) continue;
-        const o = ctx.createOscillator();
-        o.type = "sine";
-        o.frequency.value = f * r * (1 + (Math.random() - 0.5) * 0.002);
-        const g = ctx.createGain();
-        const dec = ring * d * (hi ? 0.65 : 1);
-        g.gain.setValueAtTime(0, when);
-        g.gain.linearRampToValueAtTime(a, when + 0.005);
-        g.gain.exponentialRampToValueAtTime(0.0006, when + dec);
-        o.connect(g);
-        g.connect(v);
-        o.start(when);
-        o.stop(when + dec + 0.05);
-        last = o;
-      }
-      this.hammer(when, v, f, 0.5);
-      this.ends.push(when + ring * (hi ? 0.65 : 1));
-      if (last) last.onended = () => v.disconnect();
+      return;
     }
 
     hammer(when, dest, f, amt) {
@@ -3357,48 +3322,14 @@
       this.tick(t + 0.002, pan, 1200, 2, 0.2, 0.03);
     }
 
-    // the page dissolving: an airy swell over a low open fifth
+    // No intro music or ambient musical swell.
     intro() {
       this.log("intro", []);
-      if (!this.ready()) return;
-      const ctx = this.ctx;
-      const t = this.now() + 0.02;
-      const src = ctx.createBufferSource();
-      src.buffer = this.noiseBuf;
-      src.loop = true;
-      const bp = ctx.createBiquadFilter();
-      bp.type = "bandpass";
-      bp.Q.value = 0.8;
-      bp.frequency.setValueAtTime(260, t);
-      bp.frequency.exponentialRampToValueAtTime(2400, t + 0.9);
-      bp.frequency.exponentialRampToValueAtTime(900, t + 1.8);
-      const g = this.bus(t, 0, 0.6);
-      g.gain.setValueAtTime(0, t);
-      g.gain.linearRampToValueAtTime(0.16, t + 0.7);
-      g.gain.exponentialRampToValueAtTime(0.0005, t + 2.2);
-      src.connect(bp);
-      bp.connect(g);
-      src.start(t);
-      src.stop(t + 2.3);
-      src.onended = () => g.disconnect();
-      for (const [m, d] of [[E2, 0], [E2 + 7, 0.08], [E2 + 12, 0.16]]) this.pad(m, t + 0.3 + d, 0.07, 2.6);
     }
 
+    // Sustained musical pads are intentionally disabled.
     pad(midi, when, vel, len) {
-      const ctx = this.ctx;
-      const g = this.bus(when, 0, 0.9);
-      g.gain.setValueAtTime(0, when);
-      g.gain.linearRampToValueAtTime(vel, when + len * 0.4);
-      g.gain.exponentialRampToValueAtTime(0.0005, when + len);
-      for (const det of [-4, 4]) {
-        const o = ctx.createOscillator();
-        o.type = "triangle";
-        o.frequency.value = mtof(midi);
-        o.detune.value = det;
-        o.connect(g);
-        o.start(when);
-        o.stop(when + len + 0.05);
-      }
+      return;
     }
 
     // the swarm fans out: E G# B E arpeggio on the grid
@@ -3420,28 +3351,9 @@
       this.pad(E2 + 12, when, 0.05, 5);
     }
 
-    // back to the real page: a falling sweep
+    // No musical outro or falling tonal sweep.
     release() {
       this.log("release", []);
-      if (!this.ready()) return;
-      const ctx = this.ctx;
-      const t = this.now() + 0.01;
-      const src = ctx.createBufferSource();
-      src.buffer = this.noiseBuf;
-      src.loop = true;
-      const bp = ctx.createBiquadFilter();
-      bp.type = "bandpass";
-      bp.Q.value = 1;
-      bp.frequency.setValueAtTime(3000, t);
-      bp.frequency.exponentialRampToValueAtTime(220, t + 1);
-      const g = this.bus(t, 0, 0.5);
-      g.gain.setValueAtTime(0.12, t);
-      g.gain.exponentialRampToValueAtTime(0.0005, t + 1.1);
-      src.connect(bp);
-      bp.connect(g);
-      src.start(t);
-      src.stop(t + 1.2);
-      this.piano(E2 + 12, t + 0.05, 0.3, 0, 2.5);
     }
 
     close(after = 0) {
