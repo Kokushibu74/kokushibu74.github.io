@@ -906,7 +906,7 @@ async function botAnswerCallback(env,query,text,showAlert=false){
   if(!query?.id||!env.TELEGRAM_BOT_TOKEN)return;
   await botTelegram(env,"answerCallbackQuery",{callback_query_id:query.id,...(text?{text}:{}),...(showAlert?{show_alert:true}:{})});
 }
-// Legacy "ADMIN CONTROL CENTER" wording is intentionally stripped, never emitted as a message header.
+// Legacy "ADMIN CONTROL CENTER" and "PRIVATE ADMIN SESSION" labels are intentionally stripped, never emitted.
 function botFormatTelegramResponse(text,options={}) {
   return formatTelegramMessage(text,{parseMode:options.parse_mode==="HTML"?"HTML":"PLAIN"});
 }
