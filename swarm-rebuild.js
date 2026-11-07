@@ -3593,12 +3593,35 @@
       }, true);
       // browsers only let audio start after a click/keypress on the page
       on(window, "pointerdown", () => this.unlockSound(), true);
-      if (!this.env.isRoot) {
-        on(this.view.host, "wheel", (e) => {
-          e.preventDefault();
-          this.env.scroller.scrollBy({ top: e.deltaY, left: e.deltaX, behavior: "instant" });
-        }, { passive: false });
-      }
+      // The fullscreen rebuild surface sits above the live document. Forward
+      // wheel and touch gestures to the page scroller so the reconstruction
+      // stays locked to the same scroll position on desktop and mobile.
+      const overHud = (e) => e.composedPath().includes(this.view.hud);
+      on(this.view.host, "wheel", (e) => {
+        if (overHud(e)) return;
+        e.preventDefault();
+        if (this.env.isRoot) window.scrollBy({ top: e.deltaY, left: e.deltaX, behavior: "instant" });
+        else this.env.scroller.scrollBy({ top: e.deltaY, left: e.deltaX, behavior: "instant" });
+      }, { passive: false });
+
+      let touchY = null;
+      on(this.view.host, "touchstart", (e) => {
+        if (overHud(e) || !e.touches.length) {
+          touchY = null;
+          return;
+        }
+        touchY = e.touches[0].clientY;
+      }, { passive: true });
+      on(this.view.host, "touchmove", (e) => {
+        if (touchY == null || overHud(e) || !e.touches.length) return;
+        e.preventDefault();
+        const nextY = e.touches[0].clientY;
+        const delta = touchY - nextY;
+        touchY = nextY;
+        this.env.scrollBy(delta);
+      }, { passive: false });
+      on(this.view.host, "touchend", () => { touchY = null; }, { passive: true });
+      on(this.view.host, "touchcancel", () => { touchY = null; }, { passive: true });
       on(this.view.hud, "click", (e) => {
         const b = e.target.closest("button");
         if (!b) return;
@@ -3724,9 +3747,17 @@
       v.root.querySelector('[data-a="tour"]').hidden = true;
       v.root.querySelector('[data-a="speed"]').hidden = true;
       this.tour = false;
+
+      // Let the completed reconstruction breathe briefly, then reveal the
+      // original live page automatically. Manual close/live controls remain.
+      clearTimeout(this.completeTimer);
+      this.completeTimer = setTimeout(() => {
+        if (!this.dead && this.complete) stop(true);
+      }, 2200);
     }
 
     destroy(reveal) {
+      clearTimeout(this.completeTimer);
       unhidePage();
       if (this.sfx) {
         if (reveal) this.sfx.release();
