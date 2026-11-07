@@ -315,6 +315,32 @@ def signed(value):
     return ("+" if value > 0 else "") + f"{value:,}"
 
 
+def news_report_warnings(metrics):
+    warnings = []
+    if metrics.get("rss_failed") not in (None, 0):
+        warnings.append("Some RSS/feed queries failed.")
+    attempts = metrics.get("metadata_attempts")
+    fetched = metrics.get("metadata_fetched")
+    cached_success = metrics.get("metadata_cached_success") or 0
+    cached_fallback = metrics.get("metadata_cached_fallback") or 0
+    checked_total = (attempts or 0) + cached_success + cached_fallback
+    verified_total = (fetched or 0) + cached_success
+    if checked_total and verified_total / checked_total < 0.5:
+        warnings.append("Publisher metadata coverage is low, including cached publisher previews.")
+    if metrics.get("validation") == "FAIL":
+        warnings.append("Generated feed validation failed.")
+    weather_total = metrics.get("weather_cards")
+    weather_with_preview = metrics.get("weather_cards_with_preview")
+    if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
+        warnings.append("Some Weather/Disaster cards do not have a preview image URL.")
+    if metrics.get("baseline") == "establishing":
+        warnings.append("The comparison baseline is being established.")
+    return warnings
+
+def should_send_news_notification(conclusion, metrics):
+    """Send news workflow failures and warnings, never routine success notifications."""
+    return str(conclusion or "").lower() != "success" or bool(news_report_warnings(metrics))
+
 def build_news_report(metrics, context, verified_ids=None):
     """Render a compact Telegram report while retaining every available diagnostic."""
     verified_ids = verified_ids or {}
@@ -358,7 +384,7 @@ def build_news_report(metrics, context, verified_ids=None):
     run_url = html.escape(run_url, quote=True)
 
     lines = [
-        f'{emoji("rocket", verified_ids)} <b>KOKUSHIBU74 · NEWS REPORT</b>',
+        f'📡 <b>NEWS REFRESH REPORT</b>',
         f'{emoji("success", verified_ids)} <b>{html.escape(status)}</b>  ·  {html.escape(stamp)}',
         "",
         f'{emoji("news", verified_ids)} <b>NEWS DATABASE</b>',
@@ -455,7 +481,7 @@ def build_news_report(metrics, context, verified_ids=None):
         f'{workflow}  ·  {branch}  ·  {event}',
         f'Run <code>{run_id}</code>  ·  Attempt <b>{attempt}</b>',
         "",
-        '<i>KOKUSHIBU74 · AUTOMATED NEWS MONITORING</i>',
+        '<i>Automated feed diagnostics · Bangladesh time</i>',
     ])
     message = "\n".join(lines)
     plain_length = len(re.sub(r"<[^>]+>", "", message))
@@ -482,7 +508,7 @@ def build_failure_report(context, failed, excerpts):
         run_url = "https://github.com/" + str(context.get("repository") or "") + "/actions"
     run_url = html.escape(run_url, quote=True)
     lines = [
-        '🚨 <b>KOKUSHIBU74 · WORKFLOW ALERT</b>',
+        '🚨 <b>WORKFLOW FAILURE</b>',
         '🔴 <b>' + html.escape(str(context.get("conclusion") or "FAILED").upper()) + '</b>',
         '📅 ' + html.escape(stamp),
         '━━━━━━━━━━━━━━━━━━━━━━',
@@ -510,7 +536,20 @@ def build_failure_report(context, failed, excerpts):
     return message
 
 
-def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_error="", reply_markup=None):
+def format_telegram_message(message, category="BOT CONTROL CENTER"):
+    raw = str(message or "").strip()
+    if "<i>KOKUSHIBU74 · INTELLIGENCE</i>" in raw:
+        return raw
+    category = html.escape(str(category or "BOT CONTROL CENTER"))
+    formatted = f"<b>◈ {category}</b>\\n\\n{raw}\\n\\n<i>KOKUSHIBU74 · INTELLIGENCE</i>"
+    plain_length = len(re.sub(r"<[^>]+>", "", formatted))
+    if plain_length > MAX_TELEGRAM_TEXT:
+        raise ValueError("Telegram formatted message exceeds the safe message length: " + str(plain_length))
+    return formatted
+
+
+def send_telegram_report(token, chat_id, message, verified_ids=None, lookup_error="", reply_markup=None, category="BOT CONTROL CENTER"):
+    message = format_telegram_message(message, category)
     verified_ids = verified_ids or {}
     custom_count = len(verified_ids)
     payload = {
@@ -562,16 +601,15 @@ def main():
         "updated_at": env.get("UPDATED_AT"),
         "repository": env.get("REPOSITORY"),
     }
-    if should_suppress_scheduled_success(context, env["GH_TOKEN"]):
-        print("Telegram report suppressed: a successful manual News refresh completed within the previous 15 minutes.")
-        return
-
     log_text, failed, excerpts = read_run_logs(context["repository"], context["run_id"], env["GH_TOKEN"])
     if context["workflow_name"] == "Refresh live news feed" and str(context["conclusion"]).lower() == "success":
         metrics = parse_news_metrics(log_text)
+        if not should_send_news_notification(context["conclusion"], metrics):
+            print("Telegram news success notification suppressed by policy; workflow and feed refresh completed normally.")
+            return
         verified_ids, lookup_error = verified_animated_custom_emojis(env["TELEGRAM_BOT_TOKEN"])
         message = build_news_report(metrics, context, verified_ids)
-        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, verified_ids, lookup_error)
+        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, verified_ids, lookup_error, category="NEWS INTELLIGENCE")
         print("News report metrics parsed; publisher metadata and RSS diagnostics included where available.")
         if lookup_error:
             print("Custom emoji lookup fallback: " + lookup_error)
@@ -585,8 +623,16 @@ def main():
                 {"text": "Open Workflow", "url": run_url},
                 {"text": "Retry Failed Jobs", "callback_data": "b1:alert:github:retry:" + run_id},
             ]]}
-        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, reply_markup=reply_markup)
+        send_telegram_report(env["TELEGRAM_BOT_TOKEN"], env["TELEGRAM_CHAT_ID"], message, reply_markup=reply_markup, category=("NEWS INTELLIGENCE" if context["workflow_name"] == "Refresh live news feed" else "AUTOMATION MONITORING"))
 
 
 if __name__ == "__main__":
     main()
+    warnings = news_report_warnings(metrics)
+    attempts = metrics.get("metadata_attempts")
+    fetched = metrics.get("metadata_fetched")
+    cached_success = metrics.get("metadata_cached_success") or 0
+    cached_fallback = metrics.get("metadata_cached_fallback") or 0
+    checked_total = (attempts or 0) + cached_success + cached_fallback
+    verified_total = (fetched or 0) + cached_success
+    status = conclusion.upper() if conclusion != "success" else ("WARNING · " + str(len(warnings)) + " ITEM(S)" if warnings else "SUCCESS")
