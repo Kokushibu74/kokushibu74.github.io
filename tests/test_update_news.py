@@ -316,20 +316,37 @@ class NewsLogicTests(unittest.TestCase):
     def test_previous_items_are_pruned_after_90_calendar_days(self):
         import json
         from tempfile import TemporaryDirectory
-        old_output = news.OUTPUT
+        old_output, old_archive_output = news.OUTPUT, news.ARCHIVE_OUTPUT
         try:
             with TemporaryDirectory() as folder:
                 path = Path(folder) / "news-feed.json"
+                archive_path = Path(folder) / "news-archive.json"
                 now = datetime.now(timezone.utc)
                 path.write_text(json.dumps({"items": [
                     {"title": "Fresh headline", "link": "https://example.com/fresh", "publishedAt": now.isoformat(), "category": "Bangladesh"},
                     {"title": "Undated headline", "link": "https://example.com/undated", "publishedAt": None, "category": "Technology"}
                 ]}), encoding="utf-8")
-                news.OUTPUT = str(path)
+                archive_path.write_text(json.dumps({"items": [
+                    {"title": "Archived headline", "link": "https://example.com/archive", "publishedAt": (now - timedelta(days=3)).isoformat(), "category": "World"}
+                ]}), encoding="utf-8")
+                news.OUTPUT, news.ARCHIVE_OUTPUT = str(path), str(archive_path)
                 previous = news.read_previous()
-                self.assertEqual({item["title"] for item in previous}, {"Fresh headline"})
+                self.assertEqual({item["title"] for item in previous}, {"Fresh headline", "Archived headline"})
         finally:
-            news.OUTPUT = old_output
+            news.OUTPUT, news.ARCHIVE_OUTPUT = old_output, old_archive_output
+
+    def test_feed_partitions_keep_latest_and_archive_at_exact_24_hour_boundary(self):
+        now = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
+        items = [
+            {"title": "Latest", "publishedAt": (now - timedelta(hours=23, minutes=59)).isoformat()},
+            {"title": "Boundary", "publishedAt": (now - timedelta(hours=24)).isoformat()},
+            {"title": "Archive", "publishedAt": (now - timedelta(days=7)).isoformat()},
+            {"title": "Too far future", "publishedAt": (now + timedelta(minutes=10)).isoformat()},
+        ]
+        latest, archive = news.split_feed_items(items, now)
+        self.assertEqual([item["title"] for item in latest], ["Latest"])
+        self.assertEqual([item["title"] for item in archive], ["Boundary", "Archive"])
+        self.assertEqual(len(latest) + len(archive), 3)
 
     def test_retained_recent_fatal_clash_recomputes_breaking_status(self):
         now = datetime(2026, 11, 5, 7, 54, 55, tzinfo=timezone.utc)
