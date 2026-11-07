@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 from pathlib import Path
 
 OUTPUT = "news-feed.json"
+ARCHIVE_OUTPUT = "news-archive.json"
 WEATHER_QUERIES = [
     ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "bn-BD", "BD", "BD:bn"),
     ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "en-US", "BD", "BD:en"),
@@ -796,15 +797,27 @@ def annotate_seen_items(items, previous, now=None):
 
 
 def read_previous_snapshot():
-    """Read the raw prior feed so removals include stories pruned by the 90-day retention rule."""
-    try:
-        with open(OUTPUT, "r", encoding="utf-8") as file:
-            payload = json.load(file)
-        if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
-            return [], False
-        return [dict(item) for item in payload["items"] if isinstance(item, dict)], True
-    except (OSError, json.JSONDecodeError, TypeError):
-        return [], False
+    """Read both public partitions so metadata, retention and change tracking remain continuous."""
+    combined = []
+    seen = set()
+    baseline_available = False
+    for path in (OUTPUT, ARCHIVE_OUTPUT):
+        try:
+            with open(path, "r", encoding="utf-8") as file:
+                payload = json.load(file)
+            if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
+                continue
+            baseline_available = True
+            for raw_item in payload["items"]:
+                if not isinstance(raw_item, dict):
+                    continue
+                key = key_for(raw_item)
+                if key and key not in seen:
+                    seen.add(key)
+                    combined.append(dict(raw_item))
+        except (OSError, json.JSONDecodeError, TypeError):
+            continue
+    return combined, baseline_available
 
 
 def retained_previous_items(items, now=None):
@@ -889,6 +902,29 @@ def calculate_feed_changes(current_items, previous_items, previous_raw_items, ba
         "net_change": len(current_keys) - len(previous_raw_keys) if baseline_available else None,
         "baseline_available": bool(baseline_available),
     }
+
+
+def split_feed_items(items, now=None):
+    """Partition retained headlines so the initial page never downloads its 90-day archive."""
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    latest, archive = [], []
+    for item in items:
+        try:
+            stamp = datetime.fromisoformat(str(item.get("publishedAt") or "").replace("Z", "+00:00"))
+            if stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=timezone.utc)
+            age = (current.astimezone(timezone.utc) - stamp.astimezone(timezone.utc)).total_seconds()
+        except (ValueError, TypeError, AttributeError, OverflowError):
+            continue
+        if age < -5 * 60:
+            continue
+        if age < 24 * 60 * 60:
+            latest.append(item)
+        else:
+            archive.append(item)
+    return latest, archive
 
 
 def feed_content_metrics(items, weather_items=None, now=None):
@@ -1309,18 +1345,41 @@ def main():
         if stamp and stamp >= history_cutoff:
             history.append(item)
     history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
-    payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
-    with open(OUTPUT, "w", encoding="utf-8") as file:
-        json.dump(payload, file, ensure_ascii=False, indent=2)
-        file.write("\n")
-
-    with open(OUTPUT, "r", encoding="utf-8") as file:
-        written_payload = json.load(file)
-    validation = validate_feed_payload(written_payload)
+    full_payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
+    validation = validate_feed_payload(full_payload)
     if not validation["valid"]:
         print("Feed validation: FAIL; items:", len(selected), "; invalid:", validation["invalid"],
               "; duplicates:", validation["duplicates"])
         raise ValueError("Generated news feed failed validation: " + "; ".join(validation["issues"]))
+
+    latest_items, archive_items = split_feed_items(selected)
+    latest_payload = {
+        "updatedAt": now_iso,
+        "latestBatchAt": now_iso,
+        "items": latest_items,
+        "weatherItems": weather_items,
+        "breakingHistory": history[:500],
+    }
+    archive_payload = {"updatedAt": now_iso, "items": archive_items, "weatherItems": []}
+    # Publish both partitions together in the workflow commit.
+    with open(ARCHIVE_OUTPUT, "w", encoding="utf-8") as file:
+        json.dump(archive_payload, file, ensure_ascii=False, indent=2)
+        file.write("\n")
+    with open(OUTPUT, "w", encoding="utf-8") as file:
+        json.dump(latest_payload, file, ensure_ascii=False, indent=2)
+        file.write("\n")
+
+    with open(OUTPUT, "r", encoding="utf-8") as file:
+        written_latest = json.load(file)
+    with open(ARCHIVE_OUTPUT, "r", encoding="utf-8") as file:
+        written_archive = json.load(file)
+    latest_validation = validate_feed_payload(written_latest)
+    archive_validation = validate_feed_payload(written_archive)
+    if not latest_validation["valid"] or not archive_validation["valid"]:
+        issues = latest_validation["issues"] + archive_validation["issues"]
+        raise ValueError("Generated news partitions failed validation: " + "; ".join(issues))
+    if len(written_latest["items"]) + len(written_archive["items"]) != len(selected):
+        raise ValueError("Generated news partitions do not account for every retained headline.")
 
     content_metrics = feed_content_metrics(selected, weather_items)
     category_counts = {
@@ -1347,10 +1406,12 @@ def main():
           "bd_slider_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
           "weather_cards:", content_metrics["weather_cards"],
           "weather_cards_with_preview:", content_metrics["weather_cards_with_preview"])
-    print("Feed validation: PASS; items:", len(selected), "; invalid:", validation["invalid"],
-          "; duplicates:", validation["duplicates"])
+    print("Feed validation: PASS; latest:", len(latest_items), "; archive:", len(archive_items),
+          "; invalid:", latest_validation["invalid"] + archive_validation["invalid"],
+          "; duplicates:", latest_validation["duplicates"] + archive_validation["duplicates"])
     attempted_feeds = len(DIRECT_FEEDS) + len(QUERIES) + len(WEATHER_QUERIES)
     print("Feed diagnostics:", successful_feeds, "/", attempted_feeds, "successful; failures:", " | ".join(feed_failures[:20]) or "none")
+    print("Feed partition sizes: latest_bytes:", Path(OUTPUT).stat().st_size, "archive_bytes:", Path(ARCHIVE_OUTPUT).stat().st_size)
 
 if __name__ == "__main__":
     main()
