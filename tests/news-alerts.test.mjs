@@ -179,7 +179,7 @@ test("rejection audits refresh when summary or source counts change",async()=>{
 test("Telegram formatter assigns a subject-specific visitor header and clean HTML",()=>{
   const message=formatTelegramMessage("Visitor ID: VIS-ABC123DEF456\nIP: 203.0.113.10");
   assert.match(message,/^<b>◈ VISITOR INTELLIGENCE<\/b>/);
-  assert.match(message,/<code>VIS-ABC123DEF456<\/code>/===false);
+  assert.match(message,/<code>VIS-ABC123DEF456<\/code>/);
   assert.match(message,/<i>KOKUSHIBU74 · INTELLIGENCE<\/i>$/);
 });
 test("Telegram formatter escapes plain text and preserves trusted HTML bodies",()=>{
