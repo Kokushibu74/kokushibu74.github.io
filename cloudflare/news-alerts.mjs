@@ -144,6 +144,7 @@ export function formatTelegramMessage(text,options={}){
   body=body.replace(/^◈ KOKUSHIBU74 INTELLIGENCE\s*\n?/i,"")
     .replace(/^<b>◈ KOKUSHIBU74 INTELLIGENCE<\/b>\s*\n?/i,"")
     .replace(/^<code>ADMIN CONTROL CENTER<\/code>\s*\n?/i,"")
+    .replace(/^ADMIN CONTROL CENTER\s*\n?/im,"")
     .replace(/\n?━━━━━━━━━━━━━━━━━━━━\n◈ ADMIN CONTROL CENTER • PRIVATE CHAT\s*$/i,"")
     .replace(/\n?<i>CONTROL CENTER • PRIVATE ADMIN SESSION<\/i>\s*$/i,"")
     .trim();
