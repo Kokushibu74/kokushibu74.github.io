@@ -98,6 +98,70 @@ def should_suppress_scheduled_success(context, token, window_minutes=15, fetcher
         print("Duplicate-report check unavailable; sending report (fail-open): " + scrub(type(exc).__name__, 80))
         return False
 
+def should_suppress_duplicate_news_warning(context, metrics, token, window_minutes=360, fetcher=None, log_reader=None):
+    """Suppress an unchanged successful-run warning already reported within the cooldown.
+    This is read-only GitHub Actions history; it does not write Cloudflare KV or repo state.
+    API/log lookup errors fail open so new warnings are never silently lost.
+    """
+    if (
+        str(context.get("workflow_name") or "") != "Refresh live news feed"
+        or str(context.get("conclusion") or "").lower() != "success"
+    ):
+        return False
+    current_warnings = news_report_warnings(metrics)
+    if not current_warnings:
+        return False
+
+    try:
+        completed_text = str(context.get("updated_at") or context.get("created_at") or "")
+        current_completed = datetime.fromisoformat(completed_text.replace("Z", "+00:00"))
+        workflow_file = os.path.basename(
+            str(context.get("workflow_path") or ".github/workflows/update-news.yml")
+        )
+        branch = urllib.parse.quote(str(context.get("branch") or "main"), safe="")
+        repository = str(context.get("repository") or "")
+        url = (
+            "https://api.github.com/repos/" + repository
+            + "/actions/workflows/" + urllib.parse.quote(workflow_file, safe="")
+            + "/runs?branch=" + branch + "&per_page=100"
+        )
+        get_bytes = fetcher or github_get
+        payload = json.loads(get_bytes(url, token).decode("utf-8"))
+        current_run_id = str(context.get("run_id") or "")
+        window = timedelta(minutes=max(0, int(window_minutes)))
+        previous_run = None
+
+        for run in payload.get("workflow_runs", []):
+            if str(run.get("id") or "") == current_run_id:
+                continue
+            if str(run.get("event") or "").lower() not in ("schedule", "push", "workflow_dispatch"):
+                continue
+            if str(run.get("conclusion") or "").lower() != "success":
+                continue
+            if str(run.get("head_branch") or context.get("branch") or "") != str(context.get("branch") or "main"):
+                continue
+            completed_at = run.get("updated_at")
+            if not completed_at:
+                continue
+            prior_completed = datetime.fromisoformat(str(completed_at).replace("Z", "+00:00"))
+            age = current_completed - prior_completed
+            if timedelta(0) <= age <= window:
+                previous_run = run
+                break
+
+        if not previous_run:
+            return False
+
+        read_logs = log_reader or read_run_logs
+        previous_logs, _failed, _excerpts = read_logs(repository, previous_run.get("id"), token)
+        previous_metrics = parse_news_metrics(previous_logs)
+        previous_warnings = news_report_warnings(previous_metrics)
+        return bool(previous_warnings) and previous_warnings == current_warnings
+    except Exception as exc:
+        print("Duplicate News warning check unavailable; sending alert (fail-open): " + scrub(type(exc).__name__, 80))
+        return False
+
+
 def telegram_call(token, method, payload):
     request = urllib.request.Request(
         "https://api.telegram.org/bot" + token + "/" + method,
@@ -595,6 +659,9 @@ def main():
         metrics = parse_news_metrics(log_text)
         if not should_send_news_notification(context["conclusion"], metrics):
             print("Telegram news success notification suppressed by policy; workflow and feed refresh completed normally.")
+            return
+        if should_suppress_duplicate_news_warning(context, metrics, env["GH_TOKEN"]):
+            print("Repeated News warning suppressed; the same warning was already reported within the previous 6 hours.")
             return
         verified_ids, lookup_error = verified_animated_custom_emojis(env["TELEGRAM_BOT_TOKEN"])
         message = build_news_report(metrics, context, verified_ids)

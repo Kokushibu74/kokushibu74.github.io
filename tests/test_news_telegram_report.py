@@ -134,6 +134,98 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
         self.assertIn("Overall preview coverage <b>93%</b> (13/14)", message)
         self.assertNotIn("Publisher metadata coverage is low", message)
 
+    def test_identical_success_warning_is_suppressed_for_six_hours_without_state_writes(self):
+        context = {
+            "workflow_name": "Refresh live news feed",
+            "event_name": "workflow_dispatch",
+            "conclusion": "success",
+            "run_id": "current-run",
+            "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main",
+            "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-07T09:01:00Z",
+        }
+        metrics = {
+            "rss_failed": 0,
+            "metadata_attempts": 13,
+            "metadata_fetched": 2,
+            "metadata_cached_success": 0,
+            "metadata_cached_fallback": 1,
+            "validation": None,
+            "weather_cards": 12,
+            "weather_cards_with_preview": 6,
+        }
+        previous_logs = """Feed breakdown: latest_24h: 1144 archive: 12087 latest_tag_15m: 9 preview_image_urls: 3862 bd_latest_tag_preview_candidates: 12 weather_cards: 12 weather_cards_with_preview: 6
+Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cached/reused: 1 cached_success: 0 cached_fallback: 1 Google News URLs resolved: 2
+"""
+        captured = {}
+        def fake_get(url, _token):
+            captured["url"] = url
+            return b'{"workflow_runs":[{"id":123,"event":"schedule","conclusion":"success","head_branch":"main","updated_at":"2026-11-07T08:46:00Z"}]}'
+        def fake_logs(repository, run_id, _token):
+            captured["previous_run"] = (repository, run_id)
+            return previous_logs, [], []
+
+        self.assertTrue(report.should_suppress_duplicate_news_warning(
+            context, metrics, "fake-token", fetcher=fake_get, log_reader=fake_logs
+        ))
+        self.assertIn("per_page=100", captured["url"])
+        self.assertEqual(captured["previous_run"][1], 123)
+
+    def test_changed_warning_is_not_suppressed(self):
+        context = {
+            "workflow_name": "Refresh live news feed", "conclusion": "success",
+            "run_id": "current-run", "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main", "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-07T09:01:00Z",
+        }
+        current = {
+            "rss_failed": 0, "metadata_attempts": 13, "metadata_fetched": 2,
+            "metadata_cached_success": 0, "metadata_cached_fallback": 1,
+            "weather_cards": 12, "weather_cards_with_preview": 6,
+        }
+        previous_logs = """Feed breakdown: latest_24h: 100 archive: 1000 latest_tag_15m: 2 preview_image_urls: 200 bd_latest_tag_preview_candidates: 3 weather_cards: 12 weather_cards_with_preview: 10
+Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cached/reused: 1 cached_success: 0 cached_fallback: 1 Google News URLs resolved: 2
+Feed diagnostics: 24 / 25 successful; failures: one publisher feed unavailable
+"""
+        def fake_get(_url, _token):
+            return b'{"workflow_runs":[{"id":123,"event":"schedule","conclusion":"success","updated_at":"2026-11-07T08:46:00Z"}]}'
+        def fake_logs(_repository, _run_id, _token):
+            return previous_logs, [], []
+        self.assertFalse(report.should_suppress_duplicate_news_warning(
+            context, current, "fake-token", fetcher=fake_get, log_reader=fake_logs
+        ))
+
+    def test_duplicate_warning_older_than_six_hours_is_reported_again(self):
+        context = {
+            "workflow_name": "Refresh live news feed", "conclusion": "success",
+            "run_id": "current-run", "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main", "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-07T09:01:00Z",
+        }
+        metrics = {"rss_failed": 1}
+        def fake_get(_url, _token):
+            return b'{"workflow_runs":[{"id":123,"event":"schedule","conclusion":"success","updated_at":"2026-11-07T02:00:00Z"}]}'
+        def unexpected_logs(*_args):
+            raise AssertionError("old runs must not have their logs downloaded")
+        self.assertFalse(report.should_suppress_duplicate_news_warning(
+            context, metrics, "fake-token", fetcher=fake_get, log_reader=unexpected_logs
+        ))
+
+    def test_duplicate_warning_history_lookup_fails_open(self):
+        context = {
+            "workflow_name": "Refresh live news feed", "conclusion": "success",
+            "run_id": "current-run", "workflow_path": ".github/workflows/update-news.yml",
+            "branch": "main", "repository": "Kokushibu74/kokushibu74.github.io",
+            "updated_at": "2026-11-07T09:01:00Z",
+        }
+        metrics = {"rss_failed": 1}
+        def broken_get(_url, _token):
+            raise OSError("offline")
+        self.assertFalse(report.should_suppress_duplicate_news_warning(
+            context, metrics, "fake-token", fetcher=broken_get
+        ))
+
     def test_clean_news_success_is_suppressed_but_warnings_and_failures_are_sent(self):
         clean = {"rss_failed": 0, "metadata_attempts": 10, "metadata_fetched": 10, "metadata_cached_success": 0, "metadata_cached_fallback": 0, "validation": "PASS", "weather_cards": 0, "weather_cards_with_preview": 0}
         warning = dict(clean, rss_failed=2)
