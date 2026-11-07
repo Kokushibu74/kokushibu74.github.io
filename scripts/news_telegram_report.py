@@ -345,26 +345,14 @@ def build_news_report(metrics, context, verified_ids=None):
     """Render a compact Telegram report while retaining every available diagnostic."""
     verified_ids = verified_ids or {}
     conclusion = str(context.get("conclusion") or "unknown").lower()
-    warnings = []
-    if metrics.get("rss_failed") not in (None, 0):
-        warnings.append("Some RSS/feed queries failed.")
+    warnings = news_report_warnings(metrics)
     attempts = metrics.get("metadata_attempts")
     fetched = metrics.get("metadata_fetched")
     cached_success = metrics.get("metadata_cached_success") or 0
     cached_fallback = metrics.get("metadata_cached_fallback") or 0
     checked_total = (attempts or 0) + cached_success + cached_fallback
     verified_total = (fetched or 0) + cached_success
-    if checked_total and verified_total / checked_total < 0.5:
-        warnings.append("Publisher metadata coverage is low, including cached publisher previews.")
-    if metrics.get("validation") == "FAIL":
-        warnings.append("Generated feed validation failed.")
-    weather_total = metrics.get("weather_cards")
-    weather_with_preview = metrics.get("weather_cards_with_preview")
-    if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
-        warnings.append("Some Weather/Disaster cards do not have a preview image URL.")
-    if metrics.get("baseline") == "establishing":
-        warnings.append("The comparison baseline is being established.")
-
+    status = conclusion.upper() if conclusion != "success" else ("WARNING · " + str(len(warnings)) + " ITEM(S)" if warnings else "SUCCESS")
     status = conclusion.upper() if conclusion != "success" else ("SUCCESS · WARNINGS" if warnings else "SUCCESS")
     stamp_value = context.get("updated_at") or context.get("created_at") or ""
     try:
@@ -485,11 +473,11 @@ def build_news_report(metrics, context, verified_ids=None):
     ])
     message = "\n".join(lines)
     plain_length = len(re.sub(r"<[^>]+>", "", message))
-    if plain_length > MAX_TELEGRAM_TEXT:
+    if plain_length > MAX_TELEGRAM_TEXT - 100:
         lines = [line for line in lines if not line.startswith("🌐 Publisher preview unavailable")]
         message = "\n".join(lines)
         plain_length = len(re.sub(r"<[^>]+>", "", message))
-    if plain_length > MAX_TELEGRAM_TEXT:
+    if plain_length > MAX_TELEGRAM_TEXT - 100:
         raise ValueError("Telegram report exceeds the safe message length: " + str(plain_length))
     return message
 def build_failure_report(context, failed, excerpts):
@@ -541,7 +529,7 @@ def format_telegram_message(message, category="BOT CONTROL CENTER"):
     if "<i>KOKUSHIBU74 · INTELLIGENCE</i>" in raw:
         return raw
     category = html.escape(str(category or "BOT CONTROL CENTER"))
-    formatted = f"<b>◈ {category}</b>\\n\\n{raw}\\n\\n<i>KOKUSHIBU74 · INTELLIGENCE</i>"
+    formatted = f"<b>◈ {category}</b>\n\n{raw}\n\n<i>KOKUSHIBU74 · INTELLIGENCE</i>"
     plain_length = len(re.sub(r"<[^>]+>", "", formatted))
     if plain_length > MAX_TELEGRAM_TEXT:
         raise ValueError("Telegram formatted message exceeds the safe message length: " + str(plain_length))
