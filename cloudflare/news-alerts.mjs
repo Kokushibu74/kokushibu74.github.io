@@ -147,6 +147,16 @@ export function formatTelegramMessage(text,options={}){
     .replace(/\n?━━━━━━━━━━━━━━━━━━━━\n◈ ADMIN CONTROL CENTER • PRIVATE CHAT\s*$/i,"")
     .replace(/\n?<i>CONTROL CENTER • PRIVATE ADMIN SESSION<\/i>\s*$/i,"")
     .trim();
+  let insideCode=false;
+  body=body.split(/(<[^>]+>)/g).map(part=>{
+    if(part.startsWith("<")){
+      if(/^<code>/i.test(part))insideCode=true;
+      if(/^<\/code>/i.test(part))insideCode=false;
+      return part;
+    }
+    if(insideCode)return part;
+    return part.replace(/VIS-[A-F0-9]{12}|(?:\d{1,3}\.){3}\d{1,3}|[+-]?\d{1,3}\.\d{4,}\s*,\s*[+-]?\d{1,3}\.\d{4,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi,value=>"<code>"+value+"</code>");
+  }).join("");
   return "<b>◈ "+category+"</b>\n\n"+body+"\n\n<i>KOKUSHIBU74 · INTELLIGENCE</i>";
 }
 
