@@ -470,7 +470,7 @@ async function sendTelegramReportBatch(env,chatId,messages,reportId,reportInput=
   for(let i=sent;i<messages.length;i++){
     const text=String(messages[i]||"");
     const formattedText=formatTelegramMessage(text,{parseMode:"HTML",category:"DAILY INTELLIGENCE"});
-    if(formattedText.length>3900)throw new Error("Daily report section "+(i+1)+" exceeds the safe Telegram message length.");
+    if(text.length>3900||formattedText.length>3900)throw new Error("Daily report section "+(i+1)+" exceeds the safe Telegram message length.");
     let response,payload;
     if(i===0&&imageId&&formattedText.length<=950){
       response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendPhoto",{
