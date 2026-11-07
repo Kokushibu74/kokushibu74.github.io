@@ -7,6 +7,9 @@ on:
       - "cloudflare/portfolio-contact-telegram.js"
       - "cloudflare/news-alerts.mjs"
       - "cloudflare/news-watchdog.mjs"
+      - "scripts/news_telegram_report.py"
+      - "tests/test_news_telegram_report.py"
+      - "tests/telegram-bot-regression.test.mjs"
       - "tests/news-alerts.test.mjs"
       - "tests/news-watchdog.test.mjs"
       - "tests/visitor-location.test.mjs"
@@ -27,7 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Check Worker and module syntax
+      - name: Set up Python\n        uses: actions/setup-python@v5\n        with:\n          python-version: "3.12"\n      - name: Check Worker and module syntax
         run: |
           node --check cloudflare/portfolio-contact-telegram.js
           node --check cloudflare/news-alerts.mjs
