@@ -43,6 +43,18 @@ class NewsLogicTests(unittest.TestCase):
         }
         self.assertEqual(news.weather_preview_image(item), "https://cdn.example.com/thumb.jpg")
 
+    def test_weather_cards_without_any_preview_image_are_excluded(self):
+        items = [
+            {"title": "Newest without image", "previewImage": ""},
+            {"title": "Next with RSS image", "image": "https://cdn.example.com/weather.jpg"},
+            {"title": "Third without image"},
+            {"title": "Fourth with thumbnail", "thumbnailUrl": "https://cdn.example.com/thumb.jpg"},
+        ]
+        selected = news.select_weather_cards_with_preview(items)
+        self.assertEqual([item["title"] for item in selected], ["Next with RSS image", "Fourth with thumbnail"])
+        self.assertEqual(selected[0]["previewImage"], "https://cdn.example.com/weather.jpg")
+        self.assertEqual(selected[1]["previewImage"], "https://cdn.example.com/thumb.jpg")
+
     def test_recent_weather_or_disaster_story_is_accepted(self):
         self.assertTrue(news.is_weather_disaster_story(
             "Cyclone warning issued as heavy rain approaches",

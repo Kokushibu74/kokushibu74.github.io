@@ -212,7 +212,9 @@ def parse_news_metrics(log_text):
     )
     if weather_detail:
         candidates, fetched, cached, unavailable, rss_fallback, with_preview = map(int, weather_detail.groups())
-        metrics["weather_cards"] = candidates
+        # "Weather cards" means cards actually published to the UI; image-less
+        # candidates are intentionally excluded by the feed generator.
+        metrics["weather_cards"] = with_preview
         metrics["weather_cards_with_preview"] = with_preview
         metrics["weather_enriched"] = fetched
         metrics["weather_priority"] = candidates
@@ -319,14 +321,8 @@ def news_report_warnings(metrics):
     warnings = []
     if metrics.get("rss_failed") not in (None, 0):
         warnings.append("Some RSS/feed queries failed.")
-    attempts = metrics.get("metadata_attempts")
-    fetched = metrics.get("metadata_fetched")
-    cached_success = metrics.get("metadata_cached_success") or 0
-    cached_fallback = metrics.get("metadata_cached_fallback") or 0
-    checked_total = (attempts or 0) + cached_success + cached_fallback
-    verified_total = (fetched or 0) + cached_success
-    if checked_total and verified_total / checked_total < 0.5:
-        warnings.append("Publisher metadata coverage is low, including cached publisher previews.")
+    # Publisher Open Graph extraction is best-effort: many publishers block bots.
+    # RSS image fallbacks remain valid previews, so metadata fetch rate alone is not a feed warning.
     if metrics.get("validation") == "FAIL":
         warnings.append("Generated feed validation failed.")
     weather_total = metrics.get("weather_cards")
@@ -419,13 +415,13 @@ def build_news_report(metrics, context, verified_ids=None):
         f'⚠️ Unavailable <b>{number(metrics.get("metadata_unavailable"))}</b>  ·  Cached <b>{number(metrics.get("metadata_cached"))}</b>',
     ])
     if attempts is not None and attempts > 0 and fetched is not None:
-        lines.append(f'📊 New fetch success <b>{round(100 * fetched / max(1, attempts))}%</b> ({fetched}/{attempts})')
+        lines.append(f'📊 New metadata fetch success <b>{round(100 * fetched / max(1, attempts))}%</b> ({fetched}/{attempts})')
         if cached_success or cached_fallback:
             lines.append(f'📦 Cached previews <b>{number(metrics.get("metadata_cached"))}</b> · Verified <b>{number(cached_success)}</b> · Fallback <b>{number(cached_fallback)}</b>')
         if checked_total:
-            lines.append(f'📊 Overall preview coverage <b>{round(100 * verified_total / checked_total)}%</b> ({verified_total}/{checked_total})')
+            lines.append(f'📊 Publisher metadata verification <b>{round(100 * verified_total / checked_total)}%</b> ({verified_total}/{checked_total})')
     elif attempts == 0:
-        lines.append(f'📊 New fetch success <b>N/A</b> · No new requests; cached <b>{number(metrics.get("metadata_cached"))}</b>')
+        lines.append(f'📊 New metadata fetch success <b>N/A</b> · No new requests; cached <b>{number(metrics.get("metadata_cached"))}</b>')
     else:
         lines.append('📊 Metadata success rate <b>Not reported</b>')
     if metrics.get("publisher_preview_unavailable"):
