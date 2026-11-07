@@ -56,6 +56,10 @@ assert.match(news, /activeSubcategory==="All"\|\|getSubcategory\(x\)===activeSub
 assert.match(news, /data-subcategory/, "Subcategory controls must have delegated click targets");
 assert.match(news, /getSubcategory\(item\)/, "Mobile and desktop renderers must display the assigned subcategory");
 assert.match(news, /news-categories\.json/, "The News module must load the shared category taxonomy");
-assert.match(page, /news\.js\?v=33/, "News module cache must be refreshed after category navigation changes");
+assert.match(page, /news\.js\?v=34/, "News module cache must be refreshed after category navigation changes");
+assert.match(news, /async function loadArchiveFeed\(\)/, "Archive data must have a dedicated loader");
+assert.match(news, /if\(viewMode==="archive"&&!archiveLoaded\)/, "Archive data must load only after the visitor selects Archive");
+assert.match(news, /items=latestItems\.concat\(archiveItems\)/, "Latest and archive data must be combined without re-downloading either partition");
+assert.match(news, /fetch\(archiveUrl\.href,\{cache:"no-cache"\}\)/, "Archive must be fetched from its own data file");
 
 console.log("News client optimization contracts OK.");
