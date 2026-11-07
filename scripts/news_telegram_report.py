@@ -373,7 +373,7 @@ def build_news_report(metrics, context, verified_ids=None):
     run_url = html.escape(run_url, quote=True)
 
     lines = [
-        f'📡 <b>NEWS REFRESH REPORT</b>',
+        f'{emoji("rocket", verified_ids)} <b>NEWS REFRESH REPORT</b>',
         f'{emoji("success", verified_ids)} <b>{html.escape(status)}</b>  ·  {html.escape(stamp)}',
         "",
         f'{emoji("news", verified_ids)} <b>NEWS DATABASE</b>',
