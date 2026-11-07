@@ -1721,7 +1721,8 @@ async function miniAppCronAlert(env,cron,status,detail){
     await env.BOT_CONFIG_KV.put(key,JSON.stringify({failed:false,at:Date.now(),status:String(status)}),{expirationTtl:14*86400});
     return;
   }
-  if(!decision.notify)return;
+  const shouldNotify=decision.notify;
+  if(!shouldNotify)return;
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID){console.error("Mini App cron alert could not be delivered: Telegram configuration unavailable");return;}
   const escape=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,220);
   const body=["🚨 <b>AUTOMATION FAILURE</b>","⚙️ <b>Schedule:</b> <code>"+escape(cron)+"</code>","🕒 "+new Date().toLocaleString("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" (Bangladesh time)","❌ "+escape(detail||status)].join("\n");
