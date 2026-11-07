@@ -353,7 +353,6 @@ def build_news_report(metrics, context, verified_ids=None):
     checked_total = (attempts or 0) + cached_success + cached_fallback
     verified_total = (fetched or 0) + cached_success
     status = conclusion.upper() if conclusion != "success" else ("WARNING · " + str(len(warnings)) + " ITEM(S)" if warnings else "SUCCESS")
-    status = conclusion.upper() if conclusion != "success" else ("SUCCESS · WARNINGS" if warnings else "SUCCESS")
     stamp_value = context.get("updated_at") or context.get("created_at") or ""
     try:
         stamp = datetime.fromisoformat(stamp_value.replace("Z", "+00:00")).astimezone(BDT).strftime("%d %b %Y · %I:%M %p BDT")
@@ -519,7 +518,7 @@ def build_failure_report(context, failed, excerpts):
         lines.extend('• ' + html.escape(item) for item in excerpts[:4])
     lines.extend(['', f'🔗 <a href="{run_url}">OPEN GITHUB ACTION RUN</a>'])
     message = "\n".join(lines)
-    if len(re.sub(r"<[^>]+>", "", message)) > MAX_TELEGRAM_TEXT:
+    if len(re.sub(r"<[^>]+>", "", message)) > MAX_TELEGRAM_TEXT - 100:
         message = message[:MAX_TELEGRAM_TEXT]
     return message
 
@@ -616,11 +615,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    warnings = news_report_warnings(metrics)
-    attempts = metrics.get("metadata_attempts")
-    fetched = metrics.get("metadata_fetched")
-    cached_success = metrics.get("metadata_cached_success") or 0
-    cached_fallback = metrics.get("metadata_cached_fallback") or 0
-    checked_total = (attempts or 0) + cached_success + cached_fallback
-    verified_total = (fetched or 0) + cached_success
-    status = conclusion.upper() if conclusion != "success" else ("WARNING · " + str(len(warnings)) + " ITEM(S)" if warnings else "SUCCESS")
