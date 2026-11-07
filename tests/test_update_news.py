@@ -313,6 +313,35 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(items[1]["firstSeenAt"], now.isoformat())
         self.assertEqual(items[1]["latestBatchAt"], now.isoformat())
 
+    def test_previous_snapshot_bootstraps_legacy_archive_only_when_requested(self):
+        import json
+        from tempfile import TemporaryDirectory
+        from unittest.mock import Mock, patch
+        with TemporaryDirectory() as folder:
+            latest_path = Path(folder) / "news-feed.json"
+            archive_path = Path(folder) / "news-archive.json"
+            latest_path.write_text(json.dumps({"items": [
+                {"title": "Recent", "link": "https://example.com/recent", "publishedAt": datetime.now(timezone.utc).isoformat()}
+            ]}), encoding="utf-8")
+            archive_path.write_text(json.dumps({"items": []}), encoding="utf-8")
+            legacy = {"items": [
+                {"title": "Old story", "link": "https://example.com/old", "publishedAt": (datetime.now(timezone.utc) - timedelta(days=4)).isoformat()}
+            ]}
+            response = Mock()
+            response.__enter__ = Mock(return_value=response)
+            response.__exit__ = Mock(return_value=False)
+            response.read.return_value = json.dumps(legacy).encode("utf-8")
+            with patch.object(news, "OUTPUT", str(latest_path)), \
+                 patch.object(news, "ARCHIVE_OUTPUT", str(archive_path)), \
+                 patch.object(news, "LEGACY_FEED_SEED_URL", "https://example.com/legacy.json"), \
+                 patch.object(news.urllib.request, "urlopen", return_value=response) as opener:
+                ordinary, _ = news.read_previous_snapshot()
+                self.assertEqual(len(ordinary), 1)
+                recovered, baseline = news.read_previous_snapshot(allow_legacy_bootstrap=True)
+                self.assertTrue(baseline)
+                self.assertEqual({item["title"] for item in recovered}, {"Recent", "Old story"})
+                opener.assert_called_once()
+
     def test_previous_items_are_pruned_after_90_calendar_days(self):
         import json
         from tempfile import TemporaryDirectory
