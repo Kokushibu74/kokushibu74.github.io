@@ -82,7 +82,8 @@ Feed diagnostics: 25 / 25 successful; failures: none
         message = report.build_news_report(metrics, context, verified)
         self.assertIn('<tg-emoji emoji-id="5445284980978621387">🚀</tg-emoji>', message)
         self.assertIn('<tg-emoji emoji-id="5433982607035474385">📰</tg-emoji>', message)
-        self.assertIn("SUCCESS · WARNINGS", message)
+        self.assertIn("WARNING · ", message)
+        self.assertNotIn("SUCCESS · WARNINGS", message)
         self.assertIn("NEWS DATABASE", message)
         self.assertIn("LIVE FEED", message)
         self.assertIn("COLLECTION HEALTH", message)
@@ -132,6 +133,20 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
         self.assertIn("New fetch success <b>0%</b> (0/1)", message)
         self.assertIn("Overall preview coverage <b>93%</b> (13/14)", message)
         self.assertNotIn("Publisher metadata coverage is low", message)
+
+    def test_clean_news_success_is_suppressed_but_warnings_and_failures_are_sent(self):
+        clean = {"rss_failed": 0, "metadata_attempts": 10, "metadata_fetched": 10, "metadata_cached_success": 0, "metadata_cached_fallback": 0, "validation": "PASS", "weather_cards": 0, "weather_cards_with_preview": 0}
+        warning = dict(clean, rss_failed=2)
+        self.assertFalse(report.should_send_news_notification("success", clean))
+        self.assertTrue(report.should_send_news_notification("success", warning))
+        self.assertTrue(report.should_send_news_notification("failure", clean))
+        self.assertTrue(report.should_send_news_notification("cancelled", clean))
+
+    def test_all_news_and_workflow_messages_receive_category_header_and_brand_footer(self):
+        message = report.format_telegram_message("<b>Failure details</b>", "NEWS INTELLIGENCE")
+        self.assertTrue(message.startswith("<b>◈ NEWS INTELLIGENCE</b>"))
+        self.assertTrue(message.endswith("<i>KOKUSHIBU74 · INTELLIGENCE</i>"))
+        self.assertIn("<b>Failure details</b>", message)
 
     def test_report_uses_html_escaping_for_dynamic_values(self):
         metrics = report.parse_news_metrics("")
