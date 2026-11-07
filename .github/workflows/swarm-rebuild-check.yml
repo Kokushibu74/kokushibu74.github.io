@@ -1,0 +1,37 @@
+name: Swarm Rebuild integration checks
+
+on:
+  push:
+    branches:
+      - swarm-rebuild-header-trigger
+
+jobs:
+  syntax-and-wiring:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check JavaScript syntax
+        run: |
+          node --check swarm-rebuild.js
+          node --check swarm-rebuild-launcher.js
+      - name: Check homepage wiring
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text()
+          engine = Path("swarm-rebuild.js").read_text()
+          launcher = Path("swarm-rebuild-launcher.js").read_text()
+          assert html.count('id="nav-brand-intro"') == 1
+          assert html.count('src="swarm-rebuild.js?v=1"') == 1
+          assert html.count('src="swarm-rebuild-launcher.js?v=1"') == 1
+          assert 'const KEY = "__swarmRebuild"' in engine
+          assert "window[KEY] = {" in engine
+          assert "  start();\n})();" not in engine
+          assert 'getElementById("nav-brand-intro")' in launcher
+          assert "event.preventDefault()" in launcher
+          assert "swarm.start()" in launcher
+          print("Homepage trigger and original engine wiring checks passed.")
+          PY
