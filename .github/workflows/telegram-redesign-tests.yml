@@ -1,0 +1,34 @@
+name: Telegram redesign regression tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "cloudflare/news-watchdog.mjs"
+      - "tests/news-alerts.test.mjs"
+      - "tests/news-watchdog.test.mjs"
+      - ".github/workflows/telegram-redesign-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  telegram-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check Worker and module syntax
+        run: |
+          node --check cloudflare/portfolio-contact-telegram.js
+          node --check cloudflare/news-alerts.mjs
+          node --check cloudflare/news-watchdog.mjs
+      - name: Run Telegram and news regression tests
+        run: node --test tests/news-alerts.test.mjs tests/news-watchdog.test.mjs
