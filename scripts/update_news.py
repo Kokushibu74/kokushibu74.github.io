@@ -228,6 +228,21 @@ def weather_preview_image(item):
             return value
     return ""
 
+def select_weather_cards_with_preview(items, limit=12):
+    """Keep only the newest weather cards that have a usable HTTPS preview image."""
+    selected = []
+    for item in items:
+        if len(selected) >= limit:
+            break
+        if not isinstance(item, dict):
+            continue
+        image = weather_preview_image(item)
+        if not image:
+            continue
+        item["previewImage"] = image
+        selected.append(item)
+    return selected
+
 
 def image_for(node):
     for path in ("./media:content", "./media:thumbnail"):
@@ -1233,8 +1248,8 @@ def main():
                 weather_rss_fallback += 1
             item["previewImage"] = fallback_image
         item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
-    weather_items = weather_collected[:12]
-    weather_with_preview = sum(1 for item in weather_items if item.get("previewImage"))
+    weather_items = select_weather_cards_with_preview(weather_preview_candidates, limit=12)
+    weather_with_preview = len(weather_items)
     print("Weather/disaster previews: candidates:", len(weather_preview_candidates),
           "metadata_fetched:", weather_enriched, "cached/reused:", weather_cached,
           "publisher_unavailable:", weather_unavailable, "RSS_image_fallback:", weather_rss_fallback,
