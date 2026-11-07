@@ -186,6 +186,7 @@ Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cach
         }
         previous_logs = """Feed breakdown: latest_24h: 100 archive: 1000 latest_tag_15m: 2 preview_image_urls: 200 bd_latest_tag_preview_candidates: 3 weather_cards: 12 weather_cards_with_preview: 10
 Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cached/reused: 1 cached_success: 0 cached_fallback: 1 Google News URLs resolved: 2
+Feed diagnostics: 24 / 25 successful; failures: one publisher feed unavailable
 """
         def fake_get(_url, _token):
             return b'{"workflow_runs":[{"id":123,"event":"schedule","conclusion":"success","updated_at":"2026-11-07T08:46:00Z"}]}'
