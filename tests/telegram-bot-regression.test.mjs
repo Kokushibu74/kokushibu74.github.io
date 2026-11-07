@@ -177,7 +177,8 @@ assert.match(source, /b1:status:automation:3/, "Automation must expose manual ac
 
 console.log("Website diagnostics, News Center history and Automation schedule contracts verified.");
 
-assert.match(source, /mdSafe\("Visitor IDs are the clickable buttons below; tap one to open its report\."\)/, "The /userid MarkdownV2 footer must escape reserved punctuation");
+assert.match(source, /mdSafe\("Visitor IDs are the clickable buttons below; tap one to open its report\."\)/, "The /userid footer must escape dynamic text");
+assert.match(source, /parse_mode:"HTML"/, "User Directory must use HTML formatting");
 
 
 const callbackEdit = section("async function botHandleCallback", "async function umHandleCommand");
