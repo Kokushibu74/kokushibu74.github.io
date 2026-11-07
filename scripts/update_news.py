@@ -17,6 +17,7 @@ from pathlib import Path
 
 OUTPUT = "news-feed.json"
 ARCHIVE_OUTPUT = "news-archive.json"
+LEGACY_FEED_SEED_URL = "https://raw.githubusercontent.com/Kokushibu74/kokushibu74.github.io/53d209cebdcd44bbfc834adb9a9f5c0d1b178310/news-feed.json"
 WEATHER_QUERIES = [
     ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "bn-BD", "BD", "BD:bn"),
     ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "en-US", "BD", "BD:en"),
@@ -796,8 +797,8 @@ def annotate_seen_items(items, previous, now=None):
     return items
 
 
-def read_previous_snapshot():
-    """Read both public partitions so metadata, retention and change tracking remain continuous."""
+def read_previous_snapshot(allow_legacy_bootstrap=False):
+    """Read both public partitions; recover the pre-split snapshot once if the archive was not committed."""
     combined = []
     seen = set()
     baseline_available = False
@@ -817,6 +818,29 @@ def read_previous_snapshot():
                     combined.append(dict(raw_item))
         except (OSError, json.JSONDecodeError, TypeError):
             continue
+
+    # One-time migration safety net: the original 90-day snapshot is pinned to an immutable commit.
+    # It is only read when the two new partitions contain far fewer than the expected retained set.
+    if allow_legacy_bootstrap and len(combined) < 5000 and LEGACY_FEED_SEED_URL:
+        try:
+            request = urllib.request.Request(LEGACY_FEED_SEED_URL, headers=HEADERS)
+            with urllib.request.urlopen(request, timeout=30) as response:
+                legacy_payload = json.loads(response.read(25_000_000).decode("utf-8"))
+            legacy_items = legacy_payload.get("items", []) if isinstance(legacy_payload, dict) else []
+            recovered = 0
+            for raw_item in legacy_items:
+                if not isinstance(raw_item, dict):
+                    continue
+                key = key_for(raw_item)
+                if key and key not in seen:
+                    seen.add(key)
+                    combined.append(dict(raw_item))
+                    recovered += 1
+            if recovered:
+                baseline_available = True
+                print("Legacy archive bootstrap: recovered", recovered, "historical headlines from the pinned pre-split snapshot.")
+        except Exception as exc:
+            print("WARNING: legacy archive bootstrap unavailable:", type(exc).__name__, str(exc)[:160])
     return combined, baseline_available
 
 
@@ -1020,7 +1044,7 @@ def format_signed(value):
 
 
 def main():
-    previous_raw, baseline_available = read_previous_snapshot()
+    previous_raw, baseline_available = read_previous_snapshot(allow_legacy_bootstrap=True)
     previous = retained_previous_items(previous_raw)
     previous_weather = read_previous_weather()
     breaking_history = read_breaking_history()
