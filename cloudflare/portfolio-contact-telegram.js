@@ -916,7 +916,8 @@ async function botSend(env,chatId,text,keyboard,options={}){
   try{saved=await botGetMenuAnchor(env,chatId)}catch(e){console.error("Telegram menu anchor read failed",String(e&&e.message||e).slice(0,240))}
   const callbackMessageId=Number(BOT_CALLBACK_MESSAGE_ANCHORS.get(String(chatId))||0)||null;
   const messageId=callbackMessageId||saved?.messageId||options.messageId||null;
-  const formatted=botFormatTelegramResponse(text,options);\n  const payload={chat_id:chatId,text:formatted.slice(0,3900),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]}};
+  const formatted=botFormatTelegramResponse(text,options);
+  const payload={chat_id:chatId,text:formatted.slice(0,3900),parse_mode:"HTML",disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard||[]}};
   if(messageId&&(!options.forceNew||callbackMessageId)){
     let edited;
     try{edited=await botTelegram(env,"editMessageText",{...payload,message_id:messageId})}
