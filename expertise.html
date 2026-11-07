@@ -15,7 +15,7 @@
 <title>Expertise & Capabilities | Shihabul Islam</title>
 <meta name="description" content="Explore Shihabul Islam's practical work across web development, interface engineering, AI workflows, developer tools and cybersecurity learning.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared-shell.css?v=4">
 <link rel="stylesheet" href="chatbot-widget.css?v=1">
 <style>
@@ -23,7 +23,7 @@
 :root{color-scheme:dark;--bg:#05070b;--cyan:#00f2fe;--blue:#4facfe;--muted:#929caf;--line:#ffffff18}
 html{scroll-behavior:smooth;background:var(--bg)}
 body{margin:0;min-height:100vh;background:var(--bg);color:#f5f7fc;font-family:Outfit,sans-serif;overflow-x:hidden;position:relative;isolation:isolate}
-.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+.wrap{width:min(1100px,calc(100% - 32px));margin:auto}\n/* Keep the Expertise header visually identical to About and the other subpages. */\n.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #ffffff18}.brand{font-weight:900;letter-spacing:.08em;text-decoration:none}.brand b{color:var(--cyan)}.links{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap}.links a{font-size:12px;text-decoration:none;color:#a8b1c2;transition:color .2s,transform .2s}.links a:hover,.links a.active{color:var(--cyan);transform:translateY(-2px)}\n@media(max-width:680px){.nav{min-height:68px;gap:10px;align-items:center}.links{gap:8px 12px;justify-content:flex-end}.links a{font-size:10px}}
 /* Match the restrained moving cosmic background used across the other subpages. */
 body{position:relative;isolation:isolate}body:before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;opacity:.52;background:radial-gradient(ellipse at 14% 18%,rgba(0,242,254,.115) 0%,transparent 34%),radial-gradient(ellipse at 83% 36%,rgba(127,0,255,.105) 0%,transparent 35%),radial-gradient(ellipse at 54% 90%,rgba(79,172,254,.065) 0%,transparent 38%);background-size:135% 135%;animation:cosmicDrift 26s ease-in-out infinite alternate}@keyframes cosmicDrift{0%{background-position:0 0}50%{background-position:55% 35%}100%{background-position:100% 70%}}
 
@@ -78,7 +78,7 @@ body{position:relative;isolation:isolate}body:before{content:"";position:fixed;i
 #expertise-page .ex-detail p{color:var(--ex-muted);font-size:13px;line-height:1.9;margin:0}
 #expertise-page .ex-detail ul{padding:0;margin:22px 0 0;list-style:none;display:grid;gap:10px}
 #expertise-page .ex-detail li{font-size:11px;color:#c2ccda;display:flex;gap:10px;align-items:flex-start}
-#expertise-page .ex-detail li:before{content:"↗";color:var(--ex-cyan);font-family:"DM Mono",monospace}
+#expertise-page .ex-detail li:before{content:"";display:none}
 #expertise-page .ex-detail-foot{border-top:1px solid var(--ex-line);padding-top:16px;margin-top:24px;color:#74849a;font:9px "DM Mono",monospace;letter-spacing:.1em}
 #expertise-page .ex-domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
 #expertise-page .ex-domain{position:relative;min-height:230px;padding:25px;border:1px solid var(--ex-line);background:linear-gradient(145deg,rgba(17,26,42,.9),rgba(9,14,25,.88));overflow:hidden;transition:transform .25s,border-color .25s}
@@ -125,7 +125,7 @@ body{position:relative;isolation:isolate}body:before{content:"";position:fixed;i
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4984469946659633" crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a class="active" href="expertise.html">Expertise</a><a href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
+<header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a class="active" href="expertise.html" aria-current="page">Expertise</a><a href="projects.html">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
 <main id="expertise-page">
 <section class="ex-wrap ex-hero">
   <div class="ex-hero-copy">
@@ -188,9 +188,9 @@ body{position:relative;isolation:isolate}body:before{content:"";position:fixed;i
       <div class="ex-award-copy"><h3>Cybersecurity Training Program</h3><p>Recognized for performance in Byte Capsule's 4th batch of its six-month, self-learning-based Cybersecurity Training Program.</p><div class="ex-award-meta">AWARDED TO SHIHABUL ISLAM · FOUNDER & CEO: SAKIB HAQUE ZISAN</div></div>
     </article>
     <div class="ex-cert-grid">
-      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>01</span></div><div class="ex-cert-mark"><i class="fa-solid fa-fingerprint"></i></div><h3>Cyber Security: Phishing</h3><p>Instructor: Peter A · Completed November 1, 2022</p><a href="https://ude.my/UC-15936d31-a50e-4374-bc20-1668e9985c38" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL ↗</a></article>
-      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>02</span></div><div class="ex-cert-mark"><i class="fa-solid fa-bug"></i></div><h3>Web Pentesting Essentials</h3><p>Instructor: Byte Capsule Ltd. · Completed February 28, 2023</p><a href="https://ude.my/UC-b8ae9c04-1f29-4d19-b75e-c0fbece5cc4e" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL ↗</a></article>
-      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>03</span></div><div class="ex-cert-mark"><i class="fa-solid fa-wifi"></i></div><h3>WiFi Hacking Guide For Pentesters</h3><p>Instructor: XL Teaching · Completed March 1, 2023</p><a href="https://ude.my/UC-388b46ce-0009-48e2-a8ad-abeb4ab1d0a0" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL ↗</a></article>
+      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>01</span></div><div class="ex-cert-mark"><i class="fa-solid fa-fingerprint"></i></div><h3>Cyber Security: Phishing</h3><p>Instructor: Peter A · Completed November 1, 2022</p><a href="https://ude.my/UC-15936d31-a50e-4374-bc20-1668e9985c38" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL</a></article>
+      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>02</span></div><div class="ex-cert-mark"><i class="fa-solid fa-bug"></i></div><h3>Web Pentesting Essentials</h3><p>Instructor: Byte Capsule Ltd. · Completed February 28, 2023</p><a href="https://ude.my/UC-b8ae9c04-1f29-4d19-b75e-c0fbece5cc4e" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL</a></article>
+      <article class="ex-cert"><div class="ex-cert-top"><span>UDEMY / COMPLETION</span><span>03</span></div><div class="ex-cert-mark"><i class="fa-solid fa-wifi"></i></div><h3>WiFi Hacking Guide For Pentesters</h3><p>Instructor: XL Teaching · Completed March 1, 2023</p><a href="https://ude.my/UC-388b46ce-0009-48e2-a8ad-abeb4ab1d0a0" target="_blank" rel="noopener noreferrer">VERIFY CREDENTIAL</a></article>
     </div>
   </div>
 </section>
