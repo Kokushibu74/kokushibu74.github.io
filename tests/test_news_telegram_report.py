@@ -90,7 +90,7 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("Metadata attempts", message)
         self.assertIn("FEED QUALITY", message)
         self.assertIn("RUN DETAILS", message)
-        self.assertIn("New fetch success <b>7%</b> (1/14)", message)
+        self.assertIn("New metadata fetch success <b>7%</b> (1/14)", message)
         self.assertIn("Removed <b>0</b>", message)
         self.assertIn("Net = Added − Removed", message)
         self.assertIn("Validation <b>PASS</b>", message)
@@ -131,7 +131,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
 """
         metrics = report.parse_news_metrics(logs)
         message = report.build_news_report(metrics, {"conclusion": "success", "updated_at": "2026-11-05T12:00:00Z"})
-        self.assertIn("New fetch success <b>0%</b> (0/1)", message)
+        self.assertIn("New metadata fetch success <b>0%</b> (0/1)", message)
         self.assertIn("Publisher metadata verification <b>93%</b> (13/14)", message)
         self.assertNotIn("Publisher metadata coverage is low", message)
 
