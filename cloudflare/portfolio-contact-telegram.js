@@ -548,14 +548,16 @@ function umLocationReportKeyboard(id,history,directoryPage=1){
   rows.push([{text:"⬅️ User Directory",callback_data:"b1:users:list:"+directoryPage}]);
   return rows;
 }
-async function umHistory(env,kind,id,event){
+async function umHistory(env,kind,id,event,ctx=null){
   const at=Date.now(),day=umDate(at),salt=crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2);
   const sampled=kind==="visitor"&&["page_view","event_batch"].includes(String(event?.type||""));
   const slot=Math.floor(at/(15*60*1000))*15*60*1000;
   const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+(sampled?String(slot).padStart(13,"0")+":sample":String(at).padStart(13,"0")+"-"+salt);
   if(sampled&&await env.VISITOR_KV.get(key))return false;
   const retentionSeconds=kind==="admin"?365*86400:90*86400;
-  await env.VISITOR_KV.put(key,JSON.stringify({at,kind,id,event}),{expirationTtl:retentionSeconds});
+  const record={at,kind,id,event};
+  await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:retentionSeconds});
+  if(kind==="visitor"){const sync=sendVisitorSheetsEvent(env,{eventId:"history:"+key,kind:"visitor_history",visitorId:id,record});if(ctx&&typeof ctx.waitUntil==="function")ctx.waitUntil(sync);else await sync;}
   return true;
 }
 async function umTelegramTouch(env,msg){
@@ -2222,15 +2224,93 @@ async function sheetsAccessToken(env){
   if(!response.ok||!data.access_token)throw new Error("Google OAuth failed: "+String(data.error_description||data.error||("HTTP "+response.status)).slice(0,180));
   return {accessToken:data.access_token,clientEmail:sa.client_email};
 }
-async function sheetsApiRequest(accessToken,path){
-  const response=await fetch("https://sheets.googleapis.com/v4/spreadsheets/"+SHEETS_SPREADSHEET_ID+path,{headers:{Authorization:"Bearer "+accessToken}});
+const SHEETS_HEADERS = {
+  "Visitor Profiles":["Visitor ID","First Seen UTC","Last Seen UTC","Total Visits","Total Page Views","Last Session ID","Country","Region","City","ISP","Device Type","Device Model","Platform","Operating System","Browser","Referrer","UTM Source","UTM Medium","UTM Campaign","Language","IP Address (masked)","IP Version","ASN","Network Type","Hosting Signal","Proxy Signal","Screen","Viewport","Pixel Ratio","Performance JSON","Profile JSON","Updated At UTC"],
+  "Visitor Events":["Event ID","At UTC","Visitor ID","Event Type","Page","Session ID","Event JSON","Retention Until UTC"],
+  "Location History":["Event ID","Visitor ID","Latitude","Longitude","Accuracy Meters","Source","Captured At UTC","Captured At BDT","Retention Until UTC"],
+  "Page Views":["Event ID","Visitor ID","Session ID","Page","At UTC","Referrer","UTM Source","Browser","Device Type","Country","City","Retention Until UTC"],
+  "Visit Sessions":["Event ID","Visitor ID","Session ID","Started At UTC","Entry Page","Country","City","Device Type","Browser","Retention Until UTC"],
+  "Return History":["Event ID","Visitor ID","Session ID","Returned At UTC","Total Visits","Total Page Views","First Seen UTC","Last Seen UTC","City","Country","Device","Retention Until UTC"],
+  "Device History":["Event ID","Visitor ID","Recorded At UTC","Device Type","Device Model","Platform","Operating System","Browser","User Agent","Retention Until UTC"],
+  "Daily Summary":["Day + Visitor ID","Day BDT","Visitor ID","First Seen UTC","Last Seen UTC","Page Views","Sessions","Returning","Client Errors","Pages JSON","Source JSON","Network JSON","Device JSON","Recent Events JSON","Navigation Sequence JSON","Updated At UTC"],
+  "Location Consent":["Event ID","Visitor ID","Consent","Policy Version","Accepted At UTC","Updated At UTC","Withdrawn At UTC"],
+  "Deletion Requests":["Event ID","Visitor ID","Requested At UTC","Requested At BDT","Status","Scope"],
+  "System Logs":["Event ID","At UTC","Level","Type","Message","Visitor ID","Details JSON"],
+  "Sync Ledger":["Event ID","Processed At UTC","Event Type","Visitor ID"]
+};
+async function sheetsApiRequest(accessToken,path,method="GET",body=null){
+  const options={method,headers:{Authorization:"Bearer "+accessToken}};
+  if(body!==null){options.headers["Content-Type"]="application/json";options.body=JSON.stringify(body);}
+  const response=await fetch("https://sheets.googleapis.com/v4/spreadsheets/"+SHEETS_SPREADSHEET_ID+path,options);
   const data=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error("Google Sheets API failed (HTTP "+response.status+"): "+String(data.error?.message||"Unknown API error").slice(0,180));
   return data;
 }
+function sheetsIso(value){const n=Number(value);return Number.isFinite(n)&&n>0?new Date(n).toISOString():"";}
+function sheetsRetention(value,days=90){const n=Number(value)||Date.now();return new Date(n+days*86400000).toISOString();}
+function sheetsMaskIp(value){const ip=String(value||"");if(ip.includes(".")){const p=ip.split(".");return p.length===4?p.slice(0,3).join(".")+".0":"Masked";}if(ip.includes(":"))return ip.split(":").slice(0,4).join(":")+"::";return "";}
+function sheetsSafeProfile(profile){const copy=JSON.parse(JSON.stringify(profile||{}));if(copy.network)copy.network.ip=sheetsMaskIp(copy.network.ip);return copy;}
+function sheetsCell(value){if(value===null||value===undefined)return {userEnteredValue:{stringValue:""}};if(typeof value==="number"&&Number.isFinite(value))return {userEnteredValue:{numberValue:value}};if(typeof value==="boolean")return {userEnteredValue:{boolValue:value}};return {userEnteredValue:{stringValue:String(value)}};}
+function sheetsAppendRequest(sheetId,values){return {appendCells:{sheetId,rows:[{values:values.map(sheetsCell)}],fields:"userEnteredValue"}};}
+function sheetsUpdateRequest(sheetId,rowIndex,values){return {updateCells:{range:{sheetId,startRowIndex:rowIndex,startColumnIndex:0},rows:[{values:values.map(sheetsCell)}],fields:"userEnteredValue"}};}
+async function sheetsEnsureTabs(accessToken){
+  let metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title)");
+  const existing=new Map((metadata.sheets||[]).map(s=>[s.properties.title,s.properties.sheetId]));
+  const missing=Object.keys(SHEETS_HEADERS).filter(title=>!existing.has(title));
+  if(missing.length){
+    const created=await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests:missing.map(title=>({addSheet:{properties:{title}}}))});
+    const headers=[];
+    for(let i=0;i<missing.length;i++){const id=created.replies?.[i]?.addSheet?.properties?.sheetId;if(!Number.isInteger(id))throw new Error("Google Sheets did not return a sheet ID for "+missing[i]);headers.push({updateCells:{range:{sheetId:id,startRowIndex:0,startColumnIndex:0},rows:[{values:SHEETS_HEADERS[missing[i]].map(sheetsCell)}],fields:"userEnteredValue"}});}
+    if(headers.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests:headers});
+    metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title)");
+  }
+  const ids={};for(const sheet of metadata.sheets||[])ids[sheet.properties.title]=sheet.properties.sheetId;
+  for(const title of Object.keys(SHEETS_HEADERS))if(!Number.isInteger(ids[title]))throw new Error("Google Sheets tab missing after initialization: "+title);
+  return ids;
+}
+async function sheetsFindRow(env,accessToken,tab,key,cacheKey){
+  const cachedRaw=await env.VISITOR_KV.get(cacheKey),cached=Number(cachedRaw);
+  if(cachedRaw!==null&&Number.isInteger(cached)&&cached>=1)return {rowIndex:cached,exists:true};
+  const data=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'"+tab+"'!A:A")),values=data.values||[];
+  const found=values.findIndex((row,index)=>index>0&&String(row[0])===String(key));
+  return found>=1?{rowIndex:found,exists:true}:{rowIndex:values.length,exists:false};
+}
+function sheetsProfileRow(profile){
+  const n=profile.network||{},d=profile.device||{},s=profile.source||{};
+  return [profile.visitorId||profile.id||"",sheetsIso(profile.firstSeen),sheetsIso(profile.lastSeen),profile.totalSessions||0,profile.totalPageViews||0,profile.lastSessionId||"",n.country||"",n.region||"",n.city||"",n.isp||"",d.deviceType||"",d.deviceModel||"",d.platform||"",d.os||"",d.browser||"",s.referrer||"",s.utmSource||"",s.utmMedium||"",s.utmCampaign||"",d.language||"",n.ip||"",n.ipVersion||"",n.asn||"",n.networkType||"",n.hostingSignal||"",n.corporateProxy||"",d.screen||"",d.viewport||"",d.pixelRatio??"",JSON.stringify(profile.performance||{}),JSON.stringify(profile),new Date().toISOString()];
+}
+function sheetsDailyRow(day,visitorId,record){return [day+"|"+visitorId,day,visitorId,sheetsIso(record.firstSeen),sheetsIso(record.lastSeen),record.pageViews||0,record.sessions||0,!!record.returning,record.errors||0,JSON.stringify(record.pages||{}),JSON.stringify(record.source||{}),JSON.stringify(record.network||{}),JSON.stringify(record.device||{}),JSON.stringify(record.recentEvents||[]),JSON.stringify(record.navigationSequence||[]),new Date().toISOString()];}
+function sheetsHistoryRow(eventId,record,visitorId){const e=record?.event||{},at=Number(record?.at)||Date.now();return [eventId,sheetsIso(at),visitorId||record?.id||"",e.type||e.command||record?.kind||"event",e.path||"",e.sessionId||"",JSON.stringify(e),sheetsRetention(at,90)];}
+async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
+  const eventId=String(event.eventId||"");if(!eventId)throw new Error("Visitor Sheets event is missing eventId");
+  const doneKey="sheets:done:"+eventId;if(await env.VISITOR_KV.get(doneKey))return {duplicate:true};
+  if(Number(attempts)>1){const ledger=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'Sync Ledger'!A:A"));if((ledger.values||[]).some(row=>String(row[0])===eventId)){await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});return {duplicate:true,recovered:true};}}
+  const requests=[],rowMappings=[],append=(tab,row)=>requests.push(sheetsAppendRequest(ids[tab],row));
+  const upsert=async(tab,key,cacheKey,row)=>{const loc=await sheetsFindRow(env,accessToken,tab,key,cacheKey);requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));rowMappings.push([cacheKey,String(loc.rowIndex)]);};
+  const visitorId=String(event.visitorId||event.profile?.visitorId||event.profile?.id||event.record?.visitorId||event.record?.id||"");
+  const at=Number(event.at||event.record?.at||event.record?.capturedAt||event.record?.requestedAt)||Date.now();
+  if(event.profile){const profile=sheetsSafeProfile(event.profile),id=String(profile.visitorId||profile.id||visitorId);if(id)await upsert("Visitor Profiles",id,"sheets:row:profile:"+id,sheetsProfileRow(profile));}
+  const daily=event.daily||event.dayRecord;
+  if(daily&&visitorId){const day=String(event.day||daily.day||"");if(day)await upsert("Daily Summary",day+"|"+visitorId,"sheets:row:daily:"+day+":"+visitorId,sheetsDailyRow(day,visitorId,daily));}
+  if(event.kind==="track"){
+    if(event.pageView){const p=event.profile||{},n=p.network||{},d=p.device||{},s=p.source||{};append("Page Views",[eventId,visitorId,event.sessionId||"",event.page||"",sheetsIso(at),s.referrer||"",s.utmSource||"",d.browser||"",d.deviceType||"",n.country||"",n.city||"",sheetsRetention(at,90)]);}
+    if(event.newSession){const p=event.profile||{},n=p.network||{},d=p.device||{};append("Visit Sessions",[eventId,visitorId,event.sessionId||"",sheetsIso(at),event.page||"",n.country||"",n.city||"",d.deviceType||"",d.browser||"",sheetsRetention(at,90)]);if(!event.first)append("Return History",[eventId,visitorId,event.sessionId||"",sheetsIso(at),p.totalSessions||0,p.totalPageViews||0,sheetsIso(p.firstSeen),sheetsIso(p.lastSeen),n.city||"",n.country||"",[d.deviceType,d.deviceModel,d.os,d.browser].filter(Boolean).join(" / "),sheetsRetention(at,365)]);}
+    if(event.deviceChanged){const p=event.profile||{},d=p.device||{};append("Device History",[eventId,visitorId,sheetsIso(at),d.deviceType||"",d.deviceModel||"",d.platform||"",d.os||"",d.browser||"",d.userAgent||"",sheetsRetention(at,365)]);}
+  }else if(event.kind==="visitor_history"||event.kind==="legacy_history"){append("Visitor Events",sheetsHistoryRow(eventId,event.record||{},visitorId));}
+  else if(event.kind==="location_history"||event.kind==="legacy_location"){const r=event.record||{};append("Location History",[eventId,visitorId||r.visitorId||"",r.latitude??"",r.longitude??"",r.accuracyMeters??"",r.source||"",r.capturedAtUtc||sheetsIso(r.capturedAt),r.capturedAtBdt||"",sheetsRetention(r.capturedAt||at,Number(r.retentionDays)||90)]);}
+  else if(event.kind==="location_consent"||event.kind==="legacy_consent"){const r=event.record||{};append("Location Consent",[eventId,visitorId||r.visitorId||"",!!r.consent,r.policyVersion||"",r.acceptedAtUtc||"",r.updatedAtUtc||"",r.withdrawnAtUtc||""]);}
+  else if(event.kind==="deletion_request"||event.kind==="legacy_deletion_request"){const r=event.record||{};append("Deletion Requests",[eventId,visitorId||r.visitorId||"",r.requestedAtUtc||sheetsIso(r.requestedAt),r.requestedAtBdt||"",r.status||"pending",r.scope||""]);}
+  else if(event.kind==="system_log"){const r=event.record||{};append("System Logs",[eventId,sheetsIso(at),r.level||"INFO",r.type||"SYNC",r.message||"",visitorId,JSON.stringify(r.details||{})]);}
+  append("Sync Ledger",[eventId,new Date().toISOString(),event.kind||"unknown",visitorId]);
+  await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
+  for(const [key,value] of rowMappings)await env.VISITOR_KV.put(key,value,{expirationTtl:31536000});
+  await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});
+  return {duplicate:false,writes:requests.length};
+}
+async function sendVisitorSheetsEvent(env,event){if(!env.VISITOR_SHEETS_QUEUE){console.error("Visitor Sheets queue binding unavailable");return false;}try{await env.VISITOR_SHEETS_QUEUE.send(event);return true;}catch(error){console.error("Visitor Sheets queue enqueue failed",String(error&&error.message||error).slice(0,180));return false;}}
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const origin = request.headers.get("Origin") || "";
     const allowedOrigin = "https://kokushibu74.github.io";
     const cors = {"Access-Control-Allow-Origin":allowedOrigin,"Access-Control-Allow-Methods":"GET, POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Vary":"Origin"};
@@ -2239,21 +2319,6 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
     const routeUrl=new URL(request.url);
-    if(pathname==="/sheets-admin"){
-      if(request.method!=="GET")return respond({ok:false,error:"Method not allowed"},405);
-      if(!env.SHEETS_ADMIN_TOKEN||routeUrl.searchParams.get("token")!==env.SHEETS_ADMIN_TOKEN)return respond({ok:false,error:"Unauthorized"},401);
-      if(routeUrl.searchParams.get("action")!=="health")return respond({ok:false,error:"Unsupported action"},400);
-      let serviceAccountEmail="";
-      try{
-        const sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}");serviceAccountEmail=String(sa.client_email||"");
-        const auth=await sheetsAccessToken(env);
-        const metadata=await sheetsApiRequest(auth.accessToken,"?fields=spreadsheetId,properties.title,sheets.properties(sheetId,title)");
-        return respond({ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:metadata.spreadsheetId,title:metadata.properties?.title||"",tabs:(metadata.sheets||[]).map(s=>({sheetId:s.properties?.sheetId,title:s.properties?.title}))});
-      }catch(e){return respond({ok:false,serviceAccountEmail,spreadsheetId:SHEETS_SPREADSHEET_ID,error:String(e&&e.message||e).slice(0,240)},502);}
-    }
-
-    if(pathname==="/hero-preview")return botHeroPreviewPage(env,routeUrl.searchParams.get("token")||"");
-    if(pathname==="/hero-preview-image")return botHeroPreviewImage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/miniapp/api"){
       if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
       if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
@@ -2356,6 +2421,9 @@ export default {
       let previous={};try{previous=await env.VISITOR_KV.get(key,"json")||{}}catch{}
       const record={visitorId:id,consent,policyVersion:String(data.policyVersion||"2026-11-05").slice(0,32),acceptedAtUtc:consent?(previous.acceptedAtUtc||new Date(now).toISOString()):(previous.acceptedAtUtc||null),updatedAtUtc:new Date(now).toISOString(),withdrawnAtUtc:consent?null:new Date(now).toISOString()};
       await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
+      await env.VISITOR_KV.put("loc:v1:latest:"+id,JSON.stringify(record),{expirationTtl:7776000});
+      ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"gps:"+key,kind:"location_history",visitorId:id,record}));
+      ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"consent:"+id+":"+now,kind:"location_consent",visitorId:id,record}));
       return respond({ok:true,consent,retentionDays:90},200);
     }
     if(pathname==="/location-history"){
@@ -2400,6 +2468,8 @@ export default {
       const key="loc:v1:delete-request:"+id+":"+String(now).padStart(13,"0")+":"+salt;
       const bdt=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"}).format(new Date(now))+" BDT";
       await env.VISITOR_KV.put(key,JSON.stringify({visitorId:id,requestedAt:now,requestedAtUtc:utc,requestedAtBdt:bdt,status:"pending",scope:"gps-location-history-only"}),{expirationTtl:7776000});
+      const deletionRecord={visitorId:id,requestedAt:now,requestedAtUtc:utc,requestedAtBdt:bdt,status:"pending",scope:"gps-location-history-only"};
+      ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"delete:"+key,kind:"deletion_request",visitorId:id,record:deletionRecord}));
       const admins=[...new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(x=>/^\d{5,20}$/.test(x)))];
       let adminNotified=false;
       if(env.TELEGRAM_BOT_TOKEN&&admins.length){
@@ -2461,7 +2531,7 @@ export default {
       };
       await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
       if(userManagerOld)await env.VISITOR_KV.delete(userManagerProfileKey).catch(error=>console.warn("Duplicate visitor profile cleanup failed",String(error&&error.message||error).slice(0,100)));
-      try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))});}catch(e){console.error("User history write failed",String(e));}
+      try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))},ctx);}catch(e){console.error("User history write failed",String(e));}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
       let dayRow={};try{dayRow=await env.VISITOR_KV.get(dailyKey,"json")||{}}catch{}
       const dayPages=dayRow.pages&&typeof dayRow.pages==="object"?dayRow.pages:{};
@@ -2469,6 +2539,8 @@ export default {
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
       const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),navigationSequence:profile.pages.slice(-12)};
       await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
+      const sheetsTrackEvent={eventId:"track:"+crypto.randomUUID(),kind:"track",at:now,visitorId:id,sessionId:session,page,pageView,newSession,first,returning:!!dayRecord.returning,deviceChanged:first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{}),profile:sheetsSafeProfile(profile),daily:dayRecord,day:reportDay};
+      ctx.waitUntil(sendVisitorSheetsEvent(env,sheetsTrackEvent));
       // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
       let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
@@ -2560,6 +2632,7 @@ export default {
       if(performance.inp)perfRows.push(["INP",Math.round(performance.inp)+" ms"]);
       if(performance.cls!==null&&performance.cls!==undefined)perfRows.push(["CLS",Number(performance.cls).toFixed(3)]);
       if(perfRows.length)lines.push(...section("06","⚡","PERFORMANCE SNAPSHOT",perfRows));
+      if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){const latestLocation=await env.VISITOR_KV.get("loc:v1:latest:"+id,"json").catch(()=>null);if(latestLocation)lines.push("","<b>07 · 🧭 CONSENTED GPS LOCATION HISTORY</b>","│ Latitude <code>"+esc(latestLocation.latitude)+"</code>","│ Longitude <code>"+esc(latestLocation.longitude)+"</code>","│ Accuracy <code>"+esc(latestLocation.accuracyMeters)+" m</code>","│ Captured <code>"+esc(latestLocation.capturedAtBdt||latestLocation.capturedAtUtc||"Unknown")+"</code>");}
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
@@ -2659,27 +2732,41 @@ export default {
     for(const f of files){const body=new FormData();body.set("chat_id",String(env.TELEGRAM_CHAT_ID));body.set("document",f,String(f.name||"attachment"));body.set("caption",formatTelegramMessage("📎 Attachment: "+String(f.name||"attachment"),{parseMode:"PLAIN",category:"CONTACT INTELLIGENCE"}));body.set("parse_mode","HTML");let r,d;try{r=await fetch(api+"sendDocument",{method:"POST",body});d=await r.json().catch(()=>({}));}catch(e){console.error("Attachment upload failed:",String(e&&e.message||e));return respond({error:"Message delivered, but an attachment upload failed. Please retry with smaller files."},502);}if(!r.ok||!d.ok){console.error("Telegram attachment failure:",String(d.description||r.status));return respond({error:"Message delivered, but Telegram could not accept an attachment."},502);}}
     return respond({ok:true});
   },
+  async queue(batch,env,ctx){
+    let auth=null,ids=null;
+    for(const message of batch.messages){
+      const event=message.body||{};
+      try{
+        if(event.kind==="diagnostic"){
+          let email="";try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
+          try{
+            auth=await sheetsAccessToken(env);ids=await sheetsEnsureTabs(auth.accessToken);
+            const eventId=String(event.eventId||"sheets-diagnostic-"+Date.now());
+            const messageText="Google Sheets API authentication, spreadsheet access and tab initialization verified";
+            const details={spreadsheetId:SHEETS_SPREADSHEET_ID,serviceAccountEmail:auth.clientEmail,tabCount:Object.keys(ids).length};
+            const requests=[sheetsAppendRequest(ids["System Logs"],[eventId,new Date().toISOString(),"INFO","INTEGRATION_TEST",messageText,"",JSON.stringify(details)]),sheetsAppendRequest(ids["Sync Ledger"],[eventId,new Date().toISOString(),"diagnostic",""])];
+            await sheetsApiRequest(auth.accessToken,":batchUpdate","POST",{requests});
+            await env.BOT_CONFIG_KV.put("sheets:diagnostic:result",JSON.stringify({ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:SHEETS_SPREADSHEET_ID,tabs:Object.keys(ids)}),{expirationTtl:86400});
+          }catch(error){await env.BOT_CONFIG_KV.put("sheets:diagnostic:result",JSON.stringify({ok:false,serviceAccountEmail:email,spreadsheetId:SHEETS_SPREADSHEET_ID,error:String(error&&error.message||error).slice(0,240)}),{expirationTtl:86400});}
+          message.ack();continue;
+        }
+        if(event.kind==="verify"){
+          auth=auth||await sheetsAccessToken(env);
+          const metadata=await sheetsApiRequest(auth.accessToken,"?fields=sheets.properties(sheetId,title)"),counts={};
+          for(const sheet of metadata.sheets||[]){const title=sheet.properties?.title;if(!title)continue;const data=await sheetsApiRequest(auth.accessToken,"/values/"+encodeURIComponent("'"+title+"'!A:A"));counts[title]=Math.max(0,(data.values||[]).length-1);}
+          await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
+          message.ack();continue;
+        }
+        auth=auth||await sheetsAccessToken(env);ids=ids||await sheetsEnsureTabs(auth.accessToken);
+        await sheetsWriteEvent(env,auth.accessToken,ids,event,message.attempts||1);message.ack();
+      }catch(error){
+        console.error("Visitor Sheets queue sync failed",JSON.stringify({eventId:event.eventId||"",kind:event.kind||"unknown",attempts:message.attempts||1,error:String(error&&error.message||error).slice(0,220)}));
+        message.retry({delaySeconds:60});
+      }
+    }
+  },
   async scheduled(controller,env,ctx) {
     if(controller.cron==="* * * * *"){
-       try{
-         const diagnosticKey="sheets:diagnostic:once:v1";
-         if(!await env.BOT_CONFIG_KV.get(diagnosticKey)){
-           let email="";
-           try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
-           try{
-             const auth=await sheetsAccessToken(env);
-             const metadata=await sheetsApiRequest(auth.accessToken,"?fields=spreadsheetId,properties.title,sheets.properties(sheetId,title)");
-             const result={ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:metadata.spreadsheetId,title:metadata.properties?.title||"",tabs:(metadata.sheets||[]).map(s=>s.properties?.title)};
-             console.log("SHEETS_DIAGNOSTIC_RESULT",JSON.stringify(result));
-             await env.BOT_CONFIG_KV.put(diagnosticKey,JSON.stringify({at:Date.now(),ok:true}),{expirationTtl:365*86400});
-           }catch(error){
-             const result={ok:false,serviceAccountEmail:email,error:String(error&&error.message||error).slice(0,220)};
-             console.error("SHEETS_DIAGNOSTIC_RESULT",JSON.stringify(result));
-             await env.BOT_CONFIG_KV.put(diagnosticKey,JSON.stringify({at:Date.now(),ok:false}),{expirationTtl:900});
-           }
-         }
-       }catch(error){console.error("Sheets diagnostic scheduling failed",String(error&&error.message||error).slice(0,160))}
-
       const minute=new Date().getUTCMinutes();
       if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
       // Check idle menus every minute so the 15-minute expiry is not delayed by another quarter-hour.
