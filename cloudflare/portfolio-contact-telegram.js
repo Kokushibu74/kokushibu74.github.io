@@ -2200,6 +2200,35 @@ async function newsBreakingAlertCheck(env){
   return {sent:sent.length,summary};
 }
 
+
+const SHEETS_SPREADSHEET_ID = "1lVu54b3V3bqu8ySrBF0CX8Tpd5adfoYa4jxA0cnukus";
+function sheetsB64Url(value){return btoa(value).replace(/=/g,"").replace(/\\+/g,"-").replace(/\\//g,"_");}
+async function sheetsAccessToken(env){
+  if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is unavailable");
+  let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("Google service-account secret is not valid JSON")}
+  if(!sa.client_email||!sa.private_key)throw new Error("Google service-account JSON is missing client_email or private_key");
+  const now=Math.floor(Date.now()/1000);
+  const header=sheetsB64Url(JSON.stringify({alg:"RS256",typ:"JWT"}));
+  const claim=sheetsB64Url(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/spreadsheets",aud:"https://oauth2.googleapis.com/token",iat:now,exp:now+3600}));
+  const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\\s/g,"");
+  const keyBytes=Uint8Array.from(atob(pem),c=>c.charCodeAt(0));
+  const key=await crypto.subtle.importKey("pkcs8",keyBytes,{name:"RSASSA-PKCS1-v1_5",hash:"SHA-256"},false,["sign"]);
+  const signingInput=header+"."+claim;
+  const signature=await crypto.subtle.sign("RSASSA-PKCS1-v1_5",key,new TextEncoder().encode(signingInput));
+  const sigBytes=new Uint8Array(signature);let binary="";for(let i=0;i<sigBytes.length;i+=0x8000)binary+=String.fromCharCode(...sigBytes.subarray(i,i+0x8000));
+  const assertion=signingInput+"."+sheetsB64Url(binary);
+  const response=await fetch("https://oauth2.googleapis.com/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer",assertion})});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||!data.access_token)throw new Error("Google OAuth failed: "+String(data.error_description||data.error||("HTTP "+response.status)).slice(0,180));
+  return {accessToken:data.access_token,clientEmail:sa.client_email};
+}
+async function sheetsApiRequest(accessToken,path){
+  const response=await fetch("https://sheets.googleapis.com/v4/spreadsheets/"+SHEETS_SPREADSHEET_ID+path,{headers:{Authorization:"Bearer "+accessToken}});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error("Google Sheets API failed (HTTP "+response.status+"): "+String(data.error?.message||"Unknown API error").slice(0,180));
+  return data;
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -2210,6 +2239,19 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
     const routeUrl=new URL(request.url);
+    if(pathname==="/sheets-admin"){
+      if(request.method!=="GET")return respond({ok:false,error:"Method not allowed"},405);
+      if(!env.SHEETS_ADMIN_TOKEN||routeUrl.searchParams.get("token")!==env.SHEETS_ADMIN_TOKEN)return respond({ok:false,error:"Unauthorized"},401);
+      if(routeUrl.searchParams.get("action")!=="health")return respond({ok:false,error:"Unsupported action"},400);
+      let serviceAccountEmail="";
+      try{
+        const sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}");serviceAccountEmail=String(sa.client_email||"");
+        const auth=await sheetsAccessToken(env);
+        const metadata=await sheetsApiRequest(auth.accessToken,"?fields=spreadsheetId,properties.title,sheets.properties(sheetId,title)");
+        return respond({ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:metadata.spreadsheetId,title:metadata.properties?.title||"",tabs:(metadata.sheets||[]).map(s=>({sheetId:s.properties?.sheetId,title:s.properties?.title}))});
+      }catch(e){return respond({ok:false,serviceAccountEmail,spreadsheetId:SHEETS_SPREADSHEET_ID,error:String(e&&e.message||e).slice(0,240)},502);}
+    }
+
     if(pathname==="/hero-preview")return botHeroPreviewPage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/hero-preview-image")return botHeroPreviewImage(env,routeUrl.searchParams.get("token")||"");
     if(pathname==="/miniapp/api"){
