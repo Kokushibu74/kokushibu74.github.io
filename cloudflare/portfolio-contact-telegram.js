@@ -2205,13 +2205,13 @@ async function newsBreakingAlertCheck(env){
 
 const SHEETS_SPREADSHEET_ID = "1lVu54b3V3bqu8ySrBF0CX8Tpd5adfoYa4jxA0cnukus";
 function sheetsB64Url(value){return btoa(value).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");}
-async function sheetsAccessToken(env){
+async function sheetsAccessToken(env,scope="https://www.googleapis.com/auth/spreadsheets"){
   if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is unavailable");
   let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("Google service-account secret is not valid JSON")}
   if(!sa.client_email||!sa.private_key)throw new Error("Google service-account JSON is missing client_email or private_key");
   const now=Math.floor(Date.now()/1000);
   const header=sheetsB64Url(JSON.stringify({alg:"RS256",typ:"JWT"}));
-  const claim=sheetsB64Url(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/spreadsheets",aud:"https://oauth2.googleapis.com/token",iat:now,exp:now+3600}));
+  const claim=sheetsB64Url(JSON.stringify({iss:sa.client_email,scope,aud:"https://oauth2.googleapis.com/token",iat:now,exp:now+3600}));
   const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\s/g,"");
   const keyBytes=Uint8Array.from(atob(pem),c=>c.charCodeAt(0));
   const key=await crypto.subtle.importKey("pkcs8",keyBytes,{name:"RSASSA-PKCS1-v1_5",hash:"SHA-256"},false,["sign"]);
@@ -2238,6 +2238,17 @@ const SHEETS_HEADERS = {
   "System Logs":["Event ID","At UTC","Level","Type","Message","Visitor ID","Details JSON"],
   "Sync Ledger":["Event ID","Processed At UTC","Event Type","Visitor ID"]
 };
+
+async function enableSheetsApi(env){
+  const auth=await sheetsAccessToken(env,"https://www.googleapis.com/auth/cloud-platform");
+  const sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}");
+  const project=String(sa.project_id||"");
+  if(!project)throw new Error("Service-account project_id is missing");
+  const response=await fetch("https://serviceusage.googleapis.com/v1/projects/"+encodeURIComponent(project)+"/services/sheets.googleapis.com:enable",{method:"POST",headers:{Authorization:"Bearer "+auth.accessToken}});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error("Google Sheets API enable failed (HTTP "+response.status+"): "+String(data.error?.message||"Unknown Service Usage API error").slice(0,220));
+  return {ok:true,project,service:"sheets.googleapis.com",operation:data.name||"accepted"};
+}
 async function sheetsApiRequest(accessToken,path,method="GET",body=null){
   const options={method,headers:{Authorization:"Bearer "+accessToken}};
   if(body!==null){options.headers["Content-Type"]="application/json";options.body=JSON.stringify(body);}
@@ -2737,6 +2748,12 @@ export default {
     for(const message of batch.messages){
       const event=message.body||{};
       try{
+        if(event.kind==="enable_sheets_api"){
+          let email="";try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
+          try{const result=await enableSheetsApi(env);await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify({...result,serviceAccountEmail:email}),{expirationTtl:86400});}
+          catch(error){await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify({ok:false,serviceAccountEmail:email,error:String(error&&error.message||error).slice(0,240)}),{expirationTtl:86400});}
+          message.ack();continue;
+        }
         if(event.kind==="diagnostic"){
           let email="";try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
           try{
