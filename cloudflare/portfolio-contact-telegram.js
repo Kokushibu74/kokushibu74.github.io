@@ -2750,8 +2750,8 @@ export default {
       try{
         if(event.kind==="enable_sheets_api"){
           let email="";try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
-          try{const result=await enableSheetsApi(env);await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify({...result,serviceAccountEmail:email}),{expirationTtl:86400});}
-          catch(error){await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify({ok:false,serviceAccountEmail:email,error:String(error&&error.message||error).slice(0,240)}),{expirationTtl:86400});}
+          try{const result=await enableSheetsApi(env);const output={...result,serviceAccountEmail:email};console.log("SHEETS_ENABLE_API_RESULT",JSON.stringify(output));await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify(output),{expirationTtl:86400});}
+          catch(error){const output={ok:false,serviceAccountEmail:email,error:String(error&&error.message||error).slice(0,240)};console.error("SHEETS_ENABLE_API_RESULT",JSON.stringify(output));await env.BOT_CONFIG_KV.put("sheets:enable-api:result",JSON.stringify(output),{expirationTtl:86400});}
           message.ack();continue;
         }
         if(event.kind==="diagnostic"){
