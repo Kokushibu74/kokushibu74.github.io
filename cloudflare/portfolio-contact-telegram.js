@@ -2318,7 +2318,7 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});
   return {duplicate:false,writes:requests.length};
 }
-async function sendVisitorSheetsEvent(env,event){if(!env.VISITOR_SHEETS_QUEUE){console.error("Visitor Sheets queue binding unavailable");return false;}try{await env.VISITOR_SHEETS_QUEUE.send(event);return true;}catch(error){console.error("Visitor Sheets queue enqueue failed",String(error&&error.message||error).slice(0,180));return false;}}
+async function sendVisitorSheetsEvent(env,event){if(!env.VISITOR_SHEETS_QUEUE)return false;try{await env.VISITOR_SHEETS_QUEUE.send(event);return true;}catch(error){console.error("Visitor Sheets queue enqueue failed",String(error&&error.message||error).slice(0,180));return false;}}
 
 export default {
   async fetch(request, env, ctx) {
