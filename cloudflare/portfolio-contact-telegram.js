@@ -2661,6 +2661,25 @@ export default {
   },
   async scheduled(controller,env,ctx) {
     if(controller.cron==="* * * * *"){
+       try{
+         const diagnosticKey="sheets:diagnostic:once:v1";
+         if(!await env.BOT_CONFIG_KV.get(diagnosticKey)){
+           let email="";
+           try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
+           try{
+             const auth=await sheetsAccessToken(env);
+             const metadata=await sheetsApiRequest(auth.accessToken,"?fields=spreadsheetId,properties.title,sheets.properties(sheetId,title)");
+             const result={ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:metadata.spreadsheetId,title:metadata.properties?.title||"",tabs:(metadata.sheets||[]).map(s=>s.properties?.title)};
+             console.log("SHEETS_DIAGNOSTIC_RESULT",JSON.stringify(result));
+             await env.BOT_CONFIG_KV.put(diagnosticKey,JSON.stringify({at:Date.now(),ok:true}),{expirationTtl:365*86400});
+           }catch(error){
+             const result={ok:false,serviceAccountEmail:email,error:String(error&&error.message||error).slice(0,220)};
+             console.error("SHEETS_DIAGNOSTIC_RESULT",JSON.stringify(result));
+             await env.BOT_CONFIG_KV.put(diagnosticKey,JSON.stringify({at:Date.now(),ok:false}),{expirationTtl:900});
+           }
+         }
+       }catch(error){console.error("Sheets diagnostic scheduling failed",String(error&&error.message||error).slice(0,160))}
+
       const minute=new Date().getUTCMinutes();
       if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
       // Check idle menus every minute so the 15-minute expiry is not delayed by another quarter-hour.
