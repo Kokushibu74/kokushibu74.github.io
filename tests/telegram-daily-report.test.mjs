@@ -72,7 +72,7 @@ const messages = buildDailyReportMessages({
   prior: {unique:22,sessions:23,views:44},
   ga4: {users:"10",sessions:"20",views:"40",engagement:"0.25"},
   ga4Error: "",
-  resourceSnapshot: {day:"2026-11-03",metrics:[{label:"KV writes (all 6 namespaces, daily Free allowance)",used:250,limit:1000,unit:"operations",percent:25}]}
+  resourceSnapshot: {day:"2026-11-03",metrics:[{label:"KV writes (all 6 namespaces, daily Free allowance)",used:250,limit:1000,unit:"operations",percent:25}],dailyMetrics:[{key:"workers_requests",label:"Workers requests (daily)",used:14948,limit:10000000,unit:"requests",percent:0},{key:"kv_writes",label:"KV writes (daily)",used:250,limit:1000,unit:"operations",percent:25}]}
 });
 assert.equal(messages.length, 5, "The daily report must create exactly five messages");
 for (const message of messages) assert.ok(message.length < 3900, "Each report section must fit in one Telegram message");
@@ -80,6 +80,10 @@ assert.ok(messages[2].includes("VIS\\-••••••••0000") || messages
 assert.ok(messages[2].includes("Galaxy A34"), "Visitor details must include device information");
 assert.ok(messages[2].includes("Dhaka/BD"), "Compact visitor profiles must include location context");
 assert.ok(messages[3].includes("6 existing KV namespaces"), "Cloudflare section must show namespace coverage");
+assert.ok(messages[3].includes("Usage day: 2026-11-03 UTC"), "Infrastructure report must show the UTC usage day instead of the billing month");
+assert.ok(messages[3].includes("Reset: 00:00 UTC / 06:00 BDT"), "Infrastructure report must show the exact daily reset boundary");
+assert.ok(messages[3].includes("Workers requests (daily)"), "Infrastructure report must show daily Workers usage");
+assert.ok(!messages[3].includes("Billing month:"), "Infrastructure report must not display a monthly billing period");
 assert.ok(messages[4].includes("Content\\-Security\\-Policy") || messages[4].includes("Content-Security-Policy"), "Security section must list missing headers after Markdown escaping");
 const unavailableHeaders = buildDailyReportMessages({reportId:"test",stamp:"test",site:"https://example.com",status:null,responseMs:10,failure:"Network timeout",missing:[],headersChecked:false,activity:null,prior:null,ga4:null,ga4Error:"Unavailable",resourceSnapshot:null});
 assert.ok(unavailableHeaders[4].includes("Header inspection unavailable"), "Failed site checks must not be mislabeled as healthy security headers");

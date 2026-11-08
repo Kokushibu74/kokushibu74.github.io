@@ -61,9 +61,10 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     groups.push({start,query});
   }
   const workersQuery=[
-    "query ShihabWorkersBudget($accountTag: string!, $startTime: Time!, $aiStartTime: Time!, $endTime: Time!) {",
+    "query ShihabWorkersBudget($accountTag: string!, $startTime: Time!, $dailyStartTime: Time!, $aiStartTime: Time!, $endTime: Time!) {",
     " viewer { accounts(filter: { accountTag: $accountTag }) {",
     "  workersInvocationsAdaptive(limit: 1000, filter: { datetime_geq: $startTime, datetime_leq: $endTime }) { sum { requests errors cpuTimeUs } }",
+    "  workersDailyInvocationsAdaptive: workersInvocationsAdaptive(limit: 1000, filter: { datetime_geq: $dailyStartTime, datetime_leq: $endTime }) { sum { requests errors cpuTimeUs } }",
     "  aiInferenceAdaptiveGroups(limit: 1000, filter: { datetime_geq: $aiStartTime, datetime_leq: $endTime }) { sum { totalNeurons } }",
     " } }",
     "}"
@@ -77,10 +78,10 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     "}"
   ].join("\n");
   const variables={accountTag:CF_MONITOR_ACCOUNT_ID,start:monthStart,end:day,storageStart,
-    startTime:monthStart+"T00:00:00Z",aiStartTime:day+"T00:00:00Z",endTime:now.toISOString()};
+    startTime:monthStart+"T00:00:00Z",dailyStartTime:day+"T00:00:00Z",aiStartTime:day+"T00:00:00Z",endTime:now.toISOString()};
   // Small parallel requests keep monthly analytics within the Worker API timeout.
   const [workerData,d1Data,...kvData]=await Promise.all([
-    cfMonitorGraphQL(env,workersQuery,{accountTag:CF_MONITOR_ACCOUNT_ID,startTime:variables.startTime,aiStartTime:variables.aiStartTime,endTime:variables.endTime}),
+    cfMonitorGraphQL(env,workersQuery,{accountTag:CF_MONITOR_ACCOUNT_ID,startTime:variables.startTime,dailyStartTime:variables.dailyStartTime,aiStartTime:variables.aiStartTime,endTime:variables.endTime}),
     cfMonitorGraphQL(env,d1Query,{accountTag:CF_MONITOR_ACCOUNT_ID,start:monthStart,end:day,storageStart}),
     ...groups.map(group=>cfMonitorGraphQL(env,group.query,{accountTag:CF_MONITOR_ACCOUNT_ID,start:monthStart,end:day,storageStart}))
   ]);
@@ -92,6 +93,9 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   const workerRows=workerAccount.workersInvocationsAdaptive||[];
   const workers=workerRows.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.requests),0);
   const workersCpuMs=workerRows.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.cpuTimeUs),0)/1000;
+  const workerDailyRows=workerAccount.workersDailyInvocationsAdaptive||[];
+  const workersDaily=workerDailyRows.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.requests),0);
+  const workersCpuDailyMs=workerDailyRows.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.cpuTimeUs),0)/1000;
   const aiNeurons=(workerAccount.aiInferenceAdaptiveGroups||[]).reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.totalNeurons),0);
   const kvOpsRows=[],kvStorageRows=[];
   for(let batch=0;batch<groups.length;batch++){
@@ -105,6 +109,8 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
   const d1Usage=d1Account.d1Usage||[];
   const d1RowsRead=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsRead),0);
   const d1RowsWritten=d1Usage.reduce((sum,row)=>sum+cfMonitorNumber(row?.sum?.rowsWritten),0);
+  const d1RowsReadDaily=d1Usage.reduce((sum,row)=>sum+(String(row?.dimensions?.date||"").slice(0,10)===day?cfMonitorNumber(row?.sum?.rowsRead):0),0);
+  const d1RowsWrittenDaily=d1Usage.reduce((sum,row)=>sum+(String(row?.dimensions?.date||"").slice(0,10)===day?cfMonitorNumber(row?.sum?.rowsWritten):0),0);
   const kvBytes=kvStorageRows.reduce((sum,rows)=>sum+cfMonitorMax(rows,"byteCount"),0);
   const d1Bytes=cfMonitorMax(d1Account.d1Storage||[],"databaseSizeBytes");
   const metrics=[
@@ -119,6 +125,19 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     {key:"d1_rows_read",label:"D1 rows read (monthly)",used:d1RowsRead,limit:25000000000,unit:"rows",period:"monthly"},
     {key:"d1_rows_written",label:"D1 rows written (monthly)",used:d1RowsWritten,limit:50000000,unit:"rows",period:"monthly"},
     {key:"d1_storage",label:"D1 storage (account included allowance)",used:d1Bytes,limit:5368709120,unit:"bytes",period:"storage"}
+  ];
+  const dailyMetrics=[
+    {key:"workers_requests",label:"Workers requests (daily)",used:workersDaily,limit:10000000,unit:"requests",period:"daily"},
+    {key:"workers_cpu_ms",label:"Workers CPU time (daily)",used:workersCpuDailyMs,limit:30000000,unit:"ms",period:"daily"},
+    {key:"workers_ai_neurons",label:"Workers AI neurons (daily allocation)",used:aiNeurons,limit:10000,unit:"neurons",period:"daily"},
+    {key:"kv_reads",label:"KV reads (all 6 namespaces, daily)",used:kvAction("read",day),limit:100000,unit:"operations",period:"daily"},
+    {key:"kv_writes",label:"KV writes (all 6 namespaces, daily)",used:kvAction("write",day),limit:1000,unit:"operations",period:"daily"},
+    {key:"kv_deletes",label:"KV deletes (all 6 namespaces, daily)",used:kvAction("delete",day),limit:1000,unit:"operations",period:"daily"},
+    {key:"kv_lists",label:"KV list operations (all 6 namespaces, daily)",used:kvAction("list",day),limit:1000,unit:"operations",period:"daily"},
+    {key:"kv_storage",label:"KV storage (current)",used:kvBytes,limit:1073741824,unit:"bytes",period:"storage"},
+    {key:"d1_rows_read",label:"D1 rows read (daily)",used:d1RowsReadDaily,limit:25000000000,unit:"rows",period:"daily"},
+    {key:"d1_rows_written",label:"D1 rows written (daily)",used:d1RowsWrittenDaily,limit:50000000,unit:"rows",period:"daily"},
+    {key:"d1_storage",label:"D1 storage (current)",used:d1Bytes,limit:5368709120,unit:"bytes",period:"storage"}
   ];
   const thresholds=[50,70,85,95],pending=[];
   for(const metric of metrics){
@@ -177,7 +196,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
       catch(e){console.error("Cloudflare resource alert state save failed:",String(e&&e.message||e).slice(0,120));}
     }
   }
-  return {day,month,metrics:metrics.map(m=>({key:m.key,label:m.label,unit:m.unit,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100),period:m.period})),alerts:pending.length};
+  return {day,month,metrics:metrics.map(m=>({key:m.key,label:m.label,unit:m.unit,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100),period:m.period})),dailyMetrics:dailyMetrics.map(m=>({key:m.key,label:m.label,unit:m.unit,used:m.used,limit:m.limit,percent:Math.round(m.used/m.limit*100),period:m.period})),alerts:pending.length};
 }
 async function cfHistoricalExceptionAudit(env,sendTelegram) {
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is unavailable");
@@ -411,12 +430,12 @@ function buildDailyReportMessages(input){
     bold("RECENT VISITOR PROFILES"),
     ...dailyReportVisitorDetailsLines(activity)
   ];
-  const metricNames={workers_requests:"Workers requests (monthly)",workers_cpu_ms:"Workers CPU time (monthly)",workers_ai_neurons:"Workers AI neurons (daily)",kv_reads:"KV reads (monthly)",kv_writes:"KV writes (monthly)",kv_deletes:"KV deletes (monthly)",kv_lists:"KV list operations (monthly)",kv_storage:"KV storage",d1_rows_read:"D1 rows read (monthly)",d1_rows_written:"D1 rows written (monthly)",d1_storage:"D1 storage"};
-  const metrics=input.resourceSnapshot?.metrics||[];
+  const metricNames={workers_requests:"Workers requests (daily)",workers_cpu_ms:"Workers CPU time (daily)",workers_ai_neurons:"Workers AI neurons (daily)",kv_reads:"KV reads (daily)",kv_writes:"KV writes (daily)",kv_deletes:"KV deletes (daily)",kv_lists:"KV list operations (daily)",kv_storage:"KV storage (current)",d1_rows_read:"D1 rows read (daily)",d1_rows_written:"D1 rows written (daily)",d1_storage:"D1 storage (current)"};
+  const metrics=input.resourceSnapshot?.dailyMetrics||[];
   const resource=[
     bold("04/05 · INFRASTRUCTURE INTELLIGENCE"),
     plain("REPORT ID: "+id),
-    plain("Billing month: "+(input.resourceSnapshot?.month||"Unavailable")+" UTC · AI allocation day: "+(input.resourceSnapshot?.day||"Unavailable")+" UTC"),
+    plain("Usage day: "+(input.resourceSnapshot?.day||"Unavailable")+" UTC · Reset: 00:00 UTC / 06:00 BDT"),
     "",
     ...metrics.map(metric=>{
       const used=metric.unit==="bytes"?(metric.used/1073741824).toFixed(3)+" GiB":Math.round(metric.used).toLocaleString("en-US");
@@ -426,7 +445,7 @@ function buildDailyReportMessages(input){
       return icon+" "+plain(metricNames[metric.key]||metric.label)+": "+bold(used+" / "+limit)+" · "+bold(percent+"%");
     }),
     metrics.length?plain("Coverage: 3 Workers · 6 existing KV namespaces · 1 D1 database · Workers AI binding"):"⚠️ "+plain("Cloudflare resource metrics unavailable."),
-    plain("Workers requests/CPU and KV usage are account-wide; D1 usage covers the account’s only database. Analytics values are estimates, not the billing ledger; Workers AI usage is adaptively sampled.")
+    plain("Daily totals are measured from 00:00 UTC (06:00 BDT); Workers/D1 figures are daily usage against plan allowances, KV figures use daily allowances, and storage is a current snapshot. Analytics values are estimates, not the billing ledger; Workers AI usage is adaptively sampled.")
   ];
   const securityStatus=!input.headersChecked?"CHECK UNAVAILABLE":input.missing?.length?"REVIEW REQUIRED":input.platformLimitations?.length?"HOST-LIMITED":"STABLE";
   const security=[
@@ -2648,7 +2667,7 @@ export default {
       try{
         resourceSnapshot=await cfResourceBudgetCheck(env,cfg.trafficAlerts?sendTelegram:null,now);
         try{const errorKey="cloudflare:budget-monitor-error:v1";if(await env.BOT_CONFIG_KV.get(errorKey))await env.BOT_CONFIG_KV.delete(errorKey)}catch{}
-        console.log("Cloudflare resource budget monitor completed",JSON.stringify({day:resourceSnapshot.day,month:resourceSnapshot.month,metrics:resourceSnapshot.metrics.map(metric=>({key:metric.key,percent:metric.percent,period:metric.period}))}));
+        console.log("Cloudflare resource budget monitor completed",JSON.stringify({day:resourceSnapshot.day,month:resourceSnapshot.month,metrics:resourceSnapshot.dailyMetrics.map(metric=>({key:metric.key,percent:metric.percent,period:metric.period}))}));
       }
       catch(e){
         console.error("Cloudflare resource budget monitor failed:",String(e&&e.message||e).slice(0,220));
