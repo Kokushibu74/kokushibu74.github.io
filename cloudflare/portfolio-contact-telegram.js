@@ -2204,7 +2204,7 @@ async function newsBreakingAlertCheck(env){
 
 
 const SHEETS_SPREADSHEET_ID = "1lVu54b3V3bqu8ySrBF0CX8Tpd5adfoYa4jxA0cnukus";
-function sheetsB64Url(value){return btoa(value).replace(/=/g,"").replace(/\\+/g,"-").replace(/\\//g,"_");}
+function sheetsB64Url(value){return btoa(value).replace(/=/g,"").replace(/\+/g,"-").replace(/\//g,"_");}
 async function sheetsAccessToken(env){
   if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is unavailable");
   let sa;try{sa=JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON)}catch{throw new Error("Google service-account secret is not valid JSON")}
@@ -2212,7 +2212,7 @@ async function sheetsAccessToken(env){
   const now=Math.floor(Date.now()/1000);
   const header=sheetsB64Url(JSON.stringify({alg:"RS256",typ:"JWT"}));
   const claim=sheetsB64Url(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/spreadsheets",aud:"https://oauth2.googleapis.com/token",iat:now,exp:now+3600}));
-  const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\\s/g,"");
+  const pem=sa.private_key.replace(/-----BEGIN PRIVATE KEY-----/,"").replace(/-----END PRIVATE KEY-----/,"").replace(/\s/g,"");
   const keyBytes=Uint8Array.from(atob(pem),c=>c.charCodeAt(0));
   const key=await crypto.subtle.importKey("pkcs8",keyBytes,{name:"RSASSA-PKCS1-v1_5",hash:"SHA-256"},false,["sign"]);
   const signingInput=header+"."+claim;
