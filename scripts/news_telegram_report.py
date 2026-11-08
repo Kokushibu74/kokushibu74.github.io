@@ -383,22 +383,8 @@ def news_report_warnings(metrics):
     warnings = []
     if metrics.get("rss_failed") not in (None, 0):
         warnings.append("Some RSS/feed queries failed.")
-    attempts = metrics.get("metadata_attempts")
-    fetched = metrics.get("metadata_fetched")
-    cached_success = metrics.get("metadata_cached_success") or 0
-    cached_fallback = metrics.get("metadata_cached_fallback") or 0
-    checked_total = (attempts or 0) + cached_success + cached_fallback
-    verified_total = (fetched or 0) + cached_success
-    if checked_total and verified_total / checked_total < 0.5:
-        warnings.append("Publisher metadata coverage is low, including cached publisher previews.")
     if metrics.get("validation") == "FAIL":
         warnings.append("Generated feed validation failed.")
-    weather_total = metrics.get("weather_cards")
-    weather_with_preview = metrics.get("weather_cards_with_preview")
-    if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
-        warnings.append("Some Weather/Disaster cards do not have a preview image URL.")
-    if metrics.get("baseline") == "establishing":
-        warnings.append("The comparison baseline is being established.")
     return warnings
 
 def should_send_news_notification(conclusion, metrics):
@@ -513,19 +499,32 @@ def build_news_report(metrics, context, verified_ids=None):
     else:
         lines.append('ℹ️ Validation details are limited to checks reported by the generator.')
 
+    informational = []
+    attempts = metrics.get("metadata_attempts")
+    fetched = metrics.get("metadata_fetched")
+    cached_success = metrics.get("metadata_cached_success") or 0
+    cached_fallback = metrics.get("metadata_cached_fallback") or 0
+    checked_total = (attempts or 0) + cached_success + cached_fallback
+    verified_total = (fetched or 0) + cached_success
+    if checked_total and verified_total / checked_total < 0.5:
+        informational.append("Publisher preview metadata is limited; some publishers may block automated preview requests.")
+    weather_total = metrics.get("weather_cards")
+    weather_with_preview = metrics.get("weather_cards_with_preview")
+    if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
+        informational.append(f"{weather_total - weather_with_preview} Weather/Disaster card(s) have no preview image; story data remains available.")
+    if metrics.get("baseline") == "establishing":
+        informational.append("News change-tracking baseline is still being established.")
+    if informational:
+        lines.extend(["", f'ℹ️ <b>INFO · {len(informational)} note(s)</b>'])
+        lines.extend('• ' + html.escape(note) for note in informational[:5])
+
     if warnings:
         lines.extend(["", f'⚠️ <b>NEEDS ATTENTION · {len(warnings)} item(s)</b>'])
         for warning in warnings[:5]:
             lines.append('• ' + html.escape(warning))
-        if attempts and fetched is not None and fetched < attempts:
-            lines.append('↳ Review publishers that block preview requests; keep RSS fallbacks.')
         if metrics.get("rss_failure_details"):
             lines.append('↳ Check failed feeds; retry affected sources on the next refresh.')
-        if metrics.get("baseline") == "establishing":
-            lines.append('↳ The next successful refresh will establish the comparison baseline.')
-        if weather_total and weather_with_preview is not None and weather_with_preview < weather_total:
-            lines.append(f'↳ Review {weather_total - weather_with_preview} Weather/Disaster cards without preview images.')
-    else:
+    elif not informational:
         lines.extend(["", "✅ <b>ALL CHECKS CLEAR</b> · No reported feed or collection issues."])
 
     lines.extend([
