@@ -82,9 +82,11 @@ Feed diagnostics: 25 / 25 successful; failures: none
         message = report.build_news_report(metrics, context, verified)
         self.assertIn('<tg-emoji emoji-id="5445284980978621387">🚀</tg-emoji>', message)
         self.assertIn('<tg-emoji emoji-id="5433982607035474385">📰</tg-emoji>', message)
-        self.assertIn("⚠️ <b>WARNING · ", message)
+        self.assertIn("SUCCESS", message)
+        self.assertNotIn("WARNING · ", message)
+        self.assertIn("INFO · ", message)
         self.assertNotIn("SUCCESS · WARNINGS", message)
-        self.assertNotIn('<tg-emoji emoji-id="5427009714745517609">✅</tg-emoji>', message)
+        self.assertIn('<tg-emoji emoji-id="5427009714745517609">✅</tg-emoji>', message)
         self.assertIn("NEWS DATABASE", message)
         self.assertIn("LIVE FEED", message)
         self.assertIn("COLLECTION HEALTH", message)
@@ -95,7 +97,7 @@ Feed diagnostics: 25 / 25 successful; failures: none
         self.assertIn("Removed <b>0</b>", message)
         self.assertIn("Net = Added − Removed", message)
         self.assertIn("Validation <b>PASS</b>", message)
-        self.assertIn("Some Weather/Disaster cards do not have a preview image URL.", message)
+        self.assertIn("Weather/Disaster card(s) have no preview image", message)
         self.assertLessEqual(len(message), report.MAX_TELEGRAM_TEXT)
 
 
@@ -147,7 +149,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
             "updated_at": "2026-11-07T09:01:00Z",
         }
         metrics = {
-            "rss_failed": 0,
+            "rss_failed": 1,
             "metadata_attempts": 13,
             "metadata_fetched": 2,
             "metadata_cached_success": 0,
@@ -158,6 +160,7 @@ Publisher preview checks: attempted: 1 metadata fetched: 0 unavailable: 1 cached
         }
         previous_logs = """Feed breakdown: latest_24h: 1144 archive: 12087 latest_tag_15m: 9 preview_image_urls: 3862 bd_latest_tag_preview_candidates: 12 weather_cards: 12 weather_cards_with_preview: 6
 Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cached/reused: 1 cached_success: 0 cached_fallback: 1 Google News URLs resolved: 2
+Feed diagnostics: 24 / 25 successful; failures: one publisher feed unavailable
 """
         captured = {}
         def fake_get(url, _token):
@@ -181,7 +184,7 @@ Publisher preview checks: attempted: 13 metadata fetched: 2 unavailable: 11 cach
             "updated_at": "2026-11-07T09:01:00Z",
         }
         current = {
-            "rss_failed": 0, "metadata_attempts": 13, "metadata_fetched": 2,
+            "rss_failed": 1, "metadata_attempts": 13, "metadata_fetched": 2,
             "metadata_cached_success": 0, "metadata_cached_fallback": 1,
             "weather_cards": 12, "weather_cards_with_preview": 6,
         }
