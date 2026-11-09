@@ -270,7 +270,25 @@ async function cfHistoricalExceptionAudit(env,sendTelegram) {
 
 function bdDay(ts=Date.now()){return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(ts));}
 function previousBdDay(day){const d=new Date(day+"T00:00:00Z");d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10);}
-async function readDailyActivity(env,day){const prefix="daily:"+day+":visitor:",rows=[];let cursor,pageCount=0;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row)}cursor=page.list_complete?undefined:page.cursor;pageCount++;}while(cursor&&pageCount<2);const partial=!!cursor;const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};const pages={};let views=0,sessions=0,errors=0,returning=0;for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}return {day,partial,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};}
+const DAILY_ACTIVITY_CACHE=new Map();
+async function readDailyActivity(env,day){
+  const now=Date.now(),cached=DAILY_ACTIVITY_CACHE.get(day);
+  if(cached&&cached.expiresAt>now)return cached.value;
+  const prefix="daily:"+day+":visitor:",rows=[];let cursor,pageCount=0;
+  do{
+    const page=await env.VISITOR_KV.list({prefix,limit:1000,cursor});
+    for(const key of page.keys||[]){const row=await env.VISITOR_KV.get(key.name,"json");if(row)rows.push(row);}
+    cursor=page.list_complete?undefined:page.cursor;pageCount++;
+  }while(cursor&&pageCount<2);
+  const partial=!!cursor;
+  const tally=fn=>{const m={};for(const r of rows){const k=String(fn(r)||"Unknown");m[k]=(m[k]||0)+1;}return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")");};
+  const pages={};let views=0,sessions=0,errors=0,returning=0;
+  for(const r of rows){views+=r.pageViews||0;sessions+=r.sessions||0;errors+=r.errors||0;if(r.returning)returning++;for(const [k,v] of Object.entries(r.pages||{}))pages[k]=(pages[k]||0)+v;}
+  const value={day,partial,unique:rows.length,returning,sessions,views,errors,pages:Object.entries(pages).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([k,v])=>k+" ("+v+")"),countries:tally(r=>r.network?.country),cities:tally(r=>r.network?.city),isps:tally(r=>r.network?.isp),devices:tally(r=>r.device?.deviceType),browsers:tally(r=>r.device?.browser),visitors:rows.sort((a,b)=>(b.pageViews||0)-(a.pageViews||0)).slice(0,20)};
+  if(DAILY_ACTIVITY_CACHE.size>=4)DAILY_ACTIVITY_CACHE.delete(DAILY_ACTIVITY_CACHE.keys().next().value);
+  DAILY_ACTIVITY_CACHE.set(day,{expiresAt:now+30_000,value});
+  return value;
+}
 async function sendTelegramText(env,chatId,text,options={}){
   const max=3500,formatted=botFormatTelegramResponse(text,{parse_mode:options.parse_mode==="HTML"?"HTML":"PLAIN"}),lines=formatted.split("\n"),chunks=[];let current="";
   for(const line of lines){
@@ -554,12 +572,14 @@ async function umHistory(env,kind,id,event,ctx=null){
   const sampled=kind==="visitor"&&["page_view","event_batch"].includes(String(event?.type||""));
   const slot=Math.floor(at/(15*60*1000))*15*60*1000;
   const key=UM_PREFIX+"history:"+kind+":"+id+":"+day+":"+(sampled?String(slot).padStart(13,"0")+":sample":String(at).padStart(13,"0")+"-"+salt);
-  if(sampled&&await env.VISITOR_KV.get(key))return false;
+  if(sampled){try{if(await env.VISITOR_KV.get(key))return false}catch(e){console.warn("History deduplication lookup unavailable",String(e&&e.message||e).slice(0,120));}}
   const retentionSeconds=kind==="admin"?365*86400:90*86400;
   const record={at,kind,id,event};
-  await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:retentionSeconds});
+  let kvStored=false;
+  try{await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:retentionSeconds});kvStored=true}
+  catch(e){console.warn("User history KV persistence unavailable; continuing with downstream sync where configured",String(e&&e.message||e).slice(0,180));}
   if(kind==="visitor"){const sync=sendVisitorSheetsEvent(env,{eventId:"history:"+key,kind:"visitor_history",visitorId:id,record});if(ctx&&typeof ctx.waitUntil==="function")ctx.waitUntil(sync);else await sync;}
-  return true;
+  return kvStored;
 }
 async function umTelegramTouch(env,msg){
   const id=String(msg.from.id),key=UM_PREFIX+"telegram:"+id,now=Date.now();
@@ -745,23 +765,44 @@ const BOT_DEFAULTS = {
   monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, newsAlerts:true, workflowAlerts:true,
   trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
 };
+const BOT_CONFIG_CACHE={expiresAt:0,value:null};
 async function botConfig(env){
   if(!env.BOT_CONFIG_KV)return {...BOT_DEFAULTS};
-  try{return {...BOT_DEFAULTS,...(await env.BOT_CONFIG_KV.get("settings:v1","json")||{})}}catch{return {...BOT_DEFAULTS}}
+  const now=Date.now();
+  if(BOT_CONFIG_CACHE.value&&BOT_CONFIG_CACHE.expiresAt>now)return {...BOT_CONFIG_CACHE.value};
+  try{
+    const value={...BOT_DEFAULTS,...(await env.BOT_CONFIG_KV.get("settings:v1","json")||{})};
+    BOT_CONFIG_CACHE.value=value;
+    BOT_CONFIG_CACHE.expiresAt=now+5000;
+    return {...value};
+  }catch{return {...BOT_DEFAULTS}}
 }
 async function botSaveConfig(env,cfg){
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is not deployed");
-  await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify({...BOT_DEFAULTS,...cfg,updatedAt:Date.now()}));
+  const value={...BOT_DEFAULTS,...cfg,updatedAt:Date.now()};
+  await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify(value));
+  BOT_CONFIG_CACHE.value=value;
+  BOT_CONFIG_CACHE.expiresAt=Date.now()+5000;
 }
 const BOT_MENU_KEY_PREFIX = "bot:menu:v1:";
 const BOT_CONTEXT_KEY_PREFIX = "bot:context:v1:";
+const BOT_CONTEXT_CACHE=new Map();
+const BOT_CONTEXT_CACHE_AT=new Map();
+const BOT_CONTEXT_CACHE_TTL_MS=5000;
 async function botSetContext(env,chatId,context){
-  if(!env.BOT_CONFIG_KV)return;
-  await env.BOT_CONFIG_KV.put(BOT_CONTEXT_KEY_PREFIX+String(chatId),JSON.stringify({...context,updatedAt:Date.now()}),{expirationTtl:86400});
+  const id=String(chatId),next={...context,updatedAt:Date.now()};
+  BOT_CONTEXT_CACHE.set(id,next);
+  BOT_CONTEXT_CACHE_AT.set(id,Date.now()+BOT_CONTEXT_CACHE_TTL_MS);
+  if(!env.BOT_CONFIG_KV)return false;
+  try{await env.BOT_CONFIG_KV.put(BOT_CONTEXT_KEY_PREFIX+id,JSON.stringify(next),{expirationTtl:86400});return true}
+  catch(e){console.warn("Telegram menu context persistence unavailable; continuing with in-memory context",String(e&&e.message||e).slice(0,160));return false}
 }
 async function botGetContext(env,chatId){
-  if(!env.BOT_CONFIG_KV)return null;
-  try{return await env.BOT_CONFIG_KV.get(BOT_CONTEXT_KEY_PREFIX+String(chatId),"json")}catch{return null}
+  const id=String(chatId),memory=BOT_CONTEXT_CACHE.get(id)||null;
+  if(memory&&Number(BOT_CONTEXT_CACHE_AT.get(id)||0)>Date.now())return memory;
+  if(!env.BOT_CONFIG_KV)return memory;
+  try{const saved=await env.BOT_CONFIG_KV.get(BOT_CONTEXT_KEY_PREFIX+id,"json");if(saved){BOT_CONTEXT_CACHE.set(id,saved);BOT_CONTEXT_CACHE_AT.set(id,Date.now()+BOT_CONTEXT_CACHE_TTL_MS);return saved}}catch{}
+  return memory;
 }
 const BOT_CALLBACK_LAST=new Map();
 const BOT_CALLBACK_MESSAGE_ANCHORS=new Map();
@@ -903,7 +944,7 @@ async function botRegisterCommands(env,chatId,isAdmin){
   const missingDefault=BOT_PUBLIC_COMMANDS.map(x=>x.command).filter(x=>!defaultActual.has(x));
   if(missingDefault.length)throw new Error("Default command verification missing: "+missingDefault.join(", "));
   if(chatId===undefined||chatId===null)return {count:defaultActual.size,verified:true};
-  const expected=BOT_PUBLIC_COMMANDS;
+  const expected=isAdmin?[...BOT_PUBLIC_COMMANDS,...BOT_ADMIN_COMMANDS]:BOT_PUBLIC_COMMANDS;
   const scoped=await botTelegram(env,"setMyCommands",{commands:expected,scope:{type:"chat",chat_id:chatId}});
   if(!scoped.ok)throw new Error("Chat command registration failed (HTTP "+scoped.status+"): "+String(scoped.data?.description||"Telegram API error").slice(0,140));
   const check=await botTelegram(env,"getMyCommands",{scope:{type:"chat",chat_id:chatId}});
@@ -976,13 +1017,9 @@ async function botSend(env,chatId,text,keyboard,options={}){
   }catch(e){
     console.error("Telegram menu anchor save failed",String(e&&e.message||e).slice(0,240));
     if(options.persistentMenu&&newMessageId){
-      try{
-        const removed=await botTelegram(env,"deleteMessage",{chat_id:chatId,message_id:Number(newMessageId)});
-        if(!removed.ok&&!String(removed.data?.description||"").toLowerCase().includes("message to delete not found")){
-          console.error("Telegram unpersistable menu cleanup failed",JSON.stringify({status:removed.status,description:String(removed.data?.description||"").slice(0,180)}));
-        }
-      }catch(cleanupError){console.error("Telegram unpersistable menu cleanup request failed",String(cleanupError&&cleanupError.message||cleanupError).slice(0,180))}
-      throw new Error("The menu could not be saved because its storage is unavailable. Use the Control Center chat menu button for now.");
+      // KV persistence is best-effort: never delete a successfully delivered Control Center menu just because the daily write quota is exhausted.
+      console.warn("Telegram menu anchor persistence unavailable; keeping the visible menu and continuing without saved anchor",String(e&&e.message||e).slice(0,160));
+      return sent.data.result;
     }
   }
   return sent.data.result;
@@ -1268,7 +1305,10 @@ async function botHandleCallback(env,query){
     if(callbackMessageId&&!notificationAction){
       BOT_CALLBACK_MESSAGE_ANCHORS.set(String(chatId),callbackMessageId);
       const currentAnchor=await botGetMenuAnchor(env,chatId);
-      if(Number(currentAnchor?.messageId||0)!==callbackMessageId)await botRememberMenu(env,chatId,callbackMessageId);
+      if(Number(currentAnchor?.messageId||0)!==callbackMessageId){
+        try{await botRememberMenu(env,chatId,callbackMessageId)}
+        catch(e){console.warn("Telegram callback anchor persistence unavailable; continuing with in-memory clicked-message anchor",String(e&&e.message||e).slice(0,160));}
+      }
     }
     if(action.startsWith("confirm:")||action.startsWith("cancel:")){
       await botAnswerCallback(env,query);
@@ -1724,16 +1764,15 @@ const MINIAPP_CRON_INDEX_KEY = "miniapp:cron:index:v1";
 async function miniAppCronRecord(env,entry){
   if(!env.BOT_CONFIG_KV)return null;
   const at=Number(entry.at||Date.now()),id=String(entry.id||crypto.randomUUID()),status=String(entry.status||"running");
-  const key=MINIAPP_CRON_PREFIX+String(at).padStart(13,"0")+":"+id+":"+status;
   const value={id,at,status,cron:String(entry.cron||"unknown"),
     durationMs:Number.isFinite(entry.durationMs)?entry.durationMs:null,
     httpStatus:Number.isFinite(entry.httpStatus)?entry.httpStatus:null,
     detail:String(entry.detail||"").slice(0,180)};
-  await env.BOT_CONFIG_KV.put(key,JSON.stringify(value),{expirationTtl:14*86400});
   if(status!=="running"){
     const previous=await env.BOT_CONFIG_KV.get(MINIAPP_CRON_INDEX_KEY,"json").catch(()=>[]);
     const rows=Array.isArray(previous)?previous:[];
     const next=[value,...rows.filter(row=>row&&row.id!==id)].sort((a,b)=>b.at-a.at).slice(0,100);
+    // The index is the primary history source; a second per-run key duplicated every terminal record.
     await env.BOT_CONFIG_KV.put(MINIAPP_CRON_INDEX_KEY,JSON.stringify(next),{expirationTtl:14*86400});
   }
   return value;
@@ -2600,7 +2639,10 @@ export default {
       const key="loc:v1:history:visitor:"+id+":"+String(now).padStart(13,"0")+":"+salt;
       const record={visitorId:id,latitude,longitude,accuracyMeters:Math.round(accuracy),source:"browser-geolocation",capturedAt:now,capturedAtUtc:utc,capturedAtBdt:bdt,locality:null,retentionDays:90};
       await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
-      await env.VISITOR_KV.put("loc:v1:latest:"+id,JSON.stringify(record),{expirationTtl:7776000});
+      const latestLocationKey="loc:v1:latest:"+id;
+      const previousLatest=await env.VISITOR_KV.get(latestLocationKey,"json").catch(()=>null);
+      const recentLocations=[...(Array.isArray(previousLatest)?previousLatest:(previousLatest?[previousLatest]:[])),record].slice(-3);
+      await env.VISITOR_KV.put(latestLocationKey,JSON.stringify(recentLocations),{expirationTtl:7776000});
       ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"gps:"+key,kind:"location_history",visitorId:id,record}));
       return respond({ok:true,recorded:true,retentionDays:90},200);
     }
@@ -2682,24 +2724,23 @@ export default {
         source:{referrer:clean(data.referrer,240),utmSource:clean(data.utmSource,100),utmMedium:clean(data.utmMedium,100),utmCampaign:clean(data.utmCampaign,120)},
         performance:data.performance&&typeof data.performance==="object"?{loadMs:Number(data.performance.loadMs)||null,domMs:Number(data.performance.domMs)||null,lcp:Number(data.performance.lcp)||null,inp:Number(data.performance.inp)||null,cls:Number(data.performance.cls)||null}:null
       };
-      await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
+      const deviceChanged=first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{});
+      const profileRefreshDue=first||newSession||deviceChanged||now-(Number(old.lastSeen)||0)>=300000;
+      if(profileRefreshDue)await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
       if(userManagerOld)await env.VISITOR_KV.delete(userManagerProfileKey).catch(error=>console.warn("Duplicate visitor profile cleanup failed",String(error&&error.message||error).slice(0,100)));
-      try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))},ctx);}catch(e){console.error("User history write failed",String(e));}
+      if(pageView||events.length){try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))},ctx);}catch(e){console.error("User history write failed",String(e));}}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
       let dayRow={};try{dayRow=await env.VISITOR_KV.get(dailyKey,"json")||{}}catch{}
       const dayPages=dayRow.pages&&typeof dayRow.pages==="object"?dayRow.pages:{};
       if(pageView)dayPages[page]=(Number(dayPages[page])||0)+1;
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
-      const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),navigationSequence:profile.pages.slice(-12)};
-      await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
-      const deviceChanged=first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{});
-      const profileRefreshDue=first||newSession||deviceChanged||now-(Number(old.lastSeen)||0)>=300000;
+      const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),recentPageViews:[...(Array.isArray(dayRow.recentPageViews)?dayRow.recentPageViews:[]).filter(at=>now-Number(at)<300000),...(pageView?[now]:[])].slice(-100),navigationSequence:profile.pages.slice(-12)};
+      if(pageView||events.length)await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
+      
       const sheetsTrackEvent={eventId:"track:"+crypto.randomUUID(),kind:"track",at:now,visitorId:id,sessionId:session,page,pageView,newSession,first,returning:!!dayRecord.returning,deviceChanged,skipProfileUpsert:!profileRefreshDue,profile:sheetsSafeProfile(profile),daily:dayRecord,day:reportDay};
       ctx.waitUntil(sendVisitorSheetsEvent(env,sheetsTrackEvent));
-      // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
-      const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
-      let traffic=0;try{traffic=Number(await env.VISITOR_KV.get(trafficKey))||0}catch{}
-      if(pageView){traffic+=1;await env.VISITOR_KV.put(trafficKey,String(traffic),{expirationTtl:600});}
+      // Reuse the daily visitor record for the five-minute spike window; avoid a separate KV read/write per page view.
+      const traffic=Array.isArray(dayRecord.recentPageViews)?dayRecord.recentPageViews.length:0;
       const sendAlert=async(key,text)=>{const marker="alert:"+key,lock="alert:lock:"+key;if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock))return;if(key.startsWith("security:")){const eventKey="security:event:v1:"+id+":"+session;if(!await env.VISITOR_KV.get(eventKey))await env.VISITOR_KV.put(eventKey,JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});}const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:alert:status:security:3"},{text:"Security Center",callback_data:"b1:alert:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:website"},{text:"Logs",callback_data:"b1:alert:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]};await sendVisitorAlertOnce(env,key,text,markup,now)};
       if(pageView&&traffic>=40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
@@ -2791,9 +2832,8 @@ export default {
         try{
           const locationConsent=await env.VISITOR_KV.get("loc:v1:consent:"+id,"json");
           if(locationConsent?.consent===true&&!locationConsent.withdrawnAtUtc){
-            const locationKeys=await env.VISITOR_KV.list({prefix:"loc:v1:history:visitor:"+id+":",limit:1000});
-            const recentKeys=(locationKeys.keys||[]).slice(-3);
-            const recentLocations=(await Promise.all(recentKeys.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
+            const latestLocations=await env.VISITOR_KV.get("loc:v1:latest:"+id,"json").catch(()=>null);
+            const recentLocations=(Array.isArray(latestLocations)?latestLocations:(latestLocations?[latestLocations]:[])).filter(Boolean).slice(-3);
             if(recentLocations.length){
               lines.push("","<b>07 · 🧭 CONSENTED GPS LOCATION HISTORY</b>");
               for(let i=0;i<recentLocations.length;i++){
@@ -2965,11 +3005,13 @@ export default {
     if(controller.cron==="* * * * *"){
       const minute=new Date().getUTCMinutes();
       if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
-      // Check idle menus every minute so the 15-minute expiry is not delayed by another quarter-hour.
-      try{
-        const menuCleanup=await botExpireIdleMenu(env);
-        if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
-      }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
+      // Fifteen-minute cleanup cadence reduces repeated KV list scans; idle menus may be removed up to 30 minutes after last interaction.
+      if(minute%15===0){
+        try{
+          const menuCleanup=await botExpireIdleMenu(env);
+          if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
+        }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
+      }
       if(minute%5===0){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
         catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
@@ -3096,4 +3138,5 @@ export default {
     }
   }
 };
+
 
