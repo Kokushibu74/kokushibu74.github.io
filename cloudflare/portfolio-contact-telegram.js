@@ -614,15 +614,31 @@ async function umProfile(env,user){
 async function umBlocked(env,kind,id){
   try{return !!(await env.VISITOR_KV.get(UM_PREFIX+"block:"+kind+":"+id,"json"))}catch{return false}
 }
+const VISITOR_ALERT_FALLBACK_MEMORY=new Map();
 async function sendVisitorAlertOnce(env,key,text,markup,now=Date.now()){
   if(!env.VISITOR_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return false;
   const marker="alert:"+key,lock="alert:lock:"+key;
+  const memoryUntil=Number(VISITOR_ALERT_FALLBACK_MEMORY.get(key)||0);
+  if(memoryUntil>now)return false;
+  VISITOR_ALERT_FALLBACK_MEMORY.set(key,now+90_000);
+  if(VISITOR_ALERT_FALLBACK_MEMORY.size>512){
+    for(const [memoryKey,expiresAt] of VISITOR_ALERT_FALLBACK_MEMORY)if(expiresAt<=now)VISITOR_ALERT_FALLBACK_MEMORY.delete(memoryKey);
+    if(VISITOR_ALERT_FALLBACK_MEMORY.size>512)VISITOR_ALERT_FALLBACK_MEMORY.delete(VISITOR_ALERT_FALLBACK_MEMORY.keys().next().value);
+  }
+  let lockAcquired=false;
   try{
-    if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock))return false;
-    await env.VISITOR_KV.put(lock,String(now),{expirationTtl:90});
+    if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock)){
+      VISITOR_ALERT_FALLBACK_MEMORY.delete(key);
+      return false;
+    }
   }catch(error){
-    console.error("Visitor alert deduplication state unavailable",String(error&&error.message||error).slice(0,160));
-    return false;
+    console.warn("Visitor alert deduplication read unavailable; using isolate-local fallback",String(error&&error.message||error).slice(0,160));
+  }
+  try{
+    await env.VISITOR_KV.put(lock,String(now),{expirationTtl:90});
+    lockAcquired=true;
+  }catch(error){
+    console.warn("Visitor alert KV lock unavailable; attempting Telegram delivery with isolate-local deduplication",String(error&&error.message||error).slice(0,160));
   }
   try{
     const response=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/sendMessage",{
@@ -639,6 +655,7 @@ async function sendVisitorAlertOnce(env,key,text,markup,now=Date.now()){
     if(!response.ok||payload.ok!==true){
       throw new Error("Telegram rejected the alert (HTTP "+response.status+"): "+String(payload.description||"unknown Telegram API error").slice(0,140));
     }
+    VISITOR_ALERT_FALLBACK_MEMORY.set(key,now+86400_000);
     try{
       await env.VISITOR_KV.put(marker,JSON.stringify({sentAt:now,messageId:payload.result?.message_id||null}),{expirationTtl:86400});
     }catch(error){
@@ -646,10 +663,11 @@ async function sendVisitorAlertOnce(env,key,text,markup,now=Date.now()){
     }
     return true;
   }catch(error){
+    VISITOR_ALERT_FALLBACK_MEMORY.delete(key);
     console.error("Visitor alert delivery failed",JSON.stringify({key:String(key).slice(0,140),error:String(error&&error.message||error).slice(0,180)}));
     return false;
   }finally{
-    await env.VISITOR_KV.delete(lock).catch(error=>console.error("Visitor alert lock cleanup failed",String(error&&error.message||error).slice(0,120)));
+    if(lockAcquired)await env.VISITOR_KV.delete(lock).catch(error=>console.error("Visitor alert lock cleanup failed",String(error&&error.message||error).slice(0,120)));
   }
 }
 async function umReply(env,chatId,text,keyboard=botBackKeyboard(),options={}){
@@ -790,7 +808,14 @@ const BOT_CONTEXT_CACHE=new Map();
 const BOT_CONTEXT_CACHE_AT=new Map();
 const BOT_CONTEXT_CACHE_TTL_MS=5000;
 async function botSetContext(env,chatId,context){
-  const id=String(chatId),next={...context,updatedAt:Date.now()};
+  const id=String(chatId),current=await botGetContext(env,id);
+  const comparable=value=>{if(!value||typeof value!=="object")return "";const copy={...value};delete copy.updatedAt;return JSON.stringify(copy);};
+  if(current&&comparable(current)===comparable(context)){
+    BOT_CONTEXT_CACHE.set(id,current);
+    BOT_CONTEXT_CACHE_AT.set(id,Date.now()+BOT_CONTEXT_CACHE_TTL_MS);
+    return false;
+  }
+  const next={...context,updatedAt:Date.now()};
   BOT_CONTEXT_CACHE.set(id,next);
   BOT_CONTEXT_CACHE_AT.set(id,Date.now()+BOT_CONTEXT_CACHE_TTL_MS);
   if(!env.BOT_CONFIG_KV)return false;
@@ -963,6 +988,7 @@ async function botRememberMenu(env,chatId,messageId,onlyIfMissing=false){
   const key=BOT_MENU_KEY_PREFIX+String(chatId);
   if(onlyIfMissing){const old=await botGetMenuAnchor(env,chatId);if(old?.messageId)return;}
   const prior=await botGetMenuAnchor(env,chatId),now=Date.now();
+  if(prior&&Number(prior.messageId)===Number(messageId))return false;
   await env.BOT_CONFIG_KV.put(key,JSON.stringify({...prior,chatId:String(chatId),messageId:Number(messageId),updatedAt:now,lastInteractionAt:now}));
 }
 async function botAnswerCallback(env,query,text,showAlert=false){
@@ -2247,7 +2273,7 @@ async function newsBreakingAlertCheck(env){
   try{
     const summaryKey="news-alert-audit:v1:last-run";
     const previous=await env.BOT_CONFIG_KV.get(summaryKey,"json");
-    if(!previous||now-Number(previous.at||0)>=15*60000||sent.length||audited){
+    if(!previous||now-Number(previous.at||0)>=15*60000||sent.length){
       await env.BOT_CONFIG_KV.put(summaryKey,JSON.stringify(summary),{expirationTtl:auditTtl});
     }
   }catch(error){
@@ -2355,11 +2381,11 @@ async function sheetsFormatTabs(accessToken){
 async function sheetsFindRow(env,accessToken,tab,key,cacheKey){
   if(cacheKey){
     const cachedRaw=await env.VISITOR_KV.get(cacheKey),cached=Number(cachedRaw);
-    if(cachedRaw!==null&&Number.isInteger(cached)&&cached>=1)return {rowIndex:cached,exists:true};
+    if(cachedRaw!==null&&Number.isInteger(cached)&&cached>=1)return {rowIndex:cached,exists:true,cached:true};
   }
   const data=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'"+tab+"'!A:A")),values=data.values||[];
   const found=values.findIndex((row,index)=>index>0&&String(row[0])===String(key));
-  return found>=1?{rowIndex:found,exists:true}:{rowIndex:values.length,exists:false};
+  return found>=1?{rowIndex:found,exists:true,cached:false}:{rowIndex:values.length,exists:false,cached:false};
 }
 function sheetsProfileRow(profile){
   const n=profile.network||{},d=profile.device||{},s=profile.source||{};
@@ -2379,7 +2405,7 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
     const useCache=tab!=="Visitor Profiles"&&!!cacheKey;
     const loc=await sheetsFindRow(env,accessToken,tab,key,useCache?cacheKey:null);
     requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));
-    if(useCache)rowMappings.push([cacheKey,String(loc.rowIndex)]);
+    if(useCache&&!loc.cached)rowMappings.push([cacheKey,String(loc.rowIndex)]);
   };
   const visitorId=String(event.visitorId||event.profile?.visitorId||event.profile?.id||event.record?.visitorId||event.record?.id||"");
   const at=Number(event.at||event.record?.at||event.record?.capturedAt||event.record?.requestedAt)||Date.now();
@@ -2726,7 +2752,7 @@ export default {
       };
       const deviceChanged=first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{});
       const profileRefreshDue=first||newSession||deviceChanged||now-(Number(old.lastSeen)||0)>=300000;
-      if(profileRefreshDue)await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});
+      if(profileRefreshDue){try{await env.VISITOR_KV.put(profileKey,JSON.stringify(profile),{expirationTtl:31536000});}catch(error){console.warn("Visitor profile KV update unavailable; continuing alert processing and Sheets sync",String(error&&error.message||error).slice(0,180));}}
       if(userManagerOld)await env.VISITOR_KV.delete(userManagerProfileKey).catch(error=>console.warn("Duplicate visitor profile cleanup failed",String(error&&error.message||error).slice(0,100)));
       if(pageView||events.length){try{await umHistory(env,"visitor",id,pageView?{type:"page_view",path:page,sessionId:session}:{type:"event_batch",path:page,events:events.map(e=>({type:e.type,at:e.at}))},ctx);}catch(e){console.error("User history write failed",String(e));}}
       const reportDay=bdDay(now),dailyKey="daily:"+reportDay+":visitor:"+id;
@@ -2735,13 +2761,13 @@ export default {
       if(pageView)dayPages[page]=(Number(dayPages[page])||0)+1;
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
       const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),recentPageViews:[...(Array.isArray(dayRow.recentPageViews)?dayRow.recentPageViews:[]).filter(at=>now-Number(at)<300000),...(pageView?[now]:[])].slice(-100),navigationSequence:profile.pages.slice(-12)};
-      if(pageView||events.length)await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
+      if(pageView||events.length){try{await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});}catch(error){console.warn("Visitor daily KV update unavailable; continuing alert processing and Sheets sync",String(error&&error.message||error).slice(0,180));}}
       
       const sheetsTrackEvent={eventId:"track:"+crypto.randomUUID(),kind:"track",at:now,visitorId:id,sessionId:session,page,pageView,newSession,first,returning:!!dayRecord.returning,deviceChanged,skipProfileUpsert:!profileRefreshDue,profile:sheetsSafeProfile(profile),daily:dayRecord,day:reportDay};
-      ctx.waitUntil(sendVisitorSheetsEvent(env,sheetsTrackEvent));
+      if(pageView||events.length)ctx.waitUntil(sendVisitorSheetsEvent(env,sheetsTrackEvent));
       // Reuse the daily visitor record for the five-minute spike window; avoid a separate KV read/write per page view.
       const traffic=Array.isArray(dayRecord.recentPageViews)?dayRecord.recentPageViews.length:0;
-      const sendAlert=async(key,text)=>{const marker="alert:"+key,lock="alert:lock:"+key;if(await env.VISITOR_KV.get(marker)||await env.VISITOR_KV.get(lock))return;if(key.startsWith("security:")){const eventKey="security:event:v1:"+id+":"+session;if(!await env.VISITOR_KV.get(eventKey))await env.VISITOR_KV.put(eventKey,JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});}const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:alert:status:security:3"},{text:"Security Center",callback_data:"b1:alert:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:website"},{text:"Logs",callback_data:"b1:alert:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]};await sendVisitorAlertOnce(env,key,text,markup,now)};
+      const sendAlert=async(key,text)=>{if(key.startsWith("security:")){const eventKey="security:event:v1:"+id+":"+session;try{if(!await env.VISITOR_KV.get(eventKey))await env.VISITOR_KV.put(eventKey,JSON.stringify({type:"unusual_visitor_activity",visitorId:id,at:now,page:String(page||"").slice(0,160),sessionId:String(session||"").slice(0,80)}),{expirationTtl:30*86400});}catch(error){console.warn("Security event persistence unavailable; continuing alert delivery",String(error&&error.message||error).slice(0,140));}}const markup=key.startsWith("security:")?{inline_keyboard:[[{text:"Events",callback_data:"b1:alert:status:security:3"},{text:"Security Center",callback_data:"b1:alert:security"}]]}:key.startsWith("errors:")?{inline_keyboard:[[{text:"Details",callback_data:"b1:alert:website"},{text:"Logs",callback_data:"b1:alert:logs"}]]}:{inline_keyboard:[[{text:"Usage",callback_data:"b1:alert:status:analytics:3"},{text:"Details",callback_data:"b1:alert:analytics"}]]};await sendVisitorAlertOnce(env,key,text,markup,now)};
       if(pageView&&traffic>=40&&botCfg.trafficAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("spike:"+bucket,"📈 <b>TRAFFIC SPIKE</b>\nAt least 40 page events in 5 minutes.\nCurrent page: "+clean(page,120)+"\nTime: "+new Date(now).toLocaleString("en-US",{timeZone:"Asia/Dhaka"}));
       const errorEvents=events.filter(e=>e.type==="js_error"||e.type==="promise_error");
       if(errorEvents.length&&botCfg.clientErrorAlerts&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID)await sendAlert("errors:"+id+":"+Math.floor(now/86400000),"🔴 <b>CLIENT ERROR</b>\nVisitor: <code>"+id+"</code>\nPage: "+clean(page,120)+"\nErrors reported: "+errorEvents.length+"\nDetails: "+clean(errorEvents[0].value,160));
