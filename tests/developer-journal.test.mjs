@@ -32,7 +32,7 @@ test("Journal cards open the full article without a separate read-more control",
   assert.match(journal, /data-post-id/);
   assert.match(journal, /function openArticle/);
   assert.match(journal, /history\.pushState/);
-  assert.doesNotMatch(journal, /Read More|Read Story/i);
+  assert.doesNotMatch(journal, /Read More|Read Story|OPEN JOURNAL/i);
 });
 
 test("Timeline supports reveal, reduced motion, filters, archive and scheduled publishing", () => {
