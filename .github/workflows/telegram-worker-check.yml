@@ -216,3 +216,53 @@ jobs:
             }
           }
           NODE
+
+  journal-live-smoke-test:
+    if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify live Developer Journal public feed and privacy boundary
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 9 --retry-delay 10 --retry-all-errors --max-time 20 \
+            -H 'Origin: https://kokushibu74.github.io' \
+            -D /tmp/journal-feed-headers \
+            'https://portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed' \
+            -o /tmp/journal-feed.json
+          grep -qi '^access-control-allow-origin: https://kokushibu74.github.io' /tmp/journal-feed-headers
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const feed = JSON.parse(fs.readFileSync('/tmp/journal-feed.json', 'utf8'));
+          if (feed.ok !== true || !Array.isArray(feed.posts)) throw new Error('Journal feed response contract mismatch');
+          for (const post of feed.posts) {
+            if (post.status === 'draft' || post.deletedAt || post.previousStatus) throw new Error('Private Journal fields leaked into the public feed');
+            for (const field of ['id', 'title', 'description', 'category', 'content']) {
+              if (typeof post[field] !== 'string') throw new Error('Public post missing ' + field);
+            }
+          }
+          console.log('Live Journal feed and public/private boundary: OK (' + feed.posts.length + ' published posts)');
+          NODE
+      - name: Verify live GitHub Pages Journal section and assets
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 9 --retry-delay 10 --retry-all-errors --max-time 20 \
+            'https://kokushibu74.github.io/projects.html' -o /tmp/projects-live.html
+          grep -q 'id="developer-journal"' /tmp/projects-live.html
+          grep -q 'id="journal-article-view"' /tmp/projects-live.html
+          grep -q 'journal.css?v=1' /tmp/projects-live.html
+          grep -q 'journal.js?v=1' /tmp/projects-live.html
+          curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
+            'https://kokushibu74.github.io/journal.css?v=1' -o /tmp/journal-live.css
+          curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
+            'https://kokushibu74.github.io/journal.js?v=1' -o /tmp/journal-live.js
+          grep -q 'journal-card:hover' /tmp/journal-live.css
+          grep -q 'portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed' /tmp/journal-live.js
+          echo 'Live GitHub Pages Journal markup, CSS and JavaScript: OK'
+      - name: Verify Telegram Blog Manager asset is published
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
+            'https://kokushibu74.github.io/miniapp/app.js' -o /tmp/miniapp-live.js
+          grep -q 'Developer Journal' /tmp/miniapp-live.js
+          grep -q 'blogSave' /tmp/miniapp-live.js
+          echo 'Live Telegram Blog Manager asset: OK'
