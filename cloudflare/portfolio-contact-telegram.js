@@ -2170,7 +2170,12 @@ async function newsBreakingAlertCheck(env){
       console.warn("News alert audit resolution failed",String(error&&error.message||error).slice(0,120));
     }
     const stateKey="news-alert:v2:"+key;
-    const previous=await env.BOT_CONFIG_KV.get(stateKey,"json");
+    let previous=await env.BOT_CONFIG_KV.get(stateKey,"json");
+    // Migration guard: don't resend an alert already recorded under the pre-clustering key.
+    if(!previous&&eventId){
+      const legacyKey=await newsAlertKey(title,String(item.source||item.publisherName||""));
+      if(legacyKey!==key)previous=await env.BOT_CONFIG_KV.get("news-alert:v2:"+legacyKey,"json");
+    }
     let updateNo=0,updateStateKey="";
     if(previous){
       const titleChanged=String(previous.title||"").trim()!==title;
