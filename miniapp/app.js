@@ -186,7 +186,7 @@
     let activeId="";
     const wrap=document.createElement("div");wrap.className="user-tools blog-manager";
     const intro=document.createElement("div");intro.className="blog-manager-intro";
-    intro.innerHTML="<b>Publish from Telegram</b><small>Drafts, scheduled posts and Trash stay encrypted in the repository. Only published articles are sent to the public site; uploaded images are stored in the portfolio media folder.</small>";
+    intro.innerHTML="<b>Publish from Telegram</b><small>Draft text, scheduled posts and Trash stay AES-GCM encrypted. Uploaded images go to the public portfolio media folder immediately, so use only images intended for public viewing; only published article text is returned to the site.</small>";
     const form=document.createElement("div");form.className="blog-editor";
     form.innerHTML=`
       <div class="blog-editor-head"><div><span class="section-kicker">JOURNAL CMS</span><h3 id="blog-form-heading">New article</h3></div><button type="button" class="blog-new" id="blog-new">＋ New</button></div>
