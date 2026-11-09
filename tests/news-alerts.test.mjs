@@ -94,6 +94,19 @@ test("dedup key strips a publisher suffix from the headline",async()=>assert.equ
 test("Bangladesh alert location resolves district and division from headline",()=>assert.equal(extractAlertLocation(item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"})),"নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));
 test("headline village name is included when explicitly stated",()=>assert.ok(extractAlertLocation(item({title:"হ্নীলা গ্রামে বন্যা",summary:"কক্সবাজার এলাকায় পানি বৃদ্ধি"})).includes("গ্রাম: হ্নীলা, কক্সবাজার, চট্টগ্রাম বিভাগ, বাংলাদেশ")));
 test("structured village and thana location is preserved without guessing",()=>assert.equal(extractAlertLocation(item({title:"Major incident",location:{village:"Hnila",union:"Hnila Union",upazila:"Teknaf",thana:"Teknaf",district:"Cox's Bazar",division:"Chattogram",country:"Bangladesh"}})),"Hnila, Hnila Union, Teknaf, Teknaf, Cox's Bazar, Chattogram, Bangladesh"));
+test("Telegram alert includes clickable links for trusted publisher sources only",()=>{
+  const x=item({sourceLinks:[
+    {name:"The Daily Star",url:"https://www.thedailystar.net/news/example"},
+    {name:"Prothom Alo",url:"https://www.prothomalo.com/news/example"},
+    {name:"Random Blog",url:"https://random.example/news"}
+  ]});
+  const d=evaluateNewsAlert(x,{now});
+  const message=formatAlertMessage(x,d,{key:"abcd"});
+  assert.match(message,/<a href="https:\/\/www\.thedailystar\.net\/news\/example">The Daily Star<\/a>/);
+  assert.match(message,/<a href="https:\/\/www\.prothomalo\.com\/news\/example">Prothom Alo<\/a>/);
+  assert.doesNotMatch(message,/random\.example/);
+});
+
 test("Bangladesh alert uses Bengali identity and real district location",()=>{const x=item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"abcd"});assert.ok(m.includes("🇧🇩 <b>BANGLADESH ALERT NETWORK</b>"));assert.ok(m.includes("নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
 test("international alert uses global identity and does not hardcode Dhaka",()=>{const x=item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"1234"});assert.ok(m.includes("🌐 <b>GLOBAL ALERT NETWORK</b>"));assert.ok(m.includes("Chile"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
 test("alert update is visibly numbered",()=>{const x=item();const d=evaluateNewsAlert(x,{now});assert.ok(formatAlertMessage(x,d,{key:"abcd",updateNo:2}).includes("UPDATE 02"));});
@@ -137,6 +150,8 @@ test("worker keeps a bounded main scan and weather candidates on a five-minute c
   assert.ok(alertSource.includes("feed.slice(0,160)"));
   assert.ok(alertSource.includes("feed.items.slice(0,160)"));
   assert.ok(alertSource.includes("weatherItems.slice(0,12)"));
+  assert.ok(alertSource.includes("feed?.alertItems"));
+  assert.ok(alertSource.includes("item.alertEventId"));
   assert.ok(alertSource.includes("news-alert-reject:v1:"));
 });
 
