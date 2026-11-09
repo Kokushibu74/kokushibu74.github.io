@@ -2857,7 +2857,7 @@ export default {
           }
           const profileRows=valueRanges[titles.indexOf("Visitor Profiles")]?.values||[];
           const profileIds=profileRows.slice(1).map(row=>String(row[0]||"")).filter(Boolean);
-          await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,profileIdCount:profileIds.length,profileIdSample:[...profileIds.slice(0,3),...profileIds.slice(-3)],rangeDetails,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
+          await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,profileIdCount:profileIds.length,profileIds,rangeDetails,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
           message.ack();continue;
         }
         auth=auth||await sheetsAccessToken(env);ids=ids||await sheetsEnsureTabs(auth.accessToken);
