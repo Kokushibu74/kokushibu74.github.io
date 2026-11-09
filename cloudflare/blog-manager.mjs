@@ -1,6 +1,6 @@
 const REPO = "Kokushibu74/kokushibu74.github.io";
 const API = "https://api.github.com/repos/" + REPO + "/contents/";
-const DATA_PATH = "journal-data.json";
+const DATA_PATH = "journal-private.json";
 const PUBLIC_ORIGIN = "https://kokushibu74.github.io";
 
 function cleanText(value, max, fallback = "") {
@@ -18,6 +18,50 @@ function decodeGithubFile(value) {
   const bytes = Uint8Array.from(raw, char => char.charCodeAt(0));
   return new TextDecoder().decode(bytes);
 }
+
+function decodeBase64Bytes(value) {
+  const raw = atob(String(value || "").replace(/\s/g, ""));
+  return Uint8Array.from(raw, char => char.charCodeAt(0));
+}
+
+async function journalCryptoKey(env) {
+  if (!env?.JOURNAL_ENCRYPTION_KEY) throw new Error("Journal encryption key is not configured.");
+  const raw = decodeBase64Bytes(env.JOURNAL_ENCRYPTION_KEY);
+  if (raw.length !== 32) throw new Error("Journal encryption key has an invalid length.");
+  return crypto.subtle.importKey("raw", raw, { name: "AES-GCM" }, false, ["encrypt", "decrypt"]);
+}
+
+export async function encryptJournal(env, journal) {
+  const key = await journalCryptoKey(env);
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const plaintext = new TextEncoder().encode(JSON.stringify(journal));
+  const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, plaintext);
+  return {
+    version: 1,
+    algorithm: "AES-256-GCM",
+    iv: encodeBase64(iv),
+    ciphertext: encodeBase64(new Uint8Array(ciphertext))
+  };
+}
+
+export async function decryptJournal(env, envelope) {
+  if (!envelope || envelope.version !== 1 || envelope.algorithm !== "AES-256-GCM") {
+    throw new Error("Private Journal encryption envelope is invalid.");
+  }
+  const key = await journalCryptoKey(env);
+  const iv = decodeBase64Bytes(envelope.iv);
+  const ciphertext = decodeBase64Bytes(envelope.ciphertext);
+  if (iv.length !== 12 || ciphertext.length < 16) throw new Error("Private Journal ciphertext is invalid.");
+  let plaintext;
+  try { plaintext = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ciphertext); }
+  catch { throw new Error("Private Journal could not be decrypted. The encryption key may have changed."); }
+  let journal;
+  try { journal = JSON.parse(new TextDecoder().decode(plaintext)); }
+  catch { throw new Error("Decrypted Journal data is invalid JSON."); }
+  if (!journal || !Array.isArray(journal.posts)) throw new Error("Decrypted Journal data has an invalid structure.");
+  return { version: 1, posts: journal.posts };
+}
+
 
 function githubHeaders(env) {
   if (!env?.GITHUB_TOKEN) throw new Error("Blog publishing is unavailable: GitHub write access is not configured.");
@@ -44,20 +88,21 @@ async function readJournal(env) {
   const { response, data } = await githubJson(env, DATA_PATH + "?ref=main", { method: "GET" });
   if (response.status === 404) return { sha: null, journal: { version: 1, posts: [] } };
   if (!response.ok || !data.content || !data.sha) {
-    throw new Error("Could not read the Developer Journal data from GitHub (HTTP " + response.status + ").");
+    throw new Error("Could not read the private Developer Journal data from GitHub (HTTP " + response.status + ").");
   }
-  let journal;
-  try { journal = JSON.parse(decodeGithubFile(data.content)); }
-  catch { throw new Error("Developer Journal data is invalid JSON. No changes were made."); }
-  if (!journal || !Array.isArray(journal.posts)) throw new Error("Developer Journal data has an invalid structure.");
-  return { sha: data.sha, journal: { version: 1, posts: journal.posts } };
+  let envelope;
+  try { envelope = JSON.parse(decodeGithubFile(data.content)); }
+  catch { throw new Error("Private Journal envelope is invalid JSON. No changes were made."); }
+  const journal = await decryptJournal(env, envelope);
+  return { sha: data.sha, journal };
 }
 
 async function updateJournal(env, message, mutate) {
   for (let attempt = 0; attempt < 2; attempt++) {
     const current = await readJournal(env);
     const next = await mutate(current.journal);
-    const bytes = new TextEncoder().encode(JSON.stringify(next, null, 2) + "\n");
+    const envelope = await encryptJournal(env, next);
+    const bytes = new TextEncoder().encode(JSON.stringify(envelope, null, 2) + "\n");
     const payload = { message, content: encodeBase64(bytes), branch: "main" };
     if (current.sha) payload.sha = current.sha;
     const { response, data } = await githubJson(env, DATA_PATH, { method: "PUT", body: JSON.stringify(payload) });
@@ -128,6 +173,19 @@ export function isPublicJournalPost(post, now = Date.now()) {
   if (!post || post.deletedAt) return false;
   if (post.status === "published") return true;
   return post.status === "scheduled" && Number.isFinite(Date.parse(post.publishAt)) && Date.parse(post.publishAt) <= now;
+}
+
+export async function getPublicJournalFeed(env, now = Date.now()) {
+  const posts = await listJournalPosts(env);
+  return posts.filter(post => isPublicJournalPost(post, now))
+    .sort((a, b) => Number(b.pinned === true) - Number(a.pinned === true) || Date.parse(b.publishAt || b.publishedAt || 0) - Date.parse(a.publishAt || a.publishedAt || 0))
+    .slice(0, 100)
+    .map(post => ({
+      id: post.id, title: post.title, description: post.description,
+      category: post.category, content: post.content, charts: post.charts || [],
+      coverImage: post.coverImage || "", pinned: post.pinned === true,
+      publishAt: post.publishAt, publishedAt: post.publishedAt, createdAt: post.createdAt
+    }));
 }
 
 export async function listJournalPosts(env) {
