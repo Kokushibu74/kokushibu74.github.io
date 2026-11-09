@@ -143,6 +143,17 @@ class NewsLogicTests(unittest.TestCase):
         alerts = news.build_alert_items(items, now=now)
         self.assertEqual(len(alerts), 2)
 
+    def test_generic_breaking_query_flag_is_not_enough_for_alert_stream(self):
+        now = datetime.now(timezone.utc)
+        item = {
+            "title": "সর্বশেষ খবর: নতুন কোচ নিয়োগ দিল ক্লাব",
+            "summary": "ক্লাব নতুন কোচের নাম ঘোষণা করেছে",
+            "source": "Jago News 24",
+            "isBreaking": True,
+            "publishedAt": (now - timedelta(minutes=5)).isoformat(),
+        }
+        self.assertEqual(news.build_alert_items([item], now=now), [])
+
     def test_alert_builder_keeps_existing_worker_signal_candidates(self):
         now = datetime.now(timezone.utc)
         item = {
