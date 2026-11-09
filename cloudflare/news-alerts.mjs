@@ -84,6 +84,10 @@ export function evaluateNewsAlert(item={},options={}){
     global=!local&&!internationalImpact&&(item.category==="World"||item.alertScope==="global"||
       Boolean(locationCountry&&!/^Bangladesh$/i.test(locationCountry))),
     officialWeather=official&&event.weather&&local;
+  if(!local&&!internationalImpact&&!global)return {
+    eligible:false,reason:"location_unclassified",weather:event.weather,
+    category:alertCategory(text),sourceCount,sources,trustedSources
+  };
   if(!trustedSources.length&&!officialWeather)return {
     eligible:false,reason:"untrusted_sources",weather:event.weather,
     category:alertCategory(text),sourceCount,sources,trustedSources
