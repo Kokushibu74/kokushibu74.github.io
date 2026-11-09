@@ -2255,18 +2255,26 @@ function sheetsCell(value){if(value===null||value===undefined)return {userEntere
 function sheetsAppendRequest(sheetId,values){return {appendCells:{sheetId,rows:[{values:values.map(sheetsCell)}],fields:"userEnteredValue"}};}
 function sheetsUpdateRequest(sheetId,rowIndex,values){return {updateCells:{range:{sheetId,startRowIndex:rowIndex,startColumnIndex:0},rows:[{values:values.map(sheetsCell)}],fields:"userEnteredValue"}};}
 async function sheetsEnsureTabs(accessToken){
-  let metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title)");
-  const existing=new Map((metadata.sheets||[]).map(s=>[s.properties.title,s.properties.sheetId]));
+  let metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title,gridProperties.columnCount)");
+  let existing=new Map((metadata.sheets||[]).map(s=>[s.properties.title,s.properties]));
   const missing=Object.keys(SHEETS_HEADERS).filter(title=>!existing.has(title));
   if(missing.length){
-    const created=await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests:missing.map(title=>({addSheet:{properties:{title}}}))});
-    const headers=[];
-    for(let i=0;i<missing.length;i++){const id=created.replies?.[i]?.addSheet?.properties?.sheetId;if(!Number.isInteger(id))throw new Error("Google Sheets did not return a sheet ID for "+missing[i]);headers.push({updateCells:{range:{sheetId:id,startRowIndex:0,startColumnIndex:0},rows:[{values:SHEETS_HEADERS[missing[i]].map(sheetsCell)}],fields:"userEnteredValue"}});}
-    if(headers.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests:headers});
-    metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title)");
+    await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests:missing.map(title=>({addSheet:{properties:{title,gridProperties:{columnCount:Math.max(26,SHEETS_HEADERS[title].length)}}}}))});
+    metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title,gridProperties.columnCount)");
+    existing=new Map((metadata.sheets||[]).map(s=>[s.properties.title,s.properties]));
   }
-  const ids={};for(const sheet of metadata.sheets||[])ids[sheet.properties.title]=sheet.properties.sheetId;
-  for(const title of Object.keys(SHEETS_HEADERS))if(!Number.isInteger(ids[title]))throw new Error("Google Sheets tab missing after initialization: "+title);
+  const ids={},requests=[];
+  for(const [title,headers] of Object.entries(SHEETS_HEADERS)){
+    const properties=existing.get(title);
+    if(!properties||!Number.isInteger(properties.sheetId))throw new Error("Google Sheets tab missing after initialization: "+title);
+    ids[title]=properties.sheetId;
+    const requiredColumns=Math.max(26,headers.length);
+    if(Number(properties.gridProperties?.columnCount||0)<requiredColumns){
+      requests.push({updateSheetProperties:{properties:{sheetId:properties.sheetId,gridProperties:{columnCount:requiredColumns}},fields:"gridProperties.columnCount"}});
+    }
+    requests.push({updateCells:{range:{sheetId:properties.sheetId,startRowIndex:0,startColumnIndex:0},rows:[{values:headers.map(sheetsCell)}],fields:"userEnteredValue"}});
+  }
+  if(requests.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
   return ids;
 }
 async function sheetsFindRow(env,accessToken,tab,key,cacheKey){
