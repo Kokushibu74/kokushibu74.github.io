@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isPublicJournalPost, validateCharts, validatePost } from "../cloudflare/blog-manager.mjs";
+import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal } from "../cloudflare/blog-manager.mjs";
+import { webcrypto } from "node:crypto";
+globalThis.crypto ||= webcrypto;
 
 test("published articles are public and drafts remain private", () => {
   assert.equal(isPublicJournalPost({ status: "published", publishAt: "2026-11-09T00:00:00.000Z" }), true);
@@ -61,3 +63,16 @@ test("invalid image URLs and empty article bodies are rejected", () => {
 });
 
 console.log("Developer Journal validation and publication rules passed.");
+
+test("private drafts are encrypted with AES-GCM and decrypt only with the configured key", async () => {
+  const env = { JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 9).toString("base64") };
+  const journal = { version: 1, posts: [{ id: "blog_12345678", title: "Private draft title", status: "draft" }] };
+  const envelope = await encryptJournal(env, journal);
+  assert.equal(envelope.algorithm, "AES-256-GCM");
+  assert.equal(JSON.stringify(envelope).includes("Private draft title"), false);
+  assert.deepEqual(await decryptJournal(env, envelope), journal);
+  const second = await encryptJournal(env, journal);
+  assert.notEqual(envelope.iv, second.iv, "AES-GCM must use a fresh random IV for every write");
+  const wrongKey = { JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 8).toString("base64") };
+  await assert.rejects(() => decryptJournal(wrongKey, envelope), /could not be decrypted/);
+});
