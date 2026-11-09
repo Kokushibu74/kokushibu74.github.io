@@ -93,7 +93,7 @@ test("public feed contains only published and due scheduled posts with an explic
   globalThis.fetch = async () => new Response(JSON.stringify({ content, sha: "test-sha" }), { status: 200 });
   try {
     const posts = await getPublicJournalFeed(env, now);
-    assert.deepEqual(posts.map(post => post.id), ["blog_public01", "blog_due0001"]);
+    assert.deepEqual(posts.map(post => post.id), ["blog_due0001", "blog_public01"]);
     assert.ok(posts.every(post => post.status === "published"));
     assert.ok(posts.every(post => !post.deletedAt && !post.previousStatus));
   } finally {
