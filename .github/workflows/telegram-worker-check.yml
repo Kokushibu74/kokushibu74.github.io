@@ -11,6 +11,7 @@ on:
       - 'journal.css'
       - 'projects.html'
       - 'tests/blog-manager.test.mjs'
+      - 'tests/developer-journal.test.mjs'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
@@ -33,6 +34,7 @@ on:
       - 'journal.css'
       - 'projects.html'
       - 'tests/blog-manager.test.mjs'
+      - 'tests/developer-journal.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -63,6 +65,8 @@ jobs:
           node --check miniapp/app.js
       - name: Verify Developer Journal publishing and visibility rules
         run: node tests/blog-manager.test.mjs
+      - name: Verify Developer Journal UI and Project Slider boundary
+        run: node tests/developer-journal.test.mjs
       - name: Verify Telegram menu and KV write regressions
         run: node tests/telegram-bot-regression.test.mjs
       - name: Verify KV optimization and alert security contracts
