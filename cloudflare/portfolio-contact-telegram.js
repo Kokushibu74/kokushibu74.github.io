@@ -2848,7 +2848,7 @@ export default {
           const titles=(metadata.sheets||[]).map(sheet=>sheet.properties?.title).filter(Boolean);
           const query=new URLSearchParams();
           for(const title of titles)query.append("ranges","'"+title.replace(/'/g,"''")+"'!A:A");
-          const values=await sheetsApiRequest(auth.accessToken,":batchGet?"+query.toString());
+          const values=await sheetsApiRequest(auth.accessToken,"/values:batchGet?"+query.toString());
           const valueRanges=values.valueRanges||[],counts={},rangeDetails=[];
           for(let i=0;i<titles.length;i++){
             const valueRange=valueRanges[i],rows=valueRange?.values||[];
