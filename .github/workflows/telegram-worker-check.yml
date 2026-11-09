@@ -235,7 +235,7 @@ jobs:
           const feed = JSON.parse(fs.readFileSync('/tmp/journal-feed.json', 'utf8'));
           if (feed.ok !== true || !Array.isArray(feed.posts)) throw new Error('Journal feed response contract mismatch');
           for (const post of feed.posts) {
-            if (post.status === 'draft' || post.deletedAt || post.previousStatus) throw new Error('Private Journal fields leaked into the public feed');
+            if (post.status !== 'published' || post.deletedAt || post.previousStatus) throw new Error('Public feed contains a non-published status or private Journal fields');
             for (const field of ['id', 'title', 'description', 'category', 'content']) {
               if (typeof post[field] !== 'string') throw new Error('Public post missing ' + field);
             }

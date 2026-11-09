@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal } from "../cloudflare/blog-manager.mjs";
+import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal, getPublicJournalFeed } from "../cloudflare/blog-manager.mjs";
 import { webcrypto } from "node:crypto";
 globalThis.crypto ||= webcrypto;
 
@@ -75,4 +75,28 @@ test("private drafts are encrypted with AES-GCM and decrypt only with the config
   assert.notEqual(envelope.iv, second.iv, "AES-GCM must use a fresh random IV for every write");
   const wrongKey = { JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 8).toString("base64") };
   await assert.rejects(() => decryptJournal(wrongKey, envelope), /could not be decrypted/);
+});
+
+test("public feed contains only published and due scheduled posts with an explicit public status", async () => {
+  const env = { GITHUB_TOKEN: "test-token", JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 9).toString("base64") };
+  const now = Date.parse("2026-11-09T12:00:00.000Z");
+  const journal = { version: 1, posts: [
+    { id: "blog_public01", title: "Public article", description: "Public", category: "Development", content: "Public body", status: "published", publishAt: "2026-11-09T10:00:00.000Z" },
+    { id: "blog_draft001", title: "Private draft", description: "Draft", category: "Development", content: "Draft body", status: "draft", publishAt: "2026-11-09T11:00:00.000Z" },
+    { id: "blog_future01", title: "Future scheduled", description: "Future", category: "Development", content: "Future body", status: "scheduled", publishAt: "2026-11-10T10:00:00.000Z" },
+    { id: "blog_due0001", title: "Due scheduled", description: "Due", category: "Development", content: "Due body", status: "scheduled", publishAt: "2026-11-09T11:00:00.000Z" },
+    { id: "blog_trash01", title: "Trashed article", description: "Trash", category: "Development", content: "Trash body", status: "published", deletedAt: "2026-11-09T11:30:00.000Z", publishAt: "2026-11-09T09:00:00.000Z" }
+  ] };
+  const envelope = await encryptJournal(env, journal);
+  const content = Buffer.from(JSON.stringify(envelope), "utf8").toString("base64");
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response(JSON.stringify({ content, sha: "test-sha" }), { status: 200 });
+  try {
+    const posts = await getPublicJournalFeed(env, now);
+    assert.deepEqual(posts.map(post => post.id), ["blog_due0001", "blog_public01"]);
+    assert.ok(posts.every(post => post.status === "published"));
+    assert.ok(posts.every(post => !post.deletedAt && !post.previousStatus));
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
