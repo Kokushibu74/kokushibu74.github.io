@@ -673,15 +673,18 @@ def canonical_publisher_name(source):
     """Collapse common publisher aliases so one outlet is never counted twice."""
     name = clean(source)
     lower = name.lower()
+    if lower in {"bss", "unb", "tbs", "ap", "ap news", "afp"}:
+        return {"bss": "BSS", "unb": "UNB", "tbs": "The Business Standard",
+                "ap": "AP", "ap news": "AP", "afp": "AFP"}[lower]
     aliases = (
         (("bbc",), "BBC"), (("daily star",), "The Daily Star"),
         (("prothom alo", "প্রথম আলো"), "Prothom Alo"),
         (("jago news", "jagonews24"), "Jago News 24"),
-        (("bangladesh sangbad sangstha", "bss"), "BSS"),
-        (("united news of bangladesh", "unb"), "UNB"),
-        (("business standard", "tbs"), "The Business Standard"),
-        (("associated press", "ap news", "ap"), "AP"),
-        (("agence france", "afp"), "AFP"), (("reuters",), "Reuters"),
+        (("bangladesh sangbad sangstha",), "BSS"),
+        (("united news of bangladesh",), "UNB"),
+        (("business standard",), "The Business Standard"),
+        (("associated press",), "AP"),
+        (("agence france",), "AFP"), (("reuters",), "Reuters"),
     )
     for needles, canonical in aliases:
         if any(needle in lower for needle in needles):
