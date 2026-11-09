@@ -276,3 +276,4 @@ export async function trashJournalPost(env, userId, id) {
 export async function restoreJournalPost(env, userId, id) {
   return changePostStatus(env, userId, id, "restore");
 }
+
