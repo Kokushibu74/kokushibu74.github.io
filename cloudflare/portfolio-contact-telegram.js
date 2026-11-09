@@ -2428,7 +2428,7 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
     const routeUrl=new URL(request.url);
-    const journalCacheKey=new Request("https://journal-feed-cache.internal/v1");
+    const journalCacheKey=new Request(new URL("/__journal_feed_cache",request.url));
     const invalidateJournalFeedCache=async()=>{try{await caches.default.delete(journalCacheKey);}catch{}};
     if(pathname==="/journal-feed"&&request.method==="GET"){
       try{
