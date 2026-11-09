@@ -889,8 +889,7 @@ def build_alert_items(items, now=None):
         if age_minutes < -5 or age_minutes > 24 * 60:
             continue
         item = dict(original)
-        if not item.get("sourceEvidence"):
-            merge_source_evidence(item, item.get("source") or item.get("publisherName") or "")
+        merge_source_evidence(item, item.get("source") or item.get("publisherName") or "")
         candidates.append(item)
 
     candidates.sort(key=lambda item: str(item.get("publishedAt") or item.get("pubDate") or ""), reverse=True)
