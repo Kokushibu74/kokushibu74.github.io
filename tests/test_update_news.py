@@ -129,6 +129,20 @@ class NewsLogicTests(unittest.TestCase):
         alerts = news.build_alert_items(items, now=now)
         self.assertEqual(len(alerts), 2)
 
+    def test_alert_builder_keeps_existing_worker_signal_candidates(self):
+        now = datetime.now(timezone.utc)
+        item = {
+            "title": "ঢাকায় বাস দুর্ঘটনায় ৩ জন আহত",
+            "summary": "ঢাকায় বাস দুর্ঘটনায় কয়েকজন আহত হয়েছেন",
+            "source": "Jago News 24",
+            "publishedAt": (now - timedelta(minutes=5)).isoformat(),
+        }
+        self.assertFalse(news.BREAKING_EVENT_RE.search(item["title"] + " " + item["summary"]))
+        self.assertTrue(news.ALERT_SIGNAL_RE.search(item["title"] + " " + item["summary"]))
+        alerts = news.build_alert_items([item], now=now)
+        self.assertEqual(len(alerts), 1)
+        self.assertEqual(alerts[0]["sourceEvidence"], ["Jago News 24"])
+
     def test_alert_event_builder_excludes_stale_and_followup_items(self):
         now = datetime.now(timezone.utc)
         items = [
