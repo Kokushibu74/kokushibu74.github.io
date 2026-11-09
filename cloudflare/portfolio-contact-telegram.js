@@ -2276,8 +2276,10 @@ async function sheetsEnsureTabs(accessToken){
   return ids;
 }
 async function sheetsFindRow(env,accessToken,tab,key,cacheKey){
-  const cachedRaw=await env.VISITOR_KV.get(cacheKey),cached=Number(cachedRaw);
-  if(cachedRaw!==null&&Number.isInteger(cached)&&cached>=1)return {rowIndex:cached,exists:true};
+  if(cacheKey){
+    const cachedRaw=await env.VISITOR_KV.get(cacheKey),cached=Number(cachedRaw);
+    if(cachedRaw!==null&&Number.isInteger(cached)&&cached>=1)return {rowIndex:cached,exists:true};
+  }
   const data=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'"+tab+"'!A:A")),values=data.values||[];
   const found=values.findIndex((row,index)=>index>0&&String(row[0])===String(key));
   return found>=1?{rowIndex:found,exists:true}:{rowIndex:values.length,exists:false};
@@ -2290,10 +2292,14 @@ function sheetsDailyRow(day,visitorId,record){const network={...(record.network|
 function sheetsHistoryRow(eventId,record,visitorId){const e=record?.event||{},at=Number(record?.at)||Date.now();return [eventId,sheetsIso(at),visitorId||record?.id||"",e.type||e.command||record?.kind||"event",e.path||"",e.sessionId||"",JSON.stringify(e),sheetsRetention(at,90)];}
 async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   const eventId=String(event.eventId||"");if(!eventId)throw new Error("Visitor Sheets event is missing eventId");
-  const doneKey="sheets:done:"+eventId;if(await env.VISITOR_KV.get(doneKey))return {duplicate:true};
-  if(Number(attempts)>1){const ledger=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'Sync Ledger'!A:A"));if((ledger.values||[]).some(row=>String(row[0])===eventId)){await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});return {duplicate:true,recovered:true};}}
+  if(Number(attempts)>1){const ledger=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'Sync Ledger'!A:A"));if((ledger.values||[]).some(row=>String(row[0])===eventId))return {duplicate:true,recovered:true};}
   const requests=[],rowMappings=[],append=(tab,row)=>requests.push(sheetsAppendRequest(ids[tab],row));
-  const upsert=async(tab,key,cacheKey,row)=>{const loc=await sheetsFindRow(env,accessToken,tab,key,cacheKey);requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));rowMappings.push([cacheKey,String(loc.rowIndex)]);};
+  const upsert=async(tab,key,cacheKey,row)=>{
+    const useCache=tab!=="Visitor Profiles"&&!!cacheKey;
+    const loc=await sheetsFindRow(env,accessToken,tab,key,useCache?cacheKey:null);
+    requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));
+    if(useCache)rowMappings.push([cacheKey,String(loc.rowIndex)]);
+  };
   const visitorId=String(event.visitorId||event.profile?.visitorId||event.profile?.id||event.record?.visitorId||event.record?.id||"");
   const at=Number(event.at||event.record?.at||event.record?.capturedAt||event.record?.requestedAt)||Date.now();
   if(event.profile&&!event.skipProfileUpsert){const profile=sheetsSafeProfile(event.profile),id=String(profile.visitorId||profile.id||visitorId);if(id)await upsert("Visitor Profiles",id,"sheets:row:profile:"+id,sheetsProfileRow(profile));}
@@ -2312,7 +2318,6 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   append("Sync Ledger",[eventId,new Date().toISOString(),event.kind||"unknown",visitorId]);
   await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
   for(const [key,value] of rowMappings)await env.VISITOR_KV.put(key,value,{expirationTtl:31536000});
-  await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});
   return {duplicate:false,writes:requests.length};
 }
 
