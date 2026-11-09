@@ -14,6 +14,11 @@
       console.error("[swarm-rebuild] The original animation script is not available.");
       return;
     }
+    const rebirth = window.__swarmRebirth;
+    if (rebirth && typeof rebirth.launch === "function") {
+      rebirth.launch(swarm);
+      return;
+    }
     if (swarm.app) swarm.stop(false);
     else swarm.start();
   });
