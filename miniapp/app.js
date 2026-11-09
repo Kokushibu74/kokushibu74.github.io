@@ -10,6 +10,7 @@
     ["security","⬡","Security","Protection & security checks"],
     ["github","⌘","GitHub","Repository & workflow runs"],
     ["hero","▧","Hero Image","Preview & publish image"],
+    ["blog","✍","Developer Journal","Publish and manage articles"],
     ["automation","⟳","Automation","Schedules & run history"],
     ["alerts","⚑","Alerts","Notifications & incidents"],
     ["reports","▥","Reports","Daily reports & comparisons"],
@@ -54,6 +55,7 @@
       security:"Security posture, protection status and recent alerts.",
       github:"Repository status, latest commits and GitHub Actions workflow runs.",
       hero:"Upload a new hero image, preview the actual homepage crop and confirm publishing.",
+      blog:"Create, edit, publish, archive and restore your Developer Journal articles.",
       automation:"Schedule overview, Bangladesh-time countdowns and verified run history.",
       alerts:"Recent critical incidents, alert settings and acknowledgement history.",
       reports:"Daily health report, GA4 metrics and day-over-day comparisons.",
@@ -96,7 +98,10 @@
     el.textContent="Loading verified module data…";
     try{
       const result=await api("module",{section});
-      if(section==="hero"){
+      if(section==="blog"){
+        await renderBlogManager(el,result.posts||[]);
+      }
+      else if(section==="hero"){
         const wrap=document.createElement("div");wrap.className="user-tools";
         const intro=document.createElement("small");intro.textContent="Choose a JPEG, PNG or WebP image (maximum 4 MB). The image is staged privately for 10 minutes; nothing is published until you confirm.";
         const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";
@@ -176,6 +181,124 @@
       else{const pre=document.createElement("pre");pre.className="module-report";pre.textContent=JSON.stringify(result.stats||result.settings||result,null,2);el.replaceChildren(pre);}
     }catch(e){el.textContent=e.message;}
   }
+  async function renderBlogManager(el,initialPosts=[]) {
+    let posts=Array.isArray(initialPosts)?initialPosts:[];
+    let activeId="";
+    const wrap=document.createElement("div");wrap.className="user-tools blog-manager";
+    const intro=document.createElement("div");intro.className="blog-manager-intro";
+    intro.innerHTML="<b>Publish from Telegram</b><small>Posts and media are stored in the portfolio repository. This manager does not add Blog-specific KV writes.</small>";
+    const form=document.createElement("div");form.className="blog-editor";
+    form.innerHTML=`
+      <div class="blog-editor-head"><div><span class="section-kicker">JOURNAL CMS</span><h3 id="blog-form-heading">New article</h3></div><button type="button" class="blog-new" id="blog-new">＋ New</button></div>
+      <label>Article title<input id="blog-title" maxlength="160" placeholder="Give your article a clear title"></label>
+      <label>Short description<textarea id="blog-description" rows="2" maxlength="600" placeholder="A short introduction for the timeline card"></textarea></label>
+      <div class="blog-fields-two">
+        <label>Category<select id="blog-category"><option>Development</option><option>AI & Automation</option><option>Experiments</option><option>Tutorials</option><option>Updates</option><option>Research</option></select></label>
+        <label>Publication date & time (Bangladesh)<input id="blog-publish-at" type="datetime-local"></label>
+      </div>
+      <label>Article body <small>Markdown supported: headings, bold, lists, links, images, quotes and fenced code. Use [[chart:chart-id]] where a chart should appear.</small><textarea id="blog-content" rows="11" placeholder="# Your story&#10;&#10;Write the full article here..."></textarea></label>
+      <label>Charts JSON <small>Each chart: { "id":"traffic", "title":"Visitors", "type":"bar", "labels":["Jan","Feb"], "datasets":[{"label":"Visitors","data":[120,180]}] }</small><textarea id="blog-charts" rows="5" spellcheck="false">[]</textarea></label>
+      <div class="blog-fields-two">
+        <label>Cover image URL<input id="blog-cover" placeholder="Upload an image or paste an HTTPS URL"></label>
+        <label>Upload image<input id="blog-image-file" type="file" accept="image/jpeg,image/png,image/webp"></label>
+      </div>
+      <div class="blog-editor-options"><label class="blog-check"><input id="blog-pinned" type="checkbox"> Pin this article</label><label>State<select id="blog-status"><option value="draft">Draft</option><option value="published">Publish now</option><option value="scheduled">Scheduled</option></select></label></div>
+      <div class="blog-editor-actions"><button type="button" id="blog-save-draft">Save draft</button><button type="button" class="primary" id="blog-publish">Save & publish</button><button type="button" id="blog-preview">Preview text</button></div>
+      <div id="blog-editor-status" class="blog-status" role="status">Changes are not published until you save.</div>
+      <pre id="blog-preview-panel" class="module-report blog-preview" hidden></pre>
+    `;
+    const listPanel=document.createElement("section");listPanel.className="blog-post-manager";
+    listPanel.innerHTML='<div class="blog-list-head"><div><span class="section-kicker">CONTENT LIBRARY</span><h3>All articles</h3></div><button type="button" id="blog-reload">↻ Refresh</button></div><div id="blog-post-list" class="blog-post-list"></div>';
+    wrap.append(intro,form,listPanel);el.replaceChildren(wrap);
+    const $=id=>form.querySelector("#"+id)||wrap.querySelector("#"+id);
+    const status=$("blog-editor-status"),preview=$("blog-preview-panel"),list=$("blog-post-list");
+    const nowLocal=()=>{const d=new Date(Date.now()-new Date().getTimezoneOffset()*60000);return d.toISOString().slice(0,16);};
+    const newId=()=>("blog_"+(crypto.randomUUID?crypto.randomUUID():Date.now()+"_"+Math.random().toString(16).slice(2))).replace(/[^a-z0-9_-]/gi,"").slice(0,80);
+    function reset(){
+      activeId=newId();$("blog-form-heading").textContent="New article";
+      $("blog-title").value="";$("blog-description").value="";$("blog-category").value="Development";
+      $("blog-publish-at").value=nowLocal();$("blog-content").value="";$("blog-charts").value="[]";
+      $("blog-cover").value="";$("blog-image-file").value="";$("blog-pinned").checked=false;
+      $("blog-status").value="draft";preview.hidden=true;status.textContent="New draft ready. Save when you are happy with it.";
+    }
+    function fill(post){
+      activeId=post.id;$("blog-form-heading").textContent="Edit article";
+      $("blog-title").value=post.title||"";$("blog-description").value=post.description||"";
+      $("blog-category").value=post.category||"Development";
+      const date=new Date(post.publishAt||post.publishedAt||Date.now());
+      $("blog-publish-at").value=Number.isNaN(date.getTime())?nowLocal():new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16);
+      $("blog-content").value=post.content||"";$("blog-charts").value=JSON.stringify(post.charts||[],null,2);
+      $("blog-cover").value=post.coverImage||"";$("blog-pinned").checked=post.pinned===true;
+      $("blog-status").value=post.status==="scheduled"?"scheduled":post.status==="published"?"published":"draft";
+      preview.hidden=true;status.textContent="Editing: "+post.title;
+      form.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+    function renderList(){
+      const visible=posts.slice().sort((a,b)=>Date.parse(b.updatedAt||b.publishAt||0)-Date.parse(a.updatedAt||a.publishAt||0));
+      list.innerHTML=visible.length?visible.map(post=>{
+        const trashed=!!post.deletedAt;
+        const state=trashed?"TRASH":String(post.status||"draft").toUpperCase();
+        return '<article class="blog-admin-row"><div class="blog-admin-copy"><b>'+escapeHtml(post.title||"Untitled")+'</b><small>'+escapeHtml(post.category||"Development")+' · '+escapeHtml(state)+' · '+escapeHtml(post.publishAt||post.updatedAt||"")+'</small><p>'+escapeHtml(post.description||"")+'</p></div><div class="blog-admin-actions">'+(trashed?'<button type="button" data-restore="'+escapeHtml(post.id)+'">Restore</button>':'<button type="button" data-edit="'+escapeHtml(post.id)+'">Edit</button><button type="button" class="danger" data-trash="'+escapeHtml(post.id)+'">Delete</button>')+'</div></article>';
+      }).join(""):'<div class="blog-empty">No articles yet. Create your first Developer Journal post above.</div>';
+    }
+    async function reload(){
+      const r=await api("blogList");posts=Array.isArray(r.posts)?r.posts:[];renderList();
+    }
+    async function save(mode){
+      const title=$("blog-title").value.trim(),description=$("blog-description").value.trim(),content=$("blog-content").value;
+      if(!title||!description||!content.trim()){notice("Title, description and article body are required.",true);return;}
+      let charts;try{charts=JSON.parse($("blog-charts").value||"[]");if(!Array.isArray(charts))throw new Error("Charts must be a JSON array.");}catch(e){notice("Charts JSON error: "+e.message,true);return;}
+      const dateValue=$("blog-publish-at").value;
+      const publishAt=dateValue?new Date(dateValue).toISOString():new Date().toISOString();
+      let state=mode||$("blog-status").value;
+      if(state==="published"&&Date.parse(publishAt)>Date.now())state="scheduled";
+      const post={id:activeId||newId(),title,description,category:$("blog-category").value,content,charts,coverImage:$("blog-cover").value.trim(),pinned:$("blog-pinned").checked,status:state,publishAt};
+      const buttons=[$("blog-save-draft"),$("blog-publish")];buttons.forEach(b=>b.disabled=true);status.textContent="Saving to GitHub…";
+      try{
+        const r=await api("blogSave",{post});
+        status.textContent=(state==="draft"?"Draft saved.":state==="scheduled"?"Article scheduled.":"Article published.")+" Commit: "+String(r.commit||"accepted").slice(0,10);
+        notice(state==="published"?"Developer Journal article published.":"Developer Journal article saved.");
+        await reload();fill(r.post||post);
+      }catch(e){status.textContent=e.message;notice(e.message,true);}
+      finally{buttons.forEach(b=>b.disabled=false);}
+    }
+    $("blog-new").addEventListener("click",reset);
+    $("blog-save-draft").addEventListener("click",()=>save("draft"));
+    $("blog-publish").addEventListener("click",()=>save($("blog-status").value==="draft"?"published":$("blog-status").value));
+    $("blog-status").addEventListener("change",()=>{if($("blog-status").value==="published")status.textContent="This article will be published after you press Save & publish.";});
+    $("blog-preview").addEventListener("click",()=>{preview.hidden=false;preview.textContent=[$("blog-title").value,$("blog-description").value,"", $("blog-content").value].join("\n");});
+    $("blog-reload").addEventListener("click",async()=>{const b=$("blog-reload");b.disabled=true;try{await reload();status.textContent="Article list refreshed.";}catch(e){notice(e.message,true);}finally{b.disabled=false;}});
+    $("blog-image-file").addEventListener("change",async()=>{
+      const file=$("blog-image-file").files?.[0];if(!file)return;
+      if(file.size>4*1024*1024){notice("Each image must be 4 MB or smaller.",true);return;}
+      const button=$("blog-image-file");button.disabled=true;status.textContent="Uploading image to the portfolio repository…";
+      try{
+        const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read image."));reader.readAsDataURL(file);});
+        const r=await api("blogUpload",{postId:activeId||newId(),mimeType:file.type,base64:dataUrl.split(",")[1]});
+        const url=r.url||("https://kokushibu74.github.io/"+r.path);$("blog-cover").value=url;
+        const alt=file.name.replace(/\.[^.]+$/,"").replace(/[\-_]+/g," ");
+        $("blog-content").value=($("blog-content").value.trimEnd()+"\n\n!["+alt+"]("+url+")").trim();
+        status.textContent="Image uploaded. Markdown image link added to the article.";
+        notice("Journal image uploaded.");
+      }catch(e){status.textContent=e.message;notice(e.message,true);}
+      finally{button.disabled=false;}
+    });
+    list.addEventListener("click",async e=>{
+      const edit=e.target.closest("[data-edit]");if(edit){const post=posts.find(x=>x.id===edit.dataset.edit);if(post)fill(post);return;}
+      const trash=e.target.closest("[data-trash]");if(trash){
+        const post=posts.find(x=>x.id===trash.dataset.trash);if(!post)return;
+        const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Move this article to Trash? It can be restored later.",resolve)):window.confirm("Move this article to Trash?");
+        if(!yes)return;trash.disabled=true;
+        try{await api("blogDelete",{id:post.id});notice("Article moved to Trash. It can be restored.");await reload();if(activeId===post.id)reset();}
+        catch(err){notice(err.message,true);trash.disabled=false;}return;
+      }
+      const restore=e.target.closest("[data-restore]");if(restore){
+        restore.disabled=true;try{await api("blogRestore",{id:restore.dataset.restore});notice("Article restored.");await reload();}
+        catch(err){notice(err.message,true);restore.disabled=false;}
+      }
+    });
+    reset();renderList();
+  }
   async function api(action,payload={}) {
     if(!tg?.initData) throw new Error("Telegram Mini App authentication data is missing. Open this page from the Kokushibu Bot menu inside Telegram.");
     const response=await fetch(API_BASE+"/miniapp/api",{method:"POST",headers:{"Content-Type":"application/json"},cache:"no-store",body:JSON.stringify({initData:tg.initData,action,...payload})});
@@ -221,5 +344,5 @@
   renderNav();tick();setInterval(tick,1000);
   if(tg?.initDataUnsafe?.user){const u=tg.initDataUnsafe.user;$("admin-name").textContent=u.first_name||u.username||"Admin";$("admin-avatar").textContent=(u.first_name||"A").slice(0,1).toUpperCase();}
   if(!tg?.initData){$("connection-label").textContent="OPEN IN TELEGRAM";notice("This is the Telegram Mini App interface. Open it from the Kokushibu Bot after the secure backend and Bot menu are connected.",true);}
-  else refresh();
+  else { const requested=new URLSearchParams(location.search).get("module"); refresh().then(()=>{if(requested&&modules.some(m=>m[0]===requested))go(requested);}); }
 })();
