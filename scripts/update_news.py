@@ -700,8 +700,12 @@ def merge_source_evidence(item, source, source_url=None):
     """Keep independent publisher names and safe original-article links."""
     name = canonical_publisher_name(source)
     ignored = {"", "google news", "original publisher", "unknown source"}
-    sources = list(item.get("sourceEvidence") or [])
-    if name and name.lower() not in ignored and name.lower() not in {str(x).lower() for x in sources}:
+    sources = []
+    for existing in item.get("sourceEvidence") or []:
+        canonical = canonical_publisher_name(existing)
+        if canonical and canonical.lower() not in ignored and canonical.lower() not in {value.lower() for value in sources}:
+            sources.append(canonical[:120])
+    if name and name.lower() not in ignored and name.lower() not in {value.lower() for value in sources}:
         sources.append(name[:120])
     item["sourceEvidence"] = sources[:12]
     item["corroborationCount"] = len(item["sourceEvidence"])
@@ -711,8 +715,19 @@ def merge_source_evidence(item, source, source_url=None):
     except ValueError:
         parsed = None
     if parsed and parsed.scheme == "https" and parsed.hostname and not parsed.hostname.lower().endswith("google.com"):
-        links = list(item.get("sourceLinks") or [])
-        if not any(str(entry.get("name", "")).lower() == name.lower() for entry in links if isinstance(entry, dict)):
+        links = []
+        for entry in item.get("sourceLinks") or []:
+            if not isinstance(entry, dict):
+                continue
+            existing_name = canonical_publisher_name(entry.get("name") or "")
+            existing_url = clean(entry.get("url") or "")
+            try:
+                existing_parsed = urlparse(existing_url)
+            except ValueError:
+                existing_parsed = None
+            if existing_name and existing_parsed and existing_parsed.scheme == "https" and existing_parsed.hostname and not existing_parsed.hostname.lower().endswith("google.com") and existing_name.lower() not in {value["name"].lower() for value in links}:
+                links.append({"name": existing_name[:120], "url": existing_url[:700]})
+        if name and name.lower() not in {entry["name"].lower() for entry in links}:
             links.append({"name": name[:120], "url": url[:700]})
         item["sourceLinks"] = links[:8]
     return item
