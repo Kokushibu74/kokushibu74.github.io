@@ -2849,9 +2849,15 @@ export default {
           const query=new URLSearchParams();
           for(const title of titles)query.append("ranges","'"+title.replace(/'/g,"''")+"'!A:A");
           const values=await sheetsApiRequest(auth.accessToken,":batchGet?"+query.toString());
-          const counts={};
-          for(let i=0;i<titles.length;i++){const rows=values.valueRanges?.[i]?.values||[];counts[titles[i]]=Math.max(0,rows.length-1);}
-          await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
+          const valueRanges=values.valueRanges||[],counts={},rangeDetails=[];
+          for(let i=0;i<titles.length;i++){
+            const valueRange=valueRanges[i],rows=valueRange?.values||[];
+            counts[titles[i]]=Math.max(0,rows.length-1);
+            rangeDetails.push({requestedTitle:titles[i],returnedRange:valueRange?.range||"",rows:rows.length,firstCell:rows[1]?.[0]||"",lastCell:rows.length?rows[rows.length-1]?.[0]||"":""});
+          }
+          const profileRows=valueRanges[titles.indexOf("Visitor Profiles")]?.values||[];
+          const profileIds=profileRows.slice(1).map(row=>String(row[0]||"")).filter(Boolean);
+          await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,profileIdCount:profileIds.length,profileIdSample:[...profileIds.slice(0,3),...profileIds.slice(-3)],rangeDetails,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
           message.ack();continue;
         }
         auth=auth||await sheetsAccessToken(env);ids=ids||await sheetsEnsureTabs(auth.accessToken);
