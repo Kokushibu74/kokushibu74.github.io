@@ -2275,6 +2275,28 @@ async function sheetsEnsureTabs(accessToken){
   if(requests.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
   return ids;
 }
+async function sheetsFormatTabs(accessToken){
+  const metadata=await sheetsApiRequest(accessToken,"?fields=sheets.properties(sheetId,title,gridProperties(rowCount,columnCount)),sheets.basicFilter,sheets.bandedRanges");
+  const existing=new Map((metadata.sheets||[]).map(x=>[x.properties.title,x]));
+  const requests=[],headerColor={red:0.08,green:0.16,blue:0.27},bandColor={red:0.94,green:0.96,blue:0.98};
+  for(const [title,headers] of Object.entries(SHEETS_HEADERS)){
+    const sheet=existing.get(title);if(!sheet)continue;
+    const id=sheet.properties.sheetId,rows=Math.max(1000,sheet.properties.gridProperties?.rowCount||1000),cols=headers.length;
+    requests.push({updateSheetProperties:{properties:{sheetId:id,gridProperties:{frozenRowCount:1}},fields:"gridProperties.frozenRowCount"}});
+    requests.push({repeatCell:{range:{sheetId:id,startRowIndex:0,endRowIndex:1,startColumnIndex:0,endColumnIndex:cols},cell:{userEnteredFormat:{backgroundColor:headerColor,textFormat:{foregroundColor:{red:1,green:1,blue:1},bold:true,fontSize:10},horizontalAlignment:"CENTER",verticalAlignment:"MIDDLE",wrapStrategy:"WRAP"}},fields:"userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment,wrapStrategy)"}});
+    requests.push({updateDimensionProperties:{range:{sheetId:id,dimension:"ROWS",startIndex:0,endIndex:1},properties:{pixelSize:42},fields:"pixelSize"}});
+    requests.push({repeatCell:{range:{sheetId:id,startRowIndex:1,endRowIndex:rows,startColumnIndex:0,endColumnIndex:cols},cell:{userEnteredFormat:{textFormat:{fontSize:10,foregroundColor:{red:0.16,green:0.19,blue:0.24}},verticalAlignment:"MIDDLE",wrapStrategy:"CLIP"}},fields:"userEnteredFormat(textFormat,verticalAlignment,wrapStrategy)"}});
+    for(let c=0;c<cols;c++){
+      const x=headers[c].toLowerCase();
+      const width=x.includes("json")?260:(x.includes("user agent")||x.includes("referrer")||x.includes("page")||x.includes("message")||x.includes("details"))?220:(x.includes("visitor id")||x.includes("event id")||x.includes("session id"))?190:(x.includes("latitude")||x.includes("longitude")||x.includes("accuracy"))?115:(x.includes("date")||x.includes("time")||x.includes("at utc")||x.includes("at bdt")||x.includes("seen"))?175:(x.includes("device")||x.includes("browser")||x.includes("country")||x.includes("city")||x.includes("source")||x.includes("status")||x.includes("type"))?135:120;
+      requests.push({updateDimensionProperties:{range:{sheetId:id,dimension:"COLUMNS",startIndex:c,endIndex:c+1},properties:{pixelSize:width},fields:"pixelSize"}});
+    }
+    if(!sheet.basicFilter)requests.push({setBasicFilter:{filter:{range:{sheetId:id,startRowIndex:0,endRowIndex:rows,startColumnIndex:0,endColumnIndex:cols}}}});
+    if(!(sheet.bandedRanges||[]).length)requests.push({addBanding:{bandedRange:{range:{sheetId:id,startRowIndex:0,endRowIndex:rows,startColumnIndex:0,endColumnIndex:cols},rowProperties:{headerColor,firstBandColor:{red:1,green:1,blue:1},secondBandColor:bandColor}}}});
+  }
+  if(requests.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
+  return {formattedTabs:requests.length,tabCount:existing.size};
+}
 async function sheetsFindRow(env,accessToken,tab,key,cacheKey){
   if(cacheKey){
     const cachedRaw=await env.VISITOR_KV.get(cacheKey),cached=Number(cachedRaw);
@@ -2851,6 +2873,12 @@ export default {
             await sheetsApiRequest(auth.accessToken,":batchUpdate","POST",{requests});
             await env.BOT_CONFIG_KV.put("sheets:diagnostic:result",JSON.stringify({ok:true,serviceAccountEmail:auth.clientEmail,spreadsheetId:SHEETS_SPREADSHEET_ID,tabs:Object.keys(ids)}),{expirationTtl:86400});
           }catch(error){await env.BOT_CONFIG_KV.put("sheets:diagnostic:result",JSON.stringify({ok:false,serviceAccountEmail:email,spreadsheetId:SHEETS_SPREADSHEET_ID,error:String(error&&error.message||error).slice(0,240)}),{expirationTtl:86400});}
+          message.ack();continue;
+        }
+        if(event.kind==="format"){
+          auth=auth||await sheetsAccessToken(env);
+          const result=await sheetsFormatTabs(auth.accessToken);
+          console.log("Visitor Sheets clean table formatting result",JSON.stringify({...result,at:new Date().toISOString()}));
           message.ack();continue;
         }
         if(event.kind==="verify"){
