@@ -212,7 +212,9 @@
     wrap.append(intro,form,listPanel);el.replaceChildren(wrap);
     const $=id=>form.querySelector("#"+id)||wrap.querySelector("#"+id);
     const status=$("blog-editor-status"),preview=$("blog-preview-panel"),list=$("blog-post-list");
-    const nowLocal=()=>{const d=new Date(Date.now()-new Date().getTimezoneOffset()*60000);return d.toISOString().slice(0,16);};
+    const formatBdtInput=value=>{const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date(value??Date.now()));const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));return p.year+"-"+p.month+"-"+p.day+"T"+p.hour+":"+p.minute;};
+    const nowLocal=()=>formatBdtInput();
+    const bdtInputToIso=value=>{const date=new Date(String(value)+":00+06:00");if(!Number.isFinite(date.getTime()))throw new Error("Invalid Bangladesh date and time.");return date.toISOString();};
     const newId=()=>("blog_"+(crypto.randomUUID?crypto.randomUUID():Date.now()+"_"+Math.random().toString(16).slice(2))).replace(/[^a-z0-9_-]/gi,"").slice(0,80);
     function reset(){
       activeId=newId();$("blog-form-heading").textContent="New article";
@@ -226,7 +228,7 @@
       $("blog-title").value=post.title||"";$("blog-description").value=post.description||"";
       $("blog-category").value=post.category||"Development";
       const date=new Date(post.publishAt||post.publishedAt||Date.now());
-      $("blog-publish-at").value=Number.isNaN(date.getTime())?nowLocal():new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16);
+      $("blog-publish-at").value=Number.isNaN(date.getTime())?nowLocal():formatBdtInput(date);
       $("blog-content").value=post.content||"";$("blog-charts").value=JSON.stringify(post.charts||[],null,2);
       $("blog-cover").value=post.coverImage||"";$("blog-pinned").checked=post.pinned===true;
       $("blog-status").value=post.status==="scheduled"?"scheduled":post.status==="published"?"published":"draft";
@@ -249,7 +251,7 @@
       if(!title||!description||!content.trim()){notice("Title, description and article body are required.",true);return;}
       let charts;try{charts=JSON.parse($("blog-charts").value||"[]");if(!Array.isArray(charts))throw new Error("Charts must be a JSON array.");}catch(e){notice("Charts JSON error: "+e.message,true);return;}
       const dateValue=$("blog-publish-at").value;
-      const publishAt=dateValue?new Date(dateValue).toISOString():new Date().toISOString();
+      const publishAt=dateValue?bdtInputToIso(dateValue):new Date().toISOString();
       let state=mode||$("blog-status").value;
       if(state==="published"&&Date.parse(publishAt)>Date.now())state="scheduled";
       const post={id:activeId||newId(),title,description,category:$("blog-category").value,content,charts,coverImage:$("blog-cover").value.trim(),pinned:$("blog-pinned").checked,status:state,publishAt};
