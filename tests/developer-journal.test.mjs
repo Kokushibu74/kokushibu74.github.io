@@ -7,6 +7,7 @@ const journal = readFileSync(new URL("../journal.js", import.meta.url), "utf8");
 const styles = readFileSync(new URL("../journal.css", import.meta.url), "utf8");
 const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
 const miniapp = readFileSync(new URL("../miniapp/app.js", import.meta.url), "utf8");
+const manager = readFileSync(new URL("../cloudflare/blog-manager.mjs", import.meta.url), "utf8");
 
 test("Developer Journal is inserted after the existing Project Slider", () => {
   const slider = projects.indexOf('id="project-gallery"');
@@ -58,6 +59,13 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(miniapp, /timeZone:"Asia\/Dhaka"/);
   assert.match(miniapp, /\+06:00/);
   assert.match(journal, /timeZone: "Asia\/Dhaka"/);
+  assert.match(journal, /portfolio-contact-telegram\.mdshihab74\.workers\.dev\/journal-feed/);
+  assert.doesNotMatch(journal, /journal-data\.json/);
+  assert.match(worker, /pathname===\"\/journal-feed\"/);
+  assert.match(worker, /getPublicJournalFeed/);
+  assert.match(manager, /AES-256-GCM/);
+  assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
+  assert.match(miniapp, /Drafts, scheduled posts and Trash stay encrypted/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
