@@ -2077,7 +2077,7 @@ async function sendNewsAlertMedia(env,item,caption,link){
     }catch{return false;}
   };
   const result=await deliverWithMediaFallback(candidates,caption,link,send);
-  if(result!=="text"&&link.length>220){
+  if(link.length>220){
     if(!await send("sendMessage",{text:"🔗 "+escapeHtml(link),disable_web_page_preview:false}))
       throw new Error("Telegram original article link delivery failed");
   }
