@@ -2,15 +2,15 @@ const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
 
 const fence = String.fromCharCode(96).repeat(3);
+const tick = String.fromCharCode(96);
 const articleBody = [
   "# Browser test section",
-  "This article checks **bold text**, inline `code` and responsive reading.",
+  "This article checks **bold text**, inline " + tick + "code" + tick + " and responsive reading.",
   fence + "js",
   "const answer = 42;",
   fence,
   "[[chart:traffic]]"
-].join("
-");
+].join(String.fromCharCode(10));
 
 const samplePost = {
   id: "browser_test_20261109",
@@ -68,7 +68,7 @@ const samplePost = {
       borderColor: getComputedStyle(element).borderColor
     }));
     assert.notEqual(hoverStyle.transform, "none", "Desktop card should lift on hover");
-    assert.match(hoverStyle.borderColor, /0,s*229,s*255/, "Hover should activate the cyan border");
+    assert.ok(hoverStyle.borderColor.includes("0, 229, 255"), "Hover should activate the cyan border");
 
     await card.click();
     await page.waitForFunction(() => !document.querySelector("#journal-article-view").hidden);
@@ -84,7 +84,7 @@ const samplePost = {
     await page.locator(".journal-card").scrollIntoViewIfNeeded();
     const mobile = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
-      columns: getComputedStyle(document.querySelector(".journal-card-inner")).gridTemplateColumns.split(/s+/).length,
+      columns: getComputedStyle(document.querySelector(".journal-card-inner")).gridTemplateColumns.trim().split(" ").filter(Boolean).length,
       sliderExists: !!document.querySelector("#project-gallery")
     }));
     assert.equal(mobile.overflow, false, "Mobile Journal must not cause horizontal overflow");
