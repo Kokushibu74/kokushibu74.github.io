@@ -144,7 +144,7 @@
           if(t<.36){tx=p.x*width+(gx-p.x*width)*gather;ty=p.y*height+(gy-p.y*height)*gather;}
           else if(t<.76){tx=gx+(fx-gx)*form;ty=gy+(fy-gy)*form;}
           else{
-            const angle=Math.atan2(target.y-cy,target.x-cx)+p.seed*.08;
+            const angle=Math.atan2(target.y-cy,target.x-cx)+p.seed*.08+now*.00035;
             const dist=size*(.08+burst*.88)+(p.seed%1)*size*.22;
             tx=cx+Math.cos(angle)*dist;ty=cy+Math.sin(angle)*dist;
           }
@@ -196,7 +196,7 @@
         ctx.font="600 9px monospace";ctx.textAlign="center";ctx.fillText("SWARM INITIALIZING",cx,cy+size*.66);ctx.globalAlpha=1;
       }
       if(t<1)raf=requestAnimationFrame(draw);
-      else beginSwarm();
+      else {beginSwarm();raf=requestAnimationFrame(draw);}
     }
 
     function finishOverlay(){
