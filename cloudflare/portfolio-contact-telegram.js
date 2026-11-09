@@ -1835,7 +1835,7 @@ async function miniAppGa4Report(env){
 async function miniAppModule(env,section){
   if(section==="blog"){
     const posts=await listJournalPosts(env);
-    return {section,posts,source:"GitHub journal-data.json"};
+    return {section,posts,source:"Encrypted GitHub journal-private.json"};
   }
   const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
