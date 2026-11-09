@@ -3060,6 +3060,8 @@
   const E2 = 40;
   const mtof = (m) => 440 * Math.pow(2, (m - 69) / 12);
   let soundPref = true;
+  // Reuse an AudioContext primed synchronously by the header click before the cinematic intro.
+  let primedSound = null;
   const SPK_ICON = '<svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6v4h2.5l3.5 3V3L5 6z" fill="currentColor"/>';
 
   class Sound {
@@ -3404,7 +3406,8 @@
       const shotP = this.loadShot();
       this.view = new View(this.env);
       this.engine = new Engine(this.view);
-      this.sfx = new Sound();
+      this.sfx = primedSound || new Sound();
+      primedSound = null;
       this.sfx.init();
       this.engine.sfx = this.sfx;
       this.engine.onStart = () => this.view.intro.classList.add("gone");
@@ -3752,6 +3755,16 @@
   }
 
   window[KEY] = {
+    primeSound() {
+      if (app) return false;
+      if (!primedSound) primedSound = new Sound();
+      return primedSound.init();
+    },
+    cancelPrimeSound() {
+      if (!primedSound) return;
+      primedSound.close(0.1);
+      primedSound = null;
+    },
     toggle() {
       if (app) stop(false);
       else start();
