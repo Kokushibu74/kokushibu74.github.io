@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build a larger, deduplicated news feed from public Google News RSS searches."""
 import html
+import hashlib
 import json
 import re
 import urllib.request
@@ -668,40 +669,51 @@ def key_for(item):
     return re.sub(r"[^\w]+", " ", title.lower()).strip()
 
 
-def merge_source_evidence(item, source):
-    """Keep unique publisher groups for independent corroboration."""
+def canonical_publisher_name(source):
+    """Collapse common publisher aliases so one outlet is never counted twice."""
     name = clean(source)
     lower = name.lower()
-    if "bbc" in lower:
-        name = "BBC"
-    elif "daily star" in lower:
-        name = "The Daily Star"
-    elif "prothom alo" in lower or "প্রথম আলো" in name:
-        name = "Prothom Alo"
-    elif "jago news" in lower:
-        name = "Jago News 24"
-    elif "bangladesh sangbad sangstha" in lower or lower == "bss":
-        name = "BSS"
-    elif "united news of bangladesh" in lower or lower == "unb":
-        name = "UNB"
-    elif "business standard" in lower or lower == "tbs":
-        name = "The Business Standard"
-    elif "associated press" in lower or lower == "ap news":
-        name = "AP"
-    elif "agence france" in lower or lower == "afp":
-        name = "AFP"
+    aliases = (
+        (("bbc",), "BBC"), (("daily star",), "The Daily Star"),
+        (("prothom alo", "প্রথম আলো"), "Prothom Alo"),
+        (("jago news", "jagonews24"), "Jago News 24"),
+        (("bangladesh sangbad sangstha", "bss"), "BSS"),
+        (("united news of bangladesh", "unb"), "UNB"),
+        (("business standard", "tbs"), "The Business Standard"),
+        (("associated press", "ap news", "ap"), "AP"),
+        (("agence france", "afp"), "AFP"), (("reuters",), "Reuters"),
+    )
+    for needles, canonical in aliases:
+        if any(needle in lower for needle in needles):
+            return canonical
+    return name
+
+
+def merge_source_evidence(item, source, source_url=None):
+    """Keep independent publisher names and safe original-article links."""
+    name = canonical_publisher_name(source)
     ignored = {"", "google news", "original publisher", "unknown source"}
     sources = list(item.get("sourceEvidence") or [])
-    if name and name.lower() not in ignored and name.lower() not in {x.lower() for x in sources}:
+    if name and name.lower() not in ignored and name.lower() not in {str(x).lower() for x in sources}:
         sources.append(name[:120])
     item["sourceEvidence"] = sources[:12]
     item["corroborationCount"] = len(item["sourceEvidence"])
+    url = clean(source_url or item.get("publisherUrl") or item.get("link") or "")
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        parsed = None
+    if parsed and parsed.scheme == "https" and parsed.hostname and not parsed.hostname.lower().endswith("google.com"):
+        links = list(item.get("sourceLinks") or [])
+        if not any(str(entry.get("name", "")).lower() == name.lower() for entry in links if isinstance(entry, dict)):
+            links.append({"name": name[:120], "url": url[:700]})
+        item["sourceLinks"] = links[:8]
     return item
 
 
-def merge_duplicate_source(existing, source, *, country=None, category=None, is_breaking=None, summary=None):
-    """Merge source evidence and retain the summary that established a breaking signal."""
-    merge_source_evidence(existing, source)
+def merge_duplicate_source(existing, source, *, country=None, category=None, is_breaking=None, summary=None, source_url=None):
+    """Merge publisher evidence and retain the summary that established a breaking signal."""
+    merge_source_evidence(existing, source, source_url)
     was_breaking = bool(existing.get("isBreaking"))
     if is_breaking is not None:
         existing["isBreaking"] = bool(was_breaking or is_breaking)
@@ -711,6 +723,171 @@ def merge_duplicate_source(existing, source, *, country=None, category=None, is_
     if is_global:
         existing["alertScope"] = "global"
     return existing
+
+
+ALERT_CLUSTER_STOPWORDS = {
+    "the", "a", "an", "and", "or", "of", "to", "in", "on", "at", "for", "with", "from",
+    "after", "before", "over", "under", "as", "by", "is", "are", "was", "were", "be",
+    "been", "being", "has", "have", "had", "will", "would", "could", "should", "this",
+    "that", "these", "those", "says", "said", "reports", "report", "news", "breaking",
+    "update", "latest", "live", "today", "yesterday", "জন", "জনের", "জনকে", "নিয়ে",
+    "নিয়ে", "নিহত", "মারা", "গেছে", "গেল", "গেলো", "হয়েছে", "হয়েছে", "হলো", "হয়ে",
+    "হয়ে", "এবং", "এক", "একটি", "দুই", "তিন", "চার", "পাঁচ", "এলাকায়", "এলাকায়",
+    "জেলায়", "জেলায়", "দেশে", "দেশের", "বাংলাদেশে", "বাংলাদেশের",
+}
+ALERT_CLUSTER_LOCATIONS = (
+    "dhaka", "ঢাকা", "chattogram", "chittagong", "চট্টগ্রাম", "sylhet", "সিলেট",
+    "khulna", "খুলনা", "rajshahi", "রাজশাহী", "barishal", "বরিশাল", "rangpur", "রংপুর",
+    "mymensingh", "ময়মনসিংহ", "cox's bazar", "কক্সবাজার", "jashore", "jessore", "যশোর",
+    "gazipur", "গাজীপুর", "narayanganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ", "cumilla", "কুমিল্লা",
+    "feni", "ফেনী", "noakhali", "নোয়াখালী", "kurigram", "কুড়িগ্রাম", "sunamganj", "সুনামগঞ্জ",
+    "satkhira", "সাতক্ষীরা", "bogura", "bogra", "বগুড়া", "pabna", "পাবনা", "tangail", "টাঙ্গাইল",
+    "bandarban", "বান্দরবান", "rangamati", "রাঙামাটি", "bhola", "ভোলা", "patuakhali", "পটুয়াখালী",
+    "bangladesh", "বাংলাদেশ",
+)
+ALERT_CLUSTER_TYPES = (
+    ("flood", re.compile(r"(?:flood|flooding|flash flood|বন্যা|জলোচ্ছ্বাস)", re.I)),
+    ("cyclone", re.compile(r"(?:cyclone|hurricane|typhoon|ঘূর্ণিঝড়|ঘূর্ণিঝড়)", re.I)),
+    ("earthquake", re.compile(r"(?:earthquake|ভূমিকম্প)", re.I)),
+    ("landslide", re.compile(r"(?:landslide|পাহাড়ধস|পাহাড়ধস)", re.I)),
+    ("wildfire", re.compile(r"(?:wildfire|দাবানল)", re.I)),
+    ("heatwave", re.compile(r"(?:heat ?wave|তাপপ্রবাহ)", re.I)),
+    ("storm", re.compile(r"(?:storm|heavy rain|rainfall|lightning|tornado|tsunami|ঝড়|ঝড়|বৃষ্টি|বজ্রপাত|কালবৈশাখী)", re.I)),
+    ("fire", re.compile(r"(?:fire|আগুন|অগ্নিকাণ্ড)", re.I)),
+    ("explosion", re.compile(r"(?:explosion|blast|বিস্ফোরণ)", re.I)),
+    ("crash", re.compile(r"(?:accident|crash|collision|derailment|capsiz|দুর্ঘটনা|নৌকাডুবি|ট্রেন দুর্ঘটনা)", re.I)),
+    ("murder", re.compile(r"(?:murder|homicide|খুন|হত্যা)", re.I)),
+    ("violence", re.compile(r"(?:shooting|clash|riot|armed attack|সংঘর্ষ|গুলিবর্ষণ|গুলি চালনা|হামলা)", re.I)),
+    ("political", re.compile(r"(?:referendum|গণভোট|গণঅভ্যুত্থান|পদত্যাগ|ক্ষমতাচ্যুত|জরুরি অবস্থা|curfew|resign|ousted)", re.I)),
+)
+
+
+def alert_event_type(item):
+    text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary"))
+    for event_type, pattern in ALERT_CLUSTER_TYPES:
+        if pattern.search(text):
+            return event_type
+    return "general"
+
+
+def alert_event_tokens(item):
+    text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    tokens = {
+        token for token in re.findall(r"[\w]+", text, flags=re.UNICODE)
+        if len(token) > 1 and token not in ALERT_CLUSTER_STOPWORDS and not token.isdigit()
+    }
+    tokens.add("event:" + alert_event_type(item))
+    return tokens
+
+
+def alert_event_locations(item):
+    text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    return {place for place in ALERT_CLUSTER_LOCATIONS if place in text}
+
+
+def alert_event_matches(left, right):
+    """Conservatively match differently worded coverage of the same recent incident."""
+    if key_for(left) == key_for(right):
+        return True
+    left_type, right_type = alert_event_type(left), alert_event_type(right)
+    if left_type != right_type or left_type == "general":
+        return False
+    try:
+        left_time = datetime.fromisoformat(str(left.get("publishedAt") or left.get("pubDate") or "").replace("Z", "+00:00"))
+        right_time = datetime.fromisoformat(str(right.get("publishedAt") or right.get("pubDate") or "").replace("Z", "+00:00"))
+        if left_time.tzinfo is None:
+            left_time = left_time.replace(tzinfo=timezone.utc)
+        if right_time.tzinfo is None:
+            right_time = right_time.replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return False
+    window = 360 if left_type in {"flood", "cyclone", "earthquake", "landslide", "wildfire", "heatwave", "storm"} else 180
+    if abs((left_time - right_time).total_seconds()) > window * 60:
+        return False
+    left_locations, right_locations = alert_event_locations(left), alert_event_locations(right)
+    shared_locations = left_locations & right_locations
+    if left_locations and right_locations and not shared_locations:
+        return False
+    left_numbers = set(re.findall(r"\d+", str(left.get("title") or "")))
+    right_numbers = set(re.findall(r"\d+", str(right.get("title") or "")))
+    if left_numbers and right_numbers and not (left_numbers & right_numbers):
+        return False
+    left_tokens, right_tokens = alert_event_tokens(left), alert_event_tokens(right)
+    shared = left_tokens & right_tokens
+    if len(shared) < 3:
+        return False
+    jaccard = len(shared) / max(1, len(left_tokens | right_tokens))
+    overlap = len(shared) / max(1, min(len(left_tokens), len(right_tokens)))
+    if shared_locations:
+        return jaccard >= 0.18 or overlap >= 0.42
+    return jaccard >= 0.28 and overlap >= 0.5
+
+
+def build_alert_items(items, now=None):
+    """Build a separate, alert-only event stream without changing the public news cards."""
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    candidates = []
+    for original in items or []:
+        if not isinstance(original, dict) or not str(original.get("title") or "").strip():
+            continue
+        text = " ".join(str(original.get(field) or "") for field in ("title", "summary", "previewSummary"))
+        if not BREAKING_EVENT_RE.search(text) or BREAKING_FOLLOWUP_RE.search(text):
+            continue
+        try:
+            published = datetime.fromisoformat(str(original.get("publishedAt") or original.get("pubDate") or "").replace("Z", "+00:00"))
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=timezone.utc)
+        except (TypeError, ValueError):
+            continue
+        age_minutes = (current - published).total_seconds() / 60
+        if age_minutes < -5 or age_minutes > 24 * 60:
+            continue
+        item = dict(original)
+        if not item.get("sourceEvidence"):
+            merge_source_evidence(item, item.get("source") or item.get("publisherName") or "")
+        candidates.append(item)
+
+    candidates.sort(key=lambda item: str(item.get("publishedAt") or item.get("pubDate") or ""), reverse=True)
+    clusters = []
+    for item in candidates:
+        match = next((cluster for cluster in clusters if alert_event_matches(item, cluster["item"])), None)
+        if match is None:
+            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or [])})
+            continue
+        for source in item.get("sourceEvidence") or []:
+            canonical = canonical_publisher_name(source)
+            if canonical and canonical.lower() not in {str(value).lower() for value in match["sources"]}:
+                match["sources"].append(canonical)
+        for link in item.get("sourceLinks") or []:
+            if not isinstance(link, dict):
+                continue
+            name, url = canonical_publisher_name(link.get("name")), str(link.get("url") or "")
+            try:
+                parsed = urlparse(url)
+            except ValueError:
+                continue
+            if parsed.scheme == "https" and parsed.hostname and not parsed.hostname.lower().endswith("google.com"):
+                if not any(str(old.get("name", "")).lower() == name.lower() for old in match["links"] if isinstance(old, dict)):
+                    match["links"].append({"name": name, "url": url[:700]})
+        current_stamp = str(match["item"].get("publishedAt") or "")
+        incoming_stamp = str(item.get("publishedAt") or "")
+        if incoming_stamp > current_stamp:
+            match["item"]["publishedAt"] = incoming_stamp
+        if not match["item"].get("summary") and item.get("summary"):
+            match["item"]["summary"] = item["summary"]
+
+    result = []
+    for cluster in clusters:
+        item = cluster["item"]
+        item["sourceEvidence"] = cluster["sources"][:12]
+        item["sourceLinks"] = cluster["links"][:8]
+        item["corroborationCount"] = len(item["sourceEvidence"])
+        base_key = key_for(item)
+        item["alertEventId"] = hashlib.sha256(base_key.encode("utf-8")).hexdigest()[:32]
+        result.append(item)
+    return result
 
 
 def read_previous_weather():
@@ -1050,8 +1227,8 @@ def main():
     breaking_history = read_breaking_history()
     collected, seen = [], set()
     collected_by_key = {}
-    breaking_url_budget = {"remaining": 3}
-    weather_url_budget = {"remaining": 3}
+    breaking_url_budget = {"remaining": 12}
+    weather_url_budget = {"remaining": 10}
     successful_feeds = 0
     feed_failures = []
 
@@ -1083,14 +1260,14 @@ def main():
                     "previewCheckedAt": datetime.now(timezone.utc).isoformat(),
                     "sourceEvidence": [],
                 }
-                merge_source_evidence(item, source)
+                merge_source_evidence(item, source, link)
                 key = key_for(item)
                 if not key:
                     continue
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, category=item["category"], is_breaking=item.get("isBreaking"), summary=item.get("summary"))
+                        merge_duplicate_source(existing, source, category=item["category"], is_breaking=item.get("isBreaking"), summary=item.get("summary"), source_url=link)
                     continue
                 seen.add(key)
                 collected_by_key[key] = item
@@ -1124,16 +1301,16 @@ def main():
                     "videoUrl": video_for(node), "publisherUrl": "", "publisherName": source,
                     "sourceEvidence": [],
                 }
-                merge_source_evidence(item, source)
+                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
+                merge_source_evidence(item, source, item["publisherUrl"])
                 key = key_for(item)
                 if not key:
                     continue
                 if key in seen:
                     existing = collected_by_key.get(key)
                     if existing:
-                        merge_duplicate_source(existing, source, country=country, is_breaking=item.get("isBreaking"), summary=item.get("summary"))
+                        merge_duplicate_source(existing, source, country=country, is_breaking=item.get("isBreaking"), summary=item.get("summary"), source_url=item["publisherUrl"])
                     continue
-                item["publisherUrl"] = resolve_alert_publisher_url(item, breaking_url_budget)
                 seen.add(key)
                 collected_by_key[key] = item
                 collected.append(item)
@@ -1173,20 +1350,16 @@ def main():
                     "isBreaking": is_recent_breaking(title, published, query, source, summary) or is_recent_weather_alert(title, summary, published),
                     "sourceEvidence": [],
                 }
-                merge_source_evidence(item, source)
+                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
+                merge_source_evidence(item, source, item["publisherUrl"])
                 key = key_for(item)
                 if not key:
                     continue
                 if key in weather_seen:
                     existing = weather_by_key.get(key)
                     if existing:
-                        merge_source_evidence(existing, source)
-                        was_breaking = bool(existing.get("isBreaking"))
-                        if item.get("isBreaking") and not was_breaking and item.get("summary"):
-                            existing["summary"] = str(item["summary"])[:420]
-                        existing["isBreaking"] = bool(was_breaking or item.get("isBreaking"))
+                        merge_duplicate_source(existing, source, category="Weather & Disasters", is_breaking=item.get("isBreaking"), summary=item.get("summary"), source_url=item["publisherUrl"])
                     continue
-                item["publisherUrl"] = resolve_alert_publisher_url(item, weather_url_budget)
                 weather_seen.add(key)
                 weather_by_key[key] = item
                 weather_collected.append(item)
@@ -1369,7 +1542,8 @@ def main():
         if stamp and stamp >= history_cutoff:
             history.append(item)
     history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
-    full_payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "breakingHistory": history[:500]}
+    alert_items = build_alert_items(selected + weather_items)
+    full_payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "alertItems": alert_items, "breakingHistory": history[:500]}
     validation = validate_feed_payload(full_payload)
     if not validation["valid"]:
         print("Feed validation: FAIL; items:", len(selected), "; invalid:", validation["invalid"],
@@ -1382,6 +1556,7 @@ def main():
         "latestBatchAt": now_iso,
         "items": latest_items,
         "weatherItems": weather_items,
+        "alertItems": alert_items,
         "breakingHistory": history[:500],
     }
     archive_payload = {"updatedAt": now_iso, "items": archive_items, "weatherItems": []}
