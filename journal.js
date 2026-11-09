@@ -162,7 +162,7 @@
   }
 
   function updateTimelineProgress() {
-    if (!timeline || !section.hidden) {
+    if (timeline && !section.hidden) {
       const rect = timeline.getBoundingClientRect();
       const start = window.innerHeight * 0.82;
       const distance = Math.max(1, timeline.offsetHeight);
@@ -406,6 +406,18 @@
   }, { passive: true });
   window.addEventListener("resize", updateTimelineProgress);
 
+  let publishTimer = null;
+  function scheduleNextPublish() {
+    if (publishTimer) clearTimeout(publishTimer);
+    const next = state.posts.filter(post => !post.deletedAt && post.status === "scheduled")
+      .map(dateValue).filter(value => value > Date.now()).sort((a,b) => a-b)[0];
+    if (!next) return;
+    publishTimer = setTimeout(() => {
+      renderTimeline();
+      scheduleNextPublish();
+    }, Math.min(Math.max(500, next - Date.now() + 500), 2147483647));
+  }
+
   async function init() {
     try {
       const response = await fetch("journal-data.json?v=" + Date.now(), { cache: "no-store" });
@@ -413,6 +425,7 @@
       const data = await response.json();
       state.posts = Array.isArray(data.posts) ? data.posts : [];
       renderTimeline();
+      scheduleNextPublish();
       const match = location.hash.match(/^#journal\/([^/]+)$/);
       if (match) openArticle(decodeURIComponent(match[1]), false);
     } catch (error) {
