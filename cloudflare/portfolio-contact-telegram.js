@@ -1,5 +1,6 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
+import { listJournalPosts, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -736,7 +737,7 @@ const BOT_MENU = [
 ];
 const BOT_SECONDARY_MENU = [
   ["github","🐙 GitHub & Deploy"],["hero","🖼️ Hero Image"],
-  ["logs","📜 Logs & Recovery"],["refresh","🔄 Refresh Now"],["settings","⚙️ Settings"]
+  ["blog","✍️ Developer Journal"],["logs","📜 Logs & Recovery"],["refresh","🔄 Refresh Now"],["settings","⚙️ Settings"]
 ];
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
@@ -1289,6 +1290,10 @@ async function botHandleCallback(env,query){
       return true;
     }
     await botMarkMenuInteraction(env,chatId,notificationAction?null:query.message?.message_id,false);
+    if(action==="blog"){
+      await botSend(env,chatId,"✍️ DEVELOPER JOURNAL\\n\\nTelegram-এর ভেতর থেকেই Blog তৈরি, সম্পাদনা, প্রকাশ, Trash ও Restore করতে নিচের Control খুলুন।",[[{text:"Open Blog Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=blog"}}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});
+      return true;
+    }
     if(action.startsWith("github:retry:")){
       const runId=action.slice("github:retry:".length);
       if(!/^\d{1,20}$/.test(runId)){await botSend(env,chatId,"Invalid GitHub workflow run ID.",botBackKeyboard(),{forceNew:true});return true;}
@@ -1828,6 +1833,10 @@ async function miniAppGa4Report(env){
   return result;
 }
 async function miniAppModule(env,section){
+  if(section==="blog"){
+    const posts=await listJournalPosts(env);
+    return {section,posts,source:"GitHub journal-data.json"};
+  }
   const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
   if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
@@ -2429,6 +2438,26 @@ export default {
         const user=await miniAppAuthorize(body?.initData,env);
         await miniAppRateLimit(env,user.id);
         const action=String(body?.action||"");
+        if(action==="blogList"){
+          const posts=await listJournalPosts(env);
+          return respond({ok:true,posts});
+        }
+        if(action==="blogSave"){
+          const result=await saveJournalPost(env,user.id,body?.post||{});
+          return respond({ok:true,...result});
+        }
+        if(action==="blogUpload"){
+          const result=await uploadJournalImage(env,user.id,body||{});
+          return respond({ok:true,...result});
+        }
+        if(action==="blogDelete"){
+          const result=await trashJournalPost(env,user.id,String(body?.id||""));
+          return respond({ok:true,...result});
+        }
+        if(action==="blogRestore"){
+          const result=await restoreJournalPost(env,user.id,String(body?.id||""));
+          return respond({ok:true,...result});
+        }
         if(action==="heroPrepare"){
           const result=await miniAppHeroPrepare(env,user.id,body);
           await miniAppAudit(env,user.id,"heroPrepare",{mimeType:String(body?.mimeType||""),bytes:Math.floor(String(body?.base64||"").length*3/4)});
