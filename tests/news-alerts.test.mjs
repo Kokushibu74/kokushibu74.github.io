@@ -21,7 +21,12 @@ test("two untrusted publishers are not sufficient corroboration",()=>assert.equa
 test("one trusted and one untrusted independent publisher cannot corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now}).reason,"needs_trusted_corroboration"));
 test("two independent trusted publishers corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Prothom Alo"]}),{now}).eligible,true));
 test("one publisher is insufficient without official confirmation",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star"]}),{now}).reason,"needs_trusted_corroboration"));
-test("official weather source does not replace a trusted publisher",()=>assert.equal(evaluateNewsAlert(item({title:"বাংলাদেশে ঘূর্ণিঝড়ের জরুরি সতর্কতা",summary:"উপকূলে চরম ঝুঁকি",category:"Weather & Disasters",sourceEvidence:["Random Blog"]}),{now,officialSignal:true}).reason,"untrusted_sources"));
+test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
+  const decision=evaluateNewsAlert(item({title:"Bangladesh cyclone warning",summary:"Severe coastal cyclone alert",category:"Weather & Disasters",sourceEvidence:[],source:"",publisherName:"",publisherUrl:"https://example.com/weather"}),{now,officialSignal:true});
+  assert.equal(decision.eligible,true);
+  assert.equal(decision.verificationMode,"official_weather");
+  assert.equal(decision.trustedSources.length,0);
+});
 test("official weather bulletin can corroborate one publisher",()=>assert.equal(evaluateNewsAlert(item({title:"বাংলাদেশে ঘূর্ণিঝড়ের জরুরি সতর্কতা",summary:"উপকূলে চরম ঝুঁকি",category:"Weather & Disasters",sourceEvidence:["The Daily Star"]}),{now,officialSignal:true}).eligible,true));
 test("corroborated severe weather alert may be up to three hours old",()=>assert.equal(evaluateNewsAlert(item({title:"Sylhet flood warning issued",summary:"Severe flooding near danger level",category:"Weather & Disasters",publishedAt:new Date(now-120*60000).toISOString()}),{now}).eligible,true));
 test("single-source weather alert still needs an official source after one hour",()=>assert.equal(evaluateNewsAlert(item({title:"Sylhet flood warning issued",summary:"Severe flooding near danger level",category:"Weather & Disasters",sourceEvidence:["The Daily Star"],publishedAt:new Date(now-120*60000).toISOString()}),{now}).reason,"stale"));
@@ -186,19 +191,19 @@ test("fatal bus-arson headline is classified as a serious local incident",()=>{
 });
 
 
-test("single trusted publisher can trigger a fresh local fatal-clash alert",()=>{
+test("one trusted publisher cannot bypass two-source verification for a fatal clash",()=>{
   const decision=evaluateNewsAlert(item({
     title:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
     summary:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়",
     category:"Bangladesh",isBreaking:false,
-    publishedAt:new Date(now-61.3*60000).toISOString(),
+    publishedAt:new Date(now-10*60000).toISOString(),
     sourceEvidence:["Jago News 24"],source:"Jago News 24",
     publisherUrl:"https://www.jagonews24.com/country/news/1175881"
   }),{now});
-  assert.equal(decision.eligible,true);
+  assert.equal(decision.eligible,false);
+  assert.equal(decision.reason,"needs_trusted_corroboration");
   assert.equal(decision.sourceCount,1);
   assert.equal(decision.trustedSources.length,1);
-  assert.equal(decision.verificationMode,"single_source_life_safety");
 });
 
 test("rejection audits refresh when summary or source counts change",async()=>{
