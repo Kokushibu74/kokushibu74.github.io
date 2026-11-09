@@ -877,7 +877,7 @@ def build_alert_items(items, now=None):
         if not isinstance(original, dict) or not str(original.get("title") or "").strip():
             continue
         text = " ".join(str(original.get(field) or "") for field in ("title", "summary", "previewSummary"))
-        if not (original.get("isBreaking") is True or BREAKING_EVENT_RE.search(text) or ALERT_SIGNAL_RE.search(text)) or BREAKING_FOLLOWUP_RE.search(text):
+        if not (BREAKING_EVENT_RE.search(text) or ALERT_SIGNAL_RE.search(text)) or BREAKING_FOLLOWUP_RE.search(text):
             continue
         try:
             published = datetime.fromisoformat(str(original.get("publishedAt") or original.get("pubDate") or "").replace("Z", "+00:00"))
