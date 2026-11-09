@@ -2269,10 +2269,8 @@ async function sheetsEnsureTabs(accessToken){
     if(!properties||!Number.isInteger(properties.sheetId))throw new Error("Google Sheets tab missing after initialization: "+title);
     ids[title]=properties.sheetId;
     const requiredColumns=Math.max(26,headers.length);
-    if(Number(properties.gridProperties?.columnCount||0)<requiredColumns){
-      requests.push({updateSheetProperties:{properties:{sheetId:properties.sheetId,gridProperties:{columnCount:requiredColumns}},fields:"gridProperties.columnCount"}});
-    }
-    requests.push({updateCells:{range:{sheetId:properties.sheetId,startRowIndex:0,startColumnIndex:0},rows:[{values:headers.map(sheetsCell)}],fields:"userEnteredValue"}});
+    requests.push({updateSheetProperties:{properties:{sheetId:properties.sheetId,gridProperties:{columnCount:requiredColumns}},fields:"gridProperties.columnCount"}});
+    requests.push({updateCells:{range:{sheetId:properties.sheetId,startRowIndex:0,endRowIndex:1,startColumnIndex:0,endColumnIndex:headers.length},rows:[{values:headers.map(sheetsCell)}],fields:"userEnteredValue"}});
   }
   if(requests.length)await sheetsApiRequest(accessToken,":batchUpdate","POST",{requests});
   return ids;
