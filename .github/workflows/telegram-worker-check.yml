@@ -12,6 +12,7 @@ on:
       - 'projects.html'
       - 'tests/blog-manager.test.mjs'
       - 'tests/developer-journal.test.mjs'
+      - 'tests/journal-browser-smoke.cjs'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
@@ -35,6 +36,7 @@ on:
       - 'projects.html'
       - 'tests/blog-manager.test.mjs'
       - 'tests/developer-journal.test.mjs'
+      - 'tests/journal-browser-smoke.cjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -266,3 +268,18 @@ jobs:
           grep -q 'Developer Journal' /tmp/miniapp-live.js
           grep -q 'blogSave' /tmp/miniapp-live.js
           echo 'Live Telegram Blog Manager asset: OK'
+
+  journal-browser-smoke:
+    if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm install --no-save playwright@latest
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Verify live Journal interactions in a browser
+        run: node tests/journal-browser-smoke.cjs
