@@ -1567,7 +1567,7 @@ def main():
         if stamp and stamp >= history_cutoff:
             history.append(item)
     history.sort(key=lambda item: item.get("detectedAt") or item.get("publishedAt") or "", reverse=True)
-    alert_items = build_alert_items(selected + weather_items)
+    alert_items = build_alert_items(selected + weather_collected)
     full_payload = {"updatedAt": now_iso, "latestBatchAt": now_iso, "items": selected, "weatherItems": weather_items, "alertItems": alert_items, "breakingHistory": history[:500]}
     validation = validate_feed_payload(full_payload)
     if not validation["valid"]:
