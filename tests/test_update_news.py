@@ -77,6 +77,68 @@ class NewsLogicTests(unittest.TestCase):
         b = {"title": "ঢাকায় জরুরি সংবাদ!", "source": "Source B"}
         self.assertEqual(news.key_for(a), news.key_for(b))
 
+    def test_publisher_aliases_collapse_to_one_independent_source(self):
+        self.assertEqual(news.canonical_publisher_name("JagoNews24"), "Jago News 24")
+        self.assertEqual(news.canonical_publisher_name("BSS"), "BSS")
+        self.assertEqual(news.canonical_publisher_name("AP News"), "AP")
+
+    def test_source_evidence_keeps_original_publisher_links_but_not_google_redirects(self):
+        item = {"sourceEvidence": []}
+        news.merge_source_evidence(item, "The Daily Star", "https://www.thedailystar.net/news/example")
+        news.merge_source_evidence(item, "Prothom Alo", "https://news.google.com/rss/articles/abc")
+        self.assertEqual(item["sourceEvidence"], ["The Daily Star", "Prothom Alo"])
+        self.assertEqual(item["sourceLinks"], [
+            {"name": "The Daily Star", "url": "https://www.thedailystar.net/news/example"}
+        ])
+
+    def test_differently_worded_coverage_of_same_recent_incident_merges_sources(self):
+        now = datetime.now(timezone.utc)
+        published = (now - timedelta(minutes=12)).isoformat()
+        items = [
+            {
+                "title": "যশোরে আগুনে পুড়ে ৭ দোকান, ৩০ লাখ টাকার ক্ষতি",
+                "summary": "যশোরে আগুনে পুড়ে সাতটি দোকান ক্ষতিগ্রস্ত হয়েছে",
+                "source": "Jago News 24", "sourceEvidence": ["Jago News 24"],
+                "sourceLinks": [{"name": "Jago News 24", "url": "https://www.jagonews24.com/country/example"}],
+                "publishedAt": published,
+            },
+            {
+                "title": "যশোরে ভয়াবহ অগ্নিকাণ্ডে ৭ দোকান পুড়ে ছাই",
+                "summary": "যশোরে আগুনে ৭টি দোকান পুড়ে গেছে",
+                "source": "The Daily Star", "sourceEvidence": ["The Daily Star"],
+                "sourceLinks": [{"name": "The Daily Star", "url": "https://www.thedailystar.net/news/example"}],
+                "publishedAt": (now - timedelta(minutes=8)).isoformat(),
+            },
+        ]
+        alerts = news.build_alert_items(items, now=now)
+        self.assertEqual(len(alerts), 1)
+        self.assertEqual(set(alerts[0]["sourceEvidence"]), {"Jago News 24", "The Daily Star"})
+        self.assertEqual({entry["name"] for entry in alerts[0]["sourceLinks"]}, {"Jago News 24", "The Daily Star"})
+        self.assertEqual(len(alerts[0]["alertEventId"]), 32)
+
+    def test_distinct_same_district_incidents_with_conflicting_counts_do_not_merge(self):
+        now = datetime.now(timezone.utc)
+        items = [
+            {"title": "যশোরে আগুনে পুড়ে ৭ দোকান", "summary": "যশোরে আগুনে ৭ দোকান ক্ষতিগ্রস্ত",
+             "source": "Jago News 24", "sourceEvidence": ["Jago News 24"],
+             "publishedAt": (now - timedelta(minutes=12)).isoformat()},
+            {"title": "যশোরে আগুনে পুড়ে ২টি গুদাম", "summary": "যশোরে আগুনে ২টি গুদাম পুড়ে গেছে",
+             "source": "The Daily Star", "sourceEvidence": ["The Daily Star"],
+             "publishedAt": (now - timedelta(minutes=8)).isoformat()},
+        ]
+        alerts = news.build_alert_items(items, now=now)
+        self.assertEqual(len(alerts), 2)
+
+    def test_alert_event_builder_excludes_stale_and_followup_items(self):
+        now = datetime.now(timezone.utc)
+        items = [
+            {"title": "ঢাকায় আগুনে ৫ দোকান পুড়ে গেছে", "summary": "ঢাকায় আগুনে দোকান পুড়ে গেছে",
+             "source": "Jago News 24", "publishedAt": (now - timedelta(days=2)).isoformat()},
+            {"title": "ঢাকার আগুনের ঘটনায় সন্দেহভাজন গ্রেপ্তার", "summary": "পুলিশ একজনকে গ্রেপ্তার করেছে",
+             "source": "The Daily Star", "publishedAt": (now - timedelta(minutes=5)).isoformat()},
+        ]
+        self.assertEqual(news.build_alert_items(items, now=now), [])
+
     def test_duplicate_direct_rss_merge_does_not_reference_google_country_variable(self):
         existing = {"sourceEvidence": [], "category": "Bangladesh"}
         merged = news.merge_duplicate_source(existing, "Prothom Alo", category="Bangladesh")
