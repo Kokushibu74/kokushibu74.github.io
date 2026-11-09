@@ -55,6 +55,9 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(miniapp, /api\("blogSave"/);
   assert.match(miniapp, /api\("blogDelete"/);
   assert.match(miniapp, /api\("blogRestore"/);
+  assert.match(miniapp, /timeZone:"Asia\/Dhaka"/);
+  assert.match(miniapp, /\+06:00/);
+  assert.match(journal, /timeZone: "Asia\/Dhaka"/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
