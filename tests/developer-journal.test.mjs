@@ -65,6 +65,7 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(worker, /getPublicJournalFeed/);
   assert.match(manager, /AES-256-GCM/);
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
+  assert.match(manager, /status: "published"/);
   assert.match(miniapp, /Drafts, scheduled posts and Trash stay encrypted/);
 });
 
