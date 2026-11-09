@@ -32,7 +32,7 @@ test("Journal cards open the full article without a separate read-more control",
   assert.match(journal, /data-post-id/);
   assert.match(journal, /function openArticle/);
   assert.match(journal, /history\.pushState/);
-  assert.doesNotMatch(journal, /Read More|Read Story/i);
+  assert.doesNotMatch(journal, /Read More|Read Story|OPEN JOURNAL/i);
 });
 
 test("Timeline supports reveal, reduced motion, filters, archive and scheduled publishing", () => {
@@ -66,7 +66,7 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(manager, /AES-256-GCM/);
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
   assert.match(manager, /status: "published"/);
-  assert.match(miniapp, /Drafts, scheduled posts and Trash stay encrypted/);
+  assert.match(miniapp, /Draft text, scheduled posts and Trash stay AES-GCM encrypted/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
