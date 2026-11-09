@@ -2617,7 +2617,9 @@ export default {
       const dayStart=new Date(reportDay+"T00:00:00+06:00").getTime();
       const dayRecord={visitorId:id,firstSeen:profile.firstSeen,lastSeen:now,lastSessionId:session,pageViews:(Number(dayRow.pageViews)||0)+(pageView?1:0),sessions:(Number(dayRow.sessions)||0)+(pageView&&newSession?1:0),returning:!!(dayRow.returning||(!first&&profile.firstSeen<dayStart)),errors:(Number(dayRow.errors)||0)+events.filter(e=>e.type==="js_error"||e.type==="promise_error").length,pages:dayPages,source:profile.source,network:{country:profile.network.country,region:profile.network.region,city:profile.network.city,isp:profile.network.isp},device:{deviceType:profile.device.deviceType,deviceModel:profile.device.deviceModel,platform:profile.device.platform,browser:profile.device.browser,os:profile.device.os},recentEvents:[...(Array.isArray(dayRow.recentEvents)?dayRow.recentEvents:[]),...events.map(e=>({type:e.type,at:e.at}))].slice(-12),navigationSequence:profile.pages.slice(-12)};
       await env.VISITOR_KV.put(dailyKey,JSON.stringify(dayRecord),{expirationTtl:90*86400});
-      const sheetsTrackEvent={eventId:"track:"+crypto.randomUUID(),kind:"track",at:now,visitorId:id,sessionId:session,page,pageView,newSession,first,returning:!!dayRecord.returning,deviceChanged:first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{}),profile:sheetsSafeProfile(profile),daily:dayRecord,day:reportDay};
+      const deviceChanged=first||JSON.stringify(old.device||{})!==JSON.stringify(profile.device||{});
+      const profileRefreshDue=first||newSession||deviceChanged||now-(Number(old.lastSeen)||0)>=300000;
+      const sheetsTrackEvent={eventId:"track:"+crypto.randomUUID(),kind:"track",at:now,visitorId:id,sessionId:session,page,pageView,newSession,first,returning:!!dayRecord.returning,deviceChanged,skipProfileUpsert:!profileRefreshDue,profile:sheetsSafeProfile(profile),daily:dayRecord,day:reportDay};
       ctx.waitUntil(sendVisitorSheetsEvent(env,sheetsTrackEvent));
       // Free-tier-friendly coarse traffic counter: one shared five-minute bucket.
       const bucket=Math.floor(now/300000),trafficKey="traffic:"+bucket;
