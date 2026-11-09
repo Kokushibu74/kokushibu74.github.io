@@ -2490,8 +2490,6 @@ export default {
       let previous={};try{previous=await env.VISITOR_KV.get(key,"json")||{}}catch{}
       const record={visitorId:id,consent,policyVersion:String(data.policyVersion||"2026-11-05").slice(0,32),acceptedAtUtc:consent?(previous.acceptedAtUtc||new Date(now).toISOString()):(previous.acceptedAtUtc||null),updatedAtUtc:new Date(now).toISOString(),withdrawnAtUtc:consent?null:new Date(now).toISOString()};
       await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
-      await env.VISITOR_KV.put("loc:v1:latest:"+id,JSON.stringify(record),{expirationTtl:7776000});
-      ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"gps:"+key,kind:"location_history",visitorId:id,record}));
       ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"consent:"+id+":"+now,kind:"location_consent",visitorId:id,record}));
       return respond({ok:true,consent,retentionDays:90},200);
     }
@@ -2518,6 +2516,8 @@ export default {
       const key="loc:v1:history:visitor:"+id+":"+String(now).padStart(13,"0")+":"+salt;
       const record={visitorId:id,latitude,longitude,accuracyMeters:Math.round(accuracy),source:"browser-geolocation",capturedAt:now,capturedAtUtc:utc,capturedAtBdt:bdt,locality:null,retentionDays:90};
       await env.VISITOR_KV.put(key,JSON.stringify(record),{expirationTtl:7776000});
+      await env.VISITOR_KV.put("loc:v1:latest:"+id,JSON.stringify(record),{expirationTtl:7776000});
+      ctx.waitUntil(sendVisitorSheetsEvent(env,{eventId:"gps:"+key,kind:"location_history",visitorId:id,record}));
       return respond({ok:true,recorded:true,retentionDays:90},200);
     }
     if(pathname==="/location-delete-request"){
@@ -2701,7 +2701,23 @@ export default {
       if(performance.inp)perfRows.push(["INP",Math.round(performance.inp)+" ms"]);
       if(performance.cls!==null&&performance.cls!==undefined)perfRows.push(["CLS",Number(performance.cls).toFixed(3)]);
       if(perfRows.length)lines.push(...section("06","⚡","PERFORMANCE SNAPSHOT",perfRows));
-      if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){const latestLocation=await env.VISITOR_KV.get("loc:v1:latest:"+id,"json").catch(()=>null);if(latestLocation)lines.push("","<b>07 · 🧭 CONSENTED GPS LOCATION HISTORY</b>","│ Latitude <code>"+esc(latestLocation.latitude)+"</code>","│ Longitude <code>"+esc(latestLocation.longitude)+"</code>","│ Accuracy <code>"+esc(latestLocation.accuracyMeters)+" m</code>","│ Captured <code>"+esc(latestLocation.capturedAtBdt||latestLocation.capturedAtUtc||"Unknown")+"</code>");}
+      if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
+        try{
+          const locationConsent=await env.VISITOR_KV.get("loc:v1:consent:"+id,"json");
+          if(locationConsent?.consent===true&&!locationConsent.withdrawnAtUtc){
+            const locationKeys=await env.VISITOR_KV.list({prefix:"loc:v1:history:visitor:"+id+":",limit:1000});
+            const recentKeys=(locationKeys.keys||[]).slice(-3);
+            const recentLocations=(await Promise.all(recentKeys.map(key=>env.VISITOR_KV.get(key.name,"json").catch(()=>null)))).filter(Boolean);
+            if(recentLocations.length){
+              lines.push("","<b>07 · 🧭 CONSENTED GPS LOCATION HISTORY</b>");
+              for(let i=0;i<recentLocations.length;i++){
+                const location=recentLocations[i];
+                lines.push("│ "+(i+1)+". "+esc(location.capturedAtBdt||location.capturedAtUtc||"Unknown"),"│ Coordinates <code>"+esc(location.latitude)+", "+esc(location.longitude)+"</code>","│ Accuracy <code>"+esc(location.accuracyMeters)+" m</code>");
+              }
+            }
+          }
+        }catch(error){console.warn("Consent-aware GPS alert enrichment skipped",String(error&&error.message||error).slice(0,120));}
+      }
       lines.push("","━━━━━━━━━━━━━━━━━━━━","🕒 <b>VISIT TIMESTAMP</b>","│ Bangladesh Time  <code>"+esc(stamp)+" BDT</code>","━━━━━━━━━━━━━━━━━━━━","🛡️ <b>PORTFOLIO VISITOR MONITOR</b> · <b>ACTIVE</b>","<i>IP location is approximate. Browser/device signals may be unavailable or user-agent supplied. Bot identity is not confirmed by user-agent alone.</i>");
       if(pageView&&botCfg.monitoring&&env.TELEGRAM_BOT_TOKEN&&env.TELEGRAM_CHAT_ID){
         const text=lines.join("\n");
@@ -2804,7 +2820,7 @@ export default {
   async queue(batch,env,ctx){
     let auth=null,ids=null;
     for(let messageIndex=0;messageIndex<batch.messages.length;messageIndex++){
-      if(messageIndex>0)await new Promise(resolve=>setTimeout(resolve,1200));
+      if(messageIndex>0)await new Promise(resolve=>setTimeout(resolve,2500));
       const message=batch.messages[messageIndex];
       const event=message.body||{};
       try{
@@ -2828,16 +2844,22 @@ export default {
         }
         if(event.kind==="verify"){
           auth=auth||await sheetsAccessToken(env);
-          const metadata=await sheetsApiRequest(auth.accessToken,"?fields=sheets.properties(sheetId,title)"),counts={};
-          for(const sheet of metadata.sheets||[]){const title=sheet.properties?.title;if(!title)continue;const data=await sheetsApiRequest(auth.accessToken,"/values/"+encodeURIComponent("'"+title+"'!A:A"));counts[title]=Math.max(0,(data.values||[]).length-1);}
+          const metadata=await sheetsApiRequest(auth.accessToken,"?fields=sheets.properties(title)");
+          const titles=(metadata.sheets||[]).map(sheet=>sheet.properties?.title).filter(Boolean);
+          const query=new URLSearchParams();
+          for(const title of titles)query.append("ranges","'"+title.replace(/'/g,"''")+"'!A:A");
+          const values=await sheetsApiRequest(auth.accessToken,":batchGet?"+query.toString());
+          const counts={};
+          for(let i=0;i<titles.length;i++){const rows=values.valueRanges?.[i]?.values||[];counts[titles[i]]=Math.max(0,rows.length-1);}
           await env.BOT_CONFIG_KV.put("sheets:verify:result",JSON.stringify({ok:true,spreadsheetId:SHEETS_SPREADSHEET_ID,counts,checkedAt:new Date().toISOString()}),{expirationTtl:86400});
           message.ack();continue;
         }
         auth=auth||await sheetsAccessToken(env);ids=ids||await sheetsEnsureTabs(auth.accessToken);
         await sheetsWriteEvent(env,auth.accessToken,ids,event,message.attempts||1);message.ack();
       }catch(error){
-        console.error("Visitor Sheets queue sync failed",JSON.stringify({eventId:event.eventId||"",kind:event.kind||"unknown",attempts:message.attempts||1,error:String(error&&error.message||error).slice(0,220)}));
-        message.retry({delaySeconds:60});
+        const attempts=Math.max(1,Number(message.attempts)||1);
+        console.error("Visitor Sheets queue sync failed",JSON.stringify({eventId:event.eventId||"",kind:event.kind||"unknown",attempts,error:String(error&&error.message||error).slice(0,220)}));
+        message.retry({delaySeconds:Math.min(900,60*Math.pow(2,Math.min(4,attempts-1)))});
       }
     }
   },
