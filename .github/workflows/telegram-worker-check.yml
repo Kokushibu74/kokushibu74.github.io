@@ -6,6 +6,11 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/blog-manager.mjs'
+      - 'journal.js'
+      - 'journal.css'
+      - 'projects.html'
+      - 'tests/blog-manager.test.mjs'
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
@@ -23,6 +28,11 @@ on:
       - 'tests/visitor-location.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'cloudflare/blog-manager.mjs'
+      - 'journal.js'
+      - 'journal.css'
+      - 'projects.html'
+      - 'tests/blog-manager.test.mjs'
       - 'cloudflare/multi-ai-memory-api.js'
       - '.github/workflows/telegram-worker-check.yml'
       - 'miniapp/**'
@@ -46,6 +56,13 @@ jobs:
           node-version: 22
       - name: Parse Worker module
         run: node --check cloudflare/portfolio-contact-telegram.js
+      - name: Parse Developer Journal modules and frontend scripts
+        run: |
+          node --check cloudflare/blog-manager.mjs
+          node --check journal.js
+          node --check miniapp/app.js
+      - name: Verify Developer Journal publishing and visibility rules
+        run: node tests/blog-manager.test.mjs
       - name: Verify Telegram menu and KV write regressions
         run: node tests/telegram-bot-regression.test.mjs
       - name: Verify KV optimization and alert security contracts
