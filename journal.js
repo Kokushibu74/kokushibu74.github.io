@@ -125,7 +125,7 @@
             (post.pinned ? '<span class="journal-pin">PINNED</span>' : '') + '</div>' +
             '<h3>' + escapeHtml(post.title || "Untitled article") + '</h3>' +
             '<p class="journal-card-description">' + escapeHtml(post.description || "") + '</p>' +
-            '<div class="journal-card-footer"><span>' + readingMinutes(post) + ' MIN READ</span><span class="journal-card-open">OPEN JOURNAL ↗</span></div>' +
+            '<div class="journal-card-footer"><span>' + readingMinutes(post) + ' MIN READ</span></div>' +
           '</div>' +
           '<div class="journal-card-media">' + image + '</div>' +
         '</div>' +
