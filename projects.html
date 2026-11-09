@@ -72,6 +72,7 @@ header.site-shell-header{width:100%!important;max-width:none!important;margin:0!
   <!-- Google AdSense Auto ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4984469946659633" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="scroll-reveal.css?v=1">
+  <link rel="stylesheet" href="journal.css?v=1">
 </head>
 <body>
 <header class="wrap nav"><a class="brand" href="./">KOKUSHIBU<b>74</b></a><nav class="links" aria-label="Main navigation"><a href="./">Home</a><a href="about.html">About</a><a href="expertise.html">Expertise</a><a class="active" href="projects.html" aria-current="page">Projects</a><a href="news.html">News</a><a href="contact.html">Contact</a></nav></header>
@@ -80,6 +81,32 @@ header.site-shell-header{width:100%!important;max-width:none!important;margin:0!
 <div id="project-filter-status" class="project-filter-status" hidden></div>
 <div class="gallery-head"><span class="gallery-label">PROJECT GALLERY <span aria-hidden="true">/</span> <span id="project-total">LOADING</span></span><div class="slider-controls"><span class="slider-count" id="slider-count" aria-live="polite">01 / 05</span><button class="slider-btn" id="gallery-prev" type="button" aria-label="Previous projects"><i class="fa-solid fa-arrow-left"></i></button><button class="slider-btn" id="gallery-next" type="button" aria-label="Next projects"><i class="fa-solid fa-arrow-right"></i></button></div></div>
 <section class="project-gallery" id="project-gallery" aria-label="Project portfolio" tabindex="0"><div class="empty-state">Loading projects…</div></section><div class="gallery-dots" id="gallery-dots" aria-label="Choose project slide"></div>
+<section class="journal-section" id="developer-journal" aria-labelledby="journal-title">
+  <p class="journal-kicker">THE DEVELOPMENT LOG / 04</p>
+  <div class="journal-heading-row">
+    <div>
+      <h2 id="journal-title">Developer <span>Journal</span></h2>
+      <p class="journal-subtitle">Building in public. A living record of ideas, experiments, progress and lessons learned.</p>
+    </div>
+    <div class="journal-stats"><strong id="journal-post-count">00 ARTICLES</strong><span id="journal-latest-date">WAITING FOR FIRST ENTRY</span></div>
+  </div>
+  <div class="journal-accent-line" aria-hidden="true"></div>
+  <div class="journal-toolbar">
+    <div class="journal-categories" id="journal-categories" aria-label="Filter journal by category">
+      <button class="journal-filter" type="button" data-category="all" aria-pressed="true">All Posts</button>
+    </div>
+    <select class="journal-archive" id="journal-archive" aria-label="Filter journal by month"><option value="all">All months</option></select>
+  </div>
+  <div class="journal-timeline" id="journal-timeline" aria-live="polite">
+    <div class="journal-loading">Loading Developer Journal…</div>
+  </div>
+  <button class="journal-load-more" id="journal-load-more" type="button" hidden>LOAD MORE ENTRIES</button>
+</section>
+<section class="journal-article-view" id="journal-article-view" aria-label="Journal article" hidden>
+  <div class="journal-article-progress" aria-hidden="true"><span id="journal-reading-progress"></span></div>
+  <button class="journal-back" type="button" data-journal-back>← BACK TO JOURNAL</button>
+  <div id="journal-article-content"></div>
+</section>
 </main>
 <footer class="wrap footer"><span>© 2026 Shihabul Islam · Built with curiosity.</span><span><a href="./">Back to home ↑</a></span></footer>
 <script>
@@ -162,4 +189,5 @@ start();
 <script src="shared-shell.js?v=6" defer></script>
   <script src="chatbot-widget.js?v=2" defer></script>
   <script src="scroll-reveal.js?v=1" defer></script>
+  <script src="journal.js?v=1" defer></script>
 </body></html>
