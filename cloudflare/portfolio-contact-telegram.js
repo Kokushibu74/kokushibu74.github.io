@@ -1,6 +1,6 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
-import { listJournalPosts, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
+import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -2428,6 +2428,20 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
     const routeUrl=new URL(request.url);
+    const journalCacheKey=new Request("https://journal-feed-cache.internal/v1");
+    const invalidateJournalFeedCache=async()=>{try{await caches.default.delete(journalCacheKey);}catch{}};
+    if(pathname==="/journal-feed"&&request.method==="GET"){
+      try{
+        const cached=await caches.default.match(journalCacheKey);
+        if(cached)return cached;
+        const posts=await getPublicJournalFeed(env);
+        const response=new Response(JSON.stringify({ok:true,posts}),{status:200,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"public, max-age=60"}});
+        try{await caches.default.put(journalCacheKey,response.clone());}catch{}
+        return response;
+      }catch(error){
+        return respond({ok:false,error:"Developer Journal feed is temporarily unavailable."},503);
+      }
+    }
     if(pathname==="/miniapp/api"){
       if(request.method!=="POST")return respond({ok:false,error:"Method not allowed"},405);
       if(origin!==allowedOrigin)return respond({ok:false,error:"Origin rejected"},403);
@@ -2444,6 +2458,7 @@ export default {
         }
         if(action==="blogSave"){
           const result=await saveJournalPost(env,user.id,body?.post||{});
+          await invalidateJournalFeedCache();
           return respond({ok:true,...result});
         }
         if(action==="blogUpload"){
@@ -2452,10 +2467,12 @@ export default {
         }
         if(action==="blogDelete"){
           const result=await trashJournalPost(env,user.id,String(body?.id||""));
+          await invalidateJournalFeedCache();
           return respond({ok:true,...result});
         }
         if(action==="blogRestore"){
           const result=await restoreJournalPost(env,user.id,String(body?.id||""));
+          await invalidateJournalFeedCache();
           return respond({ok:true,...result});
         }
         if(action==="heroPrepare"){
