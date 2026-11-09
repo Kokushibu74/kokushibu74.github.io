@@ -72,7 +72,7 @@
     const mobile=matchMedia("(max-width: 767px)").matches;
     const count=REDUCED?90:(mobile?170:300);
     const particles=Array.from({length:count},(_,i)=>({
-      x:Math.random(),y:Math.random(),seed:Math.random()*Math.PI*2,u:i/(count-1),
+      x:Math.random(),y:Math.random(),seed:Math.random()*Math.PI*2,u:i/(Math.max(1,Math.floor(count*.76)-1)),
       form:i<count*.76,size:Math.random()*1.6+.45,hue:Math.random()
     }));
     const stars=Array.from({length:mobile?55:100},()=>({
