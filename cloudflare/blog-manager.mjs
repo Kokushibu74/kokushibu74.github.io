@@ -183,7 +183,7 @@ export async function getPublicJournalFeed(env, now = Date.now()) {
     .map(post => ({
       id: post.id, title: post.title, description: post.description,
       category: post.category, content: post.content, charts: post.charts || [],
-      coverImage: post.coverImage || "", pinned: post.pinned === true,
+      coverImage: post.coverImage || "", pinned: post.pinned === true, status: "published",
       publishAt: post.publishAt, publishedAt: post.publishedAt, createdAt: post.createdAt
     }));
 }
