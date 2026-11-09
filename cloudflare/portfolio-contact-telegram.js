@@ -1291,7 +1291,7 @@ async function botHandleCallback(env,query){
     }
     await botMarkMenuInteraction(env,chatId,notificationAction?null:query.message?.message_id,false);
     if(action==="blog"){
-      await botSend(env,chatId,"✍️ DEVELOPER JOURNAL\\n\\nTelegram-এর ভেতর থেকেই Blog তৈরি, সম্পাদনা, প্রকাশ, Trash ও Restore করতে নিচের Control খুলুন।",[[{text:"Open Blog Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=blog"}}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});
+      await botSend(env,chatId,"✍️ DEVELOPER JOURNAL\n\nTelegram-এর ভেতর থেকেই Blog তৈরি, সম্পাদনা, প্রকাশ, Trash ও Restore করতে নিচের Control খুলুন।",[[{text:"Open Blog Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=blog"}}],[{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});
       return true;
     }
     if(action.startsWith("github:retry:")){
