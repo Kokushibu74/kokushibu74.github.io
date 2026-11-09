@@ -2295,6 +2295,10 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   if(Number(attempts)>1){const ledger=await sheetsApiRequest(accessToken,"/values/"+encodeURIComponent("'Sync Ledger'!A:A"));if((ledger.values||[]).some(row=>String(row[0])===eventId))return {duplicate:true,recovered:true};}
   const requests=[],rowMappings=[],append=(tab,row)=>requests.push(sheetsAppendRequest(ids[tab],row));
   const upsert=async(tab,key,cacheKey,row)=>{
+    if(tab==="Visitor Profiles"&&Number.isInteger(event.profileRowIndex)&&event.profileRowIndex>=1){
+      requests.push(sheetsUpdateRequest(ids[tab],event.profileRowIndex,row));
+      return;
+    }
     const useCache=tab!=="Visitor Profiles"&&!!cacheKey;
     const loc=await sheetsFindRow(env,accessToken,tab,key,useCache?cacheKey:null);
     requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));
