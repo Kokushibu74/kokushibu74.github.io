@@ -2296,7 +2296,7 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   const upsert=async(tab,key,cacheKey,row)=>{const loc=await sheetsFindRow(env,accessToken,tab,key,cacheKey);requests.push(loc.exists?sheetsUpdateRequest(ids[tab],loc.rowIndex,row):sheetsAppendRequest(ids[tab],row));rowMappings.push([cacheKey,String(loc.rowIndex)]);};
   const visitorId=String(event.visitorId||event.profile?.visitorId||event.profile?.id||event.record?.visitorId||event.record?.id||"");
   const at=Number(event.at||event.record?.at||event.record?.capturedAt||event.record?.requestedAt)||Date.now();
-  if(event.profile){const profile=sheetsSafeProfile(event.profile),id=String(profile.visitorId||profile.id||visitorId);if(id)await upsert("Visitor Profiles",id,"sheets:row:profile:"+id,sheetsProfileRow(profile));}
+  if(event.profile&&!event.skipProfileUpsert){const profile=sheetsSafeProfile(event.profile),id=String(profile.visitorId||profile.id||visitorId);if(id)await upsert("Visitor Profiles",id,"sheets:row:profile:"+id,sheetsProfileRow(profile));}
   const daily=event.daily||event.dayRecord;
   if(daily&&visitorId){const day=String(event.day||daily.day||"");if(day)await upsert("Daily Summary",day+"|"+visitorId,"sheets:row:daily:"+day+":"+visitorId,sheetsDailyRow(day,visitorId,daily));}
   if(event.kind==="track"){
@@ -2304,6 +2304,7 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
     if(event.newSession){const p=event.profile||{},n=p.network||{},d=p.device||{};append("Visit Sessions",[eventId,visitorId,event.sessionId||"",sheetsIso(at),event.page||"",n.country||"",n.city||"",d.deviceType||"",d.browser||"",sheetsRetention(at,90)]);if(!event.first)append("Return History",[eventId,visitorId,event.sessionId||"",sheetsIso(at),p.totalSessions||0,p.totalPageViews||0,sheetsIso(p.firstSeen),sheetsIso(p.lastSeen),n.city||"",n.country||"",[d.deviceType,d.deviceModel,d.os,d.browser].filter(Boolean).join(" / "),sheetsRetention(at,365)]);}
     if(event.deviceChanged){const p=event.profile||{},d=p.device||{};append("Device History",[eventId,visitorId,sheetsIso(at),d.deviceType||"",d.deviceModel||"",d.platform||"",d.os||"",d.browser||"",d.userAgent||"",sheetsRetention(at,365)]);}
   }else if(event.kind==="visitor_history"||event.kind==="legacy_history"){append("Visitor Events",sheetsHistoryRow(eventId,event.record||{},visitorId));}
+  else if(event.kind==="legacy_device"){const p=event.profile||{},d=p.device||{};append("Device History",[eventId,visitorId,sheetsIso(at),d.deviceType||"",d.deviceModel||"",d.platform||"",d.os||"",d.browser||"",d.userAgent||"",sheetsRetention(at,365)]);}
   else if(event.kind==="location_history"||event.kind==="legacy_location"){const r=event.record||{};append("Location History",[eventId,visitorId||r.visitorId||"",r.latitude??"",r.longitude??"",r.accuracyMeters??"",r.source||"",r.capturedAtUtc||sheetsIso(r.capturedAt),r.capturedAtBdt||"",sheetsRetention(r.capturedAt||at,Number(r.retentionDays)||90)]);}
   else if(event.kind==="location_consent"||event.kind==="legacy_consent"){const r=event.record||{};append("Location Consent",[eventId,visitorId||r.visitorId||"",!!r.consent,r.policyVersion||"",r.acceptedAtUtc||"",r.updatedAtUtc||"",r.withdrawnAtUtc||""]);}
   else if(event.kind==="deletion_request"||event.kind==="legacy_deletion_request"){const r=event.record||{};append("Deletion Requests",[eventId,visitorId||r.visitorId||"",r.requestedAtUtc||sheetsIso(r.requestedAt),r.requestedAtBdt||"",r.status||"pending",r.scope||""]);}
@@ -2313,6 +2314,67 @@ async function sheetsWriteEvent(env,accessToken,ids,event,attempts=1){
   for(const [key,value] of rowMappings)await env.VISITOR_KV.put(key,value,{expirationTtl:31536000});
   await env.VISITOR_KV.put(doneKey,"1",{expirationTtl:90*86400});
   return {duplicate:false,writes:requests.length};
+}
+
+async function sheetsMigrationEnqueue(env){
+  if(!env.VISITOR_KV||!env.VISITOR_SHEETS_QUEUE)throw new Error("Visitor KV or Sheets Queue binding is unavailable");
+  const listKeys=async prefix=>{const names=[];let cursor;do{const page=await env.VISITOR_KV.list({prefix,limit:1000,...(cursor?{cursor}:{})});names.push(...(page.keys||[]).map(k=>k.name));cursor=page.list_complete?undefined:page.cursor;}while(cursor);return names;};
+  const readMany=async names=>{const out=[];for(let i=0;i<names.length;i+=25){const batch=await Promise.all(names.slice(i,i+25).map(async key=>{const raw=await env.VISITOR_KV.get(key);if(raw===null)return {key,value:null};let value;try{value=JSON.parse(raw);}catch{throw new Error("Invalid JSON in legacy visitor record: "+key);}return {key,value};}));out.push(...batch.filter(x=>x.value!==null));}return out;};
+  const prefixes=["visitor:","um:v1:visitor:","daily:","um:v1:history:visitor:","loc:v1:history:visitor:","loc:v1:consent:","loc:v1:delete-request:","security:event:v1:"];
+  const keyGroups=await Promise.all(prefixes.map(listKeys));
+  const [primaryProfiles,legacyProfiles,dailies,histories,locations,consents,deletions,security]=await Promise.all(keyGroups.map(readMany));
+  const profiles=new Map();
+  for(const {value:p} of [...primaryProfiles,...legacyProfiles]){
+    const id=String(p.visitorId||p.id||"");if(!id)continue;
+    const old=profiles.get(id);
+    if(!old||Number(p.lastSeen||0)>Number(old.lastSeen||0))profiles.set(id,p);
+    else if(p.customId&&!old.customId)old.customId=p.customId;
+  }
+  const events=[];
+  for(const [id,p] of profiles)events.push({eventId:"migration:profile:"+id,kind:"profile",visitorId:id,profile:sheetsSafeProfile(p),at:Number(p.lastSeen)||Date.now()});
+  const profileFor=id=>profiles.get(String(id||""))||null;
+  for(const {key,value:d} of dailies){
+    const parts=key.split(":"),day=parts[1]||"",id=parts[3]||"";if(!id||!day)continue;
+    const daily={...d,day,firstSeen:d.firstSeen||profileFor(id)?.firstSeen||null,lastSeen:d.lastSeen||profileFor(id)?.lastSeen||null};
+    if(daily.network?.ip)daily.network={...daily.network,ip:sheetsMaskIp(daily.network.ip)};
+    events.push({eventId:"migration:daily:"+key,kind:"daily_summary",visitorId:id,day,daily,at:Number(daily.lastSeen)||Date.now()});
+  }
+  const historyRows=histories.map(({key,value})=>({key,record:value,visitorId:String(value.id||key.split(":")[4]||"")})).sort((a,b)=>Number(a.record.at||0)-Number(b.record.at||0));
+  for(const item of historyRows)events.push({eventId:"migration:history:"+item.key,kind:"visitor_history",visitorId:item.visitorId,record:item.record,at:Number(item.record.at)||Date.now()});
+  const pageViews=historyRows.filter(x=>x.record.event?.type==="page_view"&&x.record.event?.sessionId);
+  const sessionsByVisitor=new Map();
+  for(const item of pageViews){const id=item.visitorId,session=String(item.record.event.sessionId),key=id+":"+session;if(!sessionsByVisitor.has(key))sessionsByVisitor.set(key,{visitorId:id,sessionId:session,rows:[]});sessionsByVisitor.get(key).rows.push(item);}
+  const sessionsByVisitorSorted=new Map();
+  for(const session of sessionsByVisitor.values()){session.rows.sort((a,b)=>Number(a.record.at||0)-Number(b.record.at||0));if(!sessionsByVisitorSorted.has(session.visitorId))sessionsByVisitorSorted.set(session.visitorId,[]);sessionsByVisitorSorted.get(session.visitorId).push(session);}
+  let pageViewCount=0,sessionCount=0,returnSessionCount=0;
+  for(const [id,sessions] of sessionsByVisitorSorted){
+    sessions.sort((a,b)=>Number(a.rows[0]?.record.at||0)-Number(b.rows[0]?.record.at||0));
+    let cumulativeViews=0;const baseProfile=profileFor(id)||{};
+    for(let si=0;si<sessions.length;si++){
+      const session=sessions[si];sessionCount++;if(si>0)returnSessionCount++;
+      for(let ri=0;ri<session.rows.length;ri++){
+        const item=session.rows[ri],e=item.record.event||{},at=Number(item.record.at)||Date.now();cumulativeViews++;
+        const snapshot=sheetsSafeProfile({...baseProfile,totalSessions:si+1,totalPageViews:cumulativeViews,lastSeen:at});
+        events.push({eventId:"migration:pageview:"+item.key,kind:"track",at,visitorId:id,sessionId:session.sessionId,page:String(e.path||""),pageView:true,newSession:ri===0,first:si===0,deviceChanged:false,skipProfileUpsert:true,profile:snapshot});
+        pageViewCount++;
+      }
+    }
+  }
+  for(const [id,p] of profiles)events.push({eventId:"migration:device:"+id,kind:"legacy_device",visitorId:id,profile:sheetsSafeProfile(p),at:Number(p.lastSeen)||Date.now()});
+  const consentByVisitor=new Map(consents.map(x=>[String(x.value.visitorId||x.key.split(":").pop()),x.value]));
+  const deletionRows=deletions.map(x=>({key:x.key,value:x.value,visitorId:String(x.value.visitorId||"")}));
+  const pendingGpsDelete=new Set(deletionRows.filter(x=>String(x.value.status||"").toLowerCase()==="pending"&&String(x.value.scope||"").includes("gps")).map(x=>x.visitorId));
+  let locationIncluded=0,locationSkipped=0;
+  for(const {key,value:r} of locations){
+    const id=String(r.visitorId||key.split(":")[4]||""),consent=consentByVisitor.get(id);
+    if(!consent||consent.consent!==true||consent.withdrawnAtUtc||pendingGpsDelete.has(id)){locationSkipped++;continue;}
+    events.push({eventId:"migration:location:"+key,kind:"location_history",visitorId:id,record:r,at:Number(r.capturedAt)||Date.now()});locationIncluded++;
+  }
+  for(const {key,value:r} of consents){const id=String(r.visitorId||key.split(":").pop());events.push({eventId:"migration:consent:"+key,kind:"location_consent",visitorId:id,record:r,at:Date.now()});}
+  for(const {key,value:r} of deletionRows)events.push({eventId:"migration:delete:"+key,kind:"deletion_request",visitorId:r.visitorId,record:r,at:Number(r.requestedAt)||Date.now()});
+  for(const {key,value:r} of security)events.push({eventId:"migration:security:"+key,kind:"visitor_history",visitorId:String(r.visitorId||""),record:{at:r.at,kind:"security",id:r.visitorId,event:r},at:Number(r.at)||Date.now()});
+  let enqueued=0;for(let i=0;i<events.length;i+=50){const chunk=events.slice(i,i+50);await env.VISITOR_SHEETS_QUEUE.sendBatch(chunk.map(body=>({body,contentType:"json"})));enqueued+=chunk.length;}
+  return {sourceKeys:{profiles:primaryProfiles.length,legacyProfiles:legacyProfiles.length,daily:dailies.length,visitorHistory:histories.length,locationHistory:locations.length,locationConsent:consents.length,deletionRequests:deletions.length,securityEvents:security.length},uniqueProfiles:profiles.size,pageViews:pageViewCount,sessions:sessionCount,returnSessions:returnSessionCount,locationIncluded,locationSkipped,enqueued,at:new Date().toISOString()};
 }
 async function sendVisitorSheetsEvent(env,event){if(!env.VISITOR_SHEETS_QUEUE)return false;try{await env.VISITOR_SHEETS_QUEUE.send(event);return true;}catch(error){console.error("Visitor Sheets queue enqueue failed",String(error&&error.message||error).slice(0,180));return false;}}
 
@@ -2744,6 +2806,11 @@ export default {
     for(const message of batch.messages){
       const event=message.body||{};
       try{
+        if(event.kind==="migration_scan"){
+          const result=await sheetsMigrationEnqueue(env);
+          await env.BOT_CONFIG_KV.put("sheets:migration:result",JSON.stringify(result),{expirationTtl:7*86400});
+          message.ack();continue;
+        }
         if(event.kind==="diagnostic"){
           let email="";try{email=String(JSON.parse(env.GA4_SERVICE_ACCOUNT_JSON||"{}").client_email||"")}catch{}
           try{
