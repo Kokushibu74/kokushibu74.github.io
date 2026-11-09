@@ -877,7 +877,7 @@ def build_alert_items(items, now=None):
     candidates.sort(key=lambda item: str(item.get("publishedAt") or item.get("pubDate") or ""), reverse=True)
     clusters = []
     for item in candidates:
-        match = next((cluster for cluster in clusters if alert_event_matches(item, cluster["item"])), None)
+        match = next((cluster for cluster in clusters if alert_event_matches(item, {**cluster["item"], "sourceEvidence": cluster["sources"]})), None)
         if match is None:
             clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or [])})
             continue
