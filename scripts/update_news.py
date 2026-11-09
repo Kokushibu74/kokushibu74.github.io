@@ -82,6 +82,10 @@ BREAKING_EVENT_RE = re.compile(
     r"killed|death toll|died|dies|fire breaks out|major fire|explosion|blast|crash kills|earthquake|cyclone|flood|"
     r"mass casualty|emergency declared|resigns|resigned|steps down|coup|war|armed conflict|airstrike|invasion|ceasefire|embassy evacuation|Bangladeshi nationals|Bangladesh embassy|terror attack|bombing|hostage|attack on|evacuated)", re.I
 )
+ALERT_SIGNAL_RE = re.compile(
+    r"(?:নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|"
+    r"killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)", re.I
+)
 BREAKING_FOLLOWUP_RE = re.compile(
     r"(?:রিমান্ডে|মামলা(?: দায়ের| করা| হয়েছে| হয়েছে)?|আসামি\s*[০-৯0-9]+|চার্জশিট|"
     r"জিজ্ঞাসাবাদ|তদন্ত(?: চলছে|ে)|গ্রেপ্তার|গ্রেফতার|আটক|মামলার শুনানি|আদালতে হাজির|remanded|arrested|arrest in|trial|hearing|convicted|sentenced|case update|charges? filed|case filed|court orders|"
@@ -858,7 +862,7 @@ def build_alert_items(items, now=None):
         if not isinstance(original, dict) or not str(original.get("title") or "").strip():
             continue
         text = " ".join(str(original.get(field) or "") for field in ("title", "summary", "previewSummary"))
-        if not BREAKING_EVENT_RE.search(text) or BREAKING_FOLLOWUP_RE.search(text):
+        if not (original.get("isBreaking") is True or BREAKING_EVENT_RE.search(text) or ALERT_SIGNAL_RE.search(text)) or BREAKING_FOLLOWUP_RE.search(text):
             continue
         try:
             published = datetime.fromisoformat(str(original.get("publishedAt") or original.get("pubDate") or "").replace("Z", "+00:00"))
