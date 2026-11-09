@@ -27,7 +27,13 @@ const makeRequest=(path,{method="GET",body,ip="198.51.100.1",origin="https://kok
   Object.defineProperty(request,"cf",{value:{city:"Dhaka",region:"Dhaka",country:"BD",timezone:"Asia/Dhaka"}});
   return request;
 };
-const call=async(env,path,options)=>worker.fetch(makeRequest(path,options),env);
+const call=async(env,path,options)=>{
+  const pending=[];
+  const ctx={waitUntil(promise){pending.push(Promise.resolve(promise));}};
+  const response=await worker.fetch(makeRequest(path,options),env,ctx);
+  await Promise.allSettled(pending);
+  return response;
+};
 const visitorId="VIS-A1B2C3D4E5F6",sessionId="SES-102030405060";
 const profile={id:visitorId,lastSessionId:sessionId,firstSeen:Date.now(),lastSeen:Date.now()};
 
