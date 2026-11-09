@@ -2803,7 +2803,9 @@ export default {
   },
   async queue(batch,env,ctx){
     let auth=null,ids=null;
-    for(const message of batch.messages){
+    for(let messageIndex=0;messageIndex<batch.messages.length;messageIndex++){
+      if(messageIndex>0)await new Promise(resolve=>setTimeout(resolve,1200));
+      const message=batch.messages[messageIndex];
       const event=message.body||{};
       try{
         if(event.kind==="migration_scan"){
