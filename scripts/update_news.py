@@ -779,19 +779,41 @@ def alert_event_tokens(item):
         token for token in re.findall(r"[\w]+", text, flags=re.UNICODE)
         if len(token) > 1 and token not in ALERT_CLUSTER_STOPWORDS and not token.isdigit()
     }
+    tokens.update("number:" + number for number in re.findall(r"\d+", text))
     tokens.add("event:" + alert_event_type(item))
     return tokens
 
 
 def alert_event_locations(item):
     text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
-    return {place for place in ALERT_CLUSTER_LOCATIONS if place in text}
+    aliases = (
+        ("dhaka", ("dhaka", "ঢাকা")), ("chattogram", ("chattogram", "chittagong", "চট্টগ্রাম")),
+        ("sylhet", ("sylhet", "সিলেট")), ("khulna", ("khulna", "খুলনা")),
+        ("rajshahi", ("rajshahi", "রাজশাহী")), ("barishal", ("barishal", "বরিশাল")),
+        ("rangpur", ("rangpur", "রংপুর")), ("mymensingh", ("mymensingh", "ময়মনসিংহ", "ময়মনসিংহ")),
+        ("coxsbazar", ("cox's bazar", "cox bazar", "কক্সবাজার")),
+        ("jashore", ("jashore", "jessore", "যশোর")),
+        ("gazipur", ("gazipur", "গাজীপুর")), ("narayanganj", ("narayanganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ")),
+        ("cumilla", ("cumilla", "comilla", "কুমিল্লা")), ("feni", ("feni", "ফেনী")),
+        ("noakhali", ("noakhali", "নোয়াখালী", "নোয়াখালী")), ("kurigram", ("kurigram", "কুড়িগ্রাম")),
+        ("sunamganj", ("sunamganj", "সুনামগঞ্জ")), ("satkhira", ("satkhira", "সাতক্ষীরা")),
+        ("bogura", ("bogura", "bogra", "বগুড়া", "বগুড়া")), ("pabna", ("pabna", "পাবনা")),
+        ("tangail", ("tangail", "টাঙ্গাইল")), ("bandarban", ("bandarban", "বান্দরবান")),
+        ("rangamati", ("rangamati", "রাঙামাটি")), ("bhola", ("bhola", "ভোলা")),
+        ("patuakhali", ("patuakhali", "পটুয়াখালী", "পটুয়াখালী")),
+        ("bangladesh", ("bangladesh", "বাংলাদেশ")),
+    )
+    return {canonical for canonical, names in aliases if any(name in text for name in names)}
 
 
 def alert_event_matches(left, right):
     """Conservatively match differently worded coverage of the same recent incident."""
     if key_for(left) == key_for(right):
         return True
+    left_sources = {canonical_publisher_name(value).lower() for value in (left.get("sourceEvidence") or [left.get("source")]) if value}
+    right_sources = {canonical_publisher_name(value).lower() for value in (right.get("sourceEvidence") or [right.get("source")]) if value}
+    if left_sources & right_sources:
+        return False
     left_type, right_type = alert_event_type(left), alert_event_type(right)
     if left_type != right_type or left_type == "general":
         return False
