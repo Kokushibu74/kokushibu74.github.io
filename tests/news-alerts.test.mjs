@@ -119,6 +119,14 @@ test("long source-rich alerts use Telegram text mode instead of an oversized med
   assert.deepEqual(methods,["sendMessage"]);
 });
 
+test("Worker checks the legacy alert key before using a clustered event ID",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.match(source,/let previous=await env\.BOT_CONFIG_KV\.get\(stateKey,"json"\)/);
+  assert.match(source,/if\(!previous&&eventId\)/);
+  assert.match(source,/legacyKey=await newsAlertKey\(title,String\(item\.source\|\|item\.publisherName\|\|""\)\)/);
+  assert.match(source,/news-alert:v2:"\+legacyKey/);
+});
+
 test("Bangladesh alert uses Bengali identity and real district location",()=>{const x=item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"abcd"});assert.ok(m.includes("🇧🇩 <b>BANGLADESH ALERT NETWORK</b>"));assert.ok(m.includes("নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
 test("international alert uses global identity and does not hardcode Dhaka",()=>{const x=item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"1234"});assert.ok(m.includes("🌐 <b>GLOBAL ALERT NETWORK</b>"));assert.ok(m.includes("Chile"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
 test("alert update is visibly numbered",()=>{const x=item();const d=evaluateNewsAlert(x,{now});assert.ok(formatAlertMessage(x,d,{key:"abcd",updateNo:2}).includes("UPDATE 02"));});
