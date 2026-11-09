@@ -69,7 +69,7 @@ async function updateJournal(env, message, mutate) {
   throw new Error("The Journal changed during this update. Reload the Blog Manager and try again.");
 }
 
-function validateCharts(input) {
+export function validateCharts(input) {
   const charts = Array.isArray(input) ? input : [];
   if (charts.length > 8) throw new Error("A blog post can contain up to 8 charts.");
   return charts.map((chart, index) => {
@@ -92,7 +92,7 @@ function validateCharts(input) {
   });
 }
 
-function validatePost(input, existing, now = Date.now()) {
+export function validatePost(input, existing, now = Date.now()) {
   const id = cleanText(input?.id, 80);
   const title = cleanText(input?.title, 160);
   const description = cleanText(input?.description, 600);
