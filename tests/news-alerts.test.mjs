@@ -48,7 +48,7 @@ test("peaceful demonstration is not a serious violence alert",()=>assert.equal(e
 test("celebrity natural death is not an accident alert",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় অভিনেতার মৃত্যু",summary:"পরিবারের পক্ষ থেকে নিশ্চিত"}),{now}).reason,"not_significant"));
 test("major international earthquake is accepted as a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"}),{now}).scope,"global"));
 test("Bangladesh feed category alone cannot localize a foreign event",()=>assert.equal(evaluateNewsAlert(item({title:"Major earthquake kills people in Chile",summary:"South America",category:"Bangladesh"}),{now}).eligible,false));
-test("official local warning can localize a weather story without a place in its headline",()=>assert.equal(evaluateNewsAlert(item({title:"Severe flood warning issued",summary:"Emergency bulletin",category:"Weather & Disasters",sourceEvidence:["The Daily Star"]}),{now,officialSignal:true}).eligible,true));
+test("official local warning can localize a weather story without a place in its headline",()=>assert.equal(evaluateNewsAlert(item({title:"Severe flood warning issued",summary:"Emergency bulletin",category:"Weather & Disasters",location:{city:"Dhaka",country:"Bangladesh"},sourceEvidence:["The Daily Star"]}),{now,officialSignal:true}).eligible,true));
 test("district-only Bangladesh location is recognized",()=>assert.equal(evaluateNewsAlert(item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"}),{now}).eligible,true));
 test("international war affecting Bangladeshi nationals qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"Middle East war forces evacuation of Bangladeshi nationals",summary:"Bangladeshi nationals evacuated",category:"World"}),{now}).eligible,true));
 test("international attack affecting Bangladeshis qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"Terror attack targets Bangladeshi nationals abroad",summary:"Bangladeshi nationals injured",category:"World"}),{now}).eligible,true));
@@ -72,6 +72,13 @@ test("official DDM signal requires a recent dated warning",()=>assert.equal(pars
 test("stale official warning is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Flood Alert Warning Last update: 2026-10-20 20:00:00 Bangladesh district flood warning",item({title:"Bangladesh severe flood warning"}),now).confirmed,false));
 test("official page without matching hazard is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Heat wave warning Last update: 2026-11-03 20:00:00 Bangladesh",item({title:"Bangladesh severe flood warning"}),now).confirmed,false));
 test("official bulletin for a different district is not corroboration",()=>assert.equal(parseOfficialDisasterSignal("Flood Alert Warning Last update: 2026-11-03 20:00:00 Bangladesh district flood warning Sylhet",item({title:"Dhaka flood warning"}),now).confirmed,false));
+test("Bangladesh DDM bulletin cannot corroborate a foreign-location weather event",()=>{
+  const page="Flood Alert Warning Last update: 2026-11-03 20:00:00 Bangladesh district flood warning Cox's Bazar";
+  const foreign=item({title:"Greece flood warning",summary:"Flood warning for a Greek island",location:"Greece",category:"Weather & Disasters"});
+  assert.equal(parseOfficialDisasterSignal(page,foreign,now).confirmed,false);
+  const decision=evaluateNewsAlert({...foreign,sourceEvidence:[],source:"",publisherUrl:"https://example.com/story"},{now,officialSignal:true});
+  assert.equal(decision.eligible,false);
+});
 
 test("video failure falls back to photo",async()=>{
   const calls=[];
