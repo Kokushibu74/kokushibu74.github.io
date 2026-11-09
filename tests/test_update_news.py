@@ -82,6 +82,20 @@ class NewsLogicTests(unittest.TestCase):
         self.assertEqual(news.canonical_publisher_name("BSS"), "BSS")
         self.assertEqual(news.canonical_publisher_name("AP News"), "AP")
 
+    def test_alert_event_builder_canonicalizes_cached_publisher_aliases(self):
+        now = datetime.now(timezone.utc)
+        published = (now - timedelta(minutes=5)).isoformat()
+        items = [
+            {"title": "যশোরে আগুনে পুড়ে ৭ দোকান", "summary": "যশোরে আগুনে ৭ দোকান পুড়ে গেছে",
+             "source": "JagoNews24", "sourceEvidence": ["JagoNews24"], "publishedAt": published},
+            {"title": "যশোরে আগুনে পুড়ে ৭ দোকান", "summary": "যশোরে আগুনে ৭ দোকান পুড়ে গেছে",
+             "source": "Jago News 24", "sourceEvidence": ["Jago News 24"], "publishedAt": published},
+        ]
+        alerts = news.build_alert_items(items, now=now)
+        self.assertEqual(len(alerts), 1)
+        self.assertEqual(alerts[0]["sourceEvidence"], ["Jago News 24"])
+        self.assertEqual(alerts[0]["corroborationCount"], 1)
+
     def test_source_evidence_keeps_original_publisher_links_but_not_google_redirects(self):
         item = {"sourceEvidence": []}
         news.merge_source_evidence(item, "The Daily Star", "https://www.thedailystar.net/news/example")
