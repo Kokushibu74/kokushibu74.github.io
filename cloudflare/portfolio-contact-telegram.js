@@ -2102,7 +2102,8 @@ async function newsBreakingAlertCheck(env){
   }
   const mainItems=Array.isArray(feed)?feed.slice(0,160):(Array.isArray(feed?.items)?feed.items.slice(0,160):[]);
   const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
-  const items=Array.isArray(feed)?mainItems:[...mainItems,...weatherItems];
+  // Prefer the event-clustered alert-only stream; retain the old feed path during rollout.
+  const items=Array.isArray(feed)?mainItems:(Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,120):[...mainItems,...weatherItems]);
   const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
@@ -2128,7 +2129,8 @@ async function newsBreakingAlertCheck(env){
     const decision=evaluateNewsAlert(item,{now,officialSignal:official.confirmed});
     if(official.confirmed&&decision.eligible)decision.official=official;
     const link=String(item.publisherUrl||item.link||"");
-    const key=await newsAlertKey(title,String(item.source||item.publisherName||""));
+    const eventId=String(item.alertEventId||"").trim();
+    const key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
     const rejectAuditKey="news-alert-reject:v1:"+key;
     if(!decision.eligible){
       const reason=String(decision.reason||"unknown");
