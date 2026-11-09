@@ -21,7 +21,7 @@
 .journal-timeline{--line-progress:0;position:relative;display:grid;gap:18px;padding:5px 0 8px 34px}
 .journal-timeline:before,.journal-timeline:after{content:"";position:absolute;left:10px;top:8px;bottom:12px;width:2px;border-radius:99px}
 .journal-timeline:before{background:linear-gradient(180deg,rgba(0,229,255,.17),rgba(168,85,247,.12))}
-.journal-timeline:after{bottom:auto;height:calc((100% - 20px)*var(--line-progress));background:linear-gradient(180deg,#00e5ff,#7b8dff 58%,#a855f7);box-shadow:0 0 12px rgba(0,229,255,.42);transition:height .12s linear}
+.journal-timeline:after{bottom:12px;height:auto;transform:scaleY(var(--line-progress));transform-origin:top;background:linear-gradient(180deg,#00e5ff,#7b8dff 58%,#a855f7);box-shadow:0 0 12px rgba(0,229,255,.42);transition:transform .12s linear}
 .journal-card{position:relative;min-width:0;opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.8,.2,1)}
 .journal-card.is-visible{opacity:1;transform:translateY(0);transition-delay:var(--reveal-delay,0ms)}
 .journal-card:before{content:"";position:absolute;left:-30px;top:24px;width:10px;height:10px;border:2px solid #00e5ff;border-radius:50%;background:#07111d;box-shadow:0 0 0 5px rgba(0,229,255,.07),0 0 16px rgba(0,229,255,.5);z-index:2;transition:border-color .3s,box-shadow .3s,transform .3s}
