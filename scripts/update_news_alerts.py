@@ -377,7 +377,25 @@ def article_plain_text(raw):
     value = re.sub(r"<[^>]+>", " ", value)
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
-def fetch_article_incident_time(story):
+LOCATION_PATTERNS = [
+    re.compile(r"[\u0980-\u09FF]{2,}(?:\s+[\u0980-\u09FF]{2,}){0,2}\s+(?:গ্রাম|মহল্লা|এলাকা|বাজার|ইউনিয়ন|উপজেলা|থানা|জেলা)(?:ে|ের|য়|তে|র)?", re.I),
+    re.compile(r"(?:in|near|at)\s+[A-Za-z][A-Za-z .'-]{1,45}\s+(?:village|neighborhood|market|union|upazila|thana|district)", re.I),
+]
+
+def find_incident_location_phrase(text):
+    value = clean(text)[:12000]
+    found = []
+    for pattern in LOCATION_PATTERNS:
+        for match in pattern.finditer(value):
+            phrase = re.sub(r"\s+", " ", match.group(0)).strip(" ,.;:।")
+            if phrase and phrase.lower() not in {x.lower() for x in found}:
+                found.append(phrase[:100])
+            if len(found) >= 6:
+                return ", ".join(found)
+    return ", ".join(found)
+
+def fetch_article_enrichment(story):
+
     url = str(story.get("url") or "").strip()
     try:
         parsed = urlparse(url)
@@ -398,10 +416,13 @@ def fetch_article_incident_time(story):
             if not (final_host == host or final_host.endswith("." + host) or host.endswith("." + final_host)):
                 return ""
             raw = response.read(1_200_000)
-        text = article_plain_text(raw.decode("utf-8", errors="replace"))
-        return find_incident_time_phrase(text[:30000])
+        text = article_plain_text(raw.decode("utf-8", errors="replace"))[:30000]
+        return {
+            "incidentTimeText": find_incident_time_phrase(text),
+            "locationText": find_incident_location_phrase(text),
+        }
     except Exception:
-        return ""
+        return {}
 
 def enrich_alert_incident_times(alerts, max_articles=10):
     tasks = []
@@ -410,7 +431,10 @@ def enrich_alert_incident_times(alerts, max_articles=10):
         for story in stories:
             if not isinstance(story, dict):
                 continue
-            if find_incident_time_phrase(" ".join(str(story.get(k) or "") for k in ("title", "summary"))):
+            story_text = " ".join(str(story.get(k) or "") for k in ("title", "summary"))
+            has_time = bool(find_incident_time_phrase(story_text))
+            has_location = bool(find_incident_location_phrase(story_text)) and bool(BANGLADESH_RE.search(story_text))
+            if has_time and has_location:
                 continue
             url = str(story.get("url") or "")
             if url and not any(existing[1] == url for existing in tasks):
@@ -419,11 +443,13 @@ def enrich_alert_incident_times(alerts, max_articles=10):
     if not tasks:
         return alerts
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        phrases = list(pool.map(lambda row: fetch_article_incident_time(row[0]), tasks))
-    for (story, _url), phrase in zip(tasks, phrases):
-        if phrase:
-            story["incidentTimeText"] = phrase
+        enrichments = list(pool.map(lambda row: fetch_article_enrichment(row[0]), tasks))
+    for (story, _url), enrichment in zip(tasks, enrichments):
+        if enrichment.get("incidentTimeText"):
+            story["incidentTimeText"] = enrichment["incidentTimeText"]
             story["incidentTimeSource"] = str(story.get("name") or story.get("source") or "")
+        if enrichment.get("locationText"):
+            story["locationText"] = enrichment["locationText"]
     return alerts
 
 def cluster_alerts(candidates):
