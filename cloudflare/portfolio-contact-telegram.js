@@ -2172,6 +2172,10 @@ async function newsBreakingAlertCheck(env){
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
   const feedAgeMinutes=Number.isFinite(feedUpdatedMs)?Math.round((now-feedUpdatedMs)/60000):null;
+  if(feedAgeMinutes!==null&&feedAgeMinutes>45){
+    console.warn("Bangladesh alert feed is stale",JSON.stringify({feedAgeMinutes}));
+    return {skipped:"alert feed stale",feedAgeMinutes};
+  }
   let officialPagesPromise=null,scanned=0,audited=0;
   for(const item of items){
     if(!item||typeof item!=="object")continue;
@@ -2270,7 +2274,7 @@ async function newsBreakingAlertCheck(env){
       await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
     }
   }
-  const summary={at:now,feedUpdatedAt,feedAgeMinutes,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
+  const summary={at:now,feedUpdatedAt,feedAgeMinutes,sourceCount:Number(feed?.sourceCount)||0,healthySources:Number(feed?.healthySourceCount)||0,failedSources:Number(feed?.failedSourceCount)||0,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
   try{
     const summaryKey="news-alert-audit:v1:last-run";
     const previous=await env.BOT_CONFIG_KV.get(summaryKey,"json");
