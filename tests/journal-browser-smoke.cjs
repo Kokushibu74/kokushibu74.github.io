@@ -1,5 +1,8 @@
 const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
+const { createServer } = require("node:http");
+const { readFile } = require("node:fs/promises");
+const { resolve, extname, sep } = require("node:path");
 
 const fence = String.fromCharCode(96).repeat(3);
 const tick = String.fromCharCode(96);
@@ -7,6 +10,8 @@ const articleBody = [
   "![Cover image](https://example.com/journal-cover.jpg)",
   "# Browser test section",
   "This article checks **bold text**, inline " + tick + "code" + tick + " and responsive reading.",
+  "Documentation: https://example.com/docs.",
+  "npm run build",
   fence + "js",
   "const answer = 42;",
   fence,
@@ -33,6 +38,20 @@ const samplePost = {
 };
 
 (async () => {
+  const root = process.cwd();
+  const mime = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".woff2": "font/woff2" };
+  const server = createServer(async (request, response) => {
+    try {
+      const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
+      const file = resolve(root, pathname === "/" ? "index.html" : "." + pathname);
+      if (file !== root && !file.startsWith(root + sep)) { response.writeHead(403).end(); return; }
+      const body = await readFile(file);
+      response.writeHead(200, { "content-type": mime[extname(file).toLowerCase()] || "application/octet-stream", "cache-control": "no-store" });
+      response.end(body);
+    } catch { response.writeHead(404).end("Not found"); }
+  });
+  await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
+  const baseUrl = "http://127.0.0.1:" + server.address().port;
   const browser = await chromium.launch({ headless: true, args: ["--no-sandbox"] });
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -42,12 +61,12 @@ const samplePost = {
       status: 200,
       headers: {
         "content-type": "application/json",
-        "access-control-allow-origin": "https://kokushibu74.github.io"
+        "access-control-allow-origin": "*"
       },
       body: JSON.stringify({ ok: true, posts: [samplePost] })
     }));
 
-    const response = await page.goto("https://kokushibu74.github.io/projects.html", {
+    const response = await page.goto(baseUrl + "/projects.html", {
       waitUntil: "domcontentloaded",
       timeout: 60000
     });
@@ -81,6 +100,9 @@ const samplePost = {
     await page.waitForFunction(() => Math.abs(document.querySelector("#journal-article-view").getBoundingClientRect().top - 14) < 40);
     await page.waitForSelector(".journal-chart svg");
     await page.waitForSelector(".journal-code-copy");
+    assert.equal(await page.locator(".journal-article-body a[href=\"https://example.com/docs\"] , .journal-article-body a[href=\"https://example.com/docs.\"]").count(), 1, "Plain URLs should become clickable links.");
+    assert.ok(await page.locator(".journal-article-body pre[data-language=\"bash\"]").count() >= 1, "Recognized terminal commands should become code blocks.");
+    assert.ok(await page.locator(".journal-code-copy").count() >= 2, "Fenced code and detected commands should both be copyable.");
     await page.locator("[data-journal-back]").click();
     await page.waitForFunction(() => document.querySelector("#journal-article-view").hidden);
 
@@ -98,9 +120,10 @@ const samplePost = {
     assert.equal(mobile.sliderExists, true, "Existing Project Slider must remain present");
     assert.deepEqual(pageErrors, [], "Page should not throw browser runtime errors");
 
-    console.log("Browser smoke passed: live page, scroll reveal, desktop hover, full article, charts, code block, mobile layout and preserved Project Slider.");
+    console.log("Browser smoke passed: branch-local page, scroll reveal, desktop hover, full article, auto-links, copyable commands, charts, mobile layout and preserved Project Slider.");
   } finally {
     await browser.close();
+    await new Promise(resolve => server.close(resolve));
   }
 })().catch(error => {
   console.error(error);

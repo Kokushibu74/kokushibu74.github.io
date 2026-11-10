@@ -186,26 +186,23 @@
     let activeId="";
     const wrap=document.createElement("div");wrap.className="user-tools blog-manager";
     const intro=document.createElement("div");intro.className="blog-manager-intro";
-    intro.innerHTML="<b>Publish from Telegram</b><small>Draft text, scheduled posts and Trash stay AES-GCM encrypted. Uploaded images go to the public portfolio media folder immediately, so use only images intended for public viewing; only published article text is returned to the site.</small>";
+    intro.innerHTML="<b>Smart publishing</b><small>শুধু Title, মূল বিবরণ এবং প্রয়োজন হলে একটি ছবি দিন। Short details, category, links ও command formatting স্বয়ংক্রিয়ভাবে সাজানো হবে। Draft ও প্রকাশিত লেখা AES-GCM encrypted অবস্থায় সংরক্ষিত থাকে; আপলোড করা ছবি public media folder-এ যায়।";
     const form=document.createElement("div");form.className="blog-editor";
     form.innerHTML=`
-      <div class="blog-editor-head"><div><span class="section-kicker">JOURNAL CMS</span><h3 id="blog-form-heading">New article</h3></div><button type="button" class="blog-new" id="blog-new">＋ New</button></div>
-      <label>Article title<input id="blog-title" maxlength="160" placeholder="Give your article a clear title"></label>
-      <label>Short description<textarea id="blog-description" rows="2" maxlength="600" placeholder="A short introduction for the timeline card"></textarea></label>
-      <div class="blog-fields-two">
-        <label>Category<select id="blog-category"><option>Development</option><option>AI & Automation</option><option>Experiments</option><option>Tutorials</option><option>Updates</option><option>Research</option></select></label>
-        <label>Publication date & time (Bangladesh)<input id="blog-publish-at" type="datetime-local"></label>
-      </div>
-      <label>Article body <small>Markdown supported: headings, bold, lists, links, images, quotes and fenced code. Use [[chart:chart-id]] where a chart should appear.</small><textarea id="blog-content" rows="11" placeholder="# Your story&#10;&#10;Write the full article here..."></textarea></label>
-      <label>Charts JSON <small>Each chart: { "id":"traffic", "title":"Visitors", "type":"bar", "labels":["Jan","Feb"], "datasets":[{"label":"Visitors","data":[120,180]}] }</small><textarea id="blog-charts" rows="5" spellcheck="false">[]</textarea></label>
-      <div class="blog-fields-two">
-        <label>Cover image URL<input id="blog-cover" placeholder="Upload an image or paste an HTTPS URL"></label>
-        <label>Upload image<input id="blog-image-file" type="file" accept="image/jpeg,image/png,image/webp"></label>
-      </div>
-      <div class="blog-editor-options"><label class="blog-check"><input id="blog-pinned" type="checkbox"> Pin this article</label><label>State<select id="blog-status"><option value="draft">Draft</option><option value="published">Publish now</option><option value="scheduled">Scheduled</option></select></label></div>
-      <div class="blog-editor-actions"><button type="button" id="blog-save-draft">Save draft</button><button type="button" class="primary" id="blog-publish">Save & publish</button><button type="button" id="blog-preview">Preview text</button></div>
-      <div id="blog-editor-status" class="blog-status" role="status">Changes are not published until you save.</div>
+      <div class="blog-editor-head"><div><span class="section-kicker">SMART JOURNAL PUBLISHER</span><h3 id="blog-form-heading">New article</h3></div><button type="button" class="blog-new" id="blog-new">＋ New</button></div>
+      <label>Title<input id="blog-title" maxlength="160" placeholder="Post title"></label>
+      <label>Details / মূল বিবরণ <small>সম্পূর্ণ লেখা এখানে দিন। URL ও Terminal command থাকলে সেগুলো নিজে থেকেই সাজানো হবে। Markdown-ও সমর্থিত।</small><textarea id="blog-content" rows="13" placeholder="Write or paste the complete article here…"></textarea></label>
+      <label>Optional image<input id="blog-image-file" type="file" accept="image/jpeg,image/png,image/webp"></label>
+      <div class="blog-editor-actions"><button type="button" id="blog-save-draft">Save draft</button><button type="button" class="primary" id="blog-publish">Publish</button><button type="button" id="blog-preview">Preview</button></div>
+      <div id="blog-editor-status" class="blog-status" role="status">Title and details are required. Image is optional.</div>
       <pre id="blog-preview-panel" class="module-report blog-preview" hidden></pre>
+      <input id="blog-description" type="hidden">
+      <input id="blog-category" type="hidden" value="Development">
+      <input id="blog-publish-at" type="hidden">
+      <textarea id="blog-charts" hidden>[]</textarea>
+      <input id="blog-cover" type="hidden">
+      <input id="blog-pinned" type="checkbox" hidden>
+      <select id="blog-status" hidden><option value="draft">Draft</option><option value="published">Publish now</option><option value="scheduled">Scheduled</option></select>
     `;
     const listPanel=document.createElement("section");listPanel.className="blog-post-manager";
     listPanel.innerHTML='<div class="blog-list-head"><div><span class="section-kicker">CONTENT LIBRARY</span><h3>All articles</h3></div><button type="button" id="blog-reload">↻ Refresh</button></div><div id="blog-post-list" class="blog-post-list"></div>';
@@ -247,14 +244,15 @@
       const r=await api("blogList");posts=Array.isArray(r.posts)?r.posts:[];renderList();
     }
     async function save(mode){
-      const title=$("blog-title").value.trim(),description=$("blog-description").value.trim(),content=$("blog-content").value;
-      if(!title||!description||!content.trim()){notice("Title, description and article body are required.",true);return;}
+      const title=$("blog-title").value.trim(),content=$("blog-content").value;
+      if(!title||!content.trim()){notice("Title and article details are required.",true);return;}
+      const description="";
       let charts;try{charts=JSON.parse($("blog-charts").value||"[]");if(!Array.isArray(charts))throw new Error("Charts must be a JSON array.");}catch(e){notice("Charts JSON error: "+e.message,true);return;}
       const dateValue=$("blog-publish-at").value;
       const publishAt=dateValue?bdtInputToIso(dateValue):new Date().toISOString();
       let state=mode||$("blog-status").value;
       if(state==="published"&&Date.parse(publishAt)>Date.now())state="scheduled";
-      const post={id:activeId||newId(),title,description,category:$("blog-category").value,content,charts,coverImage:$("blog-cover").value.trim(),pinned:$("blog-pinned").checked,status:state,publishAt};
+      const post={id:activeId||newId(),title,description,content,charts,coverImage:$("blog-cover").value.trim(),pinned:$("blog-pinned").checked,status:state,publishAt};
       const buttons=[$("blog-save-draft"),$("blog-publish")];buttons.forEach(b=>b.disabled=true);status.textContent="Saving to GitHub…";
       try{
         const r=await api("blogSave",{post});
@@ -266,7 +264,7 @@
     }
     $("blog-new").addEventListener("click",reset);
     $("blog-save-draft").addEventListener("click",()=>save("draft"));
-    $("blog-publish").addEventListener("click",()=>save($("blog-status").value==="draft"?"published":$("blog-status").value));
+    $("blog-publish").addEventListener("click",()=>save("published"));
     $("blog-status").addEventListener("change",()=>{if($("blog-status").value==="published")status.textContent="This article will be published after you press Save & publish.";});
     $("blog-preview").addEventListener("click",()=>{preview.hidden=false;preview.textContent=[$("blog-title").value,$("blog-description").value,"", $("blog-content").value].join("\n");});
     $("blog-reload").addEventListener("click",async()=>{const b=$("blog-reload");b.disabled=true;try{await reload();status.textContent="Article list refreshed.";}catch(e){notice(e.message,true);}finally{b.disabled=false;}});

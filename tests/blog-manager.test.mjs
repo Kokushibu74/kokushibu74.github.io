@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal, getPublicJournalFeed } from "../cloudflare/blog-manager.mjs";
+import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal, getPublicJournalFeed, generateShortDescription, inferJournalCategory } from "../cloudflare/blog-manager.mjs";
 import { webcrypto } from "node:crypto";
 globalThis.crypto ||= webcrypto;
 
@@ -81,7 +81,7 @@ test("public feed contains only published and due scheduled posts with an explic
   const env = { GITHUB_TOKEN: "test-token", JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 9).toString("base64") };
   const now = Date.parse("2026-11-09T12:00:00.000Z");
   const journal = { version: 1, posts: [
-    { id: "blog_public01", title: "Public article", description: "Public", category: "Development", content: "Public body", status: "published", publishAt: "2026-11-09T10:00:00.000Z" },
+    { id: "blog_public01", title: "Public article", description: "Old manual summary", category: "Development", content: "This article explains AI agent automation with Cloudflare Workers and practical deployment checks.", status: "published", publishAt: "2026-11-09T10:00:00.000Z" },
     { id: "blog_draft001", title: "Private draft", description: "Draft", category: "Development", content: "Draft body", status: "draft", publishAt: "2026-11-09T11:00:00.000Z" },
     { id: "blog_future01", title: "Future scheduled", description: "Future", category: "Development", content: "Future body", status: "scheduled", publishAt: "2026-11-10T10:00:00.000Z" },
     { id: "blog_due0001", title: "Due scheduled", description: "Due", category: "Development", content: "Due body", status: "scheduled", publishAt: "2026-11-09T11:00:00.000Z" },
@@ -96,7 +96,20 @@ test("public feed contains only published and due scheduled posts with an explic
     assert.deepEqual(posts.map(post => post.id), ["blog_due0001", "blog_public01"]);
     assert.ok(posts.every(post => post.status === "published"));
     assert.ok(posts.every(post => !post.deletedAt && !post.previousStatus));
+    const legacy = posts.find(post => post.id === "blog_public01");
+    assert.match(legacy.description, /^This article explains AI agent automation/);
+    assert.equal(legacy.category, "AI & Automation", "Legacy public posts should receive inferred categories at read time.");
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+
+test("smart publishing generates a concise summary and infers a content category", () => {
+  const content = "# Deploying an AI agent\n\nThis guide explains how to deploy an AI agent with Cloudflare Workers and verify its runtime behavior."; 
+  assert.match(generateShortDescription(content), /^This guide explains how to deploy an AI agent/);
+  assert.equal(inferJournalCategory("Deploying an AI agent", content), "AI & Automation");
+  const post = validatePost({ id: "blog_smart001", title: "Deploying an AI agent", content, status: "published" });
+  assert.ok(post.description.length > 20);
+  assert.equal(post.category, "AI & Automation");
 });
