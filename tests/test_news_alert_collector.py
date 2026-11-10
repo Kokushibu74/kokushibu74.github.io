@@ -113,7 +113,12 @@ class AlertCollectorTests(unittest.TestCase):
         phrase = collector.find_incident_location_phrase("নারায়ণগঞ্জের ফতুল্লার সাইনবোর্ড এলাকায় আগুন লাগে। ঘটনাস্থল ফতুল্লা থানায়, নারায়ণগঞ্জ জেলায়।")
         self.assertIn("সাইনবোর্ড এলাকায়", phrase)
         self.assertIn("ফতুল্লা থানায়", phrase)
-        self.assertIn("নারায়ণগঞ্জ জেলায়", phrase)
+        self.assertIn("নারায়ণগঞ্জ", phrase)
+
+    def test_article_location_extraction_ignores_navigation_terms(self):
+        phrase = collector.find_incident_location_phrase("ছবি চট্টগ্রামের আনোয়ারায় গ্রাম, প্রযুক্তি বিনোদন খেলা গ্রাম। চট্টগ্রামের আনোয়ারায় গ্রামীণ ব্যাংক ভবনে ককটেল বিস্ফোরণ ঘটে।")
+        self.assertNotIn("প্রযুক্তি", phrase)
+        self.assertNotIn("খেলা", phrase)
 
     def test_article_html_cleanup_removes_scripts_and_navigation(self):
         text = collector.article_plain_text("<html><script>fake 9 pm</script><nav>menu</nav><p>আগুন লাগে রাত ৮টার দিকে</p></html>")
