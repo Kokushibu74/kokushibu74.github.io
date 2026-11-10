@@ -2263,7 +2263,11 @@ async function newsBreakingAlertCheck(env){
       const currentLocation=extractAlertLocation(item);
       const locationChanged=currentLocation!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"&&String(previous.location||"")!==currentLocation;
       const currentSourceLocations=extractAlertSourceLocations(item);
-      const sourceLocationsChanged=Array.isArray(previous.sourceLocations)&&currentSourceLocations.length>0&&JSON.stringify(currentSourceLocations)!==JSON.stringify(previous.sourceLocations);
+      const previousSourceLocations=Array.isArray(previous.sourceLocations)?previous.sourceLocations:null;
+      const previousLocationText=String(previous.location||"").toLowerCase();
+      const sourceLocationsChanged=currentSourceLocations.length>0&&(previousSourceLocations?
+        JSON.stringify(currentSourceLocations)!==JSON.stringify(previousSourceLocations):
+        currentSourceLocations.some(entry=>{const address=String(entry.address||"").toLowerCase();return !previousLocationText||address!==previousLocationText&&(address.includes(previousLocationText)||!previousLocationText.includes(address));}));
       const currentDetails=item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{};
       const detailsChanged=Object.keys(currentDetails).length>0&&JSON.stringify(currentDetails)!==JSON.stringify(previous.incidentDetails||{});
       const currentSafety=Array.isArray(item.safetyAdvice)?item.safetyAdvice.filter(Boolean):typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[];
