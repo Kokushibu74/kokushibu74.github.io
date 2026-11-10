@@ -218,7 +218,10 @@ export function formatTelegramMessage(text,options={}){
     if(insideCode)return part;
     return part.replace(/VIS-[A-F0-9]{12}|(?:\d{1,3}\.){3}\d{1,3}|[+-]?\d{1,3}\.\d{4,}\s*,\s*[+-]?\d{1,3}\.\d{4,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi,value=>"<code>"+value+"</code>");
   }).join("");
-  return "<b>◈ "+category+"</b>\n\n"+body+"\n\n<i>KOKUSHIBU74 · INTELLIGENCE</i>";
+  const footer="<i>KOKUSHIBU74 · INTELLIGENCE</i>";
+  // News alerts are designed for phone notification previews: the headline
+  // must remain the first visible line, ahead of all category branding.
+  return category==="NEWS INTELLIGENCE"?body+"\n\n"+footer:"<b>◈ "+category+"</b>\n\n"+body+"\n\n"+footer;
 }
 
 
@@ -264,15 +267,17 @@ function parseIncidentText(text,published){
   }
   if(!resolvedOffset&&periodWord==="রাত"&&base.hour<5)resolvedOffset=-1;
   const date=shiftBdDay(base,resolvedOffset);
-  const periodOnly=!/\d/.test(raw)&&Boolean(periodWord||weekday);
-  const timeMatch=raw.match(/(?:প্রায়|প্রায়|আনুমানিক|around|about|approximately)?\s*(?:রাত|সকাল|ভোর|দুপুর|বিকেল|সন্ধ্যা|at\s+)?\s*(\d{1,2})(?::(\d{2}))?\s*(টা|টায়|টায়|টার|টার দিকে|টার সময়|টার সময়|মিনিটে|am|pm)?/i);
-  const explicitClock=Boolean(timeMatch&&(/\d{1,2}:\d{2}/.test(timeMatch[0])||timeMatch[3]||periodWord));
+  // A date number (for example, ১০ in "১০ নভেম্বর") is not a clock.
+  // Require a colon or an explicit clock unit before accepting a numeric time.
+  const timeMatch=raw.match(/(?:প্রায়|প্রায়|আনুমানিক|around|about|approximately)?\s*(?:রাত|সকাল|ভোর|দুপুর|বিকেল|সন্ধ্যা|at\s+)?\s*(?:(\d{1,2}):(\d{2})\s*(am|pm)?|(\d{1,2})\s*(টা|টায়|টায়|টার|টার দিকে|টার সময়|টার সময়|মিনিটে|am|pm))/i);
+  const periodOnly=!timeMatch&&Boolean(periodWord||weekday);
+  const explicitClock=Boolean(timeMatch);
   const approximate=/প্রায়|প্রায়|আনুমানিক|দিকে|around|about|approximately/i.test(raw);
   const periodLabel={ভোর:"ভোর",সকাল:"সকাল",দুপুর:"দুপুর",বিকেল:"বিকেল",সন্ধ্যা:"সন্ধ্যা",রাত:"রাত",morning:"সকাল",afternoon:"দুপুর",evening:"সন্ধ্যা",night:"রাত"};
   if(explicitClock){
-    let hour=Number(timeMatch[1]),minute=Number(timeMatch[2]||0);
+    let hour=Number(timeMatch[1]||timeMatch[4]),minute=Number(timeMatch[2]||0);
     if(hour>23||minute>59)return null;
-    const marker=String(timeMatch[3]||"").toLowerCase();
+    const marker=String(timeMatch[3]||timeMatch[5]||"").toLowerCase();
     const ambiguousClock=marker!=="pm"&&marker!=="am"&&!periodWord&&hour<=12;
     if(marker==="pm"&&hour<12)hour+=12;
     if(marker==="am"&&hour===12)hour=0;
@@ -281,7 +286,11 @@ function parseIncidentText(text,published){
       if(/ভোর|সকাল/i.test(periodWord)&&hour===12)hour=0;
     }
     let stamp=bdDateStamp(date.year,date.month,date.day,hour,minute);
-    if(!dateOffset&&stamp>published+5*60000)stamp-=24*60*60*1000;
+    // Never silently move a future clock to the previous day. Without an
+    // explicit relative date, surface the conflict for verification instead.
+    if(resolvedOffset===0&&stamp>published+5*60000){
+      return {timestamp:null,precision:"conflicting",display:"ঘটনার তারিখ/সময় যাচাই প্রয়োজন",sourceText:timeMatch[0]};
+    }
     const parts=bdDateParts(stamp),periodName=parts.hour<4?"রাত":parts.hour<6?"ভোর":parts.hour<12?"সকাল":parts.hour<15?"দুপুর":parts.hour<18?"বিকেল":parts.hour<20?"সন্ধ্যা":"রাত";
     const clock=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12)+":"+new Intl.NumberFormat("bn-BD",{minimumIntegerDigits:2,useGrouping:false}).format(parts.minute);
     const exactTime=ambiguousClock?"সময়কাল অনির্দিষ্ট "+clock:periodName+" "+clock;
@@ -399,12 +408,13 @@ export function formatAlertMessage(item={},decision={},options={}){
     ?locationEvidence.slice(0,2).map(x=>esc(x.address)).join(" · ")
     :esc(location);
   const lines=[
-    "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · "+updateLabel+" · "+severityIcon+" <b>"+esc(severity)+"</b>",
+    "<b>"+title+"</b>",
+    "🇧🇩 <b>BANGLADESH</b> · "+updateLabel+" · "+severityIcon+" <b>"+esc(severity)+"</b>",
     categoryIcon+" <b>"+esc(category)+"</b>",
-    "📰 <b>"+title+"</b>",
     summary,
     "📍 "+locationLabel,
-    "🕒 ঘটনার সময়: "+esc(incident.display)+" · প্রকাশের সময়: "+esc(publishedLabel),
+    "🕒 ঘটনা: "+esc(incident.display),
+    "📰 প্রকাশ: "+esc(publishedLabel),
     updatedLabel?"🔄 আপডেট: "+esc(updatedLabel):"",
     detailLine,
     verification+(sourceNames.length?" · "+sourceNames.length+" সূত্র":""),
