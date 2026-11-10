@@ -85,14 +85,14 @@ jobs:
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_slider_rules.py -v
       - name: Generate feed from public RSS sources
-        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'schedule' || steps.bot_config.outputs.news_enabled == 'true') }}
+        if: ${{ github.event_name != 'pull_request' && steps.bot_config.outputs.news_enabled == 'true' }}
         run: python3 scripts/update_news.py
       - name: Generate Telegram-only Bangladesh alert feed
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
+        if: ${{ steps.bot_config.outputs.alerts_enabled == 'true' }}
         continue-on-error: true
         run: python3 scripts/update_news_alerts.py
       - name: Commit feed when changed
-        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true') }}
+        if: ${{ github.event_name != 'pull_request' && steps.bot_config.outputs.enabled == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
