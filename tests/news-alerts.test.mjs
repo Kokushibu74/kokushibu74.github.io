@@ -126,6 +126,25 @@ test("distinct locations reported by separate sources are shown on separate line
   assert.match(message,/Prothom Alo/);
 });
 
+
+test("article-extracted locality, thana and district are assembled into one address line",()=>{
+  const address=extractAlertLocation({articleLocationText:"সাইনবোর্ড এলাকায়, ফতুল্লা থানায়, নারায়ণগঞ্জ জেলায়"});
+  assert.match(address,/এলাকা: সাইনবোর্ড/);
+  assert.match(address,/থানা: ফতুল্লা/);
+  assert.match(address,/নারায়ণগঞ্জ/);
+  assert.match(address,/ঢাকা বিভাগ/);
+});
+test("source-specific article locations are retained for multi-line location reporting",()=>{
+  const x=item({sourceStories:[
+    {name:"The Daily Star",title:"অগ্নিকাণ্ড",locationText:"সাইনবোর্ড এলাকায়, ফতুল্লা থানায়, নারায়ণগঞ্জ জেলায়"},
+    {name:"Prothom Alo",title:"অগ্নিকাণ্ড",locationText:"হ্নীলা গ্রামে, টেকনাফ থানায়, কক্সবাজার জেলায়"}
+  ]});
+  const locations=extractAlertSourceLocations(x);
+  assert.equal(locations.length,2);
+  assert.match(locations[0].address,/সাইনবোর্ড/);
+  assert.match(locations[1].address,/হ্নীলা/);
+});
+
 test("full alert includes title, description, location, incident and publication times, source links and verification",()=>{
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
