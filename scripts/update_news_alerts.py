@@ -198,7 +198,7 @@ def is_bangladesh_story(title, summary=""):
     return bool(BANGLADESH_RE.search(str(title or "") + " " + str(summary or "")))
 
 def google_news_query_url(domain):
-    query = urlencode({"q": "site:" + domain + " Bangladesh", "hl": "bn", "gl": "BD", "ceid": "BD:bn"})
+    query = urlencode({"q": "site:" + domain + " Bangladesh when:1d", "hl": "bn", "gl": "BD", "ceid": "BD:bn"})
     return "https://news.google.com/rss/search?" + query
 
 def is_alert_candidate(title, summary="", published=None, now=None):
@@ -275,7 +275,7 @@ def fetch_google_fallback(source):
         entries = parse_feed(raw)
         return {
             "name": name, "domain": domain, "url": url, "kind": "google",
-            "status": "healthy", "http": 200, "items": entries,
+            "status": "healthy", "http": 200, "items": entries[:30],
             "durationMs": round((time.monotonic() - started) * 1000),
         }
     except urllib.error.HTTPError as error:
@@ -289,7 +289,7 @@ def fetch_google_fallback(source):
 def canonical_source(name):
     return news_helpers().canonical_publisher_name(name)
 
-def collect_candidates(source_results, now=None, google_resolution_budget=24):
+def collect_candidates(source_results, now=None, google_resolution_budget=32):
     current = now or datetime.now(timezone.utc)
     module = news_helpers()
     candidates = []
