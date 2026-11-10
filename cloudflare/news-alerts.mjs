@@ -102,7 +102,7 @@ export function extractAlertSourceLocations(item={}) {
   const stories=Array.isArray(item.sourceStories)?item.sourceStories:[];
   const entries=[
     ...provided.map(x=>({source:String(x?.source||""),address:String(x?.address||x?.location||"").trim()})),
-    ...stories.map(story=>({source:String(story?.name||story?.source||""),address:extractAlertLocation({title:story?.title,summary:story?.summary,location:story?.location})}))
+    ...stories.map(story=>({source:String(story?.name||story?.source||""),address:extractAlertLocation({title:story?.title,summary:[story?.summary,story?.locationText].filter(Boolean).join(" "),location:story?.location})}))
   ].filter(x=>x.address&&x.address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়");
   return [...new Map(entries.map(x=>[x.address.toLowerCase(),x])).values()].slice(0,8);
 }
