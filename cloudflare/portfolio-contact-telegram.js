@@ -2155,7 +2155,7 @@ async function newsBreakingAlertCheck(env){
   if(cfg.newsAlerts===false)return {skipped:"disabled"};
   let feed;
   try{
-    const response=await fetch("https://kokushibu74.github.io/news-feed.json",{headers:{"Cache-Control":"no-cache"},signal:AbortSignal.timeout(10000)});
+    const response=await fetch("https://kokushibu74.github.io/news-alert-feed.json",{headers:{"Cache-Control":"no-cache"},signal:AbortSignal.timeout(10000)});
     if(!response.ok){
       console.error("News alert feed fetch failed",JSON.stringify({status:response.status}));
       return {skipped:"feed http "+response.status};
@@ -2165,15 +2165,17 @@ async function newsBreakingAlertCheck(env){
     console.error("News alert feed unavailable",String(error&&error.message||error).slice(0,160));
     return {skipped:"feed unavailable"};
   }
-  const mainItems=Array.isArray(feed)?feed.slice(0,160):(Array.isArray(feed?.items)?feed.items.slice(0,160):[]);
-  const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
-  // Prefer the event-clustered alert-only stream; retain the old feed path during rollout.
-  const items=Array.isArray(feed)?mainItems:(Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,120):[...mainItems,...weatherItems]);
+  // This endpoint is a dedicated Telegram-only feed; the public News Page JSON is not read or changed.
+  const items=Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,180):[];
   const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
   const feedAgeMinutes=Number.isFinite(feedUpdatedMs)?Math.round((now-feedUpdatedMs)/60000):null;
+  if(feedAgeMinutes!==null&&feedAgeMinutes>45){
+    console.warn("Bangladesh alert feed is stale",JSON.stringify({feedAgeMinutes}));
+    return {skipped:"alert feed stale",feedAgeMinutes};
+  }
   let officialPagesPromise=null,scanned=0,audited=0;
   for(const item of items){
     if(!item||typeof item!=="object")continue;
@@ -2236,6 +2238,8 @@ async function newsBreakingAlertCheck(env){
     }
     const stateKey="news-alert:v2:"+key;
     let previous=await env.BOT_CONFIG_KV.get(stateKey,"json");
+    // Older global-alert state must not control the Bangladesh-only event lifecycle.
+    if(previous&&previous.scope!=="bangladesh")previous=null;
     // Migration guard: don't resend an alert already recorded under the pre-clustering key.
     if(!previous&&eventId){
       const legacyKey=await newsAlertKey(title,String(item.source||item.publisherName||""));
@@ -2248,7 +2252,8 @@ async function newsBreakingAlertCheck(env){
       const oldSources=Array.isArray(previous.trustedSources)?previous.trustedSources:[];
       const newSources=decision.trustedSources||[];
       const sourceExpanded=newSources.some(source=>!oldSources.includes(source));
-      if(!titleChanged&&!summaryChanged&&!sourceExpanded)continue;
+      const verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
+      if(!titleChanged&&!summaryChanged&&!sourceExpanded&&!verificationImproved)continue;
       const updateKey=await newsAlertKey(title+" "+String(item.summary||item.previewSummary||""));
       updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
       if(await env.BOT_CONFIG_KV.get(updateStateKey))continue;
@@ -2260,7 +2265,7 @@ async function newsBreakingAlertCheck(env){
     try{
       const caption=formatAlertMessage(item,decision,{key,updateNo});
       const media=await sendNewsAlertMedia(env,item,caption,link);
-      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
+      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
@@ -2269,7 +2274,7 @@ async function newsBreakingAlertCheck(env){
       await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
     }
   }
-  const summary={at:now,feedUpdatedAt,feedAgeMinutes,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
+  const summary={at:now,feedUpdatedAt,feedAgeMinutes,sourceCount:Number(feed?.sourceCount)||0,healthySources:Number(feed?.healthySourceCount)||0,failedSources:Number(feed?.failedSourceCount)||0,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
   try{
     const summaryKey="news-alert-audit:v1:last-run";
     const previous=await env.BOT_CONFIG_KV.get(summaryKey,"json");
