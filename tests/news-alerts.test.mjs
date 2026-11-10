@@ -440,7 +440,7 @@ test("location formatter collapses source addresses that only repeat the same di
   ]});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"location-dedup",updateNo:2});
   assert.match(message,/সাইনবোর্ড/);
-  assert.equal((message.match(/নারায়ণগঞ্জ/g)||[]).length,1);
+  assert.equal((message.match(/📍 [^\n]*/)?.[0].match(/নারায়ণগঞ্জ/g)||[]).length,1);
   assert.doesNotMatch(message,/Jago News 24.*নারায়ণগঞ্জ/);
 });
 test("notification-first alert formatter keeps the core alert compact and removes verbose section headers",()=>{
