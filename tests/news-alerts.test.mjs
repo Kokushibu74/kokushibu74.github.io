@@ -224,6 +224,7 @@ test("worker reads a bounded Telegram-only Bangladesh alert feed",async()=>{
   assert.ok(alertSource.includes("feed?.alertItems"));
   assert.ok(alertSource.includes("slice(0,180)"));
   assert.ok(alertSource.includes("item.alertEventId"));
+  assert.ok(alertSource.includes('legacyPrevious.scope==="bangladesh"'));
   assert.ok(alertSource.includes("news-alert-reject:v1:"));
 });
 
