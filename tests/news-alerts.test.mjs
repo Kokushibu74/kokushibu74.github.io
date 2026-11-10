@@ -474,7 +474,7 @@ test("notification-first alert formatter keeps the core alert compact and remove
   assert.ok(message.length<1300);
   assert.match(message,/^<b>নারায়ণগঞ্জে মাদ্রাসায় আগুন:/);
   assert.match(message,/UPDATE 02/);
-  assert.match(message,/ঘটনা: এখনো নিশ্চিত নয়/);
+  assert.match(message,/ঘটনার সময়: এখনো নিশ্চিত নয়/);
   assert.match(message,/প্রকাশের সময়:/);
   assert.match(message,/Bangla Tribune/);
   assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
