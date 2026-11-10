@@ -2125,24 +2125,39 @@ function officialDisasterConfirmation(item,now,pages){
   }
   return {confirmed:false};
 }
-async function sendNewsAlertMedia(env,item,caption,link){
+async function sendNewsAlertMedia(env,item,caption,link,replyToMessageId=null){
   const token=env.TELEGRAM_BOT_TOKEN,chatId=env.TELEGRAM_CHAT_ID;
   const candidates=mediaCandidates(item);
+  let sentMessageId=null,replyFailure="",attachReply=Boolean(replyToMessageId),deliveryCaption=caption;
   const send=async(method,body)=>{
     try{
       const formattedBody={...body,parse_mode:"HTML"};
       if(typeof body.caption==="string")formattedBody.caption=formatTelegramMessage(body.caption,{parseMode:"HTML",category:"NEWS INTELLIGENCE"});
       if(typeof body.text==="string")formattedBody.text=formatTelegramMessage(body.text,{parseMode:body.parse_mode==="HTML"?"HTML":"PLAIN",category:"NEWS INTELLIGENCE"});
+      if(attachReply)formattedBody.reply_parameters={message_id:Number(replyToMessageId),allow_sending_without_reply:false};
       const response=await fetch("https://api.telegram.org/bot"+token+"/"+method,{
         method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:chatId,...formattedBody}),
         signal:AbortSignal.timeout(15000)
       });
       const result=await response.json().catch(()=>({}));
-      return response.ok&&result.ok===true;
+      if(response.ok&&result.ok===true){sentMessageId=Number(result.result?.message_id)||null;return true;}
+      replyFailure=String(result.description||"");
+      return false;
     }catch{return false;}
   };
-  const result=await deliverWithMediaFallback(candidates,caption,link,send);
-  return result;
+  let media,replyFallback=false;
+  try{
+    media=await deliverWithMediaFallback(candidates,deliveryCaption,link,send);
+  }catch(error){
+    if(!attachReply||!/(message to reply not found|replied message not found|reply message not found|message_id_invalid|message identifier is not specified)/i.test(replyFailure))throw error;
+    // Telegram confirms the parent is unavailable. Start a new visible continuation rather than losing the update.
+    attachReply=false;
+    sentMessageId=null;
+    replyFallback=true;
+    deliveryCaption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের Telegram message আর reply করা যাচ্ছে না; এই বার্তা থেকে নতুন thread শুরু হচ্ছে।";
+    media=await deliverWithMediaFallback(candidates,deliveryCaption,link,send);
+  }
+  return {media,messageId:sentMessageId,replyFallback};
 }
 
 async function newsBreakingAlertCheck(env){
@@ -2278,15 +2293,21 @@ async function newsBreakingAlertCheck(env){
       const updateKey=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("").slice(0,32);
       updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
       if(await env.BOT_CONFIG_KV.get(updateStateKey))continue;
-      updateNo=Math.max(2,Number(previous.updateCount||1)+1);
+      updateNo=Number(previous.rootMessageId)?Math.max(1,Number(previous.updateCount||0)+1):1;
     }
     const lockKey="news-alert-lock:v1:"+key;
     if(await env.BOT_CONFIG_KV.get(lockKey))continue;
     await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
     try{
-      const caption=formatAlertMessage(item,decision,{key,updateNo,updatedAt:updateNo?now:0});
-      const media=await sendNewsAlertMedia(env,item,caption,link);
-      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),incidentTime:extractIncidentTime(item),sourceLocations:extractAlertSourceLocations(item),incidentDetails:item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{},safetyAdvice:Array.isArray(item.safetyAdvice)?item.safetyAdvice:typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
+      const rootMessageId=Number(previous?.rootMessageId)||0;
+      const latestMessageId=Number(previous?.latestMessageId)||0;
+      const replyToMessageId=previous?(verificationImproved&&rootMessageId?rootMessageId:(latestMessageId||rootMessageId||null)):null;
+      const legacyThreadRestart=Boolean(previous&&!replyToMessageId);
+      let caption=formatAlertMessage(item,decision,{key,updateNo,updatedAt:updateNo?now:0});
+      if(legacyThreadRestart)caption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
+      const delivery=await sendNewsAlertMedia(env,item,caption,link,replyToMessageId);
+      const messageId=Number(delivery?.messageId)||null;
+      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),incidentTime:extractIncidentTime(item),sourceLocations:extractAlertSourceLocations(item),incidentDetails:item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{},safetyAdvice:Array.isArray(item.safetyAdvice)?item.safetyAdvice:typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:decision.official&&decision.official.url||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
