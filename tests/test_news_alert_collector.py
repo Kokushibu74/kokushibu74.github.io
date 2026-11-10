@@ -68,6 +68,7 @@ class AlertCollectorTests(unittest.TestCase):
         url = collector.google_news_query_url("bdnews24.com")
         self.assertIn("news.google.com/rss/search?", url)
         self.assertIn("site%3Abdnews24.com", url)
+        self.assertIn("when%3A1d", url)
         self.assertIn("ceid=BD%3Abn", url)
 
     def test_feed_parser_preserves_google_news_publisher_attribution(self):
