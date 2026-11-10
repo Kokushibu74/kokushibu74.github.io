@@ -52,6 +52,40 @@ class AlertCollectorTests(unittest.TestCase):
         rows = collector.parse_feed(xml)
         self.assertEqual(rows[0]["link"], "https://example.com/fire")
 
+    def test_google_news_query_is_scoped_to_one_publisher_and_bangladesh(self):
+        url = collector.google_news_query_url("bdnews24.com")
+        self.assertIn("news.google.com/rss/search?", url)
+        self.assertIn("site%3Abdnews24.com", url)
+        self.assertIn("ceid=BD%3Abn", url)
+
+    def test_feed_parser_preserves_google_news_publisher_attribution(self):
+        xml = """<rss><channel><item><title>ঢাকায় ককটেল বিস্ফোরণ</title><link>https://news.google.com/rss/articles/example</link><pubDate>Tue, 10 Nov 2026 08:00:00 +0000</pubDate><description>পুলিশ ঘটনাস্থলে</description><source url="https://www.thedailystar.net">The Daily Star</source></item></channel></rss>""".encode("utf-8")
+        row = collector.parse_feed(xml)[0]
+        self.assertEqual(row["source_name"], "The Daily Star")
+        self.assertEqual(row["source_url"], "https://www.thedailystar.net")
+
+    def test_google_news_wrapper_is_resolved_to_the_original_publisher(self):
+        published = self.now - timedelta(minutes=3)
+        source = {
+            "name": "bdnews24.com", "domain": "bdnews24.com", "kind": "google",
+            "status": "healthy", "items": [{
+                "title": "ঢাকায় ককটেল বিস্ফোরণ",
+                "summary": "পুলিশ ঘটনাস্থলে গেছে",
+                "link": "https://news.google.com/rss/articles/example",
+                "published": published,
+                "source_name": "bdnews24.com",
+                "source_url": "https://bdnews24.com",
+            }],
+        }
+        resolver = collector.news_helpers().resolve_google_news_url
+        from unittest.mock import patch
+        with patch.object(collector.news_helpers(), "resolve_google_news_url", return_value="https://bdnews24.com/article/example") as mocked:
+            rows = collector.collect_candidates([source], self.now)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["link"], "https://bdnews24.com/article/example")
+        self.assertEqual(rows[0]["sourceEvidence"], ["bdnews24.com"])
+        mocked.assert_called_once()
+
     def test_publisher_host_must_match_feed_domain(self):
         self.assertTrue(collector.host_matches("https://bangla.bdnews24.com/story", "bdnews24.com"))
         self.assertFalse(collector.host_matches("https://fake-example.com/story", "bdnews24.com"))
