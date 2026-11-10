@@ -252,11 +252,11 @@ jobs:
           grep -q 'id="developer-journal"' /tmp/projects-live.html
           grep -q 'id="journal-article-view"' /tmp/projects-live.html
           grep -q 'journal.css?v=1' /tmp/projects-live.html
-          grep -q 'journal.js?v=1' /tmp/projects-live.html
+          grep -q 'journal.js?v=2' /tmp/projects-live.html
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
             'https://kokushibu74.github.io/journal.css?v=1' -o /tmp/journal-live.css
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
-            'https://kokushibu74.github.io/journal.js?v=1' -o /tmp/journal-live.js
+            'https://kokushibu74.github.io/journal.js?v=2' -o /tmp/journal-live.js
           grep -q 'journal-card:hover' /tmp/journal-live.css
           grep -q 'portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed' /tmp/journal-live.js
           echo 'Live GitHub Pages Journal markup, CSS and JavaScript: OK'
