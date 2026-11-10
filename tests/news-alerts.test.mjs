@@ -113,6 +113,19 @@ test("alert location is rendered as one hierarchical address line",()=>{
   const x=item({location:{village:"পূর্বপাড়া",union:"সদর ইউনিয়ন",upazila:"গোপালগঞ্জ সদর",district:"গোপালগঞ্জ",division:"ঢাকা",country:"বাংলাদেশ"}});
   assert.equal(extractAlertLocation(x),"পূর্বপাড়া, সদর ইউনিয়ন, গোপালগঞ্জ সদর, গোপালগঞ্জ, ঢাকা, বাংলাদেশ");
 });
+
+test("distinct locations reported by separate sources are shown on separate lines",()=>{
+  const x=item({title:"ঘটনার খবর",summary:"বিস্ফোরণের ঘটনা",sourceStories:[
+    {name:"The Daily Star",title:"হ্নীলা গ্রামে বিস্ফোরণ",summary:"কক্সবাজারে ঘটনা"},
+    {name:"Prothom Alo",title:"টেকনাফ থানায় বিস্ফোরণ",summary:"কক্সবাজারে ঘটনা"}
+  ]});
+  const message=formatAlertMessage(x,evaluateNewsAlert(item(),{now}),{key:"multi-location"});
+  assert.match(message,/গ্রাম: হ্নীলা/);
+  assert.match(message,/থানা: টেকনাফ/);
+  assert.match(message,/The Daily Star/);
+  assert.match(message,/Prothom Alo/);
+});
+
 test("full alert includes title, description, location, incident and publication times, source links and verification",()=>{
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
