@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const fence = String.fromCharCode(96).repeat(3);
 const tick = String.fromCharCode(96);
 const articleBody = [
+  "![Cover image](https://example.com/journal-cover.jpg)",
   "# Browser test section",
   "This article checks **bold text**, inline " + tick + "code" + tick + " and responsive reading.",
   fence + "js",
@@ -25,7 +26,7 @@ const samplePost = {
     labels: ["Jan", "Feb"],
     datasets: [{ label: "Visitors", data: [120, 180] }]
   }],
-  coverImage: "",
+  coverImage: "https://example.com/journal-cover.jpg",
   pinned: false,
   status: "published",
   publishAt: "2026-11-09T12:00:00.000Z"
@@ -70,9 +71,14 @@ const samplePost = {
     assert.notEqual(hoverStyle.transform, "none", "Desktop card should lift on hover");
     assert.ok(hoverStyle.borderColor.includes("0, 229, 255"), "Hover should activate the cyan border");
 
+    const clickedScrollY = await page.evaluate(() => window.scrollY);
     await card.click();
     await page.waitForFunction(() => !document.querySelector("#journal-article-view").hidden);
     assert.equal(await page.locator("#journal-article-content h1").innerText(), samplePost.title);
+    assert.equal(await page.locator(".journal-article-cover").count(), 1, "Article should render one cover image.");
+    assert.equal(await page.locator(".journal-article-body img").count(), 0, "The same cover must not be duplicated inside the article body.");
+    assert.equal(await page.locator(".journal-article-description").count(), 0, "The card summary should not be repeated above the full article.");
+    await page.waitForFunction(() => Math.abs(document.querySelector("#journal-article-view").getBoundingClientRect().top - 14) < 40);
     await page.waitForSelector(".journal-chart svg");
     await page.waitForSelector(".journal-code-copy");
     await page.locator("[data-journal-back]").click();
