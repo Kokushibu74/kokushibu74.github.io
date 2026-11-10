@@ -7,6 +7,8 @@ const journal = readFileSync(new URL("../journal.js", import.meta.url), "utf8");
 const styles = readFileSync(new URL("../journal.css", import.meta.url), "utf8");
 const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
 const miniapp = readFileSync(new URL("../miniapp/app.js", import.meta.url), "utf8");
+const miniappHtml = readFileSync(new URL("../miniapp/index.html", import.meta.url), "utf8");
+const workflow = readFileSync(new URL("../.github/workflows/telegram-worker-check.yml", import.meta.url), "utf8");
 const manager = readFileSync(new URL("../cloudflare/blog-manager.mjs", import.meta.url), "utf8");
 
 test("Developer Journal is inserted after the existing Project Slider", () => {
@@ -84,6 +86,9 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
   assert.match(manager, /status: "published"/);
   assert.match(miniapp, /Smart publishing/);
+  assert.match(miniappHtml, /app\\.js\\?v=2/);
+  assert.match(workflow, /journal\\.js\\?v=4/);
+  assert.match(workflow, /miniapp\\/app\\.js\\?v=2/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
