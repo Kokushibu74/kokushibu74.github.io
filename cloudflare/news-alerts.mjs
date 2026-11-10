@@ -77,7 +77,7 @@ export function extractAlertLocation(item={}) {
     ["উপজেলা",/([\p{L}\p{M}]+)\s+উপজেলা(?:র)?/iu],
     ["থানা",/([\p{L}\p{M}]+)\s+থানা(?:য়|তে|র)?/iu]
   ];
-  for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match)levels.push(match[1]);}
+  for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match)levels.push(label+": "+match[1]);}
   const matchedDistrict=DISTRICTS.map(([en,bn,division])=>{
     const names=[en,...bn.split("|")],positions=names.map(name=>text.indexOf(name.toLowerCase())).filter(index=>index>=0);
     return positions.length?{en,bn,division,index:Math.min(...positions)}:null;
@@ -314,12 +314,12 @@ export function formatAlertMessage(item={},decision={},options={}){
   const category=String(decision.category||alertCategory(String(item.title||"")+" "+String(item.summary||"")));
   const categoryIcon=/বিস্ফোরণ|বোমা/i.test(category)?"💥":/অগ্নি|আগুন/i.test(category)?"🔥":/সংঘর্ষ|সহিংসতা/i.test(category)?"⚔️":/দুর্যোগ|আবহাওয়া/i.test(category)?"🌪️":/দুর্ঘটনা/i.test(category)?"🚑":"🚨";
   const status=String(decision.status||"provisional");
-  const verification=status==="confirmed"?"🟢 <b>CONFIRMED · একাধিক স্বাধীন সূত্রে সমর্থিত</b>":status==="conflicting"?"🔴 <b>CONFLICTING · সূত্রের তথ্যে অমিল</b>":"🟡 <b>PROVISIONAL · যাচাই চলমান</b>";
+  const verification=status==="confirmed"?"🟢 <b>CONFIRMED · একাধিক স্বাধীন সূত্রে সমর্থিত</b>":status==="conflicting"?"🔴 <b>CONFLICTING · সূত্রের তথ্যে অমিল</b>":"🟡 <b>PROVISIONAL · স্বাধীন যাচাই চলছে</b>";
   const sourceLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[])
     .filter(entry=>entry&&typeof entry.name==="string"&&typeof entry.url==="string"&&/^https:\/\//i.test(entry.url)&&!/news\.google\.com/i.test(entry.url)&&isTrustedPublisher(entry.name)).slice(0,10);
   const links=sourceLinks.map(entry=>'<a href="'+esc(entry.url)+'">'+esc(canonicalSource(entry.name))+'</a>');
   const primaryLink=String(item.publisherUrl||item.link||"");
-  if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ</a>');
+  if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ পড়ুন</a>');
   const sourceNames=Array.isArray(decision.trustedSources)?decision.trustedSources.filter(Boolean):[];
   const sourceLine=links.length?"🔎 <b>সংবাদসূত্র:</b> "+links.join(" · "):(sourceNames.length?"🔎 <b>সংবাদসূত্র:</b> "+esc(sourceNames.join(" · ")):"");
   const locationEvidence=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
@@ -337,8 +337,8 @@ export function formatAlertMessage(item={},decision={},options={}){
   const adviceLine=advice.length?"⚠️ <b>সতর্কতা</b>\n"+advice.map(value=>"• "+esc(value)).join("\n"):"";
   const timePrecision=incident.precision==="exact"?"নির্দিষ্ট সময়":incident.precision==="approximate"?"আনুমানিক সময়":incident.precision==="period"?"সময়কাল":incident.precision==="date_only"?"শুধু তারিখ":incident.precision==="conflicting"?"তথ্যে অমিল":"অনিশ্চিত";
   const lines=[
-    "🇧🇩 <b>KOKUSHIBU74 · NEWS INTELLIGENCE</b>",
-    "🚨 <b>"+(options.updateNo?"🔄 INCIDENT UPDATE":"BREAKING ALERT")+"</b>  "+severityIcon+" <b>"+esc(severity)+"</b>",
+    "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · <b>KOKUSHIBU74 INTELLIGENCE</b>",
+    "🚨 <b>"+(options.updateNo?"🔄 UPDATE "+String(options.updateNo).padStart(2,"0"):"BREAKING ALERT")+"</b>  "+severityIcon+" <b>"+esc(severity)+"</b>",
     "🏷️ <b>"+categoryIcon+" "+esc(category)+"</b>",
     "",
     "📰 <b>"+title+"</b>",
