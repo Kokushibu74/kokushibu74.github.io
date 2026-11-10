@@ -85,7 +85,7 @@ jobs:
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_slider_rules.py -v
       - name: Generate feed from public RSS sources
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.news_enabled == 'true' }}
+        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'schedule' || steps.bot_config.outputs.news_enabled == 'true') }}
         run: python3 scripts/update_news.py
       - name: Generate Telegram-only Bangladesh alert feed
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
