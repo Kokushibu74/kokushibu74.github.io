@@ -171,7 +171,7 @@ test("full alert includes title, description, location, incident and publication
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage(x,d,{key:"abc123"});
-  assert.match(message,/রাত ৮/);
+  assert.match(message,/ঘটনার সময়: ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
   assert.match(message,/প্রকাশের সময়/);
   assert.match(message,/ঘটনার সময়/);
   assert.match(message,/ঘটনার বিবরণ|একটি এলাকায়/);
