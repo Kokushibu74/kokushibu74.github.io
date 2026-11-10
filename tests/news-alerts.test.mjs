@@ -507,6 +507,7 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(media,/reply_parameters=\{message_id:Number\(replyToMessageId\),allow_sending_without_reply:false\}/);
   assert.match(media,/messageId:sentMessageId/);
   assert.match(media,/replyFallback/);
+  assert.match(media,/replied message not found/);
   const alerts=source.slice(source.indexOf("async function newsBreakingAlertCheck(env){"),source.indexOf("\n\nconst SHEETS_SPREADSHEET_ID"));
   assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
   assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
