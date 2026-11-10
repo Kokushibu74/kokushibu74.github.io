@@ -230,10 +230,18 @@ function parseIncidentText(text,published){
   const base=bdDateParts(published);
   const dateOffset=/(গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়|yesterday|last night|last evening)/i.test(raw)?-1:
     /(আগের দিন|পরশু|day before yesterday)/i.test(raw)?-2:0;
-  const date=shiftBdDay(base,dateOffset);
   const period=raw.match(/(ভোর|সকাল|দুপুর|বিকেল|সন্ধ্যা|রাত|morning|afternoon|evening|night)/i);
   const periodWord=period?.[1]||"";
-  const periodOnly=/(গতকাল|গত রাতে|গতরাতে|আজ সকালে|আজ দুপুরে|আজ বিকেলে|আজ সন্ধ্যায়|আজ সন্ধ্যায়|আজ রাতে|yesterday morning|yesterday afternoon|yesterday evening|last night|this morning|this afternoon|this evening|tonight)/i.test(raw);
+  const weekday=raw.match(/(রবিবার|সোমবার|মঙ্গলবার|বুধবার|বৃহস্পতিবার|শুক্রবার|শনিবার)/);
+  let resolvedOffset=dateOffset;
+  if(weekday){
+    const weekdayIndex={"রবিবার":0,"সোমবার":1,"মঙ্গলবার":2,"বুধবার":3,"বৃহস্পতিবার":4,"শুক্রবার":5,"শনিবার":6}[weekday[1]];
+    const currentDay=new Date(Date.UTC(base.year,base.month-1,base.day)).getUTCDay();
+    resolvedOffset-=((currentDay-weekdayIndex+7)%7);
+  }
+  if(!resolvedOffset&&periodWord==="রাত"&&base.hour<5)resolvedOffset=-1;
+  const date=shiftBdDay(base,resolvedOffset);
+  const periodOnly=!/\\d/.test(raw)&&Boolean(periodWord||weekday);
   const timeMatch=raw.match(/(?:প্রায়|প্রায়|আনুমানিক|around|about|approximately)?\s*(?:রাত|সকাল|ভোর|দুপুর|বিকেল|সন্ধ্যা|at\s+)?\s*(\d{1,2})(?::(\d{2}))?\s*(টা|টায়|টায়|টার|টার দিকে|টার সময়|টার সময়|মিনিটে|am|pm)?/i);
   const explicitClock=Boolean(timeMatch&&(/\d{1,2}:\d{2}/.test(timeMatch[0])||timeMatch[3]||periodWord));
   const approximate=/প্রায়|প্রায়|আনুমানিক|দিকে|around|about|approximately/i.test(raw);
@@ -257,7 +265,7 @@ function parseIncidentText(text,published){
     return {timestamp:stamp,precision:ambiguousClock?"time_only":approximate?"approximate":"exact",display:(approximate?"আনুমানিক ":"")+exactTime+" · "+bdDateLabel(stamp),sourceText:timeMatch[0]};
   }
   if(periodOnly&&periodWord){
-    return {timestamp:bdDateStamp(date.year,date.month,date.day),precision:"period",display:(dateOffset<0?"গত ":"")+periodLabel[periodWord]+" · "+bdDateLabel(bdDateStamp(date.year,date.month,date.day)),sourceText:periodWord};
+    return {timestamp:bdDateStamp(date.year,date.month,date.day),precision:"period",display:(resolvedOffset<0?"গত ":"")+periodLabel[periodWord]+" · "+bdDateLabel(bdDateStamp(date.year,date.month,date.day)),sourceText:periodWord};
   }
   const explicitDate=raw.match(/(\d{1,2})\s+(জানুয়ারি|জানুয়ারি|ফেব্রুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)\s*(\d{4})?/i);
   if(explicitDate){
