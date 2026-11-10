@@ -319,7 +319,18 @@ export function formatAlertMessage(item={},decision={},options={}){
   const esc=value=>escapeHtml(String(value??""));
   const title=esc(String(item.title||"").trim().slice(0,220));
   const summary=esc(String(item.summary||item.previewSummary||"").trim().slice(0,850));
-  const location=extractAlertLocation(item);
+  const itemLocation=extractAlertLocation(item);
+  const providedLocations=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
+  const storyLocations=(Array.isArray(item.sourceStories)?item.sourceStories:[]).map(story=>{
+    if(!story||typeof story!=="object")return null;
+    const address=extractAlertLocation({title:story.title,summary:story.summary,location:story.location});
+    return address&&address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?{source:String(story.name||story.source||""),address}:null;
+  }).filter(Boolean);
+  const uniqueStoryLocations=[...new Map(storyLocations.map(x=>[x.address.toLowerCase(),x])).values()];
+  const locationEvidence=providedLocations.length?providedLocations:uniqueStoryLocations.length>1?uniqueStoryLocations:[];
+  const bestStoryLocation=uniqueStoryLocations.sort((a,b)=>b.address.length-a.address.length)[0];
+  const location=providedLocations[0]?.address||providedLocations[0]?.location||
+    (itemLocation==="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?(bestStoryLocation?.address||itemLocation):itemLocation);
   const incident=extractIncidentTime(item);
   const published=Date.parse(item.publishedAt||item.pubDate||"");
   const publishedLabel=Number.isFinite(published)?bdDateLabel(published)+" · "+bdClockLabel(published)+" BDT":"সময় অনির্দিষ্ট";
@@ -338,7 +349,6 @@ export function formatAlertMessage(item={},decision={},options={}){
   if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ পড়ুন</a>');
   const sourceNames=Array.isArray(decision.trustedSources)?decision.trustedSources.filter(Boolean):[];
   const sourceLine=links.length?"🔎 <b>সংবাদসূত্র:</b> "+links.join(" · "):(sourceNames.length?"🔎 <b>সংবাদসূত্র:</b> "+esc(sourceNames.join(" · ")):"");
-  const locationEvidence=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
   const locationLines=locationEvidence.length>1?locationEvidence.map(x=>"📍 "+esc(x.address||x.location)+(x.source?" <i>— "+esc(x.source)+"</i>":"")).join("\n"):"📍 <b>ঘটনাস্থল:</b> "+esc(location);
   const details=item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{};
   const detailRows=[
