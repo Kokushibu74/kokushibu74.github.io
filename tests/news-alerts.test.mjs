@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdtemp,rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {pathToFileURL} from "node:url";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 
@@ -60,6 +60,62 @@ test("provisional alert message clearly labels verification status and links sou
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage({...x,sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]},d,{key:"abc123"});
   assert.match(message,/PROVISIONAL/);assert.match(message,/স্বাধীন যাচাই চলছে/);assert.match(message,/<a href=/);
+});
+
+
+test("incident time parser separates exact event time from publication time",()=>{
+  const x=item({title:"ঢাকায় রাত ৮:৩০ মিনিটে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"exact");
+  assert.match(time.display,/৮:৩০|৮:৩০/);
+});
+test("incident time parser labels approximate time instead of claiming precision",()=>{
+  const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"approximate");
+  assert.match(time.display,/আনুমানিক/);
+});
+test("incident time parser resolves yesterday-night against publication date",()=>{
+  const x=item({title:"গতকাল রাতে বিস্ফোরণ",summary:"ঢাকায় ঘটনা",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"period");
+  assert.match(time.display,/গত রাত/);
+});
+test("incident time parser returns unknown when the source gives no incident time",()=>{
+  const x=item({title:"ঢাকায় বিস্ফোরণ",summary:"এলাকায় আতঙ্ক",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"unknown");
+  assert.equal(time.display,"এখনো নিশ্চিত নয়");
+});
+test("conflicting independent source incident times are not silently merged",()=>{
+  const x=item({title:"ঢাকায় বিস্ফোরণ",summary:"বিস্তারিত",publishedAt:"2026-11-04T16:00:00Z",sourceStories:[
+    {name:"The Daily Star",title:"ঢাকায় রাত ৮টায় বিস্ফোরণ"},
+    {name:"Prothom Alo",title:"ঢাকায় রাত ৮:৩০ মিনিটে বিস্ফোরণ"}
+  ]});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"conflicting");
+  assert.match(time.display,/সূত্রভেদে/);
+});
+test("supplied verified incident timestamp takes precedence over headline parsing",()=>{
+  const x=item({title:"ঢাকায় বিস্ফোরণ",incidentAt:"2026-11-04T14:30:00Z",incidentTimePrecision:"approximate"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"approximate");
+});
+test("alert location is rendered as one hierarchical address line",()=>{
+  const x=item({location:{village:"পূর্বপাড়া",union:"সদর ইউনিয়ন",upazila:"গোপালগঞ্জ সদর",district:"গোপালগঞ্জ",division:"ঢাকা",country:"বাংলাদেশ"}});
+  assert.equal(extractAlertLocation(x),"পূর্বপাড়া, সদর ইউনিয়ন, গোপালগঞ্জ সদর, গোপালগঞ্জ, ঢাকা, বাংলাদেশ");
+});
+test("full alert includes title, description, location, incident and publication times, source links and verification",()=>{
+  const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
+  const d=evaluateNewsAlert(x,{now});
+  const message=formatAlertMessage(x,d,{key:"abc123"});
+  assert.match(message,/রাত ৮/);
+  assert.match(message,/প্রকাশের সময়/);
+  assert.match(message,/ঘটনার সময়/);
+  assert.match(message,/ঘটনার বিবরণ|একটি এলাকায়/);
+  assert.match(message,/📍/);
+  assert.match(message,/The Daily Star/);
+  assert.match(message,/PROVISIONAL/);
 });
 
 test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
