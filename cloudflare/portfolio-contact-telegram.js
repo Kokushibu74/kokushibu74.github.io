@@ -2019,7 +2019,7 @@ async function miniAppOverview(env,user){
   let site={ok:false,status:"UNKNOWN",detail:"Check unavailable",responseMs:null};
   try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(10000)});site={ok:r.ok,status:"HTTP "+r.status,detail:r.ok?"Portfolio reachable":"Portfolio returned HTTP "+r.status,responseMs:Math.round(performance.now()-started)};await r.body?.cancel();}catch(e){site={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,120),responseMs:Math.round(performance.now()-started)};}
   let news={ok:false,status:"UNKNOWN",detail:"Feed check unavailable"};
-  try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  try{const r=await fetch("https://kokushibu74.github.io/news-alert-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
   let bot={ok:false,status:"UNKNOWN",detail:"Telegram Bot check unavailable"};
   try{const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/getMe",{signal:AbortSignal.timeout(8000)});const d=await r.json();bot={ok:!!(r.ok&&d.ok),status:r.ok&&d.ok?"CONNECTED":"ERROR",detail:d.result?.username?"@"+d.result.username:"Telegram API check failed"};}catch(e){bot={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
   const cfg=await botConfig(env);let activity=null;
@@ -2165,10 +2165,8 @@ async function newsBreakingAlertCheck(env){
     console.error("News alert feed unavailable",String(error&&error.message||error).slice(0,160));
     return {skipped:"feed unavailable"};
   }
-  const mainItems=Array.isArray(feed)?feed.slice(0,160):(Array.isArray(feed?.items)?feed.items.slice(0,160):[]);
-  const weatherItems=Array.isArray(feed?.weatherItems)?feed.weatherItems.slice(0,12):[];
-  // Prefer the event-clustered alert-only stream; retain the old feed path during rollout.
-  const items=Array.isArray(feed)?mainItems:(Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,120):[...mainItems,...weatherItems]);
+  // This endpoint is a dedicated Telegram-only feed; the public News Page JSON is not read or changed.
+  const items=Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,180):[];
   const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
@@ -2236,6 +2234,8 @@ async function newsBreakingAlertCheck(env){
     }
     const stateKey="news-alert:v2:"+key;
     let previous=await env.BOT_CONFIG_KV.get(stateKey,"json");
+    // Older global-alert state must not control the Bangladesh-only event lifecycle.
+    if(previous&&previous.scope!=="bangladesh")previous=null;
     // Migration guard: don't resend an alert already recorded under the pre-clustering key.
     if(!previous&&eventId){
       const legacyKey=await newsAlertKey(title,String(item.source||item.publisherName||""));
@@ -2248,7 +2248,8 @@ async function newsBreakingAlertCheck(env){
       const oldSources=Array.isArray(previous.trustedSources)?previous.trustedSources:[];
       const newSources=decision.trustedSources||[];
       const sourceExpanded=newSources.some(source=>!oldSources.includes(source));
-      if(!titleChanged&&!summaryChanged&&!sourceExpanded)continue;
+      const verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
+      if(!titleChanged&&!summaryChanged&&!sourceExpanded&&!verificationImproved)continue;
       const updateKey=await newsAlertKey(title+" "+String(item.summary||item.previewSummary||""));
       updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
       if(await env.BOT_CONFIG_KV.get(updateStateKey))continue;
@@ -2260,7 +2261,7 @@ async function newsBreakingAlertCheck(env){
     try{
       const caption=formatAlertMessage(item,decision,{key,updateNo});
       const media=await sendNewsAlertMedia(env,item,caption,link);
-      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
+      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media,officialSource:decision.official&&decision.official.url||null,updateCount:updateNo||1};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
