@@ -518,9 +518,24 @@ class NewsLogicTests(unittest.TestCase):
         sleep.assert_not_called()
 
     def test_multiple_free_direct_sources_are_configured(self):
-        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 5)
+        self.assertGreaterEqual(len(news.DIRECT_FEEDS), 42)
         self.assertTrue(all(url.startswith("https://") for _, url in news.DIRECT_FEEDS))
         self.assertEqual(len({url for _, url in news.DIRECT_FEEDS}), len(news.DIRECT_FEEDS))
+        names = {name for name, _ in news.DIRECT_FEEDS}
+        expected_new_sources = {
+            "bdnews24.com", "Banglanews24", "Jugantor", "Kaler Kantho",
+            "Bangla Tribune", "Dhaka Tribune", "The Business Standard",
+            "The Financial Express", "New Age", "Daily Observer", "BSS", "UNB",
+            "Risingbd", "Samakal", "Dhaka Post", "Bangladesh Pratidin", "Daily Sun",
+            "Somoy News", "Channel 24", "Jamuna TV", "Ekattor TV", "Daily Inqilab",
+            "Barta24", "Bhorer Kagoj", "Bonik Barta", "Desh Rupantor",
+            "The Daily Ittefaq", "Ajker Patrika", "Manab Zamin",
+            "Dainik Amader Shomoy", "Daily Naya Diganta", "Daily Janakantha",
+            "Dainik Azadi", "Daily Sangbad", "Dhaka Courier", "The Business Post",
+            "BD24Live",
+        }
+        self.assertTrue(expected_new_sources.issubset(names))
+        self.assertEqual(len(expected_new_sources), 37)
 
 
 
