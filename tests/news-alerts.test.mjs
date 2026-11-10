@@ -503,13 +503,15 @@ test("alert layout uses clear blank-line hierarchy and a fully emphasized priori
 
 test("Telegram news alerts persist message IDs and reply updates in the correct chain",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
-  const media=source.slice(source.indexOf("async function sendNewsAlertMedia"),source.indexOf("\\n\\nasync function newsBreakingAlertCheck"));
-  assert.match(media,/reply_parameters=\\{message_id:Number\\(replyToMessageId\\),allow_sending_without_reply:false\\}/);
+  const media=source.slice(source.indexOf("async function sendNewsAlertMedia"),source.indexOf("\n\nasync function newsBreakingAlertCheck"));
+  assert.match(media,/reply_parameters=\{message_id:Number\(replyToMessageId\),allow_sending_without_reply:false\}/);
   assert.match(media,/messageId:sentMessageId/);
-  const alerts=source.slice(source.indexOf("async function newsBreakingAlertCheck(env){"),source.indexOf("\\n\\nconst SHEETS_SPREADSHEET_ID"));
-  assert.match(alerts,/rootMessageId:rootMessageId\\|\\|messageId/);
-  assert.match(alerts,/latestMessageId:messageId\\|\\|latestMessageId\\|\\|rootMessageId/);
-  assert.match(alerts,/verificationImproved&&rootMessageId\\?rootMessageId/);
-  assert.match(alerts,/latestMessageId\\|\\|rootMessageId\\|\\|null/);
+  assert.match(media,/replyFallback/);
+  const alerts=source.slice(source.indexOf("async function newsBreakingAlertCheck(env){"),source.indexOf("\n\nconst SHEETS_SPREADSHEET_ID"));
+  assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
+  assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
+  assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
+  assert.match(alerts,/latestMessageId\|\|rootMessageId\|\|null/);
   assert.match(alerts,/legacyThreadRestart/);
+  assert.match(alerts,/updateNo=Number\(previous\.rootMessageId\)\?Math\.max\(1,/);
 });
