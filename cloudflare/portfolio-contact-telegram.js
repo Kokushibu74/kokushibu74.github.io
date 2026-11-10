@@ -2149,7 +2149,7 @@ async function sendNewsAlertMedia(env,item,caption,link,replyToMessageId=null){
   try{
     media=await deliverWithMediaFallback(candidates,deliveryCaption,link,send);
   }catch(error){
-    if(!attachReply||!/(message to reply not found|reply message not found|message_id_invalid|message identifier is not specified)/i.test(replyFailure))throw error;
+    if(!attachReply||!/(message to reply not found|replied message not found|reply message not found|message_id_invalid|message identifier is not specified)/i.test(replyFailure))throw error;
     // Telegram confirms the parent is unavailable. Start a new visible continuation rather than losing the update.
     attachReply=false;
     sentMessageId=null;
