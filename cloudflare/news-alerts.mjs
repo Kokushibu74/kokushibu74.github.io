@@ -251,7 +251,7 @@ function parseIncidentText(text,published){
     let stamp=bdDateStamp(date.year,date.month,date.day,hour,minute);
     if(!dateOffset&&stamp>published+5*60000)stamp-=24*60*60*1000;
     const parts=bdDateParts(stamp),periodName=parts.hour<4?"রাত":parts.hour<6?"ভোর":parts.hour<12?"সকাল":parts.hour<15?"দুপুর":parts.hour<18?"বিকেল":parts.hour<20?"সন্ধ্যা":"রাত";
-    const clock=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12)+":"+String(parts.minute).padStart(2,"0");
+    const clock=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12)+":"+new Intl.NumberFormat("bn-BD",{minimumIntegerDigits:2,useGrouping:false}).format(parts.minute);
     const exactTime=periodName+" "+clock;
     return {timestamp:stamp,precision:approximate?"approximate":"exact",display:(approximate?"আনুমানিক ":"")+exactTime+" · "+bdDateLabel(stamp),sourceText:timeMatch[0]};
   }
@@ -285,7 +285,7 @@ export function extractIncidentTime(item={}){
   const stories=Array.isArray(item.sourceStories)?item.sourceStories:[];
   const candidates=[];
   for(const story of stories){
-    const candidate=parseIncidentText([story.title,story.summary,story.articleText].filter(Boolean).join(" "),published);
+    const candidate=parseIncidentText([story.title,story.summary,story.incidentTimeText,story.articleText].filter(Boolean).join(" "),published);
     if(candidate)candidates.push({...candidate,source:String(story.name||story.source||"")});
   }
   const main=parseIncidentText([item.title,item.summary,item.previewSummary,item.articleText].filter(Boolean).join(" "),published);
