@@ -352,6 +352,76 @@ def collect_candidates(source_results, now=None, google_resolution_budget=32):
             })
     return candidates
 
+
+INCIDENT_TIME_PATTERNS = [
+    re.compile(r"(?:আজ|গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়)?\\s*(?:ভোর|সকাল|দুপুর|বিকেল|সন্ধ্যা|রাত)\\s*(?:প্রায়|প্রায়|আনুমানিক)?\\s*\\d{1,2}(?::\\d{2})?\\s*(?:টা|টায়|টায়|টার দিকে|টার সময়|টার সময়|মিনিটে)?", re.I),
+    re.compile(r"(?:around|about|approximately|at)\\s+\\d{1,2}(?::\\d{2})?\\s*(?:am|pm)", re.I),
+    re.compile(r"(?:yesterday morning|yesterday afternoon|yesterday evening|last night|last evening|this morning|this afternoon|this evening|tonight)", re.I),
+]
+
+def find_incident_time_phrase(text):
+    value = clean(text)
+    for pattern in INCIDENT_TIME_PATTERNS:
+        match = pattern.search(value)
+        if match:
+            return match.group(0).strip()[:100]
+    return ""
+
+def article_plain_text(raw):
+    value = re.sub(r"<!--.*?-->", " ", str(raw or ""), flags=re.S)
+    value = re.sub(r"<(script|style|noscript|svg|nav|header|footer|aside|form)[^>]*>.*?</\\1>", " ", value, flags=re.I | re.S)
+    value = re.sub(r"<[^>]+>", " ", value)
+    return re.sub(r"\\s+", " ", html.unescape(value)).strip()
+
+def fetch_article_incident_time(story):
+    url = str(story.get("url") or "").strip()
+    try:
+        parsed = urlparse(url)
+        host = (parsed.hostname or "").lower()
+        if parsed.scheme != "https" or not host:
+            return ""
+        allowed = {domain for _, _, domain in SOURCES}
+        if not any(host == domain or host.endswith("." + domain) for domain in allowed):
+            return ""
+        request = urllib.request.Request(url, headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml",
+            "Accept-Language": "bn-BD,bn;q=0.9,en;q=0.8",
+        })
+        with urllib.request.urlopen(request, timeout=6) as response:
+            final_url = response.geturl()
+            final_host = (urlparse(final_url).hostname or "").lower()
+            if not (final_host == host or final_host.endswith("." + host) or host.endswith("." + final_host)):
+                return ""
+            raw = response.read(1_200_000)
+        text = article_plain_text(raw.decode("utf-8", errors="replace"))
+        return find_incident_time_phrase(text[:30000])
+    except Exception:
+        return ""
+
+def enrich_alert_incident_times(alerts, max_articles=10):
+    tasks = []
+    for item in alerts:
+        stories = item.get("sourceStories") if isinstance(item.get("sourceStories"), list) else []
+        for story in stories:
+            if not isinstance(story, dict):
+                continue
+            if find_incident_time_phrase(" ".join(str(story.get(k) or "") for k in ("title", "summary"))):
+                continue
+            url = str(story.get("url") or "")
+            if url and not any(existing[1] == url for existing in tasks):
+                tasks.append((story, url))
+    tasks = tasks[:max(0, int(max_articles))]
+    if not tasks:
+        return alerts
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        phrases = list(pool.map(lambda row: fetch_article_incident_time(row[0]), tasks))
+    for (story, _url), phrase in zip(tasks, phrases):
+        if phrase:
+            story["incidentTimeText"] = phrase
+            story["incidentTimeSource"] = str(story.get("name") or story.get("source") or "")
+    return alerts
+
 def cluster_alerts(candidates):
     module = news_helpers()
     clusters = []
@@ -438,6 +508,7 @@ def main():
     candidates = collect_candidates(all_results, now)
     alerts = cluster_alerts(candidates)
     alerts = alerts[:MAX_ITEMS]
+    alerts = enrich_alert_incident_times(alerts)
     payload = {
         "schemaVersion": 1,
         "scope": "bangladesh",
