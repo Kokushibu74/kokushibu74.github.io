@@ -418,7 +418,12 @@
     }, Math.min(Math.max(500, next - Date.now() + 500), 2147483647));
   }
 
+  let feedLoading = false;
+  let lastFeedLoadAt = 0;
   async function init() {
+    if (feedLoading || Date.now() - lastFeedLoadAt < 5000) return;
+    feedLoading = true;
+    lastFeedLoadAt = Date.now();
     try {
       const response = await fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed?v=" + Date.now(), { cache: "no-store" });
       if (!response.ok) throw new Error("Journal data is not available yet.");
@@ -432,7 +437,18 @@
     } catch (error) {
       timeline.innerHTML = '<div class="journal-empty">Developer Journal could not load. Please try again later.</div>';
       console.error("Developer Journal load failed:", error);
+    } finally {
+      feedLoading = false;
     }
   }
   init();
+  // Refresh after returning to an already-open Projects page so a post
+  // published from Telegram appears without requiring a manual reload.
+  window.addEventListener("focus", init);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) init();
+  });
+  window.addEventListener("pageshow", event => {
+    if (event.persisted) init();
+  });
 })();
