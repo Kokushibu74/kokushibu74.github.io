@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal, getPublicJournalFeed } from "../cloudflare/blog-manager.mjs";
+import { isPublicJournalPost, validateCharts, validatePost, encryptJournal, decryptJournal, getPublicJournalFeed, generateShortDescription, inferJournalCategory } from "../cloudflare/blog-manager.mjs";
 import { webcrypto } from "node:crypto";
 globalThis.crypto ||= webcrypto;
 
@@ -100,3 +100,6 @@ test("public feed contains only published and due scheduled posts with an explic
     globalThis.fetch = originalFetch;
   }
 });
+
+
+test("smart publishing generates a concise summary and infers a content category", () => {\n  const content = "# Deploying an AI agent\\n\\nThis guide explains how to deploy an AI agent with Cloudflare Workers and verify its runtime behavior.";\n  assert.match(generateShortDescription(content), /^This guide explains how to deploy an AI agent/);\n  assert.equal(inferJournalCategory("Deploying an AI agent", content), "AI & Automation");\n  const post = validatePost({ id: "blog_smart001", title: "Deploying an AI agent", content, status: "published" });\n  assert.ok(post.description.length > 20);\n  assert.equal(post.category, "AI & Automation");\n});\n
