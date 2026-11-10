@@ -115,6 +115,9 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertIn("ফতুল্লা থানায়", phrase)
         self.assertIn("নারায়ণগঞ্জ", phrase)
 
+    def test_article_location_extraction_rejects_time_and_generic_place_words(self):
+        phrase = collector.find_incident_location_phrase("সোমবার গভীর রাতে উপজেলার একটি গ্রামে আগুন লাগে।")
+        self.assertEqual(phrase, "")
     def test_article_location_extraction_ignores_navigation_terms(self):
         phrase = collector.find_incident_location_phrase("ছবি চট্টগ্রামের আনোয়ারায় গ্রাম, প্রযুক্তি বিনোদন খেলা গ্রাম। চট্টগ্রামের আনোয়ারায় গ্রামীণ ব্যাংক ভবনে ককটেল বিস্ফোরণ ঘটে।")
         self.assertNotIn("প্রযুক্তি", phrase)
