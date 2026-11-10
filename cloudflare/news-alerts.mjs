@@ -327,10 +327,16 @@ export function formatAlertMessage(item={},decision={},options={}){
     return address&&address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?{source:String(story.name||story.source||""),address}:null;
   }).filter(Boolean);
   const uniqueStoryLocations=[...new Map(storyLocations.map(x=>[x.address.toLowerCase(),x])).values()];
-  const locationEvidence=providedLocations.length?providedLocations:uniqueStoryLocations.length>1?uniqueStoryLocations:[];
-  const bestStoryLocation=uniqueStoryLocations.sort((a,b)=>b.address.length-a.address.length)[0];
+  const bestStoryLocation=[...uniqueStoryLocations].sort((a,b)=>b.address.length-a.address.length)[0];
+  const itemLocationKnown=itemLocation!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়";
+  const storyLocationDiffers=uniqueStoryLocations.length===1&&itemLocationKnown&&
+    !uniqueStoryLocations[0].address.toLowerCase().includes(itemLocation.toLowerCase())&&
+    !itemLocation.toLowerCase().includes(uniqueStoryLocations[0].address.toLowerCase());
+  const locationEvidence=providedLocations.length?providedLocations:
+    uniqueStoryLocations.length>1?uniqueStoryLocations:
+    storyLocationDiffers?[...uniqueStoryLocations,{source:String(item.publisherName||item.source||"প্রাথমিক সংবাদ"),address:itemLocation}]:[];
   const location=providedLocations[0]?.address||providedLocations[0]?.location||
-    (itemLocation==="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?(bestStoryLocation?.address||itemLocation):itemLocation);
+    (itemLocationKnown&&(!bestStoryLocation||bestStoryLocation.address.length<=itemLocation.length)?itemLocation:(bestStoryLocation?.address||itemLocation));
   const incident=extractIncidentTime(item);
   const published=Date.parse(item.publishedAt||item.pubDate||"");
   const publishedLabel=Number.isFinite(published)?bdDateLabel(published)+" · "+bdClockLabel(published)+" BDT":"সময় অনির্দিষ্ট";
