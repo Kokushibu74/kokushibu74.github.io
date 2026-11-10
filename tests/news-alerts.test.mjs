@@ -69,6 +69,14 @@ test("incident time parser separates exact event time from publication time",()=
   assert.equal(time.precision,"exact");
   assert.match(time.display,/৮:৩০|৮:৩০/);
 });
+
+test("incident time parser handles Bengali hour and separate minute wording",()=>{
+  const x=item({title:"ঢাকায় রাত ৮টা ৩০ মিনিটে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"exact");
+  assert.match(time.display,/রাত ৮:৩০/);
+});
+
 test("incident time parser labels approximate time instead of claiming precision",()=>{
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
   const time=extractIncidentTime(x);
