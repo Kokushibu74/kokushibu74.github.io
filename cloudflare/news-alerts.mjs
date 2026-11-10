@@ -232,7 +232,7 @@ function shiftBdDay(parts,delta){
   return {year:d.getUTCFullYear(),month:d.getUTCMonth()+1,day:d.getUTCDate(),hour:parts.hour,minute:parts.minute};
 }
 function parseIncidentText(text,published){
-  const raw=bnDigits(String(text||"")).replace(/\s+/g," ").trim();
+  const raw=bnDigits(String(text||"")).replace(/(\d{1,2})\s*টা\s*(\d{1,2})\s*মিনিটে/g,"$1:$2").replace(/\s+/g," ").trim();
   if(!raw||!Number.isFinite(published))return null;
   const base=bdDateParts(published);
   const dateOffset=/(গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়|yesterday|last night|last evening)/i.test(raw)?-1:
