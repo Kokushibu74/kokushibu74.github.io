@@ -385,21 +385,31 @@ def article_plain_text(raw):
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
 LOCATION_PATTERNS = [
-    re.compile(r"[\u0980-\u09FF]{2,}(?:\s+[\u0980-\u09FF]{2,}){0,2}\s+(?:গ্রাম|মহল্লা|এলাকা|বাজার|ইউনিয়ন|উপজেলা|থানা|জেলা)(?:ে|ের|য়|তে|র)?", re.I),
+    re.compile(r"[\u0980-\u09FF]{2,}(?:\s+[\u0980-\u09FF]{2,}){0,2}\s+(?:গ্রাম|মহল্লা|এলাকা|বাজার|ইউনিয়ন|উপজেলা|থানা)(?:ে|ের|য়|তে|র)?", re.I),
     re.compile(r"(?:in|near|at)\s+[A-Za-z][A-Za-z .'-]{1,45}\s+(?:village|neighborhood|market|union|upazila|thana|district)", re.I),
 ]
 
 def find_incident_location_phrase(text):
     value = clean(text)[:12000]
     found = []
+    event_re = re.compile(r"(আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", re.I)
+    noise_re = re.compile(r"(ছবি|ভিডিও|প্রযুক্তি|বিনোদন|খেলা|ফুটবল|বিশ্বকাপ|ফিচার|প্রথম আলো|দৈনিক আজাদী|সর্বশেষ|জনপ্রিয়|জনপ্রিয়|popular|photos|videos|sports|entertainment|features)", re.I)
     for pattern in LOCATION_PATTERNS:
         for match in pattern.finditer(value):
-            context = value[max(0, match.start() - 120):min(len(value), match.end() + 100)]
-            if not re.search(r"(আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context, re.I):
+            left = max(value.rfind(mark, 0, match.start()) for mark in (".", "।", "!", "?", ";", "\n")) + 1
+            ends = [value.find(mark, match.end()) for mark in (".", "।", "!", "?", ";", "\n")]
+            ends = [pos for pos in ends if pos >= 0]
+            right = min(ends) if ends else len(value)
+            sentence = value[left:right]
+            if not event_re.search(sentence) or noise_re.search(sentence):
                 continue
             phrase = re.sub(r"\s+", " ", match.group(0)).strip(" ,.;:।")
             if phrase and phrase.lower() not in {x.lower() for x in found}:
                 found.append(phrase[:100])
+            for district in BANGLADESH_RE.finditer(sentence):
+                name = district.group(0).strip()
+                if name and name.lower() not in {x.lower() for x in found}:
+                    found.append(name[:60])
             if len(found) >= 6:
                 return ", ".join(found)
     return ", ".join(found)
