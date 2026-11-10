@@ -69,12 +69,15 @@ export function extractAlertLocation(item={}) {
     const unique=structured.filter((value,index)=>structured.findIndex(other=>other.toLowerCase()===value.toLowerCase())===index);
     return unique.join(", ");
   }
-  const rawText=[item.title,item.summary,item.previewSummary].filter(Boolean).join(" ");
+  const rawText=[item.title,item.summary,item.previewSummary,item.articleLocationText,...(Array.isArray(item.sourceStories)?item.sourceStories.map(story=>story?.locationText):[])].filter(Boolean).join(" ");
   const text=rawText.toLowerCase(),levels=[];
   const levelPatterns=[
     ["গ্রাম",/([\p{L}\p{M}]+)\s+গ্রাম(?:ে|ের)?/iu],
-    ["ইউনিয়ন",/([\p{L}\p{M}]+)\s+ইউনিয়ন(?:ের)?/iu],
-    ["উপজেলা",/([\p{L}\p{M}]+)\s+উপজেলা(?:র)?/iu],
+    ["মহল্লা",/([\p{L}\p{M}]+)\s+মহল্লা(?:য়|তে|র)?/iu],
+    ["এলাকা",/([\p{L}\p{M}]+)\s+এলাকা(?:য়|তে|র)?/iu],
+    ["বাজার",/([\p{L}\p{M}]+)\s+বাজার(?:ে|ের)?/iu],
+    ["ইউনিয়ন",/([\p{L}\p{M}]+)\s+ইউনিয়ন(?:ে|ের)?/iu],
+    ["উপজেলা",/([\p{L}\p{M}]+)\s+উপজেলা(?:য়|তে|র)?/iu],
     ["থানা",/([\p{L}\p{M}]+)\s+থানা(?:য়|তে|র)?/iu]
   ];
   for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match)levels.push(label+": "+match[1]);}
@@ -334,7 +337,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   const providedLocations=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
   const storyLocations=(Array.isArray(item.sourceStories)?item.sourceStories:[]).map(story=>{
     if(!story||typeof story!=="object")return null;
-    const address=extractAlertLocation({title:story.title,summary:story.summary,location:story.location});
+    const address=extractAlertLocation({title:story.title,summary:[story.summary,story.locationText].filter(Boolean).join(" "),location:story.location});
     return address&&address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?{source:String(story.name||story.source||""),address}:null;
   }).filter(Boolean);
   const uniqueStoryLocations=[...new Map(storyLocations.map(x=>[x.address.toLowerCase(),x])).values()];
