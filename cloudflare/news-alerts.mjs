@@ -88,7 +88,9 @@ export function extractAlertLocation(item={}) {
   const district=matchedDistrict?matchedDistrict.bn.split("|")[0]:"";
   const division=matchedDistrict?DIVISION_BN[matchedDistrict.division]+" বিভাগ":"";
   const country=matchedDistrict?"বাংলাদেশ":"";
-  const parts=[...levels,district,division,country].filter(Boolean);
+  const divisionName=division.replace(/ বিভাগ$/,"");
+  const filteredLevels=levels.filter(value=>{const name=value.split(": ").slice(1).join(":").toLowerCase();return name!==district.toLowerCase()&&name!==divisionName.toLowerCase();});
+  const parts=[...filteredLevels,district,division,country].filter(Boolean);
   if(parts.length)return [...new Set(parts)].join(", ");
   for(const [en,bn] of Object.entries(DIVISION_BN)){
     if(text.includes(en.toLowerCase())||text.includes(bn.toLowerCase()))return /[\u0980-\u09FF]/.test(text)?bn+" বিভাগ, বাংলাদেশ":en+" Division, Bangladesh";
