@@ -41,7 +41,7 @@ concurrency:
 jobs:
   refresh-news:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Read Telegram automation settings
         id: bot_config
