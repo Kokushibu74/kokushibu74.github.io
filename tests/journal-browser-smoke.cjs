@@ -7,6 +7,8 @@ const articleBody = [
   "![Cover image](https://example.com/journal-cover.jpg)",
   "# Browser test section",
   "This article checks **bold text**, inline " + tick + "code" + tick + " and responsive reading.",
+  "Documentation: https://example.com/docs.",
+  "npm run build",
   fence + "js",
   "const answer = 42;",
   fence,
@@ -81,6 +83,9 @@ const samplePost = {
     await page.waitForFunction(() => Math.abs(document.querySelector("#journal-article-view").getBoundingClientRect().top - 14) < 40);
     await page.waitForSelector(".journal-chart svg");
     await page.waitForSelector(".journal-code-copy");
+    assert.equal(await page.locator(".journal-article-body a[href=\"https://example.com/docs\"] , .journal-article-body a[href=\"https://example.com/docs.\"]").count(), 1, "Plain URLs should become clickable links.");
+    assert.ok(await page.locator(".journal-article-body pre[data-language=\"bash\"]").count() >= 1, "Recognized terminal commands should become code blocks.");
+    assert.ok(await page.locator(".journal-code-copy").count() >= 2, "Fenced code and detected commands should both be copyable.");
     await page.locator("[data-journal-back]").click();
     await page.waitForFunction(() => document.querySelector("#journal-article-view").hidden);
 
