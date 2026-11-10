@@ -171,7 +171,7 @@ test("full alert includes title, description, location, incident and publication
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage(x,d,{key:"abc123"});
-  assert.match(message,/ঘটনার সময়: ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
+  assert.match(message,/ঘটনার সময়:<\/b> ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
   assert.match(message,/প্রকাশের সময়/);
   assert.match(message,/ঘটনার সময়/);
   assert.match(message,/ঘটনার বিবরণ|একটি এলাকায়/);
@@ -462,8 +462,8 @@ test("location formatter collapses source addresses that only repeat the same di
   ]});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"location-dedup",updateNo:2});
   assert.match(message,/সাইনবোর্ড/);
-  assert.equal((message.match(/📍 [^\n]*/)?.[0].match(/নারায়ণগঞ্জ/g)||[]).length,1);
-  assert.doesNotMatch(message,/Jago News 24.*নারায়ণগঞ্জ/);
+  const locationLine=message.match(/📍 <b>ঘটনাস্থল<\/b>\n([^\n]+)/)?.[1]||"";
+  assert.equal((locationLine.match(/নারায়ণগঞ্জ/g)||[]).length,1);
 });
 test("notification-first alert formatter keeps the core alert compact and removes verbose section headers",()=>{
   const x=item({title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন: বার্ন ইনস্টিটিউটে ৮৮ শিক্ষার্থী",summary:"ধোঁয়ায় অসুস্থ হয়ে ৮৮ শিক্ষার্থী চিকিৎসা নিয়েছেন। বর্তমানে ৩৫ জন ভর্তি রয়েছেন।",sourceLinks:[
@@ -474,7 +474,7 @@ test("notification-first alert formatter keeps the core alert compact and remove
   assert.ok(message.length<1300);
   assert.match(message,/^<b>নারায়ণগঞ্জে মাদ্রাসায় আগুন:/);
   assert.match(message,/UPDATE 02/);
-  assert.match(message,/ঘটনার সময়: এখনো নিশ্চিত নয়/);
+  assert.match(message,/ঘটনার সময়:<\/b> এখনো নিশ্চিত নয়/);
   assert.match(message,/প্রকাশের সময়:/);
   assert.match(message,/Bangla Tribune/);
   assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
@@ -489,4 +489,14 @@ test("news Telegram notification starts with the headline, not the intelligence 
   assert.match(notification,/^<b>শ্রীমঙ্গলে সমন্বয়ক হাসিবের ওপর হামলা<\/b>/);
   assert.doesNotMatch(notification,/^<b>◈ NEWS INTELLIGENCE<\/b>/);
   assert.match(notification,/<i>KOKUSHIBU74 · INTELLIGENCE<\/i>$/);
+});
+
+test("alert layout uses clear blank-line hierarchy and a fully emphasized priority row",()=>{
+  const x=item({title:"শ্রীমঙ্গলে সমন্বয়কের ওপর হামলা",summary:"শ্রীমঙ্গলের রাধানগরে হামলার ঘটনা ঘটেছে। আহত ব্যক্তিকে চিকিৎসা দেওয়া হয়েছে।"});
+  const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"spaced-layout"});
+  assert.match(message,/^<b>শ্রীমঙ্গলে সমন্বয়কের ওপর হামলা<\/b>\n\n/);
+  assert.match(message,/\n\n🇧🇩 <b>BANGLADESH NEWS ALERT<\/b> · 🚨 <b>BREAKING ALERT<\/b> · 🟠 <b>HIGH PRIORITY<\/b>\n\n/);
+  assert.match(message,/\n\n📝 <b>ঘটনার বিবরণ<\/b>\n/);
+  assert.match(message,/\n\n📍 <b>ঘটনাস্থল<\/b>\n/);
+  assert.match(message,/\n\n🕒 <b>ঘটনার সময়:<\/b>/);
 });
