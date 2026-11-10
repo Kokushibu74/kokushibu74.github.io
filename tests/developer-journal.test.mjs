@@ -16,7 +16,7 @@ test("Developer Journal is inserted after the existing Project Slider", () => {
   assert.ok(slider >= 0 && dots > slider && journalSection > dots);
   assert.match(projects, /id="journal-article-view"/);
   assert.match(projects, /journal\.css\?v=1/);
-  assert.match(projects, /journal\.js\?v=1/);
+  assert.match(projects, /journal\.js\?v=2/);
 });
 
 test("Project Slider keyboard, swipe and carousel logic remain present", () => {
@@ -41,6 +41,8 @@ test("Timeline supports reveal, reduced motion, filters, archive and scheduled p
   assert.match(journal, /data-category/);
   assert.match(journal, /journal-archive/);
   assert.match(journal, /scheduleNextPublish/);
+  assert.match(journal, /addEventListener\("focus", init\)/);
+  assert.match(journal, /addEventListener\("visibilitychange"/);
   assert.match(styles, /journal-card:hover/);
   assert.match(styles, /@media\(max-width:700px\)/);
   assert.match(styles, /@media\(prefers-reduced-motion:reduce\)/);
