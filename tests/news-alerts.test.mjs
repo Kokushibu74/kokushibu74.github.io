@@ -494,9 +494,9 @@ test("news Telegram notification starts with the headline, not the intelligence 
 test("alert layout uses clear blank-line hierarchy and a fully emphasized priority row",()=>{
   const x=item({title:"শ্রীমঙ্গলে সমন্বয়কের ওপর হামলা",summary:"শ্রীমঙ্গলের রাধানগরে হামলার ঘটনা ঘটেছে। আহত ব্যক্তিকে চিকিৎসা দেওয়া হয়েছে।"});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"spaced-layout"});
-  assert.match(message,/^<b>শ্রীমঙ্গলে সমন্বয়কের ওপর হামলা<\\/b>\\n\\n/);
-  assert.match(message,/\\n\\n🇧🇩 <b>BANGLADESH NEWS ALERT<\\/b> · 🚨 <b>BREAKING ALERT<\\/b> · 🟠 <b>HIGH PRIORITY<\\/b>\\n\\n/);
-  assert.match(message,/\\n\\n📝 <b>ঘটনার বিবরণ<\\/b>\\n/);
-  assert.match(message,/\\n\\n📍 <b>ঘটনাস্থল<\\/b>\\n/);
-  assert.match(message,/\\n\\n🕒 <b>ঘটনার সময়:<\\/b>/);
+  assert.match(message,/^<b>শ্রীমঙ্গলে সমন্বয়কের ওপর হামলা<\/b>\n\n/);
+  assert.match(message,/\n\n🇧🇩 <b>BANGLADESH NEWS ALERT<\/b> · 🚨 <b>BREAKING ALERT<\/b> · 🟠 <b>HIGH PRIORITY<\/b>\n\n/);
+  assert.match(message,/\n\n📝 <b>ঘটনার বিবরণ<\/b>\n/);
+  assert.match(message,/\n\n📍 <b>ঘটনাস্থল<\/b>\n/);
+  assert.match(message,/\n\n🕒 <b>ঘটনার সময়:<\/b>/);
 });
