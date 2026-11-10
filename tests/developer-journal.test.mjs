@@ -16,7 +16,7 @@ test("Developer Journal is inserted after the existing Project Slider", () => {
   assert.ok(slider >= 0 && dots > slider && journalSection > dots);
   assert.match(projects, /id="journal-article-view"/);
   assert.match(projects, /journal\.css\?v=1/);
-  assert.match(projects, /journal\.js\?v=2/);
+  assert.match(projects, /journal\.js\?v=3/);
 });
 
 test("Project Slider keyboard, swipe and carousel logic remain present", () => {
