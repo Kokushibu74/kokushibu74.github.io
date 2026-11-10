@@ -156,6 +156,7 @@ test("Worker emits an update when incident time, location or incident details ch
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
   assert.match(source,/incidentTimeChanged/);
   assert.match(source,/locationChanged/);
+  assert.match(source,/sourceLocationsChanged/);
   assert.match(source,/detailsChanged/);
   assert.match(source,/sourceLinkExpanded/);
   assert.match(source,/updatePayload/);
