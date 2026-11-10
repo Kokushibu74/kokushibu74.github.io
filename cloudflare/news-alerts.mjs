@@ -63,8 +63,8 @@ export function isWeatherCandidate(item={}){const text=String(item.title||"")+" 
 function locationFields(item={}){const raw=item.location??item.incidentLocation??item.place??item.address??{};if(typeof raw==="string"&&raw.trim())return {text:raw.trim()};const obj=raw&&typeof raw==="object"?raw:{},admin=item.adminLocation&&typeof item.adminLocation==="object"?item.adminLocation:{};const pick=(...keys)=>{for(const key of keys){const v=obj[key]??admin[key]??item[key];if(typeof v==="string"&&v.trim())return v.trim();}return "";};return {village:pick("village","villageName"),union:pick("union","unionName"),upazila:pick("upazila","subdistrict","upazilaName"),thana:pick("thana","policeStation","police_station"),district:pick("district","districtName"),division:pick("division","divisionName"),country:pick("country","countryName"),city:pick("city","cityName"),text:pick("formatted","displayName","name")};}
 export function extractAlertLocation(item={}) {
   const f=locationFields(item);
-  if(f.text)return f.text;
-  const structured=[f.village,f.union,f.upazila,f.thana,f.district,f.division,f.city,f.country].filter(Boolean);
+  if(f.text&&f.text.includes(","))return f.text;
+  const structured=[f.village,f.union,f.upazila,f.thana,f.district,f.division,f.city,f.text,f.country].filter(Boolean);
   if(structured.length){
     const unique=structured.filter((value,index)=>structured.findIndex(other=>other.toLowerCase()===value.toLowerCase())===index);
     return unique.join(", ");
@@ -244,13 +244,15 @@ function parseIncidentText(text,published){
     const marker=String(timeMatch[3]||"").toLowerCase();
     if(marker==="pm"&&hour<12)hour+=12;
     if(marker==="am"&&hour===12)hour=0;
-    if(!marker){
+    if(marker!=="pm"&&marker!=="am"){
       if(/দুপুর|বিকেল|সন্ধ্যা|রাত/i.test(periodWord)&&hour<12)hour+=12;
       if(/ভোর|সকাল/i.test(periodWord)&&hour===12)hour=0;
     }
     let stamp=bdDateStamp(date.year,date.month,date.day,hour,minute);
     if(!dateOffset&&stamp>published+5*60000)stamp-=24*60*60*1000;
-    const exactTime=new Date(stamp).toLocaleTimeString("bn-BD",{timeZone:"Asia/Dhaka",hour:"numeric",minute:"2-digit",hour12:true});
+    const parts=bdDateParts(stamp),periodName=parts.hour<4?"রাত":parts.hour<6?"ভোর":parts.hour<12?"সকাল":parts.hour<15?"দুপুর":parts.hour<18?"বিকেল":parts.hour<20?"সন্ধ্যা":"রাত";
+    const clock=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12)+":"+String(parts.minute).padStart(2,"0");
+    const exactTime=periodName+" "+clock;
     return {timestamp:stamp,precision:approximate?"approximate":"exact",display:(approximate?"আনুমানিক ":"")+exactTime+" · "+bdDateLabel(stamp),sourceText:timeMatch[0]};
   }
   if(periodOnly&&periodWord){
@@ -318,7 +320,8 @@ export function formatAlertMessage(item={},decision={},options={}){
   const links=sourceLinks.map(entry=>'<a href="'+esc(entry.url)+'">'+esc(canonicalSource(entry.name))+'</a>');
   const primaryLink=String(item.publisherUrl||item.link||"");
   if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ</a>');
-  const sourceLine=links.length?"🔎 <b>সংবাদসূত্র:</b> "+links.join(" · "):"";
+  const sourceNames=Array.isArray(decision.trustedSources)?decision.trustedSources.filter(Boolean):[];
+  const sourceLine=links.length?"🔎 <b>সংবাদসূত্র:</b> "+links.join(" · "):(sourceNames.length?"🔎 <b>সংবাদসূত্র:</b> "+esc(sourceNames.join(" · ")):"");
   const locationEvidence=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
   const locationLines=locationEvidence.length>1?locationEvidence.map(x=>"📍 "+esc(x.address||x.location)+(x.source?" <i>— "+esc(x.source)+"</i>":"")).join("\n"):"📍 <b>ঘটনাস্থল:</b> "+esc(location);
   const details=item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{};
