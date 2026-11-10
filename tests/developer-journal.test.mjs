@@ -63,6 +63,11 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.doesNotMatch(journal, /journal-data\.json/);
   assert.match(worker, /pathname===\"\/journal-feed\"/);
   assert.match(worker, /getPublicJournalFeed/);
+  const feedStart = worker.indexOf('if(pathname==="/journal-feed"');
+  const feedEnd = worker.indexOf('if(pathname==="/miniapp/api"', feedStart);
+  const feedRoute = worker.slice(feedStart, feedEnd);
+  assert.match(feedRoute, /return respond\\(\\{ok:true,posts\\}\\)/);
+  assert.doesNotMatch(feedRoute, /caches\\.default\\.(match|put)/, "Public feed must not serve a stale edge-cached post list.");
   assert.match(manager, /AES-256-GCM/);
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
   assert.match(manager, /status: "published"/);
