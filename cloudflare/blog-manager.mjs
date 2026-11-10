@@ -205,8 +205,8 @@ export async function getPublicJournalFeed(env, now = Date.now()) {
     .sort((a, b) => Number(b.pinned === true) - Number(a.pinned === true) || Date.parse(b.publishAt || b.publishedAt || 0) - Date.parse(a.publishAt || a.publishedAt || 0))
     .slice(0, 100)
     .map(post => ({
-      id: post.id, title: post.title, description: post.description || generateShortDescription(post.content, post.title),
-      category: post.category || inferJournalCategory(post.title, post.content), content: post.content, charts: post.charts || [],
+      id: post.id, title: post.title, description: generateShortDescription(post.content, post.title),
+      category: inferJournalCategory(post.title, post.content), content: post.content, charts: post.charts || [],
       coverImage: post.coverImage || "", pinned: post.pinned === true, status: "published",
       publishAt: post.publishAt, publishedAt: post.publishedAt, createdAt: post.createdAt
     }));
