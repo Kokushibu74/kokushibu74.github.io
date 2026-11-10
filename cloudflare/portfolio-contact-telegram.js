@@ -2019,7 +2019,7 @@ async function miniAppOverview(env,user){
   let site={ok:false,status:"UNKNOWN",detail:"Check unavailable",responseMs:null};
   try{const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow",signal:AbortSignal.timeout(10000)});site={ok:r.ok,status:"HTTP "+r.status,detail:r.ok?"Portfolio reachable":"Portfolio returned HTTP "+r.status,responseMs:Math.round(performance.now()-started)};await r.body?.cancel();}catch(e){site={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,120),responseMs:Math.round(performance.now()-started)};}
   let news={ok:false,status:"UNKNOWN",detail:"Feed check unavailable"};
-  try{const r=await fetch("https://kokushibu74.github.io/news-alert-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
+  try{const r=await fetch("https://kokushibu74.github.io/news-feed.json",{redirect:"follow",signal:AbortSignal.timeout(10000)});let d=null;try{d=await r.json()}catch{}news={ok:r.ok&&!!d&&typeof d==="object",status:"HTTP "+r.status,detail:r.ok&&d?"News feed reachable":"News feed unavailable"};}catch(e){news={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
   let bot={ok:false,status:"UNKNOWN",detail:"Telegram Bot check unavailable"};
   try{const r=await fetch("https://api.telegram.org/bot"+env.TELEGRAM_BOT_TOKEN+"/getMe",{signal:AbortSignal.timeout(8000)});const d=await r.json();bot={ok:!!(r.ok&&d.ok),status:r.ok&&d.ok?"CONNECTED":"ERROR",detail:d.result?.username?"@"+d.result.username:"Telegram API check failed"};}catch(e){bot={ok:false,status:"ERROR",detail:String(e&&e.message||e).slice(0,100)};}
   const cfg=await botConfig(env);let activity=null;
@@ -2155,7 +2155,7 @@ async function newsBreakingAlertCheck(env){
   if(cfg.newsAlerts===false)return {skipped:"disabled"};
   let feed;
   try{
-    const response=await fetch("https://kokushibu74.github.io/news-feed.json",{headers:{"Cache-Control":"no-cache"},signal:AbortSignal.timeout(10000)});
+    const response=await fetch("https://kokushibu74.github.io/news-alert-feed.json",{headers:{"Cache-Control":"no-cache"},signal:AbortSignal.timeout(10000)});
     if(!response.ok){
       console.error("News alert feed fetch failed",JSON.stringify({status:response.status}));
       return {skipped:"feed http "+response.status};
