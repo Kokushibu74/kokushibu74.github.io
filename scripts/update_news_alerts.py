@@ -363,8 +363,10 @@ INCIDENT_TIME_PATTERNS = [
 def find_incident_time_phrase(text):
     value = clean(text)
     for pattern in INCIDENT_TIME_PATTERNS:
-        match = pattern.search(value)
-        if match:
+        for match in pattern.finditer(value):
+            context = value[max(0, match.start() - 90):min(len(value), match.end() + 50)].lower()
+            if re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", context):
+                continue
             return match.group(0).strip()[:100]
     return ""
 
