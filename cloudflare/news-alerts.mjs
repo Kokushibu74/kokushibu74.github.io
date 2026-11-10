@@ -308,7 +308,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   const incident=extractIncidentTime(item);
   const published=Date.parse(item.publishedAt||item.pubDate||"");
   const publishedLabel=Number.isFinite(published)?new Date(published).toLocaleString("bn-BD",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT":"সময় অনির্দিষ্ট";
-  const updated=Number(item.updatedAt||item.lastUpdatedAt||0);
+  const updated=Number(options.updatedAt||item.updatedAt||item.lastUpdatedAt||0);
   const updatedLabel=updated?new Date(updated).toLocaleString("bn-BD",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT":"";
   const severity=String(decision.severity||"HIGH").toUpperCase();
   const severityIcon=severity==="CRITICAL"?"🔴":severity==="HIGH"?"🟠":severity==="MODERATE"?"🟡":"🔵";
