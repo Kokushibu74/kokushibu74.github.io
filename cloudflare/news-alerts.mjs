@@ -112,7 +112,7 @@ export function evaluateNewsAlert(item={},options={}){
     category:alertCategory(text),sourceCount,sources,trustedSources
   };
   const age=(now-published)/60000,
-    maxAge=event.weather&&officialWeather?180:60;
+    maxAge=event.weather&&(officialWeather||trustedSources.length>=2)?180:60;
   if(age < -5||age>maxAge)return fail("stale");
   const link=String(item.publisherUrl||item.link||"");
   let parsed;
