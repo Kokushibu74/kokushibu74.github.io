@@ -70,6 +70,25 @@ test("incident time parser separates exact event time from publication time",()=
   assert.match(time.display,/৮:৩০|৮:৩০/);
 });
 
+test("incident time parser does not read the day number as the clock in the Shreemangal report",()=>{
+  const title="সমন্বয়ক হাসিবের সঙ্গে থাকা তরুণীর পরিচয় জানা গেলো, হামলাকারী কে ছিল?";
+  const summary="মৌলভীবাজারের শ্রীমঙ্গলে বৈষম্যবিরোধী ছাত্র আন্দোলনের অন্যতম সমন্বয়ক হাসিব আল ইসলামের ওপর চাপাতি নিয়ে হামলার ঘটনা ঘটেছে। মঙ্গলবার (১০ নভেম্বর) দুপুর ১২টার দিকে শ্রীমঙ্গলের রাধানগর এলাকার বালিশিরা রিসোর্টের সামনে এ ঘটনা ঘটে।";
+  const x=item({title,summary,publishedAt:"2026-11-10T14:19:56+00:00",sourceStories:[{name:"Bangla Tribune",title,summary}]});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"approximate");
+  assert.equal(time.timestamp,Date.parse("2026-11-10T06:00:00Z"));
+  assert.match(time.display,/১০ নভেম্বর/);
+  assert.match(time.display,/দুপুর ১২:০০/);
+});
+
+test("future clock without an explicit previous-day reference is not shifted to yesterday",()=>{
+  const x=item({title:"ঢাকায় রাত ১০টার দিকে বিস্ফোরণ",publishedAt:"2026-11-10T14:19:56+00:00"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"conflicting");
+  assert.equal(time.timestamp,null);
+  assert.match(time.display,/তারিখ\/সময় যাচাই প্রয়োজন/);
+});
+
 test("incident time parser handles Bengali hour and separate minute wording",()=>{
   const x=item({title:"ঢাকায় রাত ৮টা ৩০ মিনিটে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
   const time=extractIncidentTime(x);
@@ -152,7 +171,7 @@ test("full alert includes title, description, location, incident and publication
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage(x,d,{key:"abc123"});
-  assert.match(message,/রাত ৮/);
+  assert.match(message,/ঘটনার সময়: ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
   assert.match(message,/প্রকাশের সময়/);
   assert.match(message,/ঘটনার সময়/);
   assert.match(message,/ঘটনার বিবরণ|একটি এলাকায়/);
@@ -453,9 +472,21 @@ test("notification-first alert formatter keeps the core alert compact and remove
   ]});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"compact-alert",updateNo:2});
   assert.ok(message.length<1300);
+  assert.match(message,/^<b>নারায়ণগঞ্জে মাদ্রাসায় আগুন:/);
   assert.match(message,/UPDATE 02/);
   assert.match(message,/ঘটনার সময়: এখনো নিশ্চিত নয়/);
   assert.match(message,/প্রকাশের সময়:/);
   assert.match(message,/Bangla Tribune/);
   assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
+});
+
+
+test("news Telegram notification starts with the headline, not the intelligence category banner",()=>{
+  const x=item({title:"শ্রীমঙ্গলে সমন্বয়ক হাসিবের ওপর হামলা",summary:"শ্রীমঙ্গলের রাধানগরে হামলার ঘটনা ঘটেছে।"});
+  const decision=evaluateNewsAlert(x,{now});
+  const alert=formatAlertMessage(x,decision,{key:"headline-first"});
+  const notification=formatTelegramMessage(alert,{parseMode:"HTML",category:"NEWS INTELLIGENCE"});
+  assert.match(notification,/^<b>শ্রীমঙ্গলে সমন্বয়ক হাসিবের ওপর হামলা<\/b>/);
+  assert.doesNotMatch(notification,/^<b>◈ NEWS INTELLIGENCE<\/b>/);
+  assert.match(notification,/<i>KOKUSHIBU74 · INTELLIGENCE<\/i>$/);
 });
