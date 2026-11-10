@@ -404,7 +404,7 @@ export function formatAlertMessage(item={},decision={},options={}){
     "📰 <b>"+title+"</b>",
     summary,
     "📍 "+locationLabel,
-    "🕒 ঘটনা: "+esc(incident.display)+" · প্রকাশ: "+esc(publishedLabel),
+    "🕒 ঘটনার সময়: "+esc(incident.display)+" · প্রকাশের সময়: "+esc(publishedLabel),
     updatedLabel?"🔄 আপডেট: "+esc(updatedLabel):"",
     detailLine,
     verification+(sourceNames.length?" · "+sourceNames.length+" সূত্র":""),
