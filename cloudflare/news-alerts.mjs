@@ -93,6 +93,17 @@ export function extractAlertLocation(item={}) {
   for(const countryName of COUNTRIES)if(text.includes(countryName.toLowerCase()))return countryName;
   return "নির্দিষ্ট অবস্থান নিশ্চিত নয়";
 }
+
+export function extractAlertSourceLocations(item={}) {
+  const provided=Array.isArray(item.sourceLocations)?item.sourceLocations:[];
+  const stories=Array.isArray(item.sourceStories)?item.sourceStories:[];
+  const entries=[
+    ...provided.map(x=>({source:String(x?.source||""),address:String(x?.address||x?.location||"").trim()})),
+    ...stories.map(story=>({source:String(story?.name||story?.source||""),address:extractAlertLocation({title:story?.title,summary:story?.summary,location:story?.location})}))
+  ].filter(x=>x.address&&x.address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়");
+  return [...new Map(entries.map(x=>[x.address.toLowerCase(),x])).values()].slice(0,8);
+}
+
 export function evaluateNewsAlert(item={},options={}){
   const now=Number(options.now??Date.now()),official=options.officialSignal===true,
     title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||""),
