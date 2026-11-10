@@ -351,6 +351,7 @@ export function formatAlertMessage(item={},decision={},options={}){
     "🏷️ <b>"+categoryIcon+" "+esc(category)+"</b>",
     "",
     "📰 <b>"+title+"</b>",
+    "📝 <b>বিবরণ</b>",
     summary,
     "",
     "📍 <b>LOCATION</b>",
