@@ -2154,7 +2154,7 @@ async function sendNewsAlertMedia(env,item,caption,link,replyToMessageId=null){
     attachReply=false;
     sentMessageId=null;
     replyFallback=true;
-    deliveryCaption+="\\n\\n⚠️ <b>THREAD CONTINUATION</b> · আগের Telegram message আর reply করা যাচ্ছে না; এই বার্তা থেকে নতুন thread শুরু হচ্ছে।";
+    deliveryCaption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের Telegram message আর reply করা যাচ্ছে না; এই বার্তা থেকে নতুন thread শুরু হচ্ছে।";
     media=await deliverWithMediaFallback(candidates,deliveryCaption,link,send);
   }
   return {media,messageId:sentMessageId,replyFallback};
@@ -2304,7 +2304,7 @@ async function newsBreakingAlertCheck(env){
       const replyToMessageId=previous?(verificationImproved&&rootMessageId?rootMessageId:(latestMessageId||rootMessageId||null)):null;
       const legacyThreadRestart=Boolean(previous&&!replyToMessageId);
       let caption=formatAlertMessage(item,decision,{key,updateNo,updatedAt:updateNo?now:0});
-      if(legacyThreadRestart)caption+="\\n\\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
+      if(legacyThreadRestart)caption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
       const delivery=await sendNewsAlertMedia(env,item,caption,link,replyToMessageId);
       const messageId=Number(delivery?.messageId)||null;
       const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),incidentTime:extractIncidentTime(item),sourceLocations:extractAlertSourceLocations(item),incidentDetails:item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{},safetyAdvice:Array.isArray(item.safetyAdvice)?item.safetyAdvice:typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:decision.official&&decision.official.url||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
