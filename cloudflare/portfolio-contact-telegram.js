@@ -2243,7 +2243,10 @@ async function newsBreakingAlertCheck(env){
     // Migration guard: don't resend an alert already recorded under the pre-clustering key.
     if(!previous&&eventId){
       const legacyKey=await newsAlertKey(title,String(item.source||item.publisherName||""));
-      if(legacyKey!==key)previous=await env.BOT_CONFIG_KV.get("news-alert:v2:"+legacyKey,"json");
+      if(legacyKey!==key){
+        const legacyPrevious=await env.BOT_CONFIG_KV.get("news-alert:v2:"+legacyKey,"json");
+        if(legacyPrevious&&legacyPrevious.scope==="bangladesh")previous=legacyPrevious;
+      }
     }
     let updateNo=0,updateStateKey="";
     if(previous){
