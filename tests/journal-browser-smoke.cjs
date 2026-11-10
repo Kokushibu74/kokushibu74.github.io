@@ -61,7 +61,7 @@ const samplePost = {
       status: 200,
       headers: {
         "content-type": "application/json",
-        "access-control-allow-origin": "https://kokushibu74.github.io"
+        "access-control-allow-origin": "*"
       },
       body: JSON.stringify({ ok: true, posts: [samplePost] })
     }));
