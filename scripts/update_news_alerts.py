@@ -25,6 +25,7 @@ USER_AGENT = "KOKUSHIBU74-NewsAlertCollector/1.0 (+https://kokushibu74.github.io
 TIMEOUT = 9
 MAX_AGE_HOURS = 24
 MAX_ITEMS = 180
+_NEWS_HELPERS = None
 
 # Endpoints are candidates, not assumed healthy. A source is active only when
 # its endpoint returns parseable RSS/Atom and its articles link to that publisher.
@@ -228,13 +229,19 @@ def fetch_source(source):
         return {"name": name, "domain": domain, "url": url, "status": "failed",
                 "http": None, "items": [], "error": detail or error.__class__.__name__}
 
+def news_helpers():
+    global _NEWS_HELPERS
+    if _NEWS_HELPERS is None:
+        import importlib.util
+        path = ROOT / "scripts" / "update_news.py"
+        spec = importlib.util.spec_from_file_location("news_collector_helpers", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _NEWS_HELPERS = module
+    return _NEWS_HELPERS
+
 def canonical_source(name):
-    import importlib.util
-    path = ROOT / "scripts" / "update_news.py"
-    spec = importlib.util.spec_from_file_location("news_collector_helpers", path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module.canonical_publisher_name(name)
+    return news_helpers().canonical_publisher_name(name)
 
 def collect_candidates(source_results, now=None):
     current = now or datetime.now(timezone.utc)
@@ -262,15 +269,12 @@ def collect_candidates(source_results, now=None):
                 "category": "Bangladesh",
                 "alertScope": "bangladesh",
                 "isBreaking": True,
+                "sourceStories": [{"name": canonical, "title": entry["title"], "summary": entry["summary"], "url": entry["link"]}],
             })
     return candidates
 
 def cluster_alerts(candidates):
-    import importlib.util
-    path = ROOT / "scripts" / "update_news.py"
-    spec = importlib.util.spec_from_file_location("news_collector_helpers", path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    module = news_helpers()
     clusters = []
     candidates.sort(key=lambda item: item.get("publishedAt", ""), reverse=True)
     for item in candidates:
@@ -278,8 +282,12 @@ def cluster_alerts(candidates):
             item, {**cluster["item"], "sourceEvidence": cluster["sources"]}
         )), None)
         if match is None:
-            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []),
-                             "links": list(item.get("sourceLinks") or [])})
+            clusters.append({
+                "item": dict(item),
+                "sources": list(item.get("sourceEvidence") or []),
+                "links": list(item.get("sourceLinks") or []),
+                "stories": list(item.get("sourceStories") or []),
+            })
             continue
         for source in item.get("sourceEvidence") or []:
             canonical = module.canonical_publisher_name(source)
@@ -294,6 +302,12 @@ def cluster_alerts(candidates):
                 continue
             if not any(str(old.get("name", "")).lower() == name.lower() for old in match["links"]):
                 match["links"].append({"name": name, "url": url[:700]})
+        for story in item.get("sourceStories") or []:
+            if not isinstance(story, dict):
+                continue
+            signature = (str(story.get("name") or "").lower(), str(story.get("url") or "").lower())
+            if not any((str(old.get("name") or "").lower(), str(old.get("url") or "").lower()) == signature for old in match["stories"]):
+                match["stories"].append(story)
         if str(item.get("publishedAt") or "") > str(match["item"].get("publishedAt") or ""):
             match["item"]["publishedAt"] = item["publishedAt"]
         if not match["item"].get("summary") and item.get("summary"):
@@ -303,6 +317,7 @@ def cluster_alerts(candidates):
         item = cluster["item"]
         item["sourceEvidence"] = cluster["sources"][:20]
         item["sourceLinks"] = cluster["links"][:12]
+        item["sourceStories"] = cluster["stories"][:20]
         item["corroborationCount"] = len(item["sourceEvidence"])
         item["alertEventId"] = hashlib.sha256(module.key_for(item).encode("utf-8")).hexdigest()[:32]
         output.append(item)
