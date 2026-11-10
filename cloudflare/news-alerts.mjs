@@ -80,7 +80,7 @@ export function extractAlertLocation(item={}) {
     ["উপজেলা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+উপজেলা(?:য়|তে|র)?/iu],
     ["থানা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+থানা(?:য়|তে|র)?/iu]
   ];
-  for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match)levels.push(label+": "+match[1]);}
+  for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match){const place=match[1].replace(/^(?:বন্যা|আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|দুর্যোগ|বৃষ্টি|পানি|ঘটনা|ঘটনার|ঝড়|ঝড়)\s+/i,"").trim();if(place)levels.push(label+": "+place);}}
   const matchedDistrict=DISTRICTS.map(([en,bn,division])=>{
     const names=[en,...bn.split("|")],positions=names.map(name=>text.indexOf(name.toLowerCase())).filter(index=>index>=0);
     return positions.length?{en,bn,division,index:Math.min(...positions)}:null;
