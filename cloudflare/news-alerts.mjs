@@ -236,7 +236,7 @@ function parseIncidentText(text,published){
   const periodOnly=/(গতকাল|গত রাতে|গতরাতে|আজ সকালে|আজ দুপুরে|আজ বিকেলে|আজ সন্ধ্যায়|আজ সন্ধ্যায়|আজ রাতে|yesterday morning|yesterday afternoon|yesterday evening|last night|this morning|this afternoon|this evening|tonight)/i.test(raw);
   const timeMatch=raw.match(/(?:প্রায়|প্রায়|আনুমানিক|around|about|approximately)?\s*(?:রাত|সকাল|ভোর|দুপুর|বিকেল|সন্ধ্যা|at\s+)?\s*(\d{1,2})(?::(\d{2}))?\s*(টা|টায়|টায়|টার|টার দিকে|টার সময়|টার সময়|মিনিটে|am|pm)?/i);
   const explicitClock=Boolean(timeMatch&&(/\d{1,2}:\d{2}/.test(timeMatch[0])||timeMatch[3]||periodWord));
-  const approximate=/প্রায়|প্রায়|আনুমানিক|দিকে|around|about|approximately/i.test(timeMatch?.[0]||"");
+  const approximate=/প্রায়|প্রায়|আনুমানিক|দিকে|around|about|approximately/i.test(raw);
   const periodLabel={ভোর:"ভোর",সকাল:"সকাল",দুপুর:"দুপুর",বিকেল:"বিকেল",সন্ধ্যা:"সন্ধ্যা",রাত:"রাত",morning:"সকাল",afternoon:"দুপুর",evening:"সন্ধ্যা",night:"রাত"};
   if(explicitClock){
     let hour=Number(timeMatch[1]),minute=Number(timeMatch[2]||0);
