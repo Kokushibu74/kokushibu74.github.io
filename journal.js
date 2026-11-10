@@ -171,10 +171,13 @@
     }
   }
 
-  function inlineMarkdown(text) {
+  function inlineMarkdown(text, excludedImageUrl = "") {
     let html = escapeHtml(text);
     html = html.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (match, alt, rawUrl) => {
       const url = safeUrl(rawUrl);
+      // The article cover is already rendered in the header. If the editor
+      // also placed that same image at the top of the body, show it only once.
+      if (url && excludedImageUrl && url === excludedImageUrl) return "";
       return url ? '<img src="' + escapeHtml(url) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">' : escapeHtml(alt);
     });
     html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, (match, label, rawUrl) => {
@@ -187,21 +190,21 @@
     return html;
   }
 
-  function renderMarkdown(source) {
+  function renderMarkdown(source, excludedImageUrl = "") {
     const lines = String(source || "").replace(/\r/g, "").split("\n");
     const output = [];
     let paragraph = [], list = [], listType = "", code = [], codeLanguage = "", inCode = false;
 
     const flushParagraph = () => {
       if (paragraph.length) {
-        output.push("<p>" + inlineMarkdown(paragraph.join(" ")) + "</p>");
+        output.push("<p>" + inlineMarkdown(paragraph.join(" "), excludedImageUrl) + "</p>");
         paragraph = [];
       }
     };
     const flushList = () => {
       if (list.length) {
         const tag = listType === "ol" ? "ol" : "ul";
-        output.push("<" + tag + ">" + list.map(item => "<li>" + inlineMarkdown(item) + "</li>").join("") + "</" + tag + ">");
+        output.push("<" + tag + ">" + list.map(item => "<li>" + inlineMarkdown(item, excludedImageUrl) + "</li>").join("") + "</" + tag + ">");
         list = []; listType = "";
       }
     };
@@ -230,7 +233,7 @@
       if (heading) {
         flushParagraph(); flushList();
         const level = heading[1].length + 1;
-        output.push("<h" + level + ">" + inlineMarkdown(heading[2]) + "</h" + level + ">");
+        output.push("<h" + level + ">" + inlineMarkdown(heading[2], excludedImageUrl) + "</h" + level + ">");
         continue;
       }
       if (/^\s*>/.test(line)) {
@@ -309,9 +312,8 @@
     articleContent.innerHTML =
       '<header class="journal-article-header">' + meta +
       '<h1>' + escapeHtml(post.title || "Untitled article") + '</h1>' +
-      '<p class="journal-article-description">' + escapeHtml(post.description || "") + '</p>' +
       coverHtml + '</header>' +
-      '<div class="journal-article-body">' + renderMarkdown(post.content) + '</div>' +
+      '<div class="journal-article-body">' + renderMarkdown(post.content, cover) + '</div>' +
       '<footer class="journal-article-bottom"><span>DEVELOPER JOURNAL · KOKUSHIBU74</span><span>' + escapeHtml(formatDate(dateValue(post))) + ' · BANGLADESH TIME</span></footer>';
 
     articleContent.querySelectorAll("[data-journal-chart]").forEach(figure => {
@@ -343,8 +345,14 @@
     document.title = post.title + " | Developer Journal";
     if (descriptionMeta) descriptionMeta.content = String(post.description || originalDescription).slice(0, 300);
     if (push) history.pushState({ journalArticle: id }, "", "#journal/" + encodeURIComponent(id));
-    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-    updateReadingProgress();
+    // Keep the reader oriented: open the article where the Journal lives,
+    // just below the existing Project Slider, instead of jumping to page top.
+    const articleTop = articleView.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: Math.max(0, articleTop - 14),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+    });
+    requestAnimationFrame(updateReadingProgress);
   }
 
   function closeArticle(fromHistory = false) {
