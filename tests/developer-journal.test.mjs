@@ -31,6 +31,10 @@ test("Project Slider keyboard, swipe and carousel logic remain present", () => {
 test("Journal cards open the full article without a separate read-more control", () => {
   assert.match(journal, /data-post-id/);
   assert.match(journal, /function openArticle/);
+  assert.match(journal, /renderMarkdown\(post\.content, cover\)/);
+  assert.doesNotMatch(journal, /journal-article-description/);
+  assert.match(journal, /articleTop - 14/);
+  assert.match(journal, /excludedImageUrl && url === excludedImageUrl/);
   assert.match(journal, /history\.pushState/);
   assert.doesNotMatch(journal, /Read More|Read Story|OPEN JOURNAL/i);
 });
