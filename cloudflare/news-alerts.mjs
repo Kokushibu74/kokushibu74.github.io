@@ -241,7 +241,7 @@ function parseIncidentText(text,published){
   }
   if(!resolvedOffset&&periodWord==="রাত"&&base.hour<5)resolvedOffset=-1;
   const date=shiftBdDay(base,resolvedOffset);
-  const periodOnly=!/\\d/.test(raw)&&Boolean(periodWord||weekday);
+  const periodOnly=!/\d/.test(raw)&&Boolean(periodWord||weekday);
   const timeMatch=raw.match(/(?:প্রায়|প্রায়|আনুমানিক|around|about|approximately)?\s*(?:রাত|সকাল|ভোর|দুপুর|বিকেল|সন্ধ্যা|at\s+)?\s*(\d{1,2})(?::(\d{2}))?\s*(টা|টায়|টায়|টার|টার দিকে|টার সময়|টার সময়|মিনিটে|am|pm)?/i);
   const explicitClock=Boolean(timeMatch&&(/\d{1,2}:\d{2}/.test(timeMatch[0])||timeMatch[3]||periodWord));
   const approximate=/প্রায়|প্রায়|আনুমানিক|দিকে|around|about|approximately/i.test(raw);
