@@ -399,14 +399,36 @@ def main():
     started = time.monotonic()
     now = datetime.now(timezone.utc)
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:
-        results = list(pool.map(fetch_source, SOURCES))
-    healthy = [item for item in results if item["status"] == "healthy"]
-    if len(healthy) < 3:
-        print("ERROR: fewer than 3 publisher RSS sources are healthy; keeping the previous alert feed.", file=sys.stderr)
-        for item in results:
-            print(item["name"] + ": " + item["status"] + " " + str(item.get("error", "")), file=sys.stderr)
+        direct_results = list(pool.map(fetch_source, SOURCES))
+    direct_healthy_names = {item["name"] for item in direct_results if item["status"] == "healthy"}
+    fallback_sources = [source for source in SOURCES if source[0] not in direct_healthy_names]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:
+        fallback_results = list(pool.map(fetch_google_fallback, fallback_sources))
+    fallback_healthy_names = {item["name"] for item in fallback_results if item["status"] == "healthy"}
+    effective_healthy_names = direct_healthy_names | fallback_healthy_names
+    source_health = []
+    direct_by_name = {item["name"]: item for item in direct_results}
+    fallback_by_name = {item["name"]: item for item in fallback_results}
+    for name, _url, domain in SOURCES:
+        direct = direct_by_name[name]
+        fallback = fallback_by_name.get(name)
+        source_health.append({
+            "name": name, "domain": domain,
+            "status": "healthy" if name in effective_healthy_names else "failed",
+            "directStatus": direct["status"],
+            "directError": direct.get("error"),
+            "fallbackStatus": fallback["status"] if fallback else "not_needed",
+            "fallbackError": fallback.get("error") if fallback else None,
+            "fallbackItems": len(fallback.get("items") or []) if fallback else 0,
+        })
+    if len(effective_healthy_names) < 3:
+        print("ERROR: fewer than 3 publisher sources are reachable directly or through Google News; keeping the previous alert feed.", file=sys.stderr)
+        for item in source_health:
+            if item["status"] != "healthy":
+                print(item["name"] + ": direct=" + item["directStatus"] + " fallback=" + item["fallbackStatus"], file=sys.stderr)
         raise SystemExit(1)
-    candidates = collect_candidates(results, now)
+    all_results = direct_results + fallback_results
+    candidates = collect_candidates(all_results, now)
     alerts = cluster_alerts(candidates)
     alerts = alerts[:MAX_ITEMS]
     payload = {
@@ -414,14 +436,13 @@ def main():
         "scope": "bangladesh",
         "generatedAt": now.isoformat(),
         "updatedAt": now.isoformat(),
-        "collector": "publisher-rss",
+        "collector": "publisher-rss+google-news-fallback",
         "sourceCount": len(SOURCES),
-        "healthySourceCount": len(healthy),
-        "failedSourceCount": len(results) - len(healthy),
-        "sourceHealth": [
-            {key: value for key, value in item.items() if key not in {"items"}}
-            for item in results
-        ],
+        "healthySourceCount": len(effective_healthy_names),
+        "failedSourceCount": len(SOURCES) - len(effective_healthy_names),
+        "directHealthySourceCount": len(direct_healthy_names),
+        "fallbackHealthySourceCount": len(fallback_healthy_names),
+        "sourceHealth": source_health,
         "candidateCount": len(candidates),
         "alertItems": alerts,
     }
@@ -429,12 +450,14 @@ def main():
     print(json.dumps({
         "generatedAt": payload["generatedAt"],
         "configuredSources": len(SOURCES),
-        "healthySources": len(healthy),
-        "failedSources": len(results) - len(healthy),
+        "healthySources": len(effective_healthy_names),
+        "directHealthySources": len(direct_healthy_names),
+        "fallbackHealthySources": len(fallback_healthy_names),
+        "failedSources": len(SOURCES) - len(effective_healthy_names),
         "candidates": len(candidates),
         "clusteredAlerts": len(alerts),
         "elapsedSeconds": round(time.monotonic() - started, 2),
-        "failedSourceNames": [item["name"] for item in results if item["status"] != "healthy"],
+        "failedSourceNames": [item["name"] for item in source_health if item["status"] != "healthy"],
     }, ensure_ascii=False))
 
 if __name__ == "__main__":
