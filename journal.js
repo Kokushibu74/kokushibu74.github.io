@@ -184,6 +184,12 @@
       const url = safeUrl(rawUrl);
       return url ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>' : label;
     });
+    html = html.replace(/(^|[\s(])((?:https?:\/\/|www\.)[^\s<]+)/g, (match, prefix, rawUrl) => {
+      const clean = rawUrl.replace(/[.,!?;:]+$/, "");
+      const suffix = rawUrl.slice(clean.length);
+      const url = safeUrl(/^www\./i.test(clean) ? "https://" + clean : clean);
+      return url ? prefix + '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(clean) + '</a>' + suffix : match;
+    });
     html = html.replace(/\x60([^\x60]+)\x60/g, "<code>$1</code>");
     html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
@@ -193,7 +199,13 @@
   function renderMarkdown(source, excludedImageUrl = "") {
     const lines = String(source || "").replace(/\r/g, "").split("\n");
     const output = [];
-    let paragraph = [], list = [], listType = "", code = [], codeLanguage = "", inCode = false;
+    let paragraph = [], list = [], listType = "", code = [], codeLanguage = "", inCode = false, autoCommands = [];
+    const isCommandLine = line => /^\s*(?:\$\s+|❯\s+)?(?:npm|npx|pnpm|yarn|bun|node|python3?|pip3?|uv|git|gh|wrangler|curl|wget|docker|kubectl|terraform|ssh|scp|chmod|chown|mkdir|cd|cp|mv|rm|sudo|apt(?:-get)?|brew|echo|export|touch|cat|grep|find|tar|make|composer|php|ruby|go|cargo|rustc|java|gradle|ffmpeg|deno)\s+\S+/i.test(line);
+    const flushAutoCommands = () => {
+      if (!autoCommands.length) return;
+      output.push('<pre data-language="bash"><code>' + escapeHtml(autoCommands.join("\n")) + '</code></pre>');
+      autoCommands = [];
+    };
 
     const flushParagraph = () => {
       if (paragraph.length) {
@@ -216,12 +228,17 @@
 
     for (const line of lines) {
       if (line.trim().startsWith("\x60\x60\x60")) {
-        flushParagraph(); flushList();
+        flushAutoCommands(); flushParagraph(); flushList();
         if (inCode) flushCode();
         else { inCode = true; codeLanguage = line.trim().slice(3).trim().slice(0, 24); }
         continue;
       }
       if (inCode) { code.push(line); continue; }
+      if (isCommandLine(line)) {
+        flushParagraph(); flushList(); autoCommands.push(line.trim());
+        continue;
+      }
+      flushAutoCommands();
 
       const chart = line.trim().match(/^\[\[chart:([a-z0-9_-]{1,40})\]\]$/i);
       if (chart) {
@@ -254,7 +271,7 @@
       flushList(); paragraph.push(line.trim());
     }
     if (inCode) flushCode();
-    flushParagraph(); flushList();
+    flushAutoCommands(); flushParagraph(); flushList();
     return output.join("\n");
   }
 
