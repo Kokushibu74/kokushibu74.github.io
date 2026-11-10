@@ -2504,13 +2504,14 @@ export default {
     const invalidateJournalFeedCache=async()=>{try{await caches.default.delete(journalCacheKey);}catch{}};
     if(pathname==="/journal-feed"&&request.method==="GET"){
       try{
-        const cached=await caches.default.match(journalCacheKey);
-        if(cached)return cached;
+        // The feed is backed by the encrypted GitHub journal. Avoid a fixed
+        // Cache API key: it ignores query-string cache busting and cache
+        // invalidation is edge-local, so other Cloudflare locations can serve
+        // an older post list after a successful Telegram publish.
         const posts=await getPublicJournalFeed(env);
-        const response=new Response(JSON.stringify({ok:true,posts}),{status:200,headers:{...cors,"Content-Type":"application/json; charset=utf-8","Cache-Control":"public, max-age=60"}});
-        try{await caches.default.put(journalCacheKey,response.clone());}catch{}
-        return response;
+        return respond({ok:true,posts});
       }catch(error){
+        console.error("Developer Journal feed failed:",String(error&&error.message||error).slice(0,180));
         return respond({ok:false,error:"Developer Journal feed is temporarily unavailable."},503);
       }
     }
