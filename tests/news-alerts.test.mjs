@@ -21,6 +21,18 @@ test("two untrusted publishers are not sufficient corroboration",()=>assert.equa
 test("one trusted publisher produces a provisional alert even when another source is untrusted",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.deepEqual(d.trustedSources,["The Daily Star"]);});
 test("two independent trusted publishers corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Prothom Alo"]}),{now}).eligible,true));
 test("one trusted publisher is eligible as provisional",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["The Daily Star"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.verificationMode,"single_source_provisional");});
+test("police vehicle fire during a clash is provisionally eligible",()=>{
+  const d=evaluateNewsAlert(item({title:"গোপালগঞ্জে পুলিশের গাড়িতে আগুন, পাল্টাপাল্টি ধাওয়া",summary:"বিক্ষোভের সময় পুলিশের গাড়িতে আগুন দেওয়া হয়েছে",sourceEvidence:["UNB"]}),{now});
+  assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.severity,"HIGH");
+});
+test("investigation committee follow-up is not a new incident alert",()=>{
+  const d=evaluateNewsAlert(item({title:"নারায়ণগঞ্জে মাদরাসায় অগ্নিকাণ্ডের ঘটনায় তদন্ত কমিটি",summary:"ঘটনার তদন্তে কমিটি গঠন",sourceEvidence:["Jago News 24"]}),{now});
+  assert.equal(d.eligible,false);assert.equal(d.reason,"follow_up");
+});
+test("political statement repeating old incident claims is not a new alert",()=>{
+  const d=evaluateNewsAlert(item({title:"পতিত ফ্যাসিস্ট দমনে সরকার ব্যর্থ: জামায়াত",summary:"বিবৃতিতে ককটেল বিস্ফোরণ ও অগ্নিসংযোগের অভিযোগ",sourceEvidence:["Bangla Tribune"]}),{now});
+  assert.equal(d.eligible,false);assert.equal(d.reason,"not_incident_report");
+});
 test("cocktail explosion without casualties produces a critical provisional alert",()=>{
   const d=evaluateNewsAlert(item({title:"ঢাকায় ককটেল বিস্ফোরণ",summary:"হতাহতের তথ্য এখনো জানা যায়নি",sourceEvidence:["Jago News 24"]}),{now});
   assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.severity,"CRITICAL");
