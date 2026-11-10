@@ -431,3 +431,28 @@ test("daily report and bot directory no longer use MarkdownV2",async()=>{
   assert.match(source,/parse_mode:"HTML"/);
   assert.match(source,/automationAlertDecision\(status,previous\?\.failed===true\)/);
 });
+
+
+test("location formatter collapses source addresses that only repeat the same district hierarchy",()=>{
+  const x=item({title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন",summary:"ফতুল্লার সাইনবোর্ড এলাকায় আগুন",sourceStories:[
+    {name:"Bangla Tribune",title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন",locationText:"ফতুল্লার সাইনবোর্ড এলাকায়, নারায়ণগঞ্জ"},
+    {name:"Jago News 24",title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন",locationText:"নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}
+  ]});
+  const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"location-dedup",updateNo:2});
+  assert.match(message,/সাইনবোর্ড/);
+  assert.equal((message.match(/নারায়ণগঞ্জ/g)||[]).length,1);
+  assert.doesNotMatch(message,/Jago News 24.*নারায়ণগঞ্জ/);
+});
+test("notification-first alert formatter keeps the core alert compact and removes verbose section headers",()=>{
+  const x=item({title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন: বার্ন ইনস্টিটিউটে ৮৮ শিক্ষার্থী",summary:"ধোঁয়ায় অসুস্থ হয়ে ৮৮ শিক্ষার্থী চিকিৎসা নিয়েছেন। বর্তমানে ৩৫ জন ভর্তি রয়েছেন।",sourceLinks:[
+    {name:"Bangla Tribune",url:"https://www.banglatribune.com/law-and-crime/example"},
+    {name:"Jago News 24",url:"https://www.jagonews24.com/country/news/example"}
+  ]});
+  const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"compact-alert",updateNo:2});
+  assert.ok(message.length<1300);
+  assert.match(message,/UPDATE 02/);
+  assert.match(message,/ঘটনা: এখনো নিশ্চিত নয়/);
+  assert.match(message,/প্রকাশ:/);
+  assert.match(message,/Bangla Tribune/);
+  assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
+});
