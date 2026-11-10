@@ -6,6 +6,30 @@ const PUBLIC_ORIGIN = "https://kokushibu74.github.io";
 function cleanText(value, max, fallback = "") {
   return String(value ?? "").replace(/[\u0000-\u001f]/g, " ").replace(/\s+/g, " ").trim().slice(0, max) || fallback;
 }
+export function generateShortDescription(content, title = "") {
+  const blocks = String(content ?? "").replace(/\r/g, "").split(/\n\s*\n/);
+  for (const block of blocks) {
+    if (/^\s*```/.test(block)) continue;
+    const text = block.replace(/^\s{0,3}#{1,6}\s+/gm, "").replace(/^\s*>\s?/gm, "").replace(/^\s*(?:[-*+] |\d+\. )/gm, "").replace(/!?\[([^\]]*)\]\([^)]+\)/g, "$1").replace(/https?:\/\/\S+/gi, "").replace(/\x60([^\x60]+)\x60/g, "$1").replace(/[*_~>#]/g, "").replace(/\s+/g, " ").trim();
+    if (text.length >= 24) {
+      if (text.length <= 180) return text;
+      const cut = text.slice(0, 177), boundary = cut.lastIndexOf(" ");
+      return (boundary > 110 ? cut.slice(0, boundary) : cut).replace(/[.,;:!?-]+$/, "") + "…";
+    }
+  }
+  return cleanText(title, 160, "A new Developer Journal article.");
+}
+
+export function inferJournalCategory(title = "", content = "") {
+  const text = (String(title) + " " + String(content)).toLowerCase();
+  if (/\b(ai|artificial intelligence|llm|gpt|machine learning|automation|agentic|ai agent)\b/.test(text)) return "AI & Automation";
+  if (/\b(tutorial|how to|step[- ]by[- ]step|guide|walkthrough|installation|setup)\b/.test(text)) return "Tutorials";
+  if (/\b(research|benchmark|analysis|comparison|findings|performance study)\b/.test(text)) return "Research";
+  if (/\b(experiment|prototype|proof of concept|poc|sandbox)\b/.test(text)) return "Experiments";
+  if (/\b(update|release|changelog|announcement|launched|deployed|fixed|maintenance)\b/.test(text)) return "Updates";
+  return "Development";
+}
+
 
 function encodeBase64(bytes) {
   let binary = "";
@@ -140,9 +164,9 @@ export function validateCharts(input) {
 export function validatePost(input, existing, now = Date.now()) {
   const id = cleanText(input?.id, 80);
   const title = cleanText(input?.title, 160);
-  const description = cleanText(input?.description, 600);
   const content = String(input?.content ?? "").replace(/\u0000/g, "").slice(0, 120000);
-  const category = cleanText(input?.category, 40, "Development");
+  const description = cleanText(input?.description, 600) || generateShortDescription(content, input?.title);
+  const category = cleanText(input?.category, 40) || inferJournalCategory(input?.title, content);
   const status = ["draft", "published", "scheduled"].includes(input?.status) ? input.status : "draft";
   const publishAt = input?.publishAt ? new Date(input.publishAt).toISOString() : new Date(now).toISOString();
   if (!/^[a-z0-9_-]{8,80}$/i.test(id)) throw new Error("Invalid blog post ID.");
@@ -181,8 +205,8 @@ export async function getPublicJournalFeed(env, now = Date.now()) {
     .sort((a, b) => Number(b.pinned === true) - Number(a.pinned === true) || Date.parse(b.publishAt || b.publishedAt || 0) - Date.parse(a.publishAt || a.publishedAt || 0))
     .slice(0, 100)
     .map(post => ({
-      id: post.id, title: post.title, description: post.description,
-      category: post.category, content: post.content, charts: post.charts || [],
+      id: post.id, title: post.title, description: post.description || generateShortDescription(post.content, post.title),
+      category: post.category || inferJournalCategory(post.title, post.content), content: post.content, charts: post.charts || [],
       coverImage: post.coverImage || "", pinned: post.pinned === true, status: "published",
       publishAt: post.publishAt, publishedAt: post.publishedAt, createdAt: post.createdAt
     }));
