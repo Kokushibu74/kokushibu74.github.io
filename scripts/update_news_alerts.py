@@ -17,7 +17,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "news-alert-feed.json"
@@ -171,8 +171,14 @@ def parse_feed(raw):
             link = str((link_node.attrib.get("href") if link_node is not None else "") or "")
         summary = clean(child_text(node, "description", "summary", "encoded", "content"))
         published = parse_published(child_text(node, "pubDate", "published", "updated", "date"))
+        source_node = child(node, "source")
+        source_name = clean("".join(source_node.itertext())) if source_node is not None else ""
+        source_url = str(source_node.attrib.get("url") or "") if source_node is not None else ""
         if title and link:
-            output.append({"title": title[:300], "summary": summary[:900], "link": link, "published": published})
+            output.append({
+                "title": title[:300], "summary": summary[:900], "link": link,
+                "published": published, "source_name": source_name[:120], "source_url": source_url[:500]
+            })
     return output
 
 def host_matches(url, domain):
@@ -185,6 +191,10 @@ def host_matches(url, domain):
 
 def is_bangladesh_story(title, summary=""):
     return bool(BANGLADESH_RE.search(str(title or "") + " " + str(summary or "")))
+
+def google_news_query_url(domain):
+    query = urlencode({"q": "site:" + domain + " Bangladesh", "hl": "bn", "gl": "BD", "ceid": "BD:bn"})
+    return "https://news.google.com/rss/search?" + query
 
 def is_alert_candidate(title, summary="", published=None, now=None):
     text = str(title or "") + " " + str(summary or "")
@@ -240,18 +250,55 @@ def news_helpers():
         _NEWS_HELPERS = module
     return _NEWS_HELPERS
 
+def fetch_google_fallback(source):
+    name, _direct_url, domain = source
+    url = google_news_query_url(domain)
+    request = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+        "Accept-Language": "bn-BD,bn;q=0.9,en;q=0.8",
+    })
+    started = time.monotonic()
+    try:
+        with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+            raw = response.read(2_500_000)
+            final_url = response.geturl()
+        if not host_matches(final_url, "news.google.com"):
+            raise ValueError("Google News fallback redirected unexpectedly")
+        entries = parse_feed(raw)
+        return {
+            "name": name, "domain": domain, "url": url, "kind": "google",
+            "status": "healthy", "http": 200, "items": entries,
+            "durationMs": round((time.monotonic() - started) * 1000),
+        }
+    except urllib.error.HTTPError as error:
+        return {"name": name, "domain": domain, "url": url, "kind": "google",
+                "status": "failed", "http": error.code, "items": [], "error": "HTTP " + str(error.code)}
+    except Exception as error:
+        detail = re.sub(r"[\r\n\t]+", " ", str(error))[:180]
+        return {"name": name, "domain": domain, "url": url, "kind": "google",
+                "status": "failed", "http": None, "items": [], "error": detail or error.__class__.__name__}
+
 def canonical_source(name):
     return news_helpers().canonical_publisher_name(name)
 
-def collect_candidates(source_results, now=None):
+def collect_candidates(source_results, now=None, google_resolution_budget=24):
     current = now or datetime.now(timezone.utc)
+    module = news_helpers()
     candidates = []
+    pending_google = []
     for source in source_results:
         if source["status"] != "healthy":
             continue
         for entry in source["items"]:
             published = entry["published"]
             if not is_alert_candidate(entry["title"], entry["summary"], published, current):
+                continue
+            if source.get("kind") == "google":
+                if not host_matches(entry.get("source_url") or "", source["domain"]):
+                    continue
+                source_name = entry.get("source_name") or source["name"]
+                pending_google.append((source, entry, source_name))
                 continue
             if not host_matches(entry["link"], source["domain"]):
                 continue
@@ -270,6 +317,31 @@ def collect_candidates(source_results, now=None):
                 "alertScope": "bangladesh",
                 "isBreaking": True,
                 "sourceStories": [{"name": canonical, "title": entry["title"], "summary": entry["summary"], "url": entry["link"]}],
+            })
+    pending_google = pending_google[:max(0, google_resolution_budget)]
+    if pending_google:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+            resolved_urls = list(pool.map(module.resolve_google_news_url, [row[1]["link"] for row in pending_google]))
+        for (source, entry, source_name), resolved in zip(pending_google, resolved_urls):
+            if not resolved or not host_matches(resolved, source["domain"]):
+                continue
+            canonical = canonical_source(source_name)
+            if not canonical:
+                continue
+            candidates.append({
+                "title": entry["title"],
+                "summary": entry["summary"],
+                "link": resolved,
+                "publisherUrl": resolved,
+                "publishedAt": entry["published"].isoformat(),
+                "source": canonical,
+                "publisherName": canonical,
+                "sourceEvidence": [canonical],
+                "sourceLinks": [{"name": canonical, "url": resolved}],
+                "category": "Bangladesh",
+                "alertScope": "bangladesh",
+                "isBreaking": True,
+                "sourceStories": [{"name": canonical, "title": entry["title"], "summary": entry["summary"], "url": resolved}],
             })
     return candidates
 
