@@ -242,6 +242,7 @@ function parseIncidentText(text,published){
     let hour=Number(timeMatch[1]),minute=Number(timeMatch[2]||0);
     if(hour>23||minute>59)return null;
     const marker=String(timeMatch[3]||"").toLowerCase();
+    const ambiguousClock=!marker&&!periodWord&&hour<=12;
     if(marker==="pm"&&hour<12)hour+=12;
     if(marker==="am"&&hour===12)hour=0;
     if(marker!=="pm"&&marker!=="am"){
@@ -252,8 +253,8 @@ function parseIncidentText(text,published){
     if(!dateOffset&&stamp>published+5*60000)stamp-=24*60*60*1000;
     const parts=bdDateParts(stamp),periodName=parts.hour<4?"রাত":parts.hour<6?"ভোর":parts.hour<12?"সকাল":parts.hour<15?"দুপুর":parts.hour<18?"বিকেল":parts.hour<20?"সন্ধ্যা":"রাত";
     const clock=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12)+":"+new Intl.NumberFormat("bn-BD",{minimumIntegerDigits:2,useGrouping:false}).format(parts.minute);
-    const exactTime=periodName+" "+clock;
-    return {timestamp:stamp,precision:approximate?"approximate":"exact",display:(approximate?"আনুমানিক ":"")+exactTime+" · "+bdDateLabel(stamp),sourceText:timeMatch[0]};
+    const exactTime=ambiguousClock?"সময়কাল অনির্দিষ্ট "+clock:periodName+" "+clock;
+    return {timestamp:stamp,precision:ambiguousClock?"time_only":approximate?"approximate":"exact",display:(approximate?"আনুমানিক ":"")+exactTime+" · "+bdDateLabel(stamp),sourceText:timeMatch[0]};
   }
   if(periodOnly&&periodWord){
     return {timestamp:bdDateStamp(date.year,date.month,date.day),precision:"period",display:(dateOffset<0?"গত ":"")+periodLabel[periodWord]+" · "+bdDateLabel(bdDateStamp(date.year,date.month,date.day)),sourceText:periodWord};
@@ -335,7 +336,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   const incidentCategory=/বিস্ফোরণ|বোমা|অগ্নি|আগুন|সংঘর্ষ|সহিংসতা|দুর্ঘটনা/i.test(category);
   if(!advice.length&&incidentCategory&&severity!=="INFO")advice.push("ঘটনাস্থলের আশপাশে নিরাপদ দূরত্ব বজায় রাখুন এবং স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।");
   const adviceLine=advice.length?"⚠️ <b>সতর্কতা</b>\n"+advice.map(value=>"• "+esc(value)).join("\n"):"";
-  const timePrecision=incident.precision==="exact"?"নির্দিষ্ট সময়":incident.precision==="approximate"?"আনুমানিক সময়":incident.precision==="period"?"সময়কাল":incident.precision==="date_only"?"শুধু তারিখ":incident.precision==="conflicting"?"তথ্যে অমিল":"অনিশ্চিত";
+  const timePrecision=incident.precision==="exact"?"নির্দিষ্ট সময়":incident.precision==="approximate"?"আনুমানিক সময়":incident.precision==="period"?"সময়কাল":incident.precision==="date_only"?"শুধু তারিখ":incident.precision==="time_only"?"সময়কাল অনির্দিষ্ট":incident.precision==="conflicting"?"তথ্যে অমিল":"অনিশ্চিত";
   const lines=[
     "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · <b>KOKUSHIBU74 INTELLIGENCE</b>",
     "🚨 <b>"+(options.updateNo?"🔄 UPDATE "+String(options.updateNo).padStart(2,"0"):"BREAKING ALERT")+"</b>  "+severityIcon+" <b>"+esc(severity)+"</b>",
