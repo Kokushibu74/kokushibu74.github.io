@@ -133,11 +133,20 @@ test("media transport exceptions still fall back to text",async()=>{
   assert.equal(result,"text");
   assert.deepEqual(calls,["sendVideo","sendPhoto","sendMessage"]);
 });
-test("no-media alert uses text with the original article URL",async()=>{
-  let body;
-  const result=await deliverWithMediaFallback([],"caption","https://news.example/original",async(method,payload)=>{body=payload;return method==="sendMessage";});
+test("no-media alert sends only its single caption message",async()=>{
+  const calls=[];
+  const result=await deliverWithMediaFallback([],"caption with embedded article link","https://news.example/original",async(method,payload)=>{calls.push({method,payload});return true;});
   assert.equal(result,"text");
-  assert.match(body.text,/https:\/\/news\.example\/original/);
+  assert.equal(calls.length,1);
+  assert.equal(calls[0].method,"sendMessage");
+  assert.equal(calls[0].payload.text,"caption with embedded article link");
+});
+test("long original URLs remain clickable inside the first alert message",()=>{
+  const url="https://www.unb.com.bd/video/"+("long-bengali-slug-".repeat(18))+"-Gopalganj-UNB";
+  const x=item({publisherUrl:url});
+  const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"long-link"});
+  assert.ok(message.includes('<a href="'+url+'">মূল সংবাদ পড়ুন</a>'));
+  assert.doesNotMatch(message,/লিংক আলাদা বার্তায়/);
 });
 
 test("dedup key is deterministic and normalized",async()=>assert.equal(await newsAlertKey("Dhaka — Crash!"),await newsAlertKey("dhaka crash")));
@@ -172,6 +181,10 @@ test("long source-rich alerts use Telegram text mode instead of an oversized med
   assert.deepEqual(methods,["sendMessage"]);
 });
 
+test("Worker does not send long original URLs as a second alert message",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.doesNotMatch(source,/if\(link\.length>220\)/);
+});
 test("Worker checks the legacy alert key before using a clustered event ID",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
   assert.match(source,/let previous=await env\.BOT_CONFIG_KV\.get\(stateKey,"json"\)/);
