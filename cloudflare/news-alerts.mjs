@@ -409,12 +409,12 @@ export function formatAlertMessage(item={},decision={},options={}){
     :esc(location);
   const lines=[
     "<b>"+title+"</b>",
-    "🇧🇩 <b>BANGLADESH</b> · "+updateLabel+" · "+severityIcon+" <b>"+esc(severity)+"</b>",
+    "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · "+updateLabel+" · "+severityIcon+" <b>"+esc(severity)+"</b>",
     categoryIcon+" <b>"+esc(category)+"</b>",
     summary,
     "📍 "+locationLabel,
-    "🕒 ঘটনা: "+esc(incident.display),
-    "📰 প্রকাশ: "+esc(publishedLabel),
+    "🕒 ঘটনার সময়: "+esc(incident.display),
+    "📰 প্রকাশের সময়: "+esc(publishedLabel),
     updatedLabel?"🔄 আপডেট: "+esc(updatedLabel):"",
     detailLine,
     verification+(sourceNames.length?" · "+sourceNames.length+" সূত্র":""),
