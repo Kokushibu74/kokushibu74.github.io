@@ -73,12 +73,12 @@ export function extractAlertLocation(item={}) {
   const text=rawText.toLowerCase(),levels=[];
   const levelPatterns=[
     ["গ্রাম",/([\p{L}\p{M}]+)\s+গ্রাম(?:ে|ের)?/iu],
-    ["মহল্লা",/([\p{L}\p{M}]+)\s+মহল্লা(?:য়|তে|র)?/iu],
-    ["এলাকা",/([\p{L}\p{M}]+)\s+এলাকা(?:য়|তে|র)?/iu],
-    ["বাজার",/([\p{L}\p{M}]+)\s+বাজার(?:ে|ের)?/iu],
+    ["মহল্লা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+মহল্লা(?:য়|তে|র)?/iu],
+    ["এলাকা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+এলাকা(?:য়|তে|র)?/iu],
+    ["বাজার",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+বাজার(?:ে|ের)?/iu],
     ["ইউনিয়ন",/([\p{L}\p{M}]+)\s+ইউনিয়ন(?:ে|ের)?/iu],
-    ["উপজেলা",/([\p{L}\p{M}]+)\s+উপজেলা(?:য়|তে|র)?/iu],
-    ["থানা",/([\p{L}\p{M}]+)\s+থানা(?:য়|তে|র)?/iu]
+    ["উপজেলা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+উপজেলা(?:য়|তে|র)?/iu],
+    ["থানা",/([\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+থানা(?:য়|তে|র)?/iu]
   ];
   for(const [label,re] of levelPatterns){const match=rawText.match(re);if(match)levels.push(label+": "+match[1]);}
   const matchedDistrict=DISTRICTS.map(([en,bn,division])=>{
