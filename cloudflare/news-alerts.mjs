@@ -213,6 +213,13 @@ function bdDateParts(timestamp){
 function bdDateLabel(timestamp){
   return new Date(Number(timestamp)).toLocaleDateString("bn-BD",{timeZone:"Asia/Dhaka",day:"numeric",month:"long",year:"numeric"});
 }
+function bdClockLabel(timestamp){
+  const parts=bdDateParts(timestamp);
+  const period=parts.hour<4?"রাত":parts.hour<6?"ভোর":parts.hour<12?"সকাল":parts.hour<15?"দুপুর":parts.hour<18?"বিকেল":parts.hour<20?"সন্ধ্যা":"রাত";
+  const hour=new Intl.NumberFormat("bn-BD").format(parts.hour%12||12);
+  const minute=new Intl.NumberFormat("bn-BD",{minimumIntegerDigits:2,useGrouping:false}).format(parts.minute);
+  return period+" "+hour+":"+minute;
+}
 function bnDigits(value){
   const digits={"০":"0","১":"1","২":"2","৩":"3","৪":"4","৫":"5","৬":"6","৭":"7","৮":"8","৯":"9"};
   return String(value||"").replace(/[০-৯]/g,char=>digits[char]||char);
@@ -315,9 +322,9 @@ export function formatAlertMessage(item={},decision={},options={}){
   const location=extractAlertLocation(item);
   const incident=extractIncidentTime(item);
   const published=Date.parse(item.publishedAt||item.pubDate||"");
-  const publishedLabel=Number.isFinite(published)?new Date(published).toLocaleString("bn-BD",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT":"সময় অনির্দিষ্ট";
+  const publishedLabel=Number.isFinite(published)?bdDateLabel(published)+" · "+bdClockLabel(published)+" BDT":"সময় অনির্দিষ্ট";
   const updated=Number(options.updatedAt||item.updatedAt||item.lastUpdatedAt||0);
-  const updatedLabel=updated?new Date(updated).toLocaleString("bn-BD",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT":"";
+  const updatedLabel=updated?bdDateLabel(updated)+" · "+bdClockLabel(updated)+" BDT":"";
   const severity=String(decision.severity||"HIGH").toUpperCase();
   const severityIcon=severity==="CRITICAL"||severity==="SEVERE"?"🔴":severity==="HIGH"?"🟠":severity==="MODERATE"||severity==="WARNING"?"🟡":"🔵";
   const category=String(decision.category||alertCategory(String(item.title||"")+" "+String(item.summary||"")));
