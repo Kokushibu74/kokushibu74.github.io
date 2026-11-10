@@ -83,7 +83,7 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(manager, /AES-256-GCM/);
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
   assert.match(manager, /status: "published"/);
-  assert.match(miniapp, /Draft text, scheduled posts and Trash stay AES-GCM encrypted/);
+  assert.match(miniapp, /Smart publishing/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
