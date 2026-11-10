@@ -2,6 +2,16 @@ name: Refresh live news feed
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-news.yml"
+      - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "scripts/update_news_alerts.py"
+      - "tests/test_news_alerts.py"
+      - "tests/news-alerts.test.mjs"
+      - "tests/test_news_alert_collector.py"
   push:
     branches: [main]
     paths:
@@ -13,9 +23,12 @@ on:
       - "tests/news-alerts.test.mjs"
       - "tests/test_news_alerts.py"
       - "scripts/update_news.py"
+      - "scripts/update_news_alerts.py"
+      - "news-alert-feed.json"
       - "news-categories.json"
       - "tests/test_update_news.py"
       - "tests/test_slider_rules.py"
+      - "tests/test_news_alert_collector.py"
   schedule:
     - cron: "*/15 * * * *"
 
@@ -36,27 +49,35 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 2 --max-time 15 https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config -o /tmp/bot-config.json
-          enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsRefresh===true?'true':'false')")"
+          news_enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsRefresh===true?'true':'false')")"
+          alerts_enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsAlerts===true?'true':'false')")"
+          enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsRefresh===true||c.newsAlerts===true?'true':'false')")"
+          echo "news_enabled=$news_enabled" >> "$GITHUB_OUTPUT"
+          echo "alerts_enabled=$alerts_enabled" >> "$GITHUB_OUTPUT"
           echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
       - name: Check out latest main before refreshing the feed
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.event.pull_request.head.sha || 'main' }}
       - name: Check Telegram Worker syntax
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: |
           node --check cloudflare/portfolio-contact-telegram.js
           node --check cloudflare/news-watchdog.mjs
+          node --check cloudflare/news-alerts.mjs
       - name: Run GitHub watchdog dispatch tests
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: node --test tests/news-watchdog.test.mjs
       - name: Run Bangladesh alert safeguards
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
         run: python3 tests/test_news_alerts.py -v
       - name: Run Telegram alert module tests
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
         run: node --test tests/news-alerts.test.mjs
+      - name: Test Bangladesh alert RSS collector
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
+        run: python3 tests/test_news_alert_collector.py -v
       - name: Run offline news logic tests
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_update_news.py -v
@@ -64,14 +85,17 @@ jobs:
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_slider_rules.py -v
       - name: Generate feed from public RSS sources
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.news_enabled == 'true' }}
         run: python3 scripts/update_news.py
+      - name: Generate Telegram-only Bangladesh alert feed
+        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
+        run: python3 scripts/update_news_alerts.py
       - name: Commit feed when changed
-        if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
+        if: ${{ github.event_name != 'pull_request' && (github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true') }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news-feed.json news-archive.json
+          git add news-feed.json news-archive.json news-alert-feed.json
           if git diff --cached --quiet; then
             echo "News feed unchanged."
           else
