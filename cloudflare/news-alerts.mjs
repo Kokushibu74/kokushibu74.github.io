@@ -250,7 +250,7 @@ function parseIncidentText(text,published){
     let hour=Number(timeMatch[1]),minute=Number(timeMatch[2]||0);
     if(hour>23||minute>59)return null;
     const marker=String(timeMatch[3]||"").toLowerCase();
-    const ambiguousClock=!marker&&!periodWord&&hour<=12;
+    const ambiguousClock=marker!=="pm"&&marker!=="am"&&!periodWord&&hour<=12;
     if(marker==="pm"&&hour<12)hour+=12;
     if(marker==="am"&&hour===12)hour=0;
     if(marker!=="pm"&&marker!=="am"){
