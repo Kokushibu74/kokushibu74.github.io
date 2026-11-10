@@ -211,7 +211,7 @@ test("dedup key strips a publisher suffix from the headline",async()=>assert.equ
 
 test("Bangladesh alert location resolves district and division from headline",()=>assert.equal(extractAlertLocation(item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"})),"নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));
 test("headline village name is included when explicitly stated",()=>assert.ok(extractAlertLocation(item({title:"হ্নীলা গ্রামে বন্যা",summary:"কক্সবাজার এলাকায় পানি বৃদ্ধি"})).includes("গ্রাম: হ্নীলা, কক্সবাজার, চট্টগ্রাম বিভাগ, বাংলাদেশ")));
-test("structured village and thana location is preserved without guessing",()=>assert.equal(extractAlertLocation(item({title:"Major incident",location:{village:"Hnila",union:"Hnila Union",upazila:"Teknaf",thana:"Teknaf",district:"Cox's Bazar",division:"Chattogram",country:"Bangladesh"}})),"Hnila, Hnila Union, Teknaf, Teknaf, Cox's Bazar, Chattogram, Bangladesh"));
+test("structured village and thana location is preserved without guessing",()=>assert.equal(extractAlertLocation(item({title:"Major incident",location:{village:"Hnila",union:"Hnila Union",upazila:"Teknaf",thana:"Teknaf",district:"Cox's Bazar",division:"Chattogram",country:"Bangladesh"}})),"Hnila, Hnila Union, Teknaf, Cox's Bazar, Chattogram, Bangladesh"));
 test("Telegram alert includes clickable links for trusted publisher sources only",()=>{
   const x=item({sourceLinks:[
     {name:"The Daily Star",url:"https://www.thedailystar.net/news/example"},
