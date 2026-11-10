@@ -332,7 +332,7 @@ export function extractIncidentTime(item={}){
 }
 
 function dedupeLocationEvidence(entries=[]){
-  const normalize=value=>String(value||"").toLocaleLowerCase("bn").replace(/[ঃ:]/g,"").replace(/[।.;]/g," ").replace(/\\s+/g," ").trim();
+  const normalize=value=>String(value||"").toLocaleLowerCase("bn").replace(/[ঃ:]/g,"").replace(/[।.;]/g," ").replace(/\s+/g," ").trim();
   const rows=[...new Map(entries.filter(x=>x&&String(x.address||x.location||"").trim()).map(x=>{
     const address=String(x.address||x.location||"").trim();
     return [normalize(address),{...x,address}];
@@ -348,7 +348,7 @@ function dedupeLocationEvidence(entries=[]){
   }).sort((a,b)=>parts(b.address).length-parts(a.address).length||b.address.length-a.address.length);
 }
 function compactAlertText(value,max=320){
-  const text=String(value||"").replace(/\\s+/g," ").trim();
+  const text=String(value||"").replace(/\s+/g," ").trim();
   if(text.length<=max)return text;
   const cut=text.slice(0,max-1);
   const boundary=cut.lastIndexOf(" ");
