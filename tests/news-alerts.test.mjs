@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdtemp,rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {pathToFileURL} from "node:url";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,extractAlertSourceLocations,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 
