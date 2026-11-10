@@ -79,7 +79,7 @@ assert.match(commandRegistration, /getMyCommands/, "Registration must be verifie
 assert.match(commandRegistration, /if\(!defaults\.ok\)/, "Default command registration failures must be surfaced");
 assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration failures must be surfaced");
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
-assert.match(commandRegistration, /const expected=BOT_PUBLIC_COMMANDS/);
+assert.match(commandRegistration, /const expected=isAdmin\?\[\.\.\.BOT_PUBLIC_COMMANDS,\.\.\.BOT_ADMIN_COMMANDS\]:BOT_PUBLIC_COMMANDS/);
 assert.doesNotMatch(commandRegistration, /BOT_PUBLIC_COMMANDS\.concat\(isAdmin\?BOT_ADMIN_COMMANDS/,
   "Admin-only functions must not flood Telegram's top-level command menu");
 
