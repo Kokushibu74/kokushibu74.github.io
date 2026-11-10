@@ -57,12 +57,50 @@ QUERIES = [
     ("Technology", "ChatGPT OpenAI Google Gemini AI news", "en-US", "US", "US:en"),
 ]
 DIRECT_FEEDS = [
-    # Public publisher RSS feeds; Google News searches remain a broad free fallback.
+    # Publisher RSS feeds; Google News searches remain a broad fallback when
+    # an outlet blocks or temporarily breaks its public RSS endpoint.
     ("The Daily Star", "https://www.thedailystar.net/frontpage/rss.xml"),
     ("Jago News 24", "https://www.jagonews24.com/rss/rss.xml"),
     ("Prothom Alo", "https://www.prothomalo.com/feed/"),
     ("BBC News বাংলা", "https://feeds.bbci.co.uk/bengali/rss.xml"),
     ("BBC News World", "https://feeds.bbci.co.uk/news/world/rss.xml"),
+    ("bdnews24.com", "https://bdnews24.com/?widgetName=rssfeed&widgetId=1150&getXmlFeed=true"),
+    ("Banglanews24", "https://www.banglanews24.com/rss/rss.xml"),
+    ("Jugantor", "https://www.jugantor.com/feed/rss.xml"),
+    ("Kaler Kantho", "https://www.kalerkantho.com/rss.xml"),
+    ("Bangla Tribune", "https://www.banglatribune.com/feed/"),
+    ("Dhaka Tribune", "https://www.dhakatribune.com/feed"),
+    ("The Business Standard", "https://www.tbsnews.net/rss.xml"),
+    ("The Financial Express", "https://thefinancialexpress.com.bd/rss"),
+    ("New Age", "https://www.newagebd.net/rss"),
+    ("Daily Observer", "https://observerbd.com/rss.php"),
+    ("BSS", "https://www.bssnews.net/feed"),
+    ("UNB", "https://unb.com.bd/rss"),
+    ("Risingbd", "https://www.risingbd.com/rss/rss.xml"),
+    ("Samakal", "https://samakal.com/rss.xml"),
+    ("Dhaka Post", "https://www.dhakapost.com/rss"),
+    ("Bangladesh Pratidin", "https://www.bd-pratidin.com/rss.xml"),
+    ("Daily Sun", "https://www.daily-sun.com/rss.xml"),
+    ("Somoy News", "https://www.somoynews.tv/rss"),
+    ("Channel 24", "https://www.channel24bd.tv/rss"),
+    ("Jamuna TV", "https://jamuna.tv/feed"),
+    ("Ekattor TV", "https://ekattor.tv/feed"),
+    ("Daily Inqilab", "https://dailyinqilab.com/rss.xml"),
+    ("Barta24", "https://barta24.com/rss.xml"),
+    ("Bhorer Kagoj", "https://www.bhorerkagoj.com/feed/"),
+    ("Bonik Barta", "https://bonikbarta.com/rss.xml"),
+    ("Desh Rupantor", "https://www.deshrupantor.com/rss"),
+    ("The Daily Ittefaq", "https://www.ittefaq.com.bd/rss.xml"),
+    ("Ajker Patrika", "https://www.ajkerpatrika.com/rss"),
+    ("Manab Zamin", "https://mzamin.com/rss.xml"),
+    ("Dainik Amader Shomoy", "https://www.dainikamadershomoy.com/rss"),
+    ("Daily Naya Diganta", "https://www.dailynayadiganta.com/rss"),
+    ("Daily Janakantha", "https://www.dailyjanakantha.com/rss"),
+    ("Dainik Azadi", "https://dainikazadi.net/feed"),
+    ("Daily Sangbad", "https://sangbad.net.bd/feed/"),
+    ("Dhaka Courier", "https://dhakacourier.com.bd/feed"),
+    ("The Business Post", "https://businesspostbd.com/feed"),
+    ("BD24Live", "https://www.bd24live.com/feed"),
 ]
 BREAKING_QUERY_TEXTS = {"বাংলাদেশ ব্রেকিং নিউজ", "Bangladesh breaking news"}
 DIRECT_SOURCE_NAMES = {name for name, _ in DIRECT_FEEDS}
@@ -1279,7 +1317,7 @@ def main():
     for source, feed_url in DIRECT_FEEDS:
         try:
             request = urllib.request.Request(feed_url, headers=HEADERS)
-            with urlopen_with_retry(request, timeout=10) as response:
+            with urlopen_with_retry(request, timeout=6, attempts=1) as response:
                 root = parse_feed_xml(response.read())
             nodes = feed_items(root)
             for node in nodes:
