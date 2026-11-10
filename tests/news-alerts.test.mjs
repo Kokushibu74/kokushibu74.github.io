@@ -118,6 +118,28 @@ test("full alert includes title, description, location, incident and publication
   assert.match(message,/PROVISIONAL/);
 });
 
+
+test("ambiguous 12-hour clock is not assigned AM or PM",()=>{
+  const x=item({title:"ঢাকায় ৮:৩০ মিনিটে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"time_only");
+  assert.match(time.display,/সময়কাল অনির্দিষ্ট/);
+});
+test("weekday and period-only incident time is resolved against publication date",()=>{
+  const x=item({title:"মঙ্গলবার রাতে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"period");
+  assert.match(time.display,/গত রাত/);
+});
+test("Worker emits an update when incident time, location or incident details change",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.match(source,/incidentTimeChanged/);
+  assert.match(source,/locationChanged/);
+  assert.match(source,/detailsChanged/);
+  assert.match(source,/sourceLinkExpanded/);
+  assert.match(source,/updatePayload/);
+});
+
 test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
   const decision=evaluateNewsAlert(item({title:"Bangladesh cyclone warning",summary:"Severe coastal cyclone alert",category:"Weather & Disasters",sourceEvidence:[],source:"",publisherName:"",publisherUrl:"https://example.com/weather"}),{now,officialSignal:true});
   assert.equal(decision.eligible,true);
