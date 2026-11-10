@@ -123,15 +123,18 @@ export function evaluateNewsAlert(item={},options={}){
   // A repeated syndicated copy with the same normalized title and summary is
   // not counted as a second independent report.
   const storyRows=Array.isArray(item.sourceStories)?item.sourceStories:[];
-  const fingerprints=new Set(),independent=[];
+  const titleFingerprints=new Set(),summaryFingerprints=new Set(),independent=[];
   for(const story of storyRows){
     if(!story||typeof story!=="object")continue;
     const publisher=canonicalSource(story.name||story.source||"");
     if(!publisher||!isTrustedPublisher(publisher))continue;
-    const fingerprint=(String(story.title||"")+" "+String(story.summary||""))
-      .toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
-    if(!fingerprint||fingerprints.has(fingerprint))continue;
-    fingerprints.add(fingerprint);
+    const normalize=value=>String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
+    const titleFingerprint=normalize(story.title),summaryFingerprint=normalize(story.summary);
+    const duplicateTitle=titleFingerprint&&titleFingerprints.has(titleFingerprint);
+    const duplicateSummary=summaryFingerprint.length>=80&&summaryFingerprints.has(summaryFingerprint);
+    if(duplicateTitle||duplicateSummary)continue;
+    if(titleFingerprint)titleFingerprints.add(titleFingerprint);
+    if(summaryFingerprint.length>=80)summaryFingerprints.add(summaryFingerprint);
     if(!independent.some(value=>value.toLowerCase()===publisher.toLowerCase()))independent.push(publisher);
   }
   const corroboratingSources=storyRows.length?independent:trustedSources;
