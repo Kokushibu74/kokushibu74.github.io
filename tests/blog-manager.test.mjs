@@ -81,7 +81,7 @@ test("public feed contains only published and due scheduled posts with an explic
   const env = { GITHUB_TOKEN: "test-token", JOURNAL_ENCRYPTION_KEY: Buffer.alloc(32, 9).toString("base64") };
   const now = Date.parse("2026-11-09T12:00:00.000Z");
   const journal = { version: 1, posts: [
-    { id: "blog_public01", title: "Public article", description: "Public", category: "Development", content: "Public body", status: "published", publishAt: "2026-11-09T10:00:00.000Z" },
+    { id: "blog_public01", title: "Public article", description: "Old manual summary", category: "Development", content: "This article explains AI agent automation with Cloudflare Workers and practical deployment checks.", status: "published", publishAt: "2026-11-09T10:00:00.000Z" },
     { id: "blog_draft001", title: "Private draft", description: "Draft", category: "Development", content: "Draft body", status: "draft", publishAt: "2026-11-09T11:00:00.000Z" },
     { id: "blog_future01", title: "Future scheduled", description: "Future", category: "Development", content: "Future body", status: "scheduled", publishAt: "2026-11-10T10:00:00.000Z" },
     { id: "blog_due0001", title: "Due scheduled", description: "Due", category: "Development", content: "Due body", status: "scheduled", publishAt: "2026-11-09T11:00:00.000Z" },
@@ -96,6 +96,9 @@ test("public feed contains only published and due scheduled posts with an explic
     assert.deepEqual(posts.map(post => post.id), ["blog_due0001", "blog_public01"]);
     assert.ok(posts.every(post => post.status === "published"));
     assert.ok(posts.every(post => !post.deletedAt && !post.previousStatus));
+    const legacy = posts.find(post => post.id === "blog_public01");
+    assert.match(legacy.description, /^This article explains AI agent automation/);
+    assert.equal(legacy.category, "AI & Automation", "Legacy public posts should receive inferred categories at read time.");
   } finally {
     globalThis.fetch = originalFetch;
   }
