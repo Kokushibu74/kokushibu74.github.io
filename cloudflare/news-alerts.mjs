@@ -200,7 +200,7 @@ export function formatTelegramMessage(text,options={}){
 export function formatAlertMessage(item={},decision={},options={}){
   const location=escapeHtml(extractAlertLocation(item)),
     link=String(item.publisherUrl||item.link||""),
-    linkLine=link.length<=220?'🔗 <a href="'+escapeHtml(link)+'">মূল সংবাদ পড়ুন</a>':"🔗 মূল সংবাদ লিংক আলাদা বার্তায় দেওয়া হবে",
+    linkLine=link?'🔗 <a href="'+escapeHtml(link)+'">মূল সংবাদ পড়ুন</a>':"",
     title=escapeHtml(String(item.title||"").trim().slice(0,180)),
     summary=escapeHtml(String(item.summary||item.previewSummary||"").trim().slice(0,280)),
     sources=escapeHtml((decision.trustedSources||[]).join(" · ").slice(0,180)),
@@ -235,7 +235,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   ];
   return lines.filter(Boolean).join("\n").slice(0,3500);
 }
-export async function deliverWithMediaFallback(candidates,caption,link,send){for(const media of (caption.length<=1024?candidates:[])){try{const method=media.type==="video"?"sendVideo":"sendPhoto",body=media.type==="video"?{video:media.url,caption,parse_mode:"HTML"}:{photo:media.url,caption,parse_mode:"HTML"};if(await send(method,body))return media.type;}catch{}}const text=[caption,"",link.length<=220?"🔗 "+escapeHtml(link):"🔗 Original article link will follow separately"].join("\n");if(!await send("sendMessage",{text,parse_mode:"HTML",disable_web_page_preview:false}))throw new Error("Telegram news alert delivery failed");return "text";}
+export async function deliverWithMediaFallback(candidates,caption,link,send){for(const media of (caption.length<=1024?candidates:[])){try{const method=media.type==="video"?"sendVideo":"sendPhoto",body=media.type==="video"?{video:media.url,caption,parse_mode:"HTML"}:{photo:media.url,caption,parse_mode:"HTML"};if(await send(method,body))return media.type;}catch{}}if(!await send("sendMessage",{text:caption,parse_mode:"HTML",disable_web_page_preview:false}))throw new Error("Telegram news alert delivery failed");return "text";}
 export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/"){
   const raw=String(html||"").replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]*>/g," ").replace(/&nbsp;|&#160;/gi," ").replace(/&amp;/gi,"&").replace(/\s+/g," ");
   const hazard=String(item.title||"")+" "+String(item.summary||"");
