@@ -102,4 +102,11 @@ test("public feed contains only published and due scheduled posts with an explic
 });
 
 
-test("smart publishing generates a concise summary and infers a content category", () => {\n  const content = "# Deploying an AI agent\\n\\nThis guide explains how to deploy an AI agent with Cloudflare Workers and verify its runtime behavior.";\n  assert.match(generateShortDescription(content), /^This guide explains how to deploy an AI agent/);\n  assert.equal(inferJournalCategory("Deploying an AI agent", content), "AI & Automation");\n  const post = validatePost({ id: "blog_smart001", title: "Deploying an AI agent", content, status: "published" });\n  assert.ok(post.description.length > 20);\n  assert.equal(post.category, "AI & Automation");\n});\n
+test("smart publishing generates a concise summary and infers a content category", () => {
+  const content = "# Deploying an AI agent\n\nThis guide explains how to deploy an AI agent with Cloudflare Workers and verify its runtime behavior."; 
+  assert.match(generateShortDescription(content), /^This guide explains how to deploy an AI agent/);
+  assert.equal(inferJournalCategory("Deploying an AI agent", content), "AI & Automation");
+  const post = validatePost({ id: "blog_smart001", title: "Deploying an AI agent", content, status: "published" });
+  assert.ok(post.description.length > 20);
+  assert.equal(post.category, "AI & Automation");
+});
