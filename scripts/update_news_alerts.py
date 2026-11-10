@@ -372,7 +372,14 @@ def find_incident_time_phrase(text):
     return ""
 
 def article_plain_text(raw):
-    value = re.sub(r"<!--.*?-->", " ", str(raw or ""), flags=re.S)
+    value = str(raw or "")
+    article_blocks = re.findall(r"<article\b[^>]*>(.*?)</article>", value, flags=re.I | re.S)
+    main_blocks = re.findall(r"<main\b[^>]*>(.*?)</main>", value, flags=re.I | re.S)
+    if article_blocks:
+        value = max(article_blocks, key=len)
+    elif main_blocks:
+        value = max(main_blocks, key=len)
+    value = re.sub(r"<!--.*?-->", " ", value, flags=re.S)
     value = re.sub(r"<(script|style|noscript|svg|nav|header|footer|aside|form)[^>]*>.*?</\1>", " ", value, flags=re.I | re.S)
     value = re.sub(r"<[^>]+>", " ", value)
     return re.sub(r"\s+", " ", html.unescape(value)).strip()
@@ -387,6 +394,9 @@ def find_incident_location_phrase(text):
     found = []
     for pattern in LOCATION_PATTERNS:
         for match in pattern.finditer(value):
+            context = value[max(0, match.start() - 120):min(len(value), match.end() + 100)]
+            if not re.search(r"(আগুন|অগ্নিকাণ্ড|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context, re.I):
+                continue
             phrase = re.sub(r"\s+", " ", match.group(0)).strip(" ,.;:।")
             if phrase and phrase.lower() not in {x.lower() for x in found}:
                 found.append(phrase[:100])
