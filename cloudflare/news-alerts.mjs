@@ -50,10 +50,8 @@ function classifyEvent(text,category=""){
   if(WEATHER.test(text)&&WEATHER_SEVERITY.test(text))return {weather:true};
   if(REFERENDUM.test(text)&&REFERENDUM_CHANGE.test(text))return {weather:false};
   if(UPRISING.test(text)&&UPRISING_DEVELOPMENT.test(text))return {weather:false};
-  if(MURDER.test(text)){
-    if(category==="World"&&!BD.test(text))return null;
-    return {weather:false};
-  }
+  if(MURDER.test(text))return {weather:false};
+  if(INTERNATIONAL_CRISIS.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||DIRECT_BD_IMPACT.test(text)||category==="World"))return {weather:false};
   // These incidents are alert-worthy before casualty figures are known.
   if(CLASH.test(text))return {weather:false};
   if(ACCIDENT.test(text)&&(DEATH.test(text)||SERIOUS.test(text)||MAJOR_ACCIDENT.test(text)))return {weather:false};
