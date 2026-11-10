@@ -401,10 +401,10 @@ def fetch_article_enrichment(story):
         parsed = urlparse(url)
         host = (parsed.hostname or "").lower()
         if parsed.scheme != "https" or not host:
-            return ""
+            return {}
         allowed = {domain for _, _, domain in SOURCES}
         if not any(host == domain or host.endswith("." + domain) for domain in allowed):
-            return ""
+            return {}
         request = urllib.request.Request(url, headers={
             "User-Agent": USER_AGENT,
             "Accept": "text/html,application/xhtml+xml",
@@ -414,7 +414,7 @@ def fetch_article_enrichment(story):
             final_url = response.geturl()
             final_host = (urlparse(final_url).hostname or "").lower()
             if not (final_host == host or final_host.endswith("." + host) or host.endswith("." + final_host)):
-                return ""
+                return {}
             raw = response.read(1_200_000)
         text = article_plain_text(raw.decode("utf-8", errors="replace"))[:30000]
         return {
