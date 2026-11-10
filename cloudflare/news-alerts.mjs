@@ -367,9 +367,9 @@ export function formatAlertMessage(item={},decision={},options={}){
   const esc=value=>escapeHtml(String(value??""));
   const title=esc(compactAlertText(String(item.title||"").trim(),170));
   const summaryText=compactAlertText(item.summary||item.previewSummary||"",360);
-  const summarySentences=summaryText.split(/(?<=[।!?])\\s+/u).filter(Boolean);
+  const summarySentences=summaryText.split(/(?<=[।!?])\s+/u).filter(Boolean);
   const summary=summarySentences.length>1&&summaryText.length>170
-    ?summarySentences.slice(0,3).map(esc).join("\\n\\n")+(summarySentences.length>3?"…":"")
+    ?summarySentences.slice(0,3).map(esc).join("\n\n")+(summarySentences.length>3?"…":"")
     :esc(summaryText);
   const itemLocation=extractAlertLocation(item);
   const providedLocations=(Array.isArray(item.sourceLocations)?item.sourceLocations:[])
@@ -394,7 +394,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   const status=String(decision.status||"provisional");
   const verification=status==="confirmed"?"🟢 <b>CONFIRMED</b>":status==="conflicting"?"🔴 <b>CONFLICTING</b>":"🟡 <b>PROVISIONAL</b>";
   const sourceLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[])
-    .filter(entry=>entry&&typeof entry.name==="string"&&typeof entry.url==="string"&&/^https:\/\//i.test(entry.url)&&!/news\\.google\\.com/i.test(entry.url)&&isTrustedPublisher(entry.name)).slice(0,5);
+    .filter(entry=>entry&&typeof entry.name==="string"&&typeof entry.url==="string"&&/^https:\/\//i.test(entry.url)&&!/news\.google\.com/i.test(entry.url)&&isTrustedPublisher(entry.name)).slice(0,5);
   const links=sourceLinks.map(entry=>'<a href="'+esc(entry.url)+'">'+esc(canonicalSource(entry.name))+'</a>');
   const primaryLink=String(item.publisherUrl||item.link||"");
   if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ</a>');
@@ -417,20 +417,20 @@ export function formatAlertMessage(item={},decision={},options={}){
     "🕒 <b>ঘটনার সময়:</b> "+esc(incident.display),
     "📰 <b>প্রকাশের সময়:</b> "+esc(publishedLabel),
     updatedLabel?"🔄 <b>আপডেট:</b> "+esc(updatedLabel):""
-  ].filter(Boolean).join("\\n");
+  ].filter(Boolean).join("\n");
   const sections=[
     "<b>"+title+"</b>",
     statusLine,
     categoryIcon+" <b>"+esc(category)+"</b>",
-    summary?"📝 <b>ঘটনার বিবরণ</b>\\n"+summary:"",
-    "📍 <b>ঘটনাস্থল</b>\\n"+locationLabel,
+    summary?"📝 <b>ঘটনার বিবরণ</b>\n"+summary:"",
+    "📍 <b>ঘটনাস্থল</b>\n"+locationLabel,
     timeLines,
     detailLine,
     verification+(sourceNames.length?" · "+sourceNames.length+" সূত্র":""),
     sourceLine,
     adviceLine
   ];
-  return sections.filter(Boolean).join("\\n\\n").slice(0,1900);
+  return sections.filter(Boolean).join("\n\n").slice(0,1900);
 }
 export async function deliverWithMediaFallback(candidates,caption,link,send){for(const media of (caption.length<=1024?candidates:[])){try{const method=media.type==="video"?"sendVideo":"sendPhoto",body=media.type==="video"?{video:media.url,caption,parse_mode:"HTML"}:{photo:media.url,caption,parse_mode:"HTML"};if(await send(method,body))return media.type;}catch{}}if(!await send("sendMessage",{text:caption,parse_mode:"HTML",disable_web_page_preview:false}))throw new Error("Telegram news alert delivery failed");return "text";}
 export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/"){
