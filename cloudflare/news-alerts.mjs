@@ -331,90 +331,87 @@ export function extractIncidentTime(item={}){
   return {precision:"unknown",display:"এখনো নিশ্চিত নয়",timestamp:null,source:""};
 }
 
+function dedupeLocationEvidence(entries=[]){
+  const normalize=value=>String(value||"").toLocaleLowerCase("bn").replace(/[ঃ:]/g,"").replace(/[।.;]/g," ").replace(/\\s+/g," ").trim();
+  const rows=[...new Map(entries.filter(x=>x&&String(x.address||x.location||"").trim()).map(x=>{
+    const address=String(x.address||x.location||"").trim();
+    return [normalize(address),{...x,address}];
+  }))].map(([,x])=>x);
+  const parts=value=>normalize(value).split(",").map(x=>x.trim()).filter(Boolean);
+  return rows.filter((row,index)=>{
+    const current=parts(row.address);
+    return !rows.some((other,otherIndex)=>{
+      if(index===otherIndex)return false;
+      const candidate=parts(other.address);
+      return candidate.length>current.length&&current.every(part=>candidate.includes(part));
+    });
+  }).sort((a,b)=>parts(b.address).length-parts(a.address).length||b.address.length-a.address.length);
+}
+function compactAlertText(value,max=320){
+  const text=String(value||"").replace(/\\s+/g," ").trim();
+  if(text.length<=max)return text;
+  const cut=text.slice(0,max-1);
+  const boundary=cut.lastIndexOf(" ");
+  return (boundary>max*0.65?cut.slice(0,boundary):cut).trimEnd()+"…";
+}
 export function formatAlertMessage(item={},decision={},options={}){
   const esc=value=>escapeHtml(String(value??""));
-  const title=esc(String(item.title||"").trim().slice(0,220));
-  const summary=esc(String(item.summary||item.previewSummary||"").trim().slice(0,850));
+  const title=esc(compactAlertText(String(item.title||"").trim(),170));
+  const summary=esc(compactAlertText(item.summary||item.previewSummary||"",300));
   const itemLocation=extractAlertLocation(item);
-  const providedLocations=Array.isArray(item.sourceLocations)?item.sourceLocations.filter(x=>x&&String(x.address||x.location||"").trim()).slice(0,5):[];
+  const providedLocations=(Array.isArray(item.sourceLocations)?item.sourceLocations:[])
+    .map(x=>({source:String(x?.source||""),address:String(x?.address||x?.location||"").trim()}));
   const storyLocations=(Array.isArray(item.sourceStories)?item.sourceStories:[]).map(story=>{
     if(!story||typeof story!=="object")return null;
     const address=extractAlertLocation({title:story.title,summary:[story.summary,story.locationText].filter(Boolean).join(" "),location:story.location});
     return address&&address!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?{source:String(story.name||story.source||""),address}:null;
   }).filter(Boolean);
-  const uniqueStoryLocations=[...new Map(storyLocations.map(x=>[x.address.toLowerCase(),x])).values()];
-  const bestStoryLocation=[...uniqueStoryLocations].sort((a,b)=>b.address.length-a.address.length)[0];
-  const itemLocationKnown=itemLocation!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়";
-  const storyLocationDiffers=uniqueStoryLocations.length===1&&itemLocationKnown&&
-    !uniqueStoryLocations[0].address.toLowerCase().includes(itemLocation.toLowerCase())&&
-    !itemLocation.toLowerCase().includes(uniqueStoryLocations[0].address.toLowerCase());
-  const locationEvidence=providedLocations.length?providedLocations:
-    uniqueStoryLocations.length>1?uniqueStoryLocations:
-    storyLocationDiffers?[...uniqueStoryLocations,{source:String(item.publisherName||item.source||"প্রাথমিক সংবাদ"),address:itemLocation}]:[];
-  const location=providedLocations[0]?.address||providedLocations[0]?.location||
-    (itemLocationKnown&&(!bestStoryLocation||bestStoryLocation.address.length<=itemLocation.length)?itemLocation:(bestStoryLocation?.address||itemLocation));
+  const locationEvidence=dedupeLocationEvidence([...providedLocations,...storyLocations]);
+  const location=locationEvidence[0]?.address||(itemLocation!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"?itemLocation:"অবস্থান নিশ্চিত নয়");
   const incident=extractIncidentTime(item);
   const published=Date.parse(item.publishedAt||item.pubDate||"");
   const publishedLabel=Number.isFinite(published)?bdDateLabel(published)+" · "+bdClockLabel(published)+" BDT":"সময় অনির্দিষ্ট";
   const updated=Number(options.updatedAt||item.updatedAt||item.lastUpdatedAt||0);
-  const updatedLabel=updated?bdDateLabel(updated)+" · "+bdClockLabel(updated)+" BDT":"";
+  const updatedLabel=updated?bdClockLabel(updated)+" BDT":"";
   const severity=String(decision.severity||"HIGH").toUpperCase();
   const severityIcon=severity==="CRITICAL"||severity==="SEVERE"?"🔴":severity==="HIGH"?"🟠":severity==="MODERATE"||severity==="WARNING"?"🟡":"🔵";
   const category=String(decision.category||alertCategory(String(item.title||"")+" "+String(item.summary||"")));
   const categoryIcon=/বিস্ফোরণ|বোমা/i.test(category)?"💥":/অগ্নি|আগুন/i.test(category)?"🔥":/সংঘর্ষ|সহিংসতা/i.test(category)?"⚔️":/দুর্যোগ|আবহাওয়া/i.test(category)?"🌪️":/দুর্ঘটনা/i.test(category)?"🚑":"🚨";
   const status=String(decision.status||"provisional");
-  const verification=status==="confirmed"?"🟢 <b>CONFIRMED · একাধিক স্বাধীন সূত্রে সমর্থিত</b>":status==="conflicting"?"🔴 <b>CONFLICTING · সূত্রের তথ্যে অমিল</b>":"🟡 <b>PROVISIONAL · স্বাধীন যাচাই চলছে</b>";
+  const verification=status==="confirmed"?"🟢 <b>CONFIRMED</b>":status==="conflicting"?"🔴 <b>CONFLICTING</b>":"🟡 <b>PROVISIONAL</b>";
   const sourceLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[])
-    .filter(entry=>entry&&typeof entry.name==="string"&&typeof entry.url==="string"&&/^https:\/\//i.test(entry.url)&&!/news\.google\.com/i.test(entry.url)&&isTrustedPublisher(entry.name)).slice(0,10);
+    .filter(entry=>entry&&typeof entry.name==="string"&&typeof entry.url==="string"&&/^https:\/\//i.test(entry.url)&&!/news\.google\.com/i.test(entry.url)&&isTrustedPublisher(entry.name)).slice(0,5);
   const links=sourceLinks.map(entry=>'<a href="'+esc(entry.url)+'">'+esc(canonicalSource(entry.name))+'</a>');
   const primaryLink=String(item.publisherUrl||item.link||"");
-  if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ পড়ুন</a>');
+  if(primaryLink&&!links.some(value=>value.includes(esc(primaryLink))))links.unshift('<a href="'+esc(primaryLink)+'">মূল সংবাদ</a>');
   const sourceNames=Array.isArray(decision.trustedSources)?decision.trustedSources.filter(Boolean):[];
-  const sourceLine=links.length?"🔎 <b>সংবাদসূত্র:</b> "+links.join(" · "):(sourceNames.length?"🔎 <b>সংবাদসূত্র:</b> "+esc(sourceNames.join(" · ")):"");
-  const locationLines=locationEvidence.length>1?locationEvidence.map(x=>"📍 "+esc(x.address||x.location)+(x.source?" <i>— "+esc(x.source)+"</i>":"")).join("\n"):"📍 <b>ঘটনাস্থল:</b> "+esc(location);
+  const sourceLine=links.length?"🔗 "+links.join(" · "):(sourceNames.length?"🔗 "+esc(sourceNames.slice(0,3).join(" · ")):"");
   const details=item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{};
-  const detailRows=[
-    ["নিহত",details.killed??item.killed],["আহত",details.injured??item.injured],
-    ["নিখোঁজ",details.missing??item.missing],["ক্ষয়ক্ষতি",details.damage??item.damage],
-    ["বর্তমান অবস্থা",details.status??item.incidentStatus]
-  ].filter(([,value])=>value!==undefined&&value!==null&&String(value).trim());
-  const detailLine=detailRows.length?"📊 <b>ঘটনার আপডেট</b>\n"+detailRows.map(([label,value])=>"• "+label+": "+esc(value)).join("\n"):"";
-  const advice=Array.isArray(item.safetyAdvice)?item.safetyAdvice.filter(Boolean).slice(0,4):typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[];
+  const detailRows=[["নিহত",details.killed??item.killed],["আহত",details.injured??item.injured],["নিখোঁজ",details.missing??item.missing]]
+    .filter(([,value])=>value!==undefined&&value!==null&&String(value).trim());
+  const detailLine=detailRows.length?"📊 "+detailRows.map(([label,value])=>label+": "+esc(value)).join(" · "):"";
+  const advice=Array.isArray(item.safetyAdvice)?item.safetyAdvice.filter(Boolean).slice(0,1):typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[];
   const incidentCategory=/বিস্ফোরণ|বোমা|অগ্নি|আগুন|সংঘর্ষ|সহিংসতা|দুর্ঘটনা/i.test(category);
-  if(!advice.length&&incidentCategory&&severity!=="INFO")advice.push("ঘটনাস্থলের আশপাশে নিরাপদ দূরত্ব বজায় রাখুন এবং স্থানীয় প্রশাসনের নির্দেশনা অনুসরণ করুন।");
-  const adviceLine=advice.length?"⚠️ <b>সতর্কতা</b>\n"+advice.map(value=>"• "+esc(value)).join("\n"):"";
-  const timePrecision=incident.precision==="exact"?"নির্দিষ্ট সময়":incident.precision==="approximate"?"আনুমানিক সময়":incident.precision==="period"?"সময়কাল":incident.precision==="date_only"?"শুধু তারিখ":incident.precision==="time_only"?"সময়কাল অনির্দিষ্ট":incident.precision==="conflicting"?"তথ্যে অমিল":"অনিশ্চিত";
+  if(!advice.length&&incidentCategory&&severity!=="INFO")advice.push("ঘটনাস্থল থেকে নিরাপদ দূরত্ব বজায় রাখুন; প্রশাসনের নির্দেশনা মানুন।");
+  const adviceLine=advice.length?"⚠️ "+esc(compactAlertText(advice[0],115)):"";
+  const updateLabel=options.updateNo?"🔄 <b>UPDATE "+String(options.updateNo).padStart(2,"0")+"</b>":"🚨 <b>BREAKING ALERT</b>";
+  const locationLabel=locationEvidence.length>1
+    ?locationEvidence.slice(0,2).map(x=>esc(x.address)).join(" · ")
+    :esc(location);
   const lines=[
-    "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · <b>KOKUSHIBU74 INTELLIGENCE</b>",
-    "🚨 <b>"+(options.updateNo?"🔄 UPDATE "+String(options.updateNo).padStart(2,"0"):"BREAKING ALERT")+"</b>  "+severityIcon+" <b>"+esc(severity)+"</b>",
-    "🏷️ <b>"+categoryIcon+" "+esc(category)+"</b>",
-    "",
+    "🇧🇩 <b>BANGLADESH NEWS ALERT</b> · "+updateLabel+" · "+severityIcon+" <b>"+esc(severity)+"</b>",
+    categoryIcon+" <b>"+esc(category)+"</b>",
     "📰 <b>"+title+"</b>",
-    "📝 <b>বিবরণ</b>",
     summary,
-    "",
-    "📍 <b>LOCATION</b>",
-    locationLines,
-    "",
-    "🕒 <b>INCIDENT TIMELINE</b>",
-    "⚡ <b>ঘটনার সময়:</b> "+esc(incident.display),
-    "📰 <b>প্রকাশের সময়:</b> "+esc(publishedLabel),
-    updatedLabel?"🔄 <b>সর্বশেষ আপডেট:</b> "+esc(updatedLabel):"",
-    incident.source?"<i>সময়-তথ্যের সূত্র: "+esc(incident.source)+" · "+esc(timePrecision)+"</i>":"<i>সময়-তথ্যের অবস্থা: "+esc(timePrecision)+"</i>",
-    "",
+    "📍 "+locationLabel,
+    "🕒 ঘটনা: "+esc(incident.display)+" · প্রকাশ: "+esc(publishedLabel),
+    updatedLabel?"🔄 আপডেট: "+esc(updatedLabel):"",
     detailLine,
-    adviceLine,
-    "",
-    "🔍 <b>VERIFICATION</b>",
-    verification,
+    verification+(sourceNames.length?" · "+sourceNames.length+" সূত্র":""),
     sourceLine,
-    "",
-    "🆔 <b>Incident ID:</b> BD-"+esc(String(options.key||"UNKNOWN").toUpperCase()),
-    options.updateNo?"🔄 <b>Update:</b> #"+String(options.updateNo).padStart(2,"0"):"",
-    "",
-    "<i>◈ KOKUSHIBU74 · INTELLIGENCE</i>"
+    adviceLine
   ];
-  return lines.filter(Boolean).join("\n").slice(0,3800);
+  return lines.filter(Boolean).join("\n").slice(0,1900);
 }
 export async function deliverWithMediaFallback(candidates,caption,link,send){for(const media of (caption.length<=1024?candidates:[])){try{const method=media.type==="video"?"sendVideo":"sendPhoto",body=media.type==="video"?{video:media.url,caption,parse_mode:"HTML"}:{photo:media.url,caption,parse_mode:"HTML"};if(await send(method,body))return media.type;}catch{}}if(!await send("sendMessage",{text:caption,parse_mode:"HTML",disable_web_page_preview:false}))throw new Error("Telegram news alert delivery failed");return "text";}
 export function parseOfficialDisasterSignal(html,item={},now=Date.now(),name="DDM",url="https://rapid.ddm.gov.bd/home/weather/"){
