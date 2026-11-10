@@ -30,6 +30,18 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertFalse(collector.is_alert_candidate("ঢাকায় বৃষ্টি", "সারাদিন বৃষ্টি হতে পারে", published, self.now))
         self.assertTrue(collector.is_alert_candidate("বাংলাদেশে ভারী বৃষ্টির সতর্কতা", "জরুরি warning", published, self.now))
 
+    def test_police_vehicle_fire_is_alert_eligible(self):
+        published = self.now - timedelta(minutes=4)
+        self.assertTrue(collector.is_alert_candidate("গোপালগঞ্জে পুলিশের গাড়িতে আগুন", "পাল্টাপাল্টি ধাওয়া", published, self.now))
+
+    def test_investigation_committee_followup_is_excluded(self):
+        published = self.now - timedelta(minutes=4)
+        self.assertFalse(collector.is_alert_candidate("নারায়ণগঞ্জে মাদরাসায় অগ্নিকাণ্ডের ঘটনায় তদন্ত কমিটি", "ঘটনার তদন্তে কমিটি গঠন", published, self.now))
+
+    def test_political_statement_without_incident_in_headline_is_excluded(self):
+        published = self.now - timedelta(minutes=4)
+        self.assertFalse(collector.is_alert_candidate("পতিত ফ্যাসিস্ট দমনে সরকার ব্যর্থ: জামায়াত", "বিবৃতিতে ককটেল বিস্ফোরণ ও অগ্নিসংযোগের অভিযোগ", published, self.now))
+
     def test_foreign_incident_is_excluded(self):
         published = self.now - timedelta(minutes=4)
         self.assertFalse(collector.is_alert_candidate("India bus fire kills three", "A bus caught fire in India", published, self.now))
