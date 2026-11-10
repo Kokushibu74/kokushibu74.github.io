@@ -18,9 +18,38 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
 
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
 test("two untrusted publishers are not sufficient corroboration",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["Random Blog","Unknown News"]}),{now}).reason,"untrusted_sources"));
-test("one trusted and one untrusted independent publisher cannot corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now}).reason,"needs_trusted_corroboration"));
+test("one trusted publisher produces a provisional alert even when another source is untrusted",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.deepEqual(d.trustedSources,["The Daily Star"]);});
 test("two independent trusted publishers corroborate",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Prothom Alo"]}),{now}).eligible,true));
-test("one publisher is insufficient without official confirmation",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["The Daily Star"]}),{now}).reason,"needs_trusted_corroboration"));
+test("one trusted publisher is eligible as provisional",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["The Daily Star"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.verificationMode,"single_source_provisional");});
+test("cocktail explosion without casualties produces a critical provisional alert",()=>{
+  const d=evaluateNewsAlert(item({title:"ঢাকায় ককটেল বিস্ফোরণ",summary:"হতাহতের তথ্য এখনো জানা যায়নি",sourceEvidence:["Jago News 24"]}),{now});
+  assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.severity,"CRITICAL");
+});
+test("bus fire without casualties produces a provisional alert",()=>{
+  const d=evaluateNewsAlert(item({title:"ঢাকায় চলন্ত বাসে আগুন",summary:"হতাহতের তথ্য পাওয়া যায়নি",sourceEvidence:["The Daily Star"]}),{now});
+  assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.equal(d.severity,"HIGH");
+});
+test("two independently reported publisher stories confirm a provisional incident",()=>{
+  const x=item({sourceEvidence:["The Daily Star","Prothom Alo"],sourceStories:[
+    {name:"The Daily Star",title:"ঢাকায় বিস্ফোরণ",summary:"পুলিশ ঘটনাস্থলে গেছে"},
+    {name:"Prothom Alo",title:"ঢাকায় বিস্ফোরণের খবর",summary:"ফায়ার সার্ভিস উদ্ধার কাজ করছে"}
+  ]});
+  const d=evaluateNewsAlert(x,{now});assert.equal(d.eligible,true);assert.equal(d.status,"confirmed");
+});
+test("identical syndicated copies do not count as two independent reports",()=>{
+  const x=item({sourceEvidence:["The Daily Star","Prothom Alo"],sourceStories:[
+    {name:"The Daily Star",title:"ঢাকায় বিস্ফোরণ",summary:"পুলিশ ঘটনাস্থলে গেছে"},
+    {name:"Prothom Alo",title:"ঢাকায় বিস্ফোরণ",summary:"পুলিশ ঘটনাস্থলে গেছে"}
+  ]});
+  const d=evaluateNewsAlert(x,{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.deepEqual(d.trustedSources,["The Daily Star"]);
+});
+test("provisional alert message clearly labels verification status and links sources",()=>{
+  const x=item({sourceEvidence:["The Daily Star"]});
+  const d=evaluateNewsAlert(x,{now});
+  const message=formatAlertMessage({...x,sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]},d,{key:"abc123"});
+  assert.match(message,/PROVISIONAL/);assert.match(message,/স্বাধীন যাচাই চলছে/);assert.match(message,/<a href=/);
+});
+
 test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
   const decision=evaluateNewsAlert(item({title:"Bangladesh cyclone warning",summary:"Severe coastal cyclone alert",category:"Weather & Disasters",sourceEvidence:[],source:"",publisherName:"",publisherUrl:"https://example.com/weather"}),{now,officialSignal:true});
   assert.equal(decision.eligible,true);
@@ -36,7 +65,7 @@ test("severe weather candidates are selected for official checks",()=>assert.equ
 test("ordinary weather forecast is not sent for official disaster checks",()=>assert.equal(isWeatherCandidate(item({title:"Bangladesh weekly weather forecast",summary:"Sunny and warm"})),false));
 test("weather alert requires severe wording",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় আজ আবহাওয়া কেমন",summary:"weather forecast",category:"Bangladesh"}),{now}).reason,"not_significant"));
 test("major accident qualifies even when no casualty count is reported",()=>assert.equal(evaluateNewsAlert(item({title:"Dhaka major accident closes airport road",summary:"Major accident in Dhaka",sourceEvidence:["The Daily Star","Prothom Alo"]}),{now}).eligible,true));
-test("BBC regional editions count as one publisher group",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["BBC News বাংলা","BBC News World"]}),{now}).reason,"needs_trusted_corroboration"));
+test("BBC regional editions count as one publisher group and remain provisional",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["BBC News বাংলা","BBC News World"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.deepEqual(d.trustedSources,["BBC"]);});
 test("referendum result qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"বাংলাদেশে গণভোটের ফলাফল ঘোষণা",summary:"চূড়ান্ত সিদ্ধান্ত জানানো হয়েছে"}),{now}).eligible,true));
 test("referendum mention without decision does not qualify",()=>assert.equal(evaluateNewsAlert(item({title:"গণভোট নিয়ে আলোচনা চলছে",summary:"সাধারণ আলোচনা"} ),{now}).reason,"not_significant"));
 test("major uprising development qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"গণঅভ্যুত্থানের পর সরকার পদত্যাগের ঘোষণা",summary:"Dhaka Bangladesh"}),{now}).eligible,true));
@@ -46,14 +75,14 @@ test("murder qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"ঢা�
 test("serious clash with gunfire qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় সংঘর্ষে গুলিবর্ষণ",summary:"সশস্ত্র সংঘর্ষ"}),{now}).eligible,true));
 test("peaceful demonstration is not a serious violence alert",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় শান্তিপূর্ণ বিক্ষোভ",summary:"প্রতিবাদ কর্মসূচি"}),{now}).reason,"not_significant"));
 test("celebrity natural death is not an accident alert",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকায় অভিনেতার মৃত্যু",summary:"পরিবারের পক্ষ থেকে নিশ্চিত"}),{now}).reason,"not_significant"));
-test("major international earthquake is accepted as a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"}),{now}).scope,"global"));
+test("international earthquake is excluded from Bangladesh-only alerts",()=>assert.equal(evaluateNewsAlert(item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"}),{now}).reason,"outside_bangladesh"));
 test("Bangladesh feed category alone cannot localize a foreign event",()=>assert.equal(evaluateNewsAlert(item({title:"Major earthquake kills people in Chile",summary:"South America",category:"Bangladesh"}),{now}).eligible,false));
 test("official local warning can localize a weather story without a place in its headline",()=>assert.equal(evaluateNewsAlert(item({title:"Severe flood warning issued",summary:"Emergency bulletin",category:"Weather & Disasters",location:{city:"Dhaka",country:"Bangladesh"},sourceEvidence:["The Daily Star"]}),{now,officialSignal:true}).eligible,true));
 test("district-only Bangladesh location is recognized",()=>assert.equal(evaluateNewsAlert(item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"}),{now}).eligible,true));
-test("international war affecting Bangladeshi nationals qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"Middle East war forces evacuation of Bangladeshi nationals",summary:"Bangladeshi nationals evacuated",category:"World"}),{now}).eligible,true));
-test("international attack affecting Bangladeshis qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"Terror attack targets Bangladeshi nationals abroad",summary:"Bangladeshi nationals injured",category:"World"}),{now}).eligible,true));
-test("major foreign war without Bangladesh impact is accepted globally",()=>assert.equal(evaluateNewsAlert(item({title:"War escalates after airstrikes",summary:"Regional conflict abroad",category:"World"}),{now}).scope,"global"));
-test("international event directly affecting Bangladesh qualifies",()=>assert.equal(evaluateNewsAlert(item({title:"Severe cyclone disrupts flights to Bangladesh",summary:"Bangladesh-bound flights cancelled",category:"World"}),{now}).eligible,true));
+test("foreign war affecting Bangladeshi nationals is outside the domestic alert scope",()=>assert.equal(evaluateNewsAlert(item({title:"Middle East war forces evacuation of Bangladeshi nationals",summary:"Bangladeshi nationals evacuated",category:"World"}),{now}).reason,"outside_bangladesh"));
+test("foreign attack affecting Bangladeshis is excluded from the domestic alert scope",()=>assert.equal(evaluateNewsAlert(item({title:"Terror attack targets Bangladeshi nationals abroad",summary:"Bangladeshi nationals injured",category:"World"}),{now}).reason,"outside_bangladesh"));
+test("foreign war without a Bangladesh location is excluded",()=>assert.equal(evaluateNewsAlert(item({title:"War escalates after airstrikes",summary:"Regional conflict abroad",category:"World"}),{now}).reason,"outside_bangladesh"));
+test("international event mentioning Bangladesh but occurring abroad is excluded",()=>assert.equal(evaluateNewsAlert(item({title:"Severe cyclone disrupts flights to Bangladesh",summary:"Bangladesh-bound flights cancelled",category:"World"}),{now}).reason,"outside_bangladesh"));
 test("murder suspect arrest follow-up is rejected",()=>assert.equal(evaluateNewsAlert(item({title:"Dhaka murder suspect arrested",summary:"Police arrested the suspect"}),{now}).reason,"follow_up"));
 test("severe wildfire damage qualifies as a disaster alert",()=>assert.equal(evaluateNewsAlert(item({title:"Wildfire destroys homes in Chattogram",summary:"Severe wildfire damage",category:"Weather & Disasters"}),{now}).eligible,true));
 test("follow-up and investigation stories are rejected",()=>assert.equal(evaluateNewsAlert(item({title:"ঢাকার দুর্ঘটনার তদন্ত চলছে"}),{now}).reason,"follow_up"));
@@ -139,15 +168,15 @@ test("Worker checks the legacy alert key before using a clustered event ID",asyn
   assert.match(source,/news-alert:v2:"\+legacyKey/);
 });
 
-test("Bangladesh alert uses Bengali identity and real district location",()=>{const x=item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"abcd"});assert.ok(m.includes("🇧🇩 <b>BANGLADESH ALERT NETWORK</b>"));assert.ok(m.includes("নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
-test("international alert uses global identity and does not hardcode Dhaka",()=>{const x=item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"1234"});assert.ok(m.includes("🌐 <b>GLOBAL ALERT NETWORK</b>"));assert.ok(m.includes("Chile"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
+test("Bangladesh alert uses Bengali identity and real district location",()=>{const x=item({title:"নারায়ণগঞ্জে বড় বাস দুর্ঘটনা",summary:"নারায়ণগঞ্জে গুরুতর দুর্ঘটনা"});const d=evaluateNewsAlert(x,{now});const m=formatAlertMessage(x,d,{key:"abcd"});assert.ok(m.includes("🇧🇩 <b>BANGLADESH NEWS ALERT</b>"));assert.ok(m.includes("নারায়ণগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"));assert.equal(m.includes("Dhaka / Bangladesh"),false);});
+test("foreign events are rejected rather than formatted as Bangladesh alerts",()=>{const x=item({title:"Major earthquake kills people in Chile",summary:"South America",category:"World"});assert.equal(evaluateNewsAlert(x,{now}).eligible,false);});
 test("alert update is visibly numbered",()=>{const x=item();const d=evaluateNewsAlert(x,{now});assert.ok(formatAlertMessage(x,d,{key:"abcd",updateNo:2}).includes("UPDATE 02"));});
-test("international story affecting Bangladeshis stays global and marks Bangladesh impact",()=>{const x=item({title:"Terror attack targets Bangladeshi nationals abroad",summary:"Bangladeshi nationals injured",category:"World"});const d=evaluateNewsAlert(x,{now});assert.equal(d.scope,"global");assert.equal(d.bangladeshImpact,true);});
+test("international stories do not enter the domestic Bangladesh alert feed",()=>{const x=item({title:"Terror attack targets Bangladeshi nationals abroad",summary:"Bangladeshi nationals injured",category:"World"});assert.equal(evaluateNewsAlert(x,{now}).eligible,false);});
 
-test("global weather alert requires explicit non-Bangladesh region evidence",()=>{const x=item({title:"Severe earthquake warning issued",summary:"Magnitude 6.2 warning",category:"Weather & Disasters",alertScope:"global"});assert.equal(evaluateNewsAlert(x,{now}).scope,"global");const localCandidate=item({title:"Severe earthquake warning issued",summary:"Magnitude 6.2 warning",category:"Weather & Disasters",alertScope:"bangladesh_candidate"});assert.equal(evaluateNewsAlert(localCandidate,{now}).reason,"location_unclassified");});
+test("weather alert without a Bangladesh location is excluded",()=>{const x=item({title:"Severe earthquake warning issued",summary:"Magnitude 6.2 warning",category:"Weather & Disasters",alertScope:"global"});assert.equal(evaluateNewsAlert(x,{now}).reason,"outside_bangladesh");});
 
-test("ordinary single-victim murder abroad is not a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Man murdered in Paris",summary:"Police investigating the incident",category:"World"}),{now}).reason,"not_significant"));
-test("mass-casualty massacre abroad qualifies as a global alert",()=>assert.equal(evaluateNewsAlert(item({title:"Massacre kills dozens in Paris",summary:"Dozens killed in mass casualty attack",category:"World"}),{now}).scope,"global"));
+test("ordinary murder abroad is excluded from Bangladesh-only alerts",()=>assert.equal(evaluateNewsAlert(item({title:"Man murdered in Paris",summary:"Police investigating the incident",category:"World"}),{now}).reason,"outside_bangladesh"));
+test("mass-casualty massacre abroad is excluded from Bangladesh-only alerts",()=>assert.equal(evaluateNewsAlert(item({title:"Massacre kills dozens in Paris",summary:"Dozens killed in mass casualty attack",category:"World"}),{now}).reason,"outside_bangladesh"));
 
 
 test("Bangla death verb variants qualify in a corroborated Bangladesh clash alert",()=>{
@@ -165,24 +194,23 @@ test("upstream non-breaking flag does not block a significant corroborated event
   assert.equal(decision.trustedSources.length,2);
 });
 
-test("one trusted Jago publisher is visible but does not bypass corroboration",()=>{
+test("one trusted Jago publisher creates a provisional alert",()=>{
   const decision=evaluateNewsAlert(item({sourceEvidence:["Jago News 24"],source:"Jago News 24"}),{now});
-  assert.equal(decision.reason,"needs_trusted_corroboration");
+  assert.equal(decision.eligible,true);
+  assert.equal(decision.status,"provisional");
   assert.equal(decision.sourceCount,1);
   assert.equal(decision.trustedSources.length,1);
 });
 
-test("worker keeps a bounded main scan and weather candidates on a five-minute cadence",async()=>{
+test("worker reads a bounded Telegram-only Bangladesh alert feed",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
   const start=source.indexOf("async function newsBreakingAlertCheck(env){");
-  const end=source.indexOf("\n\nexport default {",start);
+  const end=source.indexOf("\n\nconst SHEETS_SPREADSHEET_ID",start);
   assert.ok(start>=0&&end>start);
   const alertSource=source.slice(start,end);
-  assert.match(source,/minute%5===0/);
-  assert.ok(alertSource.includes("feed.slice(0,160)"));
-  assert.ok(alertSource.includes("feed.items.slice(0,160)"));
-  assert.ok(alertSource.includes("weatherItems.slice(0,12)"));
+  assert.match(alertSource,/news-alert-feed\.json/);
   assert.ok(alertSource.includes("feed?.alertItems"));
+  assert.ok(alertSource.includes("slice(0,180)"));
   assert.ok(alertSource.includes("item.alertEventId"));
   assert.ok(alertSource.includes("news-alert-reject:v1:"));
 });
@@ -198,7 +226,7 @@ test("fatal bus-arson headline is classified as a serious local incident",()=>{
 });
 
 
-test("one trusted publisher cannot bypass two-source verification for a fatal clash",()=>{
+test("fatal clash from one trusted publisher is provisionally alerted before casualty corroboration",()=>{
   const decision=evaluateNewsAlert(item({
     title:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত, বাসে আগুন দিলো ক্ষুব্ধ জনতা",
     summary:"জয়পুরহাটে মোটরসাইকেল আরোহী নিহত হওয়ার পর ক্ষুব্ধ জনতা বাসে আগুন দেয়",
@@ -207,8 +235,8 @@ test("one trusted publisher cannot bypass two-source verification for a fatal cl
     sourceEvidence:["Jago News 24"],source:"Jago News 24",
     publisherUrl:"https://www.jagonews24.com/country/news/1175881"
   }),{now});
-  assert.equal(decision.eligible,false);
-  assert.equal(decision.reason,"needs_trusted_corroboration");
+  assert.equal(decision.eligible,true);
+  assert.equal(decision.status,"provisional");
   assert.equal(decision.sourceCount,1);
   assert.equal(decision.trustedSources.length,1);
 });
