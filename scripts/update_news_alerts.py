@@ -404,6 +404,10 @@ def find_incident_location_phrase(text):
             if not event_re.search(sentence) or noise_re.search(sentence):
                 continue
             phrase = re.sub(r"\s+", " ", match.group(0)).strip(" ,.;:।")
+            noise_words = {"আজ", "গতকাল", "গত", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার", "রবিবার", "রাত", "রাতে", "গভীর", "সকাল", "সকালে", "ভোর", "ভোরে", "দুপুর", "দুপুরে", "বিকেল", "বিকেলে", "সন্ধ্যা", "সন্ধ্যায়", "সন্ধ্যায়", "দিকে", "সময়", "সময়", "ঘটনায়", "ঘটনার", "এলাকার", "একটি", "এক", "কোনো", "সেই", "এই", "ওই"}
+            tokens = re.findall(r"[\u0980-\u09FF]+|\d+", phrase)
+            if not tokens or any(token in noise_words for token in tokens) or any(token.isdigit() for token in tokens):
+                continue
             if phrase and phrase.lower() not in {x.lower() for x in found}:
                 found.append(phrase[:100])
             for district in BANGLADESH_RE.finditer(sentence):
