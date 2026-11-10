@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build an alert-only Bangladesh feed from independent publisher RSS sources.
 
-This collector is deliberately separate from scripts/update_news.py so the
-public News Page feed and its archive remain unchanged.
+This collector writes only news-alert-feed.json. It never modifies
+scripts/update_news.py, the public News Page feed, or its archive.
 """
 import concurrent.futures
 import hashlib
