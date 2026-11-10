@@ -86,9 +86,9 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(manager, /JOURNAL_ENCRYPTION_KEY/);
   assert.match(manager, /status: "published"/);
   assert.match(miniapp, /Smart publishing/);
-  assert.match(miniappHtml, /app\\.js\\?v=2/);
-  assert.match(workflow, /journal\\.js\\?v=4/);
-  assert.match(workflow, /miniapp\\/app\\.js\\?v=2/);
+  assert.match(miniappHtml, /app\.js\?v=2/);
+  assert.match(workflow, /journal\.js\?v=4/);
+  assert.match(workflow, /miniapp\/app\.js\?v=2/);
 });
 
 console.log("Developer Journal UI, interaction and Telegram integration contracts passed.");
