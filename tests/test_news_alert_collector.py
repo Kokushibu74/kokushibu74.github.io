@@ -109,6 +109,12 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(collector.find_incident_time_phrase("গতকাল রাতে এলাকায় বিস্ফোরণ ঘটে"), "গতকাল রাতে")
         self.assertEqual(collector.find_incident_time_phrase("The fire started around 8:30 pm"), "around 8:30 pm")
 
+    def test_article_location_extraction_finds_locality_and_administrative_terms(self):
+        phrase = collector.find_incident_location_phrase("নারায়ণগঞ্জের ফতুল্লার সাইনবোর্ড এলাকায় আগুন লাগে। ঘটনাস্থল ফতুল্লা থানায়, নারায়ণগঞ্জ জেলায়।")
+        self.assertIn("সাইনবোর্ড এলাকায়", phrase)
+        self.assertIn("ফতুল্লা থানায়", phrase)
+        self.assertIn("নারায়ণগঞ্জ জেলায়", phrase)
+
     def test_article_html_cleanup_removes_scripts_and_navigation(self):
         text = collector.article_plain_text("<html><script>fake 9 pm</script><nav>menu</nav><p>আগুন লাগে রাত ৮টার দিকে</p></html>")
         self.assertNotIn("fake", text)
