@@ -52,7 +52,7 @@ assert.match(idleExpiry, /setChatMenuButton.*type:"default"/s, "Idle expiry must
 assert.match(idleExpiry, /deleteMessage/, "Idle expiry must remove the old inline menu message");
 const minuteScheduler = section('if(controller.cron==="* * * * *"){', 'const cronStartedAt=');
 assert.match(minuteScheduler, /botExpireIdleMenu\(env\)/, "Idle expiry must be checked on the minute Cron");
-assert.doesNotMatch(minuteScheduler, /minute%15===0.*botExpireIdleMenu/s, "Idle expiry must not wait for quarter-hour boundaries");
+assert.match(minuteScheduler, /minute%15===0[\s\S]*botExpireIdleMenu\(env\)/, "Idle cleanup retains the existing 15-minute KV-safe cadence");
 
 
 const webhook = section('if(new URL(request.url).pathname==="/telegram-webhook"){', 'if(new URL(request.url).pathname!=="/submit")');
