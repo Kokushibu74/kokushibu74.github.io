@@ -40,7 +40,7 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertFalse(collector.is_alert_candidate("ঢাকায় বিস্ফোরণ", "পুরোনো ঘটনা", self.now - timedelta(days=2), self.now))
 
     def test_feed_parser_reads_rss_items(self):
-        xml = b"""<rss><channel><item><title>ঢাকায় ককটেল বিস্ফোরণ</title><link>https://example.com/story</link><pubDate>Tue, 10 Nov 2026 08:00:00 +0000</pubDate><description>পুলিশ ঘটনাস্থলে</description></item></channel></rss>"""
+        xml = """<rss><channel><item><title>ঢাকায় ককটেল বিস্ফোরণ</title><link>https://example.com/story</link><pubDate>Tue, 10 Nov 2026 08:00:00 +0000</pubDate><description>পুলিশ ঘটনাস্থলে</description></item></channel></rss>""".encode("utf-8")
         rows = collector.parse_feed(xml)
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["title"], "ঢাকায় ককটেল বিস্ফোরণ")
@@ -48,7 +48,7 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertIsNotNone(rows[0]["published"])
 
     def test_feed_parser_reads_atom_entries(self):
-        xml = b"""<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>ঢাকায় বাসে আগুন</title><link href="https://example.com/fire"/><updated>2026-11-10T08:00:00Z</updated><summary>বাসে আগুন</summary></entry></feed>"""
+        xml = """<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>ঢাকায় বাসে আগুন</title><link href="https://example.com/fire"/><updated>2026-11-10T08:00:00Z</updated><summary>বাসে আগুন</summary></entry></feed>""".encode("utf-8")
         rows = collector.parse_feed(xml)
         self.assertEqual(rows[0]["link"], "https://example.com/fire")
 
