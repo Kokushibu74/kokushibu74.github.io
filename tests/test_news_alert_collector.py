@@ -103,6 +103,7 @@ class AlertCollectorTests(unittest.TestCase):
     def test_incident_time_phrase_finds_bangla_exact_and_approximate_times(self):
         self.assertEqual(collector.find_incident_time_phrase("আজ রাত ৮:৩০ মিনিটে বিস্ফোরণ ঘটে"), "আজ রাত ৮:৩০ মিনিটে")
         self.assertEqual(collector.find_incident_time_phrase("রাত আনুমানিক ৯টার দিকে আগুন লাগে"), "রাত আনুমানিক ৯টার দিকে")
+        self.assertEqual(collector.find_incident_time_phrase("রাত ৮টা ৩০ মিনিটে বিস্ফোরণ ঘটে"), "রাত ৮টা ৩০ মিনিটে")
 
     def test_incident_time_phrase_finds_relative_periods(self):
         self.assertEqual(collector.find_incident_time_phrase("গতকাল রাতে এলাকায় বিস্ফোরণ ঘটে"), "গতকাল রাতে")
