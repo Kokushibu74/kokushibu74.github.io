@@ -252,22 +252,25 @@ jobs:
           grep -q 'id="developer-journal"' /tmp/projects-live.html
           grep -q 'id="journal-article-view"' /tmp/projects-live.html
           grep -q 'journal.css?v=1' /tmp/projects-live.html
-          grep -q 'journal.js?v=3' /tmp/projects-live.html
+          grep -q 'journal.js?v=4' /tmp/projects-live.html
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
             'https://kokushibu74.github.io/journal.css?v=1' -o /tmp/journal-live.css
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
-            'https://kokushibu74.github.io/journal.js?v=3' -o /tmp/journal-live.js
+            'https://kokushibu74.github.io/journal.js?v=4' -o /tmp/journal-live.js
           grep -q 'journal-card:hover' /tmp/journal-live.css
           grep -q 'portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed' /tmp/journal-live.js
-          echo 'Live GitHub Pages Journal markup, CSS and JavaScript: OK'
+          grep -q 'isCommandLine' /tmp/journal-live.js
+          echo 'Live GitHub Pages Journal markup, CSS and smart formatter: OK'
       - name: Verify Telegram Blog Manager asset is published
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
-            'https://kokushibu74.github.io/miniapp/app.js' -o /tmp/miniapp-live.js
+            'https://kokushibu74.github.io/miniapp/app.js?v=2' -o /tmp/miniapp-live.js
           grep -q 'Developer Journal' /tmp/miniapp-live.js
           grep -q 'blogSave' /tmp/miniapp-live.js
-          echo 'Live Telegram Blog Manager asset: OK'
+          grep -q 'Title and details are required' /tmp/miniapp-live.js
+          grep -q 'Optional image' /tmp/miniapp-live.js
+          echo 'Live Telegram Smart Blog Manager asset: OK'
 
   journal-browser-smoke:
     if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
