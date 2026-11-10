@@ -99,6 +99,21 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(rows[0]["sourceEvidence"], ["bdnews24.com"])
         mocked.assert_called_once()
 
+
+    def test_incident_time_phrase_finds_bangla_exact_and_approximate_times(self):
+        self.assertEqual(collector.find_incident_time_phrase("আজ রাত ৮:৩০ মিনিটে বিস্ফোরণ ঘটে"), "রাত ৮:৩০ মিনিটে")
+        self.assertEqual(collector.find_incident_time_phrase("রাত আনুমানিক ৯টার দিকে আগুন লাগে"), "রাত আনুমানিক ৯টার দিকে")
+
+    def test_incident_time_phrase_finds_relative_periods(self):
+        self.assertEqual(collector.find_incident_time_phrase("গতকাল রাতে এলাকায় বিস্ফোরণ ঘটে"), "গতকাল রাতে")
+        self.assertEqual(collector.find_incident_time_phrase("The fire started around 8:30 pm"), "around 8:30 pm")
+
+    def test_article_html_cleanup_removes_scripts_and_navigation(self):
+        text = collector.article_plain_text("<html><script>fake 9 pm</script><nav>menu</nav><p>আগুন লাগে রাত ৮টার দিকে</p></html>")
+        self.assertNotIn("fake", text)
+        self.assertNotIn("menu", text)
+        self.assertIn("রাত ৮টার দিকে", text)
+
     def test_publisher_host_must_match_feed_domain(self):
         self.assertTrue(collector.host_matches("https://bangla.bdnews24.com/story", "bdnews24.com"))
         self.assertFalse(collector.host_matches("https://fake-example.com/story", "bdnews24.com"))
