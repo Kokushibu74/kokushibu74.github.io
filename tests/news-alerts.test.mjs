@@ -59,7 +59,7 @@ test("provisional alert message clearly labels verification status and links sou
   const x=item({sourceEvidence:["The Daily Star"]});
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage({...x,sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]},d,{key:"abc123"});
-  assert.match(message,/PROVISIONAL/);assert.match(message,/স্বাধীন যাচাই চলছে/);assert.match(message,/<a href=/);
+  assert.match(message,/PROVISIONAL/);assert.match(message,/<a href=/);assert.doesNotMatch(message,/স্বাধীন যাচাই চলছে/);
 });
 
 
@@ -114,10 +114,13 @@ test("alert location is rendered as one hierarchical address line",()=>{
   assert.equal(extractAlertLocation(x),"পূর্বপাড়া, সদর ইউনিয়ন, গোপালগঞ্জ সদর, গোপালগঞ্জ, ঢাকা, বাংলাদেশ");
 });
 
-test("distinct locations reported by separate sources are shown on separate lines",()=>{
+test("distinct locations reported by separate sources are both retained in the compact location line",()=>{
   const x=item({title:"ঘটনার খবর",summary:"বিস্ফোরণের ঘটনা",sourceStories:[
     {name:"The Daily Star",title:"হ্নীলা গ্রামে বিস্ফোরণ",summary:"কক্সবাজারে ঘটনা"},
     {name:"Prothom Alo",title:"টেকনাফ থানায় বিস্ফোরণ",summary:"কক্সবাজারে ঘটনা"}
+  ],sourceLinks:[
+    {name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"},
+    {name:"Prothom Alo",url:"https://www.prothomalo.com/bangladesh/example"}
   ]});
   const message=formatAlertMessage(x,evaluateNewsAlert(item(),{now}),{key:"multi-location"});
   assert.match(message,/গ্রাম: হ্নীলা/);
@@ -264,7 +267,7 @@ test("long original URLs remain clickable inside the first alert message",()=>{
   const url="https://www.unb.com.bd/video/"+("long-bengali-slug-".repeat(18))+"-Gopalganj-UNB";
   const x=item({publisherUrl:url});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"long-link"});
-  assert.ok(message.includes('<a href="'+url+'">মূল সংবাদ পড়ুন</a>'));
+  assert.ok(message.includes('<a href="'+url+'">মূল সংবাদ</a>'));
   assert.doesNotMatch(message,/লিংক আলাদা বার্তায়/);
 });
 
@@ -452,7 +455,7 @@ test("notification-first alert formatter keeps the core alert compact and remove
   assert.ok(message.length<1300);
   assert.match(message,/UPDATE 02/);
   assert.match(message,/ঘটনার সময়: এখনো নিশ্চিত নয়/);
-  assert.match(message,/প্রকাশ:/);
+  assert.match(message,/প্রকাশের সময়:/);
   assert.match(message,/Bangla Tribune/);
   assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
 });
