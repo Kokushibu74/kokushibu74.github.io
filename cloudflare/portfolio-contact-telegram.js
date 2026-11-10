@@ -2254,7 +2254,7 @@ async function newsBreakingAlertCheck(env){
       const sourceExpanded=newSources.some(source=>!oldSources.includes(source));
       const oldLinks=Array.isArray(previous.sourceLinks)?previous.sourceLinks:[];
       const currentLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).filter(link=>link&&link.url).map(link=>String(link.url));
-      const sourceLinkExpanded=currentLinks.some(url=>!oldLinks.includes(url));
+      const sourceLinkExpanded=Array.isArray(previous.sourceLinks)&&currentLinks.some(url=>!oldLinks.includes(url));
       const verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
       const currentIncidentTime=extractIncidentTime(item);
       const oldIncidentTime=previous.incidentTime||{};
