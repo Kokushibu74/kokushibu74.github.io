@@ -319,7 +319,7 @@ export function formatAlertMessage(item={},decision={},options={}){
   const updated=Number(options.updatedAt||item.updatedAt||item.lastUpdatedAt||0);
   const updatedLabel=updated?new Date(updated).toLocaleString("bn-BD",{timeZone:"Asia/Dhaka",dateStyle:"medium",timeStyle:"short"})+" BDT":"";
   const severity=String(decision.severity||"HIGH").toUpperCase();
-  const severityIcon=severity==="CRITICAL"?"🔴":severity==="HIGH"?"🟠":severity==="MODERATE"?"🟡":"🔵";
+  const severityIcon=severity==="CRITICAL"||severity==="SEVERE"?"🔴":severity==="HIGH"?"🟠":severity==="MODERATE"||severity==="WARNING"?"🟡":"🔵";
   const category=String(decision.category||alertCategory(String(item.title||"")+" "+String(item.summary||"")));
   const categoryIcon=/বিস্ফোরণ|বোমা/i.test(category)?"💥":/অগ্নি|আগুন/i.test(category)?"🔥":/সংঘর্ষ|সহিংসতা/i.test(category)?"⚔️":/দুর্যোগ|আবহাওয়া/i.test(category)?"🌪️":/দুর্ঘটনা/i.test(category)?"🚑":"🚨";
   const status=String(decision.status||"provisional");
