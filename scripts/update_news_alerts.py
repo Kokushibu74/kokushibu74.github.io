@@ -110,6 +110,11 @@ WEATHER_RE = re.compile(
     r"heavy rain|wildfire|tornado|tsunami)",
     re.I,
 )
+STATEMENT_RE = re.compile(r"(বিবৃতি|বিবৃতিতে|নিন্দা|প্রতিবাদ|সরকার ব্যর্থ|statement|press release|condemnation|condemns|denounces|government failed)", re.I)
+INCIDENT_IN_TITLE_RE = re.compile(
+    r"(ককটেল|বোমা|বিস্ফোরণ|আগুন|অগ্নিকাণ্ড|অগ্নিসংযোগ|সংঘর্ষ|গুলিবর্ষণ|গুলি|হামলা|ভাঙচুর|ভাংচুর|দুর্ঘটনা|বাস|ট্রেন|লঞ্চ|ধস|বন্যা|ঘূর্ণিঝড়|ঘূর্ণিঝড়|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|বজ্রপাত|অতিবৃষ্টি|cyclone|flood|earthquake|fire|explosion|blast|clash|shooting|accident|crash|arson)",
+    re.I,
+)
 WEATHER_WARNING_RE = re.compile(
     r"(সতর্ক|বিপদ সংকেত|বিপদসীমা|সতর্কবার্তা|জরুরি|অতি ভারী|অত্যন্ত ভারী|"
     r"warning|alert|signal|severe|extreme|heavy|evacuat|landfall|danger level|"
@@ -121,7 +126,7 @@ FOLLOWUP_RE = re.compile(
     r"তদন্ত চলছে|গ্রেপ্তার|গ্রেফতার|আটক|মামলার শুনানি|আদালতে হাজির|"
     r"বার্ষিকী|বছর আগে|বছর পরে|স্মরণে|পেছন ফিরে|পুরোনো ঘটনা|"
     r"remanded|arrested|trial|hearing|convicted|sentenced|case filed|"
-    r"investigation into|anniversary|years? ago|years? later|retrospective|"
+    r"investigation into|investigation committee|probe committee|তদন্ত কমিটি|তদন্তে|anniversary|years? ago|years? later|retrospective|"
     r"from the archives|old case|follow[- ]?up)",
     re.I,
 )
@@ -199,6 +204,8 @@ def google_news_query_url(domain):
 def is_alert_candidate(title, summary="", published=None, now=None):
     text = str(title or "") + " " + str(summary or "")
     if not title or FOLLOWUP_RE.search(text) or not EVENT_RE.search(text):
+        return False
+    if STATEMENT_RE.search(str(title)) and not INCIDENT_IN_TITLE_RE.search(str(title)):
         return False
     if not is_bangladesh_story(title, summary):
         return False
