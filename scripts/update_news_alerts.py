@@ -354,8 +354,8 @@ def collect_candidates(source_results, now=None, google_resolution_budget=32):
 
 
 INCIDENT_TIME_PATTERNS = [
-    re.compile(r"(?:আজ|গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়)?\\s*(?:ভোর|সকাল|দুপুর|বিকেল|সন্ধ্যা|রাত)\\s*(?:প্রায়|প্রায়|আনুমানিক)?\\s*\\d{1,2}(?::\\d{2})?\\s*(?:টা|টায়|টায়|টার দিকে|টার সময়|টার সময়|মিনিটে)?", re.I),
-    re.compile(r"(?:around|about|approximately|at)\\s+\\d{1,2}(?::\\d{2})?\\s*(?:am|pm)", re.I),
+    re.compile(r"(?:আজ|গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়)?\s*(?:ভোর|সকাল|দুপুর|বিকেল|সন্ধ্যা|রাত)\s*(?:প্রায়|প্রায়|আনুমানিক)?\s*\d{1,2}(?::\d{2})?\s*(?:টা|টায়|টায়|টার দিকে|টার সময়|টার সময়|মিনিটে)?", re.I),
+    re.compile(r"(?:around|about|approximately|at)\s+\d{1,2}(?::\d{2})?\s*(?:am|pm)", re.I),
     re.compile(r"(?:yesterday morning|yesterday afternoon|yesterday evening|last night|last evening|this morning|this afternoon|this evening|tonight)", re.I),
 ]
 
@@ -369,9 +369,9 @@ def find_incident_time_phrase(text):
 
 def article_plain_text(raw):
     value = re.sub(r"<!--.*?-->", " ", str(raw or ""), flags=re.S)
-    value = re.sub(r"<(script|style|noscript|svg|nav|header|footer|aside|form)[^>]*>.*?</\\1>", " ", value, flags=re.I | re.S)
+    value = re.sub(r"<(script|style|noscript|svg|nav|header|footer|aside|form)[^>]*>.*?</\1>", " ", value, flags=re.I | re.S)
     value = re.sub(r"<[^>]+>", " ", value)
-    return re.sub(r"\\s+", " ", html.unescape(value)).strip()
+    return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
 def fetch_article_incident_time(story):
     url = str(story.get("url") or "").strip()
