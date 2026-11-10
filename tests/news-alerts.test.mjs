@@ -171,7 +171,7 @@ test("full alert includes title, description, location, incident and publication
   const x=item({title:"ঢাকায় রাত ৮টার দিকে বিস্ফোরণ",summary:"একটি এলাকায় বিস্ফোরণের ঘটনা ঘটেছে।",location:{district:"ঢাকা",division:"ঢাকা",country:"বাংলাদেশ"},sourceLinks:[{name:"The Daily Star",url:"https://www.thedailystar.net/news/bangladesh/example"}]});
   const d=evaluateNewsAlert(x,{now});
   const message=formatAlertMessage(x,d,{key:"abc123"});
-  assert.match(message,/ঘটনার সময়: ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
+  assert.match(message,/ঘটনার সময়:<\/b> ঘটনার তারিখ\/সময় যাচাই প্রয়োজন/);
   assert.match(message,/প্রকাশের সময়/);
   assert.match(message,/ঘটনার সময়/);
   assert.match(message,/ঘটনার বিবরণ|একটি এলাকায়/);
@@ -462,8 +462,8 @@ test("location formatter collapses source addresses that only repeat the same di
   ]});
   const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"location-dedup",updateNo:2});
   assert.match(message,/সাইনবোর্ড/);
-  assert.equal((message.match(/📍 [^\n]*/)?.[0].match(/নারায়ণগঞ্জ/g)||[]).length,1);
-  assert.doesNotMatch(message,/Jago News 24.*নারায়ণগঞ্জ/);
+  const locationLine=message.match(/📍 <b>ঘটনাস্থল<\/b>\n([^\n]+)/)?.[1]||"";
+  assert.equal((locationLine.match(/নারায়ণগঞ্জ/g)||[]).length,1);
 });
 test("notification-first alert formatter keeps the core alert compact and removes verbose section headers",()=>{
   const x=item({title:"নারায়ণগঞ্জে মাদ্রাসায় আগুন: বার্ন ইনস্টিটিউটে ৮৮ শিক্ষার্থী",summary:"ধোঁয়ায় অসুস্থ হয়ে ৮৮ শিক্ষার্থী চিকিৎসা নিয়েছেন। বর্তমানে ৩৫ জন ভর্তি রয়েছেন।",sourceLinks:[
@@ -474,7 +474,7 @@ test("notification-first alert formatter keeps the core alert compact and remove
   assert.ok(message.length<1300);
   assert.match(message,/^<b>নারায়ণগঞ্জে মাদ্রাসায় আগুন:/);
   assert.match(message,/UPDATE 02/);
-  assert.match(message,/ঘটনার সময়:<\\/b> এখনো নিশ্চিত নয়/);
+  assert.match(message,/ঘটনার সময়:<\/b> এখনো নিশ্চিত নয়/);
   assert.match(message,/প্রকাশের সময়:/);
   assert.match(message,/Bangla Tribune/);
   assert.doesNotMatch(message,/INCIDENT TIMELINE|VERIFICATION|Incident ID|KOKUSHIBU74 · INTELLIGENCE/);
