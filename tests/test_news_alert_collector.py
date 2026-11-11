@@ -110,7 +110,7 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(collector.find_incident_time_phrase("The fire started around 8:30 pm"), "around 8:30 pm")
 
     def test_incident_date_phrase_extracts_explicit_event_date(self):
-        text = "মঙ্গলবার (১০ নভেম্বর) দিবাগত রাত ১২টা ৫০ মিনিটে পাবনায় গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ ঘটে।"
+        text = "প্রকাশিত: ১১ নভেম্বর ২০২৬, বিকেল ৩:২৯। মঙ্গলবার (১০ নভেম্বর) দিবাগত রাত ১২টা ৫০ মিনিটে পাবনায় গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ ঘটে।"
         self.assertEqual(collector.find_incident_date_phrase(text), "মঙ্গলবার (১০ নভেম্বর)")
         self.assertEqual(collector.find_incident_time_phrase(text), "রাত ১২টা ৫০ মিনিটে")
 
