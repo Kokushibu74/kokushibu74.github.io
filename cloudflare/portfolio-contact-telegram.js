@@ -1779,7 +1779,7 @@ async function umHandleCommand(env,msg,options={}){
     await paidHandleCallback(env,{data:"p1:status",message:{chat:{id:chatId,type:"private"}},from:msg.from,id:""});return true;
   }
   if(cmd==="/help"||cmd==="/cmd"){
-    if(!isAdmin){await botSend(env,chatId,"ℹ️ PAID NEWS ALERT BOT\n\n/subscribe — প্যাকেজ কিনুন\n/status — Subscription Status\n/renew — নবায়ন\n\nসব News Alert শুধু Paid Subscriber-দের জন্য।",paidUserKeyboard(),{forceNew:true});return true;}
+    if(!isAdmin){await botSend(env,chatId,"ℹ️ PAID NEWS ALERT BOT\n\n/subscribe — প্যাকেজ কিনুন\n/status — Subscription Status\n/renew — নবায়ন\n\nসব News Alert শুধু Paid Subscriber-দের জন্য।",paidUserKeyboard());return true;}
     let registrationStatus="❌ Telegram command registration failed.";
     try{const registration=await botRegisterCommands(env,chatId,isAdmin);registrationStatus="✅ Telegram command menu registered and verified ("+registration.count+" commands).";}
     catch(e){registrationStatus="⚠️ Command registration error: "+String(e&&e.message||e).slice(0,180);console.error("Telegram command registration failed",registrationStatus);}
