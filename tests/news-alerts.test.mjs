@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdtemp,rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {pathToFileURL} from "node:url";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,extractAlertSourceLocations,formatTelegramMessage,telegramMessageCategory,automationAlertDecision} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,extractAlertSourceLocations,formatTelegramMessage,telegramMessageCategory,automationAlertDecision,assessNewsAlertUpdate} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 
@@ -195,12 +195,10 @@ test("weekday and period-only incident time is resolved against publication date
 });
 test("Worker emits an update when incident time, location or incident details change",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
-  assert.match(source,/incidentTimeChanged/);
-  assert.match(source,/locationChanged/);
-  assert.match(source,/sourceLocationsChanged/);
-  assert.match(source,/detailsChanged/);
-  assert.match(source,/sourceLinkExpanded/);
-  assert.match(source,/updatePayload/);
+  assert.match(source,/assessNewsAlertUpdate\(previous,item,decision\)/);
+  assert.match(source,/if\(!assessment\.hasMeaningfulUpdate\)continue/);
+  assert.match(source,/assessment\.flags/);
+  assert.doesNotMatch(source,/sourceLinkExpanded/,"A new URL from the same publisher is not independent corroboration");
 });
 
 test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
@@ -512,9 +510,9 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
   assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
   assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
-  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false;');
+  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;');
   const previousBranch=alerts.indexOf("if(previous){",scopeDeclaration);
-  const verificationAssignment=alerts.indexOf('verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";');
+  const verificationAssignment=alerts.indexOf("verificationImproved=assessment.verificationImproved;");
   const replySelection=alerts.indexOf("const replyToMessageId=previous?(verificationImproved&&rootMessageId?");
   assert.ok(scopeDeclaration>=0&&previousBranch>scopeDeclaration&&verificationAssignment>previousBranch&&replySelection>verificationAssignment,
     "verificationImproved must be declared outside the previous-event branch and assigned before reply selection");
@@ -522,4 +520,60 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(alerts,/latestMessageId\|\|rootMessageId\|\|null/);
   assert.match(alerts,/legacyThreadRestart/);
   assert.match(alerts,/updateNo=Number\(previous\.rootMessageId\)\?Math\.max\(1,/);
+});
+
+
+test("Manikganj regression: a shorter same-publisher repeat cannot downgrade or resend the alert",()=>{
+  const previous={title:"মানিকগঞ্জে বিএনপির কার্যালয়ে আগুন",
+    summary:"মানিকগঞ্জের দৌলতপুর উপজেলা বিএনপির কার্যালয়ে গভীর রাতে অগ্নিসংযোগের ঘটনা ঘটেছে। এতে কার্যালয়ের প্লাস্টিকের চেয়ার ও টিনের বেড়ার কাঠের...",
+    location:"উপজেলা: মানিকগঞ্জের দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",
+    incidentTime:{precision:"period",display:"রাত · ১১ নভেম্বর, ২০২৬",timestamp:1794333600000,source:"Jago News 24"},
+    sourceLocations:[{source:"Jago News 24",address:"উপজেলা: মানিকগঞ্জের দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],
+    sourceEvidence:["Jago News 24"],trustedSources:["Jago News 24"],sourceLinks:["https://www.jagonews24.com/country/news/1178203"],
+    verificationStatus:"provisional",severity:"HIGH",incidentDetails:{},safetyAdvice:[]};
+  const incoming={title:previous.title,summary:previous.title,location:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",
+    incidentTime:{precision:"unknown",display:"এখনো নিশ্চিত নয়",timestamp:null,source:""},
+    sourceLocations:[{source:"Jago News 24",address:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],
+    sourceLinks:[{name:"Jago News 24",url:"https://www.jagonews24.com/country/news/1178203"}]};
+  const decision={status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"],sources:["Jago News 24"]};
+  const result=assessNewsAlertUpdate(previous,incoming,decision);
+  assert.equal(result.hasMeaningfulUpdate,false);
+  assert.equal(result.item.summary,previous.summary);
+  assert.equal(result.item.location,previous.location);
+  assert.deepEqual(result.item.incidentTime,previous.incidentTime);
+  assert.match(result.item.sourceLocations[0].address,/দৌলতপুর/);
+});
+
+test("a genuinely new casualty detail in the same publisher summary is a meaningful update",()=>{
+  const previous={summary:"ঢাকায় বাস দুর্ঘটনায় আগুন লাগে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:"ঢাকায় বাস দুর্ঘটনায় আগুন লাগে। এতে ২ জন আহত হয়েছেন।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"]});
+  assert.equal(result.hasMeaningfulUpdate,true);
+  assert.equal(result.flags.summaryEnriched,true);
+});
+
+test("a new independent publisher confirms directly actionable verification improvement",()=>{
+  const previous={summary:"ঢাকায় বাসে আগুন লেগেছে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:"ঢাকায় বাসে আগুন লেগেছে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"confirmed",severity:"HIGH",trustedSources:["Jago News 24","The Daily Star"]});
+  assert.equal(result.hasMeaningfulUpdate,true);
+  assert.equal(result.verificationImproved,true);
+  assert.deepEqual(result.decision.trustedSources,["Jago News 24","The Daily Star"]);
+});
+
+test("a more specific location and more precise incident time can enrich an alert",()=>{
+  const previous={summary:"আগুনের ঘটনা ঘটেছে।",location:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:"আগুনের ঘটনা ঘটেছে।",location:"উপজেলা: দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",sourceLocations:[{source:"Jago News 24",address:"উপজেলা: দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],incidentTime:{precision:"period",display:"রাত · ১১ নভেম্বর",timestamp:1794333600000,source:"Jago News 24"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"]});
+  assert.equal(result.hasMeaningfulUpdate,true);
+  assert.equal(result.flags.locationEnriched,true);
+  assert.equal(result.flags.incidentTimeEnriched,true);
+  assert.match(result.item.location,/দৌলতপুর/);
+});
+
+test("title-only changes and source-link duplicates do not trigger an update",()=>{
+  const previous={title:"ঢাকায় বাসে আগুন",summary:"ঢাকায় বাসে আগুন লাগে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={title:"ঢাকায় বাসে আগুনের ঘটনা",summary:"ঢাকায় বাসে আগুন লাগে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},sourceLinks:[{name:"Jago News 24",url:"https://www.jagonews24.com/example"}]};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"]});
+  assert.equal(result.hasMeaningfulUpdate,false);
 });

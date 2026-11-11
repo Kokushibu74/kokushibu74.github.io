@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
@@ -2259,36 +2259,17 @@ async function newsBreakingAlertCheck(env){
         if(legacyPrevious&&legacyPrevious.scope==="bangladesh")previous=legacyPrevious;
       }
     }
-    let updateNo=0,updateStateKey="",verificationImproved=false;
+    let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;
     if(previous){
-      const currentSummary=String(item.summary||item.previewSummary||"").trim();
-      const titleChanged=String(previous.title||"").trim()!==title;
-      const summaryChanged=String(previous.summary||"").trim()!==currentSummary;
-      const oldSources=Array.isArray(previous.trustedSources)?previous.trustedSources:[];
-      const newSources=decision.trustedSources||[];
-      const sourceExpanded=newSources.some(source=>!oldSources.includes(source));
-      const oldLinks=Array.isArray(previous.sourceLinks)?previous.sourceLinks:[];
-      const currentLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).filter(link=>link&&link.url).map(link=>String(link.url));
-      const sourceLinkExpanded=Array.isArray(previous.sourceLinks)&&currentLinks.some(url=>!oldLinks.includes(url));
-      verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
-      const currentIncidentTime=extractIncidentTime(item);
-      const oldIncidentTime=previous.incidentTime||{};
-      const incidentTimeChanged=currentIncidentTime.precision!=="unknown"&&
-        (oldIncidentTime.display!==currentIncidentTime.display||oldIncidentTime.precision!==currentIncidentTime.precision);
-      const currentLocation=extractAlertLocation(item);
-      const locationChanged=currentLocation!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়"&&String(previous.location||"")!==currentLocation;
-      const currentSourceLocations=extractAlertSourceLocations(item);
-      const previousSourceLocations=Array.isArray(previous.sourceLocations)?previous.sourceLocations:null;
-      const previousLocationText=String(previous.location||"").toLowerCase();
-      const sourceLocationsChanged=currentSourceLocations.length>0&&(previousSourceLocations?
-        JSON.stringify(currentSourceLocations)!==JSON.stringify(previousSourceLocations):
-        currentSourceLocations.some(entry=>{const address=String(entry.address||"").toLowerCase();return !previousLocationText||address!==previousLocationText&&(address.includes(previousLocationText)||!previousLocationText.includes(address));}));
-      const currentDetails=item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{};
-      const detailsChanged=Object.keys(currentDetails).length>0&&JSON.stringify(currentDetails)!==JSON.stringify(previous.incidentDetails||{});
-      const currentSafety=Array.isArray(item.safetyAdvice)?item.safetyAdvice.filter(Boolean):typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[];
-      const safetyChanged=currentSafety.length>0&&JSON.stringify(currentSafety)!==JSON.stringify(previous.safetyAdvice||[]);
-      if(!titleChanged&&!summaryChanged&&!sourceExpanded&&!sourceLinkExpanded&&!verificationImproved&&!incidentTimeChanged&&!locationChanged&&!sourceLocationsChanged&&!detailsChanged&&!safetyChanged)continue;
-      const updatePayload=JSON.stringify({title,summary:currentSummary,incidentTime:currentIncidentTime,location:currentLocation,sourceLocations:currentSourceLocations,details:currentDetails,safetyAdvice:currentSafety,sourceLinks:currentLinks,verification:decision.status});
+      const assessment=assessNewsAlertUpdate(previous,item,decision);
+      if(!assessment.hasMeaningfulUpdate)continue;
+      alertItem=assessment.item;
+      alertDecision=assessment.decision;
+      verificationImproved=assessment.verificationImproved;
+      const updatePayload=JSON.stringify({title:alertItem.title,summary:alertItem.summary,incidentTime:alertItem.incidentTime,
+        location:alertItem.location,sourceLocations:alertItem.sourceLocations,details:alertItem.incidentDetails,
+        safetyAdvice:alertItem.safetyAdvice,sourceEvidence:alertItem.sourceEvidence,verification:alertDecision.status,
+        severity:alertDecision.severity,flags:assessment.flags});
       const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(updatePayload));
       const updateKey=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("").slice(0,32);
       updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
@@ -2303,11 +2284,11 @@ async function newsBreakingAlertCheck(env){
       const latestMessageId=Number(previous?.latestMessageId)||0;
       const replyToMessageId=previous?(verificationImproved&&rootMessageId?rootMessageId:(latestMessageId||rootMessageId||null)):null;
       const legacyThreadRestart=Boolean(previous&&!replyToMessageId);
-      let caption=formatAlertMessage(item,decision,{key,updateNo,updatedAt:updateNo?now:0});
+      let caption=formatAlertMessage(alertItem,alertDecision,{key,updateNo,updatedAt:updateNo?now:0});
       if(legacyThreadRestart)caption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
-      const delivery=await sendNewsAlertMedia(env,item,caption,link,replyToMessageId);
+      const delivery=await sendNewsAlertMedia(env,alertItem,caption,link,replyToMessageId);
       const messageId=Number(delivery?.messageId)||null;
-      const history={sentAt:now,title,summary:String(item.summary||item.previewSummary||""),link,category:decision.category,scope:decision.scope,location:extractAlertLocation(item),incidentTime:extractIncidentTime(item),sourceLocations:extractAlertSourceLocations(item),incidentDetails:item.incidentDetails&&typeof item.incidentDetails==="object"?item.incidentDetails:{},safetyAdvice:Array.isArray(item.safetyAdvice)?item.safetyAdvice:typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:decision.sources,trustedSources:decision.trustedSources,verificationStatus:decision.status||"confirmed",severity:decision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:decision.official&&decision.official.url||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
+      const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
