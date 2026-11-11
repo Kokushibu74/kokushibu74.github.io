@@ -592,6 +592,7 @@ test("degraded current event state is restored from its original Main News histo
   const result=restoreAlertRootSnapshot(current,root,"news-alert-history:v1:1794387014828:event:1");
   assert.equal(result.restored,true);
   assert.match(result.state.summary,/দৌলতপুর/);
+  assert.equal(result.state.summary,root.summary,"a title-only current summary is not appended as a new fact");
   assert.match(result.state.location,/দৌলতপুর/);
   assert.equal(result.state.incidentTime.precision,"period");
   assert.equal(result.state.updateCount,1);
