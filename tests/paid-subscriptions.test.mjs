@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   PAYMENT_RECEIVER, PACKAGE_PRICES, createPaymentRequest,
-  listActiveAlertRecipients, reviewPayment
+  listActiveAlertRecipients, reviewPayment, setSubscriptionStatus
 } from "../cloudflare/paid-subscriptions.mjs";
 
 const worker = readFileSync(new URL("../cloudflare/portfolio-contact-telegram.js", import.meta.url), "utf8");
@@ -59,6 +59,20 @@ test("approval is guarded by pending status and uses a single D1 batch", async (
   assert.match(statements[1],/ON CONFLICT/);
 });
 
+
+test("Admin can suspend and resume subscriptions with expiry protection", async () => {
+  const statements=[];
+  const env={PAYMENTS_DB:{prepare(sql){return {bind(...params){return {async run(){statements.push({sql,params});return {meta:{changes:1}};}};}};}}};
+  const suspended=await setSubscriptionStatus(env,"group","-100123","suspended","999");
+  assert.equal(suspended.status,"suspended");
+  assert.match(statements[0].sql,/status=\?/);
+  assert.equal(statements[0].params[0],"suspended");
+  const resumed=await setSubscriptionStatus(env,"group","-100123","active","999");
+  assert.equal(resumed.status,"active");
+  assert.match(statements[2].sql,/expires_at>\?/);
+  assert.equal(statements[2].params[0],"active");
+});
+
 test("database schema prevents duplicate transactions and duplicate subscription targets", () => {
   assert.match(migration,/trx_id TEXT NOT NULL COLLATE NOCASE UNIQUE/);
   assert.match(migration,/UNIQUE\(target_type, target_id\)/);
@@ -73,6 +87,8 @@ test("public payment callbacks are routed before the existing Admin-only control
   assert.match(worker,/\["payments","💳 Payments & Subscriptions"\]/);
   assert.match(worker,/paidHandleGroupConnect/);
   assert.match(worker,/getChatMember/);
+  assert.match(worker,/setSubscriptionStatus/);
+  assert.match(miniapp,/data-payment-action="suspend"/);
 });
 
 test("News Alert dispatch has no public single-chat fallback and requires paid recipients", () => {
