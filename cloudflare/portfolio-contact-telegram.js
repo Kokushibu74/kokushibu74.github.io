@@ -2171,7 +2171,7 @@ async function newsRestoreAlertRootSnapshot(env,key,previous){
     const candidates=(page.keys||[]).filter(entry=>String(entry.name||"").endsWith(":"+key+":1"));
     for(const entry of candidates){
       const record=await env.BOT_CONFIG_KV.get(entry.name,"json");
-      if(!record||Number(record.rootMessageId)!==rootMessageId||Number(record.updateCount||0)!==0||record.parentMessageId!==null)continue;
+      if(!record||Number(record.rootMessageId)!==rootMessageId||Number(record.updateCount||0)!==0||record.parentMessageId!=null)continue;
       if(!rootRecord||Number(record.sentAt)<Number(rootRecord.sentAt)){rootRecord=record;rootHistoryKey=entry.name;}
     }
     if(rootRecord||page.list_complete||!page.cursor)break;
