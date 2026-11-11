@@ -344,7 +344,7 @@
       try{await api("paymentAdminAction",{operation:"extend",targetType,targetId,days});notice("Subscription extended.");$("payments-target-id").value="";await load();}
       catch(err){notice(err.message,true);}
       finally{button.disabled=false;}
-    });
+    };
     await load();
   }
 
