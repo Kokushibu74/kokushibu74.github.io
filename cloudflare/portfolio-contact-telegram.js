@@ -2160,7 +2160,8 @@ async function miniAppModule(env,section){
     const posts=await listJournalPosts(env);
     return {section,posts,source:"Encrypted GitHub journal-private.json"};
   }
-  const allowed=["website","news","analytics","security","reports","settings"];
+  const allowed=["website","news","analytics","security","reports","settings","payments"];
+  if(section==="payments")return {section,...await getPaymentAdminOverview(env),source:"Paid subscription D1"};
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
   if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
   if(section==="automation"||section==="alerts"){
@@ -2924,6 +2925,30 @@ export default {
           const result=await miniAppDispatchNews(env);
           await miniAppAudit(env,user.id,"newsRefresh_dispatched",{workflow:result.workflow});
           return respond({ok:true,...result});
+        }
+        if(action==="paymentAdminOverview"){
+          const [overview,pending,subscriptions]=await Promise.all([
+            getPaymentAdminOverview(env),listPendingPayments(env,30),listSubscriptions(env,"all",100)
+          ]);
+          await miniAppAudit(env,user.id,"paymentAdminOverview",{pending:pending.length,subscriptions:subscriptions.length});
+          return respond({ok:true,overview,pending,subscriptions});
+        }
+        if(action==="paymentAdminAction"){
+          const operation=String(body?.operation||"");
+          if(operation==="approve"||operation==="reject"){
+            const payment=await getPayment(env,String(body?.paymentId||""));
+            if(!payment)throw new Error("Payment request not found.");
+            const result=await reviewPayment(env,payment.id,operation,user.id,String(body?.reason||""));
+            await paidSendReviewResult(env,payment,result);
+            await miniAppAudit(env,user.id,"payment_"+operation,{paymentId:payment.id,amount:payment.amount,targetType:payment.target_type});
+            return respond({ok:true,status:result.status,paymentId:payment.id});
+          }
+          if(operation==="extend"){
+            const result=await extendSubscription(env,String(body?.targetType||""),String(body?.targetId||""),Number(body?.days||0),user.id);
+            await miniAppAudit(env,user.id,"subscription_extend",result);
+            return respond({ok:true,...result});
+          }
+          throw new Error("Unsupported payment administration action.");
         }
         if(action==="module"){
           const section=String(body?.section||"");const result=await miniAppModule(env,section);
