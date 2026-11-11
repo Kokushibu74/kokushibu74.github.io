@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-11T12:26:19.593672+00:00",
-  "updatedAt": "2026-11-11T12:26:19.593672+00:00",
+  "generatedAt": "2026-11-11T12:41:36.397993+00:00",
+  "updatedAt": "2026-11-11T12:41:36.397993+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -424,6 +424,37 @@
   "candidateCount": 27,
   "alertItems": [
     {
+      "title": "‘এমন দিনের জন্যই আমাদের তৈরি করা হয়েছে’, যুদ্ধেয় ময়দানে সালমান",
+      "summary": "চীন-ভারত সীমান্তে উত্তেজনা, বরফঢাকা পাহাড়ে রক্তক্ষয়ী সংঘর্ষ আর যুদ্ধের ময়দানে এক সেনার সাহসিকতা দেখিয়ে আলোচনায় সালমান খানের নতুন সিনেমা.....",
+      "link": "https://www.jagonews24.com/entertainment/news/1178346",
+      "publisherUrl": "https://www.jagonews24.com/entertainment/news/1178346",
+      "publishedAt": "2026-11-11T12:34:12+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/entertainment/news/1178346"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "‘এমন দিনের জন্যই আমাদের তৈরি করা হয়েছে’, যুদ্ধেয় ময়দানে সালমান",
+          "summary": "চীন-ভারত সীমান্তে উত্তেজনা, বরফঢাকা পাহাড়ে রক্তক্ষয়ী সংঘর্ষ আর যুদ্ধের ময়দানে এক সেনার সাহসিকতা দেখিয়ে আলোচনায় সালমান খানের নতুন সিনেমা.....",
+          "url": "https://www.jagonews24.com/entertainment/news/1178346"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5078ecb739ae5ff379c2b702e1c0df54"
+    },
+    {
       "title": "পার্বত্য অঞ্চলে ৫ বছরে সশস্ত্র গোষ্ঠীর হামলায় নিহত কতজন জানালেন স্বরাষ্ট্রমন্ত্রী",
       "summary": "স্বরাষ্ট্রমন্ত্রী সালাহউদ্দিন আহমদ জানিয়েছেন, পার্বত্য চট্টগ্রামে গত পাঁচ বছরে সশস্ত্র গোষ্ঠীর হামলায় ৩১৬ জন নিহত হয়েছেন। তাদের মধ্যে ৩০৮ জন বেসামরিক নাগরিক এবং আট জন নিরাপত্তা বাহিনীর সদস্য। একই সময়ে ৪৩৫ জন বেসামরিক নাগরিক ও ৫৫ জন নিরাপত্তা বাহিনীর সদস্য আহত হয়েছেন। বুধবার (১১ নভেম্বর) জাতীয় সংসদের চতুর্থ অধিবেশনের তৃতীয় দিনের প্রশ্নোত্তর পর্বে মানিকগঞ্জ-১ আসনের সংসদ সদস্য এস এ জিন্নাহ কবিরের... বিস্তারিত",
       "link": "https://www.banglatribune.com/national/980283/%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%85%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%B2%E0%A7%87-%E0%A7%AB-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%B6%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%B7%E0%A7%8D%E0%A6%A0%E0%A7%80%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -575,19 +606,24 @@
     },
     {
       "title": "নারায়ণগঞ্জের ফতুল্লায় মাদ্রাসায় আগুন: দুজন আইসিইউতে, একজন লাইফ সাপোর্টে",
-      "summary": "",
+      "summary": "নারায়ণগঞ্জে পণ্যবাহী লরিতে আগুন Dhaka Tribune Bangla",
       "link": "https://www.prothomalo.com/bangladesh/vzykubxyvf",
       "publisherUrl": "https://www.prothomalo.com/bangladesh/vzykubxyvf",
       "publishedAt": "2026-11-11T10:09:01+00:00",
       "source": "Prothom Alo",
       "publisherName": "Prothom Alo",
       "sourceEvidence": [
-        "Prothom Alo"
+        "Prothom Alo",
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
           "name": "Prothom Alo",
           "url": "https://www.prothomalo.com/bangladesh/vzykubxyvf"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112901/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AA%E0%A6%A3%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -600,9 +636,15 @@
           "summary": "",
           "url": "https://www.prothomalo.com/bangladesh/vzykubxyvf",
           "incidentDateText": "১১ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নারায়ণগঞ্জে পণ্যবাহী লরিতে আগুন - Dhaka Tribune Bangla",
+          "summary": "নারায়ণগঞ্জে পণ্যবাহী লরিতে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112901/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AA%E0%A6%A3%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "6c541e4512c8eb51d8ee3283a2162b08"
     },
     {
@@ -666,72 +708,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fc42af216bffc28f5e7f323525ad81c4"
-    },
-    {
-      "title": "গোপালগঞ্জে দুটি সড়ক দুর্ঘটনায় বীর মুক্তিযোদ্ধাসহ নিহত ২ - Dhaka Tribune Bangla",
-      "summary": "গোপালগঞ্জে দুটি সড়ক দুর্ঘটনায় বীর মুক্তিযোদ্ধাসহ নিহত ২ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/112913/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B8%E0%A6%B9",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/112913/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B8%E0%A6%B9",
-      "publishedAt": "2026-11-11T09:30:31+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112913/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B8%E0%A6%B9"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গোপালগঞ্জে দুটি সড়ক দুর্ঘটনায় বীর মুক্তিযোদ্ধাসহ নিহত ২ - Dhaka Tribune Bangla",
-          "summary": "গোপালগঞ্জে দুটি সড়ক দুর্ঘটনায় বীর মুক্তিযোদ্ধাসহ নিহত ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112913/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B8%E0%A6%B9"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f8fb2b45f294b12126b329bb4c388117"
-    },
-    {
-      "title": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ - United News of Bangladesh",
-      "summary": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467",
-      "publishedAt": "2026-11-11T09:29:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ - United News of Bangladesh",
-          "summary": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467",
-          "incidentDateText": "মঙ্গলবার (১০ নভেম্বর)",
-          "incidentTimeText": "রাত ১২টা ৫০ মিনিটে",
-          "incidentTimeSource": "UNB",
-          "locationText": "পাবনা সদর থানার, পাবনা"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "650148185b949e9312d286fa68eab7bf"
     },
     {
       "title": "ব্রাহ্মণবাড়িয়ায় বিএনপি-যুবদলের দফায় দফায় সংঘর্ষ, আহত ২০",
