@@ -1751,7 +1751,7 @@ async function botHandleCallback(env,query){
 
 async function umHandleCommand(env,msg,options={}){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/start","/menu","/help","/cmd","/subscribe","/status","/renew","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const commands=new Set(["/start","/menu","/help","/cmd","/subscribe","/status","/renew","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats","/extend"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
@@ -1763,10 +1763,10 @@ async function umHandleCommand(env,msg,options={}){
     else await paidShowMenu(env,chatId);
     return true;
   }
-  if(["/subscribe","/renew"].includes(cmd)&&!isAdmin){
+  if(["/subscribe","/renew"].includes(cmd)){
     await botSend(env,chatId,"📦 Choose your paid News Alert package:",paidPlanKeyboard(),{forceNew:true});return true;
   }
-  if(cmd==="/status"&&!isAdmin){
+  if(cmd==="/status"){
     await paidHandleCallback(env,{data:"p1:status",message:{chat:{id:chatId,type:"private"}},from:msg.from,id:""});return true;
   }
   if(cmd==="/help"||cmd==="/cmd"){
@@ -3250,7 +3250,7 @@ export default {
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
         const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
-        if(!adminSet.has(String(msg.from.id))&&await paidHandleText(env,msg))return new Response("OK");
+        if(await paidHandleText(env,msg))return new Response("OK");
         if(pending?.mode && !String(msg.text||"").trim().startsWith("/")){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
