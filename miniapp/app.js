@@ -322,7 +322,7 @@
         pendingCount.textContent=(data.pending||[]).length+" REQUESTS";
         pending.innerHTML=(data.pending||[]).map(p=>'<article class="payment-card"><div class="payment-card-head"><b>'+escapeHtml(p.package_type.toUpperCase())+' · ৳'+escapeHtml(p.amount)+'</b><span class="tag">PENDING</span></div><div class="payment-fields"><span>User</span><b>'+escapeHtml(p.user_id)+'</b><span>Target</span><b>'+escapeHtml(p.target_title||p.target_id)+'</b><span>Method</span><b>'+escapeHtml(p.payment_method.toUpperCase())+'</b><span>Pay Source</span><b>'+escapeHtml(p.pay_source_account)+'</b><span>Receiver</span><b>'+escapeHtml(p.receiver_account)+'</b><span>TrxID</span><b>'+escapeHtml(p.trx_id)+'</b><span>Submitted</span><b>'+escapeHtml(fmt(p.submitted_at))+'</b></div><div class="payment-actions"><button type="button" data-payment-action="approve" data-payment-id="'+escapeHtml(p.id)+'">Approve</button><button type="button" class="danger" data-payment-action="reject" data-payment-id="'+escapeHtml(p.id)+'">Reject</button></div></article>').join("")||'<div class="empty-state">No pending payment requests.</div>';
         subCount.textContent=(data.subscriptions||[]).length+" RECORDS";
-        subs.innerHTML=(data.subscriptions||[]).map(x=>'<article class="payment-card"><div class="payment-card-head"><b>'+escapeHtml(x.target_type.toUpperCase())+' · '+escapeHtml(x.target_id)+'</b><span class="tag">'+(x.status==="active"&&Number(x.expires_at)>Date.now()?"ACTIVE":"EXPIRED")+'</span></div><div class="payment-fields"><span>Owner</span><b>'+escapeHtml(x.owner_user_id)+'</b><span>Price</span><b>৳'+escapeHtml(x.amount)+'</b><span>Start</span><b>'+escapeHtml(fmt(x.starts_at))+'</b><span>Expiry</span><b>'+escapeHtml(fmt(x.expires_at))+'</b></div></article>').join("")||'<div class="empty-state">No subscriptions recorded yet.</div>';
+        subs.innerHTML=(data.subscriptions||[]).map(x=>{const expired=Number(x.expires_at)<=Date.now(),active=x.status==="active"&&!expired;const control=!expired&&x.status==="active"?'<button type="button" data-payment-action="suspend" data-target-type="'+escapeHtml(x.target_type)+'" data-target-id="'+escapeHtml(x.target_id)+'">Suspend</button>':!expired&&x.status==="suspended"?'<button type="button" data-payment-action="resume" data-target-type="'+escapeHtml(x.target_type)+'" data-target-id="'+escapeHtml(x.target_id)+'">Resume</button>':"";return '<article class="payment-card"><div class="payment-card-head"><b>'+escapeHtml(x.target_type.toUpperCase())+' · '+escapeHtml(x.target_id)+'</b><span class="tag">'+(active?"ACTIVE":expired?"EXPIRED":"SUSPENDED")+'</span></div><div class="payment-fields"><span>Owner</span><b>'+escapeHtml(x.owner_user_id)+'</b><span>Price</span><b>৳'+escapeHtml(x.amount)+'</b><span>Start</span><b>'+escapeHtml(fmt(x.starts_at))+'</b><span>Expiry</span><b>'+escapeHtml(fmt(x.expires_at))+'</b></div><div class="payment-actions">'+control+'</div></article>';}).join("")||'<div class="empty-state">No subscriptions recorded yet.</div>';
       }catch(e){notice(e.message,true);pending.innerHTML='<div class="empty-state">'+escapeHtml(e.message)+'</div>';}
       finally{refresh.disabled=false;}
     };
@@ -331,9 +331,12 @@
       const button=e.target.closest("[data-payment-action]");
       if(button){
         const operation=button.dataset.paymentAction,paymentId=button.dataset.paymentId;
-        const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm((operation==="approve"?"Approve":"Reject")+" this payment request?",resolve)):window.confirm((operation==="approve"?"Approve":"Reject")+" this payment request?");
+        const isReview=operation==="approve"||operation==="reject";
+        const prompt=isReview?(operation==="approve"?"Approve":"Reject")+" this payment request?":(operation==="suspend"?"Suspend":"Resume")+" this subscription?";
+        const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm(prompt,resolve)):window.confirm(prompt);
         if(!yes)return;button.disabled=true;
-        try{await api("paymentAdminAction",{operation,paymentId});notice("Payment "+operation+"d.");await load();}
+        const payload=isReview?{operation,paymentId}:{operation,targetType:button.dataset.targetType,targetId:button.dataset.targetId};
+        try{await api("paymentAdminAction",payload);notice(isReview?"Payment "+operation+"d.":"Subscription "+operation+"d.");await load();}
         catch(err){notice(err.message,true);button.disabled=false;}
       }
     };
