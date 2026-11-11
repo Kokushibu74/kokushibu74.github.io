@@ -371,6 +371,23 @@ def find_incident_time_phrase(text):
             return match.group(0).strip()[:100]
     return ""
 
+INCIDENT_DATE_PATTERNS = [
+    re.compile(r"(?:রবিবার|সোমবার|মঙ্গলবার|বুধবার|বৃহস্পতিবার|শুক্রবার|শনিবার)\\s*\\(\\s*\\d{1,2}\\s+(?:জানুয়ারি|জানুয়ারি|ফেব্রুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)(?:\\s+\\d{4})?\\s*\\)", re.I),
+    re.compile(r"\\d{1,2}\\s+(?:জানুয়ারি|জানুয়ারি|ফেব্রুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)(?:\\s+\\d{4})?", re.I),
+]
+
+def find_incident_date_phrase(text):
+    value = clean(text)
+    for pattern in INCIDENT_DATE_PATTERNS:
+        for match in pattern.finditer(value):
+            context = value[max(0, match.start() - 120):min(len(value), match.end() + 260)].lower()
+            if re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", context):
+                continue
+            if not re.search(r"(আগুন|অগ্নিকাণ্ড|অগ্নিসংযোগ|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context):
+                continue
+            return match.group(0).strip()[:100]
+    return ""
+
 def article_plain_text(raw):
     value = str(raw or "")
     article_blocks = re.findall(r"<article\b[^>]*>(.*?)</article>", value, flags=re.I | re.S)
@@ -442,6 +459,7 @@ def fetch_article_enrichment(story):
             raw = response.read(1_200_000)
         text = article_plain_text(raw.decode("utf-8", errors="replace"))[:30000]
         return {
+            "incidentDateText": find_incident_date_phrase(text),
             "incidentTimeText": find_incident_time_phrase(text),
             "locationText": find_incident_location_phrase(text),
         }
@@ -456,9 +474,10 @@ def enrich_alert_incident_times(alerts, max_articles=10):
             if not isinstance(story, dict):
                 continue
             story_text = " ".join(str(story.get(k) or "") for k in ("title", "summary"))
+            has_date = bool(find_incident_date_phrase(story_text))
             has_time = bool(find_incident_time_phrase(story_text))
             has_location = bool(find_incident_location_phrase(story_text)) and bool(BANGLADESH_RE.search(story_text))
-            if has_time and has_location:
+            if has_date and has_time and has_location:
                 continue
             url = str(story.get("url") or "")
             if url and not any(existing[1] == url for existing in tasks):
@@ -469,6 +488,8 @@ def enrich_alert_incident_times(alerts, max_articles=10):
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         enrichments = list(pool.map(lambda row: fetch_article_enrichment(row[0]), tasks))
     for (story, _url), enrichment in zip(tasks, enrichments):
+        if enrichment.get("incidentDateText"):
+            story["incidentDateText"] = enrichment["incidentDateText"]
         if enrichment.get("incidentTimeText"):
             story["incidentTimeText"] = enrichment["incidentTimeText"]
             story["incidentTimeSource"] = str(story.get("name") or story.get("source") or "")
