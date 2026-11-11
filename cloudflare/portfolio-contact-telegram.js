@@ -2383,8 +2383,9 @@ function officialDisasterConfirmation(item,now,pages){
   }
   return {confirmed:false};
 }
-async function sendNewsAlertMedia(env,item,caption,link,replyToMessageId=null){
-  const token=env.TELEGRAM_BOT_TOKEN,chatId=env.TELEGRAM_CHAT_ID;
+async function sendNewsAlertMedia(env,chatId,item,caption,link,replyToMessageId=null){
+  const token=env.TELEGRAM_BOT_TOKEN;
+  if(!token||!chatId)throw new Error("Paid alert recipient or Telegram bot token is missing.");
   const candidates=mediaCandidates(item);
   let sentMessageId=null,replyFailure="",attachReply=Boolean(replyToMessageId),deliveryCaption=caption;
   const send=async(method,body)=>{
@@ -2452,9 +2453,12 @@ async function newsRestoreAlertRootSnapshot(env,key,previous){
 }
 
 async function newsBreakingAlertCheck(env){
-  if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};
+  if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.PAYMENTS_DB)return {skipped:"paid subscription bindings unavailable"};
   const cfg=await botConfig(env);
   if(cfg.newsAlerts===false)return {skipped:"disabled"};
+  let recipients;
+  try{recipients=await listActiveAlertRecipients(env)}catch(error){console.error("Paid alert recipient lookup failed",String(error&&error.message||error).slice(0,160));return {skipped:"subscription database unavailable"};}
+  if(!recipients.length)return {skipped:"no active paid subscribers"};
   let feed;
   try{
     const response=await fetch("https://kokushibu74.github.io/news-alert-feed.json",{headers:{"Cache-Control":"no-cache"},signal:AbortSignal.timeout(10000)});
@@ -2551,40 +2555,60 @@ async function newsBreakingAlertCheck(env){
       }
     }
     if(previous)previous=await newsRestoreAlertRootSnapshot(env,key,previous);
-    let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;
+    let updateNo=Number(previous?.updateCount||0),updateStateKey="",updateKey=String(previous?.deliveryUpdateKey||"root"),alertItem=item,alertDecision=decision;
     if(previous){
       const assessment=assessNewsAlertUpdate(previous,item,decision);
-      if(!assessment.hasMeaningfulUpdate)continue;
-      alertItem=assessment.item;
-      alertDecision=assessment.decision;
-      verificationImproved=assessment.verificationImproved;
-      const updatePayload=JSON.stringify({title:alertItem.title,summary:alertItem.summary,incidentTime:alertItem.incidentTime,
-        location:alertItem.location,sourceLocations:alertItem.sourceLocations,details:alertItem.incidentDetails,
-        safetyAdvice:alertItem.safetyAdvice,sourceEvidence:alertItem.sourceEvidence,verification:alertDecision.status,
-        severity:alertDecision.severity,flags:assessment.flags});
-      const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(updatePayload));
-      const updateKey=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("").slice(0,32);
-      updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
-      if(await env.BOT_CONFIG_KV.get(updateStateKey))continue;
-      updateNo=Number(previous.rootMessageId)?Math.max(1,Number(previous.updateCount||0)+1):1;
+      if(assessment.hasMeaningfulUpdate){
+        alertItem=assessment.item;
+        alertDecision=assessment.decision;
+        const updatePayload=JSON.stringify({title:alertItem.title,summary:alertItem.summary,incidentTime:alertItem.incidentTime,
+          location:alertItem.location,sourceLocations:alertItem.sourceLocations,details:alertItem.incidentDetails,
+          safetyAdvice:alertItem.safetyAdvice,sourceEvidence:alertItem.sourceEvidence,verification:alertDecision.status,
+          severity:alertDecision.severity,flags:assessment.flags});
+        const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(updatePayload));
+        updateKey=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("").slice(0,32);
+        updateStateKey="news-alert-update:v1:"+key+":"+updateKey;
+        const updateAlreadyKnown=await env.BOT_CONFIG_KV.get(updateStateKey);
+        if(!updateAlreadyKnown)updateNo=Number(previous.updateCount||0)+1;
+        else{
+          updateNo=Number(previous.updateCount||0);
+          updateKey=String(previous.deliveryUpdateKey||"root");
+          alertItem=item;
+          alertDecision=decision;
+        }
+      }
     }
     const lockKey="news-alert-lock:v1:"+key;
     if(await env.BOT_CONFIG_KV.get(lockKey))continue;
     await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
     try{
-      const rootMessageId=Number(previous?.rootMessageId)||0;
-      const latestMessageId=Number(previous?.latestMessageId)||0;
-      const replyToMessageId=previous?(verificationImproved&&rootMessageId?rootMessageId:(latestMessageId||rootMessageId||null)):null;
-      const legacyThreadRestart=Boolean(previous&&!replyToMessageId);
+      const eligibleRecipients=recipients.filter(recipient=>{
+        const published=Number.isFinite(publishedAt)?publishedAt:now;
+        return Number(recipient.starts_at||0)<=published;
+      });
+      let delivered=0;
       let caption=formatAlertMessage(alertItem,alertDecision,{key,updateNo,updatedAt:updateNo?now:0});
-      if(legacyThreadRestart)caption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
-      const delivery=await sendNewsAlertMedia(env,alertItem,caption,link,replyToMessageId);
-      const messageId=Number(delivery?.messageId)||null;
-      const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,rootSnapshotKey:previous?.rootSnapshotKey||(!previous?"news-alert-history:v1:"+String(now)+":"+key+":1":null),rootSnapshotCheckedAt:previous?.rootSnapshotCheckedAt||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
-      await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
-      if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
-      await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
-      sent.push(title);
+      for(const recipient of eligibleRecipients){
+        const recipientType=String(recipient.target_type),recipientId=String(recipient.target_id);
+        const existingDelivery=await getDelivery(env,key,updateKey,recipientType,recipientId);
+        if(existingDelivery?.status==="sent")continue;
+        const latest=await getLatestDelivery(env,key,recipientType,recipientId);
+        try{
+          const delivery=await sendNewsAlertMedia(env,recipientId,alertItem,caption,link,Number(latest?.message_id)||null);
+          await saveDelivery(env,{eventKey:key,updateKey,recipientType,recipientId,messageId:delivery?.messageId});
+          delivered++;
+        }catch(deliveryError){
+          await recordDeliveryFailure(env,{eventKey:key,updateKey,recipientType,recipientId,error:String(deliveryError?.message||deliveryError)});
+          console.error("Paid News Alert delivery failed",JSON.stringify({recipientType,recipientId,eventKey:key,error:String(deliveryError?.message||deliveryError).slice(0,180)}));
+        }
+      }
+      if(delivered>0){
+        const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,updateCount:updateNo,deliveryUpdateKey:updateKey,recipientCount:eligibleRecipients.length,deliveredCount:delivered};
+        await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+        if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo,deliveryUpdateKey:updateKey}),{expirationTtl:NEWS_ALERT_TTL});
+        await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+        sent.push(title);
+      }
     }finally{
       await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
     }
