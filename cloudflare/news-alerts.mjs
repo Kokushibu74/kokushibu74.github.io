@@ -115,7 +115,7 @@ function normalizeAlertUpdateText(value){
 }
 function alertUpdateTokens(value){
   const stop=new Set(["এবং","করে","হয়েছে","হয়েছে","হবে","হয়","হয়","তার","এতে","এই","সেই","একটি","এক","জন","জনের","দিয়ে","নিয়ে","থেকে","দিকে","করা","ঘটনা","ঘটনার","সংবাদ","বলেন","জানান","the","and","for","with","from","that","this","after","has","have","was","were"]);
-  return new Set(normalizeAlertUpdateText(value).split(" ").filter(token=>token.length>1&&!stop.has(token)));
+  return new Set(normalizeAlertUpdateText(value).split(" ").filter(token=>(token.length>1||/^[0-9০-৯]+$/.test(token))&&!stop.has(token)));
 }
 function alertLocationParts(value){
   return String(value||"").split(",").map(part=>normalizeAlertUpdateText(part)).filter(Boolean);
@@ -134,7 +134,7 @@ function mergeAlertDetailObjects(previous={},current={}){
   const merged={...(previous&&typeof previous==="object"?previous:{})};
   let added=false;
   for(const [key,value] of Object.entries(current&&typeof current==="object"?current:{})){
-    if(value===undefined||value===null||String(value).trim()==="")continue;
+    if(value===undefined||value===null||String(value).trim()===""||/^(unknown|n\/a|এখনো নিশ্চিত নয়|নিশ্চিত নয়)$/i.test(String(value).trim()))continue;
     const old=merged[key];
     if(old===undefined||old===null||String(old).trim()===""){merged[key]=value;added=true;}
     else if(String(old)!==String(value)){merged[key]=value;added=true;}
