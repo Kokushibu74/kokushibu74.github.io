@@ -2259,7 +2259,7 @@ async function newsBreakingAlertCheck(env){
         if(legacyPrevious&&legacyPrevious.scope==="bangladesh")previous=legacyPrevious;
       }
     }
-    let updateNo=0,updateStateKey="";
+    let updateNo=0,updateStateKey="",verificationImproved=false;
     if(previous){
       const currentSummary=String(item.summary||item.previewSummary||"").trim();
       const titleChanged=String(previous.title||"").trim()!==title;
@@ -2270,7 +2270,7 @@ async function newsBreakingAlertCheck(env){
       const oldLinks=Array.isArray(previous.sourceLinks)?previous.sourceLinks:[];
       const currentLinks=(Array.isArray(item.sourceLinks)?item.sourceLinks:[]).filter(link=>link&&link.url).map(link=>String(link.url));
       const sourceLinkExpanded=Array.isArray(previous.sourceLinks)&&currentLinks.some(url=>!oldLinks.includes(url));
-      const verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
+      verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
       const currentIncidentTime=extractIncidentTime(item);
       const oldIncidentTime=previous.incidentTime||{};
       const incidentTimeChanged=currentIncidentTime.precision!=="unknown"&&
