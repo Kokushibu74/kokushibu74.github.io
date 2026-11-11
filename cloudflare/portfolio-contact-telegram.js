@@ -1,6 +1,7 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
+import { PAYMENT_RECEIVER, PACKAGE_PRICES, createPaymentRequest, getPayment, listPendingPayments, listUserPayments, listUserSubscriptions, listActiveAlertRecipients, getDelivery, getLatestDelivery, saveDelivery, recordDeliveryFailure, reviewPayment, extendSubscription, listSubscriptions, getRevenueSummary, getPaymentAdminOverview } from "./paid-subscriptions.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -775,7 +776,7 @@ const BOT_MENU = [
 ];
 const BOT_SECONDARY_MENU = [
   ["github","🐙 GitHub & Deploy"],["hero","🖼️ Hero Image"],
-  ["blog","✍️ Developer Journal"],["logs","📜 Logs & Recovery"],["refresh","🔄 Refresh Now"],["settings","⚙️ Settings"]
+  ["blog","✍️ Developer Journal"],["payments","💳 Payments & Subscriptions"],["logs","📜 Logs & Recovery"],["refresh","🔄 Refresh Now"],["settings","⚙️ Settings"]
 ];
 // Sports Zone is paused by user request. Keep its alert code for later restoration, but do not read its KV or send budget alerts.
 const SPORTS_ZONE_MONITORING_ENABLED=false;
@@ -936,7 +937,11 @@ const BOT_PUBLIC_COMMANDS=[
   {command:"start",description:"Open the control center"},
   {command:"menu",description:"Open the main menu"},
   {command:"help",description:"Command guide"},
-  {command:"cmd",description:"Register commands and show guide"}
+  {command:"cmd",description:"Register commands and show guide"},
+  {command:"subscribe",description:"Buy a paid News Alert subscription"},
+  {command:"status",description:"Check your subscription status"},
+  {command:"renew",description:"Renew your subscription"},
+  {command:"connectgroup",description:"Link this group to your subscription"}
 ];
 const BOT_ADMIN_COMMANDS=[
   {command:"info",description:"Website and Worker health"},
@@ -957,7 +962,8 @@ const BOT_ADMIN_COMMANDS=[
   {command:"history",description:"Recent user history"},
   {command:"sources",description:"News feed and source status"},
   {command:"traffic",description:"Visitor traffic overview"},
-  {command:"report",description:"Daily report status"}
+  {command:"report",description:"Daily report status"},
+  {command:"extend",description:"Extend a paid subscription"}
 ];
 async function botRegisterCommands(env,chatId,isAdmin){
   if(!env.TELEGRAM_BOT_TOKEN)throw new Error("Telegram bot token is unavailable.");
@@ -1312,6 +1318,242 @@ async function botStatusText(env,category,index){
   lines.push("","━━━━━━━━━━━━━━━━━━","প্রয়োজনে Main Menu থেকে অন্য বিভাগ নির্বাচন করুন।");
   return lines.join("\n");
 }
+
+const PAID_FLOW_PREFIX = "paid:flow:v1:";
+const PAID_INDIVIDUAL_PRICE = 100;
+const PAID_GROUP_PRICE = 300;
+function paidFlowKey(userId){return PAID_FLOW_PREFIX+String(userId);}
+async function paidGetFlow(env,userId){return env.BOT_CONFIG_KV?.get(paidFlowKey(userId),"json")||null;}
+async function paidSetFlow(env,userId,value){
+  if(!env.BOT_CONFIG_KV)throw new Error("Payment flow storage is unavailable.");
+  await env.BOT_CONFIG_KV.put(paidFlowKey(userId),JSON.stringify({...value,updatedAt:Date.now()}),{expirationTtl:1800});
+}
+async function paidClearFlow(env,userId){await env.BOT_CONFIG_KV?.delete(paidFlowKey(userId));}
+function paidUserKeyboard(){
+  return [
+    [{text:"💳 Buy Subscription",callback_data:"p1:buy"},{text:"📅 My Subscription",callback_data:"p1:status"}],
+    [{text:"🔁 Renew Subscription",callback_data:"p1:renew"},{text:"🧾 Payment History",callback_data:"p1:history"}],
+    [{text:"❓ Help & Support",callback_data:"p1:help"}]
+  ];
+}
+function paidPlanKeyboard(){
+  return [
+    [{text:"Individual · ৳100 / 30 days",callback_data:"p1:plan:individual"}],
+    [{text:"Group · ৳300 / 30 days",callback_data:"p1:plan:group"}],
+    [{text:"⬅️ Main Menu",callback_data:"p1:menu"}]
+  ];
+}
+function paidMethodKeyboard(){
+  return [
+    [{text:"bKash Personal",callback_data:"p1:method:bkash"}],
+    [{text:"Nagad Personal",callback_data:"p1:method:nagad"}],
+    [{text:"✖️ Cancel",callback_data:"p1:cancel"}]
+  ];
+}
+async function paidShowMenu(env,chatId){
+  const subs=await listUserSubscriptions(env,String(chatId)).catch(()=>[]);
+  const now=Date.now(),active=subs.filter(x=>x.status==="active"&&Number(x.expires_at)>now).length;
+  await botSend(env,chatId,
+    "🇧🇩 NEWS ALERT SUBSCRIPTION\n\nসব News Alert শুধু Paid Subscriber-দের জন্য।\n\nআপনার Active Subscription: "+active+"\n\nIndividual · ৳100 / 30 দিন\nGroup · ৳300 / 30 দিন",
+    paidUserKeyboard(),{forceNew:true});
+}
+async function paidStartPlan(env,userId,packageType,username){
+  if(!["individual","group"].includes(packageType))throw new Error("Invalid subscription package.");
+  const state={packageType,username:String(username||""),step:packageType==="group"?"awaiting_group":"payment_method",
+    targetId:String(userId),targetTitle:packageType==="individual"?"Individual account":""};
+  await paidSetFlow(env,userId,state);
+  if(packageType==="group"){
+    await botSend(env,userId,
+      "👥 GROUP SUBSCRIPTION · ৳300 / 30 DAYS\n\n১. Bot-কে আপনার Telegram Group-এ Add করুন এবং Administrator permission দিন।\n২. ওই Group-এ /connectgroup লিখুন।\n৩. Group Admin ও Bot permission যাচাই হলে এখানে Payment Method নির্বাচন করতে পারবেন।\n\nGroup linking-এর আগে কোনো টাকা পাঠাবেন না।",
+      [[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});
+    return;
+  }
+  await botSend(env,userId,"💳 INDIVIDUAL SUBSCRIPTION · ৳100 / 30 DAYS\n\nPayment Method নির্বাচন করুন।",paidMethodKeyboard(),{forceNew:true});
+}
+function paidFormatAdminRequest(payment){
+  return [
+    "🆕 NEW PAYMENT REQUEST",
+    "━━━━━━━━━━━━━━━━━━",
+    "User ID: "+payment.userId,
+    "Username: "+(payment.username?"@"+payment.username:"Not set"),
+    "Package: "+payment.packageType.toUpperCase(),
+    "Group: "+(payment.targetTitle||"Not applicable"),
+    "Group ID: "+(payment.packageType==="group"?payment.targetId:"—"),
+    "",
+    "Amount: ৳"+payment.amount,
+    "Method: "+payment.paymentMethod.toUpperCase(),
+    "Receiver Account: "+payment.receiverAccount,
+    "Pay Source Account: "+payment.paySourceAccount,
+    "Transaction ID: "+payment.trxId,
+    "Submitted: "+new Date(payment.submittedAt).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT",
+    "",
+    "Status: PENDING · Admin verification required"
+  ].join("\n");
+}
+async function paidNotifyAdmins(env,payment){
+  const admins=String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean);
+  const keyboard=[[{text:"✅ Approve",callback_data:"p1:review:approve:"+payment.id},{text:"✖️ Reject",callback_data:"p1:review:reject:"+payment.id}]];
+  if(payment.screenshotFileId)keyboard.push([{text:"🖼️ View Screenshot",callback_data:"p1:review:screenshot:"+payment.id}]);
+  const results=await Promise.all(admins.map(async id=>{
+    const response=await botTelegram(env,"sendMessage",{chat_id:id,text:paidFormatAdminRequest(payment),disable_web_page_preview:true,reply_markup:{inline_keyboard:keyboard}});
+    return {id,ok:response.ok};
+  }));
+  if(results.every(x=>!x.ok))throw new Error("Payment request could not be delivered to any configured Admin.");
+}
+async function paidSubmitPayment(env,userId,screenshotFileId=null){
+  const flow=await paidGetFlow(env,userId);
+  if(!flow||flow.step!=="screenshot")throw new Error("Payment submission session expired. Start again with /subscribe.");
+  const payment=await createPaymentRequest(env,{
+    userId,username:flow.username,packageType:flow.packageType,paymentMethod:flow.paymentMethod,
+    paySourceAccount:flow.paySourceAccount,trxId:flow.trxId,targetId:flow.targetId,
+    targetTitle:flow.targetTitle,screenshotFileId
+  });
+  await paidClearFlow(env,userId);
+  await paidNotifyAdmins(env,payment);
+  await botSend(env,userId,
+    "✅ PAYMENT REQUEST SUBMITTED\n\nRequest ID: "+payment.id+"\nPackage: "+payment.packageType+"\nAmount: ৳"+payment.amount+"\nStatus: Pending Admin Verification\n\nPayment যাচাই শেষে Bot-এ ফলাফল জানানো হবে।",
+    [[{text:"📅 My Subscription",callback_data:"p1:status"},{text:"🧾 Payment History",callback_data:"p1:history"}]],{forceNew:true});
+  return payment;
+}
+async function paidSendReviewResult(env,payment,result){
+  const message=result.status==="approved"
+    ?"✅ PAYMENT APPROVED\nআপনার "+payment.package_type+" subscription সক্রিয় হয়েছে।\nমেয়াদ শেষ: "+new Date(result.expiresAt).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT"
+    :"❌ PAYMENT REJECTED\nআপনার Payment Request অনুমোদিত হয়নি। প্রয়োজনে Payment History দেখে Admin-এর সঙ্গে যোগাযোগ করুন।";
+  await botTelegram(env,"sendMessage",{chat_id:payment.user_id,text:message,disable_web_page_preview:true});
+  if(payment.target_type==="group"&&result.status==="approved"){
+    await botTelegram(env,"sendMessage",{chat_id:payment.target_id,text:"✅ এই Group-এর Paid News Alert Subscription সক্রিয় হয়েছে। মেয়াদ: ৩০ দিন।",disable_web_page_preview:true});
+  }
+}
+async function paidHandleCallback(env,query){
+  const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
+  if(!chatId||!data.startsWith("p1:"))return false;
+  if(query.message?.chat?.type!=="private"){await botAnswerCallback(env,query,"Use the Bot in a private chat.",true);return true;}
+  const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+  const isAdmin=admins.has(sender),action=data.slice(3);
+  if(action.startsWith("review:")){
+    if(!isAdmin){await botAnswerCallback(env,query,"Admin access required.",true);return true;}
+    const bits=action.split(":"),operation=bits[1],paymentId=bits[2];
+    await botAnswerCallback(env,query);
+    try{
+      const payment=await getPayment(env,paymentId);
+      if(!payment)throw new Error("Payment request not found.");
+      if(operation==="screenshot"){
+        if(!payment.screenshot_file_id)throw new Error("No screenshot was submitted.");
+        await botTelegram(env,"sendPhoto",{chat_id:chatId,photo:payment.screenshot_file_id,caption:"Payment screenshot · "+payment.id});
+        return true;
+      }
+      const result=await reviewPayment(env,paymentId,operation,sender);
+      await paidSendReviewResult(env,payment,result);
+      await botSend(env,chatId,"✅ Payment "+result.status.toUpperCase()+"\nRequest: "+paymentId+"\nUser: "+payment.user_id,[[{text:"💳 Payments & Subscriptions",callback_data:"b1:payments"}]],{forceNew:true});
+    }catch(error){await botSend(env,chatId,"⚠️ "+String(error.message||error),[[{text:"⬅️ Payments",callback_data:"b1:payments"}]],{forceNew:true});}
+    return true;
+  }
+  await botAnswerCallback(env,query);
+  if(action==="menu"){await paidShowMenu(env,chatId);return true;}
+  if(action==="buy"||action==="renew"){await botSend(env,chatId,"📦 SELECT SUBSCRIPTION\n\nIndividual: ৳100 / 30 days\nGroup: ৳300 / 30 days",paidPlanKeyboard(),{forceNew:true});return true;}
+  if(action==="cancel"){await paidClearFlow(env,sender);await paidShowMenu(env,chatId);return true;}
+  if(action==="help"){
+    await botSend(env,chatId,"ℹ️ PAID NEWS ALERT HELP\n\n১. Buy Subscription থেকে প্যাকেজ নির্বাচন করুন।\n২. bKash/Nagad-এ Send Money করুন।\n৩. যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি ও TrxID দিন।\n৪. Admin যাচাই করে Approve করলে Alert চালু হবে।\n\nসব News Alert Paid-only। Pending বা Expired অবস্থায় Alert যাবে না।",[[{text:"💳 Buy Subscription",callback_data:"p1:buy"},{text:"⬅️ Main Menu",callback_data:"p1:menu"}]],{forceNew:true});return true;
+  }
+  if(action==="status"){
+    const subscriptions=await listUserSubscriptions(env,sender);
+    const now=Date.now();
+    const text=subscriptions.length?subscriptions.map(s=>
+      (s.target_type==="group"?"GROUP · "+String(s.target_id):"INDIVIDUAL")+
+      "\nStatus: "+(s.status==="active"&&Number(s.expires_at)>now?"ACTIVE":"EXPIRED")+
+      "\nStart: "+new Date(Number(s.starts_at)).toLocaleDateString("en-GB",{timeZone:"Asia/Dhaka"})+
+      "\nExpiry: "+new Date(Number(s.expires_at)).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"})+" BDT"
+    ).join("\n\n"):"কোনো Subscription পাওয়া যায়নি।";
+    await botSend(env,chatId,"📅 MY SUBSCRIPTION\n\n"+text,[[{text:"🔁 Renew",callback_data:"p1:renew"},{text:"💳 Buy",callback_data:"p1:buy"}],[{text:"⬅️ Main Menu",callback_data:"p1:menu"}]],{forceNew:true});return true;
+  }
+  if(action==="history"){
+    const payments=await listUserPayments(env,sender);
+    const text=payments.length?payments.map(p=>p.package_type.toUpperCase()+" · ৳"+p.amount+" · "+p.payment_method.toUpperCase()+"\nTrxID: "+p.trx_id+"\nStatus: "+p.status.toUpperCase()).join("\n\n"):"কোনো Payment History নেই।";
+    await botSend(env,chatId,"🧾 PAYMENT HISTORY\n\n"+text,[[{text:"🔁 Renew",callback_data:"p1:renew"},{text:"⬅️ Main Menu",callback_data:"p1:menu"}]],{forceNew:true});return true;
+  }
+  if(action.startsWith("plan:")){
+    const packageType=action.split(":")[1];
+    await paidStartPlan(env,sender,packageType,query.from?.username||"");
+    return true;
+  }
+  if(action.startsWith("method:")){
+    const method=action.split(":")[1],flow=await paidGetFlow(env,sender);
+    if(!flow||flow.step!=="payment_method"||!["bkash","nagad"].includes(method)){await botSend(env,chatId,"Payment session expired. আবার Subscribe করুন।",paidUserKeyboard(),{forceNew:true});return true;}
+    await paidSetFlow(env,sender,{...flow,paymentMethod:method,step:"source_account"});
+    await botSend(env,chatId,"💳 "+method.toUpperCase()+" PAYMENT\n\nReceiver Account: "+PAYMENT_RECEIVER+"\nPayment Type: Send Money\nAmount: ৳"+PACKAGE_PRICES[flow.packageType]+"\n\nএখন যে Account থেকে টাকা পাঠিয়েছেন সেই Pay Source Account Number দিন।",[[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});return true;
+  }
+  if(action==="screenshot:skip"){
+    await paidSubmitPayment(env,sender,null);return true;
+  }
+  if(action.startsWith("admin:")){
+    if(!isAdmin){await botSend(env,chatId,"Admin access required.");return true;}
+    const section=action.split(":")[1];
+    if(section==="pending"){
+      const payments=await listPendingPayments(env,20);
+      const keyboard=payments.map(p=>[{text:(p.package_type==="group"?"GROUP":"INDIVIDUAL")+" · ৳"+p.amount+" · "+p.user_id,callback_data:"p1:review:approve:"+p.id},{text:"Reject",callback_data:"p1:review:reject:"+p.id}]);
+      keyboard.push([{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]);
+      await botSend(env,chatId,"💳 PENDING PAYMENT REQUESTS\n\n"+(payments.map(p=>p.id+" · "+p.payment_method.toUpperCase()+" · "+p.trx_id+" · "+p.pay_source_account).join("\n")||"No pending requests."),keyboard,{forceNew:true});return true;
+    }
+    if(section==="subscribers"||section==="groups"||section==="expired"){
+      const filter=section==="groups"?"groups":section==="expired"?"expired":"all";
+      const subscriptions=await listSubscriptions(env,filter,50);
+      await botSend(env,chatId,"👥 "+section.toUpperCase()+"\n\n"+(subscriptions.map(x=>x.target_type+" · "+x.target_id+" · owner "+x.owner_user_id+" · "+new Date(Number(x.expires_at)).toLocaleDateString("en-GB")).join("\n")||"No records."),[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
+    }
+    if(section==="revenue"){
+      const revenue=await getRevenueSummary(env);
+      await botSend(env,chatId,"📊 REVENUE REPORT\n\nApproved Revenue: ৳"+Number(revenue.approved_total||0)+"\nPending Amount: ৳"+Number(revenue.pending_total||0)+"\nApproved Payments: "+Number(revenue.approved_count||0)+"\nPending Requests: "+Number(revenue.pending_count||0)+"\nRejected Requests: "+Number(revenue.rejected_count||0),[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
+    }
+    if(section==="overview"){
+      const overview=await getPaymentAdminOverview(env);
+      await botSend(env,chatId,"💳 PAYMENT & SUBSCRIPTION OVERVIEW\n\nPending Payments: "+overview.pendingPayments+"\nActive Individuals: "+overview.activeIndividuals+"\nActive Groups: "+overview.activeGroups+"\nExpired: "+overview.expiredSubscriptions+"\nApproved Revenue: ৳"+Number(overview.revenue.approved_total||0),[[{text:"Pending Payments",callback_data:"p1:admin:pending"},{text:"Subscribers",callback_data:"p1:admin:subscribers"}],[{text:"Groups",callback_data:"p1:admin:groups"},{text:"Revenue",callback_data:"p1:admin:revenue"}],[{text:"Expired",callback_data:"p1:admin:expired"},{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});return true;
+    }
+  }
+  return false;
+}
+async function paidHandleText(env,msg){
+  const userId=String(msg.from?.id||""),chatId=msg.chat.id,text=String(msg.text||"").trim();
+  if(!userId||!text)return false;
+  if(text==="/cancel"){await paidClearFlow(env,userId);await paidShowMenu(env,chatId);return true;}
+  const flow=await paidGetFlow(env,userId);
+  if(!flow)return false;
+  if(flow.step==="source_account"){
+    if(!/^01[3-9]\d{8}$/.test(text)){await botSend(env,chatId,"⚠️ বৈধ ১১ সংখ্যার বাংলাদেশি Mobile Number দিন।",paidUserKeyboard());return true;}
+    await paidSetFlow(env,userId,{...flow,paySourceAccount:text,step:"transaction_id"});
+    await botSend(env,chatId,"এখন Payment-এর Transaction ID (TrxID) পাঠান।",[[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});return true;
+  }
+  if(flow.step==="transaction_id"){
+    if(!/^[A-Za-z0-9-]{6,40}$/.test(text)){await botSend(env,chatId,"⚠️ TrxID ৬–৪০ অক্ষরের মধ্যে দিন (English letters, numbers, hyphen)।");return true;}
+    await paidSetFlow(env,userId,{...flow,trxId:text,step:"screenshot"});
+    await botSend(env,chatId,"🖼️ Payment Screenshot পাঠাতে পারেন। না থাকলে Skip চাপুন।",[[{text:"Skip Screenshot",callback_data:"p1:screenshot:skip"}],[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});return true;
+  }
+  if(flow.step==="screenshot"&&/^skip$/i.test(text)){await paidSubmitPayment(env,userId,null);return true;}
+  return false;
+}
+async function paidHandleGroupConnect(env,msg){
+  const userId=String(msg.from?.id||""),chatId=msg.chat?.id;
+  if(!userId||!chatId||!env.TELEGRAM_BOT_TOKEN)return false;
+  const flow=await paidGetFlow(env,userId);
+  if(!flow||flow.packageType!=="group"||flow.step!=="awaiting_group"){
+    await botTelegram(env,"sendMessage",{chat_id:chatId,text:"আগে Bot-এর Private Chat থেকে Group Subscription নির্বাচন করুন।"});return true;
+  }
+  const [userMember,botMember]=await Promise.all([
+    botTelegram(env,"getChatMember",{chat_id:chatId,user_id:Number(userId)}),
+    botTelegram(env,"getChatMember",{chat_id:chatId,user_id:Number(String(env.TELEGRAM_BOT_TOKEN).split(":")[0])})
+  ]);
+  const userStatus=userMember.data?.result?.status,botStatus=botMember.data?.result?.status;
+  if(!userMember.ok||!["creator","administrator"].includes(userStatus)){
+    await botTelegram(env,"sendMessage",{chat_id:chatId,text:"⛔ Group Subscription শুধু এই গ্রুপের Admin/Owner সংযুক্ত করতে পারবেন।"});return true;
+  }
+  if(!botMember.ok||!["creator","administrator"].includes(botStatus)){
+    await botTelegram(env,"sendMessage",{chat_id:chatId,text:"⚠️ Bot-কে এই গ্রুপে Administrator করুন, তারপর /connectgroup আবার দিন।"});return true;
+  }
+  const next={...flow,targetId:String(chatId),targetTitle:String(msg.chat.title||"Telegram Group").slice(0,120),step:"payment_method"};
+  await paidSetFlow(env,userId,next);
+  await botTelegram(env,"sendMessage",{chat_id:chatId,text:"✅ Group Admin ও Bot permission যাচাই হয়েছে। Payment details Private Chat-এ পাঠানো হয়েছে।"});
+  await botSend(env,userId,"✅ GROUP LINKED\n\nGroup: "+next.targetTitle+"\nGroup ID: "+next.targetId+"\nAmount: ৳300\n\nএখন Payment Method নির্বাচন করুন।",paidMethodKeyboard(),{forceNew:true});
+  return true;
+}
+
 async function botHandleCallback(env,query){
   const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
   if(!chatId||!data.startsWith("b1:"))return false;
