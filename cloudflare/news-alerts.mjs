@@ -156,16 +156,16 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   const currentSummary=String(item.summary||item.previewSummary||"").trim();
   const oldTokens=alertUpdateTokens(oldSummary),nextTokens=alertUpdateTokens(currentSummary);
   const novelTokens=[...nextTokens].filter(token=>!oldTokens.has(token));
-  const newNumeric=[...nextTokens].filter(token=>/^\d+$/.test(token)&&!oldTokens.has(token));
+  const newNumeric=[...nextTokens].filter(token=>/^[0-9০-৯]+$/.test(token)&&!oldTokens.has(token));
   const hasFactMarker=/(নিহত|মারা|আহত|নিখোঁজ|গ্রেপ্তার|আটক|উদ্ধার|নিশ্চিত|নিশ্চিত করেছে|ক্ষতিগ্রস্ত|পুড়ে|পুড়েছে|পালিয়েছে|চালু|বন্ধ|evacuated|killed|injured|arrested|rescued|confirmed|missing|hospitalized|dead|died)/i.test(currentSummary);
   const summaryEnriched=Boolean(currentSummary&&normalizeAlertUpdateText(currentSummary)!==normalizeAlertUpdateText(oldSummary)&&
     (novelTokens.length>=3||(newNumeric.length>0&&hasFactMarker)));
-  const currentSourceLocations=Array.isArray(item.sourceLocations)?item.sourceLocations:[];
-  const candidates=[...currentSourceLocations.map(x=>String(x?.address||x?.location||"")),String(item.location||"")].filter(Boolean);
+  const currentSourceLocations=extractAlertSourceLocations(item);
+  const candidates=[...currentSourceLocations.map(x=>String(x?.address||x?.location||"")),extractAlertLocation(item)].filter(value=>value&&value!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়");
   const currentLocation=candidates.sort((a,b)=>b.length-a.length)[0]||"";
   const oldLocation=String(previous.location||"");
   const locationEnriched=alertLocationIsMoreSpecific(currentLocation,oldLocation);
-  const currentTime=item.incidentTime&&typeof item.incidentTime==="object"?item.incidentTime:{precision:"unknown"};
+  const currentTime=extractIncidentTime(item);
   const oldTime=previous.incidentTime&&typeof previous.incidentTime==="object"?previous.incidentTime:{precision:"unknown"};
   const currentTimeRank=alertTimeRank(currentTime),oldTimeRank=alertTimeRank(oldTime);
   const incidentTimeEnriched=currentTimeRank>0&&(oldTimeRank===0||currentTimeRank>oldTimeRank||
