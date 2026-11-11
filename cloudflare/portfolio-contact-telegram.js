@@ -1425,7 +1425,7 @@ async function paidSubmitPayment(env,userId,screenshotFileId=null){
   let adminNotified=true;
   try{await paidNotifyAdmins(env,payment)}catch(error){adminNotified=false;console.error("Paid payment request Admin notification failed",String(error?.message||error).slice(0,180));}
   await botSend(env,userId,
-    "✅ PAYMENT REQUEST SUBMITTED\n\nRequest ID: "+payment.id+"\nPackage: "+payment.packageType+"\nAmount: ৳"+payment.amount+"\nStatus: Pending Admin Verification\n\nPayment যাচাই শেষে Bot-এ ফলাফল জানানো হবে।",
+    "✅ PAYMENT REQUEST SUBMITTED\n\nRequest ID: "+payment.id+"\nPackage: "+payment.packageType+"\nAmount: ৳"+payment.amount+"\nStatus: Pending Admin Verification\n\nPayment যাচাই শেষে Bot-এ ফলাফল জানানো হবে।"+(adminNotified?"":"\n⚠️ Admin notification delivery failed; please contact support."),
     [[{text:"📅 My Subscription",callback_data:"p1:status"},{text:"🧾 Payment History",callback_data:"p1:history"}]],{forceNew:true});
   return payment;
 }
