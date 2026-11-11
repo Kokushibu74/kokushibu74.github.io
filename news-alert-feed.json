@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-11T04:51:35.841327+00:00",
-  "updatedAt": "2026-11-11T04:51:35.841327+00:00",
+  "generatedAt": "2026-11-11T05:11:33.094547+00:00",
+  "updatedAt": "2026-11-11T05:11:33.094547+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 6,
-  "fallbackHealthySourceCount": 35,
+  "directHealthySourceCount": 7,
+  "fallbackHealthySourceCount": 34,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -45,7 +45,7 @@
       "domain": "bdnews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "not well-formed (invalid token): line 8, column 46",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2
+      "fallbackItems": 4
     },
     {
       "name": "New Age",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -364,11 +364,11 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 0
     },
     {
       "name": "Daily Sangbad",
@@ -421,8 +421,73 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 37,
+  "candidateCount": 39,
   "alertItems": [
+    {
+      "title": "মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় তরুণের মৃত্যু",
+      "summary": "মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় সায়মুন হোসেন (২০) নামে এক তরুণ নিহত হয়েছেন। গতকাল মঙ্গলবার সকালে ঢাকা–চট্টগ্রাম মহাসড়কের ঢাকামুখী অংশের মীরসরাই সদর এলাকায় এ দুর্ঘটনা ঘটে। সায়মুন উপজেলার ওয়াহেদপুর ইউনিয়নের মধ্যম ওয়াহেদপুর এলাকার দেলোয়ার হোসেনের ছেলে। জোরারগঞ্জ হাইওয়ে থানার ওসি রকিবুল হাসান বলেন, মহাসড়কের মীরসরাই থানাসংলগ্ন ঢাকামুখী অংশে অজ্ঞাত একটি গাড়ির ধাক্কায় সায়মুন গুরুতর আহত হন। […] The post মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় তরুণের মৃত্যু appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%ae%e0%a7%80%e0%a6%b0%e0%a6%b8%e0%a6%b0%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87-%e0%a6%85%e0%a6%9c%e0%a7%8d%e0%a6%9e%e0%a6%be%e0%a6%a4-%e0%a6%97%e0%a6%be%e0%a7%9c%e0%a6%bf%e0%a6%b0-%e0%a6%a7-3/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%ae%e0%a7%80%e0%a6%b0%e0%a6%b8%e0%a6%b0%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87-%e0%a6%85%e0%a6%9c%e0%a7%8d%e0%a6%9e%e0%a6%be%e0%a6%a4-%e0%a6%97%e0%a6%be%e0%a7%9c%e0%a6%bf%e0%a6%b0-%e0%a6%a7-3/",
+      "publishedAt": "2026-11-11T04:57:10+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%ae%e0%a7%80%e0%a6%b0%e0%a6%b8%e0%a6%b0%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87-%e0%a6%85%e0%a6%9c%e0%a7%8d%e0%a6%9e%e0%a6%be%e0%a6%a4-%e0%a6%97%e0%a6%be%e0%a7%9c%e0%a6%bf%e0%a6%b0-%e0%a6%a7-3/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় তরুণের মৃত্যু",
+          "summary": "মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় সায়মুন হোসেন (২০) নামে এক তরুণ নিহত হয়েছেন। গতকাল মঙ্গলবার সকালে ঢাকা–চট্টগ্রাম মহাসড়কের ঢাকামুখী অংশের মীরসরাই সদর এলাকায় এ দুর্ঘটনা ঘটে। সায়মুন উপজেলার ওয়াহেদপুর ইউনিয়নের মধ্যম ওয়াহেদপুর এলাকার দেলোয়ার হোসেনের ছেলে। জোরারগঞ্জ হাইওয়ে থানার ওসি রকিবুল হাসান বলেন, মহাসড়কের মীরসরাই থানাসংলগ্ন ঢাকামুখী অংশে অজ্ঞাত একটি গাড়ির ধাক্কায় সায়মুন গুরুতর আহত হন। […] The post মীরসরাইয়ে অজ্ঞাত গাড়ির ধাক্কায় তরুণের মৃত্যু appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%ae%e0%a7%80%e0%a6%b0%e0%a6%b8%e0%a6%b0%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87-%e0%a6%85%e0%a6%9c%e0%a7%8d%e0%a6%9e%e0%a6%be%e0%a6%a4-%e0%a6%97%e0%a6%be%e0%a7%9c%e0%a6%bf%e0%a6%b0-%e0%a6%a7-3/",
+          "locationText": "অংশের মীরসরাই সদর এলাকায়, ঢাকা, চট্টগ্রাম, জোরারগঞ্জ হাইওয়ে থানার, মহাসড়কের মীরসরাই থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a4a9c024229de8b52183bb6ca5595320"
+    },
+    {
+      "title": "কুষ্টিয়া সরকারি কলেজে মাদকবিরোধী অভিযানে গিয়ে হামলায় তিন পুলিশ সদস্য আহত",
+      "summary": "কুষ্টিয়া সরকারি কলেজে মাদকবিরোধী অভিযানে গিয়ে হামলার শিকার হয়েছেন জেলা গোয়েন্দা পুলিশের (ডিবি) তিন সদস্য।",
+      "link": "https://www.prothomalo.com/bangladesh/district/ip83t2mg4l",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ip83t2mg4l",
+      "publishedAt": "2026-11-11T04:37:52+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/ip83t2mg4l"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "কুষ্টিয়া সরকারি কলেজে মাদকবিরোধী অভিযানে গিয়ে হামলায় তিন পুলিশ সদস্য আহত",
+          "summary": "কুষ্টিয়া সরকারি কলেজে মাদকবিরোধী অভিযানে গিয়ে হামলার শিকার হয়েছেন জেলা গোয়েন্দা পুলিশের (ডিবি) তিন সদস্য।",
+          "url": "https://www.prothomalo.com/bangladesh/district/ip83t2mg4l",
+          "incidentTimeText": "রাত ৯টার দিকে",
+          "incidentTimeSource": "Prothom Alo"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "54c54c37f659b20ebdc66921a27f1cf9"
+    },
     {
       "title": "মেহেরপুরে তিন বিএনপি নেতার বাড়ির গেটে ককটেল সদৃশ বস্তু",
       "summary": "মেহেরপুরে তিন বিএনপি নেতার বাড়ির গেটে ককটেল সদৃশ বস্তু",
@@ -838,6 +903,37 @@
       "alertEventId": "265b359b8cd14da186ea7c6cb6733ae0"
     },
     {
+      "title": "কক্সবাজারে সাংবাদিকের ওপর ছাত্রদল নেতার হামলা - The Financial Express",
+      "summary": "কক্সবাজারে সাংবাদিকের ওপর ছাত্রদল নেতার হামলা The Financial Express",
+      "link": "https://bangla.thefinancialexpress.com.bd/national/kksbajare-sangbadiker-oopr-chatrdl-netar-hamla",
+      "publisherUrl": "https://bangla.thefinancialexpress.com.bd/national/kksbajare-sangbadiker-oopr-chatrdl-netar-hamla",
+      "publishedAt": "2026-11-10T14:53:00+00:00",
+      "source": "The Financial Express",
+      "publisherName": "The Financial Express",
+      "sourceEvidence": [
+        "The Financial Express"
+      ],
+      "sourceLinks": [
+        {
+          "name": "The Financial Express",
+          "url": "https://bangla.thefinancialexpress.com.bd/national/kksbajare-sangbadiker-oopr-chatrdl-netar-hamla"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "The Financial Express",
+          "title": "কক্সবাজারে সাংবাদিকের ওপর ছাত্রদল নেতার হামলা - The Financial Express",
+          "summary": "কক্সবাজারে সাংবাদিকের ওপর ছাত্রদল নেতার হামলা The Financial Express",
+          "url": "https://bangla.thefinancialexpress.com.bd/national/kksbajare-sangbadiker-oopr-chatrdl-netar-hamla"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b395366bbe5f3a4ec06ad9365beb12a8"
+    },
+    {
       "title": "নেত্রকোনায় আবারও গ্রামীণ ব্যাংকের শাখায় পেট্রল ঢেলে অগ্নিসংযোগ - Dhaka Tribune Bangla",
       "summary": "নেত্রকোনায় আবারও গ্রামীণ ব্যাংকের শাখায় পেট্রল ঢেলে অগ্নিসংযোগ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/112861/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2",
@@ -1210,6 +1306,48 @@
       "alertEventId": "2f8b24e399cdc54861c74885bc0ca628"
     },
     {
+      "title": "নেত্রকোণায় হাওড় এক্সপ্রেস ট্রেনে আগুন - dhakapost.com",
+      "summary": "নেত্রকোণায় হাওড় এক্সপ্রেস ট্রেনে আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/country/496768",
+      "publisherUrl": "https://www.dhakapost.com/country/496768",
+      "publishedAt": "2026-11-10T08:10:45+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com",
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/496768"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "নেত্রকোণায় হাওড় এক্সপ্রেস ট্রেনে আগুন - dhakapost.com",
+          "summary": "নেত্রকোণায় হাওড় এক্সপ্রেস ট্রেনে আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/country/496768"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
+          "summary": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "a6ee298feeb99e700398611bfb9befca"
+    },
+    {
       "title": "ধানমন্ডি ৩২ থেকে দু’টি তাজা ককটেল ও চিরকুট উদ্ধার, সতর্ক অবস্থানে পুলিশ - Dhaka Tribune Bangla",
       "summary": "ধানমন্ডি ৩২ থেকে দু’টি তাজা ককটেল ও চিরকুট উদ্ধার, সতর্ক অবস্থানে পুলিশ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/112819/%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BF-%E0%A7%A9%E0%A7%A8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A7%81%E2%80%99%E0%A6%9F%E0%A6%BF-%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%BE-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%95%E0%A7%81%E0%A6%9F-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
@@ -1239,37 +1377,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b339a83fcc81bb7841122979e394bdc4"
-    },
-    {
-      "title": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
-      "summary": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-10T07:29:11+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
-          "summary": "নেত্রকোণায় ‘হাওর এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112818/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%B0-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E2%80%99-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2aa6338fa60c7b8ea90271d3c37156b8"
     },
     {
       "title": "নেত্রকোনায় রেললাইন, ট্রেনের বগি ও ব্যাংকে আগুন, আ.লীগ নেতাদের বাড়িতে হামলা-লুট - একাত্তর",
@@ -1467,68 +1574,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a525233184a230c8087efd7cca314b92"
-    },
-    {
-      "title": "মালিবাগে ককটেল বিস্ফোরণে ১৭ বছরের কিশোর আহত - dhakapost.com",
-      "summary": "মালিবাগে ককটেল বিস্ফোরণে ১৭ বছরের কিশোর আহত dhakapost.com",
-      "link": "https://www.dhakapost.com/national/496713",
-      "publisherUrl": "https://www.dhakapost.com/national/496713",
-      "publishedAt": "2026-11-10T05:04:23+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/496713"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "মালিবাগে ককটেল বিস্ফোরণে ১৭ বছরের কিশোর আহত - dhakapost.com",
-          "summary": "মালিবাগে ককটেল বিস্ফোরণে ১৭ বছরের কিশোর আহত dhakapost.com",
-          "url": "https://www.dhakapost.com/national/496713"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "910d7ad42bb51bf33ebffe8658b3cba6"
-    },
-    {
-      "title": "বান্দরবানের রোয়াংছড়িতে আগুনে পুড়লো ১৬ বসতঘর - Dhaka Tribune Bangla",
-      "summary": "বান্দরবানের রোয়াংছড়িতে আগুনে পুড়লো ১৬ বসতঘর Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/112807/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B0%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%82%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A7%A7%E0%A7%AC-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%98%E0%A6%B0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/112807/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B0%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%82%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A7%A7%E0%A7%AC-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%98%E0%A6%B0",
-      "publishedAt": "2026-11-10T05:02:18+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112807/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B0%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%82%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A7%A7%E0%A7%AC-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%98%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "বান্দরবানের রোয়াংছড়িতে আগুনে পুড়লো ১৬ বসতঘর - Dhaka Tribune Bangla",
-          "summary": "বান্দরবানের রোয়াংছড়িতে আগুনে পুড়লো ১৬ বসতঘর Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112807/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B0%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%82%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A7%A7%E0%A7%AC-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%98%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0517b884cfd1484d9d157125f4740740"
     }
   ]
 }
