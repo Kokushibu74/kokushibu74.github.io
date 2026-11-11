@@ -1759,7 +1759,7 @@ async function umHandleCommand(env,msg,options={}){
   const isAdmin=admins.has(sender);
   if(cmd==="/start"||cmd==="/menu"){
     if(!botAllowStartMenu(chatId))return true;
-    if(isAdmin)await botActivateMenu(env,chatId,true);
+    if(isAdmin)await botActivateMenu(env,chatId,isAdmin);
     else await paidShowMenu(env,chatId);
     return true;
   }
