@@ -386,8 +386,9 @@ def find_incident_date_phrase(text):
             candidates.append(match)
     candidates.sort(key=lambda match: abs(match.start() - time_position) if time_position >= 0 else match.start())
     for match in candidates:
-        nearby = value[max(0, match.start() - 65):min(len(value), match.end() + 45)].lower()
-        if re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", nearby):
+        prefix = value[max(0, match.start() - 120):match.start()].lower()
+        publication_marker = re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", prefix)
+        if publication_marker and not re.search(r"[।.!?]", prefix[publication_marker.end():]):
             continue
         context = value[max(0, match.start() - 120):min(len(value), match.end() + 220)].lower()
         if not re.search(r"(আগুন|অগ্নিকাণ্ড|অগ্নিসংযোগ|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context):
