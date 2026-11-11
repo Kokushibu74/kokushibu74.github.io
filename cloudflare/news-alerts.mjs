@@ -400,18 +400,26 @@ function parseIncidentText(text,published){
   const raw=bnDigits(String(text||"")).replace(/(\d{1,2})\s*টা\s*(\d{1,2})\s*মিনিটে/g,"$1:$2").replace(/\s+/g," ").trim();
   if(!raw||!Number.isFinite(published))return null;
   const base=bdDateParts(published);
+  const explicitDate=raw.match(/(\d{1,2})\s+(জানুয়ারি|জানুয়ারি|ফেব্রুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)\s*(\d{4})?/i);
+  const months={"জানুয়ারি":1,"জানুয়ারি":1,"ফেব্রুয়ারি":2,"ফেব্রুয়ারি":2,"মার্চ":3,"এপ্রিল":4,"মে":5,"জুন":6,"জুলাই":7,"আগস্ট":8,"সেপ্টেম্বর":9,"অক্টোবর":10,"নভেম্বর":11,"ডিসেম্বর":12};
   const dateOffset=/(গতকাল|গত রাতে|গতরাতে|গত সন্ধ্যায়|গত সন্ধ্যায়|yesterday|last night|last evening)/i.test(raw)?-1:
     /(আগের দিন|পরশু|day before yesterday)/i.test(raw)?-2:0;
   const period=raw.match(/(ভোর|সকাল|দুপুর|বিকেল|সন্ধ্যা|রাত|morning|afternoon|evening|night)/i);
   const periodWord=period?.[1]||"";
-  const weekday=raw.match(/(রবিবার|সোমবার|মঙ্গলবার|বুধবার|বৃহস্পতিবার|শুক্রবার|শনিবার)/);
+  const weekday=raw.match(/(রবিবার|সোমবার|মঙ্গলবার|বুধবার|বৃহস্পতিবার|শুক্রবার|শনিবার|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/i);
   let resolvedOffset=dateOffset;
   if(weekday){
-    const weekdayIndex={"রবিবার":0,"সোমবার":1,"মঙ্গলবার":2,"বুধবার":3,"বৃহস্পতিবার":4,"শুক্রবার":5,"শনিবার":6}[weekday[1]];
+    const weekdayNames={"রবিবার":0,"সোমবার":1,"মঙ্গলবার":2,"বুধবার":3,"বৃহস্পতিবার":4,"শুক্রবার":5,"শনিবার":6,"sunday":0,"monday":1,"tuesday":2,"wednesday":3,"thursday":4,"friday":5,"saturday":6};
+    const weekdayIndex=weekdayNames[weekday[1].toLowerCase()];
     const currentDay=new Date(Date.UTC(base.year,base.month-1,base.day)).getUTCDay();
     resolvedOffset-=((currentDay-weekdayIndex+7)%7);
   }
-  if(!resolvedOffset&&periodWord==="রাত"&&base.hour<5)resolvedOffset=-1;
+  if(explicitDate){
+    const explicitStamp=bdDateStamp(Number(explicitDate[3]||base.year),months[explicitDate[2]],Number(explicitDate[1]));
+    const explicitParts=bdDateParts(explicitStamp);
+    resolvedOffset=Math.round((Date.UTC(explicitParts.year,explicitParts.month-1,explicitParts.day)-Date.UTC(base.year,base.month-1,base.day))/86400000);
+  }
+  if(!resolvedOffset&&!explicitDate&&periodWord==="রাত"&&base.hour<5)resolvedOffset=-1;
   const date=shiftBdDay(base,resolvedOffset);
   // A date number (for example, ১০ in "১০ নভেম্বর") is not a clock.
   // Require a colon or an explicit clock unit before accepting a numeric time.
@@ -428,7 +436,9 @@ function parseIncidentText(text,published){
     if(marker==="pm"&&hour<12)hour+=12;
     if(marker==="am"&&hour===12)hour=0;
     if(marker!=="pm"&&marker!=="am"){
-      if(/দুপুর|বিকেল|সন্ধ্যা|রাত/i.test(periodWord)&&hour<12)hour+=12;
+      // Bengali "রাত ১২টা" is midnight (00:xx), never noon (12:xx).
+      if(/রাত/i.test(periodWord)&&hour===12)hour=0;
+      else if(/দুপুর|বিকেল|সন্ধ্যা|রাত/i.test(periodWord)&&hour<12)hour+=12;
       if(/ভোর|সকাল/i.test(periodWord)&&hour===12)hour=0;
     }
     let stamp=bdDateStamp(date.year,date.month,date.day,hour,minute);
@@ -445,9 +455,7 @@ function parseIncidentText(text,published){
   if(periodOnly&&periodWord){
     return {timestamp:bdDateStamp(date.year,date.month,date.day),precision:"period",display:(resolvedOffset<0?"গত ":"")+periodLabel[periodWord]+" · "+bdDateLabel(bdDateStamp(date.year,date.month,date.day)),sourceText:periodWord};
   }
-  const explicitDate=raw.match(/(\d{1,2})\s+(জানুয়ারি|জানুয়ারি|ফেব্রুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)\s*(\d{4})?/i);
-  if(explicitDate){
-    const months={"জানুয়ারি":1,"জানুয়ারি":1,"ফেব্রুয়ারি":2,"ফেব্রুয়ারি":2,"মার্চ":3,"এপ্রিল":4,"মে":5,"জুন":6,"জুলাই":7,"আগস্ট":8,"সেপ্টেম্বর":9,"অক্টোবর":10,"নভেম্বর":11,"ডিসেম্বর":12};
+  if(explicitDate&&!explicitClock){
     const month=months[explicitDate[2]],year=Number(explicitDate[3]||base.year);
     const stamp=bdDateStamp(year,month,Number(explicitDate[1]));
     return {timestamp:stamp,precision:"date_only",display:bdDateLabel(stamp),sourceText:explicitDate[0]};
@@ -472,10 +480,10 @@ export function extractIncidentTime(item={}){
   const stories=Array.isArray(item.sourceStories)?item.sourceStories:[];
   const candidates=[];
   for(const story of stories){
-    const candidate=parseIncidentText([story.title,story.summary,story.incidentTimeText,story.articleText].filter(Boolean).join(" "),published);
+    const candidate=parseIncidentText([story.title,story.summary,story.incidentDateText,story.eventDateText,story.incidentTimeText,story.articleText].filter(Boolean).join(" "),published);
     if(candidate)candidates.push({...candidate,source:String(story.name||story.source||"")});
   }
-  const main=parseIncidentText([item.title,item.summary,item.previewSummary,item.articleText].filter(Boolean).join(" "),published);
+  const main=parseIncidentText([item.title,item.summary,item.incidentDateText,item.eventDateText,item.previewSummary,item.articleText].filter(Boolean).join(" "),published);
   if(main)candidates.push({...main,source:String(item.publisherName||item.source||"")});
   const unique=[...new Map(candidates.map(value=>[value.timestamp!==null?String(value.timestamp):value.display,value])).values()];
   if(unique.length>1){
