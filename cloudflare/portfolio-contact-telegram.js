@@ -3229,7 +3229,7 @@ export default {
       try{
       if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
       const msg=update.message;
-      if(msg?.chat?.type!=="private"&&typeof msg.text==="string"&&/^\\/connectgroup(?:@\\w+)?(?:\\s|$)/i.test(msg.text.trim())){
+      if(msg?.chat?.type!=="private"&&typeof msg.text==="string"&&/^\/connectgroup(?:@\w+)?(?:\\s|$)/i.test(msg.text.trim())){
         try{await paidHandleGroupConnect(env,msg)}catch(e){console.error("Paid group linking failed",String(e&&e.message||e));await botTelegram(env,"sendMessage",{chat_id:msg.chat.id,text:"⚠️ Group linking failed. Please retry or contact support."});}
         return new Response("OK");
       }
