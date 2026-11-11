@@ -450,7 +450,7 @@
     feedLoading = true;
     lastFeedLoadAt = Date.now();
     try {
-      const response = await fetch("https://portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed?v=" + Date.now(), { cache: "no-store" });
+      const response = await fetch("journal-feed.json?v=" + Date.now(), { cache: "no-store" });
       if (!response.ok) throw new Error("Journal data is not available yet.");
       const data = await response.json();
       if (data.ok !== true || !Array.isArray(data.posts)) throw new Error("Journal feed response is invalid.");
