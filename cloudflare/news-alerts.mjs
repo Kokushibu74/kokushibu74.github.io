@@ -216,6 +216,7 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
 export function restoreAlertRootSnapshot(previous={},root={},rootKey=""){
   const rootSummary=String(root.summary||"").trim(),currentSummary=String(previous.summary||"").trim();
   const rootTokens=alertUpdateTokens(rootSummary),currentTokens=alertUpdateTokens(currentSummary);
+  const currentIsTitle=normalizeAlertUpdateText(currentSummary)===normalizeAlertUpdateText(root.title);
   const summaryRestored=rootTokens.size>currentTokens.size||(currentSummary.length>0&&rootSummary.length>currentSummary.length*1.2);
   const locationRestored=alertLocationIsMoreSpecific(root.location,previous.location);
   const rootTime=root.incidentTime&&typeof root.incidentTime==="object"?root.incidentTime:{precision:"unknown"};
@@ -234,7 +235,7 @@ export function restoreAlertRootSnapshot(previous={},root={},rootKey=""){
   const restored={
     ...previous,
     title:String(previous.title||root.title||""),
-    summary:summaryRestored?(currentSummary&&[...currentTokens].some(token=>!rootTokens.has(token))?rootSummary+" নতুন তথ্য: "+currentSummary:rootSummary):(currentSummary||rootSummary),
+    summary:summaryRestored?(!currentIsTitle&&currentSummary&&[...currentTokens].some(token=>!rootTokens.has(token))?rootSummary+" নতুন তথ্য: "+currentSummary:rootSummary):(currentSummary||rootSummary),
     location:locationRestored?String(root.location||""):String(previous.location||root.location||""),
     incidentTime:timeRestored?rootTime:currentTime,
     sourceLocations:mergeAlertLocationEvidence(root.sourceLocations||[],previous.sourceLocations||[]),
