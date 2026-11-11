@@ -109,6 +109,11 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(collector.find_incident_time_phrase("গতকাল রাতে এলাকায় বিস্ফোরণ ঘটে"), "গতকাল রাতে")
         self.assertEqual(collector.find_incident_time_phrase("The fire started around 8:30 pm"), "around 8:30 pm")
 
+    def test_incident_date_phrase_extracts_explicit_event_date(self):
+        text = "মঙ্গলবার (১০ নভেম্বর) দিবাগত রাত ১২টা ৫০ মিনিটে পাবনায় গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ ঘটে।"
+        self.assertEqual(collector.find_incident_date_phrase(text), "মঙ্গলবার (১০ নভেম্বর)")
+        self.assertEqual(collector.find_incident_time_phrase(text), "রাত ১২টা ৫০ মিনিটে")
+
     def test_article_location_extraction_finds_locality_and_administrative_terms(self):
         phrase = collector.find_incident_location_phrase("নারায়ণগঞ্জের ফতুল্লার সাইনবোর্ড এলাকায় আগুন লাগে। ঘটনাস্থল ফতুল্লা থানায়, নারায়ণগঞ্জ জেলায়।")
         self.assertIn("সাইনবোর্ড এলাকায়", phrase)
