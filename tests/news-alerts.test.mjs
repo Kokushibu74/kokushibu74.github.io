@@ -204,7 +204,7 @@ test("weekday and period-only incident time is resolved against publication date
 test("Worker emits an update when incident time, location or incident details change",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
   assert.match(source,/assessNewsAlertUpdate\(previous,item,decision\)/);
-  assert.match(source,/if\(!assessment\.hasMeaningfulUpdate\)continue/);
+  assert.match(source,/if\(assessment\.hasMeaningfulUpdate\)/);
   assert.match(source,/assessment\.flags/);
   assert.doesNotMatch(source,/sourceLinkExpanded/,"A new URL from the same publisher is not independent corroboration");
 });
@@ -507,27 +507,21 @@ test("alert layout uses clear blank-line hierarchy and a fully emphasized priori
   assert.match(message,/\n\n🕒 <b>ঘটনার সময়:<\/b>/);
 });
 
-test("Telegram news alerts persist message IDs and reply updates in the correct chain",async()=>{
+test("Telegram news alerts persist per-recipient delivery IDs and reply updates in the correct chain",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
-  const media=source.slice(source.indexOf("async function sendNewsAlertMedia"),source.indexOf("\n\nasync function newsBreakingAlertCheck"));
+  const media=source.slice(source.indexOf("async function sendNewsAlertMedia"),source.indexOf("\n\nasync function newsRestoreAlertRootSnapshot"));
   assert.match(media,/reply_parameters=\{message_id:Number\(replyToMessageId\),allow_sending_without_reply:false\}/);
   assert.match(media,/messageId:sentMessageId/);
   assert.match(media,/replyFallback/);
   assert.match(media,/replied message not found/);
   const alerts=source.slice(source.indexOf("async function newsBreakingAlertCheck(env){"),source.indexOf("\n\nconst SHEETS_SPREADSHEET_ID"));
-  assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
-  assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
-  assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
-  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;');
-  const previousBranch=alerts.indexOf("if(previous){",scopeDeclaration);
-  const verificationAssignment=alerts.indexOf("verificationImproved=assessment.verificationImproved;");
-  const replySelection=alerts.indexOf("const replyToMessageId=previous?(verificationImproved&&rootMessageId?");
-  assert.ok(scopeDeclaration>=0&&previousBranch>scopeDeclaration&&verificationAssignment>previousBranch&&replySelection>verificationAssignment,
-    "verificationImproved must be declared outside the previous-event branch and assigned before reply selection");
-  assert.doesNotMatch(alerts,/const verificationImproved=/);
-  assert.match(alerts,/latestMessageId\|\|rootMessageId\|\|null/);
-  assert.match(alerts,/legacyThreadRestart/);
-  assert.match(alerts,/updateNo=Number\(previous\.rootMessageId\)\?Math\.max\(1,/);
+  assert.match(alerts,/getDelivery\(env,key,updateKey,recipientType,recipientId\)/);
+  assert.match(alerts,/getLatestDelivery\(env,key,recipientType,recipientId\)/);
+  assert.match(alerts,/sendNewsAlertMedia\(env,recipientId,alertItem,caption,link,Number\(latest\?\.message_id\)\|\|null\)/);
+  assert.match(alerts,/saveDelivery\(env,\{eventKey:key,updateKey,recipientType,recipientId,messageId:delivery\?\.messageId\}\)/);
+  assert.match(alerts,/recordDeliveryFailure/);
+  assert.match(alerts,/deliveryUpdateKey:updateKey/);
+  assert.doesNotMatch(alerts,/env\.TELEGRAM_CHAT_ID/,"Paid News Alerts must never fall back to the legacy single chat ID.");
 });
 
 
