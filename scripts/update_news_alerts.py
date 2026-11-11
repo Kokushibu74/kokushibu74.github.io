@@ -385,6 +385,11 @@ def find_incident_date_phrase(text):
     for pattern in INCIDENT_DATE_PATTERNS:
         for match in pattern.finditer(value):
             candidates.append(match)
+    candidates = [match for match in candidates if not any(
+        other.start() <= match.start() and other.end() >= match.end()
+        and len(other.group(0)) > len(match.group(0))
+        for other in candidates
+    )]
     candidates.sort(key=lambda match: abs(match.start() - time_position) if time_position >= 0 else match.start())
     for match in candidates:
         prefix = value[max(0, match.start() - 120):match.start()].lower()
