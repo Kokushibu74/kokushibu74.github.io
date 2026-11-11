@@ -212,6 +212,47 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   return {hasMeaningfulUpdate,verificationImproved,flags:{summaryEnriched,locationEnriched,incidentTimeEnriched,detailsAdded:details.added,sourceExpanded,verificationImproved,severityImproved,officialSourceAdded},item:mergedItem,decision:mergedDecision};
 }
 
+
+export function restoreAlertRootSnapshot(previous={},root={},rootKey=""){
+  const rootSummary=String(root.summary||"").trim(),currentSummary=String(previous.summary||"").trim();
+  const summaryRestored=alertUpdateTokens(rootSummary).size>alertUpdateTokens(currentSummary).size;
+  const locationRestored=alertLocationIsMoreSpecific(root.location,previous.location);
+  const rootTime=root.incidentTime&&typeof root.incidentTime==="object"?root.incidentTime:{precision:"unknown"};
+  const currentTime=previous.incidentTime&&typeof previous.incidentTime==="object"?previous.incidentTime:{precision:"unknown"};
+  const timeRestored=alertTimeRank(rootTime)>alertTimeRank(currentTime);
+  const rootDetails=root.incidentDetails&&typeof root.incidentDetails==="object"?root.incidentDetails:{};
+  const currentDetails=previous.incidentDetails&&typeof previous.incidentDetails==="object"?previous.incidentDetails:{};
+  const mergedDetails={...rootDetails};
+  for(const [key,value] of Object.entries(currentDetails)){
+    if(mergedDetails[key]===undefined||mergedDetails[key]===null||String(mergedDetails[key]).trim()==="")mergedDetails[key]=value;
+  }
+  const rootAdvice=Array.isArray(root.safetyAdvice)?root.safetyAdvice:[];
+  const currentAdvice=Array.isArray(previous.safetyAdvice)?previous.safetyAdvice:[];
+  const rootLinks=Array.isArray(root.sourceLinks)?root.sourceLinks:[];
+  const currentLinks=Array.isArray(previous.sourceLinks)?previous.sourceLinks:[];
+  const restored={
+    ...previous,
+    title:String(previous.title||root.title||""),
+    summary:summaryRestored?rootSummary:currentSummary||rootSummary,
+    location:locationRestored?String(root.location||""):String(previous.location||root.location||""),
+    incidentTime:timeRestored?rootTime:currentTime,
+    sourceLocations:mergeAlertLocationEvidence(root.sourceLocations||[],previous.sourceLocations||[]),
+    incidentDetails:mergedDetails,
+    safetyAdvice:[...new Set([...rootAdvice,...currentAdvice].filter(Boolean))].slice(0,5),
+    sourceLinks:[...new Set([...rootLinks,...currentLinks].filter(Boolean))],
+    sourceEvidence:[...new Set([...(root.sourceEvidence||[]),...(previous.sourceEvidence||[])])],
+    trustedSources:[...new Set([...(root.trustedSources||[]),...(previous.trustedSources||[])])],
+    officialSource:previous.officialSource||root.officialSource||null,
+    rootSnapshotKey:rootKey||previous.rootSnapshotKey||null
+  };
+  if(timeRestored&&rootTime.timestamp)restored.incidentAt=new Date(rootTime.timestamp).toISOString();
+  const didRestore=summaryRestored||locationRestored||timeRestored||
+    Object.keys(rootDetails).some(key=>currentDetails[key]===undefined)||
+    rootAdvice.some(value=>!currentAdvice.includes(value))||
+    rootLinks.some(value=>!currentLinks.includes(value));
+  return {restored:didRestore,state:restored};
+}
+
 export function evaluateNewsAlert(item={},options={}){
   const now=Number(options.now??Date.now()),official=options.officialSignal===true,
     title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||""),

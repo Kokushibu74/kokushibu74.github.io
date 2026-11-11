@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdtemp,rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {join} from "node:path";
 import {pathToFileURL} from "node:url";
-import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,extractAlertSourceLocations,formatTelegramMessage,telegramMessageCategory,automationAlertDecision,assessNewsAlertUpdate} from "../cloudflare/news-alerts.mjs";
+import {evaluateNewsAlert,mediaCandidates,parseOfficialDisasterSignal,escapeHtml,newsAlertKey,deliverWithMediaFallback,isWeatherCandidate,formatAlertMessage,extractAlertLocation,extractIncidentTime,extractAlertSourceLocations,formatTelegramMessage,telegramMessageCategory,automationAlertDecision,assessNewsAlertUpdate,restoreAlertRootSnapshot} from "../cloudflare/news-alerts.mjs";
 const now=Date.parse("2026-11-04T00:00:00Z");
 const item=(overrides={})=>({title:"ঢাকায় বাস দুর্ঘটনায় ৩ জন নিহত",summary:"ঢাকায় ভয়াবহ দুর্ঘটনা",category:"Bangladesh",isBreaking:true,publishedAt:new Date(now-10*60000).toISOString(),publisherUrl:"https://www.thedailystar.net/news/bangladesh/example",sourceEvidence:["The Daily Star","Prothom Alo"],...overrides});
 
@@ -576,4 +576,37 @@ test("title-only changes and source-link duplicates do not trigger an update",()
   const incoming={title:"ঢাকায় বাসে আগুনের ঘটনা",summary:"ঢাকায় বাসে আগুন লাগে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},sourceLinks:[{name:"Jago News 24",url:"https://www.jagonews24.com/example"}]};
   const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"]});
   assert.equal(result.hasMeaningfulUpdate,false);
+});
+
+
+test("degraded current event state is restored from its original Main News history without changing the Reply Chain",()=>{
+  const root={title:"মানিকগঞ্জে বিএনপির কার্যালয়ে আগুন",
+    summary:"মানিকগঞ্জের দৌলতপুর উপজেলা বিএনপির কার্যালয়ে গভীর রাতে অগ্নিসংযোগের ঘটনা ঘটেছে। এতে কার্যালয়ের প্লাস্টিকের চেয়ার ও টিনের বেড়ার কাঠের...",
+    location:"উপজেলা: মানিকগঞ্জের দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",
+    incidentTime:{precision:"period",display:"রাত · ১১ নভেম্বর, ২০২৬",timestamp:1794333600000,source:"Jago News 24"},
+    sourceLocations:[{source:"Jago News 24",address:"উপজেলা: মানিকগঞ্জের দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],
+    sourceEvidence:["Jago News 24"],trustedSources:["Jago News 24"],updateCount:0,rootMessageId:1475,latestMessageId:1475,parentMessageId:null};
+  const current={title:root.title,summary:root.title,location:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",
+    incidentTime:{precision:"unknown",display:"এখনো নিশ্চিত নয়"},sourceLocations:[{source:"Jago News 24",address:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],
+    sourceEvidence:["Jago News 24"],trustedSources:["Jago News 24"],updateCount:1,rootMessageId:1475,latestMessageId:1476,lastMessageId:1476,parentMessageId:1475};
+  const result=restoreAlertRootSnapshot(current,root,"news-alert-history:v1:1794387014828:event:1");
+  assert.equal(result.restored,true);
+  assert.match(result.state.summary,/দৌলতপুর/);
+  assert.match(result.state.location,/দৌলতপুর/);
+  assert.equal(result.state.incidentTime.precision,"period");
+  assert.equal(result.state.updateCount,1);
+  assert.equal(result.state.rootMessageId,1475);
+  assert.equal(result.state.latestMessageId,1476);
+  assert.equal(result.state.parentMessageId,1475);
+  assert.match(result.state.rootSnapshotKey,/news-alert-history/);
+});
+
+test("Worker restores a prior Main News snapshot before evaluating a later update",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  const restore=source.indexOf("async function newsRestoreAlertRootSnapshot");
+  const check=source.indexOf("async function newsBreakingAlertCheck(env){");
+  const call=source.indexOf("previous=await newsRestoreAlertRootSnapshot(env,key,previous);",check);
+  const assessment=source.indexOf("assessNewsAlertUpdate(previous,item,decision)",check);
+  assert.ok(restore>=0&&check>restore&&call>check&&assessment>call);
+  assert.match(source,/rootSnapshotKey:previous\\?\\.rootSnapshotKey/);
 });
