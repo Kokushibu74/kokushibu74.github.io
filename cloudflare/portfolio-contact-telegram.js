@@ -961,22 +961,23 @@ const BOT_ADMIN_COMMANDS=[
 ];
 async function botRegisterCommands(env,chatId,isAdmin){
   if(!env.TELEGRAM_BOT_TOKEN)throw new Error("Telegram bot token is unavailable.");
-  const defaults=await botTelegram(env,"setMyCommands",{commands:BOT_PUBLIC_COMMANDS,scope:{type:"default"}});
-  if(!defaults.ok)throw new Error("Default command registration failed (HTTP "+defaults.status+"): "+String(defaults.data?.description||"Telegram API error").slice(0,140));
+  // No default command menu: this bot is private to the configured administrator.
+  const defaults=await botTelegram(env,"deleteMyCommands",{scope:{type:"default"}});
+  if(!defaults.ok)throw new Error("Default command removal failed (HTTP "+defaults.status+"): "+String(defaults.data?.description||"Telegram API error").slice(0,140));
   const defaultCheck=await botTelegram(env,"getMyCommands",{scope:{type:"default"}});
   if(!defaultCheck.ok)throw new Error("Default command verification failed (HTTP "+defaultCheck.status+"): "+String(defaultCheck.data?.description||"Telegram API error").slice(0,140));
-  const defaultActual=new Set((Array.isArray(defaultCheck.data?.result)?defaultCheck.data.result:[]).map(x=>String(x.command||"")));
-  const missingDefault=BOT_PUBLIC_COMMANDS.map(x=>x.command).filter(x=>!defaultActual.has(x));
-  if(missingDefault.length)throw new Error("Default command verification missing: "+missingDefault.join(", "));
-  if(chatId===undefined||chatId===null)return {count:defaultActual.size,verified:true};
-  const expected=isAdmin?[...BOT_PUBLIC_COMMANDS,...BOT_ADMIN_COMMANDS]:BOT_PUBLIC_COMMANDS;
+  const defaultActual=Array.isArray(defaultCheck.data?.result)?defaultCheck.data.result:[];
+  if(defaultActual.length)throw new Error("Default Telegram commands remain visible; expected a private command menu.");
+  if(chatId===undefined||chatId===null)return {count:0,verified:true};
+  if(!isAdmin)return {count:0,verified:true};
+  const expected=[...BOT_PUBLIC_COMMANDS,...BOT_ADMIN_COMMANDS];
   const scoped=await botTelegram(env,"setMyCommands",{commands:expected,scope:{type:"chat",chat_id:chatId}});
-  if(!scoped.ok)throw new Error("Chat command registration failed (HTTP "+scoped.status+"): "+String(scoped.data?.description||"Telegram API error").slice(0,140));
+  if(!scoped.ok)throw new Error("Admin command registration failed (HTTP "+scoped.status+"): "+String(scoped.data?.description||"Telegram API error").slice(0,140));
   const check=await botTelegram(env,"getMyCommands",{scope:{type:"chat",chat_id:chatId}});
-  if(!check.ok)throw new Error("Command verification failed (HTTP "+check.status+"): "+String(check.data?.description||"Telegram API error").slice(0,140));
+  if(!check.ok)throw new Error("Admin command verification failed (HTTP "+check.status+"): "+String(check.data?.description||"Telegram API error").slice(0,140));
   const actual=new Set((Array.isArray(check.data?.result)?check.data.result:[]).map(x=>String(x.command||"")));
   const missing=expected.map(x=>x.command).filter(x=>!actual.has(x));
-  if(missing.length)throw new Error("Telegram command verification missing: "+missing.join(", "));
+  if(missing.length)throw new Error("Admin command verification missing: "+missing.join(", "));
   return {count:actual.size,verified:true};
 }
 async function botGetMenuAnchor(env,chatId){
@@ -1507,6 +1508,10 @@ async function umHandleCommand(env,msg,options={}){
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   const isAdmin=admins.has(sender);
+  if(!isAdmin){
+    await umReply(env,chatId,"⛔ এই বটটি ব্যক্তিগত Admin ব্যবহারের জন্য। আপনার Telegram ID অনুমোদিত নয়।");
+    return true;
+  }
   if(cmd==="/start"||cmd==="/menu"){
     if(!botAllowStartMenu(chatId))return true;
     await botActivateMenu(env,chatId,isAdmin);
