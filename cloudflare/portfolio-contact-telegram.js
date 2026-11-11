@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
@@ -2160,6 +2160,39 @@ async function sendNewsAlertMedia(env,item,caption,link,replyToMessageId=null){
   return {media,messageId:sentMessageId,replyFallback};
 }
 
+
+async function newsRestoreAlertRootSnapshot(env,key,previous){
+  if(!previous||Number(previous.updateCount||0)<=0||previous.rootSnapshotKey||previous.rootSnapshotCheckedAt)return previous;
+  const rootMessageId=Number(previous.rootMessageId)||0;
+  if(!rootMessageId)return previous;
+  try{
+  let cursor=null,rootRecord=null,rootHistoryKey="";
+  for(let pageNo=0;pageNo<5;pageNo++){
+    const page=await env.BOT_CONFIG_KV.list({prefix:"news-alert-history:v1:",limit:1000,...(cursor?{cursor}:{})});
+    const candidates=(page.keys||[]).filter(entry=>String(entry.name||"").endsWith(":"+key+":1"));
+    for(const entry of candidates){
+      const record=await env.BOT_CONFIG_KV.get(entry.name,"json");
+      if(!record||Number(record.rootMessageId)!==rootMessageId||Number(record.updateCount||0)!==0||record.parentMessageId!=null)continue;
+      if(!rootRecord||Number(record.sentAt)<Number(rootRecord.sentAt)){rootRecord=record;rootHistoryKey=entry.name;}
+    }
+    if(rootRecord||page.list_complete||!page.cursor)break;
+    cursor=page.cursor;
+  }
+  if(!rootRecord){
+    const checked={...previous,rootSnapshotCheckedAt:Date.now()};
+    await env.BOT_CONFIG_KV.put("news-alert:v2:"+key,JSON.stringify(checked),{expirationTtl:NEWS_ALERT_TTL});
+    return checked;
+  }
+  const recovered=restoreAlertRootSnapshot(previous,rootRecord,rootHistoryKey).state;
+  recovered.rootSnapshotCheckedAt=Date.now();
+  await env.BOT_CONFIG_KV.put("news-alert:v2:"+key,JSON.stringify(recovered),{expirationTtl:NEWS_ALERT_TTL});
+  return recovered;
+  }catch(error){
+    console.warn("News alert root snapshot restore skipped",String(error&&error.message||error).slice(0,160));
+    return previous;
+  }
+}
+
 async function newsBreakingAlertCheck(env){
   if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};
   const cfg=await botConfig(env);
@@ -2259,6 +2292,7 @@ async function newsBreakingAlertCheck(env){
         if(legacyPrevious&&legacyPrevious.scope==="bangladesh")previous=legacyPrevious;
       }
     }
+    if(previous)previous=await newsRestoreAlertRootSnapshot(env,key,previous);
     let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;
     if(previous){
       const assessment=assessNewsAlertUpdate(previous,item,decision);
@@ -2288,7 +2322,7 @@ async function newsBreakingAlertCheck(env){
       if(legacyThreadRestart)caption+="\n\n⚠️ <b>THREAD CONTINUATION</b> · আগের alert-এর Telegram message ID সংরক্ষিত ছিল না। এই বার্তা থেকে নতুন reply-chain শুরু হচ্ছে।";
       const delivery=await sendNewsAlertMedia(env,alertItem,caption,link,replyToMessageId);
       const messageId=Number(delivery?.messageId)||null;
-      const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
+      const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,rootSnapshotKey:previous?.rootSnapshotKey||(!previous?"news-alert-history:v1:"+String(now)+":"+key+":1":null),rootSnapshotCheckedAt:previous?.rootSnapshotCheckedAt||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
