@@ -608,5 +608,5 @@ test("Worker restores a prior Main News snapshot before evaluating a later updat
   const call=source.indexOf("previous=await newsRestoreAlertRootSnapshot(env,key,previous);",check);
   const assessment=source.indexOf("assessNewsAlertUpdate(previous,item,decision)",check);
   assert.ok(restore>=0&&check>restore&&call>check&&assessment>call);
-  assert.match(source,/rootSnapshotKey:previous\\?\\.rootSnapshotKey/);
+  assert.match(source,/rootSnapshotKey:previous\?\.rootSnapshotKey/);
 });
