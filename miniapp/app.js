@@ -327,7 +327,7 @@
       finally{refresh.disabled=false;}
     };
     refresh.addEventListener("click",load);
-    el.addEventListener("click",async e=>{
+    el.onclick=async e=>{
       const button=e.target.closest("[data-payment-action]");
       if(button){
         const operation=button.dataset.paymentAction,paymentId=button.dataset.paymentId;
@@ -336,8 +336,8 @@
         try{await api("paymentAdminAction",{operation,paymentId});notice("Payment "+operation+"d.");await load();}
         catch(err){notice(err.message,true);button.disabled=false;}
       }
-    });
-    $("payments-extend").addEventListener("click",async()=>{
+    };
+    $("payments-extend").onclick=async()=>{
       const targetType=$("payments-target-type").value,targetId=$("payments-target-id").value.trim(),days=Number($("payments-days").value);
       if(!targetId||!Number.isInteger(days)||days<1||days>365){notice("Enter a valid target ID and 1–365 days.",true);return;}
       const button=$("payments-extend");button.disabled=true;
