@@ -2484,6 +2484,7 @@ async function newsBreakingAlertCheck(env){
   // This endpoint is a dedicated Telegram-only feed; the public News Page JSON is not read or changed.
   const items=Array.isArray(feed?.alertItems)?feed.alertItems.slice(0,180):[];
   const now=Date.now(),sent=[],rejected={},auditTtl=3*86400;
+  let deliveryBudget=100;
   const auditSignal=/(নিহত|মারা\s*(?:গেছেন|গেছে|গেল(?:ো|েন)?|যান)|প্রাণ\s*(?:হারিয়েছেন|হারিয়েছে|হারান|গেছে|গেল)|মৃত্যু|খুন|হত্যা|দুর্ঘটনা|সংঘর্ষ|বাসে আগুন|অগ্নিসংযোগ|গুলিবর্ষণ|গুলিতে|গুলি চালনা|বিস্ফোরণ|অগ্নিকাণ্ড|ধস|ঘূর্ণিঝড়|ঘূর্ণিঝড়|বন্যা|ভূমিকম্প|পাহাড়ধস|পাহাড়ধস|তাপপ্রবাহ|যুদ্ধ|পদত্যাগ|নির্বাচন স্থগিত|killed|died|death|fatal|murder|homicide|crash|bus set on fire|vehicle set on fire|explosion|earthquake|cyclone|flood|landslide|mass casualty|war|airstrike|terror attack|bombing|hostage|resigns|coup)/i;
   const feedUpdatedAt=Array.isArray(feed)?null:feed?.updatedAt||null;
   const feedUpdatedMs=Date.parse(String(feedUpdatedAt||""));
@@ -2591,6 +2592,7 @@ async function newsBreakingAlertCheck(env){
     const lockKey="news-alert-lock:v1:"+key;
     if(await env.BOT_CONFIG_KV.get(lockKey))continue;
     await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
+    let budgetExhausted=false;
     try{
       const eligibleRecipients=recipients.filter(recipient=>{
         const published=Number.isFinite(publishedAt)?publishedAt:now;
@@ -2599,10 +2601,12 @@ async function newsBreakingAlertCheck(env){
       let delivered=0;
       let caption=formatAlertMessage(alertItem,alertDecision,{key,updateNo,updatedAt:updateNo?now:0});
       for(const recipient of eligibleRecipients){
+        if(deliveryBudget<=0){budgetExhausted=true;break;}
         const recipientType=String(recipient.target_type),recipientId=String(recipient.target_id);
         const existingDelivery=await getDelivery(env,key,updateKey,recipientType,recipientId);
         if(existingDelivery?.status==="sent")continue;
         const latest=await getLatestDelivery(env,key,recipientType,recipientId);
+        deliveryBudget--;
         try{
           const delivery=await sendNewsAlertMedia(env,recipientId,alertItem,caption,link,Number(latest?.message_id)||null);
           await saveDelivery(env,{eventKey:key,updateKey,recipientType,recipientId,messageId:delivery?.messageId});
@@ -2622,6 +2626,7 @@ async function newsBreakingAlertCheck(env){
     }finally{
       await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
     }
+    if(budgetExhausted)break;
   }
   const summary={at:now,feedUpdatedAt,feedAgeMinutes,sourceCount:Number(feed?.sourceCount)||0,healthySources:Number(feed?.healthySourceCount)||0,failedSources:Number(feed?.failedSourceCount)||0,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
   try{
