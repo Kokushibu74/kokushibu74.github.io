@@ -1409,13 +1409,21 @@ async function paidNotifyAdmins(env,payment){
 async function paidSubmitPayment(env,userId,screenshotFileId=null){
   const flow=await paidGetFlow(env,userId);
   if(!flow||flow.step!=="screenshot")throw new Error("Payment submission session expired. Start again with /subscribe.");
-  const payment=await createPaymentRequest(env,{
-    userId,username:flow.username,packageType:flow.packageType,paymentMethod:flow.paymentMethod,
-    paySourceAccount:flow.paySourceAccount,trxId:flow.trxId,targetId:flow.targetId,
-    targetTitle:flow.targetTitle,screenshotFileId
-  });
+  let payment;
+  try{
+    payment=await createPaymentRequest(env,{
+      userId,username:flow.username,packageType:flow.packageType,paymentMethod:flow.paymentMethod,
+      paySourceAccount:flow.paySourceAccount,trxId:flow.trxId,targetId:flow.targetId,
+      targetTitle:flow.targetTitle,screenshotFileId
+    });
+  }catch(error){
+    const detail=String(error?.message||error);
+    if(/unique constraint|constraint failed.*trx_id/i.test(detail))throw new Error("এই Transaction ID আগে জমা দেওয়া হয়েছে। নতুন ও সঠিক TrxID দিন।");
+    throw error;
+  }
   await paidClearFlow(env,userId);
-  await paidNotifyAdmins(env,payment);
+  let adminNotified=true;
+  try{await paidNotifyAdmins(env,payment)}catch(error){adminNotified=false;console.error("Paid payment request Admin notification failed",String(error?.message||error).slice(0,180));}
   await botSend(env,userId,
     "✅ PAYMENT REQUEST SUBMITTED\n\nRequest ID: "+payment.id+"\nPackage: "+payment.packageType+"\nAmount: ৳"+payment.amount+"\nStatus: Pending Admin Verification\n\nPayment যাচাই শেষে Bot-এ ফলাফল জানানো হবে।",
     [[{text:"📅 My Subscription",callback_data:"p1:status"},{text:"🧾 Payment History",callback_data:"p1:history"}]],{forceNew:true});
@@ -1489,7 +1497,8 @@ async function paidHandleCallback(env,query){
     await botSend(env,chatId,"💳 "+method.toUpperCase()+" PAYMENT\n\nReceiver Account: "+PAYMENT_RECEIVER+"\nPayment Type: Send Money\nAmount: ৳"+PACKAGE_PRICES[flow.packageType]+"\n\nএখন যে Account থেকে টাকা পাঠিয়েছেন সেই Pay Source Account Number দিন।",[[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});return true;
   }
   if(action==="screenshot:skip"){
-    await paidSubmitPayment(env,sender,null);return true;
+    try{await paidSubmitPayment(env,sender,null)}catch(error){await botSend(env,chatId,"⚠️ "+String(error.message||error),[[{text:"⬅️ Main Menu",callback_data:"p1:menu"}]],{forceNew:true});}
+    return true;
   }
   if(action.startsWith("admin:")){
     if(!isAdmin){await botSend(env,chatId,"Admin access required.");return true;}
@@ -1532,7 +1541,7 @@ async function paidHandleText(env,msg){
     await paidSetFlow(env,userId,{...flow,trxId:text,step:"screenshot"});
     await botSend(env,chatId,"🖼️ Payment Screenshot পাঠাতে পারেন। না থাকলে Skip চাপুন।",[[{text:"Skip Screenshot",callback_data:"p1:screenshot:skip"}],[{text:"✖️ Cancel",callback_data:"p1:cancel"}]],{forceNew:true});return true;
   }
-  if(flow.step==="screenshot"&&/^skip$/i.test(text)){await paidSubmitPayment(env,userId,null);return true;}
+  if(flow.step==="screenshot"&&/^skip$/i.test(text)){try{await paidSubmitPayment(env,userId,null)}catch(error){await botSend(env,chatId,"⚠️ "+String(error.message||error),paidUserKeyboard(),{forceNew:true});}return true;}
   return false;
 }
 async function paidHandleGroupConnect(env,msg){
