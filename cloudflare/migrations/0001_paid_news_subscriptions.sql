@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS payment_requests (
   payment_method TEXT NOT NULL CHECK (payment_method IN ('bkash','nagad')),
   pay_source_account TEXT NOT NULL,
   receiver_account TEXT NOT NULL,
+  screenshot_file_id TEXT,
   trx_id TEXT NOT NULL COLLATE NOCASE UNIQUE,
   target_type TEXT NOT NULL CHECK (target_type IN ('individual','group')),
   target_id TEXT NOT NULL,
