@@ -109,6 +109,109 @@ export function extractAlertSourceLocations(item={}) {
   return [...new Map(entries.map(x=>[x.address.toLowerCase(),x])).values()].slice(0,8);
 }
 
+
+function normalizeAlertUpdateText(value){
+  return String(value||"").toLocaleLowerCase("bn").replace(/[^\p{L}\p{M}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
+}
+function alertUpdateTokens(value){
+  const stop=new Set(["এবং","করে","হয়েছে","হয়েছে","হবে","হয়","হয়","তার","এতে","এই","সেই","একটি","এক","জন","জনের","দিয়ে","নিয়ে","থেকে","দিকে","করা","ঘটনা","ঘটনার","সংবাদ","বলেন","জানান","the","and","for","with","from","that","this","after","has","have","was","were"]);
+  return new Set(normalizeAlertUpdateText(value).split(" ").filter(token=>token.length>1&&!stop.has(token)));
+}
+function alertLocationParts(value){
+  return String(value||"").split(",").map(part=>normalizeAlertUpdateText(part)).filter(Boolean);
+}
+function alertLocationIsMoreSpecific(candidate,previous){
+  const next=alertLocationParts(candidate),old=alertLocationParts(previous);
+  if(!next.length)return false;
+  if(!old.length)return true;
+  if(next.length<=old.length)return false;
+  return old.every(part=>next.some(value=>value.includes(part)||part.includes(value)));
+}
+function alertTimeRank(value){
+  return ({unknown:0,conflicting:0,date_only:1,period:2,time_only:3,approximate:4,exact:5})[String(value?.precision||"unknown")]||0;
+}
+function mergeAlertDetailObjects(previous={},current={}){
+  const merged={...(previous&&typeof previous==="object"?previous:{})};
+  let added=false;
+  for(const [key,value] of Object.entries(current&&typeof current==="object"?current:{})){
+    if(value===undefined||value===null||String(value).trim()==="")continue;
+    const old=merged[key];
+    if(old===undefined||old===null||String(old).trim()===""){merged[key]=value;added=true;}
+    else if(String(old)!==String(value)){merged[key]=value;added=true;}
+  }
+  return {value:merged,added};
+}
+function mergeAlertLocationEvidence(previous=[],current=[]){
+  const rows=[...(Array.isArray(previous)?previous:[]),...(Array.isArray(current)?current:[])].filter(x=>x&&String(x.address||x.location||"").trim());
+  const byAddress=new Map();
+  for(const row of rows){
+    const address=String(row.address||row.location||"").trim(),key=normalizeAlertUpdateText(address);
+    const old=byAddress.get(key);
+    if(!old||address.length>String(old.address||"").length)byAddress.set(key,{...row,address});
+  }
+  return [...byAddress.values()].sort((a,b)=>String(b.address||"").length-String(a.address||"").length).slice(0,8);
+}
+export function assessNewsAlertUpdate(previous={},item={},decision={}){
+  const oldSummary=String(previous.summary||"").trim();
+  const currentSummary=String(item.summary||item.previewSummary||"").trim();
+  const oldTokens=alertUpdateTokens(oldSummary),nextTokens=alertUpdateTokens(currentSummary);
+  const novelTokens=[...nextTokens].filter(token=>!oldTokens.has(token));
+  const newNumeric=[...nextTokens].filter(token=>/^\d+$/.test(token)&&!oldTokens.has(token));
+  const hasFactMarker=/(নিহত|মারা|আহত|নিখোঁজ|গ্রেপ্তার|আটক|উদ্ধার|নিশ্চিত|নিশ্চিত করেছে|ক্ষতিগ্রস্ত|পুড়ে|পুড়েছে|পালিয়েছে|চালু|বন্ধ|evacuated|killed|injured|arrested|rescued|confirmed|missing|hospitalized|dead|died)/i.test(currentSummary);
+  const summaryEnriched=Boolean(currentSummary&&normalizeAlertUpdateText(currentSummary)!==normalizeAlertUpdateText(oldSummary)&&
+    (novelTokens.length>=3||(newNumeric.length>0&&hasFactMarker)));
+  const currentSourceLocations=Array.isArray(item.sourceLocations)?item.sourceLocations:[];
+  const candidates=[...currentSourceLocations.map(x=>String(x?.address||x?.location||"")),String(item.location||"")].filter(Boolean);
+  const currentLocation=candidates.sort((a,b)=>b.length-a.length)[0]||"";
+  const oldLocation=String(previous.location||"");
+  const locationEnriched=alertLocationIsMoreSpecific(currentLocation,oldLocation);
+  const currentTime=item.incidentTime&&typeof item.incidentTime==="object"?item.incidentTime:{precision:"unknown"};
+  const oldTime=previous.incidentTime&&typeof previous.incidentTime==="object"?previous.incidentTime:{precision:"unknown"};
+  const currentTimeRank=alertTimeRank(currentTime),oldTimeRank=alertTimeRank(oldTime);
+  const incidentTimeEnriched=currentTimeRank>0&&(oldTimeRank===0||currentTimeRank>oldTimeRank||
+    (currentTimeRank===oldTimeRank&&String(currentTime.display||"")!==String(oldTime.display||"")&&
+      currentTime.source&&currentTime.source!==oldTime.source));
+  const oldSources=new Set((Array.isArray(previous.trustedSources)?previous.trustedSources:[]).map(normalizeAlertUpdateText));
+  const sourceExpanded=(Array.isArray(decision.trustedSources)?decision.trustedSources:[]).some(source=>!oldSources.has(normalizeAlertUpdateText(source)));
+  const verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";
+  const severityRank={INFO:0,LOW:1,MODERATE:2,WARNING:2,HIGH:3,CRITICAL:4,SEVERE:4};
+  const severityImproved=(severityRank[String(decision.severity||"").toUpperCase()]??0)>(severityRank[String(previous.severity||"").toUpperCase()]??0);
+  const details=mergeAlertDetailObjects(previous.incidentDetails,item.incidentDetails);
+  const officialSourceAdded=Boolean(decision.official?.url&&decision.official.url!==previous.officialSource);
+  const hasMeaningfulUpdate=summaryEnriched||locationEnriched||incidentTimeEnriched||details.added||
+    sourceExpanded||verificationImproved||severityImproved||officialSourceAdded;
+  const oldLocations=Array.isArray(previous.sourceLocations)?previous.sourceLocations:[];
+  const mergedLocations=mergeAlertLocationEvidence(oldLocations,currentSourceLocations);
+  const oldAdvice=Array.isArray(previous.safetyAdvice)?previous.safetyAdvice:[];
+  const currentAdvice=Array.isArray(item.safetyAdvice)?item.safetyAdvice:typeof item.safetyAdvice==="string"&&item.safetyAdvice.trim()?[item.safetyAdvice.trim()]:[];
+  const mergedAdvice=[...new Set([...oldAdvice,...currentAdvice].filter(Boolean))].slice(0,5);
+  const mergedSources=[...new Set([...(Array.isArray(previous.trustedSources)?previous.trustedSources:[]),...(Array.isArray(decision.trustedSources)?decision.trustedSources:[])])];
+  const mergedEvidence=[...new Set([...(Array.isArray(previous.sourceEvidence)?previous.sourceEvidence:[]),...(Array.isArray(decision.sources)?decision.sources:[])])];
+  const mergedTime=incidentTimeEnriched?currentTime:oldTimeRank?oldTime:currentTime;
+  const mergedSummary=summaryEnriched
+    ?(normalizeAlertUpdateText(currentSummary).includes(normalizeAlertUpdateText(oldSummary))?currentSummary:
+      currentSummary+" পূর্বের বিবরণ: "+oldSummary)
+    :(oldSummary||currentSummary);
+  const mergedItem={
+    ...item,
+    title:String(item.title||previous.title||""),
+    summary:mergedSummary,
+    location:locationEnriched?currentLocation:(oldLocation||currentLocation),
+    incidentTime:mergedTime,
+    incidentAt:mergedTime.timestamp?new Date(mergedTime.timestamp).toISOString():null,
+    sourceLocations:mergedLocations,
+    incidentDetails:details.value,
+    safetyAdvice:mergedAdvice,
+    sourceEvidence:mergedEvidence,
+    sourceLinks:Array.isArray(item.sourceLinks)&&item.sourceLinks.length?item.sourceLinks:
+      (Array.isArray(previous.sourceLinks)?previous.sourceLinks.filter(Boolean).map(url=>({name:(previous.trustedSources||[])[0]||"",url})):[])
+  };
+  const mergedDecision={...decision,trustedSources:mergedSources,sources:mergedEvidence,
+    status:verificationImproved?"confirmed":(decision.status||previous.verificationStatus||"provisional"),
+    severity:severityImproved?decision.severity:(previous.severity||decision.severity)};
+  return {hasMeaningfulUpdate,verificationImproved,flags:{summaryEnriched,locationEnriched,incidentTimeEnriched,detailsAdded:details.added,sourceExpanded,verificationImproved,severityImproved,officialSourceAdded},item:mergedItem,decision:mergedDecision};
+}
+
 export function evaluateNewsAlert(item={},options={}){
   const now=Number(options.now??Date.now()),official=options.officialSignal===true,
     title=String(item.title||"").trim(),summary=String(item.summary||item.previewSummary||""),
