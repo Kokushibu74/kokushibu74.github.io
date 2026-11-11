@@ -512,6 +512,13 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
   assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
   assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
+  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false;');
+  const previousBranch=alerts.indexOf("if(previous){",scopeDeclaration);
+  const verificationAssignment=alerts.indexOf('verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";');
+  const replySelection=alerts.indexOf("const replyToMessageId=previous?(verificationImproved&&rootMessageId?");
+  assert.ok(scopeDeclaration>=0&&previousBranch>scopeDeclaration&&verificationAssignment>previousBranch&&replySelection>verificationAssignment,
+    "verificationImproved must be declared outside the previous-event branch and assigned before reply selection");
+  assert.doesNotMatch(alerts,/const verificationImproved=/);
   assert.match(alerts,/latestMessageId\|\|rootMessageId\|\|null/);
   assert.match(alerts,/legacyThreadRestart/);
   assert.match(alerts,/updateNo=Number\(previous\.rootMessageId\)\?Math\.max\(1,/);
