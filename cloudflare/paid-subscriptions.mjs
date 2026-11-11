@@ -25,7 +25,7 @@ export async function createPaymentRequest(env, input) {
   `).bind(
     id, String(input.userId), String(input.username || "").slice(0,80) || null,
     input.packageType, amount, input.paymentMethod, input.paySourceAccount,
-    PAYMENT_RECEIVER, input.trxId.trim(), input.packageType,
+    PAYMENT_RECEIVER, input.screenshotFileId || null, input.trxId.trim(), input.packageType,
     String(input.targetId), String(input.targetTitle || "").slice(0,120) || null,
     submittedAt
   ).run();
