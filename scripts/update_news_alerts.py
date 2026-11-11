@@ -378,14 +378,21 @@ INCIDENT_DATE_PATTERNS = [
 
 def find_incident_date_phrase(text):
     value = clean(text)
+    time_phrase = find_incident_time_phrase(value)
+    time_position = value.lower().find(time_phrase.lower()) if time_phrase else -1
+    candidates = []
     for pattern in INCIDENT_DATE_PATTERNS:
         for match in pattern.finditer(value):
-            context = value[max(0, match.start() - 120):min(len(value), match.end() + 260)].lower()
-            if re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", context):
-                continue
-            if not re.search(r"(আগুন|অগ্নিকাণ্ড|অগ্নিসংযোগ|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context):
-                continue
-            return match.group(0).strip()[:100]
+            candidates.append(match)
+    candidates.sort(key=lambda match: abs(match.start() - time_position) if time_position >= 0 else match.start())
+    for match in candidates:
+        nearby = value[max(0, match.start() - 65):min(len(value), match.end() + 45)].lower()
+        if re.search(r"(প্রকাশিত|প্রকাশের সময়|প্রকাশের সময়|সর্বশেষ আপডেট|আপডেট করা|published|posted|last updated|updated at)", nearby):
+            continue
+        context = value[max(0, match.start() - 120):min(len(value), match.end() + 220)].lower()
+        if not re.search(r"(আগুন|অগ্নিকাণ্ড|অগ্নিসংযোগ|বিস্ফোরণ|সংঘর্ষ|দুর্ঘটনা|নিহত|আহত|হামলা|ঘটনা|fire|explosion|blast|clash|accident|killed|injured|incident|attack)", context):
+            continue
+        return match.group(0).strip()[:100]
     return ""
 
 def article_plain_text(raw):
