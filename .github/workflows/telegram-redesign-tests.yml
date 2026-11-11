@@ -7,6 +7,11 @@ on:
       - "cloudflare/portfolio-contact-telegram.js"
       - "cloudflare/news-alerts.mjs"
       - "cloudflare/news-watchdog.mjs"
+      - "cloudflare/paid-subscriptions.mjs"
+      - "cloudflare/migrations/0001_paid_news_subscriptions.sql"
+      - "miniapp/app.js"
+      - "miniapp/app.css"
+      - "tests/paid-subscriptions.test.mjs"
       - "scripts/news_telegram_report.py"
       - "tests/test_news_telegram_report.py"
       - "tests/telegram-bot-regression.test.mjs"
@@ -38,7 +43,9 @@ jobs:
           node --check cloudflare/portfolio-contact-telegram.js
           node --check cloudflare/news-alerts.mjs
           node --check cloudflare/news-watchdog.mjs
+          node --check cloudflare/paid-subscriptions.mjs
+          node --check miniapp/app.js
       - name: Run Telegram and news regression tests
-        run: node --test tests/news-alerts.test.mjs tests/news-watchdog.test.mjs tests/visitor-location.test.mjs tests/telegram-bot-regression.test.mjs
+        run: node --test tests/news-alerts.test.mjs tests/news-watchdog.test.mjs tests/visitor-location.test.mjs tests/telegram-bot-regression.test.mjs tests/paid-subscriptions.test.mjs
       - name: Run News Telegram report policy tests
         run: python tests/test_news_telegram_report.py
