@@ -203,6 +203,31 @@ export async function listSubscriptions(env, filter="all", limit=100) {
   return result.results || [];
 }
 
+
+export async function listRecentPayments(env, limit=50) {
+  const result = await db(env).prepare(
+    "SELECT * FROM payment_requests ORDER BY submitted_at DESC LIMIT ?"
+  ).bind(Math.max(1,Math.min(200,Number(limit)||50))).all();
+  return result.results || [];
+}
+
+export async function setSubscriptionStatus(env, targetType, targetId, status, adminId) {
+  const database=db(env);
+  if(!["individual","group"].includes(targetType))throw new Error("Invalid subscription target.");
+  if(!["active","suspended"].includes(status))throw new Error("Invalid subscription status.");
+  const now=Date.now();
+  const condition=status==="active"?" AND expires_at>?":"";
+  const params=status==="active"?[status,now,targetType,String(targetId),now]:[status,now,targetType,String(targetId)];
+  const result=await database.prepare(
+    "UPDATE subscriptions SET status=?,updated_at=? WHERE target_type=? AND target_id=?"+condition
+  ).bind(...params).run();
+  if(Number(result?.meta?.changes||0)!==1)throw new Error(status==="active"?"Subscription not found or already expired.":"Subscription not found.");
+  await database.prepare(
+    "INSERT INTO payment_audit(id,actor_id,action,details,created_at) VALUES(?,?,?,?,?)"
+  ).bind(crypto.randomUUID(),String(adminId),status==="active"?"subscription_resumed":"subscription_suspended",JSON.stringify({targetType,targetId:String(targetId)}),now).run();
+  return {targetType,targetId:String(targetId),status};
+}
+
 export async function getRevenueSummary(env) {
   const result = await db(env).prepare(`
     SELECT
