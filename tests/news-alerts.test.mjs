@@ -89,6 +89,14 @@ test("future clock without an explicit previous-day reference is not shifted to 
   assert.match(time.display,/তারিখ\/সময় যাচাই প্রয়োজন/);
 });
 
+test("incident parser uses explicit article event date and treats night 12 as midnight",()=>{
+  const x=item({publishedAt:"2026-11-11T09:29:00Z",sourceStories:[{name:"UNB",title:"পাবনায় অগ্নিসংযোগ",summary:"পাবনায় গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ",incidentDateText:"মঙ্গলবার (১০ নভেম্বর)",incidentTimeText:"রাত ১২টা ৫০ মিনিটে"}]});
+  const time=extractIncidentTime(x);
+  assert.equal(time.precision,"exact");
+  assert.match(time.display,/রাত ১২:৫০ · ১০ নভেম্বর, ২০২৬/);
+  assert.equal(time.timestamp,new Date("2026-11-10T00:50:00+06:00").getTime());
+});
+
 test("incident time parser handles Bengali hour and separate minute wording",()=>{
   const x=item({title:"ঢাকায় রাত ৮টা ৩০ মিনিটে বিস্ফোরণ",publishedAt:"2026-11-04T16:00:00Z"});
   const time=extractIncidentTime(x);
