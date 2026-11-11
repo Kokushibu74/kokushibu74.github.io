@@ -319,10 +319,14 @@ class PageMetadataParser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.meta = {}
+        self.itemprop = {}
         self.canonical = ""
         self.title_parts = []
         self.links = []
+        self.image_links = []
+        self.jsonld_scripts = []
         self.in_title = False
+        self.in_jsonld = False
 
     def handle_starttag(self, tag, attrs):
         attrs = {str(k).lower(): (v or "") for k, v in attrs}
@@ -331,10 +335,19 @@ class PageMetadataParser(HTMLParser):
             value = attrs.get("content", "").strip()
             if key and value and key not in self.meta:
                 self.meta[key] = value
-        elif tag.lower() == "link" and "canonical" in attrs.get("rel", "").lower().split():
+            itemprop = attrs.get("itemprop", "").strip().lower()
+            if itemprop and value and itemprop not in self.itemprop:
+                self.itemprop[itemprop] = value
+        elif tag.lower() == "link":
+            rels = attrs.get("rel", "").lower().split()
             href = attrs.get("href", "").strip()
-            if href.startswith("https://"):
+            if "canonical" in rels and href.startswith("https://"):
                 self.canonical = href
+            if ("image_src" in rels or "image" in rels) and href:
+                self.image_links.append(href)
+        elif tag.lower() == "script" and "ld+json" in attrs.get("type", "").lower():
+            self.in_jsonld = True
+            self.jsonld_scripts.append("")
         elif tag.lower() == "a":
             href = attrs.get("href", "").strip()
             if href.startswith("https://"):
@@ -345,10 +358,57 @@ class PageMetadataParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag.lower() == "title":
             self.in_title = False
+        elif tag.lower() == "script":
+            self.in_jsonld = False
 
     def handle_data(self, data):
         if self.in_title and data.strip():
             self.title_parts.append(data.strip())
+        if self.in_jsonld and self.jsonld_scripts:
+            self.jsonld_scripts[-1] += data
+
+
+def jsonld_publisher_metadata(parser):
+    """Extract article image and publisher name from JSON-LD without executing page scripts."""
+    publisher_name = ""
+    images = []
+
+    def image_values(value):
+        if isinstance(value, str):
+            if value.strip():
+                images.append(value.strip())
+        elif isinstance(value, dict):
+            for key in ("url", "contentUrl"):
+                if isinstance(value.get(key), str) and value[key].strip():
+                    images.append(value[key].strip())
+        elif isinstance(value, list):
+            for entry in value:
+                image_values(entry)
+
+    def walk(value):
+        nonlocal publisher_name
+        if isinstance(value, list):
+            for entry in value:
+                walk(entry)
+            return
+        if not isinstance(value, dict):
+            return
+        publisher = value.get("publisher")
+        if not publisher_name and isinstance(publisher, dict):
+            publisher_name = clean(str(publisher.get("name") or ""))
+        for key in ("image", "thumbnailUrl", "primaryImageOfPage"):
+            if key in value:
+                image_values(value[key])
+        for key, child in value.items():
+            if key not in {"publisher", "image", "thumbnailUrl", "primaryImageOfPage"} and isinstance(child, (dict, list)):
+                walk(child)
+
+    for raw in parser.jsonld_scripts:
+        try:
+            walk(json.loads(raw.strip()))
+        except (json.JSONDecodeError, TypeError, ValueError):
+            continue
+    return publisher_name, images
 
 
 def frame_permission(headers):
@@ -509,17 +569,26 @@ def publisher_metadata(url):
         meta = parser.meta
         title = clean(meta.get("og:title") or meta.get("twitter:title") or " ".join(parser.title_parts))
         summary = clean(meta.get("og:description") or meta.get("description") or meta.get("twitter:description"))
-        image = meta.get("og:image:secure_url") or meta.get("og:image") or meta.get("twitter:image") or meta.get("twitter:image:src") or ""
-        if image.startswith("//"):
-            image = "https:" + image
-        elif image.startswith("/"):
-            image = final.scheme + "://" + final.netloc + image
-        if not image.startswith("https://"):
-            image = ""
+        jsonld_publisher, jsonld_images = jsonld_publisher_metadata(parser)
+        image_candidates = [
+            meta.get("og:image:secure_url"), meta.get("og:image"),
+            meta.get("twitter:image"), meta.get("twitter:image:src"),
+            parser.itemprop.get("image"), *parser.image_links, *jsonld_images,
+        ]
+        image = ""
+        for candidate in image_candidates:
+            candidate = str(candidate or "").strip()
+            if not candidate:
+                continue
+            candidate = urllib.parse.urljoin(final_url, candidate)
+            parsed_image = urlparse(candidate)
+            if parsed_image.scheme == "https" and parsed_image.hostname:
+                image = candidate
+                break
         canonical = parser.canonical or final_url
         if not canonical.startswith("https://"):
             canonical = final_url
-        publisher_name = clean(meta.get("og:site_name") or meta.get("application-name") or final.hostname or "")
+        publisher_name = clean(meta.get("og:site_name") or meta.get("application-name") or jsonld_publisher or final.hostname or "")
         if publisher_name.startswith("www."):
             publisher_name = publisher_name[4:]
         return {
@@ -1477,10 +1546,10 @@ def main():
         else:
             item["previewMetadataStatus"] = "fallback"
             weather_unavailable += 1
-        item.setdefault("publisherName", item.get("source", "Original publisher"))
-        item.setdefault("previewTitle", item.get("title", ""))
-        item.setdefault("previewSummary", item.get("summary", ""))
-        # Empty metadata fields must not suppress a usable RSS image fallback.
+        item["publisherName"] = clean(item.get("publisherName") or item.get("source") or "Original publisher")
+        item["previewTitle"] = clean(item.get("previewTitle") or item.get("title") or "")
+        item["previewSummary"] = clean(item.get("previewSummary") or item.get("summary") or "")
+        # RSS, Open Graph, Twitter Card, and structured metadata all remain valid preview sources.
         fallback_image = weather_preview_image(item)
         if fallback_image:
             if not item.get("previewImage"):
@@ -1537,16 +1606,19 @@ def main():
             metadata = {}
         if metadata:
             item.update(metadata)
+            # Prefer publisher metadata, but never discard an image already supplied by RSS.
+            if not item.get("previewImage"):
+                item["previewImage"] = weather_preview_image(item)
             item["previewMetadataStatus"] = "success"
             enriched += 1
         else:
             metadata_unavailable += 1
             item["previewMetadataStatus"] = "fallback"
-            # Keep the direct publisher link and RSS summary when publisher pages block bots.
-            item.setdefault("publisherName", item.get("source", "Original publisher"))
-            item.setdefault("previewTitle", item.get("title", ""))
-            item.setdefault("previewSummary", item.get("summary", ""))
-            item.setdefault("previewImage", item.get("image", ""))
+            # Keep useful RSS attribution and media when publisher pages block automated requests.
+            item["publisherName"] = clean(item.get("publisherName") or item.get("source") or "Original publisher")
+            item["previewTitle"] = clean(item.get("previewTitle") or item.get("title") or "")
+            item["previewSummary"] = clean(item.get("previewSummary") or item.get("summary") or "")
+            item["previewImage"] = item.get("previewImage") or weather_preview_image(item)
             item["previewCheckedAt"] = datetime.now(timezone.utc).isoformat()
     print("Publisher preview checks: attempted:", metadata_attempts, "metadata fetched:", enriched,
           "unavailable:", metadata_unavailable, "cached/reused:", metadata_cached,
