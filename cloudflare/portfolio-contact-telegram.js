@@ -1123,7 +1123,8 @@ async function botCategory(env,chatId,category){
     users:["👥 USER MANAGER","All Users","Search Users","User Stats","Link / Unlink","Block / Unblock","Rename User","User History","Visitor Information"],
     settings:["🔧 SETTINGS","Configuration Status","Admin Access","Bot Menu"],
     logs:["📜 LOGS & RECOVERY","Recent Worker Events","Workflow Logs","Security Logs"],
-    recovery:["♻️ RECOVERY","Backup Branch","Worker Rollback Point","Recovery Guide"]
+    recovery:["♻️ RECOVERY","Backup Branch","Worker Rollback Point","Recovery Guide"],
+    payments:["💳 PAYMENTS & SUBSCRIPTIONS","Payment Requests","Active Subscribers","Group Management","Revenue Reports","Expiry Management","Subscription Settings","Access Control","Payment History"]
   };
   const names=labels[category];if(!names){await botShowMenu(env,chatId);return}
   const rows=[];
@@ -1151,6 +1152,11 @@ async function botCategory(env,chatId,category){
   }else if(category==="logs"){
     rows.push([{text:"Worker Events",callback_data:"b1:status:logs:1"},{text:"Workflow Logs",callback_data:"b1:status:logs:2"}]);
     rows.push([{text:"Security Logs",callback_data:"b1:status:logs:3"},{text:"Recovery Guide",callback_data:"b1:status:recovery:1"}]);
+  }else if(category==="payments"){
+    rows.push([{text:"💳 Payment Requests",callback_data:"p1:admin:pending"},{text:"👥 Active Subscribers",callback_data:"p1:admin:subscribers"}]);
+    rows.push([{text:"👥 Group Management",callback_data:"p1:admin:groups"},{text:"📊 Revenue Reports",callback_data:"p1:admin:revenue"}]);
+    rows.push([{text:"⌛ Expiry Management",callback_data:"p1:admin:expired"},{text:"⚙️ Subscription Settings",callback_data:"p1:admin:overview"}]);
+    rows.push([{text:"🛡️ Paid Access Control",callback_data:"p1:admin:overview"},{text:"🧾 Payment History",callback_data:"p1:admin:pending"}]);
   }else if(category==="hero"){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
@@ -1556,7 +1562,9 @@ async function paidHandleGroupConnect(env,msg){
 
 async function botHandleCallback(env,query){
   const data=String(query.data||""),chatId=query.message?.chat?.id,sender=String(query.from?.id||"");
-  if(!chatId||!data.startsWith("b1:"))return false;
+  if(!chatId)return false;
+  if(data.startsWith("p1:"))return paidHandleCallback(env,query);
+  if(!data.startsWith("b1:"))return false;
   const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
   if(query.message?.chat?.type!=="private"||!admins.has(sender)){
     await botAnswerCallback(env,query,"Admin access required",true);
@@ -1743,7 +1751,7 @@ async function botHandleCallback(env,query){
 
 async function umHandleCommand(env,msg,options={}){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/start","/menu","/help","/cmd","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
+  const commands=new Set(["/start","/menu","/help","/cmd","/subscribe","/status","/renew","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
@@ -1751,10 +1759,18 @@ async function umHandleCommand(env,msg,options={}){
   const isAdmin=admins.has(sender);
   if(cmd==="/start"||cmd==="/menu"){
     if(!botAllowStartMenu(chatId))return true;
-    await botActivateMenu(env,chatId,isAdmin);
+    if(isAdmin)await botActivateMenu(env,chatId,true);
+    else await paidShowMenu(env,chatId);
     return true;
   }
+  if(["/subscribe","/renew"].includes(cmd)&&!isAdmin){
+    await botSend(env,chatId,"📦 Choose your paid News Alert package:",paidPlanKeyboard(),{forceNew:true});return true;
+  }
+  if(cmd==="/status"&&!isAdmin){
+    await paidHandleCallback(env,{data:"p1:status",message:{chat:{id:chatId,type:"private"}},from:msg.from,id:""});return true;
+  }
   if(cmd==="/help"||cmd==="/cmd"){
+    if(!isAdmin){await botSend(env,chatId,"ℹ️ PAID NEWS ALERT BOT\n\n/subscribe — প্যাকেজ কিনুন\n/status — Subscription Status\n/renew — নবায়ন\n\nসব News Alert শুধু Paid Subscriber-দের জন্য।",paidUserKeyboard(),{forceNew:true});return true;}
     let registrationStatus="❌ Telegram command registration failed.";
     try{const registration=await botRegisterCommands(env,chatId,isAdmin);registrationStatus="✅ Telegram command menu registered and verified ("+registration.count+" commands).";}
     catch(e){registrationStatus="⚠️ Command registration error: "+String(e&&e.message||e).slice(0,180);console.error("Telegram command registration failed",registrationStatus);}
@@ -3189,8 +3205,19 @@ export default {
       try{
       if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
       const msg=update.message;
+      if(msg?.chat?.type!=="private"&&typeof msg.text==="string"&&/^\\/connectgroup(?:@\\w+)?(?:\\s|$)/i.test(msg.text.trim())){
+        try{await paidHandleGroupConnect(env,msg)}catch(e){console.error("Paid group linking failed",String(e&&e.message||e));await botTelegram(env,"sendMessage",{chat_id:msg.chat.id,text:"⚠️ Group linking failed. Please retry or contact support."});}
+        return new Response("OK");
+      }
       if(msg?.chat?.type==="private"&&Array.isArray(msg.photo)&&msg.from?.id){
-        const sender=String(msg.from.id),admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
+        const sender=String(msg.from.id);
+        const paidFlow=await paidGetFlow(env,sender).catch(()=>null);
+        if(paidFlow?.step==="screenshot"){
+          try{await paidSubmitPayment(env,sender,msg.photo[msg.photo.length-1]?.file_id||null)}
+          catch(e){console.error("Paid payment screenshot submission failed",String(e&&e.message||e));await botSend(env,msg.chat.id,"⚠️ Payment submission failed: "+String(e&&e.message||e).slice(0,180),paidUserKeyboard(),{forceNew:true});}
+          return new Response("OK");
+        }
+        const admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
         if(admins.has(sender)&&env.BOT_CONFIG_KV){
           const mode=await env.BOT_CONFIG_KV.get("hero:uploading:"+sender,"json");
           if(mode){const photo=msg.photo[msg.photo.length-1],token=crypto.randomUUID();await env.BOT_CONFIG_KV.delete("hero:uploading:"+sender);await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({fileId:photo.file_id,adminId:sender,expiresAt:Date.now()+900000}),{expirationTtl:900});const preview="https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token);await botSend(env,msg.chat.id,"🖼️ HERO PREVIEW READY\nআগে ওয়েবসাইটের আসল Hero layout-এ ছবিটি দেখুন:\n"+preview+"\n\nPreview ১৫ মিনিটের জন্য সচল থাকবে।",[[{text:"✅ Confirm & Publish",callback_data:"b1:hero:confirm:"+token}],[{text:"✖️ Cancel",callback_data:"b1:hero:cancel:"+token}]],{forceNew:true});return new Response("OK")}
@@ -3199,6 +3226,7 @@ export default {
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
       if(msg.chat.type==="private"&&msg.from?.id&&env.BOT_CONFIG_KV){
         const adminSet=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).filter(Boolean));if(adminSet.has(String(msg.from.id))&&await botHandleStartButton(env,msg))return new Response("OK");const inputKey="bot:user-input:"+String(msg.from.id),pending=await env.BOT_CONFIG_KV.get(inputKey,"json");
+        if(!adminSet.has(String(msg.from.id))&&await paidHandleText(env,msg))return new Response("OK");
         if(pending?.mode && !String(msg.text||"").trim().startsWith("/")){
           await env.BOT_CONFIG_KV.delete(inputKey);
           const raw=String(msg.text||"").trim().slice(0,500),parts=raw.split(/\s+/);let command="";
