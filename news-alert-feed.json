@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-11T06:43:32.623797+00:00",
-  "updatedAt": "2026-11-11T06:43:32.623797+00:00",
+  "generatedAt": "2026-11-11T07:01:37.410306+00:00",
+  "updatedAt": "2026-11-11T07:01:37.410306+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 6
+      "fallbackItems": 7
     },
     {
       "name": "New Age",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 29
     },
     {
       "name": "Ekattor TV",
@@ -288,7 +288,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13
+      "fallbackItems": 30
     },
     {
       "name": "Desh Rupantor",
@@ -421,8 +421,53 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 35,
   "alertItems": [
+    {
+      "title": "এক রাতেই ঢাকার ৪ স্থানে ককটেল বিস্ফোরণ, দুই বাসে আগুন",
+      "summary": "রাজধানীর বিভিন্ন এলাকায় এক রাতেই চার স্থানে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+      "link": "https://www.jagonews24.com/national/news/1178145",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1178145",
+      "publishedAt": "2026-11-11T06:52:25+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1178145"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "এক রাতেই ঢাকার ৪ স্থানে ককটেল বিস্ফোরণ, দুই বাসে আগুন",
+          "summary": "রাজধানীর বিভিন্ন এলাকায় এক রাতেই চার স্থানে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+          "url": "https://www.jagonews24.com/national/news/1178145"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "রাতে রাজধানীর চার স্থানে ককটেল বিস্ফোরণ, বাসে আগুন",
+          "summary": "রাজধানী ঢাকাসহ দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ ও যানবাহনে অগ্নিসংযোগের ঘটনাগুলোকে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের পরিকল্পিত নাশকতা হিসেবে দেখছে সরকার।",
+          "url": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j",
+          "incidentTimeText": "রাত ১২টা ৪৫ মিনিটে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "শেরেবাংলা নগর থানার, বলে জানান বনানী থানার, শাহ আলী থানার"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "7b94cc83b7996a9a9553b530c21bd687"
+    },
     {
       "title": "গাবতলীতে বাসচাপায় দুই নারী নিহত, আহত ১",
       "summary": "রাজধানীর দারুসসালাম থানার গাবতলী এলাকায় বাসের চাপায় ২ নারী নিহত হয়েছেন, আহত হয়েছেন ১ জন। তাৎক্ষণিকভাবে তাদের পরিচয় পাওয়া যায়নি। বুধবার (১১ নভেম্বর) সকাল সাড়ে ১০ টার দিকে গাবতলী বাস স্টেশন এলাকায় এই দুর্ঘটনা ঘটে। দারুসসালাম থানার উপপরিদর্শক এসআই দিরাজ নন্দি জানান, সকাল সাড়ে ১০টার দিকে গাবতলী বাস স্টেশন এলাকায় রাস্তা পার হওয়ার সময়ে (বগুড়া-ঢাকা) চাঁদনি পরিবহনের বাস তাদের চাপা দেয়।... বিস্তারিত",
@@ -484,6 +529,40 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b1c283c5597e001060568843bfbc4e2d"
+    },
+    {
+      "title": "‘জয় বাংলা’ স্লোগান দিয়ে গ্রামীণ ব্যাংক অফিসে আগুন - dhakapost.com",
+      "summary": "‘জয় বাংলা’ স্লোগান দিয়ে গ্রামীণ ব্যাংক অফিসে আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/country/497011",
+      "publisherUrl": "https://www.dhakapost.com/country/497011",
+      "publishedAt": "2026-11-11T06:05:51+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/497011"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "‘জয় বাংলা’ স্লোগান দিয়ে গ্রামীণ ব্যাংক অফিসে আগুন - dhakapost.com",
+          "summary": "‘জয় বাংলা’ স্লোগান দিয়ে গ্রামীণ ব্যাংক অফিসে আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/country/497011",
+          "incidentTimeText": "রাত ১২টা ৫০ মিনিটে",
+          "incidentTimeSource": "dhakapost.com",
+          "locationText": "সত্যতা নিশ্চিত করেছেন গ্রাম, পাবনা, পাবনা সদর থানার"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d150269088825400225324eaab1484a7"
     },
     {
       "title": "ব্রাহ্মণবাড়িয়ায় সাবেক দুই চেয়ারম্যানের লোকজনের সংঘর্ষ, আহত ২৫",
@@ -577,40 +656,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2bfeffd046c160acb4b3aad08d2c0cae"
-    },
-    {
-      "title": "রাতে রাজধানীর চার স্থানে ককটেল বিস্ফোরণ, বাসে আগুন",
-      "summary": "রাজধানী ঢাকাসহ দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ ও যানবাহনে অগ্নিসংযোগের ঘটনাগুলোকে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের পরিকল্পিত নাশকতা হিসেবে দেখছে সরকার।",
-      "link": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j",
-      "publishedAt": "2026-11-11T05:06:05+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "রাতে রাজধানীর চার স্থানে ককটেল বিস্ফোরণ, বাসে আগুন",
-          "summary": "রাজধানী ঢাকাসহ দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ ও যানবাহনে অগ্নিসংযোগের ঘটনাগুলোকে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের পরিকল্পিত নাশকতা হিসেবে দেখছে সরকার।",
-          "url": "https://www.prothomalo.com/bangladesh/crime/ugh7ir3w5j",
-          "incidentTimeText": "রাত ১২টা ৪৫ মিনিটে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "শেরেবাংলা নগর থানার, বলে জানান বনানী থানার, শাহ আলী থানার"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f8bbf58226d8bd72169f8a6ad56f068c"
     },
     {
       "title": "কুষ্টিয়া সরকারি কলেজে মাদকবিরোধী অভিযানে গিয়ে হামলায় তিন পুলিশ সদস্য আহত",
@@ -1430,37 +1475,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b339a83fcc81bb7841122979e394bdc4"
-    },
-    {
-      "title": "নেত্রকোনায় রেললাইন, ট্রেনের বগি ও ব্যাংকে আগুন, আ.লীগ নেতাদের বাড়িতে হামলা-লুট - একাত্তর",
-      "summary": "নেত্রকোনায় রেললাইন, ট্রেনের বগি ও ব্যাংকে আগুন, আ.লীগ নেতাদের বাড়িতে হামলা-লুট একাত্তর",
-      "link": "https://ekattor.tv/country/mymensingh/97406/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF-%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://ekattor.tv/country/mymensingh/97406/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF-%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-10T06:48:10+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/97406/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF-%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "নেত্রকোনায় রেললাইন, ট্রেনের বগি ও ব্যাংকে আগুন, আ.লীগ নেতাদের বাড়িতে হামলা-লুট - একাত্তর",
-          "summary": "নেত্রকোনায় রেললাইন, ট্রেনের বগি ও ব্যাংকে আগুন, আ.লীগ নেতাদের বাড়িতে হামলা-লুট একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/97406/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF-%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cda46edafc64e5fa17ab9f0f4ae13792"
     }
   ]
 }
