@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-11T15:21:43.617551+00:00",
-  "updatedAt": "2026-11-11T15:21:43.617551+00:00",
+  "generatedAt": "2026-11-11T15:41:02.984623+00:00",
+  "updatedAt": "2026-11-11T15:41:02.984623+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -65,7 +65,7 @@
       "domain": "jugantor.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19
+      "fallbackItems": 18
     },
     {
       "name": "New Age",
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26
+      "fallbackItems": 29
     },
     {
       "name": "Ekattor TV",
@@ -248,7 +248,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27
+      "fallbackItems": 24
     },
     {
       "name": "Daily Inqilab",
@@ -345,7 +345,7 @@
       "domain": "dailynayadiganta.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -421,8 +421,39 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 28,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষ, আহত ২৫",
+      "summary": "ফেনীর দাগনভূঞায় বিএনপির দুই পক্ষের মধ্যে সংঘর্ষ, ধাওয়া-পাল্টাধাওয়া ও ইটপাটকেল নিক্ষেপের ঘটনা ঘটেছে। এতে অন্তত ২৫ জন আহত হয়েছেন...",
+      "link": "https://www.jagonews24.com/country/news/1178444",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1178444",
+      "publishedAt": "2026-11-11T15:21:16+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1178444"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষ, আহত ২৫",
+          "summary": "ফেনীর দাগনভূঞায় বিএনপির দুই পক্ষের মধ্যে সংঘর্ষ, ধাওয়া-পাল্টাধাওয়া ও ইটপাটকেল নিক্ষেপের ঘটনা ঘটেছে। এতে অন্তত ২৫ জন আহত হয়েছেন...",
+          "url": "https://www.jagonews24.com/country/news/1178444"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f3fce1a68b2f638134a340462466052a"
+    },
     {
       "title": "ইনকিউবেটরে আগুন লেগে দগ্ধ সেই নবজাতক মারা গেছে",
       "summary": "রাজধানীর চানখাঁরপুলে একটি বেসরকারি ক্লিনিকের ইনকিউবেটরে আগুন লেগে দগ্ধ হওয়া ৩ ঘণ্টা বয়সী সেই নবজাতক মারা গেছে। ঢাকা মেডিকেল কলেজ (ঢামেক) হাসপাতালের ২১১ নম্বর ওয়ার্ডে চিকিৎসাধীন অবস্থায় বুধবার (১১ নভেম্বর) বিকেল ৩টার দিকে...",
@@ -653,8 +684,8 @@
       "alertEventId": "096d6d6e840502ab1f2b519bbfef6fed"
     },
     {
-      "title": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident - United News of Bangladesh",
-      "summary": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident United News of Bangladesh",
+      "title": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident | UNB - United News of Bangladesh",
+      "summary": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident | UNB United News of Bangladesh",
       "link": "https://unb.com.bd/video/9911/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AE%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%B9%E0%A6%BE%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF-%E0%A6%B9-%E0%A6%A4---Accident---UNB",
       "publisherUrl": "https://unb.com.bd/video/9911/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AE%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%B9%E0%A6%BE%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF-%E0%A6%B9-%E0%A6%A4---Accident---UNB",
       "publishedAt": "2026-11-11T12:11:00+00:00",
@@ -675,13 +706,13 @@
       "sourceStories": [
         {
           "name": "UNB",
-          "title": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident - United News of Bangladesh",
-          "summary": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident United News of Bangladesh",
+          "title": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident | UNB - United News of Bangladesh",
+          "summary": "লালমনিরহাটের আদিতমারীতে ড্রাম ট্রাকের চাপায় সাবেক সেনা সদস্য নি/হ/ত | Accident | UNB United News of Bangladesh",
           "url": "https://unb.com.bd/video/9911/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AE%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%B9%E0%A6%BE%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF-%E0%A6%B9-%E0%A6%A4---Accident---UNB"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "fffd9898da4c64557d0b261536d8fdf9"
+      "alertEventId": "fea912b419aca4c711e0b84ed024f4a6"
     },
     {
       "title": "পাকিস্তানে সন্ত্রাসীদের গুলিতে ডিএসপিসহ ১০ পুলিশ সদস্য নিহত - dhakapost.com",
@@ -708,8 +739,7 @@
           "name": "dhakapost.com",
           "title": "পাকিস্তানে সন্ত্রাসীদের গুলিতে ডিএসপিসহ ১০ পুলিশ সদস্য নিহত - dhakapost.com",
           "summary": "পাকিস্তানে সন্ত্রাসীদের গুলিতে ডিএসপিসহ ১০ পুলিশ সদস্য নিহত dhakapost.com",
-          "url": "https://www.dhakapost.com/international/497126",
-          "incidentDateText": "১১ নভেম্বর ২০২৬"
+          "url": "https://www.dhakapost.com/international/497126"
         }
       ],
       "corroborationCount": 1,
@@ -906,20 +936,20 @@
       "alertEventId": "f8fb2b45f294b12126b329bb4c388117"
     },
     {
-      "title": "ব্রাহ্মণবাড়িয়ায় বিএনপি-যুবদলের দফায় দফায় সংঘর্ষ, আহত ২০",
-      "summary": "ব্রাহ্মণবাড়িয়ার বিজয়নগরে পূর্ববিরোধের জেরে দুই পক্ষের মধ্যে দফায় দফায় সংঘর্ষে অন্তত ২০ জন আহত হয়েছেন। বুধবার (১১ নভেম্বর) সকালে উপজেলার ইছাপুরা ইউনিয়নের ইছাপুরা গ্রামে এ সংঘর্ষের ঘটনা ঘটে। এতে কয়েকটি বাড়িঘর ভাঙচুর ও লুটপাটের শিকার হয়েছে। স্থানীয় সূত্রে জানা যায়, ইছাপুরা ইউনিয়ন বিএনপির সাধারণ সম্পাদক এনাম খাঁর সঙ্গে উপজেলা যুবলীগের সাবেক আহ্বায়ক জিয়াউল হক বকুলের অনুসারী আক্তার ও রুবেলের বিরোধ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/980239/%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%A3%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/980239/%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%A3%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
-      "publishedAt": "2026-11-11T09:28:23+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ - United News of Bangladesh",
+      "summary": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467",
+      "publishedAt": "2026-11-11T09:29:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "UNB"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/980239/%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%A3%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467"
         }
       ],
       "category": "Bangladesh",
@@ -927,14 +957,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "ব্রাহ্মণবাড়িয়ায় বিএনপি-যুবদলের দফায় দফায় সংঘর্ষ, আহত ২০",
-          "summary": "ব্রাহ্মণবাড়িয়ার বিজয়নগরে পূর্ববিরোধের জেরে দুই পক্ষের মধ্যে দফায় দফায় সংঘর্ষে অন্তত ২০ জন আহত হয়েছেন। বুধবার (১১ নভেম্বর) সকালে উপজেলার ইছাপুরা ইউনিয়নের ইছাপুরা গ্রামে এ সংঘর্ষের ঘটনা ঘটে। এতে কয়েকটি বাড়িঘর ভাঙচুর ও লুটপাটের শিকার হয়েছে। স্থানীয় সূত্রে জানা যায়, ইছাপুরা ইউনিয়ন বিএনপির সাধারণ সম্পাদক এনাম খাঁর সঙ্গে উপজেলা যুবলীগের সাবেক আহ্বায়ক জিয়াউল হক বকুলের অনুসারী আক্তার ও রুবেলের বিরোধ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/980239/%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A7%8D%E0%A6%AE%E0%A6%A3%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A6%E0%A6%AB%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+          "name": "UNB",
+          "title": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ - United News of Bangladesh",
+          "summary": "পাবনায় ‘জয় বাংলা স্লোগান দিয়ে’ গ্রামীণ ব্যাংক কার্যালয়ে অগ্নিসংযোগ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E2%80%98%E0%A6%9C%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%B8%E0%A7%8D%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E2%80%99-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116467"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "75b51a1f0faaaf46e2b6152ac6f9121c"
+      "alertEventId": "650148185b949e9312d286fa68eab7bf"
     },
     {
       "title": "নারায়ণগঞ্জে মাদ্রাসায় আগুন: হাসপাতালে ভর্তি ১৮, আইসিইউতে তিনজন - একাত্তর",
@@ -1028,6 +1058,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a1a7cd64435c60c79726523328218ee"
+    },
+    {
+      "title": "রাজধানীতে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ - Dhaka Tribune Bangla",
+      "summary": "রাজধানীতে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/112897/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/112897/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publishedAt": "2026-11-11T07:26:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112897/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "রাজধানীতে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ - Dhaka Tribune Bangla",
+          "summary": "রাজধানীতে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/112897/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4eeb1bf6c39cc761b170666d3a6cf86a"
     },
     {
       "title": "পাবনায় ‘জয় বাংলা’ স্লোগান দিয়ে গ্রামীণ ব্যাংক শাখায় আগুন - Risingbd.com",
