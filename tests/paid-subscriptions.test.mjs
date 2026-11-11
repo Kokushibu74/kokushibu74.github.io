@@ -46,7 +46,7 @@ test("approval is guarded by pending status and uses a single D1 batch", async (
   const statements=[];
   const payment={id:"pay-1",user_id:"123",package_type:"individual",amount:100,target_type:"individual",target_id:"123",status:"pending"};
   const env={PAYMENTS_DB:{
-    prepare(sql){return {sql,bind(...params){return {
+    prepare(sql){return {sql,bind(...params){return {sql,params,
       async first(){if(sql.includes("FROM payment_requests"))return payment;if(sql.includes("FROM subscriptions"))return null;return null;}
     };}};},
     async batch(items){statements.push(...items.map(x=>x.sql));return [{meta:{changes:1}},{meta:{changes:1}},{meta:{changes:1}}];}
