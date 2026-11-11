@@ -2165,6 +2165,7 @@ async function newsRestoreAlertRootSnapshot(env,key,previous){
   if(!previous||Number(previous.updateCount||0)<=0||previous.rootSnapshotKey||previous.rootSnapshotCheckedAt)return previous;
   const rootMessageId=Number(previous.rootMessageId)||0;
   if(!rootMessageId)return previous;
+  try{
   let cursor=null,rootRecord=null,rootHistoryKey="";
   for(let pageNo=0;pageNo<5;pageNo++){
     const page=await env.BOT_CONFIG_KV.list({prefix:"news-alert-history:v1:",limit:1000,...(cursor?{cursor}:{})});
@@ -2186,6 +2187,10 @@ async function newsRestoreAlertRootSnapshot(env,key,previous){
   recovered.rootSnapshotCheckedAt=Date.now();
   await env.BOT_CONFIG_KV.put("news-alert:v2:"+key,JSON.stringify(recovered),{expirationTtl:NEWS_ALERT_TTL});
   return recovered;
+  }catch(error){
+    console.warn("News alert root snapshot restore skipped",String(error&&error.message||error).slice(0,160));
+    return previous;
+  }
 }
 
 async function newsBreakingAlertCheck(env){
