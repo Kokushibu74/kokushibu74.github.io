@@ -510,7 +510,7 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(alerts,/rootMessageId:delivery\?\.replyFallback\?messageId:\(rootMessageId\|\|messageId\)/);
   assert.match(alerts,/latestMessageId:messageId\|\|latestMessageId\|\|rootMessageId/);
   assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
-  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false;');
+  const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false,alertItem=item,alertDecision=decision;');
   const previousBranch=alerts.indexOf("if(previous){",scopeDeclaration);
   const verificationAssignment=alerts.indexOf("verificationImproved=assessment.verificationImproved;");
   const replySelection=alerts.indexOf("const replyToMessageId=previous?(verificationImproved&&rootMessageId?");
