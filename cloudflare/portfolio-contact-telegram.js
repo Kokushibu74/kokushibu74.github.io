@@ -1,7 +1,7 @@
 import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
-import { PAYMENT_RECEIVER, PACKAGE_PRICES, createPaymentRequest, getPayment, listPendingPayments, listUserPayments, listUserSubscriptions, listActiveAlertRecipients, getDelivery, getLatestDelivery, saveDelivery, recordDeliveryFailure, reviewPayment, extendSubscription, listSubscriptions, getRevenueSummary, getPaymentAdminOverview } from "./paid-subscriptions.mjs";
+import { PAYMENT_RECEIVER, PACKAGE_PRICES, createPaymentRequest, getPayment, listPendingPayments, listUserPayments, listUserSubscriptions, listActiveAlertRecipients, getDelivery, getLatestDelivery, saveDelivery, recordDeliveryFailure, reviewPayment, extendSubscription, listSubscriptions, listRecentPayments, setSubscriptionStatus, getRevenueSummary, getPaymentAdminOverview } from "./paid-subscriptions.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -963,7 +963,7 @@ const BOT_ADMIN_COMMANDS=[
   {command:"sources",description:"News feed and source status"},
   {command:"traffic",description:"Visitor traffic overview"},
   {command:"report",description:"Daily report status"},
-  {command:"extend",description:"Extend a paid subscription"}
+  {command:"extend",description:"Extend a paid subscription"},{command:"suspend",description:"Suspend a paid subscription"},{command:"resume",description:"Resume a paid subscription"}
 ];
 async function botRegisterCommands(env,chatId,isAdmin){
   if(!env.TELEGRAM_BOT_TOKEN)throw new Error("Telegram bot token is unavailable.");
@@ -1156,7 +1156,7 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"💳 Payment Requests",callback_data:"p1:admin:pending"},{text:"👥 Active Subscribers",callback_data:"p1:admin:subscribers"}]);
     rows.push([{text:"👥 Group Management",callback_data:"p1:admin:groups"},{text:"📊 Revenue Reports",callback_data:"p1:admin:revenue"}]);
     rows.push([{text:"⌛ Expiry Management",callback_data:"p1:admin:expired"},{text:"⚙️ Subscription Settings",callback_data:"p1:admin:overview"}]);
-    rows.push([{text:"🛡️ Paid Access Control",callback_data:"p1:admin:overview"},{text:"🧾 Payment History",callback_data:"p1:admin:pending"}]);
+    rows.push([{text:"🛡️ Paid Access Control",callback_data:"p1:admin:access"},{text:"🧾 Payment History",callback_data:"p1:admin:history"}]);
   }else if(category==="hero"){
     rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
@@ -1514,13 +1514,22 @@ async function paidHandleCallback(env,query){
       const subscriptions=await listSubscriptions(env,filter,50);
       await botSend(env,chatId,"👥 "+section.toUpperCase()+"\n\n"+(subscriptions.map(x=>x.target_type+" · "+x.target_id+" · owner "+x.owner_user_id+" · "+new Date(Number(x.expires_at)).toLocaleDateString("en-GB")).join("\n")||"No records."),[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
     }
+    if(section==="history"){
+      const payments=await listRecentPayments(env,50);
+      await botSend(env,chatId,"🧾 PAYMENT HISTORY\\n\\n"+(payments.map(p=>p.package_type.toUpperCase()+" · ৳"+p.amount+" · "+p.status.toUpperCase()+"\\n"+p.payment_method.toUpperCase()+" · "+p.trx_id+"\\nSource: "+p.pay_source_account+" · User: "+p.user_id).join("\\n\\n")||"No payment records."),[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
+    }
+    if(section==="access"){
+      const subscriptions=await listSubscriptions(env,"all",50);
+      const text=subscriptions.map(x=>x.target_type+" · "+x.target_id+" · "+x.status.toUpperCase()+" · expires "+new Date(Number(x.expires_at)).toLocaleDateString("en-GB")).join("\\n")||"No subscription records.";
+      await botSend(env,chatId,"🛡️ PAID ACCESS CONTROL\\n\\n"+text+"\\n\\nCommands:\\n/suspend individual USER_ID\\n/resume individual USER_ID\\n/suspend group GROUP_ID\\n/resume group GROUP_ID\\n/extend individual USER_ID DAYS\\n/extend group GROUP_ID DAYS",[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
+    }
     if(section==="revenue"){
       const revenue=await getRevenueSummary(env);
       await botSend(env,chatId,"📊 REVENUE REPORT\n\nApproved Revenue: ৳"+Number(revenue.approved_total||0)+"\nPending Amount: ৳"+Number(revenue.pending_total||0)+"\nApproved Payments: "+Number(revenue.approved_count||0)+"\nPending Requests: "+Number(revenue.pending_count||0)+"\nRejected Requests: "+Number(revenue.rejected_count||0),[[{text:"⬅️ Admin Panel",callback_data:"b1:payments"}]],{forceNew:true});return true;
     }
     if(section==="overview"){
       const overview=await getPaymentAdminOverview(env);
-      await botSend(env,chatId,"💳 PAYMENT & SUBSCRIPTION OVERVIEW\n\nPending Payments: "+overview.pendingPayments+"\nActive Individuals: "+overview.activeIndividuals+"\nActive Groups: "+overview.activeGroups+"\nExpired: "+overview.expiredSubscriptions+"\nApproved Revenue: ৳"+Number(overview.revenue.approved_total||0),[[{text:"Pending Payments",callback_data:"p1:admin:pending"},{text:"Subscribers",callback_data:"p1:admin:subscribers"}],[{text:"Groups",callback_data:"p1:admin:groups"},{text:"Revenue",callback_data:"p1:admin:revenue"}],[{text:"Expired",callback_data:"p1:admin:expired"},{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});return true;
+      await botSend(env,chatId,"💳 PAYMENT & SUBSCRIPTION OVERVIEW\n\nPending Payments: "+overview.pendingPayments+"\nActive Individuals: "+overview.activeIndividuals+"\nActive Groups: "+overview.activeGroups+"\nExpired: "+overview.expiredSubscriptions+"\nApproved Revenue: ৳"+Number(overview.revenue.approved_total||0),[[{text:"Pending Payments",callback_data:"p1:admin:pending"},{text:"Subscribers",callback_data:"p1:admin:subscribers"}],[{text:"Groups",callback_data:"p1:admin:groups"},{text:"Revenue",callback_data:"p1:admin:revenue"}],[{text:"Expired",callback_data:"p1:admin:expired"},{text:"Payment History",callback_data:"p1:admin:history"}],[{text:"Access Control",callback_data:"p1:admin:access"},{text:"⬅️ Main Menu",callback_data:"b1:home"}]],{forceNew:true});return true;
     }
   }
   return false;
@@ -1760,7 +1769,7 @@ async function botHandleCallback(env,query){
 
 async function umHandleCommand(env,msg,options={}){
   const text=String(msg.text||"").trim(),parts=text.split(/\s+/),cmd=(parts.shift()||"").split("@")[0].toLowerCase();
-  const commands=new Set(["/start","/menu","/help","/cmd","/subscribe","/status","/renew","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats","/extend"]);
+  const commands=new Set(["/start","/menu","/help","/cmd","/subscribe","/status","/renew","/details","/health","/errors","/logs","/history","/sources","/traffic","/report","/userid","/userinfo","/userrename","/userlink","/userunlink","/userblock","/userunblock","/userhistory","/usersearch","/userstats","/extend","/suspend","/resume"]);
   if(!commands.has(cmd))return false;
   const chatId=msg.chat.id,sender=String(msg.from?.id||"");
   if(msg.chat.type!=="private"){await umReply(env,chatId,"নিরাপত্তার জন্য এই কমান্ডগুলো Bot-এর Private Chat-এ ব্যবহার করুন।");return true;}
@@ -2956,6 +2965,11 @@ export default {
             await paidSendReviewResult(env,payment,result);
             await miniAppAudit(env,user.id,"payment_"+operation,{paymentId:payment.id,amount:payment.amount,targetType:payment.target_type});
             return respond({ok:true,status:result.status,paymentId:payment.id});
+          }
+          if(operation==="suspend"||operation==="resume"){
+            const result=await setSubscriptionStatus(env,String(body?.targetType||""),String(body?.targetId||""),operation==="suspend"?"suspended":"active",user.id);
+            await miniAppAudit(env,user.id,"subscription_"+operation,result);
+            return respond({ok:true,...result});
           }
           if(operation==="extend"){
             const result=await extendSubscription(env,String(body?.targetType||""),String(body?.targetId||""),Number(body?.days||0),user.id);
