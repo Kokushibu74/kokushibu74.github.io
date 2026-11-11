@@ -15,6 +15,7 @@
     ["alerts","⚑","Alerts","Notifications & incidents"],
     ["reports","▥","Reports","Daily reports & comparisons"],
     ["users","♙","User Manager","Visitor & Telegram users"],
+    ["payments","▣","Payments & Subscriptions","Paid News Alert access, payments and revenue"],
     ["settings","⚙","Settings","Bot & system configuration"],
     ["logs","≋","Logs","Activity & error records"],
     ["recovery","⟲","Recovery","Backups & recovery tools"]
@@ -60,11 +61,13 @@
       alerts:"Recent critical incidents, alert settings and acknowledgement history.",
       reports:"Daily health report, GA4 metrics and day-over-day comparisons.",
       users:"Search and manage linked Telegram and website visitor profiles.",
+      payments:"Review payments, manage paid subscribers, group access, renewals and revenue.",
       settings:"Admin access, bot configuration and system preferences.",
       logs:"Recent Worker events, workflow logs and security activity.",
       recovery:"Verified backup references and safe recovery procedures."
     };
     const el=$("module-content");
+    if(section==="payments"){await renderPaymentsManager(el);return;}
     if(section==="automation"){
       const el=$("module-content");if(automationRefreshTimer)clearInterval(automationRefreshTimer);if(automationClockTimer)clearInterval(automationClockTimer);
       el.innerHTML='<div class="automation-wrap"><div class="automation-top"><div><span class="section-kicker">SCHEDULED OPERATIONS</span><h3>Recent automations</h3><p>Cloudflare Cron and GitHub Actions · verified activity from the last 24 hours</p></div><button type="button" id="automation-refresh">↻ Refresh</button></div><div class="automation-timers" id="automation-timers"></div><div class="automation-source-status" id="automation-source-status" aria-live="polite"></div><div class="automation-summary" id="automation-summary"></div><div class="automation-log-head"><div><span class="section-kicker">ACTIVITY TIMELINE</span><h3>Last 24 hours</h3></div><span class="tag" id="automation-count">0 EVENTS</span></div><div id="automation-events" class="automation-events"><div class="empty-state">Loading verified automation history…</div></div><p class="automation-footnote">Idle-menu cleanup is checked every 15 minutes by the existing every-minute Cron trigger. The 30-minute Cron performs the website health/security-header check and the daily report window at 23:00 Bangladesh time. GitHub News Refresh is scheduled every 15 minutes. Event-triggered workflows appear when GitHub starts them.</p></div>';
@@ -299,6 +302,52 @@
     });
     reset();renderList();
   }
+
+  async function renderPaymentsManager(el){
+    el.innerHTML='<div class="payments-wrap"><div class="payments-top"><div><span class="section-kicker">PAID NEWS ALERT ACCESS</span><h3>Payments & Subscriptions</h3><p>Individual ৳100 / 30 days · Group ৳300 / 30 days</p></div><button type="button" id="payments-refresh">↻ Refresh</button></div><div id="payments-metrics" class="payments-metrics"><div class="empty-state">Loading payment records…</div></div><div class="payments-section"><div class="payments-section-head"><h3>Pending payment requests</h3><span class="tag" id="payments-pending-count">—</span></div><div id="payments-pending" class="payments-list"><div class="empty-state">Loading…</div></div></div><div class="payments-section"><div class="payments-section-head"><h3>Subscriptions</h3><span class="tag" id="payments-sub-count">—</span></div><div id="payments-subs" class="payments-list"><div class="empty-state">Loading…</div></div></div><div class="payments-section"><div class="payments-section-head"><h3>Manual extension</h3></div><div class="payments-extension"><select id="payments-target-type"><option value="individual">Individual · Telegram User ID</option><option value="group">Group · Telegram Group ID</option></select><input id="payments-target-id" placeholder="Telegram User ID or Group ID"><input id="payments-days" type="number" min="1" max="365" value="30"><button type="button" id="payments-extend">Extend subscription</button></div></div></div>';
+    const metrics=$("payments-metrics"),pending=$("payments-pending"),subs=$("payments-subs"),pendingCount=$("payments-pending-count"),subCount=$("payments-sub-count"),refresh=$("payments-refresh");
+    const fmt=ts=>Number(ts)?new Date(Number(ts)).toLocaleString("en-GB",{timeZone:"Asia/Dhaka"}):"—";
+    const load=async()=>{
+      refresh.disabled=true;
+      try{
+        const data=await api("paymentAdminOverview"),o=data.overview||{},rev=o.revenue||{};
+        metrics.innerHTML=[
+          ["Pending Requests",o.pendingPayments||0],
+          ["Active Individuals",o.activeIndividuals||0],
+          ["Active Groups",o.activeGroups||0],
+          ["Approved Revenue","৳"+Number(rev.approved_total||0).toLocaleString("en-BD")],
+          ["Pending Amount","৳"+Number(rev.pending_total||0).toLocaleString("en-BD")],
+          ["Expired",o.expiredSubscriptions||0]
+        ].map(x=>'<article class="payments-metric"><small>'+escapeHtml(x[0])+'</small><b>'+escapeHtml(x[1])+'</b></article>').join("");
+        pendingCount.textContent=(data.pending||[]).length+" REQUESTS";
+        pending.innerHTML=(data.pending||[]).map(p=>'<article class="payment-card"><div class="payment-card-head"><b>'+escapeHtml(p.package_type.toUpperCase())+' · ৳'+escapeHtml(p.amount)+'</b><span class="tag">PENDING</span></div><div class="payment-fields"><span>User</span><b>'+escapeHtml(p.user_id)+'</b><span>Target</span><b>'+escapeHtml(p.target_title||p.target_id)+'</b><span>Method</span><b>'+escapeHtml(p.payment_method.toUpperCase())+'</b><span>Pay Source</span><b>'+escapeHtml(p.pay_source_account)+'</b><span>Receiver</span><b>'+escapeHtml(p.receiver_account)+'</b><span>TrxID</span><b>'+escapeHtml(p.trx_id)+'</b><span>Submitted</span><b>'+escapeHtml(fmt(p.submitted_at))+'</b></div><div class="payment-actions"><button type="button" data-payment-action="approve" data-payment-id="'+escapeHtml(p.id)+'">Approve</button><button type="button" class="danger" data-payment-action="reject" data-payment-id="'+escapeHtml(p.id)+'">Reject</button></div></article>').join("")||'<div class="empty-state">No pending payment requests.</div>';
+        subCount.textContent=(data.subscriptions||[]).length+" RECORDS";
+        subs.innerHTML=(data.subscriptions||[]).map(x=>'<article class="payment-card"><div class="payment-card-head"><b>'+escapeHtml(x.target_type.toUpperCase())+' · '+escapeHtml(x.target_id)+'</b><span class="tag">'+(x.status==="active"&&Number(x.expires_at)>Date.now()?"ACTIVE":"EXPIRED")+'</span></div><div class="payment-fields"><span>Owner</span><b>'+escapeHtml(x.owner_user_id)+'</b><span>Price</span><b>৳'+escapeHtml(x.amount)+'</b><span>Start</span><b>'+escapeHtml(fmt(x.starts_at))+'</b><span>Expiry</span><b>'+escapeHtml(fmt(x.expires_at))+'</b></div></article>').join("")||'<div class="empty-state">No subscriptions recorded yet.</div>';
+      }catch(e){notice(e.message,true);pending.innerHTML='<div class="empty-state">'+escapeHtml(e.message)+'</div>';}
+      finally{refresh.disabled=false;}
+    };
+    refresh.addEventListener("click",load);
+    el.addEventListener("click",async e=>{
+      const button=e.target.closest("[data-payment-action]");
+      if(button){
+        const operation=button.dataset.paymentAction,paymentId=button.dataset.paymentId;
+        const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm((operation==="approve"?"Approve":"Reject")+" this payment request?",resolve)):window.confirm((operation==="approve"?"Approve":"Reject")+" this payment request?");
+        if(!yes)return;button.disabled=true;
+        try{await api("paymentAdminAction",{operation,paymentId});notice("Payment "+operation+"d.");await load();}
+        catch(err){notice(err.message,true);button.disabled=false;}
+      }
+    });
+    $("payments-extend").addEventListener("click",async()=>{
+      const targetType=$("payments-target-type").value,targetId=$("payments-target-id").value.trim(),days=Number($("payments-days").value);
+      if(!targetId||!Number.isInteger(days)||days<1||days>365){notice("Enter a valid target ID and 1–365 days.",true);return;}
+      const button=$("payments-extend");button.disabled=true;
+      try{await api("paymentAdminAction",{operation:"extend",targetType,targetId,days});notice("Subscription extended.");$("payments-target-id").value="";await load();}
+      catch(err){notice(err.message,true);}
+      finally{button.disabled=false;}
+    });
+    await load();
+  }
+
   async function api(action,payload={}) {
     if(!tg?.initData) throw new Error("Telegram Mini App authentication data is missing. Open this page from the Kokushibu Bot menu inside Telegram.");
     const response=await fetch(API_BASE+"/miniapp/api",{method:"POST",headers:{"Content-Type":"application/json"},cache:"no-store",body:JSON.stringify({initData:tg.initData,action,...payload})});
