@@ -195,12 +195,10 @@ test("weekday and period-only incident time is resolved against publication date
 });
 test("Worker emits an update when incident time, location or incident details change",async()=>{
   const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
-  assert.match(source,/incidentTimeChanged/);
-  assert.match(source,/locationChanged/);
-  assert.match(source,/sourceLocationsChanged/);
-  assert.match(source,/detailsChanged/);
-  assert.match(source,/sourceLinkExpanded/);
-  assert.match(source,/updatePayload/);
+  assert.match(source,/assessNewsAlertUpdate\(previous,item,decision\)/);
+  assert.match(source,/if\(!assessment\.hasMeaningfulUpdate\)continue/);
+  assert.match(source,/assessment\.flags/);
+  assert.doesNotMatch(source,/sourceLinkExpanded/,"A new URL from the same publisher is not independent corroboration");
 });
 
 test("official weather bulletin can verify a fresh local warning without a news publisher",()=>{
@@ -514,7 +512,7 @@ test("Telegram news alerts persist message IDs and reply updates in the correct 
   assert.match(alerts,/verificationImproved&&rootMessageId\?rootMessageId/);
   const scopeDeclaration=alerts.indexOf('let updateNo=0,updateStateKey="",verificationImproved=false;');
   const previousBranch=alerts.indexOf("if(previous){",scopeDeclaration);
-  const verificationAssignment=alerts.indexOf('verificationImproved=String(previous.verificationStatus||"")!=="confirmed"&&decision.status==="confirmed";');
+  const verificationAssignment=alerts.indexOf("verificationImproved=assessment.verificationImproved;");
   const replySelection=alerts.indexOf("const replyToMessageId=previous?(verificationImproved&&rootMessageId?");
   assert.ok(scopeDeclaration>=0&&previousBranch>scopeDeclaration&&verificationAssignment>previousBranch&&replySelection>verificationAssignment,
     "verificationImproved must be declared outside the previous-event branch and assigned before reply selection");
