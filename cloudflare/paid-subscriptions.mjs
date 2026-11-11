@@ -20,8 +20,8 @@ export async function createPaymentRequest(env, input) {
   await db(env).prepare(`
     INSERT INTO payment_requests
       (id,user_id,username,package_type,amount,payment_method,pay_source_account,
-       receiver_account,trx_id,target_type,target_id,target_title,status,submitted_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
+       receiver_account,screenshot_file_id,trx_id,target_type,target_id,target_title,status,submitted_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,'pending',?)
   `).bind(
     id, String(input.userId), String(input.username || "").slice(0,80) || null,
     input.packageType, amount, input.paymentMethod, input.paySourceAccount,
@@ -147,7 +147,7 @@ export async function reviewPayment(env, paymentId, action, adminId, reason="") 
     database.prepare(`
       INSERT INTO subscriptions
         (id,target_type,target_id,owner_user_id,package_type,amount,status,starts_at,expires_at,created_at,updated_at)
-      SELECT ?,?,?,?,?,?,'active',?,?,?,?,?
+      SELECT ?,?,?,?,?,?,'active',?,?,?,?
       WHERE changes()>0
       ON CONFLICT(target_type,target_id) DO UPDATE SET
         owner_user_id=excluded.owner_user_id,
