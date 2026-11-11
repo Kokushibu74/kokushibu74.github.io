@@ -79,7 +79,10 @@ assert.match(commandRegistration, /getMyCommands/, "Registration must be verifie
 assert.match(commandRegistration, /if\(!defaults\.ok\)/, "Default command registration failures must be surfaced");
 assert.match(commandRegistration, /if\(!scoped\.ok\)/, "Per-chat registration failures must be surfaced");
 assert.match(commandRegistration, /missing\.length/, "Missing Telegram commands must be detected");
-assert.match(commandRegistration, /const expected=isAdmin\?\[\.\.\.BOT_PUBLIC_COMMANDS,\.\.\.BOT_ADMIN_COMMANDS\]:BOT_PUBLIC_COMMANDS/);
+assert.match(commandRegistration, /deleteMyCommands/, "The default Telegram command menu must be removed");
+assert.match(commandRegistration, /defaultActual\.length/, "Default command removal must be verified");
+assert.match(commandRegistration, /if\(!isAdmin\)return \{count:0,verified:true\}/, "Only the admin chat receives a command menu");
+assert.match(commandRegistration, /const expected=\[\.\.\.BOT_PUBLIC_COMMANDS,\.\.\.BOT_ADMIN_COMMANDS\]/);
 assert.doesNotMatch(commandRegistration, /BOT_PUBLIC_COMMANDS\.concat\(isAdmin\?BOT_ADMIN_COMMANDS/,
   "Admin-only functions must not flood Telegram's top-level command menu");
 
@@ -106,6 +109,7 @@ const commandHandler = section("async function umHandleCommand", "function botB6
 assert.match(commandHandler, /"\/help"/, "/help must be dispatched");
 assert.match(commandHandler, /"\/details"/, "Context-aware detail shortcut must be dispatched");
 assert.match(commandHandler, /botRegisterCommands\(env,chatId,isAdmin\)/, "Startup path must register commands");
+assert.match(commandHandler, /if\(!isAdmin\)\{[\s\S]*?return true;\s*\}/, "Every public command must be denied before /start, /menu, /help or /cmd is handled");
 assert.match(commandHandler, /botGetContext\(env,chatId\)/, "/details must use persisted context");
 
 const analytics = section('}else if(category==="analytics"){', '}else if(category==="security"){');
