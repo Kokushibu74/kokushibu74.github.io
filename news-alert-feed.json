@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-12T04:31:50.555871+00:00",
-  "updatedAt": "2026-11-12T04:31:50.555871+00:00",
+  "generatedAt": "2026-11-12T04:51:28.019795+00:00",
+  "updatedAt": "2026-11-12T04:51:28.019795+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "directHealthySourceCount": 6,
+  "fallbackHealthySourceCount": 35,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 29
     },
     {
       "name": "Ekattor TV",
@@ -404,11 +404,11 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 30
     },
     {
       "name": "BBC News বাংলা",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 25,
   "alertItems": [
     {
       "title": "রিয়াদ রুটে বিমানের ফ্লাইট স্থগিত ৩০ নভেম্বর পর্যন্ত",
@@ -727,12 +727,17 @@
       "source": "UNB",
       "publisherName": "UNB",
       "sourceEvidence": [
-        "UNB"
+        "UNB",
+        "Daily Observer"
       ],
       "sourceLinks": [
         {
           "name": "UNB",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF/%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%B8%E0%A6%B6%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%B7%E0%A7%8D%E0%A6%A0%E0%A7%80%E0%A6%B0-%E0%A7%A9%E0%A7%AD%E0%A7%A8-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A9%E0%A7%A7%E0%A7%AC--%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80/116481"
+        },
+        {
+          "name": "Daily Observer",
+          "url": "https://bn.observerbd.com/news/149919"
         }
       ],
       "category": "Bangladesh",
@@ -745,9 +750,15 @@
           "summary": "পাঁচ বছরে পার্বত্য চট্টগ্রামে সশস্ত্র গোষ্ঠীর ৩৭২ হামলায় নিহত ৩১৬: স্বরাষ্ট্রমন্ত্রী United News of Bangladesh",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF/%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%B8%E0%A6%B6%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%B7%E0%A7%8D%E0%A6%A0%E0%A7%80%E0%A6%B0-%E0%A7%A9%E0%A7%AD%E0%A7%A8-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A9%E0%A7%A7%E0%A7%AC--%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80/116481",
           "incidentDateText": "১১ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Daily Observer",
+          "title": "পার্বত্য চট্টগ্রামে পাঁচ বছরে হামলায় নিহত ৩১৬ জন: স্বরাষ্ট্রমন্ত্রী - Daily Observer",
+          "summary": "পার্বত্য চট্টগ্রামে পাঁচ বছরে হামলায় নিহত ৩১৬ জন: স্বরাষ্ট্রমন্ত্রী Daily Observer",
+          "url": "https://bn.observerbd.com/news/149919"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "b991815f5b429a2523c7231f5bf64d49"
     },
     {
