@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-12T00:21:43.622440+00:00",
-  "updatedAt": "2026-11-12T00:21:43.622440+00:00",
+  "generatedAt": "2026-11-12T00:41:37.039200+00:00",
+  "updatedAt": "2026-11-12T00:41:37.039200+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -375,7 +375,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>",
+      "directError": "<urlopen error [Errno -3] Temporary failure in name resolution>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "যুবদল-কৃষদল নেতার হামলায় দুই ভাই গুরুতর আহত",
@@ -761,37 +761,6 @@
       "alertEventId": "b634193cc5a5e8ce57b892d7e673955a"
     },
     {
-      "title": "নারায়ণগঞ্জে মাদরাসায় আগুন: এখনো চিকিৎসাধীন ৯, ছাড়পত্র পেয়েছে ৮৫ জন",
-      "summary": "নারায়ণগঞ্জে মাদরাসায় আগুন: এখনো চিকিৎসাধীন ৯, ছাড়পত্র পেয়েছে ৮৫ জন",
-      "link": "https://www.jagonews24.com/national/news/1178389",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1178389",
-      "publishedAt": "2026-11-11T13:40:38+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1178389"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "নারায়ণগঞ্জে মাদরাসায় আগুন: এখনো চিকিৎসাধীন ৯, ছাড়পত্র পেয়েছে ৮৫ জন",
-          "summary": "নারায়ণগঞ্জে মাদরাসায় আগুন: এখনো চিকিৎসাধীন ৯, ছাড়পত্র পেয়েছে ৮৫ জন",
-          "url": "https://www.jagonews24.com/national/news/1178389"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "db9ef4ab6e4f81e4150c90cc0e7f3b38"
-    },
-    {
       "title": "হাসপাতাল না খুললে তোদের হত্যা করা হবে, আর আমার কথা বললে এবার গোলাগুলি হবে",
       "summary": "চাঁদাবাজি, চাঁদা দাবি, হামলা, ভাঙচুর ও গুলি ছুড়ে আতঙ্ক সৃষ্টির ঘটনায় খুলনায় উদ্বেগ বাড়ছে ব্যবসায়ীদের। চাঁদাবাজদের দাপটে একের পর এক প্রতিষ্ঠান ও ফার্মেসি বন্ধ করে দিতে বাধ্য হয়েছেন তারা। আবার চাঁদা দিতে না পারায় ডায়াগনস্টিক সেন্টার বন্ধের হুমকি দেওয়া হলে সেটি বন্ধ করে দেওয়া হয়। পরে সন্ত্রাসীদের পাল্টা হত্যার হুমকির মুখে আবারও খুলতে বাধ্য হন মালিকপক্ষ। এরই মধ্যে খুলনা মহানগরীর চারটি... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/980323/%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2-%E0%A6%A8%E0%A6%BE-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%B2%E0%A7%87-%E0%A6%A4%E0%A7%8B%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%B9%E0%A6%AC%E0%A7%87-%E0%A6%86%E0%A6%B0-%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%A5%E0%A6%BE",
@@ -956,8 +925,7 @@
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
         "Dhaka Tribune Bangla",
-        "Jamuna Television",
-        "Risingbd.com"
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
@@ -967,10 +935,6 @@
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/667824"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/670543"
         }
       ],
       "category": "Bangladesh",
@@ -988,15 +952,9 @@
           "title": "গাজীপুরে মোটরসাইকেল দুর্ঘটনায় স্বামী-স্ত্রী ও সন্তানসহ একই পরিবারের নিহত ৩ - Jamuna Television",
           "summary": "গাজীপুরে মোটরসাইকেল দুর্ঘটনায় স্বামী-স্ত্রী ও সন্তানসহ একই পরিবারের নিহত ৩ Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/667824"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "গাজীপুরে সড়ক দুর্ঘটনায় প্রাণ গেল ৩ মোটরসাইকেল আরোহীর - Risingbd.com",
-          "summary": "গাজীপুরে সড়ক দুর্ঘটনায় প্রাণ গেল ৩ মোটরসাইকেল আরোহীর Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/670543"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "16b5a0f3219a97071491dda21c23944d"
     },
     {
