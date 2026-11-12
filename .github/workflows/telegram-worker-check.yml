@@ -7,6 +7,9 @@ on:
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/blog-manager.mjs'
+      - 'cloudflare/paid-subscriptions.mjs'
+      - 'cloudflare/migrations/**'
+      - 'tests/paid-subscriptions.test.mjs'
       - 'journal.js'
       - 'journal.css'
       - 'projects.html'
@@ -63,6 +66,7 @@ jobs:
       - name: Parse Developer Journal modules and frontend scripts
         run: |
           node --check cloudflare/blog-manager.mjs
+          node --check cloudflare/paid-subscriptions.mjs
           node --check journal.js
           node --check miniapp/app.js
       - name: Verify Developer Journal publishing and visibility rules
@@ -71,6 +75,8 @@ jobs:
         run: node tests/developer-journal.test.mjs
       - name: Verify Telegram menu and KV write regressions
         run: node tests/telegram-bot-regression.test.mjs
+      - name: Verify paid subscription and payment workflows
+        run: node --test tests/paid-subscriptions.test.mjs
       - name: Verify KV optimization and alert security contracts
         run: node tests/kv-alert-optimization.test.mjs
       - name: Verify visitor location consent and Telegram directory contracts
@@ -95,7 +101,7 @@ jobs:
           const required = [
             'callback_query', 'botHandleCallback', 'botMainKeyboard',
             'BOT_CONFIG_KV', 'BOT_DEFAULTS', 'answerCallbackQuery',
-            'ADMIN_TELEGRAM_IDS', 'if(action==="refresh")',
+            'ADMIN_TELEGRAM_IDS', 'PAYMENTS_DB', 'paidHandleCallback', 'listActiveAlertRecipients', 'Payments & Subscriptions', 'if(action==="paymentAdminOverview")', 'if(action==="paymentAdminAction")', 'if(action==="refresh")',
             'if(shouldSendDailyReport)', 'cfg.emergencyProtection',
             'pathname==="/workflow-config"', 'newsRefresh:true',
             'const runChecks=!!cfg.monitoring&&!!cfg.scheduledChecks;',
@@ -220,7 +226,7 @@ jobs:
           NODE
 
   journal-live-smoke-test:
-    if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     steps:
       - name: Verify live Developer Journal public feed and privacy boundary
@@ -276,11 +282,13 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
-            'https://kokushibu74.github.io/miniapp/app.js?v=2' -o /tmp/miniapp-live.js
+            'https://kokushibu74.github.io/miniapp/app.js?v=3' -o /tmp/miniapp-live.js
           grep -q 'Developer Journal' /tmp/miniapp-live.js
           grep -q 'blogSave' /tmp/miniapp-live.js
           grep -q 'Title and details are required' /tmp/miniapp-live.js
           grep -q 'Optional image' /tmp/miniapp-live.js
+          grep -q 'Payments & Subscriptions' /tmp/miniapp-live.js
+          grep -q 'paymentAdminOverview' /tmp/miniapp-live.js
           echo 'Live Telegram Smart Blog Manager asset: OK'
 
   journal-browser-smoke:
