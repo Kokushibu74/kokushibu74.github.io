@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-12T09:46:38.983039+00:00",
-  "updatedAt": "2026-11-12T09:46:38.983039+00:00",
+  "generatedAt": "2026-11-12T10:06:34.064675+00:00",
+  "updatedAt": "2026-11-12T10:06:34.064675+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 6,
-  "fallbackHealthySourceCount": 35,
+  "directHealthySourceCount": 7,
+  "fallbackHealthySourceCount": 34,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -84,18 +84,18 @@
       "name": "Bangla Tribune",
       "domain": "banglatribune.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 0
     },
     {
       "name": "Dhaka Tribune",
       "domain": "dhakatribune.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9
+      "fallbackItems": 10
     },
     {
       "name": "New Age",
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25
+      "fallbackItems": 24
     },
     {
       "name": "Risingbd",
@@ -238,14 +238,14 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27
+      "fallbackItems": 26
     },
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 22,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "হবিগঞ্জে ট্রাকের সঙ্গে সংঘর্ষে ডাকবাহী গাড়ির চালকসহ তিনজন নিহত",
@@ -505,6 +505,37 @@
       "alertEventId": "e791b04cfd0163127f521537d2e3ba82"
     },
     {
+      "title": "‘জেলা ছাত্রলীগ সভাপতি হুমকি দিয়েছে’, হামলার জন্য আ.লীগকে দায়ী করলেন নুসরাত",
+      "summary": "কুষ্টিয়ার দৌলতপুরে নিজের পৈতৃক বাড়িতে অগ্নিকাণ্ডের ঘটনাকে ‘পরিকল্পিত হামলা’ বলে দাবি করেছেন জাতীয় নাগরিক পার্টির (এনসিপি) যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম। এ ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছেন তিনি। তার অভিযোগ, ঘটনার আগে থেকেই তাকে বিভিন্ন নম্বর থেকে হুমকি দেওয়া হচ্ছিল। বৃহস্পতিবার (১২ নভেম্বর) বেলা সাড়ে ১১টার দিকে উপজেলার বাগোয়ান গ্রামে ক্ষতিগ্রস্ত... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/980469/%E2%80%98%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%B8%E0%A6%AD%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%AE%E0%A6%95%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/980469/%E2%80%98%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%B8%E0%A6%AD%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%AE%E0%A6%95%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF",
+      "publishedAt": "2026-11-12T08:48:06+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/980469/%E2%80%98%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%B8%E0%A6%AD%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%AE%E0%A6%95%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "‘জেলা ছাত্রলীগ সভাপতি হুমকি দিয়েছে’, হামলার জন্য আ.লীগকে দায়ী করলেন নুসরাত",
+          "summary": "কুষ্টিয়ার দৌলতপুরে নিজের পৈতৃক বাড়িতে অগ্নিকাণ্ডের ঘটনাকে ‘পরিকল্পিত হামলা’ বলে দাবি করেছেন জাতীয় নাগরিক পার্টির (এনসিপি) যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম। এ ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছেন তিনি। তার অভিযোগ, ঘটনার আগে থেকেই তাকে বিভিন্ন নম্বর থেকে হুমকি দেওয়া হচ্ছিল। বৃহস্পতিবার (১২ নভেম্বর) বেলা সাড়ে ১১টার দিকে উপজেলার বাগোয়ান গ্রামে ক্ষতিগ্রস্ত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/980469/%E2%80%98%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%B8%E0%A6%AD%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%AE%E0%A6%95%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "dbad87c19ee07f5c6f356156b099e2cd"
+    },
+    {
       "title": "যারা আমাদের ভয় পাইয়ে দেবে ভাবছে, তাদের মুখে শুধুই চুনকালি: এমপি নুসরাত",
       "summary": "কুষ্টিয়ার দৌলতপুরে নিজের পৈতৃক বাড়িতে হামলা ও অগ্নিসংযোগের জন্য আওয়ামী লীগের লোকজনকে দায়ী করেছেন সংরক্ষিত নারী আসনের সংসদ সদস্য ও জাতীয় নাগরিক পার্টির (এনসিপি) নেত্রী নুসরাত তাবাসসুম।",
       "link": "https://www.prothomalo.com/bangladesh/district/xnkq6ou1gr",
@@ -538,6 +569,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fd042e821b49a956e282f6b6466e1e29"
+    },
+    {
+      "title": "আতঙ্কে কোর্স শেষের আগেই ঢাকা বিশ্ববিদ্যালয় ছাড়ছেন ৮ চীনা শিক্ষার্থী",
+      "summary": "ঢাকা বিশ্ববিদ্যালয় (ঢাবি) ক্যাম্পাসে একের পর এক ককটেল বিস্ফোরণের ঘটনায় আতঙ্কিত হয়ে নির্ধারিত সময়ের আগেই বিশ্ববিদ্যালয় ছাড়ছেন আট চীনা শিক্ষার্থী। তাদের মধ্যে দুজন ইতোমধ্যে চীনে ফিরে গেছেন। বাকি ছয়জন আগামীকাল শুক্রবার (১৩ নভেম্বর) ঢাকা ছাড়বেন। আধুনিক ভাষা ইনস্টিটিউটের অধীনে বাংলা ভাষা ও সংস্কৃতিবিষয়ক একটি বিশেষ কোর্সে অংশ নিতে তারা ঢাকা বিশ্ববিদ্যালয়ে এসেছিলেন। নভেম্বরের শেষ দিকে কোর্স ও পরীক্ষা... বিস্তারিত",
+      "link": "https://www.banglatribune.com/my-campus/980453/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%B6%E0%A7%87%E0%A6%B7-%E0%A6%B9%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A6%A2%E0%A6%BE%E0%A6%AC%E0%A6%BF",
+      "publisherUrl": "https://www.banglatribune.com/my-campus/980453/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%B6%E0%A7%87%E0%A6%B7-%E0%A6%B9%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A6%A2%E0%A6%BE%E0%A6%AC%E0%A6%BF",
+      "publishedAt": "2026-11-12T07:48:10+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/my-campus/980453/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%B6%E0%A7%87%E0%A6%B7-%E0%A6%B9%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A6%A2%E0%A6%BE%E0%A6%AC%E0%A6%BF"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/education/news/1178587"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "আতঙ্কে কোর্স শেষের আগেই ঢাকা বিশ্ববিদ্যালয় ছাড়ছেন ৮ চীনা শিক্ষার্থী",
+          "summary": "ঢাকা বিশ্ববিদ্যালয় (ঢাবি) ক্যাম্পাসে একের পর এক ককটেল বিস্ফোরণের ঘটনায় আতঙ্কিত হয়ে নির্ধারিত সময়ের আগেই বিশ্ববিদ্যালয় ছাড়ছেন আট চীনা শিক্ষার্থী। তাদের মধ্যে দুজন ইতোমধ্যে চীনে ফিরে গেছেন। বাকি ছয়জন আগামীকাল শুক্রবার (১৩ নভেম্বর) ঢাকা ছাড়বেন। আধুনিক ভাষা ইনস্টিটিউটের অধীনে বাংলা ভাষা ও সংস্কৃতিবিষয়ক একটি বিশেষ কোর্সে অংশ নিতে তারা ঢাকা বিশ্ববিদ্যালয়ে এসেছিলেন। নভেম্বরের শেষ দিকে কোর্স ও পরীক্ষা... বিস্তারিত",
+          "url": "https://www.banglatribune.com/my-campus/980453/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%B8-%E0%A6%B6%E0%A7%87%E0%A6%B7-%E0%A6%B9%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A6%A2%E0%A6%BE%E0%A6%AC%E0%A6%BF"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
+          "summary": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
+          "url": "https://www.jagonews24.com/education/news/1178587"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "2deaa904e07a760863566f123debad27"
     },
     {
       "title": "খাগড়াছড়িতে মধ্যরাতে দুই সরকারি অফিসে আগুন, ঘটনাস্থলে কেরোসিনে বোতল",
@@ -619,20 +692,20 @@
       "alertEventId": "6fc798a500db324df42039adb6732e6e"
     },
     {
-      "title": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
-      "summary": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
-      "link": "https://www.jagonews24.com/education/news/1178587",
-      "publisherUrl": "https://www.jagonews24.com/education/news/1178587",
-      "publishedAt": "2026-11-12T07:08:12+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "দাঁড়িয়ে থাকা ট্রাকের পেছনে ডাক বিভাগের কাভার্ডভ্যানের ধাক্কায় নিহত ৩",
+      "summary": "হবিগঞ্জের মাধবপুরে ঢাকা-সিলেট মহাসড়কে দাঁড়িয়ে থাকা পাথরবোঝাই একটি ট্রাকের পেছনে বাংলাদেশ ডাক বিভাগের একটি কাভার্ডভ্যানের ধাক্কায় তিন জন নিহত হয়েছেন। নিহত তিন জনই কাভার্ডভ্যানে ছিলেন। বৃহস্পতিবার (১২ নভেম্বর) ভোরে উপজেলার নোয়াপাড়া এলাকার কাউছারনগরে এ দুর্ঘটনা ঘটে। নিহতরা হলেন- মৌলভীবাজারের কমলগঞ্জ উপজেলার আদমপুর গ্রামের মৃত খয়রুদ্দিনের ছেলে জসিম মিয়া, শ্রীমঙ্গল উপজেলার সুরাবি গ্রামের সন্তুস... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/sylhet/980446/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/sylhet/980446/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-12T07:08:36+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/education/news/1178587"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/sylhet/980446/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -640,30 +713,30 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
-          "summary": "ঢাকা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণ, ফিরে যাচ্ছেন চীনা শিক্ষার্থীরা",
-          "url": "https://www.jagonews24.com/education/news/1178587"
+          "name": "Bangla Tribune",
+          "title": "দাঁড়িয়ে থাকা ট্রাকের পেছনে ডাক বিভাগের কাভার্ডভ্যানের ধাক্কায় নিহত ৩",
+          "summary": "হবিগঞ্জের মাধবপুরে ঢাকা-সিলেট মহাসড়কে দাঁড়িয়ে থাকা পাথরবোঝাই একটি ট্রাকের পেছনে বাংলাদেশ ডাক বিভাগের একটি কাভার্ডভ্যানের ধাক্কায় তিন জন নিহত হয়েছেন। নিহত তিন জনই কাভার্ডভ্যানে ছিলেন। বৃহস্পতিবার (১২ নভেম্বর) ভোরে উপজেলার নোয়াপাড়া এলাকার কাউছারনগরে এ দুর্ঘটনা ঘটে। নিহতরা হলেন- মৌলভীবাজারের কমলগঞ্জ উপজেলার আদমপুর গ্রামের মৃত খয়রুদ্দিনের ছেলে জসিম মিয়া, শ্রীমঙ্গল উপজেলার সুরাবি গ্রামের সন্তুস... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/sylhet/980446/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97%E0%A7%87%E0%A6%B0"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "f6a6869151d62402bb05940f8d680024"
+      "alertEventId": "8f8aaed874e08561b216286edfe971b3"
     },
     {
-      "title": "নুসরাত তাবাসসুম বললেন, ‘আগুনের পথ পাড়ি দিয়ে নিজের কাজ করে যাব’",
-      "summary": "নুসরাতের কুষ্টিয়ার গ্রামের বাড়িতে পেট্রলবোমা হামলা চালানো হয়েছে বলে গতকাল রাতে অভিযোগ করেন দলটির নেতারা। গতকাল দিবাগত রাতে নুসরাতের গ্রামের বাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটে।",
-      "link": "https://www.prothomalo.com/politics/fftinbwa3l",
-      "publisherUrl": "https://www.prothomalo.com/politics/fftinbwa3l",
-      "publishedAt": "2026-11-12T05:50:31+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "রাস্তা পার হতে গিয়ে গাড়ির ধাক্কায় রাজধানীতে প্রাণ গেলো এক ব্যক্তির",
+      "summary": "রাজধানীর উত্তরার আজমপুর এলাকায় গাড়ির ধাক্কায় মো. শফিকুল ইসলাম (৫৫) নামের এক ব্যক্তি নিহত হয়েছেন। বৃহস্পতিবার (১২ নভেম্বর) ভোর ৪টার দিকে এই দুর্ঘটনা ঘটে। পরে তাকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে নিয়ে গে‌লে চিকিৎসক মৃত ঘোষণা করেন। নিহত শফিকুল ইসলাম ঝিনাইদহ সদর উপজেলার আরাফপুর গ্রামের নিজামুদ্দিনের ছেলে। হাসপাতা‌লে নিহতের খালা শাশুড়ি রুবিয়া আক্তার বলেন, ‘ভোরে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/law-and-crime/980441/%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B0-%E0%A6%B9%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publisherUrl": "https://www.banglatribune.com/law-and-crime/980441/%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B0-%E0%A6%B9%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publishedAt": "2026-11-12T06:53:46+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Prothom Alo"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/politics/fftinbwa3l"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/law-and-crime/980441/%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B0-%E0%A6%B9%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
         }
       ],
       "category": "Bangladesh",
@@ -671,18 +744,107 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Prothom Alo",
-          "title": "নুসরাত তাবাসসুম বললেন, ‘আগুনের পথ পাড়ি দিয়ে নিজের কাজ করে যাব’",
-          "summary": "নুসরাতের কুষ্টিয়ার গ্রামের বাড়িতে পেট্রলবোমা হামলা চালানো হয়েছে বলে গতকাল রাতে অভিযোগ করেন দলটির নেতারা। গতকাল দিবাগত রাতে নুসরাতের গ্রামের বাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/politics/fftinbwa3l",
-          "incidentDateText": "১২ নভেম্বর ২০২৬",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "নুসরাতের কুষ্টিয়ার গ্রামে, কুষ্টিয়া, পর কুষ্টিয়ার দৌলতপুর উপজেলার, বাগোয়ান গ্রামে নুসরাতের গ্রামে"
+          "name": "Bangla Tribune",
+          "title": "রাস্তা পার হতে গিয়ে গাড়ির ধাক্কায় রাজধানীতে প্রাণ গেলো এক ব্যক্তির",
+          "summary": "রাজধানীর উত্তরার আজমপুর এলাকায় গাড়ির ধাক্কায় মো. শফিকুল ইসলাম (৫৫) নামের এক ব্যক্তি নিহত হয়েছেন। বৃহস্পতিবার (১২ নভেম্বর) ভোর ৪টার দিকে এই দুর্ঘটনা ঘটে। পরে তাকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে নিয়ে গে‌লে চিকিৎসক মৃত ঘোষণা করেন। নিহত শফিকুল ইসলাম ঝিনাইদহ সদর উপজেলার আরাফপুর গ্রামের নিজামুদ্দিনের ছেলে। হাসপাতা‌লে নিহতের খালা শাশুড়ি রুবিয়া আক্তার বলেন, ‘ভোরে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/980441/%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B0-%E0%A6%B9%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "7c29dd14ca93ad1c0c5ad7ff6b2af648"
+      "alertEventId": "17b5b804a1819cdde49d810f5fd36d0e"
+    },
+    {
+      "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে ৫ জন গুলিবিদ্ধ",
+      "summary": "ইউপি নির্বাচনকে সামনে রেখে আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জ সদরের মোল্লাকান্দি ইউনিয়নে বিএনপির দুই পক্ষের মধ্যে হামলা, সংঘর্ষ ও ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে পাঁচ জন গুলিবিদ্ধসহ ১০ জন আহত হয়েছে। বুধবার (১১ নভেম্বর) দিনগত রাত সাড়ে ১১টা থেকে বৃহস্পতিবার (১২ নভেম্বর) সকাল ৭টা পর্যন্ত মোল্লাকান্দি ইউনিয়নের নোয়াদ্দা, রাজারচর, কংসপুরা ও নতুন আমঘাটা গ্রামে ইউনিয়ন বিএনপির সহ-সভাপতি আওলাদ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/980440/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A7%AB-%E0%A6%9C%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/980440/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A7%AB-%E0%A6%9C%E0%A6%A8",
+      "publishedAt": "2026-11-12T06:51:32+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/980440/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A7%AB-%E0%A6%9C%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে ৫ জন গুলিবিদ্ধ",
+          "summary": "ইউপি নির্বাচনকে সামনে রেখে আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জ সদরের মোল্লাকান্দি ইউনিয়নে বিএনপির দুই পক্ষের মধ্যে হামলা, সংঘর্ষ ও ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে পাঁচ জন গুলিবিদ্ধসহ ১০ জন আহত হয়েছে। বুধবার (১১ নভেম্বর) দিনগত রাত সাড়ে ১১টা থেকে বৃহস্পতিবার (১২ নভেম্বর) সকাল ৭টা পর্যন্ত মোল্লাকান্দি ইউনিয়নের নোয়াদ্দা, রাজারচর, কংসপুরা ও নতুন আমঘাটা গ্রামে ইউনিয়ন বিএনপির সহ-সভাপতি আওলাদ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/980440/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A7%AB-%E0%A6%9C%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c79b02ea2fc92b863832dfab840d6dbd"
+    },
+    {
+      "title": "নুসরাত তাবাসসুমের বাড়িতে হামলা-অগ্নিসংযোগের ঘটনায় জামায়াতের নিন্দা",
+      "summary": "জাতীয় নাগরিক পার্টির (এনসিপি) জাতীয় নারী শক্তির সদস্যসচিব, দলের যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম জ্যোতির কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামের বাড়িতে পেট্রলবোমা হামলা ও অগ্নিসংযোগের ঘটনায় গভীর উদ্বেগ এবং এর তীব্র নিন্দা ও প্রতিবাদ জানিয়েছে বাংলাদেশ জামায়াতে ইসলামী। বৃহস্পতিবার (১২ নভেম্বর) দলটির সহকারী সেক্রেটারি জেনারেল এবং কেন্দ্রীয় প্রচার ও মিডিয়া... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/jamat-e-islam/980439/%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F",
+      "publisherUrl": "https://www.banglatribune.com/politics/jamat-e-islam/980439/%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F",
+      "publishedAt": "2026-11-12T06:46:37+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/jamat-e-islam/980439/%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নুসরাত তাবাসসুমের বাড়িতে হামলা-অগ্নিসংযোগের ঘটনায় জামায়াতের নিন্দা",
+          "summary": "জাতীয় নাগরিক পার্টির (এনসিপি) জাতীয় নারী শক্তির সদস্যসচিব, দলের যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম জ্যোতির কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামের বাড়িতে পেট্রলবোমা হামলা ও অগ্নিসংযোগের ঘটনায় গভীর উদ্বেগ এবং এর তীব্র নিন্দা ও প্রতিবাদ জানিয়েছে বাংলাদেশ জামায়াতে ইসলামী। বৃহস্পতিবার (১২ নভেম্বর) দলটির সহকারী সেক্রেটারি জেনারেল এবং কেন্দ্রীয় প্রচার ও মিডিয়া... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/jamat-e-islam/980439/%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f09a5cb009ad36bbab10cb770b935012"
+    },
+    {
+      "title": "সরকার দায়িত্ব পালনে ব্যর্থ হলে খেসারত উচ্চ মূল্যে দিতে হবে: জামায়াত আমির",
+      "summary": "জাতীয়তাবাদী নাগরিক পার্টির (এনসিপি) জাতীয় নারী শক্তির সদস্যসচিব, এনসিপির যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম জ্যোতির কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামের বাড়িতে পেট্রলবোমা হামলা ও অগ্নিসংযোগের তীব্র নিন্দা ও প্রতিবাদ জানিয়েছেন বিরোধীদলীয় নেতা ও বাংলাদেশ জামায়াতে ইসলামীর আমির ডা. শফিকুর রহমান। বুধবার (১১ নভেনবর) দিবাগত রাত ১২টার পর এই হামলার ঘটনা ঘটে।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/jamat-e-islam/980423/%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BE%E0%A7%9F%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AC-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A7%8D%E0%A6%A5-%E0%A6%B9%E0%A6%B2%E0%A7%87-%E0%A6%96%E0%A7%87%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/politics/jamat-e-islam/980423/%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BE%E0%A7%9F%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AC-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A7%8D%E0%A6%A5-%E0%A6%B9%E0%A6%B2%E0%A7%87-%E0%A6%96%E0%A7%87%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A7%87",
+      "publishedAt": "2026-11-12T06:00:53+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/jamat-e-islam/980423/%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BE%E0%A7%9F%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AC-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A7%8D%E0%A6%A5-%E0%A6%B9%E0%A6%B2%E0%A7%87-%E0%A6%96%E0%A7%87%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সরকার দায়িত্ব পালনে ব্যর্থ হলে খেসারত উচ্চ মূল্যে দিতে হবে: জামায়াত আমির",
+          "summary": "জাতীয়তাবাদী নাগরিক পার্টির (এনসিপি) জাতীয় নারী শক্তির সদস্যসচিব, এনসিপির যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের সংসদ সদস্য নুসরাত তাবাসসুম জ্যোতির কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামের বাড়িতে পেট্রলবোমা হামলা ও অগ্নিসংযোগের তীব্র নিন্দা ও প্রতিবাদ জানিয়েছেন বিরোধীদলীয় নেতা ও বাংলাদেশ জামায়াতে ইসলামীর আমির ডা. শফিকুর রহমান। বুধবার (১১ নভেনবর) দিবাগত রাত ১২টার পর এই হামলার ঘটনা ঘটে।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/jamat-e-islam/980423/%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BE%E0%A7%9F%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AC-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A7%8D%E0%A6%A5-%E0%A6%B9%E0%A6%B2%E0%A7%87-%E0%A6%96%E0%A7%87%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%89%E0%A6%9A%E0%A7%8D%E0%A6%9A-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "426653327433ab6c8d193218fb881372"
     },
     {
       "title": "স্বর্ণের বাজারে বিরাট ধস - Dhaka Tribune Bangla",
@@ -778,11 +940,11 @@
       "alertEventId": "acbeb43a858800cbc6290a65fc026829"
     },
     {
-      "title": "বাংলাদেশের কাছে হারের পর মুতাইরির বিস্ফোরণ, ‘মধ্যরাতের মেইলেই বুঝেছিলাম আমরা হারতে যাচ্ছি’ - Bangla Tribune",
-      "summary": "বাংলাদেশের কাছে হারের পর মুতাইরির বিস্ফোরণ, ‘মধ্যরাতের মেইলেই বুঝেছিলাম আমরা হারতে যাচ্ছি’ Bangla Tribune",
-      "link": "https://www.banglatribune.com/sport/football/980392/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%A4%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publisherUrl": "https://www.banglatribune.com/sport/football/980392/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%A4%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publishedAt": "2026-11-11T19:37:49+00:00",
+      "title": "এমপি নুসরাতের বাড়িতে আগুনে পুড়লো ঘর, রক্ষা পেলেন মা-বাবা",
+      "summary": "সংরক্ষিত নারী আসনের সংসদ সদস্য ও এনসিপি নেত্রী নুসরাত তাবাসসুমের কুষ্টিয়ার গ্রামের বাড়িতে আগুন লেগেছে। সেখানে পেট্রোলবোমা হামলা চালানো হয়েছে বলে এনসিপি নেতারা অভিযোগ করেছেন। বুধবার (১১ নভেম্বর) দিবাগত ১২টার পর কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামে নুসরাতের গ্রামের বাড়িতে এই অগ্নিকাণ্ডের ঘটনা ঘটে। কুষ্টিয়ার অতিরিক্ত পুলিশ সুপার (ভেড়ামারা সার্কেল) দেলোয়ার হোসেন বলেন, খবর পাওয়ার সঙ্গে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/980401/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A6%98%E0%A6%B0-%E0%A6%93-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%9B%E0%A6%BE%E0%A6%97%E0%A6%B2",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/980401/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A6%98%E0%A6%B0-%E0%A6%93-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%9B%E0%A6%BE%E0%A6%97%E0%A6%B2",
+      "publishedAt": "2026-11-12T02:59:20+00:00",
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
@@ -791,7 +953,7 @@
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/sport/football/980392/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%A4%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+          "url": "https://www.banglatribune.com/country/khulna/980401/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A6%98%E0%A6%B0-%E0%A6%93-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%9B%E0%A6%BE%E0%A6%97%E0%A6%B2"
         }
       ],
       "category": "Bangladesh",
@@ -800,13 +962,13 @@
       "sourceStories": [
         {
           "name": "Bangla Tribune",
-          "title": "বাংলাদেশের কাছে হারের পর মুতাইরির বিস্ফোরণ, ‘মধ্যরাতের মেইলেই বুঝেছিলাম আমরা হারতে যাচ্ছি’ - Bangla Tribune",
-          "summary": "বাংলাদেশের কাছে হারের পর মুতাইরির বিস্ফোরণ, ‘মধ্যরাতের মেইলেই বুঝেছিলাম আমরা হারতে যাচ্ছি’ Bangla Tribune",
-          "url": "https://www.banglatribune.com/sport/football/980392/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%A4%E0%A6%BE%E0%A6%87%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+          "title": "এমপি নুসরাতের বাড়িতে আগুনে পুড়লো ঘর, রক্ষা পেলেন মা-বাবা",
+          "summary": "সংরক্ষিত নারী আসনের সংসদ সদস্য ও এনসিপি নেত্রী নুসরাত তাবাসসুমের কুষ্টিয়ার গ্রামের বাড়িতে আগুন লেগেছে। সেখানে পেট্রোলবোমা হামলা চালানো হয়েছে বলে এনসিপি নেতারা অভিযোগ করেছেন। বুধবার (১১ নভেম্বর) দিবাগত ১২টার পর কুষ্টিয়ার দৌলতপুর উপজেলার বাগোয়ান গ্রামে নুসরাতের গ্রামের বাড়িতে এই অগ্নিকাণ্ডের ঘটনা ঘটে। কুষ্টিয়ার অতিরিক্ত পুলিশ সুপার (ভেড়ামারা সার্কেল) দেলোয়ার হোসেন বলেন, খবর পাওয়ার সঙ্গে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/980401/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B-%E0%A6%98%E0%A6%B0-%E0%A6%93-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%9B%E0%A6%BE%E0%A6%97%E0%A6%B2"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "79131c3905f3aec5aaab23c7385cbe07"
+      "alertEventId": "1c8dfcbc3cc714a270d73053081f9253"
     },
     {
       "title": "খিলগাঁও থানার ভেতরে পরপর দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
@@ -1055,37 +1217,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "16b5a0f3219a97071491dda21c23944d"
-    },
-    {
-      "title": "নারায়ণগঞ্জে মাদরাসায় আগুনের ঘটনায় ১৮ শিক্ষার্থী চিকিৎসাধীন - Channel 24",
-      "summary": "নারায়ণগঞ্জে মাদরাসায় আগুনের ঘটনায় ১৮ শিক্ষার্থী চিকিৎসাধীন Channel 24",
-      "link": "https://www.channel24bd.tv/national/article/358215/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A7%A7%E0%A7%AE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80-%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE%E0%A6%A7%E0%A7%80%E0%A6%A8%C2%A0",
-      "publisherUrl": "https://www.channel24bd.tv/national/article/358215/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A7%A7%E0%A7%AE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80-%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE%E0%A6%A7%E0%A7%80%E0%A6%A8%C2%A0",
-      "publishedAt": "2026-11-11T09:48:00+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/national/article/358215/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A7%A7%E0%A7%AE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80-%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE%E0%A6%A7%E0%A7%80%E0%A6%A8%C2%A0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "নারায়ণগঞ্জে মাদরাসায় আগুনের ঘটনায় ১৮ শিক্ষার্থী চিকিৎসাধীন - Channel 24",
-          "summary": "নারায়ণগঞ্জে মাদরাসায় আগুনের ঘটনায় ১৮ শিক্ষার্থী চিকিৎসাধীন Channel 24",
-          "url": "https://www.channel24bd.tv/national/article/358215/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A7%A7%E0%A7%AE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80-%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE%E0%A6%A7%E0%A7%80%E0%A6%A8%C2%A0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c55b7f3cc6d7e7435916e58decd84f0f"
     }
   ]
 }
