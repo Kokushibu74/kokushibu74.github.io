@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-13T14:21:51.886240+00:00",
-  "updatedAt": "2026-11-13T14:21:51.886240+00:00",
+  "generatedAt": "2026-11-13T14:41:59.496950+00:00",
+  "updatedAt": "2026-11-13T14:41:59.496950+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22
+      "fallbackItems": 20
     },
     {
       "name": "Risingbd",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -288,7 +288,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28
+      "fallbackItems": 27
     },
     {
       "name": "Desh Rupantor",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 39,
   "alertItems": [
     {
       "title": "এমপির বাড়িতে বিদ্যুৎ থেকে আগুনের কোনও আলামত পায়নি পল্লী বিদ্যুৎ",
@@ -559,38 +559,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e6ffa52f919f873d3d580f3d3b8bb953"
-    },
-    {
-      "title": "গাজীপুরে এগারসিন্দুরের ইঞ্জিনে আগুন, চট্টগ্রাম-ঢাকা রুটে ট্রেন চলাচল বন্ধ - Ajker Patrika",
-      "summary": "গাজীপুরে এগারসিন্দুরের ইঞ্জিনে আগুন, চট্টগ্রাম-ঢাকা রুটে ট্রেন চলাচল বন্ধ Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/amp/bangladesh/gazipur/ajpijplreca7i",
-      "publisherUrl": "https://www.ajkerpatrika.com/amp/bangladesh/gazipur/ajpijplreca7i",
-      "publishedAt": "2026-11-13T12:36:29+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/amp/bangladesh/gazipur/ajpijplreca7i"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "গাজীপুরে এগারসিন্দুরের ইঞ্জিনে আগুন, চট্টগ্রাম-ঢাকা রুটে ট্রেন চলাচল বন্ধ - Ajker Patrika",
-          "summary": "গাজীপুরে এগারসিন্দুরের ইঞ্জিনে আগুন, চট্টগ্রাম-ঢাকা রুটে ট্রেন চলাচল বন্ধ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/amp/bangladesh/gazipur/ajpijplreca7i",
-          "incidentDateText": "১৩ নভেম্বর ২০২৬"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ee2b9ef12495cb6c125140b96e7c2fc"
     },
     {
       "title": "কমিটি নিয়ে ছাত্রদলের দুই পক্ষের সংঘর্ষ, বিএনপি ও এমপির অফিস ভাঙচুর",
@@ -775,7 +743,6 @@
       "sourceEvidence": [
         "Dhaka Tribune Bangla",
         "Banglanews24",
-        "একাত্তর",
         "Jago News 24"
       ],
       "sourceLinks": [
@@ -786,10 +753,6 @@
         {
           "name": "Banglanews24",
           "url": "https://banglanews24.com/politics/news/bd/1693168.details"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/dhaka/97602/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A7%A7%E0%A7%A6-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%8F%E0%A6%95-%E0%A6%93"
         },
         {
           "name": "Jago News 24",
@@ -813,19 +776,13 @@
           "url": "https://banglanews24.com/politics/news/bd/1693168.details"
         },
         {
-          "name": "একাত্তর",
-          "title": "গোপালগঞ্জে একের পর এক ১০ গাড়ির সংঘর্ষ, নিহত এক ও আহত বহু - একাত্তর",
-          "summary": "গোপালগঞ্জে একের পর এক ১০ গাড়ির সংঘর্ষ, নিহত এক ও আহত বহু একাত্তর",
-          "url": "https://ekattor.tv/country/dhaka/97602/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A7%A7%E0%A7%A6-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%8F%E0%A6%95-%E0%A6%93"
-        },
-        {
           "name": "Jago News 24",
           "title": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষে বিএনপি নেতা নিহত, আহত শতাধিক",
           "summary": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষে বিএনপি নেতা নিহত, আহত শতাধিক",
           "url": "https://www.jagonews24.com/country/news/1179045"
         }
       ],
-      "corroborationCount": 4,
+      "corroborationCount": 3,
       "alertEventId": "5faede740a9885138c24aa67e2d062c3"
     },
     {
@@ -891,6 +848,37 @@
       "alertEventId": "b8f705b99c7677486b954983ebc4669f"
     },
     {
+      "title": "গোপালগঞ্জে সড়ক দুর্ঘটনা: এমপির গাড়িবহরে থাকা বিএনপি নেতার মৃত্যু - Ajker Patrika",
+      "summary": "গোপালগঞ্জে সড়ক দুর্ঘটনা: এমপির গাড়িবহরে থাকা বিএনপি নেতার মৃত্যু Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajpxun5pha9h8",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajpxun5pha9h8",
+      "publishedAt": "2026-11-13T10:42:52+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajpxun5pha9h8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "গোপালগঞ্জে সড়ক দুর্ঘটনা: এমপির গাড়িবহরে থাকা বিএনপি নেতার মৃত্যু - Ajker Patrika",
+          "summary": "গোপালগঞ্জে সড়ক দুর্ঘটনা: এমপির গাড়িবহরে থাকা বিএনপি নেতার মৃত্যু Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajpxun5pha9h8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5576439963bb2446b949543550385628"
+    },
+    {
       "title": "সৌদিতে হুথি হামলা চলতে থাকলে বিশ্বের ২০০ কোটি মুসলিম বসে থাকবে না",
       "summary": "সৌদি আরবে হামলার দায়ে ইয়ামানের হুথি গোষ্ঠীর বিরুদ্ধে ব্যবস্থা নিতে জাতিসংঘ এবং ওআইসির হস্তক্ষেপ কামনা করেছেন বাংলাদেশ খেলাফত আন্দোলনের নেতারা। তারা বলেন, সৌদি আরবের ওপর আক্রমণ অব্যাহত থাকলে বিশ্বের ২০০ কোটি মুসলমান বসে থাকবে না। কারণ মক্কা ও মদিনা হচ্ছে মুসলমানদের আবেগের জায়গা। তাই মহানবী (সা.)-এর জন্মস্থানে এ ধরনের হামলা অব্যাহত থাকলে আমরা প্রয়োজনে সৌদি আরবের পাশে দাঁড়াবো। শুক্রবার (১৩... বিস্তারিত",
       "link": "https://www.banglatribune.com/politics/other-politics/980697/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A7%81%E0%A6%A5%E0%A6%BF-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%9A%E0%A6%B2%E0%A6%A4%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A7%A8%E0%A7%A6%E0%A7%A6-%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF",
@@ -920,37 +908,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9ec6eb794b4fa174a1d43e39e1120700"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপির গাড়িবহরসহ ১০ গাড়ির সংঘর্ষ, আহত শতাধিক",
-      "summary": "গোপালগঞ্জে এমপির গাড়িবহরসহ ১০ গাড়ির সংঘর্ষ, আহত শতাধিক",
-      "link": "https://www.jagonews24.com/country/news/1179023",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1179023",
-      "publishedAt": "2026-11-13T09:27:06+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1179023"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "গোপালগঞ্জে এমপির গাড়িবহরসহ ১০ গাড়ির সংঘর্ষ, আহত শতাধিক",
-          "summary": "গোপালগঞ্জে এমপির গাড়িবহরসহ ১০ গাড়ির সংঘর্ষ, আহত শতাধিক",
-          "url": "https://www.jagonews24.com/country/news/1179023"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "111e065c722e4c24b48b19df51cde832"
     },
     {
       "title": "ইনানীতে ১৮ দিন ধরে জ্বলছে গ্যাসের আগুন, উত্তোলনে প্রস্তুত বাপেক্স",
@@ -1303,6 +1260,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9d0be53588ec36f84d1fd1ccd04f6c7b"
+    },
+    {
+      "title": "এমপি নুসরাতের বাড়িতে অগ্নিসংযোগ : টাঙ্গাইলে এনসিপির মশাল মিছিল - Risingbd.com",
+      "summary": "এমপি নুসরাতের বাড়িতে অগ্নিসংযোগ : টাঙ্গাইলে এনসিপির মশাল মিছিল Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/670810",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/670810",
+      "publishedAt": "2026-11-12T23:50:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/670810"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "এমপি নুসরাতের বাড়িতে অগ্নিসংযোগ : টাঙ্গাইলে এনসিপির মশাল মিছিল - Risingbd.com",
+          "summary": "এমপি নুসরাতের বাড়িতে অগ্নিসংযোগ : টাঙ্গাইলে এনসিপির মশাল মিছিল Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/670810"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8033dae8bb7762940edfaad00c21323e"
     },
     {
       "title": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষে বিএনপি নেতার মৃত্যু, আহত শতাধিক - Daily Bonik Barta",
