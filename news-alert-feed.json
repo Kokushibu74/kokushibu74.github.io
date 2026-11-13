@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-13T05:56:40.166452+00:00",
-  "updatedAt": "2026-11-13T05:56:40.166452+00:00",
+  "generatedAt": "2026-11-13T06:16:39.793946+00:00",
+  "updatedAt": "2026-11-13T06:16:39.793946+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -34,11 +34,11 @@
       "name": "Jago News 24",
       "domain": "jagonews24.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 0
     },
     {
       "name": "bdnews24.com",
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28
+      "fallbackItems": 27
     },
     {
       "name": "Risingbd",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 29
     },
     {
       "name": "Ekattor TV",
@@ -288,7 +288,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26
+      "fallbackItems": 14
     },
     {
       "name": "Desh Rupantor",
@@ -404,11 +404,11 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 30
     },
     {
       "name": "BBC News বাংলা",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 30,
   "alertItems": [
     {
       "title": "ফুটবল খেলাকে কেন্দ্র করে দুই গ্রামের সংঘর্ষ, প্রাণ গেলো অটোরিকশাচালকের",
@@ -463,12 +463,17 @@
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Dhaka Tribune Bangla"
+        "Dhaka Tribune Bangla",
+        "Daily Naya Diganta"
       ],
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg"
+        },
+        {
+          "name": "Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/national/1068956"
         }
       ],
       "category": "Bangladesh",
@@ -480,45 +485,19 @@
           "title": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
           "summary": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg"
+        },
+        {
+          "name": "Daily Naya Diganta",
+          "title": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) - Daily Naya Diganta",
+          "summary": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/national/1068956",
+          "incidentDateText": "বৃহস্পতিবার (১২ নভেম্বর)",
+          "incidentTimeText": "রাত ৯টা ২০ মিনিটে",
+          "incidentTimeSource": "Daily Naya Diganta"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "e3ac027382e9c8893d8f7c06e19bf743"
-    },
-    {
-      "title": "মালয়েশিয়ায় সড়ক দুর্ঘটনায় বাংলাদেশি যুবকের মৃত্যু - Jugantor",
-      "summary": "মালয়েশিয়ায় সড়ক দুর্ঘটনায় বাংলাদেশি যুবকের মৃত্যু Jugantor",
-      "link": "https://www.jugantor.com/country-news/1183587",
-      "publisherUrl": "https://www.jugantor.com/country-news/1183587",
-      "publishedAt": "2026-11-13T04:16:28+00:00",
-      "source": "Jugantor",
-      "publisherName": "Jugantor",
-      "sourceEvidence": [
-        "Jugantor"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jugantor",
-          "url": "https://www.jugantor.com/country-news/1183587"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jugantor",
-          "title": "মালয়েশিয়ায় সড়ক দুর্ঘটনায় বাংলাদেশি যুবকের মৃত্যু - Jugantor",
-          "summary": "মালয়েশিয়ায় সড়ক দুর্ঘটনায় বাংলাদেশি যুবকের মৃত্যু Jugantor",
-          "url": "https://www.jugantor.com/country-news/1183587",
-          "incidentDateText": "বুধবার (১১ নভেম্বর)",
-          "incidentTimeText": "সকাল ১০টার দিকে",
-          "incidentTimeSource": "Jugantor",
-          "locationText": "আনাস ভোলার চরফ্যাশন উপজেলার, ভোলা, দুলারহাট থানা"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f8e918d0132ba992b3a590ae87d35699"
     },
     {
       "title": "মাওয়ার পথে দুর্ঘটনায় প্রাণ হারালেন মোটরসাইকেলের দুই আরোহী - Dhaka Tribune Bangla",
@@ -656,6 +635,68 @@
       "alertEventId": "9a15ba97b4a0b4574cb103694eecb696"
     },
     {
+      "title": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
+      "summary": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
+      "link": "https://www.jagonews24.com/country/news/1178900",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1178900",
+      "publishedAt": "2026-11-13T02:15:21+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1178900"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
+          "summary": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
+          "url": "https://www.jagonews24.com/country/news/1178900"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "78d3437e083dd20c402bc49c99964918"
+    },
+    {
+      "title": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
+      "summary": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
+      "link": "https://www.jagonews24.com/country/news/1178897",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1178897",
+      "publishedAt": "2026-11-13T01:59:40+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1178897"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
+          "summary": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
+          "url": "https://www.jagonews24.com/country/news/1178897"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1266f095d7818c0926a10bc5da26c9e6"
+    },
+    {
       "title": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ - Banglanews24",
       "summary": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ Banglanews24",
       "link": "https://www.banglanews24.com/national/news/bd/1693078.details",
@@ -749,6 +790,7 @@
       "publisherName": "Jamuna Television",
       "sourceEvidence": [
         "Jamuna Television",
+        "Daily Bonik Barta",
         "Dhaka Tribune Bangla",
         "Bangla Tribune"
       ],
@@ -756,6 +798,10 @@
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/667894"
+        },
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/y1ALZGWZWE54FFyx"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -777,6 +823,12 @@
           "url": "https://www.jamuna.tv/all-bangladesh/667894"
         },
         {
+          "name": "Daily Bonik Barta",
+          "title": "যশোরে দুই আদালতে ককটেল বিস্ফোরণ - Daily Bonik Barta",
+          "summary": "যশোরে দুই আদালতে ককটেল বিস্ফোরণ Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/y1ALZGWZWE54FFyx"
+        },
+        {
           "name": "Dhaka Tribune Bangla",
           "title": "যশোরে আদালতের দেয়ালে কয়েকটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
           "summary": "যশোরে আদালতের দেয়ালে কয়েকটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
@@ -789,7 +841,7 @@
           "url": "https://www.banglatribune.com/country/khulna/980583/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 4,
       "alertEventId": "c49dfc6c3a7ad460b2a10774656a3414"
     },
     {
