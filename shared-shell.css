@@ -46,3 +46,81 @@ main .hero-typewriter-done{filter:none}
   .hero .accent.hero-typewriter-active::after,
   main .hero-typewriter-active::after{display:none}
 }
+
+
+/* Canonical Projects-page header: enforced after each page's local layout rules. */
+html body header.site-shell-header{
+  position:sticky!important;top:0!important;z-index:1000!important;
+  width:100%!important;max-width:none!important;margin:0!important;
+  min-height:72px!important;padding:0 18px!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:16px!important;flex-wrap:nowrap!important;
+  background:linear-gradient(110deg,rgba(5,7,11,.97),rgba(10,15,27,.94))!important;
+  backdrop-filter:blur(22px)!important;
+  border-bottom:1px solid rgba(0,242,254,.28)!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.28),inset 0 -1px rgba(255,255,255,.025)!important;
+}
+html body header.site-shell-header:after{
+  content:"";position:absolute;bottom:-1px;left:0;width:26%;height:1px;
+  background:linear-gradient(90deg,#00f2fe,transparent);pointer-events:none;
+}
+html body header.site-shell-header .brand{
+  display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;
+  font-size:clamp(14px,2.8vw,20px)!important;font-weight:900!important;
+  white-space:nowrap!important;color:#f7fbff!important;letter-spacing:.09em!important;
+  text-decoration:none!important;
+}
+html body header.site-shell-header .brand b{color:#00f2fe!important}
+html body header.site-shell-header nav.links{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex:1 1 auto!important;min-width:0!important;flex-wrap:nowrap!important;
+  gap:clamp(8px,1.45vw,19px)!important;overflow:visible!important;
+}
+html body header.site-shell-header nav.links a{
+  position:relative!important;display:inline-block!important;flex:0 0 auto!important;
+  font-size:12px!important;font-weight:700!important;white-space:nowrap!important;
+  color:#aebbd0!important;text-decoration:none!important;
+  transition:color .2s ease!important;transform:none!important;
+}
+html body header.site-shell-header nav.links a:after{
+  content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;
+  border-radius:2px;background:linear-gradient(90deg,#00f2fe,#7f5cff);
+  transition:right .25s ease;
+}
+html body header.site-shell-header nav.links a.active,
+html body header.site-shell-header nav.links a:hover{color:#00f2fe!important}
+html body header.site-shell-header nav.links a.active:after,
+html body header.site-shell-header nav.links a:hover:after{right:0}
+html body header.site-shell-header .shell-tools{display:flex!important;align-items:center!important;flex:0 0 auto!important;gap:9px!important}
+html body header.site-shell-header .shell-wa{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;padding:10px 20px!important;border:0!important;border-radius:999px!important;
+  background:linear-gradient(135deg,#00f2fe 0%,#4facfe 100%)!important;
+  color:#05070b!important;font-size:12px!important;font-weight:900!important;
+  white-space:nowrap!important;text-decoration:none!important;
+}
+@media(max-width:900px){
+  html body header.site-shell-header{gap:10px!important;padding:0 12px!important}
+  html body header.site-shell-header nav.links{gap:10px!important}
+  html body header.site-shell-header nav.links a{font-size:11px!important}
+}
+@media(max-width:760px){
+  html body header.site-shell-header{
+    position:sticky!important;top:0!important;min-height:0!important;padding:10px 12px!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:center!important;gap:9px!important;
+  }
+  html body header.site-shell-header .brand{font-size:15px!important}
+  html body header.site-shell-header nav.links{
+    grid-column:1/-1!important;grid-row:2!important;
+    display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;
+    overflow-y:hidden!important;justify-content:flex-start!important;
+    gap:19px!important;padding:8px 0 5px!important;scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  html body header.site-shell-header nav.links::-webkit-scrollbar{display:none!important}
+  html body header.site-shell-header nav.links a{font-size:11px!important}
+  html body header.site-shell-header .shell-tools{grid-column:2!important;grid-row:1!important}
+  html body header.site-shell-header .shell-wa{padding:8px 10px!important;font-size:10px!important}
+}
+@media(max-width:370px){html body header.site-shell-header .shell-wa{padding:8px 9px!important}}
