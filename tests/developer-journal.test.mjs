@@ -73,7 +73,8 @@ test("Telegram Mini App and Worker expose authenticated Blog Manager actions", (
   assert.match(miniapp, /timeZone:"Asia\/Dhaka"/);
   assert.match(miniapp, /\+06:00/);
   assert.match(journal, /timeZone: "Asia\/Dhaka"/);
-  assert.match(journal, /portfolio-contact-telegram\.mdshihab74\.workers\.dev\/journal-feed/);\n  assert.match(journal, /mode: "cors", credentials: "omit"/);\n  assert.doesNotMatch(journal, /journal-feed\.json/);
+  assert.match(journal, /portfolio-contact-telegram\.mdshihab74\.workers\.dev\/journal-feed/);
+  assert.match(journal, /mode: "cors", credentials: "omit"/);\n  assert.doesNotMatch(journal, /journal-feed\.json/);
   assert.doesNotMatch(journal, /journal-data\.json/);
   assert.match(worker, /pathname===\"\/journal-feed\"/);
   assert.match(worker, /getPublicJournalFeed/);
