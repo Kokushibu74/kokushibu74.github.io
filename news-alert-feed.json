@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-13T05:36:42.751536+00:00",
-  "updatedAt": "2026-11-13T05:36:42.751536+00:00",
+  "generatedAt": "2026-11-13T05:56:40.166452+00:00",
+  "updatedAt": "2026-11-13T05:56:40.166452+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "directHealthySourceCount": 6,
+  "fallbackHealthySourceCount": 35,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -34,11 +34,11 @@
       "name": "Jago News 24",
       "domain": "jagonews24.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 30
     },
     {
       "name": "bdnews24.com",
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26
+      "fallbackItems": 28
     },
     {
       "name": "Risingbd",
@@ -288,7 +288,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 26
     },
     {
       "name": "Desh Rupantor",
@@ -421,39 +421,8 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 27,
   "alertItems": [
-    {
-      "title": "এমপি নুসরাতের বাড়ি পরিদর্শনে কুষ্টিয়া যাচ্ছে বিরোধী দলের সংসদীয় দল",
-      "summary": "অগ্নিকাণ্ডের ঘটনায় পুড়ে যাওয়া এনসিপির যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের এমপি নুসরাত তাবাসসুম বাড়িঘর পরিদর্শনে আসছেন বিরোধীদলীয় সংসদীয় টিম...",
-      "link": "https://www.jagonews24.com/country/news/1178946",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1178946",
-      "publishedAt": "2026-11-13T05:26:09+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1178946"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "এমপি নুসরাতের বাড়ি পরিদর্শনে কুষ্টিয়া যাচ্ছে বিরোধী দলের সংসদীয় দল",
-          "summary": "অগ্নিকাণ্ডের ঘটনায় পুড়ে যাওয়া এনসিপির যুগ্ম আহ্বায়ক ও সংরক্ষিত নারী আসনের এমপি নুসরাত তাবাসসুম বাড়িঘর পরিদর্শনে আসছেন বিরোধীদলীয় সংসদীয় টিম...",
-          "url": "https://www.jagonews24.com/country/news/1178946"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "249d346ac684cefd350f791dc53d9f51"
-    },
     {
       "title": "ফুটবল খেলাকে কেন্দ্র করে দুই গ্রামের সংঘর্ষ, প্রাণ গেলো অটোরিকশাচালকের",
       "summary": "চাঁদপুরের হাজীগঞ্জ ও শাহরাস্তি উপজেলার দুই গ্রামের বাসিন্দাদের মধ্যে ফুটবল খেলাকে কেন্দ্র করে সংঘর্ষে শাহজাহান (৩৫) নামে এক অটোরিকশাচালক নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন অন্তত ছয়জন। বৃহস্পতিবার (১২ নভেম্বর) বিকালে শাহরাস্তি উপজেলার ধোপল্লা বাজারে এ সংঘর্ষের ঘটনা ঘটে। নিহত শাহজাহান হাজীগঞ্জ পৌরসভার ৯ নম্বর ওয়ার্ডের এনায়েতপুর মুন্সীবাড়ি এলাকার বাসিন্দা। নিহতের ভাই মানিক হোসেন জানান, ফুটবল... বিস্তারিত",
@@ -484,6 +453,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8081a80c0023238638f3d91de6d8cf58"
+    },
+    {
+      "title": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg",
+      "publishedAt": "2026-11-13T04:43:54+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "মতিঝিলে বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113016/%E0%A6%AE%E0%A6%A4%E0%A6%BF%E0%A6%9D%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3?fbclid=IwdGRjcAVjgmhleHRuA2FlbQIxMQBwZG9mBWZkaWQWUSKMyW1TikzwJqD15cCRzeP_7YVKuXNydGMGYXBwX2lkCjY2Mjg1NjgzNzkAAR-iIno4MMB49xgVW0W0ezjA-0ZDVyU9WQJjYPVk8B_9AGRmcufIRv5x_1tngA_aem_GlEvvp6Kvb-ZS0xnu3QJvg"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e3ac027382e9c8893d8f7c06e19bf743"
     },
     {
       "title": "মালয়েশিয়ায় সড়ক দুর্ঘটনায় বাংলাদেশি যুবকের মৃত্যু - Jugantor",
@@ -594,40 +594,6 @@
       "alertEventId": "9d0be53588ec36f84d1fd1ccd04f6c7b"
     },
     {
-      "title": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) - Daily Naya Diganta",
-      "summary": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) Daily Naya Diganta",
-      "link": "https://dailynayadiganta.com/post/national/1068956",
-      "publisherUrl": "https://dailynayadiganta.com/post/national/1068956",
-      "publishedAt": "2026-11-13T03:02:00+00:00",
-      "source": "Daily Naya Diganta",
-      "publisherName": "Daily Naya Diganta",
-      "sourceEvidence": [
-        "Daily Naya Diganta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/national/1068956"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Naya Diganta",
-          "title": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) - Daily Naya Diganta",
-          "summary": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/national/1068956",
-          "incidentDateText": "বৃহস্পতিবার (১২ নভেম্বর)",
-          "incidentTimeText": "রাত ৯টা ২০ মিনিটে",
-          "incidentTimeSource": "Daily Naya Diganta"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "19a62e452f93b4e52ea9e60db844af3f"
-    },
-    {
       "title": "‘আগুনের পরশমণি’ থেকে ‘ঘেটুপুত্র কমলা’, হুমায়ূনের ৫ সিনেমার গল্প",
       "summary": "শুক্রবার (১৩ নভেম্বর) কিংবদন্তি কথাসাহিত্যিক ও চলচ্চিত্র পরিচালক হুমায়ূন আহমেদের ৭৯ তম জন্মদিন। ১৯৪৮ সালের এই দিনে নেত্রকোনার কেন্দুয়া উপজেলার কুতুবপুরে জন্মগ্রহণ করেন তিনি। তার বাবা শহীদ ফয়জুর রহমান আহমেদ ও মা আয়েশা ফয়েজের প্রথম সন্তান হুমায়ূন আহমেদ। তিন ভাই, দুই বোনের মধ্যে তিনি সবার বড়। জনপ্রিয় কথাসাহিত্যিক জাফর ইকবাল তার ছোট ভাই। সবার ছোট ভাই আহসান হাবীব। ২০১২ সালের ১৯ জুলাই মার্কিন... বিস্তারিত",
       "link": "https://www.banglatribune.com/entertainment/dhallywood/980562/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%B6%E0%A6%AE%E0%A6%A3%E0%A6%BF%E2%80%99-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E2%80%98%E0%A6%98%E0%A7%87%E0%A6%9F%E0%A7%81%E0%A6%AA%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E2%80%99-%E0%A6%B9%E0%A7%81%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%82%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A7%AB",
@@ -688,68 +654,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9a15ba97b4a0b4574cb103694eecb696"
-    },
-    {
-      "title": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
-      "summary": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
-      "link": "https://www.jagonews24.com/country/news/1178900",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1178900",
-      "publishedAt": "2026-11-13T02:15:21+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1178900"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
-          "summary": "যশোরে দুই আদালত এলাকায় ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/country/news/1178900"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "78d3437e083dd20c402bc49c99964918"
-    },
-    {
-      "title": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
-      "summary": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
-      "link": "https://www.jagonews24.com/country/news/1178897",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1178897",
-      "publishedAt": "2026-11-13T01:59:40+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1178897"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
-          "summary": "নুসরাত তাবাসসুমের বাড়িতে হামলার প্রতিবাদে ফেনীতে এনসিপির বিক্ষোভ",
-          "url": "https://www.jagonews24.com/country/news/1178897"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1266f095d7818c0926a10bc5da26c9e6"
     },
     {
       "title": "বাংলাদেশ ব্যাংকের সামনে ককটেল বিস্ফোরণ - Banglanews24",
@@ -845,7 +749,6 @@
       "publisherName": "Jamuna Television",
       "sourceEvidence": [
         "Jamuna Television",
-        "Daily Bonik Barta",
         "Dhaka Tribune Bangla",
         "Bangla Tribune"
       ],
@@ -853,10 +756,6 @@
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/667894"
-        },
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/y1ALZGWZWE54FFyx/"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -878,12 +777,6 @@
           "url": "https://www.jamuna.tv/all-bangladesh/667894"
         },
         {
-          "name": "Daily Bonik Barta",
-          "title": "যশোরে দুই আদালতে ককটেল বিস্ফোরণ - Daily Bonik Barta",
-          "summary": "যশোরে দুই আদালতে ককটেল বিস্ফোরণ Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/y1ALZGWZWE54FFyx/"
-        },
-        {
           "name": "Dhaka Tribune Bangla",
           "title": "যশোরে আদালতের দেয়ালে কয়েকটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
           "summary": "যশোরে আদালতের দেয়ালে কয়েকটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
@@ -896,7 +789,7 @@
           "url": "https://www.banglatribune.com/country/khulna/980583/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
-      "corroborationCount": 4,
+      "corroborationCount": 3,
       "alertEventId": "c49dfc6c3a7ad460b2a10774656a3414"
     },
     {
@@ -1002,37 +895,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "ad804d700b97659b9ef96668d15d2968"
-    },
-    {
-      "title": "এবার কক্সবাজারে আবাসিক হোটেলে আগুন, ভেতরে শতাধিক পর্যটক",
-      "summary": "এবার কক্সবাজারের কলাতলী হোটেল-মোটেল জোনের একটি আবাসিক হোটেলে অগ্নিকাণ্ড ঘটেছে। বৃহস্পতিবার (১২ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে শহরের কলাতলী এলাকায় ‘কক্স অ্যাম্বাসেডর’ হোটেলের আটতলার একটি কক্ষে আগুনের সূত্রপাত হয়। অগ্নিকাণ্ডের সময় হোটেলটির ভেতরে শতাধিক পর্যটক অবস্থান করলেও ফায়ার সার্ভিসের তৎপরতায় কোনও হতাহতের ঘটনা ঘটেনি এবং আগুন নিয়ন্ত্রণে আনা সম্ভব হয়েছে। ফায়ার সার্ভিস সূত্রে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/980560/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%87%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/980560/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%87%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95",
-      "publishedAt": "2026-11-12T15:22:25+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/980560/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%87%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "এবার কক্সবাজারে আবাসিক হোটেলে আগুন, ভেতরে শতাধিক পর্যটক",
-          "summary": "এবার কক্সবাজারের কলাতলী হোটেল-মোটেল জোনের একটি আবাসিক হোটেলে অগ্নিকাণ্ড ঘটেছে। বৃহস্পতিবার (১২ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে শহরের কলাতলী এলাকায় ‘কক্স অ্যাম্বাসেডর’ হোটেলের আটতলার একটি কক্ষে আগুনের সূত্রপাত হয়। অগ্নিকাণ্ডের সময় হোটেলটির ভেতরে শতাধিক পর্যটক অবস্থান করলেও ফায়ার সার্ভিসের তৎপরতায় কোনও হতাহতের ঘটনা ঘটেনি এবং আগুন নিয়ন্ত্রণে আনা সম্ভব হয়েছে। ফায়ার সার্ভিস সূত্রে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/980560/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%87%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "aed32fd11f77cb0be0996fedf6546ae3"
     },
     {
       "title": "স্বরাষ্ট্রমন্ত্রী কেন এই হামলাকে লঘু করতে চাইলেন, প্রশ্ন এমপি নুসরাতের",
