@@ -1,5 +1,6 @@
 (() => {
   "use strict";
+  const JOURNAL_FEED_URL = "https://portfolio-contact-telegram.mdshihab74.workers.dev/journal-feed";
   const section = document.getElementById("developer-journal");
   const articleView = document.getElementById("journal-article-view");
   if (!section || !articleView) return;
@@ -450,7 +451,7 @@
     feedLoading = true;
     lastFeedLoadAt = Date.now();
     try {
-      const response = await fetch("journal-feed.json?v=" + Date.now(), { cache: "no-store" });
+      const response = await fetch(JOURNAL_FEED_URL + "?v=" + Date.now(), { cache: "no-store", mode: "cors", credentials: "omit" });
       if (!response.ok) throw new Error("Journal data is not available yet.");
       const data = await response.json();
       if (data.ok !== true || !Array.isArray(data.posts)) throw new Error("Journal feed response is invalid.");
