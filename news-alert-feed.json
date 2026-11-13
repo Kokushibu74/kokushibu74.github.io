@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-13T07:16:30.605476+00:00",
-  "updatedAt": "2026-11-13T07:16:30.605476+00:00",
+  "generatedAt": "2026-11-13T07:36:39.429036+00:00",
+  "updatedAt": "2026-11-13T07:36:39.429036+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 1
     },
     {
       "name": "New Age",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,14 +238,14 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27
+      "fallbackItems": 26
     },
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 30,
   "alertItems": [
     {
       "title": "এমপির সংবর্ধনায় হাতাহাতি থেকে সংঘর্ষ, বিএনপি নেতা বহিষ্কার",
@@ -1019,22 +1019,17 @@
       "alertEventId": "5f7708a7ae848003f2d636b3f5909049"
     },
     {
-      "title": "কক্সবাজারে আবাসিক হোটেলে আগুন, নিরাপদে নামিয়ে আনা হলো পর্যটকদের",
-      "summary": "এবার কক্সবাজারের কলাতলী হোটেল-মোটেল জোনের একটি আবাসিক হোটেলে অগ্নিকাণ্ড ঘটেছে। তবে ফায়ার সার্ভিসের দ্রুত পদক্ষেপে আগুন নিয়ন্ত্রণে আসায় এবং পর্যটকদের নিরাপদে নিচে নামিয়ে আনায় কোনও হতাহত কিংবা বড় ধরনের ক্ষয়ক্ষতি হয়নি। বৃহস্পতিবার (১২ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে শহরের কলাতলী এলাকায় ‘কক্স অ্যাম্বাসেডর’ হোটেলের আটতলার একটি কক্ষে আগুনের সূত্রপাত হয়। হোটেলটির আটতলার ওই কক্ষের শীতাতপ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/980580/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/980580/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%BE",
-      "publishedAt": "2026-11-12T15:29:54+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "কক্সবাজারের কলাতলীতে হোটেলে আগুন: আতঙ্কে রাস্তায় শতাধিক পর্যটক - Dhaka Tribune Bangla",
+      "summary": "কক্সবাজারের কলাতলীতে হোটেলে আগুন: আতঙ্কে রাস্তায় শতাধিক পর্যটক Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113001/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%AF%E0%A6%BC",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113001/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%AF%E0%A6%BC",
+      "publishedAt": "2026-11-12T14:35:34+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Bangla Tribune",
         "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/980580/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%BE"
-        },
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113001/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%AF%E0%A6%BC"
@@ -1045,20 +1040,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "কক্সবাজারে আবাসিক হোটেলে আগুন, নিরাপদে নামিয়ে আনা হলো পর্যটকদের",
-          "summary": "এবার কক্সবাজারের কলাতলী হোটেল-মোটেল জোনের একটি আবাসিক হোটেলে অগ্নিকাণ্ড ঘটেছে। তবে ফায়ার সার্ভিসের দ্রুত পদক্ষেপে আগুন নিয়ন্ত্রণে আসায় এবং পর্যটকদের নিরাপদে নিচে নামিয়ে আনায় কোনও হতাহত কিংবা বড় ধরনের ক্ষয়ক্ষতি হয়নি। বৃহস্পতিবার (১২ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে শহরের কলাতলী এলাকায় ‘কক্স অ্যাম্বাসেডর’ হোটেলের আটতলার একটি কক্ষে আগুনের সূত্রপাত হয়। হোটেলটির আটতলার ওই কক্ষের শীতাতপ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/980580/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%BE"
-        },
-        {
           "name": "Dhaka Tribune Bangla",
           "title": "কক্সবাজারের কলাতলীতে হোটেলে আগুন: আতঙ্কে রাস্তায় শতাধিক পর্যটক - Dhaka Tribune Bangla",
           "summary": "কক্সবাজারের কলাতলীতে হোটেলে আগুন: আতঙ্কে রাস্তায় শতাধিক পর্যটক Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113001/%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%AF%E0%A6%BC"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "ad804d700b97659b9ef96668d15d2968"
+      "corroborationCount": 1,
+      "alertEventId": "3cc3e8449ab7916393784c3b6c54040c"
     },
     {
       "title": "স্বরাষ্ট্রমন্ত্রী: নুসরাতের বাড়িতে আগুন শর্টসার্কিট থেকে হওয়ার সম্ভাবনা বেশি - Dhaka Tribune Bangla",
