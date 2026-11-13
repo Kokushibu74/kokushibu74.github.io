@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-13T03:01:36.250290+00:00",
-  "updatedAt": "2026-11-13T03:01:36.250290+00:00",
+  "generatedAt": "2026-11-13T03:21:37.483288+00:00",
+  "updatedAt": "2026-11-13T03:21:37.483288+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "directHealthySourceCount": 6,
+  "fallbackHealthySourceCount": 35,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -364,11 +364,11 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "no element found: line 1, column 0",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 30
     },
     {
       "name": "Daily Sangbad",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "‘আগুনের পরশমণি’ থেকে ‘ঘেটুপুত্র কমলা’, হুমায়ূনের ৫ সিনেমার গল্প",
@@ -1263,37 +1263,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "59d9e4102c4c40c503b8a079274f8a75"
-    },
-    {
-      "title": "কুষ্টিয়ায় নুসরাত তাবাসসুমের বাড়িতে পেট্রোল বোমা নিক্ষেপের অভিযোগ - Dhaka Tribune Bangla",
-      "summary": "কুষ্টিয়ায় নুসরাত তাবাসসুমের বাড়িতে পেট্রোল বোমা নিক্ষেপের অভিযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/112956/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/112956/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
-      "publishedAt": "2026-11-12T03:15:00+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112956/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "কুষ্টিয়ায় নুসরাত তাবাসসুমের বাড়িতে পেট্রোল বোমা নিক্ষেপের অভিযোগ - Dhaka Tribune Bangla",
-          "summary": "কুষ্টিয়ায় নুসরাত তাবাসসুমের বাড়িতে পেট্রোল বোমা নিক্ষেপের অভিযোগ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/112956/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A7%81%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%A4%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "acbeb43a858800cbc6290a65fc026829"
     }
   ]
 }
