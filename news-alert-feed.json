@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-14T13:51:42.403499+00:00",
-  "updatedAt": "2026-11-14T13:51:42.403499+00:00",
+  "generatedAt": "2026-11-14T14:12:04.907760+00:00",
+  "updatedAt": "2026-11-14T14:12:04.907760+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -248,7 +248,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13
+      "fallbackItems": 14
     },
     {
       "name": "Daily Inqilab",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 15,
+  "candidateCount": 16,
   "alertItems": [
     {
       "title": "ভিডিওর জন্য দ্রুতগতিতে চালাচ্ছিলেন মোটরসাইকেল, গাছে ধাক্কা দিয়ে নিহত একজন",
@@ -833,6 +833,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "745c15d46309a5b19bf44649c6fe97ce"
+    },
+    {
+      "title": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষ বিএনপি নেতা নিহত|1325733 - bd-pratidin.com",
+      "summary": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষ বিএনপি নেতা নিহত|1325733 bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/printnews/1325733",
+      "publisherUrl": "https://www.bd-pratidin.com/printnews/1325733",
+      "publishedAt": "2026-11-13T18:00:00+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
+      "sourceEvidence": [
+        "bd-pratidin.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1325733"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bd-pratidin.com",
+          "title": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষ বিএনপি নেতা নিহত|1325733 - bd-pratidin.com",
+          "summary": "গোপালগঞ্জে ১০ গাড়ির সংঘর্ষ বিএনপি নেতা নিহত|1325733 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1325733"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "359e06ebcea0425ba4a8cc34dfee0656"
     }
   ]
 }
