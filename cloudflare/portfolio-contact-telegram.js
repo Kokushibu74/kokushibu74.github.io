@@ -1,4 +1,4 @@
-import { evaluateNewsAlert, newsAlertKey, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
+import { evaluateNewsAlert, newsAlertKey, normalizeNewsAlertLink, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
@@ -685,7 +685,7 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
   const time=v=>{
     if(v===null||v===undefined||v==="")return "Not available";
     let t;
-    if(typeof v==="number"||(typeof v==="string"&&/^\\d{10,13}$/.test(v))){
+    if(typeof v==="number"||(typeof v==="string"&&/^\d{10,13}$/.test(v))){
       const num=Number(v);t=new Date(num<1e12?num*1000:num);
     }else t=new Date(v);
     if(!Number.isFinite(t.getTime()))return value(v);
@@ -2198,6 +2198,41 @@ async function newsRestoreAlertRootSnapshot(env,key,previous){
   }
 }
 
+async function newsAlertLinkIndexKey(item){
+  const raw=item?.publisherUrl||item?.link||(Array.isArray(item?.sourceLinks)?item.sourceLinks[0]?.url:"")||"";
+  const normalized=normalizeNewsAlertLink(raw);
+  if(!normalized)return "";
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(normalized));
+  const hash=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("").slice(0,32);
+  return "news-alert-link:v1:"+hash;
+}
+
+async function newsMigrateRecentAlertLinkIndex(env,now){
+  const marker="news-alert-link-index:migrated:v1";
+  if(await env.BOT_CONFIG_KV.get(marker))return;
+  let cursor=null,pages=0,complete=true;
+  const cutoff=now-24*60*60*1000;
+  do{
+    const page=await env.BOT_CONFIG_KV.list({prefix:"news-alert-history:v1:",limit:1000,...(cursor?{cursor}:{})});
+    for(const entry of page.keys||[]){
+      const match=String(entry.name||"").match(/^news-alert-history:v1:(\d+):([a-f0-9]{32}):/i);
+      if(!match||Number(match[1])<cutoff)continue;
+      const history=await env.BOT_CONFIG_KV.get(entry.name,"json");
+      if(!history)continue;
+      const rootMatch=String(history.rootSnapshotKey||"").match(/^news-alert-history:v1:\d+:([a-f0-9]{32}):/i);
+      const eventKey=(rootMatch?.[1]||match[2]).toLowerCase();
+      for(const link of Array.isArray(history.sourceLinks)?history.sourceLinks:[]){
+        const indexKey=await newsAlertLinkIndexKey({link});
+        if(indexKey)await env.BOT_CONFIG_KV.put(indexKey,eventKey,{expirationTtl:NEWS_ALERT_TTL});
+      }
+    }
+    cursor=page.cursor||null;
+    pages++;
+    if(cursor&&pages>=20){complete=false;break;}
+  }while(cursor);
+  if(complete)await env.BOT_CONFIG_KV.put(marker,"1",{expirationTtl:NEWS_ALERT_TTL});
+}
+
 async function newsBreakingAlertCheck(env){
   if(!env.BOT_CONFIG_KV||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return {skipped:"missing binding"};
   const cfg=await botConfig(env);
@@ -2225,6 +2260,7 @@ async function newsBreakingAlertCheck(env){
     console.warn("Bangladesh alert feed is stale",JSON.stringify({feedAgeMinutes}));
     return {skipped:"alert feed stale",feedAgeMinutes};
   }
+  await newsMigrateRecentAlertLinkIndex(env,now);
   let officialPagesPromise=null,scanned=0,audited=0;
   for(const item of items){
     if(!item||typeof item!=="object")continue;
@@ -2246,7 +2282,12 @@ async function newsBreakingAlertCheck(env){
     if(official.confirmed&&decision.eligible)decision.official=official;
     const link=String(item.publisherUrl||item.link||"");
     const eventId=String(item.alertEventId||"").trim();
-    const key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
+    let key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
+    const linkIndexKey=await newsAlertLinkIndexKey(item);
+    if(linkIndexKey){
+      const linkedEventKey=await env.BOT_CONFIG_KV.get(linkIndexKey);
+      if(/^[a-f0-9]{32}$/i.test(String(linkedEventKey||"")))key=linkedEventKey;
+    }
     const rejectAuditKey="news-alert-reject:v1:"+key;
     if(!decision.eligible){
       const reason=String(decision.reason||"unknown");
@@ -2329,6 +2370,7 @@ async function newsBreakingAlertCheck(env){
       const messageId=Number(delivery?.messageId)||null;
       const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,rootSnapshotKey:previous?.rootSnapshotKey||(!previous?"news-alert-history:v1:"+String(now)+":"+key+":1":null),rootSnapshotCheckedAt:previous?.rootSnapshotCheckedAt||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
+      if(linkIndexKey)await env.BOT_CONFIG_KV.put(linkIndexKey,key,{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       sent.push(title);
