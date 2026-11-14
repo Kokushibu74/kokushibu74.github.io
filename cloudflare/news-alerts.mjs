@@ -167,11 +167,19 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   ];
   const oldFactMarkers=new Set(factMarkerPatterns.filter(([,pattern])=>pattern.test(oldSummary)).map(([key])=>key));
   const newFactMarkers=factMarkerPatterns.filter(([key,pattern])=>pattern.test(currentSummary)&&!oldFactMarkers.has(key));
-  const hasFactMarker=factMarkerPatterns.some(([,pattern])=>pattern.test(currentSummary));
+  const newNumericFact=newNumeric.some(token=>{
+    const index=currentSummary.indexOf(token);
+    if(index<0)return false;
+    const start=Math.max(currentSummary.lastIndexOf("।",index),currentSummary.lastIndexOf(".",index),currentSummary.lastIndexOf("!",index),currentSummary.lastIndexOf("?",index),currentSummary.lastIndexOf("\n",index))+1;
+    const ends=["।",".","!","?","\n"].map(mark=>currentSummary.indexOf(mark,index)).filter(value=>value>=0);
+    const end=ends.length?Math.min(...ends):currentSummary.length;
+    const sentence=currentSummary.slice(start,end);
+    return factMarkerPatterns.some(([,pattern])=>pattern.test(sentence));
+  });
   const summaryChanged=Boolean(currentSummary&&normalizeAlertUpdateText(currentSummary)!==normalizeAlertUpdateText(oldSummary));
   const summaryEnriched=Boolean(summaryChanged&&(
     (novelTokens.length>=3&&newFactMarkers.length>0)||
-    (newNumeric.length>0&&hasFactMarker)
+    newNumericFact
   ));
   const currentSourceLocations=extractAlertSourceLocations(item);
   const candidates=[...currentSourceLocations.map(x=>String(x?.address||x?.location||"")),extractAlertLocation(item)].filter(value=>value&&value!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়");
