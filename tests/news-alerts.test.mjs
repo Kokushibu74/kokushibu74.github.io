@@ -588,6 +588,14 @@ test("editorial summary rewrites without a new fact do not trigger an update",()
   assert.equal(result.item.summary,previous.summary);
 });
 
+test("a new date alone does not look like a new numeric incident fact",()=>{
+  const previous={summary:"ঢাকায় ১ জন আহত হয়েছেন।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:"ঢাকায় ১ জন আহত হয়েছেন। ঘটনাটি ১২ নভেম্বর রাতে ঘটেছে।",location:"ঢাকা, বাংলাদেশ",incidentTime:{precision:"unknown"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Jago News 24"]});
+  assert.equal(result.hasMeaningfulUpdate,false);
+  assert.equal(result.flags.summaryEnriched,false);
+});
+
 test("a genuinely new arrest fact is a meaningful summary update",()=>{
   const previous={summary:"হবিগঞ্জে বাড়িতে পেট্রোল বোমা নিক্ষেপ করা হয়েছে।",location:"হবিগঞ্জ, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"CRITICAL"};
   const incoming={summary:"হবিগঞ্জে বাড়িতে পেট্রোল বোমা নিক্ষেপ করা হয়েছে। এ ঘটনায় সন্দেহভাজন একজনকে গ্রেপ্তার করেছে পুলিশ।",location:"হবিগঞ্জ, বাংলাদেশ",incidentTime:{precision:"unknown"}};
