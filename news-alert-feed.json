@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-14T17:41:35.583131+00:00",
-  "updatedAt": "2026-11-14T17:41:35.583131+00:00",
+  "generatedAt": "2026-11-14T18:01:34.186763+00:00",
+  "updatedAt": "2026-11-14T18:01:34.186763+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -95,7 +95,7 @@
       "domain": "dhakatribune.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -115,7 +115,7 @@
       "domain": "thefinancialexpress.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 5
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21
+      "fallbackItems": 20
     },
     {
       "name": "Risingbd",
@@ -208,7 +208,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18
+      "fallbackItems": 16
     },
     {
       "name": "Somoy News",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22
+      "fallbackItems": 24
     },
     {
       "name": "Ekattor TV",
@@ -248,7 +248,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26
+      "fallbackItems": 27
     },
     {
       "name": "Daily Inqilab",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 25,
   "alertItems": [
     {
       "title": "মোটরসাইকেলকে বাঁচাতে গিয়ে উল্টে গেলো টেম্পু, চালক নিহত",
@@ -1040,6 +1040,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8c32d236558e5047642a8a67d02099f0"
+    },
+    {
+      "title": "মাগুরায় সড়ক দুর্ঘটনায় ক্ষতিগ্রস্থ ১২২ পরিবারকে ৪ কোটি ২৫ লাখ টাকার সরকারি সহায়তা প্রদান - দৈনিক ইনকিলাব",
+      "summary": "মাগুরায় সড়ক দুর্ঘটনায় ক্ষতিগ্রস্থ ১২২ পরিবারকে ৪ কোটি ২৫ লাখ টাকার সরকারি সহায়তা প্রদান দৈনিক ইনকিলাব",
+      "link": "https://dailyinqilab.com/bangladesh/news/962508",
+      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/962508",
+      "publishedAt": "2026-11-14T05:34:30+00:00",
+      "source": "দৈনিক ইনকিলাব",
+      "publisherName": "দৈনিক ইনকিলাব",
+      "sourceEvidence": [
+        "দৈনিক ইনকিলাব"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/962508"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "মাগুরায় সড়ক দুর্ঘটনায় ক্ষতিগ্রস্থ ১২২ পরিবারকে ৪ কোটি ২৫ লাখ টাকার সরকারি সহায়তা প্রদান - দৈনিক ইনকিলাব",
+          "summary": "মাগুরায় সড়ক দুর্ঘটনায় ক্ষতিগ্রস্থ ১২২ পরিবারকে ৪ কোটি ২৫ লাখ টাকার সরকারি সহায়তা প্রদান দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/962508"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4f2b2b72a9f2d2c259ffcb0c5e7ff1ea"
     },
     {
       "title": "কুমিল্লায় ভয়াবহ অগ্নিকাণ্ড, পুড়লো ১২ দোকান - Dhaka Tribune Bangla",
