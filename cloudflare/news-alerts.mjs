@@ -157,9 +157,30 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   const oldTokens=alertUpdateTokens(oldSummary),nextTokens=alertUpdateTokens(currentSummary);
   const novelTokens=[...nextTokens].filter(token=>!oldTokens.has(token));
   const newNumeric=[...nextTokens].filter(token=>/^[0-9০-৯]+$/.test(token)&&!oldTokens.has(token));
-  const hasFactMarker=/(নিহত|মারা|আহত|নিখোঁজ|গ্রেপ্তার|আটক|উদ্ধার|নিশ্চিত|নিশ্চিত করেছে|ক্ষতিগ্রস্ত|পুড়ে|পুড়েছে|পালিয়েছে|চালু|বন্ধ|evacuated|killed|injured|arrested|rescued|confirmed|missing|hospitalized|dead|died)/i.test(currentSummary);
-  const summaryEnriched=Boolean(currentSummary&&normalizeAlertUpdateText(currentSummary)!==normalizeAlertUpdateText(oldSummary)&&
-    (novelTokens.length>=3||(newNumeric.length>0&&hasFactMarker)));
+  const factMarkerPatterns=[
+    ["casualty",/(নিহত|মারা|আহত|মৃত্যু|killed|injured|hospitalized|dead|died|fatal)/i],
+    ["arrest",/(গ্রেপ্তার|গ্রেফতার|আটক|arrested|detained)/i],
+    ["rescue",/(উদ্ধার|rescued)/i],
+    ["missing",/(নিখোঁজ|missing)/i],
+    ["damage",/(ক্ষতিগ্রস্ত|পুড়ে|পুড়েছে|পালিয়েছে|ধ্বংস|damaged|destroyed|burned|fled)/i],
+    ["status",/(নিশ্চিত|নিশ্চিত করেছে|confirmed|evacuated|চালু|বন্ধ|closed|reopened)/i]
+  ];
+  const oldFactMarkers=new Set(factMarkerPatterns.filter(([,pattern])=>pattern.test(oldSummary)).map(([key])=>key));
+  const newFactMarkers=factMarkerPatterns.filter(([key,pattern])=>pattern.test(currentSummary)&&!oldFactMarkers.has(key));
+  const newNumericFact=newNumeric.some(token=>{
+    const index=currentSummary.indexOf(token);
+    if(index<0)return false;
+    const start=Math.max(currentSummary.lastIndexOf("।",index),currentSummary.lastIndexOf(".",index),currentSummary.lastIndexOf("!",index),currentSummary.lastIndexOf("?",index),currentSummary.lastIndexOf("\n",index))+1;
+    const ends=["।",".","!","?","\n"].map(mark=>currentSummary.indexOf(mark,index)).filter(value=>value>=0);
+    const end=ends.length?Math.min(...ends):currentSummary.length;
+    const sentence=currentSummary.slice(start,end);
+    return factMarkerPatterns.some(([,pattern])=>pattern.test(sentence));
+  });
+  const summaryChanged=Boolean(currentSummary&&normalizeAlertUpdateText(currentSummary)!==normalizeAlertUpdateText(oldSummary));
+  const summaryEnriched=Boolean(summaryChanged&&(
+    (novelTokens.length>=3&&newFactMarkers.length>0)||
+    newNumericFact
+  ));
   const currentSourceLocations=extractAlertSourceLocations(item);
   const candidates=[...currentSourceLocations.map(x=>String(x?.address||x?.location||"")),extractAlertLocation(item)].filter(value=>value&&value!=="নির্দিষ্ট অবস্থান নিশ্চিত নয়");
   const currentLocation=candidates.sort((a,b)=>b.length-a.length)[0]||"";
@@ -188,10 +209,9 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   const mergedSources=[...new Set([...(Array.isArray(previous.trustedSources)?previous.trustedSources:[]),...(Array.isArray(decision.trustedSources)?decision.trustedSources:[])])];
   const mergedEvidence=[...new Set([...(Array.isArray(previous.sourceEvidence)?previous.sourceEvidence:[]),...(Array.isArray(decision.sources)?decision.sources:[])])];
   const mergedTime=incidentTimeEnriched?currentTime:oldTimeRank?oldTime:currentTime;
-  const mergedSummary=summaryEnriched
-    ?(normalizeAlertUpdateText(currentSummary).includes(normalizeAlertUpdateText(oldSummary))?currentSummary:
-      currentSummary+" পূর্বের বিবরণ: "+oldSummary)
-    :(oldSummary||currentSummary);
+  // A new summary is treated as the current consolidated report. Never append
+  // the previous summary: that repeats stale copy and makes an UPDATE look new.
+  const mergedSummary=summaryEnriched?currentSummary:(oldSummary||currentSummary);
   const mergedItem={
     ...item,
     title:String(item.title||previous.title||""),
