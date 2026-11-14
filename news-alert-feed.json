@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-14T14:53:10.499632+00:00",
-  "updatedAt": "2026-11-14T14:53:10.499632+00:00",
+  "generatedAt": "2026-11-14T14:57:16.506353+00:00",
+  "updatedAt": "2026-11-14T14:57:16.506353+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25
+      "fallbackItems": 24
     },
     {
       "name": "Risingbd",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -248,7 +248,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16
+      "fallbackItems": 13
     },
     {
       "name": "Daily Inqilab",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 18,
   "alertItems": [
     {
       "title": "রেলওয়ে ওভারপাসে বোমাসদৃশ বস্তু, এলাকাজুড়ে আতঙ্ক",
@@ -729,6 +729,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "418e734521b3339d84fd3d8489b5c478"
+    },
+    {
+      "title": "সিরাজগঞ্জ-৩ আসনের এমপির গাড়িতে হামলার প্রতিবাদে জামায়াতের নিন্দা: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) - Daily Naya Diganta",
+      "summary": "সিরাজগঞ্জ-৩ আসনের এমপির গাড়িতে হামলার প্রতিবাদে জামায়াতের নিন্দা: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) Daily Naya Diganta",
+      "link": "https://dailynayadiganta.com/bangladesh/country-news/o0399XFOxDAD",
+      "publisherUrl": "https://dailynayadiganta.com/bangladesh/country-news/o0399XFOxDAD",
+      "publishedAt": "2026-11-14T10:43:06+00:00",
+      "source": "Daily Naya Diganta",
+      "publisherName": "Daily Naya Diganta",
+      "sourceEvidence": [
+        "Daily Naya Diganta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/bangladesh/country-news/o0399XFOxDAD"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Naya Diganta",
+          "title": "সিরাজগঞ্জ-৩ আসনের এমপির গাড়িতে হামলার প্রতিবাদে জামায়াতের নিন্দা: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) - Daily Naya Diganta",
+          "summary": "সিরাজগঞ্জ-৩ আসনের এমপির গাড়িতে হামলার প্রতিবাদে জামায়াতের নিন্দা: Daily Naya Diganta (দৈনিক নয়া দিগন্ত) Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/bangladesh/country-news/o0399XFOxDAD"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b12dcc3ba9dace77bd9a5d0e4fa8c303"
     },
     {
       "title": "রাজনীতিতে ফেরার জন্য আওয়ামী লীগের বহুমুখী কৌশল",
