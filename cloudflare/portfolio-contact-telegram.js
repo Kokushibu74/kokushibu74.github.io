@@ -685,7 +685,7 @@ function umVisitorReport(id,p,history={records:[],total:0,page:1,totalPages:1,tr
   const time=v=>{
     if(v===null||v===undefined||v==="")return "Not available";
     let t;
-    if(typeof v==="number"||(typeof v==="string"&&/^\\d{10,13}$/.test(v))){
+    if(typeof v==="number"||(typeof v==="string"&&/^\d{10,13}$/.test(v))){
       const num=Number(v);t=new Date(num<1e12?num*1000:num);
     }else t=new Date(v);
     if(!Number.isFinite(t.getTime()))return value(v);
@@ -2215,11 +2215,11 @@ async function newsMigrateRecentAlertLinkIndex(env,now){
   do{
     const page=await env.BOT_CONFIG_KV.list({prefix:"news-alert-history:v1:",limit:1000,...(cursor?{cursor}:{})});
     for(const entry of page.keys||[]){
-      const match=String(entry.name||"").match(/^news-alert-history:v1:(\\d+):([a-f0-9]{32}):/i);
+      const match=String(entry.name||"").match(/^news-alert-history:v1:(\d+):([a-f0-9]{32}):/i);
       if(!match||Number(match[1])<cutoff)continue;
       const history=await env.BOT_CONFIG_KV.get(entry.name,"json");
       if(!history)continue;
-      const rootMatch=String(history.rootSnapshotKey||"").match(/^news-alert-history:v1:\\d+:([a-f0-9]{32}):/i);
+      const rootMatch=String(history.rootSnapshotKey||"").match(/^news-alert-history:v1:\d+:([a-f0-9]{32}):/i);
       const eventKey=(rootMatch?.[1]||match[2]).toLowerCase();
       for(const link of Array.isArray(history.sourceLinks)?history.sourceLinks:[]){
         const indexKey=await newsAlertLinkIndexKey({link});
