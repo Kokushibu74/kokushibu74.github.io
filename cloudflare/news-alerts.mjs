@@ -35,6 +35,18 @@ function canonicalSource(value){const name=String(value||"").trim(),lower=name.t
 function isTrustedPublisher(source){return /(\bbbc\b|the daily star|prothom alo|jago news|\bbss\b|\bunb\b|dhaka tribune|bdnews24|business standard|new age|financial express|ittefaq|jugantor|kaler kantho|samakal|daily observer|daily sun|channel 24|jamuna|somoy|ekattor|independent television|bangla tribune|banglanews24|dhaka post|risingbd|ntv|rtv|reuters|associated press|\bap\b|\bafp\b|al jazeera|\bdw\b|cnn|guardian|france 24|new york times|washington post|financial times|npr|bangladesh pratidin|bd-pratidin|barta24|bhorer kagoj|ajker patrika|manab zamin|mzamin|daily inqilab|janakantha|naya diganta|desh rupantor|bonik barta|business post|bd24live|dhaka courier|dainik amader shomoy|dainikamadershomoy|dainik azadi|sangbad)/i.test(source);}
 function normalizeSources(item){return [...new Set((Array.isArray(item.sourceEvidence)?item.sourceEvidence:[]).map(canonicalSource).filter(x=>!GENERIC_SOURCES.has(x.toLowerCase())))];}
 export async function newsAlertKey(value,source=""){let title=String(value||""),publisher=String(source||"").trim();if(publisher)for(const separator of [" - "," – "," — "," | "]){const suffix=separator+publisher;if(title.toLowerCase().endsWith(suffix.toLowerCase())){title=title.slice(0,-suffix.length);break;}}const stop=new Set(["the","a","an","in","on","at","of","for","and","to","by","from","with","as","after","before","breaking","news","update"]);const tokens=title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().split(/\s+/).filter(Boolean).map(token=>token.length>4&&/^[a-z]+$/.test(token)?token.replace(/(?:ing|ed|es|s)$/,""):token).filter(token=>!stop.has(token)&&!/^\d+$/.test(token));const normalized=[...new Set(tokens)].sort().join(" ");const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(normalized));return [...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,32);}
+
+export function normalizeNewsAlertLink(value){
+  try{
+    const url=new URL(String(value||"").trim());
+    if(url.protocol!=="https:"&&url.protocol!=="http:")return "";
+    url.hash="";
+    for(const key of [...url.searchParams.keys()])if(/^utm_/i.test(key)||["fbclid","gclid","mc_cid","mc_eid"].includes(key.toLowerCase()))url.searchParams.delete(key);
+    url.hostname=url.hostname.toLowerCase();
+    url.pathname=url.pathname.replace(/\\/+$/,"")||"/";
+    return url.toString();
+  }catch{return "";}
+}
 export function escapeHtml(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 export function alertCategory(text){
   if(WEATHER.test(text))return "দুর্যোগ ও আবহাওয়া";
