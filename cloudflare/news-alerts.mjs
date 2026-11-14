@@ -43,7 +43,7 @@ export function normalizeNewsAlertLink(value){
     url.hash="";
     for(const key of [...url.searchParams.keys()])if(/^utm_/i.test(key)||["fbclid","gclid","mc_cid","mc_eid"].includes(key.toLowerCase()))url.searchParams.delete(key);
     url.hostname=url.hostname.toLowerCase();
-    url.pathname=url.pathname.replace(/\\/+$/,"")||"/";
+    url.pathname=url.pathname.replace(/\/+$/,"")||"/";
     return url.toString();
   }catch{return "";}
 }
