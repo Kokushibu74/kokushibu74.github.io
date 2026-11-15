@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-15T01:06:38.370318+00:00",
-  "updatedAt": "2026-11-15T01:06:38.370318+00:00",
+  "generatedAt": "2026-11-15T01:21:44.103511+00:00",
+  "updatedAt": "2026-11-15T01:21:44.103511+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29
+      "fallbackItems": 28
     },
     {
       "name": "Ekattor TV",
@@ -288,7 +288,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29
+      "fallbackItems": 24
     },
     {
       "name": "Desh Rupantor",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 23,
+  "candidateCount": 24,
   "alertItems": [
     {
       "title": "যন্ত্রপাতি স্থাপন কার্যক্রম শুরু, আগুন বন্ধের পর গ্যাস উত্তোলন",
@@ -743,6 +743,37 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "a3ef9ff476372809112c2694a664a459"
+    },
+    {
+      "title": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন - Ajker Patrika",
+      "summary": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7",
+      "publishedAt": "2026-11-14T16:09:48+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন - Ajker Patrika",
+          "summary": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "df4fe92091eb952241ba97e9d0ecbcb1"
     },
     {
       "title": "রেলওয়ে ওভারপাসে বোমাসদৃশ বস্তু, ঘিরে রেখেছে পুলিশ",
