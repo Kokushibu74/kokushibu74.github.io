@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-15T06:11:31.824643+00:00",
-  "updatedAt": "2026-11-15T06:11:31.824643+00:00",
+  "generatedAt": "2026-11-15T06:31:39.552215+00:00",
+  "updatedAt": "2026-11-15T06:31:39.552215+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "directHealthySourceCount": 6,
+  "fallbackHealthySourceCount": 35,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -84,11 +84,11 @@
       "name": "Bangla Tribune",
       "domain": "banglatribune.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 30
     },
     {
       "name": "Dhaka Tribune",
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5
+      "fallbackItems": 6
     },
     {
       "name": "New Age",
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25
+      "fallbackItems": 26
     },
     {
       "name": "Ekattor TV",
@@ -421,14 +421,14 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 23,
+  "candidateCount": 13,
   "alertItems": [
     {
-      "title": "গ্যাস সিলিন্ডারের আগুনে পুড়ল প্রবাসীর ১৩ বসতঘর-দোকান",
-      "summary": "গাজীপুরের শ্রীপুরে খাবার হোটেলের গ্যাস সিলিন্ডারের আগুনে দুবাই প্রবাসীর ১৩টি বসতঘর, একটি খাবার হোটেল ও দোকান পুড়ে গেছে। খবর পেয়ে...",
-      "link": "https://www.jagonews24.com/country/news/1179603",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1179603",
-      "publishedAt": "2026-11-15T05:54:21+00:00",
+      "title": "পটুয়াখালীতে তেলের ট্যাঙ্কারের সঙ্গে পিকআপের সংঘর্ষ, নিহত ১",
+      "summary": "পটুয়াখালী সদরে পিকআপ ভ্যান ও তেলের ট্যাঙ্কারের মুখোমুখি সংঘর্ষে চান মিয়া (৪৫) নামে এক ব্যক্তি নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন...",
+      "link": "https://www.jagonews24.com/country/news/1179610",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1179610",
+      "publishedAt": "2026-11-15T06:23:24+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
@@ -437,7 +437,7 @@
       "sourceLinks": [
         {
           "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1179603"
+          "url": "https://www.jagonews24.com/country/news/1179610"
         }
       ],
       "category": "Bangladesh",
@@ -446,172 +446,62 @@
       "sourceStories": [
         {
           "name": "Jago News 24",
+          "title": "পটুয়াখালীতে তেলের ট্যাঙ্কারের সঙ্গে পিকআপের সংঘর্ষ, নিহত ১",
+          "summary": "পটুয়াখালী সদরে পিকআপ ভ্যান ও তেলের ট্যাঙ্কারের মুখোমুখি সংঘর্ষে চান মিয়া (৪৫) নামে এক ব্যক্তি নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন...",
+          "url": "https://www.jagonews24.com/country/news/1179610"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8feadd81b5e1b9f8f6a47cdaad0bf8b7"
+    },
+    {
+      "title": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট - Jamuna Television",
+      "summary": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/667998",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/667998",
+      "publishedAt": "2026-11-15T06:01:41+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/667998"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1179603"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট - Jamuna Television",
+          "summary": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/667998",
+          "incidentDateText": "১৫ নভেম্বর",
+          "incidentTimeText": "সকাল ৯টার দিকে",
+          "incidentTimeSource": "Jamuna Television"
+        },
+        {
+          "name": "Jago News 24",
           "title": "গ্যাস সিলিন্ডারের আগুনে পুড়ল প্রবাসীর ১৩ বসতঘর-দোকান",
           "summary": "গাজীপুরের শ্রীপুরে খাবার হোটেলের গ্যাস সিলিন্ডারের আগুনে দুবাই প্রবাসীর ১৩টি বসতঘর, একটি খাবার হোটেল ও দোকান পুড়ে গেছে। খবর পেয়ে...",
           "url": "https://www.jagonews24.com/country/news/1179603"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "316574595d9c04faaf12a5cdf7b14865"
+      "corroborationCount": 2,
+      "alertEventId": "5f9ec04e3060d0209595b94bbee1eafc"
     },
     {
-      "title": "জামালপুরে বোমা সদৃশ বস্তুটি নিষ্ক্রিয় করলো সেনাবাহিনী",
-      "summary": "জামালপুর শহরের রেলওয়ে ওভারপাস থেকে উদ্ধার করা বোমা সদৃশ বস্তুটি বিস্ফোরণ ঘটিয়ে নিষ্ক্রিয় করেছে সেনাবাহিনীর বোম্ব ডিসপোজাল ইউনিট। শনিবার (১৪ নভেম্বর) মধ্যরাতে শহরের পুরাতন ফুলবাড়িয়া ঈদগাহ মাঠে নিয়ন্ত্রিত বিস্ফোরণের মাধ্যমে বস্তুটি নিষ্ক্রিয় করা হয়। এর আগে শনিবার সন্ধ্যায় শহরের রেলওয়ে ওভারপাসের ফুটপাতে লাল টেপে মোড়ানো এবং দুই পাশে বৈদ্যুতিক তার সংযুক্ত একটি বস্তু পড়ে থাকতে দেখেন স্থানীয়... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/mymensing/980974/%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%8B",
-      "publisherUrl": "https://www.banglatribune.com/country/mymensing/980974/%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%8B",
-      "publishedAt": "2026-11-15T05:48:53+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/980974/%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "জামালপুরে বোমা সদৃশ বস্তুটি নিষ্ক্রিয় করলো সেনাবাহিনী",
-          "summary": "জামালপুর শহরের রেলওয়ে ওভারপাস থেকে উদ্ধার করা বোমা সদৃশ বস্তুটি বিস্ফোরণ ঘটিয়ে নিষ্ক্রিয় করেছে সেনাবাহিনীর বোম্ব ডিসপোজাল ইউনিট। শনিবার (১৪ নভেম্বর) মধ্যরাতে শহরের পুরাতন ফুলবাড়িয়া ঈদগাহ মাঠে নিয়ন্ত্রিত বিস্ফোরণের মাধ্যমে বস্তুটি নিষ্ক্রিয় করা হয়। এর আগে শনিবার সন্ধ্যায় শহরের রেলওয়ে ওভারপাসের ফুটপাতে লাল টেপে মোড়ানো এবং দুই পাশে বৈদ্যুতিক তার সংযুক্ত একটি বস্তু পড়ে থাকতে দেখেন স্থানীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/980974/%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f9f71e71da5097bb8b01b6f1420a0d5a"
-    },
-    {
-      "title": "ভোরে কড়াইল বস্তিতে আগুন, ঘুমন্ত যুবকের মৃত্যু",
-      "summary": "রাজধানীর বনানী এলাকার কড়াইল বস্তিতে অগ্নিকাণ্ডের ঘটনায় শাহরিয়ার রহমান শুভ্র (১৯) নামের এক তরুণের মৃত্যু হয়েছে। রবিবার (১৫ নভেম্বর) ভোরে বস্তির টিঅ্যান্ডটি কলোনির পশ্চিমপাড়ায় এ আগুন লাগে। আগুনে ওই তরুণের মৃত্যুর পাশাপাশি বেশ কয়েকটি বসতঘর ও দোকান পুড়ে ছাই হয়ে গেছে। নিহত শাহরিয়ার রহমান শুভ্রর গ্রামের বাড়ি ঝালকাঠি সদর উপজেলার শিরযুগ গ্রামে। তার বাবার নাম মনির হোসেন এবং মায়ের নাম মোর্শেদা... বিস্তারিত",
-      "link": "https://www.banglatribune.com/others/capital-city/980992/%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/others/capital-city/980992/%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-15T05:20:24+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/others/capital-city/980992/%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ভোরে কড়াইল বস্তিতে আগুন, ঘুমন্ত যুবকের মৃত্যু",
-          "summary": "রাজধানীর বনানী এলাকার কড়াইল বস্তিতে অগ্নিকাণ্ডের ঘটনায় শাহরিয়ার রহমান শুভ্র (১৯) নামের এক তরুণের মৃত্যু হয়েছে। রবিবার (১৫ নভেম্বর) ভোরে বস্তির টিঅ্যান্ডটি কলোনির পশ্চিমপাড়ায় এ আগুন লাগে। আগুনে ওই তরুণের মৃত্যুর পাশাপাশি বেশ কয়েকটি বসতঘর ও দোকান পুড়ে ছাই হয়ে গেছে। নিহত শাহরিয়ার রহমান শুভ্রর গ্রামের বাড়ি ঝালকাঠি সদর উপজেলার শিরযুগ গ্রামে। তার বাবার নাম মনির হোসেন এবং মায়ের নাম মোর্শেদা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/others/capital-city/980992/%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AD%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2d8736e4fc785290a7648dbf1e7d3881"
-    },
-    {
-      "title": "খুলনায় হত্যা-চাঁদাবাজি বন্ধে এনসিপির ৭ দফা দাবি",
-      "summary": "খুলনায় ধারাবাহিক হত্যাকাণ্ড, সন্ত্রাস, চাঁদাবাজি, দখলবাজি এবং ব্যবসাপ্রতিষ্ঠানে হামলা ও হুমকির ঘটনায় উদ্বেগ ও ক্ষোভ প্রকাশ করেছে জাতীয় নাগরিক পার্টি (এনসিপি)। এসব অপরাধ নিয়ন্ত্রণ এবং জননিরাপত্তা নিশ্চিত করতে সরকারকে সাত দফা দাবি জানিয়েছে দলটির খুলনা জেলা শাখা। শনিবার (১৪ নভেম্বর) দুপুরে খুলনা প্রেস ক্লাবে আয়োজিত এক সংবাদ সম্মেলনে এসব দাবি তুলে ধরা হয়। এতে লিখিত বক্তব্য পাঠ করেন এনসিপির খুলনা... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/980984/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%87-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A7%AD-%E0%A6%A6%E0%A6%AB%E0%A6%BE-%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BF",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/980984/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%87-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A7%AD-%E0%A6%A6%E0%A6%AB%E0%A6%BE-%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BF",
-      "publishedAt": "2026-11-15T04:06:34+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/980984/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%87-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A7%AD-%E0%A6%A6%E0%A6%AB%E0%A6%BE-%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "খুলনায় হত্যা-চাঁদাবাজি বন্ধে এনসিপির ৭ দফা দাবি",
-          "summary": "খুলনায় ধারাবাহিক হত্যাকাণ্ড, সন্ত্রাস, চাঁদাবাজি, দখলবাজি এবং ব্যবসাপ্রতিষ্ঠানে হামলা ও হুমকির ঘটনায় উদ্বেগ ও ক্ষোভ প্রকাশ করেছে জাতীয় নাগরিক পার্টি (এনসিপি)। এসব অপরাধ নিয়ন্ত্রণ এবং জননিরাপত্তা নিশ্চিত করতে সরকারকে সাত দফা দাবি জানিয়েছে দলটির খুলনা জেলা শাখা। শনিবার (১৪ নভেম্বর) দুপুরে খুলনা প্রেস ক্লাবে আয়োজিত এক সংবাদ সম্মেলনে এসব দাবি তুলে ধরা হয়। এতে লিখিত বক্তব্য পাঠ করেন এনসিপির খুলনা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/980984/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%87-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A7%AD-%E0%A6%A6%E0%A6%AB%E0%A6%BE-%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "17be9181e7401017b8f82dba0510cbbc"
-    },
-    {
-      "title": "একের পর এক হত্যা-চাঁদাবাজি: এমপি-হুইপ-প্রশাসকও নিরুপায়",
-      "summary": "খুলনার আইনশৃঙ্খলা পরিস্থিতির চরম অবনতি, একের পর এক হত্যাকাণ্ড, সন্ত্রাসী কর্মকাণ্ড ও চাঁদাবাজি নিয়ে চরম উদ্বেগ এবং ক্ষোভ প্রকাশ করেছেন সরকারদলীয় এমপি, জাতীয় সংসদের হুইপ, সিটি করপোরেশনের প্রশাসকসহ বিএনপির নেতারা। বিশেষ করে প্রকাশ্যে গুলি করে রাজনৈতিক নেতাকর্মীদের হত্যা, চাঁদাবাজি এবং ব্যবসায়ীদের ওপর হামলার ঘটনায় পুলিশ ও প্রশাসনকে কঠোর পদক্ষেপ নিতে বলেছেন তারা। তারা বলছেন, একের পর এক হত্যা,... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/980947/%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%87%E0%A6%AA-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A6%93",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/980947/%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%87%E0%A6%AA-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A6%93",
-      "publishedAt": "2026-11-15T04:01:00+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/980947/%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%87%E0%A6%AA-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A6%93"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "একের পর এক হত্যা-চাঁদাবাজি: এমপি-হুইপ-প্রশাসকও নিরুপায়",
-          "summary": "খুলনার আইনশৃঙ্খলা পরিস্থিতির চরম অবনতি, একের পর এক হত্যাকাণ্ড, সন্ত্রাসী কর্মকাণ্ড ও চাঁদাবাজি নিয়ে চরম উদ্বেগ এবং ক্ষোভ প্রকাশ করেছেন সরকারদলীয় এমপি, জাতীয় সংসদের হুইপ, সিটি করপোরেশনের প্রশাসকসহ বিএনপির নেতারা। বিশেষ করে প্রকাশ্যে গুলি করে রাজনৈতিক নেতাকর্মীদের হত্যা, চাঁদাবাজি এবং ব্যবসায়ীদের ওপর হামলার ঘটনায় পুলিশ ও প্রশাসনকে কঠোর পদক্ষেপ নিতে বলেছেন তারা। তারা বলছেন, একের পর এক হত্যা,... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/980947/%E0%A6%8F%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B9%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B9%E0%A7%81%E0%A6%87%E0%A6%AA-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A6%93"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "28f8b8bf1cafacd49ec408e6598371d9"
-    },
-    {
-      "title": "গোপালগঞ্জে বিএনপির দুটি কার্যালয়ে ভাঙচুর, অগ্নিসংযোগ",
-      "summary": "গোপালগঞ্জের টুঙ্গিপাড়ায় বিএনপি ও যুবদলের দুটি কার্যালয়ে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও এর সহযোগী সংগঠনের নেতাকর্মীরা এ ঘটনা ঘটিয়েছে বলে জানিয়েছেন বিএনপির নেতাকর্মীরা। শনিবার (১৪ নভেম্বর) রাতে টুঙ্গিপাড়া উপজেলার নিলফা বাজার ও বর্ণি বাজারে পৃথকভাবে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা গেছে, রাতে আওয়ামী লীগ ও এর সহযোগী সংগঠনের নেতাকর্মীরা লাঠিসোঁটা নিয়ে মিছিল বের... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/980960/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/980960/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0",
-      "publishedAt": "2026-11-14T20:05:46+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/980960/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "গোপালগঞ্জে বিএনপির দুটি কার্যালয়ে ভাঙচুর, অগ্নিসংযোগ",
-          "summary": "গোপালগঞ্জের টুঙ্গিপাড়ায় বিএনপি ও যুবদলের দুটি কার্যালয়ে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও এর সহযোগী সংগঠনের নেতাকর্মীরা এ ঘটনা ঘটিয়েছে বলে জানিয়েছেন বিএনপির নেতাকর্মীরা। শনিবার (১৪ নভেম্বর) রাতে টুঙ্গিপাড়া উপজেলার নিলফা বাজার ও বর্ণি বাজারে পৃথকভাবে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা গেছে, রাতে আওয়ামী লীগ ও এর সহযোগী সংগঠনের নেতাকর্মীরা লাঠিসোঁটা নিয়ে মিছিল বের... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/980960/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "820d1a4f472cd24df7428ed1cb8d5d4a"
-    },
-    {
-      "title": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন",
-      "summary": "রেফারির শেষ বাঁশি বাজার সঙ্গে সঙ্গেই কান্নায় ভেঙে পড়লেন বাংলাদেশের ফুটবলাররা। স্তব্ধ পুরো জাতীয় স্টেডিয়াম। ২১ বছর পর সাফের ফাইনালে খেলার যে স্বপ্ন দেখেছিল বাংলাদেশ, তা ভেঙে গেলো পাকিস্তানের কাছে ১-০ গোলে হেরে। তবে মাঠের হতাশা গ্যালারিতে ছড়িয়ে পড়তে বেশি সময় লাগেনি। ম্যাচের শেষ দিকে গোল হজমের পর দর্শকদের ছোড়া স্মোক ফ্লেয়ারে কিছুক্ষণের জন্য বন্ধ থাকে খেলা। পরে ম্যাচ শেষে গ্যালারির এক পাশে... বিস্তারিত",
+      "title": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন - Bangla Tribune",
+      "summary": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন Bangla Tribune",
       "link": "https://www.banglatribune.com/sport/football/980957/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87",
       "publisherUrl": "https://www.banglatribune.com/sport/football/980957/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87",
       "publishedAt": "2026-11-14T18:51:11+00:00",
@@ -619,9 +509,7 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "কালের কণ্ঠ",
-        "Dhaka Tribune Bangla",
-        "Ajker Patrika"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
@@ -629,12 +517,46 @@
           "url": "https://www.banglatribune.com/sport/football/980957/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87"
         },
         {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/sport/2026/11/15/1767708"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/sport/113113/%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%C2%A0%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87%C2%A0%E0%A6%B9%E0%A6%BE%E0%A6%B0-%C2%A0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87%C2%A0%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87%C2%A0%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%C2%A0%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন - Bangla Tribune",
+          "summary": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন Bangla Tribune",
+          "url": "https://www.banglatribune.com/sport/football/980957/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87"
         },
         {
           "name": "Dhaka Tribune Bangla",
+          "title": "পাকিস্তানের কাছে হার, ক্ষোভে গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা - Dhaka Tribune Bangla",
+          "summary": "পাকিস্তানের কাছে হার, ক্ষোভে গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/sport/113113/%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%C2%A0%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87%C2%A0%E0%A6%B9%E0%A6%BE%E0%A6%B0-%C2%A0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87%C2%A0%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87%C2%A0%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%C2%A0%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "36a13371f29e8c3f5d82c1e73f6eecfe"
+    },
+    {
+      "title": "বিদায়ের হতাশায় গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা - কালের কণ্ঠ",
+      "summary": "বিদায়ের হতাশায় গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/sport/2026/11/15/1767708",
+      "publisherUrl": "https://www.kalerkantho.com/online/sport/2026/11/15/1767708",
+      "publishedAt": "2026-11-14T18:29:11+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ",
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/sport/2026/11/15/1767708"
         },
         {
           "name": "Ajker Patrika",
@@ -646,22 +568,10 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "বাংলাদেশের বিদায়, জাতীয় স্টেডিয়ামের গ্যালারিতে আগুন",
-          "summary": "রেফারির শেষ বাঁশি বাজার সঙ্গে সঙ্গেই কান্নায় ভেঙে পড়লেন বাংলাদেশের ফুটবলাররা। স্তব্ধ পুরো জাতীয় স্টেডিয়াম। ২১ বছর পর সাফের ফাইনালে খেলার যে স্বপ্ন দেখেছিল বাংলাদেশ, তা ভেঙে গেলো পাকিস্তানের কাছে ১-০ গোলে হেরে। তবে মাঠের হতাশা গ্যালারিতে ছড়িয়ে পড়তে বেশি সময় লাগেনি। ম্যাচের শেষ দিকে গোল হজমের পর দর্শকদের ছোড়া স্মোক ফ্লেয়ারে কিছুক্ষণের জন্য বন্ধ থাকে খেলা। পরে ম্যাচ শেষে গ্যালারির এক পাশে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/sport/football/980957/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87"
-        },
-        {
           "name": "কালের কণ্ঠ",
           "title": "বিদায়ের হতাশায় গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা - কালের কণ্ঠ",
           "summary": "বিদায়ের হতাশায় গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/online/sport/2026/11/15/1767708"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "পাকিস্তানের কাছে হার, ক্ষোভে গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা - Dhaka Tribune Bangla",
-          "summary": "পাকিস্তানের কাছে হার, ক্ষোভে গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/sport/113113/%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%C2%A0%E0%A6%95%E0%A6%BE%E0%A6%9B%E0%A7%87%C2%A0%E0%A6%B9%E0%A6%BE%E0%A6%B0-%C2%A0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87%C2%A0%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%87%C2%A0%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%C2%A0%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8"
         },
         {
           "name": "Ajker Patrika",
@@ -673,101 +583,8 @@
           "incidentTimeSource": "Ajker Patrika"
         }
       ],
-      "corroborationCount": 4,
-      "alertEventId": "36a13371f29e8c3f5d82c1e73f6eecfe"
-    },
-    {
-      "title": "মোটরসাইকেল আরোহী নিহতের পর গোপালগঞ্জে বাসে আগুন",
-      "summary": "গোপালগঞ্জে যাত্রীবাহী বাসের চাপায় মহিবুল্লাহ (৪৫) নামে এক মোটরসাইকেল আরোহী নিহত হয়েছেন। এ ঘটনায় ইজিবাইকের আরও তিন যাত্রী গুরুতর আহত হয়েছেন। দুর্ঘটনার পর বিক্ষুব্ধ লোকজন বাসটিতে আগুন ধরিয়ে দেন। শনিবার (১৪ নভেম্বর) বিকাল সাড়ে ৪টার দিকে ঢাকা-খুলনা মহাসড়কের গোপালগঞ্জ সদর উপজেলার চন্দ্রদিঘলীয়া এলাকায় এ দুর্ঘটনা ঘটে। নিহত মহিবুল্লাহ চন্দ্রদিঘলীয়া গ্রামের সুফি সাহেবের ছেলে। পুলিশ ও স্থানীয়... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/980954/%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%86%E0%A6%B0%E0%A7%8B%E0%A6%B9%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/980954/%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%86%E0%A6%B0%E0%A7%8B%E0%A6%B9%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-14T18:06:12+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/980954/%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%86%E0%A6%B0%E0%A7%8B%E0%A6%B9%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "মোটরসাইকেল আরোহী নিহতের পর গোপালগঞ্জে বাসে আগুন",
-          "summary": "গোপালগঞ্জে যাত্রীবাহী বাসের চাপায় মহিবুল্লাহ (৪৫) নামে এক মোটরসাইকেল আরোহী নিহত হয়েছেন। এ ঘটনায় ইজিবাইকের আরও তিন যাত্রী গুরুতর আহত হয়েছেন। দুর্ঘটনার পর বিক্ষুব্ধ লোকজন বাসটিতে আগুন ধরিয়ে দেন। শনিবার (১৪ নভেম্বর) বিকাল সাড়ে ৪টার দিকে ঢাকা-খুলনা মহাসড়কের গোপালগঞ্জ সদর উপজেলার চন্দ্রদিঘলীয়া এলাকায় এ দুর্ঘটনা ঘটে। নিহত মহিবুল্লাহ চন্দ্রদিঘলীয়া গ্রামের সুফি সাহেবের ছেলে। পুলিশ ও স্থানীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/980954/%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%86%E0%A6%B0%E0%A7%8B%E0%A6%B9%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2d2e2ddbaac20252730f25f3e37e3737"
-    },
-    {
-      "title": "কোটি কোটি টাকা চাঁদা দিচ্ছে সবাই, ভয়ে কেউ মুখ খুলছে না: বিএনপি নেতা মঞ্জু",
-      "summary": "খুলনার আইনশৃঙ্খলা পরিস্থিতির চরম অবনতি, একের পর এক হত্যাকাণ্ড, সন্ত্রাসী কর্মকাণ্ড ও চাঁদাবাজি নিয়ে চরম উদ্বেগ এবং ক্ষোভ প্রকাশ করেছেন খুলনা সিটি করপোরেশনের (কেসিসি) প্রশাসক ও মহানগর বিএনপির সাবেক সভাপতি নজরুল ইসলাম মঞ্জু। তিনি বলেছেন, একের পর এক হত্যা, হামলা, ভাঙচুর, চাঁদাবাজি ও অগ্নিসংযোগের ঘটনায় উদ্বেগ বাড়ছে নগরজুড়ে। পরিস্থিতি নিয়ে রাজনৈতিক নেতৃত্ব ও শীর্ষ পর্যায় থেকে চরম উদ্বেগ প্রকাশ করা... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/980948/%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%9F%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%87-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%AE%E0%A7%81%E0%A6%96",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/980948/%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%9F%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%87-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%AE%E0%A7%81%E0%A6%96",
-      "publishedAt": "2026-11-14T16:58:40+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/980948/%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%9F%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%87-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%AE%E0%A7%81%E0%A6%96"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "কোটি কোটি টাকা চাঁদা দিচ্ছে সবাই, ভয়ে কেউ মুখ খুলছে না: বিএনপি নেতা মঞ্জু",
-          "summary": "খুলনার আইনশৃঙ্খলা পরিস্থিতির চরম অবনতি, একের পর এক হত্যাকাণ্ড, সন্ত্রাসী কর্মকাণ্ড ও চাঁদাবাজি নিয়ে চরম উদ্বেগ এবং ক্ষোভ প্রকাশ করেছেন খুলনা সিটি করপোরেশনের (কেসিসি) প্রশাসক ও মহানগর বিএনপির সাবেক সভাপতি নজরুল ইসলাম মঞ্জু। তিনি বলেছেন, একের পর এক হত্যা, হামলা, ভাঙচুর, চাঁদাবাজি ও অগ্নিসংযোগের ঘটনায় উদ্বেগ বাড়ছে নগরজুড়ে। পরিস্থিতি নিয়ে রাজনৈতিক নেতৃত্ব ও শীর্ষ পর্যায় থেকে চরম উদ্বেগ প্রকাশ করা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/980948/%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%9F%E0%A6%BF-%E0%A6%9F%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%87-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%AE%E0%A7%81%E0%A6%96"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f5e98b36d36934de01657298e0022408"
-    },
-    {
-      "title": "রোগে নয়, হাসপাতালের জানালা দিয়ে পড়ে রোগীর মৃত্যু",
-      "summary": "বগুড়ার শহীদ জিয়াউর রহমান মেডিক্যাল কলেজ (শজিমেক) হাসপাতালের ছয়তলা থেকে পড়ে শিরিন (৬৫) নামের এক রোগীর মৃত্যু হয়েছে। শনিবার (১৪ নভেম্বর) রাত ৮টার দিকে হাসপাতালের মেডিসিন বিভাগের ছয়তলায় এই দুর্ঘটনা ঘটে। শিরিন বগুড়া শহরের ঝোপগাড়ি এলাকার সুলাইমান হোসেনের স্ত্রী। জানা গেছে, গত ১২ অক্টোবর মাথাব্যথা, শরীর ব্যথা ও জ্বর নিয়ে শজিমেক হাসপাতালের মেডিসিন বিভাগের ছয়তলায় ভর্তি হন শিরিন। এর আগে তিনি স্ট্রোকে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/rajshahi/980943/%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%A8%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
-      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/980943/%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%A8%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
-      "publishedAt": "2026-11-14T16:35:28+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/980943/%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%A8%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "রোগে নয়, হাসপাতালের জানালা দিয়ে পড়ে রোগীর মৃত্যু",
-          "summary": "বগুড়ার শহীদ জিয়াউর রহমান মেডিক্যাল কলেজ (শজিমেক) হাসপাতালের ছয়তলা থেকে পড়ে শিরিন (৬৫) নামের এক রোগীর মৃত্যু হয়েছে। শনিবার (১৪ নভেম্বর) রাত ৮টার দিকে হাসপাতালের মেডিসিন বিভাগের ছয়তলায় এই দুর্ঘটনা ঘটে। শিরিন বগুড়া শহরের ঝোপগাড়ি এলাকার সুলাইমান হোসেনের স্ত্রী। জানা গেছে, গত ১২ অক্টোবর মাথাব্যথা, শরীর ব্যথা ও জ্বর নিয়ে শজিমেক হাসপাতালের মেডিসিন বিভাগের ছয়তলায় ভর্তি হন শিরিন। এর আগে তিনি স্ট্রোকে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/980943/%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%A8%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1c45db3751a277fdd3d35f6c91840ed7"
+      "corroborationCount": 2,
+      "alertEventId": "62c43224a44f38a77bd8a15bd579a5b7"
     },
     {
       "title": "পর্তুগালে সড়ক দুর্ঘটনায় ১০ দিন কোমায় থাকার পর বাংলাদেশি তরুণের মৃত্যু - The Daily Ittefaq",
@@ -805,7 +622,8 @@
           "name": "dhakapost.com",
           "title": "পর্তুগালে সড়ক দুর্ঘটনায় বাংলাদেশি তরুণের মৃত্যু - dhakapost.com",
           "summary": "পর্তুগালে সড়ক দুর্ঘটনায় বাংলাদেশি তরুণের মৃত্যু dhakapost.com",
-          "url": "https://www.dhakapost.com/probash/497914"
+          "url": "https://www.dhakapost.com/probash/497914",
+          "incidentDateText": "১৪ নভেম্বর ২০২৬"
         }
       ],
       "corroborationCount": 2,
@@ -836,73 +654,13 @@
           "name": "Ajker Patrika",
           "title": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন - Ajker Patrika",
           "summary": "নেত্রকোনায় গ্রামীণ ব্যাংকের কার্যালয়ে পেট্রল ঢেলে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7"
+          "url": "https://www.ajkerpatrika.com/bangladesh/netrakona/ajpp73kc4exc7",
+          "incidentDateText": "১৪ নভেম্বর ২০২৬",
+          "locationText": "সদর মডেল থানার"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "df4fe92091eb952241ba97e9d0ecbcb1"
-    },
-    {
-      "title": "রেলওয়ে ওভারপাসে বোমাসদৃশ বস্তু, ঘিরে রেখেছে পুলিশ",
-      "summary": "জামালপুর শহরের রেলওয়ে ওভারপাসে লাল প্লাস্টিকে মোড়ানো তারযুক্ত বোমাসদৃশ একটি বস্তু পড়ে থাকতে দেখা গেছে। শনিবার (১৪ নভেম্বর) সন্ধ্যায় বস্তুটি দেখতে পেয়ে স্থানীয়দের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। খবর পেয়ে পুলিশ ও ফায়ার সার্ভিসের সদস্যরা ঘটনাস্থলে গিয়ে বস্তুটির চারপাশ ঘিরে রেখেছেন। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, শনিবার সন্ধ্যায় ওভারপাস দিয়ে চলাচলের সময় কয়েকজন পথচারী লাল প্লাস্টিকে মোড়ানো বস্তুটি দেখতে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/mymensing/980936/%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A7%9F%E0%A7%87-%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publisherUrl": "https://www.banglatribune.com/country/mymensing/980936/%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A7%9F%E0%A7%87-%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publishedAt": "2026-11-14T15:41:47+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/980936/%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A7%9F%E0%A7%87-%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "রেলওয়ে ওভারপাসে বোমাসদৃশ বস্তু, ঘিরে রেখেছে পুলিশ",
-          "summary": "জামালপুর শহরের রেলওয়ে ওভারপাসে লাল প্লাস্টিকে মোড়ানো তারযুক্ত বোমাসদৃশ একটি বস্তু পড়ে থাকতে দেখা গেছে। শনিবার (১৪ নভেম্বর) সন্ধ্যায় বস্তুটি দেখতে পেয়ে স্থানীয়দের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। খবর পেয়ে পুলিশ ও ফায়ার সার্ভিসের সদস্যরা ঘটনাস্থলে গিয়ে বস্তুটির চারপাশ ঘিরে রেখেছেন। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, শনিবার সন্ধ্যায় ওভারপাস দিয়ে চলাচলের সময় কয়েকজন পথচারী লাল প্লাস্টিকে মোড়ানো বস্তুটি দেখতে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/980936/%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%93%E0%A7%9F%E0%A7%87-%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f93989da75c19558f2fe480eedfa4ed2"
-    },
-    {
-      "title": "দুর্ঘটনায় আহত থানার সেকেন্ড অফিসার এসআই মারা গেছেন",
-      "summary": "টাঙ্গাইলের বাসাইলে মোটরসাইকেল ও পিকআপভ্যানের সংঘর্ষে আহত হয়ে চিকিৎসাধীন অবস্থায় ফরিদ আহমেদ নামের পুলিশের এসআই মারা গেছেন । শনিবার (১৪ নভেম্বর) বিকাল সোয়া ৫টার দিকে রাজারবাগ কেন্দ্রীয় পুলিশ হাসপাতালে তিনি চিকিৎসাধীন অবস্থায় মৃত্যুবরণ করেন। তিনি বাসাইল থানার সেকেন্ড অফিসার হিসেবে কর্মরত ছিলেন। তিনি ময়মনসিংহের ঈশ্বরগঞ্জ উপজেলার রাজিবপুর ইউনিয়নের রুদ্রপুর গ্রামের সরকার বাড়ি এলাকার তোফাজ্জল হোসেনের... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/980935/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%86%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/980935/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%86%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8",
-      "publishedAt": "2026-11-14T15:38:50+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/980935/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%86%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "দুর্ঘটনায় আহত থানার সেকেন্ড অফিসার এসআই মারা গেছেন",
-          "summary": "টাঙ্গাইলের বাসাইলে মোটরসাইকেল ও পিকআপভ্যানের সংঘর্ষে আহত হয়ে চিকিৎসাধীন অবস্থায় ফরিদ আহমেদ নামের পুলিশের এসআই মারা গেছেন । শনিবার (১৪ নভেম্বর) বিকাল সোয়া ৫টার দিকে রাজারবাগ কেন্দ্রীয় পুলিশ হাসপাতালে তিনি চিকিৎসাধীন অবস্থায় মৃত্যুবরণ করেন। তিনি বাসাইল থানার সেকেন্ড অফিসার হিসেবে কর্মরত ছিলেন। তিনি ময়মনসিংহের ঈশ্বরগঞ্জ উপজেলার রাজিবপুর ইউনিয়নের রুদ্রপুর গ্রামের সরকার বাড়ি এলাকার তোফাজ্জল হোসেনের... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/980935/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%86%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9442fe22d610ded8c765b7788d50ab0a"
     },
     {
       "title": "জামালপুর রেলওয়ে ওভারপাসে বোমাসদৃশ বস্তু, এলাকাজুড়ে আতঙ্ক - Dhaka Tribune Bangla",
@@ -934,68 +692,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8b6e7ae6810ee453cd7b931b5339545c"
-    },
-    {
-      "title": "খুলনায় বালু বহনকারী ডাম্প ট্রাকে আগুন",
-      "summary": "খুলনায় রাস্তার পাশে পার্কিং করা বালু বহনকারী একটি ট্রাকে অগ্নিসংযোগ করা হয়েছে। শনিবার (১৪ নভেম্বর) দিবাগত ভোর ৪টার দিকে রূপসা উপজেলার নৈহাটি ইউনিয়নের রামনগর মোল্লাবাড়ির সামনে দুর্বৃত্তরা ট্রাকটিতে আগুন দিয়ে পালিয়ে যায়। রূপসা থানার ওসি মাসুম খান বলেন, ট্রাকটির মালিক দুই ভাই। এদের মধ্যে ছোট ভাই ট্রাকটির চালক। তার সঙ্গে বালু ভরাটকারী শ্রমিকদের বাগবিতণ্ডা হয়। এর জেরে অন্ধকারে শ্রমিকরা ট্রাকটিতে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/980920/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81-%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A1%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AA-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/980920/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81-%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A1%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AA-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-14T14:20:10+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/980920/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81-%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A1%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AA-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "খুলনায় বালু বহনকারী ডাম্প ট্রাকে আগুন",
-          "summary": "খুলনায় রাস্তার পাশে পার্কিং করা বালু বহনকারী একটি ট্রাকে অগ্নিসংযোগ করা হয়েছে। শনিবার (১৪ নভেম্বর) দিবাগত ভোর ৪টার দিকে রূপসা উপজেলার নৈহাটি ইউনিয়নের রামনগর মোল্লাবাড়ির সামনে দুর্বৃত্তরা ট্রাকটিতে আগুন দিয়ে পালিয়ে যায়। রূপসা থানার ওসি মাসুম খান বলেন, ট্রাকটির মালিক দুই ভাই। এদের মধ্যে ছোট ভাই ট্রাকটির চালক। তার সঙ্গে বালু ভরাটকারী শ্রমিকদের বাগবিতণ্ডা হয়। এর জেরে অন্ধকারে শ্রমিকরা ট্রাকটিতে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/980920/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81-%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A1%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AA-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "16ac9c0a0a18ca8292d5fc3141210c09"
-    },
-    {
-      "title": "ভিডিওর জন্য দ্রুতগতিতে চালাচ্ছিলেন মোটরসাইকেল, গাছে ধাক্কা দিয়ে নিহত একজন",
-      "summary": "সাতক্ষীরার আশাশুনিতে দ্রুতগতির মোটরসাইকেল নিয়ন্ত্রণ হারিয়ে গাছের সঙ্গে ধাক্কা লেগে মোস্তাকিম (২১) নামের এক যুবক নিহত হয়েছেন। এই দুর্ঘটনায় আহত হয়েছেন আরও দুই জন। শনিবার (১৪ নভেম্বর) দুপুরে সাতক্ষীরা-পারুলিয়া সড়কের শোভনালী এলাকায় এই দুর্ঘটনা ঘটে। নিহত মোস্তাকিম সাতক্ষীরা সদর উপজেলার দেবনগর গ্রামের মোমিন আলীর ছেলে। স্থানীয়দের বরাতে এসআই তারিকুর রহমান শুভ জানান, তিনি ঘটনাস্থল থেকে নিহতের মরদেহ ও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/980903/%E0%A6%AD%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%93%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%97%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/980903/%E0%A6%AD%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%93%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%97%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-14T13:22:27+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/980903/%E0%A6%AD%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%93%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%97%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ভিডিওর জন্য দ্রুতগতিতে চালাচ্ছিলেন মোটরসাইকেল, গাছে ধাক্কা দিয়ে নিহত একজন",
-          "summary": "সাতক্ষীরার আশাশুনিতে দ্রুতগতির মোটরসাইকেল নিয়ন্ত্রণ হারিয়ে গাছের সঙ্গে ধাক্কা লেগে মোস্তাকিম (২১) নামের এক যুবক নিহত হয়েছেন। এই দুর্ঘটনায় আহত হয়েছেন আরও দুই জন। শনিবার (১৪ নভেম্বর) দুপুরে সাতক্ষীরা-পারুলিয়া সড়কের শোভনালী এলাকায় এই দুর্ঘটনা ঘটে। নিহত মোস্তাকিম সাতক্ষীরা সদর উপজেলার দেবনগর গ্রামের মোমিন আলীর ছেলে। স্থানীয়দের বরাতে এসআই তারিকুর রহমান শুভ জানান, তিনি ঘটনাস্থল থেকে নিহতের মরদেহ ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/980903/%E0%A6%AD%E0%A6%BF%E0%A6%A1%E0%A6%BF%E0%A6%93%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%97%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4300dd1a80b977eb0cae50cd9acd3567"
     },
     {
       "title": "গোপালগঞ্জে বাসের ধাক্কায় বাইসাইকেল চালক নিহত, বিক্ষুব্ধ জনতার বাসে আগুন - Jamuna Television",
