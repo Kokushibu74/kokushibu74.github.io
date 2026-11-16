@@ -73,8 +73,10 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
   '.neon-image-viewport{position:absolute;inset:2px;z-index:1;border-radius:50%;overflow:hidden;isolation:isolate}',
   '.neon-inner-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;border-radius:50%;object-fit:cover;scale:var(--hero-image-zoom,1);transform-origin:center}',
   '#portrait-reveal-overlay{position:fixed;inset:0;z-index:99970;display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));background:rgba(2,5,14,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .24s ease,visibility .24s ease;overflow:hidden;isolation:isolate;overscroll-behavior:contain}',
-  '#portrait-reveal-overlay.is-visible{opacity:1;visibility:visible;pointer-events:auto}',
-  '#portrait-reveal-frame{position:relative;pointer-events:auto;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border:1px solid rgba(79,172,254,.45);border-radius:18px;overflow:hidden;box-shadow:0 0 22px rgba(0,242,254,.16),0 0 34px rgba(127,0,255,.12);transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate;touch-action:pan-y}',
+  '#portrait-reveal-overlay.is-visible{opacity:1;visibility:visible;pointer-events:none}',
+  '#portrait-reveal-overlay.is-visible.is-tap{pointer-events:auto}',
+  '#portrait-reveal-overlay.is-tap #portrait-reveal-frame{pointer-events:auto}',
+  '#portrait-reveal-frame{position:relative;pointer-events:none;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border:1px solid rgba(79,172,254,.45);border-radius:18px;overflow:hidden;box-shadow:0 0 22px rgba(0,242,254,.16),0 0 34px rgba(127,0,255,.12);transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate;touch-action:pan-y}',
   '#portrait-reveal-overlay.is-visible #portrait-reveal-frame{transform:translateY(0) scale(1)}',
   '#portrait-reveal-frame:before{content:"";position:absolute;z-index:0;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--portrait-angle,0deg),#00f2fe,#4facfe,#7f00ff,#e100ff,#00f2fe);animation:rotateGlow 7s linear infinite,portraitNeonGlow 3.8s ease-in-out infinite alternate;opacity:.78;pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}',
   '#portrait-reveal-frame:after{content:"";position:absolute;z-index:3;inset:0;border:1.5px solid rgba(0,242,254,.55);border-radius:inherit;box-shadow:inset 0 0 12px rgba(79,172,254,.12);pointer-events:none}',
@@ -134,7 +136,7 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
  overlay.addEventListener("pointercancel",()=>{pointerStart=null});
  document.addEventListener("keydown",event=>{
   if(event.key==="Escape"&&mode){close();return;}
-  if(mode==="tap"&&(event.key==="ArrowLeft"||event.key==="ArrowRight")){event.preventDefault();navigate(event.key==="ArrowLeft"?-1:1);}
+  if(mode==="tap"){resetTimer();if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();navigate(event.key==="ArrowLeft"?-1:1);}}
  });
  window.addEventListener("popstate",()=>{if(mode==="tap")close(true);});
 }
