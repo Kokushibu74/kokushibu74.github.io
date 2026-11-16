@@ -1147,7 +1147,8 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"Worker Events",callback_data:"b1:status:logs:1"},{text:"Workflow Logs",callback_data:"b1:status:logs:2"}]);
     rows.push([{text:"Security Logs",callback_data:"b1:status:logs:3"},{text:"Recovery Guide",callback_data:"b1:status:recovery:1"}]);
   }else if(category==="hero"){
-    rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
+    rows.push([{text:"🗂️ Open Hero Gallery Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=hero"}}]);
+    rows.push([{text:"📤 Upload from Telegram",callback_data:"b1:hero:upload"}]);
     rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
   }else{
     for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+(i+j)})));
@@ -1487,7 +1488,7 @@ async function botHandleCallback(env,query){
       await env.BOT_CONFIG_KV.put("bot:user-input:"+sender,JSON.stringify({mode,createdAt:Date.now()}),{expirationTtl:600});
       await botSend(env,chatId,prompts[mode]+"\n১০ মিনিটের মধ্যে উত্তর পাঠান।",botBackKeyboard());return true;
     }
-    if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botRunWithProgress(env,chatId,"অনুমোদিত Hero Image GitHub-এ প্রকাশ করা হচ্ছে...",async()=>{const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ GitHub updated: "+result.imagePath+"\nPages deployment may take a few moments. Verify the live homepage before considering it complete.",botBackKeyboard());});return true;}
+    if(action.startsWith("hero:confirm:")){const token=action.slice("hero:confirm:".length);await botRunWithProgress(env,chatId,"ছবির Metadata পরিষ্কার করে Gallery-তে যোগ করা হচ্ছে...",async()=>{const result=await botCommitHero(env,token);await botSend(env,chatId,"✅ Gallery-তে ছবি যোগ হয়েছে: "+result.imagePath+"\nHomepage Active Image পরিবর্তন হয়নি। নতুন ছবি Active করতে Gallery Manager খুলুন।",[[{text:"🗂️ Open Gallery Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=hero"}}],...botBackKeyboard()]);});return true;}
     if(action.startsWith("hero:cancel:")){const token=action.slice("hero:cancel:".length);await env.BOT_CONFIG_KV?.delete("hero:pending:"+token);await botSend(env,chatId,"Hero image update cancelled. Live image unchanged.",botBackKeyboard(),{forceNew:true});return true;}
     if(action==="hero:upload"){if(!env.BOT_CONFIG_KV){await botSend(env,chatId,"Configuration storage is not connected yet.",botBackKeyboard());return true;}await env.BOT_CONFIG_KV.put("hero:uploading:"+sender,JSON.stringify({at:Date.now()}),{expirationTtl:900});await botSend(env,chatId,"এখন Telegram-এ ছবিটি Photo হিসেবে পাঠান (File/Document নয়)। ১৫ মিনিটের মধ্যে পাঠাতে হবে।",botBackKeyboard(),{forceNew:true});return true}
     if(action==="hero:current"){await botRunWithProgress(env,chatId,"বর্তমান Hero Image-এর তথ্য আনা হচ্ছে...",async()=>{const d=await (await fetch("https://kokushibu74.github.io/site-data.json",{signal:AbortSignal.timeout(10000)})).json();await botSend(env,chatId,"Current hero image:\n"+String(d.image||"Not set")+"\nPosition: "+String(d.imagePos??"default"),botBackKeyboard());});return true}
@@ -1714,30 +1715,263 @@ async function botCommitHero(env,token){
   if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("GitHub or configuration binding is unavailable");
   const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV.get(key,"json");
   if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
+  const original=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+  const clean=heroStripImageMetadata(original);
+  const preflight=heroStripImageMetadata(clean.bytes);
+  if(preflight.removed.length||preflight.bytes.length!==clean.bytes.length||!preflight.bytes.every((value,index)=>value===clean.bytes[index]))throw new Error("Image metadata verification failed before upload.");
+  const ext=clean.mimeType==="image/png"?"png":clean.mimeType==="image/webp"?"webp":"jpg";
+  const imageId="hero-"+crypto.randomUUID(),imagePath="storage/pictures/hero-gallery-"+Date.now()+"-"+crypto.randomUUID().slice(0,8)+"."+ext;
   const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
-  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
-  const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
-  const ext=pending.mimeType==="image/png"?"png":pending.mimeType==="image/webp"?"webp":"jpg";
-  const imagePath="storage/pictures/hero-miniapp-"+Date.now()+"."+ext;
-  const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
-  const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
-  const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp"}});
-  const current=await dataRes.json().catch(()=>({}));if(!dataRes.ok||!current.content||!current.sha)throw new Error("Could not read current site data from GitHub");
-  const raw=atob(current.content.replace(/\s/g,"")),data=JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
-  data.image=imagePath;
-  const content=botB64(new TextEncoder().encode(JSON.stringify(data,null,2)+"\n"));
-  const putData=await fetch(api+"site-data.json",{method:"PUT",headers,body:JSON.stringify({message:"chore: set portfolio hero image",content,sha:current.sha,branch:"main"})});
-  const dataResult=await putData.json().catch(()=>({}));if(!putData.ok)throw new Error("GitHub site-data update failed (HTTP "+putData.status+")");
-  await env.BOT_CONFIG_KV.delete(key);
-  return {imagePath,commit:dataResult.commit?.sha||imageResult.commit?.sha};
+  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Hero-Gallery","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
+  const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: add sanitized hero gallery image",content:botB64(clean.bytes),branch:"main"}),signal:AbortSignal.timeout(20000)});
+  const imageResult=await putImage.json().catch(()=>({}));
+  if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+"): "+String(imageResult.message||"unknown error").slice(0,150));
+  let metadataWriteStarted=false;
+  try{
+    const verifyUrl="https://raw.githubusercontent.com/Kokushibu74/kokushibu74.github.io/main/"+imagePath+"?verify="+Date.now();
+    const verifyResponse=await fetch(verifyUrl,{cache:"no-store",signal:AbortSignal.timeout(15000)});
+    if(!verifyResponse.ok)throw new Error("Uploaded image could not be read back for metadata verification (HTTP "+verifyResponse.status+").");
+    const remoteBytes=new Uint8Array(await verifyResponse.arrayBuffer());
+    const remoteCheck=heroStripImageMetadata(remoteBytes);
+    if(remoteCheck.removed.length||remoteBytes.length!==clean.bytes.length||!remoteCheck.bytes.every((value,index)=>value===remoteBytes[index]))throw new Error("Uploaded image still contains embedded metadata or changed during storage verification.");
+    metadataWriteStarted=true;
+    const update=await heroUpdateSiteData(env,data=>{
+      const gallery=heroGalleryNormalize(data);
+      if(gallery.images.some(item=>item.src===imagePath))throw new Error("This image is already in the gallery.");
+      gallery.images.push({id:imageId,src:imagePath,focusX:50,focusY:50,zoom:1,faceDetection:false,uploadedAt:new Date().toISOString()});
+      data.heroGallery=gallery;
+      return {gallery};
+    },"chore: add image to hero gallery");
+    await env.BOT_CONFIG_KV.delete(key).catch(error=>console.warn("Hero pending upload cleanup skipped",String(error&&error.message||error).slice(0,120)));
+    return {imagePath,imageId,commit:update.commit,galleryCount:update.gallery.images.length,metadataStripped:clean.removed.length,metadataVerified:true,activeImageChanged:false};
+  }catch(error){
+    if(!metadataWriteStarted&&imageResult.content?.sha){
+      try{await fetch(api+imagePath,{method:"DELETE",headers,body:JSON.stringify({message:"chore: remove unverified hero gallery upload",sha:imageResult.content.sha,branch:"main"}),signal:AbortSignal.timeout(10000)});}catch{}
+    }
+    throw error;
+  }
 }
+function heroStripImageMetadata(input){
+  const bytes=input instanceof Uint8Array?input:new Uint8Array(input);
+  const join=chunks=>{const total=chunks.reduce((n,x)=>n+x.length,0),out=new Uint8Array(total);let at=0;for(const chunk of chunks){out.set(chunk,at);at+=chunk.length;}return out;};
+  const ascii=(start,end)=>String.fromCharCode(...bytes.slice(start,end));
+  const equal=(a,b)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+  const removed=[];
+  if(bytes.length<16)throw new Error("Image file is too small.");
+  if(bytes[0]===0xff&&bytes[1]===0xd8){
+    const chunks=[bytes.slice(0,2)];let pos=2,inScan=false,sawScan=false,sawEnd=false;
+    while(pos<bytes.length){
+      if(inScan){
+        let end=pos;
+        while(end<bytes.length){
+          if(bytes[end]===0xff){
+            let j=end+1;while(j<bytes.length&&bytes[j]===0xff)j++;
+            const marker=bytes[j];
+            if(marker===0x00||(marker>=0xd0&&marker<=0xd7)){end=j+1;continue;}
+            break;
+          }
+          end++;
+        }
+        if(end>pos)chunks.push(bytes.slice(pos,end));
+        pos=end;inScan=false;
+        if(pos>=bytes.length)break;
+      }
+      const start=pos;
+      if(bytes[pos]!==0xff)throw new Error("Invalid JPEG marker sequence.");
+      while(pos<bytes.length&&bytes[pos]===0xff)pos++;
+      if(pos>=bytes.length)throw new Error("Incomplete JPEG marker.");
+      const marker=bytes[pos++];
+      if(marker===0xd9){chunks.push(bytes.slice(start,pos));sawEnd=true;break;}
+      if(marker===0xd8||marker===0x01||(marker>=0xd0&&marker<=0xd7)){chunks.push(bytes.slice(start,pos));continue;}
+      if(pos+2>bytes.length)throw new Error("Incomplete JPEG segment.");
+      const length=(bytes[pos]<<8)|bytes[pos+1],end=pos+length;
+      if(length<2||end>bytes.length)throw new Error("Invalid JPEG segment length.");
+      if((marker>=0xe0&&marker<=0xef)||marker===0xfe)removed.push("JPEG_"+marker.toString(16).toUpperCase());
+      else chunks.push(bytes.slice(start,end));
+      pos=end;
+      if(marker===0xda){sawScan=true;inScan=true;}
+    }
+    if(!sawScan||!sawEnd)throw new Error("JPEG image is incomplete or unsupported.");
+    if(pos<bytes.length)removed.push("JPEG_TRAILING_DATA");
+    const clean=join(chunks);
+    return {bytes:clean,mimeType:"image/jpeg",removed,verified:removed.length===0&&equal(bytes,clean)};
+  }
+  const pngSignature=[137,80,78,71,13,10,26,10];
+  if(pngSignature.every((v,i)=>bytes[i]===v)){
+    const chunks=[bytes.slice(0,8)];let pos=8,sawHeader=false,sawEnd=false;
+    while(pos+12<=bytes.length){
+      const length=(bytes[pos]*0x1000000)+(bytes[pos+1]<<16)+(bytes[pos+2]<<8)+bytes[pos+3];
+      const type=ascii(pos+4,pos+8),end=pos+12+length;
+      if(end>bytes.length)throw new Error("Invalid PNG chunk length.");
+      if(type==="IHDR")sawHeader=true;
+      const first=type.charCodeAt(0),critical=first>=65&&first<=90;
+      if(critical||type==="tRNS")chunks.push(bytes.slice(pos,end));
+      else removed.push("PNG_"+type);
+      pos=end;
+      if(type==="IEND"){sawEnd=true;break;}
+    }
+    if(!sawHeader||!sawEnd)throw new Error("PNG image is incomplete.");
+    if(pos<bytes.length)removed.push("PNG_TRAILING_DATA");
+    const clean=join(chunks);
+    return {bytes:clean,mimeType:"image/png",removed,verified:removed.length===0&&equal(bytes,clean)};
+  }
+  if(ascii(0,4)==="RIFF"&&ascii(8,12)==="WEBP"){
+    const declared=(bytes[4]|(bytes[5]<<8)|(bytes[6]<<16)|(bytes[7]<<24))>>>0;
+    const limit=declared+8;
+    if(limit>bytes.length||limit<12)throw new Error("Invalid WebP RIFF length.");
+    const chunks=[];let pos=12,hasImage=false;
+    while(pos+8<=limit){
+      const type=ascii(pos,pos+4),length=(bytes[pos+4]|(bytes[pos+5]<<8)|(bytes[pos+6]<<16)|(bytes[pos+7]<<24))>>>0;
+      const end=pos+8+length,padded=end+(length&1);
+      if(padded>limit)throw new Error("Invalid WebP chunk length.");
+      if(type==="EXIF"||type==="XMP "||type==="ICCP")removed.push("WEBP_"+type.trim());
+      else{
+        const chunk=bytes.slice(pos,padded);
+        if(type==="VP8X"){
+          if(length<10)throw new Error("Invalid WebP extended header.");
+          const flags=chunk[8],cleanFlags=flags&~0x2c;
+          if(flags!==cleanFlags){chunk[8]=cleanFlags;removed.push("WEBP_VP8X_METADATA_FLAGS");}
+        }
+        if(type==="VP8 "||type==="VP8L"||type==="ANMF")hasImage=true;
+        chunks.push(chunk);
+      }
+      pos=padded;
+    }
+    if(!hasImage)throw new Error("WebP image payload is missing.");
+    if(pos<limit)throw new Error("Invalid WebP chunk boundary.");
+    if(limit<bytes.length)removed.push("WEBP_TRAILING_DATA");
+    const body=join(chunks),out=new Uint8Array(12+body.length);
+    out.set([82,73,70,70],0);
+    const riffSize=4+body.length;
+    out[4]=riffSize&255;out[5]=(riffSize>>>8)&255;out[6]=(riffSize>>>16)&255;out[7]=(riffSize>>>24)&255;
+    out.set([87,69,66,80],8);out.set(body,12);
+    return {bytes:out,mimeType:"image/webp",removed,verified:removed.length===0&&equal(bytes,out)};
+  }
+  throw new Error("Unsupported image format. Use JPEG, PNG or WebP.");
+}
+
+function heroGalleryNormalize(data){
+  const clamp=(value,min,max)=>Math.min(max,Math.max(min,Number.isFinite(Number(value))?Number(value):min));
+  const raw=data&&data.heroGallery&&Array.isArray(data.heroGallery.images)?data.heroGallery:{};
+  let images=(raw.images||[]).filter(item=>item&&typeof item.src==="string"&&item.src.trim()).map((item,index)=>({
+    id:String(item.id||("image-"+(index+1))).slice(0,100),
+    src:String(item.src).slice(0,500),
+    focusX:clamp(item.focusX??50,0,100),
+    focusY:clamp(item.focusY??data.imagePos??50,0,100),
+    zoom:clamp(item.zoom??1,1,2.2),
+    faceDetection:item.faceDetection===true,
+    uploadedAt:item.uploadedAt||item.uploadTimestamp||null
+  }));
+  if(!images.length){
+    const src=String(data.image||"storage/pictures/1790523232314.jpg");
+    const base=(src.split("/").pop()||"current").replace(/[^a-z0-9_-]/gi,"-").slice(0,64)||"current";
+    images=[{id:"legacy-"+base,src,focusX:50,focusY:clamp(data.imagePos??50,0,100),zoom:1,faceDetection:false,uploadedAt:null}];
+  }
+  const active=images.find(item=>item.id===String(raw.activeImageId||""))||images.find(item=>item.src===String(data.image||""))||images[0];
+  return {version:1,activeImageId:active.id,images};
+}
+
+async function heroReadSiteData(env){
+  if(!env.GITHUB_TOKEN)throw new Error("GitHub repository access is unavailable.");
+  const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/site-data.json?ref=main";
+  const response=await fetch(api,{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Hero-Gallery","X-GitHub-Api-Version":"2022-11-28"},signal:AbortSignal.timeout(12000)});
+  const file=await response.json().catch(()=>({}));
+  if(!response.ok||!file.content||!file.sha)throw new Error("Could not read current site-data.json (HTTP "+response.status+").");
+  const raw=atob(file.content.replace(/\s/g,"")),data=JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
+  return {data,sha:file.sha};
+}
+
+async function heroWriteSiteData(env,data,sha,message){
+  const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/site-data.json";
+  const response=await fetch(api,{method:"PUT",headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Hero-Gallery","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},body:JSON.stringify({message,content:botB64(new TextEncoder().encode(JSON.stringify(data,null,2)+"\n")),sha,branch:"main"}),signal:AbortSignal.timeout(15000)});
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok){const error=new Error("GitHub site-data update failed (HTTP "+response.status+"): "+String(result.message||"unknown error").slice(0,150));error.status=response.status;throw error;}
+  return result.commit?.sha||null;
+}
+
+async function heroUpdateSiteData(env,mutate,message){
+  for(let attempt=0;attempt<3;attempt++){
+    const current=await heroReadSiteData(env);
+    const result=mutate(current.data);
+    try{
+      const commit=await heroWriteSiteData(env,current.data,current.sha,message);
+      return {...(result||{}),commit};
+    }catch(error){
+      if(error?.status===409&&attempt<2)continue;
+      throw error;
+    }
+  }
+  throw new Error("Site data changed repeatedly. No gallery update was committed.");
+}
+
+async function heroDeleteGitHubImage(env,path){
+  if(!/^storage\/pictures\/[A-Za-z0-9._-]+\.(?:jpe?g|png|webp)$/i.test(path))return {deleted:false,warning:"Image path is outside the managed gallery folder."};
+  const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/"+path+"?ref=main";
+  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Hero-Gallery","X-GitHub-Api-Version":"2022-11-28"};
+  const current=await fetch(api,{headers,signal:AbortSignal.timeout(10000)}),file=await current.json().catch(()=>({}));
+  if(current.status===404)return {deleted:true,alreadyMissing:true};
+  if(!current.ok||!file.sha)return {deleted:false,warning:"Gallery record was removed, but GitHub could not confirm the image file."};
+  const removed=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/"+path,{method:"DELETE",headers:{...headers,"Content-Type":"application/json"},body:JSON.stringify({message:"chore: delete unused hero gallery image",sha:file.sha,branch:"main"}),signal:AbortSignal.timeout(12000)});
+  if(!removed.ok)return {deleted:false,warning:"Gallery record was removed, but image file deletion failed (HTTP "+removed.status+")."};
+  return {deleted:true};
+}
+
+async function miniAppHeroGalleryList(env){
+  const {data}=await heroReadSiteData(env);
+  return {gallery:heroGalleryNormalize(data)};
+}
+
+async function miniAppHeroGallerySetActive(env,imageId){
+  const id=String(imageId||"");
+  if(!id||id.length>100)throw new Error("Invalid gallery image ID.");
+  return await heroUpdateSiteData(env,data=>{
+    const gallery=heroGalleryNormalize(data),image=gallery.images.find(item=>item.id===id);
+    if(!image)throw new Error("Gallery image was not found.");
+    gallery.activeImageId=image.id;data.heroGallery=gallery;data.image=image.src;data.imagePos=image.focusY;
+    return {gallery};
+  },"chore: select active hero gallery image");
+}
+
+async function miniAppHeroGallerySavePosition(env,body){
+  const id=String(body?.imageId||"");
+  const focusX=Number(body?.focusX),focusY=Number(body?.focusY),zoom=Number(body?.zoom);
+  if(!id||id.length>100||!Number.isFinite(focusX)||focusX<0||focusX>100||!Number.isFinite(focusY)||focusY<0||focusY>100||!Number.isFinite(zoom)||zoom<1||zoom>2.2)throw new Error("Invalid image position or zoom values.");
+  return await heroUpdateSiteData(env,data=>{
+    const gallery=heroGalleryNormalize(data),image=gallery.images.find(item=>item.id===id);
+    if(!image)throw new Error("Gallery image was not found.");
+    image.focusX=focusX;image.focusY=focusY;image.zoom=zoom;
+    if(body?.faceDetection===true)image.faceDetection=true;
+    else if(body?.faceDetection===false)image.faceDetection=false;
+    data.heroGallery=gallery;
+    if(gallery.activeImageId===image.id){data.image=image.src;data.imagePos=image.focusY;}
+    return {gallery};
+  },"chore: adjust hero gallery image position");
+}
+
+async function miniAppHeroGalleryDelete(env,imageId){
+  const id=String(imageId||"");
+  if(!id||id.length>100)throw new Error("Invalid gallery image ID.");
+  const updated=await heroUpdateSiteData(env,data=>{
+    const gallery=heroGalleryNormalize(data),image=gallery.images.find(item=>item.id===id);
+    if(!image)throw new Error("Gallery image was not found.");
+    if(gallery.activeImageId===image.id)throw new Error("The active Homepage image cannot be deleted. Select another image first.");
+    if(gallery.images.length<=1)throw new Error("At least one gallery image must remain.");
+    gallery.images=gallery.images.filter(item=>item.id!==id);
+    data.heroGallery=gallery;
+    return {gallery,deletedSrc:image.src};
+  },"chore: remove hero gallery image");
+  const cleanup=await heroDeleteGitHubImage(env,String(updated.deletedSrc||""));
+  return {gallery:updated.gallery,deleted:true,commit:updated.commit,...cleanup};
+}
+
 async function botHeroPreviewPage(env,token){
   const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
   if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
-  const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow"});
-  if(!r.ok)return new Response("Website preview unavailable",{status:502});
-  let html=await r.text();
-  const injected='<base href="https://kokushibu74.github.io/"><script>(function(){const original=window.fetch.bind(window);window.fetch=async function(input,init){const response=await original(input,init);if(String(input).includes("site-data.json")&&response.ok){const data=await response.clone().json();data.image="'+new URL("/hero-preview-image?token="+encodeURIComponent(token),"https://portfolio-contact-telegram.mdshihab74.workers.dev").href+'";return new Response(JSON.stringify(data),{status:response.status,headers:{"Content-Type":"application/json"}})}return response}})();</script>';
+  const response=await fetch("https://kokushibu74.github.io/",{redirect:"follow"});
+  if(!response.ok)return new Response("Website preview unavailable",{status:502});
+  let html=await response.text();
+  const previewUrl=new URL("/hero-preview-image?token="+encodeURIComponent(token),"https://portfolio-contact-telegram.mdshihab74.workers.dev").href;
+  const injected='<base href="https://kokushibu74.github.io/"><script>(function(){const original=window.fetch.bind(window),preview='+JSON.stringify(previewUrl)+';window.fetch=async function(input,init){const response=await original(input,init);if(String(input).includes("site-data.json")&&response.ok){const data=await response.clone().json();data.image=preview;data.imagePos=50;const gallery=data.heroGallery&&Array.isArray(data.heroGallery.images)?data.heroGallery:{version:1,images:[]};gallery.images=gallery.images.filter(item=>item.id!=="__preview__");gallery.images.push({id:"__preview__",src:preview,focusX:50,focusY:50,zoom:1});gallery.activeImageId="__preview__";data.heroGallery=gallery;return new Response(JSON.stringify(data),{status:response.status,headers:{"Content-Type":"application/json","Cache-Control":"no-store"}})}return response}})();</script>';
   html=html.replace("</head>",injected+"</head>");
   return new Response(html,{headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store","X-Robots-Tag":"noindex, nofollow"}});
 }
@@ -1856,13 +2090,13 @@ async function miniAppHeroPrepare(env,userId,body){
   if(!data||data.length>Math.ceil(4*1024*1024*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 4 MB or smaller and valid base64.");
   const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
   if(bytes.length<16||bytes.length>4*1024*1024)throw new Error("Image must be between 16 bytes and 4 MB.");
-  const isJpeg=bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
-  const isPng=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47;
-  const isWebp=String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP";
-  if(!(mime==="image/jpeg"&&isJpeg||mime==="image/png"&&isPng||mime==="image/webp"&&isWebp))throw new Error("Image file content does not match its declared format.");
+  const actual=bytes[0]===0xff&&bytes[1]===0xd8?"image/jpeg":bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?"image/png":String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP"?"image/webp":"";
+  if(actual!==mime)throw new Error("Image file content does not match its declared format.");
+  const clean=heroStripImageMetadata(bytes),verified=heroStripImageMetadata(clean.bytes);
+  if(verified.removed.length||verified.bytes.length!==clean.bytes.length||!verified.bytes.every((value,index)=>value===clean.bytes[index]))throw new Error("Image metadata could not be safely removed.");
   const token=crypto.randomUUID(),expiresAt=Date.now()+10*60*1000;
-  await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({base64:data,mimeType:mime,userId:String(userId),expiresAt}),{expirationTtl:600});
-  return {token,expiresAt,previewUrl:"https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token)};
+  await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({base64:botB64(clean.bytes),mimeType:clean.mimeType,userId:String(userId),expiresAt,metadataStripped:clean.removed.length}),{expirationTtl:600});
+  return {token,expiresAt,previewUrl:"https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token),metadataStripped:clean.removed.length};
 }
 async function miniAppHeroConfirm(env,userId,token){
   if(!/^[0-9a-f-]{30,40}$/i.test(String(token||"")))throw new Error("Invalid or expired preview token.");
@@ -1909,7 +2143,7 @@ async function miniAppModule(env,section){
   }
   const allowed=["website","news","analytics","security","reports","settings"];
   if(allowed.includes(section))return {section,text:await botStatusText(env,section,0),source:"existing Worker checks"};
-  if(section==="hero")return {section,text:"HERO IMAGE MANAGER\\n\\nবর্তমান Telegram Bot-এর Hero upload flow এখনো অক্ষত আছে। Mini App upload/preview/confirm action আলাদাভাবে প্রস্তুত করা হবে। এই পর্যায়ে কোনো image upload বা publish করা হচ্ছে না।",source:"existing Telegram Bot workflow"};
+  if(section==="hero")return {section,...await miniAppHeroGalleryList(env),source:"GitHub site-data.json"};
   if(section==="automation"||section==="alerts"){
     const cfg=await botConfig(env);
     const keys=section==="automation"?["monitoring","dailyReport","scheduledChecks","newsRefresh"]:["workflowAlerts","trafficAlerts","clientErrorAlerts","securityAlerts","emergencyProtection"];
@@ -2683,6 +2917,21 @@ export default {
           await miniAppAudit(env,user.id,"heroCancel");
           return respond({ok:true});
         }
+        if(action==="heroGalleryList"){
+          return respond({ok:true,...await miniAppHeroGalleryList(env)});
+        }
+        if(action==="heroGallerySetActive"){
+          const result=await miniAppHeroGallerySetActive(env,String(body?.imageId||""));
+          return respond({ok:true,...result});
+        }
+        if(action==="heroGallerySavePosition"){
+          const result=await miniAppHeroGallerySavePosition(env,body||{});
+          return respond({ok:true,...result});
+        }
+        if(action==="heroGalleryDelete"){
+          const result=await miniAppHeroGalleryDelete(env,String(body?.imageId||""));
+          return respond({ok:true,...result});
+        }
         if(action==="ga4Report"){
           const result=await miniAppGa4Report(env);
           await miniAppAudit(env,user.id,"ga4Report",{propertyId:result.propertyId});
@@ -3007,7 +3256,7 @@ export default {
         const sender=String(msg.from.id),admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
         if(admins.has(sender)&&env.BOT_CONFIG_KV){
           const mode=await env.BOT_CONFIG_KV.get("hero:uploading:"+sender,"json");
-          if(mode){const photo=msg.photo[msg.photo.length-1],token=crypto.randomUUID();await env.BOT_CONFIG_KV.delete("hero:uploading:"+sender);await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({fileId:photo.file_id,adminId:sender,expiresAt:Date.now()+900000}),{expirationTtl:900});const preview="https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token);await botSend(env,msg.chat.id,"🖼️ HERO PREVIEW READY\nআগে ওয়েবসাইটের আসল Hero layout-এ ছবিটি দেখুন:\n"+preview+"\n\nPreview ১৫ মিনিটের জন্য সচল থাকবে।",[[{text:"✅ Confirm & Publish",callback_data:"b1:hero:confirm:"+token}],[{text:"✖️ Cancel",callback_data:"b1:hero:cancel:"+token}]],{forceNew:true});return new Response("OK")}
+          if(mode){const photo=msg.photo[msg.photo.length-1],token=crypto.randomUUID();await env.BOT_CONFIG_KV.delete("hero:uploading:"+sender);await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({fileId:photo.file_id,adminId:sender,expiresAt:Date.now()+900000}),{expirationTtl:900});const preview="https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token);await botSend(env,msg.chat.id,"🖼️ GALLERY IMAGE PREVIEW READY\nছবিটি পরিষ্কার করে Gallery-তে যোগ করার আগে Homepage Round Frame-এ দেখে নিন:\n"+preview+"\n\nConfirm করলে ছবিটি Gallery-তে যোগ হবে; Active Homepage Image বদলাবে না। Preview ১৫ মিনিট সচল থাকবে।",[[{text:"✅ Add to Gallery",callback_data:"b1:hero:confirm:"+token}],[{text:"✖️ Cancel",callback_data:"b1:hero:cancel:"+token}]],{forceNew:true});return new Response("OK")}
         }
       }
       if(!msg?.chat||typeof msg.text!=="string")return new Response("OK");
