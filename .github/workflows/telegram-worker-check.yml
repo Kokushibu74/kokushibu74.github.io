@@ -30,6 +30,8 @@ on:
     branches: [main, feature/kokushibu-telegram-miniapp, test/visitor-location-runtime-20261105]
     paths:
       - 'tests/visitor-location.test.mjs'
+      - 'site.js'
+      - 'tests/hero-gallery.test.mjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/blog-manager.mjs'
