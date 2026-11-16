@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T04:11:49.812287+00:00",
-  "updatedAt": "2026-11-16T04:11:49.812287+00:00",
+  "generatedAt": "2026-11-16T04:26:46.931303+00:00",
+  "updatedAt": "2026-11-16T04:26:46.931303+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -375,7 +375,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "মাছ-মাংসের বাজারে আগুন, স্বস্তি কেবল সবজিতে",
@@ -1184,6 +1184,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8c6e0790ab5e426fc2bca39d9e24dc4f"
+    },
+    {
+      "title": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট - Jamuna Television",
+      "summary": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/667998",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/667998",
+      "publishedAt": "2026-11-15T06:01:41+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/667998"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট - Jamuna Television",
+          "summary": "গাজীপুরে আগুনে পুড়ল প্রবাসীর ১৩টি বসত ঘর ও দোকানপাট Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/667998"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5f9ec04e3060d0209595b94bbee1eafc"
     },
     {
       "title": "জামালপুরে বোমা সদৃশ বস্তু নিষ্ক্রিয় করলো সেনাবাহিনী - Dhaka Tribune Bangla",
