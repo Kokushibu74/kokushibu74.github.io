@@ -1711,26 +1711,15 @@ async function botTelegramPhoto(env,fileId){
   const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.length>4*1024*1024)throw new Error("Hero image must be 4 MB or smaller");
   return bytes;
 }
-async function botCommitHero(env,token){
+async function botCommitHero(env,token,adminId){
   if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("GitHub or configuration binding is unavailable");
   const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV.get(key,"json");
   if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired; upload the image again");
-  const api="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/contents/";
-  const headers={Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"};
-  const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
-  const ext=pending.mimeType==="image/png"?"png":pending.mimeType==="image/webp"?"webp":"jpg";
-  const imagePath="storage/pictures/hero-miniapp-"+Date.now()+"."+ext;
-  const putImage=await fetch(api+imagePath,{method:"PUT",headers,body:JSON.stringify({message:"chore: update portfolio hero image",content:botB64(bytes),branch:"main"})});
-  const imageResult=await putImage.json().catch(()=>({}));if(!putImage.ok)throw new Error("GitHub image upload failed (HTTP "+putImage.status+")");
-  const dataRes=await fetch(api+"site-data.json?ref=main",{headers:{Authorization:"Bearer "+env.GITHUB_TOKEN,Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp"}});
-  const current=await dataRes.json().catch(()=>({}));if(!dataRes.ok||!current.content||!current.sha)throw new Error("Could not read current site data from GitHub");
-  const raw=atob(current.content.replace(/\s/g,"")),data=JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))));
-  data.image=imagePath;
-  const content=botB64(new TextEncoder().encode(JSON.stringify(data,null,2)+"\n"));
-  const putData=await fetch(api+"site-data.json",{method:"PUT",headers,body:JSON.stringify({message:"chore: set portfolio hero image",content,sha:current.sha,branch:"main"})});
-  const dataResult=await putData.json().catch(()=>({}));if(!putData.ok)throw new Error("GitHub site-data update failed (HTTP "+putData.status+")");
+  if(String(pending.adminId)!==String(adminId))throw new Error("This preview belongs to another admin session.");
+  const bytes=await botTelegramPhoto(env,pending.fileId);
+  const result=await commitGalleryBytes(env,adminId,bytes,"image/jpeg",{focusX:50,focusY:50,zoom:1,faceDetection:false});
   await env.BOT_CONFIG_KV.delete(key);
-  return {imagePath,commit:dataResult.commit?.sha||imageResult.commit?.sha};
+  return result;
 }
 async function botHeroPreviewPage(env,token){
   const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
