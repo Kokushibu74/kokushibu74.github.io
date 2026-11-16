@@ -42,38 +42,93 @@ function putU32le(bytes, offset, value) {
 function stripJpegMetadata(input) {
   if (input.length < 4 || input[0] !== 255 || input[1] !== 216) throw new Error("Invalid JPEG image.");
   const parts = [input.slice(0, 2)];
-  let p = 2, ended = false;
+  let p = 2, inScan = false, scanStart = -1, sawEOI = false;
   while (p < input.length) {
+    if (inScan) {
+      let markerPos = -1;
+      while (p < input.length) {
+        if (input[p] === 255) {
+          let q = p + 1;
+          while (q < input.length && input[q] === 255) q++;
+          if (q >= input.length) throw new Error("Truncated JPEG scan.");
+          const marker = input[q];
+          if (marker === 0x00 || (marker >= 0xd0 && marker <= 0xd7)) { p = q + 1; continue; }
+          markerPos = p;
+          break;
+        }
+        p++;
+      }
+      if (markerPos < 0) throw new Error("JPEG end marker is missing.");
+      parts.push(input.slice(scanStart, markerPos));
+      p = markerPos;
+      inScan = false;
+      continue;
+    }
     const markerStart = p;
     if (input[p] !== 255) throw new Error("Malformed JPEG marker stream.");
     while (p < input.length && input[p] === 255) p++;
     if (p >= input.length) throw new Error("Truncated JPEG marker.");
     const marker = input[p++];
-    if (marker === 0xd9) {
-      parts.push(input.slice(markerStart, p));
-      if (p < input.length) parts.push(input.slice(p));
-      ended = true;
-      break;
-    }
+    if (marker === 0xd9) { parts.push(input.slice(markerStart, p)); sawEOI = true; break; }
     if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) {
       parts.push(input.slice(markerStart, p));
       continue;
     }
-    if (p + 2 > input.length) throw new Error("Truncated JPEG segment length.");
+    if (marker === 0x00 || p + 2 > input.length) throw new Error("Invalid JPEG marker.");
     const length = (input[p] << 8) | input[p + 1];
     if (length < 2 || p + length > input.length) throw new Error("Invalid JPEG segment length.");
     const segmentEnd = p + length;
     if (marker === 0xda) {
-      parts.push(input.slice(markerStart));
-      ended = true;
-      break;
+      parts.push(input.slice(markerStart, segmentEnd));
+      p = segmentEnd;
+      scanStart = p;
+      inScan = true;
+      continue;
     }
     const isMetadata = (marker >= 0xe0 && marker <= 0xef) || marker === 0xfe;
     if (!isMetadata) parts.push(input.slice(markerStart, segmentEnd));
     p = segmentEnd;
   }
-  if (!ended) throw new Error("JPEG scan or end marker is missing.");
+  if (!sawEOI) throw new Error("JPEG end marker is missing.");
   return concat(parts);
+}
+function jpegHasMetadata(input) {
+  if (input.length < 4 || input[0] !== 255 || input[1] !== 216) return true;
+  let p = 2, inScan = false;
+  while (p < input.length) {
+    if (inScan) {
+      let markerPos = -1;
+      while (p < input.length) {
+        if (input[p] === 255) {
+          let q = p + 1;
+          while (q < input.length && input[q] === 255) q++;
+          if (q >= input.length) return true;
+          const marker = input[q];
+          if (marker === 0x00 || (marker >= 0xd0 && marker <= 0xd7)) { p = q + 1; continue; }
+          markerPos = p;
+          break;
+        }
+        p++;
+      }
+      if (markerPos < 0) return true;
+      p = markerPos;
+      inScan = false;
+      continue;
+    }
+    if (input[p] !== 255) return true;
+    while (p < input.length && input[p] === 255) p++;
+    if (p >= input.length) return true;
+    const marker = input[p++];
+    if (marker === 0xd9) return false;
+    if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) continue;
+    if (marker === 0x00 || p + 2 > input.length) return true;
+    const length = (input[p] << 8) | input[p + 1];
+    if (length < 2 || p + length > input.length) return true;
+    if ((marker >= 0xe0 && marker <= 0xef) || marker === 0xfe) return true;
+    p += length;
+    if (marker === 0xda) inScan = true;
+  }
+  return true;
 }
 
 const PNG_SIGNATURE = Uint8Array.from([137, 80, 78, 71, 13, 10, 26, 10]);
@@ -121,25 +176,7 @@ function stripWebpMetadata(input) {
 
 export function hasEmbeddedImageMetadata(bytes, mimeType) {
   const input = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
-  if (mimeType === "image/jpeg") {
-    if (input.length < 4 || input[0] !== 255 || input[1] !== 216) return true;
-    let p = 2;
-    while (p < input.length) {
-      if (input[p] !== 255) return true;
-      while (p < input.length && input[p] === 255) p++;
-      if (p >= input.length) return true;
-      const marker = input[p++];
-      if (marker === 0xd9) return false;
-      if (marker === 0xda) return false;
-      if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) continue;
-      if (p + 2 > input.length) return true;
-      const length = (input[p] << 8) | input[p + 1];
-      if (length < 2 || p + length > input.length) return true;
-      if ((marker >= 0xe0 && marker <= 0xef) || marker === 0xfe) return true;
-      p += length;
-    }
-    return true;
-  }
+  if (mimeType === "image/jpeg") return jpegHasMetadata(input);
   if (mimeType === "image/png") {
     if (input.length < 8 || !PNG_SIGNATURE.every((v, i) => input[i] === v)) return true;
     let p = 8;
