@@ -9,6 +9,8 @@ on:
       - 'cloudflare/blog-manager.mjs'
       - 'cloudflare/hero-gallery.mjs'
       - 'site.js'
+      - 'admin.js'
+      - 'admin.html'
       - 'tests/hero-gallery.test.mjs'
       - 'journal.js'
       - 'journal.css'
@@ -68,6 +70,7 @@ jobs:
           node --check cloudflare/blog-manager.mjs
           node --check cloudflare/hero-gallery.mjs
           node --check site.js
+          node --check admin.js
           node --check journal.js
           node --check miniapp/app.js
       - name: Verify Hero Gallery image metadata stripping
