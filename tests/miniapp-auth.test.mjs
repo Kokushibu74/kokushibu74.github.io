@@ -4,6 +4,7 @@ import { webcrypto } from "node:crypto";
 import vm from "node:vm";
 
 const worker = readFileSync("cloudflare/portfolio-contact-telegram.js", "utf8");
+const gallery = readFileSync("cloudflare/hero-gallery.mjs", "utf8");
 const html = readFileSync("miniapp/index.html", "utf8");
 const app = readFileSync("miniapp/app.js", "utf8");
 const css = readFileSync("miniapp/app.css", "utf8");
@@ -63,10 +64,10 @@ const userActionSource = worker.slice(userActionStart, userActionEnd);
 assert(userActionSource.indexOf('if(operation==="link")') < userActionSource.indexOf("const user=await umResolve(env,input)"), "User linking must not require a previously selected single user");
 assert(worker.includes("miniAppGa4Report") && worker.includes('if(action==="ga4Report")'), "GA4 report must use the authenticated Worker API");
 assert(worker.includes("miniAppHeroPrepare") && worker.includes("miniAppHeroConfirm"), "Hero upload must use a staged preview and explicit confirm flow");
-assert(worker.includes("pending.userId") && worker.includes("pending.expiresAt"), "Hero preview must be admin-bound and expire");
-assert(worker.includes("image/jpeg") && worker.includes("image/png") && worker.includes("image/webp"), "Hero upload must restrict supported image formats");
+assert(gallery.includes("userId: String(userId)") && gallery.includes("expiresAt"), "Hero gallery preview must be admin-bound and expire");
+assert(gallery.includes("image/jpeg") && gallery.includes("image/png") && gallery.includes("image/webp") && gallery.includes("stripImageMetadata"), "Hero upload must restrict formats and strip metadata before staging");
 assert(worker.includes('if(action==="heroPrepare")') && worker.includes('if(action==="heroConfirm")'), "Hero prepare and publish actions must be authenticated");
-assert(app.includes('api("heroPrepare"') && app.includes('api("heroConfirm"') && app.includes("Confirm & Publish to Live Site"), "Hero UI must upload, preview and require explicit publish confirmation");
+assert(app.includes('api("heroPrepare"') && app.includes('api("heroConfirm"') && app.includes('api("heroGalleryList"') && app.includes('api("heroGallerySetActive"') && app.includes('api("heroGalleryUpdatePosition"') && app.includes('api("heroGalleryDelete"') && app.includes("file.multiple=true"), "Hero UI must support multi-image gallery management, active selection and manual framing");
 
 assert(worker.includes("miniAppCronHistory") && worker.includes('if(action==="cronHistory")'), "Cloudflare Cron run history API must exist");
 assert(worker.includes("miniAppDispatchNews") && worker.includes('if(action==="newsRefresh")'), "manual News Refresh must use the existing GitHub workflow dispatch");
