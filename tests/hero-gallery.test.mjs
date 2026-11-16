@@ -37,6 +37,16 @@ assert.equal(hasEmbeddedImageMetadata(cleanJpeg, "image/jpeg"), false);
 assert.equal(cleanJpeg[0], 255);
 assert.equal(cleanJpeg[1], 216);
 assert.deepEqual(Array.from(cleanJpeg.slice(-5)), [17, 34, 51, 255, 217], "JPEG scan bytes must remain unchanged");
+const multiScanJpeg = concat([
+  Uint8Array.from([255, 216]),
+  jpegSegment(0xdb),
+  jpegSegment(0xda),
+  Uint8Array.from([1, 2, 255, 208, 3, 255, 225, 0, 8, 69, 120, 105, 102, 0, 0, 71, 80, 83]),
+  jpegSegment(0xda),
+  Uint8Array.from([4, 5, 255, 217])
+]);
+const cleanMultiScan = stripImageMetadata(multiScanJpeg, "image/jpeg");
+assert.equal(hasEmbeddedImageMetadata(cleanMultiScan, "image/jpeg"), false, "metadata between JPEG scans must also be stripped");
 
 const png = concat([
   Uint8Array.from([137, 80, 78, 71, 13, 10, 26, 10]),
@@ -88,6 +98,7 @@ assert(site.includes('e.pointerType==="touch"') && site.includes('e.target===ove
 assert(site.includes("object-fit:contain"), "Full-size viewer must show the original image without cropping");
 assert(app.includes("file.multiple=true") && app.includes('api("heroGallerySetActive"') && app.includes('api("heroGalleryUpdatePosition"'), "Telegram Mini App must support multi-upload, active selection and manual framing");
 assert(app.includes("FaceDetector.createFromOptions") && app.includes("ObjectDetector.createFromOptions"), "Face and subject detection must run locally in the Mini App");
+assert(app.includes('import("https://kokushibu74.github.io/cloudflare/hero-gallery.mjs")') && app.includes("stripImageMetadata"), "Image metadata must be stripped in the browser before sending bytes to the Worker");
 assert(worker.includes('if(pathname==="/hero-preview-image"') && worker.includes('if(action==="heroGalleryDelete")'), "Worker must expose the sanitized preview and authenticated gallery controls");
 assert(!/faceEmbedding|faceIdentity|biometricTemplate/i.test(c + app + worker), "No facial identity or biometric template storage is allowed");
 
