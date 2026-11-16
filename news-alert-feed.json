@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T19:01:47.021164+00:00",
-  "updatedAt": "2026-11-16T19:01:47.021164+00:00",
+  "generatedAt": "2026-11-16T19:56:50.874560+00:00",
+  "updatedAt": "2026-11-16T19:56:50.874560+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 41,
-  "failedSourceCount": 0,
+  "healthySourceCount": 34,
+  "failedSourceCount": 7,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 27,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -63,12 +63,12 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Kaler Kantho",
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16
+      "fallbackItems": 15
     },
     {
       "name": "New Age",
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25
+      "fallbackItems": 24
     },
     {
       "name": "Risingbd",
@@ -193,12 +193,12 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Sun",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -245,7 +245,7 @@
       "domain": "ekattor.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -323,12 +323,12 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -343,12 +343,12 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Janakantha",
@@ -373,21 +373,21 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -421,8 +421,39 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 11,
+  "candidateCount": 13,
   "alertItems": [
+    {
+      "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
+      "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publisherUrl": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publishedAt": "2026-11-16T19:06:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
+          "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2a8c1a02638bb7036d525e86f515c76f"
+    },
     {
       "title": "উল্টোপথে আসা জাহাজের ধাক্কায় ডুবে গেছে বালুভর্তি বাল্কহেড, ১২ ঘণ্টায়ও উদ্ধার হয়নি",
       "summary": "যশোরের অভয়নগরে ভৈরব নদে লাইটার জাহাজের ধাক্কায় বালুভর্তি একটি বাল্কহেড ডুবে গেছে। সোমবার (১৬ নভেম্বর) ভোর ৫টার দিকে উপজেলার নওয়াপাড়া-শংকরপাশা খেয়াঘাটসংলগ্ন বিশ্বাস বাড়ির সামনে এ দুর্ঘটনা ঘটে। বিকাল ৫টা পর্যন্ত সেটি উদ্ধার করা যায়নি। তবে দুর্ঘটনাস্থল দিয়ে নৌযান চলাচল বন্ধ রয়েছে। প্রত্যক্ষদর্শীরা জানান, সোমবার ভোর আনুমানিক ৫টার দিকে খুলনাগামী ‘এমভি মারুফ-১’ লাইটার জাহাজের ধাক্কায়... বিস্তারিত",
@@ -486,6 +517,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "234f8cab241c362109922f80e5f4591e"
+    },
+    {
+      "title": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publishedAt": "2026-11-16T11:28:05+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "120574b1c265f7bae9fcae7b784b80c0"
     },
     {
       "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
@@ -733,8 +795,7 @@
           "name": "Jamuna Television",
           "title": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Jamuna Television",
           "summary": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668059",
-          "incidentDateText": "১৬ নভেম্বর ২০২৬"
+          "url": "https://www.jamuna.tv/all-bangladesh/668059"
         }
       ],
       "corroborationCount": 1,
