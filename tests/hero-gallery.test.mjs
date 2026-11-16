@@ -41,7 +41,8 @@ const multiScanJpeg = concat([
   Uint8Array.from([255, 216]),
   jpegSegment(0xdb),
   jpegSegment(0xda),
-  Uint8Array.from([1, 2, 255, 208, 3, 255, 225, 0, 8, 69, 120, 105, 102, 0, 0, 71, 80, 83]),
+  Uint8Array.from([1, 2, 255, 208, 3]),
+  jpegSegment(0xe1, ascii("Exif\0\0GPS")),
   jpegSegment(0xda),
   Uint8Array.from([4, 5, 255, 217])
 ]);
