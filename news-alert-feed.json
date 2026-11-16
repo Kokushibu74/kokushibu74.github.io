@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T21:37:03.223444+00:00",
-  "updatedAt": "2026-11-16T21:37:03.223444+00:00",
+  "generatedAt": "2026-11-16T21:56:46.842669+00:00",
+  "updatedAt": "2026-11-16T21:56:46.842669+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 31,
-  "failedSourceCount": 10,
+  "healthySourceCount": 36,
+  "failedSourceCount": 5,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 24,
+  "fallbackHealthySourceCount": 29,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -73,12 +73,12 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bangla Tribune",
@@ -113,32 +113,32 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 13
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "BSS",
@@ -263,12 +263,12 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Bhorer Kagoj",
@@ -293,12 +293,12 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "The Daily Ittefaq",
@@ -323,16 +323,6 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
-    },
-    {
-      "name": "Dainik Amader Shomoy",
-      "domain": "dainikamadershomoy.com",
       "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
@@ -341,14 +331,24 @@
       "fallbackItems": 30
     },
     {
-      "name": "Daily Naya Diganta",
-      "domain": "dailynayadiganta.com",
+      "name": "Dainik Amader Shomoy",
+      "domain": "dainikamadershomoy.com",
       "status": "failed",
       "directStatus": "failed",
-      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
+      "directError": "HTTP 404",
       "fallbackStatus": "failed",
       "fallbackError": "HTTP 429",
       "fallbackItems": 0
+    },
+    {
+      "name": "Daily Naya Diganta",
+      "domain": "dailynayadiganta.com",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Daily Janakantha",
@@ -373,11 +373,11 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -413,16 +413,47 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 8,
+  "candidateCount": 11,
   "alertItems": [
+    {
+      "title": "অন্তঃসত্ত্বা শিক্ষিকার পেটে লাথি মারার অভিযোগ বিএনপি নেতার বিরুদ্ধে, জ্বালিয়ে দেওয়ার হুমকি",
+      "summary": "নেত্রকোনার আটপাড়া উপজেলায় বিদ্যালয়ের ব্যবস্থাপনা কমিটি গঠন নিয়ে বিরোধের জেরে পাঁচ মাসের অন্তঃসত্ত্বা এক ভারপ্রাপ্ত প্রধান শিক্ষিকার ওপর হামলা ও মারধরের অভিযোগ উঠেছে বিএনপি নেতাকর্মীদের বিরুদ্ধে। এ সময় শিক্ষিকার তলপেটে লাথি মারার পাশাপাশি তাকে পেটের সন্তানসহ পুড়িয়ে হত্যা এবং বাড়িঘর জ্বালিয়ে দেওয়ার হুমকি দেওয়া হয় বলে অভিযোগ করেছেন ভুক্তভোগী। এ সময় ইউনিয়ন বিএনপির সভাপতি আনোয়ার হোসেনের নেতৃত্বে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/mymensing/981411/%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%83%E0%A6%B8%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A6%BE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B2%E0%A6%BE%E0%A6%A5%E0%A6%BF-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publisherUrl": "https://www.banglatribune.com/country/mymensing/981411/%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%83%E0%A6%B8%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A6%BE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B2%E0%A6%BE%E0%A6%A5%E0%A6%BF-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publishedAt": "2026-11-16T21:49:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/mymensing/981411/%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%83%E0%A6%B8%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A6%BE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B2%E0%A6%BE%E0%A6%A5%E0%A6%BF-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "অন্তঃসত্ত্বা শিক্ষিকার পেটে লাথি মারার অভিযোগ বিএনপি নেতার বিরুদ্ধে, জ্বালিয়ে দেওয়ার হুমকি",
+          "summary": "নেত্রকোনার আটপাড়া উপজেলায় বিদ্যালয়ের ব্যবস্থাপনা কমিটি গঠন নিয়ে বিরোধের জেরে পাঁচ মাসের অন্তঃসত্ত্বা এক ভারপ্রাপ্ত প্রধান শিক্ষিকার ওপর হামলা ও মারধরের অভিযোগ উঠেছে বিএনপি নেতাকর্মীদের বিরুদ্ধে। এ সময় শিক্ষিকার তলপেটে লাথি মারার পাশাপাশি তাকে পেটের সন্তানসহ পুড়িয়ে হত্যা এবং বাড়িঘর জ্বালিয়ে দেওয়ার হুমকি দেওয়া হয় বলে অভিযোগ করেছেন ভুক্তভোগী। এ সময় ইউনিয়ন বিএনপির সভাপতি আনোয়ার হোসেনের নেতৃত্বে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/mymensing/981411/%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%83%E0%A6%B8%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A6%BE-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B2%E0%A6%BE%E0%A6%A5%E0%A6%BF-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "22c46bb842304eb93b0b4ea7c59c0bbc"
+    },
     {
       "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
       "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
@@ -519,6 +550,37 @@
       "alertEventId": "120574b1c265f7bae9fcae7b784b80c0"
     },
     {
+      "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
+      "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-16T09:45:37+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
+          "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fd4fbf349bff25fbd7d588370a02aea8"
+    },
+    {
       "title": "রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’",
       "summary": "চট্টগ্রাম নগরের বায়েজিদ বোস্তামী এলাকায় ২০ লাখ টাকা চাঁদা না পেয়ে এক ব্যবসায়ীর বাড়ি লক্ষ্য করে গুলি চালানোর অভিযোগ উঠেছে। গুলিবর্ষণের পর মুঠোফোনে ওই ব্যবসায়ীকে আবারও প্রাণনাশের হুমকি দেওয়া হয়েছে। তাঁকে বলা হয়েছে, ‘আজ বাড়িতে গুলি করেছি, কাল শরীরে গুলি করব।’ ভুক্তভোগী ব্যবসায়ী জাফর আহমেদের অভিযোগ, ‘রায়হান’ পরিচয়ে এক ব্যক্তি তাঁর কাছে ২০ লাখ টাকা […] The post রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’ appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/bayezid-businessman-house-firing-extortion-threat/",
@@ -549,6 +611,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "743988b53cae8dbb368d7c8d8037cc49"
+    },
+    {
+      "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+      "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publishedAt": "2026-11-16T06:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+          "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d55a28b34dc927eac631721e721756c2"
     },
     {
       "title": "পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত",
