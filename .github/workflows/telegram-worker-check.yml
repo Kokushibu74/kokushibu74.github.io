@@ -7,6 +7,8 @@ on:
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/blog-manager.mjs'
+      - 'cloudflare/hero-gallery.mjs'
+      - 'tests/hero-gallery.test.mjs'
       - 'journal.js'
       - 'journal.css'
       - 'projects.html'
@@ -63,8 +65,11 @@ jobs:
       - name: Parse Developer Journal modules and frontend scripts
         run: |
           node --check cloudflare/blog-manager.mjs
+          node --check cloudflare/hero-gallery.mjs
           node --check journal.js
           node --check miniapp/app.js
+      - name: Verify Hero Gallery image metadata stripping
+        run: node tests/hero-gallery.test.mjs
       - name: Verify Developer Journal publishing and visibility rules
         run: node tests/blog-manager.test.mjs
       - name: Verify Developer Journal UI and Project Slider boundary
