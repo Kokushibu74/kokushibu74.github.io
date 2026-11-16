@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T21:58:27.223912+00:00",
-  "updatedAt": "2026-11-16T21:58:27.223912+00:00",
+  "generatedAt": "2026-11-16T22:16:41.800794+00:00",
+  "updatedAt": "2026-11-16T22:16:41.800794+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 40,
-  "failedSourceCount": 1,
+  "healthySourceCount": 33,
+  "failedSourceCount": 8,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 26,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -73,12 +73,12 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bangla Tribune",
@@ -118,27 +118,27 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11
+      "fallbackItems": 10
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "BSS",
@@ -153,12 +153,12 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 24
     },
     {
       "name": "Risingbd",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -233,12 +233,12 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ekattor TV",
@@ -253,12 +253,12 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Barta24",
@@ -303,12 +303,12 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ajker Patrika",
@@ -333,12 +333,12 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Naya Diganta",
@@ -421,8 +421,50 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 12,
+  "candidateCount": 10,
   "alertItems": [
+    {
+      "title": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে দুটি ককটেল বিস্ফোরণ",
+      "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ধাপেরহাট ইউনিয়ন বিএনপি কার্যালয়ের পাশে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়দের মধ্যে আতঙ্ক ছড়িয়ে পড়ে...",
+      "link": "https://www.jagonews24.com/country/news/1180293",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180293",
+      "publishedAt": "2026-11-16T22:05:35+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180293"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে দুটি ককটেল বিস্ফোরণ",
+          "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ধাপেরহাট ইউনিয়ন বিএনপি কার্যালয়ের পাশে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়দের মধ্যে আতঙ্ক ছড়িয়ে পড়ে...",
+          "url": "https://www.jagonews24.com/country/news/1180293"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
+          "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "1c1461a9d5cf732342c11d2734978fc5"
+    },
     {
       "title": "অন্তঃসত্ত্বা শিক্ষিকার পেটে লাথি মারার অভিযোগ বিএনপি নেতার বিরুদ্ধে, জ্বালিয়ে দেওয়ার হুমকি",
       "summary": "নেত্রকোনার আটপাড়া উপজেলায় বিদ্যালয়ের ব্যবস্থাপনা কমিটি গঠন নিয়ে বিরোধের জেরে পাঁচ মাসের অন্তঃসত্ত্বা এক ভারপ্রাপ্ত প্রধান শিক্ষিকার ওপর হামলা ও মারধরের অভিযোগ উঠেছে বিএনপি নেতাকর্মীদের বিরুদ্ধে। এ সময় শিক্ষিকার তলপেটে লাথি মারার পাশাপাশি তাকে পেটের সন্তানসহ পুড়িয়ে হত্যা এবং বাড়িঘর জ্বালিয়ে দেওয়ার হুমকি দেওয়া হয় বলে অভিযোগ করেছেন ভুক্তভোগী। এ সময় ইউনিয়ন বিএনপির সভাপতি আনোয়ার হোসেনের নেতৃত্বে... বিস্তারিত",
@@ -453,70 +495,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "22c46bb842304eb93b0b4ea7c59c0bbc"
-    },
-    {
-      "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
-      "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-16T19:06:00+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
-          "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ৬নং ধাপেরহাট ইউনিয়ন বিএনপির দলীয় কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে ধাপেরহাট বন্দরে রংপুর-ঢাকা মহাসড়কসংলগ্ন দলীয় কার্যালয়ের সামনে এ ঘটনা ঘটে। বিকট শব্দে বিস্ফোরণের পর স্থানীয় ব্যবসায়ী, পথচারী ও আশপাশের মানুষের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। স্থানীয়দের বরাতে জানা গেছে, সন্ধ্যার দিকে হঠাৎ দলীয় কার্যালয়ের সামনে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rangpur/981404/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2a8c1a02638bb7036d525e86f515c76f"
-    },
-    {
-      "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
-      "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668115",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668115",
-      "publishedAt": "2026-11-16T11:46:07+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668115"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
-          "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668115",
-          "incidentDateText": "১৭ নভেম্বর ২০২৬",
-          "locationText": "আগেই আগুনে ঘাট এলাকায়"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "234f8cab241c362109922f80e5f4591e"
     },
     {
       "title": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
@@ -644,6 +622,37 @@
       "alertEventId": "743988b53cae8dbb368d7c8d8037cc49"
     },
     {
+      "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+      "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publishedAt": "2026-11-16T06:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+          "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d55a28b34dc927eac631721e721756c2"
+    },
+    {
       "title": "পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত",
       "summary": "চট্টগ্রামের পটিয়ায় ঈগল পরিবহনের একটি বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে মো. ফারাজ (২১) নামের এক যুবক নিহত হয়েছেন। এ ঘটনায় মোটরসাইকেলের অপর আরোহী গুরুতর আহত হয়েছেন। নিহত ফারাজ লোহাগাড়া উপজেলার মোহাম্মদ জাহাঙ্গীরের ছেলে। তিনি সম্প্রতি প্রবাস থেকে দেশে ফিরেছিলেন। সোমবার সকাল ৯টার দিকে উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। প্রত্যক্ষদর্শী ও স্থানীয় […] The post পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/patiya-eagle-bus-motorcycle-collision-expatriate-youth-killed/",
@@ -678,37 +687,6 @@
       "alertEventId": "58be80b350a3fc06663bd5255853dd1b"
     },
     {
-      "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-      "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-      "link": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publisherUrl": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publishedAt": "2026-11-16T04:43:51+00:00",
-      "source": "The Daily Ittefaq",
-      "publisherName": "The Daily Ittefaq",
-      "sourceEvidence": [
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "The Daily Ittefaq",
-          "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-          "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2c63cb59e7f5dc165ce71aca16b8b3f8"
-    },
-    {
       "title": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113179/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
@@ -738,69 +716,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f6b07eb51b5a97a725e40e911313dc3b"
-    },
-    {
-      "title": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Jamuna Television",
-      "summary": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668059",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668059",
-      "publishedAt": "2026-11-16T01:30:42+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668059"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Jamuna Television",
-          "summary": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668059",
-          "incidentDateText": "১৬ নভেম্বর ২০২৬"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2217cc57b0c08bb4301e0d306a985dfa"
-    },
-    {
-      "title": "নাটোরে জয় বাংলা স্লোগান দিয়ে ককটেল বিস্ফোরণ ও ১০০ রাউন্ড ফাঁকা গুলিবর্ষণ - Jamuna Television",
-      "summary": "নাটোরে জয় বাংলা স্লোগান দিয়ে ককটেল বিস্ফোরণ ও ১০০ রাউন্ড ফাঁকা গুলিবর্ষণ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668057",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668057",
-      "publishedAt": "2026-11-16T00:07:36+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668057"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "নাটোরে জয় বাংলা স্লোগান দিয়ে ককটেল বিস্ফোরণ ও ১০০ রাউন্ড ফাঁকা গুলিবর্ষণ - Jamuna Television",
-          "summary": "নাটোরে জয় বাংলা স্লোগান দিয়ে ককটেল বিস্ফোরণ ও ১০০ রাউন্ড ফাঁকা গুলিবর্ষণ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668057"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0a19064d3d555c2324f549a048cb3d7d"
     }
   ]
 }
