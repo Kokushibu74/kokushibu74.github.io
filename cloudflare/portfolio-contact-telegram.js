@@ -1843,27 +1843,10 @@ async function miniAppDispatchNews(env){
   return {accepted:true,workflow:"update-news.yml",branch:"main",url:"https://github.com/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml"};
 }
 async function miniAppHeroPrepare(env,userId,body){
-  if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("Hero image storage is unavailable.");
-  const mime=String(body?.mimeType||""),data=String(body?.base64||"");
-  if(!["image/jpeg","image/png","image/webp"].includes(mime))throw new Error("Only JPEG, PNG and WebP images are supported.");
-  if(!data||data.length>Math.ceil(4*1024*1024*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 4 MB or smaller and valid base64.");
-  const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
-  if(bytes.length<16||bytes.length>4*1024*1024)throw new Error("Image must be between 16 bytes and 4 MB.");
-  const isJpeg=bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
-  const isPng=bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47;
-  const isWebp=String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP";
-  if(!(mime==="image/jpeg"&&isJpeg||mime==="image/png"&&isPng||mime==="image/webp"&&isWebp))throw new Error("Image file content does not match its declared format.");
-  const token=crypto.randomUUID(),expiresAt=Date.now()+10*60*1000;
-  await env.BOT_CONFIG_KV.put("hero:pending:"+token,JSON.stringify({base64:data,mimeType:mime,userId:String(userId),expiresAt}),{expirationTtl:600});
-  return {token,expiresAt,previewUrl:"https://portfolio-contact-telegram.mdshihab74.workers.dev/hero-preview?token="+encodeURIComponent(token)};
+  return await prepareGalleryImage(env,userId,body);
 }
-async function miniAppHeroConfirm(env,userId,token){
-  if(!/^[0-9a-f-]{30,40}$/i.test(String(token||"")))throw new Error("Invalid or expired preview token.");
-  const key="hero:pending:"+token,pending=await env.BOT_CONFIG_KV?.get(key,"json");
-  if(!pending||pending.expiresAt<Date.now())throw new Error("Hero preview expired. Upload the image again.");
-  if(String(pending.userId)!==String(userId))throw new Error("This preview belongs to another admin session.");
-  const result=await botCommitHero(env,token);
-  return {ok:true,...result};
+async function miniAppHeroConfirm(env,userId,token,position={}){
+  return await commitGalleryPending(env,userId,token,position);
 }
 async function miniAppGa4Report(env){
   if(!env.GA4_SERVICE_ACCOUNT_JSON)throw new Error("GA4_SERVICE_ACCOUNT_JSON secret is missing.");
@@ -2673,8 +2656,8 @@ export default {
           return respond({ok:true,...result});
         }
         if(action==="heroConfirm"){
-          const result=await miniAppHeroConfirm(env,user.id,String(body?.token||""));
-          await miniAppAudit(env,user.id,"heroConfirm",{imagePath:result.imagePath,commit:result.commit});
+          const result=await miniAppHeroConfirm(env,user.id,String(body?.token||""),{focusX:body?.focusX,focusY:body?.focusY,zoom:body?.zoom,faceDetection:body?.faceDetection});
+          await miniAppAudit(env,user.id,"heroConfirm",{imagePath:result.imagePath,commit:result.commit,metadataStripped:result.metadataStripped});
           return respond(result);
         }
         if(action==="heroCancel"){
