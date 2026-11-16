@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'site.js'
+      - 'tests/hero-gallery.test.mjs'
       - 'cloudflare/blog-manager.mjs'
       - 'journal.js'
       - 'journal.css'
@@ -65,6 +67,7 @@ jobs:
           node --check cloudflare/blog-manager.mjs
           node --check journal.js
           node --check miniapp/app.js
+          node --check site.js
       - name: Verify Developer Journal publishing and visibility rules
         run: node tests/blog-manager.test.mjs
       - name: Verify Developer Journal UI and Project Slider boundary
@@ -79,6 +82,8 @@ jobs:
         run: node --test tests/visitor-location-runtime.test.mjs
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
+      - name: Verify Hero Gallery metadata privacy and viewer contracts
+        run: node tests/hero-gallery.test.mjs
       - name: Verify Cloudflare Standard resource budget guardrails
         run: node tests/resource-budget-guardrails.test.mjs
       - name: Verify five-part Telegram daily report
