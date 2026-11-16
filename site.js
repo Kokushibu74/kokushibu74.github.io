@@ -67,7 +67,7 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
  const images=(Array.isArray(galleryImages)?galleryImages:[]).filter(item=>item&&typeof item.src==="string"&&item.src);
  const list=images.length?images:[{id:"active",src:img.currentSrc||img.src,alt:defaultAlt||"Full portrait"}];
  let activeIndex=Math.max(0,list.findIndex(item=>item.id===activeId));if(activeIndex<0)activeIndex=0;
- let currentIndex=activeIndex,mode="",hideTimer=0,historyEntry=false,pointerStart=null,suppressClickUntil=0;
+ let currentIndex=activeIndex,mode="",hideTimer=0,historyEntry=false,pointerStart=null,suppressClickUntil=0,suppressHoverUntilLeave=false,lastPointerX=null,lastPointerY=null;
  const style=document.createElement("style");style.id="portrait-reveal-styles";
  style.textContent=[
   '.neon-image-viewport{position:absolute;inset:2px;z-index:1;border-radius:50%;overflow:hidden;isolation:isolate}',
@@ -114,12 +114,13 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
   if(nextMode==="tap")resetTimer();
  };
  function close(fromPop=false){
-  clearTimeout(hideTimer);hideTimer=0;const hadHistory=historyEntry;historyEntry=false;mode="";pointerStart=null;
+  clearTimeout(hideTimer);hideTimer=0;const closingMode=mode,hadHistory=historyEntry;historyEntry=false;mode="";pointerStart=null;
+  if(closingMode==="tap"&&lastPointerX!==null&&lastPointerY!==null){const rect=img.getBoundingClientRect();suppressHoverUntilLeave=lastPointerX>=rect.left&&lastPointerX<=rect.right&&lastPointerY>=rect.top&&lastPointerY<=rect.bottom;}
   overlay.classList.remove("is-visible","is-tap");overlay.setAttribute("aria-hidden","true");
   if(hadHistory&&!fromPop){try{history.back();}catch(_){}}
  }
- img.addEventListener("mouseenter",()=>{if(matchMedia("(hover: hover) and (pointer: fine)").matches&&mode!=="tap")open("hover")});
- img.addEventListener("mouseleave",()=>{if(mode==="hover")close()});
+ img.addEventListener("mouseenter",()=>{if(suppressHoverUntilLeave)return;if(matchMedia("(hover: hover) and (pointer: fine)").matches&&mode!=="tap")open("hover")});
+ img.addEventListener("mouseleave",()=>{if(mode==="hover")close();if(suppressHoverUntilLeave)suppressHoverUntilLeave=false;});
  img.addEventListener("click",event=>{event.preventDefault();open("tap")});
  img.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open("tap")}else if(event.key==="Escape")close()});
  previous.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();navigate(-1);});
@@ -134,6 +135,8 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
   if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.2){navigate(dx<0?1:-1);suppressClickUntil=Date.now()+450;event.preventDefault();}else resetTimer();
  });
  overlay.addEventListener("pointercancel",()=>{pointerStart=null});
+ document.addEventListener("pointermove",event=>{if(event.pointerType==="mouse"){lastPointerX=event.clientX;lastPointerY=event.clientY;}});
+ document.addEventListener("pointerdown",event=>{if(event.pointerType==="mouse"){lastPointerX=event.clientX;lastPointerY=event.clientY;}});
  document.addEventListener("keydown",event=>{
   if(event.key==="Escape"&&mode){close();return;}
   if(mode==="tap"){resetTimer();if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();navigate(event.key==="ArrowLeft"?-1:1);}}
