@@ -1824,7 +1824,8 @@ function heroStripImageMetadata(input){
       const type=ascii(pos,pos+4),length=(bytes[pos+4]|(bytes[pos+5]<<8)|(bytes[pos+6]<<16)|(bytes[pos+7]<<24))>>>0;
       const end=pos+8+length,padded=end+(length&1);
       if(padded>limit)throw new Error("Invalid WebP chunk length.");
-      if(type==="EXIF"||type==="XMP "||type==="ICCP")removed.push("WEBP_"+type.trim());
+      const allowedChunks=new Set(["VP8X","VP8 ","VP8L","ALPH","ANIM","ANMF"]);
+      if(!allowedChunks.has(type))removed.push("WEBP_"+(type.trim()||"UNKNOWN"));
       else{
         const chunk=bytes.slice(pos,padded);
         if(type==="VP8X"){
