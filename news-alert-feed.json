@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T12:41:51.132882+00:00",
-  "updatedAt": "2026-11-16T12:41:51.132882+00:00",
+  "generatedAt": "2026-11-16T13:01:42.390145+00:00",
+  "updatedAt": "2026-11-16T13:01:42.390145+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -65,7 +65,7 @@
       "domain": "jugantor.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20
+      "fallbackItems": 22
     },
     {
       "name": "New Age",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -421,14 +421,14 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 33,
   "alertItems": [
     {
-      "title": "কেসিসিতে পেট্রলবোমা নিক্ষেপ, সব প্রতিষ্ঠানে নজরদারি বৃদ্ধি",
-      "summary": "খুলনা সিটি করপোরেশনের (কেসিসি) নগর ভবনে পেট্রলবোমা নিক্ষেপের পর গুরুত্বপূর্ণ সরকারি, বেসরকারি ও স্বায়ত্তশাসিত প্রতিষ্ঠানে নিরাপত্তা ও নজরদারি...",
-      "link": "https://www.jagonews24.com/country/news/1180182",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1180182",
-      "publishedAt": "2026-11-16T12:30:29+00:00",
+      "title": "প্রাইভেটকারে করে ছাগল চুরির চেষ্টা, ধাওয়া দিয়ে গাড়িতে আগুন",
+      "summary": "দিনাজপুরের বোচাগঞ্জে প্রাইভেটকারে করে ছাগল চুরির চেষ্টার অভিযোগ উঠেছে। স্থানীয়দের ধাওয়া খেয়ে পালানোর সময় গাড়িচাপায় বেশ কয়েকজন আহত হন...",
+      "link": "https://www.jagonews24.com/country/news/1180200",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180200",
+      "publishedAt": "2026-11-16T12:52:00+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
@@ -437,7 +437,7 @@
       "sourceLinks": [
         {
           "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180182"
+          "url": "https://www.jagonews24.com/country/news/1180200"
         }
       ],
       "category": "Bangladesh",
@@ -446,13 +446,13 @@
       "sourceStories": [
         {
           "name": "Jago News 24",
-          "title": "কেসিসিতে পেট্রলবোমা নিক্ষেপ, সব প্রতিষ্ঠানে নজরদারি বৃদ্ধি",
-          "summary": "খুলনা সিটি করপোরেশনের (কেসিসি) নগর ভবনে পেট্রলবোমা নিক্ষেপের পর গুরুত্বপূর্ণ সরকারি, বেসরকারি ও স্বায়ত্তশাসিত প্রতিষ্ঠানে নিরাপত্তা ও নজরদারি...",
-          "url": "https://www.jagonews24.com/country/news/1180182"
+          "title": "প্রাইভেটকারে করে ছাগল চুরির চেষ্টা, ধাওয়া দিয়ে গাড়িতে আগুন",
+          "summary": "দিনাজপুরের বোচাগঞ্জে প্রাইভেটকারে করে ছাগল চুরির চেষ্টার অভিযোগ উঠেছে। স্থানীয়দের ধাওয়া খেয়ে পালানোর সময় গাড়িচাপায় বেশ কয়েকজন আহত হন...",
+          "url": "https://www.jagonews24.com/country/news/1180200"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "aa29b2971bbb9eedf6af4bbf3a4c8f74"
+      "alertEventId": "9b6881a4c78241f4b88efb4562b8863e"
     },
     {
       "title": "উল্টোপথে আসা জাহাজের ধাক্কায় ডুবে গেছে বালুভর্তি বাল্কহেড, ১২ ঘণ্টায়ও উদ্ধার হয়নি",
@@ -1020,6 +1020,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b088a81a549f53fbba77bfdbfa817644"
+    },
+    {
+      "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+      "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB",
+      "publishedAt": "2026-11-16T06:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire - United News of Bangladesh",
+          "summary": "গাজীপুরে গ্রামীণ ব্যাংকের শাখায় আ/গু/ন দেওয়ার চেষ্টা | Gazipur | Grameen Bank Fire United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9950/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE---Gazipur---Grameen-Bank-Fire---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d55a28b34dc927eac631721e721756c2"
     },
     {
       "title": "পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত",
