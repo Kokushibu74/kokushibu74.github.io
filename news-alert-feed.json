@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T12:26:39.367496+00:00",
-  "updatedAt": "2026-11-16T12:26:39.367496+00:00",
+  "generatedAt": "2026-11-16T12:41:51.132882+00:00",
+  "updatedAt": "2026-11-16T12:41:51.132882+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
   "healthySourceCount": 41,
@@ -65,7 +65,7 @@
       "domain": "jugantor.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19
+      "fallbackItems": 20
     },
     {
       "name": "New Age",
@@ -225,7 +225,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 29
     },
     {
       "name": "Ekattor TV",
@@ -421,8 +421,39 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 32,
   "alertItems": [
+    {
+      "title": "কেসিসিতে পেট্রলবোমা নিক্ষেপ, সব প্রতিষ্ঠানে নজরদারি বৃদ্ধি",
+      "summary": "খুলনা সিটি করপোরেশনের (কেসিসি) নগর ভবনে পেট্রলবোমা নিক্ষেপের পর গুরুত্বপূর্ণ সরকারি, বেসরকারি ও স্বায়ত্তশাসিত প্রতিষ্ঠানে নিরাপত্তা ও নজরদারি...",
+      "link": "https://www.jagonews24.com/country/news/1180182",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180182",
+      "publishedAt": "2026-11-16T12:30:29+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180182"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "কেসিসিতে পেট্রলবোমা নিক্ষেপ, সব প্রতিষ্ঠানে নজরদারি বৃদ্ধি",
+          "summary": "খুলনা সিটি করপোরেশনের (কেসিসি) নগর ভবনে পেট্রলবোমা নিক্ষেপের পর গুরুত্বপূর্ণ সরকারি, বেসরকারি ও স্বায়ত্তশাসিত প্রতিষ্ঠানে নিরাপত্তা ও নজরদারি...",
+          "url": "https://www.jagonews24.com/country/news/1180182"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "aa29b2971bbb9eedf6af4bbf3a4c8f74"
+    },
     {
       "title": "উল্টোপথে আসা জাহাজের ধাক্কায় ডুবে গেছে বালুভর্তি বাল্কহেড, ১২ ঘণ্টায়ও উদ্ধার হয়নি",
       "summary": "যশোরের অভয়নগরে ভৈরব নদে লাইটার জাহাজের ধাক্কায় বালুভর্তি একটি বাল্কহেড ডুবে গেছে। সোমবার (১৬ নভেম্বর) ভোর ৫টার দিকে উপজেলার নওয়াপাড়া-শংকরপাশা খেয়াঘাটসংলগ্ন বিশ্বাস বাড়ির সামনে এ দুর্ঘটনা ঘটে। বিকাল ৫টা পর্যন্ত সেটি উদ্ধার করা যায়নি। তবে দুর্ঘটনাস্থল দিয়ে নৌযান চলাচল বন্ধ রয়েছে। প্রত্যক্ষদর্শীরা জানান, সোমবার ভোর আনুমানিক ৫টার দিকে খুলনাগামী ‘এমভি মারুফ-১’ লাইটার জাহাজের ধাক্কায়... বিস্তারিত",
@@ -581,6 +612,37 @@
       "alertEventId": "45d1976708f9c4759a443e76f236dcc7"
     },
     {
+      "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
+      "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-16T09:45:37+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
+          "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fd4fbf349bff25fbd7d588370a02aea8"
+    },
+    {
       "title": "অপরাধী শনাক্তে খুলনাজুড়ে বসছে এআই ক্যামেরা",
       "summary": "খুলনা শহরের নিরাপত্তা জোরদারে পুরো নগরীকে কৃত্রিম বুদ্ধিমত্তাসম্পন্ন (এআই) সিসিটিভি ক্যামেরার আওতায় আনার পরিকল্পনা নিয়েছে খুলনা সিটি করপোরেশন (কেসিসি)। এসব ক্যামেরার মাধ্যমে ব্যক্তি, গাড়ি ও ইজিবাইক দ্রুত শনাক্ত করা সম্ভব হবে বলে জানিয়েছেন কেসিসির প্রশাসক নজরুল ইসলাম মঞ্জু। সোমবার (১৬ নভেম্বর) দুপুরে নগর ভবনে পেট্রোল বোমা বিস্ফোরণের স্থান পরিদর্শন শেষে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এসব কথা... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/981252/%E0%A6%85%E0%A6%AA%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A7%80-%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%AC%E0%A6%B8%E0%A6%9B%E0%A7%87-%E0%A6%8F%E0%A6%86%E0%A6%87-%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A6%BE",
@@ -705,8 +767,7 @@
           "name": "Prothom Alo",
           "title": "খুলনায় মধ্য রাতে নগর ভবন লক্ষ্য করে পেট্রলবোমা নিক্ষেপ",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/b12d2h0v5t",
-          "incidentDateText": "১৬ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/b12d2h0v5t"
         }
       ],
       "corroborationCount": 1,
