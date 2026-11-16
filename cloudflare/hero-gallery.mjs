@@ -261,8 +261,14 @@ async function uploadCleanImage(env, bytes, mimeType, id) {
   if (!response.ok) throw new Error("Image upload failed (GitHub HTTP " + response.status + ").");
   const verifyResponse = await fetch(API + path + "?ref=main", { headers: await githubHeaders(env), signal: AbortSignal.timeout(12000) });
   const verifyFile = await verifyResponse.json().catch(() => ({}));
-  if (!verifyResponse.ok || !verifyFile.content) throw new Error("Image was uploaded but its metadata could not be verified. It was not added to the gallery.");
-  const storedBytes = decodeBase64(verifyFile.content);
+  if (!verifyResponse.ok) throw new Error("Image was uploaded but its metadata could not be verified. It was not added to the gallery.");
+  let storedBytes;
+  if (verifyFile.content) storedBytes = decodeBase64(verifyFile.content);
+  else if (verifyFile.download_url) {
+    const rawResponse = await fetch(verifyFile.download_url, { signal: AbortSignal.timeout(15000) });
+    if (!rawResponse.ok) throw new Error("Uploaded image could not be downloaded for metadata verification.");
+    storedBytes = new Uint8Array(await rawResponse.arrayBuffer());
+  } else throw new Error("GitHub did not provide the uploaded image bytes for metadata verification.");
   if (hasEmbeddedImageMetadata(storedBytes, mimeType)) throw new Error("Uploaded image metadata verification failed. It was not added to the gallery.");
   return { path, commit: uploaded.commit?.sha || null, bytes: storedBytes.length, mimeType };
 }
