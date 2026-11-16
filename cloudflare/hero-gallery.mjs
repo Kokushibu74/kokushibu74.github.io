@@ -42,20 +42,13 @@ function putU32le(bytes, offset, value) {
 function stripJpegMetadata(input) {
   if (input.length < 4 || input[0] !== 255 || input[1] !== 216) throw new Error("Invalid JPEG image.");
   const parts = [input.slice(0, 2)];
-  let p = 2, sawScan = false, ended = false;
+  let p = 2, ended = false;
   while (p < input.length) {
     const markerStart = p;
-    if (input[p] !== 255) {
-      if (sawScan) { p++; continue; }
-      throw new Error("Malformed JPEG marker stream.");
-    }
+    if (input[p] !== 255) throw new Error("Malformed JPEG marker stream.");
     while (p < input.length && input[p] === 255) p++;
     if (p >= input.length) throw new Error("Truncated JPEG marker.");
     const marker = input[p++];
-    if (marker === 0x00) {
-      if (!sawScan) throw new Error("Unexpected JPEG byte stuffing.");
-      continue;
-    }
     if (marker === 0xd9) {
       parts.push(input.slice(markerStart, p));
       if (p < input.length) parts.push(input.slice(p));
@@ -70,12 +63,16 @@ function stripJpegMetadata(input) {
     const length = (input[p] << 8) | input[p + 1];
     if (length < 2 || p + length > input.length) throw new Error("Invalid JPEG segment length.");
     const segmentEnd = p + length;
+    if (marker === 0xda) {
+      parts.push(input.slice(markerStart));
+      ended = true;
+      break;
+    }
     const isMetadata = (marker >= 0xe0 && marker <= 0xef) || marker === 0xfe;
     if (!isMetadata) parts.push(input.slice(markerStart, segmentEnd));
     p = segmentEnd;
-    if (marker === 0xda) sawScan = true;
   }
-  if (!ended) throw new Error("JPEG end marker is missing.");
+  if (!ended) throw new Error("JPEG scan or end marker is missing.");
   return concat(parts);
 }
 
@@ -125,26 +122,24 @@ function stripWebpMetadata(input) {
 export function hasEmbeddedImageMetadata(bytes, mimeType) {
   const input = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
   if (mimeType === "image/jpeg") {
-    let p = 2, inScan = false;
+    if (input.length < 4 || input[0] !== 255 || input[1] !== 216) return true;
+    let p = 2;
     while (p < input.length) {
-      if (input[p] !== 255) { if (inScan) { p++; continue; } return true; }
-      const start = p;
+      if (input[p] !== 255) return true;
       while (p < input.length && input[p] === 255) p++;
       if (p >= input.length) return true;
       const marker = input[p++];
-      if (marker === 0x00) { if (!inScan) return true; continue; }
       if (marker === 0xd9) return false;
+      if (marker === 0xda) return false;
       if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) continue;
       if (p + 2 > input.length) return true;
       const length = (input[p] << 8) | input[p + 1];
       if (length < 2 || p + length > input.length) return true;
       if ((marker >= 0xe0 && marker <= 0xef) || marker === 0xfe) return true;
       p += length;
-      if (marker === 0xda) inScan = true;
-      if (p <= start) return true;
     }
     return true;
-  }
+  }}
   if (mimeType === "image/png") {
     if (input.length < 8 || !PNG_SIGNATURE.every((v, i) => input[i] === v)) return true;
     let p = 8;
@@ -374,6 +369,7 @@ export async function deleteGalleryImage(env, userId, imageId) {
   data.heroGallery = gallery;
   const commit = await writeSiteData(env, data, sha, "chore: remove hero gallery image");
   let storageDeleted = false;
+  if (!String(image.src).startsWith("storage/pictures/gallery-")) return { deletedImageId: image.id, commit, storageDeleted: false, warning: "Storage path was not a managed gallery image." };
   try {
     const headers = await githubHeaders(env);
     const response = await fetch(API + image.src + "?ref=main", { headers, signal: AbortSignal.timeout(10000) });
