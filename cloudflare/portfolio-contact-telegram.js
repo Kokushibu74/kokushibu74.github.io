@@ -2660,6 +2660,25 @@ export default {
           await miniAppAudit(env,user.id,"heroConfirm",{imagePath:result.imagePath,commit:result.commit,metadataStripped:result.metadataStripped});
           return respond(result);
         }
+        if(action==="heroGalleryList"){
+          const result=await listHeroGallery(env);
+          return respond({ok:true,...result});
+        }
+        if(action==="heroGallerySetActive"){
+          const result=await setGalleryActive(env,user.id,String(body?.imageId||""));
+          await miniAppAudit(env,user.id,"heroGallerySetActive",{imageId:result.activeImageId,commit:result.commit});
+          return respond({ok:true,...result});
+        }
+        if(action==="heroGalleryUpdatePosition"){
+          const result=await updateGalleryPosition(env,user.id,String(body?.imageId||""),{focusX:body?.focusX,focusY:body?.focusY,zoom:body?.zoom,faceDetection:body?.faceDetection});
+          await miniAppAudit(env,user.id,"heroGalleryUpdatePosition",{imageId:String(body?.imageId||""),focusX:result.image.focusX,focusY:result.image.focusY,zoom:result.image.zoom});
+          return respond({ok:true,...result});
+        }
+        if(action==="heroGalleryDelete"){
+          const result=await deleteGalleryImage(env,user.id,String(body?.imageId||""));
+          await miniAppAudit(env,user.id,"heroGalleryDelete",{imageId:result.deletedImageId,storageDeleted:result.storageDeleted});
+          return respond({ok:true,...result});
+        }
         if(action==="heroCancel"){
           const token=String(body?.token||""),key="hero:pending:"+token;
           const pending=await env.BOT_CONFIG_KV?.get(key,"json");
