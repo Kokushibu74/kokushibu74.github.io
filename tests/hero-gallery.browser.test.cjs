@@ -37,10 +37,13 @@ async function installGalleryFixture(page) {
 }
 
 async function speedViewerTimer(page) {
-  await page.addInitScript(() => {
+  await page.evaluate(() => {
     const original = window.setTimeout.bind(window);
-    window.setTimeout = (handler, timeout, ...args) =>
-      original(handler, timeout === 20000 ? 500 : timeout, ...args);
+    window.__heroTimerDelays = [];
+    window.setTimeout = (handler, timeout, ...args) => {
+      window.__heroTimerDelays.push(timeout);
+      return original(handler, timeout === 20000 ? 500 : timeout, ...args);
+    };
   });
 }
 
@@ -63,10 +66,10 @@ async function waitForViewer(page, visible) {
 
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await desktop.emulateMedia({ reducedMotion: "reduce" });
-    await speedViewerTimer(desktop);
     await installGalleryFixture(desktop);
     await desktop.goto(origin, { waitUntil: "domcontentloaded" });
     await desktop.waitForFunction(() => window.__portfolioRendered === true);
+    await speedViewerTimer(desktop);
     const image = desktop.locator("#home .neon-inner-img");
     const overlay = desktop.locator("#portrait-reveal-overlay");
     await image.waitFor({ state: "visible" });
@@ -100,6 +103,8 @@ async function waitForViewer(page, visible) {
 
     await image.click();
     await waitForViewer(desktop, true);
+    assert.ok((await desktop.evaluate(() => window.__heroTimerDelays)).includes(20000),
+      "Tap viewer must schedule its 20-second inactivity timer.");
     await desktop.waitForTimeout(280);
     await desktop.locator("#portrait-reveal-next").click();
     await desktop.waitForTimeout(300);
@@ -115,10 +120,10 @@ async function waitForViewer(page, visible) {
       deviceScaleFactor: 3
     });
     await mobile.emulateMedia({ reducedMotion: "reduce" });
-    await speedViewerTimer(mobile);
     await installGalleryFixture(mobile);
     await mobile.goto(origin, { waitUntil: "domcontentloaded" });
     await mobile.waitForFunction(() => window.__portfolioRendered === true);
+    await speedViewerTimer(mobile);
     const mobileImage = mobile.locator("#home .neon-inner-img");
     const mobileOverlay = mobile.locator("#portrait-reveal-overlay");
     await mobileImage.waitFor({ state: "visible" });
