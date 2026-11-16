@@ -102,25 +102,7 @@
         await renderBlogManager(el,result.posts||[]);
       }
       else if(section==="hero"){
-        const wrap=document.createElement("div");wrap.className="user-tools";
-        const intro=document.createElement("small");intro.textContent="Choose a JPEG, PNG or WebP image (maximum 4 MB). The image is staged privately for 10 minutes; nothing is published until you confirm.";
-        const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";
-        const local=document.createElement("img");local.alt="Selected hero image preview";local.hidden=true;local.style.cssText="max-width:100%;max-height:240px;object-fit:contain;border-radius:12px;border:1px solid rgba(120,145,190,.2)";
-        const stage=document.createElement("button");stage.type="button";stage.textContent="Upload & Prepare Preview";stage.disabled=true;
-        const status=document.createElement("pre");status.className="module-report";status.textContent="No image selected.";
-        const frame=document.createElement("iframe");frame.title="Homepage hero preview";frame.hidden=true;frame.loading="lazy";frame.style.cssText="width:100%;height:560px;border:1px solid rgba(120,145,190,.2);border-radius:12px;background:#070b14";
-        const actions=document.createElement("div");actions.style.cssText="display:flex;gap:8px;flex-wrap:wrap";
-        const confirm=document.createElement("button");confirm.type="button";confirm.textContent="Confirm & Publish to Live Site";confirm.hidden=true;
-        const cancel=document.createElement("button");cancel.type="button";cancel.textContent="Cancel Preview";cancel.hidden=true;
-        let selected=null,token=null,previewUrl=null;
-        file.addEventListener("change",()=>{selected=file.files?.[0]||null;stage.disabled=!selected||selected.size>4*1024*1024;if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=selected?URL.createObjectURL(selected):null;local.src=previewUrl||"";local.hidden=!selected;status.textContent=selected?(selected.size>4*1024*1024?"Image exceeds the 4 MB limit.":selected.name+" · "+Math.ceil(selected.size/1024)+" KB"):"No image selected.";});
-        stage.addEventListener("click",async()=>{if(!selected)return;stage.disabled=true;status.textContent="Uploading image securely to temporary private storage…";try{
-          const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read selected image."));reader.readAsDataURL(selected);});
-          const base64=dataUrl.split(",")[1];const r=await api("heroPrepare",{mimeType:selected.type,base64});token=r.token;frame.src=r.previewUrl;frame.hidden=false;confirm.hidden=false;cancel.hidden=false;status.textContent="Private preview ready. Review the actual homepage below. This image is not live yet.";
-        }catch(err){status.textContent=err.message;notice(err.message,true);}finally{stage.disabled=!selected||selected.size>4*1024*1024;}});
-        confirm.addEventListener("click",async()=>{if(!token)return;const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Publish this hero image to the live website? This will update site-data.json on main.",resolve)):window.confirm("Publish this hero image to the live website?");if(!yes)return;confirm.disabled=true;try{const r=await api("heroConfirm",{token});status.textContent="Published successfully: "+r.imagePath+"\\nCommit: "+(r.commit||"accepted");notice("Hero image published to the live site.");token=null;frame.hidden=true;confirm.hidden=true;cancel.hidden=true;}catch(err){status.textContent=err.message;notice(err.message,true);}finally{confirm.disabled=false;}});
-        cancel.addEventListener("click",async()=>{if(token){try{await api("heroCancel",{token});}catch(err){notice(err.message,true);}}token=null;frame.hidden=true;confirm.hidden=true;cancel.hidden=true;status.textContent="Preview cancelled. Nothing was published.";});
-        actions.append(stage,confirm,cancel);wrap.append(intro,file,local,actions,status,frame);el.replaceChildren(wrap);
+        await renderHeroGallery(el);
       }
       else if(section==="analytics"||section==="reports"){
         const wrap=document.createElement("div");wrap.className="user-tools";
@@ -180,6 +162,217 @@
       else if(result.backups){const pre=document.createElement("pre");pre.className="module-report";pre.textContent=result.note+"\\n\\n"+result.backups.map(x=>x.name+" · "+(x.sha||"SHA unavailable")).join("\\n");el.replaceChildren(pre);}
       else{const pre=document.createElement("pre");pre.className="module-report";pre.textContent=JSON.stringify(result.stats||result.settings||result,null,2);el.replaceChildren(pre);}
     }catch(e){el.textContent=e.message;}
+  }
+  async function renderHeroGallery(el) {
+    const wrap=document.createElement("div");wrap.className="user-tools hero-gallery-manager";
+    const intro=document.createElement("div");intro.className="hero-gallery-intro";
+    const introTitle=document.createElement("b");introTitle.textContent="Private Hero Gallery";
+    const introText=document.createElement("small");introText.textContent="Upload multiple photos, adjust each crop, and choose which one appears in the homepage Round Frame. Browsing or previewing never changes the active image. Embedded EXIF, GPS, device, date/time and text metadata are removed before GitHub upload.";
+    intro.append(introTitle,introText);
+    const uploadPanel=document.createElement("section");uploadPanel.className="hero-gallery-upload";
+    const uploadHead=document.createElement("div");uploadHead.className="hero-gallery-panel-head";
+    const uploadTitle=document.createElement("b");uploadTitle.textContent="Add photos";
+    const uploadHint=document.createElement("small");uploadHint.textContent="JPEG, PNG or WebP · up to 4 MB each · select multiple files";
+    uploadHead.append(uploadTitle,uploadHint);
+    const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";file.multiple=true;
+    const selectedGrid=document.createElement("div");selectedGrid.className="hero-gallery-selected";
+    const uploadButton=document.createElement("button");uploadButton.type="button";uploadButton.className="primary";uploadButton.textContent="Add selected photos to Gallery";uploadButton.disabled=true;
+    const uploadStatus=document.createElement("pre");uploadStatus.className="module-report";uploadStatus.textContent="No photos selected.";
+    uploadPanel.append(uploadHead,file,selectedGrid,uploadButton,uploadStatus);
+    const galleryPanel=document.createElement("section");galleryPanel.className="hero-gallery-library";
+    const galleryHead=document.createElement("div");galleryHead.className="hero-gallery-panel-head";
+    const galleryTitle=document.createElement("b");galleryTitle.textContent="Gallery";
+    const reloadButton=document.createElement("button");reloadButton.type="button";reloadButton.textContent="↻ Refresh";
+    galleryHead.append(galleryTitle,reloadButton);
+    const galleryList=document.createElement("div");galleryList.className="hero-gallery-list";
+    galleryPanel.append(galleryHead,galleryList);
+    const editor=document.createElement("section");editor.className="hero-gallery-editor";editor.hidden=true;
+    const editorHead=document.createElement("div");editorHead.className="hero-gallery-panel-head";
+    const editorTitle=document.createElement("b");editorTitle.textContent="Image framing";
+    const editorClose=document.createElement("button");editorClose.type="button";editorClose.textContent="Close";
+    editorHead.append(editorTitle,editorClose);
+    const editorPreviewWrap=document.createElement("div");editorPreviewWrap.className="hero-gallery-edit-preview-wrap";
+    const editorPreview=document.createElement("div");editorPreview.className="hero-gallery-edit-preview";
+    const editorImage=document.createElement("img");editorImage.alt="Image framing preview";
+    editorPreview.append(editorImage);editorPreviewWrap.append(editorPreview);
+    const editorStatus=document.createElement("small");editorStatus.className="hero-gallery-editor-status";
+    const controls=document.createElement("div");controls.className="hero-gallery-controls";
+    const makeRange=(label,min,max,step,value)=>{
+      const box=document.createElement("label");box.className="hero-gallery-range";
+      const top=document.createElement("span");const name=document.createElement("b");name.textContent=label;const val=document.createElement("output");val.textContent=String(value);top.append(name,val);
+      const input=document.createElement("input");input.type="range";input.min=String(min);input.max=String(max);input.step=String(step);input.value=String(value);box.append(top,input);return {box,input,val};
+    };
+    const xRange=makeRange("Horizontal focus",0,100,1,50);
+    const yRange=makeRange("Vertical focus",0,100,1,50);
+    const zoomRange=makeRange("Zoom",1,2.5,.01,1);
+    controls.append(xRange.box,yRange.box,zoomRange.box);
+    const editorActions=document.createElement("div");editorActions.className="hero-gallery-actions";
+    const detectButton=document.createElement("button");detectButton.type="button";detectButton.textContent="Auto detect face / subject";
+    const saveButton=document.createElement("button");saveButton.type="button";saveButton.className="primary";saveButton.textContent="Save position";
+    editorActions.append(detectButton,saveButton);
+    editor.append(editorHead,editorPreviewWrap,editorStatus,controls,editorActions);
+    wrap.append(intro,uploadPanel,galleryPanel,editor);el.replaceChildren(wrap);
+    let gallery={images:[],activeImageId:""},selectedImage=null,visionPromise=null,selectedFiles=[],selectedUrls=[];
+    const imageUrl=src=>{try{const u=new URL(String(src||""),"https://kokushibu74.github.io/");return u.protocol==="https:"?u.href:"";}catch{return "";}};
+    const button=(label,fn,cls="")=>{const b=document.createElement("button");b.type="button";b.textContent=label;if(cls)b.className=cls;b.addEventListener("click",fn);return b;};
+    const setStatus=(message,error=false)=>{uploadStatus.textContent=message;uploadStatus.classList.toggle("error",error);};
+    const safeFallback=()=>({focusX:50,focusY:50,zoom:1,faceDetection:false,source:"safe-fit"});
+    const loadVision=()=>{
+      if(visionPromise)return visionPromise;
+      visionPromise=(async()=>{
+        const vision=await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/+esm");
+        const wasm="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm";
+        const fileset=await vision.FilesetResolver.forVisionTasks(wasm);
+        let faceDetector=null,objectDetector=null;
+        try{faceDetector=await vision.FaceDetector.createFromOptions(fileset,{baseOptions:{modelAssetPath:"https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/face_detector.tflite"},runningMode:"IMAGE",minDetectionConfidence:.4});}catch(_){}
+        try{objectDetector=await vision.ObjectDetector.createFromOptions(fileset,{baseOptions:{modelAssetPath:"https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite0/float32/1/efficientdet_lite0.tflite"},runningMode:"IMAGE",scoreThreshold:.35,maxResults:6});}catch(_){}
+        if(!faceDetector&&!objectDetector)throw new Error("The free local detection models could not be loaded.");
+        return {faceDetector,objectDetector};
+      })().catch(error=>{visionPromise=null;throw error;});
+      return visionPromise;
+    };
+    const loadImage=src=>new Promise((resolve,reject)=>{
+      const image=new Image();image.crossOrigin="anonymous";image.onload=()=>resolve(image);image.onerror=()=>reject(new Error("Could not load the selected image for local analysis."));image.src=src;
+    });
+    const focusFromBoxes=(boxes,width,height,source,faceDetection)=>{
+      if(!boxes.length)return null;
+      const minX=Math.min(...boxes.map(b=>Number(b.originX??b.x??0)));
+      const minY=Math.min(...boxes.map(b=>Number(b.originY??b.y??0)));
+      const maxX=Math.max(...boxes.map(b=>Number(b.originX??b.x??0)+Number(b.width||0)));
+      const maxY=Math.max(...boxes.map(b=>Number(b.originY??b.y??0)+Number(b.height||0)));
+      const span=Math.max((maxX-minX)/width,(maxY-minY)/height);
+      const zoom=Math.max(1,Math.min(2.5,.82/Math.max(span,.18)));
+      return {focusX:Math.round(Math.max(0,Math.min(100,((minX+maxX)/2/width)*100))),focusY:Math.round(Math.max(0,Math.min(100,((minY+maxY)/2/height)*100))),zoom:Number(zoom.toFixed(2)),faceDetection,source};
+    };
+    const detectPosition=async src=>{
+      try{
+        const image=await loadImage(src),models=await loadVision();
+        if(models.faceDetector){
+          const result=models.faceDetector.detect(image),faces=(result.detections||[]).map(x=>x.boundingBox).filter(Boolean);
+          if(faces.length)return focusFromBoxes(faces,image.naturalWidth,image.naturalHeight,"face",true);
+        }
+        if(models.objectDetector){
+          const result=models.objectDetector.detect(image),objects=(result.detections||[]).filter(x=>x.boundingBox);
+          const people=objects.filter(x=>(x.categories||[]).some(c=>String(c.categoryName||"").toLowerCase()==="person"));
+          const chosen=people.length?people:objects.slice(0,1);
+          const boxes=chosen.map(x=>x.boundingBox);
+          if(boxes.length)return focusFromBoxes(boxes,image.naturalWidth,image.naturalHeight,"subject",!!models.faceDetector);
+        }
+        return {...safeFallback(),source:"safe-fit",faceDetection:!!models.faceDetector};
+      }catch(error){return {...safeFallback(),warning:String(error?.message||error).slice(0,140)};}
+    };
+    const updateEditorPreview=()=>{
+      if(!selectedImage)return;
+      const x=Number(xRange.input.value),y=Number(yRange.input.value),zoom=Number(zoomRange.input.value);
+      xRange.val.textContent=x+"%";yRange.val.textContent=y+"%";zoomRange.val.textContent=zoom.toFixed(2)+"×";
+      editorImage.style.objectPosition=x+"% "+y+"%";editorImage.style.transform="scale("+zoom+")";
+    };
+    [xRange.input,yRange.input,zoomRange.input].forEach(input=>input.addEventListener("input",updateEditorPreview));
+    const openEditor=item=>{
+      selectedImage=item;editor.hidden=false;editorTitle.textContent="Image framing · "+item.id;
+      editorImage.src=imageUrl(item.src);xRange.input.value=String(item.focusX??50);yRange.input.value=String(item.focusY??50);zoomRange.input.value=String(item.zoom??1);
+      editorStatus.textContent="Preview only. Saving changes crop metadata; it does not change the Active Image.";
+      updateEditorPreview();editor.scrollIntoView({behavior:"smooth",block:"nearest"});
+    };
+    editorClose.addEventListener("click",()=>{editor.hidden=true;selectedImage=null;});
+    const loadGallery=async()=>{
+      galleryTitle.textContent="Gallery · Loading";
+      const result=await api("heroGalleryList");
+      gallery=result.gallery||{images:[],activeImageId:""};
+      renderGallery();
+    };
+    const renderGallery=()=>{
+      galleryTitle.textContent="Gallery · "+gallery.images.length+" images";
+      galleryList.replaceChildren();
+      if(!gallery.images.length){const empty=document.createElement("div");empty.className="empty-state";empty.textContent="No gallery images yet. Add photos above.";galleryList.append(empty);return;}
+      for(const item of gallery.images){
+        const card=document.createElement("article");card.className="hero-gallery-card";
+        const thumbWrap=document.createElement("div");thumbWrap.className="hero-gallery-thumb";
+        const thumb=document.createElement("img");thumb.src=imageUrl(item.src);thumb.alt="Gallery image";thumb.style.objectPosition=Number(item.focusX??50)+"% "+Number(item.focusY??50)+"%";thumb.style.transform="scale("+Number(item.zoom??1)+")";thumbWrap.append(thumb);
+        const copy=document.createElement("div");copy.className="hero-gallery-copy";
+        const name=document.createElement("b");name.textContent=item.id;
+        const meta=document.createElement("small");meta.textContent=(item.id===gallery.activeImageId?"ACTIVE · ":"")+(item.legacy?"Original existing image · ":"")+(item.uploadedAt?new Date(item.uploadedAt).toLocaleString():"Existing image")+" · "+Number(item.focusX??50)+"/"+Number(item.focusY??50)+" · "+Number(item.zoom??1).toFixed(2)+"×";
+        copy.append(name,meta);
+        const actions=document.createElement("div");actions.className="hero-gallery-actions";
+        const original=document.createElement("a");original.href=imageUrl(item.src);original.target="_blank";original.rel="noopener noreferrer";original.textContent="Open original";original.className="hero-gallery-link";
+        actions.append(original,button("Adjust",()=>openEditor(item)));
+        if(item.id!==gallery.activeImageId)actions.append(button("Set Active",async()=>{
+          const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Show this image in the homepage Round Frame?",resolve)):window.confirm("Show this image in the homepage Round Frame?");
+          if(!yes)return;
+          try{await api("heroGallerySetActive",{imageId:item.id});notice("Homepage Active Image updated.");await loadGallery();}
+          catch(error){notice(error.message,true);}
+        },"primary"));
+        actions.append(button("Auto detect",async()=>{
+          try{
+            const result=await detectPosition(imageUrl(item.src));
+            openEditor({...item,...result});
+            editorStatus.textContent=result.source==="face"?"Face boxes detected locally. Only focus and zoom will be saved.":result.source==="subject"?"No face detected; subject box used. Only focus and zoom will be saved.":result.warning||"No face or subject box found; safe center framing is ready.";
+          }catch(error){notice(error.message,true);}
+        }));
+        if(!item.legacy&&item.id!==gallery.activeImageId)actions.append(button("Delete",async()=>{
+          const yes=tg?.showConfirm?await new Promise(resolve=>tg.showConfirm("Delete this gallery image? This cannot be undone.",resolve)):window.confirm("Delete this gallery image?");
+          if(!yes)return;
+          try{const result=await api("heroGalleryDelete",{imageId:item.id});notice(result.storageDeleted?"Gallery image deleted.":"Removed from gallery; repository file cleanup needs review.");await loadGallery();}
+          catch(error){notice(error.message,true);}
+        },"danger"));
+        card.append(thumbWrap,copy,actions);galleryList.append(card);
+      }
+    };
+    saveButton.addEventListener("click",async()=>{
+      if(!selectedImage)return;saveButton.disabled=true;
+      try{
+        const result=await api("heroGalleryUpdatePosition",{imageId:selectedImage.id,focusX:Number(xRange.input.value),focusY:Number(yRange.input.value),zoom:Number(zoomRange.input.value),faceDetection:selectedImage.faceDetection===true});
+        notice("Image framing saved.");selectedImage=result.image;await loadGallery();openEditor(selectedImage);
+      }catch(error){notice(error.message,true);editorStatus.textContent=error.message;}
+      finally{saveButton.disabled=false;}
+    });
+    detectButton.addEventListener("click",async()=>{
+      if(!selectedImage)return;detectButton.disabled=true;editorStatus.textContent="Loading free local face / subject detection…";
+      try{
+        const result=await detectPosition(imageUrl(selectedImage.src));
+        xRange.input.value=String(result.focusX);yRange.input.value=String(result.focusY);zoomRange.input.value=String(result.zoom);
+        selectedImage={...selectedImage,...result};updateEditorPreview();
+        editorStatus.textContent=result.source==="face"?"Face(s) detected locally. No identity or face data is stored.":result.source==="subject"?"No face detected; subject detection was used.":result.warning||"No face or subject detected; safe center framing is ready.";
+      }finally{detectButton.disabled=false;}
+    });
+    file.addEventListener("change",()=>{
+      selectedFiles=Array.from(file.files||[]);selectedUrls.forEach(url=>URL.revokeObjectURL(url));selectedUrls=[];
+      selectedGrid.replaceChildren();
+      for(const selected of selectedFiles){
+        const row=document.createElement("div");row.className="hero-gallery-selected-item";
+        const preview=document.createElement("img");const url=URL.createObjectURL(selected);selectedUrls.push(url);preview.src=url;preview.alt=selected.name;
+        const label=document.createElement("small");label.textContent=selected.name+" · "+Math.ceil(selected.size/1024)+" KB";
+        row.append(preview,label);selectedGrid.append(row);
+      }
+      uploadButton.disabled=!selectedFiles.length;
+      setStatus(selectedFiles.length?selectedFiles.length+" photo(s) ready. Select Add to Gallery to process them.":"No photos selected.");
+    });
+    uploadButton.addEventListener("click",async()=>{
+      if(!selectedFiles.length)return;
+      uploadButton.disabled=true;file.disabled=true;
+      let added=0;
+      for(const selected of selectedFiles){
+        try{
+          if(!["image/jpeg","image/png","image/webp"].includes(selected.type))throw new Error(selected.name+": unsupported image type.");
+          if(selected.size>4*1024*1024)throw new Error(selected.name+": exceeds the 4 MB limit.");
+          setStatus("Detecting face / subject locally: "+selected.name);
+          const detected=await detectPosition(selectedUrls[selectedFiles.indexOf(selected)]);
+          setStatus("Removing embedded metadata and uploading: "+selected.name);
+          const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read "+selected.name));reader.readAsDataURL(selected);});
+          const prepared=await api("heroPrepare",{mimeType:selected.type,base64:dataUrl.split(",")[1]});
+          try{
+            await api("heroConfirm",{token:prepared.token,focusX:detected.focusX,focusY:detected.focusY,zoom:detected.zoom,faceDetection:detected.faceDetection});
+          }catch(error){await api("heroCancel",{token:prepared.token}).catch(()=>{});throw error;}
+          added++;setStatus("Added "+added+" of "+selectedFiles.length+" image(s). Homepage Active Image has not changed.");
+        }catch(error){setStatus("Stopped after "+added+" image(s). "+String(error.message||error),true);break;}
+      }
+      selectedFiles=[];selectedUrls.forEach(url=>URL.revokeObjectURL(url));selectedUrls=[];file.value="";selectedGrid.replaceChildren();file.disabled=false;uploadButton.disabled=true;
+      if(added){try{await loadGallery();}catch(error){setStatus("Uploaded "+added+" image(s), but gallery refresh failed: "+error.message,true);}}
+      if(added===selectedFiles.length)setStatus("Gallery upload complete. Homepage Active Image remains unchanged.");
+      uploadButton.disabled=false;
+    });
+    reloadButton.addEventListener("click",async()=>{reloadButton.disabled=true;try{await loadGallery();notice("Gallery refreshed.");}catch(error){notice(error.message,true);}finally{reloadButton.disabled=false;}});
+    await loadGallery().catch(error=>{galleryList.textContent="Gallery could not be loaded: "+error.message;notice(error.message,true);});
   }
   async function renderBlogManager(el,initialPosts=[]) {
     let posts=Array.isArray(initialPosts)?initialPosts:[];
