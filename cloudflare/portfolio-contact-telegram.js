@@ -1727,7 +1727,8 @@ async function botHeroPreviewPage(env,token){
   const r=await fetch("https://kokushibu74.github.io/",{redirect:"follow"});
   if(!r.ok)return new Response("Website preview unavailable",{status:502});
   let html=await r.text();
-  const injected='<base href="https://kokushibu74.github.io/"><script>(function(){const original=window.fetch.bind(window);window.fetch=async function(input,init){const response=await original(input,init);if(String(input).includes("site-data.json")&&response.ok){const data=await response.clone().json();data.image="'+new URL("/hero-preview-image?token="+encodeURIComponent(token),"https://portfolio-contact-telegram.mdshihab74.workers.dev").href+'";return new Response(JSON.stringify(data),{status:response.status,headers:{"Content-Type":"application/json"}})}return response}})();</script>';
+  const previewImage=new URL("/hero-preview-image?token="+encodeURIComponent(token),"https://portfolio-contact-telegram.mdshihab74.workers.dev").href;
+  const injected='<base href="https://kokushibu74.github.io/"><script>(function(){const original=window.fetch.bind(window);window.fetch=async function(input,init){const response=await original(input,init);if(String(input).includes("site-data.json")&&response.ok){const data=await response.clone().json();data.image="'+previewImage+'";data.imagePos=50;data.imageFocusX=50;data.imageZoom=1;data.heroGallery={version:1,activeImageId:"preview",images:[{id:"preview",src:"'+previewImage+'",focusX:50,focusY:50,zoom:1}]};return new Response(JSON.stringify(data),{status:response.status,headers:{"Content-Type":"application/json"}})}return response}})();</script>';
   html=html.replace("</head>",injected+"</head>");
   return new Response(html,{headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store","X-Robots-Tag":"noindex, nofollow"}});
 }
@@ -1735,9 +1736,11 @@ async function botHeroPreviewImage(env,token){
   const pending=await env.BOT_CONFIG_KV?.get("hero:pending:"+token,"json");
   if(!pending||pending.expiresAt<Date.now())return new Response("Preview expired",{status:410});
   try{
-    const bytes=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
-    return new Response(bytes,{headers:{"Content-Type":pending.mimeType||"image/jpeg","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
-  }catch{return new Response("Image unavailable",{status:502})}
+    const original=pending.base64?Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)):await botTelegramPhoto(env,pending.fileId);
+    const mimeType=pending.mimeType||"image/jpeg";
+    const bytes=stripImageMetadata(original,mimeType);
+    return new Response(bytes,{headers:{"Content-Type":mimeType,"Cache-Control":"no-store","X-Content-Type-Options":"nosniff","Access-Control-Allow-Origin":"https://kokushibu74.github.io","Cross-Origin-Resource-Policy":"cross-origin","Vary":"Origin"}});
+  }catch(error){console.error("Hero preview image sanitization failed",String(error&&error.message||error).slice(0,160));return new Response("Image unavailable",{status:502})}
 }
 
 const MINIAPP_RATE_PREFIX = "miniapp:rate:v1:";
@@ -2608,6 +2611,14 @@ export default {
     if(request.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
     const pathname=new URL(request.url).pathname;
     const routeUrl=new URL(request.url);
+    if(pathname==="/hero-preview"&&request.method==="GET"){
+      const token=String(routeUrl.searchParams.get("token")||"");
+      return await botHeroPreviewPage(env,token);
+    }
+    if(pathname==="/hero-preview-image"&&request.method==="GET"){
+      const token=String(routeUrl.searchParams.get("token")||"");
+      return await botHeroPreviewImage(env,token);
+    }
     const journalCacheKey=new Request(new URL("/__journal_feed_cache",request.url));
     const invalidateJournalFeedCache=async()=>{try{await caches.default.delete(journalCacheKey);}catch{}};
     if(pathname==="/journal-feed"&&request.method==="GET"){
