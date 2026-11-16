@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { stripImageMetadata, hasEmbeddedImageMetadata } from "../cloudflare/hero-gallery.mjs";
 
 const concat = parts => {
@@ -76,4 +77,18 @@ assert.equal(new TextDecoder().decode(cleanWebp).includes("XMP "), false);
 assert.throws(() => stripImageMetadata(jpeg, "image/gif"), /Only JPEG, PNG and WebP/i);
 assert.throws(() => stripImageMetadata(Uint8Array.from([1, 2, 3]), "image/jpeg"), /Invalid JPEG/i);
 
-console.log("Hero Gallery image metadata stripping tests passed.");
+
+const site = readFileSync("site.js", "utf8");
+const app = readFileSync("miniapp/app.js", "utf8");
+const worker = readFileSync("cloudflare/portfolio-contact-telegram.js", "utf8");
+assert(site.includes("setTimeout(()=>close(),20000)"), "Viewer must close 20 seconds after the last interaction");
+assert(site.includes("history.pushState") && site.includes('window.addEventListener("popstate"'), "Mobile Back must close the viewer without leaving the page");
+assert(site.includes('e.key==="ArrowLeft"') && site.includes('e.key==="ArrowRight"'), "Desktop keyboard navigation must be supported");
+assert(site.includes('e.pointerType==="touch"') && site.includes('e.target===overlay'), "Mobile swipe and outside-click close must be supported");
+assert(site.includes("object-fit:contain"), "Full-size viewer must show the original image without cropping");
+assert(app.includes("file.multiple=true") && app.includes('api("heroGallerySetActive"') && app.includes('api("heroGalleryUpdatePosition"'), "Telegram Mini App must support multi-upload, active selection and manual framing");
+assert(app.includes("FaceDetector.createFromOptions") && app.includes("ObjectDetector.createFromOptions"), "Face and subject detection must run locally in the Mini App");
+assert(worker.includes('if(pathname==="/hero-preview-image"') && worker.includes('if(action==="heroGalleryDelete")'), "Worker must expose the sanitized preview and authenticated gallery controls");
+assert(!/faceEmbedding|faceIdentity|biometricTemplate/i.test(c + app + worker), "No facial identity or biometric template storage is allowed");
+
+console.log("Hero Gallery metadata, viewer and admin contract tests passed.");
