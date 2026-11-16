@@ -350,7 +350,7 @@
     uploadButton.addEventListener("click",async()=>{
       if(!selectedFiles.length)return;
       uploadButton.disabled=true;file.disabled=true;
-      let added=0;
+      const total=selectedFiles.length;let added=0;
       for(const selected of selectedFiles){
         try{
           if(!["image/jpeg","image/png","image/webp"].includes(selected.type))throw new Error(selected.name+": unsupported image type.");
@@ -368,7 +368,7 @@
       }
       selectedFiles=[];selectedUrls.forEach(url=>URL.revokeObjectURL(url));selectedUrls=[];file.value="";selectedGrid.replaceChildren();file.disabled=false;uploadButton.disabled=true;
       if(added){try{await loadGallery();}catch(error){setStatus("Uploaded "+added+" image(s), but gallery refresh failed: "+error.message,true);}}
-      if(added===selectedFiles.length)setStatus("Gallery upload complete. Homepage Active Image remains unchanged.");
+      if(added===total)setStatus("Gallery upload complete. Homepage Active Image remains unchanged.");
       uploadButton.disabled=false;
     });
     reloadButton.addEventListener("click",async()=>{reloadButton.disabled=true;try{await loadGallery();notice("Gallery refreshed.");}catch(error){notice(error.message,true);}finally{reloadButton.disabled=false;}});
