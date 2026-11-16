@@ -259,7 +259,7 @@ jobs:
           grep -q 'id="developer-journal"' /tmp/projects-live.html
           grep -q 'id="journal-article-view"' /tmp/projects-live.html
           grep -q 'journal.css?v=1' /tmp/projects-live.html
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then JOURNAL_VERSION=5; else JOURNAL_VERSION=6; fi
+          JOURNAL_VERSION=6
           grep -q "journal.js?v=${JOURNAL_VERSION}" /tmp/projects-live.html
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
             'https://kokushibu74.github.io/journal.css?v=1' -o /tmp/journal-live.css
