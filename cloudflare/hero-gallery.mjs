@@ -139,7 +139,7 @@ export function hasEmbeddedImageMetadata(bytes, mimeType) {
       p += length;
     }
     return true;
-  }}
+  }
   if (mimeType === "image/png") {
     if (input.length < 8 || !PNG_SIGNATURE.every((v, i) => input[i] === v)) return true;
     let p = 8;
