@@ -1496,7 +1496,7 @@ async function botHandleCallback(env,query){
        const label=names[category]?.[index]||"Status";
        await botSetContext(env,chatId,{section:category,view:"status",index,actionId:action,messageId:Number(query.message?.message_id||0)});await botRunWithProgress(env,chatId,"নির্বাচিত বিভাগের তথ্য সংগ্রহ ও যাচাই করা হচ্ছে...",async()=>{const result=await botStatusText(env,category,index);await botSend(env,chatId,"🔎 "+label+"\n"+result,botBackKeyboard());});return true;}
         await botShowMenu(env,chatId);
-  }catch(e){const reason=String(e&&e.message||e).slice(0,180);console.error("Telegram button action failed; original message preserved and no replacement sent",String(e&&e.stack||e).slice(0,1600));try{const notice=await botTelegram(env,"sendMessage",{chat_id:chatId,text:botFormatTelegramResponse("⚠️ Button action failed.\n"+reason+"\n\nমূল Notification/Message অক্ষত রাখা হয়েছে।",{}),disable_web_page_preview:true,reply_markup:{inline_keyboard:botBackKeyboard()},reply_to_message_id:Number(query.message?.message_id||0)});if(!notice.ok)console.error("Telegram callback failure notice delivery failed",String(notice.data?.description||"Telegram API error").slice(0,240))}catch(noticeError){console.error("Telegram callback failure notice request failed",String(noticeError&&noticeError.message||noticeError).slice(0,240))}}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
+  }catch(e){const reason=String(e&&e.message||e).slice(0,180);const quotaExceeded=/KV put\(\) limit exceeded/i.test(reason);const noticeText=quotaExceeded?"⚠️ Cloudflare Free Plan-এর দৈনিক KV Write Limit শেষ হয়েছে। এই Action সংরক্ষণ করা যায়নি; কোনো Setting পরিবর্তন হয়নি। Read-only Menu ব্যবহার করা যাবে। KV limit reset হওয়ার পর আবার চেষ্টা করুন (বাংলাদেশ সময় সকাল ৬টার পর)।":"⚠️ Button action failed.\n"+reason+"\n\nমূল Notification/Message অক্ষত রাখা হয়েছে।";console.error("Telegram button action failed; original message preserved and no replacement sent",String(e&&e.stack||e).slice(0,1600));try{const notice=await botTelegram(env,"sendMessage",{chat_id:chatId,text:botFormatTelegramResponse(noticeText,{}),disable_web_page_preview:true,reply_markup:{inline_keyboard:botBackKeyboard()},reply_to_message_id:Number(query.message?.message_id||0)});if(!notice.ok)console.error("Telegram callback failure notice delivery failed",String(notice.data?.description||"Telegram API error").slice(0,240))}catch(noticeError){console.error("Telegram callback failure notice request failed",String(noticeError&&noticeError.message||noticeError).slice(0,240))}}finally{BOT_CALLBACK_MESSAGE_ANCHORS.delete(String(chatId));BOT_CALLBACK_ACTIVE.delete(String(chatId));try{await botMarkMenuInteraction(env,chatId,null,false)}catch(e){console.error("Telegram menu interaction metadata write failed",String(e&&e.stack||e).slice(0,800))}}
   return true;
 }
 
@@ -2284,9 +2284,10 @@ async function newsBreakingAlertCheck(env){
     const eventId=String(item.alertEventId||"").trim();
     let key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
     const linkIndexKey=await newsAlertLinkIndexKey(item);
+    let linkedEventKey="";
     if(linkIndexKey){
-      const linkedEventKey=await env.BOT_CONFIG_KV.get(linkIndexKey);
-      if(/^[a-f0-9]{32}$/i.test(String(linkedEventKey||"")))key=linkedEventKey;
+      linkedEventKey=String(await env.BOT_CONFIG_KV.get(linkIndexKey)||"");
+      if(/^[a-f0-9]{32}$/i.test(linkedEventKey))key=linkedEventKey;
     }
     const rejectAuditKey="news-alert-reject:v1:"+key;
     if(!decision.eligible){
@@ -2358,7 +2359,13 @@ async function newsBreakingAlertCheck(env){
     }
     const lockKey="news-alert-lock:v1:"+key;
     if(await env.BOT_CONFIG_KV.get(lockKey))continue;
-    await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:120});
+    try{
+      await env.BOT_CONFIG_KV.put(lockKey,String(now),{expirationTtl:900});
+    }catch(error){
+      console.warn("News alert skipped because the KV delivery lock could not be persisted",String(error&&error.message||error).slice(0,160));
+      continue;
+    }
+    let alertStatePersisted=false;
     try{
       const rootMessageId=Number(previous?.rootMessageId)||0;
       const latestMessageId=Number(previous?.latestMessageId)||0;
@@ -2370,19 +2377,21 @@ async function newsBreakingAlertCheck(env){
       const messageId=Number(delivery?.messageId)||null;
       const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,rootSnapshotKey:previous?.rootSnapshotKey||(!previous?"news-alert-history:v1:"+String(now)+":"+key+":1":null),rootSnapshotCheckedAt:previous?.rootSnapshotCheckedAt||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
-      if(linkIndexKey)await env.BOT_CONFIG_KV.put(linkIndexKey,key,{expirationTtl:NEWS_ALERT_TTL});
+      alertStatePersisted=true;
+      if(linkIndexKey&&linkedEventKey!==key)await env.BOT_CONFIG_KV.put(linkIndexKey,key,{expirationTtl:NEWS_ALERT_TTL});
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       sent.push(title);
     }finally{
-      await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
+      if(alertStatePersisted)await env.BOT_CONFIG_KV.delete(lockKey).catch(()=>{});
+      else console.warn("News alert delivery lock retained temporarily because persistent alert state was not confirmed",key);
     }
   }
   const summary={at:now,feedUpdatedAt,feedAgeMinutes,sourceCount:Number(feed?.sourceCount)||0,healthySources:Number(feed?.healthySourceCount)||0,failedSources:Number(feed?.failedSourceCount)||0,totalItems:items.length,candidates:scanned,audited,rejected,sent:sent.length};
   try{
     const summaryKey="news-alert-audit:v1:last-run";
     const previous=await env.BOT_CONFIG_KV.get(summaryKey,"json");
-    if(!previous||now-Number(previous.at||0)>=15*60000||sent.length){
+    if(!previous||now-Number(previous.at||0)>=60*60000||sent.length){
       await env.BOT_CONFIG_KV.put(summaryKey,JSON.stringify(summary),{expirationTtl:auditTtl});
     }
   }catch(error){
