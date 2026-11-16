@@ -204,6 +204,7 @@ assert.match(editInPlace, /Only recover automatically when Telegram confirms tha
 assert.doesNotMatch(editInPlace.slice(editInPlace.indexOf("if(callbackMessageId)"), editInPlace.indexOf('const sent=await botTelegram(env,"sendMessage"')), /sendMessage/, "A failed callback edit must stop before sendMessage");
 const callbackFailure = section("async function botHandleCallback", "async function umHandleCommand");
 assert.match(callbackFailure, /original message preserved and no replacement sent/, "Uneditable historical notifications must be preserved without sending a duplicate");
+assert.match(callbackFailure, /Cloudflare Free Plan-এর দৈনিক KV Write Limit শেষ হয়েছে/, "KV quota failures must explain that persistent actions were not saved and when to retry");
 const callbackCatchStart=callbackFailure.indexOf("}catch(e){const reason=");
 const callbackCatchEnd=callbackFailure.indexOf("}finally{",callbackCatchStart);
 const callbackCatch=callbackFailure.slice(callbackCatchStart,callbackCatchEnd>callbackCatchStart?callbackCatchEnd:undefined);
