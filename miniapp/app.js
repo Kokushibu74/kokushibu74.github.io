@@ -212,7 +212,7 @@
     editorActions.append(detectButton,saveButton);
     editor.append(editorHead,editorPreviewWrap,editorStatus,controls,editorActions);
     wrap.append(intro,uploadPanel,galleryPanel,editor);el.replaceChildren(wrap);
-    let gallery={images:[],activeImageId:""},selectedImage=null,visionPromise=null,selectedFiles=[],selectedUrls=[];
+    let gallery={images:[],activeImageId:""},selectedImage=null,visionPromise=null,sanitizerPromise=null,selectedFiles=[],selectedUrls=[];
     const imageUrl=src=>{try{const u=new URL(String(src||""),"https://kokushibu74.github.io/");return u.protocol==="https:"?u.href:"";}catch{return "";}};
     const button=(label,fn,cls="")=>{const b=document.createElement("button");b.type="button";b.textContent=label;if(cls)b.className=cls;b.addEventListener("click",fn);return b;};
     const setStatus=(message,error=false)=>{uploadStatus.textContent=message;uploadStatus.classList.toggle("error",error);};
@@ -357,8 +357,14 @@
           if(selected.size>4*1024*1024)throw new Error(selected.name+": exceeds the 4 MB limit.");
           setStatus("Detecting face / subject locally: "+selected.name);
           const detected=await detectPosition(selectedUrls[selectedFiles.indexOf(selected)]);
-          setStatus("Removing embedded metadata and uploading: "+selected.name);
-          const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read "+selected.name));reader.readAsDataURL(selected);});
+          setStatus("Stripping embedded metadata locally and uploading: "+selected.name);
+          if(!sanitizerPromise)sanitizerPromise=import("https://kokushibu74.github.io/cloudflare/hero-gallery.mjs");
+          const sanitizer=await sanitizerPromise;
+          const originalBytes=new Uint8Array(await selected.arrayBuffer());
+          const cleanedBytes=sanitizer.stripImageMetadata(originalBytes,selected.type);
+          if(sanitizer.hasEmbeddedImageMetadata(cleanedBytes,selected.type))throw new Error(selected.name+": metadata verification failed before upload.");
+          const cleanedFile=new File([cleanedBytes],selected.name,{type:selected.type});
+          const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read cleaned image "+selected.name));reader.readAsDataURL(cleanedFile);});
           const prepared=await api("heroPrepare",{mimeType:selected.type,base64:dataUrl.split(",")[1]});
           try{
             await api("heroConfirm",{token:prepared.token,focusX:detected.focusX,focusY:detected.focusY,zoom:detected.zoom,faceDetection:detected.faceDetection});
