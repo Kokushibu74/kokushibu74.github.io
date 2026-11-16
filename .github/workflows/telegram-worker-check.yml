@@ -8,6 +8,7 @@ on:
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'site.js'
       - 'tests/hero-gallery.test.mjs'
+      - 'tests/hero-gallery.browser.test.cjs'
       - 'cloudflare/blog-manager.mjs'
       - 'journal.js'
       - 'journal.css'
@@ -292,5 +293,7 @@ jobs:
         run: npm install --no-save playwright@latest
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Verify Hero Gallery desktop and mobile viewer interactions
+        run: node tests/hero-gallery.browser.test.cjs
       - name: Verify live Journal interactions in a browser
         run: node tests/journal-browser-smoke.cjs
