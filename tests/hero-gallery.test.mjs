@@ -27,10 +27,20 @@ function chunk(type,data){
 }
 function join(parts){return Uint8Array.from(parts.flat());}
 
-const jpeg=Uint8Array.from([0xff,0xd8,0xff,0xe1,0x00,0x06,0x45,0x78,0x69,0x66,0xff,0xda,0x00,0x02,0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0xaa,0xff,0xd9]);
+const jpeg=Uint8Array.from([0xff,0xd8,
+  0xff,0xe0,0x00,0x04,0x01,0x02,
+  0xff,0xe1,0x00,0x06,0x45,0x78,0x69,0x66,
+  0xff,0xe2,0x00,0x06,0x49,0x43,0x43,0x50,
+  0xff,0xed,0x00,0x06,0x49,0x50,0x54,0x43,
+  0xff,0xfe,0x00,0x04,0x41,0x42,
+  0xff,0xda,0x00,0x02,0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0xaa,0xff,0xd9]);
 const cleanJpeg=sanitize(jpeg);
 assert.equal(cleanJpeg.mimeType,"image/jpeg");
+assert.ok(cleanJpeg.removed.includes("JPEG_E0"),"JPEG APP0/JFIF metadata must be stripped");
 assert.ok(cleanJpeg.removed.includes("JPEG_E1"),"JPEG EXIF APP1 must be stripped");
+assert.ok(cleanJpeg.removed.includes("JPEG_E2"),"JPEG ICC APP2 metadata must be stripped");
+assert.ok(cleanJpeg.removed.includes("JPEG_ED"),"JPEG IPTC APP13 metadata must be stripped");
+assert.ok(cleanJpeg.removed.includes("JPEG_FE"),"JPEG comment segments must be stripped");
 assert.ok(!equal(jpeg,cleanJpeg.bytes),"JPEG metadata removal must change the byte stream");
 const verifyJpeg=sanitize(cleanJpeg.bytes);
 assert.equal(verifyJpeg.removed.length,0,"JPEG read-back verification must find no remaining metadata");
@@ -42,6 +52,9 @@ const png=join([
   pngSignature,
   chunk("IHDR",ihdr),
   chunk("tEXt",[65,117,116,104,111,114,0,83,104,105,104,97,98]),
+  chunk("eXIf",[69,120,105,102]),
+  chunk("tIME",[7,232,1,2,3,4,5]),
+  chunk("iCCP",[80,114,111,102,105,108,101,0,0]),
   chunk("tRNS",[0]),
   chunk("IDAT",[1,2,3]),
   chunk("IEND",[])
@@ -49,6 +62,9 @@ const png=join([
 const cleanPng=sanitize(png);
 assert.equal(cleanPng.mimeType,"image/png");
 assert.ok(cleanPng.removed.includes("PNG_tEXt"),"PNG text metadata must be stripped");
+assert.ok(cleanPng.removed.includes("PNG_eXIf"),"PNG EXIF metadata must be stripped");
+assert.ok(cleanPng.removed.includes("PNG_tIME"),"PNG timestamp metadata must be stripped");
+assert.ok(cleanPng.removed.includes("PNG_iCCP"),"PNG embedded color profile metadata must be stripped");
 assert.ok(cleanPng.bytes.some((v,i)=>i>0&&v===0x74&&cleanPng.bytes[i+1]===0x52),"PNG transparency data must remain intact");
 const verifyPng=sanitize(cleanPng.bytes);
 assert.equal(verifyPng.removed.length,0,"PNG read-back verification must find no identifying ancillary chunks");
@@ -61,6 +77,9 @@ const webpChunk=(type,data)=>{
 const webpBody=[87,69,66,80,
   ...webpChunk("VP8X",[0x2c,0,0,0,0,0,0,0,0,0]),
   ...webpChunk("EXIF",[69,120,105,102]),
+  ...webpChunk("XMP ",[88,77,80,0]),
+  ...webpChunk("ICCP",[73,67,67,80]),
+  ...webpChunk("JUNK",[77,101,116,97]),
   ...webpChunk("VP8 ",[1,2,3])
 ];
 const riffSize=webpBody.length;
@@ -68,6 +87,9 @@ const webp=Uint8Array.from([82,73,70,70,riffSize&255,(riffSize>>>8)&255,(riffSiz
 const cleanWebp=sanitize(webp);
 assert.equal(cleanWebp.mimeType,"image/webp");
 assert.ok(cleanWebp.removed.includes("WEBP_EXIF"),"WebP EXIF chunk must be stripped");
+assert.ok(cleanWebp.removed.includes("WEBP_XMP"),"WebP XMP metadata must be stripped");
+assert.ok(cleanWebp.removed.includes("WEBP_ICCP"),"WebP ICC profile metadata must be stripped");
+assert.ok(cleanWebp.removed.includes("WEBP_JUNK"),"Unknown WebP chunks must be stripped rather than assumed safe");
 assert.ok(cleanWebp.removed.includes("WEBP_VP8X_METADATA_FLAGS"),"WebP EXIF/XMP/ICC flags must be cleared");
 const verifyWebp=sanitize(cleanWebp.bytes);
 assert.equal(verifyWebp.removed.length,0,"WebP read-back verification must find no metadata");
@@ -112,6 +134,10 @@ assert.match(site,/pointerup/,"Mobile swipe navigation must be wired");
 assert.match(site,/history\.pushState/);
 assert.match(site,/addEventListener\("popstate"/);
 assert.match(site,/img\.addEventListener\("mouseenter"/,"Existing desktop hover preview must remain");
+assert.match(site,/#portrait-reveal-overlay\.is-visible\{opacity:1;visibility:visible;pointer-events:none\}/,"Desktop hover preview must not intercept the pointer and trigger its own mouseleave");
+assert.match(site,/#portrait-reveal-overlay\.is-visible\.is-tap\{pointer-events:auto\}/,"Tap viewer must remain interactive");
+assert.match(site,/#portrait-reveal-frame\{position:relative;pointer-events:none/,"Hover preview frame must not capture pointer events");
+assert.match(site,/if\(mode==="tap"\)\{resetTimer\(\);/,"Keyboard interaction must reset the 20-second inactivity timer");
 
 assert.match(app,/@mediapipe\/tasks-vision/,"Face detection must run in the browser");
 assert.match(app,/heroGallerySetActive/);
