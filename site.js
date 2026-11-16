@@ -147,6 +147,8 @@ function installPortraitReveal(data){
  frame.addEventListener("pointerdown",e=>{if(mode!=="tap")return;resetTimer();swipeStartX=e.pointerType==="touch"?e.clientX:null});
  frame.addEventListener("pointerup",e=>{if(mode!=="tap"||e.pointerType!=="touch"||swipeStartX===null)return;const delta=e.clientX-swipeStartX;swipeStartX=null;if(Math.abs(delta)>42)navigate(delta<0?1:-1);else resetTimer()});
  frame.addEventListener("pointercancel",()=>{swipeStartX=null});
+ frame.addEventListener("focusin",()=>{if(mode==="tap")resetTimer()});
+ frame.addEventListener("keydown",()=>{if(mode==="tap")resetTimer()});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"){close();return;}if(mode==="tap"&&(e.key==="ArrowLeft"||e.key==="ArrowRight")){e.preventDefault();navigate(e.key==="ArrowLeft"?-1:1)}});
  window.addEventListener("popstate",()=>{if(mode==="tap"){historyPushed=false;close(true)}});
 }
