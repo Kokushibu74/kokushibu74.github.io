@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-16T21:22:02.758631+00:00",
-  "updatedAt": "2026-11-16T21:22:02.758631+00:00",
+  "generatedAt": "2026-11-16T21:37:03.223444+00:00",
+  "updatedAt": "2026-11-16T21:37:03.223444+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 33,
-  "failedSourceCount": 8,
+  "healthySourceCount": 31,
+  "failedSourceCount": 10,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 26,
+  "fallbackHealthySourceCount": 24,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -63,12 +63,12 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Kaler Kantho",
@@ -123,22 +123,22 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "BSS",
@@ -153,12 +153,12 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 24
     },
     {
       "name": "Risingbd",
@@ -173,22 +173,22 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bangladesh Pratidin",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -243,12 +243,12 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Daily Inqilab",
@@ -293,22 +293,22 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
-    },
-    {
-      "name": "The Daily Ittefaq",
-      "domain": "ittefaq.com.bd",
       "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
       "fallbackStatus": "failed",
       "fallbackError": "HTTP 429",
       "fallbackItems": 0
+    },
+    {
+      "name": "The Daily Ittefaq",
+      "domain": "ittefaq.com.bd",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Ajker Patrika",
@@ -373,11 +373,11 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -413,15 +413,15 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 10,
+  "candidateCount": 8,
   "alertItems": [
     {
       "title": "সাদুল্লাপুরে বিএনপির কার্যালয়ের সামনে দুই ককটেল বিস্ফোরণ",
@@ -517,68 +517,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "120574b1c265f7bae9fcae7b784b80c0"
-    },
-    {
-      "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-      "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-16T09:45:37+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-          "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fd4fbf349bff25fbd7d588370a02aea8"
-    },
-    {
-      "title": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-16T08:01:56+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "835fab5d99aad24282796b530ed9ac1f"
     },
     {
       "title": "রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’",
