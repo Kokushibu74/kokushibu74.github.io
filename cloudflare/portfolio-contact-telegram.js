@@ -1,6 +1,7 @@
 import { evaluateNewsAlert, newsAlertKey, normalizeNewsAlertLink, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
+import { prepareGalleryImage, commitGalleryPending, commitGalleryBytes, listHeroGallery, setGalleryActive, updateGalleryPosition, deleteGalleryImage, stripImageMetadata } from "./hero-gallery.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
 const UM_PREFIX = "um:v1:";
@@ -1147,8 +1148,8 @@ async function botCategory(env,chatId,category){
     rows.push([{text:"Worker Events",callback_data:"b1:status:logs:1"},{text:"Workflow Logs",callback_data:"b1:status:logs:2"}]);
     rows.push([{text:"Security Logs",callback_data:"b1:status:logs:3"},{text:"Recovery Guide",callback_data:"b1:status:recovery:1"}]);
   }else if(category==="hero"){
-    rows.push([{text:"📤 Upload Hero Image",callback_data:"b1:hero:upload"}]);
-    rows.push([{text:"🖼️ Current Hero Image",callback_data:"b1:hero:current"}]);
+    rows.push([{text:"🗂 Open Gallery Manager",web_app:{url:"https://kokushibu74.github.io/miniapp/?module=hero"}}]);
+    rows.push([{text:"📤 Upload to Gallery",callback_data:"b1:hero:upload"},{text:"🖼️ Current Active Image",callback_data:"b1:hero:current"}]);
   }else{
     for(let i=1;i<names.length;i+=2)rows.push(names.slice(i,i+2).map((label,j)=>({text:label,callback_data:"b1:status:"+category+":"+(i+j)})));
   }
@@ -1707,7 +1708,7 @@ async function botTelegramPhoto(env,fileId){
   const gd=await g.json().catch(()=>({}));if(!g.ok||!gd.ok||!gd.result?.file_path)throw new Error("Telegram photo retrieval failed");
   const r=await fetch("https://api.telegram.org/file/bot"+env.TELEGRAM_BOT_TOKEN+"/"+gd.result.file_path);
   if(!r.ok)throw new Error("Telegram photo download failed");
-  const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.length>5*1024*1024)throw new Error("Hero image must be 5 MB or smaller");
+  const bytes=new Uint8Array(await r.arrayBuffer());if(bytes.length>4*1024*1024)throw new Error("Hero image must be 4 MB or smaller");
   return bytes;
 }
 async function botCommitHero(env,token){
