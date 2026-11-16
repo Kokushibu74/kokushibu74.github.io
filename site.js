@@ -33,7 +33,7 @@ function render(raw) {
  const heroFocusX=Math.max(0,Math.min(100,Number(activeGalleryItem?.focusX??d.imageFocusX??50)||0));
  const heroFocusY=Math.max(0,Math.min(100,Number(activeGalleryItem?.focusY??d.imagePos??50)||0));
  const heroZoom=Math.max(1,Math.min(2.5,Number(activeGalleryItem?.zoom??d.imageZoom??1)||1));
- const img=esc(heroSrc);
+ const img=esc(safeUrl(heroSrc));
  let html='';
  html+='<section id="home" class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 min-h-[65vh]"><div class="space-y-6">';
  html+='<div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/10 bg-white/[.03] text-[10px] sm:text-xs font-mono tracking-wider text-zinc-300">'+esc(d.badge||fallback.badge)+'</div>';
