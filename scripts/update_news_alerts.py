@@ -73,6 +73,18 @@ SOURCES = [
     ("BBC News বাংলা", "https://feeds.bbci.co.uk/bengali/rss.xml", "bbc.co.uk"),
 ]
 
+# Additional regional/local publishers. These are separately live-validated in CI
+# before a change can be merged; they do not replace any existing source.
+NEW_DIRECT_SOURCES = [
+    ("BD Type", "https://bdtype.com/feed", "bdtype.com"),
+    ("Prokoushol News", "https://prokousholnews.com/rss/category/district", "prokousholnews.com"),
+    ("Narayanganj Times", "https://www.narayanganjtimes.com/feed/", "narayanganjtimes.com"),
+    ("Mymensingh Pratidin", "https://mymensinghpratidin.com/feed/", "mymensinghpratidin.com"),
+    ("Dainik Purbokone", "https://dainikpurbokone.net/feed/", "dainikpurbokone.net"),
+    ("CVoice24", "https://www.cvoice24.com/feed/", "cvoice24.com"),
+]
+SOURCES.extend(NEW_DIRECT_SOURCES)
+
 BANGLADESH_RE = re.compile(
     r"(বাংলাদেশ|ঢাকা|চট্টগ্রাম|চাটগাঁ|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|ময়মনসিংহ|"
     r"কক্সবাজার|কুড়িগ্রাম|কুড়িগ্রাম|সুনামগঞ্জ|সাতক্ষীরা|নারায়ণগঞ্জ|নারায়ণগঞ্জ|গাজীপুর|কুমিল্লা|"
@@ -285,6 +297,28 @@ def fetch_google_fallback(source):
         detail = re.sub(r"[\r\n\t]+", " ", str(error))[:180]
         return {"name": name, "domain": domain, "url": url, "kind": "google",
                 "status": "failed", "http": None, "items": [], "error": detail or error.__class__.__name__}
+
+def classify_source_health(direct, fallback=None):
+    """Return additive, explicit health labels while preserving legacy status."""
+    direct_ok = bool(direct and direct.get("status") == "healthy")
+    fallback_ok = bool(fallback and fallback.get("status") == "healthy")
+    fallback_items = len((fallback or {}).get("items") or [])
+    if direct_ok:
+        health_class = "direct_healthy"
+    elif fallback_ok and fallback_items:
+        health_class = "fallback_with_items"
+    elif fallback_ok:
+        health_class = "fallback_zero_items"
+    else:
+        health_class = "failed"
+    return {
+        "status": "healthy" if direct_ok or fallback_ok else "failed",
+        "directHealthy": direct_ok,
+        "fallbackOnly": not direct_ok and fallback_ok,
+        "fallbackWithItems": not direct_ok and fallback_ok and fallback_items > 0,
+        "fallbackZeroItems": not direct_ok and fallback_ok and fallback_items == 0,
+        "healthClass": health_class,
+    }
 
 def canonical_source(name):
     return news_helpers().canonical_publisher_name(name)
@@ -578,14 +612,22 @@ def main():
     for name, _url, domain in SOURCES:
         direct = direct_by_name[name]
         fallback = fallback_by_name.get(name)
+        health = classify_source_health(direct, fallback)
         source_health.append({
             "name": name, "domain": domain,
-            "status": "healthy" if name in effective_healthy_names else "failed",
+            # Keep the legacy fields stable for the Telegram Worker and dashboards.
+            "status": health["status"],
             "directStatus": direct["status"],
             "directError": direct.get("error"),
             "fallbackStatus": fallback["status"] if fallback else "not_needed",
             "fallbackError": fallback.get("error") if fallback else None,
             "fallbackItems": len(fallback.get("items") or []) if fallback else 0,
+            # Additive diagnostics; existing consumers can safely ignore these.
+            "directHealthy": health["directHealthy"],
+            "fallbackOnly": health["fallbackOnly"],
+            "fallbackWithItems": health["fallbackWithItems"],
+            "fallbackZeroItems": health["fallbackZeroItems"],
+            "healthClass": health["healthClass"],
         })
     if len(effective_healthy_names) < 3:
         print("ERROR: fewer than 3 publisher sources are reachable directly or through Google News; keeping the previous alert feed.", file=sys.stderr)
@@ -609,6 +651,10 @@ def main():
         "failedSourceCount": len(SOURCES) - len(effective_healthy_names),
         "directHealthySourceCount": len(direct_healthy_names),
         "fallbackHealthySourceCount": len(fallback_healthy_names),
+        "directFailedSourceCount": len(SOURCES) - len(direct_healthy_names),
+        "fallbackOnlySourceCount": sum(1 for item in source_health if item["fallbackOnly"]),
+        "fallbackWithItemsSourceCount": sum(1 for item in source_health if item["fallbackWithItems"]),
+        "fallbackZeroItemsSourceCount": sum(1 for item in source_health if item["fallbackZeroItems"]),
         "sourceHealth": source_health,
         "candidateCount": len(candidates),
         "alertItems": alerts,
@@ -620,6 +666,9 @@ def main():
         "healthySources": len(effective_healthy_names),
         "directHealthySources": len(direct_healthy_names),
         "fallbackHealthySources": len(fallback_healthy_names),
+        "fallbackOnlySources": sum(1 for item in source_health if item["fallbackOnly"]),
+        "fallbackWithItemsSources": sum(1 for item in source_health if item["fallbackWithItems"]),
+        "fallbackZeroItemsSources": sum(1 for item in source_health if item["fallbackZeroItems"]),
         "failedSources": len(SOURCES) - len(effective_healthy_names),
         "candidates": len(candidates),
         "clusteredAlerts": len(alerts),
