@@ -16,11 +16,16 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
-test("Chandpur Times is eligible as one trusted regional publisher",()=>{
-  const decision=evaluateNewsAlert(item({sourceEvidence:["Chandpur Times"]}),{now});
-  assert.equal(decision.eligible,true);
-  assert.equal(decision.status,"provisional");
-  assert.deepEqual(decision.trustedSources,["Chandpur Times"]);
+test("regional and official publishers are eligible individually but cannot confirm alone",()=>{
+  const sources=["Chandpur Times","Amader Barishal","Chattogram News","DMP Official News","Daily Sylhet News","Daily Purbanchal"];
+  for(const publisher of sources){
+    const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
+    assert.equal(decision.eligible,true,publisher+" should be trusted");
+    assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
+  }
+  const confirmed=evaluateNewsAlert(item({sourceEvidence:["Chandpur Times","Chattogram News"]}),{now});
+  assert.equal(confirmed.status,"confirmed");
+  assert.equal(confirmed.trustedSources.length,2);
 });
 
 test("GDACS and USGS share one corroboration group and cannot confirm each other",()=>{
