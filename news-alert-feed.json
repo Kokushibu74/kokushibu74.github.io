@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T08:07:01.030597+00:00",
-  "updatedAt": "2026-11-17T08:07:01.030597+00:00",
+  "generatedAt": "2026-11-17T08:26:50.046986+00:00",
+  "updatedAt": "2026-11-17T08:26:50.046986+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 32,
-  "failedSourceCount": 9,
+  "healthySourceCount": 40,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 25,
+  "fallbackHealthySourceCount": 33,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -153,22 +153,22 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Samakal",
@@ -193,31 +193,31 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 2
     },
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -303,12 +303,12 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Ajker Patrika",
@@ -343,12 +343,12 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Daily Janakantha",
@@ -393,11 +393,11 @@
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 10,
+  "candidateCount": 11,
   "alertItems": [
     {
       "title": "সকালের সংঘর্ষের পর শান্ত মিরপুর, যান চলাচল স্বাভাবিক",
@@ -453,6 +453,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9d7554ce2bdd697e11d580ced7aac66e"
+    },
+    {
+      "title": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash - United News of Bangladesh",
+      "summary": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB",
+      "publishedAt": "2026-11-17T06:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash - United News of Bangladesh",
+          "summary": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ad52dbae3e05aa45e4a6f18d549a6b35"
     },
     {
       "title": "খুনের জনপদে চাঁদাবাজির রাজত্ব, প্রবাসী-ব্যবসায়ী-শিক্ষক কেউই রেহাই পাচ্ছেন না",
