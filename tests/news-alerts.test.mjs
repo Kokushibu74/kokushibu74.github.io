@@ -28,6 +28,15 @@ test("validated regional publishers are eligible individually but cannot confirm
   assert.equal(confirmed.trustedSources.length,2);
 });
 
+test("new Dhaka publisher candidates remain provisional until a second source confirms",()=>{
+  const sources=["Protidiner Sangbad","Jaijaidin","Manobkantha","Alokito Bangladesh","Daily Bangladesh","Shomoyer Alo"];
+  for(const publisher of sources){
+    const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
+    assert.equal(decision.eligible,true,publisher+" should be trusted");
+    assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
+  }
+});
+
 test("GDACS and USGS share one corroboration group and cannot confirm each other",()=>{
   const decision=evaluateNewsAlert(item({sourceEvidence:["GDACS","USGS Earthquake Feed"]}),{now});
   assert.equal(decision.eligible,true);
