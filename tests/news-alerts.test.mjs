@@ -16,6 +16,18 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
+test("validated regional RSS publishers are eligible and can corroborate independently",()=>{
+  const regional=["BD Type","Prokoushol News","Narayanganj Times","Mymensingh Pratidin","Dainik Purbokone","CVoice24"];
+  for(const publisher of regional){
+    const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
+    assert.equal(decision.eligible,true,publisher+" should be trusted");
+    assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
+  }
+  const confirmed=evaluateNewsAlert(item({sourceEvidence:["Narayanganj Times","Mymensingh Pratidin"]}),{now});
+  assert.equal(confirmed.status,"confirmed");
+  assert.equal(confirmed.trustedSources.length,2);
+});
+
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
 test("two untrusted publishers are not sufficient corroboration",()=>assert.equal(evaluateNewsAlert(item({sourceEvidence:["Random Blog","Unknown News"]}),{now}).reason,"untrusted_sources"));
 test("one trusted publisher produces a provisional alert even when another source is untrusted",()=>{const d=evaluateNewsAlert(item({sourceEvidence:["The Daily Star","Local News Desk"]}),{now});assert.equal(d.eligible,true);assert.equal(d.status,"provisional");assert.deepEqual(d.trustedSources,["The Daily Star"]);});
