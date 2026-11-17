@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T16:11:52.708578+00:00",
-  "updatedAt": "2026-11-17T16:11:52.708578+00:00",
+  "generatedAt": "2026-11-17T16:31:56.895527+00:00",
+  "updatedAt": "2026-11-17T16:31:56.895527+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 40,
-  "failedSourceCount": 1,
+  "healthySourceCount": 33,
+  "failedSourceCount": 8,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 26,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -43,12 +43,12 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Banglanews24",
@@ -93,12 +93,12 @@
     {
       "name": "Dhaka Tribune",
       "domain": "dhakatribune.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "The Business Standard",
@@ -123,11 +123,11 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -153,12 +153,12 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Risingbd",
@@ -183,12 +183,12 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bangladesh Pratidin",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -233,12 +233,12 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ekattor TV",
@@ -333,12 +333,12 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Naya Diganta",
@@ -413,16 +413,58 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 19,
+  "candidateCount": 13,
   "alertItems": [
+    {
+      "title": "সাবেক মন্ত্রী মোজাম্মেল হকের বাড়িতে আগুন",
+      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক মুক্তিযুদ্ধবিষয়ক মন্ত্রী আ ক ম মোজাম্মেল হকের গাজীপুরের পুরোনো বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। খবর পেয়ে ফায়ার সার্ভিসের দুটি ইউনিট আগুন নিয়ন্ত্রণে আনে। মঙ্গলবার (১৭ নভেম্বর) রাত সাড়ে ৮টার দিকে গাজীপুর মহানগরীর দক্ষিণ ছায়াবীথি (জোড় পুকুরপাড়) এলাকার বাসভবনটিতে দুর্বৃত্তরা আগুন ধরিয়ে দেয়। ২০২৪ সালের ৫ আগস্ট আওয়ামী লীগ সরকারের পতনের পর থেকে মোজাম্মেল হক পলাতক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981589/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981589/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-17T16:20:46+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981589/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180685"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সাবেক মন্ত্রী মোজাম্মেল হকের বাড়িতে আগুন",
+          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক মুক্তিযুদ্ধবিষয়ক মন্ত্রী আ ক ম মোজাম্মেল হকের গাজীপুরের পুরোনো বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। খবর পেয়ে ফায়ার সার্ভিসের দুটি ইউনিট আগুন নিয়ন্ত্রণে আনে। মঙ্গলবার (১৭ নভেম্বর) রাত সাড়ে ৮টার দিকে গাজীপুর মহানগরীর দক্ষিণ ছায়াবীথি (জোড় পুকুরপাড়) এলাকার বাসভবনটিতে দুর্বৃত্তরা আগুন ধরিয়ে দেয়। ২০২৪ সালের ৫ আগস্ট আওয়ামী লীগ সরকারের পতনের পর থেকে মোজাম্মেল হক পলাতক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981589/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
+          "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
+          "url": "https://www.jagonews24.com/country/news/1180685"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "722a7f90844f0371eb192200785e84bc"
+    },
     {
       "title": "মাইকে ঘোষণা দিয়ে থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, ছিনিয়ে নিলো আসামিদের",
       "summary": "মসজিদের মাইকে ঘোষণা দিয়ে গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা-ভাঙচুর চালিয়ে আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, মঙ্গলবার সন্ধ্যার পরপরই কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা মাইকিং করে লোক জড়ো করেন। তারা থানা ঘেরাও করে চত্বরে থাকা কয়েকটি গাড়িতে দেন।... বিস্তারিত",
@@ -468,37 +510,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "bcc73693597ac70f66f61deb57444338"
-    },
-    {
-      "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
-      "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
-      "link": "https://www.jagonews24.com/country/news/1180685",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1180685",
-      "publishedAt": "2026-11-17T15:48:57+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180685"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
-          "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
-          "url": "https://www.jagonews24.com/country/news/1180685"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "070da7b6235d1692fafba0ce5e8eba18"
     },
     {
       "title": "গোপালগঞ্জে বিএনপির এমপি জিলানীর বাড়িতে আগুন",
@@ -605,40 +616,6 @@
       "alertEventId": "ebd1edbcab68a8491dab95d141de5252"
     },
     {
-      "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপা পড়ে বাংলাদেশী নিহত - Daily Naya Diganta",
-      "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপা পড়ে বাংলাদেশী নিহত Daily Naya Diganta",
-      "link": "https://dailynayadiganta.com/post/abroad/1070270",
-      "publisherUrl": "https://dailynayadiganta.com/post/abroad/1070270",
-      "publishedAt": "2026-11-17T15:02:00+00:00",
-      "source": "Daily Naya Diganta",
-      "publisherName": "Daily Naya Diganta",
-      "sourceEvidence": [
-        "Daily Naya Diganta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1070270"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Naya Diganta",
-          "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপা পড়ে বাংলাদেশী নিহত - Daily Naya Diganta",
-          "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপা পড়ে বাংলাদেশী নিহত Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1070270",
-          "incidentTimeText": "আজ দুপুর ২টা ৪৫ মিনিটে",
-          "incidentTimeSource": "Daily Naya Diganta",
-          "locationText": "কাম্পুং মেলায়ু কেপং এলাকা, বাংলাদেশ"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ae14b105c0495d7ae66b05e3431cbe7"
-    },
-    {
       "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
       "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
       "link": "https://bn.observerbd.com/news/150552",
@@ -733,130 +710,6 @@
       "alertEventId": "757ed0cb068b0de70b92c40f34968528"
     },
     {
-      "title": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার - Dhaka Tribune Bangla",
-      "summary": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8",
-      "publishedAt": "2026-11-17T10:14:10+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার - Dhaka Tribune Bangla",
-          "summary": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "313e0e34676aeec00babb3b3d4aef26a"
-    },
-    {
-      "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-      "summary": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
-      "publishedAt": "2026-11-17T07:34:03+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-          "summary": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ecef08897ac469bc5291f9d6c5485aee"
-    },
-    {
-      "title": "শাহজালাল বিমানবন্দর এলাকায় ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "শাহজালাল বিমানবন্দর এলাকায় ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113255/%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113255/%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publishedAt": "2026-11-17T07:14:08+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113255/%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "শাহজালাল বিমানবন্দর এলাকায় ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "শাহজালাল বিমানবন্দর এলাকায় ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113255/%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f779f86189457e6fbf452e9a629ce42d"
-    },
-    {
-      "title": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash - United News of Bangladesh",
-      "summary": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB",
-      "publishedAt": "2026-11-17T06:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash - United News of Bangladesh",
-          "summary": "নাহিদের সংবর্ধনা শেষে লন্ডনে আওয়ামী লীগ ও এনসিপির সং/ঘ/র্ষ | Awami League | NCP | Clash United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9961/%E0%A6%A8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%A8%E0%A6%BE-%E0%A6%B6%E0%A7%87%E0%A6%B7%E0%A7%87-%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%82-%E0%A6%98-%E0%A6%B0%E0%A7%8D%E0%A6%B7---Awami-League---NCP---Clash---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ad52dbae3e05aa45e4a6f18d549a6b35"
-    },
-    {
       "title": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ - Barta 24",
       "summary": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ Barta 24",
       "link": "https://barta24.com/details/national/348379",
@@ -917,68 +770,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c116ae5938a80b1b5c4c99e69ee1f0a6"
-    },
-    {
-      "title": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113233/%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113233/%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-16T18:15:00+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113233/%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে পরপর দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113233/%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d66c55b4e1fe1e9a24374a9478051d57"
-    },
-    {
-      "title": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের - Daily Bonik Barta",
-      "summary": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/",
-      "publishedAt": "2026-11-16T16:13:00+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের - Daily Bonik Barta",
-          "summary": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8e56f01b228a04b39dae93d26121bc7f"
     }
   ]
 }
