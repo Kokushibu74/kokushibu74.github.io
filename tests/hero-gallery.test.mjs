@@ -69,6 +69,14 @@ assert.ok(cleanPng.bytes.some((v,i)=>i>0&&v===0x74&&cleanPng.bytes[i+1]===0x52),
 const verifyPng=sanitize(cleanPng.bytes);
 assert.equal(verifyPng.removed.length,0,"PNG read-back verification must find no identifying ancillary chunks");
 assert.ok(equal(cleanPng.bytes,verifyPng.bytes),"PNG second pass must be stable");
+const unknownCriticalPng=join([
+  pngSignature,
+  chunk("IHDR",ihdr),
+  chunk("ABCD",[1,2,3]),
+  chunk("IDAT",[1,2,3]),
+  chunk("IEND",[])
+]);
+assert.throws(()=>sanitize(unknownCriticalPng),/Unsupported PNG critical chunk/,"Unknown PNG critical chunks must not be retained as potentially identifying payloads.");
 
 const webpChunk=(type,data)=>{
   const payload=Array.from(data),n=payload.length;
