@@ -139,6 +139,9 @@ assert.match(site,/#portrait-reveal-overlay\.is-visible\.is-tap\{pointer-events:
 assert.match(site,/#portrait-reveal-frame\{position:relative;pointer-events:none/,"Hover preview frame must not capture pointer events");
 assert.match(site,/if\(mode==="tap"\)\{resetTimer\(\);/,"Keyboard interaction must reset the 20-second inactivity timer");
 
+assert.match(app,/async function normalizeHeroUpload/,"Uploads must normalize image orientation before stripping EXIF metadata");
+assert.match(app,/imageOrientation:"from-image"/,"EXIF orientation must be applied to pixels before metadata removal");
+assert.match(app,/canvas.toBlob/,"Normalized upload must be re-encoded without embedded metadata");
 assert.match(app,/@mediapipe\/tasks-vision/,"Face detection must run in the browser");
 assert.match(app,/heroGallerySetActive/);
 assert.match(app,/heroGallerySavePosition/);
