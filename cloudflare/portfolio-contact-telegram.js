@@ -1764,13 +1764,13 @@ function heroStripImageMetadata(input){
       if(inScan){
         let end=pos;
         while(end<bytes.length){
-          if(bytes[end]===0xff){
-            let j=end+1;while(j<bytes.length&&bytes[j]===0xff)j++;
-            const marker=bytes[j];
-            if(marker===0x00||(marker>=0xd0&&marker<=0xd7)){end=j+1;continue;}
-            break;
-          }
-          end++;
+          const markerStart=bytes.indexOf(0xff,end);
+          if(markerStart<0){end=bytes.length;break;}
+          let j=markerStart+1;while(j<bytes.length&&bytes[j]===0xff)j++;
+          if(j>=bytes.length){end=bytes.length;break;}
+          const marker=bytes[j];
+          if(marker===0x00||(marker>=0xd0&&marker<=0xd7)){end=j+1;continue;}
+          end=markerStart;break;
         }
         if(end>pos)chunks.push(bytes.slice(pos,end));
         pos=end;inScan=false;
@@ -1798,14 +1798,13 @@ function heroStripImageMetadata(input){
   }
   const pngSignature=[137,80,78,71,13,10,26,10];
   if(pngSignature.every((v,i)=>bytes[i]===v)){
-    const chunks=[bytes.slice(0,8)];let pos=8,sawHeader=false,sawEnd=false;
+    const chunks=[bytes.slice(0,8)],knownCritical=new Set(["IHDR","PLTE","IDAT","IEND"]);let pos=8,sawHeader=false,sawEnd=false;
     while(pos+12<=bytes.length){
       const length=(bytes[pos]*0x1000000)+(bytes[pos+1]<<16)+(bytes[pos+2]<<8)+bytes[pos+3];
       const type=ascii(pos+4,pos+8),end=pos+12+length;
       if(end>bytes.length)throw new Error("Invalid PNG chunk length.");
       if(type==="IHDR")sawHeader=true;
       const first=type.charCodeAt(0),critical=first>=65&&first<=90;
-      const knownCritical=new Set(["IHDR","PLTE","IDAT","IEND"]);
       if(critical&&!knownCritical.has(type))throw new Error("Unsupported PNG critical chunk: "+type);
       if(knownCritical.has(type)||type==="tRNS")chunks.push(bytes.slice(pos,end));
       else removed.push("PNG_"+type);
