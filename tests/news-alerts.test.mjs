@@ -16,11 +16,16 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
-test("Sun News is eligible as one trusted publisher but cannot confirm alone",()=>{
-  const decision=evaluateNewsAlert(item({sourceEvidence:["Sun News"]}),{now});
-  assert.equal(decision.eligible,true);
-  assert.equal(decision.status,"provisional");
-  assert.deepEqual(decision.trustedSources,["Sun News"]);
+test("regional publisher sources are eligible individually but require two independent publishers",()=>{
+  const regional=["Daily Karatoa","Gramer Kagoj","Chandpur Times","Rajshahi News24"];
+  for(const publisher of regional){
+    const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
+    assert.equal(decision.eligible,true,publisher+" should be trusted");
+    assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
+  }
+  const confirmed=evaluateNewsAlert(item({sourceEvidence:["Gramer Kagoj","Chandpur Times"]}),{now});
+  assert.equal(confirmed.status,"confirmed");
+  assert.equal(confirmed.trustedSources.length,2);
 });
 
 test("two independent publishers verify a fatal Dhaka accident",()=>assert.equal(evaluateNewsAlert(item(),{now}).eligible,true));
