@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T12:41:36.080685+00:00",
-  "updatedAt": "2026-11-17T12:41:36.080685+00:00",
+  "generatedAt": "2026-11-17T13:01:48.176028+00:00",
+  "updatedAt": "2026-11-17T13:01:48.176028+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 41,
-  "failedSourceCount": 0,
+  "healthySourceCount": 35,
+  "failedSourceCount": 6,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 28,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -113,12 +113,12 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 23
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "New Age",
@@ -133,12 +133,12 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "BSS",
@@ -173,12 +173,12 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Dhaka Post",
@@ -238,7 +238,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29
+      "fallbackItems": 28
     },
     {
       "name": "Ekattor TV",
@@ -253,12 +253,12 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Barta24",
@@ -273,11 +273,11 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -313,12 +313,12 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Manab Zamin",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 8,
+  "candidateCount": 9,
   "alertItems": [
     {
       "title": "ছাত্রলীগের মিছিলে ‘জয় বাংলা’ স্লোগান, বিএনপি নেতার প্রতিষ্ঠানে হামলা",
@@ -639,6 +639,41 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d66c55b4e1fe1e9a24374a9478051d57"
+    },
+    {
+      "title": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের - Daily Bonik Barta",
+      "summary": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের Daily Bonik Barta",
+      "link": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/",
+      "publishedAt": "2026-11-16T16:13:00+00:00",
+      "source": "Daily Bonik Barta",
+      "publisherName": "Daily Bonik Barta",
+      "sourceEvidence": [
+        "Daily Bonik Barta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Bonik Barta",
+          "title": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের - Daily Bonik Barta",
+          "summary": "সিরাজগঞ্জে সড়ক দুর্ঘটনায় প্রাণ গেল দুজনের Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/yfelyj04OzZMtWfd/",
+          "incidentDateText": "মঙ্গলবার (১৭ নভেম্বর)",
+          "incidentTimeText": "সকাল ৭টার দিকে",
+          "incidentTimeSource": "Daily Bonik Barta",
+          "locationText": "হাটিকুমরুলের ধোপাকান্দি এলাকায়, সলঙ্গা থানার হাটিকুমরুল ইউনিয়নে, এবং দাদনপুর গ্রামে"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8e56f01b228a04b39dae93d26121bc7f"
     },
     {
       "title": "বিদায়ের হতাশায় গ্যালারিতে আগুন দিলেন বাংলাদেশের দর্শকরা - কালের কণ্ঠ",
