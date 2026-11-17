@@ -45,6 +45,7 @@ assert.ok(!equal(jpeg,cleanJpeg.bytes),"JPEG metadata removal must change the by
 const verifyJpeg=sanitize(cleanJpeg.bytes);
 assert.equal(verifyJpeg.removed.length,0,"JPEG read-back verification must find no remaining metadata");
 assert.ok(equal(cleanJpeg.bytes,verifyJpeg.bytes),"JPEG second pass must be stable");
+assert.equal(verifyJpeg.bytes,cleanJpeg.bytes,"A clean JPEG read-back must avoid a redundant full-image copy");
 
 const pngSignature=[137,80,78,71,13,10,26,10];
 const ihdr=[0,0,0,1,0,0,0,1,8,6,0,0,0];
@@ -69,6 +70,7 @@ assert.ok(cleanPng.bytes.some((v,i)=>i>0&&v===0x74&&cleanPng.bytes[i+1]===0x52),
 const verifyPng=sanitize(cleanPng.bytes);
 assert.equal(verifyPng.removed.length,0,"PNG read-back verification must find no identifying ancillary chunks");
 assert.ok(equal(cleanPng.bytes,verifyPng.bytes),"PNG second pass must be stable");
+assert.equal(verifyPng.bytes,cleanPng.bytes,"A clean PNG read-back must avoid a redundant full-image copy");
 const unknownCriticalPng=join([
   pngSignature,
   chunk("IHDR",ihdr),
@@ -102,6 +104,7 @@ assert.ok(cleanWebp.removed.includes("WEBP_VP8X_METADATA_FLAGS"),"WebP EXIF/XMP/
 const verifyWebp=sanitize(cleanWebp.bytes);
 assert.equal(verifyWebp.removed.length,0,"WebP read-back verification must find no metadata");
 assert.ok(equal(cleanWebp.bytes,verifyWebp.bytes),"WebP second pass must be stable");
+assert.equal(verifyWebp.bytes,cleanWebp.bytes,"A clean WebP read-back must avoid a redundant full-image copy");
 
 const legacy=normalize({image:"storage/pictures/legacy-profile.jpg",imagePos:38});
 assert.equal(legacy.images.length,1,"Legacy single-image sites must migrate to one virtual gallery item");
@@ -147,6 +150,15 @@ assert.match(site,/#portrait-reveal-overlay\.is-visible\.is-tap\{pointer-events:
 assert.match(site,/#portrait-reveal-frame\{position:relative;pointer-events:none/,"Hover preview frame must not capture pointer events");
 assert.match(site,/if\(mode==="tap"\)\{resetTimer\(\);/,"Keyboard interaction must reset the 20-second inactivity timer");
 
+const heroPrepare=extract("async function miniAppHeroPrepare(","async function miniAppHeroConfirm");
+assert.match(heroPrepare,/10\*1024\*1024/,"Worker Hero uploads must accept up to 10 MB");
+assert.match(heroPrepare,/10 MB or smaller/,"Worker Hero upload error must describe the 10 MB limit");
+assert.doesNotMatch(heroPrepare,/4\*1024\*1024/,"The Hero Worker must not retain the old 4 MB cap");
+assert.match(app,/HERO_GALLERY_MAX_UPLOAD_BYTES\s*=\s*10\s*\*\s*1024\s*\*\s*1024/,"Mini App Hero uploader must share the 10 MB limit");
+assert.match(app,/Maximum 10 MB/,"Mini App Hero uploader must show the 10 MB limit");
+assert.match(site,/portrait-round-morph/,"Round Frame must morph into and out of the full-size viewer");
+assert.match(site,/viewerTransition/,"Next/Previous must expose the selected randomized transition");
+assert.match(site,/const names=\["fade","slide","blur","zoom"\]/,"Viewer must rotate through four transition styles");
 assert.match(app,/async function normalizeHeroUpload/,"Uploads must normalize image orientation before stripping EXIF metadata");
 assert.match(app,/imageOrientation:"from-image"/,"EXIF orientation must be applied to pixels before metadata removal");
 assert.match(app,/canvas.toBlob/,"Normalized upload must be re-encoded without embedded metadata");

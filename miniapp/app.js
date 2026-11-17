@@ -1,6 +1,7 @@
 (() => {
   "use strict";
   const API_BASE = "https://portfolio-contact-telegram.mdshihab74.workers.dev";
+  const HERO_GALLERY_MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
   const tg = window.Telegram?.WebApp;
   const modules = [
     ["dashboard","⌂","Dashboard","System overview"],
@@ -58,7 +59,7 @@
       });
       const mimeType=blob.type||file.type;
       if(!["image/jpeg","image/png","image/webp"].includes(mimeType))throw new Error("The browser could not produce a supported clean image format.");
-      if(!blob.size||blob.size>4*1024*1024)throw new Error("The normalized image exceeds the 4 MB upload limit. Choose a smaller image.");
+      if(!blob.size||blob.size>HERO_GALLERY_MAX_UPLOAD_BYTES)throw new Error("The normalized image exceeds the 10 MB upload limit. Choose a smaller image.");
       const dataUrl=await new Promise((resolve,reject)=>{
         const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read the normalized image."));
         reader.readAsDataURL(blob);
@@ -157,7 +158,7 @@
         intro.append(introTitle,introText);
         const upload=document.createElement("section");upload.className="hero-gallery-upload";
         const uploadTitle=document.createElement("h3");uploadTitle.textContent="Add image to Gallery";
-        const uploadHelp=document.createElement("small");uploadHelp.textContent="JPEG, PNG or WebP · Maximum 4 MB · metadata is removed before repository upload.";
+        const uploadHelp=document.createElement("small");uploadHelp.textContent="JPEG, PNG or WebP · Maximum 10 MB · metadata is removed before repository upload.";
         const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";
         const local=document.createElement("img");local.className="hero-gallery-local-preview";local.alt="Selected image preview";local.hidden=true;
         const uploadActions=document.createElement("div");uploadActions.className="hero-gallery-actions";
@@ -307,9 +308,9 @@
           if(selectedObjectUrl)URL.revokeObjectURL(selectedObjectUrl);
           selectedObjectUrl=selectedFile?URL.createObjectURL(selectedFile):null;
           local.src=selectedObjectUrl||"";local.hidden=!selectedFile;
-          const valid=selectedFile&&["image/jpeg","image/png","image/webp"].includes(selectedFile.type)&&selectedFile.size>0&&selectedFile.size<=4*1024*1024;
+          const valid=selectedFile&&["image/jpeg","image/png","image/webp"].includes(selectedFile.type)&&selectedFile.size>0&&selectedFile.size<=HERO_GALLERY_MAX_UPLOAD_BYTES;
           stage.disabled=!valid;
-          uploadStatus.textContent=!selectedFile?"No image selected.":!valid?"Choose a JPEG, PNG or WebP image no larger than 4 MB.":selectedFile.name+" · "+Math.ceil(selectedFile.size/1024)+" KB · metadata will be stripped before repository upload.";
+          uploadStatus.textContent=!selectedFile?"No image selected.":!valid?"Choose a JPEG, PNG or WebP image no larger than 10 MB.":selectedFile.name+" · "+Math.ceil(selectedFile.size/1024)+" KB · metadata will be stripped before repository upload.";
         });
         stage.addEventListener("click",async()=>{
           if(!selectedFile)return;stage.disabled=true;uploadStatus.textContent="Preparing a private, metadata-clean preview…";
@@ -319,7 +320,7 @@
             token=prepared.token;frame.src=prepared.previewUrl;frame.hidden=false;confirm.hidden=false;cancel.hidden=false;
             uploadStatus.textContent="Preview ready. Embedded metadata stripped: "+Number(prepared.metadataStripped||0)+" item(s). The Homepage image is still unchanged.";
           }catch(error){uploadStatus.textContent=error.message;notice(error.message,true);}
-          finally{stage.disabled=!selectedFile||selectedFile.size>4*1024*1024;}
+          finally{stage.disabled=!selectedFile||selectedFile.size>HERO_GALLERY_MAX_UPLOAD_BYTES;}
         });
         confirm.addEventListener("click",async()=>{
           if(!token)return;const yes=await askConfirm("Add this sanitized image to the Gallery? The current Homepage Active Image will not change.");if(!yes)return;

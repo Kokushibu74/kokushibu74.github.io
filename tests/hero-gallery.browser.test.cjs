@@ -42,7 +42,7 @@ async function speedViewerTimer(page) {
     window.__heroTimerDelays = [];
     window.setTimeout = (handler, timeout, ...args) => {
       window.__heroTimerDelays.push(timeout);
-      return original(handler, timeout === 20000 ? 500 : timeout, ...args);
+      return original(handler, timeout === 20000 ? 1600 : timeout, ...args);
     };
   });
 }
@@ -65,7 +65,7 @@ async function waitForViewer(page, visible) {
     browser = await chromium.launch({ headless: true });
 
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await desktop.emulateMedia({ reducedMotion: "reduce" });
+    await desktop.emulateMedia({ reducedMotion: "no-preference" });
     await installGalleryFixture(desktop);
     await desktop.goto(origin, { waitUntil: "domcontentloaded" });
     await desktop.waitForFunction(() => window.__portfolioRendered === true);
@@ -86,14 +86,28 @@ async function waitForViewer(page, visible) {
 
     await image.click();
     await waitForViewer(desktop, true);
+    await desktop.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
+      undefined, { timeout: 2500 });
+    await desktop.waitForFunction(() => !document.querySelector(".portrait-round-morph"),
+      undefined, { timeout: 3000 });
     assert.ok((await overlay.getAttribute("class")).includes("is-tap"),
       "Clicking the Round Frame must open interactive tap-viewer mode.");
+    assert.equal(await desktop.locator("#portrait-reveal-image").evaluate(el => el.style.opacity), "",
+      "The full-size image must be revealed after the Round Frame morph completes.");
     assert.equal(await overlay.evaluate(el => getComputedStyle(el).pointerEvents), "auto");
     await desktop.locator("#portrait-reveal-next").click();
     await desktop.waitForFunction(() => document.querySelector("#portrait-reveal-image").src.endsWith("/1790523232314.jpg"));
+    await desktop.waitForFunction(() => ["fade","slide","blur","zoom"].includes(document.querySelector("#portrait-reveal-image").dataset.viewerTransition));
+    const nextTransition = await desktop.locator("#portrait-reveal-image").getAttribute("data-viewer-transition");
     await desktop.keyboard.press("ArrowLeft");
     await desktop.waitForFunction(() => document.querySelector("#portrait-reveal-image").src.endsWith("/profile-1792618182176.jpg"));
+    await desktop.waitForFunction(() => ["fade","slide","blur","zoom"].includes(document.querySelector("#portrait-reveal-image").dataset.viewerTransition));
+    const previousTransition = await desktop.locator("#portrait-reveal-image").getAttribute("data-viewer-transition");
+    assert.notEqual(previousTransition, nextTransition,
+      "Consecutive Next/Previous actions must not repeat the same transition.");
     await desktop.keyboard.press("Escape");
+    await desktop.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
+      undefined, { timeout: 2500 });
     await waitForViewer(desktop, false);
 
     await image.click();
@@ -119,7 +133,7 @@ async function waitForViewer(page, visible) {
       hasTouch: true,
       deviceScaleFactor: 3
     });
-    await mobile.emulateMedia({ reducedMotion: "reduce" });
+    await mobile.emulateMedia({ reducedMotion: "no-preference" });
     await installGalleryFixture(mobile);
     await mobile.goto(origin, { waitUntil: "domcontentloaded" });
     await mobile.waitForFunction(() => window.__portfolioRendered === true);
@@ -129,6 +143,10 @@ async function waitForViewer(page, visible) {
     await mobileImage.waitFor({ state: "visible" });
     await mobileImage.click();
     await waitForViewer(mobile, true);
+    await mobile.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
+      undefined, { timeout: 2500 });
+    await mobile.waitForFunction(() => !document.querySelector(".portrait-round-morph"),
+      undefined, { timeout: 3000 });
     assert.ok(await mobile.locator("#portrait-reveal-next").isVisible(),
       "Mobile viewer must show its in-image navigation arrow.");
 
@@ -141,6 +159,7 @@ async function waitForViewer(page, visible) {
       }));
     });
     await mobile.waitForFunction(() => document.querySelector("#portrait-reveal-image").src.endsWith("/1790523232314.jpg"));
+    await mobile.waitForFunction(() => ["fade","slide","blur","zoom"].includes(document.querySelector("#portrait-reveal-image").dataset.viewerTransition));
 
     const currentUrl = mobile.url();
     await mobile.evaluate(() => history.back());
