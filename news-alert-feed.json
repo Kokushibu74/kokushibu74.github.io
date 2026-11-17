@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T19:17:06.071280+00:00",
-  "updatedAt": "2026-11-17T19:17:06.071280+00:00",
+  "generatedAt": "2026-11-17T19:32:00.901555+00:00",
+  "updatedAt": "2026-11-17T19:32:00.901555+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 41,
-  "failedSourceCount": 0,
+  "healthySourceCount": 40,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -118,7 +118,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16
+      "fallbackItems": 15
     },
     {
       "name": "New Age",
@@ -263,12 +263,12 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bhorer Kagoj",
@@ -421,7 +421,7 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 26,
   "alertItems": [
     {
       "title": "আওয়ামী লীগ টুঙ্গিপাড়া লিমিটেড হয়ে যাবে: স্বরাষ্ট্রমন্ত্রী",
@@ -1078,68 +1078,6 @@
       "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     },
     {
-      "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
-      "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
-      "link": "https://www.dhakapost.com/international/498693",
-      "publisherUrl": "https://www.dhakapost.com/international/498693",
-      "publishedAt": "2026-11-17T13:21:52+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/498693"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
-          "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
-          "url": "https://www.dhakapost.com/international/498693"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3c5cbdb27aa5fbdd1efc08544b6117cc"
-    },
-    {
-      "title": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা - United News of Bangladesh",
-      "summary": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560",
-      "publishedAt": "2026-11-17T11:13:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা - United News of Bangladesh",
-          "summary": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a70f4273edaee7b96ca0d907bf2d5182"
-    },
-    {
       "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
@@ -1231,68 +1169,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1063162ff3b705c22dda3b236a5de4d9"
-    },
-    {
-      "title": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ - Barta 24",
-      "summary": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ Barta 24",
-      "link": "https://barta24.com/details/national/348379",
-      "publisherUrl": "https://barta24.com/details/national/348379",
-      "publishedAt": "2026-11-17T00:38:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/national/348379"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ - Barta 24",
-          "summary": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ Barta 24",
-          "url": "https://barta24.com/details/national/348379"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "85bcf952dcf77d4b841fd7baf262d8a6"
-    },
-    {
-      "title": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত - Barta 24",
-      "summary": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত Barta 24",
-      "link": "https://barta24.com/details/international/348366",
-      "publisherUrl": "https://barta24.com/details/international/348366",
-      "publishedAt": "2026-11-16T23:44:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/international/348366"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত - Barta 24",
-          "summary": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত Barta 24",
-          "url": "https://barta24.com/details/international/348366"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c116ae5938a80b1b5c4c99e69ee1f0a6"
     }
   ]
 }
