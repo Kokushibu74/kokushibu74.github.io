@@ -87,9 +87,9 @@ async function waitForViewer(page, visible) {
     await image.click();
     await waitForViewer(desktop, true);
     await desktop.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
-      { timeout: 2500 });
+      undefined, { timeout: 2500 });
     await desktop.waitForFunction(() => !document.querySelector(".portrait-round-morph"),
-      { timeout: 3000 });
+      undefined, { timeout: 3000 });
     assert.ok((await overlay.getAttribute("class")).includes("is-tap"),
       "Clicking the Round Frame must open interactive tap-viewer mode.");
     assert.equal(await desktop.locator("#portrait-reveal-image").evaluate(el => el.style.opacity), "",
@@ -107,7 +107,7 @@ async function waitForViewer(page, visible) {
       "Consecutive Next/Previous actions must not repeat the same transition.");
     await desktop.keyboard.press("Escape");
     await desktop.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
-      { timeout: 2500 });
+      undefined, { timeout: 2500 });
     await waitForViewer(desktop, false);
 
     await image.click();
@@ -144,9 +144,9 @@ async function waitForViewer(page, visible) {
     await mobileImage.click();
     await waitForViewer(mobile, true);
     await mobile.waitForFunction(() => !!document.querySelector(".portrait-round-morph"),
-      { timeout: 2500 });
+      undefined, { timeout: 2500 });
     await mobile.waitForFunction(() => !document.querySelector(".portrait-round-morph"),
-      { timeout: 3000 });
+      undefined, { timeout: 3000 });
     assert.ok(await mobile.locator("#portrait-reveal-next").isVisible(),
       "Mobile viewer must show its in-image navigation arrow.");
 

@@ -124,7 +124,7 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
   Object.assign(clone.style,{left:fromRect.left+"px",top:fromRect.top+"px",width:fromRect.width+"px",height:fromRect.height+"px",objectFit:direction==="open"?"cover":"contain",borderRadius:direction==="open"?"50%":"12px"});
   document.body.appendChild(clone);morphClone=clone;full.style.opacity="0";
   const from={left:fromRect.left+"px",top:fromRect.top+"px",width:fromRect.width+"px",height:fromRect.height+"px",borderRadius:direction==="open"?"50%":"12px",opacity:1};
-  const to={left:toRect.left+"px",top:toRect.top+"px",width:toRect.width+"px",height:toRect.height+"px",borderRadius:direction==="open"?"12px":"50%",opacity:0};
+  const to={left:toRect.left+"px",top:toRect.top+"px",width:toRect.width+"px",height:toRect.height+"px",borderRadius:direction==="open"?"12px":"50%",opacity:direction==="open"?0:1};
   morphAnimation=clone.animate([from,to],{duration:540,easing:"cubic-bezier(.22,.8,.24,1)",fill:"both"});
   morphAnimation.onfinish=()=>{
    if(morphClone!==clone)return;
