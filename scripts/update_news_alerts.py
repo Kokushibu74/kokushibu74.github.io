@@ -77,8 +77,6 @@ SOURCES = [
 # before a change can be merged; they do not replace any existing source.
 NEW_DIRECT_SOURCES = [
     ("Chandpur Times", "https://chandpurtimes.com/feed/", "chandpurtimes.com"),
-    ("Dhaka Times", "https://www.dhakatimes24.com/all-news/bangladesh/feed/latest-rss.xml", "dhakatimes24.com"),
-    ("Daily Karatoa", "https://www.dailykaratoa.com/all-news/bangladesh/feed/latest-rss.xml", "dailykaratoa.com"),
     ("GDACS", "https://www.gdacs.org/xml/rss.xml", "gdacs.org"),
     ("USGS Earthquake Feed", "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom", "earthquake.usgs.gov"),
 ]
@@ -320,6 +318,12 @@ def classify_source_health(direct, fallback=None):
     }
 
 def canonical_source(name):
+    normalized = str(name or "").strip().lower()
+    # GDACS may relay the same underlying seismic event data as USGS; keep
+    # these official data feeds in one corroboration group to avoid false
+    # two-source confirmation from a shared upstream event.
+    if normalized in {"gdacs", "usgs", "usgs earthquake feed"}:
+        return "Global Disaster Data"
     return news_helpers().canonical_publisher_name(name)
 
 def collect_candidates(source_results, now=None, google_resolution_budget=32):
@@ -561,13 +565,13 @@ def cluster_alerts(candidates):
             })
             continue
         for source in item.get("sourceEvidence") or []:
-            canonical = module.canonical_publisher_name(source)
+            canonical = canonical_source(source)
             if canonical and canonical.lower() not in {str(value).lower() for value in match["sources"]}:
                 match["sources"].append(canonical)
         for link in item.get("sourceLinks") or []:
             if not isinstance(link, dict):
                 continue
-            name = module.canonical_publisher_name(link.get("name"))
+            name = canonical_source(link.get("name"))
             url = str(link.get("url") or "")
             if not host_matches(url, urlparse(url).hostname or ""):
                 continue
