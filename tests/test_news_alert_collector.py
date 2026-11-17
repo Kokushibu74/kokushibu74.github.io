@@ -169,7 +169,7 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(len(names), len(set(names)))
         self.assertEqual(len(domains), len(set(domains)))
         self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
-        self.assertGreaterEqual(len(collector.SOURCES), 42)
+        self.assertGreaterEqual(len(collector.SOURCES), 45)
 
 if __name__ == "__main__":
     unittest.main()
