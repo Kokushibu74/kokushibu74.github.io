@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - 'cloudflare/portfolio-contact-telegram.js'
+      - 'site.js'
+      - 'tests/hero-gallery.test.mjs'
+      - 'tests/hero-gallery.browser.test.cjs'
       - 'cloudflare/blog-manager.mjs'
       - 'journal.js'
       - 'journal.css'
@@ -28,6 +31,9 @@ on:
     branches: [main, feature/kokushibu-telegram-miniapp, test/visitor-location-runtime-20261105]
     paths:
       - 'tests/visitor-location.test.mjs'
+      - 'site.js'
+      - 'tests/hero-gallery.test.mjs'
+      - 'tests/hero-gallery.browser.test.cjs'
       - 'tests/visitor-location-runtime.test.mjs'
       - 'cloudflare/portfolio-contact-telegram.js'
       - 'cloudflare/blog-manager.mjs'
@@ -65,6 +71,7 @@ jobs:
           node --check cloudflare/blog-manager.mjs
           node --check journal.js
           node --check miniapp/app.js
+          node --check site.js
       - name: Verify Developer Journal publishing and visibility rules
         run: node tests/blog-manager.test.mjs
       - name: Verify Developer Journal UI and Project Slider boundary
@@ -79,6 +86,8 @@ jobs:
         run: node --test tests/visitor-location-runtime.test.mjs
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
+      - name: Verify Hero Gallery metadata privacy and viewer contracts
+        run: node tests/hero-gallery.test.mjs
       - name: Verify Cloudflare Standard resource budget guardrails
         run: node tests/resource-budget-guardrails.test.mjs
       - name: Verify five-part Telegram daily report
@@ -252,7 +261,7 @@ jobs:
           grep -q 'id="developer-journal"' /tmp/projects-live.html
           grep -q 'id="journal-article-view"' /tmp/projects-live.html
           grep -q 'journal.css?v=1' /tmp/projects-live.html
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then JOURNAL_VERSION=5; else JOURNAL_VERSION=6; fi
+          JOURNAL_VERSION=6
           grep -q "journal.js?v=${JOURNAL_VERSION}" /tmp/projects-live.html
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
             'https://kokushibu74.github.io/journal.css?v=1' -o /tmp/journal-live.css
@@ -266,7 +275,7 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 5 --retry-delay 5 --max-time 20 \
-            'https://kokushibu74.github.io/miniapp/app.js?v=2' -o /tmp/miniapp-live.js
+            'https://kokushibu74.github.io/miniapp/app.js?v=3' -o /tmp/miniapp-live.js
           grep -q 'Developer Journal' /tmp/miniapp-live.js
           grep -q 'blogSave' /tmp/miniapp-live.js
           grep -q 'Title and details are required' /tmp/miniapp-live.js
@@ -285,5 +294,7 @@ jobs:
         run: npm install --no-save playwright@latest
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Verify Hero Gallery desktop and mobile viewer interactions
+        run: node tests/hero-gallery.browser.test.cjs
       - name: Verify live Journal interactions in a browser
         run: node tests/journal-browser-smoke.cjs

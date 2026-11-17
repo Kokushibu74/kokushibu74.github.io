@@ -66,7 +66,8 @@ assert(worker.includes("miniAppHeroPrepare") && worker.includes("miniAppHeroConf
 assert(worker.includes("pending.userId") && worker.includes("pending.expiresAt"), "Hero preview must be admin-bound and expire");
 assert(worker.includes("image/jpeg") && worker.includes("image/png") && worker.includes("image/webp"), "Hero upload must restrict supported image formats");
 assert(worker.includes('if(action==="heroPrepare")') && worker.includes('if(action==="heroConfirm")'), "Hero prepare and publish actions must be authenticated");
-assert(app.includes('api("heroPrepare"') && app.includes('api("heroConfirm"') && app.includes("Confirm & Publish to Live Site"), "Hero UI must upload, preview and require explicit publish confirmation");
+assert(app.includes('api("heroPrepare"') && app.includes('api("heroConfirm"') && app.includes("Add to Gallery"), "Hero UI must sanitize, preview and add images without changing the active Homepage image");
+assert(app.includes('api("heroGallerySetActive"') && app.includes('api("heroGallerySavePosition"') && app.includes('api("heroGalleryDelete"'), "Hero Gallery must support active selection, position saving and guarded deletion");
 
 assert(worker.includes("miniAppCronHistory") && worker.includes('if(action==="cronHistory")'), "Cloudflare Cron run history API must exist");
 assert(worker.includes("miniAppDispatchNews") && worker.includes('if(action==="newsRefresh")'), "manual News Refresh must use the existing GitHub workflow dispatch");
