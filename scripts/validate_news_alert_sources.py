@@ -5,11 +5,16 @@ This is intentionally separate from the offline unit suite. It runs in PR CI,
 never writes the alert feed, and fails the PR if a new endpoint is not a usable
 publisher RSS/Atom feed with recent entries from the expected publisher.
 """
+import importlib.util
 import json
 import sys
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
-from scripts import update_news_alerts as collector
+ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location("update_news_alerts", ROOT / "scripts" / "update_news_alerts.py")
+collector = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(collector)
 
 
 def main():
