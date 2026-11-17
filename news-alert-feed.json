@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T15:52:01.355582+00:00",
-  "updatedAt": "2026-11-17T15:52:01.355582+00:00",
+  "generatedAt": "2026-11-17T16:11:52.708578+00:00",
+  "updatedAt": "2026-11-17T16:11:52.708578+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 35,
-  "failedSourceCount": 6,
+  "healthySourceCount": 40,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 28,
+  "fallbackHealthySourceCount": 33,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -63,12 +63,12 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Kaler Kantho",
@@ -118,27 +118,27 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23
+      "fallbackItems": 22
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "BSS",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -233,12 +233,12 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Ekattor TV",
@@ -273,11 +273,11 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -413,16 +413,62 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 19,
   "alertItems": [
+    {
+      "title": "মাইকে ঘোষণা দিয়ে থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, ছিনিয়ে নিলো আসামিদের",
+      "summary": "মসজিদের মাইকে ঘোষণা দিয়ে গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা-ভাঙচুর চালিয়ে আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, মঙ্গলবার সন্ধ্যার পরপরই কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা মাইকিং করে লোক জড়ো করেন। তারা থানা ঘেরাও করে চত্বরে থাকা কয়েকটি গাড়িতে দেন।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981583/%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981583/%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publishedAt": "2026-11-17T16:01:04+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981583/%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মাইকে ঘোষণা দিয়ে থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, ছিনিয়ে নিলো আসামিদের",
+          "summary": "মসজিদের মাইকে ঘোষণা দিয়ে গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা-ভাঙচুর চালিয়ে আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, মঙ্গলবার সন্ধ্যার পরপরই কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা মাইকিং করে লোক জড়ো করেন। তারা থানা ঘেরাও করে চত্বরে থাকা কয়েকটি গাড়িতে দেন।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981583/%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "মাইকে ঘোষণা দিয়ে টুঙ্গিপাড়া থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
+          "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা ও আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতা–কর্মীরা। আজ মঙ্গলবার সন্ধ্যার পর তাঁরা মিছিল নিয়ে প্রথমে থানা ঘেরাও করা হয়।",
+          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
+          "incidentDateText": "১৫ নভেম্বর",
+          "incidentTimeText": "রাত ৯টা ১০ মিনিটে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "পরে থানায়, হামলা এবং থানা, হামলার পর টুঙ্গিপাড়া থানার, টুঙ্গিপাড়া থানায়, টুঙ্গিপাড়া উপজেলা, টুঙ্গিপাড়া থানা"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "bcc73693597ac70f66f61deb57444338"
+    },
     {
       "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
       "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
@@ -455,63 +501,22 @@
       "alertEventId": "070da7b6235d1692fafba0ce5e8eba18"
     },
     {
-      "title": "মাইকে ঘোষণা দিয়ে টুঙ্গিপাড়া থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
-      "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা ও আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতা–কর্মীরা। আজ মঙ্গলবার সন্ধ্যার পর তাঁরা মিছিল নিয়ে প্রথমে থানা ঘেরাও করা হয়।",
-      "link": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
-      "publishedAt": "2026-11-17T15:37:33+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "গোপালগঞ্জে বিএনপির এমপি জিলানীর বাড়িতে আগুন",
+      "summary": "গোপালগঞ্জ-৩ (টুঙ্গিপাড়া ও কোটালীপাড়া) আসনের বিএনপির সংসদ সদস্য এস এম জিলানীর বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ করেছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে টুঙ্গিপাড়া থানায় ভাঙচুর চালিয়ে আগুন দেওয়ার পর এস এম জিলানীর বাড়িতেও অগ্নিসংযোগ করা হয়। টুঙ্গিপাড়া উপজেলা নির্বাহী কর্মকর্তা (ইউএনও) মোহাম্মদ দিদারুল আলম বিষয়টি নিশ্চিত... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-17T15:36:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "মাইকে ঘোষণা দিয়ে টুঙ্গিপাড়া থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
-          "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা ও আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতা–কর্মীরা। আজ মঙ্গলবার সন্ধ্যার পর তাঁরা মিছিল নিয়ে প্রথমে থানা ঘেরাও করা হয়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
-          "incidentDateText": "১৭ নভেম্বর ২০২৬",
-          "incidentTimeText": "রাত ৯টা ১০ মিনিটে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "পরে থানায়, হামলা এবং থানা, হামলার পর টুঙ্গিপাড়া থানার, টুঙ্গিপাড়া থানায়, টুঙ্গিপাড়া উপজেলা, টুঙ্গিপাড়া থানা"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "গোপালগঞ্জে বিএনপির এমপি জিলানীর বাড়িতে আগুন",
-          "summary": "গোপালগঞ্জ-৩ (টুঙ্গিপাড়া ও কোটালীপাড়া) আসনের বিএনপির সংসদ সদস্য এস এম জিলানীর বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ করেছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে টুঙ্গিপাড়া থানায় ভাঙচুর চালিয়ে আগুন দেওয়ার পর এস এম জিলানীর বাড়িতেও অগ্নিসংযোগ করা হয়। টুঙ্গিপাড়া উপজেলা নির্বাহী কর্মকর্তা (ইউএনও) মোহাম্মদ দিদারুল আলম বিষয়টি নিশ্চিত... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "7d9e3cacec46a0c602fa4aea4d8b124d"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপি জিলানীর বাড়িতে আগুন",
-      "summary": "গোপালগঞ্জ-৩ আসনের সংসদ সদস্য ও স্বেচ্ছাসেবক দলের সভাপতি এস এম জিলানীর বাড়িতে আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও সহযোগী সংগঠনের নেতাকর্মীরা...",
-      "link": "https://www.jagonews24.com/country/news/1180679",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1180679",
-      "publishedAt": "2026-11-17T15:27:13+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
+        "Bangla Tribune",
         "Jago News 24"
       ],
       "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1180679"
@@ -521,6 +526,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জে বিএনপির এমপি জিলানীর বাড়িতে আগুন",
+          "summary": "গোপালগঞ্জ-৩ (টুঙ্গিপাড়া ও কোটালীপাড়া) আসনের বিএনপির সংসদ সদস্য এস এম জিলানীর বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ করেছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে টুঙ্গিপাড়া থানায় ভাঙচুর চালিয়ে আগুন দেওয়ার পর এস এম জিলানীর বাড়িতেও অগ্নিসংযোগ করা হয়। টুঙ্গিপাড়া উপজেলা নির্বাহী কর্মকর্তা (ইউএনও) মোহাম্মদ দিদারুল আলম বিষয়টি নিশ্চিত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
         {
           "name": "Jago News 24",
           "title": "গোপালগঞ্জে এমপি জিলানীর বাড়িতে আগুন",
@@ -528,8 +539,8 @@
           "url": "https://www.jagonews24.com/country/news/1180679"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "942f5ba99c540bf04a1f10bb63f0b864"
+      "corroborationCount": 2,
+      "alertEventId": "445e830ed56a6dcce008a734aad0b918"
     },
     {
       "title": "রাবির প্রধান ফটকে ককটেল বিস্ফোরণ, ক্যাম্পাস বন্ধ রাখার হুমকি",
@@ -626,6 +637,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ae14b105c0495d7ae66b05e3431cbe7"
+    },
+    {
+      "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
+      "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
+      "link": "https://bn.observerbd.com/news/150552",
+      "publisherUrl": "https://bn.observerbd.com/news/150552",
+      "publishedAt": "2026-11-17T13:44:00+00:00",
+      "source": "Daily Observer",
+      "publisherName": "Daily Observer",
+      "sourceEvidence": [
+        "Daily Observer"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Observer",
+          "url": "https://bn.observerbd.com/news/150552"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Observer",
+          "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
+          "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
+          "url": "https://bn.observerbd.com/news/150552"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     },
     {
       "title": "১০ দিনে ৪৯ যানবাহনে আগুন, ককটেল বিস্ফোরণ ৫৯ জায়গায়",
