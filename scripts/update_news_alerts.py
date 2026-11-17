@@ -76,12 +76,7 @@ SOURCES = [
 # Additional regional/local publishers. These are separately live-validated in CI
 # before a change can be merged; they do not replace any existing source.
 NEW_DIRECT_SOURCES = [
-    ("BD Type", "https://bdtype.com/feed", "bdtype.com"),
-    ("Prokoushol News", "https://prokousholnews.com/rss/category/district", "prokousholnews.com"),
-    ("Narayanganj Times", "https://www.narayanganjtimes.com/feed/", "narayanganjtimes.com"),
-    ("Mymensingh Pratidin", "https://mymensinghpratidin.com/feed/", "mymensinghpratidin.com"),
-    ("Dainik Purbokone", "https://dainikpurbokone.net/feed/", "dainikpurbokone.net"),
-    ("CVoice24", "https://www.cvoice24.com/feed/", "cvoice24.com"),
+    ("Sun News", "https://www.sunnews24x7.com/feeds", "sunnews24x7.com"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
