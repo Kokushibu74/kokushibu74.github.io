@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T02:26:58.022581+00:00",
-  "updatedAt": "2026-11-17T02:26:58.022581+00:00",
+  "generatedAt": "2026-11-17T02:46:53.866306+00:00",
+  "updatedAt": "2026-11-17T02:46:53.866306+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 30,
-  "failedSourceCount": 11,
+  "healthySourceCount": 28,
+  "failedSourceCount": 13,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 23,
+  "fallbackHealthySourceCount": 21,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -55,7 +55,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
@@ -63,22 +63,22 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Bangla Tribune",
@@ -123,11 +123,11 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -163,12 +163,12 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Samakal",
@@ -193,22 +193,22 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 2
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Somoy News",
@@ -223,16 +223,26 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 404",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
+    },
+    {
+      "name": "Ekattor TV",
+      "domain": "ekattor.tv",
       "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
@@ -241,24 +251,14 @@
       "fallbackItems": 30
     },
     {
-      "name": "Ekattor TV",
-      "domain": "ekattor.tv",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
-    },
-    {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Barta24",
@@ -303,22 +303,22 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Manab Zamin",
@@ -333,22 +333,22 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Daily Janakantha",
@@ -373,21 +373,21 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -423,6 +423,68 @@
   ],
   "candidateCount": 6,
   "alertItems": [
+    {
+      "title": "লন্ডনে প্রবাসী বাংলাদেশি ও শিক্ষার্থীদের ওপর হামলায় ক্ষুব্ধ নাহিদ ইসলাম",
+      "summary": "লন্ডনে আয়োজিত সংবর্ধনা অনুষ্ঠান শেষে প্রবাসী বাংলাদেশি ও বিভিন্ন বিশ্ববিদ্যালয়ের শিক্ষার্থীদের ওপর হামলার অভিযোগ করেছেন জাতীয় নাগরিক পার্টির (এনসিপি) আহ্বায়ক ও বিরোধীদলীয় চিফ হুইপ নাহিদ ইসলাম। এ ঘটনায় বেশ কয়েকজন আহত হয়েছেন বলে জানিয়েছেন তিনি। মঙ্গলবার (১৭ নভেম্বর) নিজের ফেসবুক স্ট্যাটাসে নাহিদ ইসলাম এ ঘটনার জন্য ‘কার্যক্রম নিষিদ্ধ আওয়ামী লীগের পলাতক ও উগ্র কর্মীদের’ দায়ী করেন। একই... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/ncp/981418/%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/politics/ncp/981418/%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0",
+      "publishedAt": "2026-11-17T02:44:14+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/ncp/981418/%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "লন্ডনে প্রবাসী বাংলাদেশি ও শিক্ষার্থীদের ওপর হামলায় ক্ষুব্ধ নাহিদ ইসলাম",
+          "summary": "লন্ডনে আয়োজিত সংবর্ধনা অনুষ্ঠান শেষে প্রবাসী বাংলাদেশি ও বিভিন্ন বিশ্ববিদ্যালয়ের শিক্ষার্থীদের ওপর হামলার অভিযোগ করেছেন জাতীয় নাগরিক পার্টির (এনসিপি) আহ্বায়ক ও বিরোধীদলীয় চিফ হুইপ নাহিদ ইসলাম। এ ঘটনায় বেশ কয়েকজন আহত হয়েছেন বলে জানিয়েছেন তিনি। মঙ্গলবার (১৭ নভেম্বর) নিজের ফেসবুক স্ট্যাটাসে নাহিদ ইসলাম এ ঘটনার জন্য ‘কার্যক্রম নিষিদ্ধ আওয়ামী লীগের পলাতক ও উগ্র কর্মীদের’ দায়ী করেন। একই... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/ncp/981418/%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f37c9724613ad77d9fc4c10370f930fe"
+    },
+    {
+      "title": "ঘন কুয়াশায় মহাসড়কে ট্রাকচাপায় প্রাণ গেলো দুজনের",
+      "summary": "সিরাজগঞ্জের হাটিকুমরুলে পাথরবোঝাই ট্রাকের চাপায় দুই ব্যক্তি নিহত হয়েছেন। নিহতদের একজন কৃষক, অন্যজন দলিল লেখক। মঙ্গলবার (১৭ নভেম্বর) সকাল ৭টার দিকে ঢাকা-বগুড়া মহাসড়কের হাটিকুমরুল ইন্টারচেঞ্জের ধোপাকান্দি এলাকায় এ দুর্ঘটনা ঘটে। নিহতরা হলেন, হাটিকুমরুল ইউনিয়নের ধোপাকান্দি এলাকার মৃত রহিম উদ্দিনের ছেলে কৃষক ঠান্ডু মিয়া (৬০) এবং দাদনপুর গ্রামের ফাইজুল ইসলাম শেখের ছেলে আব্দুল আলীম শেখ (৪০)। তিনি... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/981419/%E0%A6%98%E0%A6%A8-%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B-%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/981419/%E0%A6%98%E0%A6%A8-%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B-%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-17T02:39:03+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/981419/%E0%A6%98%E0%A6%A8-%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B-%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "ঘন কুয়াশায় মহাসড়কে ট্রাকচাপায় প্রাণ গেলো দুজনের",
+          "summary": "সিরাজগঞ্জের হাটিকুমরুলে পাথরবোঝাই ট্রাকের চাপায় দুই ব্যক্তি নিহত হয়েছেন। নিহতদের একজন কৃষক, অন্যজন দলিল লেখক। মঙ্গলবার (১৭ নভেম্বর) সকাল ৭টার দিকে ঢাকা-বগুড়া মহাসড়কের হাটিকুমরুল ইন্টারচেঞ্জের ধোপাকান্দি এলাকায় এ দুর্ঘটনা ঘটে। নিহতরা হলেন, হাটিকুমরুল ইউনিয়নের ধোপাকান্দি এলাকার মৃত রহিম উদ্দিনের ছেলে কৃষক ঠান্ডু মিয়া (৬০) এবং দাদনপুর গ্রামের ফাইজুল ইসলাম শেখের ছেলে আব্দুল আলীম শেখ (৪০)। তিনি... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/981419/%E0%A6%98%E0%A6%A8-%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A6%9A%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B-%E0%A6%A6%E0%A7%81%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a89ed67f28de136ba51334ee5d7500ec"
+    },
     {
       "title": "পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত",
       "summary": "পটিয়ায় বাস ও মোটরসাইকেলের মুখোমুখি সংঘর্ষে মোহাম্মদ ফারেজ (২০) নামে এক যুবক নিহত হয়েছেন। এ ঘটনায় তার বন্ধু রামিম (২১) গুরুতর আহত হয়েছেন। গতকাল সোমবার সকাল সাড়ে ৯টার দিকে চট্টগ্রাম–কক্সবাজার মহাসড়কের পটিয়া উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। নিহত ফারেজ লোহাগাড়া উপজেলার আমিরাবাদ ইউনিয়নের ৭ নম্বর ওয়ার্ডের সাহেবী পাড়ার মোহাম্মদ জাহাঙ্গীর আলমের […] The post পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত appeared first on দৈনিক আজাদী .",
@@ -527,70 +589,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "22c46bb842304eb93b0b4ea7c59c0bbc"
-    },
-    {
-      "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
-      "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668115",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668115",
-      "publishedAt": "2026-11-16T11:46:07+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668115"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
-          "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668115",
-          "incidentDateText": "১৭ নভেম্বর ২০২৬",
-          "locationText": "আগেই আগুনে ঘাট এলাকায়"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "234f8cab241c362109922f80e5f4591e"
-    },
-    {
-      "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-      "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-      "link": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publisherUrl": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publishedAt": "2026-11-16T04:43:51+00:00",
-      "source": "The Daily Ittefaq",
-      "publisherName": "The Daily Ittefaq",
-      "sourceEvidence": [
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "The Daily Ittefaq",
-          "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-          "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2c63cb59e7f5dc165ce71aca16b8b3f8"
     }
   ]
 }
