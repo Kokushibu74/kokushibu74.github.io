@@ -79,6 +79,8 @@ NEW_DIRECT_SOURCES = [
     ("Chandpur Times", "https://chandpurtimes.com/feed/", "chandpurtimes.com"),
     ("Dhaka Times", "https://www.dhakatimes24.com/all-news/bangladesh/feed/latest-rss.xml", "dhakatimes24.com"),
     ("Daily Karatoa", "https://www.dailykaratoa.com/all-news/bangladesh/feed/latest-rss.xml", "dailykaratoa.com"),
+    ("GDACS", "https://www.gdacs.org/xml/rss.xml", "gdacs.org"),
+    ("USGS Earthquake Feed", "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom", "earthquake.usgs.gov"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
