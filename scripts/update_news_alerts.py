@@ -82,6 +82,12 @@ NEW_DIRECT_SOURCES = [
     ("Chattogram News", "https://chattogramnews.com/feed/", "chattogramnews.com"),
     ("Daily Sylhet News", "https://dailysylhetnews24.com/feed/", "dailysylhetnews24.com"),
     ("Daily Purbanchal", "https://purbanchal.com/feed/", "purbanchal.com"),
+    ("Protidiner Sangbad", "https://www.protidinersangbad.com/feed/", "protidinersangbad.com"),
+    ("Jaijaidin", "https://www.jaijaidin.news/rss", "jaijaidin.news"),
+    ("Manobkantha", "https://manobkantha.com.bd/feed/", "manobkantha.com.bd"),
+    ("Alokito Bangladesh", "https://www.alokitobangladesh.com/feed/", "alokitobangladesh.com"),
+    ("Daily Bangladesh", "https://www.daily-bangladesh.com/rss.xml", "daily-bangladesh.com"),
+    ("Shomoyer Alo", "https://www.shomoyeralo.com/rss.xml", "shomoyeralo.com"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
