@@ -320,6 +320,17 @@ def classify_source_health(direct, fallback=None):
         "healthClass": health_class,
     }
 
+def should_skip_feed_update(effective_healthy_count, fallback_source_count, fallback_healthy_count, previous_healthy_count=None):
+    """Protect the last good alert feed from transient upstream outages."""
+    if int(fallback_source_count or 0) > 0 and int(fallback_healthy_count or 0) == 0:
+        return True, "Google News fallback is unavailable for every fallback-only publisher"
+    if previous_healthy_count:
+        previous = max(0, int(previous_healthy_count))
+        minimum = max(3, (previous * 3 + 3) // 4)  # ceil(75% of last good count)
+        if int(effective_healthy_count or 0) < minimum:
+            return True, f"reachable sources dropped below the safe threshold ({effective_healthy_count}/{minimum} of previous {previous})"
+    return False, None
+
 def canonical_source(name):
     normalized = str(name or "").strip().lower()
     # GDACS may relay the same underlying seismic event data as USGS; keep
@@ -635,6 +646,29 @@ def main():
             "fallbackZeroItems": health["fallbackZeroItems"],
             "healthClass": health["healthClass"],
         })
+    previous_healthy_count = None
+    try:
+        if OUTPUT.exists():
+            previous_payload = json.loads(OUTPUT.read_text(encoding="utf-8"))
+            previous_healthy_count = previous_payload.get("healthySourceCount")
+    except Exception:
+        previous_healthy_count = None
+    skip_update, skip_reason = should_skip_feed_update(
+        len(effective_healthy_names), len(fallback_sources),
+        len(fallback_healthy_names), previous_healthy_count,
+    )
+    if skip_update:
+        # A transient fallback outage must never replace the last known-good feed.
+        print(json.dumps({
+            "skipped": True,
+            "reason": skip_reason,
+            "configuredSources": len(SOURCES),
+            "healthySources": len(effective_healthy_names),
+            "directHealthySources": len(direct_healthy_names),
+            "fallbackHealthySources": len(fallback_healthy_names),
+            "previousHealthySources": previous_healthy_count,
+        }, ensure_ascii=False))
+        return
     if len(effective_healthy_names) < 3:
         print("ERROR: fewer than 3 publisher sources are reachable directly or through Google News; keeping the previous alert feed.", file=sys.stderr)
         for item in source_health:

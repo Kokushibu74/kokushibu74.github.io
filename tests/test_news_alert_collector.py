@@ -175,5 +175,25 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
         self.assertGreaterEqual(len(collector.SOURCES), 47)
 
+    def test_fallback_outage_skips_feed_replacement(self):
+        skip, reason = collector.should_skip_feed_update(12, 35, 0, 44)
+        self.assertTrue(skip)
+        self.assertIn("fallback is unavailable", reason)
+
+    def test_large_source_health_drop_preserves_last_good_feed(self):
+        skip, reason = collector.should_skip_feed_update(32, 34, 30, 44)
+        self.assertTrue(skip)
+        self.assertIn("safe threshold", reason)
+
+    def test_normal_source_health_allows_feed_update(self):
+        skip, reason = collector.should_skip_feed_update(40, 34, 30, 44)
+        self.assertFalse(skip)
+        self.assertIsNone(reason)
+
+    def test_direct_only_sources_must_not_drop_far_below_previous_health(self):
+        skip, reason = collector.should_skip_feed_update(12, 0, 0, 44)
+        self.assertTrue(skip)
+        self.assertIn("safe threshold", reason)
+
 if __name__ == "__main__":
     unittest.main()
