@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T15:36:58.172178+00:00",
-  "updatedAt": "2026-11-17T15:36:58.172178+00:00",
+  "generatedAt": "2026-11-17T15:52:01.355582+00:00",
+  "updatedAt": "2026-11-17T15:52:01.355582+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 41,
-  "failedSourceCount": 0,
+  "healthySourceCount": 35,
+  "failedSourceCount": 6,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 28,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -63,12 +63,12 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Kaler Kantho",
@@ -118,27 +118,27 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24
+      "fallbackItems": 23
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "BSS",
@@ -213,11 +213,11 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -233,12 +233,12 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ekattor TV",
@@ -273,11 +273,11 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -421,8 +421,85 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 15,
+  "candidateCount": 17,
   "alertItems": [
+    {
+      "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
+      "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
+      "link": "https://www.jagonews24.com/country/news/1180685",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180685",
+      "publishedAt": "2026-11-17T15:48:57+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180685"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "সাবেক মন্ত্রী আ ক ম মোজাম্মেলের বাড়িতে আগুন",
+          "summary": "সাবেক মন্ত্রী ও কার্যক্রম নিষিদ্ধ গাজীপুর জেলা আওয়ামী লীগের সভাপতি আ ক ম মোজাম্মেল হকের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা...",
+          "url": "https://www.jagonews24.com/country/news/1180685"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "070da7b6235d1692fafba0ce5e8eba18"
+    },
+    {
+      "title": "মাইকে ঘোষণা দিয়ে টুঙ্গিপাড়া থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
+      "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা ও আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতা–কর্মীরা। আজ মঙ্গলবার সন্ধ্যার পর তাঁরা মিছিল নিয়ে প্রথমে থানা ঘেরাও করা হয়।",
+      "link": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
+      "publishedAt": "2026-11-17T15:37:33+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "মাইকে ঘোষণা দিয়ে টুঙ্গিপাড়া থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
+          "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা ও আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতা–কর্মীরা। আজ মঙ্গলবার সন্ধ্যার পর তাঁরা মিছিল নিয়ে প্রথমে থানা ঘেরাও করা হয়।",
+          "url": "https://www.prothomalo.com/bangladesh/district/4zpxbsk8am",
+          "incidentDateText": "১৭ নভেম্বর ২০২৬",
+          "incidentTimeText": "রাত ৯টা ১০ মিনিটে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "পরে থানায়, হামলা এবং থানা, হামলার পর টুঙ্গিপাড়া থানার, টুঙ্গিপাড়া থানায়, টুঙ্গিপাড়া উপজেলা, টুঙ্গিপাড়া থানা"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জে বিএনপির এমপি জিলানীর বাড়িতে আগুন",
+          "summary": "গোপালগঞ্জ-৩ (টুঙ্গিপাড়া ও কোটালীপাড়া) আসনের বিএনপির সংসদ সদস্য এস এম জিলানীর বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ করেছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের নেতাকর্মীরা। মঙ্গলবার (১৭ নভেম্বর) সন্ধ্যা সাড়ে ৭টার দিকে টুঙ্গিপাড়া থানায় ভাঙচুর চালিয়ে আগুন দেওয়ার পর এস এম জিলানীর বাড়িতেও অগ্নিসংযোগ করা হয়। টুঙ্গিপাড়া উপজেলা নির্বাহী কর্মকর্তা (ইউএনও) মোহাম্মদ দিদারুল আলম বিষয়টি নিশ্চিত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981576/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%9C%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "7d9e3cacec46a0c602fa4aea4d8b124d"
+    },
     {
       "title": "গোপালগঞ্জে এমপি জিলানীর বাড়িতে আগুন",
       "summary": "গোপালগঞ্জ-৩ আসনের সংসদ সদস্য ও স্বেচ্ছাসেবক দলের সভাপতি এস এম জিলানীর বাড়িতে আগুন দিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও সহযোগী সংগঠনের নেতাকর্মীরা...",
@@ -551,37 +628,6 @@
       "alertEventId": "7ae14b105c0495d7ae66b05e3431cbe7"
     },
     {
-      "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-      "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-      "link": "https://bn.observerbd.com/news/150552",
-      "publisherUrl": "https://bn.observerbd.com/news/150552",
-      "publishedAt": "2026-11-17T13:44:00+00:00",
-      "source": "Daily Observer",
-      "publisherName": "Daily Observer",
-      "sourceEvidence": [
-        "Daily Observer"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Observer",
-          "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-          "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
-    },
-    {
       "title": "১০ দিনে ৪৯ যানবাহনে আগুন, ককটেল বিস্ফোরণ ৫৯ জায়গায়",
       "summary": "সংশ্লিষ্ট কর্মকর্তারা বলেছেন, সড়ক ও নৌপথে নাশকতা চালিয়ে গোপালগঞ্জসহ আশপাশের চার জেলাকে সারা দেশ থেকে বিচ্ছিন্ন করার পরিকল্পনা রয়েছে আওয়ামী লীগের নেতা-কর্মীদের।",
       "link": "https://www.prothomalo.com/bangladesh/crime/1n6ihmeub6",
@@ -645,20 +691,20 @@
       "alertEventId": "757ed0cb068b0de70b92c40f34968528"
     },
     {
-      "title": "সকালের সংঘর্ষের পর শান্ত মিরপুর, যান চলাচল স্বাভাবিক",
-      "summary": "রাজধানীর মিরপুরে মঙ্গলবার (১৭ নভেম্বর) সকালে পুলিশের সঙ্গে পোশাক শ্রমিকদের সঙ্গে সংঘর্ষের ঘটনা ঘটেছে। শ্রমিকদের বিক্ষোভে ওই এলাকায় যান চলাচল বন্ধ হয়ে যায়। তবে বর্তমানে পরিস্থিতি স্বাভাবিক রয়েছে। যান চলাচলও স্বাভাবিক। আইনশৃঙ্খলা বাহিনী সতর্ক অবস্থানে রয়েছে। মোতায়েন রয়েছে বর্ডার গার্ড বাংলাদেশ বিজিবিও। নূন্যতম মজুরি ৩০ হাজার টাকার দাবিতে মঙ্গলবার সকালে শ্রমিকরা রাস্তা অবরোধ করার চেষ্টা করলে ওই... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/981472/%E0%A6%B8%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%B0%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%AF%E0%A6%BE%E0%A6%A8-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/981472/%E0%A6%B8%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%B0%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%AF%E0%A6%BE%E0%A6%A8-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2",
-      "publishedAt": "2026-11-17T07:52:26+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার - Dhaka Tribune Bangla",
+      "summary": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8",
+      "publishedAt": "2026-11-17T10:14:10+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/981472/%E0%A6%B8%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%B0%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%AF%E0%A6%BE%E0%A6%A8-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -666,14 +712,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "সকালের সংঘর্ষের পর শান্ত মিরপুর, যান চলাচল স্বাভাবিক",
-          "summary": "রাজধানীর মিরপুরে মঙ্গলবার (১৭ নভেম্বর) সকালে পুলিশের সঙ্গে পোশাক শ্রমিকদের সঙ্গে সংঘর্ষের ঘটনা ঘটেছে। শ্রমিকদের বিক্ষোভে ওই এলাকায় যান চলাচল বন্ধ হয়ে যায়। তবে বর্তমানে পরিস্থিতি স্বাভাবিক রয়েছে। যান চলাচলও স্বাভাবিক। আইনশৃঙ্খলা বাহিনী সতর্ক অবস্থানে রয়েছে। মোতায়েন রয়েছে বর্ডার গার্ড বাংলাদেশ বিজিবিও। নূন্যতম মজুরি ৩০ হাজার টাকার দাবিতে মঙ্গলবার সকালে শ্রমিকরা রাস্তা অবরোধ করার চেষ্টা করলে ওই... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/981472/%E0%A6%B8%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%B0%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%AF%E0%A6%BE%E0%A6%A8-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2"
+          "name": "Dhaka Tribune Bangla",
+          "title": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার - Dhaka Tribune Bangla",
+          "summary": "স্কুলের পরিত্যক্ত কক্ষ থেকে অর্ধশত ককটেল ও গান পাউডার উদ্ধার Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113273/%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "9d7554ce2bdd697e11d580ced7aac66e"
+      "alertEventId": "313e0e34676aeec00babb3b3d4aef26a"
     },
     {
       "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
