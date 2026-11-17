@@ -76,10 +76,9 @@ SOURCES = [
 # Additional regional/local publishers. These are separately live-validated in CI
 # before a change can be merged; they do not replace any existing source.
 NEW_DIRECT_SOURCES = [
-    ("Daily Karatoa", "https://www.dailykaratoa.com/feed/", "dailykaratoa.com"),
-    ("Gramer Kagoj", "https://www.gramerkagoj.com/feed/", "gramerkagoj.com"),
     ("Chandpur Times", "https://chandpurtimes.com/feed/", "chandpurtimes.com"),
-    ("Rajshahi News24", "https://rajshahinews24.com/feed/", "rajshahinews24.com"),
+    ("Dhaka Times", "https://www.dhakatimes24.com/all-news/bangladesh/feed/latest-rss.xml", "dhakatimes24.com"),
+    ("Daily Karatoa", "https://www.dailykaratoa.com/all-news/bangladesh/feed/latest-rss.xml", "dailykaratoa.com"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
