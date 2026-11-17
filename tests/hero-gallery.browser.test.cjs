@@ -42,7 +42,7 @@ async function speedViewerTimer(page) {
     window.__heroTimerDelays = [];
     window.setTimeout = (handler, timeout, ...args) => {
       window.__heroTimerDelays.push(timeout);
-      return original(handler, timeout === 20000 ? 500 : timeout, ...args);
+      return original(handler, timeout === 20000 ? 1600 : timeout, ...args);
     };
   });
 }
