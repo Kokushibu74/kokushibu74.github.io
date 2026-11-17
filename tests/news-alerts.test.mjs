@@ -16,9 +16,9 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
-test("regional publisher sources are eligible individually but require two independent publishers",()=>{
-  const regional=["Daily Karatoa","Chandpur Times","Dhaka Times"];
-  for(const publisher of regional){
+test("new regional and official RSS sources are eligible individually but require independent corroboration",()=>{
+  const sources=["Daily Karatoa","Chandpur Times","Dhaka Times","GDACS","USGS Earthquake Feed"];
+  for(const publisher of sources){
     const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
     assert.equal(decision.eligible,true,publisher+" should be trusted");
     assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
