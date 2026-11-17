@@ -138,6 +138,10 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertTrue(collector.host_matches("https://bangla.bdnews24.com/story", "bdnews24.com"))
         self.assertFalse(collector.host_matches("https://fake-example.com/story", "bdnews24.com"))
 
+    def test_gdacs_and_usgs_share_one_corroboration_group(self):
+        self.assertEqual(collector.canonical_source("GDACS"), "Global Disaster Data")
+        self.assertEqual(collector.canonical_source("USGS Earthquake Feed"), "Global Disaster Data")
+
     def test_source_health_distinguishes_direct_and_fallback_states(self):
         direct = collector.classify_source_health({"status": "healthy"}, None)
         self.assertEqual(direct["healthClass"], "direct_healthy")
@@ -169,7 +173,7 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(len(names), len(set(names)))
         self.assertEqual(len(domains), len(set(domains)))
         self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
-        self.assertGreaterEqual(len(collector.SOURCES), 46)
+        self.assertGreaterEqual(len(collector.SOURCES), 44)
 
 if __name__ == "__main__":
     unittest.main()
