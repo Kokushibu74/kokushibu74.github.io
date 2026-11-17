@@ -32,6 +32,43 @@
     }
     return faceDetectorPromise;
   }
+  async function normalizeHeroUpload(file){
+    let bitmap=null,objectUrl=null,source=null;
+    try{
+      if(typeof createImageBitmap==="function"){
+        try{bitmap=await createImageBitmap(file,{imageOrientation:"from-image"});source=bitmap;}catch(_){}
+      }
+      if(!source){
+        objectUrl=URL.createObjectURL(file);
+        source=await new Promise((resolve,reject)=>{
+          const image=new Image();
+          image.onload=()=>resolve(image);
+          image.onerror=()=>reject(new Error("The selected image could not be decoded safely."));
+          image.src=objectUrl;
+        });
+      }
+      const width=Number(source.width||source.naturalWidth),height=Number(source.height||source.naturalHeight);
+      if(!width||!height||width*height>40000000)throw new Error("Image dimensions are invalid or exceed the safe 40-megapixel processing limit.");
+      const canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
+      const context=canvas.getContext("2d",{alpha:true});
+      if(!context)throw new Error("Image normalization is unavailable in this browser.");
+      context.drawImage(source,0,0,width,height);
+      const blob=await new Promise((resolve,reject)=>{
+        canvas.toBlob(value=>value?resolve(value):reject(new Error("Could not normalize the selected image.")),file.type,file.type==="image/png"?undefined:0.9);
+      });
+      const mimeType=blob.type||file.type;
+      if(!["image/jpeg","image/png","image/webp"].includes(mimeType))throw new Error("The browser could not produce a supported clean image format.");
+      if(!blob.size||blob.size>4*1024*1024)throw new Error("The normalized image exceeds the 4 MB upload limit. Choose a smaller image.");
+      const dataUrl=await new Promise((resolve,reject)=>{
+        const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read the normalized image."));
+        reader.readAsDataURL(blob);
+      });
+      return {mimeType,base64:dataUrl.split(",")[1],width,height,bytes:blob.size};
+    }finally{
+      if(bitmap&&typeof bitmap.close==="function")bitmap.close();
+      if(objectUrl)URL.revokeObjectURL(objectUrl);
+    }
+  }
   const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const icon = id => modules.find(m => m[0] === id)?.[1] || "◈";
   function notice(message, error=false) {
@@ -277,8 +314,8 @@
         stage.addEventListener("click",async()=>{
           if(!selectedFile)return;stage.disabled=true;uploadStatus.textContent="Preparing a private, metadata-clean preview…";
           try{
-            const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read the selected image."));reader.readAsDataURL(selectedFile);});
-            const prepared=await api("heroPrepare",{mimeType:selectedFile.type,base64:dataUrl.split(",")[1]});
+            const normalized=await normalizeHeroUpload(selectedFile);
+            const prepared=await api("heroPrepare",{mimeType:normalized.mimeType,base64:normalized.base64});
             token=prepared.token;frame.src=prepared.previewUrl;frame.hidden=false;confirm.hidden=false;cancel.hidden=false;
             uploadStatus.textContent="Preview ready. Embedded metadata stripped: "+Number(prepared.metadataStripped||0)+" item(s). The Homepage image is still unchanged.";
           }catch(error){uploadStatus.textContent=error.message;notice(error.message,true);}
