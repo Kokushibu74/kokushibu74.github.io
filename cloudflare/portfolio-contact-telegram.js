@@ -1721,7 +1721,10 @@ async function botCommitHero(env,token){
     if(!["image/jpeg","image/png","image/webp"].includes(mimeType)||expectedLength<16||expectedLength>10*1024*1024||! /^[A-Za-z0-9+/]+={0,2}$/.test(pending.base64))throw new Error("Prepared Hero image data is invalid or expired.");
     uploadBase64=pending.base64;
   }else{
-    const original=await botTelegramPhoto(env,pending.fileId),clean=heroStripImageMetadata(original);
+    const original=pending.base64
+      ?(typeof Uint8Array.fromBase64==="function"?Uint8Array.fromBase64(pending.base64):Uint8Array.from(atob(pending.base64),c=>c.charCodeAt(0)))
+      :await botTelegramPhoto(env,pending.fileId);
+    const clean=heroStripImageMetadata(original);
     mimeType=clean.mimeType;metadataStripped=clean.removed.length;expectedLength=clean.bytes.length;uploadBase64=botB64(clean.bytes);
   }
   const ext=mimeType==="image/png"?"png":mimeType==="image/webp"?"webp":"jpg";
@@ -1739,7 +1742,7 @@ async function botCommitHero(env,token){
     const remoteBytes=new Uint8Array(await verifyResponse.arrayBuffer());
     const remoteCheck=heroStripImageMetadata(remoteBytes);
     if(remoteCheck.removed.length||remoteBytes.length!==expectedLength)throw new Error("Uploaded image still contains embedded metadata or changed during storage verification.");
-    const blobHeader=new TextEncoder().encode("blob "+remoteBytes.length+"\\0"),blobBytes=new Uint8Array(blobHeader.length+remoteBytes.length);
+    const blobHeader=new TextEncoder().encode("blob "+remoteBytes.length+"\0"),blobBytes=new Uint8Array(blobHeader.length+remoteBytes.length);
     blobBytes.set(blobHeader);blobBytes.set(remoteBytes,blobHeader.length);
     const blobSha=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-1",blobBytes)),value=>value.toString(16).padStart(2,"0")).join("");
     if(!imageResult.content?.sha||blobSha!==imageResult.content.sha)throw new Error("Uploaded image bytes changed during GitHub storage verification.");
