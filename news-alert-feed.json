@@ -1,14 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T19:32:00.901555+00:00",
-  "updatedAt": "2026-11-17T19:32:00.901555+00:00",
+  "generatedAt": "2026-11-17T19:48:01.609479+00:00",
+  "updatedAt": "2026-11-17T19:48:01.609479+00:00",
   "collector": "publisher-rss+google-news-fallback",
-  "sourceCount": 41,
-  "healthySourceCount": 40,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 33,
+  "sourceCount": 44,
+  "healthySourceCount": 44,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 10,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -18,7 +22,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Prothom Alo",
@@ -28,7 +37,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jago News 24",
@@ -38,7 +52,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "bdnews24.com",
@@ -48,17 +67,27 @@
       "directError": "not well-formed (invalid token): line 8, column 46",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jugantor",
@@ -68,7 +97,12 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Kaler Kantho",
@@ -78,7 +112,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -88,7 +127,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Dhaka Tribune",
@@ -98,7 +142,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Business Standard",
@@ -108,7 +157,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "The Financial Express",
@@ -118,7 +172,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15
+      "fallbackItems": 14,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -128,7 +187,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Daily Observer",
@@ -138,7 +202,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BSS",
@@ -148,7 +217,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "UNB",
@@ -158,7 +232,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Risingbd",
@@ -168,7 +247,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Samakal",
@@ -178,7 +262,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dhaka Post",
@@ -188,7 +277,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -198,7 +292,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sun",
@@ -208,7 +307,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Somoy News",
@@ -218,7 +322,12 @@
       "directError": "mismatched tag: line 46, column 2",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -228,7 +337,12 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -238,7 +352,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ekattor TV",
@@ -248,7 +367,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -258,17 +382,27 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -278,7 +412,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -288,7 +427,12 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Desh Rupantor",
@@ -298,7 +442,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -308,7 +457,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -318,7 +472,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Manab Zamin",
@@ -328,7 +487,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -338,7 +502,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Naya Diganta",
@@ -348,7 +517,12 @@
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Janakantha",
@@ -358,7 +532,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -368,7 +547,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Daily Sangbad",
@@ -378,7 +562,12 @@
       "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dhaka Courier",
@@ -388,7 +577,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
@@ -398,7 +592,12 @@
       "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -408,7 +607,12 @@
       "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -418,11 +622,92 @@
       "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
+    },
+    {
+      "name": "Chandpur Times",
+      "domain": "chandpurtimes.com",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
+    },
+    {
+      "name": "GDACS",
+      "domain": "gdacs.org",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
+    },
+    {
+      "name": "USGS Earthquake Feed",
+      "domain": "earthquake.usgs.gov",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 32,
   "alertItems": [
+    {
+      "title": "গোপালগঞ্জে আওয়ামী লীগের হামলা-অগ্নিসংযোগের প্রতিবাদে ঢাকায় বিক্ষোভ",
+      "summary": "গোপালগঞ্জে ‘কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলা ও অগ্নিসংযোগের প্রতিবাদে রাজধানীতে বিক্ষোভ মিছিল ও সমাবেশ করেছে জাতীয়তাবাদী স্বেচ্ছাসেবক দল, ঢাকা মহানগর দক্ষিণ। মঙ্গলবার (১৭ নভেম্বর) বিকালে রাজধানীর বাহাদুর পার্ক থেকে শুরু হয়ে বায়তুল মোকাররমের দক্ষিণ গেটের সামনে সংক্ষিপ্ত সমাবেশের মধ্য দিয়ে কর্মসূচি শেষ হয়। এতে প্রধান অতিথি হিসেবে উপস্থিত ছিলেন ঢাকা মহানগর দক্ষিণ বিএনপির আহ্বায়ক ও ঢাকা... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/bnp/981616/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AC%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/politics/bnp/981616/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AC%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87",
+      "publishedAt": "2026-11-17T19:45:31+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/bnp/981616/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AC%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জে আওয়ামী লীগের হামলা-অগ্নিসংযোগের প্রতিবাদে ঢাকায় বিক্ষোভ",
+          "summary": "গোপালগঞ্জে ‘কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলা ও অগ্নিসংযোগের প্রতিবাদে রাজধানীতে বিক্ষোভ মিছিল ও সমাবেশ করেছে জাতীয়তাবাদী স্বেচ্ছাসেবক দল, ঢাকা মহানগর দক্ষিণ। মঙ্গলবার (১৭ নভেম্বর) বিকালে রাজধানীর বাহাদুর পার্ক থেকে শুরু হয়ে বায়তুল মোকাররমের দক্ষিণ গেটের সামনে সংক্ষিপ্ত সমাবেশের মধ্য দিয়ে কর্মসূচি শেষ হয়। এতে প্রধান অতিথি হিসেবে উপস্থিত ছিলেন ঢাকা মহানগর দক্ষিণ বিএনপির আহ্বায়ক ও ঢাকা... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/bnp/981616/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A6%AC%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2c34ba0268718a9ac1d9fdd06e01a870"
+    },
     {
       "title": "আওয়ামী লীগ টুঙ্গিপাড়া লিমিটেড হয়ে যাবে: স্বরাষ্ট্রমন্ত্রী",
       "summary": "গোপালগঞ্জে থানা ঘেরাও, হামলা, অগ্নিসংযোগ ও অস্ত্র লুটের ঘটনায় সংসদে উদ্বেগ প্রকাশ করেছেন বিরোধীদলীয় নেতা ডা. শফিকুর রহমান। আগামী ১৯ নভেম্বরকে সামনে রেখে সেখানে বড় ধরনের নাশকতার পরিকল্পনা হচ্ছে বলে তথ্য পাওয়ার কথা জানিয়ে তিনি বলেন, এ বিষয়ে আর বসে থাকার সময় নেই। নিরীহ মানুষের জীবন, সম্পদ ও রাষ্ট্রীয় স্থাপনা রক্ষায় সরকারকে কার্যকর পদক্ষেপ নিতে হবে। জবাবে স্বরাষ্ট্রমন্ত্রী সালাহউদ্দিন আহমদ বলেছেন,... বিস্তারিত",
@@ -1078,6 +1363,37 @@
       "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     },
     {
+      "title": "ওয়াশিংটনে বোমা হামলার পরিকল্পনা করছে ইরান - dhakapost.com",
+      "summary": "ওয়াশিংটনে বোমা হামলার পরিকল্পনা করছে ইরান dhakapost.com",
+      "link": "https://www.dhakapost.com/international/498649",
+      "publisherUrl": "https://www.dhakapost.com/international/498649",
+      "publishedAt": "2026-11-17T11:19:20+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/498649"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "ওয়াশিংটনে বোমা হামলার পরিকল্পনা করছে ইরান - dhakapost.com",
+          "summary": "ওয়াশিংটনে বোমা হামলার পরিকল্পনা করছে ইরান dhakapost.com",
+          "url": "https://www.dhakapost.com/international/498649"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "64db89e4207f214a5665f2c207154b3f"
+    },
+    {
       "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113259/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
@@ -1169,6 +1485,110 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1063162ff3b705c22dda3b236a5de4d9"
+    },
+    {
+      "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরনো বাড়িতে আগুন - Daily Bonik Barta",
+      "summary": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরনো বাড়িতে আগুন Daily Bonik Barta",
+      "link": "https://bonikbarta.com/bangladesh/0WPALpoIF9AoMfPP",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/0WPALpoIF9AoMfPP",
+      "publishedAt": "2026-11-17T03:12:00+00:00",
+      "source": "Daily Bonik Barta",
+      "publisherName": "Daily Bonik Barta",
+      "sourceEvidence": [
+        "Daily Bonik Barta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/0WPALpoIF9AoMfPP"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Bonik Barta",
+          "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরনো বাড়িতে আগুন - Daily Bonik Barta",
+          "summary": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরনো বাড়িতে আগুন Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/0WPALpoIF9AoMfPP"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7cf34fd37bba6a50d5385531f6fd471f"
+    },
+    {
+      "title": "লন্ডনে সংবর্ধনা অনুষ্ঠানে প্রবাসী বাংলাদেশিদের ওপর হামলা, নিন্দা নাহিদের - dhakapost.com",
+      "summary": "লন্ডনে সংবর্ধনা অনুষ্ঠানে প্রবাসী বাংলাদেশিদের ওপর হামলা, নিন্দা নাহিদের dhakapost.com",
+      "link": "https://www.dhakapost.com/politics/498497",
+      "publisherUrl": "https://www.dhakapost.com/politics/498497",
+      "publishedAt": "2026-11-17T02:14:16+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com",
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/498497"
+        },
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/348379"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "লন্ডনে সংবর্ধনা অনুষ্ঠানে প্রবাসী বাংলাদেশিদের ওপর হামলা, নিন্দা নাহিদের - dhakapost.com",
+          "summary": "লন্ডনে সংবর্ধনা অনুষ্ঠানে প্রবাসী বাংলাদেশিদের ওপর হামলা, নিন্দা নাহিদের dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/498497"
+        },
+        {
+          "name": "Barta 24",
+          "title": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ - Barta 24",
+          "summary": "লন্ডনে নাহিদ ইসলামের সংবর্ধনা অনুষ্ঠানে হামলা, বিচার চাইল বাংলাদেশ Barta 24",
+          "url": "https://barta24.com/details/national/348379"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "92579aa6bf966fa0fd328d3a4f9c0bec"
+    },
+    {
+      "title": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত - Barta 24",
+      "summary": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত Barta 24",
+      "link": "https://barta24.com/details/international/348366",
+      "publisherUrl": "https://barta24.com/details/international/348366",
+      "publishedAt": "2026-11-16T23:44:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/international/348366"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত - Barta 24",
+          "summary": "মালয়েশিয়ায় ভূমিধসে বাংলাদেশি শ্রমিক নিহত Barta 24",
+          "url": "https://barta24.com/details/international/348366"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c116ae5938a80b1b5c4c99e69ee1f0a6"
     }
   ]
 }
