@@ -1805,7 +1805,9 @@ function heroStripImageMetadata(input){
       if(end>bytes.length)throw new Error("Invalid PNG chunk length.");
       if(type==="IHDR")sawHeader=true;
       const first=type.charCodeAt(0),critical=first>=65&&first<=90;
-      if(critical||type==="tRNS")chunks.push(bytes.slice(pos,end));
+      const knownCritical=new Set(["IHDR","PLTE","IDAT","IEND"]);
+      if(critical&&!knownCritical.has(type))throw new Error("Unsupported PNG critical chunk: "+type);
+      if(knownCritical.has(type)||type==="tRNS")chunks.push(bytes.slice(pos,end));
       else removed.push("PNG_"+type);
       pos=end;
       if(type==="IEND"){sawEnd=true;break;}
