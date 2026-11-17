@@ -12,6 +12,7 @@ on:
       - "tests/test_news_alerts.py"
       - "tests/news-alerts.test.mjs"
       - "tests/test_news_alert_collector.py"
+      - "scripts/validate_news_alert_sources.py"
   push:
     branches: [main]
     paths:
@@ -28,6 +29,7 @@ on:
       - "tests/test_update_news.py"
       - "tests/test_slider_rules.py"
       - "tests/test_news_alert_collector.py"
+      - "scripts/validate_news_alert_sources.py"
   schedule:
     - cron: "*/15 * * * *"
 
@@ -77,6 +79,9 @@ jobs:
       - name: Test Bangladesh alert RSS collector
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.alerts_enabled == 'true' }}
         run: python3 tests/test_news_alert_collector.py -v
+      - name: Validate newly added regional RSS endpoints
+        if: ${{ github.event_name == 'pull_request' }}
+        run: python3 scripts/validate_news_alert_sources.py
       - name: Run offline news logic tests
         if: ${{ github.event_name != 'schedule' || steps.bot_config.outputs.enabled == 'true' }}
         run: python3 tests/test_update_news.py -v

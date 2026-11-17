@@ -138,5 +138,42 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertTrue(collector.host_matches("https://bangla.bdnews24.com/story", "bdnews24.com"))
         self.assertFalse(collector.host_matches("https://fake-example.com/story", "bdnews24.com"))
 
+    def test_gdacs_and_usgs_share_one_corroboration_group(self):
+        self.assertEqual(collector.canonical_source("GDACS"), "Global Disaster Data")
+        self.assertEqual(collector.canonical_source("USGS Earthquake Feed"), "Global Disaster Data")
+
+    def test_source_health_distinguishes_direct_and_fallback_states(self):
+        direct = collector.classify_source_health({"status": "healthy"}, None)
+        self.assertEqual(direct["healthClass"], "direct_healthy")
+        self.assertTrue(direct["directHealthy"])
+        self.assertFalse(direct["fallbackOnly"])
+
+        fallback_items = collector.classify_source_health(
+            {"status": "failed"}, {"status": "healthy", "items": [{"title": "x"}]}
+        )
+        self.assertEqual(fallback_items["healthClass"], "fallback_with_items")
+        self.assertTrue(fallback_items["fallbackOnly"])
+        self.assertTrue(fallback_items["fallbackWithItems"])
+
+        fallback_empty = collector.classify_source_health(
+            {"status": "failed"}, {"status": "healthy", "items": []}
+        )
+        self.assertEqual(fallback_empty["healthClass"], "fallback_zero_items")
+        self.assertTrue(fallback_empty["fallbackZeroItems"])
+
+        failed = collector.classify_source_health(
+            {"status": "failed"}, {"status": "failed", "items": []}
+        )
+        self.assertEqual(failed["healthClass"], "failed")
+        self.assertEqual(failed["status"], "failed")
+
+    def test_new_regional_sources_are_unique_and_do_not_replace_existing_publishers(self):
+        names = [source[0] for source in collector.NEW_DIRECT_SOURCES]
+        domains = [source[2] for source in collector.NEW_DIRECT_SOURCES]
+        self.assertEqual(len(names), len(set(names)))
+        self.assertEqual(len(domains), len(set(domains)))
+        self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
+        self.assertGreaterEqual(len(collector.SOURCES), 44)
+
 if __name__ == "__main__":
     unittest.main()
