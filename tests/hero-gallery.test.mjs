@@ -147,6 +147,15 @@ assert.match(site,/#portrait-reveal-overlay\.is-visible\.is-tap\{pointer-events:
 assert.match(site,/#portrait-reveal-frame\{position:relative;pointer-events:none/,"Hover preview frame must not capture pointer events");
 assert.match(site,/if\(mode==="tap"\)\{resetTimer\(\);/,"Keyboard interaction must reset the 20-second inactivity timer");
 
+const heroPrepare=extract("async function miniAppHeroPrepare(","async function miniAppHeroConfirm");
+assert.match(heroPrepare,/10\*1024\*1024/,"Worker Hero uploads must accept up to 10 MB");
+assert.match(heroPrepare,/10 MB or smaller/,"Worker Hero upload error must describe the 10 MB limit");
+assert.doesNotMatch(heroPrepare,/4\*1024\*1024/,"The Hero Worker must not retain the old 4 MB cap");
+assert.match(app,/HERO_GALLERY_MAX_UPLOAD_BYTES\s*=\s*10\s*\*\s*1024\s*\*\s*1024/,"Mini App Hero uploader must share the 10 MB limit");
+assert.match(app,/Maximum 10 MB/,"Mini App Hero uploader must show the 10 MB limit");
+assert.match(site,/portrait-round-morph/,"Round Frame must morph into and out of the full-size viewer");
+assert.match(site,/viewerTransition/,"Next/Previous must expose the selected randomized transition");
+assert.match(site,/const names=\["fade","slide","blur","zoom"\]/,"Viewer must rotate through four transition styles");
 assert.match(app,/async function normalizeHeroUpload/,"Uploads must normalize image orientation before stripping EXIF metadata");
 assert.match(app,/imageOrientation:"from-image"/,"EXIF orientation must be applied to pixels before metadata removal");
 assert.match(app,/canvas.toBlob/,"Normalized upload must be re-encoded without embedded metadata");

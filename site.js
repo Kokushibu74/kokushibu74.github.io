@@ -78,6 +78,9 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
   '#portrait-reveal-overlay.is-tap #portrait-reveal-frame{pointer-events:auto}',
   '#portrait-reveal-frame{position:relative;pointer-events:none;display:flex;align-items:center;justify-content:center;max-width:100%;max-height:100%;padding:clamp(5px,1.4vw,12px);border:1px solid rgba(79,172,254,.45);border-radius:18px;overflow:hidden;box-shadow:0 0 22px rgba(0,242,254,.16),0 0 34px rgba(127,0,255,.12);transform:translateY(14px) scale(.94);transition:transform .34s cubic-bezier(.16,1,.3,1);isolation:isolate;touch-action:pan-y}',
   '#portrait-reveal-overlay.is-visible #portrait-reveal-frame{transform:translateY(0) scale(1)}',
+  '#portrait-reveal-overlay.is-morphing #portrait-reveal-frame{transform:none;transition:none}',
+  '#portrait-reveal-overlay.is-morphing #portrait-reveal-image{opacity:0!important}',
+  '.portrait-round-morph{position:fixed;z-index:100001;display:block;margin:0;padding:0;max-width:none;max-height:none;pointer-events:none;user-select:none;-webkit-user-drag:none;will-change:left,top,width,height,border-radius,opacity;box-shadow:0 0 22px rgba(0,242,254,.2)}',
   '#portrait-reveal-frame:before{content:"";position:absolute;z-index:0;inset:0;border-radius:inherit;padding:2px;background:conic-gradient(from var(--portrait-angle,0deg),#00f2fe,#4facfe,#7f00ff,#e100ff,#00f2fe);animation:rotateGlow 7s linear infinite,portraitNeonGlow 3.8s ease-in-out infinite alternate;opacity:.78;pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}',
   '#portrait-reveal-frame:after{content:"";position:absolute;z-index:3;inset:0;border:1.5px solid rgba(0,242,254,.55);border-radius:inherit;box-shadow:inset 0 0 12px rgba(79,172,254,.12);pointer-events:none}',
   '#portrait-reveal-image{display:block;width:auto;height:auto;max-width:min(90vw,1100px);max-height:min(86vh,calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 36px));object-fit:contain;object-position:center;border-radius:12px;background:rgba(4,8,18,.7);box-shadow:0 0 18px rgba(0,242,254,.16);animation:portraitImageIn .42s cubic-bezier(.16,1,.3,1) both;user-select:none;-webkit-user-drag:none;touch-action:pan-y}',
@@ -104,25 +107,79 @@ function installPortraitReveal(galleryImages,activeId,defaultAlt){
  const frame=overlay.querySelector("#portrait-reveal-frame"),full=overlay.querySelector("#portrait-reveal-image");
  const previous=overlay.querySelector("#portrait-reveal-prev"),next=overlay.querySelector("#portrait-reveal-next");
  previous.hidden=next.hidden=list.length<2;
+ let imageTransition=null,transitionSequence=0,lastTransition="",morphClone=null,morphAnimation=null;
+ const reduceMotion=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const clearMorph=()=>{
+  if(morphAnimation){morphAnimation.onfinish=null;try{morphAnimation.cancel();}catch(_){}morphAnimation=null;}
+  if(morphClone){morphClone.remove();morphClone=null;}
+  overlay.classList.remove("is-morphing");full.style.opacity="";
+ };
+ const roundMorph=(direction,onDone)=>{
+  if(reduceMotion()||typeof img.animate!=="function"){if(onDone)onDone();return;}
+  clearMorph();overlay.classList.add("is-morphing");
+  const fromRect=direction==="open"?img.getBoundingClientRect():full.getBoundingClientRect();
+  const toRect=direction==="open"?full.getBoundingClientRect():img.getBoundingClientRect();
+  if(!fromRect.width||!fromRect.height||!toRect.width||!toRect.height){overlay.classList.remove("is-morphing");if(onDone)onDone();return;}
+  const clone=document.createElement("img");clone.className="portrait-round-morph";clone.src=full.currentSrc||full.src;clone.alt="";
+  Object.assign(clone.style,{left:fromRect.left+"px",top:fromRect.top+"px",width:fromRect.width+"px",height:fromRect.height+"px",objectFit:direction==="open"?"cover":"contain",borderRadius:direction==="open"?"50%":"12px"});
+  document.body.appendChild(clone);morphClone=clone;full.style.opacity="0";
+  const from={left:fromRect.left+"px",top:fromRect.top+"px",width:fromRect.width+"px",height:fromRect.height+"px",borderRadius:direction==="open"?"50%":"12px",opacity:1};
+  const to={left:toRect.left+"px",top:toRect.top+"px",width:toRect.width+"px",height:toRect.height+"px",borderRadius:direction==="open"?"12px":"50%",opacity:0};
+  morphAnimation=clone.animate([from,to],{duration:540,easing:"cubic-bezier(.22,.8,.24,1)",fill:"both"});
+  morphAnimation.onfinish=()=>{
+   if(morphClone!==clone)return;
+   clone.remove();morphClone=null;morphAnimation=null;overlay.classList.remove("is-morphing");full.style.opacity="";
+   if(onDone)onDone();
+  };
+ };
  const showCurrent=()=>{const item=list[currentIndex]||list[0];full.src=safeUrl(item.src);full.alt=item.alt||defaultAlt||"Full portrait";};
  const resetTimer=()=>{if(mode!=="tap")return;clearTimeout(hideTimer);hideTimer=setTimeout(()=>close(),20000);};
- const navigate=delta=>{if(mode!=="tap"||list.length<2)return;currentIndex=(currentIndex+delta+list.length)%list.length;showCurrent();resetTimer();};
- const open=nextMode=>{
-  clearTimeout(hideTimer);mode=nextMode;currentIndex=activeIndex;showCurrent();
+ const animateViewerTransition=direction=>{
+  const token=++transitionSequence;
+  if(imageTransition){imageTransition.onfinish=null;imageTransition.cancel();imageTransition=null;}
+  const names=["fade","slide","blur","zoom"],choices=names.filter(name=>name!==lastTransition);
+  const name=choices[Math.floor(Math.random()*choices.length)]||"fade";lastTransition=name;
+  const play=()=>{
+   if(token!==transitionSequence||mode!=="tap"||reduceMotion()||typeof full.animate!=="function")return;
+   full.dataset.viewerTransition=name;
+   const frames={
+    fade:[{opacity:.12,filter:"brightness(.82)"},{opacity:1,filter:"brightness(1)"}],
+    slide:[{opacity:0,transform:"translateX("+(direction>0?"26px":"-26px")+") scale(.99)"},{opacity:1,transform:"translateX(0) scale(1)"}],
+    blur:[{opacity:.18,filter:"blur(11px)"},{opacity:1,filter:"blur(0)"}],
+    zoom:[{opacity:0,transform:"scale(.92)"},{opacity:1,transform:"scale(1)"}]
+   }[name];
+   imageTransition=full.animate(frames,{duration:480,easing:"cubic-bezier(.22,.8,.24,1)",fill:"both"});
+   imageTransition.onfinish=()=>{if(token===transitionSequence){imageTransition=null;full.style.removeProperty("opacity");full.style.removeProperty("filter");full.style.removeProperty("transform");}};
+  };
+  if(typeof full.decode==="function")full.decode().then(play,play);else play();
+ };
+ const navigate=delta=>{
+  if(mode!=="tap"||list.length<2)return;
+  currentIndex=(currentIndex+delta+list.length)%list.length;showCurrent();animateViewerTransition(delta);resetTimer();
+ };
+ const open=(nextMode,withMorph=false)=>{
+  clearTimeout(hideTimer);mode=nextMode;currentIndex=activeIndex;lastTransition="";showCurrent();
   overlay.classList.add("is-visible");overlay.classList.toggle("is-tap",nextMode==="tap");overlay.setAttribute("aria-hidden","false");
   if(nextMode==="tap"&&!historyEntry){try{history.pushState({...(history.state&&typeof history.state==="object"?history.state:{}),portraitViewer:true},"",location.href);historyEntry=true;}catch(_){}}
   if(nextMode==="tap")resetTimer();
+  if(nextMode==="tap"&&withMorph){
+   const morph=()=>{if(mode==="tap"&&overlay.classList.contains("is-visible"))roundMorph("open");};
+   if(typeof full.decode==="function")full.decode().then(morph,morph);else if(full.complete)morph();else full.addEventListener("load",morph,{once:true});
+  }
  };
  function close(fromPop=false){
   clearTimeout(hideTimer);hideTimer=0;const closingMode=mode,hadHistory=historyEntry;historyEntry=false;mode="";pointerStart=null;
   if(closingMode==="tap"&&lastPointerX!==null&&lastPointerY!==null){const rect=img.getBoundingClientRect();suppressHoverUntilLeave=lastPointerX>=rect.left&&lastPointerX<=rect.right&&lastPointerY>=rect.top&&lastPointerY<=rect.bottom;}
-  overlay.classList.remove("is-visible","is-tap");overlay.setAttribute("aria-hidden","true");
-  if(hadHistory&&!fromPop){try{history.back();}catch(_){}}
+  const finish=()=>{
+   clearMorph();overlay.classList.remove("is-visible","is-tap");overlay.setAttribute("aria-hidden","true");
+   if(hadHistory&&!fromPop){try{history.back();}catch(_){}}
+  };
+  if(closingMode==="tap"&&overlay.classList.contains("is-visible")&&!reduceMotion())roundMorph("close",finish);else finish();
  }
  img.addEventListener("mouseenter",()=>{if(suppressHoverUntilLeave)return;if(matchMedia("(hover: hover) and (pointer: fine)").matches&&mode!=="tap")open("hover")});
  img.addEventListener("mouseleave",()=>{if(mode==="hover")close();if(suppressHoverUntilLeave)suppressHoverUntilLeave=false;});
- img.addEventListener("click",event=>{event.preventDefault();open("tap")});
- img.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open("tap")}else if(event.key==="Escape")close()});
+ img.addEventListener("click",event=>{event.preventDefault();open("tap",true)});
+ img.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open("tap",true)}else if(event.key==="Escape")close()});
  previous.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();navigate(-1);});
  next.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();navigate(1);});
  frame.addEventListener("click",()=>{if(mode==="tap")resetTimer()});

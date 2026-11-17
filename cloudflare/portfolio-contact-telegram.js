@@ -2089,9 +2089,10 @@ async function miniAppHeroPrepare(env,userId,body){
   if(!env.GITHUB_TOKEN||!env.BOT_CONFIG_KV)throw new Error("Hero image storage is unavailable.");
   const mime=String(body?.mimeType||""),data=String(body?.base64||"");
   if(!["image/jpeg","image/png","image/webp"].includes(mime))throw new Error("Only JPEG, PNG and WebP images are supported.");
-  if(!data||data.length>Math.ceil(4*1024*1024*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 4 MB or smaller and valid base64.");
+  const maxHeroBytes=10*1024*1024;
+  if(!data||data.length>Math.ceil(maxHeroBytes*4/3)+16||!/^[A-Za-z0-9+/]+={0,2}$/.test(data))throw new Error("Image must be 10 MB or smaller and valid base64.");
   const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
-  if(bytes.length<16||bytes.length>4*1024*1024)throw new Error("Image must be between 16 bytes and 4 MB.");
+  if(bytes.length<16||bytes.length>maxHeroBytes)throw new Error("Image must be between 16 bytes and 10 MB.");
   const actual=bytes[0]===0xff&&bytes[1]===0xd8?"image/jpeg":bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?"image/png":String.fromCharCode(...bytes.slice(0,4))==="RIFF"&&String.fromCharCode(...bytes.slice(8,12))==="WEBP"?"image/webp":"";
   if(actual!==mime)throw new Error("Image file content does not match its declared format.");
   const clean=heroStripImageMetadata(bytes),verified=heroStripImageMetadata(clean.bytes);
