@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-17T00:11:52.914578+00:00",
-  "updatedAt": "2026-11-17T00:11:52.914578+00:00",
+  "generatedAt": "2026-11-17T00:32:00.690291+00:00",
+  "updatedAt": "2026-11-17T00:32:00.690291+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 41,
-  "healthySourceCount": 32,
-  "failedSourceCount": 9,
+  "healthySourceCount": 26,
+  "failedSourceCount": 15,
   "directHealthySourceCount": 7,
-  "fallbackHealthySourceCount": 25,
+  "fallbackHealthySourceCount": 19,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -73,12 +73,12 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
     },
     {
       "name": "Bangla Tribune",
@@ -113,21 +113,21 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 2
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
@@ -158,7 +158,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24
+      "fallbackItems": 23
     },
     {
       "name": "Risingbd",
@@ -183,32 +183,32 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0
-    },
-    {
-      "name": "Bangladesh Pratidin",
-      "domain": "bd-pratidin.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30
     },
     {
-      "name": "Daily Sun",
-      "domain": "daily-sun.com",
-      "status": "healthy",
+      "name": "Bangladesh Pratidin",
+      "domain": "bd-pratidin.com",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 3
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
+    },
+    {
+      "name": "Daily Sun",
+      "domain": "daily-sun.com",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Somoy News",
@@ -243,12 +243,12 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Inqilab",
@@ -283,42 +283,42 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30
+    },
+    {
+      "name": "Desh Rupantor",
+      "domain": "deshrupantor.com",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
       "fallbackStatus": "failed",
       "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
-      "name": "Desh Rupantor",
-      "domain": "deshrupantor.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
-    },
-    {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Manab Zamin",
@@ -333,22 +333,22 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0
     },
     {
       "name": "Daily Janakantha",
@@ -373,31 +373,31 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0
     },
     {
@@ -421,8 +421,40 @@
       "fallbackItems": 0
     }
   ],
-  "candidateCount": 10,
+  "candidateCount": 7,
   "alertItems": [
+    {
+      "title": "পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত",
+      "summary": "পটিয়ায় বাস ও মোটরসাইকেলের মুখোমুখি সংঘর্ষে মোহাম্মদ ফারেজ (২০) নামে এক যুবক নিহত হয়েছেন। এ ঘটনায় তার বন্ধু রামিম (২১) গুরুতর আহত হয়েছেন। গতকাল সোমবার সকাল সাড়ে ৯টার দিকে চট্টগ্রাম–কক্সবাজার মহাসড়কের পটিয়া উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। নিহত ফারেজ লোহাগাড়া উপজেলার আমিরাবাদ ইউনিয়নের ৭ নম্বর ওয়ার্ডের সাহেবী পাড়ার মোহাম্মদ জাহাঙ্গীর আলমের […] The post পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%ac%e0%a6%be%e0%a6%b8-%e0%a6%ac%e0%a6%be%e0%a6%87%e0%a6%95-%e0%a6%b8%e0%a6%82%e0%a6%98%e0%a6%b0%e0%a7%8d%e0%a6%b7%e0%a7%87-%e0%a6%aa/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%ac%e0%a6%be%e0%a6%b8-%e0%a6%ac%e0%a6%be%e0%a6%87%e0%a6%95-%e0%a6%b8%e0%a6%82%e0%a6%98%e0%a6%b0%e0%a7%8d%e0%a6%b7%e0%a7%87-%e0%a6%aa/",
+      "publishedAt": "2026-11-17T00:16:50+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%ac%e0%a6%be%e0%a6%b8-%e0%a6%ac%e0%a6%be%e0%a6%87%e0%a6%95-%e0%a6%b8%e0%a6%82%e0%a6%98%e0%a6%b0%e0%a7%8d%e0%a6%b7%e0%a7%87-%e0%a6%aa/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত",
+          "summary": "পটিয়ায় বাস ও মোটরসাইকেলের মুখোমুখি সংঘর্ষে মোহাম্মদ ফারেজ (২০) নামে এক যুবক নিহত হয়েছেন। এ ঘটনায় তার বন্ধু রামিম (২১) গুরুতর আহত হয়েছেন। গতকাল সোমবার সকাল সাড়ে ৯টার দিকে চট্টগ্রাম–কক্সবাজার মহাসড়কের পটিয়া উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। নিহত ফারেজ লোহাগাড়া উপজেলার আমিরাবাদ ইউনিয়নের ৭ নম্বর ওয়ার্ডের সাহেবী পাড়ার মোহাম্মদ জাহাঙ্গীর আলমের […] The post পটিয়ায় বাস-বাইক সংঘর্ষে প্রবাসী যুবক নিহত, বন্ধু আহত appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%ac%e0%a6%be%e0%a6%b8-%e0%a6%ac%e0%a6%be%e0%a6%87%e0%a6%95-%e0%a6%b8%e0%a6%82%e0%a6%98%e0%a6%b0%e0%a7%8d%e0%a6%b7%e0%a7%87-%e0%a6%aa/",
+          "locationText": "কক্সবাজার মহাসড়কের পটিয়া উপজেলার, চট্টগ্রাম, কক্সবাজার, কুসুমপুরা ইউনিয়নে, বোর্ড অফিস এলাকায়, নিহত ফারেজ লোহাগাড়া উপজেলার"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7bded69604c72a2435213ea3ca0c8642"
+    },
     {
       "title": "গাইবান্ধায় বিএনপি কার্যালয়ের সামনে দুটি ককটেল বিস্ফোরণ",
       "summary": "গাইবান্ধার সাদুল্লাপুর উপজেলার ধাপেরহাট ইউনিয়ন বিএনপি কার্যালয়ের পাশে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। সোমবার (১৬ নভেম্বর) সন্ধ্যা ৭টার দিকে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়দের মধ্যে আতঙ্ক ছড়িয়ে পড়ে...",
@@ -497,11 +529,44 @@
       "alertEventId": "22c46bb842304eb93b0b4ea7c59c0bbc"
     },
     {
-      "title": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-16T11:28:05+00:00",
+      "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
+      "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668115",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668115",
+      "publishedAt": "2026-11-16T11:46:07+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668115"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর - Jamuna Television",
+          "summary": "চট্টগ্রামে আগুনে পুড়ল জেলেপল্লীর ৩০ ঝুপড়িঘর Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668115",
+          "incidentDateText": "১৭ নভেম্বর ২০২৬",
+          "locationText": "আগেই আগুনে ঘাট এলাকায়"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "234f8cab241c362109922f80e5f4591e"
+    },
+    {
+      "title": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publishedAt": "2026-11-16T08:01:56+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -510,7 +575,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
         }
       ],
       "category": "Bangladesh",
@@ -519,172 +584,13 @@
       "sourceStories": [
         {
           "name": "Dhaka Tribune Bangla",
-          "title": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "বেনাপোলে স্বেচ্ছাসেবক দল নেতার বাড়ির সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113210/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%95-%E0%A6%A6%E0%A6%B2-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
+          "title": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "ঝিনাইদহের কালীগঞ্জ রেলস্টেশনে পর পর ৩ ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113192/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A7%A9-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "120574b1c265f7bae9fcae7b784b80c0"
-    },
-    {
-      "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-      "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-16T09:45:37+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-          "summary": "নারায়ণগঞ্জে গভীর রাতে বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113202/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fd4fbf349bff25fbd7d588370a02aea8"
-    },
-    {
-      "title": "রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’",
-      "summary": "চট্টগ্রাম নগরের বায়েজিদ বোস্তামী এলাকায় ২০ লাখ টাকা চাঁদা না পেয়ে এক ব্যবসায়ীর বাড়ি লক্ষ্য করে গুলি চালানোর অভিযোগ উঠেছে। গুলিবর্ষণের পর মুঠোফোনে ওই ব্যবসায়ীকে আবারও প্রাণনাশের হুমকি দেওয়া হয়েছে। তাঁকে বলা হয়েছে, ‘আজ বাড়িতে গুলি করেছি, কাল শরীরে গুলি করব।’ ভুক্তভোগী ব্যবসায়ী জাফর আহমেদের অভিযোগ, ‘রায়হান’ পরিচয়ে এক ব্যক্তি তাঁর কাছে ২০ লাখ টাকা […] The post রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’ appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/bayezid-businessman-house-firing-extortion-threat/",
-      "publisherUrl": "https://dainikazadi.net/bayezid-businessman-house-firing-extortion-threat/",
-      "publishedAt": "2026-11-16T07:15:01+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/bayezid-businessman-house-firing-extortion-threat/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’",
-          "summary": "চট্টগ্রাম নগরের বায়েজিদ বোস্তামী এলাকায় ২০ লাখ টাকা চাঁদা না পেয়ে এক ব্যবসায়ীর বাড়ি লক্ষ্য করে গুলি চালানোর অভিযোগ উঠেছে। গুলিবর্ষণের পর মুঠোফোনে ওই ব্যবসায়ীকে আবারও প্রাণনাশের হুমকি দেওয়া হয়েছে। তাঁকে বলা হয়েছে, ‘আজ বাড়িতে গুলি করেছি, কাল শরীরে গুলি করব।’ ভুক্তভোগী ব্যবসায়ী জাফর আহমেদের অভিযোগ, ‘রায়হান’ পরিচয়ে এক ব্যক্তি তাঁর কাছে ২০ লাখ টাকা […] The post রায়হান পরিচয়ে ফোন, বললেন ‘আজ বাড়িতে গুলি করেছি, কাল গায়ে গুলি করব’ appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/bayezid-businessman-house-firing-extortion-threat/",
-          "locationText": "নগরের বায়েজিদ বোস্তামী থানার, শহীদনগর কমিশনার বাড়িসংলগ্ন এলাকায়, ঘটনাস্থলে যায় বায়েজিদ থানা"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "743988b53cae8dbb368d7c8d8037cc49"
-    },
-    {
-      "title": "পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত",
-      "summary": "চট্টগ্রামের পটিয়ায় ঈগল পরিবহনের একটি বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে মো. ফারাজ (২১) নামের এক যুবক নিহত হয়েছেন। এ ঘটনায় মোটরসাইকেলের অপর আরোহী গুরুতর আহত হয়েছেন। নিহত ফারাজ লোহাগাড়া উপজেলার মোহাম্মদ জাহাঙ্গীরের ছেলে। তিনি সম্প্রতি প্রবাস থেকে দেশে ফিরেছিলেন। সোমবার সকাল ৯টার দিকে উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। প্রত্যক্ষদর্শী ও স্থানীয় […] The post পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/patiya-eagle-bus-motorcycle-collision-expatriate-youth-killed/",
-      "publisherUrl": "https://dainikazadi.net/patiya-eagle-bus-motorcycle-collision-expatriate-youth-killed/",
-      "publishedAt": "2026-11-16T06:07:39+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/patiya-eagle-bus-motorcycle-collision-expatriate-youth-killed/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত",
-          "summary": "চট্টগ্রামের পটিয়ায় ঈগল পরিবহনের একটি বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে মো. ফারাজ (২১) নামের এক যুবক নিহত হয়েছেন। এ ঘটনায় মোটরসাইকেলের অপর আরোহী গুরুতর আহত হয়েছেন। নিহত ফারাজ লোহাগাড়া উপজেলার মোহাম্মদ জাহাঙ্গীরের ছেলে। তিনি সম্প্রতি প্রবাস থেকে দেশে ফিরেছিলেন। সোমবার সকাল ৯টার দিকে উপজেলার কুসুমপুরা ইউনিয়নের বোর্ড অফিস এলাকায় এ দুর্ঘটনা ঘটে। প্রত্যক্ষদর্শী ও স্থানীয় […] The post পটিয়ায় বাস-মোটরসাইকেলের মুখোমুখি সংঘর্ষে প্রবাসফেরত যুবক নিহত appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/patiya-eagle-bus-motorcycle-collision-expatriate-youth-killed/",
-          "incidentTimeText": "সকাল ৯টার দিকে",
-          "incidentTimeSource": "Dainik Azadi",
-          "locationText": "নিহত ফারাজ লোহাগাড়া উপজেলার, কুসুমপুরা ইউনিয়নে, বোর্ড অফিস এলাকায়, দুজনের বাড়ি লোহাগাড়া উপজেলায়, পটিয়া হাইওয়ে থানার"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "58be80b350a3fc06663bd5255853dd1b"
-    },
-    {
-      "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-      "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-      "link": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publisherUrl": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF",
-      "publishedAt": "2026-11-16T04:43:51+00:00",
-      "source": "The Daily Ittefaq",
-      "publisherName": "The Daily Ittefaq",
-      "sourceEvidence": [
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "The Daily Ittefaq",
-          "title": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া - The Daily Ittefaq",
-          "summary": "গোপালগঞ্জের হামলার ঘটনা দেখে মনে হয় না, এটি বাংলাদেশের কোনো অংশ: গোলাম পরওয়া The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/821241/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87-%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%9F-%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2c63cb59e7f5dc165ce71aca16b8b3f8"
-    },
-    {
-      "title": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-      "summary": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113179/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113179/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publishedAt": "2026-11-16T04:29:02+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113179/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-          "summary": "খুলনায় নগর ভবনে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113179/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f6b07eb51b5a97a725e40e911313dc3b"
+      "alertEventId": "835fab5d99aad24282796b530ed9ac1f"
     },
     {
       "title": "খুলনা নগর ভবনে পেট্রোল বোমা নিক্ষেপ - Jamuna Television",
