@@ -832,22 +832,46 @@ async function activateBotKvWritePause(env,details={},now=Date.now()){
   BOT_KV_WRITE_PAUSE_CACHE.until=until;
   BOT_KV_WRITE_PAUSE_CACHE.checkedAt=now;
   const state={until,reason:"KV daily write budget",used:Number(details.used)||null,limit:Number(details.limit)||null,triggeredAt:new Date(now).toISOString()};
-  // Persist to Durable Object first: this remains available when the KV write
-  // quota has already been exhausted. KV is retained only as a secondary copy.
-  try{
-    if(!env.BOT_KV_PAUSE_STATE)throw new Error("BOT_KV_PAUSE_STATE binding is unavailable");
-    const id=env.BOT_KV_PAUSE_STATE.idFromName("global-bot-kv-write-pause");
-    await env.BOT_KV_PAUSE_STATE.get(id).setPauseState(state);
-  }catch(error){
-    console.error("Durable pause marker could not be persisted; all bot processing will fail closed",String(error&&error.message||error).slice(0,180));
+  // Persist to the shared Durable Object first and verify the stored value.
+  // A transient RPC/storage failure gets one retry before the KV backup is tried.
+  let durablePersisted=false,durableError=null;
+  for(let attempt=1;attempt<=2&&!durablePersisted;attempt++){
+    try{
+      if(!env.BOT_KV_PAUSE_STATE)throw new Error("BOT_KV_PAUSE_STATE binding is unavailable");
+      const id=env.BOT_KV_PAUSE_STATE.idFromName("global-bot-kv-write-pause");
+      const stub=env.BOT_KV_PAUSE_STATE.get(id);
+      const saved=await stub.setPauseState(state);
+      const verified=await stub.getPauseState(now);
+      if(!saved?.paused||!verified?.paused||Number(verified.until)!==until)throw new Error("Durable pause marker read-back verification failed");
+      durablePersisted=true;
+    }catch(error){
+      durableError=error;
+      if(attempt===1)console.warn("Durable pause marker write/read-back failed; retrying once",String(error&&error.message||error).slice(0,140));
+    }
   }
+  let kvBackupPersisted=false,kvBackupError=null;
   try{
-    if(env.BOT_CONFIG_KV)await env.BOT_CONFIG_KV.put(BOT_KV_WRITE_PAUSE_KEY,JSON.stringify(state),{expirationTtl:secondsUntilUtcReset(now)+60});
+    if(env.BOT_CONFIG_KV){
+      await env.BOT_CONFIG_KV.put(BOT_KV_WRITE_PAUSE_KEY,JSON.stringify(state),{expirationTtl:secondsUntilUtcReset(now)+60});
+      const backup=await env.BOT_CONFIG_KV.get(BOT_KV_WRITE_PAUSE_KEY,"json");
+      kvBackupPersisted=Number(backup?.until)===until;
+      if(!kvBackupPersisted)throw new Error("KV pause backup read-back verification failed");
+    }
   }catch(error){
-    console.warn("KV pause backup could not be persisted; Durable Object remains authoritative",String(error&&error.message||error).slice(0,160));
+    kvBackupError=error;
+  }
+  if(!durablePersisted&&!kvBackupPersisted){
+    // This isolate remains paused in memory. Other isolates can only be
+    // guaranteed to fail closed while the shared Durable Object read itself
+    // is unavailable; no distributed store can be guaranteed after every
+    // persistence backend has rejected both write and read-back.
+    console.error("CRITICAL: KV pause marker is not durable; this isolate remains paused, but cross-isolate persistence is unavailable",
+      JSON.stringify({durableError:String(durableError&&durableError.message||durableError||"unknown").slice(0,120),kvBackupError:String(kvBackupError&&kvBackupError.message||kvBackupError||"unavailable").slice(0,120)}));
+  }else{
+    console.warn("KV pause marker persisted",JSON.stringify({durablePersisted,kvBackupPersisted}));
   }
   console.warn("Telegram Bot scheduled and webhook processing paused until 00:00 UTC",JSON.stringify(state));
-  return state;
+  return {...state,durablePersisted,kvBackupPersisted};
 }
 const BOT_CONFIG_CACHE={expiresAt:0,value:null};
 async function botConfig(env){
