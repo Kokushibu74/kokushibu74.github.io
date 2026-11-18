@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T10:12:00.367647+00:00",
-  "updatedAt": "2026-11-18T10:12:00.367647+00:00",
+  "generatedAt": "2026-11-18T10:32:03.066495+00:00",
+  "updatedAt": "2026-11-18T10:32:03.066495+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Inqilab",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 64,
+  "candidateCount": 63,
   "alertItems": [
+    {
+      "title": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
+      "summary": "বাগেরহাটে জেলা বিএনপির সাবেক সাংগঠনিক সম্পাদক অধ্যাপক হাদিউজ্জামান হিরোর বাসভবনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+      "link": "https://www.jagonews24.com/country/news/1180946",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180946",
+      "publishedAt": "2026-11-18T10:25:13+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180946"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
+          "summary": "বাগেরহাটে জেলা বিএনপির সাবেক সাংগঠনিক সম্পাদক অধ্যাপক হাদিউজ্জামান হিরোর বাসভবনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+          "url": "https://www.jagonews24.com/country/news/1180946"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c6c750d6402337c421b7884c3b87f54a"
+    },
+    {
+      "title": "রংপুরে টার্মিনালের পাশে দাঁড়িয়ে থাকা বাসে আগুন",
+      "summary": "রংপুরে কোচিং সেন্টারের বাসে অগ্নিসংযোগের ঘটনার রেশ কাটতে না কাটতেই এবার কেন্দ্রীয় বাস টার্মিনালের পাশে দাঁড়িয়ে থাকা বাসে আগুনের ঘটনা ঘটেছে...",
+      "link": "https://www.jagonews24.com/country/news/1180943",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180943",
+      "publishedAt": "2026-11-18T10:22:32+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180943"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "রংপুরে টার্মিনালের পাশে দাঁড়িয়ে থাকা বাসে আগুন",
+          "summary": "রংপুরে কোচিং সেন্টারের বাসে অগ্নিসংযোগের ঘটনার রেশ কাটতে না কাটতেই এবার কেন্দ্রীয় বাস টার্মিনালের পাশে দাঁড়িয়ে থাকা বাসে আগুনের ঘটনা ঘটেছে...",
+          "url": "https://www.jagonews24.com/country/news/1180943"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2e6e836f20759b5abc667b9c32210820"
+    },
     {
       "title": "নবীগঞ্জে গ্রামীণ ব্যাংকের শাখায় আগুন",
       "summary": "হবিগঞ্জের নবীগঞ্জ উপজেলায় গ্রামীণ ব্যাংকের একটি শাখায় অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এ সময় ব্যাংকের ভেতরে একজন নিরাপত্তাকর্মী ঘুমিয়ে ছিলেন। তবে আগুনে ভেতরে কোনও ক্ষয়ক্ষতি হয়নি। পুড়ে গেছে শাখাটির সামনের ডিজিটাল সাইনবোর্ড। মঙ্গলবার (১৭ নভেম্বর) রাত ২টার দিকে উপজেলার কালিয়ারভাঙ্গা ইউনিয়নের ইমামবাড়ি এলাকায় গ্রামীণ ব্যাংকের শাখায় এ ঘটনা ঘটে। পুলিশ জানায়, রাত ২টার দিকে এক ব্যক্তি ব্যাংকের... বিস্তারিত",
@@ -905,20 +967,20 @@
       "alertEventId": "9d4fe0d95617d56d66d21923ea01dbb6"
     },
     {
-      "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire - United News of Bangladesh",
-      "summary": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB",
-      "publishedAt": "2026-11-18T10:06:09+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
+      "title": "টুঙ্গিপাড়ায় পুলিশ-বিজিবি-এমপির গাড়িসহ ৩০ যানবাহনে আগুন - Dhaka Tribune Bangla",
+      "summary": "টুঙ্গিপাড়ায় পুলিশ-বিজিবি-এমপির গাড়িসহ ৩০ যানবাহনে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113350/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A7%A9%E0%A7%A6",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113350/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A7%A9%E0%A7%A6",
+      "publishedAt": "2026-11-18T09:51:10+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "UNB"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113350/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A7%A9%E0%A7%A6"
         }
       ],
       "category": "Bangladesh",
@@ -926,14 +988,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "UNB",
-          "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire - United News of Bangladesh",
-          "summary": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB"
+          "name": "Dhaka Tribune Bangla",
+          "title": "টুঙ্গিপাড়ায় পুলিশ-বিজিবি-এমপির গাড়িসহ ৩০ যানবাহনে আগুন - Dhaka Tribune Bangla",
+          "summary": "টুঙ্গিপাড়ায় পুলিশ-বিজিবি-এমপির গাড়িসহ ৩০ যানবাহনে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113350/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A7%A9%E0%A7%A6"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "b756d61062306ea4e658143ae8a6d7d9"
+      "alertEventId": "d8ac50fdac868f92527f7be20e2df5e5"
     },
     {
       "title": "বাসাইলে গ্রামীণ ব্যাংকে দুর্বৃত্তদের আগুন",
@@ -1135,8 +1197,7 @@
       "publisherName": "Prothom Alo",
       "sourceEvidence": [
         "Prothom Alo",
-        "Bangla Tribune",
-        "Manab Zamin"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -1146,10 +1207,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
-        },
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/60989"
         }
       ],
       "category": "Bangladesh",
@@ -1175,16 +1232,9 @@
           "title": "গাজীপুরে শ্রমিক-পুলিশের ধাওয়া-পাল্টা ধাওয়া, পুলিশের গাড়িতে আগুন",
           "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে আবারও উত্তপ্ত হয়ে উঠেছে গাজীপুরের শিল্পাঞ্চল। বুধবার (১৮ নভেম্বর) সকালে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভ শুরু করেন পোশাকশ্রমিকরা। তাদের সরিয়ে দিতে গেলে পুলিশের সঙ্গে ধাওয়া-পাল্টা ধাওয়া হয়। একপর্যায়ে মালেকের বাড়ি এলাকায় সড়কের ওপর পুলিশের একটি পাজেরো গাড়িতে আগুন দেন শ্রমিকরা। বুধবার (১৮ নভেম্বর) সকাল সাড়ে ১০টার দিকে গাজীপুর মহানগরীর মালেকের বাড়ি ও... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
-        },
-        {
-          "name": "Manab Zamin",
-          "title": "গাজীপুরে পুলিশের গাড়িতে আগুন দিল পোশাকশ্রমিকেরা, যানবাহন ভাঙচুর - Manab Zamin",
-          "summary": "গাজীপুরে পুলিশের গাড়িতে আগুন দিল পোশাকশ্রমিকেরা, যানবাহন ভাঙচুর Manab Zamin",
-          "url": "https://www.mzamin.com/article/60989",
-          "incidentDateText": "১৮ নভেম্বর"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "0bf81756b7aa059feb159f868b01cfa1"
     },
     {
@@ -1385,37 +1435,6 @@
       "alertEventId": "85ab711fe7cbc484531baebc42313d75"
     },
     {
-      "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Dhaka Fire | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=mJGmVEGWQ-M",
-      "publisherUrl": "https://www.youtube.com/watch?v=mJGmVEGWQ-M",
-      "publishedAt": "2026-11-18T08:04:28+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=mJGmVEGWQ-M"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Dhaka Fire | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=mJGmVEGWQ-M"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2d98c7f7860cc62a362c8330256182cd"
-    },
-    {
       "title": "কুমিল্লায় সাবেক সংসদ সদস্য বাহারের ব্যক্তিগত অফিসে অগ্নিসংযোগ - Dhaka Tribune Bangla",
       "summary": "কুমিল্লায় সাবেক সংসদ সদস্য বাহারের ব্যক্তিগত অফিসে অগ্নিসংযোগ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113337/%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A6%A4-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87",
@@ -1487,6 +1506,37 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "3aca0fbf1e5449e401ed8fead68c4e50"
+    },
+    {
+      "title": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর - Channel 24",
+      "summary": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর Channel 24",
+      "link": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0",
+      "publisherUrl": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0",
+      "publishedAt": "2026-11-18T07:45:00+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24",
+          "url": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর - Channel 24",
+          "summary": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর Channel 24",
+          "url": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bb6d8a70f4965eb19aa52798d3dad5a5"
     },
     {
       "title": "নারায়ণগঞ্জে গভীর রাতে পার্কিং করা ২ বাসে আগুন",
@@ -1823,37 +1873,6 @@
       "alertEventId": "74969a8a419d9c53f3acbec768cc932e"
     },
     {
-      "title": "গাজীপুরে শ্রমিক বিক্ষোভ: পুলিশের গাড়িতে অগ্নিসংযোগ - Banglanews24",
-      "summary": "গাজীপুরে শ্রমিক বিক্ষোভ: পুলিশের গাড়িতে অগ্নিসংযোগ Banglanews24",
-      "link": "https://www.banglanews24.com/saradesh/news/bd/1694211.details",
-      "publisherUrl": "https://www.banglanews24.com/saradesh/news/bd/1694211.details",
-      "publishedAt": "2026-11-18T06:12:32+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1694211.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "গাজীপুরে শ্রমিক বিক্ষোভ: পুলিশের গাড়িতে অগ্নিসংযোগ - Banglanews24",
-          "summary": "গাজীপুরে শ্রমিক বিক্ষোভ: পুলিশের গাড়িতে অগ্নিসংযোগ Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1694211.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1e740000786da54a3ee78697dfafbd68"
-    },
-    {
       "title": "টুঙ্গিপাড়া থানা থেকে এখনও উড়ছে ধোঁয়া, সড়কে গাছের গুঁড়ি-পোড়া গাড়ি",
       "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা, ভাঙচুর ও অগ্নিসংযোগের পর সেখানকার পরিস্থিতি এখনো স্বাভাবিক হয়নি। থানার ভেতরে ছড়িয়ে-ছিটিয়ে রয়েছে পুড়ে যাওয়া গাড়ি, আসবাব ও বিভিন্ন সরঞ্জামের ধ্বংসাবশেষ। অন্যদিকে, থানা থেকে টুঙ্গিপাড়া যাওয়ার পথে বিভিন্ন স্থানে গাছের গুঁড়ি ফেলে এবং পোড়া গাড়ির ধ্বংসাবশেষ রেখে যান চলাচলে বাধা সৃষ্টি করা হয়েছে। বুধবার (১৮ নভেম্বর) সকাল আটটার দিকে সরেজমিনে দেখা যায়, গোপালগঞ্জ জেলা... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/981674/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%96%E0%A6%A8%E0%A6%93-%E0%A6%89%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A7%E0%A7%8B%E0%A6%81%E0%A7%9F%E0%A6%BE-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A6%9B%E0%A7%87%E0%A6%B0",
@@ -1978,37 +1997,6 @@
       "alertEventId": "a85e1a60cb02554d74e8dd8eff483ffe"
     },
     {
-      "title": "টুঙ্গিপাড়া থানা চত্বরে পোড়া গাড়ি, বের হচ্ছিল ধোঁয়া",
-      "summary": "টুঙ্গিপাড়া থানায় হামলা, ভাঙচুর ও অগ্নিসংযোগের পর গোপালগঞ্জে নিরাপত্তা জোরদার করা হয়েছে। জেলায় ২১ প্লাটুন বিজিবি মোতায়েন।",
-      "link": "https://www.prothomalo.com/bangladesh/district/8cp9f4416w",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/8cp9f4416w",
-      "publishedAt": "2026-11-18T05:31:49+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/8cp9f4416w"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "টুঙ্গিপাড়া থানা চত্বরে পোড়া গাড়ি, বের হচ্ছিল ধোঁয়া",
-          "summary": "টুঙ্গিপাড়া থানায় হামলা, ভাঙচুর ও অগ্নিসংযোগের পর গোপালগঞ্জে নিরাপত্তা জোরদার করা হয়েছে। জেলায় ২১ প্লাটুন বিজিবি মোতায়েন।",
-          "url": "https://www.prothomalo.com/bangladesh/district/8cp9f4416w"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f921a48de2b39af76427deb6691cabf8"
-    },
-    {
       "title": "পিরোজপুরে ভোরে দুই বাসে আগুন, ভেতর থেকে চালকের সহকারীর লাশ উদ্ধার",
       "summary": "পিরোজপুরের ভান্ডারিয়া উপজেলায় দুটি বাসে অগ্নিসংযোগের ঘটনা ঘটেছে। এ সময় একটি বাসের ভেতরে ঘুমিয়ে থাকা চালকের এক সহকারী (হেলপার) দগ্ধ হয়ে মারা গেছেন।",
       "link": "https://www.prothomalo.com/bangladesh/district/76sjbnbhf1",
@@ -2080,6 +2068,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ce3a830d2e1ba19cb20d1a91584764a2"
+    },
+    {
+      "title": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671645",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671645",
+      "publishedAt": "2026-11-18T04:54:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671645"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671645"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "49b2e10ba25a98984cdbda2ead995af1"
     },
     {
       "title": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে গভীর রাতে পেট্রোল বোমা হামলা - Dhaka Tribune Bangla",
@@ -2390,37 +2409,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "67d51387daa9b55e58f60431b46df39c"
-    },
-    {
-      "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-      "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publishedAt": "2026-11-17T18:19:01+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-          "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a5c11de1260ea82d4448a8138cf18850"
     },
     {
       "title": "রাজশাহী বিশ্ববিদ্যালয়ের প্রধান ফটকে ককটেল বিস্ফোরণ - The Daily Ittefaq",
