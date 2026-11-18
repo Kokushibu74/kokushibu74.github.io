@@ -84,6 +84,8 @@ jobs:
         run: node tests/visitor-location.test.mjs
       - name: Run Worker location endpoint runtime tests
         run: node --test tests/visitor-location-runtime.test.mjs
+      - name: Run Durable Object KV pause persistence tests
+        run: node --test tests/bot-kv-pause-state.test.mjs
       - name: Verify Telegram Mini App authentication and frontend contracts
         run: node tests/miniapp-auth.test.mjs
       - name: Verify Hero Gallery metadata privacy and viewer contracts
