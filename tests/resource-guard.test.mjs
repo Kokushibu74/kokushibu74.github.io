@@ -47,4 +47,5 @@ test("Worker gates Telegram webhook and scheduled automation while preserving ot
   assert.match(worker,/Temporarily paused for the daily KV reset/);
   assert.match(worker,/async scheduled\(controller,env,ctx\)/);
   assert.match(worker,/Scheduled Telegram Bot\/automation work paused until UTC daily reset/);
+  assert.match(worker,/if\(isKvWriteLimitError\(e\)\)await activateBotKvWritePause/);
 });
