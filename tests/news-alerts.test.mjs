@@ -681,3 +681,11 @@ test("Worker restores a prior Main News snapshot before evaluating a later updat
   assert.ok(restore>=0&&check>restore&&call>check&&assessment>call);
   assert.match(source,/rootSnapshotKey:previous\?\.rootSnapshotKey/);
 });
+
+test("TV YouTube video link is rendered alongside the existing alert source links",()=>{
+  const video="https://www.youtube.com/watch?v=video123";
+  const x=item({sourceEvidence:["Jamuna TV"],sourceLinks:[{name:"Jamuna TV · YouTube",url:video}]});
+  const message=formatAlertMessage(x,evaluateNewsAlert(x,{now}),{key:"tv-youtube"});
+  assert.match(message,/Jamuna TV · YouTube/);
+  assert.match(message,/youtube\.com\/watch\?v=video123/);
+});
