@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T01:32:03.211840+00:00",
-  "updatedAt": "2026-11-18T01:32:03.211840+00:00",
+  "generatedAt": "2026-11-18T01:51:48.063460+00:00",
+  "updatedAt": "2026-11-18T01:51:48.063460+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 47,
-  "healthySourceCount": 47,
-  "failedSourceCount": 0,
+  "healthySourceCount": 46,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 13,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -720,7 +720,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 32,
   "alertItems": [
     {
       "title": "টুঙ্গিপাড়ায় থানা-জিলানীর বাড়িতে হামলা, ঢাকায় স্বেচ্ছাসেবক দলের বিক্ষোভ",
@@ -981,39 +981,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "67d51387daa9b55e58f60431b46df39c"
-    },
-    {
-      "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-      "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publishedAt": "2026-11-17T18:19:01+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-          "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-          "incidentDateText": "১৭ নভেম্বর ২০২৬",
-          "locationText": "তাদের সমর্থকেরা টুঙ্গিপাড়ায় থানায়, ওইখানে গিয়ে কেবল থানায়, যারা থানায়"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a5c11de1260ea82d4448a8138cf18850"
     },
     {
       "title": "যৌথবাহিনীর অভিযানের মধ্যেই খুলনায় ব্যবসায়ীসহ দুজনকে গুলি, হাসপাতালে ভর্তি",
@@ -1541,37 +1508,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
-    },
-    {
-      "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
-      "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
-      "link": "https://www.dhakapost.com/international/498693",
-      "publisherUrl": "https://www.dhakapost.com/international/498693",
-      "publishedAt": "2026-11-17T13:21:52+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/498693"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
-          "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
-          "url": "https://www.dhakapost.com/international/498693"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3c5cbdb27aa5fbdd1efc08544b6117cc"
     },
     {
       "title": "চৌদ্দগ্রামে কাভার্ডভ্যানের ধাক্কায় সিএনজি চালক সহ নিহত ২ আহত ১",
