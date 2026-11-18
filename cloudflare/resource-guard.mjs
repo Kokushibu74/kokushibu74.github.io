@@ -18,5 +18,5 @@ export function shouldPauseBotForKvWrites(used, limit, threshold = 85) {
 
 export function isKvWriteLimitError(error) {
   const message = String(error?.message || error || "");
-  return /(?:KV|Workers KV).*(?:put|write).*(?:limit exceeded|exceeded.*limit)|put\\(\\) limit exceeded|daily (?:KV )?write limit/i.test(message);
+  return /(?:KV|Workers KV).*(?:put|write).*(?:limit exceeded|exceeded.*limit)|put\(\) limit exceeded|daily (?:KV )?write limit/i.test(message);
 }
