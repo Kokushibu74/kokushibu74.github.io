@@ -64,6 +64,23 @@ class AlertCollectorTests(unittest.TestCase):
         rows = collector.parse_feed(xml)
         self.assertEqual(rows[0]["link"], "https://example.com/fire")
 
+    def test_youtube_atom_feed_creates_tv_candidate_with_original_video_link(self):
+        published = self.now - timedelta(minutes=4)
+        source = {
+            "name": "Jamuna TV YouTube", "domain": "youtube.com", "status": "healthy",
+            "items": [{
+                "title": "ঢাকায় ভয়াবহ বাস দুর্ঘটনা | Jamuna TV",
+                "summary": "বাংলাদেশে দুর্ঘটনার খবর",
+                "link": "https://www.youtube.com/watch?v=video123",
+                "published": published,
+            }],
+        }
+        rows = collector.collect_candidates([source], self.now)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["sourceEvidence"], ["Jamuna TV"])
+        self.assertEqual(rows[0]["sourceLinks"], [{"name": "Jamuna TV · YouTube", "url": "https://www.youtube.com/watch?v=video123"}])
+        self.assertEqual(rows[0]["link"], "https://www.youtube.com/watch?v=video123")
+
     def test_google_news_query_is_scoped_to_one_publisher_and_bangladesh(self):
         url = collector.google_news_query_url("bdnews24.com")
         self.assertIn("news.google.com/rss/search?", url)
