@@ -1,0 +1,116 @@
+name: Refresh Telegram news alert feed
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-news-alerts.yml"
+      - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "cloudflare/news-watchdog.mjs"
+      - "cloudflare/resource-guard.mjs"
+      - "scripts/update_news_alerts.py"
+      - "tests/news-watchdog.test.mjs"
+      - "tests/news-alerts.test.mjs"
+      - "tests/resource-guard.test.mjs"
+      - "tests/test_news_alerts.py"
+      - "tests/test_news_alert_collector.py"
+      - "scripts/validate_news_alert_sources.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-news-alerts.yml"
+      - "cloudflare/portfolio-contact-telegram.js"
+      - "cloudflare/news-alerts.mjs"
+      - "cloudflare/news-watchdog.mjs"
+      - "cloudflare/resource-guard.mjs"
+      - "scripts/update_news_alerts.py"
+      - "tests/news-watchdog.test.mjs"
+      - "tests/news-alerts.test.mjs"
+      - "tests/resource-guard.test.mjs"
+      - "tests/test_news_alerts.py"
+      - "tests/test_news_alert_collector.py"
+      - "scripts/validate_news_alert_sources.py"
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram-news-alert-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh-alerts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || 'main' }}
+      - name: Check Worker and alert module syntax
+        run: |
+          node --check cloudflare/portfolio-contact-telegram.js
+          node --check cloudflare/news-watchdog.mjs
+          node --check cloudflare/news-alerts.mjs
+          node --check cloudflare/resource-guard.mjs
+      - name: Run GitHub watchdog dispatch tests
+        run: node --test tests/news-watchdog.test.mjs
+      - name: Run resource limit guard tests
+        run: node --test tests/resource-guard.test.mjs
+      - name: Run Bangladesh alert safeguards
+        run: python3 tests/test_news_alerts.py -v
+      - name: Run Telegram alert module tests
+        run: node --test tests/news-alerts.test.mjs
+      - name: Test Bangladesh alert RSS collector
+        run: python3 tests/test_news_alert_collector.py -v
+      - name: Validate newly added regional RSS endpoints
+        if: ${{ github.event_name == 'pull_request' }}
+        run: python3 scripts/validate_news_alert_sources.py
+      - name: Read Telegram alert toggle without blocking the public News Page
+        if: ${{ github.event_name != 'pull_request' }}
+        id: bot_config
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! curl --fail --silent --show-error --retry 1 --max-time 15 https://portfolio-contact-telegram.mdshihab74.workers.dev/workflow-config -o /tmp/bot-config.json; then
+            echo "alerts_enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Worker unavailable; Telegram alert feed refresh skipped. Public News Page has its own workflow."
+            exit 0
+          fi
+          enabled="$(node -e "const c=require('/tmp/bot-config.json'); process.stdout.write(c.newsAlerts===true?'true':'false')")"
+          echo "alerts_enabled=$enabled" >> "$GITHUB_OUTPUT"
+      - name: Generate Telegram-only Bangladesh alert feed
+        if: ${{ github.event_name != 'pull_request' && steps.bot_config.outputs.alerts_enabled == 'true' }}
+        run: python3 scripts/update_news_alerts.py
+      - name: Commit Telegram alert feed when changed
+        if: ${{ github.event_name != 'pull_request' && steps.bot_config.outputs.alerts_enabled == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news-alert-feed.json
+          if git diff --cached --quiet; then
+            echo "Telegram alert feed unchanged."
+          else
+            git commit -m "chore: refresh Telegram alert feed"
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then
+                echo "Telegram alert feed commit pushed successfully (attempt $attempt)."
+                exit 0
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "ERROR: alert feed push rejected after 3 safe attempts."
+                exit 1
+              fi
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "ERROR: rebase conflict while retrying alert feed push."
+                exit 1
+              fi
+              sleep 2
+            done
+          fi
