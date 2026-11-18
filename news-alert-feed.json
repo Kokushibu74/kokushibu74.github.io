@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T07:47:48.053310+00:00",
-  "updatedAt": "2026-11-18T07:47:48.053310+00:00",
+  "generatedAt": "2026-11-18T08:07:04.076574+00:00",
+  "updatedAt": "2026-11-18T08:07:04.076574+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 12,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -257,17 +257,17 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Post",
@@ -840,8 +840,168 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 72,
+  "candidateCount": 70,
   "alertItems": [
+    {
+      "title": "গাজীপুরে শ্রমিক-পুলিশ সং ঘ র্ষ, পুলিশের গাড়িতে আগুন | Gazipur Strike | Independent TV",
+      "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে আবারও উত্তপ্ত হয়ে উঠেছে গাজীপুরের শিল্পাঞ্চল। বুধবার (১৮ নভেম্বর) সকালে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভ শুরু করেন পোশাকশ্রমিকরা। তাদের সরিয়ে দিতে গেলে পুলিশের সঙ্গে ধাওয়া-পাল্টা ধাওয়া হয়। একপর্যায়ে মালেকের বাড়ি এলাকায় সড়কের ওপর পুলিশের একটি পাজেরো গাড়িতে আগুন দেন শ্রমিকরা। বুধবার (১৮ নভেম্বর) সকাল সাড়ে ১০টার দিকে গাজীপুর মহানগরীর মালেকের বাড়ি ও... বিস্তারিত",
+      "link": "https://www.youtube.com/watch?v=fH8BS2yw-z4",
+      "publisherUrl": "https://www.youtube.com/watch?v=fH8BS2yw-z4",
+      "publishedAt": "2026-11-18T07:56:04+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television",
+        "Prothom Alo",
+        "Jamuna TV",
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=fH8BS2yw-z4"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns"
+        },
+        {
+          "name": "Jamuna TV ·",
+          "url": "https://www.youtube.com/watch?v=2xhN999JKf8"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180800"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "গাজীপুরে শ্রমিক-পুলিশ সং ঘ র্ষ, পুলিশের গাড়িতে আগুন | Gazipur Strike | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=fH8BS2yw-z4"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ; পুলিশের গাড়িতে আগুন",
+          "summary": "",
+          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns",
+          "incidentDateText": "১৮ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Jamuna TV",
+          "title": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন | gazipur | News | JamunaTV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=2xhN999JKf8"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "গাজীপুরে শ্রমিক-পুলিশের ধাওয়া-পাল্টা ধাওয়া, পুলিশের গাড়িতে আগুন",
+          "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে আবারও উত্তপ্ত হয়ে উঠেছে গাজীপুরের শিল্পাঞ্চল। বুধবার (১৮ নভেম্বর) সকালে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভ শুরু করেন পোশাকশ্রমিকরা। তাদের সরিয়ে দিতে গেলে পুলিশের সঙ্গে ধাওয়া-পাল্টা ধাওয়া হয়। একপর্যায়ে মালেকের বাড়ি এলাকায় সড়কের ওপর পুলিশের একটি পাজেরো গাড়িতে আগুন দেন শ্রমিকরা। বুধবার (১৮ নভেম্বর) সকাল সাড়ে ১০টার দিকে গাজীপুর মহানগরীর মালেকের বাড়ি ও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন",
+          "summary": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন",
+          "url": "https://www.jagonews24.com/country/news/1180800"
+        }
+      ],
+      "corroborationCount": 5,
+      "alertEventId": "edb45c0a0a1a18bc3dad1b7730c67e99"
+    },
+    {
+      "title": "বাঁশখালীতে বিএনপি নেতা ও সাবেক চেয়ারম্যানের বাড়ির দরজায় আগুন",
+      "summary": "চট্টগ্রামের বাঁশখালীতে কালীপুর ইউনিয়ন পরিষদের সাবেক চেয়ারম্যান ও চট্টগ্রাম দক্ষিণ জেলা বিএনপির জ্যেষ্ঠ সদস্য আমিনুর রহমানের বাড়ির প্রধান দরজায় পেট্রোল ঢেলে আগুন দেওয়ার অভিযোগ উঠেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টা ১০ মিনিটের দিকে এ ঘটনা ঘটে। তবে আগুন ঘরের ভেতরে ছড়িয়ে পড়ার আগেই তা নিয়ন্ত্রণে আসে। আমিনুর রহমান জানান, রাতের কোনো একসময় দুই থেকে […] The post বাঁশখালীতে বিএনপি নেতা ও সাবেক চেয়ারম্যানের বাড়ির দরজায় আগুন appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/arson-allegation-at-former-chairmans-house-in-banshkhali/",
+      "publisherUrl": "https://dainikazadi.net/arson-allegation-at-former-chairmans-house-in-banshkhali/",
+      "publishedAt": "2026-11-18T07:55:19+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi",
+        "Chattogram News",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/arson-allegation-at-former-chairmans-house-in-banshkhali/"
+        },
+        {
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161096"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1180799"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "বাঁশখালীতে বিএনপি নেতা ও সাবেক চেয়ারম্যানের বাড়ির দরজায় আগুন",
+          "summary": "চট্টগ্রামের বাঁশখালীতে কালীপুর ইউনিয়ন পরিষদের সাবেক চেয়ারম্যান ও চট্টগ্রাম দক্ষিণ জেলা বিএনপির জ্যেষ্ঠ সদস্য আমিনুর রহমানের বাড়ির প্রধান দরজায় পেট্রোল ঢেলে আগুন দেওয়ার অভিযোগ উঠেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টা ১০ মিনিটের দিকে এ ঘটনা ঘটে। তবে আগুন ঘরের ভেতরে ছড়িয়ে পড়ার আগেই তা নিয়ন্ত্রণে আসে। আমিনুর রহমান জানান, রাতের কোনো একসময় দুই থেকে […] The post বাঁশখালীতে বিএনপি নেতা ও সাবেক চেয়ারম্যানের বাড়ির দরজায় আগুন appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/arson-allegation-at-former-chairmans-house-in-banshkhali/"
+        },
+        {
+          "name": "Chattogram News",
+          "title": "সাতকানিয়ায় গ্রামীণ ব্যাংকের ভবনের প্রধান ফটকে রাতের আঁধারে আগুন দিল দুর্বৃত্তরা",
+          "summary": "চট্টগ্রামের সাতকানিয়ায় গ্রামীণ ব্যাংকের এরিয়া অফিস ও ঢেমশা সাতকানিয়া শাখার ভবনের প্রধান ফটকে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে ভবনের বৈদ্যুতিক লাইন ক্ষতিগ্রস্ত হয়েছে। তবে কোনো ধরনের হতাহতের ঘটনা ঘটেনি বলে জানা গেছে। বুধবার (১৮ নভেম্বর) রাত আনুমানিক ২টার দিকে সাতকানিয়া পৌরসভায় অবস্থিত উপজেলা নির্বাহী কর্মকর্তা ও এসি ল্যাণ্ডের বাস ভবনের পাশে এ ঘটনা ঘটে। জানা গেছে, […] The post সাতকানিয়ায় গ্রামীণ ব্যাংকের ভবনের প্রধান ফটকে রাতের আঁধারে আগুন দিল দুর্বৃত্তরা appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161096"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চট্টগ্রামে মধ্যরাতে পুলিশ বক্সে আগুন",
+          "summary": "চট্টগ্রামে মধ্যরাতে পুলিশ বক্সে আগুন",
+          "url": "https://www.jagonews24.com/national/news/1180799"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "3aca0fbf1e5449e401ed8fead68c4e50"
+    },
+    {
+      "title": "বিএনপি কার্যালয়ে ককটেল বিস্ফোরণ",
+      "summary": "নাটোরের গুরুদাসপুরে চাপিলা ইউনিয়ন বিএনপির প্রধান কার্যালয়ে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) দিবাগত রাত আড়াইটার...",
+      "link": "https://www.jagonews24.com/country/news/1180845",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180845",
+      "publishedAt": "2026-11-18T07:52:29+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180845"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বিএনপি কার্যালয়ে ককটেল বিস্ফোরণ",
+          "summary": "নাটোরের গুরুদাসপুরে চাপিলা ইউনিয়ন বিএনপির প্রধান কার্যালয়ে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) দিবাগত রাত আড়াইটার...",
+          "url": "https://www.jagonews24.com/country/news/1180845"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "463780cef747c4b773420cdc2fa3dd87"
+    },
     {
       "title": "নারায়ণগঞ্জে গভীর রাতে পার্কিং করা ২ বাসে আগুন",
       "summary": "নারায়ণগঞ্জের রূপগঞ্জে গভীর রাতে পার্কিং করা দুটি বাসে আগুন দেয় দুর্বৃত্তরা। এতে মেঘলা পরিবহনের যাত্রীবাহী বাস দুটি পুড়ে ছাই হয়ে গেছে...",
@@ -894,22 +1054,12 @@
       "publisherName": "Dainik Azadi",
       "sourceEvidence": [
         "Dainik Azadi",
-        "Chattogram News",
-        "Jago News 24",
         "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Dainik Azadi",
           "url": "https://dainikazadi.net/satkania-grameen-bank-arson-chattogram-bangladesh-police/"
-        },
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161096"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1180799"
         },
         {
           "name": "Bangla Tribune",
@@ -928,25 +1078,13 @@
           "locationText": "সাতকানিয়া থানার"
         },
         {
-          "name": "Chattogram News",
-          "title": "সাতকানিয়ায় গ্রামীণ ব্যাংকের ভবনের প্রধান ফটকে রাতের আঁধারে আগুন দিল দুর্বৃত্তরা",
-          "summary": "চট্টগ্রামের সাতকানিয়ায় গ্রামীণ ব্যাংকের এরিয়া অফিস ও ঢেমশা সাতকানিয়া শাখার ভবনের প্রধান ফটকে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে ভবনের বৈদ্যুতিক লাইন ক্ষতিগ্রস্ত হয়েছে। তবে কোনো ধরনের হতাহতের ঘটনা ঘটেনি বলে জানা গেছে। বুধবার (১৮ নভেম্বর) রাত আনুমানিক ২টার দিকে সাতকানিয়া পৌরসভায় অবস্থিত উপজেলা নির্বাহী কর্মকর্তা ও এসি ল্যাণ্ডের বাস ভবনের পাশে এ ঘটনা ঘটে। জানা গেছে, […] The post সাতকানিয়ায় গ্রামীণ ব্যাংকের ভবনের প্রধান ফটকে রাতের আঁধারে আগুন দিল দুর্বৃত্তরা appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161096"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "চট্টগ্রামে মধ্যরাতে পুলিশ বক্সে আগুন",
-          "summary": "চট্টগ্রামে মধ্যরাতে পুলিশ বক্সে আগুন",
-          "url": "https://www.jagonews24.com/national/news/1180799"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "ঢাকা-চট্টগ্রাম মহাসড়কে পার্কিং করা বাসে আগুন",
           "summary": "নারায়ণগঞ্জের সিদ্ধিরগঞ্জে ঢাকা-চট্টগ্রাম মহাসড়কের পাশে পার্ক করে রাখা একটি স্টাফ বাসে আগুন দিয়েছে দুর্বৃত্তরা। মোটরসাইকেলে এসে দুই ব্যক্তি বাসটিতে আগুন ধরিয়ে দ্রুত পালিয়ে যায় বলে জানিয়েছে পুলিশ। আগুনে বাসটির বেশ কিছু অংশ পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হয়নি। বুধবার (১৮ নভেম্বর) রাত সাড়ে ৩টার দিকে সিদ্ধিরগঞ্জের ৩ নম্বর ওয়ার্ডের সানারপাড় এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়,... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/981662/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 4,
+      "corroborationCount": 2,
       "alertEventId": "5560869b9efab7a5378808fc33d782e6"
     },
     {
@@ -979,8 +1117,7 @@
           "name": "Prothom Alo",
           "title": "কুমিল্লায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগ কার্যালয় ও সাবেক এমপি বাহারের বাড়িতে আগুন",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/pjt0so3jr4",
-          "incidentDateText": "১৮ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/pjt0so3jr4"
         },
         {
           "name": "Jago News 24",
@@ -1070,76 +1207,11 @@
           "name": "UNB",
           "title": "মহাখালীর সাততলা বস্তিতে আ/গু/ন, নিয়ন্ত্রণে ফায়ার সার্ভিসের ৭ ইউনিট | Sattola Slum | Fire - United News of Bangladesh",
           "summary": "মহাখালীর সাততলা বস্তিতে আ/গু/ন, নিয়ন্ত্রণে ফায়ার সার্ভিসের ৭ ইউনিট | Sattola Slum | Fire United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9977/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AD-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Sattola-Slum---Fire---UNB",
-          "locationText": "গোপালগঞ্জের টুঙ্গিপাড়া থানায়, Cumilla, Dhaka, গোপালগঞ্জ"
+          "url": "https://unb.com.bd/video/9977/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AD-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Sattola-Slum---Fire---UNB"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "47fbe8af0fa3a26333da06f6ed561338"
-    },
-    {
-      "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ; পুলিশের গাড়িতে আগুন",
-      "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে আবারও উত্তপ্ত হয়ে উঠেছে গাজীপুরের শিল্পাঞ্চল। বুধবার (১৮ নভেম্বর) সকালে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভ শুরু করেন পোশাকশ্রমিকরা। তাদের সরিয়ে দিতে গেলে পুলিশের সঙ্গে ধাওয়া-পাল্টা ধাওয়া হয়। একপর্যায়ে মালেকের বাড়ি এলাকায় সড়কের ওপর পুলিশের একটি পাজেরো গাড়িতে আগুন দেন শ্রমিকরা। বুধবার (১৮ নভেম্বর) সকাল সাড়ে ১০টার দিকে গাজীপুর মহানগরীর মালেকের বাড়ি ও... বিস্তারিত",
-      "link": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns",
-      "publisherUrl": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns",
-      "publishedAt": "2026-11-18T07:06:34+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Jamuna TV",
-        "Bangla Tribune",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns"
-        },
-        {
-          "name": "Jamuna TV ·",
-          "url": "https://www.youtube.com/watch?v=2xhN999JKf8"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180800"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ; পুলিশের গাড়িতে আগুন",
-          "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns"
-        },
-        {
-          "name": "Jamuna TV",
-          "title": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন | gazipur | News | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=2xhN999JKf8"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "গাজীপুরে শ্রমিক-পুলিশের ধাওয়া-পাল্টা ধাওয়া, পুলিশের গাড়িতে আগুন",
-          "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে আবারও উত্তপ্ত হয়ে উঠেছে গাজীপুরের শিল্পাঞ্চল। বুধবার (১৮ নভেম্বর) সকালে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভ শুরু করেন পোশাকশ্রমিকরা। তাদের সরিয়ে দিতে গেলে পুলিশের সঙ্গে ধাওয়া-পাল্টা ধাওয়া হয়। একপর্যায়ে মালেকের বাড়ি এলাকায় সড়কের ওপর পুলিশের একটি পাজেরো গাড়িতে আগুন দেন শ্রমিকরা। বুধবার (১৮ নভেম্বর) সকাল সাড়ে ১০টার দিকে গাজীপুর মহানগরীর মালেকের বাড়ি ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981678/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন",
-          "summary": "গাজীপুরে উপ-পুলিশ কমিশনারের গাড়িতে শ্রমিকদের আগুন",
-          "url": "https://www.jagonews24.com/country/news/1180800"
-        }
-      ],
-      "corroborationCount": 4,
-      "alertEventId": "0bf81756b7aa059feb159f868b01cfa1"
     },
     {
       "title": "গাছবোঝাই ট্রাক উল্টে ঢাকা-চট্টগ্রাম মহাসড়কে ৮ কিলোমিটার যানজট",
@@ -1244,37 +1316,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9b283a4748aaa72d446b1d8357b1503a"
-    },
-    {
-      "title": "গাংনীতে ‘জয় বাংলা’ লেখা বোমা সদৃশ বস্তু উদ্ধার | Meherpur Cocktail | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=mStUyWI-XfE",
-      "publisherUrl": "https://www.youtube.com/watch?v=mStUyWI-XfE",
-      "publishedAt": "2026-11-18T06:33:12+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
-      "sourceEvidence": [
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Independent Television · YouTube",
-          "url": "https://www.youtube.com/watch?v=mStUyWI-XfE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Independent Television",
-          "title": "গাংনীতে ‘জয় বাংলা’ লেখা বোমা সদৃশ বস্তু উদ্ধার | Meherpur Cocktail | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=mStUyWI-XfE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da7d29f25c989b92f100d5f1eb8d6fb0"
     },
     {
       "title": "পিরোজপুরে দুই বাসে আগুন, একজনের লাশ উদ্ধার",
@@ -1423,37 +1464,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "74969a8a419d9c53f3acbec768cc932e"
-    },
-    {
-      "title": "ঘূর্ণিঝড় আকভানের প্রভাবে পটুয়াখালী বন্দরে সতর্কতা - Dhaka Tribune Bangla",
-      "summary": "ঘূর্ণিঝড় আকভানের প্রভাবে পটুয়াখালী বন্দরে সতর্কতা Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113328/%E0%A6%98%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BF%E0%A6%9D%E0%A7%9C-%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113328/%E0%A6%98%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BF%E0%A6%9D%E0%A7%9C-%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE",
-      "publishedAt": "2026-11-18T06:13:28+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113328/%E0%A6%98%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BF%E0%A6%9D%E0%A7%9C-%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ঘূর্ণিঝড় আকভানের প্রভাবে পটুয়াখালী বন্দরে সতর্কতা - Dhaka Tribune Bangla",
-          "summary": "ঘূর্ণিঝড় আকভানের প্রভাবে পটুয়াখালী বন্দরে সতর্কতা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113328/%E0%A6%98%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%BF%E0%A6%9D%E0%A7%9C-%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0b845aeefa2bc50a7f44a724097dfdad"
     },
     {
       "title": "টুঙ্গিপাড়া থানা থেকে এখনও উড়ছে ধোঁয়া, সড়কে গাছের গুঁড়ি-পোড়া গাড়ি",
@@ -2087,68 +2097,6 @@
       "alertEventId": "6b4d172503109f068459ea77910eab91"
     },
     {
-      "title": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-      "summary": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-      "link": "https://www.jagonews24.com/country/news/1180731",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1180731",
-      "publishedAt": "2026-11-18T02:49:23+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180731"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-          "summary": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-          "url": "https://www.jagonews24.com/country/news/1180731"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "02d8e0e4749af580c44fdaa57f00ea18"
-    },
-    {
-      "title": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
-      "summary": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
-      "link": "https://www.jagonews24.com/country/news/1180730",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1180730",
-      "publishedAt": "2026-11-18T02:42:57+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180730"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
-          "summary": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
-          "url": "https://www.jagonews24.com/country/news/1180730"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a62ff08f51c5058ded668100e9a0348d"
-    },
-    {
       "title": "বিদ্যালয়ের পরিত্যক্ত কক্ষ থেকে ৫০টি ককটেল ও গান পাউডার উদ্ধার",
       "summary": "পাবনার সাঁথিয়ায় একটি সরকারি প্রাথমিক বিদ্যালয়ের পরিত্যক্ত কক্ষ থেকে গান পাউডার ও অন্তত ৫০টি ককটেল উদ্ধার করেছে স্পেশাল রেসপন্স ব্যাটালিয়ন (এসআরবি)। মঙ্গলবার (১৭ নভেম্বর) সকালে উপজেলার রাউতি সরকারি প্রাথমিক বিদ্যালয়ে অভিযান চালিয়ে এসব ককটেল উদ্ধার করা হয়। এসআরবি জানায়, ডিসেম্বরকে সামনে রেখে বড় ধরনের নাশকতার পরিকল্পনার গোপন তথ্যের ভিত্তিতে এ অভিযান চালানো হয়। প্রাথমিকভাবে ধারণা করা হচ্ছে,... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/rajshahi/981624/%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%95%E0%A7%8D%E0%A6%B7-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A7%AB%E0%A7%A6%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%A8",
@@ -2240,37 +2188,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2c34ba0268718a9ac1d9fdd06e01a870"
-    },
-    {
-      "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publishedAt": "2026-11-17T19:02:25+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "76eefdaea002fc9e0097547ed1cd2148"
     },
     {
       "title": "আওয়ামী লীগ টুঙ্গিপাড়া লিমিটেড হয়ে যাবে: স্বরাষ্ট্রমন্ত্রী",
@@ -2563,20 +2480,20 @@
       "alertEventId": "548a127ceb96333d79be06aaad39bc64"
     },
     {
-      "title": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ - Barta 24",
-      "summary": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ Barta 24",
-      "link": "https://barta24.com/details/politics/348445",
-      "publisherUrl": "https://barta24.com/details/politics/348445",
-      "publishedAt": "2026-11-17T16:01:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
+      "title": "১০ দিনে ৪৯ যানবাহনে আগুন, ৫৯ জায়গায় ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "১০ দিনে ৪৯ যানবাহনে আগুন, ৫৯ জায়গায় ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113299/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AA%E0%A7%AF-%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A7%AB%E0%A7%AF-%E0%A6%9C%E0%A6%BE%E0%A7%9F%E0%A6%97%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113299/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AA%E0%A7%AF-%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A7%AB%E0%A7%AF-%E0%A6%9C%E0%A6%BE%E0%A7%9F%E0%A6%97%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
+      "publishedAt": "2026-11-17T15:24:01+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Barta 24"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/politics/348445"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113299/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AA%E0%A7%AF-%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A7%AB%E0%A7%AF-%E0%A6%9C%E0%A6%BE%E0%A7%9F%E0%A6%97%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
         }
       ],
       "category": "Bangladesh",
@@ -2584,14 +2501,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Barta 24",
-          "title": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ - Barta 24",
-          "summary": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ Barta 24",
-          "url": "https://barta24.com/details/politics/348445"
+          "name": "Dhaka Tribune Bangla",
+          "title": "১০ দিনে ৪৯ যানবাহনে আগুন, ৫৯ জায়গায় ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "১০ দিনে ৪৯ যানবাহনে আগুন, ৫৯ জায়গায় ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113299/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AA%E0%A7%AF-%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A7%AB%E0%A7%AF-%E0%A6%9C%E0%A6%BE%E0%A7%9F%E0%A6%97%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "425fcaddde9a9f74da6fd859f7e6d6db"
+      "alertEventId": "8ed2aa218da44f376bf5304e4eedd4a0"
     },
     {
       "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপা পড়ে বাংলাদেশী নিহত - Daily Naya Diganta",
