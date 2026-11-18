@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T03:12:25.306677+00:00",
-  "updatedAt": "2026-11-18T03:12:25.306677+00:00",
+  "generatedAt": "2026-11-18T03:32:01.715798+00:00",
+  "updatedAt": "2026-11-18T03:32:01.715798+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 30,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 22,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -62,32 +62,32 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "directError": "HTTP 404",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jugantor",
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -484,7 +484,7 @@
       "domain": "mzamin.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 521",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 38,
   "alertItems": [
     {
       "title": "নেত্রকোনায় আবারও রেললাইনে আগুন, ভিডিও ভাইরাল",
@@ -979,7 +979,7 @@
     },
     {
       "title": "খুলনায় দুর্বৃত্তের গুলিতে দুইজন গুলিবিদ্ধ",
-      "summary": "খুলনায় দুর্বৃত্তদের ছোড়া গুলিতে দুইজন গুলিবিদ্ধ হয়েছেন। মঙ্গলবার (১৭ নভেম্বর) রাত আনুমানিক পৌনে ১০টার দিকে আড়ংঘাটা বাজারে এ ঘটনা ঘটে...",
+      "summary": "খুলনায় দুর্বৃত্তের গুলিতে দুইজন গুলিবিদ্ধ",
       "link": "https://www.jagonews24.com/country/news/1180723",
       "publisherUrl": "https://www.jagonews24.com/country/news/1180723",
       "publishedAt": "2026-11-18T02:21:39+00:00",
@@ -1001,43 +1001,12 @@
         {
           "name": "Jago News 24",
           "title": "খুলনায় দুর্বৃত্তের গুলিতে দুইজন গুলিবিদ্ধ",
-          "summary": "খুলনায় দুর্বৃত্তদের ছোড়া গুলিতে দুইজন গুলিবিদ্ধ হয়েছেন। মঙ্গলবার (১৭ নভেম্বর) রাত আনুমানিক পৌনে ১০টার দিকে আড়ংঘাটা বাজারে এ ঘটনা ঘটে...",
+          "summary": "খুলনায় দুর্বৃত্তের গুলিতে দুইজন গুলিবিদ্ধ",
           "url": "https://www.jagonews24.com/country/news/1180723"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "67b65e3be72b2c393eb2493e65509cea"
-    },
-    {
-      "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের বাড়িতে আগুন | Gazipur Fire | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=FsQP7eUUk1A",
-      "publisherUrl": "https://www.youtube.com/watch?v=FsQP7eUUk1A",
-      "publishedAt": "2026-11-18T02:06:12+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=FsQP7eUUk1A"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের বাড়িতে আগুন | Gazipur Fire | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=FsQP7eUUk1A"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "38a5f9096c6cc9aa077fc10510533c66"
     },
     {
       "title": "টুঙ্গিপাড়ায় থানা-জিলানীর বাড়িতে হামলা, ঢাকায় স্বেচ্ছাসেবক দলের বিক্ষোভ",
@@ -1196,37 +1165,6 @@
       "alertEventId": "2c34ba0268718a9ac1d9fdd06e01a870"
     },
     {
-      "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-      "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-      "link": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publisherUrl": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publishedAt": "2026-11-17T19:11:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-          "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "eb4afb6b19298153d5b8edd23152a2ab"
-    },
-    {
       "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
       "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
@@ -1331,37 +1269,6 @@
       "alertEventId": "67d51387daa9b55e58f60431b46df39c"
     },
     {
-      "title": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা-ভাঙচুর ও অগ্নিসংযোগ; জনমনে আতঙ্ক | Gopalganj | AL Fire| Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=BoPIDf6RPUE",
-      "publisherUrl": "https://www.youtube.com/watch?v=BoPIDf6RPUE",
-      "publishedAt": "2026-11-17T18:46:10+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=BoPIDf6RPUE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা-ভাঙচুর ও অগ্নিসংযোগ; জনমনে আতঙ্ক | Gopalganj | AL Fire| Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=BoPIDf6RPUE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cdf1b0852573c6870998c3092b8f0eea"
-    },
-    {
       "title": "সাবেক মন্ত্রী মোজাম্মেল হকের বাসায় আগুন দিল বিক্ষুব্ধ জনতা | Mozammel Haque | Gazipur | Somoy TV",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=QBdka0tVXwE",
@@ -1391,6 +1298,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b4f67b995f996485444089a97b97457f"
+    },
+    {
+      "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
+      "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
+      "link": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
+      "publishedAt": "2026-11-17T18:19:01+00:00",
+      "source": "Daily Bonik Barta",
+      "publisherName": "Daily Bonik Barta",
+      "sourceEvidence": [
+        "Daily Bonik Barta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Bonik Barta",
+          "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
+          "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a5c11de1260ea82d4448a8138cf18850"
     },
     {
       "title": "যৌথবাহিনীর অভিযানের মধ্যেই খুলনায় ব্যবসায়ীসহ দুজনকে গুলি, হাসপাতালে ভর্তি",
