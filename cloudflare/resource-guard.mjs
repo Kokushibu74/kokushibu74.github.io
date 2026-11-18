@@ -9,7 +9,7 @@ export function secondsUntilUtcReset(now = Date.now()) {
   return Math.max(1, Math.ceil((nextUtcMidnight(now) - now) / 1000));
 }
 
-export function shouldPauseBotForKvWrites(used, limit, threshold = 85) {
+export function shouldPauseBotForKvWrites(used, limit, threshold = 98) {
   const current = Number(used);
   const maximum = Number(limit);
   return Number.isFinite(current) && Number.isFinite(maximum) && maximum > 0 &&

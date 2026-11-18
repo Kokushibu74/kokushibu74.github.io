@@ -8,9 +8,9 @@ import {
   isKvWriteLimitError
 } from "../cloudflare/resource-guard.mjs";
 
-test("KV write guard pauses at 85 percent and not below it",()=>{
-  assert.equal(shouldPauseBotForKvWrites(849,1000),false);
-  assert.equal(shouldPauseBotForKvWrites(850,1000),true);
+test("KV write guard pauses at 98 percent and not below it",()=>{
+  assert.equal(shouldPauseBotForKvWrites(979,1000),false);
+  assert.equal(shouldPauseBotForKvWrites(980,1000),true);
   assert.equal(shouldPauseBotForKvWrites(1000,1000),true);
   assert.equal(shouldPauseBotForKvWrites(10,0),false);
 });
