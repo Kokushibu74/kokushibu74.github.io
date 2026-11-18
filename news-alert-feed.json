@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T17:55:08.004591+00:00",
-  "updatedAt": "2026-11-18T17:55:08.004591+00:00",
+  "generatedAt": "2026-11-18T18:05:53.610190+00:00",
+  "updatedAt": "2026-11-18T18:05:53.610190+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 30,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 5,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bonik Barta",
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -557,32 +557,32 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 65,
+  "candidateCount": 64,
   "alertItems": [
+    {
+      "title": "জেলা পর্যায়েও ছড়িয়ে পড়ছে নাশকতা-সহিংসতা, জনমনে বাড়ছে আতঙ্ক",
+      "summary": "নাশকতার আগুন এখন আর রাজধানীর সড়ক কিংবা পরিত্যক্ত বাসে সীমাবদ্ধ নেই। ছড়িয়ে পড়ছে জেলা শহর, উপজেলা, মহাসড়ক, এমনকি থানা ও সরকারি স্থাপনাতেও। কোথাও ককটেল বিস্ফোরণ, কোথাও যানবাহনে অগ্নিসংযোগ, কোথাও আইনশৃঙ্খলা বাহিনীর ওপর সংঘবদ্ধ হামলা চালানো হচ্ছে। গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় আগুন, নারায়ণগঞ্জে এক রাতে পাঁচ যানবাহনে অগ্নিসংযোগ এবং চট্টগ্রামে পুলিশ বক্সে হামলার ঘটনা নতুন করে সামনে এনেছে জননিরাপত্তার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/law-and-crime/981825/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%93-%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/law-and-crime/981825/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%93-%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%87",
+      "publishedAt": "2026-11-18T18:01:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/law-and-crime/981825/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%93-%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "জেলা পর্যায়েও ছড়িয়ে পড়ছে নাশকতা-সহিংসতা, জনমনে বাড়ছে আতঙ্ক",
+          "summary": "নাশকতার আগুন এখন আর রাজধানীর সড়ক কিংবা পরিত্যক্ত বাসে সীমাবদ্ধ নেই। ছড়িয়ে পড়ছে জেলা শহর, উপজেলা, মহাসড়ক, এমনকি থানা ও সরকারি স্থাপনাতেও। কোথাও ককটেল বিস্ফোরণ, কোথাও যানবাহনে অগ্নিসংযোগ, কোথাও আইনশৃঙ্খলা বাহিনীর ওপর সংঘবদ্ধ হামলা চালানো হচ্ছে। গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় আগুন, নারায়ণগঞ্জে এক রাতে পাঁচ যানবাহনে অগ্নিসংযোগ এবং চট্টগ্রামে পুলিশ বক্সে হামলার ঘটনা নতুন করে সামনে এনেছে জননিরাপত্তার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/981825/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%93-%E0%A6%9B%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "29bd68730dfbe8ae35b07745e2b4ac7a"
+    },
     {
       "title": "গোপালগঞ্জে রামদা-চাপাতি নিয়ে নিষিদ্ধ ছাত্রলীগের মহড়া, হাসপাতাল ও বিএনপির ৫ কার্যালয়ে আগুন",
       "summary": "গোপালগঞ্জ শহরে রামদা ও চাপাতিসহ দেশীয় অস্ত্র নিয়ে নিষিদ্ধঘোষিত সংগঠন ছাত্রলীগের নেতাকর্মীরা মহড়া দিয়েছেন এবং একটি বেসরকারি হাসপাতালে হামলা, ভাঙচুর ও অগ্নিসংযোগ করেছেন। বুধবার (১৮ নভেম্বর) সন্ধ্যা সোয়া ৭টার পর থেকে শহরের বিভিন্ন সড়কে এই সহিংসতা শুরু হয়। প্রত্যক্ষদর্শীরা জানান, সন্ধ্যা সোয়া ৭টার পর শহরের পাচুড়িয়া, কোর্ট এলাকা, লঞ্চঘাট, কাঁচাবাজার মোড়, পুলিশ লাইন ও বেদগ্রাম এলাকায় মোটরসাইকেলে করে... বিস্তারিত",
@@ -2061,37 +2092,6 @@
       "alertEventId": "ad5cb2ac3c87d69d4e1ef8c87194f086"
     },
     {
-      "title": "বিএনপি নেতার বাড়িতে পেট্রোল ঢেলে আগুন",
-      "summary": "চট্টগ্রামের বাঁশখালীতে দক্ষিণ জেলা বিএনপির সদস্য আমিনুর রহমান চৌধুরীর বাড়িতে আগুন দেওয়ার ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) গভীর রাতে এ ঘটনা ঘটে। তবে দ্রুত আগুন নিয়ন্ত্রণে আনায় বড় ধরনের ক্ষয়ক্ষতি হয়নি। পুলিশ ও স্থানীয় সূত্র জানিয়েছে, রাত পৌনে ৩টার দিকে ২/৩ জন ব্যক্তি বাড়ির সামনে জানালার ফাঁক দিয়ে পেট্রোল ঢেলে আগুন ধরিয়ে দেয়। ঘটনার পরপরই নিজের ফেসবুক অ্যাকান্ডন্টে দেওয়া এক... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/981735/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981735/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-18T11:08:41+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/981735/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "বিএনপি নেতার বাড়িতে পেট্রোল ঢেলে আগুন",
-          "summary": "চট্টগ্রামের বাঁশখালীতে দক্ষিণ জেলা বিএনপির সদস্য আমিনুর রহমান চৌধুরীর বাড়িতে আগুন দেওয়ার ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) গভীর রাতে এ ঘটনা ঘটে। তবে দ্রুত আগুন নিয়ন্ত্রণে আনায় বড় ধরনের ক্ষয়ক্ষতি হয়নি। পুলিশ ও স্থানীয় সূত্র জানিয়েছে, রাত পৌনে ৩টার দিকে ২/৩ জন ব্যক্তি বাড়ির সামনে জানালার ফাঁক দিয়ে পেট্রোল ঢেলে আগুন ধরিয়ে দেয়। ঘটনার পরপরই নিজের ফেসবুক অ্যাকান্ডন্টে দেওয়া এক... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/981735/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7f3ff1f7dd349cf9216668b41d00472a"
-    },
-    {
       "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire - United News of Bangladesh",
       "summary": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire United News of Bangladesh",
       "link": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB",
@@ -2599,6 +2599,37 @@
       "alertEventId": "d7d6ef003f64a384fa3324300b2b3e2d"
     },
     {
+      "title": "লন্ডনে সংঘর্ষের জেরে সব বাংলাদেশিকে তাড়ানোর দাবি ব্রিটিশ এমপির - Jugantor",
+      "summary": "লন্ডনে সংঘর্ষের জেরে সব বাংলাদেশিকে তাড়ানোর দাবি ব্রিটিশ এমপির Jugantor",
+      "link": "https://www.jugantor.com/international/1186091",
+      "publisherUrl": "https://www.jugantor.com/international/1186091",
+      "publishedAt": "2026-11-18T04:17:13+00:00",
+      "source": "Jugantor",
+      "publisherName": "Jugantor",
+      "sourceEvidence": [
+        "Jugantor"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jugantor",
+          "url": "https://www.jugantor.com/international/1186091"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jugantor",
+          "title": "লন্ডনে সংঘর্ষের জেরে সব বাংলাদেশিকে তাড়ানোর দাবি ব্রিটিশ এমপির - Jugantor",
+          "summary": "লন্ডনে সংঘর্ষের জেরে সব বাংলাদেশিকে তাড়ানোর দাবি ব্রিটিশ এমপির Jugantor",
+          "url": "https://www.jugantor.com/international/1186091"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "47b700caee6ed3686d1c8ea8aa2fa2a1"
+    },
+    {
       "title": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
       "summary": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
@@ -2659,68 +2690,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "eb4afb6b19298153d5b8edd23152a2ab"
-    },
-    {
-      "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publishedAt": "2026-11-17T19:02:25+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "76eefdaea002fc9e0097547ed1cd2148"
-    },
-    {
-      "title": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ - Dhaka Tribune Bangla",
-      "summary": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113310/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A4%E0%A6%BF%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113310/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A4%E0%A6%BF%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-17T18:46:57+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113310/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A4%E0%A6%BF%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ - Dhaka Tribune Bangla",
-          "summary": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113310/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%A4%E0%A6%BF%E0%A6%A8-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "67d51387daa9b55e58f60431b46df39c"
     }
   ]
 }
