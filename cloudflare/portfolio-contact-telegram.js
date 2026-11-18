@@ -3296,7 +3296,7 @@ export default {
       if(request.method!=="POST")return new Response("Method not allowed",{status:405});
       if(!env.TELEGRAM_WEBHOOK_SECRET||request.headers.get("X-Telegram-Bot-Api-Secret-Token")!==env.TELEGRAM_WEBHOOK_SECRET)return new Response("Unauthorized",{status:401});
       const pause=await botKvWritePauseState(env);
-      if(pause.paused)return new Response("OK");
+      if(pause.paused)return new Response("Temporarily paused for the daily KV reset.",{status:503,headers:{"Retry-After":"900"}});
       let update;try{update=await request.json()}catch{return new Response("Bad request",{status:400})}
       try{
       if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
