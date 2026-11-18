@@ -195,9 +195,11 @@ class AlertCollectorTests(unittest.TestCase):
 
     def test_new_regional_sources_are_unique_and_do_not_replace_existing_publishers(self):
         names = [source[0] for source in collector.NEW_DIRECT_SOURCES]
-        domains = [source[2] for source in collector.NEW_DIRECT_SOURCES]
+        urls = [source[1] for source in collector.NEW_DIRECT_SOURCES]
+        non_youtube_domains = [source[2] for source in collector.NEW_DIRECT_SOURCES if source[2] != "youtube.com"]
         self.assertEqual(len(names), len(set(names)))
-        self.assertEqual(len(domains), len(set(domains)))
+        self.assertEqual(len(urls), len(set(urls)))
+        self.assertEqual(len(non_youtube_domains), len(set(non_youtube_domains)))
         self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
         self.assertGreaterEqual(len(collector.SOURCES), 47)
 
