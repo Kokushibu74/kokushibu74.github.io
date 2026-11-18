@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T16:42:16.170607+00:00",
-  "updatedAt": "2026-11-18T16:42:16.170607+00:00",
+  "generatedAt": "2026-11-18T17:02:21.299079+00:00",
+  "updatedAt": "2026-11-18T17:02:21.299079+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 3,
+      "fallbackItems": 4,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -840,8 +840,154 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 63,
+  "candidateCount": 65,
   "alertItems": [
+    {
+      "title": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
+      "summary": "নড়াইলের কালিয়ায় বিএনপি ও অঙ্গ সংগঠনের আওয়ামী লীগ বিরোধী মিছিলে হামলা করেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ। এতে বিএনপির দুই নেতা নিহত হয়েছেন...",
+      "link": "https://www.jagonews24.com/country/news/1181139",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181139",
+      "publishedAt": "2026-11-18T16:59:47+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181139"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/981837/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%9F"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
+          "summary": "নড়াইলের কালিয়ায় বিএনপি ও অঙ্গ সংগঠনের আওয়ামী লীগ বিরোধী মিছিলে হামলা করেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ। এতে বিএনপির দুই নেতা নিহত হয়েছেন...",
+          "url": "https://www.jagonews24.com/country/news/1181139"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "আওয়ামী লীগের হামলায় নিহত বিএনপির দুই নেতার পরিচয় মিলেছে",
+          "summary": "দেশে কয়েক স্থানে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নৈরাজ্য ও সহিংসতার প্রতিবাদে নড়াইলের কালিয়ায় বিএনপির নেতাকর্মীরা মোটরসাইকেল শোডাউন করেছেন। তবে এই শোডাউনেও হামলা চালিয়েছে কার্যক্রম নিষিদ্ধ দলটির নেতাকর্মীরা। এতে বিএনপির অঙ্গ সহযোগী সংগঠনের দুই নেতা নিহত হয়েছেন। আহত হয়েছেন বেশ কয়েকজন। বুধবার (১৮ নভেম্বর) সন্ধ্যায় উপজেলার বেন্দারচর এলাকার বটতলা মোড়ে এ হামলার ঘটনা ঘটে। রাত ১০টার দিকে নড়াইল জেলার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/981837/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%9F"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "a41ecae954ca2070c775c210b7dfd829"
+    },
+    {
+      "title": "মহাসড়কে বিশ্ববিদ্যালয়ের বাসে আগুন দেওয়ার চেষ্টা, অল্পের জন্য বাঁচলেন শিক্ষার্থীরা",
+      "summary": "কুমিল্লা শহরের কান্দিরপাড় থেকে ক্যাম্পাসে ফেরার পথে কুমিল্লা বিশ্ববিদ্যালয়ের (কুবি) শিক্ষার্থী বহনকারী একটি বাসে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। এতে অল্পের জন্য প্রাণে রক্ষা পেয়েছেন বাসে থাকা শিক্ষার্থীরা। বুধবার (১৮ নভেম্বর) রাত ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের কুমিল্লার কোটবাড়ি এলাকায় বিএসটিআই কার্যালয়ের পাশে এ ঘটনা ঘটে। প্রত্যক্ষদর্শী সূত্রে জানা গেছে, বাসটি কান্দিরপাড় থেকে পদুয়ার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/981839/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981839/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
+      "publishedAt": "2026-11-18T16:58:31+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/981839/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মহাসড়কে বিশ্ববিদ্যালয়ের বাসে আগুন দেওয়ার চেষ্টা, অল্পের জন্য বাঁচলেন শিক্ষার্থীরা",
+          "summary": "কুমিল্লা শহরের কান্দিরপাড় থেকে ক্যাম্পাসে ফেরার পথে কুমিল্লা বিশ্ববিদ্যালয়ের (কুবি) শিক্ষার্থী বহনকারী একটি বাসে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। এতে অল্পের জন্য প্রাণে রক্ষা পেয়েছেন বাসে থাকা শিক্ষার্থীরা। বুধবার (১৮ নভেম্বর) রাত ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের কুমিল্লার কোটবাড়ি এলাকায় বিএসটিআই কার্যালয়ের পাশে এ ঘটনা ঘটে। প্রত্যক্ষদর্শী সূত্রে জানা গেছে, বাসটি কান্দিরপাড় থেকে পদুয়ার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/981839/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "adf26ffcf553c6c317717d404bcbc0e5"
+    },
+    {
+      "title": "গোপালগঞ্জের কাশিয়ানীতে কালনা সেতুতে আগুন নিষিদ্ধ ছাত্রলীগের | Channel 24",
+      "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+      "link": "https://www.youtube.com/shorts/TwgIQVhbbX0",
+      "publisherUrl": "https://www.youtube.com/shorts/TwgIQVhbbX0",
+      "publishedAt": "2026-11-18T16:54:25+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/shorts/TwgIQVhbbX0"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181117"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "গোপালগঞ্জের কাশিয়ানীতে কালনা সেতুতে আগুন নিষিদ্ধ ছাত্রলীগের | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/TwgIQVhbbX0"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+          "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181117"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "9b80a8af8cc203d763a285569ec41157"
+    },
+    {
+      "title": "মিছিলে আ.লীগের হামলায় বিএনপির দুই নেতা নিহত",
+      "summary": "নড়াইলের কালিয়া উপজেলায় সন্ত্রাস ও নৈরাজ্যের প্রতিবাদে আয়োজিত বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় বিএনপির দুই নেতা নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৭টার দিকে এ হামলার ঘটনা ঘটে। নিহতরা হলেন- কালিয়া উপজেলা কৃষকদলের সাধারণ সম্পাদক শাহিন ও জাতীয়তাবাদী সামাজিক সাংস্কৃতিক সংস্থার (জাসাস) উপজেলা সাধারণ সম্পাদক সোহেল মোল্লা। রাত ১০টার দিকে নড়াইল জেলার পুলিশ সুপার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-18T16:44:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মিছিলে আ.লীগের হামলায় বিএনপির দুই নেতা নিহত",
+          "summary": "নড়াইলের কালিয়া উপজেলায় সন্ত্রাস ও নৈরাজ্যের প্রতিবাদে আয়োজিত বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় বিএনপির দুই নেতা নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৭টার দিকে এ হামলার ঘটনা ঘটে। নিহতরা হলেন- কালিয়া উপজেলা কৃষকদলের সাধারণ সম্পাদক শাহিন ও জাতীয়তাবাদী সামাজিক সাংস্কৃতিক সংস্থার (জাসাস) উপজেলা সাধারণ সম্পাদক সোহেল মোল্লা। রাত ১০টার দিকে নড়াইল জেলার পুলিশ সুপার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7655649816080ce8e161ef249c161826"
+    },
     {
       "title": "খুলনা জজ আদালত ভবনে ককটেল নিক্ষেপ, পুলিশ বলছে ‘বিস্ফোরিত হয়নি’",
       "summary": "খুলনা জেলা জজ আদলত ভবনের নিচতলায় ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাত সাড়ে ৮টার দিকে ককটেলটি নিক্ষেপ করে দুর্বৃত্তরা পালিয়ে যায়। তবে ককটেলটি বিস্ফোরিত না হওয়ায় কোনও ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ। আদালত পাড়ার আশপাশের লোকজন জানান, রাত সাড়ে ৮টার দিকে দুজন যুবক ককটেল নিয়ে আদালতের নিচতলায় নিক্ষেপ করে। তবে ককটেলটি বিস্ফোরিত হয়নি। ফলে কোনও ক্ষয়ক্ষতি হয়নি। সংবাদ পেয়ে পুলিশ... বিস্তারিত",
@@ -905,20 +1051,20 @@
       "alertEventId": "dc6cb40f12589af8477d57f0996bf28c"
     },
     {
-      "title": "মিছিলে আ.লীগের হামলায় বিএনপির দুই নেতা নিহত",
-      "summary": "নড়াইলের কালিয়া উপজেলায় সন্ত্রাস ও নৈরাজ্যের প্রতিবাদে আয়োজিত বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় বিএনপির দুই নেতা নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৭টার দিকে এ হামলার ঘটনা ঘটে। নিহতরা হলেন- কালিয়া উপজেলা কৃষকদলের সাধারণ সম্পাদক শাহিন ও জাতীয়তাবাদী কৃষক দলের (জাসাস) উপজেলা সাধারণ সম্পাদক সোহেল মোল্লা। রাত ১০টার দিকে নড়াইল জেলার পুলিশ সুপার মোহাম্মদ আল মামুন... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-18T16:27:15+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "গোপালগঞ্জে বেশ কয়েকটি দোকানে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের আগুন | Channel 24",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/2mWRbXOCusA",
+      "publisherUrl": "https://www.youtube.com/shorts/2mWRbXOCusA",
+      "publishedAt": "2026-11-18T16:30:52+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Channel 24"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/shorts/2mWRbXOCusA"
         }
       ],
       "category": "Bangladesh",
@@ -926,40 +1072,30 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "মিছিলে আ.লীগের হামলায় বিএনপির দুই নেতা নিহত",
-          "summary": "নড়াইলের কালিয়া উপজেলায় সন্ত্রাস ও নৈরাজ্যের প্রতিবাদে আয়োজিত বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় বিএনপির দুই নেতা নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৭টার দিকে এ হামলার ঘটনা ঘটে। নিহতরা হলেন- কালিয়া উপজেলা কৃষকদলের সাধারণ সম্পাদক শাহিন ও জাতীয়তাবাদী কৃষক দলের (জাসাস) উপজেলা সাধারণ সম্পাদক সোহেল মোল্লা। রাত ১০টার দিকে নড়াইল জেলার পুলিশ সুপার মোহাম্মদ আল মামুন... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/981829/%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+          "name": "Channel 24",
+          "title": "গোপালগঞ্জে বেশ কয়েকটি দোকানে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের আগুন | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/2mWRbXOCusA"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "7655649816080ce8e161ef249c161826"
+      "alertEventId": "e79ed4041b3433834875f2e319e7976a"
     },
     {
       "title": "এমপি বাবরের অফিস ও ক্লিনিকে আগুন! | Gopalganj | Independent TV",
-      "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+      "summary": "",
       "link": "https://www.youtube.com/watch?v=8JbP8Awsi40",
       "publisherUrl": "https://www.youtube.com/watch?v=8JbP8Awsi40",
       "publishedAt": "2026-11-18T16:08:12+00:00",
       "source": "Independent Television",
       "publisherName": "Independent Television",
       "sourceEvidence": [
-        "Independent Television",
-        "Jago News 24",
-        "ডেইলি সান বাংলা"
+        "Independent Television"
       ],
       "sourceLinks": [
         {
           "name": "Independent Television · YouTube",
           "url": "https://www.youtube.com/watch?v=8JbP8Awsi40"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181117"
-        },
-        {
-          "name": "ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62047/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -971,21 +1107,9 @@
           "title": "এমপি বাবরের অফিস ও ক্লিনিকে আগুন! | Gopalganj | Independent TV",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=8JbP8Awsi40"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
-          "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181117"
-        },
-        {
-          "name": "ডেইলি সান বাংলা",
-          "title": "গোপালগঞ্জে বিএনপির এমপি বাবরের অফিসে ভাঙচুর, আগুন - ডেইলি সান বাংলা",
-          "summary": "গোপালগঞ্জে বিএনপির এমপি বাবরের অফিসে ভাঙচুর, আগুন ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62047/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 1,
       "alertEventId": "5252282060423f937a14892fdaf8ef39"
     },
     {
@@ -1215,37 +1339,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "aae4bb46f1d3d311e148442622c8b965"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপির ক্লিনিকে আওয়ামী লীগের তাণ্ডব; বিএনপি ও জামায়াত নেতার বাড়িতে আগুন | Channel 24",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=ylsUiRLzaFs",
-      "publisherUrl": "https://www.youtube.com/watch?v=ylsUiRLzaFs",
-      "publishedAt": "2026-11-18T15:30:11+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=ylsUiRLzaFs"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "গোপালগঞ্জে এমপির ক্লিনিকে আওয়ামী লীগের তাণ্ডব; বিএনপি ও জামায়াত নেতার বাড়িতে আগুন | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=ylsUiRLzaFs"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "40d7a7fe50ff06995941210aa13e952a"
     },
     {
       "title": "গোপালগঞ্জে আরেক এমপির বাড়িতে আগুন, ভবনে আছে হাসপাতাল",
@@ -1879,6 +1972,37 @@
       "alertEventId": "b2a1669781448abb26d78fa4eaa84ddf"
     },
     {
+      "title": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত - Dhaka Tribune Bangla",
+      "summary": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-18T11:19:42+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত - Dhaka Tribune Bangla",
+          "summary": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "48cbec4a9729fe7d9d5fbae719f26321"
+    },
+    {
       "title": "মহাখালীর সাততলা বস্তির আগুনে ঘরবাড়ি ও জীবিকার সম্বল হারালেন বাসিন্দারা | Mohakhali Fire - United News of Bangladesh",
       "summary": "মহাখালীর সাততলা বস্তির আগুনে ঘরবাড়ি ও জীবিকার সম্বল হারালেন বাসিন্দারা | Mohakhali Fire United News of Bangladesh",
       "link": "https://unb.com.bd/video/9985/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%98%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B2-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A6%BE---Mohakhali-Fire---UNB",
@@ -2293,37 +2417,6 @@
       "alertEventId": "3aca0fbf1e5449e401ed8fead68c4e50"
     },
     {
-      "title": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর - Channel 24",
-      "summary": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর Channel 24",
-      "link": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0",
-      "publisherUrl": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0",
-      "publishedAt": "2026-11-18T07:45:00+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর - Channel 24",
-          "summary": "সিলেটে চা বাগানে বিপুল বিস্ফোরক ও ডিটোনেটর Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/359667/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%9A%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%81%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%93-%E0%A6%A1%E0%A6%BF%E0%A6%9F%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%9F%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bb6d8a70f4965eb19aa52798d3dad5a5"
-    },
-    {
       "title": "মহাখালীর সাততলা বস্তিতে আ/গু/ন, নিয়ন্ত্রণে ফায়ার সার্ভিসের ৭ ইউনিট | Sattola Slum | Fire - United News of Bangladesh",
       "summary": "মহাখালীর সাততলা বস্তিতে আ/গু/ন, নিয়ন্ত্রণে ফায়ার সার্ভিসের ৭ ইউনিট | Sattola Slum | Fire United News of Bangladesh",
       "link": "https://unb.com.bd/video/9977/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AD-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Sattola-Slum---Fire---UNB",
@@ -2541,37 +2634,6 @@
       "alertEventId": "d7d6ef003f64a384fa3324300b2b3e2d"
     },
     {
-      "title": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু - Jamuna Television",
-      "summary": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668206",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668206",
-      "publishedAt": "2026-11-18T04:11:38+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668206"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু - Jamuna Television",
-          "summary": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668206"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3486a4b34a5f31ec319670c39281466"
-    },
-    {
       "title": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
       "summary": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
@@ -2601,37 +2663,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "208e0c913f771fe8e7f7946dcecc79c9"
-    },
-    {
-      "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-      "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-      "link": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publisherUrl": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publishedAt": "2026-11-17T19:11:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-          "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "eb4afb6b19298153d5b8edd23152a2ab"
     },
     {
       "title": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ - Dhaka Tribune Bangla",
@@ -2694,6 +2725,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4126d4b0db4f71cacd2c123a2816f81f"
+    },
+    {
+      "title": "খুলনায় দুর্বৃত্তদের গুলিতে আহত ২ - Banglanews24",
+      "summary": "খুলনায় দুর্বৃত্তদের গুলিতে আহত ২ Banglanews24",
+      "link": "https://www.banglanews24.com/saradesh/news/bd/1694152.details",
+      "publisherUrl": "https://www.banglanews24.com/saradesh/news/bd/1694152.details",
+      "publishedAt": "2026-11-17T17:17:03+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1694152.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "খুলনায় দুর্বৃত্তদের গুলিতে আহত ২ - Banglanews24",
+          "summary": "খুলনায় দুর্বৃত্তদের গুলিতে আহত ২ Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1694152.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "37a963146e346aa2e68cd7e706759c1a"
     }
   ]
 }
