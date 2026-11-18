@@ -1,5 +1,6 @@
 import { evaluateNewsAlert, newsAlertKey, normalizeNewsAlertLink, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
+import { BOT_KV_WRITE_PAUSE_KEY, secondsUntilUtcReset, shouldPauseBotForKvWrites, isKvWriteLimitError } from "./resource-guard.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
 
 // Shared namespace prefix for User Manager profiles and event history.
@@ -140,6 +141,9 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     {key:"d1_rows_written",label:"D1 rows written (daily)",used:d1RowsWrittenDaily,limit:50000000,unit:"rows",period:"daily"},
     {key:"d1_storage",label:"D1 storage (current)",used:d1Bytes,limit:5368709120,unit:"bytes",period:"storage"}
   ];
+  const kvWriteMetric=metrics.find(metric=>metric.key==="kv_writes");
+  const kvPauseTriggered=!!kvWriteMetric&&shouldPauseBotForKvWrites(kvWriteMetric.used,kvWriteMetric.limit,85);
+  if(kvPauseTriggered)await activateBotKvWritePause(env,{used:kvWriteMetric.used,limit:kvWriteMetric.limit},now.getTime());
   const thresholds=[50,70,85,95],pending=[];
   for(const metric of metrics){
     const pct=metric.limit>0?metric.used/metric.limit*100:0;
@@ -191,7 +195,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     }
     lines.push("<i>AUTOMATED MONITOR · CLOUDFLARE RESOURCE BUDGET</i>");
     await sendTelegram(lines.join("\n"));
-    for(const item of pending){
+    if(!kvPauseTriggered)for(const item of pending){
       const ttl=item.metric.period==="daily"?48*3600:item.metric.period==="monthly"?45*86400:365*86400;
       try{await env.BOT_CONFIG_KV.put(item.stateKey,JSON.stringify([...new Set([...item.sent,...item.crossed])]),{expirationTtl:ttl})}
       catch(e){console.error("Cloudflare resource alert state save failed:",String(e&&e.message||e).slice(0,120));}
@@ -783,6 +787,35 @@ const BOT_DEFAULTS = {
   monitoring:true, dailyReport:true, scheduledChecks:true, newsRefresh:true, newsAlerts:true, workflowAlerts:true,
   trafficAlerts:true, clientErrorAlerts:true, securityAlerts:true, emergencyProtection:true
 };
+const BOT_KV_WRITE_PAUSE_CACHE={until:0,checkedAt:0};
+async function botKvWritePauseState(env,now=Date.now()){
+  if(BOT_KV_WRITE_PAUSE_CACHE.until>now)return {paused:true,until:BOT_KV_WRITE_PAUSE_CACHE.until};
+  if(now-BOT_KV_WRITE_PAUSE_CACHE.checkedAt<5000)return {paused:false,until:0};
+  BOT_KV_WRITE_PAUSE_CACHE.checkedAt=now;
+  if(!env.BOT_CONFIG_KV)return {paused:false,until:0};
+  try{
+    const state=await env.BOT_CONFIG_KV.get(BOT_KV_WRITE_PAUSE_KEY,"json");
+    const until=Number(state?.until)||0;
+    if(until>now){BOT_KV_WRITE_PAUSE_CACHE.until=until;return {paused:true,until};}
+  }catch(error){
+    console.warn("Bot resource pause state read unavailable",String(error&&error.message||error).slice(0,120));
+  }
+  BOT_KV_WRITE_PAUSE_CACHE.until=0;
+  return {paused:false,until:0};
+}
+async function activateBotKvWritePause(env,details={},now=Date.now()){
+  const until=Date.UTC(new Date(now).getUTCFullYear(),new Date(now).getUTCMonth(),new Date(now).getUTCDate()+1);
+  BOT_KV_WRITE_PAUSE_CACHE.until=until;
+  BOT_KV_WRITE_PAUSE_CACHE.checkedAt=now;
+  const state={until,reason:"KV daily write budget",used:Number(details.used)||null,limit:Number(details.limit)||null,triggeredAt:new Date(now).toISOString()};
+  try{
+    if(env.BOT_CONFIG_KV)await env.BOT_CONFIG_KV.put(BOT_KV_WRITE_PAUSE_KEY,JSON.stringify(state),{expirationTtl:secondsUntilUtcReset(now)+60});
+  }catch(error){
+    console.error("Bot KV pause marker could not be persisted; isolate-level pause remains active",String(error&&error.message||error).slice(0,160));
+  }
+  console.warn("Telegram Bot scheduled and webhook processing paused until 00:00 UTC",JSON.stringify(state));
+  return state;
+}
 const BOT_CONFIG_CACHE={expiresAt:0,value:null};
 async function botConfig(env){
   if(!env.BOT_CONFIG_KV)return {...BOT_DEFAULTS};
@@ -3262,9 +3295,11 @@ export default {
     if(new URL(request.url).pathname==="/telegram-webhook"){
       if(request.method!=="POST")return new Response("Method not allowed",{status:405});
       if(!env.TELEGRAM_WEBHOOK_SECRET||request.headers.get("X-Telegram-Bot-Api-Secret-Token")!==env.TELEGRAM_WEBHOOK_SECRET)return new Response("Unauthorized",{status:401});
+      const pause=await botKvWritePauseState(env);
+      if(pause.paused)return new Response("OK");
       let update;try{update=await request.json()}catch{return new Response("Bad request",{status:400})}
       try{
-      if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
+      if(update.callback_query){try{await botHandleCallback(env,update.callback_query)}catch(e){if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});console.error("Telegram callback handler failed",String(e))}return new Response("OK");}
       const msg=update.message;
       if(msg?.chat?.type==="private"&&Array.isArray(msg.photo)&&msg.from?.id){
         const sender=String(msg.from.id),admins=new Set(String(env.ADMIN_TELEGRAM_IDS||"").split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean));
@@ -3319,6 +3354,7 @@ export default {
       });
       return new Response("OK");
       }catch(e){
+        if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});
         console.error("Telegram webhook update processing failed",JSON.stringify({
           updateId:Number.isSafeInteger(update?.update_id)?update.update_id:null,
           updateType:update?.callback_query?"callback_query":update?.message?"message":"unknown",
@@ -3410,6 +3446,11 @@ export default {
     }
   },
   async scheduled(controller,env,ctx) {
+    const resourcePause=await botKvWritePauseState(env);
+    if(resourcePause.paused){
+      console.log("Scheduled Telegram Bot/automation work paused until UTC daily reset",new Date(resourcePause.until).toISOString());
+      return;
+    }
     if(controller.cron==="* * * * *"){
       const minute=new Date().getUTCMinutes();
       if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
