@@ -831,7 +831,8 @@ async function botConfig(env){
 async function botSaveConfig(env,cfg){
   if(!env.BOT_CONFIG_KV)throw new Error("BOT_CONFIG_KV binding is not deployed");
   const value={...BOT_DEFAULTS,...cfg,updatedAt:Date.now()};
-  await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify(value));
+  try{await env.BOT_CONFIG_KV.put("settings:v1",JSON.stringify(value));}
+  catch(error){if(isKvWriteLimitError(error))await activateBotKvWritePause(env,{error:String(error&&error.message||error)});throw error;}
   BOT_CONFIG_CACHE.value=value;
   BOT_CONFIG_CACHE.expiresAt=Date.now()+5000;
 }
@@ -3453,17 +3454,17 @@ export default {
     }
     if(controller.cron==="* * * * *"){
       const minute=new Date().getUTCMinutes();
-      if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
+      if(minute%5===0){try{const result=await newsBreakingAlertCheck(env);if(result.sent)console.log("News breaking alerts sent",result.sent);}catch(e){if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});console.error("News breaking alert check failed",String(e&&e.message||e).slice(0,160));}}
       // Fifteen-minute cleanup cadence reduces repeated KV list scans; idle menus may be removed up to 30 minutes after last interaction.
       if(minute%15===0){
         try{
           const menuCleanup=await botExpireIdleMenu(env);
           if(menuCleanup.expired)console.log("Idle Telegram menus expired",menuCleanup.expired);
-        }catch(e){console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
+        }catch(e){if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});console.error("Idle Telegram menu cleanup failed",String(e&&e.message||e).slice(0,180));}
       }
       if(minute%5===0){
         try{const result=await newsRefreshWatchdog(env);if(result.dispatched)console.log("News refresh watchdog dispatched workflow",result.ageMinutes);}
-        catch(e){console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
+        catch(e){if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});console.error("News refresh watchdog failed",String(e&&e.message||e).slice(0,160));try{await notifyNewsWatchdogFailure(env,e)}catch{}}
       }
       return;
     }
@@ -3505,6 +3506,7 @@ export default {
         console.log("Cloudflare resource budget monitor completed",JSON.stringify({day:resourceSnapshot.day,month:resourceSnapshot.month,metrics:resourceSnapshot.dailyMetrics.map(metric=>({key:metric.key,percent:metric.percent,period:metric.period}))}));
       }
       catch(e){
+        if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});
         console.error("Cloudflare resource budget monitor failed:",String(e&&e.message||e).slice(0,220));
         if(cfg.trafficAlerts){
           try{const key="cloudflare:budget-monitor-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Cloudflare resource monitor unavailable</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Cloudflare budget monitor warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
@@ -3514,6 +3516,7 @@ export default {
     if(runChecks&&cfg.trafficAlerts){
       try{await cfHistoricalExceptionAudit(env,sendTelegram);}
       catch(e){
+        if(isKvWriteLimitError(e))await activateBotKvWritePause(env,{error:String(e&&e.message||e)});
         console.error("Historical Cloudflare exception audit failed:",String(e&&e.message||e).slice(0,220));
         try{const key="cloudflare:exception-audit-error:v1",old=await env.BOT_CONFIG_KV.get(key,"json");if(!old?.at||Date.now()-Number(old.at)>6*60*60*1000){await sendTelegram("⚠️ <b>Historical exception log query failed</b>\n"+String(e&&e.message||e).replace(/[&<>]/g," ").slice(0,180));await env.BOT_CONFIG_KV.put(key,JSON.stringify({at:Date.now()}),{expirationTtl:2*86400});}}catch(notifyError){console.error("Exception audit warning could not be delivered:",String(notifyError&&notifyError.message||notifyError).slice(0,120));}
       }
@@ -3580,6 +3583,7 @@ export default {
     await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:terminalStatus,cron:controller.cron,durationMs:Date.now()-cronStartedAt,httpStatus:status,detail:terminalDetail});
     if(cfg.workflowAlerts||cfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,terminalStatus,terminalDetail);
     } catch(error) {
+      if(isKvWriteLimitError(error))await activateBotKvWritePause(env,{error:String(error&&error.message||error)});
       const detail=String(error&&error.message||error).slice(0,180);
       await miniAppCronRecord(env,{id:cronRunId,at:cronStartedAt,status:"failed",cron:controller.cron,durationMs:Date.now()-cronStartedAt,detail});
       try { const failedCfg=await botConfig(env); if(failedCfg.workflowAlerts||failedCfg.emergencyProtection)await miniAppCronAlert(env,controller.cron,"failed",detail); } catch(alertError) { console.error("Automation failure alert error:",String(alertError&&alertError.message||alertError).slice(0,160)); }
