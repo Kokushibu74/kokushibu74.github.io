@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T13:57:08.034075+00:00",
-  "updatedAt": "2026-11-18T13:57:08.034075+00:00",
+  "generatedAt": "2026-11-18T14:17:50.989572+00:00",
+  "updatedAt": "2026-11-18T14:17:50.989572+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,8 +840,143 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 57,
+  "candidateCount": 62,
   "alertItems": [
+    {
+      "title": "সংবাদকর্মীর ওপর যুবদল নেতার হামলার অভিযোগ",
+      "summary": "লক্ষ্মীপুরে সংবাদ সংগ্রহের সময় তানভীর আহমেদ রিমন নামে এক সংবাদকর্মীর ওপর হামলার অভিযোগ উঠেছে যুবদল নেতা আনোয়ার হোসেন সাদ্দামের বিরুদ্ধে...",
+      "link": "https://www.jagonews24.com/country/news/1181077",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181077",
+      "publishedAt": "2026-11-18T14:14:28+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181077"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "সংবাদকর্মীর ওপর যুবদল নেতার হামলার অভিযোগ",
+          "summary": "লক্ষ্মীপুরে সংবাদ সংগ্রহের সময় তানভীর আহমেদ রিমন নামে এক সংবাদকর্মীর ওপর হামলার অভিযোগ উঠেছে যুবদল নেতা আনোয়ার হোসেন সাদ্দামের বিরুদ্ধে...",
+          "url": "https://www.jagonews24.com/country/news/1181077"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "db69eb147f268550c30eceb47447e057"
+    },
+    {
+      "title": "টুঙ্গিপাড়ায় হামলা-অগ্নিসংযোগ: সংসদে ফ্যাসিবাদের শিকড় উপড়ে ফেলার দাবি",
+      "summary": "গোপালগঞ্জ ও টুঙ্গিপাড়ায় হামলা, অগ্নিসংযোগ ও লুটপাটের ঘটনায় উদ্বেগ প্রকাশ করে প্রশাসনের মধ্যে থাকা ফ্যাসিবাদের অনুসারীদের খুঁজে বের করে শাস্তির দাবি জানিয়েছেন জামায়াতে ইসলামীর সংসদ সদস্য নাজিবুর রহমান। তিনি বলেছেন, শুধু ফ্যাসিবাদবিরোধী বক্তব্য দিলেই হবে না, ফ্যাসিবাদের শিকড় উপড়ে ফেলতে হবে। এ জন্য দেশের প্রতিটি জেলায় সংসদ সদস্যদের নেতৃত্বে ফ্যাসিবাদবিরোধী প্রতিরোধ কমিটি গঠনের প্রস্তাব দিয়েছেন... বিস্তারিত",
+      "link": "https://www.banglatribune.com/national/981790/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/national/981790/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-18T14:03:07+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/national/981790/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181068"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "টুঙ্গিপাড়ায় হামলা-অগ্নিসংযোগ: সংসদে ফ্যাসিবাদের শিকড় উপড়ে ফেলার দাবি",
+          "summary": "গোপালগঞ্জ ও টুঙ্গিপাড়ায় হামলা, অগ্নিসংযোগ ও লুটপাটের ঘটনায় উদ্বেগ প্রকাশ করে প্রশাসনের মধ্যে থাকা ফ্যাসিবাদের অনুসারীদের খুঁজে বের করে শাস্তির দাবি জানিয়েছেন জামায়াতে ইসলামীর সংসদ সদস্য নাজিবুর রহমান। তিনি বলেছেন, শুধু ফ্যাসিবাদবিরোধী বক্তব্য দিলেই হবে না, ফ্যাসিবাদের শিকড় উপড়ে ফেলতে হবে। এ জন্য দেশের প্রতিটি জেলায় সংসদ সদস্যদের নেতৃত্বে ফ্যাসিবাদবিরোধী প্রতিরোধ কমিটি গঠনের প্রস্তাব দিয়েছেন... বিস্তারিত",
+          "url": "https://www.banglatribune.com/national/981790/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "ফ্যাসিবাদ প্রতিরোধ কমিটি গঠনের দাবি জামায়াতের এমপি নাজিবুরের",
+          "summary": "গোপালগঞ্জে হামলা, অগ্নিসংযোগ ও লুটপাটের ঘটনায় উদ্বেগ প্রকাশ করে ফ্যাসিবাদের শিকড় উপড়ে ফেলার দাবি জানিয়েছেন জামায়াতে ইসলামীর সংসদ সদস্য (এমপি) নাজিবুর রহমান...",
+          "url": "https://www.jagonews24.com/national/news/1181068"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "afb77026ceb180b041f4485aa32ea328"
+    },
+    {
+      "title": "আবারও ব্যাটিং ধস, কঠিন পরীক্ষায় বাংলাদেশ",
+      "summary": "দক্ষিণ আফ্রিকার বিপক্ষে জোহানেসবার্গ টেস্টে আবারও ব্যাটিং বিপর্যয়ে পড়েছে বাংলাদেশ। প্রথম ইনিংসে ১৫৭ রানে পিছিয়ে থেকে দ্বিতীয় ইনিংসে ব্যাট করতে নেমে চতুর্থ দিনে চায়ের বিরতির আগেই তিন উইকেট হারিয়েছে সফরকারীরা। বুধবার চা বিরতির সময় বাংলাদেশের সংগ্রহ ছিল ৩ উইকেটে ৫৮ রান। বিরতি থেকে ফিরে আরও একটি উইকেটও হারায় বাংলাদেশ। বিদায় নেন মাহফিজুল ইসলাম! এই রিপোর্ট লেখা পর্যন্ত দ্বিতীয় ইনিংসে সফরকারীদের... বিস্তারিত",
+      "link": "https://www.banglatribune.com/sport/cricket/981788/%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8-%E0%A6%95%E0%A6%A0%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+      "publisherUrl": "https://www.banglatribune.com/sport/cricket/981788/%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8-%E0%A6%95%E0%A6%A0%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+      "publishedAt": "2026-11-18T13:58:33+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/sport/cricket/981788/%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8-%E0%A6%95%E0%A6%A0%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "আবারও ব্যাটিং ধস, কঠিন পরীক্ষায় বাংলাদেশ",
+          "summary": "দক্ষিণ আফ্রিকার বিপক্ষে জোহানেসবার্গ টেস্টে আবারও ব্যাটিং বিপর্যয়ে পড়েছে বাংলাদেশ। প্রথম ইনিংসে ১৫৭ রানে পিছিয়ে থেকে দ্বিতীয় ইনিংসে ব্যাট করতে নেমে চতুর্থ দিনে চায়ের বিরতির আগেই তিন উইকেট হারিয়েছে সফরকারীরা। বুধবার চা বিরতির সময় বাংলাদেশের সংগ্রহ ছিল ৩ উইকেটে ৫৮ রান। বিরতি থেকে ফিরে আরও একটি উইকেটও হারায় বাংলাদেশ। বিদায় নেন মাহফিজুল ইসলাম! এই রিপোর্ট লেখা পর্যন্ত দ্বিতীয় ইনিংসে সফরকারীদের... বিস্তারিত",
+          "url": "https://www.banglatribune.com/sport/cricket/981788/%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8-%E0%A6%95%E0%A6%A0%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "57eda1fcb176187f102bfa608d813c56"
+    },
+    {
+      "title": "পার্বতীপুরে গ্রামীণ ব্যাংকে আগুন দেওয়ার চেষ্টা",
+      "summary": "দিনাজপুরের পার্বতীপুর উপজেলার গ্রামীণ ব্যাংকের ভবেরবাজার শাখা কার্যালয়ে দূর্বৃত্তরা তরল জাতীয় দ্রাহ্য পদার্থ ঢেলে অগ্নি সংযোগের চেষ্টা করেছে...",
+      "link": "https://www.jagonews24.com/country/news/1181065",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181065",
+      "publishedAt": "2026-11-18T13:56:17+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181065"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "পার্বতীপুরে গ্রামীণ ব্যাংকে আগুন দেওয়ার চেষ্টা",
+          "summary": "দিনাজপুরের পার্বতীপুর উপজেলার গ্রামীণ ব্যাংকের ভবেরবাজার শাখা কার্যালয়ে দূর্বৃত্তরা তরল জাতীয় দ্রাহ্য পদার্থ ঢেলে অগ্নি সংযোগের চেষ্টা করেছে...",
+          "url": "https://www.jagonews24.com/country/news/1181065"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "35c53f6f7d9895e05f6bd5b5150cdca7"
+    },
     {
       "title": "টুঙ্গিপাড়া থানা ছেড়ে চলে গেলেন পুলিশ সদস্যরা",
       "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় ভাঙচুর ও অগ্নিসংযোগের পর আবারও হামলার আশঙ্কায় থানা ছেড়ে চলে গেলেন পুলিশ সদস্যরা। বুধবার (১৮ নভেম্বর) বিকেল...",
@@ -872,6 +1007,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "74dd7a4ee8ab7613b898515006a447c9"
+    },
+    {
+      "title": "গোপালগঞ্জের সড়কে যেন যু-দ্ধ হয়েছে | Gopalganj Clash | Awami League | Ekattor TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=x45gxf0DCkA",
+      "publisherUrl": "https://www.youtube.com/watch?v=x45gxf0DCkA",
+      "publishedAt": "2026-11-18T13:52:41+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=x45gxf0DCkA"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "গোপালগঞ্জের সড়কে যেন যু-দ্ধ হয়েছে | Gopalganj Clash | Awami League | Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=x45gxf0DCkA"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "caae8a78627b49c9c542e86131e78e58"
     },
     {
       "title": "গ্রামীণ ব্যাংকের দুটি শাখায় আগুন দিলো দুর্বৃত্তরা, ভেতরে ছিলেন কর্মকর্তারা",
@@ -906,7 +1072,7 @@
     },
     {
       "title": "চট্টগ্রাম বন্দরে সন্ত্রাসী হামলা কীভাবে মোকাবিলা, উঠে এলো মহড়ায়",
-      "summary": "মহড়ার অংশ হিসেবে সন্ত্রাসী হামলার সময় সিসিটিভি পর্যবেক্ষণ, কুইক রেসপন্স টিম মোতায়েন এবং প্রাথমিক তল্লাশি কার্যক্রমের পর পরিস্থিতির গুরুত্ব বিবেচনায় নিরাপত্তা স্তর-৩ ঘোষণা করা হয়...",
+      "summary": "চট্টগ্রাম বন্দরে সন্ত্রাসী হামলা কীভাবে মোকাবিলা, উঠে এলো মহড়ায়",
       "link": "https://www.jagonews24.com/national/news/1181052",
       "publisherUrl": "https://www.jagonews24.com/national/news/1181052",
       "publishedAt": "2026-11-18T13:41:29+00:00",
@@ -928,7 +1094,7 @@
         {
           "name": "Jago News 24",
           "title": "চট্টগ্রাম বন্দরে সন্ত্রাসী হামলা কীভাবে মোকাবিলা, উঠে এলো মহড়ায়",
-          "summary": "মহড়ার অংশ হিসেবে সন্ত্রাসী হামলার সময় সিসিটিভি পর্যবেক্ষণ, কুইক রেসপন্স টিম মোতায়েন এবং প্রাথমিক তল্লাশি কার্যক্রমের পর পরিস্থিতির গুরুত্ব বিবেচনায় নিরাপত্তা স্তর-৩ ঘোষণা করা হয়...",
+          "summary": "চট্টগ্রাম বন্দরে সন্ত্রাসী হামলা কীভাবে মোকাবিলা, উঠে এলো মহড়ায়",
           "url": "https://www.jagonews24.com/national/news/1181052"
         }
       ],
@@ -1084,8 +1250,7 @@
           "name": "Chandpur Times",
           "title": "উপযুক্ত সময় এসেছে গোপালগঞ্জের নাম পাল্টে ফেলার- অ্যাড. সলিম উল্যা সেলিম",
           "summary": "পতিত ফ্যাসিস্ট, নিষিদ্ধ ঘোষিত আওয়ামী লীগের দেশবিরোধী ষড়যন্ত্র, আগুন সন্ত্রাস ও নৈরাজ্য সৃষ্টির প্রতিবাদে বিশাল বিক্ষোভ মিছিল ও সমাবেশ করেছে চাঁদপুর জেলা যুবদল। বুধবার (১৮ নভেম্বর) বিকেলে সাড়ে ৩টায় চাঁদপুর জেলা বিএনপি কার্যালয় প্রাঙ্গনে থেকে বিক্ষোভ মিছিল বের করা হয়। মিছিলটি শহরের প্রধান প্রধান সড়ক প্রদক্ষিণ করে পুনরায় জেলা বিএনপি কার্যালয়ে গিয়ে শেষ হয়। এর ...",
-          "url": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/",
-          "incidentDateText": "বুধবার (১৮ নভেম্বর)"
+          "url": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/"
         }
       ],
       "corroborationCount": 1,
@@ -1147,8 +1312,7 @@
           "name": "Dainik Azadi",
           "title": "রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল",
           "summary": "রাতের আঁধারে চকলেট বোমা বিস্ফোরণ ঘটিয়ে বা মানুষকে হয়রানি করে গণতান্ত্রিক আন্দোলন হয় না বলে মন্তব্য করেছেন ভূমি ও পার্বত্য চট্টগ্রাম বিষয়ক প্রতিমন্ত্রী ব্যারিস্টার মীর মোহাম্মদ হেলাল উদ্দীন। তিনি বলেছেন, আওয়ামী লীগের রাজনৈতিক কর্মকাণ্ড রাজপথে মোকাবিলা করা হবে। আজ বুধবার (১৮ নভেম্বর) দুপুরে চট্টগ্রাম বিশ্ববিদ্যালয়ের হীরকজয়ন্তী অনুষ্ঠানে গণমাধ্যমকর্মীদের বিভিন্ন প্রশ্নের জবাবে তিনি এসব কথা বলেন। […] The post রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/",
-          "incidentDateText": "বুধবার (১৮ নভেম্বর)"
+          "url": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/"
         }
       ],
       "corroborationCount": 1,
@@ -2111,37 +2275,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5560869b9efab7a5378808fc33d782e6"
-    },
-    {
-      "title": "এমপি দিপু ভূঁইয়ার বাড়ির পাশে দুটি বাসে আগুন, গুলির শব্দে আতঙ্ক",
-      "summary": "নারায়ণগঞ্জের রূপগঞ্জে সংসদ সদস্য মুস্তাফিজুর রহমান ভূঁইয়া দিপুর বাড়ির পাশের এলাকায় দুটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় এক রাউন্ড গুলির শব্দ শোনার দাবিও করেছেন স্থানীয় প্রত্যক্ষদর্শীরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টার দিকে উপজেলার গোলাকান্দাইল এলাকায় এ ঘটনা ঘটে। এতে এলাকায় আতঙ্ক ছড়িয়ে পড়ে। স্থানীয় প্রত্যক্ষদর্শীরা জানান, পাঁচটি মোটরসাইকেলে করে হেলমেট পরা ১০ জন ব্যক্তি গোলাকান্দাইল... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/981690/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A6%AA%E0%A7%81-%E0%A6%AD%E0%A7%82%E0%A6%81%E0%A6%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981690/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A6%AA%E0%A7%81-%E0%A6%AD%E0%A7%82%E0%A6%81%E0%A6%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B0",
-      "publishedAt": "2026-11-18T07:39:28+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981690/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A6%AA%E0%A7%81-%E0%A6%AD%E0%A7%82%E0%A6%81%E0%A6%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "এমপি দিপু ভূঁইয়ার বাড়ির পাশে দুটি বাসে আগুন, গুলির শব্দে আতঙ্ক",
-          "summary": "নারায়ণগঞ্জের রূপগঞ্জে সংসদ সদস্য মুস্তাফিজুর রহমান ভূঁইয়া দিপুর বাড়ির পাশের এলাকায় দুটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় এক রাউন্ড গুলির শব্দ শোনার দাবিও করেছেন স্থানীয় প্রত্যক্ষদর্শীরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টার দিকে উপজেলার গোলাকান্দাইল এলাকায় এ ঘটনা ঘটে। এতে এলাকায় আতঙ্ক ছড়িয়ে পড়ে। স্থানীয় প্রত্যক্ষদর্শীরা জানান, পাঁচটি মোটরসাইকেলে করে হেলমেট পরা ১০ জন ব্যক্তি গোলাকান্দাইল... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981690/%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%A6%E0%A6%BF%E0%A6%AA%E0%A7%81-%E0%A6%AD%E0%A7%82%E0%A6%81%E0%A6%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2dbc59edfa56e7ca2aceef29b449e680"
     },
     {
       "title": "কুমিল্লায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগ কার্যালয় ও সাবেক এমপি বাহারের বাড়িতে আগুন",
