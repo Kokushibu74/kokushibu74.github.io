@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T03:51:52.352910+00:00",
-  "updatedAt": "2026-11-18T03:51:52.352910+00:00",
+  "generatedAt": "2026-11-18T04:12:06.832558+00:00",
+  "updatedAt": "2026-11-18T04:12:06.832558+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 23,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "BSS",
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Samakal",
@@ -840,8 +840,175 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 42,
+  "candidateCount": 43,
   "alertItems": [
+    {
+      "title": "গোপালগঞ্জে বিশৃঙ্খলা ছড়ানোর আগেই ট্রিটমেন্ট চান বিরোধীদলীয় নেতা",
+      "summary": "গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় হামলা, অগ্নিসংযোগ ও অস্ত্র লুটপাটের ঘটনায় তীব্র ক্ষোভ ও উদ্বেগ প্রকাশ করে ওই এলাকার আইনশৃঙ্খলা পরিস্থিতি নিয়ন্ত্রণে সরকারকে দৃশ্যমান পদক্ষেপ নেওয়ার আহ্বান জানিয়েছেন বিরোধীদলীয় নেতা ডা. শফিকুর রহমান। তিনি বলেছেন, বিষফোড়ার জীবাণু রক্তে ছড়িয়ে পড়ার আগেই তার সঠিক ট্রিটমেন্ট করতে হবে। তা না হলে দেশের সার্বিক নিরাপত্তা ব্যবস্থা মারাত্মক হুমকিতে পড়বে। খবর […] The post গোপালগঞ্জে বিশৃঙ্খলা ছড়ানোর আগেই ট্রিটমেন্ট চান বিরোধীদলীয় নেতা appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ac%e0%a6%bf%e0%a6%b6%e0%a7%83%e0%a6%99%e0%a7%8d%e0%a6%96%e0%a6%b2%e0%a6%be-%e0%a6%9b%e0%a7%9c%e0%a6%be/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ac%e0%a6%bf%e0%a6%b6%e0%a7%83%e0%a6%99%e0%a7%8d%e0%a6%96%e0%a6%b2%e0%a6%be-%e0%a6%9b%e0%a7%9c%e0%a6%be/",
+      "publishedAt": "2026-11-18T04:09:11+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ac%e0%a6%bf%e0%a6%b6%e0%a7%83%e0%a6%99%e0%a7%8d%e0%a6%96%e0%a6%b2%e0%a6%be-%e0%a6%9b%e0%a7%9c%e0%a6%be/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "গোপালগঞ্জে বিশৃঙ্খলা ছড়ানোর আগেই ট্রিটমেন্ট চান বিরোধীদলীয় নেতা",
+          "summary": "গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় হামলা, অগ্নিসংযোগ ও অস্ত্র লুটপাটের ঘটনায় তীব্র ক্ষোভ ও উদ্বেগ প্রকাশ করে ওই এলাকার আইনশৃঙ্খলা পরিস্থিতি নিয়ন্ত্রণে সরকারকে দৃশ্যমান পদক্ষেপ নেওয়ার আহ্বান জানিয়েছেন বিরোধীদলীয় নেতা ডা. শফিকুর রহমান। তিনি বলেছেন, বিষফোড়ার জীবাণু রক্তে ছড়িয়ে পড়ার আগেই তার সঠিক ট্রিটমেন্ট করতে হবে। তা না হলে দেশের সার্বিক নিরাপত্তা ব্যবস্থা মারাত্মক হুমকিতে পড়বে। খবর […] The post গোপালগঞ্জে বিশৃঙ্খলা ছড়ানোর আগেই ট্রিটমেন্ট চান বিরোধীদলীয় নেতা appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ac%e0%a6%bf%e0%a6%b6%e0%a7%83%e0%a6%99%e0%a7%8d%e0%a6%96%e0%a6%b2%e0%a6%be-%e0%a6%9b%e0%a7%9c%e0%a6%be/",
+          "locationText": "গোপালগঞ্জের টুঙ্গিপাড়ায় থানায়, গোপালগঞ্জ"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "083e420fe56542cb790feb359d1a69c2"
+    },
+    {
+      "title": "সাভার-আশুলিয়ায় ৮০ কারখানা বন্ধ",
+      "summary": "কয়েকদিন পরিস্থিতি স্বাভাবিক থাকার পর ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে ফের উত্তপ্ত হয়ে উঠেছে সাভার ও আশুলিয়া শিল্পাঞ্চল। গতকাল মঙ্গলবার সকাল থেকে শ্রমিকদের সড়ক অবরোধ, ধাওয়া–পাল্টা ধাওয়া ও পুলিশের সঙ্গে সংঘর্ষের ঘটনা ঘটে। বিক্ষুব্ধ শ্রমিকরা আধা ঘণ্টা ঢাকা–আরিচা মহাসড়ক অবরোধ করে রাখে, ভাঙচুর করে পোশাক কারখানাসহ সড়কের চলাচলরত যানবাহন। পরিস্থিতি নিয়ন্ত্রণে আনতে সাভার ও […] The post সাভার-আশুলিয়ায় ৮০ কারখানা বন্ধ appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%b8%e0%a6%be%e0%a6%ad%e0%a6%be%e0%a6%b0-%e0%a6%86%e0%a6%b6%e0%a7%81%e0%a6%b2%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a7%ae%e0%a7%a6-%e0%a6%95%e0%a6%be%e0%a6%b0%e0%a6%96%e0%a6%be%e0%a6%a8/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%b8%e0%a6%be%e0%a6%ad%e0%a6%be%e0%a6%b0-%e0%a6%86%e0%a6%b6%e0%a7%81%e0%a6%b2%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a7%ae%e0%a7%a6-%e0%a6%95%e0%a6%be%e0%a6%b0%e0%a6%96%e0%a6%be%e0%a6%a8/",
+      "publishedAt": "2026-11-18T04:08:01+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%b8%e0%a6%be%e0%a6%ad%e0%a6%be%e0%a6%b0-%e0%a6%86%e0%a6%b6%e0%a7%81%e0%a6%b2%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a7%ae%e0%a7%a6-%e0%a6%95%e0%a6%be%e0%a6%b0%e0%a6%96%e0%a6%be%e0%a6%a8/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "সাভার-আশুলিয়ায় ৮০ কারখানা বন্ধ",
+          "summary": "কয়েকদিন পরিস্থিতি স্বাভাবিক থাকার পর ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে ফের উত্তপ্ত হয়ে উঠেছে সাভার ও আশুলিয়া শিল্পাঞ্চল। গতকাল মঙ্গলবার সকাল থেকে শ্রমিকদের সড়ক অবরোধ, ধাওয়া–পাল্টা ধাওয়া ও পুলিশের সঙ্গে সংঘর্ষের ঘটনা ঘটে। বিক্ষুব্ধ শ্রমিকরা আধা ঘণ্টা ঢাকা–আরিচা মহাসড়ক অবরোধ করে রাখে, ভাঙচুর করে পোশাক কারখানাসহ সড়কের চলাচলরত যানবাহন। পরিস্থিতি নিয়ন্ত্রণে আনতে সাভার ও […] The post সাভার-আশুলিয়ায় ৮০ কারখানা বন্ধ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%b8%e0%a6%be%e0%a6%ad%e0%a6%be%e0%a6%b0-%e0%a6%86%e0%a6%b6%e0%a7%81%e0%a6%b2%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a7%ae%e0%a7%a6-%e0%a6%95%e0%a6%be%e0%a6%b0%e0%a6%96%e0%a6%be%e0%a6%a8/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9d3b7b50a0015f5ac20f50a0a9da9423"
+    },
+    {
+      "title": "তৃতীয়বারের মতো আগুন দেওয়া হলো সাবেক এমপি বাহারের বাড়ি-কার্যালয়ে",
+      "summary": "কুমিল্লায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দক্ষিণ জেলা কার্যালয় এবং দলটির সাবেক সংসদ সদস্য আ ক ম বাহাউদ্দিন বাহারের বাড়ি ও ব্যক্তিগত কার্যালয়ে আবারও অগ্নিসংযোগের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) রাতে নগরের রামঘাট ও মুন্সেফবাড়ি এলাকায় এসব ঘটনা ঘটে। এ নিয়ে টানা তৃতীয়বারের মতো বাহারের বাসভবন ও রাজনৈতিক কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটল। ঘটনার কয়েকটি ভিডিও ইতিমধ্যে সামাজিক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/981652/%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A7%9F%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A4%E0%A7%8B-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%8B-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981652/%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A7%9F%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A4%E0%A7%8B-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%8B-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-18T04:03:28+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/981652/%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A7%9F%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A4%E0%A7%8B-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%8B-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        },
+        {
+          "name": "Channel 24 ·",
+          "url": "https://www.youtube.com/watch?v=6B9CIQJCGSk"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "তৃতীয়বারের মতো আগুন দেওয়া হলো সাবেক এমপি বাহারের বাড়ি-কার্যালয়ে",
+          "summary": "কুমিল্লায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দক্ষিণ জেলা কার্যালয় এবং দলটির সাবেক সংসদ সদস্য আ ক ম বাহাউদ্দিন বাহারের বাড়ি ও ব্যক্তিগত কার্যালয়ে আবারও অগ্নিসংযোগের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) রাতে নগরের রামঘাট ও মুন্সেফবাড়ি এলাকায় এসব ঘটনা ঘটে। এ নিয়ে টানা তৃতীয়বারের মতো বাহারের বাসভবন ও রাজনৈতিক কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটল। ঘটনার কয়েকটি ভিডিও ইতিমধ্যে সামাজিক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/981652/%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A7%9F%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A4%E0%A7%8B-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%8B-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        },
+        {
+          "name": "Channel 24",
+          "title": "কুমিল্লায় আ.লীগ কার্যালয় ও সাবেক এমপি বাহারের ব্যক্তিগত অফিসে আগুন | Cumilla News | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=6B9CIQJCGSk"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "3dc626fed07016daafd32174ca2b86c1"
+    },
+    {
+      "title": "কে এই গ্রেনেড বাবু, যার ভয়ে কাঁপছে খুলনা",
+      "summary": "খুলনার অপরাধজগতে নব্বইয়ের দশক ও পরবর্তী সময়ের মৃণাল, দাদা তপন, মোফাখখার চৌধুরীদের সন্ত্রাসী তৎপরতার ধারাবাহিকতায় এখন আলোচনায় ‘গ্রেনেড বাবু’সহ অন্তত ৯টি সন্ত্রাসী গোষ্ঠী। নগর ও আশপাশের এলাকায় এসব গোষ্ঠীর বিরুদ্ধে আধিপত্য বিস্তার, মাদক কারবার ও চাঁদাবাজি নিয়ন্ত্রণ রয়েছে। এসব নিয়ন্ত্রণ নিয়ে গোষ্ঠীগুলোর অভ্যন্তরীণ কোন্দল ও পাল্টাপাল্টি হামলায় বাড়ছে খুনোখুনি। অপরাধজগতের নেতৃত্ব ও গোষ্ঠীর... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/981610/%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81-%E0%A6%AF%E0%A6%BE%E0%A6%B0-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%AA%E0%A6%9B%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/981610/%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81-%E0%A6%AF%E0%A6%BE%E0%A6%B0-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%AA%E0%A6%9B%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE",
+      "publishedAt": "2026-11-18T04:01:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/981610/%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81-%E0%A6%AF%E0%A6%BE%E0%A6%B0-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%AA%E0%A6%9B%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "কে এই গ্রেনেড বাবু, যার ভয়ে কাঁপছে খুলনা",
+          "summary": "খুলনার অপরাধজগতে নব্বইয়ের দশক ও পরবর্তী সময়ের মৃণাল, দাদা তপন, মোফাখখার চৌধুরীদের সন্ত্রাসী তৎপরতার ধারাবাহিকতায় এখন আলোচনায় ‘গ্রেনেড বাবু’সহ অন্তত ৯টি সন্ত্রাসী গোষ্ঠী। নগর ও আশপাশের এলাকায় এসব গোষ্ঠীর বিরুদ্ধে আধিপত্য বিস্তার, মাদক কারবার ও চাঁদাবাজি নিয়ন্ত্রণ রয়েছে। এসব নিয়ন্ত্রণ নিয়ে গোষ্ঠীগুলোর অভ্যন্তরীণ কোন্দল ও পাল্টাপাল্টি হামলায় বাড়ছে খুনোখুনি। অপরাধজগতের নেতৃত্ব ও গোষ্ঠীর... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/981610/%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81-%E0%A6%AF%E0%A6%BE%E0%A6%B0-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%AA%E0%A6%9B%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fad9e1f66e916e31d26d1e249a484895"
+    },
+    {
+      "title": "লিবিয়া থেকে গ্রিসে যাচ্ছিলেন হবিগঞ্জের ৭ তরুণ, নৌকাডুবির পর খোঁজ নেই ৬ জনের",
+      "summary": "ছয় তরুণের ভাগ্যে কী ঘটেছে, তা এখনো নিশ্চিত হতে পারেনি তাঁদের পরিবার। দালালদের সঙ্গে যোগাযোগের চেষ্টা করেও ব্যর্থ হয়েছে তারা।",
+      "link": "https://www.prothomalo.com/bangladesh/district/en65dqxqzq",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/en65dqxqzq",
+      "publishedAt": "2026-11-18T04:00:00+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/en65dqxqzq"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "লিবিয়া থেকে গ্রিসে যাচ্ছিলেন হবিগঞ্জের ৭ তরুণ, নৌকাডুবির পর খোঁজ নেই ৬ জনের",
+          "summary": "ছয় তরুণের ভাগ্যে কী ঘটেছে, তা এখনো নিশ্চিত হতে পারেনি তাঁদের পরিবার। দালালদের সঙ্গে যোগাযোগের চেষ্টা করেও ব্যর্থ হয়েছে তারা।",
+          "url": "https://www.prothomalo.com/bangladesh/district/en65dqxqzq"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "40801b7f00acbf80614cd61150bd3943"
+    },
     {
       "title": "সংঘর্ষের পর গাজীপুরের শিল্পাঞ্চলে স্বস্তি, কাজে ফিরছেন শ্রমিকরা",
       "summary": "দিনভর শ্রমিক বিক্ষোভ ও সংঘর্ষের পর গাজীপুরের শিল্পাঞ্চলে স্বাভাবিক হতে শুরু করেছে পরিস্থিতি। খুলে দেওয়া হয়েছে অধিকাংশ পোশাক কারখানা। বুধবার (১৮ নভেম্বর) সকাল থেকেই বিভিন্ন কারখানায় শ্রমিকদের সারিবদ্ধভাবে প্রবেশ করে কাজে যোগ দিতে দেখা গেছে। কর্মস্থলে ফিরতে পেরে শ্রমিকদের মধ্যেও স্বস্তি দেখা গেছে। বুধবার সকাল থেকে গাজীপুরের ভোগড়া বাইপাস, নাওজোড়, জরুন, কোনাবাড়ী, কাশিমপুর, চন্দ্রা, পল্লী বিদ্যুৎ,... বিস্তারিত",
@@ -882,17 +1049,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1180730"
         }
       ],
       "category": "Bangladesh",
@@ -904,15 +1066,9 @@
           "title": "দাঁড়িয়ে থাকা দুই বাসে আগুন, ঘুমন্ত হেলপারের মৃত্যু",
           "summary": "পিরোজপুরে বাসস্ট্যান্ডে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে একটি বাসের ভেতরে ঘুমিয়ে থাকা সিয়াম নামে এক হেলপার পুড়ে মারা গেছেন। বুধবার (১৮ নভেম্বর) ভোর পৌনে ৪টার দিকে ভান্ডারিয়া বাসস্ট্যান্ডে এ ঘটনা ঘটে। নিহত সিয়ামের বাড়ি বরিশালের বাবুগঞ্জ উপজেলার শিকারপুর এলাকায়। আগুন লাগার সময় তিনি বরিশাল মালিক সমিতির ‘বাহক’ পরিবহনের একটি বাসের ভেতরে ঘুমিয়ে ছিলেন। স্থানীয়... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
-          "summary": "পিরোজপুরের ভান্ডারিয়ায় থামিয়ে রাখা দুটি বাসে দুর্বৃত্তদের দেওয়া আগুনে ঘুমন্ত অবস্থায় মো. সিয়াম নামে এক হেলপার নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) ভোর ৪টার দিকে ভান্ডারিয়া...",
-          "url": "https://www.jagonews24.com/country/news/1180730"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "5c12622f2959a37605b27893406ed286"
     },
     {
@@ -978,39 +1134,8 @@
       "alertEventId": "6b4d172503109f068459ea77910eab91"
     },
     {
-      "title": "কুমিল্লায় আ.লীগ কার্যালয় ও সাবেক এমপি বাহারের ব্যক্তিগত অফিসে আগুন | Cumilla News | Channel 24",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=6B9CIQJCGSk",
-      "publisherUrl": "https://www.youtube.com/watch?v=6B9CIQJCGSk",
-      "publishedAt": "2026-11-18T02:55:17+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=6B9CIQJCGSk"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "কুমিল্লায় আ.লীগ কার্যালয় ও সাবেক এমপি বাহারের ব্যক্তিগত অফিসে আগুন | Cumilla News | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=6B9CIQJCGSk"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f799c8bbc07cb859fbadac8ea7f3af35"
-    },
-    {
       "title": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-      "summary": "বগুড়া সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) রাতে শহরের মাটিডালী এলাকায় এ ঘটনা ঘটে। ককটেল ছুড়ে ‘জয় বাংলা’...",
+      "summary": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
       "link": "https://www.jagonews24.com/country/news/1180731",
       "publisherUrl": "https://www.jagonews24.com/country/news/1180731",
       "publishedAt": "2026-11-18T02:49:23+00:00",
@@ -1032,12 +1157,43 @@
         {
           "name": "Jago News 24",
           "title": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
-          "summary": "বগুড়া সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার (১৭ নভেম্বর) রাতে শহরের মাটিডালী এলাকায় এ ঘটনা ঘটে। ককটেল ছুড়ে ‘জয় বাংলা’...",
+          "summary": "বগুড়ায় উপজেলা পরিষদে ককটেল বিস্ফোরণ ঘটিয়ে ‘জয় বাংলা’ স্লোগান",
           "url": "https://www.jagonews24.com/country/news/1180731"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "02d8e0e4749af580c44fdaa57f00ea18"
+    },
+    {
+      "title": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
+      "summary": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
+      "link": "https://www.jagonews24.com/country/news/1180730",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1180730",
+      "publishedAt": "2026-11-18T02:42:57+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1180730"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
+          "summary": "পিরোজপুরে দুই বাসে দুর্বৃত্তের আগুন, প্রাণ গেল ঘুমন্ত হেলপারের",
+          "url": "https://www.jagonews24.com/country/news/1180730"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a62ff08f51c5058ded668100e9a0348d"
     },
     {
       "title": "নেত্রকোনায় রেল স্টেশনে পেট্রোল ঢেলে আগুন, ভিডিও ভাইরাল",
@@ -1131,37 +1287,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "da46acb7720e3095eb3305831b999bd4"
-    },
-    {
-      "title": "জড়িত প্রত্যেককে ভিডিও ফুটেজ দেখে আইনের আওতায় আনা হবে : স্বরাষ্ট্রমন্ত্রী",
-      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগ এখন টুঙ্গিপাড়া লিমিটেড হয়ে গেছে বলে মন্তব্য করেছেন স্বরাষ্ট্রমন্ত্রী সালাহউদ্দিন আহমদ। গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় হামলা ও অগ্নিসংযোগের জন্য আওয়ামী লীগকে দায়ী করে তিনি বলেছেন, এসব ঘটনায় জড়িতদের অডিও–ভিডিও ও ছবি দেখে শনাক্ত করে আইনের আওতায় আনা হবে। সাধারণ মানুষ যাতে হতাহত না হন, সেজন্য আইনশৃঙ্খলা বাহিনী ধৈর্য ধরে পরিস্থিতি মোকাবিলা করছে, […] The post জড়িত প্রত্যেককে ভিডিও ফুটেজ দেখে আইনের আওতায় আনা হবে : স্বরাষ্ট্রমন্ত্রী appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/%e0%a6%9c%e0%a7%9c%e0%a6%bf%e0%a6%a4-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%95%e0%a6%95%e0%a7%87-%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93-%e0%a6%ab%e0%a7%81/",
-      "publisherUrl": "https://dainikazadi.net/%e0%a6%9c%e0%a7%9c%e0%a6%bf%e0%a6%a4-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%95%e0%a6%95%e0%a7%87-%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93-%e0%a6%ab%e0%a7%81/",
-      "publishedAt": "2026-11-18T00:29:26+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%9c%e0%a7%9c%e0%a6%bf%e0%a6%a4-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%95%e0%a6%95%e0%a7%87-%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93-%e0%a6%ab%e0%a7%81/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "জড়িত প্রত্যেককে ভিডিও ফুটেজ দেখে আইনের আওতায় আনা হবে : স্বরাষ্ট্রমন্ত্রী",
-          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগ এখন টুঙ্গিপাড়া লিমিটেড হয়ে গেছে বলে মন্তব্য করেছেন স্বরাষ্ট্রমন্ত্রী সালাহউদ্দিন আহমদ। গোপালগঞ্জের টুঙ্গিপাড়ায় থানায় হামলা ও অগ্নিসংযোগের জন্য আওয়ামী লীগকে দায়ী করে তিনি বলেছেন, এসব ঘটনায় জড়িতদের অডিও–ভিডিও ও ছবি দেখে শনাক্ত করে আইনের আওতায় আনা হবে। সাধারণ মানুষ যাতে হতাহত না হন, সেজন্য আইনশৃঙ্খলা বাহিনী ধৈর্য ধরে পরিস্থিতি মোকাবিলা করছে, […] The post জড়িত প্রত্যেককে ভিডিও ফুটেজ দেখে আইনের আওতায় আনা হবে : স্বরাষ্ট্রমন্ত্রী appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%9c%e0%a7%9c%e0%a6%bf%e0%a6%a4-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%95%e0%a6%95%e0%a7%87-%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93-%e0%a6%ab%e0%a7%81/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "91b2e5ff7bd4b1efbe3cf96e9f0e9516"
     },
     {
       "title": "বিদ্যালয়ের পরিত্যক্ত কক্ষ থেকে ৫০টি ককটেল ও গান পাউডার উদ্ধার",
@@ -1288,37 +1413,6 @@
       "alertEventId": "eb4afb6b19298153d5b8edd23152a2ab"
     },
     {
-      "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87",
-      "publishedAt": "2026-11-17T19:02:25+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "এবার রামপুরা ব্রিজের সামনে রাইদা পরিবহনের বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113311/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "76eefdaea002fc9e0097547ed1cd2148"
-    },
-    {
       "title": "আওয়ামী লীগ টুঙ্গিপাড়া লিমিটেড হয়ে যাবে: স্বরাষ্ট্রমন্ত্রী",
       "summary": "গোপালগঞ্জে থানা ঘেরাও, হামলা, অগ্নিসংযোগ ও অস্ত্র লুটের ঘটনায় সংসদে উদ্বেগ প্রকাশ করেছেন বিরোধীদলীয় নেতা ডা. শফিকুর রহমান। আগামী ১৯ নভেম্বরকে সামনে রেখে সেখানে বড় ধরনের নাশকতার পরিকল্পনা হচ্ছে বলে তথ্য পাওয়ার কথা জানিয়ে তিনি বলেন, এ বিষয়ে আর বসে থাকার সময় নেই। নিরীহ মানুষের জীবন, সম্পদ ও রাষ্ট্রীয় স্থাপনা রক্ষায় সরকারকে কার্যকর পদক্ষেপ নিতে হবে। জবাবে স্বরাষ্ট্রমন্ত্রী সালাহউদ্দিন আহমদ বলেছেন,... বিস্তারিত",
       "link": "https://www.banglatribune.com/national/981612/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A6%BF%E0%A6%9F%E0%A7%87%E0%A6%A1-%E0%A6%B9%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A7%87",
@@ -1421,37 +1515,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b4f67b995f996485444089a97b97457f"
-    },
-    {
-      "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-      "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz",
-      "publishedAt": "2026-11-17T18:19:01+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী - Daily Bonik Barta",
-          "summary": "গোপালগঞ্জে হামলাকারীদের ভিডিও দেখে শনাক্ত করা হবে : স্বরাষ্ট্রমন্ত্রী Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/3vD6jgrLDkonSSRz"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a5c11de1260ea82d4448a8138cf18850"
     },
     {
       "title": "যৌথবাহিনীর অভিযানের মধ্যেই খুলনায় ব্যবসায়ীসহ দুজনকে গুলি, হাসপাতালে ভর্তি",
@@ -1948,37 +2011,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ae14b105c0495d7ae66b05e3431cbe7"
-    },
-    {
-      "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-      "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-      "link": "https://bn.observerbd.com/news/150552",
-      "publisherUrl": "https://bn.observerbd.com/news/150552",
-      "publishedAt": "2026-11-17T13:44:00+00:00",
-      "source": "Daily Observer",
-      "publisherName": "Daily Observer",
-      "sourceEvidence": [
-        "Daily Observer"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Observer",
-          "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-          "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     },
     {
       "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
