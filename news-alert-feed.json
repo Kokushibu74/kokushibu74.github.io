@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T13:21:56.361462+00:00",
-  "updatedAt": "2026-11-18T13:21:56.361462+00:00",
+  "generatedAt": "2026-11-18T13:36:53.177216+00:00",
+  "updatedAt": "2026-11-18T13:36:53.177216+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "BSS",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24",
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 63,
+  "candidateCount": 61,
   "alertItems": [
+    {
+      "title": "বগুড়ায় উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণ",
+      "summary": "বগুড়া মহানগরীর মাটিডালি এলাকায় সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার রাত ১১টার দিকে কয়েকজন দুর্বৃত্ত মোটরসাইকেলে এসে ককটেল বিস্ফোরণ ঘটিয়ে পালিয়ে যায়। পুলিশ ও স্থানীয় সূত্রে জানা যায়, মঙ্গলবার রাত ১১টার দিকে তিনজন দুর্বৃত্ত মোটরসাইকেলে করে সদর উপজেলা পরিষদের সামনে আসে। এ সময় তাদের একজন সদর উপজেলা পরিষদ লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এরপরই মোটরসাইকেলে করে দ্রুত... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publishedAt": "2026-11-18T13:30:06+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বগুড়ায় উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণ",
+          "summary": "বগুড়া মহানগরীর মাটিডালি এলাকায় সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার রাত ১১টার দিকে কয়েকজন দুর্বৃত্ত মোটরসাইকেলে এসে ককটেল বিস্ফোরণ ঘটিয়ে পালিয়ে যায়। পুলিশ ও স্থানীয় সূত্রে জানা যায়, মঙ্গলবার রাত ১১টার দিকে তিনজন দুর্বৃত্ত মোটরসাইকেলে করে সদর উপজেলা পরিষদের সামনে আসে। এ সময় তাদের একজন সদর উপজেলা পরিষদ লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এরপরই মোটরসাইকেলে করে দ্রুত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8b5882c8145aa3e71f2f3ad9d94f57af"
+    },
+    {
+      "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
+      "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
+      "link": "https://chattogramnews.com/archives/161103",
+      "publisherUrl": "https://chattogramnews.com/archives/161103",
+      "publishedAt": "2026-11-18T13:22:46+00:00",
+      "source": "Chattogram News",
+      "publisherName": "Chattogram News",
+      "sourceEvidence": [
+        "Chattogram News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161103"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chattogram News",
+          "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
+          "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161103"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ee252dff6a6b1ca71d6cf0422027907a"
+    },
     {
       "title": "পল্লবীতে ট্রাস্ট পরিবহনের বাসে আগুন",
       "summary": "রাজধানীর পল্লবীর সাগুফতা ফুড কার্টের সামনে ট্রাস্ট পরিবহনের একটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) বিকাল ৫টার দিকে এই ঘটনা ঘটে। পল্লবী থানার উপপরিদর্শক (এসআই) মোহাম্মদ হাসিবুল জানান, ট্রাস্ট পরিবহনের একটি বাস (ঢাকা মেট্রো-ব-১১-৭৭৯৪) রাস্তার পাশে দাঁড় করিয়ে সাগুফতার সামনে কাজ করাছিলেন চালক মো. সাদ্দাম। এ সময় দুর্বৃত্তরা পিছনে বাসের সিটে আগুন ধরিয়ে পালিয়ে যায়। তিনি আরও... বিস্তারিত",
@@ -1062,37 +1124,6 @@
       "alertEventId": "fd87c6a3f004ba98ca3f1557c8ada3b4"
     },
     {
-      "title": "গাজীপুর-সাভারে পোশাক শ্রমিকদের বিক্ষোভ-সংঘর্ষ, শতাধিক কারখানা বন্ধ| Garments Unrest | News|Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=LX3Ry_YpS-Q",
-      "publisherUrl": "https://www.youtube.com/watch?v=LX3Ry_YpS-Q",
-      "publishedAt": "2026-11-18T12:40:39+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=LX3Ry_YpS-Q"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "গাজীপুর-সাভারে পোশাক শ্রমিকদের বিক্ষোভ-সংঘর্ষ, শতাধিক কারখানা বন্ধ| Garments Unrest | News|Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=LX3Ry_YpS-Q"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1adae60348c2f17fd59ff5d1a5d5346f"
-    },
-    {
       "title": "ময়মনসিংহে গ্রামীণ ব্যাংকে আগুন",
       "summary": "ময়মনসিংহে গ্রামীণ ব্যাংকে আগুন",
       "link": "https://www.jagonews24.com/country/news/1181024",
@@ -1184,37 +1215,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "968839d2e90ac91c21e505207bc6f672"
-    },
-    {
-      "title": "থানায় অগ্নিসংযোগের পর গোপালগঞ্জের অবস্থা থমথমে, বিজিবি মোতায়েন | Gopalganj | Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=xXrIqO1NAaI",
-      "publisherUrl": "https://www.youtube.com/watch?v=xXrIqO1NAaI",
-      "publishedAt": "2026-11-18T12:09:16+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=xXrIqO1NAaI"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "থানায় অগ্নিসংযোগের পর গোপালগঞ্জের অবস্থা থমথমে, বিজিবি মোতায়েন | Gopalganj | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=xXrIqO1NAaI"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9869181b7f2ce678d93f41ad1608e78a"
     },
     {
       "title": "ভাঙচুর–অগ্নিসংযোগে বিধ্বস্ত টুঙ্গিপাড়া থানার কার্যক্রম বন্ধ",
@@ -2321,37 +2321,6 @@
       "alertEventId": "74969a8a419d9c53f3acbec768cc932e"
     },
     {
-      "title": "টুঙ্গিপাড়া থানা থেকে এখনও উড়ছে ধোঁয়া, সড়কে গাছের গুঁড়ি-পোড়া গাড়ি",
-      "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা, ভাঙচুর ও অগ্নিসংযোগের পর সেখানকার পরিস্থিতি এখনো স্বাভাবিক হয়নি। থানার ভেতরে ছড়িয়ে-ছিটিয়ে রয়েছে পুড়ে যাওয়া গাড়ি, আসবাব ও বিভিন্ন সরঞ্জামের ধ্বংসাবশেষ। অন্যদিকে, থানা থেকে টুঙ্গিপাড়া যাওয়ার পথে বিভিন্ন স্থানে গাছের গুঁড়ি ফেলে এবং পোড়া গাড়ির ধ্বংসাবশেষ রেখে যান চলাচলে বাধা সৃষ্টি করা হয়েছে। বুধবার (১৮ নভেম্বর) সকাল আটটার দিকে সরেজমিনে দেখা যায়, গোপালগঞ্জ জেলা... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/981674/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%96%E0%A6%A8%E0%A6%93-%E0%A6%89%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A7%E0%A7%8B%E0%A6%81%E0%A7%9F%E0%A6%BE-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A6%9B%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981674/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%96%E0%A6%A8%E0%A6%93-%E0%A6%89%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A7%E0%A7%8B%E0%A6%81%E0%A7%9F%E0%A6%BE-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A6%9B%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-18T06:10:49+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981674/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%96%E0%A6%A8%E0%A6%93-%E0%A6%89%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A7%E0%A7%8B%E0%A6%81%E0%A7%9F%E0%A6%BE-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A6%9B%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "টুঙ্গিপাড়া থানা থেকে এখনও উড়ছে ধোঁয়া, সড়কে গাছের গুঁড়ি-পোড়া গাড়ি",
-          "summary": "গোপালগঞ্জের টুঙ্গিপাড়া থানায় হামলা, ভাঙচুর ও অগ্নিসংযোগের পর সেখানকার পরিস্থিতি এখনো স্বাভাবিক হয়নি। থানার ভেতরে ছড়িয়ে-ছিটিয়ে রয়েছে পুড়ে যাওয়া গাড়ি, আসবাব ও বিভিন্ন সরঞ্জামের ধ্বংসাবশেষ। অন্যদিকে, থানা থেকে টুঙ্গিপাড়া যাওয়ার পথে বিভিন্ন স্থানে গাছের গুঁড়ি ফেলে এবং পোড়া গাড়ির ধ্বংসাবশেষ রেখে যান চলাচলে বাধা সৃষ্টি করা হয়েছে। বুধবার (১৮ নভেম্বর) সকাল আটটার দিকে সরেজমিনে দেখা যায়, গোপালগঞ্জ জেলা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981674/%E0%A6%9F%E0%A7%81%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BF%E0%A6%AA%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%96%E0%A6%A8%E0%A6%93-%E0%A6%89%E0%A7%9C%E0%A6%9B%E0%A7%87-%E0%A6%A7%E0%A7%8B%E0%A6%81%E0%A7%9F%E0%A6%BE-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%BE%E0%A6%9B%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2b81d123b5fc9343871623a8bb015d48"
-    },
-    {
       "title": "কাফরুলে পুলিশ-শ্রমিক সংঘর্ষ, সাউন্ড গ্রেনেড নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "কাফরুলে পুলিশ-শ্রমিক সংঘর্ষ, সাউন্ড গ্রেনেড নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113327/%E0%A6%95%E0%A6%BE%E0%A6%AB%E0%A6%B0%E0%A7%81%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1",
@@ -2660,37 +2629,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ae14b105c0495d7ae66b05e3431cbe7"
-    },
-    {
-      "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-      "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-      "link": "https://bn.observerbd.com/news/150552",
-      "publisherUrl": "https://bn.observerbd.com/news/150552",
-      "publishedAt": "2026-11-17T13:44:00+00:00",
-      "source": "Daily Observer",
-      "publisherName": "Daily Observer",
-      "sourceEvidence": [
-        "Daily Observer"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Observer",
-          "title": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু - Daily Observer",
-          "summary": "মালয়েশিয়ায় ভূমিধসে মাটিচাপায় বাংলাদেশি শ্রমিকের মৃত্যু Daily Observer",
-          "url": "https://bn.observerbd.com/news/150552"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     }
   ]
 }
