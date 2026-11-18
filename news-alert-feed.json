@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T12:12:15.043165+00:00",
-  "updatedAt": "2026-11-18T12:12:15.043165+00:00",
+  "generatedAt": "2026-11-18T12:27:16.306368+00:00",
+  "updatedAt": "2026-11-18T12:27:16.306368+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 58,
+  "candidateCount": 57,
   "alertItems": [
     {
       "title": "থানায় অগ্নিসংযোগের পর গোপালগঞ্জের অবস্থা থমথমে, বিজিবি মোতায়েন | Gopalganj | Jamuna TV",
@@ -1003,7 +1003,8 @@
           "name": "UNB",
           "title": "মহাখালীর সাততলা বস্তির আগুনে ঘরবাড়ি ও জীবিকার সম্বল হারালেন বাসিন্দারা | Mohakhali Fire - United News of Bangladesh",
           "summary": "মহাখালীর সাততলা বস্তির আগুনে ঘরবাড়ি ও জীবিকার সম্বল হারালেন বাসিন্দারা | Mohakhali Fire United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9985/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%98%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B2-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A6%BE---Mohakhali-Fire---UNB"
+          "url": "https://unb.com.bd/video/9985/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%98%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B2-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A6%BE---Mohakhali-Fire---UNB",
+          "incidentDateText": "১৯ অক্টোবর"
         }
       ],
       "corroborationCount": 1,
@@ -1411,37 +1412,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e148466a8ecdd7fc629cf37a1e01f34c"
-    },
-    {
-      "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
-      "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
-      "link": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
-      "publisherUrl": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
-      "publishedAt": "2026-11-18T09:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
-          "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
-          "url": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c72e093b1b68340b0bb0dbea7f0e50ce"
     },
     {
       "title": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
