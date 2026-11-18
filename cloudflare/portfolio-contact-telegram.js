@@ -1,4 +1,5 @@
 import { evaluateNewsAlert, newsAlertKey, normalizeNewsAlertLink, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
+export { BotKvPauseState } from "./bot-kv-pause-state.mjs";
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { BOT_KV_WRITE_PAUSE_KEY, secondsUntilUtcReset, shouldPauseBotForKvWrites, isKvWriteLimitError } from "./resource-guard.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";
@@ -789,16 +790,39 @@ const BOT_DEFAULTS = {
 };
 const BOT_KV_WRITE_PAUSE_CACHE={until:0,checkedAt:0};
 async function botKvWritePauseState(env,now=Date.now()){
+  const fallbackUntil=Date.UTC(new Date(now).getUTCFullYear(),new Date(now).getUTCMonth(),new Date(now).getUTCDate()+1);
   if(BOT_KV_WRITE_PAUSE_CACHE.until>now)return {paused:true,until:BOT_KV_WRITE_PAUSE_CACHE.until};
   if(now-BOT_KV_WRITE_PAUSE_CACHE.checkedAt<5000)return {paused:false,until:0};
   BOT_KV_WRITE_PAUSE_CACHE.checkedAt=now;
-  if(!env.BOT_CONFIG_KV)return {paused:false,until:0};
+  // Durable Object is the authoritative pause store. If it cannot be checked,
+  // fail closed so an isolate restart cannot silently resume KV-heavy bot work.
+  if(!env.BOT_KV_PAUSE_STATE){
+    BOT_KV_WRITE_PAUSE_CACHE.until=fallbackUntil;
+    console.error("Durable pause state binding unavailable; bot processing fails closed");
+    return {paused:true,until:fallbackUntil,failClosed:true};
+  }
+  try{
+    const id=env.BOT_KV_PAUSE_STATE.idFromName("global-bot-kv-write-pause");
+    const state=await env.BOT_KV_PAUSE_STATE.get(id).getPauseState(now);
+    const until=Number(state?.until)||0;
+    if(until>now){BOT_KV_WRITE_PAUSE_CACHE.until=until;return {paused:true,until,source:"durable-object"};}
+  }catch(error){
+    BOT_KV_WRITE_PAUSE_CACHE.until=fallbackUntil;
+    console.error("Durable pause state read unavailable; bot processing fails closed",String(error&&error.message||error).slice(0,160));
+    return {paused:true,until:fallbackUntil,failClosed:true};
+  }
+  if(!env.BOT_CONFIG_KV){
+    BOT_KV_WRITE_PAUSE_CACHE.until=fallbackUntil;
+    return {paused:true,until:fallbackUntil,failClosed:true};
+  }
   try{
     const state=await env.BOT_CONFIG_KV.get(BOT_KV_WRITE_PAUSE_KEY,"json");
     const until=Number(state?.until)||0;
-    if(until>now){BOT_KV_WRITE_PAUSE_CACHE.until=until;return {paused:true,until};}
+    if(until>now){BOT_KV_WRITE_PAUSE_CACHE.until=until;return {paused:true,until,source:"kv-backup"};}
   }catch(error){
-    console.warn("Bot resource pause state read unavailable",String(error&&error.message||error).slice(0,120));
+    BOT_KV_WRITE_PAUSE_CACHE.until=fallbackUntil;
+    console.error("KV backup pause state read unavailable; bot processing fails closed",String(error&&error.message||error).slice(0,140));
+    return {paused:true,until:fallbackUntil,failClosed:true};
   }
   BOT_KV_WRITE_PAUSE_CACHE.until=0;
   return {paused:false,until:0};
@@ -808,10 +832,19 @@ async function activateBotKvWritePause(env,details={},now=Date.now()){
   BOT_KV_WRITE_PAUSE_CACHE.until=until;
   BOT_KV_WRITE_PAUSE_CACHE.checkedAt=now;
   const state={until,reason:"KV daily write budget",used:Number(details.used)||null,limit:Number(details.limit)||null,triggeredAt:new Date(now).toISOString()};
+  // Persist to Durable Object first: this remains available when the KV write
+  // quota has already been exhausted. KV is retained only as a secondary copy.
+  try{
+    if(!env.BOT_KV_PAUSE_STATE)throw new Error("BOT_KV_PAUSE_STATE binding is unavailable");
+    const id=env.BOT_KV_PAUSE_STATE.idFromName("global-bot-kv-write-pause");
+    await env.BOT_KV_PAUSE_STATE.get(id).setPauseState(state);
+  }catch(error){
+    console.error("Durable pause marker could not be persisted; all bot processing will fail closed",String(error&&error.message||error).slice(0,180));
+  }
   try{
     if(env.BOT_CONFIG_KV)await env.BOT_CONFIG_KV.put(BOT_KV_WRITE_PAUSE_KEY,JSON.stringify(state),{expirationTtl:secondsUntilUtcReset(now)+60});
   }catch(error){
-    console.error("Bot KV pause marker could not be persisted; isolate-level pause remains active",String(error&&error.message||error).slice(0,160));
+    console.warn("KV pause backup could not be persisted; Durable Object remains authoritative",String(error&&error.message||error).slice(0,160));
   }
   console.warn("Telegram Bot scheduled and webhook processing paused until 00:00 UTC",JSON.stringify(state));
   return state;
