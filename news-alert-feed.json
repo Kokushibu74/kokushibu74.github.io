@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T10:46:58.954801+00:00",
-  "updatedAt": "2026-11-18T10:46:58.954801+00:00",
+  "generatedAt": "2026-11-18T11:07:04.837734+00:00",
+  "updatedAt": "2026-11-18T11:07:04.837734+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Naya Diganta",
@@ -840,8 +840,101 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 62,
+  "candidateCount": 61,
   "alertItems": [
+    {
+      "title": "স্কুলের ভবনে রাখা ছিল বিপুল ককটেল ও গানপাউডার, রাতে অভিযানে এসআরবি",
+      "summary": "পাবনার সাঁথিয়ায় একটি সরকারি প্রাথমিক বিদ্যালয়ের পরিত্যক্ত ভবন থেকে ৭৭টি ককটেল ও গানপাউডারসহ বিপুল পরিমাণ বিস্ফোরক...",
+      "link": "https://www.jagonews24.com/national/news/1180971",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1180971",
+      "publishedAt": "2026-11-18T11:03:54+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1180971"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "স্কুলের ভবনে রাখা ছিল বিপুল ককটেল ও গানপাউডার, রাতে অভিযানে এসআরবি",
+          "summary": "পাবনার সাঁথিয়ায় একটি সরকারি প্রাথমিক বিদ্যালয়ের পরিত্যক্ত ভবন থেকে ৭৭টি ককটেল ও গানপাউডারসহ বিপুল পরিমাণ বিস্ফোরক...",
+          "url": "https://www.jagonews24.com/national/news/1180971"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a77ffb051f5b9e53111b2541f9c975fb"
+    },
+    {
+      "title": "যুব উন্নয়ন সংঘ ও দোকানে দুর্বৃত্তদের আগুন, ব্যবসায়ী বললেন ‘সব শেষ, নিঃস্ব হয়ে গেলাম’",
+      "summary": "খুলনায় রাতের আঁধারে মুদি দোকান ও ওয়াজেদ নগর যুব উন্নয়ন সংঘ নামের দুটি প্রতিষ্ঠানে আগুন দিয়েছে দুর্বৃত্তরা। এতে দুটি প্রতিষ্ঠান পুড়ে ছাই হয়ে গেছে। এর মধ্যে মুদি দোকানির চার লাখ টাকা ক্ষতি হয়েছে বলে দাবি করেছেন তিনি। তবে মঙ্গলবার (১৭ নভেম্বর) দিবাগত রাত সাড়ে ৩টার দিকে মহানগরীর লবণচর থানার ওয়াজেদ নগরে এ অগ্নিকাণ্ডের সূত্রপাত হয়। রহস্যজনক এ অগ্নিকাণ্ডের ঘটনার তদন্ত শুরু করেছে লবণচরা থানা... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/981730/%E0%A6%AF%E0%A7%81%E0%A6%AC-%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%B8%E0%A6%82%E0%A6%98-%E0%A6%93-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/981730/%E0%A6%AF%E0%A7%81%E0%A6%AC-%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%B8%E0%A6%82%E0%A6%98-%E0%A6%93-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-18T10:57:28+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/981730/%E0%A6%AF%E0%A7%81%E0%A6%AC-%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%B8%E0%A6%82%E0%A6%98-%E0%A6%93-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "যুব উন্নয়ন সংঘ ও দোকানে দুর্বৃত্তদের আগুন, ব্যবসায়ী বললেন ‘সব শেষ, নিঃস্ব হয়ে গেলাম’",
+          "summary": "খুলনায় রাতের আঁধারে মুদি দোকান ও ওয়াজেদ নগর যুব উন্নয়ন সংঘ নামের দুটি প্রতিষ্ঠানে আগুন দিয়েছে দুর্বৃত্তরা। এতে দুটি প্রতিষ্ঠান পুড়ে ছাই হয়ে গেছে। এর মধ্যে মুদি দোকানির চার লাখ টাকা ক্ষতি হয়েছে বলে দাবি করেছেন তিনি। তবে মঙ্গলবার (১৭ নভেম্বর) দিবাগত রাত সাড়ে ৩টার দিকে মহানগরীর লবণচর থানার ওয়াজেদ নগরে এ অগ্নিকাণ্ডের সূত্রপাত হয়। রহস্যজনক এ অগ্নিকাণ্ডের ঘটনার তদন্ত শুরু করেছে লবণচরা থানা... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/981730/%E0%A6%AF%E0%A7%81%E0%A6%AC-%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%B8%E0%A6%82%E0%A6%98-%E0%A6%93-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4316b38c5f31181ba639c19daa62d86a"
+    },
+    {
+      "title": "বিদেশ থেকে উসকানি দিয়ে দেশে অস্থিতিশীলতা তৈরির চেষ্টা চলছে: রুহুল কবির রিজভী",
+      "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব বলেন, বাংলাদেশের মানুষকে বোমাবাজি কিংবা বিদেশ থেকে উসকানি দিয়ে দমন করা সম্ভব নয়।",
+      "link": "https://www.prothomalo.com/politics/tesdoray1b",
+      "publisherUrl": "https://www.prothomalo.com/politics/tesdoray1b",
+      "publishedAt": "2026-11-18T10:52:41+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/politics/tesdoray1b"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "বিদেশ থেকে উসকানি দিয়ে দেশে অস্থিতিশীলতা তৈরির চেষ্টা চলছে: রুহুল কবির রিজভী",
+          "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব বলেন, বাংলাদেশের মানুষকে বোমাবাজি কিংবা বিদেশ থেকে উসকানি দিয়ে দমন করা সম্ভব নয়।",
+          "url": "https://www.prothomalo.com/politics/tesdoray1b"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fdfba6c7ae75a481baf7f3932357fc7b"
+    },
     {
       "title": "আ.লীগের দেওয়া আগুনে পুড়েছে থানা-পুলিশের একাধিক গাড়ি, সঙ্গে এমপি জিলানীরসহ ২০ বাড়ি",
       "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ১৯ নভেম্বরের ‘লকডাউন’ কর্মসূচিকে কেন্দ্র করে গোপালগঞ্জের টুঙ্গিপাড়ায় থানা ভবনে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। এ সময় পুলিশের একাধিক গাড়ি ও মোটরসাইকেল এবং বিজিবির গাড়ি ও সাঁজোয়া যানেও আগুন দেওয়া হয়। এ ছাড়া গোপালগঞ্জ-৩ আসনের সংসদ সদস্য এস এম জিলানীর বাড়িসহ আশপাশের অন্তত ২০টি বাড়িতে অগ্নিসংযোগের খবর পাওয়া গেছে। বুধবার (১৮ নভেম্বর) সকালে টুঙ্গিপাড়া উপজেলার... বিস্তারিত",
@@ -875,7 +968,7 @@
     },
     {
       "title": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
-      "summary": "বাগেরহাটে জেলা বিএনপির সাবেক সাংগঠনিক সম্পাদক অধ্যাপক হাদিউজ্জামান হিরোর বাসভবনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+      "summary": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
       "link": "https://www.jagonews24.com/country/news/1180946",
       "publisherUrl": "https://www.jagonews24.com/country/news/1180946",
       "publishedAt": "2026-11-18T10:25:13+00:00",
@@ -897,7 +990,7 @@
         {
           "name": "Jago News 24",
           "title": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
-          "summary": "বাগেরহাটে জেলা বিএনপির সাবেক সাংগঠনিক সম্পাদক অধ্যাপক হাদিউজ্জামান হিরোর বাসভবনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে...",
+          "summary": "বাগেরহাটে বিএনপি নেতার বাড়িতে ককটেল বিস্ফোরণ",
           "url": "https://www.jagonews24.com/country/news/1180946"
         }
       ],
@@ -1177,11 +1270,7 @@
           "name": "Jamuna Television",
           "title": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
           "summary": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668235",
-          "incidentDateText": "বুধবার (১৮ নভেম্বর)",
-          "incidentTimeText": "সকাল ১১টার দিকে",
-          "incidentTimeSource": "Jamuna Television",
-          "locationText": "পিএম গোপালগঞ্জের কাশিয়ানীতে উপজেলা, গোপালগঞ্জ"
+          "url": "https://www.jamuna.tv/all-bangladesh/668235"
         }
       ],
       "corroborationCount": 1,
@@ -1222,15 +1311,13 @@
           "name": "Prothom Alo",
           "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ, পুলিশের গাড়িতে আগুন",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/3fpfzld4rs",
-          "incidentDateText": "১৮ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/3fpfzld4rs"
         },
         {
           "name": "Prothom Alo",
           "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ; পুলিশের গাড়িতে আগুন",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns",
-          "incidentDateText": "১৮ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/kufhcdwbns"
         },
         {
           "name": "Bangla Tribune",
@@ -1758,48 +1845,6 @@
       "alertEventId": "9b283a4748aaa72d446b1d8357b1503a"
     },
     {
-      "title": "পিরোজপুরে দুই বাসে আগুন, একজনের লাশ উদ্ধার",
-      "summary": "পিরোজপুরে দুই বাসে আগুন, একজনের লাশ উদ্ধার",
-      "link": "https://www.prothomalo.com/bangladesh/district/pirojpure-dui-baase-aagun-ekjner-laash-uddhaar",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/pirojpure-dui-baase-aagun-ekjner-laash-uddhaar",
-      "publishedAt": "2026-11-18T06:32:05+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/pirojpure-dui-baase-aagun-ekjner-laash-uddhaar"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1694183.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "পিরোজপুরে দুই বাসে আগুন, একজনের লাশ উদ্ধার",
-          "summary": "পিরোজপুরে দুই বাসে আগুন, একজনের লাশ উদ্ধার",
-          "url": "https://www.prothomalo.com/bangladesh/district/pirojpure-dui-baase-aagun-ekjner-laash-uddhaar"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে আগুন, হেলপার নিহত - Banglanews24",
-          "summary": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে আগুন, হেলপার নিহত Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1694183.details"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "5e62ce4fd710244972402806bca086c3"
-    },
-    {
       "title": "কুমিল্লায় আওয়ামী লীগের সাবেক সংসদ সদস্য বাহারের বাড়িতে আগুন",
       "summary": "গতকাল রাতে কুমিল্লা নগরের রামঘাট এলাকায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দক্ষিণ জেলা কার্যালয়েও অগ্নিসংযোগ করা হয়েছে।",
       "link": "https://www.prothomalo.com/bangladesh/district/l8at271yw3",
@@ -1997,48 +2042,6 @@
       "alertEventId": "a85e1a60cb02554d74e8dd8eff483ffe"
     },
     {
-      "title": "পিরোজপুরে ভোরে দুই বাসে আগুন, ভেতর থেকে চালকের সহকারীর লাশ উদ্ধার",
-      "summary": "পিরোজপুরের ভান্ডারিয়া উপজেলায় দুটি বাসে অগ্নিসংযোগের ঘটনা ঘটেছে। এ সময় একটি বাসের ভেতরে ঘুমিয়ে থাকা চালকের এক সহকারী (হেলপার) দগ্ধ হয়ে মারা গেছেন।",
-      "link": "https://www.prothomalo.com/bangladesh/district/76sjbnbhf1",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/76sjbnbhf1",
-      "publishedAt": "2026-11-18T05:31:25+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/76sjbnbhf1"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "পিরোজপুরে ভোরে দুই বাসে আগুন, ভেতর থেকে চালকের সহকারীর লাশ উদ্ধার",
-          "summary": "পিরোজপুরের ভান্ডারিয়া উপজেলায় দুটি বাসে অগ্নিসংযোগের ঘটনা ঘটেছে। এ সময় একটি বাসের ভেতরে ঘুমিয়ে থাকা চালকের এক সহকারী (হেলপার) দগ্ধ হয়ে মারা গেছেন।",
-          "url": "https://www.prothomalo.com/bangladesh/district/76sjbnbhf1"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "দাঁড়িয়ে থাকা দুই বাসে আগুন, ঘুমন্ত হেলপারের মৃত্যু",
-          "summary": "পিরোজপুরে বাসস্ট্যান্ডে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে একটি বাসের ভেতরে ঘুমিয়ে থাকা সিয়াম নামে এক হেলপার পুড়ে মারা গেছেন। বুধবার (১৮ নভেম্বর) ভোর পৌনে ৪টার দিকে ভান্ডারিয়া বাসস্ট্যান্ডে এ ঘটনা ঘটে। নিহত সিয়ামের বাড়ি বরিশালের বাবুগঞ্জ উপজেলার শিকারপুর এলাকায়। আগুন লাগার সময় তিনি বরিশাল মালিক সমিতির ‘বাহক’ পরিবহনের একটি বাসের ভেতরে ঘুমিয়ে ছিলেন। স্থানীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "c8e2d66214b6e629bfff68e2be8cd787"
-    },
-    {
       "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে - Dhaka Tribune Bangla",
       "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113321/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0",
@@ -2163,37 +2166,6 @@
       "alertEventId": "c9c84a884277beaabcbbd6e0bcb88a90"
     },
     {
-      "title": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু - Jamuna Television",
-      "summary": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668206",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668206",
-      "publishedAt": "2026-11-18T04:11:38+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668206"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু - Jamuna Television",
-          "summary": "পিরোজপুরে দাঁড়িয়ে থাকা ২ বাসে দুর্বৃত্তদের অগ্নিসংযোগ, ঘুমন্ত হেলপারের মৃত্যু Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668206"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3486a4b34a5f31ec319670c39281466"
-    },
-    {
       "title": "কে এই গ্রেনেড বাবু, যার ভয়ে কাঁপছে খুলনা",
       "summary": "খুলনার অপরাধজগতে নব্বইয়ের দশক ও পরবর্তী সময়ের মৃণাল, দাদা তপন, মোফাখখার চৌধুরীদের সন্ত্রাসী তৎপরতার ধারাবাহিকতায় এখন আলোচনায় ‘গ্রেনেড বাবু’সহ অন্তত ৯টি সন্ত্রাসী গোষ্ঠী। নগর ও আশপাশের এলাকায় এসব গোষ্ঠীর বিরুদ্ধে আধিপত্য বিস্তার, মাদক কারবার ও চাঁদাবাজি নিয়ন্ত্রণ রয়েছে। এসব নিয়ন্ত্রণ নিয়ে গোষ্ঠীগুলোর অভ্যন্তরীণ কোন্দল ও পাল্টাপাল্টি হামলায় বাড়ছে খুনোখুনি। অপরাধজগতের নেতৃত্ব ও গোষ্ঠীর... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/981610/%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1-%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81-%E0%A6%AF%E0%A6%BE%E0%A6%B0-%E0%A6%AD%E0%A7%9F%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%AA%E0%A6%9B%E0%A7%87-%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE",
@@ -2254,6 +2226,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "068ffc02c7b49a9e8e2fd7ca49e891a6"
+    },
+    {
+      "title": "দাঁড়িয়ে থাকা দুই বাসে আগুন, ঘুমন্ত হেলপারের মৃত্যু",
+      "summary": "পিরোজপুরে বাসস্ট্যান্ডে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে একটি বাসের ভেতরে ঘুমিয়ে থাকা সিয়াম নামে এক হেলপার পুড়ে মারা গেছেন। বুধবার (১৮ নভেম্বর) ভোর পৌনে ৪টার দিকে ভান্ডারিয়া বাসস্ট্যান্ডে এ ঘটনা ঘটে। নিহত সিয়ামের বাড়ি বরিশালের বাবুগঞ্জ উপজেলার শিকারপুর এলাকায়। আগুন লাগার সময় তিনি বরিশাল মালিক সমিতির ‘বাহক’ পরিবহনের একটি বাসের ভেতরে ঘুমিয়ে ছিলেন। স্থানীয়... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
+      "publisherUrl": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
+      "publishedAt": "2026-11-18T03:38:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "দাঁড়িয়ে থাকা দুই বাসে আগুন, ঘুমন্ত হেলপারের মৃত্যু",
+          "summary": "পিরোজপুরে বাসস্ট্যান্ডে দাঁড়িয়ে থাকা দুটি বাসে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে একটি বাসের ভেতরে ঘুমিয়ে থাকা সিয়াম নামে এক হেলপার পুড়ে মারা গেছেন। বুধবার (১৮ নভেম্বর) ভোর পৌনে ৪টার দিকে ভান্ডারিয়া বাসস্ট্যান্ডে এ ঘটনা ঘটে। নিহত সিয়ামের বাড়ি বরিশালের বাবুগঞ্জ উপজেলার শিকারপুর এলাকায়। আগুন লাগার সময় তিনি বরিশাল মালিক সমিতির ‘বাহক’ পরিবহনের একটি বাসের ভেতরে ঘুমিয়ে ছিলেন। স্থানীয়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/981648/%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5c12622f2959a37605b27893406ed286"
     },
     {
       "title": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
