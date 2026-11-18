@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T01:51:48.063460+00:00",
-  "updatedAt": "2026-11-18T01:51:48.063460+00:00",
+  "generatedAt": "2026-11-18T02:06:56.425204+00:00",
+  "updatedAt": "2026-11-18T02:06:56.425204+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 47,
-  "healthySourceCount": 46,
-  "failedSourceCount": 1,
+  "healthySourceCount": 44,
+  "failedSourceCount": 3,
   "directHealthySourceCount": 13,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 31,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 31,
+  "fallbackWithItemsSourceCount": 22,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
@@ -272,24 +272,9 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
-      "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
-    },
-    {
-      "name": "Bangladesh Pratidin",
-      "domain": "bd-pratidin.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -298,6 +283,21 @@
       "fallbackWithItems": true,
       "fallbackZeroItems": false,
       "healthClass": "fallback_with_items"
+    },
+    {
+      "name": "Bangladesh Pratidin",
+      "domain": "bd-pratidin.com",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Sun",
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -720,7 +720,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 34,
   "alertItems": [
     {
       "title": "টুঙ্গিপাড়ায় থানা-জিলানীর বাড়িতে হামলা, ঢাকায় স্বেচ্ছাসেবক দলের বিক্ষোভ",
@@ -1510,6 +1510,37 @@
       "alertEventId": "29d5b490afd21f03b39a931db93b9ab5"
     },
     {
+      "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
+      "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
+      "link": "https://www.dhakapost.com/international/498693",
+      "publisherUrl": "https://www.dhakapost.com/international/498693",
+      "publishedAt": "2026-11-17T13:21:52+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/498693"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ - dhakapost.com",
+          "summary": "ওয়াশিংটনে ইরানি হামলার আশঙ্কা নিয়ে ট্রাম্প বললেন, ‘ওরা পাগলাটে ধাঁচের’ dhakapost.com",
+          "url": "https://www.dhakapost.com/international/498693"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3c5cbdb27aa5fbdd1efc08544b6117cc"
+    },
+    {
       "title": "চৌদ্দগ্রামে কাভার্ডভ্যানের ধাক্কায় সিএনজি চালক সহ নিহত ২ আহত ১",
       "summary": "কুমিল্লার চৌদ্দগ্রামে সড়ক দুর্ঘটনায় সিএনজি অটোরিকশা চালক মোঃ লিটন মিয়া ও যাত্রী আহসান উল্লা ছুট্টু সহ ২জন নিহত ও এক যাত্রী গুরুতর আহত হয়েছেন। নিহত লিটন (৪২) উপজেলার উজিরপুর ইউনিয়নের কৃষ্ণপুর গ্রামের মোহাম্মদ মিয়া ও আহসান উল্লাহ ছুট্টু (৩৮) কালিকাপুর ইউনিয়ন বদরপুর গ্রামের মৃত কোরবান আলীর ছেলে। ঘটনাটি ঘটেছে মঙ্গলবার (১৭ নভেম্বর) দুপুরে ঢাকা চট্টগ্রাম […] The post চৌদ্দগ্রামে কাভার্ডভ্যানের ধাক্কায় সিএনজি চালক সহ নিহত ২ আহত ১ appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161065",
@@ -1539,6 +1570,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "62232c5dd93749d7efcc37f2332ac64c"
+    },
+    {
+      "title": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা - United News of Bangladesh",
+      "summary": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560",
+      "publishedAt": "2026-11-17T11:13:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা - United News of Bangladesh",
+          "summary": "গাজীপুরে পোশাকশ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ, ৫০ কারখানায় ছুটি ঘোষণা United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8B%E0%A6%B6%E0%A6%BE%E0%A6%95%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7,-%E0%A7%AB%E0%A7%A6-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE/116560"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a70f4273edaee7b96ca0d907bf2d5182"
     },
     {
       "title": "নাটোরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
