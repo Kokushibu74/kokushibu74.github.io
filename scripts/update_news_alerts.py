@@ -82,6 +82,8 @@ NEW_DIRECT_SOURCES = [
     ("Chattogram News", "https://chattogramnews.com/feed/", "chattogramnews.com"),
     ("Daily Sylhet News", "https://dailysylhetnews24.com/feed/", "dailysylhetnews24.com"),
     ("Daily Purbanchal", "https://purbanchal.com/feed/", "purbanchal.com"),
+    # Official Jamuna TV YouTube Atom feed; video URLs are retained as source links.
+    ("Jamuna TV YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCN6sm8iHiPd0cnoUardDAnw", "youtube.com"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
@@ -333,6 +335,10 @@ def should_skip_feed_update(effective_healthy_count, fallback_source_count, fall
 
 def canonical_source(name):
     normalized = str(name or "").strip().lower()
+    # A YouTube channel is the same publisher as its website; never count it twice.
+    if normalized.endswith(" youtube"):
+        name = str(name or "").strip()[:-8].strip()
+        normalized = name.lower()
     # GDACS may relay the same underlying seismic event data as USGS; keep
     # these official data feeds in one corroboration group to avoid false
     # two-source confirmation from a shared upstream event.
@@ -370,7 +376,7 @@ def collect_candidates(source_results, now=None, google_resolution_budget=32):
                 "source": canonical,
                 "publisherName": canonical,
                 "sourceEvidence": [canonical],
-                "sourceLinks": [{"name": canonical, "url": entry["link"]}],
+                "sourceLinks": [{"name": canonical + " · YouTube" if str(source["name"]).endswith(" YouTube") else canonical, "url": entry["link"]}],
                 "category": "Bangladesh",
                 "alertScope": "bangladesh",
                 "isBreaking": True,
@@ -618,7 +624,7 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:
         direct_results = list(pool.map(fetch_source, SOURCES))
     direct_healthy_names = {item["name"] for item in direct_results if item["status"] == "healthy"}
-    fallback_sources = [source for source in SOURCES if source[0] not in direct_healthy_names]
+    fallback_sources = [source for source in SOURCES if source[0] not in direct_healthy_names and not source[0].endswith(" YouTube")]
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:
         fallback_results = list(pool.map(fetch_google_fallback, fallback_sources))
     fallback_healthy_names = {item["name"] for item in fallback_results if item["status"] == "healthy"}
