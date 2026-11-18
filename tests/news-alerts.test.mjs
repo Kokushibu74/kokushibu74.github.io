@@ -16,6 +16,15 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
+test("all newly added TV publishers are trusted but remain provisional as single sources",()=>{
+  const sources=["Jamuna TV","Somoy News","Channel 24","Ekattor TV","DBC News","Independent Television","News24","RTV News"];
+  for(const publisher of sources){
+    const decision=evaluateNewsAlert(item({sourceEvidence:[publisher]}),{now});
+    assert.equal(decision.eligible,true,publisher+" should be trusted");
+    assert.equal(decision.status,"provisional",publisher+" alone must not confirm");
+  }
+});
+
 test("validated regional publishers are eligible individually but cannot confirm alone",()=>{
   const sources=["Chandpur Times","Chattogram News","Daily Sylhet News","Daily Purbanchal"];
   for(const publisher of sources){

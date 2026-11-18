@@ -81,6 +81,15 @@ class AlertCollectorTests(unittest.TestCase):
         self.assertEqual(rows[0]["sourceLinks"], [{"name": "Jamuna TV · YouTube", "url": "https://www.youtube.com/watch?v=video123"}])
         self.assertEqual(rows[0]["link"], "https://www.youtube.com/watch?v=video123")
 
+    def test_all_eight_tv_youtube_feeds_are_configured_and_unique(self):
+        tv_sources = [source for source in collector.NEW_DIRECT_SOURCES if source[0].endswith(" YouTube")]
+        self.assertEqual(len(tv_sources), 8)
+        self.assertEqual(len({source[1] for source in tv_sources}), 8)
+        self.assertTrue(all(source[2] == "youtube.com" for source in tv_sources))
+        self.assertEqual(collector.canonical_source("Somoy TV YouTube"), "Somoy News")
+        self.assertEqual(collector.canonical_source("Channel 24 YouTube"), "Channel 24")
+        self.assertEqual(collector.canonical_source("Jamuna TV YouTube"), "Jamuna TV")
+
     def test_google_news_query_is_scoped_to_one_publisher_and_bangladesh(self):
         url = collector.google_news_query_url("bdnews24.com")
         self.assertIn("news.google.com/rss/search?", url)
@@ -186,9 +195,11 @@ class AlertCollectorTests(unittest.TestCase):
 
     def test_new_regional_sources_are_unique_and_do_not_replace_existing_publishers(self):
         names = [source[0] for source in collector.NEW_DIRECT_SOURCES]
-        domains = [source[2] for source in collector.NEW_DIRECT_SOURCES]
+        urls = [source[1] for source in collector.NEW_DIRECT_SOURCES]
+        non_youtube_domains = [source[2] for source in collector.NEW_DIRECT_SOURCES if source[2] != "youtube.com"]
         self.assertEqual(len(names), len(set(names)))
-        self.assertEqual(len(domains), len(set(domains)))
+        self.assertEqual(len(urls), len(set(urls)))
+        self.assertEqual(len(non_youtube_domains), len(set(non_youtube_domains)))
         self.assertTrue(set(names).issubset({source[0] for source in collector.SOURCES}))
         self.assertGreaterEqual(len(collector.SOURCES), 47)
 

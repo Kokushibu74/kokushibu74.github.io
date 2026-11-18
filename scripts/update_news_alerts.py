@@ -84,6 +84,13 @@ NEW_DIRECT_SOURCES = [
     ("Daily Purbanchal", "https://purbanchal.com/feed/", "purbanchal.com"),
     # Official Jamuna TV YouTube Atom feed; video URLs are retained as source links.
     ("Jamuna TV YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCN6sm8iHiPd0cnoUardDAnw", "youtube.com"),
+    ("Somoy TV YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCxHoBXkY88Tb8z1Ssj6CWsQ", "youtube.com"),
+    ("Channel 24 YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCHLqIOMPk20w-6cFgkA90jw", "youtube.com"),
+    ("Ekattor TV YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCtqvtAVmad5zywaziN6CbfA", "youtube.com"),
+    ("DBC News YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCUvXoiDEKI8VZJrr58g4VAw", "youtube.com"),
+    ("Independent Television YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCATUkaOHwO9EP_W87zCiPbA", "youtube.com"),
+    ("News24 YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCPREnbhKQP-hsVfsfKP-mCw", "youtube.com"),
+    ("RTV News YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UC2P5Fd5g41Gtdqf0Uzh8Qaw", "youtube.com"),
 ]
 SOURCES.extend(NEW_DIRECT_SOURCES)
 
@@ -339,6 +346,9 @@ def canonical_source(name):
     if normalized.endswith(" youtube"):
         name = str(name or "").strip()[:-8].strip()
         normalized = name.lower()
+    # The TV channel and its news website are one publisher.
+    if normalized == "somoy tv":
+        return "Somoy News"
     # GDACS may relay the same underlying seismic event data as USGS; keep
     # these official data feeds in one corroboration group to avoid false
     # two-source confirmation from a shared upstream event.
