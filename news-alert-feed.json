@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T12:27:16.306368+00:00",
-  "updatedAt": "2026-11-18T12:27:16.306368+00:00",
+  "generatedAt": "2026-11-18T12:46:53.855832+00:00",
+  "updatedAt": "2026-11-18T12:46:53.855832+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Somoy News",
@@ -840,8 +840,101 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 57,
+  "candidateCount": 61,
   "alertItems": [
+    {
+      "title": "ময়মনসিংহে গ্রামীণ ব্যাংকে আগুন",
+      "summary": "ময়মনসিংহের তারাকান্দায় মুখ বেঁধে গ্রামীণ ব্যাংকের একটি শাখায় আগুন দিয়েছে দুর্বৃত্তরা। এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগ মাধ্যমে...",
+      "link": "https://www.jagonews24.com/country/news/1181024",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181024",
+      "publishedAt": "2026-11-18T12:37:31+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181024"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "ময়মনসিংহে গ্রামীণ ব্যাংকে আগুন",
+          "summary": "ময়মনসিংহের তারাকান্দায় মুখ বেঁধে গ্রামীণ ব্যাংকের একটি শাখায় আগুন দিয়েছে দুর্বৃত্তরা। এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগ মাধ্যমে...",
+          "url": "https://www.jagonews24.com/country/news/1181024"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9235208f3c7dd04a12662b41027410e6"
+    },
+    {
+      "title": "নেত্রকোনায় বিএনপির কার্যালয়ে আগুন, পুড়ে ছাই পাশের দোকানও",
+      "summary": "নেত্রকোনার বারহাট্টা উপজেলার চিরাম ইউনিয়ন বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে কার্যালয়টির পাশাপাশি পাশের একটি লাকড়ির দোকানও পুড়ে ছাই হয়ে গেছে। বুধবার (১৮ নভেম্বর) ভোর ৪টার দিকে উপজেলার চিরাম ইউনিয়নের বামনগাঁও বাজারে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ভোরে একদল দুর্বৃত্ত চিরাম ইউনিয়ন বিএনপির কার্যালয়ে আগুন দেয়। মুহূর্তের মধ্যেই আগুন ছড়িয়ে পড়ে কার্যালয়টির পাশাপাশি... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-18T12:37:17+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নেত্রকোনায় বিএনপির কার্যালয়ে আগুন, পুড়ে ছাই পাশের দোকানও",
+          "summary": "নেত্রকোনার বারহাট্টা উপজেলার চিরাম ইউনিয়ন বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে কার্যালয়টির পাশাপাশি পাশের একটি লাকড়ির দোকানও পুড়ে ছাই হয়ে গেছে। বুধবার (১৮ নভেম্বর) ভোর ৪টার দিকে উপজেলার চিরাম ইউনিয়নের বামনগাঁও বাজারে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ভোরে একদল দুর্বৃত্ত চিরাম ইউনিয়ন বিএনপির কার্যালয়ে আগুন দেয়। মুহূর্তের মধ্যেই আগুন ছড়িয়ে পড়ে কার্যালয়টির পাশাপাশি... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9b4acd04510e68f2271208fb5b931763"
+    },
+    {
+      "title": "যুবদল পাল্টা অগ্নিসংযোগ করলে আ.লীগের নেতাকর্মীরা নিরাপদ থাকবে না: মোনায়েম মুন্না",
+      "summary": "জাতীয়তাবাদী যুবদলের সভাপতি আবদুল মোনায়েম মুন্না বলেছেন, আওয়ামী লীগ রাতের আঁধারে চোরের মতো একজন সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ করেছে। যুবদল পাল্টা অগ্নিসংযোগ শুরু করলে আওয়ামী লীগের কোনও নেতাকর্মী নিরাপদে থাকতে পারবে না। বাড়িঘরে থাকতে পারবে না। বুধবার (১৮ নভেম্বর) বিকালে নয়াপল্টনে পরিকল্পিত সন্ত্রাস ও নৈরাজ্যের মাধ্যমে দেশকে অস্থিতিশীল করার ষড়যন্ত্রের প্রতিবাদে ঢাকা মহানগর দক্ষিণ যুবদলের বিক্ষোভ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE",
+      "publishedAt": "2026-11-18T12:28:24+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "যুবদল পাল্টা অগ্নিসংযোগ করলে আ.লীগের নেতাকর্মীরা নিরাপদ থাকবে না: মোনায়েম মুন্না",
+          "summary": "জাতীয়তাবাদী যুবদলের সভাপতি আবদুল মোনায়েম মুন্না বলেছেন, আওয়ামী লীগ রাতের আঁধারে চোরের মতো একজন সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ করেছে। যুবদল পাল্টা অগ্নিসংযোগ শুরু করলে আওয়ামী লীগের কোনও নেতাকর্মী নিরাপদে থাকতে পারবে না। বাড়িঘরে থাকতে পারবে না। বুধবার (১৮ নভেম্বর) বিকালে নয়াপল্টনে পরিকল্পিত সন্ত্রাস ও নৈরাজ্যের মাধ্যমে দেশকে অস্থিতিশীল করার ষড়যন্ত্রের প্রতিবাদে ঢাকা মহানগর দক্ষিণ যুবদলের বিক্ষোভ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "968839d2e90ac91c21e505207bc6f672"
+    },
     {
       "title": "থানায় অগ্নিসংযোগের পর গোপালগঞ্জের অবস্থা থমথমে, বিজিবি মোতায়েন | Gopalganj | Jamuna TV",
       "summary": "",
@@ -1414,8 +1507,39 @@
       "alertEventId": "e148466a8ecdd7fc629cf37a1e01f34c"
     },
     {
-      "title": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
-      "summary": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
+      "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
+      "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
+      "link": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
+      "publisherUrl": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
+      "publishedAt": "2026-11-18T09:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
+          "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
+          "url": "https://www.unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c72e093b1b68340b0bb0dbea7f0e50ce"
+    },
+    {
+      "title": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
+      "summary": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
       "link": "https://www.jamuna.tv/all-bangladesh/668235",
       "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668235",
       "publishedAt": "2026-11-18T09:10:05+00:00",
@@ -1436,13 +1560,13 @@
       "sourceStories": [
         {
           "name": "Jamuna Television",
-          "title": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
-          "summary": "গোপালগঞ্জে বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
+          "title": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
+          "summary": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668235"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "4bfb2aec95a562708ad098d04b84a6ef"
+      "alertEventId": "2e6c129695357916dda7b5c73bfa57c5"
     },
     {
       "title": "গাজীপুরে শ্রমিক বিক্ষোভ ও মহাসড়ক অবরোধ, পুলিশের গাড়িতে আগুন",
@@ -1796,17 +1920,12 @@
       "source": "Dainik Azadi",
       "publisherName": "Dainik Azadi",
       "sourceEvidence": [
-        "Dainik Azadi",
-        "Bangla Tribune"
+        "Dainik Azadi"
       ],
       "sourceLinks": [
         {
           "name": "Dainik Azadi",
           "url": "https://dainikazadi.net/satkania-grameen-bank-arson-chattogram-bangladesh-police/"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981662/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1818,15 +1937,9 @@
           "title": "সাতকানিয়ায় গ্রামীণ ব্যাংকের ফটকে গভীর রাতে দুর্বৃত্তের আগুন",
           "summary": "চট্টগ্রামের সাতকানিয়ায় গ্রামীণ ব্যাংকের এরিয়া অফিস ভবনের প্রধান ফটকে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। গতকাল বুধবার দিবাগত রাত দুইটার দিকে সাতকানিয়া পৌরসভায় উপজেলা নির্বাহী কর্মকর্তার (ইউএনও) ও সহকারী কমিশনারের (ভূমি) বাসভবনের পাশে এ ঘটনা ঘটে। পুলিশ বলছে বোতলে করে দাহ্য কোনো পদার্থ দিয়ে সেখানে আগুন দেওয়া হয়েছে। এতে ভবনের বৈদ্যুতিক লাইন ক্ষতিগ্রস্ত হয়েছে। তবে কেউ হতাহত হননি। […] The post সাতকানিয়ায় গ্রামীণ ব্যাংকের ফটকে গভীর রাতে দুর্বৃত্তের আগুন appeared first on দৈনিক আজাদী .",
           "url": "https://dainikazadi.net/satkania-grameen-bank-arson-chattogram-bangladesh-police/"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "ঢাকা-চট্টগ্রাম মহাসড়কে পার্কিং করা বাসে আগুন",
-          "summary": "নারায়ণগঞ্জের সিদ্ধিরগঞ্জে ঢাকা-চট্টগ্রাম মহাসড়কের পাশে পার্ক করে রাখা একটি স্টাফ বাসে আগুন দিয়েছে দুর্বৃত্তরা। মোটরসাইকেলে এসে দুই ব্যক্তি বাসটিতে আগুন ধরিয়ে দ্রুত পালিয়ে যায় বলে জানিয়েছে পুলিশ। আগুনে বাসটির বেশ কিছু অংশ পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হয়নি। বুধবার (১৮ নভেম্বর) রাত সাড়ে ৩টার দিকে সিদ্ধিরগঞ্জের ৩ নম্বর ওয়ার্ডের সানারপাড় এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়,... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981662/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "5560869b9efab7a5378808fc33d782e6"
     },
     {
@@ -2058,6 +2171,37 @@
       "alertEventId": "801373f03bb7aafab08380413649758e"
     },
     {
+      "title": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ - Barta 24",
+      "summary": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ Barta 24",
+      "link": "https://barta24.com/details/politics/348445",
+      "publisherUrl": "https://barta24.com/details/politics/348445",
+      "publishedAt": "2026-11-18T06:06:25+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/politics/348445"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ - Barta 24",
+          "summary": "নেত্রকোনায় বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ Barta 24",
+          "url": "https://barta24.com/details/politics/348445"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "425fcaddde9a9f74da6fd859f7e6d6db"
+    },
+    {
       "title": "রাজশাহীতে গ্রামীণ ব্যাংকে গভীর রাতে পেট্রোল বোমা হামলা",
       "summary": "রাজশাহী নগরের বনলতা আবাসিক এলাকায় গ্রামীণ ব্যাংকের সমন্বিত জোনাল ও এরিয়া অফিসে পেট্রোল বোমা নিক্ষেপের ঘটনা ঘটেছে। বুধবার (১৭ নভেম্বর) দিবাগত রাত দেড়টার দিকে অজ্ঞাতপরিচয় ব্যক্তিরা ব্যাংক ভবনের নিচতলায় রাস্তার পাশ থেকে পরপর দুটি ককটেলসদৃশ বস্তুর বিস্ফোরণ ঘটায়। এতে ভবনের কাচের ফিটিং ও জানালা ভেঙে যায়। তবে এ ঘটনায় কেউ হতাহত হয়নি। রাজশাহী মেট্রোপলিটন পুলিশের (আরএমপি) শাহ্ মখদুম থানার আওতাধীন বনলতা... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/rajshahi/981671/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
@@ -2244,20 +2388,20 @@
       "alertEventId": "208e0c913f771fe8e7f7946dcecc79c9"
     },
     {
-      "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-      "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-      "link": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publisherUrl": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn",
-      "publishedAt": "2026-11-17T19:11:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
+      "title": "শুরুতেই ধস, মহাবিপদে বাংলাদেশ - Barta 24",
+      "summary": "শুরুতেই ধস, মহাবিপদে বাংলাদেশ Barta 24",
+      "link": "https://barta24.com/details/sports/348527",
+      "publisherUrl": "https://barta24.com/details/sports/348527",
+      "publishedAt": "2026-11-17T22:27:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
       "sourceEvidence": [
-        "bdnews24.com"
+        "Barta 24"
       ],
       "sourceLinks": [
         {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/sports/348527"
         }
       ],
       "category": "Bangladesh",
@@ -2265,14 +2409,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "bdnews24.com",
-          "title": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ - bdnews24.com",
-          "summary": "ঢাকার এসপির বাসার সামনে দুটি ককটেল বিস্ফোরণ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/cyvz2fpcdn"
+          "name": "Barta 24",
+          "title": "শুরুতেই ধস, মহাবিপদে বাংলাদেশ - Barta 24",
+          "summary": "শুরুতেই ধস, মহাবিপদে বাংলাদেশ Barta 24",
+          "url": "https://barta24.com/details/sports/348527"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "eb4afb6b19298153d5b8edd23152a2ab"
+      "alertEventId": "d1aa3dbfba2e0147a28e58cba47d7df0"
     },
     {
       "title": "ফরিদপুরে সড়ক অবরোধের চেষ্টা, তিন মোটরসাইকেলে আগুন; নিহত ১ - Dhaka Tribune Bangla",
