@@ -142,7 +142,7 @@ async function cfResourceBudgetCheck(env,sendTelegram,now=new Date()) {
     {key:"d1_storage",label:"D1 storage (current)",used:d1Bytes,limit:5368709120,unit:"bytes",period:"storage"}
   ];
   const kvWriteMetric=metrics.find(metric=>metric.key==="kv_writes");
-  const kvPauseTriggered=!!kvWriteMetric&&shouldPauseBotForKvWrites(kvWriteMetric.used,kvWriteMetric.limit,85);
+  const kvPauseTriggered=!!kvWriteMetric&&shouldPauseBotForKvWrites(kvWriteMetric.used,kvWriteMetric.limit,98);
   if(kvPauseTriggered)await activateBotKvWritePause(env,{used:kvWriteMetric.used,limit:kvWriteMetric.limit},now.getTime());
   const thresholds=[50,70,85,95],pending=[];
   for(const metric of metrics){
