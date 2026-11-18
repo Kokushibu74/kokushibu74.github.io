@@ -49,3 +49,14 @@ test("Worker gates Telegram webhook and scheduled automation while preserving ot
   assert.match(worker,/Scheduled Telegram Bot\/automation work paused until UTC daily reset/);
   assert.match(worker,/if\(isKvWriteLimitError\(e\)\)await activateBotKvWritePause/);
 });
+
+test("Worker uses a persistent Durable Object pause state and fails closed on read failure",async()=>{
+  const worker=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  const durable=await readFile(new URL("../cloudflare/bot-kv-pause-state.mjs",import.meta.url),"utf8");
+  assert.match(worker,/BOT_KV_PAUSE_STATE\.idFromName\("global-bot-kv-write-pause"\)/);
+  assert.match(worker,/getPauseState\(now\)/);
+  assert.match(worker,/setPauseState\(state\)/);
+  assert.match(worker,/bot processing fails closed/);
+  assert.match(durable,/this\.ctx\.storage\.get\(PAUSE_KEY\)/);
+  assert.match(durable,/this\.ctx\.storage\.put\(PAUSE_KEY, state\)/);
+});
