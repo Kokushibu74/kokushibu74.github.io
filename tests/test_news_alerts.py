@@ -140,5 +140,74 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         self.assertTrue(item["isBreaking"])
         self.assertEqual(item["summary"], breaking_summary)
 
+
+    def test_gopalganj_attack_coverage_matches_across_publishers_after_three_hours(self):
+        left = {
+            "title": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে ককটেল বিস্ফোরণ ও আগুন",
+            "summary": "সেলিমুজ্জামানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ",
+            "source": "Jago News 24",
+            "sourceEvidence": ["Jago News 24"],
+            "publishedAt": "2026-11-19T07:35:00+00:00",
+        }
+        right = {
+            "title": "গোপালগঞ্জে সেলিমুজ্জামানের বাড়িতে আগুন",
+            "summary": "এমপির বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগ",
+            "source": "Independent Television",
+            "sourceEvidence": ["Independent Television"],
+            "publishedAt": "2026-11-19T11:14:00+00:00",
+        }
+        self.assertEqual(news.alert_event_locations(left), {"gopalganj"})
+        self.assertEqual(news.alert_event_locations(right), {"gopalganj"})
+        self.assertTrue(news.alert_event_matches(left, right))
+
+    def test_pabna_story_is_never_merged_into_gopalganj_even_with_same_headline(self):
+        gopalganj = {
+            "title": "গোপালগঞ্জে এমপির বাড়িতে আগুন",
+            "summary": "সেলিমুজ্জামানের বাড়িতে অগ্নিসংযোগ",
+            "source": "Jago News 24",
+            "sourceEvidence": ["Jago News 24"],
+            "publishedAt": "2026-11-19T07:35:00+00:00",
+        }
+        mixed = {
+            "title": "গোপালগঞ্জে এমপির বাড়িতে আগুন",
+            "summary": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ ও বাসে আগুন",
+            "source": "Independent Television",
+            "sourceEvidence": ["Independent Television"],
+            "publishedAt": "2026-11-19T08:00:00+00:00",
+        }
+        self.assertEqual(news.alert_event_locations(gopalganj), {"gopalganj"})
+        self.assertEqual(news.alert_event_locations(mixed), {"gopalganj", "pabna"})
+        self.assertFalse(news.alert_event_matches(gopalganj, mixed))
+
+    def test_event_id_stays_stable_when_later_publisher_coverage_arrives(self):
+        now = datetime(2026, 11, 19, 13, 0, tzinfo=timezone.utc)
+        first = {
+            "title": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে ককটেল বিস্ফোরণ ও আগুন",
+            "summary": "সেলিমুজ্জামানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ",
+            "source": "Jago News 24", "sourceEvidence": ["Jago News 24"],
+            "publishedAt": "2026-11-19T07:35:00+00:00",
+            "link": "https://jagonews24.com/example-one",
+        }
+        second = {
+            "title": "গোপালগঞ্জে সেলিমুজ্জামানের বাড়িতে আগুন",
+            "summary": "এমপির বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগ",
+            "source": "Independent Television", "sourceEvidence": ["Independent Television"],
+            "publishedAt": "2026-11-19T11:14:00+00:00",
+            "link": "https://independent.example/story-two",
+        }
+        third = {
+            "title": "গোপালগঞ্জে এমপির বাড়িতে অগ্নিসংযোগের খবর",
+            "summary": "সেলিমুজ্জামানের বাড়িতে হামলা ও আগুন",
+            "source": "Prothom Alo", "sourceEvidence": ["Prothom Alo"],
+            "publishedAt": "2026-11-19T12:00:00+00:00",
+            "link": "https://prothomalo.example/story-three",
+        }
+        before = news.build_alert_items([first, second], now=now)
+        after = news.build_alert_items([first, second, third], now=now)
+        self.assertEqual(len(before), 1)
+        self.assertEqual(len(after), 1)
+        self.assertEqual(before[0]["alertEventId"], after[0]["alertEventId"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
