@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T12:35:47.788237+00:00",
-  "updatedAt": "2026-11-19T12:35:47.788237+00:00",
+  "generatedAt": "2026-11-19T12:45:52.689413+00:00",
+  "updatedAt": "2026-11-19T12:45:52.689413+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 20,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 35,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "UNB",
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 57,
+  "candidateCount": 56,
   "alertItems": [
     {
       "title": "মহাখালীর সাততলা বস্তিতে অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের পাশে সেলিম উদ্দিন",
@@ -1077,37 +1077,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cf5b2a5dd32a876ae091661614d9fc0c"
-    },
-    {
-      "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-      "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-      "link": "https://www.bssnews.net/bangla/news/361669",
-      "publisherUrl": "https://www.bssnews.net/bangla/news/361669",
-      "publishedAt": "2026-11-19T11:16:00+00:00",
-      "source": "BSS",
-      "publisherName": "BSS",
-      "sourceEvidence": [
-        "BSS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "BSS",
-          "url": "https://www.bssnews.net/bangla/news/361669"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "BSS",
-          "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-          "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-          "url": "https://www.bssnews.net/bangla/news/361669"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
     },
     {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, থানায় আগুন",
@@ -1629,37 +1598,6 @@
       "alertEventId": "1f8e62c4250429d898f59cf9742075a5"
     },
     {
-      "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-      "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publishedAt": "2026-11-19T08:49:22+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-          "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "16a9a06a5f972b9e711eed1219b5fa59"
-    },
-    {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে হামলা–ভাঙচুর–আগুন",
       "summary": "আজ বেলা ১১টার দিকে কাশিয়ানী উপজেলার মহেশপুর ইউনিয়নের জয়নগর বাজারে মিছিল নিয়ে জড়ো হন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা।",
       "link": "https://www.prothomalo.com/bangladesh/district/uvplsms6jv",
@@ -1959,6 +1897,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0f93e6320cb6ac82f5c631d941832691"
+    },
+    {
+      "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
+      "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668286",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668286",
+      "publishedAt": "2026-11-19T07:13:27+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668286"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
+          "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668286"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ce34e774b75438ba522cf023305e4d89"
     },
     {
       "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
