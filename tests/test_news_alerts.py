@@ -163,6 +163,23 @@ class NewsAlertEvidenceTests(unittest.TestCase):
 
 
 
+
+    def test_generic_mp_house_report_matches_named_mp_house_report(self):
+        generic_report = {
+            "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ",
+            "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন",
+            "source": "UNB", "sourceEvidence": ["UNB"],
+            "publishedAt": "2026-11-19T09:11:00+00:00",
+        }
+        named_report = {
+            "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ",
+            "summary": "গোপালগঞ্জে সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ",
+            "source": "Ajker Patrika", "sourceEvidence": ["Ajker Patrika"],
+            "publishedAt": "2026-11-19T06:53:22+00:00",
+        }
+        self.assertTrue(news.alert_event_matches(generic_report, named_report))
+
+
     def test_same_publisher_followup_url_joins_existing_mp_incident(self):
         first = {
             "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ",

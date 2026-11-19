@@ -979,6 +979,9 @@ def alert_event_matches(left, right):
     right_numbers = set(re.findall(r"\d+", str(right.get("title") or "")))
     if left_numbers and right_numbers and not (left_numbers & right_numbers):
         return False
+    if shared_locations and "target:mp-residence" in (left_anchors & right_anchors):
+        # Same district, same MP-residence target, compatible person names and incident window.
+        return True
     left_tokens, right_tokens = alert_event_tokens(left), alert_event_tokens(right)
     shared = left_tokens & right_tokens
     if len(shared) < 3:
