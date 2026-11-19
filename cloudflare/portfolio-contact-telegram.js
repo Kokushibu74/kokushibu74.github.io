@@ -1,5 +1,13 @@
+import { DurableObject } from "cloudflare:workers";
+import { BotKvPauseStateStorage } from "./bot-kv-pause-state.mjs";
 import { evaluateNewsAlert, newsAlertKey, normalizeNewsAlertLink, escapeHtml, formatTelegramMessage, automationAlertDecision, mediaCandidates, deliverWithMediaFallback, parseOfficialDisasterSignal, isWeatherCandidate, formatAlertMessage, extractAlertLocation, extractIncidentTime, extractAlertSourceLocations, assessNewsAlertUpdate, restoreAlertRootSnapshot } from "./news-alerts.mjs";
-export { BotKvPauseState } from "./bot-kv-pause-state.mjs";
+
+// Cloudflare RPC requires the exported Durable Object class to extend the runtime base.
+export class BotKvPauseState extends DurableObject {
+  constructor(ctx, env) { super(ctx, env); this.pauseState = new BotKvPauseStateStorage(ctx, env); }
+  getPauseState(now = Date.now()) { return this.pauseState.getPauseState(now); }
+  setPauseState(state) { return this.pauseState.setPauseState(state); }
+}
 import { dispatchNewsWorkflow } from "./news-watchdog.mjs";
 import { BOT_KV_WRITE_PAUSE_KEY, secondsUntilUtcReset, shouldPauseBotForKvWrites, isKvWriteLimitError } from "./resource-guard.mjs";
 import { listJournalPosts, getPublicJournalFeed, saveJournalPost, uploadJournalImage, trashJournalPost, restoreJournalPost } from "./blog-manager.mjs";

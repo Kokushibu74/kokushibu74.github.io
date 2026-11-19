@@ -1,11 +1,10 @@
 const PAUSE_KEY = "kv-write-pause:v1";
 
 /**
- * SQLite-backed Durable Object state shared by every Worker isolate.
- * This is deliberately a plain class: the Worker runtime supplies ctx/env,
- * while Node's test runner can import and exercise the storage contract.
+ * Storage contract used by the Cloudflare Durable Object wrapper.
+ * Kept runtime-agnostic so Node tests can exercise persistence without importing cloudflare:workers.
  */
-export class BotKvPauseState {
+export class BotKvPauseStateStorage {
   constructor(ctx, env) {
     this.ctx = ctx;
     this.env = env;
