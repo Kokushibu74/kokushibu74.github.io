@@ -813,6 +813,7 @@ ALERT_CLUSTER_TYPES = (
     ("wildfire", re.compile(r"(?:wildfire|দাবানল)", re.I)),
     ("heatwave", re.compile(r"(?:heat ?wave|তাপপ্রবাহ)", re.I)),
     ("storm", re.compile(r"(?:storm|heavy rain|rainfall|lightning|tornado|tsunami|ঝড়|ঝড়|বৃষ্টি|বজ্রপাত|কালবৈশাখী)", re.I)),
+    ("attack", re.compile(r"(?:ককটেল|বোমা|বিস্ফোরণ|অগ্নিসংযোগ|ভাঙচুর|ভাংচুর|সশস্ত্র হামলা|হামলা|arson|bomb(?:ing)?|blast|explosion|attack on|set on fire)", re.I)),
     ("fire", re.compile(r"(?:fire|আগুন|অগ্নিকাণ্ড)", re.I)),
     ("explosion", re.compile(r"(?:explosion|blast|বিস্ফোরণ)", re.I)),
     ("crash", re.compile(r"(?:accident|crash|collision|derailment|capsiz|দুর্ঘটনা|নৌকাডুবি|ট্রেন দুর্ঘটনা)", re.I)),
@@ -842,29 +843,54 @@ def alert_event_tokens(item):
 
 
 def alert_event_locations(item):
+    """Return specific Bangladesh districts mentioned by the story, never a country-wide token."""
     text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
     aliases = (
-        ("dhaka", ("dhaka", "ঢাকা")), ("chattogram", ("chattogram", "chittagong", "চট্টগ্রাম")),
-        ("sylhet", ("sylhet", "সিলেট")), ("khulna", ("khulna", "খুলনা")),
-        ("rajshahi", ("rajshahi", "রাজশাহী")), ("barishal", ("barishal", "বরিশাল")),
-        ("rangpur", ("rangpur", "রংপুর")), ("mymensingh", ("mymensingh", "ময়মনসিংহ", "ময়মনসিংহ")),
-        ("coxsbazar", ("cox's bazar", "cox bazar", "কক্সবাজার")),
-        ("jashore", ("jashore", "jessore", "যশোর")),
-        ("gazipur", ("gazipur", "গাজীপুর")), ("narayanganj", ("narayanganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ")),
-        ("cumilla", ("cumilla", "comilla", "কুমিল্লা")), ("feni", ("feni", "ফেনী")),
-        ("noakhali", ("noakhali", "নোয়াখালী", "নোয়াখালী")), ("kurigram", ("kurigram", "কুড়িগ্রাম")),
-        ("sunamganj", ("sunamganj", "সুনামগঞ্জ")), ("satkhira", ("satkhira", "সাতক্ষীরা")),
-        ("bogura", ("bogura", "bogra", "বগুড়া", "বগুড়া")), ("pabna", ("pabna", "পাবনা")),
-        ("tangail", ("tangail", "টাঙ্গাইল")), ("bandarban", ("bandarban", "বান্দরবান")),
-        ("rangamati", ("rangamati", "রাঙামাটি")), ("bhola", ("bhola", "ভোলা")),
-        ("patuakhali", ("patuakhali", "পটুয়াখালী", "পটুয়াখালী")),
-        ("bangladesh", ("bangladesh", "বাংলাদেশ")),
+        ("dhaka", ("dhaka", "ঢাকা")), ("faridpur", ("faridpur", "ফরিদপুর")),
+        ("gazipur", ("gazipur", "গাজীপুর")), ("gopalganj", ("gopalganj", "গোপালগঞ্জ")),
+        ("kishoreganj", ("kishoreganj", "কিশোরগঞ্জ")), ("madaripur", ("madaripur", "মাদারীপুর")),
+        ("manikganj", ("manikganj", "মানিকগঞ্জ")), ("munshiganj", ("munshiganj", "মুন্সীগঞ্জ")),
+        ("narayanganj", ("narayanganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ")), ("narsingdi", ("narsingdi", "নরসিংদী")),
+        ("rajbari", ("rajbari", "রাজবাড়ী", "রাজবাড়ী")), ("shariatpur", ("shariatpur", "শরীয়তপুর", "শরিয়তপুর")),
+        ("tangail", ("tangail", "টাঙ্গাইল")),
+        ("bandarban", ("bandarban", "বান্দরবান")), ("brahmanbaria", ("brahmanbaria", "ব্রাহ্মণবাড়িয়া", "ব্রাহ্মণবাড়িয়া")),
+        ("chandpur", ("chandpur", "চাঁদপুর")), ("chattogram", ("chattogram", "chittagong", "চট্টগ্রাম")),
+        ("cumilla", ("cumilla", "comilla", "কুমিল্লা")), ("coxsbazar", ("cox's bazar", "cox bazar", "কক্সবাজার")),
+        ("feni", ("feni", "ফেনী")), ("khagrachhari", ("khagrachhari", "খাগড়াছড়ি", "খাগড়াছড়ি")),
+        ("lakshmipur", ("lakshmipur", "লক্ষ্মীপুর")), ("noakhali", ("noakhali", "নোয়াখালী", "নোয়াখালী")),
+        ("rangamati", ("rangamati", "রাঙামাটি")),
+        ("bogura", ("bogura", "bogra", "বগুড়া", "বগুড়া")), ("joypurhat", ("joypurhat", "জয়পুরহাট", "জয়পুরহাট")),
+        ("naogaon", ("naogaon", "নওগাঁ")), ("natore", ("natore", "নাটোর")),
+        ("chapainawabganj", ("chapainawabganj", "চাঁপাইনবাবগঞ্জ")), ("pabna", ("pabna", "পাবনা")),
+        ("rajshahi", ("rajshahi", "রাজশাহী")), ("sirajganj", ("sirajganj", "সিরাজগঞ্জ")),
+        ("bagerhat", ("bagerhat", "বাগেরহাট")), ("chuadanga", ("chuadanga", "চুয়াডাঙ্গা", "চুয়াডাঙ্গা")),
+        ("jashore", ("jashore", "jessore", "যশোর")), ("jhenaidah", ("jhenaidah", "ঝিনাইদহ")),
+        ("khulna", ("khulna", "খুলনা")), ("kushtia", ("kushtia", "কুষ্টিয়া", "কুষ্টিয়া")),
+        ("magura", ("magura", "মাগুরা")), ("meherpur", ("meherpur", "মেহেরপুর")),
+        ("narail", ("narail", "নড়াইল", "নড়াইল")), ("satkhira", ("satkhira", "সাতক্ষীরা")),
+        ("barguna", ("barguna", "বরগুনা")), ("barishal", ("barishal", "বরিশাল")),
+        ("bhola", ("bhola", "ভোলা")), ("jhalokathi", ("jhalokathi", "ঝালকাঠি")),
+        ("patuakhali", ("patuakhali", "পটুয়াখালী", "পটুয়াখালী")), ("pirojpur", ("pirojpur", "পিরোজপুর")),
+        ("habiganj", ("habiganj", "হবিগঞ্জ")), ("moulvibazar", ("moulvibazar", "মৌলভীবাজার")),
+        ("sunamganj", ("sunamganj", "সুনামগঞ্জ")), ("sylhet", ("sylhet", "সিলেট")),
+        ("dinajpur", ("dinajpur", "দিনাজপুর")), ("gaibandha", ("gaibandha", "গাইবান্ধা")),
+        ("kurigram", ("kurigram", "কুড়িগ্রাম", "কুড়িগ্রাম")), ("lalmonirhat", ("lalmonirhat", "লালমনিরহাট")),
+        ("nilphamari", ("nilphamari", "নীলফামারী")), ("panchagarh", ("panchagarh", "পঞ্চগড়", "পঞ্চগড়")),
+        ("rangpur", ("rangpur", "রংপুর")), ("thakurgaon", ("thakurgaon", "ঠাকুরগাঁও")),
+        ("jamalpur", ("jamalpur", "জামালপুর")), ("mymensingh", ("mymensingh", "ময়মনসিংহ", "ময়মনসিংহ")),
+        ("netrokona", ("netrokona", "নেত্রকোণা", "নেত্রকোনা")), ("sherpur", ("sherpur", "শেরপুর")),
     )
     return {canonical for canonical, names in aliases if any(name in text for name in names)}
 
 
 def alert_event_matches(left, right):
     """Conservatively match differently worded coverage of the same recent incident."""
+    left_locations, right_locations = alert_event_locations(left), alert_event_locations(right)
+    # Multi-district summaries are ambiguous/contaminated; do not merge them.
+    if len(left_locations) > 1 or len(right_locations) > 1:
+        return False
+    if left_locations and right_locations and left_locations != right_locations:
+        return False
     if key_for(left) == key_for(right):
         return True
     left_sources = {canonical_publisher_name(value).lower() for value in (left.get("sourceEvidence") or [left.get("source")]) if value}
@@ -883,13 +909,10 @@ def alert_event_matches(left, right):
             right_time = right_time.replace(tzinfo=timezone.utc)
     except (TypeError, ValueError):
         return False
-    window = 360 if left_type in {"flood", "cyclone", "earthquake", "landslide", "wildfire", "heatwave", "storm"} else 180
+    window = 480 if left_type in {"attack", "fire", "explosion", "violence", "murder", "crash"} else (360 if left_type in {"flood", "cyclone", "earthquake", "landslide", "wildfire", "heatwave", "storm"} else 180)
     if abs((left_time - right_time).total_seconds()) > window * 60:
         return False
-    left_locations, right_locations = alert_event_locations(left), alert_event_locations(right)
     shared_locations = left_locations & right_locations
-    if left_locations and right_locations and not shared_locations:
-        return False
     left_numbers = set(re.findall(r"\d+", str(left.get("title") or "")))
     right_numbers = set(re.findall(r"\d+", str(right.get("title") or "")))
     if left_numbers and right_numbers and not (left_numbers & right_numbers):
@@ -935,7 +958,7 @@ def build_alert_items(items, now=None):
     for item in candidates:
         match = next((cluster for cluster in clusters if alert_event_matches(item, {**cluster["item"], "sourceEvidence": cluster["sources"]})), None)
         if match is None:
-            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or [])})
+            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or []), "canonicalKey": key_for(item), "canonicalPublishedAt": str(item.get("publishedAt") or item.get("pubDate") or "")})
             continue
         for source in item.get("sourceEvidence") or []:
             canonical = canonical_publisher_name(source)
@@ -956,6 +979,10 @@ def build_alert_items(items, now=None):
         incoming_stamp = str(item.get("publishedAt") or "")
         if incoming_stamp > current_stamp:
             match["item"]["publishedAt"] = incoming_stamp
+        canonical_stamp = str(match.get("canonicalPublishedAt") or "")
+        if incoming_stamp and (not canonical_stamp or incoming_stamp < canonical_stamp):
+            match["canonicalPublishedAt"] = incoming_stamp
+            match["canonicalKey"] = key_for(item)
         if not match["item"].get("summary") and item.get("summary"):
             match["item"]["summary"] = item["summary"]
 
@@ -965,7 +992,7 @@ def build_alert_items(items, now=None):
         item["sourceEvidence"] = cluster["sources"][:12]
         item["sourceLinks"] = cluster["links"][:8]
         item["corroborationCount"] = len(item["sourceEvidence"])
-        base_key = key_for(item)
+        base_key = cluster.get("canonicalKey") or key_for(item)
         item["alertEventId"] = hashlib.sha256(base_key.encode("utf-8")).hexdigest()[:32]
         result.append(item)
     return result
