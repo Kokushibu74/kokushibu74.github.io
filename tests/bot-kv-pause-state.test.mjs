@@ -1,13 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { BotKvPauseState } from "../cloudflare/bot-kv-pause-state.mjs";
+import { BotKvPauseStateStorage } from "../cloudflare/bot-kv-pause-state.mjs";
 
 const makeStorage = (values = new Map()) => ({
   values,
   async get(key) { return this.values.get(key); },
   async put(key, value) { this.values.set(key, structuredClone(value)); }
 });
-const makeObject = storage => new BotKvPauseState({ storage }, {});
+const makeObject = storage => new BotKvPauseStateStorage({ storage }, {});
 
 test("pause state survives a new Durable Object instance", async () => {
   const storage = makeStorage();
