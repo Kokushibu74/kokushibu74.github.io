@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T18:35:49.029283+00:00",
-  "updatedAt": "2026-11-19T18:35:49.029283+00:00",
+  "generatedAt": "2026-11-19T18:50:51.362522+00:00",
+  "updatedAt": "2026-11-19T18:50:51.362522+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -843,6 +843,59 @@
   "candidateCount": 49,
   "alertItems": [
     {
+      "title": "সাবেক মেজর জেনারেল জিয়াউল আহসানের বরিশালের বাসভবনে আগুন | Barisal | Independent TV",
+      "summary": "বরিশাল নগরীতে সাবেক সেনা কর্মকর্তা ও ন্যাশনাল টেলিকমিউনিকেশন মনিটরিং সেন্টারের (এনটিএমসি) সাবেক মহাপরিচালক মেজর জেনারেল (অব.) জিয়াউল আহসানের বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যা ৬টার দিকে নগরীর কলেজ রোড সংলগ্ন বৈদ্যপাড়া এলাকার নাসির উদ্দিন সড়কে অবস্থিত তহুরা মঞ্জিল নামের ওই বাসভবনে এ ঘটনা ঘটে। হামলা ও অগ্নিসংযোগে তিনতলা ভবনটির নিচতলার একটি কক্ষ ও... বিস্তারিত",
+      "link": "https://www.youtube.com/watch?v=aCDf7hNlR4s",
+      "publisherUrl": "https://www.youtube.com/watch?v=aCDf7hNlR4s",
+      "publishedAt": "2026-11-19T18:44:57+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television",
+        "Bangla Tribune",
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=aCDf7hNlR4s"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
+        },
+        {
+          "name": "Channel 24 ·",
+          "url": "https://www.youtube.com/shorts/HeE82CdsS4I"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "সাবেক মেজর জেনারেল জিয়াউল আহসানের বরিশালের বাসভবনে আগুন | Barisal | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=aCDf7hNlR4s"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "সাবেক সেনা কর্মকর্তা জিয়াউল আহসানের বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ",
+          "summary": "বরিশাল নগরীতে সাবেক সেনা কর্মকর্তা ও ন্যাশনাল টেলিকমিউনিকেশন মনিটরিং সেন্টারের (এনটিএমসি) সাবেক মহাপরিচালক মেজর জেনারেল (অব.) জিয়াউল আহসানের বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যা ৬টার দিকে নগরীর কলেজ রোড সংলগ্ন বৈদ্যপাড়া এলাকার নাসির উদ্দিন সড়কে অবস্থিত তহুরা মঞ্জিল নামের ওই বাসভবনে এ ঘটনা ঘটে। হামলা ও অগ্নিসংযোগে তিনতলা ভবনটির নিচতলার একটি কক্ষ ও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
+        },
+        {
+          "name": "Channel 24",
+          "title": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন | Ziaul Ahsan | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/HeE82CdsS4I"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "40066b6d48c3e5223addb4d429f4f085"
+    },
+    {
       "title": "দেশজুড়ে নাশকতা ও সহিংসতা, কঠোর পদক্ষেপের পথে সরকার",
       "summary": "দেশে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কর্মসূচিকে কেন্দ্র করে দেশজুড়ে ছড়িয়ে পড়েছে অগ্নিসংযোগ, ককটেল বিস্ফোরণ ও সহিংসতা। রাজধানী থেকে শুরু করে গোপালগঞ্জসহ বিভিন্ন জেলায় হামলার লক্ষ্যবস্তু হচ্ছে যাত্রীবাহী বাস, রেলপথ, থানা, হাসপাতাল, ব্যাংক, রাজনৈতিক কার্যালয় ও বসতবাড়ি। আগুন দেওয়া হয়েছে নোবেলজয়ী অধ্যাপক ড. মুহাম্মদ ইউনূসের পৈতৃক বাড়িতেও। পাল্টা পদক্ষেপ হিসেবে দলটির নেতাকর্মীদের অনেকের বাড়িতেও আগুন... বিস্তারিত",
       "link": "https://www.banglatribune.com/law-and-crime/982049/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%95%E0%A6%A0%E0%A7%8B%E0%A6%B0-%E0%A6%AA%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0",
@@ -1059,48 +1112,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f3ff8453cf27e04a75816b7601ff1e56"
-    },
-    {
-      "title": "সাবেক সেনা কর্মকর্তা জিয়াউল আহসানের বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ",
-      "summary": "বরিশাল নগরীতে সাবেক সেনা কর্মকর্তা ও ন্যাশনাল টেলিকমিউনিকেশন মনিটরিং সেন্টারের (এনটিএমসি) সাবেক মহাপরিচালক মেজর জেনারেল (অব.) জিয়াউল আহসানের বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যা ৬টার দিকে নগরীর কলেজ রোড সংলগ্ন বৈদ্যপাড়া এলাকার নাসির উদ্দিন সড়কে অবস্থিত তহুরা মঞ্জিল নামের ওই বাসভবনে এ ঘটনা ঘটে। হামলা ও অগ্নিসংযোগে তিনতলা ভবনটির নিচতলার একটি কক্ষ ও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0",
-      "publishedAt": "2026-11-19T16:36:32+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune",
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
-        },
-        {
-          "name": "Channel 24 ·",
-          "url": "https://www.youtube.com/shorts/HeE82CdsS4I"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "সাবেক সেনা কর্মকর্তা জিয়াউল আহসানের বাড়িতে ভাঙচুর চালিয়ে অগ্নিসংযোগ",
-          "summary": "বরিশাল নগরীতে সাবেক সেনা কর্মকর্তা ও ন্যাশনাল টেলিকমিউনিকেশন মনিটরিং সেন্টারের (এনটিএমসি) সাবেক মহাপরিচালক মেজর জেনারেল (অব.) জিয়াউল আহসানের বাড়িতে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যা ৬টার দিকে নগরীর কলেজ রোড সংলগ্ন বৈদ্যপাড়া এলাকার নাসির উদ্দিন সড়কে অবস্থিত তহুরা মঞ্জিল নামের ওই বাসভবনে এ ঘটনা ঘটে। হামলা ও অগ্নিসংযোগে তিনতলা ভবনটির নিচতলার একটি কক্ষ ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/barishal/982041/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0"
-        },
-        {
-          "name": "Channel 24",
-          "title": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন | Ziaul Ahsan | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/HeE82CdsS4I"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "40066b6d48c3e5223addb4d429f4f085"
     },
     {
       "title": "রাজধানীর শ্যামলীতে ৪টি ককটেলসহ আ'ট'ক ১ #Shyamoli #DhakaSecurity #LawAndOrder #Channel24",
@@ -2097,37 +2108,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c75a5ff94860ff54fd3f89329789b8f3"
-    },
-    {
-      "title": "বরিশাল-কুয়াকাটা মহাসড়কে দুই বাসের সংঘর্ষে নিহত ১, আহত ৪০ - Daily Bonik Barta",
-      "summary": "বরিশাল-কুয়াকাটা মহাসড়কে দুই বাসের সংঘর্ষে নিহত ১, আহত ৪০ Daily Bonik Barta",
-      "link": "https://www.bonikbarta.com/bangladesh/hLkM1tdHwAkuXBA8/",
-      "publisherUrl": "https://www.bonikbarta.com/bangladesh/hLkM1tdHwAkuXBA8/",
-      "publishedAt": "2026-11-18T21:06:00+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://www.bonikbarta.com/bangladesh/hLkM1tdHwAkuXBA8/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "বরিশাল-কুয়াকাটা মহাসড়কে দুই বাসের সংঘর্ষে নিহত ১, আহত ৪০ - Daily Bonik Barta",
-          "summary": "বরিশাল-কুয়াকাটা মহাসড়কে দুই বাসের সংঘর্ষে নিহত ১, আহত ৪০ Daily Bonik Barta",
-          "url": "https://www.bonikbarta.com/bangladesh/hLkM1tdHwAkuXBA8/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "be80cf453813e965b31f02e327c12b0e"
     },
     {
       "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
