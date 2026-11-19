@@ -945,10 +945,8 @@ def alert_event_matches(left, right):
         return False
     if key_for(left) == key_for(right):
         return True
-    left_sources = {canonical_publisher_name(value).lower() for value in (left.get("sourceEvidence") or [left.get("source")]) if value}
-    right_sources = {canonical_publisher_name(value).lower() for value in (right.get("sourceEvidence") or [right.get("source")]) if value}
-    if left_sources & right_sources:
-        return False
+    # A publisher may publish a follow-up under a new URL; source overlap alone
+    # must not block matching when district, target/person and incident anchors agree.
     left_type, right_type = alert_event_type(left), alert_event_type(right)
     if left_type != right_type or left_type == "general":
         return False
