@@ -2639,8 +2639,9 @@ async function newsBreakingAlertCheck(env){
     let key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
     const linkIndexKeys=await newsAlertLinkIndexKeys(item);
     let linkedEventKey="";
-    const linkedEventKeys=[...new Set((await Promise.all(linkIndexKeys.map(indexKey=>env.BOT_CONFIG_KV.get(indexKey))))
-      .map(value=>String(value||"")).filter(value=>/^[a-f0-9]{32}$/i.test(value)))];
+    const linkIndexValues=await Promise.all(linkIndexKeys.map(indexKey=>env.BOT_CONFIG_KV.get(indexKey)));
+    const linkIndexMap=new Map(linkIndexKeys.map((indexKey,index)=>[indexKey,String(linkIndexValues[index]||"")]));
+    const linkedEventKeys=[...new Set([...linkIndexMap.values()].filter(value=>/^[a-f0-9]{32}$/i.test(value)))];
     // Only adopt a legacy event key when all matching source links agree.
     // Conflicting historical roots remain separate rather than being cross-merged.
     if(linkedEventKeys.length===1){
@@ -2737,7 +2738,7 @@ async function newsBreakingAlertCheck(env){
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       alertStatePersisted=true;
       for(const indexKey of linkIndexKeys){
-        const existingKey=String(await env.BOT_CONFIG_KV.get(indexKey)||"");
+        const existingKey=linkIndexMap.get(indexKey)||"";
         if(!existingKey||existingKey===key)await env.BOT_CONFIG_KV.put(indexKey,key,{expirationTtl:NEWS_ALERT_TTL});
       }
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
