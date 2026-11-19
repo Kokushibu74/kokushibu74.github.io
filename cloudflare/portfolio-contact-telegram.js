@@ -2417,16 +2417,16 @@ async function newsRefreshWatchdog(env){
   const blocked=await env.BOT_CONFIG_KV.get(dispatchBlockedKey,"json").catch(()=>null);
   if(Number(blocked?.at)>0&&now-Number(blocked.at)<60*60*1000)return {skipped:true,reason:"dispatch-backoff",status:Number(blocked.status)||403};
   const lastDispatch=Number(await env.BOT_CONFIG_KV.get(cooldownKey));
-  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<15*60*1000)return {skipped:true,reason:"cooldown"};
+  if(Number.isFinite(lastDispatch)&&lastDispatch>0&&now-lastDispatch<10*60*1000)return {skipped:true,reason:"cooldown"};
   const headers={Accept:"application/vnd.github+json","User-Agent":"Kokushibu74-Portfolio-MiniApp","X-GitHub-Api-Version":"2022-11-28",Authorization:"Bearer "+env.GITHUB_TOKEN};
-  const statusResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml/runs?branch=main&per_page=1",{headers,signal:AbortSignal.timeout(10000)});
+  const statusResponse=await fetch("https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news-alerts.yml/runs?branch=main&per_page=1",{headers,signal:AbortSignal.timeout(10000)});
   if(!statusResponse.ok)throw new Error("GitHub news workflow status check failed (HTTP "+statusResponse.status+")");
   const data=await statusResponse.json().catch(()=>({}));
   const latest=(data.workflow_runs||[])[0],created=Date.parse(latest?.created_at||""),age=Number.isFinite(created)?now-created:Infinity;
   const priorError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
   if(priorError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
-  if(latest&&age<15*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
-  if(latest&&["queued","in_progress"].includes(latest.status)&&age<30*60*1000)return {skipped:true,reason:"already-running"};
+  if(latest&&age<10*60*1000)return {skipped:true,reason:"recent-run",ageMinutes:Math.round(age/60000)};
+  if(latest&&["queued","in_progress"].includes(latest.status)&&age<20*60*1000)return {skipped:true,reason:"already-running"};
   let dispatchResult;
   try{
     dispatchResult=await dispatchNewsWorkflow(env.GITHUB_TOKEN);
@@ -2437,7 +2437,7 @@ async function newsRefreshWatchdog(env){
   await env.BOT_CONFIG_KV.delete(dispatchBlockedKey);
   const dispatchError=await env.BOT_CONFIG_KV.get("news-watchdog:last-error").catch(()=>null);
   if(dispatchError)await env.BOT_CONFIG_KV.delete("news-watchdog:last-error").catch(()=>{});
-  await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:60*60});
+  await env.BOT_CONFIG_KV.put(cooldownKey,String(now),{expirationTtl:30*60});
   return {dispatched:true,ageMinutes:Number.isFinite(age)?Math.round(age/60000):null,dispatchAttempts:dispatchResult.attempts,verifiedAfterAmbiguousResponse:!!dispatchResult.verified};
 }
 async function notifyNewsWatchdogFailure(env,error){
