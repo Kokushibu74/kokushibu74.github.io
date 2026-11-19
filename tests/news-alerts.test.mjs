@@ -597,6 +597,22 @@ test("a new independent publisher confirms directly actionable verification impr
   assert.deepEqual(result.decision.trustedSources,["Jago News 24","The Daily Star"]);
 });
 
+test("a period-only incident-time clarification does not trigger a duplicate Telegram update",()=>{
+  const previous={summary:"চট্টগ্রামে বাসভবনে হামলা ও ভাঙচুর করা হয়েছে।",location:"দামপাড়া, চট্টগ্রাম, বাংলাদেশ",incidentTime:{precision:"conflicting",display:"সূত্রভেদে ঘটনার সময় ভিন্ন"},trustedSources:["Dainik Azadi"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:previous.summary,location:previous.location,incidentTime:{precision:"period",display:"গত রাত · ১৭ নভেম্বর, ২০২৬",timestamp:1794852000000,source:"Dainik Azadi"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Dainik Azadi"]});
+  assert.equal(result.flags.incidentTimeEnriched,true);
+  assert.equal(result.hasMeaningfulUpdate,false);
+});
+
+test("an exact incident-time clarification can still trigger a useful update",()=>{
+  const previous={summary:"চট্টগ্রামে বাসভবনে হামলা ও ভাঙচুর করা হয়েছে।",location:"দামপাড়া, চট্টগ্রাম, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Dainik Azadi"],verificationStatus:"provisional",severity:"HIGH"};
+  const incoming={summary:previous.summary,location:previous.location,incidentTime:{precision:"exact",display:"রাত ১১:৩০ · ১৭ নভেম্বর, ২০২৬",timestamp:1794857400000,source:"Dainik Azadi"}};
+  const result=assessNewsAlertUpdate(previous,incoming,{status:"provisional",severity:"HIGH",trustedSources:["Dainik Azadi"]});
+  assert.equal(result.flags.incidentTimeEnriched,true);
+  assert.equal(result.hasMeaningfulUpdate,true);
+});
+
 test("a more specific location and more precise incident time can enrich an alert",()=>{
   const previous={summary:"আগুনের ঘটনা ঘটেছে।",location:"মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",incidentTime:{precision:"unknown"},trustedSources:["Jago News 24"],verificationStatus:"provisional",severity:"HIGH"};
   const incoming={summary:"আগুনের ঘটনা ঘটেছে।",location:"উপজেলা: দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ",sourceLocations:[{source:"Jago News 24",address:"উপজেলা: দৌলতপুর, মানিকগঞ্জ, ঢাকা বিভাগ, বাংলাদেশ"}],incidentTime:{precision:"period",display:"রাত · ১১ নভেম্বর",timestamp:1794333600000,source:"Jago News 24"}};
