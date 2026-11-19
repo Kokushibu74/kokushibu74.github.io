@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T14:00:37.503982+00:00",
-  "updatedAt": "2026-11-19T14:00:37.503982+00:00",
+  "generatedAt": "2026-11-19T14:10:41.833230+00:00",
+  "updatedAt": "2026-11-19T14:10:41.833230+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -64,7 +64,7 @@
       "domain": "bdnews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 502",
+      "directError": "not well-formed (invalid token): line 8, column 46",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 50,
+  "candidateCount": 51,
   "alertItems": [
+    {
+      "title": "হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে দুই ভাই নিহত",
+      "summary": "চট্টগ্রামের হাটহাজারী-নাজিরহাট সড়কে দুই মোটরসাইকেলের মুখোমুখি সংঘর্ষে দুই ভাই নিহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) দুপুর আড়াইটার দিকে উপজেলার মির্জাপুর...",
+      "link": "https://www.jagonews24.com/national/news/1181476",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1181476",
+      "publishedAt": "2026-11-19T14:01:35+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181476"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে দুই ভাই নিহত",
+          "summary": "চট্টগ্রামের হাটহাজারী-নাজিরহাট সড়কে দুই মোটরসাইকেলের মুখোমুখি সংঘর্ষে দুই ভাই নিহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) দুপুর আড়াইটার দিকে উপজেলার মির্জাপুর...",
+          "url": "https://www.jagonews24.com/national/news/1181476"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5a9044aef1ca23bab0e01281edd8fd03"
+    },
     {
       "title": "এবি পার্টির চেয়ারম্যান মঞ্জুর গাড়িতে আগুন",
       "summary": "আমার বাংলাদেশ পার্টির (এবি পার্টি) চেয়ারম্যান মজিবুর রহমান মঞ্জুর গাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আনুমানিক ৩টার দিকে রাজধানীর বিজয়নগরে অবস্থিত এবি পার্টির কেন্দ্রীয় কার্যালয়ের নিচে এ ঘটনা ঘটে। এবি পার্টির সহকারী প্রচার সম্পাদক আজাদুল ইসলাম আজাদ এক বিবৃতিতে এই তথ্য জানিয়েছেন। দলের পক্ষ থেকে অভিযোগ করা হয়েছে, মুখে মাস্ক পরিহিত কয়েকজন দুর্বৃত্ত অটোরিকশাযোগে এসে... বিস্তারিত",
@@ -1058,37 +1089,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4a8556bc89270cbf924b8f564da79b35"
-    },
-    {
-      "title": "দেশে সাম্প্রতিক সময়ে আর্থিক প্রতিষ্ঠানে হামলা-অ*গ্নিসংযোগে বাংলাদেশ ব্যাংকের উদ্বেগ | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8",
-      "publisherUrl": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8",
-      "publishedAt": "2026-11-19T12:43:17+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "দেশে সাম্প্রতিক সময়ে আর্থিক প্রতিষ্ঠানে হামলা-অ*গ্নিসংযোগে বাংলাদেশ ব্যাংকের উদ্বেগ | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b79cc5405449cdb92e4a348ab9a76f6e"
     },
     {
       "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB - United News of Bangladesh",
@@ -2226,6 +2226,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8f25e44e2e6c8afdc8a55969e573a439"
+    },
+    {
+      "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+      "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+      "link": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publisherUrl": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publishedAt": "2026-11-18T18:30:30+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+          "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b78d930084a944042e0b5c50f5efa463"
     },
     {
       "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন - Daily Bonik Barta",
