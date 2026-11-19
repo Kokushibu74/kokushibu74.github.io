@@ -864,7 +864,16 @@ def alert_event_anchor_tokens(item):
     }
     tokens = {token for token in re.findall(r"[\w]+", text, flags=re.UNICODE) if len(token) > 1 and token not in generic and not token.isdigit()}
     anchors = set()
+    district_prefixes = (
+        "ঢাকা", "dhaka", "ফরিদপুর", "faridpur", "গাজীপুর", "gazipur", "গোপালগঞ্জ", "gopalganj",
+        "কিশোরগঞ্জ", "kishoreganj", "মাদারীপুর", "madaripur", "মানিকগঞ্জ", "manikganj",
+        "মুন্সীগঞ্জ", "munshiganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ", "narayanganj", "নরসিংদী", "narsingdi",
+        "রাজবাড়ী", "রাজবাড়ী", "rajbari", "শরীয়তপুর", "শরিয়তপুর", "shariatpur", "টাঙ্গাইল", "tangail",
+        "পাবনা", "pabna", "রাজশাহী", "rajshahi", "বগুড়া", "বগুড়া", "bogura", "চট্টগ্রাম", "chattogram",
+    )
     for token in tokens:
+        if any(token.startswith(prefix) for prefix in district_prefixes):
+            continue
         if token.startswith("সেলিম") or token.startswith("selim"):
             anchors.add("name:selim")
         elif token.startswith("মোসাদ্দিক") or token.startswith("mosaddik"):
