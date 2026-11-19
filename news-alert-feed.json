@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T12:25:34.301144+00:00",
-  "updatedAt": "2026-11-19T12:25:34.301144+00:00",
+  "generatedAt": "2026-11-19T12:35:47.788237+00:00",
+  "updatedAt": "2026-11-19T12:35:47.788237+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Naya Diganta",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 56,
+  "candidateCount": 57,
   "alertItems": [
     {
       "title": "মহাখালীর সাততলা বস্তিতে অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের পাশে সেলিম উদ্দিন",
@@ -1277,6 +1277,37 @@
       "alertEventId": "2625100aab1b78c17b1aaf28876aa505"
     },
     {
+      "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+      "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671873",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671873",
+      "publishedAt": "2026-11-19T10:35:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+          "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e870abd3173afd0f0be0d118a66bfee7"
+    },
+    {
       "title": "চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর",
       "summary": "হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য করে ইটপাটকেল নিক্ষেপ করে এবং লাঠি দিয়ে জানালার কাচ ভাঙচুর করে। […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
@@ -1368,6 +1399,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "43055e9f77a7bc83ce465f412f5a8f42"
+    },
+    {
+      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671863",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
+      "publishedAt": "2026-11-19T10:10:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6521be4740173282a8ebbfee732b917e"
     },
     {
       "title": "গোপালগঞ্জ ও গোপালগঞ্জ হয়ে অন্য জেলার ট্রেন চলছে না",
@@ -1660,48 +1722,6 @@
       "alertEventId": "42504787d0cffaca7e0c2b4f22cf5a79"
     },
     {
-      "title": "চট্টগ্রামে গাছ কেটে সড়ক অবরোধের চেষ্টা নিষিদ্ধঘোষিত ছাত্রলীগের, গ্রামীণ ব্যাংকের কার্যালয়ের বাইরে আগুন",
-      "summary": "চট্টগ্রামের বাঁশখালীর বৈলছড়ি গ্রামীণ ব্যাংকের শাখার বাইরের দেয়ালের পাশে পাতার স্তূপে আগুন দেয় দুর্বৃত্তরা। তবে এতে বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ।",
-      "link": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj",
-      "publishedAt": "2026-11-19T08:27:52+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "চট্টগ্রামে গাছ কেটে সড়ক অবরোধের চেষ্টা নিষিদ্ধঘোষিত ছাত্রলীগের, গ্রামীণ ব্যাংকের কার্যালয়ের বাইরে আগুন",
-          "summary": "চট্টগ্রামের বাঁশখালীর বৈলছড়ি গ্রামীণ ব্যাংকের শাখার বাইরের দেয়ালের পাশে পাতার স্তূপে আগুন দেয় দুর্বৃত্তরা। তবে এতে বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ।",
-          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
-          "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "fda677c60ebf79a105ffb8454e5724d8"
-    },
-    {
       "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
       "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
       "link": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
@@ -1731,37 +1751,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d78121b11bb1abc114183e278fc015aa"
-    },
-    {
-      "title": "খাগড়াছড়িতে পার্ক করে রাখা দুটি পিকআপে আগুন, মালিককে খুঁজছে পুলিশ",
-      "summary": "ঘটনার পর পিকআপ দুটি সরিয়ে ফেলেছেন চালক। এর পর থেকেই পিকআপের মালিককে খুঁজছে পুলিশ।",
-      "link": "https://www.prothomalo.com/bangladesh/district/ie9qqev5tk",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ie9qqev5tk",
-      "publishedAt": "2026-11-19T08:16:50+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/ie9qqev5tk"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "খাগড়াছড়িতে পার্ক করে রাখা দুটি পিকআপে আগুন, মালিককে খুঁজছে পুলিশ",
-          "summary": "ঘটনার পর পিকআপ দুটি সরিয়ে ফেলেছেন চালক। এর পর থেকেই পিকআপের মালিককে খুঁজছে পুলিশ।",
-          "url": "https://www.prothomalo.com/bangladesh/district/ie9qqev5tk"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5da02b6d8113927a1efe9dd4483b08e8"
     },
     {
       "title": "আগারগাঁও মেট্রো স্টেশনের নিচে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
@@ -2034,6 +2023,37 @@
       "alertEventId": "ee8084e8b0b95024b901910e47466cd9"
     },
     {
+      "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
+      "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publishedAt": "2026-11-19T06:22:19+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
+          "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4cdb9d7327e9b25e5a5193003c09f900"
+    },
+    {
       "title": "খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন",
       "summary": "খাগড়াছড়ি সদর উপজেলার খাগড়াপুর এলাকায় পার্কিং করে রাখা সাজেকগামী পর্যটক পরিবহনের ২ পিকআপে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আড়াইটার দিকে মাস্টারের দোকানের সামনে এ ঘটনা ঘটে। এতে গাড়ি ২টির ভেতরের আসনসহ বিভিন্ন অংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, খাগড়াপুর এলাকার মাস্টারের দোকানের সামনে নিয়মিত ৪টি পিকআপ পার্কিং করে রাখা হতো। এসব […] The post খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/two-parked-pickup-trucks-set-on-fire-in-khagrachhari/",
@@ -2094,6 +2114,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "67dbe849e3a5668cc71d2773b6a8c69c"
+    },
+    {
+      "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+      "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671821",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671821",
+      "publishedAt": "2026-11-19T05:42:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+          "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
     },
     {
       "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ",
@@ -2251,37 +2302,6 @@
       "alertEventId": "f2d7cbbf14637191496fd1b051b0b656"
     },
     {
-      "title": "রাতের আঁধারে জুলাই স্মৃতিস্তম্ভে আগুন",
-      "summary": "ঢাকা-টাঙ্গাইল মহাসড়কের গোড়াইতে জুলাই স্মৃতিস্তম্ভে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাত ১২টার দিকে টাঙ্গাইলের মির্জাপুর উপজেলার গোড়াইতে এই আগুন দেওয়ার ঘটনা ঘটে। এতে স্থানীয়দের মাঝে আতঙ্ক বিরাজ করছে। স্থানীয়রা ধারণা করছেন, কার্যক্রম নিষিদ্ধ ঘোষিত আওয়ামী লীগের ডাকা লকডাউন কর্মসূচিকে সামনে রেখে এই আগুন দেওয়ার ঘটনা ঘটে থাকতে পারে। মির্জাপুর থানার ওসি আব্দুল্লাহ আল মামুন জানান, রাতে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-19T04:21:47+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "রাতের আঁধারে জুলাই স্মৃতিস্তম্ভে আগুন",
-          "summary": "ঢাকা-টাঙ্গাইল মহাসড়কের গোড়াইতে জুলাই স্মৃতিস্তম্ভে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাত ১২টার দিকে টাঙ্গাইলের মির্জাপুর উপজেলার গোড়াইতে এই আগুন দেওয়ার ঘটনা ঘটে। এতে স্থানীয়দের মাঝে আতঙ্ক বিরাজ করছে। স্থানীয়রা ধারণা করছেন, কার্যক্রম নিষিদ্ধ ঘোষিত আওয়ামী লীগের ডাকা লকডাউন কর্মসূচিকে সামনে রেখে এই আগুন দেওয়ার ঘটনা ঘটে থাকতে পারে। মির্জাপুর থানার ওসি আব্দুল্লাহ আল মামুন জানান, রাতে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "21c91f61b1de8d6145fc00eb4a3bc08e"
-    },
-    {
       "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
       "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -2311,6 +2331,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "30459297d2c1cbd0f05bbe437c4122d5"
+    },
+    {
+      "title": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671774",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671774",
+      "publishedAt": "2026-11-18T19:20:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671774"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671774"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8f25e44e2e6c8afdc8a55969e573a439"
     },
     {
       "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
