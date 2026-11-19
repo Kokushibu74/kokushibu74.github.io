@@ -909,7 +909,7 @@ def alert_event_matches(left, right):
             right_time = right_time.replace(tzinfo=timezone.utc)
     except (TypeError, ValueError):
         return False
-    window = 480 if left_type in {"fire", "explosion", "violence", "murder", "crash"} else (360 if left_type in {"flood", "cyclone", "earthquake", "landslide", "wildfire", "heatwave", "storm"} else 180)
+    window = 480 if left_type in {"attack", "fire", "explosion", "violence", "murder", "crash"} else (360 if left_type in {"flood", "cyclone", "earthquake", "landslide", "wildfire", "heatwave", "storm"} else 180)
     if abs((left_time - right_time).total_seconds()) > window * 60:
         return False
     shared_locations = left_locations & right_locations
