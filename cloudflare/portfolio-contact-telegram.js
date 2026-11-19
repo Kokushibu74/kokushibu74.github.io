@@ -2554,6 +2554,13 @@ async function newsAlertLinkIndexKey(item){
   return "news-alert-link:v1:"+hash;
 }
 
+async function newsAlertLinkIndexKeys(item){
+  const urls=[item?.publisherUrl,item?.link,...(Array.isArray(item?.sourceLinks)?item.sourceLinks.map(source=>source?.url):[])];
+  const unique=[...new Set(urls.map(value=>String(value||"").trim()).filter(Boolean))].slice(0,5);
+  const keys=await Promise.all(unique.map(url=>newsAlertLinkIndexKey({link:url})));
+  return [...new Set(keys.filter(Boolean))];
+}
+
 async function newsMigrateRecentAlertLinkIndex(env,now){
   const marker="news-alert-link-index:migrated:v1";
   if(await env.BOT_CONFIG_KV.get(marker))return;
@@ -2630,11 +2637,15 @@ async function newsBreakingAlertCheck(env){
     const link=String(item.publisherUrl||item.link||"");
     const eventId=String(item.alertEventId||"").trim();
     let key=/^[a-f0-9]{32}$/i.test(eventId)?eventId:await newsAlertKey(title,String(item.source||item.publisherName||""));
-    const linkIndexKey=await newsAlertLinkIndexKey(item);
+    const linkIndexKeys=await newsAlertLinkIndexKeys(item);
     let linkedEventKey="";
-    if(linkIndexKey){
-      linkedEventKey=String(await env.BOT_CONFIG_KV.get(linkIndexKey)||"");
-      if(/^[a-f0-9]{32}$/i.test(linkedEventKey))key=linkedEventKey;
+    const linkedEventKeys=[...new Set((await Promise.all(linkIndexKeys.map(indexKey=>env.BOT_CONFIG_KV.get(indexKey))))
+      .map(value=>String(value||"")).filter(value=>/^[a-f0-9]{32}$/i.test(value)))];
+    // Only adopt a legacy event key when all matching source links agree.
+    // Conflicting historical roots remain separate rather than being cross-merged.
+    if(linkedEventKeys.length===1){
+      linkedEventKey=linkedEventKeys[0];
+      key=linkedEventKey;
     }
     const rejectAuditKey="news-alert-reject:v1:"+key;
     if(!decision.eligible){
@@ -2725,7 +2736,10 @@ async function newsBreakingAlertCheck(env){
       const history={sentAt:now,title,summary:String(alertItem.summary||alertItem.previewSummary||""),link,category:alertDecision.category,scope:alertDecision.scope,location:extractAlertLocation(alertItem),incidentTime:extractIncidentTime(alertItem),sourceLocations:extractAlertSourceLocations(alertItem),incidentDetails:alertItem.incidentDetails&&typeof alertItem.incidentDetails==="object"?alertItem.incidentDetails:{},safetyAdvice:Array.isArray(alertItem.safetyAdvice)?alertItem.safetyAdvice:typeof alertItem.safetyAdvice==="string"&&alertItem.safetyAdvice.trim()?[alertItem.safetyAdvice.trim()]:[],sourceLinks:(Array.isArray(alertItem.sourceLinks)?alertItem.sourceLinks:[]).map(link=>String(link.url||"")).filter(Boolean),sourceEvidence:alertDecision.sources,trustedSources:alertDecision.trustedSources,verificationStatus:alertDecision.status||"confirmed",severity:alertDecision.severity||"HIGH",media:delivery?.media||"unknown",officialSource:alertDecision.official&&alertDecision.official.url||previous?.officialSource||null,rootSnapshotKey:previous?.rootSnapshotKey||(!previous?"news-alert-history:v1:"+String(now)+":"+key+":1":null),rootSnapshotCheckedAt:previous?.rootSnapshotCheckedAt||null,updateCount:updateNo,rootMessageId:delivery?.replyFallback?messageId:(rootMessageId||messageId),latestMessageId:messageId||latestMessageId||rootMessageId||null,lastMessageId:messageId,parentMessageId:delivery?.replyFallback?null:(replyToMessageId||null),threadingEnabled:Boolean(messageId)};
       await env.BOT_CONFIG_KV.put(stateKey,JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       alertStatePersisted=true;
-      if(linkIndexKey&&linkedEventKey!==key)await env.BOT_CONFIG_KV.put(linkIndexKey,key,{expirationTtl:NEWS_ALERT_TTL});
+      for(const indexKey of linkIndexKeys){
+        const existingKey=String(await env.BOT_CONFIG_KV.get(indexKey)||"");
+        if(!existingKey||existingKey===key)await env.BOT_CONFIG_KV.put(indexKey,key,{expirationTtl:NEWS_ALERT_TTL});
+      }
       if(updateStateKey)await env.BOT_CONFIG_KV.put(updateStateKey,JSON.stringify({sentAt:now,updateNo}),{expirationTtl:NEWS_ALERT_TTL});
       await env.BOT_CONFIG_KV.put("news-alert-history:v1:"+String(now)+":"+key+":"+(updateNo||1),JSON.stringify(history),{expirationTtl:NEWS_ALERT_TTL});
       sent.push(title);
