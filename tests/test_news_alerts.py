@@ -164,6 +164,7 @@ class NewsAlertEvidenceTests(unittest.TestCase):
 
 
 
+    # Regression: generic MP wording and named MP wording describe the same residence.
     def test_generic_mp_house_report_matches_named_mp_house_report(self):
         generic_report = {
             "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ",
