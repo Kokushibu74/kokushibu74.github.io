@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T22:05:50.585930+00:00",
-  "updatedAt": "2026-11-19T22:05:50.585930+00:00",
+  "generatedAt": "2026-11-19T22:20:36.338698+00:00",
+  "updatedAt": "2026-11-19T22:20:36.338698+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -139,7 +139,7 @@
       "domain": "dhakatribune.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -229,7 +229,7 @@
       "domain": "unb.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 26,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "<urlopen error [Errno 101] Network is unreachable>",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 7,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 51,
+  "candidateCount": 52,
   "alertItems": [
     {
       "title": "ধুনটে বিএনপি কার্যালয়ের সামনে পেট্রোল বোমাসদৃশ বস্তু বিস্ফোরণ",
@@ -2166,6 +2166,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c75a5ff94860ff54fd3f89329789b8f3"
+    },
+    {
+      "title": "বরিশালে জিয়াউল আহসানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ - Barta 24",
+      "summary": "বরিশালে জিয়াউল আহসানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ Barta 24",
+      "link": "https://barta24.com/details/national/348747",
+      "publisherUrl": "https://barta24.com/details/national/348747",
+      "publishedAt": "2026-11-19T01:08:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/348747"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "বরিশালে জিয়াউল আহসানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ - Barta 24",
+          "summary": "বরিশালে জিয়াউল আহসানের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ Barta 24",
+          "url": "https://barta24.com/details/national/348747"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "66808163f0db000bfddf4941f4d1075a"
     },
     {
       "title": "নাটোরে রাস্তায় আগুন দিয়ে ‘জয় বাংলা’ স্লোগান, ককটেল বিস্ফোরণ - dhakapost.com",
