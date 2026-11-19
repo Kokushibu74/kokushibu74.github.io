@@ -592,6 +592,8 @@ def cluster_alerts(candidates):
                 "sources": list(item.get("sourceEvidence") or []),
                 "links": list(item.get("sourceLinks") or []),
                 "stories": list(item.get("sourceStories") or []),
+                "canonical_key": module.key_for(item),
+                "canonical_published_at": str(item.get("publishedAt") or item.get("pubDate") or ""),
             })
             continue
         for source in item.get("sourceEvidence") or []:
@@ -613,8 +615,13 @@ def cluster_alerts(candidates):
             signature = (str(story.get("name") or "").lower(), str(story.get("url") or "").lower())
             if not any((str(old.get("name") or "").lower(), str(old.get("url") or "").lower()) == signature for old in match["stories"]):
                 match["stories"].append(story)
-        if str(item.get("publishedAt") or "") > str(match["item"].get("publishedAt") or ""):
-            match["item"]["publishedAt"] = item["publishedAt"]
+        incoming_published = str(item.get("publishedAt") or item.get("pubDate") or "")
+        if incoming_published > str(match["item"].get("publishedAt") or ""):
+            match["item"]["publishedAt"] = incoming_published
+        canonical_published = str(match.get("canonical_published_at") or "")
+        if incoming_published and (not canonical_published or incoming_published < canonical_published):
+            match["canonical_published_at"] = incoming_published
+            match["canonical_key"] = module.key_for(item)
         if not match["item"].get("summary") and item.get("summary"):
             match["item"]["summary"] = item["summary"]
     output = []
@@ -624,7 +631,7 @@ def cluster_alerts(candidates):
         item["sourceLinks"] = cluster["links"][:12]
         item["sourceStories"] = cluster["stories"][:20]
         item["corroborationCount"] = len(item["sourceEvidence"])
-        item["alertEventId"] = hashlib.sha256(module.key_for(item).encode("utf-8")).hexdigest()[:32]
+        item["alertEventId"] = hashlib.sha256(str(cluster.get("canonical_key") or module.key_for(item)).encode("utf-8")).hexdigest()[:32]
         output.append(item)
     return output
 
