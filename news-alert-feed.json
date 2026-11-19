@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T23:45:33.474169+00:00",
-  "updatedAt": "2026-11-19T23:45:33.474169+00:00",
+  "generatedAt": "2026-11-19T23:55:36.375584+00:00",
+  "updatedAt": "2026-11-19T23:55:36.375584+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Samakal",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 51,
+  "candidateCount": 50,
   "alertItems": [
+    {
+      "title": "মজিবুর রহমান মঞ্জুর গাড়িতে অগ্নিসংযোগের ঘটনায় এনসিপির নিন্দা",
+      "summary": "আমার বাংলাদেশ পার্টির (এবি পার্টি) চেয়ারম্যান মজিবুর রহমান মঞ্জুর গাড়িতে অগ্নিসংযোগের ঘটনায় তীব্র নিন্দা ও প্রতিবাদ জানিয়েছে জাতীয় নাগরিক পার্টি...",
+      "link": "https://www.jagonews24.com/politics/news/1181539",
+      "publisherUrl": "https://www.jagonews24.com/politics/news/1181539",
+      "publishedAt": "2026-11-19T23:50:19+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/politics/news/1181539"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "মজিবুর রহমান মঞ্জুর গাড়িতে অগ্নিসংযোগের ঘটনায় এনসিপির নিন্দা",
+          "summary": "আমার বাংলাদেশ পার্টির (এবি পার্টি) চেয়ারম্যান মজিবুর রহমান মঞ্জুর গাড়িতে অগ্নিসংযোগের ঘটনায় তীব্র নিন্দা ও প্রতিবাদ জানিয়েছে জাতীয় নাগরিক পার্টি...",
+          "url": "https://www.jagonews24.com/politics/news/1181539"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "52b63f15985f9d1f3bc2dbc3ad6d01e5"
+    },
     {
       "title": "রাতের অন্ধকারে কিছু টোকাই দিয়ে নাশকতা চালাচ্ছে নিষিদ্ধ আ.লীগ",
       "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগ রাতের অন্ধকারে কিছু টোকাই দিয়ে ফ্লাইওভারের উপর থেকে বোমা মারছে বলে দাবি করেছেন চট্টগ্রাম সিটি কর্পোরেশনের প্রশাসক ও মহানগর বিএনপির সাবেক সভাপতি ডা. শাহাদাত হোসেন। এসময় তিনি যারা বোমাবাজি ও অগ্নিসন্ত্রাসের সঙ্গে জড়িত, তাদের পাশাপাশি এসব কর্মকাণ্ডের অর্থদাতা, পৃষ্ঠপোষক ও নির্দেশদাতাদেরও চিহ্নিত করে দ্রুত আইনের আওতায় আনার আইনশৃঙ্খলা রক্ষাকারী বাহিনীর প্রতি […] The post রাতের অন্ধকারে কিছু টোকাই দিয়ে নাশকতা চালাচ্ছে নিষিদ্ধ আ.লীগ appeared first on দৈনিক আজাদী .",
@@ -1767,37 +1798,6 @@
       "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
     },
     {
-      "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
-      "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671873",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671873",
-      "publishedAt": "2026-11-19T10:35:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671873"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
-          "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671873"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e870abd3173afd0f0be0d118a66bfee7"
-    },
-    {
       "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
       "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594",
@@ -1858,37 +1858,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
-    },
-    {
-      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
-      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671863",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
-      "publishedAt": "2026-11-19T10:10:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671863"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
-          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671863"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6521be4740173282a8ebbfee732b917e"
     },
     {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
