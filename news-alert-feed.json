@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T10:20:29.022441+00:00",
-  "updatedAt": "2026-11-19T10:20:29.022441+00:00",
+  "generatedAt": "2026-11-19T10:30:43.253324+00:00",
+  "updatedAt": "2026-11-19T10:30:43.253324+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 6,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Daily Observer",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,8 +840,101 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 57,
+  "candidateCount": 59,
   "alertItems": [
+    {
+      "title": "রংপুরের মিঠাপুকুরে প্রাথমিক বিদ্যালয়ে আগুন | DBC NEWS",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=PM6fi3ZQ8pw",
+      "publisherUrl": "https://www.youtube.com/watch?v=PM6fi3ZQ8pw",
+      "publishedAt": "2026-11-19T10:21:16+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=PM6fi3ZQ8pw"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "রংপুরের মিঠাপুকুরে প্রাথমিক বিদ্যালয়ে আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=PM6fi3ZQ8pw"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "630b759c0a87ed53224ec63a23bd30c1"
+    },
+    {
+      "title": "পঞ্চগড় জেলা প্রশাসকের কার্যালয়ের সামনে বোমাসদৃশ বস্তু, ঘিরে রেখেছে পুলিশ | DBC NEWS",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/usJQrcDdjB0",
+      "publisherUrl": "https://www.youtube.com/shorts/usJQrcDdjB0",
+      "publishedAt": "2026-11-19T10:17:58+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/shorts/usJQrcDdjB0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "পঞ্চগড় জেলা প্রশাসকের কার্যালয়ের সামনে বোমাসদৃশ বস্তু, ঘিরে রেখেছে পুলিশ | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/usJQrcDdjB0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "377cfa61d457d2d34b2729ab57c03dfc"
+    },
+    {
+      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671863",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
+      "publishedAt": "2026-11-19T10:10:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6521be4740173282a8ebbfee732b917e"
+    },
     {
       "title": "গোপালগঞ্জ ও গোপালগঞ্জ হয়ে অন্য জেলার ট্রেন চলছে না",
       "summary": "থানা ভবন, সংসদ সদস্যদের বাড়িতে আগুন এবং কার্যক্রম নিষিদ্ধ আওয়ামী লীগের মহড়ার মধ্যে গোপালগঞ্জে ট্রেন চলাচল সাময়িক বন্ধ করে দেওয়া হয়েছে। গোপালগঞ্জ হয়ে খুলনামুখী ট্রেনের চলাচলও বন্ধ রয়েছে।",
@@ -877,19 +970,24 @@
     },
     {
       "title": "গোপালগঞ্জে দিনদুপুরে সংসদ সদস্যের বাড়িতে ককটেল বিস্ফোরণ ও অগ্নিসংযোগ! | Gopalganj | Independent TV",
-      "summary": "",
+      "summary": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
       "link": "https://www.youtube.com/shorts/-gLyi0cdsww",
       "publisherUrl": "https://www.youtube.com/shorts/-gLyi0cdsww",
       "publishedAt": "2026-11-19T10:08:16+00:00",
       "source": "Independent Television",
       "publisherName": "Independent Television",
       "sourceEvidence": [
-        "Independent Television"
+        "Independent Television",
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
           "name": "Independent Television · YouTube",
           "url": "https://www.youtube.com/shorts/-gLyi0cdsww"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181364"
         }
       ],
       "category": "Bangladesh",
@@ -901,72 +999,16 @@
           "title": "গোপালগঞ্জে দিনদুপুরে সংসদ সদস্যের বাড়িতে ককটেল বিস্ফোরণ ও অগ্নিসংযোগ! | Gopalganj | Independent TV",
           "summary": "",
           "url": "https://www.youtube.com/shorts/-gLyi0cdsww"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a4cc51138c4b949df2f18f8c831c5d89"
-    },
-    {
-      "title": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-      "summary": "পাবনা সদর উপজেলা নির্বাহী কর্মকর্তার (ইউএনও) কার্যালয়ের নবনির্মিত মিলনায়তনে ককটেল বিস্ফোরণ ও অগ্নিসংযোগের ঘটনা ঘটেছে...",
-      "link": "https://www.jagonews24.com/country/news/1181364",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181364",
-      "publishedAt": "2026-11-19T10:05:21+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181364"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
+        },
         {
           "name": "Jago News 24",
           "title": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-          "summary": "পাবনা সদর উপজেলা নির্বাহী কর্মকর্তার (ইউএনও) কার্যালয়ের নবনির্মিত মিলনায়তনে ককটেল বিস্ফোরণ ও অগ্নিসংযোগের ঘটনা ঘটেছে...",
+          "summary": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
           "url": "https://www.jagonews24.com/country/news/1181364"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "21da479f993a5f669eed2bda455b23c2"
-    },
-    {
-      "title": "কয়েকটি গাড়ি-বাড়ি পুড়িয়ে সরকার হটানো যাবে না: জয়নুল আবেদীন",
-      "summary": "কয়েকটি গাড়ি ও বাড়িতে আগুন দিয়ে বিএনপি সরকারকে ক্ষমতাচ্যুত করা যাবে না বলে মন্তব্য করেছেন দলের ভাইস চেয়ারম্যান ও বরিশাল-৩ আসনের সংসদ সদস্য জয়নুল আবেদীন...",
-      "link": "https://www.jagonews24.com/law-courts/news/1181363",
-      "publisherUrl": "https://www.jagonews24.com/law-courts/news/1181363",
-      "publishedAt": "2026-11-19T10:00:16+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/law-courts/news/1181363"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "কয়েকটি গাড়ি-বাড়ি পুড়িয়ে সরকার হটানো যাবে না: জয়নুল আবেদীন",
-          "summary": "কয়েকটি গাড়ি ও বাড়িতে আগুন দিয়ে বিএনপি সরকারকে ক্ষমতাচ্যুত করা যাবে না বলে মন্তব্য করেছেন দলের ভাইস চেয়ারম্যান ও বরিশাল-৩ আসনের সংসদ সদস্য জয়নুল আবেদীন...",
-          "url": "https://www.jagonews24.com/law-courts/news/1181363"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4bb471aa452766dc18d528be58db7925"
+      "corroborationCount": 2,
+      "alertEventId": "a4cc51138c4b949df2f18f8c831c5d89"
     },
     {
       "title": "পুলিশ উপস্থিতির মধ্যেই পেট্রোল বোমা নিক্ষেপ, পালিয়েও গেলো সামনে দিয়ে",
@@ -1712,68 +1754,6 @@
       "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
     },
     {
-      "title": "পাবনায় মধ্যরাতে ইউএনও অফিসে ককটেল বিস্ফোরণ, মিলনায়তনে আগুন",
-      "summary": "পাবনায় মধ্যরাতে ইউএনও অফিসে ককটেল বিস্ফোরণ, মিলনায়তনে আগুন",
-      "link": "https://www.jagonews24.com/country/news/1181271",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181271",
-      "publishedAt": "2026-11-19T06:36:08+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181271"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "পাবনায় মধ্যরাতে ইউএনও অফিসে ককটেল বিস্ফোরণ, মিলনায়তনে আগুন",
-          "summary": "পাবনায় মধ্যরাতে ইউএনও অফিসে ককটেল বিস্ফোরণ, মিলনায়তনে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181271"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c7eb7f109661dbccb9c0a9c9d34fa65b"
-    },
-    {
-      "title": "যশোর-নড়াইল মহাসড়কে কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
-      "summary": "যশোর-নড়াইল মহাসড়কে কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
-      "link": "https://www.jagonews24.com/country/news/1181269",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181269",
-      "publishedAt": "2026-11-19T06:32:50+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181269"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "যশোর-নড়াইল মহাসড়কে কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
-          "summary": "যশোর-নড়াইল মহাসড়কে কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
-          "url": "https://www.jagonews24.com/country/news/1181269"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c85ebe3e68d661a65631a49482bd4b4a"
-    },
-    {
       "title": "খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন",
       "summary": "খাগড়াছড়ি সদর উপজেলার খাগড়াপুর এলাকায় পার্কিং করে রাখা সাজেকগামী পর্যটক পরিবহনের ২ পিকআপে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আড়াইটার দিকে মাস্টারের দোকানের সামনে এ ঘটনা ঘটে। এতে গাড়ি ২টির ভেতরের আসনসহ বিভিন্ন অংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, খাগড়াপুর এলাকার মাস্টারের দোকানের সামনে নিয়মিত ৪টি পিকআপ পার্কিং করে রাখা হতো। এসব […] The post খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/two-parked-pickup-trucks-set-on-fire-in-khagrachhari/",
@@ -2261,6 +2241,37 @@
       "alertEventId": "4bb062161121a01f58718ea3bac1afb6"
     },
     {
+      "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ - Barta 24",
+      "summary": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ Barta 24",
+      "link": "https://barta24.com/details/national/348630",
+      "publisherUrl": "https://barta24.com/details/national/348630",
+      "publishedAt": "2026-11-18T16:34:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/348630"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ - Barta 24",
+          "summary": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ Barta 24",
+          "url": "https://barta24.com/details/national/348630"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9774074fa3bee7d76c1e906f18efc5b1"
+    },
+    {
       "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
       "summary": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/671755",
@@ -2290,6 +2301,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "aae4bb46f1d3d311e148442622c8b965"
+    },
+    {
+      "title": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন - Dhaka Tribune Bangla",
+      "summary": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113369/%E0%A6%9F%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113369/%E0%A6%9F%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-18T13:38:46+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113369/%E0%A6%9F%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন - Dhaka Tribune Bangla",
+          "summary": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113369/%E0%A6%9F%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a64b8980f72b101cd7169ddc8bbe9e97"
     },
     {
       "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
