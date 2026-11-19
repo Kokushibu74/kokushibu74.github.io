@@ -813,6 +813,7 @@ ALERT_CLUSTER_TYPES = (
     ("wildfire", re.compile(r"(?:wildfire|দাবানল)", re.I)),
     ("heatwave", re.compile(r"(?:heat ?wave|তাপপ্রবাহ)", re.I)),
     ("storm", re.compile(r"(?:storm|heavy rain|rainfall|lightning|tornado|tsunami|ঝড়|ঝড়|বৃষ্টি|বজ্রপাত|কালবৈশাখী)", re.I)),
+    ("attack", re.compile(r"(?:ককটেল|বোমা|বিস্ফোরণ|অগ্নিসংযোগ|ভাঙচুর|ভাংচুর|সশস্ত্র হামলা|হামলা|arson|bomb(?:ing)?|blast|explosion|attack on|set on fire)", re.I)),
     ("fire", re.compile(r"(?:fire|আগুন|অগ্নিকাণ্ড)", re.I)),
     ("explosion", re.compile(r"(?:explosion|blast|বিস্ফোরণ)", re.I)),
     ("crash", re.compile(r"(?:accident|crash|collision|derailment|capsiz|দুর্ঘটনা|নৌকাডুবি|ট্রেন দুর্ঘটনা)", re.I)),
@@ -957,7 +958,7 @@ def build_alert_items(items, now=None):
     for item in candidates:
         match = next((cluster for cluster in clusters if alert_event_matches(item, {**cluster["item"], "sourceEvidence": cluster["sources"]})), None)
         if match is None:
-            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or [])})
+            clusters.append({"item": dict(item), "sources": list(item.get("sourceEvidence") or []), "links": list(item.get("sourceLinks") or []), "canonicalKey": key_for(item), "canonicalPublishedAt": str(item.get("publishedAt") or item.get("pubDate") or "")})
             continue
         for source in item.get("sourceEvidence") or []:
             canonical = canonical_publisher_name(source)
@@ -978,6 +979,10 @@ def build_alert_items(items, now=None):
         incoming_stamp = str(item.get("publishedAt") or "")
         if incoming_stamp > current_stamp:
             match["item"]["publishedAt"] = incoming_stamp
+        canonical_stamp = str(match.get("canonicalPublishedAt") or "")
+        if incoming_stamp and (not canonical_stamp or incoming_stamp < canonical_stamp):
+            match["canonicalPublishedAt"] = incoming_stamp
+            match["canonicalKey"] = key_for(item)
         if not match["item"].get("summary") and item.get("summary"):
             match["item"]["summary"] = item["summary"]
 
@@ -987,7 +992,7 @@ def build_alert_items(items, now=None):
         item["sourceEvidence"] = cluster["sources"][:12]
         item["sourceLinks"] = cluster["links"][:8]
         item["corroborationCount"] = len(item["sourceEvidence"])
-        base_key = key_for(item)
+        base_key = cluster.get("canonicalKey") or key_for(item)
         item["alertEventId"] = hashlib.sha256(base_key.encode("utf-8")).hexdigest()[:32]
         result.append(item)
     return result
