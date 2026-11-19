@@ -936,6 +936,13 @@ def alert_event_matches(left, right):
         return False
     if left_locations and right_locations and left_locations != right_locations:
         return False
+    left_text = " ".join(str(left.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    right_text = " ".join(str(right.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    named_people = (("selim", re.compile(r"(?:সেলিম|selim)", re.I)), ("mosaddik", re.compile(r"(?:মোসাদ্দিক|mosaddik)", re.I)))
+    left_names = {name for name, pattern in named_people if pattern.search(left_text)}
+    right_names = {name for name, pattern in named_people if pattern.search(right_text)}
+    if left_names and right_names and not (left_names & right_names):
+        return False
     if key_for(left) == key_for(right):
         return True
     left_sources = {canonical_publisher_name(value).lower() for value in (left.get("sourceEvidence") or [left.get("source")]) if value}
