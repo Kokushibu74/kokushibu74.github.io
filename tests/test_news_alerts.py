@@ -162,6 +162,23 @@ class NewsAlertEvidenceTests(unittest.TestCase):
 
 
 
+
+    def test_same_publisher_followup_url_joins_existing_mp_incident(self):
+        first = {
+            "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ",
+            "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ",
+            "source": "UNB", "sourceEvidence": ["UNB"],
+            "publishedAt": "2026-11-19T11:10:00+00:00",
+        }
+        followup = {
+            "title": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ",
+            "summary": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ",
+            "source": "UNB", "sourceEvidence": ["UNB"],
+            "publishedAt": "2026-11-19T11:20:00+00:00",
+        }
+        self.assertTrue(news.alert_event_matches(first, followup))
+
+
     def test_mps_house_fire_is_not_merged_with_daksu_house_fire(self):
         student_house = {
             "title": "গোপালগঞ্জে ডাকসু সম্পাদকের বাড়িতে আগুন, জড়িতদের বিচার দাবি শিবিরের",
