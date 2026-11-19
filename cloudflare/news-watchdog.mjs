@@ -1,4 +1,4 @@
-const API_ROOT="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news.yml";
+const API_ROOT="https://api.github.com/repos/Kokushibu74/kokushibu74.github.io/actions/workflows/update-news-alerts.yml";
 const ACCEPTED_STATUSES=new Set([200,204]);
 const RETRYABLE_STATUSES=new Set([408,429]);
 
