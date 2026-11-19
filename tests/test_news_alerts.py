@@ -161,6 +161,23 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         self.assertTrue(news.alert_event_matches(left, right))
 
 
+
+    def test_mps_house_fire_is_not_merged_with_daksu_house_fire(self):
+        student_house = {
+            "title": "গোপালগঞ্জে ডাকসু সম্পাদকের বাড়িতে আগুন, জড়িতদের বিচার দাবি শিবিরের",
+            "summary": "গোপালগঞ্জে ডাকসু সম্পাদকের বাড়িতে আগুন, জড়িতদের বিচার দাবি শিবিরের",
+            "source": "Jago News 24", "sourceEvidence": ["Jago News 24"],
+            "publishedAt": "2026-11-19T11:00:00+00:00",
+        }
+        mp_house = {
+            "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
+            "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
+            "source": "UNB", "sourceEvidence": ["UNB"],
+            "publishedAt": "2026-11-19T11:10:00+00:00",
+        }
+        self.assertFalse(news.alert_event_matches(student_house, mp_house))
+
+
     def test_two_different_house_fires_in_gopalganj_are_not_merged(self):
         mp_house = {
             "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামান সেলিমের বাড়িতে আগুন",
