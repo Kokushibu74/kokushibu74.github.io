@@ -160,6 +160,25 @@ class NewsAlertEvidenceTests(unittest.TestCase):
         self.assertEqual(news.alert_event_locations(right), {"gopalganj"})
         self.assertTrue(news.alert_event_matches(left, right))
 
+
+    def test_two_different_house_fires_in_gopalganj_are_not_merged(self):
+        mp_house = {
+            "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামান সেলিমের বাড়িতে আগুন",
+            "summary": "সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ ও ভাঙচুর",
+            "source": "Channel 24", "sourceEvidence": ["Channel 24"],
+            "publishedAt": "2026-11-19T11:14:00+00:00",
+        }
+        student_house = {
+            "title": "গোপালগঞ্জে ডাকসু নেতা মোসাদ্দিকের বাড়িতে আগুন",
+            "summary": "মুকসুদপুরের মোচনা ইউনিয়নের ঘুনসি গ্রামে হামলা ও ভাঙচুর",
+            "source": "Bangla Tribune", "sourceEvidence": ["Bangla Tribune"],
+            "publishedAt": "2026-11-19T08:10:00+00:00",
+        }
+        self.assertEqual(news.alert_event_locations(mp_house), {"gopalganj"})
+        self.assertEqual(news.alert_event_locations(student_house), {"gopalganj"})
+        self.assertFalse(news.alert_event_matches(mp_house, student_house))
+
+
     def test_pabna_story_is_never_merged_into_gopalganj_even_with_same_headline(self):
         gopalganj = {
             "title": "গোপালগঞ্জে এমপির বাড়িতে আগুন",
