@@ -842,6 +842,51 @@ def alert_event_tokens(item):
     return tokens
 
 
+def alert_event_anchor_tokens(item):
+    """Extract target/person anchors while ignoring generic incident and district words."""
+    text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    generic = {
+        "the", "and", "for", "with", "from", "into", "after", "before", "near",
+        "আগুন", "আগুনে", "আগুনের", "অগ্নিকাণ্ড", "অগ্নিসংযোগ", "বিস্ফোরণ", "বোমা", "ককটেল",
+        "হামলা", "হামলার", "ভাঙচুর", "ভাংচুর", "পুড়িয়ে", "পুড়িয়ে", "পুড়েছে", "পুড়েছে",
+        "বাড়ি", "বাড়ি", "বাড়িতে", "বাড়িতে", "বাড়ির", "বাড়ির", "ঘর", "ঘরে", "বাসা",
+        "থানা", "থানায়", "থানায়", "এমপি", "সংসদ", "সদস্য", "নেতা", "নেতার", "নেতাকর্মী",
+        "নিষিদ্ধ", "ঘোষিত", "আওয়ামী", "লীগ", "কার্যালয়ে", "কার্যালয়", "কার্যালয়ের",
+        "fire", "arson", "burn", "burned", "burnt", "house", "home", "residence",
+        "explosion", "blast", "bomb", "cocktail", "attack", "attacked", "vandalism",
+        "station", "police", "mp", "parliament", "member", "leader", "party",
+        "dhaka", "ঢাকা", "faridpur", "ফরিদপুর", "gazipur", "গাজীপুর", "gopalganj", "গোপালগঞ্জ",
+        "kishoreganj", "কিশোরগঞ্জ", "madaripur", "মাদারীপুর", "manikganj", "মানিকগঞ্জ",
+        "munshiganj", "মুন্সীগঞ্জ", "narayanganj", "নারায়ণগঞ্জ", "narsingdi", "নরসিংদী",
+        "rajbari", "রাজবাড়ী", "shariatpur", "শরীয়তপুর", "tangail", "টাঙ্গাইল",
+        "pabna", "পাবনা", "rajshahi", "রাজশাহী", "bogura", "বগুড়া", "chattogram", "চট্টগ্রাম",
+        "bangladesh", "বাংলাদেশ",
+    }
+    tokens = {token for token in re.findall(r"[\w]+", text, flags=re.UNICODE) if len(token) > 1 and token not in generic and not token.isdigit()}
+    anchors = set()
+    district_prefixes = (
+        "ঢাকা", "dhaka", "ফরিদপুর", "faridpur", "গাজীপুর", "gazipur", "গোপালগঞ্জ", "gopalganj",
+        "কিশোরগঞ্জ", "kishoreganj", "মাদারীপুর", "madaripur", "মানিকগঞ্জ", "manikganj",
+        "মুন্সীগঞ্জ", "munshiganj", "নারায়ণগঞ্জ", "নারায়ণগঞ্জ", "narayanganj", "নরসিংদী", "narsingdi",
+        "রাজবাড়ী", "রাজবাড়ী", "rajbari", "শরীয়তপুর", "শরিয়তপুর", "shariatpur", "টাঙ্গাইল", "tangail",
+        "পাবনা", "pabna", "রাজশাহী", "rajshahi", "বগুড়া", "বগুড়া", "bogura", "চট্টগ্রাম", "chattogram",
+    )
+    for token in tokens:
+        if any(token.startswith(prefix) for prefix in district_prefixes):
+            continue
+        if token.startswith("সেলিম") or token.startswith("selim"):
+            anchors.add("name:selim")
+        elif token.startswith("মোসাদ্দিক") or token.startswith("mosaddik"):
+            anchors.add("name:mosaddik")
+        else:
+            anchors.add(token)
+    if re.search(r"(?:এমপি|সংসদ সদস্য|member of parliament|\bmp\b)", text, re.I):
+        anchors.add("target:mp-residence")
+    if re.search(r"(?:থানা|পুলিশ স্টেশন|police station)", text, re.I):
+        anchors.add("target:police-station")
+    return anchors
+
+
 def alert_event_locations(item):
     """Return specific Bangladesh districts mentioned by the story, never a country-wide token."""
     text = " ".join(str(item.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
@@ -891,6 +936,13 @@ def alert_event_matches(left, right):
         return False
     if left_locations and right_locations and left_locations != right_locations:
         return False
+    left_text = " ".join(str(left.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    right_text = " ".join(str(right.get(field) or "") for field in ("title", "summary", "previewSummary")).lower()
+    named_people = (("selim", re.compile(r"(?:সেলিম|selim)", re.I)), ("mosaddik", re.compile(r"(?:মোসাদ্দিক|mosaddik)", re.I)))
+    left_names = {name for name, pattern in named_people if pattern.search(left_text)}
+    right_names = {name for name, pattern in named_people if pattern.search(right_text)}
+    if left_names and right_names and not (left_names & right_names):
+        return False
     if key_for(left) == key_for(right):
         return True
     left_sources = {canonical_publisher_name(value).lower() for value in (left.get("sourceEvidence") or [left.get("source")]) if value}
@@ -913,6 +965,14 @@ def alert_event_matches(left, right):
     if abs((left_time - right_time).total_seconds()) > window * 60:
         return False
     shared_locations = left_locations & right_locations
+    if shared_locations:
+        left_anchors, right_anchors = alert_event_anchor_tokens(left), alert_event_anchor_tokens(right)
+        left_names = {value for value in left_anchors if value.startswith("name:")}
+        right_names = {value for value in right_anchors if value.startswith("name:")}
+        if left_names and right_names and not (left_names & right_names):
+            return False
+        if not (left_anchors & right_anchors):
+            return False
     left_numbers = set(re.findall(r"\d+", str(left.get("title") or "")))
     right_numbers = set(re.findall(r"\d+", str(right.get("title") or "")))
     if left_numbers and right_numbers and not (left_numbers & right_numbers):

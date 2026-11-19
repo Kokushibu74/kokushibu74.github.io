@@ -36,10 +36,12 @@ assert.doesNotMatch(scheduled, /miniAppCronRecord/, "Scheduled runs must not wri
 assert.match(worker, /const cutoff=Date\.now\(\)-14\*86400000/, "Cron history view must use a 14-day window");
 
 assert.match(worker, /if\(minute%5===0\)/, "News watchdog must check every five minutes");
-assert.match(worker, /age<15\*60\*1000/, "News refresh watchdog must recover stale feeds after 15 minutes");
+assert.match(worker, /latest&&\["queued","in_progress"\]\.includes\(latest\.status\)&&age<20\*60\*1000/, "News refresh watchdog must allow a queued or running refresh up to 20 minutes");
 assert.match(worker, /auditTtl=3\*86400/, "Rejected-news audit retention must be three days");
 const alertWrites = section("async function newsBreakingAlertCheck", "const SHEETS_SPREADSHEET_ID");
-assert.match(alertWrites, /linkedEventKey!==key/, "An existing URL-to-event index must not be rewritten for every alert update");
+assert.match(alertWrites, /for\(const indexKey of linkIndexKeys\)/, "Every trusted publisher link must be indexed for cross-source deduplication");
+assert.match(alertWrites, /linkIndexMap\.get\(indexKey\)/, "Link index values must be reused without extra KV reads");
+assert.match(alertWrites, /if\(!existingKey\|\|existingKey===key\)/, "Conflicting legacy event indexes must never be overwritten");
 assert.match(alertWrites, /expirationTtl:900/, "A delivery lock must remain briefly when alert state cannot be persisted, preventing immediate duplicate delivery");
 assert.match(alertWrites, /if\(alertStatePersisted\)await env\.BOT_CONFIG_KV\.delete\(lockKey\)/, "A delivery lock is released only after persistent alert state is confirmed");
 assert.match(alertWrites, />=60\*60000\|\|sent\.length/, "Routine alert run summaries must be written at most hourly unless an alert was sent");
