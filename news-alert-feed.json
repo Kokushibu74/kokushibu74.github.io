@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T21:55:37.187664+00:00",
-  "updatedAt": "2026-11-19T21:55:37.187664+00:00",
+  "generatedAt": "2026-11-19T22:05:50.585930+00:00",
+  "updatedAt": "2026-11-19T22:05:50.585930+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "<urlopen error [Errno 101] Network is unreachable>",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 7,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 50,
+  "candidateCount": 51,
   "alertItems": [
+    {
+      "title": "ধুনটে বিএনপি কার্যালয়ের সামনে পেট্রোল বোমাসদৃশ বস্তু বিস্ফোরণ",
+      "summary": "বগুড়ার ধুনট উপজেলা বিএনপির অস্থায়ী দলীয় কার্যালয়ের সামনে পেট্রোল বোমাসদৃশ বস্তু বিস্ফোরণের ঘটনা ঘটেছে। এ সময় কার্যালয়ে অগ্নিসংযোগের চেষ্টা করা হয়...",
+      "link": "https://www.jagonews24.com/country/news/1181536",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181536",
+      "publishedAt": "2026-11-19T22:00:03+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181536"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "ধুনটে বিএনপি কার্যালয়ের সামনে পেট্রোল বোমাসদৃশ বস্তু বিস্ফোরণ",
+          "summary": "বগুড়ার ধুনট উপজেলা বিএনপির অস্থায়ী দলীয় কার্যালয়ের সামনে পেট্রোল বোমাসদৃশ বস্তু বিস্ফোরণের ঘটনা ঘটেছে। এ সময় কার্যালয়ে অগ্নিসংযোগের চেষ্টা করা হয়...",
+          "url": "https://www.jagonews24.com/country/news/1181536"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3a8b2cd41c0ecd22f36b205810a24730"
+    },
     {
       "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম | Hospital Fire| Gopalganj| Ekattor TV",
       "summary": "",
@@ -1085,48 +1116,6 @@
       "alertEventId": "d44b9f86abe19428aeda883fc5c586a3"
     },
     {
-      "title": "নেত্রকোনায় ছাত্রশক্তি নেতা তালাত মাহমুদ রাফির বাড়িতে পেট্রল ঢেলে অগ্নিসংযোগ",
-      "summary": "জুলাই আন্দোলনের অন্যতম সমন্বয়ক এবং জাতীয় ছাত্রশক্তির কেন্দ্রীয় কমিটির সিনিয়র যুগ্ম সাধারণ সম্পাদক খান তালাত মাহমুদ রাফির বাড়িতে পেট্রোল ঢেলে আগুন দেওয়ার ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টার দিকে নেত্রকোনার মোহনগঞ্জ উপজেলার জয়পুর গ্রামের বাড়িতে এ ঘটনা ঘটে। এ সময় বাড়িতে ঘুমিয়ে ছিলেন রাফির বাবা-মা। তবে প্রতিবেশীর তাৎক্ষণিক তৎপরতায় আগুন দ্রুত নেভানো হয়েছে। ফলে বড় ধরনের কোনও... বিস্তারিত",
-      "link": "https://www.prothomalo.com/bangladesh/district/737hjz7r8q",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/737hjz7r8q",
-      "publishedAt": "2026-11-19T17:53:49+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/737hjz7r8q"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/982028/%E0%A6%B8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%AC%E0%A7%9F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%86%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নেত্রকোনায় ছাত্রশক্তি নেতা তালাত মাহমুদ রাফির বাড়িতে পেট্রল ঢেলে অগ্নিসংযোগ",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/737hjz7r8q"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "সমন্বয়ক রাফির বাড়িতে আগুন, বললেন ‘আল্লাহ আব্বা-আম্মারে বাঁচাইসে’",
-          "summary": "জুলাই আন্দোলনের অন্যতম সমন্বয়ক এবং জাতীয় ছাত্রশক্তির কেন্দ্রীয় কমিটির সিনিয়র যুগ্ম সাধারণ সম্পাদক খান তালাত মাহমুদ রাফির বাড়িতে পেট্রোল ঢেলে আগুন দেওয়ার ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টার দিকে নেত্রকোনার মোহনগঞ্জ উপজেলার জয়পুর গ্রামের বাড়িতে এ ঘটনা ঘটে। এ সময় বাড়িতে ঘুমিয়ে ছিলেন রাফির বাবা-মা। তবে প্রতিবেশীর তাৎক্ষণিক তৎপরতায় আগুন দ্রুত নেভানো হয়েছে। ফলে বড় ধরনের কোনও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/982028/%E0%A6%B8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%AC%E0%A7%9F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%86%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "d3b9e01304d8d542532bb23c5989e550"
-    },
-    {
       "title": "থানার সামনে আওয়ামী লীগের বিক্ষোভের সময় বিএনপির সঙ্গে দফায় দফায় সংঘর্ষ",
       "summary": "পাবনার বেড়া উপজেলায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীদের থানা ঘেরাও ও বিক্ষোভ মিছিলকে কেন্দ্র করে বিএনপি এবং ছাত্রদলের সঙ্গে পাল্টাপাল্টি ধাওয়া-সংঘর্ষের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যায় প্রথমে বেড়া থানা ঘিরে বিক্ষোভ করেন আওয়ামী লীগ, যুবলীগ ও ছাত্রলীগের নেতাকর্মীরা। খবর পেয়ে বিএনপি ও ছাত্রদলের নেতাকর্মীরা সেখানে গেলে আওয়ামী লীগের নেতাকর্মীদের সঙ্গে সংঘর্ষ ও ধাওয়া-পাল্টা... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/982057/%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0",
@@ -1321,12 +1310,17 @@
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24"
+        "Jago News 24",
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1181519"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/mymensing/982028/%E0%A6%B8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%AC%E0%A7%9F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%86%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9"
         }
       ],
       "category": "Bangladesh",
@@ -1338,10 +1332,16 @@
           "title": "নেত্রকোনায় আ’লীগ নেতাদের বাড়ি-ব্যবসাপ্রতিষ্ঠানে হামলা ও আগুন",
           "summary": "নেত্রকোনায় আ’লীগ নেতাদের বাড়ি-ব্যবসাপ্রতিষ্ঠানে হামলা ও আগুন",
           "url": "https://www.jagonews24.com/country/news/1181519"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "সমন্বয়ক রাফির বাড়িতে আগুন, বললেন ‘আল্লাহ আব্বা-আম্মারে বাঁচাইসে’",
+          "summary": "জুলাই আন্দোলনের অন্যতম সমন্বয়ক এবং জাতীয় ছাত্রশক্তির কেন্দ্রীয় কমিটির সিনিয়র যুগ্ম সাধারণ সম্পাদক খান তালাত মাহমুদ রাফির বাড়িতে পেট্রোল ঢেলে আগুন দেওয়ার ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ৩টার দিকে নেত্রকোনার মোহনগঞ্জ উপজেলার জয়পুর গ্রামের বাড়িতে এ ঘটনা ঘটে। এ সময় বাড়িতে ঘুমিয়ে ছিলেন রাফির বাবা-মা। তবে প্রতিবেশীর তাৎক্ষণিক তৎপরতায় আগুন দ্রুত নেভানো হয়েছে। ফলে বড় ধরনের কোনও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/mymensing/982028/%E0%A6%B8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%AC%E0%A7%9F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%86%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B9"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "412e5b3d7e40d8555afa2c033cdcce85"
+      "corroborationCount": 2,
+      "alertEventId": "d3b9e01304d8d542532bb23c5989e550"
     },
     {
       "title": "ফেনীতে গ্রামীণ ব্যাংকের কার্যালয় লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
@@ -2042,6 +2042,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
+    },
+    {
+      "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
+      "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/printnews/1328109",
+      "publisherUrl": "https://www.bd-pratidin.com/printnews/1328109",
+      "publishedAt": "2026-11-19T08:07:00+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
+      "sourceEvidence": [
+        "bd-pratidin.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bd-pratidin.com",
+          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
+          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "621bb659c96da3d441c0388e6402604d"
     },
     {
       "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
