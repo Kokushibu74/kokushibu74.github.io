@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T13:20:50.085030+00:00",
-  "updatedAt": "2026-11-19T13:20:50.085030+00:00",
+  "generatedAt": "2026-11-19T13:30:55.610062+00:00",
+  "updatedAt": "2026-11-19T13:30:55.610062+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "healthySourceCount": 50,
+  "failedSourceCount": 5,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 29,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 29,
+  "fallbackWithItemsSourceCount": 22,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -92,21 +92,6 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
-      "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
-    },
-    {
-      "name": "Kaler Kantho",
-      "domain": "kalerkantho.com",
       "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
@@ -118,6 +103,21 @@
       "fallbackWithItems": true,
       "fallbackZeroItems": false,
       "healthClass": "fallback_with_items"
+    },
+    {
+      "name": "Kaler Kantho",
+      "domain": "kalerkantho.com",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "BSS",
@@ -257,17 +257,17 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Post",
@@ -287,17 +287,17 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Sun",
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bonik Barta",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 16,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "GDACS",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 53,
+  "candidateCount": 52,
   "alertItems": [
+    {
+      "title": "আওয়ামী লীগের সাবেক প্রতিমন্ত্রীর বাড়িতে আগুন",
+      "summary": "রাজশাহীতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক পররাষ্ট্র প্রতিমন্ত্রী শাহরিয়ার আলমের বাড়িতে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) বেলা সাড়ে ১১টার দিকে বাঘা উপজেলার আড়ানী পৌরসভার চকসিংগা গ্রামে তার বাড়িতে এ ঘটনা ঘটে। দুর্বৃত্তরা বাড়ির গেটে পেট্রোল ঢেলে আগুন ধরিয়ে দেয়। পরে স্থানীয় লোকজন আগুন নিয়ন্ত্রণে আনেন। প্রত্যক্ষদর্শী সূত্রে জানা যায়, বেলা ১১টার দিকে মোটরসাইকেলে করে আসা পাঁচ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/981998/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/981998/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-19T13:28:49+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/981998/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "আওয়ামী লীগের সাবেক প্রতিমন্ত্রীর বাড়িতে আগুন",
+          "summary": "রাজশাহীতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক পররাষ্ট্র প্রতিমন্ত্রী শাহরিয়ার আলমের বাড়িতে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) বেলা সাড়ে ১১টার দিকে বাঘা উপজেলার আড়ানী পৌরসভার চকসিংগা গ্রামে তার বাড়িতে এ ঘটনা ঘটে। দুর্বৃত্তরা বাড়ির গেটে পেট্রোল ঢেলে আগুন ধরিয়ে দেয়। পরে স্থানীয় লোকজন আগুন নিয়ন্ত্রণে আনেন। প্রত্যক্ষদর্শী সূত্রে জানা যায়, বেলা ১১টার দিকে মোটরসাইকেলে করে আসা পাঁচ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/981998/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1590b425d8768eb331506a6eafd267c3"
+    },
+    {
+      "title": "একে একে সবার দিকে ধেয়ে আসছে ফ্যাসিবাদের অগ্নিসন্ত্রাস: রাশেদ খাঁন",
+      "summary": "ফ্যাসিবাদের অগ্নিসন্ত্রাস মোকাবিলায় জুলাই গণঅভ্যুত্থানের মতো সম্মিলিত প্রতিরোধের বিকল্প নেই বলে মন্তব্য করেছেন প্রধানমন্ত্রীর রাজনৈতিক সহকারী রাশেদ খাঁন। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যায় নিজের ভেরিফায়ে ফেসবুক পেজে দেওয়া এক পোস্টে তিনি এ মন্তব্য করেন। রাশেদ খাঁন বলেন, এবি পার্টির চেয়ারম্যান মজিবুর রহমান মঞ্জু ভাইয়ের গাড়িতে আগুন এবং ডাকসু নেতা মুসাদ্দিক আলী ইবনে মোহাম্মদের গোপালগঞ্জের... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/bnp/981997/%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BF%E0%A6%95%E0%A7%87-%E0%A6%A7%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%9B%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/politics/bnp/981997/%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BF%E0%A6%95%E0%A7%87-%E0%A6%A7%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%9B%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-19T13:26:50+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/bnp/981997/%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BF%E0%A6%95%E0%A7%87-%E0%A6%A7%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%9B%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "একে একে সবার দিকে ধেয়ে আসছে ফ্যাসিবাদের অগ্নিসন্ত্রাস: রাশেদ খাঁন",
+          "summary": "ফ্যাসিবাদের অগ্নিসন্ত্রাস মোকাবিলায় জুলাই গণঅভ্যুত্থানের মতো সম্মিলিত প্রতিরোধের বিকল্প নেই বলে মন্তব্য করেছেন প্রধানমন্ত্রীর রাজনৈতিক সহকারী রাশেদ খাঁন। বৃহস্পতিবার (১৯ নভেম্বর) সন্ধ্যায় নিজের ভেরিফায়ে ফেসবুক পেজে দেওয়া এক পোস্টে তিনি এ মন্তব্য করেন। রাশেদ খাঁন বলেন, এবি পার্টির চেয়ারম্যান মজিবুর রহমান মঞ্জু ভাইয়ের গাড়িতে আগুন এবং ডাকসু নেতা মুসাদ্দিক আলী ইবনে মোহাম্মদের গোপালগঞ্জের... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/bnp/981997/%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A6%BF%E0%A6%95%E0%A7%87-%E0%A6%A7%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%9B%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "44ae7339bdd92bf2db137d238d6fb5c8"
+    },
     {
       "title": "গাড়ি ভাঙচুর, অগ্নিসংযোগ ও নাশকতা প্রতিরোধে বনানীজুড়ে রাতদিন মাঠে স্বেচ্ছাসেবক দলের নেতাকর্মীরা",
       "summary": "বিশেষ প্রতিনিধি মোঃ মাহবুব আলম: রাজধানীর ঢাকা-১৭ আসনের বনানী এলাকায় গাড়ি ভাঙচুর, অগ্নিসংযোগ, চোরাগোপ্তা হামলা ও যেকোনো ধরনের নাশকতামূলক কর্মকাণ্ড প্রতিরোধে মাঠে সক্রিয় অবস্থানে রয়েছেন বনানী থানা স্বেচ্ছাসেবক দলের সভাপতি পদপ্রার্থী মোঃ আলাউদ্দিন আহমেদের নেতৃত্বে থানা, ১৯ ও ২০ নম্বর ওয়ার্ডসহ বিভিন্ন ওয়ার্ড ও ইউনিটের নেতৃবৃন্দ এবং স্বেচ্ছাসেবক দলের অঙ্গ ও সহযোগী সংগঠনের নেতাকর্মীরা। প্রধানমন্ত্রী […]",
@@ -1099,8 +1161,7 @@
           "name": "Prothom Alo",
           "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, থানায় আগুন",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/lseona9a8y",
-          "incidentDateText": "১৯ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/lseona9a8y"
         },
         {
           "name": "UNB",
@@ -1558,6 +1619,37 @@
       "alertEventId": "08740499966de748571ba3262832da2f"
     },
     {
+      "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
+      "summary": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591",
+      "publishedAt": "2026-11-19T09:39:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
+          "summary": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a67fd135e55db9a0a15cfc41955f3b3f"
+    },
+    {
       "title": "চলন্ত কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
       "summary": "যশোর-নড়াইল মহাসড়কে চলন্ত একটি কাভার্ডভ্যানে দুর্বৃত্তরা পেট্রোল বোমা নিক্ষেপ করেছে ঘটনা ঘটেছে। এতে আগুন ধরে গেলে গাড়ির চালক রাজিব (৪৫) দগ্ধ হন। চালকের সহকারী (হেলপার) হৃদয় (৪০) কাচের আঘাতে আহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) সকালে সদর উপজেলার হামিদপুর নুরিতলা এলাকায় এই হামলার ঘটনা ঘটে। আহত চালক রাজিব যশোরের ঝিকরগাছা উপজেলার কীর্তিপুর গ্রামের আব্দুল হাইয়ের ছেলে এবং সহকারী হৃদয় একই এলাকার জনি... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/981936/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%95",
@@ -1722,17 +1814,12 @@
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
         "Dhaka Tribune Bangla",
-        "bd-pratidin.com",
         "ডেইলি সান বাংলা"
       ],
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113415/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
         },
         {
           "name": "ডেইলি সান বাংলা",
@@ -1750,19 +1837,13 @@
           "url": "https://bangla.dhakatribune.com/bangladesh/113415/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
-          "name": "bd-pratidin.com",
-          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
-        },
-        {
           "name": "ডেইলি সান বাংলা",
           "title": "গোপালগঞ্জের আরেক থানায় আগুন, পুড়ল ১০ যানবাহন - ডেইলি সান বাংলা",
           "summary": "গোপালগঞ্জের আরেক থানায় আগুন, পুড়ল ১০ যানবাহন ডেইলি সান বাংলা",
           "url": "https://bangla.daily-sun.com/bangladesh/62088/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2-%E0%A7%A7%E0%A7%A6-%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "8bfd223b1240c362a80452ba9179c966"
     },
     {
@@ -2014,41 +2095,10 @@
       "alertEventId": "8e0a0d9711209e956a29f3b36a389a80"
     },
     {
-      "title": "ফ্যাসিবাদী শক্তি জ্বালাও-পোড়াও করে আবার ফিরতে চাইছে: রিজভী",
-      "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব ও প্রধানমন্ত্রীর রাজনৈতিক উপদেষ্টা রুহুল কবির রিজভী বলেছেন, যারা গাড়িতে আগুন দিচ্ছে তারা সন্ত্রাসী বাহিনী, কোনও রাজনৈতিক দল নয়। তারা নিজের দেশের মানুষকে ঝুঁকিতে ফেলছে। বাংলাদেশের মানুষ আবার ফ্যাসিবাদ চায় না। কিন্তু ফ্যাসিবাদী শক্তি জ্বালাও পোড়াও করে আবার ফিরতে চাইছে। অতীতের মতো এবারও দেশের মানুষ তাদের প্রতিহত করবে। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা কলেজের ১৮৬তম... বিস্তারিত",
-      "link": "https://www.banglatribune.com/politics/bnp/981895/%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%80-%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%93-%E0%A6%AA%E0%A7%8B%E0%A7%9C%E0%A6%BE%E0%A6%93-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A7%87",
-      "publisherUrl": "https://www.banglatribune.com/politics/bnp/981895/%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%80-%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%93-%E0%A6%AA%E0%A7%8B%E0%A7%9C%E0%A6%BE%E0%A6%93-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A7%87",
-      "publishedAt": "2026-11-19T05:42:55+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/politics/bnp/981895/%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%80-%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%93-%E0%A6%AA%E0%A7%8B%E0%A7%9C%E0%A6%BE%E0%A6%93-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ফ্যাসিবাদী শক্তি জ্বালাও-পোড়াও করে আবার ফিরতে চাইছে: রিজভী",
-          "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব ও প্রধানমন্ত্রীর রাজনৈতিক উপদেষ্টা রুহুল কবির রিজভী বলেছেন, যারা গাড়িতে আগুন দিচ্ছে তারা সন্ত্রাসী বাহিনী, কোনও রাজনৈতিক দল নয়। তারা নিজের দেশের মানুষকে ঝুঁকিতে ফেলছে। বাংলাদেশের মানুষ আবার ফ্যাসিবাদ চায় না। কিন্তু ফ্যাসিবাদী শক্তি জ্বালাও পোড়াও করে আবার ফিরতে চাইছে। অতীতের মতো এবারও দেশের মানুষ তাদের প্রতিহত করবে। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা কলেজের ১৮৬তম... বিস্তারিত",
-          "url": "https://www.banglatribune.com/politics/bnp/981895/%E0%A6%AB%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%80-%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%93-%E0%A6%AA%E0%A7%8B%E0%A7%9C%E0%A6%BE%E0%A6%93-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "67dbe849e3a5668cc71d2773b6a8c69c"
-    },
-    {
-      "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ - Chandpur Times",
-      "summary": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AE%E0%A7%87%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A7%87/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AE%E0%A7%87%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A7%87/",
+      "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ",
+      "summary": "চাঁদপুর সদর উপজেলার ৪নং শাহমাহমুদপুর ইউনিয়ন পরিষদ কার্যালয়ে রাতের আঁধারে অগ্নিসংযোগের ঘটনা ঘটেছে। ১৯ নভেম্বর (বৃহস্পতিবার) দিবাগত রাত আনুমানিক সাড়ে ৩টার দিকে এই ঘটনা ঘটে। তবে এই ঘটনার কোন হতাহতের খবর পাওয়া যায়নি। এতে কার্যালয়ের প্রায় ২ লাখ টাকার ক্ষয়ক্ষতি হয়েছে বলে জানিয়েছেন সংশ্লিষ্ট কর্তৃপক্ষ। সামাজিক যোগাযোগ মাধ্যমে ভাইরাল হওয়া একটি সিসিটিভি ফুটেজে দেখা যায়, ...",
+      "link": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%b9%e0%a7%87%e0%a6%b2%e0%a6%ae%e0%a7%87%e0%a6%9f-%e0%a6%aa%e0%a6%b0%e0%a7%87/",
+      "publisherUrl": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%b9%e0%a7%87%e0%a6%b2%e0%a6%ae%e0%a7%87%e0%a6%9f-%e0%a6%aa%e0%a6%b0%e0%a7%87/",
       "publishedAt": "2026-11-19T05:14:10+00:00",
       "source": "Chandpur Times",
       "publisherName": "Chandpur Times",
@@ -2058,7 +2108,7 @@
       "sourceLinks": [
         {
           "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AE%E0%A7%87%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A7%87/"
+          "url": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%b9%e0%a7%87%e0%a6%b2%e0%a6%ae%e0%a7%87%e0%a6%9f-%e0%a6%aa%e0%a6%b0%e0%a7%87/"
         }
       ],
       "category": "Bangladesh",
@@ -2067,9 +2117,9 @@
       "sourceStories": [
         {
           "name": "Chandpur Times",
-          "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ - Chandpur Times",
-          "summary": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A6%AE%E0%A7%87%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A7%87/"
+          "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ",
+          "summary": "চাঁদপুর সদর উপজেলার ৪নং শাহমাহমুদপুর ইউনিয়ন পরিষদ কার্যালয়ে রাতের আঁধারে অগ্নিসংযোগের ঘটনা ঘটেছে। ১৯ নভেম্বর (বৃহস্পতিবার) দিবাগত রাত আনুমানিক সাড়ে ৩টার দিকে এই ঘটনা ঘটে। তবে এই ঘটনার কোন হতাহতের খবর পাওয়া যায়নি। এতে কার্যালয়ের প্রায় ২ লাখ টাকার ক্ষয়ক্ষতি হয়েছে বলে জানিয়েছেন সংশ্লিষ্ট কর্তৃপক্ষ। সামাজিক যোগাযোগ মাধ্যমে ভাইরাল হওয়া একটি সিসিটিভি ফুটেজে দেখা যায়, ...",
+          "url": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%b9%e0%a7%87%e0%a6%b2%e0%a6%ae%e0%a7%87%e0%a6%9f-%e0%a6%aa%e0%a6%b0%e0%a7%87/"
         }
       ],
       "corroborationCount": 1,
@@ -2138,10 +2188,10 @@
       "alertEventId": "d70b1535e2a1e475e7c95121d69dcb45"
     },
     {
-      "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন - Chandpur Times",
-      "summary": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4/",
+      "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
+      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামি লীগের সাবেক শিক্ষামন্ত্রী ডা. দীপু মনি এবং দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর চাঁদপুরের বাসভবনে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) রাতে পৃথক সময়ে শহরের জেটি রোড এলাকায় অবস্থিত দীপু মনির বাসার একটি পরিত্যাক্ত কক্ষ এবং ফারাক্কাবাদ এলাকায় সুজিত রায় নন্দীর বাড়িতে পৃথকভাবে এই আগুন লাগার ঘটনা ঘটে। প্রথমে দীপু মনির বাসার ...",
+      "link": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%a6%e0%a7%80%e0%a6%aa%e0%a7%81-%e0%a6%ae%e0%a6%a8%e0%a6%bf-%e0%a6%93-%e0%a6%b8%e0%a7%81%e0%a6%9c%e0%a6%bf%e0%a6%a4/",
+      "publisherUrl": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%a6%e0%a7%80%e0%a6%aa%e0%a7%81-%e0%a6%ae%e0%a6%a8%e0%a6%bf-%e0%a6%93-%e0%a6%b8%e0%a7%81%e0%a6%9c%e0%a6%bf%e0%a6%a4/",
       "publishedAt": "2026-11-19T04:39:34+00:00",
       "source": "Chandpur Times",
       "publisherName": "Chandpur Times",
@@ -2151,7 +2201,7 @@
       "sourceLinks": [
         {
           "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4/"
+          "url": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%a6%e0%a7%80%e0%a6%aa%e0%a7%81-%e0%a6%ae%e0%a6%a8%e0%a6%bf-%e0%a6%93-%e0%a6%b8%e0%a7%81%e0%a6%9c%e0%a6%bf%e0%a6%a4/"
         }
       ],
       "category": "Bangladesh",
@@ -2160,31 +2210,26 @@
       "sourceStories": [
         {
           "name": "Chandpur Times",
-          "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন - Chandpur Times",
-          "summary": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4/"
+          "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
+          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামি লীগের সাবেক শিক্ষামন্ত্রী ডা. দীপু মনি এবং দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর চাঁদপুরের বাসভবনে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) রাতে পৃথক সময়ে শহরের জেটি রোড এলাকায় অবস্থিত দীপু মনির বাসার একটি পরিত্যাক্ত কক্ষ এবং ফারাক্কাবাদ এলাকায় সুজিত রায় নন্দীর বাড়িতে পৃথকভাবে এই আগুন লাগার ঘটনা ঘটে। প্রথমে দীপু মনির বাসার ...",
+          "url": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%a6%e0%a7%80%e0%a6%aa%e0%a7%81-%e0%a6%ae%e0%a6%a8%e0%a6%bf-%e0%a6%93-%e0%a6%b8%e0%a7%81%e0%a6%9c%e0%a6%bf%e0%a6%a4/"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "624be6e17826505deee23a5b7cd7ac7b"
     },
     {
-      "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন - একাত্তর",
-      "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন একাত্তর",
-      "link": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-18T20:41:38+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
+      "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
+      "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-18T20:02:13+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "একাত্তর",
         "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -2195,20 +2240,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "একাত্তর",
-          "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন - একাত্তর",
-          "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
           "name": "Dhaka Tribune Bangla",
           "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
           "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "5a5a1f2d65c20ac4634d08d1d0a97bd7"
+      "corroborationCount": 1,
+      "alertEventId": "30459297d2c1cbd0f05bbe437c4122d5"
     },
     {
       "title": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ - Risingbd.com",
@@ -2333,37 +2372,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a64b8980f72b101cd7169ddc8bbe9e97"
-    },
-    {
-      "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
-      "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
-      "link": "https://chattogramnews.com/archives/161103",
-      "publisherUrl": "https://chattogramnews.com/archives/161103",
-      "publishedAt": "2026-11-18T13:22:46+00:00",
-      "source": "Chattogram News",
-      "publisherName": "Chattogram News",
-      "sourceEvidence": [
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161103"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chattogram News",
-          "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
-          "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161103"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ee252dff6a6b1ca71d6cf0422027907a"
     }
   ]
 }
