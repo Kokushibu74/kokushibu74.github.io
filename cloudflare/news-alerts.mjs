@@ -211,8 +211,10 @@ export function assessNewsAlertUpdate(previous={},item={},decision={}){
   const severityImproved=(severityRank[String(decision.severity||"").toUpperCase()]??0)>(severityRank[String(previous.severity||"").toUpperCase()]??0);
   const details=mergeAlertDetailObjects(previous.incidentDetails,item.incidentDetails);
   const officialSourceAdded=Boolean(decision.official?.url&&decision.official.url!==previous.officialSource);
-  const hasMeaningfulUpdate=summaryEnriched||locationEnriched||incidentTimeEnriched||details.added||
-    sourceExpanded||verificationImproved||severityImproved||officialSourceAdded;
+  const hasMeaningfulUpdate=summaryEnriched||locationEnriched||details.added||
+    sourceExpanded||verificationImproved||severityImproved||officialSourceAdded||
+    // A date/period-only clarification is retained as metadata but is not worth a Telegram UPDATE.
+    (incidentTimeEnriched&&currentTime.precision==="exact");
   const oldLocations=Array.isArray(previous.sourceLocations)?previous.sourceLocations:[];
   const mergedLocations=mergeAlertLocationEvidence(oldLocations,currentSourceLocations);
   const oldAdvice=Array.isArray(previous.safetyAdvice)?previous.safetyAdvice:[];
