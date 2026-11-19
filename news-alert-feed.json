@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T12:45:52.689413+00:00",
-  "updatedAt": "2026-11-19T12:45:52.689413+00:00",
+  "generatedAt": "2026-11-19T13:00:41.495010+00:00",
+  "updatedAt": "2026-11-19T13:00:41.495010+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "healthySourceCount": 52,
+  "failedSourceCount": 3,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 31,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 31,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 6,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 23,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "UNB",
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -557,32 +557,32 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 56,
+  "candidateCount": 53,
   "alertItems": [
     {
-      "title": "মহাখালীর সাততলা বস্তিতে অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের পাশে সেলিম উদ্দিন",
-      "summary": "রাজধানীর মহাখালীর সাততলা বস্তিতে ভয়াবহ অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের সহায়তায় প্রাক-মেডিকেল ক্যাম্প স্থাপন করেছেন ঢাকা উত্তর সিটি করপোরেশনের (ডিএনসিসি) মেয়র প্রার্থী ও ঢাকা মহানগরী উত্তর জামায়াতের আমির মোহাম্মদ সেলিম উদ্দিন...",
-      "link": "https://www.jagonews24.com/politics/news/1181436",
-      "publisherUrl": "https://www.jagonews24.com/politics/news/1181436",
-      "publishedAt": "2026-11-19T12:11:40+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "দেশে সাম্প্রতিক সময়ে আর্থিক প্রতিষ্ঠানে হামলা-অ*গ্নিসংযোগে বাংলাদেশ ব্যাংকের উদ্বেগ | Somoy TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8",
+      "publisherUrl": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8",
+      "publishedAt": "2026-11-19T12:43:17+00:00",
+      "source": "Somoy News",
+      "publisherName": "Somoy News",
       "sourceEvidence": [
-        "Jago News 24"
+        "Somoy News"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/politics/news/1181436"
+          "name": "Somoy News · YouTube",
+          "url": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8"
         }
       ],
       "category": "Bangladesh",
@@ -864,14 +864,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "মহাখালীর সাততলা বস্তিতে অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের পাশে সেলিম উদ্দিন",
-          "summary": "রাজধানীর মহাখালীর সাততলা বস্তিতে ভয়াবহ অগ্নিকাণ্ডে ক্ষতিগ্রস্তদের সহায়তায় প্রাক-মেডিকেল ক্যাম্প স্থাপন করেছেন ঢাকা উত্তর সিটি করপোরেশনের (ডিএনসিসি) মেয়র প্রার্থী ও ঢাকা মহানগরী উত্তর জামায়াতের আমির মোহাম্মদ সেলিম উদ্দিন...",
-          "url": "https://www.jagonews24.com/politics/news/1181436"
+          "name": "Somoy News",
+          "title": "দেশে সাম্প্রতিক সময়ে আর্থিক প্রতিষ্ঠানে হামলা-অ*গ্নিসংযোগে বাংলাদেশ ব্যাংকের উদ্বেগ | Somoy TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=T4Kw6-9Vvy8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "3cda6f302048a0a04307b3d131cc7c89"
+      "alertEventId": "b79cc5405449cdb92e4a348ab9a76f6e"
     },
     {
       "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire - United News of Bangladesh",
@@ -903,37 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d9e29aa5e6af4ba8bf7af94a4d05359c"
-    },
-    {
-      "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ | Country Fire | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=6XhfmBAuWmI",
-      "publisherUrl": "https://www.youtube.com/watch?v=6XhfmBAuWmI",
-      "publishedAt": "2026-11-19T12:00:20+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
-      "sourceEvidence": [
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Independent Television · YouTube",
-          "url": "https://www.youtube.com/watch?v=6XhfmBAuWmI"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Independent Television",
-          "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ | Country Fire | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=6XhfmBAuWmI"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "edf02932d41f176c38c8722479bc6bab"
     },
     {
       "title": "১০ দিনে গ্রামীণ ব্যাংকের ৭২ শাখা-কার্যালয়ে হামলা–আগুন, সর্বোচ্চ গোপালগঞ্জে",
@@ -1079,6 +1048,37 @@
       "alertEventId": "cf5b2a5dd32a876ae091661614d9fc0c"
     },
     {
+      "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+      "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+      "link": "https://www.bssnews.net/bangla/news/361669",
+      "publisherUrl": "https://www.bssnews.net/bangla/news/361669",
+      "publishedAt": "2026-11-19T11:16:00+00:00",
+      "source": "BSS",
+      "publisherName": "BSS",
+      "sourceEvidence": [
+        "BSS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BSS",
+          "url": "https://www.bssnews.net/bangla/news/361669"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BSS",
+          "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+          "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+          "url": "https://www.bssnews.net/bangla/news/361669"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
+    },
+    {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, থানায় আগুন",
       "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj United News of Bangladesh",
       "link": "https://www.prothomalo.com/video/bangladesh/lseona9a8y",
@@ -1182,37 +1182,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c9a09c8a3f2969d8470b5dc4624e6dd8"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা-ভাং/চুর-অ/গ্নি সংযোগ| NEWS24",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=NqKaSbZP5d8",
-      "publisherUrl": "https://www.youtube.com/watch?v=NqKaSbZP5d8",
-      "publishedAt": "2026-11-19T10:41:36+00:00",
-      "source": "News24",
-      "publisherName": "News24",
-      "sourceEvidence": [
-        "News24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "News24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=NqKaSbZP5d8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "News24",
-          "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা-ভাং/চুর-অ/গ্নি সংযোগ| NEWS24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=NqKaSbZP5d8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b6d0385fb70a824962419391af47c38e"
     },
     {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের ৫ জন দগ্ধ - Dhaka Tribune Bangla",
@@ -1598,6 +1567,37 @@
       "alertEventId": "1f8e62c4250429d898f59cf9742075a5"
     },
     {
+      "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
+      "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
+      "publishedAt": "2026-11-19T08:49:22+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
+          "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "16a9a06a5f972b9e711eed1219b5fa59"
+    },
+    {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে হামলা–ভাঙচুর–আগুন",
       "summary": "আজ বেলা ১১টার দিকে কাশিয়ানী উপজেলার মহেশপুর ইউনিয়নের জয়নগর বাজারে মিছিল নিয়ে জড়ো হন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা।",
       "link": "https://www.prothomalo.com/bangladesh/district/uvplsms6jv",
@@ -1897,37 +1897,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0f93e6320cb6ac82f5c631d941832691"
-    },
-    {
-      "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
-      "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668286",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668286",
-      "publishedAt": "2026-11-19T07:13:27+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
-          "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ce34e774b75438ba522cf023305e4d89"
     },
     {
       "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
@@ -2240,37 +2209,6 @@
       "alertEventId": "624be6e17826505deee23a5b7cd7ac7b"
     },
     {
-      "title": "আ.লীগের আরেক এমপির বাসার মূল্যবান মালামাল লুটের পর পেট্রোল ঢেলে আগুন",
-      "summary": "ফেনী-৩ (সোনাগাজী-দাগনভূঞা) আসনের সাবেক সংসদ সদস্য হাজী রহিম উল্লাহর গ্রামের বাড়িতে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। দুর্বৃত্তরা বাড়ির মূল্যবান মালামাল লুট করে নেওয়ার পর তিনটি কক্ষ ও বাড়ির সামনে থাকা তিনটি ট্রাকে আগুন ধরিয়ে দেয়। বুধবার (১৮ নভেম্বর) দিবাগত রাত ২টার দিকে সোনাগাজী উপজেলার সোনাপুর গ্রামে এ ঘটনা ঘটে। এতে বাড়ির আসবাবপত্রসহ বিভিন্ন মালামাল পুড়ে ব্যাপক ক্ষয়ক্ষতি হয়েছে। তবে এ ঘটনায় কেউ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/981885/%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981885/%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0",
-      "publishedAt": "2026-11-19T04:33:42+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/981885/%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "আ.লীগের আরেক এমপির বাসার মূল্যবান মালামাল লুটের পর পেট্রোল ঢেলে আগুন",
-          "summary": "ফেনী-৩ (সোনাগাজী-দাগনভূঞা) আসনের সাবেক সংসদ সদস্য হাজী রহিম উল্লাহর গ্রামের বাড়িতে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। দুর্বৃত্তরা বাড়ির মূল্যবান মালামাল লুট করে নেওয়ার পর তিনটি কক্ষ ও বাড়ির সামনে থাকা তিনটি ট্রাকে আগুন ধরিয়ে দেয়। বুধবার (১৮ নভেম্বর) দিবাগত রাত ২টার দিকে সোনাগাজী উপজেলার সোনাপুর গ্রামে এ ঘটনা ঘটে। এতে বাড়ির আসবাবপত্রসহ বিভিন্ন মালামাল পুড়ে ব্যাপক ক্ষয়ক্ষতি হয়েছে। তবে এ ঘটনায় কেউ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/981885/%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AE%E0%A7%82%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%B2-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f2d7cbbf14637191496fd1b051b0b656"
-    },
-    {
       "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
       "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -2331,37 +2269,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8f25e44e2e6c8afdc8a55969e573a439"
-    },
-    {
-      "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
-      "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
-      "link": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
-      "publisherUrl": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
-      "publishedAt": "2026-11-18T18:30:30+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
-          "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
-          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b78d930084a944042e0b5c50f5efa463"
     },
     {
       "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন - Daily Bonik Barta",
