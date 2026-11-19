@@ -33,7 +33,7 @@ on:
       - "tests/test_news_alert_collector.py"
       - "scripts/validate_news_alert_sources.py"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/10 * * * *"
 
 permissions:
   contents: write
