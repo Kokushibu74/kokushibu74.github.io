@@ -813,7 +813,7 @@ ALERT_CLUSTER_TYPES = (
     ("wildfire", re.compile(r"(?:wildfire|দাবানল)", re.I)),
     ("heatwave", re.compile(r"(?:heat ?wave|তাপপ্রবাহ)", re.I)),
     ("storm", re.compile(r"(?:storm|heavy rain|rainfall|lightning|tornado|tsunami|ঝড়|ঝড়|বৃষ্টি|বজ্রপাত|কালবৈশাখী)", re.I)),
-    ("attack", re.compile(r"(?:ককটেল|বোমা|বিস্ফোরণ|অগ্নিসংযোগ|ভাঙচুর|ভাংচুর|সশস্ত্র হামলা|হামলা|arson|bomb(?:ing)?|blast|explosion|attack on|set on fire)", re.I)),
+    ("attack", re.compile(r"(?:ককটেল|বোমা|বিস্ফোরণ|অগ্নিসংযোগ|আগুন|ভাঙচুর|ভাংচুর|সশস্ত্র হামলা|হামলা|arson|bomb(?:ing)?|blast|explosion|fire|attack on|set on fire)", re.I)),
     ("fire", re.compile(r"(?:fire|আগুন|অগ্নিকাণ্ড)", re.I)),
     ("explosion", re.compile(r"(?:explosion|blast|বিস্ফোরণ)", re.I)),
     ("crash", re.compile(r"(?:accident|crash|collision|derailment|capsiz|দুর্ঘটনা|নৌকাডুবি|ট্রেন দুর্ঘটনা)", re.I)),
