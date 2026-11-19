@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T11:40:56.797505+00:00",
-  "updatedAt": "2026-11-19T11:40:56.797505+00:00",
+  "generatedAt": "2026-11-19T11:56:00.443339+00:00",
+  "updatedAt": "2026-11-19T11:56:00.443339+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Janakantha",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 63,
+  "candidateCount": 61,
   "alertItems": [
     {
       "title": "গোপালগঞ্জে নিষিদ্ধ আওয়ামী লীগের তাণ্ডব,এমপির বাড়ি-থানায় আগুন | Gopalgonj | Situation | Jamuna TV",
@@ -915,6 +915,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d1c57db2a762af84e96d7e6b4d91065a"
+    },
+    {
+      "title": "আগুন স/ন্ত্রা/স ও নৈরাজ্যের কড়া জবাব দিতে হবে: প্রধানমন্ত্রী | PM | Lalmonirhat | Ekattor TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=1kY8Ais60Vk",
+      "publisherUrl": "https://www.youtube.com/watch?v=1kY8Ais60Vk",
+      "publishedAt": "2026-11-19T11:31:06+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=1kY8Ais60Vk"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "আগুন স/ন্ত্রা/স ও নৈরাজ্যের কড়া জবাব দিতে হবে: প্রধানমন্ত্রী | PM | Lalmonirhat | Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=1kY8Ais60Vk"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fd4917fb9e89bc519e1979ecc067902a"
     },
     {
       "title": "অগ্নিসংযোগ ও সহিংসতার বিরুদ্ধে ঐক্যবদ্ধ প্রতিরোধের আহ্বান প্রধানমন্ত্রীর - United News of Bangladesh",
@@ -1117,11 +1148,7 @@
           "name": "Prothom Alo",
           "title": "ফেনীতে আ.লীগের সাবেক সংসদ সদস্যের বাড়িতে পেট্রল ঢেলে আগুন",
           "summary": "রহিম উল্লাহ ২০১৪ সালের ২৯ জানুয়ারি থেকে ২০১৮ সালের ৩০ ডিসেম্বর পর্যন্ত ফেনী-৩ আসনের সংসদ সদস্য ছিলেন। বর্তমানে তিনি চট্টগ্রাম কারাগারে বন্দী রয়েছেন।",
-          "url": "https://www.prothomalo.com/bangladesh/district/obhxhc39mp",
-          "incidentDateText": "৩০ ডিসেম্বর",
-          "incidentTimeText": "আজ সকালে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "আমিরাবাদ ইউনিয়নের সোনাপুর গ্রামে"
+          "url": "https://www.prothomalo.com/bangladesh/district/obhxhc39mp"
         }
       ],
       "corroborationCount": 1,
@@ -1253,7 +1280,7 @@
     },
     {
       "title": "চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর",
-      "summary": "কার্যক্রম নিষিদ্ধ চট্টগ্রাম মহানগর আওয়ামী লীগের সভাপতি মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
+      "summary": "হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য করে ইটপাটকেল নিক্ষেপ করে এবং লাঠি দিয়ে জানালার কাচ ভাঙচুর করে। […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
       "publisherUrl": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
       "publishedAt": "2026-11-19T10:33:23+00:00",
@@ -1275,7 +1302,7 @@
         {
           "name": "Dainik Azadi",
           "title": "চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর",
-          "summary": "কার্যক্রম নিষিদ্ধ চট্টগ্রাম মহানগর আওয়ামী লীগের সভাপতি মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
+          "summary": "হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য করে ইটপাটকেল নিক্ষেপ করে এবং লাঠি দিয়ে জানালার কাচ ভাঙচুর করে। […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
           "url": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/"
         }
       ],
@@ -1376,8 +1403,8 @@
       "alertEventId": "377cfa61d457d2d34b2729ab57c03dfc"
     },
     {
-      "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast - United News of Bangladesh",
-      "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast United News of Bangladesh",
+      "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
+      "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
       "link": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
       "publisherUrl": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
       "publishedAt": "2026-11-19T10:11:00+00:00",
@@ -1398,13 +1425,13 @@
       "sourceStories": [
         {
           "name": "UNB",
-          "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast - United News of Bangladesh",
-          "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast United News of Bangladesh",
+          "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
+          "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
           "url": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "faa42303937f7f8c29871dcc27a25594"
+      "alertEventId": "43055e9f77a7bc83ce465f412f5a8f42"
     },
     {
       "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
@@ -1633,37 +1660,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1f8e62c4250429d898f59cf9742075a5"
-    },
-    {
-      "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-      "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publishedAt": "2026-11-19T08:49:22+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-          "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "16a9a06a5f972b9e711eed1219b5fa59"
     },
     {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে হামলা–ভাঙচুর–আগুন",
@@ -2161,17 +2157,12 @@
       "source": "Risingbd.com",
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Risingbd.com",
-        "Bangla Tribune"
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/671821"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -2183,15 +2174,9 @@
           "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
           "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/671821"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "পুড়িয়ে দিয়েছে বিআরটিসির দুই বাস, রেললাইনে আগুন",
-          "summary": "রাজশাহী মহানগরীর শাহ মখদুম থানার আম চত্বর এলাকায় বিআরটিসির টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। এ ঘটনায় দুটি বাসই পুড়ে গেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ২টা ২৫ মিনিটের দিকে এ ঘটনা ঘটে বলে নিশ্চিত করেছেন শাহ্ মখদুম থানার ওসি আকবর আলী। পুলিশ সূত্রে জানা গেছে, রাত ২টা ২৫ মিনিটের দিকে আম চত্বর এলাকার বিআরটিসি বাস টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দেওয়া হয়। খবর পেয়ে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
     },
     {
@@ -2518,8 +2503,8 @@
     {
       "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন - Daily Bonik Barta",
       "summary": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন Daily Bonik Barta",
-      "link": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI",
-      "publisherUrl": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI",
+      "link": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI/",
+      "publisherUrl": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI/",
       "publishedAt": "2026-11-18T17:22:00+00:00",
       "source": "Daily Bonik Barta",
       "publisherName": "Daily Bonik Barta",
@@ -2529,7 +2514,7 @@
       "sourceLinks": [
         {
           "name": "Daily Bonik Barta",
-          "url": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI"
+          "url": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI/"
         }
       ],
       "category": "Bangladesh",
@@ -2540,7 +2525,7 @@
           "name": "Daily Bonik Barta",
           "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন - Daily Bonik Barta",
           "summary": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন Daily Bonik Barta",
-          "url": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI"
+          "url": "https://www.bonikbarta.com/bangladesh/Bru8UZVlfPix4GfI/"
         }
       ],
       "corroborationCount": 1,
@@ -2576,37 +2561,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4bb062161121a01f58718ea3bac1afb6"
-    },
-    {
-      "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
-      "summary": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671755",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671755",
-      "publishedAt": "2026-11-18T15:38:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671755"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
-          "summary": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671755"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "aae4bb46f1d3d311e148442622c8b965"
     },
     {
       "title": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন - Dhaka Tribune Bangla",
