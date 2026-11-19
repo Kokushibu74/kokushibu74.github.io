@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-18T23:36:17.081392+00:00",
-  "updatedAt": "2026-11-18T23:36:17.081392+00:00",
+  "generatedAt": "2026-11-19T04:29:20.884072+00:00",
+  "updatedAt": "2026-11-19T04:29:20.884072+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -94,7 +94,7 @@
       "domain": "jugantor.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 2,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 16,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "GDACS",
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 68,
+  "candidateCount": 69,
   "alertItems": [
     {
-      "title": "দুই পক্ষের হামলা-ভাঙচুরের ভিডিও করায় পোশাকশ্রমিককে হ'ত্যা | Narayanganj |Garment Worker | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=HMzGlb4l63g",
-      "publisherUrl": "https://www.youtube.com/watch?v=HMzGlb4l63g",
-      "publishedAt": "2026-11-18T22:25:58+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
+      "title": "রাতের আঁধারে জুলাই স্মৃতিস্তম্ভে আগুন",
+      "summary": "ঢাকা-টাঙ্গাইল মহাসড়কের গোড়াইতে জুলাই স্মৃতিস্তম্ভে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাত ১২টার দিকে টাঙ্গাইলের মির্জাপুর উপজেলার গোড়াইতে এই আগুন দেওয়ার ঘটনা ঘটে। এতে স্থানীয়দের মাঝে আতঙ্ক বিরাজ করছে। স্থানীয়রা ধারণা করছেন, কার্যক্রম নিষিদ্ধ ঘোষিত আওয়ামী লীগের ডাকা লকডাউন কর্মসূচিকে সামনে রেখে এই আগুন দেওয়ার ঘটনা ঘটে থাকতে পারে। মির্জাপুর থানার ওসি আব্দুল্লাহ আল মামুন জানান, রাতে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-19T04:21:47+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Ekattor TV"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=HMzGlb4l63g"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -864,21 +864,21 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Ekattor TV",
-          "title": "দুই পক্ষের হামলা-ভাঙচুরের ভিডিও করায় পোশাকশ্রমিককে হ'ত্যা | Narayanganj |Garment Worker | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=HMzGlb4l63g"
+          "name": "Bangla Tribune",
+          "title": "রাতের আঁধারে জুলাই স্মৃতিস্তম্ভে আগুন",
+          "summary": "ঢাকা-টাঙ্গাইল মহাসড়কের গোড়াইতে জুলাই স্মৃতিস্তম্ভে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাত ১২টার দিকে টাঙ্গাইলের মির্জাপুর উপজেলার গোড়াইতে এই আগুন দেওয়ার ঘটনা ঘটে। এতে স্থানীয়দের মাঝে আতঙ্ক বিরাজ করছে। স্থানীয়রা ধারণা করছেন, কার্যক্রম নিষিদ্ধ ঘোষিত আওয়ামী লীগের ডাকা লকডাউন কর্মসূচিকে সামনে রেখে এই আগুন দেওয়ার ঘটনা ঘটে থাকতে পারে। মির্জাপুর থানার ওসি আব্দুল্লাহ আল মামুন জানান, রাতে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981881/%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "8ce0e9d7a9d7e7600b522805fa0071ca"
+      "alertEventId": "21c91f61b1de8d6145fc00eb4a3bc08e"
     },
     {
-      "title": "নলডাঙ্গায় ‘জয় বাংলা’ স্লোগান দিয়ে সড়কে আগুন-ককটেল বিস্ফোরণ",
-      "summary": "নাটোরের নলডাঙ্গা উপজেলায় সড়কে আগুন জ্বালিয়ে ‘জয় বাংলা’ স্লোগান দিয়ে ককটেল বিস্ফোরণ ঘটানো হয়েছে। বুধবার (​১৮ নভেম্বর) রাত ৯টা ১০ মিনিটের দিকে উপজেলার...",
-      "link": "https://www.jagonews24.com/country/news/1181156",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181156",
-      "publishedAt": "2026-11-18T22:22:03+00:00",
+      "title": "আওয়ামী লীগের সাবেক এমপির বাড়ি লুটের পর আগুন",
+      "summary": "ফেনী-৩ (সোনাগাজী-দাগনভূঞা) আসনের সাবেক সংসদ সদস্য হাজী রহিম উল্লাহর গ্রামের বাড়ি ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। দুর্বৃত্তরা...",
+      "link": "https://www.jagonews24.com/country/news/1181207",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181207",
+      "publishedAt": "2026-11-19T04:20:24+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
@@ -887,7 +887,7 @@
       "sourceLinks": [
         {
           "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181156"
+          "url": "https://www.jagonews24.com/country/news/1181207"
         }
       ],
       "category": "Bangladesh",
@@ -896,39 +896,39 @@
       "sourceStories": [
         {
           "name": "Jago News 24",
-          "title": "নলডাঙ্গায় ‘জয় বাংলা’ স্লোগান দিয়ে সড়কে আগুন-ককটেল বিস্ফোরণ",
-          "summary": "নাটোরের নলডাঙ্গা উপজেলায় সড়কে আগুন জ্বালিয়ে ‘জয় বাংলা’ স্লোগান দিয়ে ককটেল বিস্ফোরণ ঘটানো হয়েছে। বুধবার (​১৮ নভেম্বর) রাত ৯টা ১০ মিনিটের দিকে উপজেলার...",
-          "url": "https://www.jagonews24.com/country/news/1181156"
+          "title": "আওয়ামী লীগের সাবেক এমপির বাড়ি লুটের পর আগুন",
+          "summary": "ফেনী-৩ (সোনাগাজী-দাগনভূঞা) আসনের সাবেক সংসদ সদস্য হাজী রহিম উল্লাহর গ্রামের বাড়ি ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। দুর্বৃত্তরা...",
+          "url": "https://www.jagonews24.com/country/news/1181207"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "ba9c3b7dcd79e6197a87dbbc9a7facb8"
+      "alertEventId": "bfd9829e1f957fe7a4e25683211aa0f3"
     },
     {
-      "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সমর্থকদের হামলায় প্রাণ গেল ২ বিএনপি নেতার | Norail News | BNP",
-      "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
-      "link": "https://www.youtube.com/watch?v=LR-O7FNCZhw",
-      "publisherUrl": "https://www.youtube.com/watch?v=LR-O7FNCZhw",
-      "publishedAt": "2026-11-18T20:59:25+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
+      "title": "সোনারগাঁয়ে বাসে আগুন",
+      "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের নারায়ণগঞ্জের সোনারগাঁয়ে একটি যাত্রীবাহী বাসে আগুন দিয়েছেন দুর্বৃত্তরা। আগুনে গাড়িটির ক্ষতি হলেও কোনো হতাহতের খবর পাওয়া যায়নি...",
+      "link": "https://www.jagonews24.com/country/news/1181203",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181203",
+      "publishedAt": "2026-11-19T04:10:30+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Somoy News",
-        "একাত্তর",
-        "Prothom Alo"
+        "Jago News 24",
+        "Prothom Alo",
+        "DBC News"
       ],
       "sourceLinks": [
         {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=LR-O7FNCZhw"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181203"
         },
         {
           "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/o7q13sktek"
+          "url": "https://www.prothomalo.com/video/bangladesh/jlrsnfv38q"
+        },
+        {
+          "name": "DBC News ·",
+          "url": "https://www.youtube.com/shorts/Ar22PYJ1mFU"
         }
       ],
       "category": "Bangladesh",
@@ -936,30 +936,410 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Somoy News",
-          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সমর্থকদের হামলায় প্রাণ গেল ২ বিএনপি নেতার | Norail News | BNP",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=LR-O7FNCZhw"
-        },
-        {
-          "name": "একাত্তর",
-          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
-          "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
-          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+          "name": "Jago News 24",
+          "title": "সোনারগাঁয়ে বাসে আগুন",
+          "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের নারায়ণগঞ্জের সোনারগাঁয়ে একটি যাত্রীবাহী বাসে আগুন দিয়েছেন দুর্বৃত্তরা। আগুনে গাড়িটির ক্ষতি হলেও কোনো হতাহতের খবর পাওয়া যায়নি...",
+          "url": "https://www.jagonews24.com/country/news/1181203"
         },
         {
           "name": "Prothom Alo",
-          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলা, নিহত ২",
-          "summary": "বিএনপি নেতা–কর্মীদের শোভাযাত্রাটি সন্ধ্যার দিকে নড়াইলের কালিয়া পৌরসভার বেন্দারচর এলাকায় পৌঁছায়। এ সময় তাদের ওপর কার্যক্রম নিষিদ্ধ আওয়ামী লীগের লোকজন হামলা চালায়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/o7q13sktek",
-          "incidentDateText": "বুধবার (১৮ নভেম্বর)",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "দুজন হলেন কালিয়া উপজেলা, কালিয়ার থানার"
+          "title": "চট্টগ্রামে অন্তর্বর্তী সরকারের সাবেক প্রধান উপদেষ্টা অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন",
+          "summary": "",
+          "url": "https://www.prothomalo.com/video/bangladesh/jlrsnfv38q",
+          "incidentDateText": "১৯ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "DBC News",
+          "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে দুর্বৃত্তদের আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/Ar22PYJ1mFU"
         }
       ],
       "corroborationCount": 3,
-      "alertEventId": "47e2b7302ea29f1f09cbffa8ab7e724b"
+      "alertEventId": "143ac38ef3d66d8d27b53f602410dff4"
+    },
+    {
+      "title": "প্রবল ঘূর্ণিঝড় ‘আকভান’ ওডিশার দিকে এগোচ্ছে, দেশজুড়ে মেঘলা আকাশ–বৃষ্টি, বন্দরে সতর্কসংকেত",
+      "summary": "ঘূর্ণিঝড়ের প্রভাবে বাংলাদেশে আকাশ মেঘলা রয়েছে। দেশের প্রায় সব অঞ্চলে থেমে থেমে বৃষ্টি হতে পারে। ঘূর্ণিঝড়ের প্রভাবে সাগর উত্তাল রয়েছে। মেটা: দেশের সমুদ্রবন্দরগুলোকে ৩ নম্বর স্থানীয় সতর্কসংকেত দেখাতে বলা হয়েছে।",
+      "link": "https://www.prothomalo.com/bangladesh/environment/ykf5ydakut",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/environment/ykf5ydakut",
+      "publishedAt": "2026-11-19T03:59:03+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/environment/ykf5ydakut"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "প্রবল ঘূর্ণিঝড় ‘আকভান’ ওডিশার দিকে এগোচ্ছে, দেশজুড়ে মেঘলা আকাশ–বৃষ্টি, বন্দরে সতর্কসংকেত",
+          "summary": "ঘূর্ণিঝড়ের প্রভাবে বাংলাদেশে আকাশ মেঘলা রয়েছে। দেশের প্রায় সব অঞ্চলে থেমে থেমে বৃষ্টি হতে পারে। ঘূর্ণিঝড়ের প্রভাবে সাগর উত্তাল রয়েছে। মেটা: দেশের সমুদ্রবন্দরগুলোকে ৩ নম্বর স্থানীয় সতর্কসংকেত দেখাতে বলা হয়েছে।",
+          "url": "https://www.prothomalo.com/bangladesh/environment/ykf5ydakut"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "44ab25cd22d5fdafba21f8a98cc37840"
+    },
+    {
+      "title": "পুড়িয়ে দেওয়া হলো জুলাই শহীদ স্মৃতিস্তম্ভ",
+      "summary": "টাঙ্গাইলের মির্জাপুরে জুলাই শহীদ স্মৃতিস্তম্ভে অগ্নিসংযোগ করে পুড়িয়ে দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাতে উপজেলার ঢাকা-টাঙ্গাইল-যমুনা সেতু মহাসড়ক...",
+      "link": "https://www.jagonews24.com/country/news/1181196",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181196",
+      "publishedAt": "2026-11-19T03:56:10+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181196"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "পুড়িয়ে দেওয়া হলো জুলাই শহীদ স্মৃতিস্তম্ভ",
+          "summary": "টাঙ্গাইলের মির্জাপুরে জুলাই শহীদ স্মৃতিস্তম্ভে অগ্নিসংযোগ করে পুড়িয়ে দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) রাতে উপজেলার ঢাকা-টাঙ্গাইল-যমুনা সেতু মহাসড়ক...",
+          "url": "https://www.jagonews24.com/country/news/1181196"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "376f1ac0a7fc2251671ead38fdcf747c"
+    },
+    {
+      "title": "পেট্রোল মেরে পল্লী বিদ্যুৎ অফিসে আগুন, পুড়লো খুঁটি-ট্রান্সমিটারের বাক্স",
+      "summary": "গাজীপুরের পল্লী বিদ্যুৎ অফিসে (অভিযোগ কেন্দ্র) ভেতরে কাঠের স্তূপে পেট্রোল ছুড়ে আগুন দিয়েছে দুর্বৃত্তরা। এক ঘণ্টার চেষ্টায় আগুন নিয়ন্ত্রণে এনেছে ফায়ার সার্ভিস। বৃহস্পতিবার (১৯ নভেম্বর) রাত সাড়ে ৩টার দিকে দুর্বৃত্তরা ওই অভিযোগ কেন্দ্রে দুটি কোটা ছুড়ে মারলে আগুন ধরে যায়। গাজীপুর পল্লী বিদ্যুৎ সমিতির উপ-মহাব্যবস্থাপক (ডিজিএম) জিয়াউল হক জানান, খবর পেয়ে ফায়ার সার্ভিসের কর্মীরা ঘটনাস্থলে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981877/%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981877/%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B",
+      "publishedAt": "2026-11-19T03:34:43+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981877/%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "পেট্রোল মেরে পল্লী বিদ্যুৎ অফিসে আগুন, পুড়লো খুঁটি-ট্রান্সমিটারের বাক্স",
+          "summary": "গাজীপুরের পল্লী বিদ্যুৎ অফিসে (অভিযোগ কেন্দ্র) ভেতরে কাঠের স্তূপে পেট্রোল ছুড়ে আগুন দিয়েছে দুর্বৃত্তরা। এক ঘণ্টার চেষ্টায় আগুন নিয়ন্ত্রণে এনেছে ফায়ার সার্ভিস। বৃহস্পতিবার (১৯ নভেম্বর) রাত সাড়ে ৩টার দিকে দুর্বৃত্তরা ওই অভিযোগ কেন্দ্রে দুটি কোটা ছুড়ে মারলে আগুন ধরে যায়। গাজীপুর পল্লী বিদ্যুৎ সমিতির উপ-মহাব্যবস্থাপক (ডিজিএম) জিয়াউল হক জানান, খবর পেয়ে ফায়ার সার্ভিসের কর্মীরা ঘটনাস্থলে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981877/%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b61ccf9ae314851b6fb3cbd53bbe2fa9"
+    },
+    {
+      "title": "খাগড়াছড়িতে পর্যটকবাহী দুই পিকআপে আগুন",
+      "summary": "খাগড়াছড়িতে পর্যটকবাহী দুই পিকআপে আগুন",
+      "link": "https://www.jagonews24.com/country/news/1181187",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181187",
+      "publishedAt": "2026-11-19T03:30:45+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181187"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "খাগড়াছড়িতে পর্যটকবাহী দুই পিকআপে আগুন",
+          "summary": "খাগড়াছড়িতে পর্যটকবাহী দুই পিকআপে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181187"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a35845e79b302993392701c44a5d19a2"
+    },
+    {
+      "title": "পুড়িয়ে দিয়েছে বিআরটিসির দুই বাস, রেললাইনে আগুন",
+      "summary": "রাজশাহী মহানগরীর শাহ মখদুম থানার আম চত্বর এলাকায় বিআরটিসির টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। এ ঘটনায় দুটি বাসই পুড়ে গেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ২টা ২৫ মিনিটের দিকে এ ঘটনা ঘটে বলে নিশ্চিত করেছেন শাহ্ মখদুম থানার ওসি আকবর আলী। পুলিশ সূত্রে জানা গেছে, রাত ২টা ২৫ মিনিটের দিকে আম চত্বর এলাকার বিআরটিসি বাস টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দেওয়া হয়। খবর পেয়ে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-19T03:27:27+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181171"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "পুড়িয়ে দিয়েছে বিআরটিসির দুই বাস, রেললাইনে আগুন",
+          "summary": "রাজশাহী মহানগরীর শাহ মখদুম থানার আম চত্বর এলাকায় বিআরটিসির টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। এ ঘটনায় দুটি বাসই পুড়ে গেছে। বুধবার (১৮ নভেম্বর) দিবাগত রাত ২টা ২৫ মিনিটের দিকে এ ঘটনা ঘটে বলে নিশ্চিত করেছেন শাহ্ মখদুম থানার ওসি আকবর আলী। পুলিশ সূত্রে জানা গেছে, রাত ২টা ২৫ মিনিটের দিকে আম চত্বর এলাকার বিআরটিসি বাস টার্মিনালে দাঁড়িয়ে থাকা দুটি বাসে আগুন দেওয়া হয়। খবর পেয়ে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/981874/%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%86%E0%A6%B0%E0%A6%9F%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%B0%E0%A7%87%E0%A6%B2%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "রাজশাহীতে রেললাইনে আগুন, ট্রেন চলাচল ব্যাহত",
+          "summary": "রাজশাহীতে রেললাইনে আগুন, ট্রেন চলাচল ব্যাহত",
+          "url": "https://www.jagonews24.com/country/news/1181171"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "1aa240260559d5df2b8f59f76b559849"
+    },
+    {
+      "title": "সিরাজগঞ্জের নিষিদ্ধ যুবলীগ সভাপতির বাসায় আগুন দিল দুর্বৃত্তরা #shortvideo",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/Sc0YoGqJIpw",
+      "publisherUrl": "https://www.youtube.com/shorts/Sc0YoGqJIpw",
+      "publishedAt": "2026-11-19T03:09:34+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/Sc0YoGqJIpw"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "সিরাজগঞ্জের নিষিদ্ধ যুবলীগ সভাপতির বাসায় আগুন দিল দুর্বৃত্তরা #shortvideo",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/Sc0YoGqJIpw"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "699d650628d7c9371c396f6330704bd3"
+    },
+    {
+      "title": "সিরাজগঞ্জে সাবেক সংসদ সদস্য ডা হাবিবে মিল্লাত মুন্নার বাড়িতে আগুন ও ভাঙচুর #shorts",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/qN-ZmvYdlo0",
+      "publisherUrl": "https://www.youtube.com/shorts/qN-ZmvYdlo0",
+      "publishedAt": "2026-11-19T03:07:25+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/qN-ZmvYdlo0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "সিরাজগঞ্জে সাবেক সংসদ সদস্য ডা হাবিবে মিল্লাত মুন্নার বাড়িতে আগুন ও ভাঙচুর #shorts",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/qN-ZmvYdlo0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3065d3747baa174f548c964fd76c49c8"
+    },
+    {
+      "title": "চাঁদপুরে সাবেক মন্ত্রী দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে অগ্নিকাণ্ড | Dipu Moni | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=4EhlkhqnTmE",
+      "publisherUrl": "https://www.youtube.com/watch?v=4EhlkhqnTmE",
+      "publishedAt": "2026-11-19T02:38:44+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=4EhlkhqnTmE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "চাঁদপুরে সাবেক মন্ত্রী দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে অগ্নিকাণ্ড | Dipu Moni | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=4EhlkhqnTmE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "dff7f7c41cf6a82438c9f6304f8680a1"
+    },
+    {
+      "title": "রাজশাহীতে বিআরটিসির দুই বাসে আগুন",
+      "summary": "রাজশাহীতে বিআরটিসির দুই বাসে আগুন",
+      "link": "https://www.jagonews24.com/country/news/1181169",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181169",
+      "publishedAt": "2026-11-19T02:27:28+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181169"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "রাজশাহীতে বিআরটিসির দুই বাসে আগুন",
+          "summary": "রাজশাহীতে বিআরটিসির দুই বাসে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181169"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "41f635c1bab4d66e5da9fe4c7e4e810c"
+    },
+    {
+      "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন",
+      "summary": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন",
+      "link": "https://www.jagonews24.com/national/news/1181163",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1181163",
+      "publishedAt": "2026-11-19T01:51:19+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181163"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন",
+          "summary": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন",
+          "url": "https://www.jagonews24.com/national/news/1181163"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6135ee451e530266820dca009de5adfa"
+    },
+    {
+      "title": "‘আকভানের’ প্রভাবে বাড়বে বৃষ্টি, কোন অঞ্চলে বেশি?",
+      "summary": "দক্ষিণপশ্চিম বঙ্গোপসাগর ও তৎসংলগ্ন পশ্চিমমধ্য বঙ্গোপসাগর এলাকায় অবস্থানরত ঘূর্ণিঝড় ‘আকভান’ আরও ঘনীভূত হয়ে প্রবল ঘূর্ণিঝড়ে পরিণত হয়েছে। এর প্রভাবে আগামী ২৪ ঘন্টা দেশের প্রায় সব বিভাগেই অস্থায়ীভাবে দমকা হাওয়াসহ হালকা থেকে মাঝারি এবং কোথাও কোথাও ভারী থেকে অতি ভারী বর্ষণ হতে পারে। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৬টা থেকে পরবর্তী ১২০ ঘণ্টার আবহাওয়ার পূর্বাভাসে বাংলাদেশ আবহাওয়া অধিদফতর এ তথ্য... বিস্তারিত",
+      "link": "https://www.banglatribune.com/weather/981856/%E2%80%98%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%A8-%E0%A6%85%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A6%BF",
+      "publisherUrl": "https://www.banglatribune.com/weather/981856/%E2%80%98%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%A8-%E0%A6%85%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A6%BF",
+      "publishedAt": "2026-11-19T01:08:39+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/weather/981856/%E2%80%98%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%A8-%E0%A6%85%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A6%BF"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "‘আকভানের’ প্রভাবে বাড়বে বৃষ্টি, কোন অঞ্চলে বেশি?",
+          "summary": "দক্ষিণপশ্চিম বঙ্গোপসাগর ও তৎসংলগ্ন পশ্চিমমধ্য বঙ্গোপসাগর এলাকায় অবস্থানরত ঘূর্ণিঝড় ‘আকভান’ আরও ঘনীভূত হয়ে প্রবল ঘূর্ণিঝড়ে পরিণত হয়েছে। এর প্রভাবে আগামী ২৪ ঘন্টা দেশের প্রায় সব বিভাগেই অস্থায়ীভাবে দমকা হাওয়াসহ হালকা থেকে মাঝারি এবং কোথাও কোথাও ভারী থেকে অতি ভারী বর্ষণ হতে পারে। বুধবার (১৮ নভেম্বর) সন্ধ্যা ৬টা থেকে পরবর্তী ১২০ ঘণ্টার আবহাওয়ার পূর্বাভাসে বাংলাদেশ আবহাওয়া অধিদফতর এ তথ্য... বিস্তারিত",
+          "url": "https://www.banglatribune.com/weather/981856/%E2%80%98%E0%A6%86%E0%A6%95%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0%E2%80%99-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%AC%E0%A7%87-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A7%8B%E0%A6%A8-%E0%A6%85%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A6%BF"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "27c4dd6b64bb4f523770e7c57826d246"
+    },
+    {
+      "title": "পটুয়াখালীতে আওয়ামী লীগ নেতার বাড়িতে আগুন",
+      "summary": "পটুয়াখালীতে আওয়ামী লীগ নেতার বাড়িতে আগুন",
+      "link": "https://www.jagonews24.com/country/news/1181161",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181161",
+      "publishedAt": "2026-11-19T00:33:03+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181161"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "পটুয়াখালীতে আওয়ামী লীগ নেতার বাড়িতে আগুন",
+          "summary": "পটুয়াখালীতে আওয়ামী লীগ নেতার বাড়িতে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181161"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "87522bc8a5a990ec3ced55b9c2f0e9a0"
     },
     {
       "title": "সার্বক্ষণিক পুলিশ পাহারায় থাকা ড. ইউনূসের বাসায় কীভাবে আগুন দিলো দুর্বৃত্তরা?",
@@ -971,8 +1351,8 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "Dhaka Tribune Bangla",
-        "Prothom Alo"
+        "একাত্তর",
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
@@ -980,12 +1360,12 @@
           "url": "https://www.banglatribune.com/country/chitagong/981852/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A1.-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F"
         },
         {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/x9ip5qhj5b"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -999,18 +1379,16 @@
           "url": "https://www.banglatribune.com/country/chitagong/981852/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%A1.-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F"
         },
         {
+          "name": "একাত্তর",
+          "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন - একাত্তর",
+          "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/chittagong/97951/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
           "name": "Dhaka Tribune Bangla",
           "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ - Dhaka Tribune Bangla",
           "summary": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন, ঘটনাস্থলে পুলিশ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113378/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AA%E0%A6%95-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A7%82%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%88%E0%A6%A4%E0%A7%83%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "চট্টগ্রামে অধ্যাপক ইউনূসের পৈতৃক বাড়িতে আগুন",
-          "summary": "এই বাড়িতে অধ্যাপক মুহাম্মদ ইউনূসের দুই ভাইয়ের পরিবার থাকে বলে জানিয়েছে পুলিশ। তবে ঘটনার সময় তাঁরা ছিলেন কি না, তা জানা যায়নি।",
-          "url": "https://www.prothomalo.com/bangladesh/x9ip5qhj5b",
-          "incidentDateText": "১৮ নভেম্বর ২০২৬",
-          "locationText": "বাড়িটির আশপাশের এলাকা, সাতকানিয়ায় গ্রাম, চট্টগ্রাম, বেশ কয়েকটি জায়গায় গ্রাম"
         }
       ],
       "corroborationCount": 3,
@@ -1049,7 +1427,7 @@
     },
     {
       "title": "ঢাকা-সিলেট মহাসড়কে যাত্রীবাহী বাসে পেট্রোল বোমা হামলা",
-      "summary": "ঢাকা-সিলেট মহাসড়কের কিশোরগঞ্জের ভৈরবে যাত্রীবাহী একটি বাসে অগ্নিসংযোগের চেষ্টায় পেট্রোল বোমা হামলার ঘটনা ঘটেছে। তবে এতে কোনো হতাহতের ঘটনা...",
+      "summary": "ঢাকা-সিলেট মহাসড়কে যাত্রীবাহী বাসে পেট্রোল বোমা হামলা",
       "link": "https://www.jagonews24.com/country/news/1181151",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181151",
       "publishedAt": "2026-11-18T20:21:08+00:00",
@@ -1071,7 +1449,7 @@
         {
           "name": "Jago News 24",
           "title": "ঢাকা-সিলেট মহাসড়কে যাত্রীবাহী বাসে পেট্রোল বোমা হামলা",
-          "summary": "ঢাকা-সিলেট মহাসড়কের কিশোরগঞ্জের ভৈরবে যাত্রীবাহী একটি বাসে অগ্নিসংযোগের চেষ্টায় পেট্রোল বোমা হামলার ঘটনা ঘটেছে। তবে এতে কোনো হতাহতের ঘটনা...",
+          "summary": "ঢাকা-সিলেট মহাসড়কে যাত্রীবাহী বাসে পেট্রোল বোমা হামলা",
           "url": "https://www.jagonews24.com/country/news/1181151"
         }
       ],
@@ -1079,56 +1457,20 @@
       "alertEventId": "4f985c0fcd09c4e1854db7468e4940f1"
     },
     {
-      "title": "নড়াইলে বিএনপির দুই নেতা নিহত; বরগুনায় ককটেল বিস্ফোরণসহ বাস ভাঙ্গচুর | Narail | Barguna | Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=K-FqpYhvac8",
-      "publisherUrl": "https://www.youtube.com/watch?v=K-FqpYhvac8",
-      "publishedAt": "2026-11-18T20:02:29+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=K-FqpYhvac8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "নড়াইলে বিএনপির দুই নেতা নিহত; বরগুনায় ককটেল বিস্ফোরণসহ বাস ভাঙ্গচুর | Narail | Barguna | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=K-FqpYhvac8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "74de08f23b138c57d586ea28e838db9f"
-    },
-    {
       "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
-      "summary": "চাঁদপুরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক মন্ত্রী ডা. দীপু মনি ও দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর বাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) রাতে শহরের...",
+      "summary": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
       "link": "https://www.jagonews24.com/country/news/1181150",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181150",
       "publishedAt": "2026-11-18T19:57:20+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24",
-        "Bangla Tribune"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1181150"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1138,34 +1480,28 @@
         {
           "name": "Jago News 24",
           "title": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
-          "summary": "চাঁদপুরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক মন্ত্রী ডা. দীপু মনি ও দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর বাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (১৮ নভেম্বর) রাতে শহরের...",
+          "summary": "চাঁদপুরে দীপু মনি ও সুজিত রায় নন্দীর বাড়িতে আগুন",
           "url": "https://www.jagonews24.com/country/news/1181150"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "দীপু মনি ও সুজিত নন্দীর বাড়িতে আগুন",
-          "summary": "চাঁদপুরে সাবেক শিক্ষামন্ত্রী ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের যুগ্ম সাধারণ সম্পাদক দীপু মনি এবং দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর পরিত্যক্ত বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার রাত ৯টার দিকে শহরের নতুন বাজারের কদমতলা মার্কেটের তিনতলায় দীপু মনির বাসায় আগুন দেওয়া হয়। পরে ভবনের বাসিন্দা ও আশপাশের লোকজন পানি ঢেলে আগুন নিয়ন্ত্রণে আনেন। ওই ভবনের পঞ্চম তলার বাসিন্দা অ্যাডভোকেট গাজী দুলাল... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "624be6e17826505deee23a5b7cd7ac7b"
     },
     {
-      "title": "মিল্ক ভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ",
-      "summary": "বাগেরহাটের ফকিরহাটে বাংলাদেশ দুগ্ধ উৎপাদনকারী সমবায় ইউনিয়ন লিমিটেড-মিল্কভিটার চেয়ারম্যান আমির হামজা সাথিলের বাড়ি লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ...",
-      "link": "https://www.jagonews24.com/country/news/1181148",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181148",
-      "publishedAt": "2026-11-18T19:22:46+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "দীপু মনি ও সুজিত নন্দীর বাড়িতে আগুন",
+      "summary": "চাঁদপুরে সাবেক শিক্ষামন্ত্রী ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের যুগ্ম সাধারণ সম্পাদক দীপু মনি এবং দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর পরিত্যক্ত বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার রাত ৯টার দিকে শহরের নতুন বাজারের কদমতলা মার্কেটের তিনতলায় দীপু মনির বাসায় আগুন দেওয়া হয়। পরে ভবনের বাসিন্দা ও আশপাশের লোকজন পানি ঢেলে আগুন নিয়ন্ত্রণে আনেন। ওই ভবনের পঞ্চম তলার বাসিন্দা অ্যাডভোকেট গাজী দুলাল... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-18T19:43:40+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181148"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1173,18 +1509,49 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "মিল্ক ভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ",
-          "summary": "বাগেরহাটের ফকিরহাটে বাংলাদেশ দুগ্ধ উৎপাদনকারী সমবায় ইউনিয়ন লিমিটেড-মিল্কভিটার চেয়ারম্যান আমির হামজা সাথিলের বাড়ি লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ...",
-          "url": "https://www.jagonews24.com/country/news/1181148"
+          "name": "Bangla Tribune",
+          "title": "দীপু মনি ও সুজিত নন্দীর বাড়িতে আগুন",
+          "summary": "চাঁদপুরে সাবেক শিক্ষামন্ত্রী ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের যুগ্ম সাধারণ সম্পাদক দীপু মনি এবং দলটির সাংগঠনিক সম্পাদক সুজিত রায় নন্দীর পরিত্যক্ত বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার রাত ৯টার দিকে শহরের নতুন বাজারের কদমতলা মার্কেটের তিনতলায় দীপু মনির বাসায় আগুন দেওয়া হয়। পরে ভবনের বাসিন্দা ও আশপাশের লোকজন পানি ঢেলে আগুন নিয়ন্ত্রণে আনেন। ওই ভবনের পঞ্চম তলার বাসিন্দা অ্যাডভোকেট গাজী দুলাল... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/981849/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%81-%E0%A6%AE%E0%A6%A8%E0%A6%BF-%E0%A6%93-%E0%A6%B8%E0%A7%81%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "accb073e30d65528fb848575e132256c"
+      "alertEventId": "607758510dd9a3d07f959b1f6e72cc36"
+    },
+    {
+      "title": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671774",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671774",
+      "publishedAt": "2026-11-18T19:20:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671774"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "বাগেরহাটে মিল্কভিটার চেয়ারম্যানের বাড়ি লক্ষ্য করে বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671774"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8f25e44e2e6c8afdc8a55969e573a439"
     },
     {
       "title": "মাদারীপুরে শাজাহান খানের ব্যবসাপ্রতিষ্ঠানে হামলা-ভাঙচুর",
-      "summary": "মাদারীপুর-২ আসনের আওয়ামী লীগের সাবেক সংসদ সদস্য ও সাবেক নৌপরিবহনমন্ত্রী শাজাহান খানের পারিবারিক ব্যবসাপ্রতিষ্ঠান সার্বিক ফিলিং স্টেশনে হামলা ও ভাঙচুরের...",
+      "summary": "মাদারীপুরে শাজাহান খানের ব্যবসাপ্রতিষ্ঠানে হামলা-ভাঙচুর",
       "link": "https://www.jagonews24.com/country/news/1181147",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181147",
       "publishedAt": "2026-11-18T19:05:58+00:00",
@@ -1206,7 +1573,7 @@
         {
           "name": "Jago News 24",
           "title": "মাদারীপুরে শাজাহান খানের ব্যবসাপ্রতিষ্ঠানে হামলা-ভাঙচুর",
-          "summary": "মাদারীপুর-২ আসনের আওয়ামী লীগের সাবেক সংসদ সদস্য ও সাবেক নৌপরিবহনমন্ত্রী শাজাহান খানের পারিবারিক ব্যবসাপ্রতিষ্ঠান সার্বিক ফিলিং স্টেশনে হামলা ও ভাঙচুরের...",
+          "summary": "মাদারীপুরে শাজাহান খানের ব্যবসাপ্রতিষ্ঠানে হামলা-ভাঙচুর",
           "url": "https://www.jagonews24.com/country/news/1181147"
         }
       ],
@@ -1214,20 +1581,25 @@
       "alertEventId": "9c6b5e2a015eb801fb36f73255071dca"
     },
     {
-      "title": "বরিশালের নথুল্লাবাদে বাসে অগ্নিসংযোগের প্রতিবাদে শ্রমিক দলের বিক্ষোভ | Barisal | BNP | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=cnD6VmHj5RI",
-      "publisherUrl": "https://www.youtube.com/watch?v=cnD6VmHj5RI",
-      "publishedAt": "2026-11-18T18:02:48+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
+      "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+      "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+      "link": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publisherUrl": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publishedAt": "2026-11-18T18:30:30+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
       "sourceEvidence": [
-        "Ekattor TV"
+        "একাত্তর",
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=cnD6VmHj5RI"
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181139"
         }
       ],
       "category": "Bangladesh",
@@ -1235,14 +1607,20 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Ekattor TV",
-          "title": "বরিশালের নথুল্লাবাদে বাসে অগ্নিসংযোগের প্রতিবাদে শ্রমিক দলের বিক্ষোভ | Barisal | BNP | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=cnD6VmHj5RI"
+          "name": "একাত্তর",
+          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+          "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
+          "summary": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
+          "url": "https://www.jagonews24.com/country/news/1181139"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "154bb201a5ecebe8d64315d36e9e4852"
+      "corroborationCount": 2,
+      "alertEventId": "b78d930084a944042e0b5c50f5efa463"
     },
     {
       "title": "জেলা পর্যায়েও ছড়িয়ে পড়ছে নাশকতা-সহিংসতা, জনমনে বাড়ছে আতঙ্ক",
@@ -1307,48 +1685,22 @@
       "alertEventId": "b2b4d587e7edd0de7e3d313aa267e0b8"
     },
     {
-      "title": "৯ জেলায় হা মলা-অগ্নিসংযোগ: নেপথ্যের কারণ কী? | Gopalganj | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=fOUXmbbafj8",
-      "publisherUrl": "https://www.youtube.com/watch?v=fOUXmbbafj8",
-      "publishedAt": "2026-11-18T17:21:11+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
+      "title": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন, ফটকে ছবি সাঁটিয়ে বিক্ষোভ - The Daily Ittefaq",
+      "summary": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন, ফটকে ছবি সাঁটিয়ে বিক্ষোভ The Daily Ittefaq",
+      "link": "https://www.ittefaq.com.bd/821784/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+      "publisherUrl": "https://www.ittefaq.com.bd/821784/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%9B%E0%A6%AC%E0%A6%BF",
+      "publishedAt": "2026-11-18T17:15:48+00:00",
+      "source": "The Daily Ittefaq",
+      "publisherName": "The Daily Ittefaq",
       "sourceEvidence": [
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Independent Television · YouTube",
-          "url": "https://www.youtube.com/watch?v=fOUXmbbafj8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Independent Television",
-          "title": "৯ জেলায় হা মলা-অগ্নিসংযোগ: নেপথ্যের কারণ কী? | Gopalganj | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=fOUXmbbafj8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c20543f92b1bb594ce8886a1f19e6c38"
-    },
-    {
-      "title": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন",
-      "summary": "নারায়ণগঞ্জ-৪ আসনের সাবেক সংসদ সদস্য ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা এ কে এম শামীম ওসমানের বাড়িতে আগুন দিয়েছে একদল যুবক। বুধবার (১৮ নভেম্বর) রাতে ফতুল্লার জামতলা এলাকায় সাবেক সংসদ সদস্যের পরিত্যক্ত বাড়িতে আগুন দেওয়া হয়। স্থানীয় সূত্রে জানা গেছে, রাতে সরকারি কদম রসুল কলেজ ছাত্র সংসদের সাবেক সেক্রেটারি ও মহানগর ছাত্রদল নেতা আতিকুর রহমান রিফাতের (শেখ রিফাত) নেতৃত্বে ১৫ থেকে ২০ জন যুবক... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/981841/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981841/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-18T17:06:17+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
+        "The Daily Ittefaq",
         "Bangla Tribune"
       ],
       "sourceLinks": [
+        {
+          "name": "The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/821784/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%9B%E0%A6%AC%E0%A6%BF"
+        },
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/981841/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -1358,6 +1710,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "The Daily Ittefaq",
+          "title": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন, ফটকে ছবি সাঁটিয়ে বিক্ষোভ - The Daily Ittefaq",
+          "summary": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন, ফটকে ছবি সাঁটিয়ে বিক্ষোভ The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/821784/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%9B%E0%A6%AC%E0%A6%BF"
+        },
         {
           "name": "Bangla Tribune",
           "title": "নারায়ণগঞ্জে শামীম ওসমানের বাড়িতে আগুন",
@@ -1365,39 +1723,8 @@
           "url": "https://www.banglatribune.com/country/dhaka/981841/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B6%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%AE-%E0%A6%93%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "8ed08b545c14c1c94dcfd4dbbd602f8d"
-    },
-    {
-      "title": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
-      "summary": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
-      "link": "https://www.jagonews24.com/country/news/1181139",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181139",
-      "publishedAt": "2026-11-18T16:59:47+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181139"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
-          "summary": "নড়াইলে বিএনপির মিছিলে কার্যক্রম নিষিদ্ধ আ’লীগের হামলা, দুই নেতা নিহত",
-          "url": "https://www.jagonews24.com/country/news/1181139"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a41ecae954ca2070c775c210b7dfd829"
+      "corroborationCount": 2,
+      "alertEventId": "91efb96925a494b143a8e6113c2807dd"
     },
     {
       "title": "মহাসড়কে বিশ্ববিদ্যালয়ের বাসে আগুন দেওয়ার চেষ্টা, অল্পের জন্য বাঁচলেন শিক্ষার্থীরা",
@@ -1429,48 +1756,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "adf26ffcf553c6c317717d404bcbc0e5"
-    },
-    {
-      "title": "গোপালগঞ্জের কাশিয়ানীতে কালনা সেতুতে আগুন নিষিদ্ধ ছাত্রলীগের | Channel 24",
-      "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
-      "link": "https://www.youtube.com/shorts/TwgIQVhbbX0",
-      "publisherUrl": "https://www.youtube.com/shorts/TwgIQVhbbX0",
-      "publishedAt": "2026-11-18T16:54:25+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/shorts/TwgIQVhbbX0"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181117"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "গোপালগঞ্জের কাশিয়ানীতে কালনা সেতুতে আগুন নিষিদ্ধ ছাত্রলীগের | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/TwgIQVhbbX0"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
-          "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181117"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "9b80a8af8cc203d763a285569ec41157"
     },
     {
       "title": "আওয়ামী লীগের হামলায় নিহত বিএনপির দুই নেতার পরিচয় মিলেছে",
@@ -1628,37 +1913,6 @@
       "alertEventId": "dc6cb40f12589af8477d57f0996bf28c"
     },
     {
-      "title": "গোপালগঞ্জে বেশ কয়েকটি দোকানে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের আগুন | Channel 24",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/2mWRbXOCusA",
-      "publisherUrl": "https://www.youtube.com/shorts/2mWRbXOCusA",
-      "publishedAt": "2026-11-18T16:30:52+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/shorts/2mWRbXOCusA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "গোপালগঞ্জে বেশ কয়েকটি দোকানে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের আগুন | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/2mWRbXOCusA"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e79ed4041b3433834875f2e319e7976a"
-    },
-    {
       "title": "খুলনায় আদালতের বারান্দায় ককটেল নিক্ষেপ",
       "summary": "খুলনায় আদালতের বারান্দায় ককটেল নিক্ষেপ",
       "link": "https://www.jagonews24.com/country/news/1181128",
@@ -1688,6 +1942,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a7490612157344a07c4de87d9d27b9a"
+    },
+    {
+      "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
+      "summary": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671755",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671755",
+      "publishedAt": "2026-11-18T15:38:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671755"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181117"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
+          "summary": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671755"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+          "summary": "গোপালগঞ্জের এমপি বাবরের ক্লিনিকে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181117"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "aae4bb46f1d3d311e148442622c8b965"
     },
     {
       "title": "গোপালগঞ্জে আরেক এমপির বাড়িতে আগুন, ভবনে আছে হাসপাতাল",
@@ -1814,48 +2110,6 @@
       "alertEventId": "0b8df66fc3744f57c2dd09f727b11c83"
     },
     {
-      "title": "বান্দরবানে বাসের ধাক্কায় পুলিশ কনস্টেবল নিহত",
-      "summary": "বান্দরবানের লামা-আলীকদম উপজেলা সড়কের শিবাতলী এলাকায় বাসের ধাক্কায় মোটরসাইকেল আরোহী পুলিশ সদস্যের মৃত্যু হয়েছে। নিহতের নাম সাজু চক্রবর্তী (৩৫)। তিনি আলীকদম থানায় পুলিশ কনস্টেবল কর্মরত ছিলেন। আজ বুধবার বিকেলে আলীকদম উপজেলার শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। আইনশৃংখলা বাহিনী ও স্থানীয়রা জানায়, কক্সবাজার থেকে আলীকদম উপজেলায় কর্মস্থলে মোটরসাইকেল চালিয়ে ফিরছিলেন। লামা-আলীকদম সড়কের শিবাতলী এলাকায় পৌঁছালে বিপরীত […] The post বান্দরবানে বাসের ধাক্কায় পুলিশ কনস্টেবল নিহত appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/police-constable-killed-in-bus-collision-in-bandarban/",
-      "publisherUrl": "https://dainikazadi.net/police-constable-killed-in-bus-collision-in-bandarban/",
-      "publishedAt": "2026-11-18T14:55:39+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi",
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/police-constable-killed-in-bus-collision-in-bandarban/"
-        },
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161103"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "বান্দরবানে বাসের ধাক্কায় পুলিশ কনস্টেবল নিহত",
-          "summary": "বান্দরবানের লামা-আলীকদম উপজেলা সড়কের শিবাতলী এলাকায় বাসের ধাক্কায় মোটরসাইকেল আরোহী পুলিশ সদস্যের মৃত্যু হয়েছে। নিহতের নাম সাজু চক্রবর্তী (৩৫)। তিনি আলীকদম থানায় পুলিশ কনস্টেবল কর্মরত ছিলেন। আজ বুধবার বিকেলে আলীকদম উপজেলার শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। আইনশৃংখলা বাহিনী ও স্থানীয়রা জানায়, কক্সবাজার থেকে আলীকদম উপজেলায় কর্মস্থলে মোটরসাইকেল চালিয়ে ফিরছিলেন। লামা-আলীকদম সড়কের শিবাতলী এলাকায় পৌঁছালে বিপরীত […] The post বান্দরবানে বাসের ধাক্কায় পুলিশ কনস্টেবল নিহত appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/police-constable-killed-in-bus-collision-in-bandarban/"
-        },
-        {
-          "name": "Chattogram News",
-          "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
-          "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161103"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "c6d32efa0c7385393c49e098dbff4d4b"
-    },
-    {
       "title": "সাবেক মন্ত্রী রেজাউল করিমের দুই বাড়িতে হামলা-অগ্নিসংযোগ",
       "summary": "পিরোজপুরের নাজিরপুরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক মৎস্য ও প্রাণিসম্পদমন্ত্রী শ ম রেজাউল করিমের দুটি বাড়িতে ভাঙচুর ও অগ্নিসংযোগ করা হয়েছে। বুধবার (১৮ নভেম্বর) সন্ধ্যা সাড়ে ৬টা থেকে ৭টার মধ্যে উপজেলার মাটিভাঙা ইউনিয়নের তারাবুনিয়া এবং উপজেলা সদর এলাকায় এ ঘটনা ঘটে। শ ম রেজাউল করিম কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কেন্দ্রীয় কমিটির সাবেক আইনবিষয়ক সম্পাদক। পুলিশ ও স্থানীয় সূত্রে জানা গেছে,... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/barishal/981794/%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%B0%E0%A7%87%E0%A6%9C%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%95%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87",
@@ -1980,20 +2234,25 @@
       "alertEventId": "6a6ebd2c6eb00ca864556d8ad10a04f2"
     },
     {
-      "title": "বগুড়ায় উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণ",
-      "summary": "বগুড়া মহানগরীর মাটিডালি এলাকায় সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার রাত ১১টার দিকে কয়েকজন দুর্বৃত্ত মোটরসাইকেলে এসে ককটেল বিস্ফোরণ ঘটিয়ে পালিয়ে যায়। পুলিশ ও স্থানীয় সূত্রে জানা যায়, মঙ্গলবার রাত ১১টার দিকে তিনজন দুর্বৃত্ত মোটরসাইকেলে করে সদর উপজেলা পরিষদের সামনে আসে। এ সময় তাদের একজন সদর উপজেলা পরিষদ লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এরপরই মোটরসাইকেলে করে দ্রুত... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publishedAt": "2026-11-18T13:30:06+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
+      "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
+      "link": "https://chattogramnews.com/archives/161103",
+      "publisherUrl": "https://chattogramnews.com/archives/161103",
+      "publishedAt": "2026-11-18T13:22:46+00:00",
+      "source": "Chattogram News",
+      "publisherName": "Chattogram News",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Chattogram News",
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161103"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
       "category": "Bangladesh",
@@ -2001,30 +2260,36 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "বগুড়ায় উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণ",
-          "summary": "বগুড়া মহানগরীর মাটিডালি এলাকায় সদর উপজেলা পরিষদের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। মঙ্গলবার রাত ১১টার দিকে কয়েকজন দুর্বৃত্ত মোটরসাইকেলে এসে ককটেল বিস্ফোরণ ঘটিয়ে পালিয়ে যায়। পুলিশ ও স্থানীয় সূত্রে জানা যায়, মঙ্গলবার রাত ১১টার দিকে তিনজন দুর্বৃত্ত মোটরসাইকেলে করে সদর উপজেলা পরিষদের সামনে আসে। এ সময় তাদের একজন সদর উপজেলা পরিষদ লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এরপরই মোটরসাইকেলে করে দ্রুত... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/981775/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%89%E0%A6%AA%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B7%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+          "name": "Chattogram News",
+          "title": "আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত",
+          "summary": "বান্দরবানের আলীকদমে লোকাল বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে সাজু চক্রবর্তী (৪১) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। বুধবার (১৮ নভেম্বর) বিকেল ৩টা ২০ মিনিটের দিকে উপজেলার ২ নম্বর চৈক্ষ্যং ইউনিয়নের ১ নম্বর ওয়ার্ডের শিবাতলী এলাকায় এ দুর্ঘটনা ঘটে। তিনি আলীকদম থানায় কর্মরত ছিলেন। নিহত সাজু চক্রবর্তী আলীকদম থানার কনস্টেবল (নম্বর-৫৩১) হিসেবে দায়িত্ব পালন করছিলেন। তাঁর […] The post আলীকদমে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষে পুলিশ কনস্টেবল নিহত appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161103"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত - Dhaka Tribune Bangla",
+          "summary": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "8b5882c8145aa3e71f2f3ad9d94f57af"
+      "corroborationCount": 2,
+      "alertEventId": "ee252dff6a6b1ca71d6cf0422027907a"
     },
     {
-      "title": "পল্লবীতে ট্রাস্ট পরিবহনের বাসে আগুন",
-      "summary": "রাজধানীর পল্লবীর সাগুফতা ফুড কার্টের সামনে ট্রাস্ট পরিবহনের একটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) বিকাল ৫টার দিকে এই ঘটনা ঘটে। পল্লবী থানার উপপরিদর্শক (এসআই) মোহাম্মদ হাসিবুল জানান, ট্রাস্ট পরিবহনের একটি বাস (ঢাকা মেট্রো-ব-১১-৭৭৯৪) রাস্তার পাশে দাঁড় করিয়ে সাগুফতার সামনে কাজ করাছিলেন চালক মো. সাদ্দাম। এ সময় দুর্বৃত্তরা পিছনে বাসের সিটে আগুন ধরিয়ে পালিয়ে যায়। তিনি আরও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/981767/%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/981767/%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-18T13:10:27+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "উপযুক্ত সময় এসেছে গোপালগঞ্জের নাম পাল্টে ফেলার- অ্যাড. সলিম উল্যা সেলিম",
+      "summary": "পতিত ফ্যাসিস্ট, নিষিদ্ধ ঘোষিত আওয়ামী লীগের দেশবিরোধী ষড়যন্ত্র, আগুন সন্ত্রাস ও নৈরাজ্য সৃষ্টির প্রতিবাদে বিশাল বিক্ষোভ মিছিল ও সমাবেশ করেছে চাঁদপুর জেলা যুবদল। বুধবার (১৮ নভেম্বর) বিকেলে সাড়ে ৩টায় চাঁদপুর জেলা বিএনপি কার্যালয় প্রাঙ্গনে থেকে বিক্ষোভ মিছিল বের করা হয়। মিছিলটি শহরের প্রধান প্রধান সড়ক প্রদক্ষিণ করে পুনরায় জেলা বিএনপি কার্যালয়ে গিয়ে শেষ হয়। এর ...",
+      "link": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/",
+      "publisherUrl": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/",
+      "publishedAt": "2026-11-18T13:05:46+00:00",
+      "source": "Chandpur Times",
+      "publisherName": "Chandpur Times",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Chandpur Times"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/981767/%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "name": "Chandpur Times",
+          "url": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/"
         }
       ],
       "category": "Bangladesh",
@@ -2032,200 +2297,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "পল্লবীতে ট্রাস্ট পরিবহনের বাসে আগুন",
-          "summary": "রাজধানীর পল্লবীর সাগুফতা ফুড কার্টের সামনে ট্রাস্ট পরিবহনের একটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) বিকাল ৫টার দিকে এই ঘটনা ঘটে। পল্লবী থানার উপপরিদর্শক (এসআই) মোহাম্মদ হাসিবুল জানান, ট্রাস্ট পরিবহনের একটি বাস (ঢাকা মেট্রো-ব-১১-৭৭৯৪) রাস্তার পাশে দাঁড় করিয়ে সাগুফতার সামনে কাজ করাছিলেন চালক মো. সাদ্দাম। এ সময় দুর্বৃত্তরা পিছনে বাসের সিটে আগুন ধরিয়ে পালিয়ে যায়। তিনি আরও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/981767/%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B9%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "name": "Chandpur Times",
+          "title": "উপযুক্ত সময় এসেছে গোপালগঞ্জের নাম পাল্টে ফেলার- অ্যাড. সলিম উল্যা সেলিম",
+          "summary": "পতিত ফ্যাসিস্ট, নিষিদ্ধ ঘোষিত আওয়ামী লীগের দেশবিরোধী ষড়যন্ত্র, আগুন সন্ত্রাস ও নৈরাজ্য সৃষ্টির প্রতিবাদে বিশাল বিক্ষোভ মিছিল ও সমাবেশ করেছে চাঁদপুর জেলা যুবদল। বুধবার (১৮ নভেম্বর) বিকেলে সাড়ে ৩টায় চাঁদপুর জেলা বিএনপি কার্যালয় প্রাঙ্গনে থেকে বিক্ষোভ মিছিল বের করা হয়। মিছিলটি শহরের প্রধান প্রধান সড়ক প্রদক্ষিণ করে পুনরায় জেলা বিএনপি কার্যালয়ে গিয়ে শেষ হয়। এর ...",
+          "url": "https://chandpurtimes.com/%e0%a6%97%e0%a7%8b%e0%a6%aa%e0%a6%be%e0%a6%b2%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87%e0%a6%b0-%e0%a6%a8%e0%a6%be%e0%a6%ae/"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "f9bf0e92a3236681c8ee11e29ce73e54"
-    },
-    {
-      "title": "বিশ্ববিদ্যালয়ের ৫ কর্মকর্তাকে মারধর করে প্রক্টর অফিসে নিয়ে গেলেন ছাত্রদল নেতারা",
-      "summary": "বরিশাল বিশ্ববিদ্যালয়ে (ববি) নিষিদ্ধ ঘোষিত ছাত্রলীগ ও আওয়ামী লীগের রাজনীতির সঙ্গে সম্পৃক্ততার অভিযোগে পাঁচ কর্মকর্তাকে মারধর করে প্রক্টর অফিসে নিয়ে যাওয়ার অভিযোগ উঠেছে। এ সময় ববির বিভিন্ন দফতরের কর্মকর্তা-কর্মচারীদের মাঝে আতঙ্ক বিরাজ করে। তারা কক্ষ ছেড়ে অন্যত্র আশ্রয় নেন। বরিশাল বিশ্ববিদ্যালয় ছাত্রদল সভাপতি মোশারফের নেতৃত্বে এ হামলা চালানো হয়। এ সময় বিশ্ববিদ্যালয় ছাত্রদলের অপর নেতারাও তার... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/barishal/981766/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0-%E0%A7%AB-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%A7%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%9F%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/barishal/981766/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0-%E0%A7%AB-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%A7%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%9F%E0%A6%B0",
-      "publishedAt": "2026-11-18T13:09:32+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/barishal/981766/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0-%E0%A7%AB-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%A7%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%9F%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "বিশ্ববিদ্যালয়ের ৫ কর্মকর্তাকে মারধর করে প্রক্টর অফিসে নিয়ে গেলেন ছাত্রদল নেতারা",
-          "summary": "বরিশাল বিশ্ববিদ্যালয়ে (ববি) নিষিদ্ধ ঘোষিত ছাত্রলীগ ও আওয়ামী লীগের রাজনীতির সঙ্গে সম্পৃক্ততার অভিযোগে পাঁচ কর্মকর্তাকে মারধর করে প্রক্টর অফিসে নিয়ে যাওয়ার অভিযোগ উঠেছে। এ সময় ববির বিভিন্ন দফতরের কর্মকর্তা-কর্মচারীদের মাঝে আতঙ্ক বিরাজ করে। তারা কক্ষ ছেড়ে অন্যত্র আশ্রয় নেন। বরিশাল বিশ্ববিদ্যালয় ছাত্রদল সভাপতি মোশারফের নেতৃত্বে এ হামলা চালানো হয়। এ সময় বিশ্ববিদ্যালয় ছাত্রদলের অপর নেতারাও তার... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/barishal/981766/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0-%E0%A7%AB-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%B0%E0%A6%A7%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%9F%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9a7d42d27df25cb91bf8c1e662852f4f"
-    },
-    {
-      "title": "বরিশালে গ্রামীণ ব্যাংক কার্যালয়সহ দুই জায়গায় আগুন - Amader Shomoy",
-      "summary": "বরিশালে গ্রামীণ ব্যাংক কার্যালয়সহ দুই জায়গায় আগুন Amader Shomoy",
-      "link": "https://www.dainikamadershomoy.com/details/01a1eeb24fcb",
-      "publisherUrl": "https://www.dainikamadershomoy.com/details/01a1eeb24fcb",
-      "publishedAt": "2026-11-18T12:51:24+00:00",
-      "source": "Amader Shomoy",
-      "publisherName": "Amader Shomoy",
-      "sourceEvidence": [
-        "Amader Shomoy"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Amader Shomoy",
-          "url": "https://www.dainikamadershomoy.com/details/01a1eeb24fcb"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Amader Shomoy",
-          "title": "বরিশালে গ্রামীণ ব্যাংক কার্যালয়সহ দুই জায়গায় আগুন - Amader Shomoy",
-          "summary": "বরিশালে গ্রামীণ ব্যাংক কার্যালয়সহ দুই জায়গায় আগুন Amader Shomoy",
-          "url": "https://www.dainikamadershomoy.com/details/01a1eeb24fcb"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da44d1c557221830357d46711d620b91"
-    },
-    {
-      "title": "রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল",
-      "summary": "রাতের আঁধারে চকলেট বোমা বিস্ফোরণ ঘটিয়ে বা মানুষকে হয়রানি করে গণতান্ত্রিক আন্দোলন হয় না বলে মন্তব্য করেছেন ভূমি ও পার্বত্য চট্টগ্রাম বিষয়ক প্রতিমন্ত্রী ব্যারিস্টার মীর মোহাম্মদ হেলাল উদ্দীন। তিনি বলেছেন, আওয়ামী লীগের রাজনৈতিক কর্মকাণ্ড রাজপথে মোকাবিলা করা হবে। আজ বুধবার (১৮ নভেম্বর) দুপুরে চট্টগ্রাম বিশ্ববিদ্যালয়ের হীরকজয়ন্তী অনুষ্ঠানে গণমাধ্যমকর্মীদের বিভিন্ন প্রশ্নের জবাবে তিনি এসব কথা বলেন। […] The post রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/",
-      "publisherUrl": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/",
-      "publishedAt": "2026-11-18T12:50:25+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল",
-          "summary": "রাতের আঁধারে চকলেট বোমা বিস্ফোরণ ঘটিয়ে বা মানুষকে হয়রানি করে গণতান্ত্রিক আন্দোলন হয় না বলে মন্তব্য করেছেন ভূমি ও পার্বত্য চট্টগ্রাম বিষয়ক প্রতিমন্ত্রী ব্যারিস্টার মীর মোহাম্মদ হেলাল উদ্দীন। তিনি বলেছেন, আওয়ামী লীগের রাজনৈতিক কর্মকাণ্ড রাজপথে মোকাবিলা করা হবে। আজ বুধবার (১৮ নভেম্বর) দুপুরে চট্টগ্রাম বিশ্ববিদ্যালয়ের হীরকজয়ন্তী অনুষ্ঠানে গণমাধ্যমকর্মীদের বিভিন্ন প্রশ্নের জবাবে তিনি এসব কথা বলেন। […] The post রাত দুইটায় চকলেট বোমা মেরে গণতান্ত্রিক আন্দোলন হয় না: মীর হেলাল appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/mir-helal-chocolate-bomb-democratic-movement/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "99cd43fbcb608b8e91e6e71689e4d4ed"
-    },
-    {
-      "title": "নেত্রকোনায় বিএনপির কার্যালয়ে আগুন, পুড়ে ছাই পাশের দোকানও",
-      "summary": "নেত্রকোনার বারহাট্টা উপজেলার চিরাম ইউনিয়ন বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে কার্যালয়টির পাশাপাশি পাশের একটি লাকড়ির দোকানও পুড়ে ছাই হয়ে গেছে। বুধবার (১৮ নভেম্বর) ভোর ৪টার দিকে উপজেলার চিরাম ইউনিয়নের বামনগাঁও বাজারে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ভোরে একদল দুর্বৃত্ত চিরাম ইউনিয়ন বিএনপির কার্যালয়ে আগুন দেয়। মুহূর্তের মধ্যেই আগুন ছড়িয়ে পড়ে কার্যালয়টির পাশাপাশি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-18T12:37:17+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "নেত্রকোনায় বিএনপির কার্যালয়ে আগুন, পুড়ে ছাই পাশের দোকানও",
-          "summary": "নেত্রকোনার বারহাট্টা উপজেলার চিরাম ইউনিয়ন বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগ করেছে দুর্বৃত্তরা। এতে কার্যালয়টির পাশাপাশি পাশের একটি লাকড়ির দোকানও পুড়ে ছাই হয়ে গেছে। বুধবার (১৮ নভেম্বর) ভোর ৪টার দিকে উপজেলার চিরাম ইউনিয়নের বামনগাঁও বাজারে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ভোরে একদল দুর্বৃত্ত চিরাম ইউনিয়ন বিএনপির কার্যালয়ে আগুন দেয়। মুহূর্তের মধ্যেই আগুন ছড়িয়ে পড়ে কার্যালয়টির পাশাপাশি... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/981762/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9b4acd04510e68f2271208fb5b931763"
-    },
-    {
-      "title": "যুবদল পাল্টা অগ্নিসংযোগ করলে আ.লীগের নেতাকর্মীরা নিরাপদ থাকবে না: মোনায়েম মুন্না",
-      "summary": "জাতীয়তাবাদী যুবদলের সভাপতি আবদুল মোনায়েম মুন্না বলেছেন, আওয়ামী লীগ রাতের আঁধারে চোরের মতো একজন সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ করেছে। যুবদল পাল্টা অগ্নিসংযোগ শুরু করলে আওয়ামী লীগের কোনও নেতাকর্মী নিরাপদে থাকতে পারবে না। বাড়িঘরে থাকতে পারবে না। বুধবার (১৮ নভেম্বর) বিকালে নয়াপল্টনে পরিকল্পিত সন্ত্রাস ও নৈরাজ্যের মাধ্যমে দেশকে অস্থিতিশীল করার ষড়যন্ত্রের প্রতিবাদে ঢাকা মহানগর দক্ষিণ যুবদলের বিক্ষোভ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE",
-      "publishedAt": "2026-11-18T12:28:24+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "যুবদল পাল্টা অগ্নিসংযোগ করলে আ.লীগের নেতাকর্মীরা নিরাপদ থাকবে না: মোনায়েম মুন্না",
-          "summary": "জাতীয়তাবাদী যুবদলের সভাপতি আবদুল মোনায়েম মুন্না বলেছেন, আওয়ামী লীগ রাতের আঁধারে চোরের মতো একজন সংসদ সদস্যের বাড়িতে অগ্নিসংযোগ করেছে। যুবদল পাল্টা অগ্নিসংযোগ শুরু করলে আওয়ামী লীগের কোনও নেতাকর্মী নিরাপদে থাকতে পারবে না। বাড়িঘরে থাকতে পারবে না। বুধবার (১৮ নভেম্বর) বিকালে নয়াপল্টনে পরিকল্পিত সন্ত্রাস ও নৈরাজ্যের মাধ্যমে দেশকে অস্থিতিশীল করার ষড়যন্ত্রের প্রতিবাদে ঢাকা মহানগর দক্ষিণ যুবদলের বিক্ষোভ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/politics/bnp/981758/%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%A6%E0%A6%B2-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "968839d2e90ac91c21e505207bc6f672"
-    },
-    {
-      "title": "ট্রাফিক পুলিশ বক্সে আগুন, জড়িতদের খুঁজছে পুলিশ",
-      "summary": "চট্টগ্রাম নগরের মুরাদপুরে ট্রাফিক পুলিশের একটি বক্সে আগুন দিয়েছে দুর্বৃত্তরা। মঙ্গলবার দিবাগত রাত ১টার দিকে এ ঘটনা ঘটে। তবে বক্সের জানালা বন্ধ থাকায় আগুন ভেতরে ছড়াতে পারেনি। এতে বড় ধরনের ক্ষয়ক্ষতি হয়নি এবং কেউ হতাহত হয়নি। তবে অগ্নিসংযোগের ঘটনায় জড়িতদের খুঁজছে পুলিশ। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১টার দিকে কয়েকজন ব্যক্তি এসে ট্রাফিক পুলিশ বক্সটিতে আগুন ধরিয়ে দ্রুত ঘটনাস্থল ত্যাগ করে। পরে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/981748/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%9C%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A6%9C%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/981748/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%9C%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A6%9C%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publishedAt": "2026-11-18T11:58:44+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/981748/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%9C%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A6%9C%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ট্রাফিক পুলিশ বক্সে আগুন, জড়িতদের খুঁজছে পুলিশ",
-          "summary": "চট্টগ্রাম নগরের মুরাদপুরে ট্রাফিক পুলিশের একটি বক্সে আগুন দিয়েছে দুর্বৃত্তরা। মঙ্গলবার দিবাগত রাত ১টার দিকে এ ঘটনা ঘটে। তবে বক্সের জানালা বন্ধ থাকায় আগুন ভেতরে ছড়াতে পারেনি। এতে বড় ধরনের ক্ষয়ক্ষতি হয়নি এবং কেউ হতাহত হয়নি। তবে অগ্নিসংযোগের ঘটনায় জড়িতদের খুঁজছে পুলিশ। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১টার দিকে কয়েকজন ব্যক্তি এসে ট্রাফিক পুলিশ বক্সটিতে আগুন ধরিয়ে দ্রুত ঘটনাস্থল ত্যাগ করে। পরে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/981748/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%9C%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A6%9C%E0%A6%9B%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fd035ea36eec2dfbe509a4088d1aefb1"
+      "alertEventId": "2b6960ca9260047bb7c33092b8edb1a8"
     },
     {
       "title": "সিলেটে চা বাগান থেকে বিস্ফোরক উদ্ধার - United News of Bangladesh",
@@ -2290,37 +2369,6 @@
       "alertEventId": "b2a1669781448abb26d78fa4eaa84ddf"
     },
     {
-      "title": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত - Dhaka Tribune Bangla",
-      "summary": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-18T11:19:42+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত - Dhaka Tribune Bangla",
-          "summary": "বান্দরবানে সড়ক দুর্ঘটনায় পুলিশ সদস্য নিহত Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113359/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "48cbec4a9729fe7d9d5fbae719f26321"
-    },
-    {
       "title": "থানায় হামলা-অগ্নিসংযোগের পর গোপালগঞ্জে ২১ প্লাটুন বিজিবি মোতায়েন - United News of Bangladesh",
       "summary": "থানায় হামলা-অগ্নিসংযোগের পর গোপালগঞ্জে ২১ প্লাটুন বিজিবি মোতায়েন United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A7%A8%E0%A7%A7-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%9F%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%A4%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%A8/116577",
@@ -2350,37 +2398,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "69b61c6ea9d69474eedadd060be723e0"
-    },
-    {
-      "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire - United News of Bangladesh",
-      "summary": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB",
-      "publishedAt": "2026-11-18T10:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire - United News of Bangladesh",
-          "summary": "ক্ষতিগ্রস্তদের নগদ সহায়তা ও গৃহনির্মাণ করে দিবে সরকার: আব্দুর রহমান সানি | Mohakhali | Fire United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9983/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%97%E0%A6%A6-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%83%E0%A6%B9%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BF%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%95%E0%A6%BE%E0%A6%B0:-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A6%BF---Mohakhali---Fire---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b756d61062306ea4e658143ae8a6d7d9"
     },
     {
       "title": "টুঙ্গিপাড়ায় পুলিশ-বিজিবি-এমপির গাড়িসহ ৩০ যানবাহনে আগুন - Dhaka Tribune Bangla",
@@ -2416,8 +2433,8 @@
     {
       "title": "গাজীপুরে ফ্লাইওভারে বো/মাসদৃশ বস্তু, সঙ্গে কাগজে সতর্কবার্তা | Bomb Scare - United News of Bangladesh",
       "summary": "গাজীপুরে ফ্লাইওভারে বো/মাসদৃশ বস্তু, সঙ্গে কাগজে সতর্কবার্তা | Bomb Scare United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB",
+      "link": "https://www.unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB",
+      "publisherUrl": "https://www.unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB",
       "publishedAt": "2026-11-18T09:11:00+00:00",
       "source": "UNB",
       "publisherName": "UNB",
@@ -2427,7 +2444,7 @@
       "sourceLinks": [
         {
           "name": "UNB",
-          "url": "https://unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB"
+          "url": "https://www.unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB"
         }
       ],
       "category": "Bangladesh",
@@ -2438,11 +2455,42 @@
           "name": "UNB",
           "title": "গাজীপুরে ফ্লাইওভারে বো/মাসদৃশ বস্তু, সঙ্গে কাগজে সতর্কবার্তা | Bomb Scare - United News of Bangladesh",
           "summary": "গাজীপুরে ফ্লাইওভারে বো/মাসদৃশ বস্তু, সঙ্গে কাগজে সতর্কবার্তা | Bomb Scare United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB"
+          "url": "https://www.unb.com.bd/video/9982/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81,-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%97%E0%A6%9C%E0%A7%87-%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE---Bomb-Scare---UNB"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "e148466a8ecdd7fc629cf37a1e01f34c"
+    },
+    {
+      "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
+      "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB",
+      "publishedAt": "2026-11-18T09:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire - United News of Bangladesh",
+          "summary": "মহাখালীর সাততলা বস্তির আগুন নিয়ন্ত্রণে আনল ফায়ার সার্ভিসের ৮ ইউনিট | Mohakhali Fire United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9980/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%A4%E0%A6%A4%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A7%AE-%E0%A6%87%E0%A6%89%E0%A6%A8%E0%A6%BF%E0%A6%9F---Mohakhali-Fire---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c72e093b1b68340b0bb0dbea7f0e50ce"
     },
     {
       "title": "গাজীপুরে পুলিশের গাড়িতে আগুন, অনির্দিষ্টকালের জন্য বন্ধ ৩৯ কারখানা - United News of Bangladesh",
@@ -2474,37 +2522,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a82a1b3c6bdf2efed067945e19cb610"
-    },
-    {
-      "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরোনো বাড়িতে আ/গু/ন | Former Minister | House Fire - United News of Bangladesh",
-      "summary": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরোনো বাড়িতে আ/গু/ন | Former Minister | House Fire United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9979/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Former-Minister---House-Fire---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9979/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Former-Minister---House-Fire---UNB",
-      "publishedAt": "2026-11-18T08:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9979/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Former-Minister---House-Fire---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরোনো বাড়িতে আ/গু/ন | Former Minister | House Fire - United News of Bangladesh",
-          "summary": "গাজীপুরে সাবেক মন্ত্রী মোজাম্মেল হকের পুরোনো বাড়িতে আ/গু/ন | Former Minister | House Fire United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9979/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80-%E0%A6%AE%E0%A7%8B%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B2-%E0%A6%B9%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Former-Minister---House-Fire---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fd9ed6eb9e52a57b2daf5d49f969adad"
     },
     {
       "title": "কুমিল্লায় সাবেক সংসদ সদস্য বাহারের ব্যক্তিগত অফিসে অগ্নিসংযোগ - Dhaka Tribune Bangla",
@@ -2611,6 +2628,37 @@
       "alertEventId": "f574377ff7263e81f8cbda8023216baa"
     },
     {
+      "title": "রংপুরে ক্যাডেট কোচিং সেন্টারের বাসে দুর্বৃত্তদের আগুন - দৈনিক ইনকিলাব",
+      "summary": "রংপুরে ক্যাডেট কোচিং সেন্টারের বাসে দুর্বৃত্তদের আগুন দৈনিক ইনকিলাব",
+      "link": "https://dailyinqilab.com/bangladesh/news/964099",
+      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/964099",
+      "publishedAt": "2026-11-18T06:30:05+00:00",
+      "source": "দৈনিক ইনকিলাব",
+      "publisherName": "দৈনিক ইনকিলাব",
+      "sourceEvidence": [
+        "দৈনিক ইনকিলাব"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/964099"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "রংপুরে ক্যাডেট কোচিং সেন্টারের বাসে দুর্বৃত্তদের আগুন - দৈনিক ইনকিলাব",
+          "summary": "রংপুরে ক্যাডেট কোচিং সেন্টারের বাসে দুর্বৃত্তদের আগুন দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/964099"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4565aaef4110979b7f3a9e070968726a"
+    },
+    {
       "title": "কাফরুলে পুলিশ-শ্রমিক সংঘর্ষ, সাউন্ড গ্রেনেড নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "কাফরুলে পুলিশ-শ্রমিক সংঘর্ষ, সাউন্ড গ্রেনেড নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113327/%E0%A6%95%E0%A6%BE%E0%A6%AB%E0%A6%B0%E0%A7%81%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1",
@@ -2704,42 +2752,11 @@
       "alertEventId": "ce3a830d2e1ba19cb20d1a91584764a2"
     },
     {
-      "title": "হাজীগঞ্জে বালুবাহী ট্রাক ও মোটরসাইকেলের সংঘর্ষে যুবক নিহত - Chandpur Times",
-      "summary": "হাজীগঞ্জে বালুবাহী ট্রাক ও মোটরসাইকেলের সংঘর্ষে যুবক নিহত Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80/",
-      "publishedAt": "2026-11-18T05:02:39+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "হাজীগঞ্জে বালুবাহী ট্রাক ও মোটরসাইকেলের সংঘর্ষে যুবক নিহত - Chandpur Times",
-          "summary": "হাজীগঞ্জে বালুবাহী ট্রাক ও মোটরসাইকেলের সংঘর্ষে যুবক নিহত Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f34c9fa3678424dec22b1370ef1671ea"
-    },
-    {
-      "title": "ঘূর্ণিঝড়ের প্রভাবে মেঘে ঢাকা উপকূলের আকাশ, ৪ বন্দরে সতর্কতা - Risingbd.com",
-      "summary": "ঘূর্ণিঝড়ের প্রভাবে মেঘে ঢাকা উপকূলের আকাশ, ৪ বন্দরে সতর্কতা Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671642",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671642",
-      "publishedAt": "2026-11-18T04:41:00+00:00",
+      "title": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671645",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671645",
+      "publishedAt": "2026-11-18T04:54:00+00:00",
       "source": "Risingbd.com",
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
@@ -2748,7 +2765,7 @@
       "sourceLinks": [
         {
           "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671642"
+          "url": "https://www.risingbd.com/bangladesh/news/671645"
         }
       ],
       "category": "Bangladesh",
@@ -2757,44 +2774,13 @@
       "sourceStories": [
         {
           "name": "Risingbd.com",
-          "title": "ঘূর্ণিঝড়ের প্রভাবে মেঘে ঢাকা উপকূলের আকাশ, ৪ বন্দরে সতর্কতা - Risingbd.com",
-          "summary": "ঘূর্ণিঝড়ের প্রভাবে মেঘে ঢাকা উপকূলের আকাশ, ৪ বন্দরে সতর্কতা Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671642"
+          "title": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "রাজশাহীতে গ্রামীণ ব্যাংক ভবনে বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671645"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "5f04decdc24c000d6ff19227d258176b"
-    },
-    {
-      "title": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-18T03:00:00+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ঢাকা জেলা পুলিশ সুপারের বাসভবনের গেটে দুটি ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113312/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "208e0c913f771fe8e7f7946dcecc79c9"
+      "alertEventId": "49b2e10ba25a98984cdbda2ead995af1"
     }
   ]
 }
