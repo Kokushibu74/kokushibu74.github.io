@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T15:15:38.906134+00:00",
-  "updatedAt": "2026-11-19T15:15:38.906134+00:00",
+  "generatedAt": "2026-11-19T15:25:39.321830+00:00",
+  "updatedAt": "2026-11-19T15:25:39.321830+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -840,8 +840,74 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 49,
+  "candidateCount": 47,
   "alertItems": [
+    {
+      "title": "চট্টগ্রামে মোটরসাইকেল দুর্ঘটনায় দুইভাইসহ ৩ জনের মৃত্যু",
+      "summary": "চট্টগ্রামের হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে প্রাণ গেলো দুই ভাইসহ তিনজনের। এ ঘটনায় আহত হয়েছেন আরও অন্তত দুইজন। নিহতরা হলেন- হাটহাজারী উপজেলার ফরহাদাবাদ ইউনিয়নের ৯ নম্বর ওয়ার্ডের হায়দার আলী সিপাহী বাড়ির মো. হারুনের ছেলে ইফতেখার মাহমুদ তুষার (৩২) ও তার ছোট ভাই ইমতিয়াজ মাহমুদ ইরাত (২৮)। নিহত দুই ভাই কিছুদিন আগে প্রবাস থেকে দেশে ফিরেছিলেন। নিহত আরেকজন হলেন মো. ফাহিম (১৯)। তার বাড়িও... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-19T15:21:47+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চট্টগ্রামে মোটরসাইকেল দুর্ঘটনায় দুইভাইসহ ৩ জনের মৃত্যু",
+          "summary": "চট্টগ্রামের হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে প্রাণ গেলো দুই ভাইসহ তিনজনের। এ ঘটনায় আহত হয়েছেন আরও অন্তত দুইজন। নিহতরা হলেন- হাটহাজারী উপজেলার ফরহাদাবাদ ইউনিয়নের ৯ নম্বর ওয়ার্ডের হায়দার আলী সিপাহী বাড়ির মো. হারুনের ছেলে ইফতেখার মাহমুদ তুষার (৩২) ও তার ছোট ভাই ইমতিয়াজ মাহমুদ ইরাত (২৮)। নিহত দুই ভাই কিছুদিন আগে প্রবাস থেকে দেশে ফিরেছিলেন। নিহত আরেকজন হলেন মো. ফাহিম (১৯)। তার বাড়িও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9551dff775876504be7b342098fa47d9"
+    },
+    {
+      "title": "আ.লীগের কর্মসূচি ঘিরে ২৪ ঘণ্টায় চট্টগ্রাম-কক্সবাজারে যা ঘটল",
+      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ১৯ নভেম্বরের লকডাউন কর্মসূচিকে ঘিরে চট্টগ্রাম ও কক্সবাজারে কয়েকটি বিচ্ছিন্ন নাশকতা, ভাঙচুর ও সংঘাতের ঘটনা ঘটেছে। চট্টগ্রামের আনোয়ারায় ট্রাফিক পুলিশ বক্সে ভাঙচুর ও অগ্নিসংযোগ, তৈলারদ্বীপে ঝটিকা মিছিল ও সড়কে আগুন দিয়ে অবরোধের চেষ্টা এবং নগরের পাঁচলাইশে অধ্যাপক মুহাম্মদ ইউনূসের পৈতৃক বাড়িতে আগুন দেওয়ার ঘটনা ঘটেছে। কক্সবাজারের টেকনাফে স্বেচ্ছাসেবক দলের মিছিল লক্ষ্য […] The post আ.লীগের কর্মসূচি ঘিরে ২৪ ঘণ্টায় চট্টগ্রাম-কক্সবাজারে যা ঘটল appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/awami-league-lockdown-chattogram-coxsbazar/",
+      "publisherUrl": "https://dainikazadi.net/awami-league-lockdown-chattogram-coxsbazar/",
+      "publishedAt": "2026-11-19T15:16:51+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/awami-league-lockdown-chattogram-coxsbazar/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "আ.লীগের কর্মসূচি ঘিরে ২৪ ঘণ্টায় চট্টগ্রাম-কক্সবাজারে যা ঘটল",
+          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ১৯ নভেম্বরের লকডাউন কর্মসূচিকে ঘিরে চট্টগ্রাম ও কক্সবাজারে কয়েকটি বিচ্ছিন্ন নাশকতা, ভাঙচুর ও সংঘাতের ঘটনা ঘটেছে। চট্টগ্রামের আনোয়ারায় ট্রাফিক পুলিশ বক্সে ভাঙচুর ও অগ্নিসংযোগ, তৈলারদ্বীপে ঝটিকা মিছিল ও সড়কে আগুন দিয়ে অবরোধের চেষ্টা এবং নগরের পাঁচলাইশে অধ্যাপক মুহাম্মদ ইউনূসের পৈতৃক বাড়িতে আগুন দেওয়ার ঘটনা ঘটেছে। কক্সবাজারের টেকনাফে স্বেচ্ছাসেবক দলের মিছিল লক্ষ্য […] The post আ.লীগের কর্মসূচি ঘিরে ২৪ ঘণ্টায় চট্টগ্রাম-কক্সবাজারে যা ঘটল appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/awami-league-lockdown-chattogram-coxsbazar/",
+          "incidentDateText": "১৯ নভেম্বর",
+          "incidentTimeText": "রাত ১১টার দিকে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "চাতরী চৌমুহনী এলাকায়, চট্টগ্রাম, আনোয়ারা থানার, পাঁচলাইশ থানার, পথে অলিয়াবাদ এলাকায়, পর টেকনাফ পৌর এলাকায়"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8ceb11f9aae18bf8d1f9dca1e775b220"
+    },
     {
       "title": "জুলাই বনাম আওয়ামী লীগ ও ভারতীয় আধিপত্যবাদ: আসিফ মাহমুদ",
       "summary": "দেশের বর্তমান পরিস্থিতি নিয়ে সামাজিক যোগাযোগ মাধ্যমে পোস্ট করেছেন এনসিপির যুগ্ম সদস্য সচিব আসিফ মাহমুদ সজীব ভূঁইয়া। বৃহস্পতিবার (১৯ নভেম্বর) রাতে ওই পোস্টে আসিফ মাহমুদ লেখেন, জুলাই বনাম (VS) আওয়ামী লীগ+ভারতীয় আধিপত্যবাদ। এমন এক সময় তিনি এ পোস্ট দিলেন যখন গোপালগঞ্জসহ দেশের বিভিন্ন জেলায় বিএনপি ও এনসিপি নেতাদের বাড়িতে আগুন দেওয়া হয়েছে। পাল্টা-পাল্টি হামলায় কয়েকজন নিহত হওয়ারও খবর পাওয়া... বিস্তারিত",
@@ -1340,12 +1406,6 @@
           "url": "https://www.prothomalo.com/video/bangladesh/2eb6a06rj0"
         },
         {
-          "name": "Prothom Alo",
-          "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, থানায় আগুন",
-          "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/lseona9a8y"
-        },
-        {
           "name": "UNB",
           "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj - United News of Bangladesh",
           "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj United News of Bangladesh",
@@ -1511,37 +1571,6 @@
       "alertEventId": "8d1244f3676cdc127f162db20cddf455"
     },
     {
-      "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
-      "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594",
-      "publishedAt": "2026-11-19T10:29:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
-          "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "caf388a89bbb6f70fe295a82d8fa286e"
-    },
-    {
       "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
       "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
       "link": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
@@ -1664,37 +1693,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "712f4e942eff0868798497acfb7f483d"
-    },
-    {
-      "title": "মুকসুদপুর থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
-      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ঘোষিত লকডাউন কর্মসূচিকে কেন্দ্র করে গোপালগঞ্জজুড়ে বিভিন্ন এলাকায় উত্তেজনাকর পরিস্থিতি বিরাজ করছে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375",
-      "publishedAt": "2026-11-19T09:56:35+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "মুকসুদপুর থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
-          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ঘোষিত লকডাউন কর্মসূচিকে কেন্দ্র করে গোপালগঞ্জজুড়ে বিভিন্ন এলাকায় উত্তেজনাকর পরিস্থিতি বিরাজ করছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "08740499966de748571ba3262832da2f"
     },
     {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
@@ -2016,37 +2014,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ee8084e8b0b95024b901910e47466cd9"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে অগ্নিসংযোগ - Channel 24",
-      "summary": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে অগ্নিসংযোগ Channel 24",
-      "link": "https://www.channel24bd.tv/countries/article/359850/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://www.channel24bd.tv/countries/article/359850/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-19T06:12:00+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/359850/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে অগ্নিসংযোগ - Channel 24",
-          "summary": "গোপালগঞ্জে এমপি সেলিমের বাড়িতে অগ্নিসংযোগ Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/359850/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "70b17fc51b7a8b4d6bf4ffdfc1619ba9"
     },
     {
       "title": "খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন",
