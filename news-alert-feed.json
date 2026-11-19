@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T10:30:43.253324+00:00",
-  "updatedAt": "2026-11-19T10:30:43.253324+00:00",
+  "generatedAt": "2026-11-19T10:45:39.491244+00:00",
+  "updatedAt": "2026-11-19T10:45:39.491244+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24",
@@ -840,8 +840,116 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 59,
+  "candidateCount": 58,
   "alertItems": [
+    {
+      "title": "বাঁশখালীতে দুই সড়কে গাছ ফেলে অবরোধ, গ্রামীণ ব্যাংকের বাইরে আগুন",
+      "summary": "চট্টগ্রামের বাঁশখালীতে দুটি পৃথক সড়কে গাছ ফেলে যান চলাচলে বাধা সৃষ্টির চেষ্টা করা হয়েছে। একই সময় উপজেলার বৈলছড়ি গ্রামীণ ব্যাংকের একটি শাখার বাইরে আগুন দেওয়ার ঘটনা ঘটেছে...",
+      "link": "https://www.jagonews24.com/national/news/1181389",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1181389",
+      "publishedAt": "2026-11-19T10:43:18+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181389"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বাঁশখালীতে দুই সড়কে গাছ ফেলে অবরোধ, গ্রামীণ ব্যাংকের বাইরে আগুন",
+          "summary": "চট্টগ্রামের বাঁশখালীতে দুটি পৃথক সড়কে গাছ ফেলে যান চলাচলে বাধা সৃষ্টির চেষ্টা করা হয়েছে। একই সময় উপজেলার বৈলছড়ি গ্রামীণ ব্যাংকের একটি শাখার বাইরে আগুন দেওয়ার ঘটনা ঘটেছে...",
+          "url": "https://www.jagonews24.com/national/news/1181389"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "চট্টগ্রামে গাছ কেটে সড়ক অবরোধের চেষ্টা নিষিদ্ধঘোষিত ছাত্রলীগের, গ্রামীণ ব্যাংকের কার্যালয়ের বাইরে আগুন",
+          "summary": "চট্টগ্রামের বাঁশখালীর বৈলছড়ি গ্রামীণ ব্যাংকের শাখার বাইরের দেয়ালের পাশে পাতার স্তূপে আগুন দেয় দুর্বৃত্তরা। তবে এতে বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ।",
+          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj",
+          "incidentDateText": "১৯ নভেম্বর ২০২৬",
+          "locationText": "শেখেরখীল ইউনিয়নে, বৈলছড়ি গ্রাম"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "93193a4ebe8393573b4673111c9b4008"
+    },
+    {
+      "title": "চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর",
+      "summary": "কার্যক্রম নিষিদ্ধ চট্টগ্রাম মহানগর আওয়ামী লীগের সভাপতি মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
+      "publisherUrl": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
+      "publishedAt": "2026-11-19T10:33:23+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর",
+          "summary": "কার্যক্রম নিষিদ্ধ চট্টগ্রাম মহানগর আওয়ামী লীগের সভাপতি মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা ও ভাঙচুর করা হয়েছে। বুধবার দিবাগত রাতে নগরের দামপাড়া এলাকার পল্টন রোডে এ হামলার ঘটনা ঘটে। সিসিটিভিতে ধারণ করা এ ঘটনার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে। ভিডিওতে দেখা যায়, একদল যুবক লাঠিসোঁটা হাতে বাসভবনের ফটকে হামলা চালাচ্ছে। এ সময় তারা ভবন লক্ষ্য […] The post চট্টগ্রামে আ.লীগ নেতা মাহতাব উদ্দিন চৌধুরীর বাসভবনে হামলা, ভাঙচুর appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/attack-on-mahtab-uddin-chowdhury-residence-chattogram/",
+          "incidentDateText": "৫ আগস্ট",
+          "locationText": "এখন পর্যন্ত কেউ থানা, ভাঙচুর দামপাড়া চকবাজার থানা, চট্টগ্রাম"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8d1244f3676cdc127f162db20cddf455"
+    },
+    {
+      "title": "সিলেটে চার বাসে আগুন",
+      "summary": "সিলেট নগরের চালিবন্দর এলাকায় দাঁড়িয়ে থাকা চারটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। আগুনে তিনটি বাসের ব্যাপক ক্ষয়ক্ষতি হয়েছে। একটি আংশিক পুড়েছে...",
+      "link": "https://www.jagonews24.com/country/news/1181382",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181382",
+      "publishedAt": "2026-11-19T10:30:49+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181382"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "সিলেটে চার বাসে আগুন",
+          "summary": "সিলেট নগরের চালিবন্দর এলাকায় দাঁড়িয়ে থাকা চারটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। আগুনে তিনটি বাসের ব্যাপক ক্ষয়ক্ষতি হয়েছে। একটি আংশিক পুড়েছে...",
+          "url": "https://www.jagonews24.com/country/news/1181382"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "00a6b9b648e8e56fd90c7f89a1500e1e"
+    },
     {
       "title": "রংপুরের মিঠাপুকুরে প্রাথমিক বিদ্যালয়ে আগুন | DBC NEWS",
       "summary": "",
@@ -1071,11 +1179,7 @@
           "name": "Prothom Alo",
           "title": "মুকসুদপুর থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আওয়ামী লীগ",
           "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ঘোষিত লকডাউন কর্মসূচিকে কেন্দ্র করে গোপালগঞ্জজুড়ে বিভিন্ন এলাকায় উত্তেজনাকর পরিস্থিতি বিরাজ করছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375",
-          "incidentDateText": "১৯ নভেম্বর ২০২৬",
-          "incidentTimeText": "দুপুর ১২টার দিকে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "কর্মীরা থানায়, পরে তাঁরা থানা, পোস্ট অফিস মোড় এলাকায়"
+          "url": "https://www.prothomalo.com/bangladesh/district/y5y4r7c375"
         },
         {
           "name": "Bangla Tribune",
@@ -1117,37 +1221,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "37c54ce08ceb72aca88b83535b10b4b4"
-    },
-    {
-      "title": "রান্নাঘরে আ গু ন ধরাতেই বি স্ফো রণ, দগ্ধ মা-শিশুসহ ৫ | Dhaka | Gas | Fire Incident | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=dnOlHXuscKA",
-      "publisherUrl": "https://www.youtube.com/watch?v=dnOlHXuscKA",
-      "publishedAt": "2026-11-19T09:43:17+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=dnOlHXuscKA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "রান্নাঘরে আ গু ন ধরাতেই বি স্ফো রণ, দগ্ধ মা-শিশুসহ ৫ | Dhaka | Gas | Fire Incident | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=dnOlHXuscKA"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "edf5e6570dd04bb85a558f908e9208b5"
     },
     {
       "title": "রংপুরে পার্কিং করা বাসে আগুন",
@@ -1276,48 +1349,6 @@
       "alertEventId": "5202bf9bc826b9619412f46af23719d7"
     },
     {
-      "title": "দেশে প্রতিদিন ৭৪টি অগ্নিকাণ্ড, বছরে ক্ষতি ৫০০ কোটি টাকার বেশি! | Fire Incident in Bangladesh",
-      "summary": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB United News of Bangladesh",
-      "link": "https://www.youtube.com/watch?v=MIbDUX-nmT0",
-      "publisherUrl": "https://www.youtube.com/watch?v=MIbDUX-nmT0",
-      "publishedAt": "2026-11-19T09:03:59+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News",
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=MIbDUX-nmT0"
-        },
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "দেশে প্রতিদিন ৭৪টি অগ্নিকাণ্ড, বছরে ক্ষতি ৫০০ কোটি টাকার বেশি! | Fire Incident in Bangladesh",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=MIbDUX-nmT0"
-        },
-        {
-          "name": "UNB",
-          "title": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB - United News of Bangladesh",
-          "summary": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "bc4a1455d54629d598d6487fd0614ee2"
-    },
-    {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে হামলা–ভাঙচুর–আগুন",
       "summary": "আজ বেলা ১১টার দিকে কাশিয়ানী উপজেলার মহেশপুর ইউনিয়নের জয়নগর বাজারে মিছিল নিয়ে জড়ো হন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা।",
       "link": "https://www.prothomalo.com/bangladesh/district/uvplsms6jv",
@@ -1347,59 +1378,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "779504a5d4b4b2df961b66f62e2c6c29"
-    },
-    {
-      "title": "চট্টগ্রামে গাছ কেটে সড়ক অবরোধের চেষ্টা নিষিদ্ধঘোষিত ছাত্রলীগের, গ্রামীণ ব্যাংকের কার্যালয়ের বাইরে আগুন",
-      "summary": "চট্টগ্রামের বাঁশখালীর বৈলছড়ি গ্রামীণ ব্যাংকের শাখার বাইরের দেয়ালের পাশে পাতার স্তূপে আগুন দেয় দুর্বৃত্তরা। তবে এতে বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ।",
-      "link": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj",
-      "publishedAt": "2026-11-19T08:27:52+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Jago News 24",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1181279"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "চট্টগ্রামে গাছ কেটে সড়ক অবরোধের চেষ্টা নিষিদ্ধঘোষিত ছাত্রলীগের, গ্রামীণ ব্যাংকের কার্যালয়ের বাইরে আগুন",
-          "summary": "চট্টগ্রামের বাঁশখালীর বৈলছড়ি গ্রামীণ ব্যাংকের শাখার বাইরের দেয়ালের পাশে পাতার স্তূপে আগুন দেয় দুর্বৃত্তরা। তবে এতে বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি বলে জানিয়েছে পুলিশ।",
-          "url": "https://www.prothomalo.com/bangladesh/district/5e34xtdokj"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "চট্টগ্রামে ফের পুলিশ বক্সে আগুন",
-          "summary": "চট্টগ্রামে ফের পুলিশ বক্সে আগুন",
-          "url": "https://www.jagonews24.com/national/news/1181279"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
-          "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "fda677c60ebf79a105ffb8454e5724d8"
     },
     {
       "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
@@ -1535,6 +1513,37 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "8bfd223b1240c362a80452ba9179c966"
+    },
+    {
+      "title": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB - United News of Bangladesh",
+      "summary": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB",
+      "publisherUrl": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB",
+      "publishedAt": "2026-11-19T08:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB - United News of Bangladesh",
+          "summary": "পটুয়াখালীতে আ.লীগ নেতার বাসায় আ/গু/ন, বাসে হা/ম/লা-ভা/ঙ/চু/র | Patuakhali | House Fire| UNB United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9996/%E0%A6%AA%E0%A6%9F%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8,-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%B9%E0%A6%BE-%E0%A6%AE-%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE-%E0%A6%99-%E0%A6%9A%E0%A7%81-%E0%A6%B0---Patuakhali---House-Fire--UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
     },
     {
       "title": "জেলা প্রশাসকের কার্যালয়ে বোমা সদৃশ বস্তু, ঘিরে রেখেছে পুলিশ",
@@ -1752,6 +1761,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
+    },
+    {
+      "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
+      "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publishedAt": "2026-11-19T06:22:19+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
+          "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4cdb9d7327e9b25e5a5193003c09f900"
     },
     {
       "title": "খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন",
@@ -2239,37 +2279,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4bb062161121a01f58718ea3bac1afb6"
-    },
-    {
-      "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ - Barta 24",
-      "summary": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ Barta 24",
-      "link": "https://barta24.com/details/national/348630",
-      "publisherUrl": "https://barta24.com/details/national/348630",
-      "publishedAt": "2026-11-18T16:34:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/national/348630"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ - Barta 24",
-          "summary": "ফেনীর সাবেক এমপি রহিম উল্লাহর বাড়িতে অগ্নিসংযোগ Barta 24",
-          "url": "https://barta24.com/details/national/348630"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9774074fa3bee7d76c1e906f18efc5b1"
     },
     {
       "title": "সিরাজগঞ্জে আ.লীগ কার্যালয় ও সাবেক এমপির বাড়িতে আগুন - Risingbd.com",
