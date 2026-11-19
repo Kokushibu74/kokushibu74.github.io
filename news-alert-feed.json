@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T08:10:39.361372+00:00",
-  "updatedAt": "2026-11-19T08:10:39.361372+00:00",
+  "generatedAt": "2026-11-19T08:11:04.429862+00:00",
+  "updatedAt": "2026-11-19T08:11:04.429862+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 52,
+  "failedSourceCount": 3,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 31,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 31,
+  "fallbackWithItemsSourceCount": 23,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -347,17 +347,17 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ekattor TV",
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Naya Diganta",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 65,
+  "candidateCount": 61,
   "alertItems": [
     {
       "title": "জেলা প্রশাসকের কার্যালয়ে বোমা সদৃশ বস্তু, ঘিরে রেখেছে পুলিশ",
@@ -1133,37 +1133,6 @@
       "alertEventId": "0f93e6320cb6ac82f5c631d941832691"
     },
     {
-      "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
-      "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668286",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668286",
-      "publishedAt": "2026-11-19T07:13:27+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
-          "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ce34e774b75438ba522cf023305e4d89"
-    },
-    {
       "title": "চট্টগ্রামে ফের পুলিশ বক্সে আগুন",
       "summary": "চট্টগ্রামে ফের পুলিশ বক্সে আগুন",
       "link": "https://www.jagonews24.com/national/news/1181279",
@@ -1277,37 +1246,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
-    },
-    {
-      "title": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন - ডেইলি সান বাংলা",
-      "summary": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন ডেইলি সান বাংলা",
-      "link": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-19T06:43:00+00:00",
-      "source": "ডেইলি সান বাংলা",
-      "publisherName": "ডেইলি সান বাংলা",
-      "sourceEvidence": [
-        "ডেইলি সান বাংলা"
-      ],
-      "sourceLinks": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "title": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন - ডেইলি সান বাংলা",
-          "summary": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ee8084e8b0b95024b901910e47466cd9"
     },
     {
       "title": "পাবনায় মধ্যরাতে ইউএনও অফিসে ককটেল বিস্ফোরণ, মিলনায়তনে আগুন",
@@ -2368,37 +2306,6 @@
       "alertEventId": "aae4bb46f1d3d311e148442622c8b965"
     },
     {
-      "title": "রাজশাহীতে বিআরটিসির দুটি বাসে আগুন, রেললাইনেও অগ্নিসংযোগ - Barta 24",
-      "summary": "রাজশাহীতে বিআরটিসির দুটি বাসে আগুন, রেললাইনেও অগ্নিসংযোগ Barta 24",
-      "link": "https://barta24.com/details/national/348610",
-      "publisherUrl": "https://barta24.com/details/national/348610",
-      "publishedAt": "2026-11-18T14:30:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/national/348610"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "রাজশাহীতে বিআরটিসির দুটি বাসে আগুন, রেললাইনেও অগ্নিসংযোগ - Barta 24",
-          "summary": "রাজশাহীতে বিআরটিসির দুটি বাসে আগুন, রেললাইনেও অগ্নিসংযোগ Barta 24",
-          "url": "https://barta24.com/details/national/348610"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e6bfeef0a81eab6f9b6143f7d1c8aebb"
-    },
-    {
       "title": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন - Dhaka Tribune Bangla",
       "summary": "টাঙ্গাইলে গ্রামীণ ব্যাংকের দুই শাখায় আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113369/%E0%A6%9F%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -2625,37 +2532,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c72e093b1b68340b0bb0dbea7f0e50ce"
-    },
-    {
-      "title": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
-      "summary": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668235",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668235",
-      "publishedAt": "2026-11-18T09:10:05+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668235"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন - Jamuna Television",
-          "summary": "গোপালগঞ্জে নিষিদ্ধ আ. লীগের তাণ্ডব অব্যাহত, বিএনপি অফিস ও গ্রামীণ ব্যাংক ভাঙচুর-আগুন Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668235"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2e6c129695357916dda7b5c73bfa57c5"
     }
   ]
 }
