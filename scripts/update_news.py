@@ -971,6 +971,10 @@ def alert_event_matches(left, right):
         right_names = {value for value in right_anchors if value.startswith("name:")}
         if left_names and right_names and not (left_names & right_names):
             return False
+        left_targets = {value for value in left_anchors if value.startswith("target:")}
+        right_targets = {value for value in right_anchors if value.startswith("target:")}
+        if (left_targets or right_targets) and not (left_targets & right_targets):
+            return False
         if not (left_anchors & right_anchors):
             return False
     left_numbers = set(re.findall(r"\d+", str(left.get("title") or "")))
