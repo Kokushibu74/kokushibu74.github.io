@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T13:45:54.466715+00:00",
-  "updatedAt": "2026-11-19T13:45:54.466715+00:00",
+  "generatedAt": "2026-11-19T14:00:37.503982+00:00",
+  "updatedAt": "2026-11-19T14:00:37.503982+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -64,7 +64,7 @@
       "domain": "bdnews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "not well-formed (invalid token): line 8, column 46",
+      "directError": "HTTP 502",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "feed redirected outside its publisher domain",
+      "directError": "<urlopen error timed out>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 53,
+  "candidateCount": 50,
   "alertItems": [
     {
       "title": "এবি পার্টির চেয়ারম্যান মঞ্জুর গাড়িতে আগুন",
@@ -1575,68 +1575,6 @@
       "alertEventId": "f3f60b02e8f5d01eed0dc6272d251776"
     },
     {
-      "title": "সিলেটে দাঁড়িয়ে থাকা ৪ বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "সিলেটে দাঁড়িয়ে থাকা ৪ বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113424/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113424/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-19T10:06:57+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113424/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "সিলেটে দাঁড়িয়ে থাকা ৪ বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "সিলেটে দাঁড়িয়ে থাকা ৪ বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113424/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f45b9258e203db087a5ecdc7432b41ec"
-    },
-    {
-      "title": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-      "summary": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-      "link": "https://www.jagonews24.com/country/news/1181364",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181364",
-      "publishedAt": "2026-11-19T10:05:21+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181364"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-          "summary": "পাবনায় ইউএনও কার্যালয়ে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ",
-          "url": "https://www.jagonews24.com/country/news/1181364"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "21da479f993a5f669eed2bda455b23c2"
-    },
-    {
       "title": "পুলিশ উপস্থিতির মধ্যেই পেট্রোল বোমা নিক্ষেপ, পালিয়েও গেলো সামনে দিয়ে",
       "summary": "বৃষ্টি ভেজা বৃহস্পতিবার (১৯ নভেম্বর) দুপুরে পুলিশের উপস্থিতির মধ্যে খুলনা মহানগরীর শিববাড়ি মোড়ে পেট্রোল বোমা নিক্ষেপ করা হয়েছে। এতে একটি স্ট্যান্ড ব্যানারে আগুন ধরে যায়। এতে কারও কোনও ক্ষতি হয়নি। সোনাডাঙ্গা থানার ওসি মো রফিকুল ইসলাম জানান, শিববাড়ি মোড়ের দুই পাশে পুলিশ টহল রয়েছে। সকাল থেকে বৃষ্টিও হচ্ছে। এরই মধ্যে দুপুরে মোটরসাইকেলে করে দুই যুবক এসে গোল চত্বরে পেট্রোল বোমা নিক্ষেপ করে। তিনি... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/981949/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%89%E0%A6%AA%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87%E0%A6%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
@@ -2102,37 +2040,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ee8084e8b0b95024b901910e47466cd9"
-    },
-    {
-      "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
-      "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
-      "publishedAt": "2026-11-19T06:22:19+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "মহাসড়কে যাত্রীবাহী দূরপাল্লার বাসে আগুন দিলো দুর্বৃত্তরা",
-          "summary": "নারায়ণগঞ্জের পৃথক দুটি স্থানে যাত্রীবাহী বাসে ও মালবোঝাই ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। তবে এতে কেউ হতাহত হয়নি। বৃহস্পতিবার (১৯ নভেম্বর) সকালে ঢাকা-চট্টগ্রাম মহাসড়কের কাঁচপুর ব্রিজ এলাকা এবং এশিয়ান হাইওয়ের মিরেরটেক বাজার এলাকায় এসব ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, সকাল সাড়ে ৯টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের ঢাকাগামী লেনের কাঁচপুর ব্রিজ এলাকায় তিশা পরিবহনের একটি যাত্রীবাহী... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/981900/%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%A6%E0%A7%82%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4cdb9d7327e9b25e5a5193003c09f900"
     },
     {
       "title": "খাগড়াছড়িতে দাঁড়িয়ে থাকা দুইটি পিকআপে আগুন",
