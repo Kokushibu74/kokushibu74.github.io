@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T13:00:41.495010+00:00",
-  "updatedAt": "2026-11-19T13:00:41.495010+00:00",
+  "generatedAt": "2026-11-19T13:10:53.754283+00:00",
+  "updatedAt": "2026-11-19T13:10:53.754283+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 52,
-  "failedSourceCount": 3,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 31,
+  "fallbackHealthySourceCount": 30,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 31,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 6,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "UNB",
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -557,17 +557,17 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dhaka Courier",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 53,
+  "candidateCount": 50,
   "alertItems": [
     {
       "title": "দেশে সাম্প্রতিক সময়ে আর্থিক প্রতিষ্ঠানে হামলা-অ*গ্নিসংযোগে বাংলাদেশ ব্যাংকের উদ্বেগ | Somoy TV",
@@ -1048,37 +1048,6 @@
       "alertEventId": "cf5b2a5dd32a876ae091661614d9fc0c"
     },
     {
-      "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-      "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-      "link": "https://www.bssnews.net/bangla/news/361669",
-      "publisherUrl": "https://www.bssnews.net/bangla/news/361669",
-      "publishedAt": "2026-11-19T11:16:00+00:00",
-      "source": "BSS",
-      "publisherName": "BSS",
-      "sourceEvidence": [
-        "BSS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "BSS",
-          "url": "https://www.bssnews.net/bangla/news/361669"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "BSS",
-          "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-          "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-          "url": "https://www.bssnews.net/bangla/news/361669"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
-    },
-    {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, থানায় আগুন",
       "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj United News of Bangladesh",
       "link": "https://www.prothomalo.com/video/bangladesh/lseona9a8y",
@@ -1146,7 +1115,11 @@
           "name": "Prothom Alo",
           "title": "গাজীপুরে মার্কেট-দোকানে হামলা-ভাঙচুর, সাভারে শ্রমিকদের সঙ্গে পুলিশের পাল্টাপাল্টি ধাওয়া",
           "summary": "চলমান শ্রমিক অসন্তোষের মধ্যে গাজীপুরের শ্রীপুরের মাওনা চৌরাস্তায় বিভিন্ন মার্কেট ও দোকানে হামলা চালিয়ে ভাঙচুরের অভিযোগ উঠেছে। এ ছাড়া জেলার বিভিন্ন এলাকায় আজ বৃহস্পতিবার দিনব্যাপী সড়ক অবরোধের চেষ্টা চালায় চালান পোশাকশ্রমিকেরা। অন্যদিকে ঢাকার সাভারের আশুলিয়া পুলিশের সঙ্গে শ্রমিকদের পাল্টাপাল্টি ধাওয়ার ঘটনা ঘটেছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/bo75n8q3vf"
+          "url": "https://www.prothomalo.com/bangladesh/district/bo75n8q3vf",
+          "incidentDateText": "১৯ নভেম্বর ২০২৬",
+          "incidentTimeText": "দুপুর ১২টা",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "পরে আনসার রোড এলাকা, জানিয়েছেন সাভার মডেল থানার"
         }
       ],
       "corroborationCount": 1,
@@ -1505,37 +1478,6 @@
       "alertEventId": "08740499966de748571ba3262832da2f"
     },
     {
-      "title": "রংপুরে পার্কিং করা বাসে আগুন",
-      "summary": "রংপুরে পার্কিং করা বাসে আগুন",
-      "link": "https://www.jagonews24.com/country/news/1181345",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181345",
-      "publishedAt": "2026-11-19T09:37:24+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181345"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "রংপুরে পার্কিং করা বাসে আগুন",
-          "summary": "রংপুরে পার্কিং করা বাসে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181345"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a9fe58d04eec49f779b4911b461a09a1"
-    },
-    {
       "title": "চলন্ত কাভার্ডভ্যানে পেট্রোল বোমা নিক্ষেপ, চালক দগ্ধ",
       "summary": "যশোর-নড়াইল মহাসড়কে চলন্ত একটি কাভার্ডভ্যানে দুর্বৃত্তরা পেট্রোল বোমা নিক্ষেপ করেছে ঘটনা ঘটেছে। এতে আগুন ধরে গেলে গাড়ির চালক রাজিব (৪৫) দগ্ধ হন। চালকের সহকারী (হেলপার) হৃদয় (৪০) কাচের আঘাতে আহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) সকালে সদর উপজেলার হামিদপুর নুরিতলা এলাকায় এই হামলার ঘটনা ঘটে। আহত চালক রাজিব যশোরের ঝিকরগাছা উপজেলার কীর্তিপুর গ্রামের আব্দুল হাইয়ের ছেলে এবং সহকারী হৃদয় একই এলাকার জনি... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/981936/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%95%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%95",
@@ -1565,37 +1507,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1f8e62c4250429d898f59cf9742075a5"
-    },
-    {
-      "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-      "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95",
-      "publishedAt": "2026-11-19T08:49:22+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক - Dhaka Tribune Bangla",
-          "summary": "পঞ্চগড় ডিসি কার্যালয়ে বোমাসদৃশ বস্তু ঘিরে আতঙ্ক Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113420/%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9A%E0%A6%97%E0%A7%9C-%E0%A6%A1%E0%A6%BF%E0%A6%B8%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "16a9a06a5f972b9e711eed1219b5fa59"
     },
     {
       "title": "গোপালগঞ্জে বিএনপির এমপি সেলিমুজ্জামানের বাড়িতে হামলা–ভাঙচুর–আগুন",
@@ -2054,37 +1965,6 @@
       "alertEventId": "67dbe849e3a5668cc71d2773b6a8c69c"
     },
     {
-      "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
-      "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671821",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671821",
-      "publishedAt": "2026-11-19T05:42:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671821"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
-          "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671821"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
-    },
-    {
       "title": "চাঁদপুরে হেলমেট পরে শাহ মাহমুদপুর পরিষদে অগ্নিসংযোগ",
       "summary": "চাঁদপুর সদর উপজেলার ৪নং শাহমাহমুদপুর ইউনিয়ন পরিষদ কার্যালয়ে রাতের আঁধারে অগ্নিসংযোগের ঘটনা ঘটেছে। ১৯ নভেম্বর (বৃহস্পতিবার) দিবাগত রাত আনুমানিক সাড়ে ৩টার দিকে এই ঘটনা ঘটে। তবে এই ঘটনার কোন হতাহতের খবর পাওয়া যায়নি। এতে কার্যালয়ের প্রায় ২ লাখ টাকার ক্ষয়ক্ষতি হয়েছে বলে জানিয়েছেন সংশ্লিষ্ট কর্তৃপক্ষ। সামাজিক যোগাযোগ মাধ্যমে ভাইরাল হওয়া একটি সিসিটিভি ফুটেজে দেখা যায়, ...",
       "link": "https://chandpurtimes.com/%e0%a6%9a%e0%a6%be%e0%a6%81%e0%a6%a6%e0%a6%aa%e0%a7%81%e0%a6%b0%e0%a7%87-%e0%a6%b9%e0%a7%87%e0%a6%b2%e0%a6%ae%e0%a7%87%e0%a6%9f-%e0%a6%aa%e0%a6%b0%e0%a7%87/",
@@ -2269,6 +2149,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8f25e44e2e6c8afdc8a55969e573a439"
+    },
+    {
+      "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+      "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+      "link": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publisherUrl": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7",
+      "publishedAt": "2026-11-18T18:30:30+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা - একাত্তর",
+          "summary": "নড়াইলে বিএনপির শোভাযাত্রায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলায় নিহত দুই নেতা একাত্তর",
+          "url": "https://ekattor.tv/country/jessore/97946/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A7%8B%E0%A6%AD%E0%A6%BE%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b78d930084a944042e0b5c50f5efa463"
     },
     {
       "title": "গোপালগঞ্জে এমপি সেলিমুজ্জামানের বাড়ি, মুকসুদপুর থানা ও গ্রামীণ ব্যাংকে আগুন - Daily Bonik Barta",
