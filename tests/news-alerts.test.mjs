@@ -16,6 +16,16 @@ test("Cloudflare Worker declares its handler and shared Telegram helpers",async(
   assert.match(source,/export default \{/);
 });
 
+
+test("Worker checks every publisher source link before creating a new alert root",async()=>{
+  const source=await readFile(new URL("../cloudflare/portfolio-contact-telegram.js",import.meta.url),"utf8");
+  assert.match(source,/async function newsAlertLinkIndexKeys\(item\)/);
+  assert.match(source,/const linkedEventKeys=\[\.\.\.new Set\(\[\.\.\.linkIndexMap\.values\(\)\]/);
+  assert.match(source,/if\(linkedEventKeys\.length===1\)/);
+  assert.match(source,/for\(const indexKey of linkIndexKeys\)/);
+  assert.match(source,/if\(!existingKey\|\|existingKey===key\)/);
+});
+
 test("all newly added TV publishers are trusted but remain provisional as single sources",()=>{
   const sources=["Jamuna TV","Somoy News","Channel 24","Ekattor TV","DBC News","Independent Television","News24","RTV News"];
   for(const publisher of sources){
