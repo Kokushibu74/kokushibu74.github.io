@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T16:50:34.927007+00:00",
-  "updatedAt": "2026-11-20T16:50:34.927007+00:00",
+  "generatedAt": "2026-11-20T17:00:39.869801+00:00",
+  "updatedAt": "2026-11-20T17:00:39.869801+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 52,
+  "failedSourceCount": 3,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 31,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 31,
+  "fallbackWithItemsSourceCount": 23,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Daily Observer",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 5,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Janakantha",
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -574,7 +574,7 @@
       "domain": "dhakacourier.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 43,
   "alertItems": [
     {
       "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
@@ -1125,8 +1125,7 @@
       "publisherName": "দৈনিক ইনকিলাব",
       "sourceEvidence": [
         "দৈনিক ইনকিলাব",
-        "Bangla Tribune",
-        "একাত্তর"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -1136,10 +1135,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1157,16 +1152,10 @@
           "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
           "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        },
-        {
-          "name": "একাত্তর",
-          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন - একাত্তর",
-          "summary": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "a67ab04c6e31abef20372f9033ada370"
+      "corroborationCount": 2,
+      "alertEventId": "ef2453111520b1ba692018f77b5d62cf"
     },
     {
       "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
@@ -1763,8 +1752,8 @@
     {
       "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
       "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-      "link": "https://www.jamuna.tv/bangladesh/668339",
-      "publisherUrl": "https://www.jamuna.tv/bangladesh/668339",
+      "link": "https://www.jamuna.tv/index.php/national/668339",
+      "publisherUrl": "https://www.jamuna.tv/index.php/national/668339",
       "publishedAt": "2026-11-20T06:40:37+00:00",
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
@@ -1774,7 +1763,7 @@
       "sourceLinks": [
         {
           "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/bangladesh/668339"
+          "url": "https://www.jamuna.tv/index.php/national/668339"
         }
       ],
       "category": "Bangladesh",
@@ -1785,7 +1774,7 @@
           "name": "Jamuna Television",
           "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
           "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-          "url": "https://www.jamuna.tv/bangladesh/668339"
+          "url": "https://www.jamuna.tv/index.php/national/668339"
         }
       ],
       "corroborationCount": 1,
@@ -1852,37 +1841,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "62477a70638ec30ed989315d3816d337"
-    },
-    {
-      "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-      "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-      "link": "https://www.dhakapost.com/national/499445",
-      "publisherUrl": "https://www.dhakapost.com/national/499445",
-      "publishedAt": "2026-11-20T04:04:21+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-          "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
       "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
@@ -2007,37 +1965,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4195c4631e93cb4eb9adb9c43e439072"
-    },
-    {
-      "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
-      "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
-      "link": "https://www.dhakapost.com/national/499373",
-      "publisherUrl": "https://www.dhakapost.com/national/499373",
-      "publishedAt": "2026-11-19T17:00:13+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499373"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
-          "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499373"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7cced41184f22d9b9387d9aec039cc17"
     }
   ]
 }
