@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T08:35:33.393994+00:00",
-  "updatedAt": "2026-11-20T08:35:33.393994+00:00",
+  "generatedAt": "2026-11-20T08:45:52.734006+00:00",
+  "updatedAt": "2026-11-20T08:45:52.734006+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 49,
+  "failedSourceCount": 6,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 28,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 28,
+  "fallbackWithItemsSourceCount": 21,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -62,32 +62,32 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jugantor",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -287,17 +287,17 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Sun",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 52,
+  "candidateCount": 49,
   "alertItems": [
     {
       "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
@@ -888,6 +888,10 @@
         {
           "name": "Jamuna TV · YouTube",
           "url": "https://www.youtube.com/watch?v=LLJDbmEaHic"
+        },
+        {
+          "name": "Jamuna TV ·",
+          "url": "https://www.youtube.com/watch?v=ocy9HE0bFJU"
         }
       ],
       "category": "Bangladesh",
@@ -899,10 +903,16 @@
           "title": "বাসে আগুন, কারখানা পুড়িয়ে দেয়া হচ্ছে; এ কোন বাংলাদেশ?: রাষ্ট্রপতি | President | Jamuna TV",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=LLJDbmEaHic"
+        },
+        {
+          "name": "Jamuna TV",
+          "title": "'দেশে বাস পুড়িয়ে দেয়া হচ্ছে, এই আগুন সন্ত্রাসের পরিবর্তন জরুরি' | Dhaka College | News | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=ocy9HE0bFJU"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "36d3ac4eddbf53f22fe6e56ec16aff5f"
+      "alertEventId": "849541c706a6a3ee3efcadbc9d2aaf8e"
     },
     {
       "title": "বাংলাদেশের বুক ফুলিয়ে দাপট দেখানো ভালো লাগেনি ‘ভালুক’ রাবাদার",
@@ -1041,37 +1051,6 @@
       "alertEventId": "4f3915ab5b903c3cef4a47a08b9bace3"
     },
     {
-      "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-      "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-      "link": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publisherUrl": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publishedAt": "2026-11-20T07:45:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-          "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ee7eb671e681b01cae45845a80276098"
-    },
-    {
       "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
       "summary": "চট্টগ্রামের মিরসরাইয়ে ঢাকা-চট্টগ্রাম মহাসড়কে পুলিশের টহল গাড়িকে পেছন থেকে সজোরে ধাক্কা দিয়েছে যাত্রীবাহী সোহাগ এলিট পরিবহনের একটি বাস। এতে পুলিশের টহল গাড়িতে থাকা ৬ পু্লিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর আনুমানিক ৫টা ১০ মিনিটে উপজেলার উত্তর সোনাপাহাড় এলাকায় চিনকি আস্তানা বাবুর তেলের দোকানের সামনে মহাসড়কের চট্টগ্রামমুখী লেনে এ দুর্ঘটনা ঘটে। পুলিশ সূত্রে জানা […] The post মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161175",
@@ -1179,43 +1158,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "f8ff0f2816fe2878b5d65f27e9dd19fb"
-    },
-    {
-      "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
-      "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8",
-      "publishedAt": "2026-11-20T05:57:29+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
-          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "শ্রীমঙ্গলে গ্রামীণ ব্যাংকের শাখায় অগ্নিসংযোগের চেষ্টা, এলাকায় উত্তেজনা - Dhaka Tribune Bangla",
-          "summary": "শ্রীমঙ্গলে গ্রামীণ ব্যাংকের শাখায় অগ্নিসংযোগের চেষ্টা, এলাকায় উত্তেজনা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113469/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a42e8a6b27a3b5f089fe5cf47b87e0b1"
     },
     {
       "title": "শ্রীমঙ্গলে গভীর রাতে গ্রামীণ ব্যাংকে আগুন, এলাকায় উত্তেজনা",
@@ -1464,37 +1406,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ba3a4aafa75cb6f4166e35cc7022b62e"
-    },
-    {
-      "title": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত - bd-pratidin.com",
-      "summary": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/national/2026/11/20/1328510",
-      "publisherUrl": "https://www.bd-pratidin.com/national/2026/11/20/1328510",
-      "publishedAt": "2026-11-20T03:21:45+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328510"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত - bd-pratidin.com",
-          "summary": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328510"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "852f3bddafe19fb1af9f42e0bd260775"
     },
     {
       "title": "ডিসি অফিসে বোমা সদৃশ বস্তু, ১৬ ঘণ্টা পর নিষ্ক্রিয় করলো এসআরবি",
@@ -1911,37 +1822,6 @@
       "alertEventId": "d9221bab7f4a6f7784bb27f41294f3c8"
     },
     {
-      "title": "ফেনীতে গ্রামীণ ব্যাংকের কার্যালয় লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-      "summary": "ফেনীতে গ্রামীণ ব্যাংকের কার্যালয় লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113462/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113462/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87",
-      "publishedAt": "2026-11-19T16:06:23+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113462/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফেনীতে গ্রামীণ ব্যাংকের কার্যালয় লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
-          "summary": "ফেনীতে গ্রামীণ ব্যাংকের কার্যালয় লক্ষ্য করে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113462/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bb68eadb33f07ac12820f264acc34ef5"
-    },
-    {
       "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
       "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
@@ -2041,6 +1921,37 @@
       "alertEventId": "5dac9c682642c6acc72d19aaa85c3d90"
     },
     {
+      "title": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার - Risingbd.com",
+      "summary": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671893",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671893",
+      "publishedAt": "2026-11-19T12:12:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671893"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার - Risingbd.com",
+          "summary": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671893"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "0bb9133239c1817386ee897bea47588d"
+    },
+    {
       "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB - United News of Bangladesh",
       "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB United News of Bangladesh",
       "link": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB",
@@ -2066,12 +1977,6 @@
           "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB - United News of Bangladesh",
           "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB United News of Bangladesh",
           "url": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB"
-        },
-        {
-          "name": "UNB",
-          "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire - United News of Bangladesh",
-          "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire United News of Bangladesh",
-          "url": "https://www.unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB"
         }
       ],
       "corroborationCount": 1,
@@ -2134,10 +2039,16 @@
           "title": "অগ্নিসংযোগ ও সহিংসতার বিরুদ্ধে ঐক্যবদ্ধ প্রতিরোধের আহ্বান প্রধানমন্ত্রীর - United News of Bangladesh",
           "summary": "অগ্নিসংযোগ ও সহিংসতার বিরুদ্ধে ঐক্যবদ্ধ প্রতিরোধের আহ্বান প্রধানমন্ত্রীর United News of Bangladesh",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%93-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A7%87-%E0%A6%90%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B9%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0/116596"
+        },
+        {
+          "name": "UNB",
+          "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
+          "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "d9c3f3f3757aa58541d4796034871486"
+      "alertEventId": "caf388a89bbb6f70fe295a82d8fa286e"
     },
     {
       "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
@@ -2233,37 +2144,6 @@
       "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
     },
     {
-      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
-      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671863",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
-      "publishedAt": "2026-11-19T10:10:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671863"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
-          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671863"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6521be4740173282a8ebbfee732b917e"
-    },
-    {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
       "summary": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591",
@@ -2303,12 +2183,17 @@
       "source": "UNB",
       "publisherName": "UNB",
       "sourceEvidence": [
-        "UNB"
+        "UNB",
+        "Amader Shomoy"
       ],
       "sourceLinks": [
         {
           "name": "UNB",
           "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
+        },
+        {
+          "name": "Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
         }
       ],
       "category": "Bangladesh",
@@ -2320,10 +2205,16 @@
           "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
           "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
           "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
+        },
+        {
+          "name": "Amader Shomoy",
+          "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
+          "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "60206a5fc787411e546b782c033a3ad3"
+      "corroborationCount": 2,
+      "alertEventId": "ffeeb589026632217dbcf075864b1b01"
     }
   ]
 }
