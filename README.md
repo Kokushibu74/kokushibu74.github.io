@@ -1,59 +1,53 @@
-# Sports Zone — Live Scores & Official Streams
+# Shihabul Islam — Portfolio
 
-GitHub Pages frontend + Cloudflare Worker API. Uses free, keyless public score endpoints and only explicitly configured official YouTube sources. No pirated streams, IPTV playlists, or browser-side secrets are included.
+Personal portfolio website for Shihabul Islam, presenting web development, UI/UX, AI and automation work.
 
-## Files
-- `sports-zone.html` — responsive football/cricket score UI and official YouTube player.
-- `worker/src/index.js` — API, validation, cache, CORS, best-effort rate limiting, protected stream management.
-- `worker/wrangler.toml` — Wrangler and KV configuration.
+**Live website:** https://kokushibu74.github.io/
 
-## 1. KV namespaces (already provisioned)
+## Project overview
 
-The production and preview KV namespaces have been created in the connected Cloudflare account and their IDs are already configured in `worker/wrangler.toml`. If deploying from a different Cloudflare account, create new namespaces and replace both IDs.
+This repository contains the static GitHub Pages website and its supporting frontend assets, content feeds, and Cloudflare Worker source files.
 
-## 2. Set the admin secret (if managing streams) and deploy
+- `index.html` — portfolio homepage.
+- `about.html`, `expertise.html`, `projects.html`, `contact.html` — portfolio sections.
+- `news.html`, `news.js`, `homepage-news.js` — news interface and feed presentation.
+- `chatbot.html`, `chatbot-widget.js`, `chatbot-widget.css` — chatbot interface and shared widget.
+- `styles.css`, `shared-shell.css`, `shared-shell.js` — shared site styling and layout.
+- `assets/`, `storage/`, `certificates/` — site media and supporting assets.
+- `cloudflare/`, `worker/` — Cloudflare Worker source and related configuration.
+- `tests/`, `scripts/` — project checks and maintenance utilities.
+- `sports-zone.html`, `sports-zone.js` — the separate Sports Zone page included in this site.
 
-```bash
-wrangler secret put ADMIN_KEY
-wrangler deploy
-```
+## Deployment
 
-Enter a long random secret when prompted. Never place it in the frontend or repository. The Worker name is `sports-zone-scores-api`; Wrangler prints its URL after deployment.
+The site is designed for GitHub Pages and uses the repository root as its published static content.
 
-The frontend currently points to `https://sports-zone-scores-api.mdshihab74.workers.dev`. If your actual URL differs, update `WORKER_URL` near the top of the script in `sports-zone.html` (no trailing slash).
+1. Keep the production website files on the configured Pages publishing branch.
+2. In the repository's **Settings → Pages**, confirm the intended source branch and root folder.
+3. Push changes to the configured publishing branch.
+4. Check the GitHub Pages deployment workflow and open the live site to verify the result.
 
-## 3. Add a verified official YouTube source
+There is no Node.js build step required for the static portfolio pages. Cloudflare Workers are separate services: review the corresponding Worker configuration and deploy them through the intended Cloudflare workflow. Do not copy secrets into this repository or frontend files.
 
-The Worker deliberately starts with an empty stream list; the prompt's sample IDs are not assumed to be official. Verify the broadcaster and embedding rights before adding a source. Run this locally (never expose ADMIN_KEY in browser code):
+## Local preview
 
-```bash
-curl -X POST "https://YOUR_WORKER_URL/api/streams" \
-  -H "Authorization: Bearer YOUR_ADMIN_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Verified official channel","youtubeId":"YOUR11CHARID","category":"cricket","officialUrl":"https://www.youtube.com/@OfficialChannel","isOfficial":true}'
-```
-
-The Worker checks the 11-character ID format and requires an HTTPS YouTube URL. These format checks cannot prove broadcasting rights; manual verification is required. Sources are stored in KV key `streams`.
-
-## 4. Smoke-test endpoints
+Because the main site is static, it can be previewed with any local static HTTP server. For example:
 
 ```bash
-curl -i "https://YOUR_WORKER_URL/health"
-curl -i "https://YOUR_WORKER_URL/api/football?league=eng.1"
-curl -i "https://YOUR_WORKER_URL/api/cricket"
-curl -i "https://YOUR_WORKER_URL/api/streams"
+python -m http.server 8000
 ```
 
-Football should return `ok: true` and a `matches` array while ESPN's public endpoint is available. Cricket uses a public ESPN scoreboard path, but competition identifiers and provider availability can vary; a 502 means the provider did not return the expected data. Streams returns an empty array until verified sources are configured.
+Then open http://localhost:8000.
 
-## 5. Publish the frontend
+Some features depend on external services, APIs, or Cloudflare Workers and may not operate fully in a local preview.
 
-Commit and push `sports-zone.html` to the GitHub Pages publishing branch (`main`). Existing GA4 measurement ID `G-WXBD1454H8`, shared header, and chatbot scripts are preserved.
+## Security and privacy
 
-## Security and known limitations
-- CORS allows `https://kokushibu74.github.io`; CORS is not authentication.
-- The 60 requests/minute/IP limiter is in-memory and isolate-local (best-effort). Use Cloudflare Rate Limiting rules or a Durable Object for robust global enforcement.
-- Admin secret stays in a Worker secret.
-- HLS/m3u8 URLs are deliberately unsupported; only configured YouTube embeds are used.
-- Frontend manual ID checking only selects IDs already configured in the official source list.
-- Public ESPN endpoints can change or become unavailable. No paid API key is used, but provider uptime is not guaranteed.
+- Keep API tokens, passwords, private keys, and Worker secrets in the relevant provider's secret store.
+- Treat public JSON feeds and files in this repository as publicly accessible.
+- Review generated news archives and other data files before committing them; avoid publishing private or personal data.
+- CORS is not an authentication mechanism. Protect privileged Worker routes with server-side authorization and appropriate rate limits.
+
+## Maintenance
+
+Before changing production files, review the relevant workflow, Worker bindings, and environment configuration. Run the available checks under `tests/` and `scripts/` where applicable, then verify the GitHub Pages deployment and any affected Worker independently.
