@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T21:55:45.431811+00:00",
-  "updatedAt": "2026-11-20T21:55:45.431811+00:00",
+  "generatedAt": "2026-11-20T22:10:40.919685+00:00",
+  "updatedAt": "2026-11-20T22:10:40.919685+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -62,24 +62,24 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 45,
+  "candidateCount": 43,
   "alertItems": [
     {
       "title": "সৌদির আরামকো টাওয়ারে হুতিদের হামলা, বাংলাদেশের তীব্র নিন্দা - Risingbd.com",
@@ -852,17 +852,12 @@
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
         "Risingbd.com",
-        "bdnews24.com",
         "bd-pratidin.com"
       ],
       "sourceLinks": [
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/international/news/672107"
-        },
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
         },
         {
           "name": "bd-pratidin.com",
@@ -880,20 +875,13 @@
           "url": "https://www.risingbd.com/international/news/672107"
         },
         {
-          "name": "bdnews24.com",
-          "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
-          "summary": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5",
-          "incidentDateText": "৭ নভেম্বর"
-        },
-        {
           "name": "bd-pratidin.com",
           "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা|1328700 - bd-pratidin.com",
           "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা|1328700 bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328700"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "ad29ddc77bfe4cfd8fed7d56b7dff97f"
     },
     {
@@ -1058,7 +1046,8 @@
           "name": "Daily Naya Diganta",
           "title": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ - Daily Naya Diganta",
           "summary": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071194"
+          "url": "https://dailynayadiganta.com/post/abroad/1071194",
+          "incidentDateText": "১২ নভেম্বর"
         }
       ],
       "corroborationCount": 1,
@@ -1220,17 +1209,22 @@
       "alertEventId": "6e1bd71edbe2754e6c9e9742801b91d8"
     },
     {
-      "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
-      "summary": "ইসলামী আন্দোলন বাংলাদেশের মহাসচিব গাজী আতাউর রহমান বলেছেন, জুলাই অভ্যুত্থানের মাধ্যমে এ দেশের ছাত্র-জনতা ফ্যাসিস্ট আওয়ামী লীগকে দেশ থেকে তাড়িয়ে দিয়েছে। হাজারো মানুষকে হত্যা; লাখো মানুষের রক্ত যাদের হাতে লেগে আছে, তারাই আবার মানুষ মারার পরিকল্পনা নিয়ে মাঠে নেমেছে। নিকৃষ্ট কৃতকর্মের জন্য তাদের কোনও অনুশোচনা নেই। আছে ঔদ্ধত্য ও অহমিকা। শুক্রবার (২০ নভেম্বর) ইসলামী আন্দোলন বাংলাদেশ, ঢাকা মহানগর... বিস্তারিত",
-      "link": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95",
-      "publisherUrl": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95",
-      "publishedAt": "2026-11-20T14:00:45+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ধ্বংসাত্মক-ন্যাক্কারজনক - dhakapost.com",
+      "summary": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ধ্বংসাত্মক-ন্যাক্কারজনক dhakapost.com",
+      "link": "https://www.dhakapost.com/politics/499551",
+      "publisherUrl": "https://www.dhakapost.com/politics/499551",
+      "publishedAt": "2026-11-20T14:16:42+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
+        "dhakapost.com",
         "Bangla Tribune"
       ],
       "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/499551"
+        },
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95"
@@ -1241,13 +1235,19 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "dhakapost.com",
+          "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ধ্বংসাত্মক-ন্যাক্কারজনক - dhakapost.com",
+          "summary": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ধ্বংসাত্মক-ন্যাক্কারজনক dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/499551"
+        },
+        {
           "name": "Bangla Tribune",
           "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
           "summary": "ইসলামী আন্দোলন বাংলাদেশের মহাসচিব গাজী আতাউর রহমান বলেছেন, জুলাই অভ্যুত্থানের মাধ্যমে এ দেশের ছাত্র-জনতা ফ্যাসিস্ট আওয়ামী লীগকে দেশ থেকে তাড়িয়ে দিয়েছে। হাজারো মানুষকে হত্যা; লাখো মানুষের রক্ত যাদের হাতে লেগে আছে, তারাই আবার মানুষ মারার পরিকল্পনা নিয়ে মাঠে নেমেছে। নিকৃষ্ট কৃতকর্মের জন্য তাদের কোনও অনুশোচনা নেই। আছে ঔদ্ধত্য ও অহমিকা। শুক্রবার (২০ নভেম্বর) ইসলামী আন্দোলন বাংলাদেশ, ঢাকা মহানগর... বিস্তারিত",
           "url": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "174a237f007e77ee7ba20453460033f8"
     },
     {
@@ -1432,17 +1432,12 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "একাত্তর",
         "Ajker Patrika"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
         },
         {
           "name": "Ajker Patrika",
@@ -1460,19 +1455,13 @@
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
         },
         {
-          "name": "একাত্তর",
-          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন - একাত্তর",
-          "summary": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
-        },
-        {
           "name": "Ajker Patrika",
           "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
           "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
     },
     {
@@ -1699,37 +1688,6 @@
       "alertEventId": "d12ab61159edd37d6d93c9bcc87b988c"
     },
     {
-      "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-      "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-      "link": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publisherUrl": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publishedAt": "2026-11-20T07:45:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-          "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ee7eb671e681b01cae45845a80276098"
-    },
-    {
       "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
       "summary": "চট্টগ্রামের মিরসরাইয়ে ঢাকা-চট্টগ্রাম মহাসড়কে পুলিশের টহল গাড়িকে পেছন থেকে সজোরে ধাক্কা দিয়েছে যাত্রীবাহী সোহাগ এলিট পরিবহনের একটি বাস। এতে পুলিশের টহল গাড়িতে থাকা ৬ পু্লিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর আনুমানিক ৫টা ১০ মিনিটে উপজেলার উত্তর সোনাপাহাড় এলাকায় চিনকি আস্তানা বাবুর তেলের দোকানের সামনে মহাসড়কের চট্টগ্রামমুখী লেনে এ দুর্ঘটনা ঘটে। পুলিশ সূত্রে জানা […] The post মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161175",
@@ -1763,8 +1721,8 @@
     {
       "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
       "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-      "link": "https://www.jamuna.tv/bangladesh/668339",
-      "publisherUrl": "https://www.jamuna.tv/bangladesh/668339",
+      "link": "https://www.jamuna.tv/index.php/national/668339",
+      "publisherUrl": "https://www.jamuna.tv/index.php/national/668339",
       "publishedAt": "2026-11-20T06:40:37+00:00",
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
@@ -1774,7 +1732,7 @@
       "sourceLinks": [
         {
           "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/bangladesh/668339"
+          "url": "https://www.jamuna.tv/index.php/national/668339"
         }
       ],
       "category": "Bangladesh",
@@ -1785,7 +1743,7 @@
           "name": "Jamuna Television",
           "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
           "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-          "url": "https://www.jamuna.tv/bangladesh/668339"
+          "url": "https://www.jamuna.tv/index.php/national/668339"
         }
       ],
       "corroborationCount": 1,
