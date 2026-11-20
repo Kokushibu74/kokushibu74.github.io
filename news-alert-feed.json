@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T12:00:35.862966+00:00",
-  "updatedAt": "2026-11-20T12:00:35.862966+00:00",
+  "generatedAt": "2026-11-20T12:15:30.522770+00:00",
+  "updatedAt": "2026-11-20T12:15:30.522770+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 12,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 14,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "GDACS",
@@ -840,8 +840,40 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 33,
   "alertItems": [
+    {
+      "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬",
+      "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের মীরসরাই উপজেলার চিনকি আস্তানা সংলগ্ন এলাকায় পুলিশের টহল গাড়ির পেছন থেকে সজোরে এসি বাসের ধাক্কায় পুলিশের ২ উপ পরিদর্শক (এসআই) ও চার সদস্যসহ ৬ জন আহত হয়েছেন। হাইওয়ে পুলিশ ও স্থানীয় সূত্রে জানা গেছে, আজ শুক্রবার ভোর সাড়ে ৫টায় মহাসড়কের চিনকি আস্তানা এলাকার বাবুর তেলের দোকানের সামনে এ দুর্ঘটনা ঘটে। এতে আহতরা হলেন-জোরারগঞ্জ […] The post মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬ appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/mirsarai-bus-hits-police-patrol-van-six-injured/",
+      "publisherUrl": "https://dainikazadi.net/mirsarai-bus-hits-police-patrol-van-six-injured/",
+      "publishedAt": "2026-11-20T12:10:30+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/mirsarai-bus-hits-police-patrol-van-six-injured/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬",
+          "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের মীরসরাই উপজেলার চিনকি আস্তানা সংলগ্ন এলাকায় পুলিশের টহল গাড়ির পেছন থেকে সজোরে এসি বাসের ধাক্কায় পুলিশের ২ উপ পরিদর্শক (এসআই) ও চার সদস্যসহ ৬ জন আহত হয়েছেন। হাইওয়ে পুলিশ ও স্থানীয় সূত্রে জানা গেছে, আজ শুক্রবার ভোর সাড়ে ৫টায় মহাসড়কের চিনকি আস্তানা এলাকার বাবুর তেলের দোকানের সামনে এ দুর্ঘটনা ঘটে। এতে আহতরা হলেন-জোরারগঞ্জ […] The post মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/mirsarai-bus-hits-police-patrol-van-six-injured/",
+          "locationText": "উদ্ধার করে মীরসরাই উপজেলা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c9d99ba9a013539ead4628bd8b7e4c5d"
+    },
     {
       "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
       "summary": "কুষ্টিয়া শহরের মজমপুর এলাকায় একটি ভাঙারির দোকানে বস্তাভর্তি মালামাল নামানোর সময় বোমা বিস্ফোরণের ঘটনা ঘটেছে। এতে ভাঙারি বিক্রেতা ও ক্রেতা দুজনই গুরুতর আহত হয়েছেন...",
@@ -1066,39 +1098,6 @@
       "alertEventId": "d97667b9486fe26d397918947ac7a360"
     },
     {
-      "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
-      "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
-      "publishedAt": "2026-11-20T09:39:20+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
-          "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
-          "incidentTimeText": "দুপুর ১টা",
-          "incidentTimeSource": "Chandpur Times"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "eb5e1cc78cb719e21e2b6a143afe9aab"
-    },
-    {
       "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, আহত ৬ সদস্য",
       "summary": "চট্টগ্রামের মীরসরাই উপজেলার বারইয়ারহাটে পুলিশের একটি টহল ভ্যানে ধাক্কা দিয়েছে একটি যাত্রীবাহী বাস। এতে ভ্যানে থাকা ছয় পুলিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর ৫টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের বারইয়ারহাট পৌর বাজারের দক্ষিণে চিনকী আস্তানা এলাকায় এ দুর্ঘটনা ঘটে। আহত পুলিশ সদস্যরা হলেন এসআই মিল্টন, এএসআই সালাহ উদ্দিন, কনস্টেবল শফিক, কনস্টেবল রানা, আরিফ ও সাফায়েত। তাদের মধ্যে চারজন উপজেলা... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/982142/%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%9F%E0%A6%B9%E0%A6%B2-%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%AC",
@@ -1130,90 +1129,35 @@
       "alertEventId": "387dadf0873712fab5df02e9c6ac985b"
     },
     {
-      "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
-      "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
-      "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
-      "publishedAt": "2026-11-20T09:13:12+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
+      "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
+      "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
+      "link": "https://www.jagonews24.com/country/news/1181645",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181645",
+      "publishedAt": "2026-11-20T08:26:32+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Chandpur Times",
-        "Jago News 24",
-        "Channel 24"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/"
-        },
-        {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1181645"
-        },
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
-          "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
-          "incidentDateText": "বৃহস্পতিবার (১৯ নভেম্বর)",
-          "locationText": "ষাটনল ইউনিয়নে, পশ্চিম লালপুর গ্রামে, বিজ্ঞাপন ষাটনল ইউনিয়ন, বিষয়ে মতলব উত্তর থানার, ফতেপুর পূর্ব ইউনিয়নে"
-        },
         {
           "name": "Jago News 24",
           "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
           "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
           "url": "https://www.jagonews24.com/country/news/1181645"
-        },
-        {
-          "name": "Channel 24",
-          "title": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ - Channel 24",
-          "summary": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "77a0d7919d829a89b4fcc8e1b69e88d0"
-    },
-    {
-      "title": "বাংলাদেশের বুক ফুলিয়ে দাপট দেখানো ভালো লাগেনি ‘ভালুক’ রাবাদার",
-      "summary": "জোহানেসবার্গ টেস্টে কাগিসো রাবাদার ভেতরের আগুনটা এবার জ্বালিয়ে দিয়েছিলেন তাঁরই সতীর্থ পেসার ডেন প্যাটারসন।",
-      "link": "https://www.prothomalo.com/sports/cricket/mythkgi9u7",
-      "publisherUrl": "https://www.prothomalo.com/sports/cricket/mythkgi9u7",
-      "publishedAt": "2026-11-20T07:55:47+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/sports/cricket/mythkgi9u7"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "বাংলাদেশের বুক ফুলিয়ে দাপট দেখানো ভালো লাগেনি ‘ভালুক’ রাবাদার",
-          "summary": "জোহানেসবার্গ টেস্টে কাগিসো রাবাদার ভেতরের আগুনটা এবার জ্বালিয়ে দিয়েছিলেন তাঁরই সতীর্থ পেসার ডেন প্যাটারসন।",
-          "url": "https://www.prothomalo.com/sports/cricket/mythkgi9u7"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "932b00061d8a62fb2a2e566be7f1775d"
+      "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
     },
     {
       "title": "মঞ্জুর গাড়িতে আওয়ামী দুস্কৃতকারীদের অগ্নিসংযোগ কাপুরুষোচিত: রিজভী",
@@ -1311,8 +1255,8 @@
     {
       "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
       "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-      "link": "https://www.jamuna.tv/index.php/national/668339",
-      "publisherUrl": "https://www.jamuna.tv/index.php/national/668339",
+      "link": "https://www.jamuna.tv/bangladesh/668339",
+      "publisherUrl": "https://www.jamuna.tv/bangladesh/668339",
       "publishedAt": "2026-11-20T06:40:37+00:00",
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
@@ -1322,7 +1266,7 @@
       "sourceLinks": [
         {
           "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/index.php/national/668339"
+          "url": "https://www.jamuna.tv/bangladesh/668339"
         }
       ],
       "category": "Bangladesh",
@@ -1333,7 +1277,7 @@
           "name": "Jamuna Television",
           "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
           "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-          "url": "https://www.jamuna.tv/index.php/national/668339"
+          "url": "https://www.jamuna.tv/bangladesh/668339"
         }
       ],
       "corroborationCount": 1,
@@ -1431,37 +1375,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "62477a70638ec30ed989315d3816d337"
-    },
-    {
-      "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
-      "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
-      "publishedAt": "2026-11-20T04:47:46+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
-          "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da77b7e9494bdcccd4795167011b4d6b"
     },
     {
       "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
@@ -1927,74 +1840,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9d12be32cf84344de301d0223dcafce2"
-    },
-    {
-      "title": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার - Risingbd.com",
-      "summary": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671893",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671893",
-      "publishedAt": "2026-11-19T12:12:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671893"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার - Risingbd.com",
-          "summary": "ময়মনসিংহে একের পর এক নাশকতা, ককটেল সদৃশ বস্তু উদ্ধার Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671893"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0bb9133239c1817386ee897bea47588d"
-    },
-    {
-      "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB - United News of Bangladesh",
-      "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB United News of Bangladesh",
-      "link": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB",
-      "publisherUrl": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB",
-      "publishedAt": "2026-11-19T12:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB - United News of Bangladesh",
-          "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire | UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB"
-        },
-        {
-          "name": "UNB",
-          "title": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire - United News of Bangladesh",
-          "summary": "নারায়ণগঞ্জের সোনারগাঁয়ে যাত্রীবাহী বাসে আ/গু/ন | Narayanganj | Bus Fire United News of Bangladesh",
-          "url": "https://www.unb.com.bd/video/10001/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---Narayanganj---Bus-Fire---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da49d71b522fe85f0c3a52ca2ed354db"
     }
   ]
 }
