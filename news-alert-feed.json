@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T09:10:35.254755+00:00",
-  "updatedAt": "2026-11-20T09:10:35.254755+00:00",
+  "generatedAt": "2026-11-20T09:25:40.956328+00:00",
+  "updatedAt": "2026-11-20T09:25:40.956328+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -11,8 +11,8 @@
   "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,12 +172,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,83 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 56,
+  "candidateCount": 57,
   "alertItems": [
+    {
+      "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, আহত ৬ সদস্য",
+      "summary": "চট্টগ্রামের মীরসরাই উপজেলার বারইয়ারহাটে পুলিশের একটি টহল ভ্যানে ধাক্কা দিয়েছে একটি যাত্রীবাহী বাস। এতে ভ্যানে থাকা ছয় পুলিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর ৫টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের বারইয়ারহাট পৌর বাজারের দক্ষিণে চিনকী আস্তানা এলাকায় এ দুর্ঘটনা ঘটে। আহত পুলিশ সদস্যরা হলেন এসআই মিল্টন, এএসআই সালাহ উদ্দিন, কনস্টেবল শফিক, কনস্টেবল রানা, আরিফ ও সাফায়েত। তাদের মধ্যে চারজন উপজেলা... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/982142/%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%9F%E0%A6%B9%E0%A6%B2-%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%AC",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982142/%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%9F%E0%A6%B9%E0%A6%B2-%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%AC",
+      "publishedAt": "2026-11-20T09:19:06+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/982142/%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%9F%E0%A6%B9%E0%A6%B2-%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%AC"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, আহত ৬ সদস্য",
+          "summary": "চট্টগ্রামের মীরসরাই উপজেলার বারইয়ারহাটে পুলিশের একটি টহল ভ্যানে ধাক্কা দিয়েছে একটি যাত্রীবাহী বাস। এতে ভ্যানে থাকা ছয় পুলিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর ৫টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের বারইয়ারহাট পৌর বাজারের দক্ষিণে চিনকী আস্তানা এলাকায় এ দুর্ঘটনা ঘটে। আহত পুলিশ সদস্যরা হলেন এসআই মিল্টন, এএসআই সালাহ উদ্দিন, কনস্টেবল শফিক, কনস্টেবল রানা, আরিফ ও সাফায়েত। তাদের মধ্যে চারজন উপজেলা... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/982142/%E0%A6%AE%E0%A7%80%E0%A6%B0%E0%A6%B8%E0%A6%B0%E0%A6%BE%E0%A6%87%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%9F%E0%A6%B9%E0%A6%B2-%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%AC"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "387dadf0873712fab5df02e9c6ac985b"
+    },
+    {
+      "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
+      "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
+      "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
+      "publisherUrl": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
+      "publishedAt": "2026-11-20T09:13:12+00:00",
+      "source": "Chandpur Times",
+      "publisherName": "Chandpur Times",
+      "sourceEvidence": [
+        "Chandpur Times",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chandpur Times",
+          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181645"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chandpur Times",
+          "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
+          "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
+          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
+          "incidentDateText": "বৃহস্পতিবার (১৯ নভেম্বর)",
+          "locationText": "ষাটনল ইউনিয়নে, পশ্চিম লালপুর গ্রামে, বিজ্ঞাপন ষাটনল ইউনিয়ন, বিষয়ে মতলব উত্তর থানার, ফতেপুর পূর্ব ইউনিয়নে"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
+          "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1181645"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
+    },
     {
       "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবিরের বাড়ির গেটে আগুন | Humayun Kabir | Sylhet | FireIncident",
       "summary": "পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের সিলেটের বাসার প্রধান ফটকের সামনে অগ্নিসংযোগ করা করা হয়েছে। গতকাল বৃহস্পতিবার গভীর রাতে নগরের দাড়িয়াপাড়া এলাকায় এ ঘটনা ঘটে।",
@@ -897,37 +972,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "f8ff0f2816fe2878b5d65f27e9dd19fb"
-    },
-    {
-      "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-      "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-      "link": "https://www.jagonews24.com/country/news/1181645",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181645",
-      "publishedAt": "2026-11-20T08:26:32+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181645"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-          "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181645"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
     },
     {
       "title": "বাসে আগুন, কারখানা পুড়িয়ে দেয়া হচ্ছে; এ কোন বাংলাদেশ?: রাষ্ট্রপতি | President | Jamuna TV",
@@ -1068,8 +1112,7 @@
           "name": "Jamuna Television",
           "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
           "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-          "url": "https://www.jamuna.tv/index.php/national/668339",
-          "incidentDateText": "২০ নভেম্বর ২০২৬"
+          "url": "https://www.jamuna.tv/index.php/national/668339"
         }
       ],
       "corroborationCount": 2,
@@ -1607,37 +1650,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e965e3389d351237dd1141747026faef"
-    },
-    {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-      "link": "https://www.jagonews24.com/country/news/1181545",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181545",
-      "publishedAt": "2026-11-20T01:39:54+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181545"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-          "url": "https://www.jagonews24.com/country/news/1181545"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f90cc7d3271604a9d154fc369816df17"
     },
     {
       "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
@@ -2289,6 +2301,37 @@
       "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
     },
     {
+      "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
+      "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
+      "link": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
+      "publisherUrl": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
+      "publishedAt": "2026-11-19T10:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
+          "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
+          "url": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "43055e9f77a7bc83ce465f412f5a8f42"
+    },
+    {
       "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
       "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/671863",
@@ -2349,37 +2392,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a67fd135e55db9a0a15cfc41955f3b3f"
-    },
-    {
-      "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
-      "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
-      "link": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB",
-      "publisherUrl": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB",
-      "publishedAt": "2026-11-19T09:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
-          "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "60206a5fc787411e546b782c033a3ad3"
     }
   ]
 }
