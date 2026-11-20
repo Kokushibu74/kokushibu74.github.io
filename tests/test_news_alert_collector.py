@@ -46,6 +46,16 @@ class AlertCollectorTests(unittest.TestCase):
         published = self.now - timedelta(minutes=4)
         self.assertFalse(collector.is_alert_candidate("India bus fire kills three", "A bus caught fire in India", published, self.now))
 
+    def test_foreign_incident_is_excluded_when_rss_summary_has_unrelated_bangladesh_headline_tail(self):
+        published = self.now - timedelta(minutes=4)
+        title = "পোল্যান্ডের মাটিতে রুশ ক্ষেপণাস্ত্র, ‘উসকানি’ বলছে ওয়ারশ"
+        summary = "ইউক্রেনে ব্যাপক হামলা চালিয়েছে রাশিয়া। পোল্যান্ডের দক্ষিণ-পূর্ব কোণে ক্ষেপণাস্ত্র পড়েছে। সাফল্যটা মূল্য পায়নি, অর্থনৈতিক সংকটে বাংলাদেশ: দ্য... বিস্তারিত"
+        self.assertFalse(collector.is_alert_candidate(title, summary, published, self.now))
+
+    def test_bangladesh_incident_title_is_not_blocked_by_foreign_context_in_summary(self):
+        published = self.now - timedelta(minutes=4)
+        self.assertTrue(collector.is_alert_candidate("ঢাকায় ককটেল বিস্ফোরণ", "রাশিয়ার ক্ষেপণাস্ত্র পরিস্থিতির সঙ্গে তুলনা করা হয়েছে", published, self.now))
+
     def test_followup_and_stale_news_are_excluded(self):
         published = self.now - timedelta(minutes=4)
         self.assertFalse(collector.is_alert_candidate("ঢাকায় বিস্ফোরণ: সন্দেহভাজন গ্রেপ্তার", "পুলিশ একজনকে আটক করেছে", published, self.now))

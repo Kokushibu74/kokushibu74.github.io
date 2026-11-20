@@ -222,11 +222,31 @@ def google_news_query_url(domain):
     query = urlencode({"q": "site:" + domain + " Bangladesh when:1d", "hl": "bn", "gl": "BD", "ceid": "BD:bn"})
     return "https://news.google.com/rss/search?" + query
 
+FOREIGN_INCIDENT_TITLE_RE = re.compile(
+    r"(পোল্যান্ড|পোল্যান্ডের|পোল্যান্ডে|ইউক্রেন|ইউক্রেনে|ইউক্রেনের|রাশিয়া|রাশিয়া|রাশিয়ার|রাশিয়ার|ওয়ারশ|ওয়ারশ|"
+    r"poland|ukraine|russia|warsaw|polish|ukrainian|russian)", re.I,
+)
+BANGLADESH_INCIDENT_TITLE_RE = re.compile(
+    r"(বাংলাদেশে|বাংলাদেশের ভূখণ্ডে|ঢাকা|চট্টগ্রাম|সিলেট|খুলনা|রাজশাহী|বরিশাল|রংপুর|ময়মনসিংহ|কক্সবাজার|"
+    r"কুড়িগ্রাম|সুনামগঞ্জ|সাতক্ষীরা|নারায়ণগঞ্জ|গাজীপুর|কুমিল্লা|ফেনী|নোয়াখালী|বগুড়া|পাবনা|কুষ্টিয়া|যশোর|"
+    r"টাঙ্গাইল|জামালপুর|দিনাজপুর|বান্দরবান|রাঙামাটি|ভোলা|পটুয়াখালী|বরগুনা|চাঁদপুর|ব্রাহ্মণবাড়িয়া|"
+    r"লক্ষ্মীপুর|সিরাজগঞ্জ|গাইবান্ধা|নীলফামারী|লালমনিরহাট|পঞ্চগড়|জয়পুরহাট|নওগাঁ|নাটোর|চাঁপাইনবাবগঞ্জ|"
+    r"মাগুরা|নড়াইল|চুয়াডাঙ্গা|মেহেরপুর|বাগেরহাট|পিরোজপুর|ঝালকাঠি|মাদারীপুর|গোপালগঞ্জ|শরীয়তপুর|"
+    r"মুন্সীগঞ্জ|মানিকগঞ্জ|নরসিংদী|কিশোরগঞ্জ|নেত্রকোণা|শেরপুর|হবিগঞ্জ|মৌলভীবাজার|ঠাকুরগাঁও|"
+    r"\bBangladesh\b|\bDhaka\b|\bChattogram\b|\bSylhet\b|\bKhulna\b|\bRajshahi\b|"
+    r"\bBarishal\b|\bRangpur\b|\bMymensingh\b|\bGazipur\b|\bNarayanganj\b|"
+    r"\bCumilla\b|\bNoakhali\b|\bCox'?s Bazar\b|\bPabna\b|\bGopalganj\b)", re.I,
+)
+
 def is_alert_candidate(title, summary="", published=None, now=None):
     text = str(title or "") + " " + str(summary or "")
     if not title or FOLLOWUP_RE.search(text) or not EVENT_RE.search(text):
         return False
     if STATEMENT_RE.search(str(title)) and not INCIDENT_IN_TITLE_RE.search(str(title)):
+        return False
+    # RSS descriptions can append unrelated Bangladesh headlines/navigation text.
+    # The incident headline itself must not name a foreign location.
+    if FOREIGN_INCIDENT_TITLE_RE.search(str(title or "")) and not BANGLADESH_INCIDENT_TITLE_RE.search(str(title or "")):
         return False
     if not is_bangladesh_story(title, summary):
         return False
