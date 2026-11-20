@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T13:00:38.184578+00:00",
-  "updatedAt": "2026-11-20T13:00:38.184578+00:00",
+  "generatedAt": "2026-11-20T13:15:37.704366+00:00",
+  "updatedAt": "2026-11-20T13:15:37.704366+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 12,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -840,8 +840,134 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 44,
   "alertItems": [
+    {
+      "title": "অটোরিকশায় ট্রেনের ধাক্কা, একই পরিবারের ৪ জন নিহত",
+      "summary": "কক্সবাজারের রামুর মিঠাছড়িতে রেলক্রসিং পার হওয়ার সময় ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার দুই শিশুসহ একই পরিবারের চার জন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিন জন। তাদের মধ্যে এক শিশুসহ দুই জনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ির একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহতরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/982204/%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A7%AA-%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982204/%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A7%AA-%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-20T13:08:59+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/982204/%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A7%AA-%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "অটোরিকশায় ট্রেনের ধাক্কা, একই পরিবারের ৪ জন নিহত",
+          "summary": "কক্সবাজারের রামুর মিঠাছড়িতে রেলক্রসিং পার হওয়ার সময় ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার দুই শিশুসহ একই পরিবারের চার জন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিন জন। তাদের মধ্যে এক শিশুসহ দুই জনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ির একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহতরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/982204/%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A7%AA-%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "Dainik Azadi",
+          "title": "কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু",
+          "summary": "কক্সবাজারের রামুতে ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার যাত্রী দুই শিশুসহ একই পরিবারের চারজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিনজন। তাঁদের মধ্যে এক শিশুসহ দুজনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকেল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ি এলাকার একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তাঁর […] The post কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/",
+          "incidentDateText": "শুক্রবার (২০ নভেম্বর)",
+          "incidentTimeText": "আজ বিকেলে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "সদস্যরা রামুর উমখালী এলাকা, পুলিশ কক্সবাজার আইকনিক থানার, কক্সবাজার"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "7065e305339e945953f0bd1d60dfd0c7"
+    },
+    {
+      "title": "নোয়াখালীতে নিষিদ্ধ যুবলীগ–ছাত্রলীগের মিছিল থেকে গ্রামীণ ব্যাংকের শাখায় হামলা, পেট্রল ঢেলে আগুন",
+      "summary": "",
+      "link": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a",
+      "publishedAt": "2026-11-20T13:06:45+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "নোয়াখালীতে নিষিদ্ধ যুবলীগ–ছাত্রলীগের মিছিল থেকে গ্রামীণ ব্যাংকের শাখায় হামলা, পেট্রল ঢেলে আগুন",
+          "summary": "",
+          "url": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a",
+          "incidentDateText": "২০ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ বিকেলে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "চৌমুহনী কাছারি বাড়ি এলাকা, পর্যায়ে নাপিতের পোল এলাকায়, মিছিল থেকে গ্রাম, খবর পেয়ে তাৎক্ষণিকভাবে থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fe13ebfacf762281c31d94c1602c4263"
+    },
+    {
+      "title": "ভাঙারির মালামাল দোকানে নামাতেই বিকট শব্দে বিস্ফোরণ, দুজন আহত",
+      "summary": "শুক্রবার বেলা ২টা ৪০ মিনিটে কুষ্টিয়া শহরের মজমপুরে রেললাইনের পাশে ভাঙারি পণ্যের দোকানে এ ঘটনা ঘটে।",
+      "link": "https://www.prothomalo.com/bangladesh/district/ibypt34745",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ibypt34745",
+      "publishedAt": "2026-11-20T13:04:42+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/ibypt34745"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "ভাঙারির মালামাল দোকানে নামাতেই বিকট শব্দে বিস্ফোরণ, দুজন আহত",
+          "summary": "শুক্রবার বেলা ২টা ৪০ মিনিটে কুষ্টিয়া শহরের মজমপুরে রেললাইনের পাশে ভাঙারি পণ্যের দোকানে এ ঘটনা ঘটে।",
+          "url": "https://www.prothomalo.com/bangladesh/district/ibypt34745",
+          "incidentDateText": "২০ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ দুপুরে",
+          "incidentTimeSource": "Prothom Alo"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+          "summary": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "f77d0c2fb7c8b746a350521056150328"
+    },
     {
       "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
       "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
@@ -984,41 +1110,6 @@
       "alertEventId": "61e5e2e528641504a2b46911322804ce"
     },
     {
-      "title": "কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু",
-      "summary": "কক্সবাজারের রামুতে ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার যাত্রী দুই শিশুসহ একই পরিবারের চারজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিনজন। তাঁদের মধ্যে এক শিশুসহ দুজনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকেল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ি এলাকার একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তাঁর […] The post কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/",
-      "publisherUrl": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/",
-      "publishedAt": "2026-11-20T12:28:03+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু",
-          "summary": "কক্সবাজারের রামুতে ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার যাত্রী দুই শিশুসহ একই পরিবারের চারজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিনজন। তাঁদের মধ্যে এক শিশুসহ দুজনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকেল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ি এলাকার একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তাঁর […] The post কক্সবাজারে ট্রেনের ধাক্কায় দুই শিশুসহ একই পরিবারের ৪ জনের মৃত্যু appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/coxs-bazar-ramu-train-accident-level-crossing-paratak-express/",
-          "incidentDateText": "শুক্রবার (২০ নভেম্বর)",
-          "incidentTimeText": "আজ বিকেলে",
-          "incidentTimeSource": "Dainik Azadi",
-          "locationText": "সদস্যরা রামুর উমখালী এলাকা, পুলিশ কক্সবাজার আইকনিক থানার, কক্সবাজার"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7065e305339e945953f0bd1d60dfd0c7"
-    },
-    {
       "title": "খুলনার সব জেলা থেকে পদ্মা সেতু হয়ে চলছে বাস",
       "summary": "খুলনা থেকে গোপালগঞ্জ ও পদ্মাসেতু হয়ে বাস চলাচল স্বাভাবিক হয়েছে। ৩৬ ঘণ্টা পর খুলনা ঢাকা মহাসড়কে বাস চলাচল শুরু হয়। এর আগে গোপালগঞ্জে সংঘর্ষ, ভাঙচুর ও অগ্নিসংযোগের ঘটনায় বুধবার (১৮ নভেম্বর) দুপুর ২টা থেকে বাস চলাচল বন্ধ হয়ে পড়ে। শুক্রবার (২০ নভেম্বর) সকাল ৬টার পর থেকে গোপালগঞ্জ পদ্মাসেতু হয়ে ঢাকার উদ্দেশে বাস ছেড়ে যেতে শুরু করে। খুলনার পাশাপাশি বাগেরহাট, সাতক্ষীরা, যশোর, পিরোজপুর, নড়াইল থেকেও... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/982189/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%AC-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%A6%E0%A7%8D%E0%A6%AE%E0%A6%BE-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81-%E0%A6%B9%E0%A7%9F%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%9B%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8",
@@ -1143,37 +1234,6 @@
       "alertEventId": "c9d99ba9a013539ead4628bd8b7e4c5d"
     },
     {
-      "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
-      "summary": "কুষ্টিয়া শহরের মজমপুর এলাকায় একটি ভাঙারির দোকানে বস্তাভর্তি মালামাল নামানোর সময় বোমা বিস্ফোরণের ঘটনা ঘটেছে। এতে ভাঙারি বিক্রেতা ও ক্রেতা দুজনই গুরুতর আহত হয়েছেন...",
-      "link": "https://www.jagonews24.com/country/news/1181737",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181737",
-      "publishedAt": "2026-11-20T11:57:42+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181737"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
-          "summary": "কুষ্টিয়া শহরের মজমপুর এলাকায় একটি ভাঙারির দোকানে বস্তাভর্তি মালামাল নামানোর সময় বোমা বিস্ফোরণের ঘটনা ঘটেছে। এতে ভাঙারি বিক্রেতা ও ক্রেতা দুজনই গুরুতর আহত হয়েছেন...",
-          "url": "https://www.jagonews24.com/country/news/1181737"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f77d0c2fb7c8b746a350521056150328"
-    },
-    {
       "title": "কাঙ্ক্ষিত বাংলাদেশ প্রতিষ্ঠার লক্ষ্য পূরণে আগুন সন্ত্রাস থেকে বেরিয়ে আসতে হবে: রাষ্ট্রপতি | DBC NEWS",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=jludTrJCCR0",
@@ -1236,10 +1296,41 @@
       "alertEventId": "9d7cf13c8485e002b79d2e56388be214"
     },
     {
+      "title": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/national/2026/11/20/1770352",
+      "publisherUrl": "https://www.kalerkantho.com/online/national/2026/11/20/1770352",
+      "publishedAt": "2026-11-20T11:08:09+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/national/2026/11/20/1770352"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/national/2026/11/20/1770352"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "316c8d84e2e9ec84fb1a1eee71386213"
+    },
+    {
       "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
       "summary": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-20T10:56:46+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1249,7 +1340,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1260,7 +1351,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
           "summary": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
@@ -1656,37 +1747,6 @@
       "alertEventId": "62477a70638ec30ed989315d3816d337"
     },
     {
-      "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
-      "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
-      "publishedAt": "2026-11-20T04:47:46+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
-          "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da77b7e9494bdcccd4795167011b4d6b"
-    },
-    {
       "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
       "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
       "link": "https://www.dhakapost.com/national/499445",
@@ -1718,20 +1778,20 @@
       "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
-      "title": "বাণিজ্যিক নগরীতে ধারাবাহিক নাশকতা-অগ্নিসংযোগ, উদ্বেগ-আতঙ্ক",
-      "summary": "দেশের অন্তত ২২টি জেলায় দুই দিনের ধারাবাহিক নাশকতা, আগুন ও সহিংসতার ঘটনায় চার জন নিহত হয়েছেন। রাজধানী থেকে শুরু করে বিভিন্ন জেলা ও উপজেলা পর্যায়ে ককটেল বিস্ফোরণ, যানবাহন ও স্থাপনায় অগ্নিসংযোগ এবং হামলার ঘটনায় সাধারণ মানুষের মধ্যে তীব্র উদ্বেগ ও আতঙ্ক ছড়িয়ে পড়েছে। এর মধ্যে বিশেষ করে বাণিজ্যিক নগরী চট্টগ্রামে সাম্প্রতিক ককটেল বিস্ফোরণ এবং অগ্নিসংযোগের ধারাবাহিক ঘটনায় জননিরাপত্তা ও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/982059/%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%97%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982059/%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%97%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-20T04:01:00+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+      "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publishedAt": "2026-11-20T03:50:00+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/982059/%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%97%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
         }
       ],
       "category": "Bangladesh",
@@ -1739,14 +1799,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "বাণিজ্যিক নগরীতে ধারাবাহিক নাশকতা-অগ্নিসংযোগ, উদ্বেগ-আতঙ্ক",
-          "summary": "দেশের অন্তত ২২টি জেলায় দুই দিনের ধারাবাহিক নাশকতা, আগুন ও সহিংসতার ঘটনায় চার জন নিহত হয়েছেন। রাজধানী থেকে শুরু করে বিভিন্ন জেলা ও উপজেলা পর্যায়ে ককটেল বিস্ফোরণ, যানবাহন ও স্থাপনায় অগ্নিসংযোগ এবং হামলার ঘটনায় সাধারণ মানুষের মধ্যে তীব্র উদ্বেগ ও আতঙ্ক ছড়িয়ে পড়েছে। এর মধ্যে বিশেষ করে বাণিজ্যিক নগরী চট্টগ্রামে সাম্প্রতিক ককটেল বিস্ফোরণ এবং অগ্নিসংযোগের ধারাবাহিক ঘটনায় জননিরাপত্তা ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/982059/%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%97%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "name": "Dhaka Tribune Bangla",
+          "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+          "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "13e4ff1b36441230e6de10b1588e0ea5"
+      "alertEventId": "ba3a4aafa75cb6f4166e35cc7022b62e"
     },
     {
       "title": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত - bd-pratidin.com",
