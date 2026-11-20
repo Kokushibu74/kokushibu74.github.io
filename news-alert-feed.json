@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T10:40:33.881112+00:00",
-  "updatedAt": "2026-11-20T10:40:33.881112+00:00",
+  "generatedAt": "2026-11-20T10:55:34.729994+00:00",
+  "updatedAt": "2026-11-20T10:55:34.729994+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "feed redirected outside its publisher domain",
+      "directError": "<urlopen error timed out>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -589,7 +589,7 @@
       "domain": "businesspostbd.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "feed redirected outside its publisher domain",
+      "directError": "<urlopen error _ssl.c:1063: The handshake operation timed out>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 47,
+  "candidateCount": 45,
   "alertItems": [
+    {
+      "title": "‘এটি কোন বাংলাদেশ?’ আগুন সন্ত্রাস ও হত্যাকাণ্ড নিয়ে প্রশ্ন মির্জা ফখরুলের | Rtv News",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=G-mF9A4-_GQ",
+      "publisherUrl": "https://www.youtube.com/watch?v=G-mF9A4-_GQ",
+      "publishedAt": "2026-11-20T10:44:27+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/watch?v=G-mF9A4-_GQ"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "‘এটি কোন বাংলাদেশ?’ আগুন সন্ত্রাস ও হত্যাকাণ্ড নিয়ে প্রশ্ন মির্জা ফখরুলের | Rtv News",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=G-mF9A4-_GQ"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "32e14b0a1cd378b7aad762ea84a9e029"
+    },
     {
       "title": "বৃষ্টির মধ্যে পেট্রোল ঢেলে গ্রামীণ ব্যাংকের জোনাল অফিসে আগুন",
       "summary": "নোয়াখালীর বেগমগঞ্জ উপজেলার চৌমুহনী পূর্ব বাজারে গ্রামীণ ব্যাংকের এরিয়া অফিসে পেট্রোল ঢেলে আগুন ও জানালার গ্লাস ভাঙচুর করেছেন কার্যক্রম নিষিদ্ধ যুবলীগের কর্মীরা। এতে অফিসটির একটা দরজা পুড়ে গেছে। পরে স্থানীয় লোকজন আগুন নিয়ন্ত্রণ করেন। শুক্রবার (২০ নভেম্বর) দুপুর আড়াইটার দিকে চৌমুহনী পূর্ব বাজারে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা গেছে, দুপুরে বৃষ্টির মধ্যে ‘জয় বাংলা, জয় বঙ্গবন্ধু’... বিস্তারিত",
@@ -905,37 +936,6 @@
       "alertEventId": "49fda98c0fa08277b39d8958a5a3f710"
     },
     {
-      "title": "গ্রামীণ ব্যাংকে পেট্রোল বোমা নিক্ষেপ",
-      "summary": "নরসিংদীর পলাশে গ্রামীণ ব্যাংকের একটি শাখায় পেট্রোল বোমা নিক্ষেপ করেছে দুর্বৃত্তরা। এতে শাখাটির কয়েকটি স্থানে আগুন ধরে যায়। তবে আগুন দ্রুত নিয়ন্ত্রণে আসায় বড় ধরনের ক্ষয়ক্ষতি হয়নি...",
-      "link": "https://www.jagonews24.com/country/news/1181693",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181693",
-      "publishedAt": "2026-11-20T10:10:08+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181693"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "গ্রামীণ ব্যাংকে পেট্রোল বোমা নিক্ষেপ",
-          "summary": "নরসিংদীর পলাশে গ্রামীণ ব্যাংকের একটি শাখায় পেট্রোল বোমা নিক্ষেপ করেছে দুর্বৃত্তরা। এতে শাখাটির কয়েকটি স্থানে আগুন ধরে যায়। তবে আগুন দ্রুত নিয়ন্ত্রণে আসায় বড় ধরনের ক্ষয়ক্ষতি হয়নি...",
-          "url": "https://www.jagonews24.com/country/news/1181693"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6c2fd7a6e8b5478d88f3269032129c2d"
-    },
-    {
       "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
       "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99",
@@ -997,7 +997,9 @@
           "name": "Chandpur Times",
           "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
           "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/"
+          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
+          "incidentTimeText": "দুপুর ১টা",
+          "incidentTimeSource": "Chandpur Times"
         }
       ],
       "corroborationCount": 1,
@@ -1095,7 +1097,9 @@
           "name": "Chandpur Times",
           "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
           "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/"
+          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
+          "incidentDateText": "বৃহস্পতিবার (১৯ নভেম্বর)",
+          "locationText": "ষাটনল ইউনিয়নে, পশ্চিম লালপুর গ্রামে, বিজ্ঞাপন ষাটনল ইউনিয়ন, বিষয়ে মতলব উত্তর থানার, ফতেপুর পূর্ব ইউনিয়নে"
         },
         {
           "name": "Jago News 24",
@@ -1106,59 +1110,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
-    },
-    {
-      "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবিরের বাড়ির গেটে আগুন | Humayun Kabir | Sylhet | FireIncident",
-      "summary": "পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের সিলেটের বাসার প্রধান ফটকের সামনে অগ্নিসংযোগ করা করা হয়েছে। গতকাল বৃহস্পতিবার গভীর রাতে নগরের দাড়িয়াপাড়া এলাকায় এ ঘটনা ঘটে।",
-      "link": "https://www.youtube.com/watch?v=W5ojsupQXN8",
-      "publisherUrl": "https://www.youtube.com/watch?v=W5ojsupQXN8",
-      "publishedAt": "2026-11-20T08:56:45+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News",
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=W5ojsupQXN8"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/z97d7d1jev"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবিরের বাড়ির গেটে আগুন | Humayun Kabir | Sylhet | FireIncident",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=W5ojsupQXN8"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার সামনে গভীর রাতে অগ্নিসংযোগ",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের সিলেটের বাসার প্রধান ফটকের সামনে অগ্নিসংযোগ করা করা হয়েছে। গতকাল বৃহস্পতিবার গভীর রাতে নগরের দাড়িয়াপাড়া এলাকায় এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/z97d7d1jev"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার সামনে আগুন, পুলিশের নজরদারি জোরদার",
-          "summary": "সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের বাসার প্রধান ফটকে আগুন দেওয়ার ঘটনা ঘটেছে। শুক্রবার (২০ নভেম্বর) ভোররাতে দুর্বৃত্তরা এ ঘটনা ঘটায়। তবে এতে কোনও ক্ষয়ক্ষতি হয়নি। পুলিশ বলছে, সেখানে পেট্রল বোমা নিক্ষেপ করা হয়নি। পলিথিন পুড়িয়ে ফটকে আগুন দেওয়ার চেষ্টা করা হয়েছে। শুক্রবার সকালে ঘটনাস্থলে গিয়ে দেখা যায়, গলির শুরুতে প্রধান ফটক পেরিয়ে দুই থেকে তিনটি বাড়ির পর... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "f8ff0f2816fe2878b5d65f27e9dd19fb"
     },
     {
       "title": "বাংলাদেশের বুক ফুলিয়ে দাপট দেখানো ভালো লাগেনি ‘ভালুক’ রাবাদার",
@@ -1316,37 +1267,6 @@
       "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
     },
     {
-      "title": "সিরাজগঞ্জে এনসিপি নেতা মাহিনের বাড়ির সামনে পেট্রল ঢেলে আগুন",
-      "summary": "সিরাজগঞ্জের বেলকুচিতে এনসিপির সহযোগী সংগঠন জাতীয় স্বেচ্ছাসেবক শক্তির আহ্বায়ক মাহিন সরকারের গ্রামের বাড়ির প্রবেশপথে অগ্নিসংযোগের ঘটনা ঘটেছে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/p7w5gcxh7q",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/p7w5gcxh7q",
-      "publishedAt": "2026-11-20T06:28:17+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/p7w5gcxh7q"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "সিরাজগঞ্জে এনসিপি নেতা মাহিনের বাড়ির সামনে পেট্রল ঢেলে আগুন",
-          "summary": "সিরাজগঞ্জের বেলকুচিতে এনসিপির সহযোগী সংগঠন জাতীয় স্বেচ্ছাসেবক শক্তির আহ্বায়ক মাহিন সরকারের গ্রামের বাড়ির প্রবেশপথে অগ্নিসংযোগের ঘটনা ঘটেছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/p7w5gcxh7q"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "70c157baeceffc39e32587225b90cac9"
-    },
-    {
       "title": "শ্রীমঙ্গলে গভীর রাতে গ্রামীণ ব্যাংকে আগুন, এলাকায় উত্তেজনা",
       "summary": "মৌলভীবাজারের শ্রীমঙ্গলে গ্রামীণ ব্যাংকের সিন্দুরখান শাখার কার্যালয়ে অগ্নিসংযোগের চেষ্টা করেছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আড়াইটার দিকে কার্যালয়ের বারান্দায় রাখা গাড়ির টায়ারে আগুন ধরিয়ে দেওয়া হয়। তবে স্থানীয় বাসিন্দাদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের ক্ষয়ক্ষতি এড়ানো সম্ভব হয়েছে। বৃহস্পতিবার (১৯ নভেম্বর) রাতে স্থানীয় ইউপি সদস্য মোরাদ হোসেন ঘটনার সত্যতা নিশ্চিত করেন।... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/sylhet/982107/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F",
@@ -1407,6 +1327,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3d7b9e88ce9e7d53da74981307975cc1"
+    },
+    {
+      "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার সামনে আগুন, পুলিশের নজরদারি জোরদার",
+      "summary": "সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের বাসার প্রধান ফটকে আগুন দেওয়ার ঘটনা ঘটেছে। শুক্রবার (২০ নভেম্বর) ভোররাতে দুর্বৃত্তরা এ ঘটনা ঘটায়। তবে এতে কোনও ক্ষয়ক্ষতি হয়নি। পুলিশ বলছে, সেখানে পেট্রল বোমা নিক্ষেপ করা হয়নি। পলিথিন পুড়িয়ে ফটকে আগুন দেওয়ার চেষ্টা করা হয়েছে। শুক্রবার সকালে ঘটনাস্থলে গিয়ে দেখা যায়, গলির শুরুতে প্রধান ফটক পেরিয়ে দুই থেকে তিনটি বাড়ির পর... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-20T05:30:40+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার সামনে আগুন, পুলিশের নজরদারি জোরদার",
+          "summary": "সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র প্রতিমন্ত্রী-১ হুমায়ুন কবিরের বাসার প্রধান ফটকে আগুন দেওয়ার ঘটনা ঘটেছে। শুক্রবার (২০ নভেম্বর) ভোররাতে দুর্বৃত্তরা এ ঘটনা ঘটায়। তবে এতে কোনও ক্ষয়ক্ষতি হয়নি। পুলিশ বলছে, সেখানে পেট্রল বোমা নিক্ষেপ করা হয়নি। পলিথিন পুড়িয়ে ফটকে আগুন দেওয়ার চেষ্টা করা হয়েছে। শুক্রবার সকালে ঘটনাস্থলে গিয়ে দেখা যায়, গলির শুরুতে প্রধান ফটক পেরিয়ে দুই থেকে তিনটি বাড়ির পর... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/sylhet/982104/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f8ff0f2816fe2878b5d65f27e9dd19fb"
     },
     {
       "title": "নারায়ণগঞ্জে ডাইং কারখানায় বয়লার বিস্ফোরণ, দগ্ধ ২ শ্রমিক",
@@ -1874,11 +1825,11 @@
       "alertEventId": "bb68eadb33f07ac12820f264acc34ef5"
     },
     {
-      "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
-      "summary": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-19T15:32:18+00:00",
+      "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+      "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publishedAt": "2026-11-19T16:03:11+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -1887,13 +1838,19 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+          "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
+        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
