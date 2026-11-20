@@ -714,5 +714,54 @@ class NewsLogicTests(unittest.TestCase):
         item = {"previewMetadataStatus": "fallback", "previewCheckedAt": "not-a-date"}
         self.assertFalse(news.preview_cache_is_fresh(item, now))
 
+    def test_page_metadata_parser_extracts_schema_org_and_jsonld_images(self):
+        parser = news.PageMetadataParser()
+        parser.feed("""
+            <html><head>
+            <meta itemprop="image" content="/images/schema-image.jpg">
+            <link rel="image_src" href="https://cdn.example.com/link-image.jpg">
+            <script type="application/ld+json">
+            {"@type":"NewsArticle","publisher":{"@type":"Organization","name":"Example Publisher"},
+             "image":{"@type":"ImageObject","url":"/images/article-hero.jpg"}}
+            </script>
+            </head></html>
+        """)
+        publisher, images = news.jsonld_publisher_metadata(parser)
+        self.assertEqual(parser.itemprop["image"], "/images/schema-image.jpg")
+        self.assertEqual(parser.image_links, ["https://cdn.example.com/link-image.jpg"])
+        self.assertEqual(publisher, "Example Publisher")
+        self.assertIn("/images/article-hero.jpg", images)
+
+    def test_publisher_metadata_resolves_relative_structured_image_and_name(self):
+        from unittest.mock import Mock, patch
+        response = Mock()
+        response.geturl.return_value = "https://publisher.example/story"
+        response.headers.get.return_value = "text/html"
+        response.headers.get_content_charset.return_value = "utf-8"
+        response.read.return_value = b"""
+            <html><head>
+            <script type="application/ld+json">
+            {"@type":"NewsArticle","publisher":{"name":"Example Publisher"},
+             "image":{"url":"/media/story.jpg"}}
+            </script>
+            </head></html>
+        """
+        request_context = Mock()
+        request_context.__enter__ = Mock(return_value=response)
+        request_context.__exit__ = Mock(return_value=False)
+        with patch.object(news, "urlopen_with_retry", return_value=request_context):
+            metadata = news.publisher_metadata("https://publisher.example/story")
+        self.assertEqual(metadata["publisherName"], "Example Publisher")
+        self.assertEqual(metadata["previewImage"], "https://publisher.example/media/story.jpg")
+
+    def test_rss_image_is_retained_when_publisher_metadata_has_no_image(self):
+        item = {
+            "previewImage": "",
+            "image": "https://cdn.example.com/rss-image.jpg",
+            "publisherName": "Example Publisher",
+        }
+        self.assertEqual(news.weather_preview_image(item), "https://cdn.example.com/rss-image.jpg")
+
+
 if __name__ == "__main__":
     unittest.main()
