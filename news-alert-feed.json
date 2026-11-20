@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-19T23:55:36.375584+00:00",
-  "updatedAt": "2026-11-19T23:55:36.375584+00:00",
+  "generatedAt": "2026-11-20T00:10:36.812242+00:00",
+  "updatedAt": "2026-11-20T00:10:36.812242+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Samakal",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 50,
+  "candidateCount": 51,
   "alertItems": [
     {
       "title": "মজিবুর রহমান মঞ্জুর গাড়িতে অগ্নিসংযোগের ঘটনায় এনসিপির নিন্দা",
@@ -872,6 +872,53 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "52b63f15985f9d1f3bc2dbc3ad6d01e5"
+    },
+    {
+      "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/_lGD9Z4cLRA",
+      "publisherUrl": "https://www.youtube.com/shorts/_lGD9Z4cLRA",
+      "publishedAt": "2026-11-19T23:44:31+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
+        },
+        {
+          "name": "Ekattor TV ·",
+          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
+        },
+        {
+          "name": "Ekattor TV",
+          "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম | Hospital Fire| Gopalganj| Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
+        },
+        {
+          "name": "Ekattor TV",
+          "title": "শেখ মুজিবের জন্মস্থানে আগুন দিয়েছে তারই লোকজন: শামসুজ্জামান দুদু #awamileague #tungipara #gopalganj",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/SnfKoq-4ZBU"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "59dcce5888a1672a4b6c745fa0bbd315"
     },
     {
       "title": "রাতের অন্ধকারে কিছু টোকাই দিয়ে নাশকতা চালাচ্ছে নিষিদ্ধ আ.লীগ",
@@ -969,37 +1016,6 @@
       "alertEventId": "3a8b2cd41c0ecd22f36b205810a24730"
     },
     {
-      "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম | Hospital Fire| Gopalganj| Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=mJPIk_t9878",
-      "publisherUrl": "https://www.youtube.com/watch?v=mJPIk_t9878",
-      "publishedAt": "2026-11-19T20:43:03+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম | Hospital Fire| Gopalganj| Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6923da08132c7cf8f4c0d769b21d4cf7"
-    },
-    {
       "title": "সাবেক পররাষ্ট্র প্রতিমন্ত্রী শাহরিয়ার আলমের বাড়িতে আগুন",
       "summary": "সাবেক পররাষ্ট্র প্রতিমন্ত্রী শাহরিয়ার আলমের রাজশাহীর বাঘার বাড়িতে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দুপুরের দিকে উপজেলার আড়ানী...",
       "link": "https://www.jagonews24.com/country/news/1181534",
@@ -1083,37 +1099,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "44ae7339bdd92bf2db137d238d6fb5c8"
-    },
-    {
-      "title": "শেখ মুজিবের জন্মস্থানে আগুন দিয়েছে তারই লোকজন: শামসুজ্জামান দুদু #awamileague #tungipara #gopalganj",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/SnfKoq-4ZBU",
-      "publisherUrl": "https://www.youtube.com/shorts/SnfKoq-4ZBU",
-      "publishedAt": "2026-11-19T19:00:05+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/SnfKoq-4ZBU"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "শেখ মুজিবের জন্মস্থানে আগুন দিয়েছে তারই লোকজন: শামসুজ্জামান দুদু #awamileague #tungipara #gopalganj",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/SnfKoq-4ZBU"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "59dcce5888a1672a4b6c745fa0bbd315"
     },
     {
       "title": "সাবেক মেজর জেনারেল জিয়াউল আহসানের বরিশালের বাসভবনে আগুন | Barisal | Independent TV",
@@ -1798,6 +1783,37 @@
       "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
     },
     {
+      "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+      "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671873",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671873",
+      "publishedAt": "2026-11-19T10:35:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+          "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e870abd3173afd0f0be0d118a66bfee7"
+    },
+    {
       "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
       "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594",
@@ -1860,6 +1876,37 @@
       "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
     },
     {
+      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671863",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
+      "publishedAt": "2026-11-19T10:10:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6521be4740173282a8ebbfee732b917e"
+    },
+    {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
       "summary": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%9C%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7/116591",
@@ -1891,20 +1938,30 @@
       "alertEventId": "a67fd135e55db9a0a15cfc41955f3b3f"
     },
     {
-      "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
-      "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
-      "link": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publisherUrl": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publishedAt": "2026-11-19T08:22:07+00:00",
-      "source": "দেশ রূপান্তর",
-      "publisherName": "দেশ রূপান্তর",
+      "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
+      "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
+      "link": "https://www.dainikamadershomoy.com/details/000000049625",
+      "publisherUrl": "https://www.dainikamadershomoy.com/details/000000049625",
+      "publishedAt": "2026-11-19T09:01:00+00:00",
+      "source": "Amader Shomoy",
+      "publisherName": "Amader Shomoy",
       "sourceEvidence": [
-        "দেশ রূপান্তর"
+        "Amader Shomoy",
+        "bd-pratidin.com",
+        "Ajker Patrika"
       ],
       "sourceLinks": [
         {
-          "name": "দেশ রূপান্তর",
-          "url": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+          "name": "Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        },
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
         }
       ],
       "category": "Bangladesh",
@@ -1912,14 +1969,26 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "দেশ রূপান্তর",
-          "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
-          "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
-          "url": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+          "name": "Amader Shomoy",
+          "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
+          "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
+          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        },
+        {
+          "name": "Ajker Patrika",
+          "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
+          "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "d78121b11bb1abc114183e278fc015aa"
+      "corroborationCount": 3,
+      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
     },
     {
       "title": "গোপালগঞ্জের আরেক থানায় আগুন - Dhaka Tribune Bangla",
@@ -1984,73 +2053,11 @@
       "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
     },
     {
-      "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-      "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/printnews/1328109",
-      "publisherUrl": "https://www.bd-pratidin.com/printnews/1328109",
-      "publishedAt": "2026-11-19T08:07:00+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "621bb659c96da3d441c0388e6402604d"
-    },
-    {
-      "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
-      "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor",
-      "publishedAt": "2026-11-19T06:53:22+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
-    },
-    {
-      "title": "রাজধানীর কাঁঠালবাগানে আবাসিক ভবনে আগুন, দগ্ধ ৩ - Dhaka Tribune Bangla",
-      "summary": "রাজধানীর কাঁঠালবাগানে আবাসিক ভবনে আগুন, দগ্ধ ৩ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113395/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113395/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9",
-      "publishedAt": "2026-11-19T05:06:36+00:00",
+      "title": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
+      "summary": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113387/%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B6%E0%A6%B9%E0%A7%80%E0%A6%A6-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113387/%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B6%E0%A6%B9%E0%A7%80%E0%A6%A6-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-19T04:05:45+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -2059,19 +2066,13 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113395/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113387/%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B6%E0%A6%B9%E0%A7%80%E0%A6%A6-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "রাজধানীর কাঁঠালবাগানে আবাসিক ভবনে আগুন, দগ্ধ ৩ - Dhaka Tribune Bangla",
-          "summary": "রাজধানীর কাঁঠালবাগানে আবাসিক ভবনে আগুন, দগ্ধ ৩ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113395/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9"
-        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
@@ -2112,37 +2113,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c75a5ff94860ff54fd3f89329789b8f3"
-    },
-    {
-      "title": "নাটোরে রাস্তায় আগুন দিয়ে ‘জয় বাংলা’ স্লোগান, ককটেল বিস্ফোরণ - dhakapost.com",
-      "summary": "নাটোরে রাস্তায় আগুন দিয়ে ‘জয় বাংলা’ স্লোগান, ককটেল বিস্ফোরণ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/499105",
-      "publisherUrl": "https://www.dhakapost.com/country/499105",
-      "publishedAt": "2026-11-19T00:05:27+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499105"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "নাটোরে রাস্তায় আগুন দিয়ে ‘জয় বাংলা’ স্লোগান, ককটেল বিস্ফোরণ - dhakapost.com",
-          "summary": "নাটোরে রাস্তায় আগুন দিয়ে ‘জয় বাংলা’ স্লোগান, ককটেল বিস্ফোরণ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499105"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "01a3203410fd35b5d8f06fd798e8a181"
     }
   ]
 }
