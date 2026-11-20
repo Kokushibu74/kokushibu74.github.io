@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T11:50:31.753464+00:00",
-  "updatedAt": "2026-11-20T11:50:31.753464+00:00",
+  "generatedAt": "2026-11-20T12:00:35.862966+00:00",
+  "updatedAt": "2026-11-20T12:00:35.862966+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 26,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 38,
+  "candidateCount": 40,
   "alertItems": [
+    {
+      "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+      "summary": "কুষ্টিয়া শহরের মজমপুর এলাকায় একটি ভাঙারির দোকানে বস্তাভর্তি মালামাল নামানোর সময় বোমা বিস্ফোরণের ঘটনা ঘটেছে। এতে ভাঙারি বিক্রেতা ও ক্রেতা দুজনই গুরুতর আহত হয়েছেন...",
+      "link": "https://www.jagonews24.com/country/news/1181737",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181737",
+      "publishedAt": "2026-11-20T11:57:42+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+          "summary": "কুষ্টিয়া শহরের মজমপুর এলাকায় একটি ভাঙারির দোকানে বস্তাভর্তি মালামাল নামানোর সময় বোমা বিস্ফোরণের ঘটনা ঘটেছে। এতে ভাঙারি বিক্রেতা ও ক্রেতা দুজনই গুরুতর আহত হয়েছেন...",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f77d0c2fb7c8b746a350521056150328"
+    },
+    {
+      "title": "কাঙ্ক্ষিত বাংলাদেশ প্রতিষ্ঠার লক্ষ্য পূরণে আগুন সন্ত্রাস থেকে বেরিয়ে আসতে হবে: রাষ্ট্রপতি | DBC NEWS",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=jludTrJCCR0",
+      "publisherUrl": "https://www.youtube.com/watch?v=jludTrJCCR0",
+      "publishedAt": "2026-11-20T11:50:34+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=jludTrJCCR0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "কাঙ্ক্ষিত বাংলাদেশ প্রতিষ্ঠার লক্ষ্য পূরণে আগুন সন্ত্রাস থেকে বেরিয়ে আসতে হবে: রাষ্ট্রপতি | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=jludTrJCCR0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9c1c41d1b3b5c1dd3371ac0a1ffb8af4"
+    },
     {
       "title": "নারায়ণগঞ্জে কারখানার বয়লার বিস্ফোরণে দুই শ্রমিক দগ্ধ | Narayanganj | Blast | News | Jamuna TV",
       "summary": "",
@@ -1077,7 +1139,8 @@
       "publisherName": "Chandpur Times",
       "sourceEvidence": [
         "Chandpur Times",
-        "Jago News 24"
+        "Jago News 24",
+        "Channel 24"
       ],
       "sourceLinks": [
         {
@@ -1087,6 +1150,10 @@
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1181645"
+        },
+        {
+          "name": "Channel 24",
+          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "category": "Bangladesh",
@@ -1106,10 +1173,16 @@
           "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
           "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
           "url": "https://www.jagonews24.com/country/news/1181645"
+        },
+        {
+          "name": "Channel 24",
+          "title": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ - Channel 24",
+          "summary": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ Channel 24",
+          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
+      "corroborationCount": 3,
+      "alertEventId": "77a0d7919d829a89b4fcc8e1b69e88d0"
     },
     {
       "title": "বাংলাদেশের বুক ফুলিয়ে দাপট দেখানো ভালো লাগেনি ‘ভালুক’ রাবাদার",
@@ -1922,37 +1995,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "da49d71b522fe85f0c3a52ca2ed354db"
-    },
-    {
-      "title": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
-      "summary": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598",
-      "publishedAt": "2026-11-19T11:55:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
-          "summary": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d44b9f86abe19428aeda883fc5c586a3"
     }
   ]
 }
