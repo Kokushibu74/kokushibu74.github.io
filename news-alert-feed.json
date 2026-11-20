@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T01:45:50.094575+00:00",
-  "updatedAt": "2026-11-20T01:45:50.094575+00:00",
+  "generatedAt": "2026-11-20T02:05:43.481252+00:00",
+  "updatedAt": "2026-11-20T02:05:43.481252+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Samakal",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 51,
+  "candidateCount": 55,
   "alertItems": [
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
@@ -1433,11 +1433,11 @@
       "alertEventId": "bb68eadb33f07ac12820f264acc34ef5"
     },
     {
-      "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
-      "summary": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-19T15:32:18+00:00",
+      "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+      "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publishedAt": "2026-11-19T16:03:11+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -1446,13 +1446,19 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+          "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
+        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
@@ -1792,6 +1798,37 @@
       "alertEventId": "13c39e2ed3dab682a162f4a967b492d4"
     },
     {
+      "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+      "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671873",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671873",
+      "publishedAt": "2026-11-19T10:35:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+          "summary": "বাগেরহাটে ওয়ার্ড বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671873"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e870abd3173afd0f0be0d118a66bfee7"
+    },
+    {
       "title": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ - United News of Bangladesh",
       "summary": "ফেনীতে সাবেক এমপির বাড়িতে লুটপাট-অগ্নিসংযোগ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AB%E0%A7%87%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B2%E0%A7%81%E0%A6%9F%E0%A6%AA%E0%A6%BE%E0%A6%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116594",
@@ -1852,6 +1889,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
+    },
+    {
+      "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+      "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671863",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671863",
+      "publishedAt": "2026-11-19T10:10:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
+          "summary": "খুলনায় পুলিশ ক্যাম্পের অদূরে দুর্বৃত্তের পেট্রোল বোমা নিক্ষেপ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671863"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6521be4740173282a8ebbfee732b917e"
     },
     {
       "title": "রাজধানীতে গ্যাস সিলিন্ডার বিস্ফোরণে একই পরিবারের পাঁচজন দগ্ধ - United News of Bangladesh",
@@ -2029,6 +2097,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
+    },
+    {
+      "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+      "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671821",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671821",
+      "publishedAt": "2026-11-19T05:42:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+          "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
     },
     {
       "title": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
