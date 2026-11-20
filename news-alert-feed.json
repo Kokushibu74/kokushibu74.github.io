@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T11:35:52.839029+00:00",
-  "updatedAt": "2026-11-20T11:35:52.839029+00:00",
+  "generatedAt": "2026-11-20T11:50:31.753464+00:00",
+  "updatedAt": "2026-11-20T11:50:31.753464+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackItems": 2,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 35,
+  "candidateCount": 38,
   "alertItems": [
+    {
+      "title": "নারায়ণগঞ্জে কারখানার বয়লার বিস্ফোরণে দুই শ্রমিক দগ্ধ | Narayanganj | Blast | News | Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=VxxJU2QfkPU",
+      "publisherUrl": "https://www.youtube.com/watch?v=VxxJU2QfkPU",
+      "publishedAt": "2026-11-20T11:32:52+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=VxxJU2QfkPU"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "নারায়ণগঞ্জে কারখানার বয়লার বিস্ফোরণে দুই শ্রমিক দগ্ধ | Narayanganj | Blast | News | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=VxxJU2QfkPU"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9d7cf13c8485e002b79d2e56388be214"
+    },
     {
       "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
       "summary": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন Dhaka Tribune Bangla",
@@ -1360,6 +1391,37 @@
       "alertEventId": "da77b7e9494bdcccd4795167011b4d6b"
     },
     {
+      "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
+      "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
+      "link": "https://www.dhakapost.com/national/499445",
+      "publisherUrl": "https://www.dhakapost.com/national/499445",
+      "publishedAt": "2026-11-20T04:04:21+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499445"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
+          "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499445"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
+    },
+    {
       "title": "বাণিজ্যিক নগরীতে ধারাবাহিক নাশকতা-অগ্নিসংযোগ, উদ্বেগ-আতঙ্ক",
       "summary": "দেশের অন্তত ২২টি জেলায় দুই দিনের ধারাবাহিক নাশকতা, আগুন ও সহিংসতার ঘটনায় চার জন নিহত হয়েছেন। রাজধানী থেকে শুরু করে বিভিন্ন জেলা ও উপজেলা পর্যায়ে ককটেল বিস্ফোরণ, যানবাহন ও স্থাপনায় অগ্নিসংযোগ এবং হামলার ঘটনায় সাধারণ মানুষের মধ্যে তীব্র উদ্বেগ ও আতঙ্ক ছড়িয়ে পড়েছে। এর মধ্যে বিশেষ করে বাণিজ্যিক নগরী চট্টগ্রামে সাম্প্রতিক ককটেল বিস্ফোরণ এবং অগ্নিসংযোগের ধারাবাহিক ঘটনায় জননিরাপত্তা ও... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/982059/%E0%A6%AC%E0%A6%BE%E0%A6%A3%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%AF%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%97%E0%A6%B0%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
@@ -1544,6 +1606,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4195c4631e93cb4eb9adb9c43e439072"
+    },
+    {
+      "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
+      "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
+      "link": "https://www.dhakapost.com/national/499373",
+      "publisherUrl": "https://www.dhakapost.com/national/499373",
+      "publishedAt": "2026-11-19T17:00:13+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499373"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
+          "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499373"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7cced41184f22d9b9387d9aec039cc17"
     },
     {
       "title": "মহেশখালীতে কুকুরকে বাঁচাতে গিয়ে মোটরসাইকেল দুর্ঘটনায় সৌদি প্রবাসীসহ নিহত ২",
@@ -1831,20 +1924,20 @@
       "alertEventId": "da49d71b522fe85f0c3a52ca2ed354db"
     },
     {
-      "title": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
-      "summary": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671885",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671885",
-      "publishedAt": "2026-11-19T11:37:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
+      "title": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
+      "summary": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598",
+      "publishedAt": "2026-11-19T11:55:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
       "sourceEvidence": [
-        "Risingbd.com"
+        "UNB"
       ],
       "sourceLinks": [
         {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671885"
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598"
         }
       ],
       "category": "Bangladesh",
@@ -1852,14 +1945,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Risingbd.com",
-          "title": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
-          "summary": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671885"
+          "name": "UNB",
+          "title": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
+          "summary": "গোপালগঞ্জে এমপির বাড়ি ও থানায় ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%93-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116598"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "7e1fddbac86e03b44b3d14a3ec709426"
+      "alertEventId": "d44b9f86abe19428aeda883fc5c586a3"
     }
   ]
 }
