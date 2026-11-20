@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T02:45:54.356436+00:00",
-  "updatedAt": "2026-11-20T02:45:54.356436+00:00",
+  "generatedAt": "2026-11-20T03:00:43.329479+00:00",
+  "updatedAt": "2026-11-20T03:00:43.329479+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 54,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Janakantha",
@@ -840,14 +840,45 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 52,
+  "candidateCount": 54,
   "alertItems": [
+    {
+      "title": "বাংলাদেশকে গুঁড়িয়ে ১৩০ বছরের যে রেকর্ড নিজের করে নিয়েছেন হারমার",
+      "summary": "বয়স ৩৭। কিন্তু বল হাতে এখনও ব্যাটারদের জন্য আতঙ্কের নাম সাইমন হারমার। বাংলাদেশের বিপক্ষে জোহানেসবার্গ টেস্টে তার ঘূর্ণিতেই ধসে পড়েছে সফরকারীদের দ্বিতীয় ইনিংস। ছয় উইকেট নিয়ে দক্ষিণ আফ্রিকাকে এনে দিয়েছেন ৯ উইকেটের জয়। একই সঙ্গে ভেঙেছেন ১৩০ বছর ধরে টিকে থাকা ইংল্যান্ডের ববি পিলের একটি রেকর্ড। বৃহস্পতিবার (১৯ নভেম্বর) ওয়ান্ডারার্সে সিরিজের প্রথম টেস্টে দ্বিতীয় ইনিংসে বাংলাদেশকে মাত্র ১৬৮ রানে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/sport/cricket/981988/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A7%A7%E0%A7%A9%E0%A7%A6-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/sport/cricket/981988/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A7%A7%E0%A7%A9%E0%A7%A6-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87",
+      "publishedAt": "2026-11-20T03:00:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/sport/cricket/981988/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A7%A7%E0%A7%A9%E0%A7%A6-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বাংলাদেশকে গুঁড়িয়ে ১৩০ বছরের যে রেকর্ড নিজের করে নিয়েছেন হারমার",
+          "summary": "বয়স ৩৭। কিন্তু বল হাতে এখনও ব্যাটারদের জন্য আতঙ্কের নাম সাইমন হারমার। বাংলাদেশের বিপক্ষে জোহানেসবার্গ টেস্টে তার ঘূর্ণিতেই ধসে পড়েছে সফরকারীদের দ্বিতীয় ইনিংস। ছয় উইকেট নিয়ে দক্ষিণ আফ্রিকাকে এনে দিয়েছেন ৯ উইকেটের জয়। একই সঙ্গে ভেঙেছেন ১৩০ বছর ধরে টিকে থাকা ইংল্যান্ডের ববি পিলের একটি রেকর্ড। বৃহস্পতিবার (১৯ নভেম্বর) ওয়ান্ডারার্সে সিরিজের প্রথম টেস্টে দ্বিতীয় ইনিংসে বাংলাদেশকে মাত্র ১৬৮ রানে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/sport/cricket/981988/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%95%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A7%A7%E0%A7%A9%E0%A7%A6-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%87-%E0%A6%B0%E0%A7%87%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "84967e55cc7f73406dbc53dbb79e5b16"
+    },
     {
       "title": "বাকৃবিতে নিজেদের মধ্যে সংঘর্ষে জড়ালো ছাত্রদল, আহত ৯",
       "summary": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ে (বাকৃবি) নিষিদ্ধ ছাত্রলীগের সন্ত্রাসী কর্মকাণ্ডের বিরুদ্ধে প্রতিবাদ মিছিলকে কেন্দ্র করে শাখা ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে সংগঠনটির যুগ্ম আহ্বায়ক মেজবাউল হক মিজুসহ অন্তত ৯ জন আহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) রাত ১২টার দিকে বিশ্ববিদ্যালয়ের হোসেন শহীদ সোহরাওয়ার্দী হলে এ ঘটনা ঘটে। হলের একাধিক প্রত্যক্ষদর্শী সূত্রে জানা যায়, বৃহস্পতিবার রাত... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
       "publisherUrl": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-20T02:44:31+00:00",
+      "publishedAt": "2026-11-20T02:46:14+00:00",
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
@@ -992,10 +1023,6 @@
         {
           "name": "Ekattor TV · YouTube",
           "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
-        },
-        {
-          "name": "Ekattor TV ·",
-          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
         }
       ],
       "category": "Bangladesh",
@@ -1007,16 +1034,10 @@
           "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
           "summary": "",
           "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
-        },
-        {
-          "name": "Ekattor TV",
-          "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম | Hospital Fire| Gopalganj| Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=mJPIk_t9878"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "6923da08132c7cf8f4c0d769b21d4cf7"
+      "alertEventId": "4ddec759ee94991ea335d87ab62f560c"
     },
     {
       "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
@@ -1947,6 +1968,59 @@
       "alertEventId": "a67fd135e55db9a0a15cfc41955f3b3f"
     },
     {
+      "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
+      "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
+      "link": "https://www.dainikamadershomoy.com/details/000000049625",
+      "publisherUrl": "https://www.dainikamadershomoy.com/details/000000049625",
+      "publishedAt": "2026-11-19T09:01:00+00:00",
+      "source": "Amader Shomoy",
+      "publisherName": "Amader Shomoy",
+      "sourceEvidence": [
+        "Amader Shomoy",
+        "bd-pratidin.com",
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        },
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Amader Shomoy",
+          "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
+          "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
+          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328109"
+        },
+        {
+          "name": "Ajker Patrika",
+          "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
+          "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
+    },
+    {
       "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
       "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
       "link": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
@@ -2040,20 +2114,20 @@
       "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
     },
     {
-      "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-      "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/printnews/1328109",
-      "publisherUrl": "https://www.bd-pratidin.com/printnews/1328109",
-      "publishedAt": "2026-11-19T08:07:00+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
+      "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+      "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671821",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671821",
+      "publishedAt": "2026-11-19T05:42:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "bd-pratidin.com"
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
         }
       ],
       "category": "Bangladesh",
@@ -2061,45 +2135,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "bd-pratidin.com",
-          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
+          "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671821"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "621bb659c96da3d441c0388e6402604d"
-    },
-    {
-      "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
-      "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor",
-      "publishedAt": "2026-11-19T06:53:22+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
+      "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
     },
     {
       "title": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
