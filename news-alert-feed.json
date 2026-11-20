@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T02:35:43.687051+00:00",
-  "updatedAt": "2026-11-20T02:35:43.687051+00:00",
+  "generatedAt": "2026-11-20T02:45:54.356436+00:00",
+  "updatedAt": "2026-11-20T02:45:54.356436+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Janakantha",
@@ -843,17 +843,22 @@
   "candidateCount": 52,
   "alertItems": [
     {
-      "title": "ছাত্রলীগবিরোধী মিছিল ঘিরে বাকৃবিতে ছাত্রদলের দুই পক্ষের সংঘর্ষ, আহত ৯",
-      "summary": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ে (বাকৃবি) নিষিদ্ধ ছাত্রলীগের সন্ত্রাসী কর্মকাণ্ডের বিরুদ্ধে প্রতিবাদ মিছিলকে কেন্দ্র করে শাখা ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে সংগঠনটির যুগ্ম আহ্বায়ক মেজবাউল হক মিজুসহ অন্তত ৯ জন আহত হয়েছেন....",
-      "link": "https://www.jagonews24.com/campus/news/1181551",
-      "publisherUrl": "https://www.jagonews24.com/campus/news/1181551",
-      "publishedAt": "2026-11-20T02:22:37+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "বাকৃবিতে নিজেদের মধ্যে সংঘর্ষে জড়ালো ছাত্রদল, আহত ৯",
+      "summary": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ে (বাকৃবি) নিষিদ্ধ ছাত্রলীগের সন্ত্রাসী কর্মকাণ্ডের বিরুদ্ধে প্রতিবাদ মিছিলকে কেন্দ্র করে শাখা ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে সংগঠনটির যুগ্ম আহ্বায়ক মেজবাউল হক মিজুসহ অন্তত ৯ জন আহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) রাত ১২টার দিকে বিশ্ববিদ্যালয়ের হোসেন শহীদ সোহরাওয়ার্দী হলে এ ঘটনা ঘটে। হলের একাধিক প্রত্যক্ষদর্শী সূত্রে জানা যায়, বৃহস্পতিবার রাত... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-20T02:44:31+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
+        "Bangla Tribune",
         "Jago News 24"
       ],
       "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/campus/news/1181551"
@@ -864,13 +869,19 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "Bangla Tribune",
+          "title": "বাকৃবিতে নিজেদের মধ্যে সংঘর্ষে জড়ালো ছাত্রদল, আহত ৯",
+          "summary": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ে (বাকৃবি) নিষিদ্ধ ছাত্রলীগের সন্ত্রাসী কর্মকাণ্ডের বিরুদ্ধে প্রতিবাদ মিছিলকে কেন্দ্র করে শাখা ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে সংগঠনটির যুগ্ম আহ্বায়ক মেজবাউল হক মিজুসহ অন্তত ৯ জন আহত হয়েছেন। বৃহস্পতিবার (১৯ নভেম্বর) রাত ১২টার দিকে বিশ্ববিদ্যালয়ের হোসেন শহীদ সোহরাওয়ার্দী হলে এ ঘটনা ঘটে। হলের একাধিক প্রত্যক্ষদর্শী সূত্রে জানা যায়, বৃহস্পতিবার রাত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/mymensing/982082/%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%83%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%9C%E0%A7%9C%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+        },
+        {
           "name": "Jago News 24",
           "title": "ছাত্রলীগবিরোধী মিছিল ঘিরে বাকৃবিতে ছাত্রদলের দুই পক্ষের সংঘর্ষ, আহত ৯",
           "summary": "বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ে (বাকৃবি) নিষিদ্ধ ছাত্রলীগের সন্ত্রাসী কর্মকাণ্ডের বিরুদ্ধে প্রতিবাদ মিছিলকে কেন্দ্র করে শাখা ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে সংগঠনটির যুগ্ম আহ্বায়ক মেজবাউল হক মিজুসহ অন্তত ৯ জন আহত হয়েছেন....",
           "url": "https://www.jagonews24.com/campus/news/1181551"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "225cc3847f76a8de3bb400f9fb14c78e"
     },
     {
@@ -965,37 +976,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f90cc7d3271604a9d154fc369816df17"
-    },
-    {
-      "title": "ডিসি অফিসে বোমা সদৃশ বস্তু, ১৬ ঘণ্টা পর নিষ্ক্রিয় করলো এসআরবি",
-      "summary": "পঞ্চগড় জেলা প্রশাসকের কার্যালয়ে লাল টেপে মোড়ানো বোমা সদৃশ বস্তুটি প্রায় ১৬ ঘণ্টা পর নিষ্ক্রিয় করেছে স্পেশাল রেসপন্স ব্যাটালিয়নের (এসআরবি) বোম্ব ডিসপোজাল...",
-      "link": "https://www.jagonews24.com/country/news/1181541",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181541",
-      "publishedAt": "2026-11-20T00:23:51+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181541"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "ডিসি অফিসে বোমা সদৃশ বস্তু, ১৬ ঘণ্টা পর নিষ্ক্রিয় করলো এসআরবি",
-          "summary": "পঞ্চগড় জেলা প্রশাসকের কার্যালয়ে লাল টেপে মোড়ানো বোমা সদৃশ বস্তুটি প্রায় ১৬ ঘণ্টা পর নিষ্ক্রিয় করেছে স্পেশাল রেসপন্স ব্যাটালিয়নের (এসআরবি) বোম্ব ডিসপোজাল...",
-          "url": "https://www.jagonews24.com/country/news/1181541"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "54dc717c5221e3c692485e0b6b471fef"
     },
     {
       "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
