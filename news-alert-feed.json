@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T13:40:36.518594+00:00",
-  "updatedAt": "2026-11-20T13:40:36.518594+00:00",
+  "generatedAt": "2026-11-20T13:55:32.641901+00:00",
+  "updatedAt": "2026-11-20T13:55:32.641901+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
@@ -637,7 +637,7 @@
       "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -844,7 +844,7 @@
   "alertItems": [
     {
       "title": "দিনাজপুরে আ’লীগের দুই নেতার বাড়িতে ভাঙচুর-অগ্নিসংযোগ",
-      "summary": "দিনাজপুরে কার্যক্রম নিষিদ্ধ দুই আওয়ামী লীগ নেতার বাড়িতে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। এসময় দুটি প্রাইভেটকার ভাঙচুর ...",
+      "summary": "দিনাজপুরে আ’লীগের দুই নেতার বাড়িতে ভাঙচুর-অগ্নিসংযোগ",
       "link": "https://www.jagonews24.com/country/news/1181756",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181756",
       "publishedAt": "2026-11-20T13:19:27+00:00",
@@ -866,7 +866,7 @@
         {
           "name": "Jago News 24",
           "title": "দিনাজপুরে আ’লীগের দুই নেতার বাড়িতে ভাঙচুর-অগ্নিসংযোগ",
-          "summary": "দিনাজপুরে কার্যক্রম নিষিদ্ধ দুই আওয়ামী লীগ নেতার বাড়িতে ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। এসময় দুটি প্রাইভেটকার ভাঙচুর ...",
+          "summary": "দিনাজপুরে আ’লীগের দুই নেতার বাড়িতে ভাঙচুর-অগ্নিসংযোগ",
           "url": "https://www.jagonews24.com/country/news/1181756"
         }
       ],
@@ -1362,6 +1362,49 @@
       "alertEventId": "c9d99ba9a013539ead4628bd8b7e4c5d"
     },
     {
+      "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
+      "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publishedAt": "2026-11-20T12:00:37+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
+          "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
+          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
+          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d97667b9486fe26d397918947ac7a360"
+    },
+    {
       "title": "কাঙ্ক্ষিত বাংলাদেশ প্রতিষ্ঠার লক্ষ্য পূরণে আগুন সন্ত্রাস থেকে বেরিয়ে আসতে হবে: রাষ্ট্রপতি | DBC NEWS",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=jludTrJCCR0",
@@ -1432,17 +1475,12 @@
       "source": "Chandpur Times",
       "publisherName": "Chandpur Times",
       "sourceEvidence": [
-        "Chandpur Times",
-        "Jago News 24"
+        "Chandpur Times"
       ],
       "sourceLinks": [
         {
           "name": "Chandpur Times",
           "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181645"
         }
       ],
       "category": "Bangladesh",
@@ -1454,16 +1492,10 @@
           "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন - Chandpur Times",
           "summary": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন Chandpur Times",
           "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-          "summary": "চাঁদপুরে আবারও বিএনপি কার্যালয়ে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1181645"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "493c57b09272bc2a89d41bc236f82aba"
+      "corroborationCount": 1,
+      "alertEventId": "16340e015b98bf02d8bb4c285536a177"
     },
     {
       "title": "‘এটি কোন বাংলাদেশ?’ আগুন সন্ত্রাস ও হত্যাকাণ্ড নিয়ে প্রশ্ন মির্জা ফখরুলের | Rtv News",
@@ -1526,43 +1558,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d12ab61159edd37d6d93c9bcc87b988c"
-    },
-    {
-      "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
-      "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99",
-      "publishedAt": "2026-11-20T10:02:06+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
-          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
-          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d97667b9486fe26d397918947ac7a360"
     },
     {
       "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, আহত ৬ সদস্য",
