@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T16:35:39.654999+00:00",
-  "updatedAt": "2026-11-20T16:35:39.654999+00:00",
+  "generatedAt": "2026-11-20T16:50:34.927007+00:00",
+  "updatedAt": "2026-11-20T16:50:34.927007+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 4,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "feed redirected outside its publisher domain",
+      "directError": "<urlopen error timed out>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 47,
+  "candidateCount": 46,
   "alertItems": [
     {
       "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
@@ -890,8 +890,7 @@
           "name": "Banglanews24",
           "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
           "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
-          "url": "https://www.banglanews24.com/national/news/bd/1694768.details",
-          "incidentDateText": "২০ নভেম্বর"
+          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
         }
       ],
       "corroborationCount": 3,
@@ -1126,7 +1125,8 @@
       "publisherName": "দৈনিক ইনকিলাব",
       "sourceEvidence": [
         "দৈনিক ইনকিলাব",
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -1136,6 +1136,10 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1153,10 +1157,16 @@
           "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
           "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন - একাত্তর",
+          "summary": "সিলেটে পররাষ্ট্র প্রতিমন্ত্রীর বাসার গেটে দুর্বৃত্তদের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/98023/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "ef2453111520b1ba692018f77b5d62cf"
+      "corroborationCount": 3,
+      "alertEventId": "a67ab04c6e31abef20372f9033ada370"
     },
     {
       "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
@@ -1287,37 +1297,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3ec2025a3f18faf685040144b2699cb3"
-    },
-    {
-      "title": "শেখ হাসিনার লা/শ দরকার তাই দেশে আগুন সন্ত্রাসে মদদ দিচ্ছেন - যশোরে রুহুল কবির রিজভী | Channel 24",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=cn8fkiUisM0",
-      "publisherUrl": "https://www.youtube.com/watch?v=cn8fkiUisM0",
-      "publishedAt": "2026-11-20T13:15:12+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=cn8fkiUisM0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "শেখ হাসিনার লা/শ দরকার তাই দেশে আগুন সন্ত্রাসে মদদ দিচ্ছেন - যশোরে রুহুল কবির রিজভী | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=cn8fkiUisM0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ba354796a79ba2eed4573c4dc85be71d"
     },
     {
       "title": "অটোরিকশায় ট্রেনের ধাক্কা, একই পরিবারের ৪ জন নিহত",
@@ -2059,37 +2038,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7cced41184f22d9b9387d9aec039cc17"
-    },
-    {
-      "title": "গাজীপুরে পল্লী বিদ্যুৎ অভিযোগ কেন্দ্রে অগ্নিসংযোগ - Risingbd.com",
-      "summary": "গাজীপুরে পল্লী বিদ্যুৎ অভিযোগ কেন্দ্রে অগ্নিসংযোগ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671949",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671949",
-      "publishedAt": "2026-11-19T16:49:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671949"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "গাজীপুরে পল্লী বিদ্যুৎ অভিযোগ কেন্দ্রে অগ্নিসংযোগ - Risingbd.com",
-          "summary": "গাজীপুরে পল্লী বিদ্যুৎ অভিযোগ কেন্দ্রে অগ্নিসংযোগ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671949"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "312963980c989fe91e75189845955e42"
     }
   ]
 }
