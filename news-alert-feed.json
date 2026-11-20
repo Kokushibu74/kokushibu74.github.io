@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T17:00:39.869801+00:00",
-  "updatedAt": "2026-11-20T17:00:39.869801+00:00",
+  "generatedAt": "2026-11-20T17:15:40.493573+00:00",
+  "updatedAt": "2026-11-20T17:15:40.493573+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 52,
-  "failedSourceCount": 3,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 31,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 31,
-  "fallbackWithItemsSourceCount": 23,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 4,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Janakantha",
@@ -574,7 +574,7 @@
       "domain": "dhakacourier.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,39 +840,40 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 43,
+  "candidateCount": 45,
   "alertItems": [
     {
-      "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
-      "summary": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ bdnews24.com",
-      "link": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5",
-      "publisherUrl": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5",
-      "publishedAt": "2026-11-20T16:16:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
+      "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের - bd-pratidin.com",
+      "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/national/2026/11/20/1328753",
+      "publisherUrl": "https://www.bd-pratidin.com/national/2026/11/20/1328753",
+      "publishedAt": "2026-11-20T16:58:23+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
       "sourceEvidence": [
-        "bdnews24.com",
         "bd-pratidin.com",
-        "Banglanews24"
+        "bdnews24.com"
       ],
       "sourceLinks": [
         {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328753"
+        },
+        {
           "name": "bdnews24.com",
           "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328700"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "bd-pratidin.com",
+          "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের - bd-pratidin.com",
+          "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328753"
+        },
         {
           "name": "bdnews24.com",
           "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
@@ -882,19 +883,19 @@
         },
         {
           "name": "bd-pratidin.com",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
+        },
+        {
+          "name": "bd-pratidin.com",
           "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা - bd-pratidin.com",
           "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/national/2026/11/20/1328700"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
-          "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
-          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "868a925472e17e152566258869d647e0"
+      "corroborationCount": 2,
+      "alertEventId": "c18682c0b69baede70614bf79deffac9"
     },
     {
       "title": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
@@ -957,70 +958,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f011745b2f426b4a9cf2713a37f8987c"
-    },
-    {
-      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
-      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716",
-      "publisherUrl": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716",
-      "publishedAt": "2026-11-20T15:21:33+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com",
-        "দৈনিক ইনকিলাব",
-        "The Daily Ittefaq",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/foreign-life/news/965127"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/probash/news/1181744"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/foreign-life/news/965127"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "কুয়েতে ৩৬ বছরের পুরোনো মাইন বিস্ফোরণ, বাংলাদেশি নিহত",
-          "summary": "কুয়েতে ৩৬ বছরের পুরোনো মাইন বিস্ফোরণ, বাংলাদেশি নিহত",
-          "url": "https://www.jagonews24.com/probash/news/1181744"
-        }
-      ],
-      "corroborationCount": 4,
-      "alertEventId": "66f3b6414b6b7ba0895478833115c6ed"
     },
     {
       "title": "কক্সবাজারে ট্রেন-সিএনজির সংঘর্ষে নিহত একই পরিবারের ৪ | Cox's Bazar | Jamuna TV",
@@ -1288,6 +1225,37 @@
       "alertEventId": "3ec2025a3f18faf685040144b2699cb3"
     },
     {
+      "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
+      "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
+      "link": "https://www.banglanews24.com/national/news/bd/1694768.details",
+      "publisherUrl": "https://www.banglanews24.com/national/news/bd/1694768.details",
+      "publishedAt": "2026-11-20T13:16:29+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
+          "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
+          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "868a925472e17e152566258869d647e0"
+    },
+    {
       "title": "অটোরিকশায় ট্রেনের ধাক্কা, একই পরিবারের ৪ জন নিহত",
       "summary": "কক্সবাজারের রামুর মিঠাছড়িতে রেলক্রসিং পার হওয়ার সময় ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার দুই শিশুসহ একই পরিবারের চার জন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিন জন। তাদের মধ্যে এক শিশুসহ দুই জনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৩টার দিকে উপজেলার দক্ষিণ মিঠাছড়ির একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহতরা হলেন- দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার সাজ্জাদ হোসেন রুবেল, তার... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/982204/%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A7%AA-%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -1463,6 +1431,59 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ba63bbcf196115b2502bbb69f2e0dfc3"
+    },
+    {
+      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
+      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত দৈনিক ইনকিলাব",
+      "link": "https://dailyinqilab.com/foreign-life/news/965127",
+      "publisherUrl": "https://dailyinqilab.com/foreign-life/news/965127",
+      "publishedAt": "2026-11-20T12:42:17+00:00",
+      "source": "দৈনিক ইনকিলাব",
+      "publisherName": "দৈনিক ইনকিলাব",
+      "sourceEvidence": [
+        "দৈনিক ইনকিলাব",
+        "The Daily Ittefaq",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/foreign-life/news/965127"
+        },
+        {
+          "name": "The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/probash/news/1181744"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/foreign-life/news/965127"
+        },
+        {
+          "name": "The Daily Ittefaq",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "কুয়েতে ৩৬ বছরের পুরোনো মাইন বিস্ফোরণ, বাংলাদেশি নিহত",
+          "summary": "কুয়েতে ৩৬ বছরের পুরোনো মাইন বিস্ফোরণ, বাংলাদেশি নিহত",
+          "url": "https://www.jagonews24.com/probash/news/1181744"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "66f3b6414b6b7ba0895478833115c6ed"
     },
     {
       "title": "খুলনার সব জেলা থেকে পদ্মা সেতু হয়ে চলছে বাস",
@@ -1841,6 +1862,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "62477a70638ec30ed989315d3816d337"
+    },
+    {
+      "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
+      "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
+      "link": "https://www.dhakapost.com/national/499445",
+      "publisherUrl": "https://www.dhakapost.com/national/499445",
+      "publishedAt": "2026-11-20T04:04:21+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499445"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
+          "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
+          "url": "https://www.dhakapost.com/national/499445"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
       "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
