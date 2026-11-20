@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T18:00:34.048973+00:00",
-  "updatedAt": "2026-11-20T18:00:34.048973+00:00",
+  "generatedAt": "2026-11-20T18:10:50.214180+00:00",
+  "updatedAt": "2026-11-20T18:10:50.214180+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "healthySourceCount": 50,
+  "failedSourceCount": 5,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 30,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 24,
+  "fallbackZeroItemsSourceCount": 6,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -62,24 +62,24 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -347,17 +347,17 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ekattor TV",
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bonik Barta",
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 42,
+  "candidateCount": 33,
   "alertItems": [
     {
       "title": "জনগণের নিরাপত্তা দিতে না পারলে দায়িত্ব ছেড়ে দিন",
@@ -872,61 +872,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5ac138b6b9cd5e7a67e0657edf049a6f"
-    },
-    {
-      "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের - bd-pratidin.com",
-      "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/national/2026/11/20/1328753",
-      "publisherUrl": "https://www.bd-pratidin.com/national/2026/11/20/1328753",
-      "publishedAt": "2026-11-20T16:58:23+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com",
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328753"
-        },
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের - bd-pratidin.com",
-          "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328753"
-        },
-        {
-          "name": "bdnews24.com",
-          "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
-          "summary": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5",
-          "incidentDateText": "৭ নভেম্বর"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা - bd-pratidin.com",
-          "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328700"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "c18682c0b69baede70614bf79deffac9"
     },
     {
       "title": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
@@ -1022,6 +967,37 @@
       "alertEventId": "569b408c93f989b2f18f8e00a1c51eaa"
     },
     {
+      "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা - bd-pratidin.com",
+      "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/national/2026/11/20/1328700",
+      "publisherUrl": "https://www.bd-pratidin.com/national/2026/11/20/1328700",
+      "publishedAt": "2026-11-20T14:26:24+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
+      "sourceEvidence": [
+        "bd-pratidin.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328700"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bd-pratidin.com",
+          "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা - bd-pratidin.com",
+          "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/national/2026/11/20/1328700"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c18682c0b69baede70614bf79deffac9"
+    },
+    {
       "title": "জনমানবশূন্য গোপালগঞ্জের পথঘাট, মানুষ শান্তি চায়",
       "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ডাকা লকডাউন ও টানা কয়েক দিনের সহিংসতা, অগ্নিসংযোগ ও ককটেল বিস্ফোরণের পর গোপালগঞ্জের সার্বিক পরিস্থিতি ধীরে ধীরে স্বাভাবিক হতে শুরু করেছে। বৃহস্পতিবার (১৯ নভেম্বর) লকডাউন কর্মসূচি শেষ হওয়ার পর রাত থেকে জেলার কোথাও নতুন করে কোনই সহিংসতা বা নাশকতার খবর পাওয়া যায়নি। প্রায় ৩৬ ঘণ্টা বন্ধ থাকার পর শুক্রবার সকাল থেকে ঢাকা-খুলনা মহাসড়কে দূরপাল্লার বাস চলাচল শুরু হয়েছে। তবে... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/982222/%E0%A6%9C%E0%A6%A8%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AC%E0%A6%B6%E0%A7%82%E0%A6%A8%E0%A7%8D%E0%A6%AF-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A6%98%E0%A6%BE%E0%A6%9F-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%B6%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%9A%E0%A6%BE%E0%A7%9F",
@@ -1053,48 +1029,6 @@
       "alertEventId": "6e1bd71edbe2754e6c9e9742801b91d8"
     },
     {
-      "title": "সিলেটে প্রতিমন্ত্রীর বাসার গেইটে আগুন, ঘটনাস্থল পরিদর্শনে জামায়াত নেতৃবৃন্দ - দৈনিক ইনকিলাব",
-      "summary": "সিলেটে প্রতিমন্ত্রীর বাসার গেইটে আগুন, ঘটনাস্থল পরিদর্শনে জামায়াত নেতৃবৃন্দ দৈনিক ইনকিলাব",
-      "link": "https://dailyinqilab.com/bangladesh/news/965159",
-      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/965159",
-      "publishedAt": "2026-11-20T14:17:58+00:00",
-      "source": "দৈনিক ইনকিলাব",
-      "publisherName": "দৈনিক ইনকিলাব",
-      "sourceEvidence": [
-        "দৈনিক ইনকিলাব",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965159"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "title": "সিলেটে প্রতিমন্ত্রীর বাসার গেইটে আগুন, ঘটনাস্থল পরিদর্শনে জামায়াত নেতৃবৃন্দ - দৈনিক ইনকিলাব",
-          "summary": "সিলেটে প্রতিমন্ত্রীর বাসার গেইটে আগুন, ঘটনাস্থল পরিদর্শনে জামায়াত নেতৃবৃন্দ দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965159"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "ef2453111520b1ba692018f77b5d62cf"
-    },
-    {
       "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
       "summary": "ইসলামী আন্দোলন বাংলাদেশের মহাসচিব গাজী আতাউর রহমান বলেছেন, জুলাই অভ্যুত্থানের মাধ্যমে এ দেশের ছাত্র-জনতা ফ্যাসিস্ট আওয়ামী লীগকে দেশ থেকে তাড়িয়ে দিয়েছে। হাজারো মানুষকে হত্যা; লাখো মানুষের রক্ত যাদের হাতে লেগে আছে, তারাই আবার মানুষ মারার পরিকল্পনা নিয়ে মাঠে নেমেছে। নিকৃষ্ট কৃতকর্মের জন্য তাদের কোনও অনুশোচনা নেই। আছে ঔদ্ধত্য ও অহমিকা। শুক্রবার (২০ নভেম্বর) ইসলামী আন্দোলন বাংলাদেশ, ঢাকা মহানগর... বিস্তারিত",
       "link": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95",
@@ -1124,43 +1058,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "174a237f007e77ee7ba20453460033f8"
-    },
-    {
-      "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-      "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF",
-      "publishedAt": "2026-11-20T13:28:58+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
-          "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
-          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9dcc5c6e239718598f7008d5330a2cea"
     },
     {
       "title": "দিনাজপুরে আ’লীগের দুই নেতার বাড়িতে ভাঙচুর-অগ্নিসংযোগ",
@@ -1218,7 +1115,11 @@
           "name": "Chattogram News",
           "title": "রামুতে ট্রেনের ধাক্কায় একই পরিবারের ৪ জন নিহত",
           "summary": "কক্সবাজারের রামুতে রেলক্রসিং পার হওয়ার সময় ট্রেনের ধাক্কায় সিএনজিচালিত অটোরিকশার দুই শিশুসহ একই পরিবারের চারজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও তিনজন। তাদের মধ্যে এক শিশুসহ দুইজনের অবস্থা আশঙ্কাজনক। শুক্রবার (২০ নভেম্বর) বিকেল ৪টার দিকে উপজেলার দক্ষিণ মিঠাছড়ির একটি রেলক্রসিংয়ে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন, দক্ষিণ মিঠাছড়ির চেইন্দা কাইম্যারঘোনা এলাকার নুরুল ইসলামের ছেলে […] The post রামুতে ট্রেনের ধাক্কায় একই পরিবারের ৪ জন নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161184"
+          "url": "https://chattogramnews.com/archives/161184",
+          "incidentDateText": "শুক্রবার (২০ নভেম্বর)",
+          "incidentTimeText": "বিকেল ৪টার দিকে",
+          "incidentTimeSource": "Chattogram News",
+          "locationText": "দক্ষিণ মিঠাছড়ি ইউনিয়ন, পুলিশ কক্সবাজার আইকনিক থানার, কক্সবাজার"
         }
       ],
       "corroborationCount": 1,
@@ -1249,7 +1150,8 @@
           "name": "Banglanews24",
           "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
           "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
-          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
+          "url": "https://www.banglanews24.com/national/news/bd/1694768.details",
+          "incidentDateText": "২০ নভেম্বর"
         }
       ],
       "corroborationCount": 1,
@@ -1298,37 +1200,6 @@
       "alertEventId": "7065e305339e945953f0bd1d60dfd0c7"
     },
     {
-      "title": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা - Bangladesh Sangbad Sangstha (BSS)",
-      "summary": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা Bangladesh Sangbad Sangstha (BSS)",
-      "link": "https://www.bssnews.net/bangla/news/362040",
-      "publisherUrl": "https://www.bssnews.net/bangla/news/362040",
-      "publishedAt": "2026-11-20T13:07:00+00:00",
-      "source": "BSS",
-      "publisherName": "BSS",
-      "sourceEvidence": [
-        "BSS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "BSS",
-          "url": "https://www.bssnews.net/bangla/news/362040"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "BSS",
-          "title": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা - Bangladesh Sangbad Sangstha (BSS)",
-          "summary": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা Bangladesh Sangbad Sangstha (BSS)",
-          "url": "https://www.bssnews.net/bangla/news/362040"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "05c19c8b188a5a4c67fbef87cf44ab4c"
-    },
-    {
       "title": "গোপালগঞ্জে হাসপাতালে আগুন, আন্তর্জাতিক আইনের লঙ্ঘন: প্রধানমন্ত্রীর উপ-প্রেস সচিব - Banglanews24",
       "summary": "গোপালগঞ্জে হাসপাতালে আগুন, আন্তর্জাতিক আইনের লঙ্ঘন: প্রধানমন্ত্রীর উপ-প্রেস সচিব Banglanews24",
       "link": "https://www.banglanews24.com/national/news/bd/1694762.details",
@@ -1358,6 +1229,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ba63bbcf196115b2502bbb69f2e0dfc3"
+    },
+    {
+      "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
+      "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0",
+      "publishedAt": "2026-11-20T12:57:21+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
+        },
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
+        },
+        {
+          "name": "Ajker Patrika",
+          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
     },
     {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
@@ -1534,6 +1447,12 @@
         },
         {
           "name": "Dhaka Tribune Bangla",
+          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
+          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
           "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
           "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
@@ -1636,37 +1555,6 @@
       "alertEventId": "d12ab61159edd37d6d93c9bcc87b988c"
     },
     {
-      "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-      "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-      "link": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publisherUrl": "https://bangla.bdnews24.com/politics/x3wlbsmpom",
-      "publishedAt": "2026-11-20T07:45:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী - bdnews24.com",
-          "summary": "পেট্রল বোমা মেরে ‘পলাতক সন্ত্রাসীকে’ বাংলাদেশে আনা যাবে না: পররাষ্ট্র প্রতিমন্ত্রী bdnews24.com",
-          "url": "https://bangla.bdnews24.com/politics/x3wlbsmpom"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ee7eb671e681b01cae45845a80276098"
-    },
-    {
       "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
       "summary": "চট্টগ্রামের মিরসরাইয়ে ঢাকা-চট্টগ্রাম মহাসড়কে পুলিশের টহল গাড়িকে পেছন থেকে সজোরে ধাক্কা দিয়েছে যাত্রীবাহী সোহাগ এলিট পরিবহনের একটি বাস। এতে পুলিশের টহল গাড়িতে থাকা ৬ পু্লিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর আনুমানিক ৫টা ১০ মিনিটে উপজেলার উত্তর সোনাপাহাড় এলাকায় চিনকি আস্তানা বাবুর তেলের দোকানের সামনে মহাসড়কের চট্টগ্রামমুখী লেনে এ দুর্ঘটনা ঘটে। পুলিশ সূত্রে জানা […] The post মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161175",
@@ -1698,68 +1586,6 @@
       "alertEventId": "55e1bf7408e2210d8d2aa44f98ee3da8"
     },
     {
-      "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
-      "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-      "link": "https://www.jamuna.tv/index.php/national/668339",
-      "publisherUrl": "https://www.jamuna.tv/index.php/national/668339",
-      "publishedAt": "2026-11-20T06:40:37+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/index.php/national/668339"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
-          "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
-          "url": "https://www.jamuna.tv/index.php/national/668339"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
-    },
-    {
-      "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
-      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
-      "publishedAt": "2026-11-20T06:07:03+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
-    },
-    {
       "title": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম - Dhaka Tribune Bangla",
       "summary": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/economy/113481/gold-price-reduced-bangladesh",
@@ -1789,37 +1615,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "62477a70638ec30ed989315d3816d337"
-    },
-    {
-      "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-      "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-      "link": "https://www.dhakapost.com/national/499445",
-      "publisherUrl": "https://www.dhakapost.com/national/499445",
-      "publishedAt": "2026-11-20T04:04:21+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-          "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
       "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
