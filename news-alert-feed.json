@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T07:00:32.243240+00:00",
-  "updatedAt": "2026-11-20T07:00:32.243240+00:00",
+  "generatedAt": "2026-11-20T07:15:38.982567+00:00",
+  "updatedAt": "2026-11-20T07:15:38.982567+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 57,
+  "candidateCount": 55,
   "alertItems": [
     {
       "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
@@ -1119,37 +1119,6 @@
       "alertEventId": "513088ba7a59da566d1cd0a139e96ff0"
     },
     {
-      "title": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম - Dhaka Tribune Bangla",
-      "summary": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/economy/113481/gold-price-reduced-bangladesh",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/economy/113481/gold-price-reduced-bangladesh",
-      "publishedAt": "2026-11-20T05:03:16+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/economy/113481/gold-price-reduced-bangladesh"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম - Dhaka Tribune Bangla",
-          "summary": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/economy/113481/gold-price-reduced-bangladesh"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "62477a70638ec30ed989315d3816d337"
-    },
-    {
       "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
       "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
       "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
@@ -1174,42 +1143,13 @@
           "name": "Chandpur Times",
           "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
           "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
+          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
+          "incidentDateText": "বৃহস্পতিবার (১৯ নভেম্বর)",
+          "locationText": "চাঁদপুরের মতলব উত্তর উপজেলার, চাঁদপুর, ছেংগারচর পৌরসভার আদুরভিটি এলাকায়, পেয়ে মতলব উত্তর থানার"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "da77b7e9494bdcccd4795167011b4d6b"
-    },
-    {
-      "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-      "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-      "link": "https://www.dhakapost.com/national/499445",
-      "publisherUrl": "https://www.dhakapost.com/national/499445",
-      "publishedAt": "2026-11-20T04:04:21+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল - dhakapost.com",
-          "summary": "দুর্বল হয়েছে ঘূর্ণিঝড় ‘আকভান’, বাংলাদেশের বন্দরে সতর্কতা বহাল dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499445"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
       "title": "বাণিজ্যিক নগরীতে ধারাবাহিক নাশকতা-অগ্নিসংযোগ, উদ্বেগ-আতঙ্ক",
@@ -1241,6 +1181,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "13e4ff1b36441230e6de10b1588e0ea5"
+    },
+    {
+      "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+      "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publishedAt": "2026-11-20T03:50:00+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+          "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ba3a4aafa75cb6f4166e35cc7022b62e"
     },
     {
       "title": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত - bd-pratidin.com",
@@ -1851,37 +1822,6 @@
       "alertEventId": "ca970563c8dd89a608d6e6dc48f54591"
     },
     {
-      "title": "চট্টগ্রামে মোটরসাইকেল দুর্ঘটনায় দুইভাইসহ ৩ জনের মৃত্যু",
-      "summary": "চট্টগ্রামের হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে প্রাণ গেলো দুই ভাইসহ তিনজনের। এ ঘটনায় আহত হয়েছেন আরও অন্তত দুইজন। নিহতরা হলেন- হাটহাজারী উপজেলার ফরহাদাবাদ ইউনিয়নের ৯ নম্বর ওয়ার্ডের হায়দার আলী সিপাহী বাড়ির মো. হারুনের ছেলে ইফতেখার মাহমুদ তুষার (৩২) ও তার ছোট ভাই ইমতিয়াজ মাহমুদ ইরাত (২৮)। নিহত দুই ভাই কিছুদিন আগে প্রবাস থেকে দেশে ফিরেছিলেন। নিহত আরেকজন হলেন মো. ফাহিম (১৯)। তার বাড়িও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-19T15:21:47+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "চট্টগ্রামে মোটরসাইকেল দুর্ঘটনায় দুইভাইসহ ৩ জনের মৃত্যু",
-          "summary": "চট্টগ্রামের হাটহাজারীতে দুই মোটরসাইকেলের সংঘর্ষে প্রাণ গেলো দুই ভাইসহ তিনজনের। এ ঘটনায় আহত হয়েছেন আরও অন্তত দুইজন। নিহতরা হলেন- হাটহাজারী উপজেলার ফরহাদাবাদ ইউনিয়নের ৯ নম্বর ওয়ার্ডের হায়দার আলী সিপাহী বাড়ির মো. হারুনের ছেলে ইফতেখার মাহমুদ তুষার (৩২) ও তার ছোট ভাই ইমতিয়াজ মাহমুদ ইরাত (২৮)। নিহত দুই ভাই কিছুদিন আগে প্রবাস থেকে দেশে ফিরেছিলেন। নিহত আরেকজন হলেন মো. ফাহিম (১৯)। তার বাড়িও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/982026/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%AD%E0%A6%BE%E0%A6%87%E0%A6%B8%E0%A6%B9-%E0%A7%A9-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9551dff775876504be7b342098fa47d9"
-    },
-    {
       "title": "গাড়ি ভাঙচুর, অগ্নিসংযোগ ও নাশকতা প্রতিরোধে বনানীজুড়ে রাতদিন মাঠে স্বেচ্ছাসেবক দলের নেতাকর্মীরা",
       "summary": "বিশেষ প্রতিনিধি মোঃ মাহবুব আলম: রাজধানীর ঢাকা-১৭ আসনের বনানী এলাকায় গাড়ি ভাঙচুর, অগ্নিসংযোগ, চোরাগোপ্তা হামলা ও যেকোনো ধরনের নাশকতামূলক কর্মকাণ্ড প্রতিরোধে মাঠে সক্রিয় অবস্থানে রয়েছেন বনানী থানা স্বেচ্ছাসেবক দলের সভাপতি পদপ্রার্থী মোঃ আলাউদ্দিন আহমেদের নেতৃত্বে থানা, ১৯ ও ২০ নম্বর ওয়ার্ডসহ বিভিন্ন ওয়ার্ড ও ইউনিটের নেতৃবৃন্দ এবং স্বেচ্ছাসেবক দলের অঙ্গ ও সহযোগী সংগঠনের নেতাকর্মীরা। প্রধানমন্ত্রী […]",
       "link": "https://dailysylhetnews24.com/2026/11/19/64250/",
@@ -2204,25 +2144,25 @@
       "alertEventId": "a67fd135e55db9a0a15cfc41955f3b3f"
     },
     {
-      "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
-      "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
-      "link": "https://www.dainikamadershomoy.com/details/000000049625",
-      "publisherUrl": "https://www.dainikamadershomoy.com/details/000000049625",
-      "publishedAt": "2026-11-19T09:01:00+00:00",
-      "source": "Amader Shomoy",
-      "publisherName": "Amader Shomoy",
+      "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
+      "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
+      "link": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB",
+      "publisherUrl": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB",
+      "publishedAt": "2026-11-19T09:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
       "sourceEvidence": [
-        "Amader Shomoy",
-        "bd-pratidin.com"
+        "UNB",
+        "Amader Shomoy"
       ],
       "sourceLinks": [
         {
-          "name": "Amader Shomoy",
-          "url": "https://www.dainikamadershomoy.com/details/000000049625"
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
         },
         {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
+          "name": "Amader Shomoy",
+          "url": "https://www.dainikamadershomoy.com/details/000000049625"
         }
       ],
       "category": "Bangladesh",
@@ -2230,20 +2170,20 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "UNB",
+          "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB - United News of Bangladesh",
+          "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে আগুন দিল নিষিদ্ধ ঘোষিত আওয়ামী লীগ | Awami League | Gopalganj | UNB United News of Bangladesh",
+          "url": "https://unb.com.bd/video/9999/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%BF%E0%A6%A4-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97---Awami-League---Gopalganj---UNB"
+        },
+        {
           "name": "Amader Shomoy",
           "title": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন - Amader Shomoy",
           "summary": "গোপালগঞ্জে থানা ও এমপির বাড়িতে ভাঙচুর-আগুন Amader Shomoy",
           "url": "https://www.dainikamadershomoy.com/details/000000049625"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
-          "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328109"
         }
       ],
       "corroborationCount": 2,
-      "alertEventId": "621bb659c96da3d441c0388e6402604d"
+      "alertEventId": "ffeeb589026632217dbcf075864b1b01"
     },
     {
       "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন - Daily Bonik Barta",
