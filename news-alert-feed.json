@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T23:10:39.951323+00:00",
-  "updatedAt": "2026-11-20T23:10:39.951323+00:00",
+  "generatedAt": "2026-11-20T23:25:33.807526+00:00",
+  "updatedAt": "2026-11-20T23:25:33.807526+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -648,16 +648,16 @@
       "name": "GDACS",
       "domain": "gdacs.org",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "not well-formed (invalid token): line 1, column 0",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
+      "directHealthy": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "USGS Earthquake Feed",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 48,
   "alertItems": [
     {
       "title": "সৌদির আরামকো টাওয়ারে হুতিদের হামলা, বাংলাদেশের তীব্র নিন্দা - Risingbd.com",
@@ -1003,6 +1003,44 @@
       "alertEventId": "66f3b6414b6b7ba0895478833115c6ed"
     },
     {
+      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত Daily Naya Diganta",
+      "link": "https://dailynayadiganta.com/post/other/1071207",
+      "publisherUrl": "https://dailynayadiganta.com/post/other/1071207",
+      "publishedAt": "2026-11-20T18:01:00+00:00",
+      "source": "Daily Naya Diganta",
+      "publisherName": "Daily Naya Diganta",
+      "sourceEvidence": [
+        "Daily Naya Diganta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/other/1071207"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Naya Diganta",
+          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/other/1071207",
+          "locationText": "হাসান ব্রাহ্মণবাড়িয়ার নবীনগর উপজেলার, ব্রাহ্মণবাড়িয়া, লাউর ফতেহপুর ইউনিয়নে, আহাম্মদপুর গ্রামে"
+        },
+        {
+          "name": "Daily Naya Diganta",
+          "title": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ - Daily Naya Diganta",
+          "summary": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/abroad/1071194"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bddaeefee7f12e7302a718a996e92b80"
+    },
+    {
       "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
       "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
       "link": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
@@ -1028,41 +1066,16 @@
           "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
           "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541"
+        },
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/national/2026/11/20/1770352"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
-    },
-    {
-      "title": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ - Daily Naya Diganta",
-      "summary": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ Daily Naya Diganta",
-      "link": "https://dailynayadiganta.com/post/abroad/1071194",
-      "publisherUrl": "https://dailynayadiganta.com/post/abroad/1071194",
-      "publishedAt": "2026-11-20T17:30:00+00:00",
-      "source": "Daily Naya Diganta",
-      "publisherName": "Daily Naya Diganta",
-      "sourceEvidence": [
-        "Daily Naya Diganta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071194"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Naya Diganta",
-          "title": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ - Daily Naya Diganta",
-          "summary": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071194"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bddaeefee7f12e7302a718a996e92b80"
+      "alertEventId": "316c8d84e2e9ec84fb1a1eee71386213"
     },
     {
       "title": "জনগণের নিরাপত্তা দিতে না পারলে দায়িত্ব ছেড়ে দিন",
