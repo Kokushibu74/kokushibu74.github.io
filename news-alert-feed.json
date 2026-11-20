@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T14:05:49.156229+00:00",
-  "updatedAt": "2026-11-20T14:05:49.156229+00:00",
+  "generatedAt": "2026-11-20T14:20:43.853525+00:00",
+  "updatedAt": "2026-11-20T14:20:43.853525+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 14,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 12,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "GDACS",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 44,
   "alertItems": [
     {
       "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
@@ -964,7 +964,8 @@
           "name": "Banglanews24",
           "title": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের - Banglanews24",
           "summary": "রিয়াদে হুথিদের হামলার নিন্দা বাংলাদেশের Banglanews24",
-          "url": "https://www.banglanews24.com/national/news/bd/1694768.details"
+          "url": "https://www.banglanews24.com/national/news/bd/1694768.details",
+          "incidentDateText": "২০ নভেম্বর"
         }
       ],
       "corroborationCount": 1,
@@ -1305,37 +1306,6 @@
       "alertEventId": "5530d9d81c85d5f61a6634fefb45c4eb"
     },
     {
-      "title": "দেশজুড়ে সহিংসতা-আগুনের ঘটনা: রাষ্ট্রপতি বললেন, এ কোন বাংলাদেশ? | President | News | Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=MwomjSs3jDo",
-      "publisherUrl": "https://www.youtube.com/watch?v=MwomjSs3jDo",
-      "publishedAt": "2026-11-20T12:23:03+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=MwomjSs3jDo"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "দেশজুড়ে সহিংসতা-আগুনের ঘটনা: রাষ্ট্রপতি বললেন, এ কোন বাংলাদেশ? | President | News | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=MwomjSs3jDo"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fe29dbd72ffa664b115327b38390303f"
-    },
-    {
       "title": "মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬",
       "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের মীরসরাই উপজেলার চিনকি আস্তানা সংলগ্ন এলাকায় পুলিশের টহল গাড়ির পেছন থেকে সজোরে এসি বাসের ধাক্কায় পুলিশের ২ উপ পরিদর্শক (এসআই) ও চার সদস্যসহ ৬ জন আহত হয়েছেন। হাইওয়ে পুলিশ ও স্থানীয় সূত্রে জানা গেছে, আজ শুক্রবার ভোর সাড়ে ৫টায় মহাসড়কের চিনকি আস্তানা এলাকার বাবুর তেলের দোকানের সামনে এ দুর্ঘটনা ঘটে। এতে আহতরা হলেন-জোরারগঞ্জ […] The post মীরসরাইয়ে পুলিশের টহল ভ্যানে বাসের ধাক্কা, দুই এসআইসহ আহত ৬ appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/mirsarai-bus-hits-police-patrol-van-six-injured/",
@@ -1410,6 +1380,37 @@
       "alertEventId": "d97667b9486fe26d397918947ac7a360"
     },
     {
+      "title": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/national/2026/11/20/1770352",
+      "publisherUrl": "https://www.kalerkantho.com/online/national/2026/11/20/1770352",
+      "publishedAt": "2026-11-20T11:08:09+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/national/2026/11/20/1770352"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে হুতি হামলার তীব্র নিন্দা ঢাকার কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/national/2026/11/20/1770352"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "316c8d84e2e9ec84fb1a1eee71386213"
+    },
+    {
       "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
       "summary": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113505/%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%A2%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1439,6 +1440,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "53f0c5486308f70abc40ff0ad3720736"
+    },
+    {
+      "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন - Chandpur Times",
+      "summary": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন Chandpur Times",
+      "link": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/",
+      "publisherUrl": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/",
+      "publishedAt": "2026-11-20T10:56:33+00:00",
+      "source": "Chandpur Times",
+      "publisherName": "Chandpur Times",
+      "sourceEvidence": [
+        "Chandpur Times"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chandpur Times",
+          "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chandpur Times",
+          "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন - Chandpur Times",
+          "summary": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন Chandpur Times",
+          "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "16340e015b98bf02d8bb4c285536a177"
     },
     {
       "title": "‘এটি কোন বাংলাদেশ?’ আগুন সন্ত্রাস ও হত্যাকাণ্ড নিয়ে প্রশ্ন মির্জা ফখরুলের | Rtv News",
@@ -1503,10 +1535,10 @@
       "alertEventId": "d12ab61159edd37d6d93c9bcc87b988c"
     },
     {
-      "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
-      "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/",
+      "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা - Chandpur Times",
+      "summary": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা Chandpur Times",
+      "link": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/",
+      "publisherUrl": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/",
       "publishedAt": "2026-11-20T09:39:20+00:00",
       "source": "Chandpur Times",
       "publisherName": "Chandpur Times",
@@ -1516,7 +1548,7 @@
       "sourceLinks": [
         {
           "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/"
+          "url": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/"
         }
       ],
       "category": "Bangladesh",
@@ -1525,9 +1557,9 @@
       "sourceStories": [
         {
           "name": "Chandpur Times",
-          "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
-          "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b8%e0%a6%a4%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%a4%e0%a6%be-5/"
+          "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা - Chandpur Times",
+          "summary": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা Chandpur Times",
+          "url": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/"
         }
       ],
       "corroborationCount": 1,
@@ -1563,48 +1595,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "387dadf0873712fab5df02e9c6ac985b"
-    },
-    {
-      "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
-      "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
-      "link": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/",
-      "publishedAt": "2026-11-20T09:13:12+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times",
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/"
-        },
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন",
-          "summary": "চাঁদপুরের মতলব উত্তরে আবারও বিএনপির দলীয় কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) দিবাগত রাতে উপজেলার ষাটনল ইউনিয়নের পশ্চিম লালপুর গ্রামের বেড়িবাঁধের ওপর অবস্থিত ৬ নম্বর ওয়ার্ড বিএনপি ও সহযোগী অঙ্গসংগঠনের কার্যালয়ে এ ঘটনা ঘটে। এতে কার্যালয়ের দরজা, মেঝের কিছু অংশ এবং বাইরে থাকা ব্যানারের একাংশ পুড়ে গেছে। স্থানীয় সূত্রে জানা যায়, বৃহস্পতিবার গভীর রাতে ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%ab%e0%a7%87%e0%a6%b0-%e0%a6%ac%e0%a6%bf%e0%a6%8f%e0%a6%a8%e0%a6%aa%e0%a6%bf-%e0%a6%95%e0%a6%be/"
-        },
-        {
-          "name": "Channel 24",
-          "title": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ - Channel 24",
-          "summary": "চাঁদপুরে ওয়ার্ড বিএনপি কার্যালয়ে অগ্নিসংযোগ Channel 24",
-          "url": "https://www.channel24bd.tv/countries/article/360094/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "77a0d7919d829a89b4fcc8e1b69e88d0"
     },
     {
       "title": "মঞ্জুর গাড়িতে আওয়ামী দুস্কৃতকারীদের অগ্নিসংযোগ কাপুরুষোচিত: রিজভী",
@@ -1729,37 +1719,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
-    },
-    {
-      "title": "শ্রীমঙ্গলে গভীর রাতে গ্রামীণ ব্যাংকে আগুন, এলাকায় উত্তেজনা",
-      "summary": "মৌলভীবাজারের শ্রীমঙ্গলে গ্রামীণ ব্যাংকের সিন্দুরখান শাখার কার্যালয়ে অগ্নিসংযোগের চেষ্টা করেছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আড়াইটার দিকে কার্যালয়ের বারান্দায় রাখা গাড়ির টায়ারে আগুন ধরিয়ে দেওয়া হয়। তবে স্থানীয় বাসিন্দাদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের ক্ষয়ক্ষতি এড়ানো সম্ভব হয়েছে। বৃহস্পতিবার (১৯ নভেম্বর) রাতে স্থানীয় ইউপি সদস্য মোরাদ হোসেন ঘটনার সত্যতা নিশ্চিত করেন।... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/sylhet/982107/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F",
-      "publisherUrl": "https://www.banglatribune.com/country/sylhet/982107/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F",
-      "publishedAt": "2026-11-20T05:53:19+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/sylhet/982107/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "শ্রীমঙ্গলে গভীর রাতে গ্রামীণ ব্যাংকে আগুন, এলাকায় উত্তেজনা",
-          "summary": "মৌলভীবাজারের শ্রীমঙ্গলে গ্রামীণ ব্যাংকের সিন্দুরখান শাখার কার্যালয়ে অগ্নিসংযোগের চেষ্টা করেছে দুর্বৃত্তরা। বুধবার (১৮ নভেম্বর) দিবাগত রাত আড়াইটার দিকে কার্যালয়ের বারান্দায় রাখা গাড়ির টায়ারে আগুন ধরিয়ে দেওয়া হয়। তবে স্থানীয় বাসিন্দাদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের ক্ষয়ক্ষতি এড়ানো সম্ভব হয়েছে। বৃহস্পতিবার (১৯ নভেম্বর) রাতে স্থানীয় ইউপি সদস্য মোরাদ হোসেন ঘটনার সত্যতা নিশ্চিত করেন।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/sylhet/982107/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6485f5900a2c087689fc6a40837f9686"
     },
     {
       "title": "স্বর্ণের দামে বড় ধস, টানা আট দফায় কমলো দাম - Dhaka Tribune Bangla",
