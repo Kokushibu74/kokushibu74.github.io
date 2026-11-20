@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T06:45:39.405877+00:00",
-  "updatedAt": "2026-11-20T06:45:39.405877+00:00",
+  "generatedAt": "2026-11-20T07:00:32.243240+00:00",
+  "updatedAt": "2026-11-20T07:00:32.243240+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,8 +840,71 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 55,
+  "candidateCount": 57,
   "alertItems": [
+    {
+      "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
+      "summary": "চট্টগ্রামের মিরসরাইয়ে ঢাকা-চট্টগ্রাম মহাসড়কে পুলিশের টহল গাড়িকে পেছন থেকে সজোরে ধাক্কা দিয়েছে যাত্রীবাহী সোহাগ এলিট পরিবহনের একটি বাস। এতে পুলিশের টহল গাড়িতে থাকা ৬ পু্লিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর আনুমানিক ৫টা ১০ মিনিটে উপজেলার উত্তর সোনাপাহাড় এলাকায় চিনকি আস্তানা বাবুর তেলের দোকানের সামনে মহাসড়কের চট্টগ্রামমুখী লেনে এ দুর্ঘটনা ঘটে। পুলিশ সূত্রে জানা […] The post মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত appeared first on চট্টগ্রাম নিউজ .",
+      "link": "https://chattogramnews.com/archives/161175",
+      "publisherUrl": "https://chattogramnews.com/archives/161175",
+      "publishedAt": "2026-11-20T06:57:07+00:00",
+      "source": "Chattogram News",
+      "publisherName": "Chattogram News",
+      "sourceEvidence": [
+        "Chattogram News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161175"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chattogram News",
+          "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
+          "summary": "চট্টগ্রামের মিরসরাইয়ে ঢাকা-চট্টগ্রাম মহাসড়কে পুলিশের টহল গাড়িকে পেছন থেকে সজোরে ধাক্কা দিয়েছে যাত্রীবাহী সোহাগ এলিট পরিবহনের একটি বাস। এতে পুলিশের টহল গাড়িতে থাকা ৬ পু্লিশ সদস্য আহত হয়েছেন। শুক্রবার (২০ নভেম্বর) ভোর আনুমানিক ৫টা ১০ মিনিটে উপজেলার উত্তর সোনাপাহাড় এলাকায় চিনকি আস্তানা বাবুর তেলের দোকানের সামনে মহাসড়কের চট্টগ্রামমুখী লেনে এ দুর্ঘটনা ঘটে। পুলিশ সূত্রে জানা […] The post মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161175"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "55e1bf7408e2210d8d2aa44f98ee3da8"
+    },
+    {
+      "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
+      "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
+      "link": "https://www.jamuna.tv/national/668339",
+      "publisherUrl": "https://www.jamuna.tv/national/668339",
+      "publishedAt": "2026-11-20T06:40:37+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/national/668339"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না - Jamuna Television",
+          "summary": "অগ্নিসংযোগ বা বোমা মেরে দিল্লি থেকে ফ্লাইট বাংলাদেশে আনা যাবে না Jamuna Television",
+          "url": "https://www.jamuna.tv/national/668339",
+          "incidentDateText": "২০ নভেম্বর ২০২৬"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
+    },
     {
       "title": "সিরাজগঞ্জে এনসিপি নেতা মাহিনের বাড়ির সামনে পেট্রল ঢেলে আগুন",
       "summary": "সিরাজগঞ্জের বেলকুচিতে এনসিপির সহযোগী সংগঠন জাতীয় স্বেচ্ছাসেবক শক্তির আহ্বায়ক মাহিন সরকারের গ্রামের বাড়ির প্রবেশপথে অগ্নিসংযোগের ঘটনা ঘটেছে।",
@@ -1111,9 +1174,7 @@
           "name": "Chandpur Times",
           "title": "মতলব উত্তরে পার্কিং করা মাইক্রোবাসে আগুন",
           "summary": "চাঁদপুরের মতলব উত্তর উপজেলার ছেংগারচর পৌরসভার আদুরভিটি এলাকায় রাস্তার পাশে পার্কিং করে রাখা একটি গাড়িতে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বৃহস্পতিবার (১৯ নভেম্বর) রাত আনুমানিক সাড়ে ৮টার মধ্যে আদুরভিটি মিয়াজী বাড়ির সামনে এ ঘটনা ঘটে। এতে গাড়িটির বেশ কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। তবে আগুনের সূত্রপাত কীভাবে হয়েছে, তা এখনো স্পষ্ট নয়। স্থানীয় সূত্রে জানা যায়, কক্সবাজার ম-৫১-০০১৫ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/",
-          "incidentDateText": "বৃহস্পতিবার (১৯ নভেম্বর)",
-          "locationText": "চাঁদপুরের মতলব উত্তর উপজেলার, চাঁদপুর, ছেংগারচর পৌরসভার আদুরভিটি এলাকায়, পেয়ে মতলব উত্তর থানার"
+          "url": "https://chandpurtimes.com/%e0%a6%ae%e0%a6%a4%e0%a6%b2%e0%a6%ac-%e0%a6%89%e0%a6%a4%e0%a7%8d%e0%a6%a4%e0%a6%b0%e0%a7%87-%e0%a6%aa%e0%a6%be%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%bf%e0%a6%82/"
         }
       ],
       "corroborationCount": 1,
@@ -1362,16 +1423,10 @@
           "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
           "summary": "গোপালগঞ্জে রামদা ও কুড়াল হাতে মহড়া দিয়ে একটি হাসপাতালে আগুন দিয়েছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। বৃহস্পতিবার (১৯ নভেম্বর) এ ঘটনা ঘটে। চিকিৎসাসেবা প্রতিষ্ঠানে এমন হামলার ঘটনায় উদ্বেগ প্রকাশের পাশাপাশি এটিকে আন্তর্জাতিক মানবিক আইনের লঙ্ঘন বলে দাবি করেছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব মো. সুজাউদ্দৌলা (সুজন মাহমুদ)। বৃহস্পতিবার সামাজিক যোগাযোগমাধ্যমে দেওয়া এক পোস্টে তিনি এ মন্তব্য... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/982065/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%99%E0%A7%8D%E0%A6%98%E0%A6%A8"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "জুলাই বনাম আওয়ামী লীগ ও ভারতীয় আধিপত্যবাদ: আসিফ মাহমুদ",
-          "summary": "দেশের বর্তমান পরিস্থিতি নিয়ে সামাজিক যোগাযোগ মাধ্যমে পোস্ট করেছেন এনসিপির যুগ্ম সদস্য সচিব আসিফ মাহমুদ সজীব ভূঁইয়া। বৃহস্পতিবার (১৯ নভেম্বর) রাতে ওই পোস্টে আসিফ মাহমুদ লেখেন, জুলাই বনাম (VS) আওয়ামী লীগ+ভারতীয় আধিপত্যবাদ। এমন এক সময় তিনি এ পোস্ট দিলেন যখন গোপালগঞ্জসহ দেশের বিভিন্ন জেলায় বিএনপি ও এনসিপি নেতাদের বাড়িতে আগুন দেওয়া হয়েছে। পাল্টা-পাল্টি হামলায় কয়েকজন নিহত হওয়ারও খবর পাওয়া... বিস্তারিত",
-          "url": "https://www.banglatribune.com/politics/ncp/982024/%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%AE-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%93-%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%86%E0%A6%A7%E0%A6%BF%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BE%E0%A6%A6"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "40f33bff720cecc14d82eff7d1f92ebe"
+      "alertEventId": "15f0077a7c9f6977c6250102cde89433"
     },
     {
       "title": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা - ডেইলি সান বাংলা",
@@ -2158,8 +2213,7 @@
       "publisherName": "Amader Shomoy",
       "sourceEvidence": [
         "Amader Shomoy",
-        "bd-pratidin.com",
-        "Ajker Patrika"
+        "bd-pratidin.com"
       ],
       "sourceLinks": [
         {
@@ -2169,10 +2223,6 @@
         {
           "name": "bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328109"
-        },
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
         }
       ],
       "category": "Bangladesh",
@@ -2190,16 +2240,72 @@
           "title": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 - bd-pratidin.com",
           "summary": "এবার গোপালগঞ্জের আরেক থানায় আগুন দিল কার্যক্রম নিষিদ্ধ আ.লীগ|1328109 bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328109"
-        },
-        {
-          "name": "Ajker Patrika",
-          "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
+      "corroborationCount": 2,
+      "alertEventId": "621bb659c96da3d441c0388e6402604d"
+    },
+    {
+      "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন - Daily Bonik Barta",
+      "summary": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন Daily Bonik Barta",
+      "link": "https://bonikbarta.com/bangladesh/DfUBHeswKOIabCe7/",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/DfUBHeswKOIabCe7/",
+      "publishedAt": "2026-11-19T08:30:00+00:00",
+      "source": "Daily Bonik Barta",
+      "publisherName": "Daily Bonik Barta",
+      "sourceEvidence": [
+        "Daily Bonik Barta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/DfUBHeswKOIabCe7/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Bonik Barta",
+          "title": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন - Daily Bonik Barta",
+          "summary": "চট্টগ্রামে ড. ইউনূসের পৈতৃক বাড়িতে আগুন Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/DfUBHeswKOIabCe7/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "56518b2587b4f950f9b30a31fb168472"
+    },
+    {
+      "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
+      "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
+      "link": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+      "publisherUrl": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
+      "publishedAt": "2026-11-19T08:22:07+00:00",
+      "source": "দেশ রূপান্তর",
+      "publisherName": "দেশ রূপান্তর",
+      "sourceEvidence": [
+        "দেশ রূপান্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দেশ রূপান্তর",
+          "url": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দেশ রূপান্তর",
+          "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
+          "summary": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক দেশ রূপান্তর",
+          "url": "https://www.deshrupantor.com/amp/736349/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d78121b11bb1abc114183e278fc015aa"
     },
     {
       "title": "গোপালগঞ্জের আরেক থানায় আগুন - Dhaka Tribune Bangla",
