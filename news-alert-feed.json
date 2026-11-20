@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T10:10:36.702290+00:00",
-  "updatedAt": "2026-11-20T10:10:36.702290+00:00",
+  "generatedAt": "2026-11-20T10:25:41.018989+00:00",
+  "updatedAt": "2026-11-20T10:25:41.018989+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 23,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Kaler Kantho",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 14,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -840,8 +840,107 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 50,
+  "candidateCount": 49,
   "alertItems": [
+    {
+      "title": "গ্রামীণ ব্যাংকে আগুন দিচ্ছিলেন যুবক, ভিডিও করছিলেন আরেকজন",
+      "summary": "সুনামগঞ্জ পৌর শহরের গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন লাগানোর চেষ্টার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে...",
+      "link": "https://www.jagonews24.com/country/news/1181700",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181700",
+      "publishedAt": "2026-11-20T10:21:42+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181700"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "গ্রামীণ ব্যাংকে আগুন দিচ্ছিলেন যুবক, ভিডিও করছিলেন আরেকজন",
+          "summary": "সুনামগঞ্জ পৌর শহরের গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন লাগানোর চেষ্টার একটি ভিডিও সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়েছে...",
+          "url": "https://www.jagonews24.com/country/news/1181700"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "49fda98c0fa08277b39d8958a5a3f710"
+    },
+    {
+      "title": "গ্রামীণ ব্যাংকে পেট্রোল বোমা নিক্ষেপ",
+      "summary": "নরসিংদীর পলাশে গ্রামীণ ব্যাংকের একটি শাখায় পেট্রোল বোমা নিক্ষেপ করেছে দুর্বৃত্তরা। এতে শাখাটির কয়েকটি স্থানে আগুন ধরে যায়। তবে আগুন দ্রুত নিয়ন্ত্রণে আসায় বড় ধরনের ক্ষয়ক্ষতি হয়নি...",
+      "link": "https://www.jagonews24.com/country/news/1181693",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181693",
+      "publishedAt": "2026-11-20T10:10:08+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181693"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "গ্রামীণ ব্যাংকে পেট্রোল বোমা নিক্ষেপ",
+          "summary": "নরসিংদীর পলাশে গ্রামীণ ব্যাংকের একটি শাখায় পেট্রোল বোমা নিক্ষেপ করেছে দুর্বৃত্তরা। এতে শাখাটির কয়েকটি স্থানে আগুন ধরে যায়। তবে আগুন দ্রুত নিয়ন্ত্রণে আসায় বড় ধরনের ক্ষয়ক্ষতি হয়নি...",
+          "url": "https://www.jagonews24.com/country/news/1181693"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6c2fd7a6e8b5478d88f3269032129c2d"
+    },
+    {
+      "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
+      "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99",
+      "publishedAt": "2026-11-20T10:02:06+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
+          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
+          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d97667b9486fe26d397918947ac7a360"
+    },
     {
       "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় ‘আকভান’-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা",
       "summary": "প্রবল ঘূর্ণিঝড় ‘আকভান’ শুক্রবার (২০ নভেম্বর) দুপুরে ভারতের উড়িষ্যার গোপালপুর উপকূলে আঘাত হানতে পারে। এর প্রভাবে বাংলাদেশের ১০ জেলায় ঘণ্টায় সর্বোচ্চ ৬০ কিলোমিটার বেগে দমকা বা ঝড়ো হাওয়া এবং বৃষ্টি কিংবা বজ্রবৃষ্টির আশঙ্কা রয়েছে। ভারতের আবহাওয়া দপ্তরের তথ্য অনুযায়ী, শক্তি কিছুটা কমিয়ে ঘূর্ণিঝড়টি বর্তমানে উত্তর অন্ধ্রপ্রদেশ ও দক্ষিণ উড়িষ্যা উপকূলের দিকে এগোচ্ছে। ঘণ্টায় প্রায় ১৮ ...",
@@ -1129,49 +1228,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ee7eb671e681b01cae45845a80276098"
-    },
-    {
-      "title": "মোহাম্মদপুরে বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "মোহাম্মদপুরে বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113489/%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113489/%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-20T07:16:56+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113489/%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "মোহাম্মদপুরে বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "মোহাম্মদপুরে বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113489/%E0%A6%AE%E0%A7%8B%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A7%8D%E0%A6%AE%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
-          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "শ্রীমঙ্গলে গ্রামীণ ব্যাংকের শাখায় অগ্নিসংযোগের চেষ্টা, এলাকায় উত্তেজনা - Dhaka Tribune Bangla",
-          "summary": "শ্রীমঙ্গলে গ্রামীণ ব্যাংকের শাখায় অগ্নিসংযোগের চেষ্টা, এলাকায় উত্তেজনা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113469/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a42e8a6b27a3b5f089fe5cf47b87e0b1"
     },
     {
       "title": "মিরসরাইয়ে পুলিশের গাড়িকে বাসের ধাক্কা, ৬ পুলিশ আহত",
@@ -1639,20 +1695,20 @@
       "alertEventId": "e965e3389d351237dd1141747026faef"
     },
     {
-      "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
-      "summary": "গোপালগঞ্জে রামদা ও কুড়াল হাতে মহড়া দিয়ে একটি হাসপাতালে আগুন দিয়েছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। বৃহস্পতিবার (১৯ নভেম্বর) এ ঘটনা ঘটে। চিকিৎসাসেবা প্রতিষ্ঠানে এমন হামলার ঘটনায় উদ্বেগ প্রকাশের পাশাপাশি এটিকে আন্তর্জাতিক মানবিক আইনের লঙ্ঘন বলে দাবি করেছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব মো. সুজাউদ্দৌলা (সুজন মাহমুদ)। বৃহস্পতিবার সামাজিক যোগাযোগমাধ্যমে দেওয়া এক পোস্টে তিনি এ মন্তব্য... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/982065/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%99%E0%A7%8D%E0%A6%98%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982065/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%99%E0%A7%8D%E0%A6%98%E0%A6%A8",
-      "publishedAt": "2026-11-19T19:41:32+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা - ডেইলি সান বাংলা",
+      "summary": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা ডেইলি সান বাংলা",
+      "link": "https://bangla.daily-sun.com/district-news/62164/%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%BE",
+      "publisherUrl": "https://bangla.daily-sun.com/district-news/62164/%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%BE",
+      "publishedAt": "2026-11-19T19:08:21+00:00",
+      "source": "ডেইলি সান বাংলা",
+      "publisherName": "ডেইলি সান বাংলা",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "ডেইলি সান বাংলা"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982065/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%99%E0%A7%8D%E0%A6%98%E0%A6%A8"
+          "name": "ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/district-news/62164/%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%BE"
         }
       ],
       "category": "Bangladesh",
@@ -1660,14 +1716,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
-          "summary": "গোপালগঞ্জে রামদা ও কুড়াল হাতে মহড়া দিয়ে একটি হাসপাতালে আগুন দিয়েছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। বৃহস্পতিবার (১৯ নভেম্বর) এ ঘটনা ঘটে। চিকিৎসাসেবা প্রতিষ্ঠানে এমন হামলার ঘটনায় উদ্বেগ প্রকাশের পাশাপাশি এটিকে আন্তর্জাতিক মানবিক আইনের লঙ্ঘন বলে দাবি করেছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব মো. সুজাউদ্দৌলা (সুজন মাহমুদ)। বৃহস্পতিবার সামাজিক যোগাযোগমাধ্যমে দেওয়া এক পোস্টে তিনি এ মন্তব্য... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982065/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%99%E0%A7%8D%E0%A6%98%E0%A6%A8"
+          "name": "ডেইলি সান বাংলা",
+          "title": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা - ডেইলি সান বাংলা",
+          "summary": "জিয়াউল আহসানের বরিশালের বাড়িতে আগুন দিয়েছে দুর্বৃত্তরা ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/district-news/62164/%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%BE"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "15f0077a7c9f6977c6250102cde89433"
+      "alertEventId": "4195c4631e93cb4eb9adb9c43e439072"
     },
     {
       "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
@@ -2151,68 +2207,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "caf388a89bbb6f70fe295a82d8fa286e"
-    },
-    {
-      "title": "খুলনায় মোটরসাইকেলে এসে প্রধানমন্ত্রীর ফেস্টুনে পেট্রলবোমা নিক্ষেপ - Manab Zamin",
-      "summary": "খুলনায় মোটরসাইকেলে এসে প্রধানমন্ত্রীর ফেস্টুনে পেট্রলবোমা নিক্ষেপ Manab Zamin",
-      "link": "https://www.mzamin.com/article/61372",
-      "publisherUrl": "https://www.mzamin.com/article/61372",
-      "publishedAt": "2026-11-19T10:13:13+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/61372"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "খুলনায় মোটরসাইকেলে এসে প্রধানমন্ত্রীর ফেস্টুনে পেট্রলবোমা নিক্ষেপ - Manab Zamin",
-          "summary": "খুলনায় মোটরসাইকেলে এসে প্রধানমন্ত্রীর ফেস্টুনে পেট্রলবোমা নিক্ষেপ Manab Zamin",
-          "url": "https://www.mzamin.com/article/61372"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "39d593bd7381fe2658986a3a16f7229f"
-    },
-    {
-      "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
-      "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
-      "link": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
-      "publisherUrl": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB",
-      "publishedAt": "2026-11-19T10:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB - United News of Bangladesh",
-          "summary": "জাজিরায় গভীর রাতে মহাসড়ক অবরোধ ও ক/ক/টেল বি/স্ফো/রণ | Padma Bridge | Bomb Blast | UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/10000/%E0%A6%9C%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%97%E0%A6%AD%E0%A7%80%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7-%E0%A6%93-%E0%A6%95-%E0%A6%95-%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B-%E0%A6%B0%E0%A6%A3---Padma-Bridge---Bomb-Blast---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "43055e9f77a7bc83ce465f412f5a8f42"
     }
   ]
 }
