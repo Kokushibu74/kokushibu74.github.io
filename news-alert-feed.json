@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T03:00:43.329479+00:00",
-  "updatedAt": "2026-11-20T03:00:43.329479+00:00",
+  "generatedAt": "2026-11-20T03:15:32.128496+00:00",
+  "updatedAt": "2026-11-20T03:15:32.128496+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 54,
+  "candidateCount": 57,
   "alertItems": [
+    {
+      "title": "মঠবাড়িয়া উপজেলা পরিষদে ককটেল বিস্ফোরণ",
+      "summary": "পিরোজপুরের মঠবাড়িয়া উপজেলা পরিষদের সামনে দুটি ককটেল নিক্ষেপের ঘটনা ঘটেছে। এর মধ্যে একটি বিস্ফোরিত হয়েছে। ঘটনাস্থল থেকে আরেকটি অবিস্ফোরিত ককটেল উদ্ধার করেছে পুলিশ.....",
+      "link": "https://www.jagonews24.com/country/news/1181559",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181559",
+      "publishedAt": "2026-11-20T03:08:48+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181559"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "মঠবাড়িয়া উপজেলা পরিষদে ককটেল বিস্ফোরণ",
+          "summary": "পিরোজপুরের মঠবাড়িয়া উপজেলা পরিষদের সামনে দুটি ককটেল নিক্ষেপের ঘটনা ঘটেছে। এর মধ্যে একটি বিস্ফোরিত হয়েছে। ঘটনাস্থল থেকে আরেকটি অবিস্ফোরিত ককটেল উদ্ধার করেছে পুলিশ.....",
+          "url": "https://www.jagonews24.com/country/news/1181559"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b8389bb013585e17cf3dd9f0f139cf6b"
+    },
+    {
+      "title": "অনলাইনে হুমকির পর মাহিন সরকারের বাড়িতে পেট্রোল বোমা নিক্ষেপ | Sirajganj | NCP Fire | News | JamunaTV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=lQrGg9J9YnY",
+      "publisherUrl": "https://www.youtube.com/watch?v=lQrGg9J9YnY",
+      "publishedAt": "2026-11-20T03:00:08+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=lQrGg9J9YnY"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "অনলাইনে হুমকির পর মাহিন সরকারের বাড়িতে পেট্রোল বোমা নিক্ষেপ | Sirajganj | NCP Fire | News | JamunaTV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=lQrGg9J9YnY"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "da6e9ecd574e84be6bdb13229975743e"
+    },
     {
       "title": "বাংলাদেশকে গুঁড়িয়ে ১৩০ বছরের যে রেকর্ড নিজের করে নিয়েছেন হারমার",
       "summary": "বয়স ৩৭। কিন্তু বল হাতে এখনও ব্যাটারদের জন্য আতঙ্কের নাম সাইমন হারমার। বাংলাদেশের বিপক্ষে জোহানেসবার্গ টেস্টে তার ঘূর্ণিতেই ধসে পড়েছে সফরকারীদের দ্বিতীয় ইনিংস। ছয় উইকেট নিয়ে দক্ষিণ আফ্রিকাকে এনে দিয়েছেন ৯ উইকেটের জয়। একই সঙ্গে ভেঙেছেন ১৩০ বছর ধরে টিকে থাকা ইংল্যান্ডের ববি পিলের একটি রেকর্ড। বৃহস্পতিবার (১৯ নভেম্বর) ওয়ান্ডারার্সে সিরিজের প্রথম টেস্টে দ্বিতীয় ইনিংসে বাংলাদেশকে মাত্র ১৬৮ রানে... বিস্তারিত",
@@ -979,7 +1041,7 @@
     },
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-      "summary": "সৌদি আরবে মর্মান্তিক সড়ক দুর্ঘটনায় মাসুদ আল হাসান (২২) নামে এক প্রবাসী বাংলাদেশি যুবক নিহত হয়েছে। বৃহস্পতিবার...",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
       "link": "https://www.jagonews24.com/country/news/1181545",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181545",
       "publishedAt": "2026-11-20T01:39:54+00:00",
@@ -1001,43 +1063,12 @@
         {
           "name": "Jago News 24",
           "title": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
-          "summary": "সৌদি আরবে মর্মান্তিক সড়ক দুর্ঘটনায় মাসুদ আল হাসান (২২) নামে এক প্রবাসী বাংলাদেশি যুবক নিহত হয়েছে। বৃহস্পতিবার...",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় ব্রাহ্মণবাড়িয়ার যুবক নিহত",
           "url": "https://www.jagonews24.com/country/news/1181545"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "f90cc7d3271604a9d154fc369816df17"
-    },
-    {
-      "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/_lGD9Z4cLRA",
-      "publisherUrl": "https://www.youtube.com/shorts/_lGD9Z4cLRA",
-      "publishedAt": "2026-11-19T23:44:31+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "হাসপাতালে কেন আগুন দেওয়া হয়েছে, তা বোধগম্য নয়: হাসনাত কাইয়ুম #gopalganj #awamileague #ekattortv",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/_lGD9Z4cLRA"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4ddec759ee94991ea335d87ab62f560c"
     },
     {
       "title": "গোপালগঞ্জে হাসপাতালে আগুন: আন্তর্জাতিক আইনের লঙ্ঘন বললেন প্রধানমন্ত্রীর উপ-প্রেস সচিব",
@@ -1782,6 +1813,37 @@
       "alertEventId": "da49d71b522fe85f0c3a52ca2ed354db"
     },
     {
+      "title": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+      "summary": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/671885",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671885",
+      "publishedAt": "2026-11-19T11:37:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671885"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন - Risingbd.com",
+          "summary": "ঝালকাঠিতে সিঁদ কেটে ঢুকে বিএনপি কার্যালয়ে দুর্বৃত্তের আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/671885"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7e1fddbac86e03b44b3d14a3ec709426"
+    },
+    {
       "title": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
       "summary": "মালদ্বীপে দুর্ঘটনায় গুরুতর আহতের খোঁজ নিলেন বাংলাদেশের হাইকমিশনার | খবর | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
       "link": "https://www.bssnews.net/bangla/news/361669",
@@ -1978,7 +2040,8 @@
       "sourceEvidence": [
         "Amader Shomoy",
         "bd-pratidin.com",
-        "Ajker Patrika"
+        "Ajker Patrika",
+        "ডেইলি সান বাংলা"
       ],
       "sourceLinks": [
         {
@@ -1992,6 +2055,10 @@
         {
           "name": "Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
+        },
+        {
+          "name": "ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -2015,10 +2082,16 @@
           "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
           "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
+        },
+        {
+          "name": "ডেইলি সান বাংলা",
+          "title": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন - ডেইলি সান বাংলা",
+          "summary": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে আগুন ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62083/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%B2%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%9C%E0%A7%8D%E0%A6%9C%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
+      "corroborationCount": 4,
+      "alertEventId": "ee8084e8b0b95024b901910e47466cd9"
     },
     {
       "title": "গ্রামীণ ব্যাংকে হামলা-ভাঙচুরে উদ্বিগ্ন বাংলাদেশ ব্যাংক - দেশ রূপান্তর",
@@ -2114,20 +2187,20 @@
       "alertEventId": "15bf59c0f7051526f084a0ae991f17a4"
     },
     {
-      "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
-      "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/671821",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/671821",
-      "publishedAt": "2026-11-19T05:42:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
+      "title": "বরিশালে নানকের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ - ডেইলি সান বাংলা",
+      "summary": "বরিশালে নানকের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ ডেইলি সান বাংলা",
+      "link": "https://bangla.daily-sun.com/bangladesh/62087/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publisherUrl": "https://bangla.daily-sun.com/bangladesh/62087/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publishedAt": "2026-11-19T07:42:03+00:00",
+      "source": "ডেইলি সান বাংলা",
+      "publisherName": "ডেইলি সান বাংলা",
       "sourceEvidence": [
-        "Risingbd.com"
+        "ডেইলি সান বাংলা"
       ],
       "sourceLinks": [
         {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671821"
+          "name": "ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62087/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "category": "Bangladesh",
@@ -2135,14 +2208,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Risingbd.com",
-          "title": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ - Risingbd.com",
-          "summary": "রাজশাহীতে বিআরটিসি বাস ও রেললাইনে আগুন, ককটেল বিস্ফোরণ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/671821"
+          "name": "ডেইলি সান বাংলা",
+          "title": "বরিশালে নানকের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ - ডেইলি সান বাংলা",
+          "summary": "বরিশালে নানকের বাড়িতে ভাঙচুর ও অগ্নিসংযোগ ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62087/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "ba5f37272361247533395c8d0a2f3bd9"
+      "alertEventId": "26059102a7aa11a6cf3ba0e680e4d033"
     },
     {
       "title": "জুলাই শহীদ স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
