@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T05:55:40.886200+00:00",
-  "updatedAt": "2026-11-20T05:55:40.886200+00:00",
+  "generatedAt": "2026-11-20T06:05:58.559487+00:00",
+  "updatedAt": "2026-11-20T06:05:58.559487+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 33,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sangbad",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 52,
+  "candidateCount": 48,
   "alertItems": [
     {
       "title": "শ্রীমঙ্গলে গভীর রাতে গ্রামীণ ব্যাংকে আগুন, এলাকায় উত্তেজনা",
@@ -948,7 +948,7 @@
     },
     {
       "title": "নারায়ণগঞ্জে ডাইং কারখানায় বয়লার বিস্ফোরণ, দগ্ধ ২ শ্রমিক",
-      "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি ডাইং কারখানায় বয়লার বিস্ফোরণে দুই শ্রমিক দগ্ধ হয়েছেন.....",
+      "summary": "নারায়ণগঞ্জে ডাইং কারখানায় বয়লার বিস্ফোরণ, দগ্ধ ২ শ্রমিক",
       "link": "https://www.jagonews24.com/country/news/1181594",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181594",
       "publishedAt": "2026-11-20T05:09:40+00:00",
@@ -970,7 +970,7 @@
         {
           "name": "Jago News 24",
           "title": "নারায়ণগঞ্জে ডাইং কারখানায় বয়লার বিস্ফোরণ, দগ্ধ ২ শ্রমিক",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি ডাইং কারখানায় বয়লার বিস্ফোরণে দুই শ্রমিক দগ্ধ হয়েছেন.....",
+          "summary": "নারায়ণগঞ্জে ডাইং কারখানায় বয়লার বিস্ফোরণ, দগ্ধ ২ শ্রমিক",
           "url": "https://www.jagonews24.com/country/news/1181594"
         }
       ],
@@ -1389,37 +1389,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5096b4d3106fc43fbd558e74ac28a18d"
-    },
-    {
-      "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
-      "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
-      "link": "https://www.dhakapost.com/national/499373",
-      "publisherUrl": "https://www.dhakapost.com/national/499373",
-      "publishedAt": "2026-11-19T17:00:13+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499373"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ - dhakapost.com",
-          "summary": "রেলপথে আগুন-নাশকতায় আতঙ্ক, নিরাপত্তা নিয়ে উদ্বেগ dhakapost.com",
-          "url": "https://www.dhakapost.com/national/499373"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7cced41184f22d9b9387d9aec039cc17"
     },
     {
       "title": "রায়ের বাজারে আগুনে ক্ষতিগ্রস্ত ১৫০ পরিবারকে সহায়তার আশ্বাস ববি হাজ্জাজের",
@@ -2019,7 +1988,6 @@
       "sourceEvidence": [
         "Amader Shomoy",
         "bd-pratidin.com",
-        "Jamuna Television",
         "Ajker Patrika"
       ],
       "sourceLinks": [
@@ -2030,10 +1998,6 @@
         {
           "name": "bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328109"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
         },
         {
           "name": "Ajker Patrika",
@@ -2057,19 +2021,13 @@
           "url": "https://www.bd-pratidin.com/printnews/1328109"
         },
         {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - Jamuna Television",
-          "summary": "গোপালগঞ্জ-১ আসনের এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668286"
-        },
-        {
           "name": "Ajker Patrika",
           "title": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ - Ajker Patrika",
           "summary": "গোপালগঞ্জে এবার সংসদ সদস্য সেলিমুজ্জামান মোল্লার বাড়িতে অগ্নিসংযোগ Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/gopalganj/ajp2elo52jhor"
         }
       ],
-      "corroborationCount": 4,
+      "corroborationCount": 3,
       "alertEventId": "4eb9d4e1e07736ed0e8a857bd3f014ec"
     },
     {
@@ -2133,68 +2091,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8bfd223b1240c362a80452ba9179c966"
-    },
-    {
-      "title": "মুকসুদপুর থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আ.লীগ - dhakapost.com",
-      "summary": "মুকসুদপুর থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আ.লীগ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/499206",
-      "publisherUrl": "https://www.dhakapost.com/country/499206",
-      "publishedAt": "2026-11-19T07:43:52+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499206"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "মুকসুদপুর থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আ.লীগ - dhakapost.com",
-          "summary": "মুকসুদপুর থানায় আগুন দিলো কার্যক্রম নিষিদ্ধ আ.লীগ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499206"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d42042f86efbb3c453fc012260fe9d48"
-    },
-    {
-      "title": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - dhakapost.com",
-      "summary": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/499199",
-      "publisherUrl": "https://www.dhakapost.com/country/499199",
-      "publishedAt": "2026-11-19T07:23:28+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499199"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ - dhakapost.com",
-          "summary": "গোপালগঞ্জে এবার এমপি সেলিমুজ্জামানের বাড়িতে ভাঙচুর-অগ্নিসংযোগ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499199"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6f79cd98f9234927f6de69f4ebd30768"
     }
   ]
 }
