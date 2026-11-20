@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T17:15:40.493573+00:00",
-  "updatedAt": "2026-11-20T17:15:40.493573+00:00",
+  "generatedAt": "2026-11-20T17:30:32.822878+00:00",
+  "updatedAt": "2026-11-20T17:30:32.822878+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 5,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -574,7 +574,7 @@
       "domain": "dhakacourier.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 45,
+  "candidateCount": 44,
   "alertItems": [
+    {
+      "title": "জনগণের নিরাপত্তা দিতে না পারলে দায়িত্ব ছেড়ে দিন",
+      "summary": "নেত্রকোনায় নিজের পৈতৃক বাড়িতে পেট্রোল ঢেলে আগুন দেওয়ার চেষ্টার অভিযোগ করেছেন বৈষম্যবিরোধী ছাত্র আন্দোলনের সাবেক কেন্দ্রীয় সমন্বয়ক ও জাতীয়...",
+      "link": "https://www.jagonews24.com/national/news/1181806",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1181806",
+      "publishedAt": "2026-11-20T17:18:24+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181806"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "জনগণের নিরাপত্তা দিতে না পারলে দায়িত্ব ছেড়ে দিন",
+          "summary": "নেত্রকোনায় নিজের পৈতৃক বাড়িতে পেট্রোল ঢেলে আগুন দেওয়ার চেষ্টার অভিযোগ করেছেন বৈষম্যবিরোধী ছাত্র আন্দোলনের সাবেক কেন্দ্রীয় সমন্বয়ক ও জাতীয়...",
+          "url": "https://www.jagonews24.com/national/news/1181806"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5ac138b6b9cd5e7a67e0657edf049a6f"
+    },
     {
       "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের - bd-pratidin.com",
       "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের bd-pratidin.com",
@@ -1329,79 +1360,6 @@
       "alertEventId": "05c19c8b188a5a4c67fbef87cf44ab4c"
     },
     {
-      "title": "নোয়াখালীতে নিষিদ্ধ যুবলীগ–ছাত্রলীগের মিছিল থেকে গ্রামীণ ব্যাংকের শাখায় হামলা, পেট্রল ঢেলে আগুন",
-      "summary": "",
-      "link": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a",
-      "publishedAt": "2026-11-20T13:06:45+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নোয়াখালীতে নিষিদ্ধ যুবলীগ–ছাত্রলীগের মিছিল থেকে গ্রামীণ ব্যাংকের শাখায় হামলা, পেট্রল ঢেলে আগুন",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/ox7qy0cp3a"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fe13ebfacf762281c31d94c1602c4263"
-    },
-    {
-      "title": "ভাঙারির মালামাল দোকানে নামাতেই বিকট শব্দে বিস্ফোরণ, দুজন আহত",
-      "summary": "শুক্রবার বেলা ২টা ৪০ মিনিটে কুষ্টিয়া শহরের মজমপুরে রেললাইনের পাশে ভাঙারি পণ্যের দোকানে এ ঘটনা ঘটে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/ibypt34745",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/ibypt34745",
-      "publishedAt": "2026-11-20T13:04:42+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/ibypt34745"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181737"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "ভাঙারির মালামাল দোকানে নামাতেই বিকট শব্দে বিস্ফোরণ, দুজন আহত",
-          "summary": "শুক্রবার বেলা ২টা ৪০ মিনিটে কুষ্টিয়া শহরের মজমপুরে রেললাইনের পাশে ভাঙারি পণ্যের দোকানে এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/ibypt34745"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
-          "summary": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
-          "url": "https://www.jagonews24.com/country/news/1181737"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "f77d0c2fb7c8b746a350521056150328"
-    },
-    {
       "title": "গোপালগঞ্জে হাসপাতালে আগুন, আন্তর্জাতিক আইনের লঙ্ঘন: প্রধানমন্ত্রীর উপ-প্রেস সচিব - Banglanews24",
       "summary": "গোপালগঞ্জে হাসপাতালে আগুন, আন্তর্জাতিক আইনের লঙ্ঘন: প্রধানমন্ত্রীর উপ-প্রেস সচিব Banglanews24",
       "link": "https://www.banglanews24.com/national/news/bd/1694762.details",
@@ -1614,6 +1572,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d97667b9486fe26d397918947ac7a360"
+    },
+    {
+      "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+      "summary": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+      "link": "https://www.jagonews24.com/country/news/1181737",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181737",
+      "publishedAt": "2026-11-20T11:57:42+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+          "summary": "কুষ্টিয়ায় ভাঙরির দোকানে বিস্ফোরণ, আহত দুই",
+          "url": "https://www.jagonews24.com/country/news/1181737"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f77d0c2fb7c8b746a350521056150328"
     },
     {
       "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
