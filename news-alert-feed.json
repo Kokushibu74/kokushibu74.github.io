@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-20T15:10:31.676183+00:00",
-  "updatedAt": "2026-11-20T15:10:31.676183+00:00",
+  "generatedAt": "2026-11-20T15:20:37.326124+00:00",
+  "updatedAt": "2026-11-20T15:20:37.326124+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -467,17 +467,17 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Manab Zamin",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 47,
   "alertItems": [
     {
       "title": "কক্সবাজারে ট্রেন-সিএনজির সংঘর্ষে নিহত একই পরিবারের ৪ | Cox's Bazar | Jamuna TV",
@@ -1465,7 +1465,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
           "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
         }
       ],
       "corroborationCount": 1,
@@ -1813,6 +1813,37 @@
       "alertEventId": "762dd1d2522ef41931d6fc697c3e2ab9"
     },
     {
+      "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+      "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD",
+      "publishedAt": "2026-11-20T03:50:00+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ - Dhaka Tribune Bangla",
+          "summary": "পাবনার বেড়ায় থানা ঘিরে আওয়ামী লীগের বিক্ষোভ, বিএনপি-আওয়ামী লীগের সংঘর্ষ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113470/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%98%E0%A6%BF%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ba3a4aafa75cb6f4166e35cc7022b62e"
+    },
+    {
       "title": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত - bd-pratidin.com",
       "summary": "দক্ষিণ আফ্রিকায় দুর্বৃত্তদের গুলিতে বাংলাদেশি নিহত bd-pratidin.com",
       "link": "https://www.bd-pratidin.com/national/2026/11/20/1328510",
@@ -2061,11 +2092,11 @@
       "alertEventId": "bb68eadb33f07ac12820f264acc34ef5"
     },
     {
-      "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
-      "summary": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-19T15:32:18+00:00",
+      "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+      "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA",
+      "publishedAt": "2026-11-19T16:03:11+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -2074,7 +2105,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
         }
       ],
       "category": "Bangladesh",
@@ -2083,13 +2114,13 @@
       "sourceStories": [
         {
           "name": "Dhaka Tribune Bangla",
-          "title": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
-          "summary": "জিয়াউল আহসানের বাসভবনে হামলা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113459/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+          "title": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন - Dhaka Tribune Bangla",
+          "summary": "সারাদেশে ১২ দিনে ৭৮ স্থানে ককটেল বিস্ফোরণ, ৭৪ গাড়িতে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113461/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A7%A7%E0%A7%A8-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87-%E0%A7%AD%E0%A7%AE-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A7%AD%E0%A7%AA"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "6fdf2fd2153a8f4b3216c3d001f1cb8a"
+      "alertEventId": "093e38b7ec267080c22385e419f07927"
     },
     {
       "title": "খুলনা জেলা খাদ্য নিয়ন্ত্রকের কার্যালয়ে পেট্রল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
