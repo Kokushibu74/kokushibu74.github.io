@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T05:15:44.679657+00:00",
-  "updatedAt": "2026-11-21T05:15:44.679657+00:00",
+  "generatedAt": "2026-11-21T05:30:36.087806+00:00",
+  "updatedAt": "2026-11-21T05:30:36.087806+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,12 +172,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 40,
   "alertItems": [
     {
       "title": "শ্বশুরবাড়ি যাওয়ার পথে সড়ক দুর্ঘটনায় প্রাণ গেলো প্রকৌশলীর",
@@ -872,39 +872,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "080fa0fe1b8ccb4dfa210771ad57d5e2"
-    },
-    {
-      "title": "আওয়ামী সন্ত্রাসীদের যেখানেই পাবেন প্রতিহত করুন",
-      "summary": "জাতীয় ছাত্রশক্তির কেন্দ্রীয় সিনিয়র যুগ্ম সাধারণ সম্পাদক খান তালাত মাহমুদ রাফির পৈতৃক বাড়িতে অগ্নিসংযোগের চেষ্টার প্রতিবাদে গতকাল চট্টগ্রাম প্রেসক্লাবে সংবাদ সম্মেলন করেন তিনি। এ সময় তালাত মাহমুদ রাফি বলেন, নেত্রকোণা আমার গ্রামের বাড়িতে গতকাল (বৃহস্পতিবার) রাত ৩টায় আওয়ামী লীগের সন্ত্রাসীরা পেট্রোল ঢেলে অগ্নিসংযোগের চেষ্টা করে। ঘরে আমার ঘুমন্ত আব্বা আম্মা ছিল। একটা শপিং ব্যাগ দিয়ে […] The post আওয়ামী সন্ত্রাসীদের যেখানেই পাবেন প্রতিহত করুন appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/%e0%a6%86%e0%a6%93%e0%a7%9f%e0%a6%be%e0%a6%ae%e0%a7%80-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8%e0%a7%80%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%af%e0%a7%87%e0%a6%96%e0%a6%be/",
-      "publisherUrl": "https://dainikazadi.net/%e0%a6%86%e0%a6%93%e0%a7%9f%e0%a6%be%e0%a6%ae%e0%a7%80-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8%e0%a7%80%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%af%e0%a7%87%e0%a6%96%e0%a6%be/",
-      "publishedAt": "2026-11-21T05:04:30+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%86%e0%a6%93%e0%a7%9f%e0%a6%be%e0%a6%ae%e0%a7%80-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8%e0%a7%80%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%af%e0%a7%87%e0%a6%96%e0%a6%be/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "আওয়ামী সন্ত্রাসীদের যেখানেই পাবেন প্রতিহত করুন",
-          "summary": "জাতীয় ছাত্রশক্তির কেন্দ্রীয় সিনিয়র যুগ্ম সাধারণ সম্পাদক খান তালাত মাহমুদ রাফির পৈতৃক বাড়িতে অগ্নিসংযোগের চেষ্টার প্রতিবাদে গতকাল চট্টগ্রাম প্রেসক্লাবে সংবাদ সম্মেলন করেন তিনি। এ সময় তালাত মাহমুদ রাফি বলেন, নেত্রকোণা আমার গ্রামের বাড়িতে গতকাল (বৃহস্পতিবার) রাত ৩টায় আওয়ামী লীগের সন্ত্রাসীরা পেট্রোল ঢেলে অগ্নিসংযোগের চেষ্টা করে। ঘরে আমার ঘুমন্ত আব্বা আম্মা ছিল। একটা শপিং ব্যাগ দিয়ে […] The post আওয়ামী সন্ত্রাসীদের যেখানেই পাবেন প্রতিহত করুন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%86%e0%a6%93%e0%a7%9f%e0%a6%be%e0%a6%ae%e0%a7%80-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8%e0%a7%80%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%af%e0%a7%87%e0%a6%96%e0%a6%be/",
-          "incidentTimeText": "রাত ৩টায়",
-          "incidentTimeSource": "Dainik Azadi"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "03ea708352348c38133f84ba83c571d1"
     },
     {
       "title": "মোটরসাইকেলে শ্বশুরবাড়ি যাচ্ছিলেন, সড়ক দুর্ঘটনায় প্রাণ গেল ডিপ্লোমা প্রকৌশলীর",
@@ -1135,8 +1102,8 @@
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
         "Risingbd.com",
-        "bdnews24.com",
-        "bd-pratidin.com"
+        "bd-pratidin.com",
+        "bdnews24.com"
       ],
       "sourceLinks": [
         {
@@ -1144,12 +1111,12 @@
           "url": "https://www.risingbd.com/international/news/672107"
         },
         {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328753"
         },
         {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1328700"
+          "name": "bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
         }
       ],
       "category": "Bangladesh",
@@ -1161,6 +1128,12 @@
           "title": "সৌদির আরামকো টাওয়ারে হুথিদের হামলা, বাংলাদেশের তীব্র নিন্দা - Risingbd.com",
           "summary": "সৌদির আরামকো টাওয়ারে হুথিদের হামলা, বাংলাদেশের তীব্র নিন্দা Risingbd.com",
           "url": "https://www.risingbd.com/international/news/672107"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "title": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের|1328753 - bd-pratidin.com",
+          "summary": "সৌদি আরবে আরামকো টাওয়ারে হুতি হামলার নিন্দা বাংলাদেশের|1328753 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1328753"
         },
         {
           "name": "bdnews24.com",
@@ -1670,48 +1643,6 @@
       "alertEventId": "05c19c8b188a5a4c67fbef87cf44ab4c"
     },
     {
-      "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
-      "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0",
-      "publishedAt": "2026-11-20T12:57:21+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune",
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        },
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "নিজের বাসায় আগুন লাগানোর ঘটনায় যা বললেন পররাষ্ট্র প্রতিমন্ত্রী",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবির বলেছেন, ‘বাংলাদেশে সন্ত্রাসীদের কোনও স্থান নেই। সন্ত্রাসের বিরুদ্ধে আমাদের অবস্থান স্পষ্ট। কোনও পালিয়ে যাওয়া সন্ত্রাসী সন্ত্রাসের মাধ্যমে দেশে ফিরবে না।’ শুক্রবার (২০ নভেম্বর) বিকাল সাড়ে ৫টায় সিলেট নগরের দাঁড়িয়াপাড়া এলাকায় নিজ বাসভবনের সামনে সাংবাদিকদের সঙ্গে আলাপকালে তিনি এ কথা বলেন। এর আগে ভোরে দাঁড়িয়াপাড়া এলাকায় পররাষ্ট্র... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/sylhet/982199/%E0%A6%A8%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B2%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0"
-        },
-        {
-          "name": "Ajker Patrika",
-          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
-    },
-    {
       "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
       "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
@@ -1902,6 +1833,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
+    },
+    {
+      "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
+      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
+      "publishedAt": "2026-11-20T06:07:03+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
     }
   ]
 }
