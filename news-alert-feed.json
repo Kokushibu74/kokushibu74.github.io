@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T12:30:32.365423+00:00",
-  "updatedAt": "2026-11-21T12:30:32.365423+00:00",
+  "generatedAt": "2026-11-21T12:40:46.749377+00:00",
+  "updatedAt": "2026-11-21T12:40:46.749377+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Naya Diganta",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -843,6 +843,84 @@
   "candidateCount": 48,
   "alertItems": [
     {
+      "title": "পাবনার বেড়ায় কার্যক্রম নিষিদ্ধ আ.লীগ ও বিএনপির নেতাকর্মীদের সংঘর্ষ | Pabna | Jamuna TV",
+      "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
+      "link": "https://www.youtube.com/watch?v=IpyJyAjVAt8",
+      "publisherUrl": "https://www.youtube.com/watch?v=IpyJyAjVAt8",
+      "publishedAt": "2026-11-21T12:35:55+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV",
+        "Channel 24",
+        "Prothom Alo",
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=IpyJyAjVAt8"
+        },
+        {
+          "name": "Jamuna TV ·",
+          "url": "https://www.youtube.com/watch?v=rnJJmPbBzm8"
+        },
+        {
+          "name": "Channel 24 ·",
+          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "পাবনার বেড়ায় কার্যক্রম নিষিদ্ধ আ.লীগ ও বিএনপির নেতাকর্মীদের সংঘর্ষ | Pabna | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=IpyJyAjVAt8"
+        },
+        {
+          "name": "Jamuna TV",
+          "title": "পাবনায় আ. লীগ ও বিএনপির নেতাকর্মীদের মধ্যে ধাওয়া-পাল্টা ধাওয়া | Pabna | Clash | News | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=rnJJmPbBzm8"
+        },
+        {
+          "name": "Channel 24",
+          "title": "পাবনায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সংঘর্ষ | Pabna BNP AL Clash | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "পাবনায় ক্ষমতাসীন বিএনপি ও কার্যক্রম নিষিদ্ধ আ.লীগের নেতা–কর্মীদের দফায় দফায় সংঘর্ষ",
+          "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
+          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
+          "incidentDateText": "২১ নভেম্বর ২০২৬",
+          "incidentTimeText": "দুপুর ১২টার দিকে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "বৃশালিখা মহল্লার, পাবনা, কাছে নৌকা চত্বর এলাকায়, সম্ভপুর মহল্লার, পায়না মহল্লায়, সঙ্গে পাশের হাতিগাড়া মহল্লার"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
+          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "corroborationCount": 4,
+      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
+    },
+    {
       "title": "নড়াইলে হিন্দু বাড়িতে হামলার ভিডিও এআই দিয়ে তৈরি",
       "summary": "নড়াইলের কালিয়ায় বিএনপির দুই নেতাকে হত্যার জের ধরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক সংসদ সদস্য (এমপি) বি এম কবিরুল হক মুক্তিসহ কয়েকজন...",
       "link": "https://www.jagonews24.com/country/news/1182047",
@@ -896,74 +974,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "8f5986d698e70f4a20f1b9174186334d"
-    },
-    {
-      "title": "পাবনায় আ. লীগ ও বিএনপির নেতাকর্মীদের মধ্যে ধাওয়া-পাল্টা ধাওয়া | Pabna | Clash | News | Jamuna TV",
-      "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
-      "link": "https://www.youtube.com/watch?v=rnJJmPbBzm8",
-      "publisherUrl": "https://www.youtube.com/watch?v=rnJJmPbBzm8",
-      "publishedAt": "2026-11-21T12:12:24+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV",
-        "Channel 24",
-        "Prothom Alo",
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=rnJJmPbBzm8"
-        },
-        {
-          "name": "Channel 24 ·",
-          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672176"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "পাবনায় আ. লীগ ও বিএনপির নেতাকর্মীদের মধ্যে ধাওয়া-পাল্টা ধাওয়া | Pabna | Clash | News | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=rnJJmPbBzm8"
-        },
-        {
-          "name": "Channel 24",
-          "title": "পাবনায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সংঘর্ষ | Pabna BNP AL Clash | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "পাবনায় ক্ষমতাসীন বিএনপি ও কার্যক্রম নিষিদ্ধ আ.লীগের নেতা–কর্মীদের দফায় দফায় সংঘর্ষ",
-          "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
-          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
-          "incidentDateText": "২১ নভেম্বর ২০২৬",
-          "incidentTimeText": "দুপুর ১২টার দিকে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "বৃশালিখা মহল্লার, পাবনা, কাছে নৌকা চত্বর এলাকায়, সম্ভপুর মহল্লার, পায়না মহল্লায়, সঙ্গে পাশের হাতিগাড়া মহল্লার"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
-          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672176"
-        }
-      ],
-      "corroborationCount": 4,
-      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
     },
     {
       "title": "জাগো নিউজের সাংবাদিকের গাড়িতে হামলা, রোববার রাজপথে নামবেন সহকর্মীরা",
@@ -1061,54 +1071,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "37979f74b5f01fd316d8f800a4266a2e"
-    },
-    {
-      "title": "নড়াইলে আ. লীগ নেতাদের বাড়িতে আগুন, সাম্প্রদায়িক হামলার অভিযোগ নাকচ পুলিশের | Narail| News | JamunaTV",
-      "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
-      "link": "https://www.youtube.com/watch?v=PAjmE72Fhck",
-      "publisherUrl": "https://www.youtube.com/watch?v=PAjmE72Fhck",
-      "publishedAt": "2026-11-21T11:40:36+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV",
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=PAjmE72Fhck"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "নড়াইলে আ. লীগ নেতাদের বাড়িতে আগুন, সাম্প্রদায়িক হামলার অভিযোগ নাকচ পুলিশের | Narail| News | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=PAjmE72Fhck"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
-          "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের ২০–৩০টি বাড়িতে হামলা–আগুন",
-          "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
-          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "cfb9e9c2790355bcf96b7b72092487c7"
     },
     {
       "title": "গাজীপুরে বিএনপি নেতার বাড়িতে হামলা, অভিযোগ আ.লীগের বিরুদ্ধে | DBC NEWS",
@@ -1337,6 +1299,43 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8b6005d5ddecee99313a9806119f8fd7"
+    },
+    {
+      "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
+      "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
+      "link": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun",
+      "publishedAt": "2026-11-21T09:01:34+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
+          "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
+          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের ২০–৩০টি বাড়িতে হামলা–আগুন",
+          "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
+          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cfb9e9c2790355bcf96b7b72092487c7"
     },
     {
       "title": "ঢাকা কলেজে ককটেল বিস্ফোরণ, ছাত্রলীগ সন্দেহে ৬ জনকে পুলিশে সোর্পদ",
@@ -1618,6 +1617,37 @@
       "alertEventId": "080fa0fe1b8ccb4dfa210771ad57d5e2"
     },
     {
+      "title": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
+      "publishedAt": "2026-11-21T04:25:11+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e43f1efbb71efad12ada62db2d92042e"
+    },
+    {
       "title": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত - Dhaka Tribune Bangla",
       "summary": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113529/%E0%A6%A8%E0%A6%93%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8B%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A6%BF-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
@@ -1749,8 +1779,7 @@
       "sourceEvidence": [
         "দৈনিক ইনকিলাব",
         "Daily Naya Diganta",
-        "bd-pratidin.com",
-        "The Daily Ittefaq"
+        "bd-pratidin.com"
       ],
       "sourceLinks": [
         {
@@ -1764,10 +1793,6 @@
         {
           "name": "bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
       "category": "Bangladesh",
@@ -1791,16 +1816,10 @@
           "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
           "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
-      "corroborationCount": 4,
-      "alertEventId": "1b0d2a1a0d10c18af35b2f0d055a6dab"
+      "corroborationCount": 3,
+      "alertEventId": "132c7a33e9d5521937975c72817e3b8d"
     },
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
