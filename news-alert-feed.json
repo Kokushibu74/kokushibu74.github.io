@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T08:00:46.450953+00:00",
-  "updatedAt": "2026-11-21T08:00:46.450953+00:00",
+  "generatedAt": "2026-11-21T08:15:29.085776+00:00",
+  "updatedAt": "2026-11-21T08:15:29.085776+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,50 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 41,
   "alertItems": [
+    {
+      "title": "নড়াইলের কালিয়ায় ১৫-২০টি বাড়িঘরে ভাঙচুর, সাবেক এমপি ও উপজেলা চেয়ারম্যানের বাড়িতে আগুন | Channel 24",
+      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
+      "link": "https://www.youtube.com/watch?v=ylkkY7lEScg",
+      "publisherUrl": "https://www.youtube.com/watch?v=ylkkY7lEScg",
+      "publishedAt": "2026-11-21T08:08:06+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/watch?v=ylkkY7lEScg"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "নড়াইলের কালিয়ায় ১৫-২০টি বাড়িঘরে ভাঙচুর, সাবেক এমপি ও উপজেলা চেয়ারম্যানের বাড়িতে আগুন | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=ylkkY7lEScg"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "নড়াইলে অর্ধশতাধিক বাড়িতে হামলা-লুট-আগুন, পুলিশ বলছে ২০টি",
+          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "8f5986d698e70f4a20f1b9174186334d"
+    },
     {
       "title": "জামালপুরের ইসলামপুরে অগ্নিকাণ্ডে তিনটি বসতঘর ভস্মীভূত #Jamalpur #Islampur #FireIncident #rtvnews",
       "summary": "",
@@ -925,37 +967,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
-    },
-    {
-      "title": "নড়াইলে অর্ধশতাধিক বাড়িতে হামলা-লুট-আগুন, পুলিশ বলছে ২০টি",
-      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
-      "publishedAt": "2026-11-21T07:28:02+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "নড়াইলে অর্ধশতাধিক বাড়িতে হামলা-লুট-আগুন, পুলিশ বলছে ২০টি",
-          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8f5986d698e70f4a20f1b9174186334d"
     },
     {
       "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
