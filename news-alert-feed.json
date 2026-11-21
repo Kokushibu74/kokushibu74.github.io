@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T07:00:33.898410+00:00",
-  "updatedAt": "2026-11-21T07:00:33.898410+00:00",
+  "generatedAt": "2026-11-21T07:10:42.162081+00:00",
+  "updatedAt": "2026-11-21T07:10:42.162081+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 6,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 39,
   "alertItems": [
     {
       "title": "বিএনপির ধাওয়ায় কার্যক্রম নিষিদ্ধ দলের নেতাকর্মীরা ককটেল ফেলে পালালেন",
@@ -917,7 +917,7 @@
     },
     {
       "title": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
-      "summary": "নড়াইল-১ আসনের সাবেক সংসদ সদস্য কবিরুল হক মুক্তি ও কালিয়া পৌরসভার সাবেক মেয়র ফকির মুশফিকুর রহমান লিটনের বাড়িসহ ৫০ থেকে ৬০টি...",
+      "summary": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
       "link": "https://www.jagonews24.com/country/news/1181895",
       "publisherUrl": "https://www.jagonews24.com/country/news/1181895",
       "publishedAt": "2026-11-21T06:17:15+00:00",
@@ -939,7 +939,7 @@
         {
           "name": "Jago News 24",
           "title": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
-          "summary": "নড়াইল-১ আসনের সাবেক সংসদ সদস্য কবিরুল হক মুক্তি ও কালিয়া পৌরসভার সাবেক মেয়র ফকির মুশফিকুর রহমান লিটনের বাড়িসহ ৫০ থেকে ৬০টি...",
+          "summary": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
           "url": "https://www.jagonews24.com/country/news/1181895"
         }
       ],
@@ -1051,6 +1051,37 @@
       "alertEventId": "72e4c7072bafe4f014d3a54ef52c1ab8"
     },
     {
+      "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
+      "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publishedAt": "2026-11-21T05:31:04+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
+          "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4fa2ebbf529b0c4b61bb6cc28105b849"
+    },
+    {
       "title": "শ্বশুরবাড়ি যাওয়ার পথে সড়ক দুর্ঘটনায় প্রাণ গেলো প্রকৌশলীর",
       "summary": "সুনামগঞ্জের ছাতকে পিকআপ ভ্যানের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে লুৎফুর রহমান (৩৯) নামে এক ডিপ্লোমা প্রকৌশলী নিহত হয়েছেন। শুক্রবার (২০ নভেম্বর) রাত ৮টার দিকে সিলেট-সুনামগঞ্জ সড়কের চৌকা এলাকায় এ দুর্ঘটনা ঘটে। নিহত লুৎফুর রহমান সিলেটের বিশ্বনাথ উপজেলার ইকানিদা দিঘলী গ্রামের বাসিন্দা। তিনি ছাতকের গোবিন্দগঞ্জ এলাকায় সিলেট-সুনামগঞ্জ সড়কের পাশে অবস্থিত আলী ফিলিং স্টেশনে কাজ করতেন। তার স্ত্রী ও এক... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/sylhet/982293/%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B6%E0%A7%81%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%AA%E0%A6%BF%E0%A6%95%E0%A6%86%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
@@ -1113,37 +1144,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "757f6ab1e5f4e6f24b9877c4d8cc477d"
-    },
-    {
-      "title": "গোপালগঞ্জে বাস-মোটরসাইকেলের সংঘর্ষে নি/হ/ত দুই | Gopalganj Road Accident | Channel 24",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=Y9Xp1KASc7E",
-      "publisherUrl": "https://www.youtube.com/watch?v=Y9Xp1KASc7E",
-      "publishedAt": "2026-11-21T04:44:10+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
-      "sourceEvidence": [
-        "Channel 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=Y9Xp1KASc7E"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Channel 24",
-          "title": "গোপালগঞ্জে বাস-মোটরসাইকেলের সংঘর্ষে নি/হ/ত দুই | Gopalganj Road Accident | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=Y9Xp1KASc7E"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9425cf8d06a56505dbf5e5d900abc8b9"
     },
     {
       "title": "মধ্যরাতে ঢাকা কলেজে ককটেল বিস্ফোরণ",
@@ -1532,37 +1532,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
-    },
-    {
-      "title": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
-      "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
-      "link": "https://www.jagonews24.com/national/news/1181796",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1181796",
-      "publishedAt": "2026-11-20T15:41:22+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1181796"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
-          "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানালো ঢাকা",
-          "url": "https://www.jagonews24.com/national/news/1181796"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e98e75e5b2196d11920a731175da764b"
     },
     {
       "title": "রিয়াদের সবচেয়ে উঁচু ভবনে হুথিদের হামলা, নিন্দা জানালো বাংলাদেশ",
