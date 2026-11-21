@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T07:50:35.809812+00:00",
-  "updatedAt": "2026-11-21T07:50:35.809812+00:00",
+  "generatedAt": "2026-11-21T08:00:46.450953+00:00",
+  "updatedAt": "2026-11-21T08:00:46.450953+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 8,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 40,
   "alertItems": [
     {
       "title": "জামালপুরের ইসলামপুরে অগ্নিকাণ্ডে তিনটি বসতঘর ভস্মীভূত #Jamalpur #Islampur #FireIncident #rtvnews",
@@ -1449,37 +1449,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "ad29ddc77bfe4cfd8fed7d56b7dff97f"
-    },
-    {
-      "title": "সুনামগঞ্জে ইউনিয়ন বিএনপির কার্যালয়ে আগুন দিলো দুর্বৃত্তরা",
-      "summary": "সুনামগঞ্জে ইউনিয়ন বিএনপির কার্যালয়ে আগুন দিলো দুর্বৃত্তরা",
-      "link": "https://www.jagonews24.com/country/news/1181814",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181814",
-      "publishedAt": "2026-11-20T19:32:32+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181814"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "সুনামগঞ্জে ইউনিয়ন বিএনপির কার্যালয়ে আগুন দিলো দুর্বৃত্তরা",
-          "summary": "সুনামগঞ্জে ইউনিয়ন বিএনপির কার্যালয়ে আগুন দিলো দুর্বৃত্তরা",
-          "url": "https://www.jagonews24.com/country/news/1181814"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "24c6ddcd75fb4ef91a451489adaa41b4"
     },
     {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
