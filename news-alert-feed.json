@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T06:00:33.172829+00:00",
-  "updatedAt": "2026-11-21T06:00:33.172829+00:00",
+  "generatedAt": "2026-11-21T06:10:47.785498+00:00",
+  "updatedAt": "2026-11-21T06:10:47.785498+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 30,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 5,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -587,17 +587,17 @@
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "BD24Live",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 40,
   "alertItems": [
+    {
+      "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
+      "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-21T06:03:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
+          "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1f67e4f2f107ef6b71a7165a393c71b3"
+    },
     {
       "title": "গোপালগঞ্জ থেকে সংসদ, সর্বত্রই সংঘাতের বার্তা",
       "summary": "বাংলাদেশে রাজনৈতিক উত্তাপ ইদানিং বেড়েই চলছে, যে উত্তাপ শুধু গরম বক্তৃতাবাজি বা বিবৃতির মধ্যে সীমাবদ্ধ নয়। গত কয়েকদিনে বিভিন্ন জায়গায় চোরাগোপ্তা হামলার মাধ্যমে নাশকতামূলক কাজের সাথে যোগ হয়েছে— একটা গোটা জেলায় বিদ্রোহের রূপ। নির্দিষ্ট ব্যক্তিত্বের বাড়িঘরের ওপর হামলা, ভাঙচুর এবং অগ্নিসংযোগ ছড়িয়ে পড়েছে বিভিন্ন এলাকায়। গোপালগঞ্জে যেমন তিনজন বিএনপি সংসদ সদস্যের বাড়িতে আগুন দেওয়া হয়েছে, তেমনই... বিস্তারিত",
@@ -1599,16 +1630,10 @@
           "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
           "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
-          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "9dcc5c6e239718598f7008d5330a2cea"
+      "alertEventId": "2a4a39dfbef20e4044295b63ec4ef3d9"
     },
     {
       "title": "রামুতে ট্রেনের ধাক্কায় একই পরিবারের ৪ জন নিহত",
@@ -1888,37 +1913,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
-    },
-    {
-      "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
-      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
-      "publishedAt": "2026-11-20T06:07:03+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
     }
   ]
 }
