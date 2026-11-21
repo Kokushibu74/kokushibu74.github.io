@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T10:05:37.694217+00:00",
-  "updatedAt": "2026-11-21T10:05:37.694217+00:00",
+  "generatedAt": "2026-11-21T10:15:55.068405+00:00",
+  "updatedAt": "2026-11-21T10:15:55.068405+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 30,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 23,
   "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -407,32 +407,32 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Desh Rupantor",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,65 +840,8 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 45,
+  "candidateCount": 39,
   "alertItems": [
-    {
-      "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
-      "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-      "publishedAt": "2026-11-21T09:55:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB",
-        "Jago News 24",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181892"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
-          "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-          "incidentDateText": "শনিবার (২১ নভেম্বর)",
-          "incidentTimeText": "ভোর ৫টার দিকে",
-          "incidentTimeSource": "UNB",
-          "locationText": "ফতুল্লার পশ্চিম মাসদাইর এলাকায়"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-          "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-          "url": "https://www.jagonews24.com/country/news/1181892"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
-    },
     {
       "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
       "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
@@ -1022,7 +965,7 @@
           "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
           "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas",
           "incidentDateText": "২১ নভেম্বর ২০২৬",
-          "locationText": "থেকে মধ্যরাত পর্যন্ত উপজেলার, বেন্দারচর গ্রামে, ছাড়া উপজেলার, বড় কালিয়া এলাকায় উপজেলা, কালিয়া উপজেলা, মাধ্যম ফেসবুকে বেন্দারচর গ্রামে"
+          "locationText": "থেকে মধ্যরাত পর্যন্ত উপজেলার, বেন্দারচর গ্রামে, ছাড়া উপজেলার, বড় কালিয়া এলাকায় উপজেলা, কালিয়া উপজেলা, যোগাযোগমাধ্যম ফেসবুকে বেন্দারচর গ্রামে"
         },
         {
           "name": "Jago News 24",
@@ -1095,7 +1038,8 @@
           "name": "Jamuna Television",
           "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
           "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668394"
+          "url": "https://www.jamuna.tv/all-bangladesh/668394",
+          "incidentDateText": "২১ নভেম্বর ২০২৬"
         },
         {
           "name": "Channel 24",
@@ -1210,6 +1154,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4ad5c508df38412f5a3e189cace89cb2"
+    },
+    {
+      "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+      "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+      "link": "https://www.jagonews24.com/country/news/1181892",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181892",
+      "publishedAt": "2026-11-21T06:07:09+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+          "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
     },
     {
       "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
@@ -1488,155 +1474,6 @@
       "alertEventId": "ad29ddc77bfe4cfd8fed7d56b7dff97f"
     },
     {
-      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
-      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত দৈনিক ইনকিলাব",
-      "link": "https://dailyinqilab.com/bangladesh/news/965331",
-      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/965331",
-      "publishedAt": "2026-11-20T18:52:45+00:00",
-      "source": "দৈনিক ইনকিলাব",
-      "publisherName": "দৈনিক ইনকিলাব",
-      "sourceEvidence": [
-        "দৈনিক ইনকিলাব",
-        "Daily Naya Diganta",
-        "bd-pratidin.com",
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965331"
-        },
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071179"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - দৈনিক ইনকিলাব",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965331"
-        },
-        {
-          "name": "Daily Naya Diganta",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত - Daily Naya Diganta",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071179"
-        },
-        {
-          "name": "bd-pratidin.com",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        },
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "title": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত - দৈনিক ইনকিলাব",
-          "summary": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965102"
-        }
-      ],
-      "corroborationCount": 4,
-      "alertEventId": "b1a0b52fa9b3d7bcb201203866df1c9f"
-    },
-    {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত Daily Naya Diganta",
-      "link": "https://dailynayadiganta.com/post/other/1071207",
-      "publisherUrl": "https://dailynayadiganta.com/post/other/1071207",
-      "publishedAt": "2026-11-20T18:01:00+00:00",
-      "source": "Daily Naya Diganta",
-      "publisherName": "Daily Naya Diganta",
-      "sourceEvidence": [
-        "Daily Naya Diganta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/other/1071207"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Naya Diganta",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/other/1071207"
-        },
-        {
-          "name": "Daily Naya Diganta",
-          "title": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ - Daily Naya Diganta",
-          "summary": "মালদ্বীপে দুর্ঘটনায় আহত প্রবাসী বাংলাদেশীর পাশে হাইকমিশন, দেশে এনে চিকিৎসার উদ্যোগ Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/abroad/1071194"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bddaeefee7f12e7302a718a996e92b80"
-    },
-    {
-      "title": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ - Jugantor",
-      "summary": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ Jugantor",
-      "link": "https://www.jugantor.com/tp-second-edition/1187581",
-      "publisherUrl": "https://www.jugantor.com/tp-second-edition/1187581",
-      "publishedAt": "2026-11-20T18:00:00+00:00",
-      "source": "Jugantor",
-      "publisherName": "Jugantor",
-      "sourceEvidence": [
-        "Jugantor",
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jugantor",
-          "url": "https://www.jugantor.com/tp-second-edition/1187581"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822076/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF-%E0%A6%86%E0%A6%B0%E0%A6%AC%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%80%E0%A6%AC%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jugantor",
-          "title": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ - Jugantor",
-          "summary": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ Jugantor",
-          "url": "https://www.jugantor.com/tp-second-edition/1187581"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "সৌদি আরবে হামলার তীব্র নিন্দা জানালো বাংলাদেশ - The Daily Ittefaq",
-          "summary": "সৌদি আরবে হামলার তীব্র নিন্দা জানালো বাংলাদেশ The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822076/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF-%E0%A6%86%E0%A6%B0%E0%A6%AC%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%80%E0%A6%AC%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "ebf536298d26765e733e9b7cd595d58e"
-    },
-    {
       "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
       "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
       "link": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
@@ -1666,6 +1503,59 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
+    },
+    {
+      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত - Daily Naya Diganta",
+      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত Daily Naya Diganta",
+      "link": "https://dailynayadiganta.com/post/abroad/1071179",
+      "publisherUrl": "https://dailynayadiganta.com/post/abroad/1071179",
+      "publishedAt": "2026-11-20T16:20:00+00:00",
+      "source": "Daily Naya Diganta",
+      "publisherName": "Daily Naya Diganta",
+      "sourceEvidence": [
+        "Daily Naya Diganta",
+        "bd-pratidin.com",
+        "The Daily Ittefaq"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/abroad/1071179"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
+        },
+        {
+          "name": "The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Naya Diganta",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত - Daily Naya Diganta",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশী নিহত Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/abroad/1071179"
+        },
+        {
+          "name": "bd-pratidin.com",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
+        },
+        {
+          "name": "The Daily Ittefaq",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
+          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "1b0d2a1a0d10c18af35b2f0d055a6dab"
     },
     {
       "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
@@ -1821,6 +1711,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "38166999b8fd45678e0089fc62d0c91d"
+    },
+    {
+      "title": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত - দৈনিক ইনকিলাব",
+      "summary": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত দৈনিক ইনকিলাব",
+      "link": "https://dailyinqilab.com/bangladesh/news/965102",
+      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/965102",
+      "publishedAt": "2026-11-20T11:40:25+00:00",
+      "source": "দৈনিক ইনকিলাব",
+      "publisherName": "দৈনিক ইনকিলাব",
+      "sourceEvidence": [
+        "দৈনিক ইনকিলাব"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/965102"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত - দৈনিক ইনকিলাব",
+          "summary": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/965102"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b1a0b52fa9b3d7bcb201203866df1c9f"
     },
     {
       "title": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর - দৈনিক ইনকিলাব",
