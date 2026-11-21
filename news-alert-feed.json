@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T09:40:30.087041+00:00",
-  "updatedAt": "2026-11-21T09:40:30.087041+00:00",
+  "generatedAt": "2026-11-21T09:50:37.923652+00:00",
+  "updatedAt": "2026-11-21T09:50:37.923652+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 12,
+      "fallbackItems": 14,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 12,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "GDACS",
@@ -843,6 +843,48 @@
   "candidateCount": 45,
   "alertItems": [
     {
+      "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
+      "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
+      "link": "https://www.jagonews24.com/country/news/1181970",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181970",
+      "publishedAt": "2026-11-21T09:42:03+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181970"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
+          "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
+          "url": "https://www.jagonews24.com/country/news/1181970"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
+          "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "f8c53c32dfec70447f15ca5f746d4e57"
+    },
+    {
       "title": "দেশের উপকূলীয় এলাকায় ঝোড়ো হাওয়ার আশঙ্কা নেই",
       "summary": "ঘূর্ণিঝড় আকভানের প্রভাবে গত দুদিন ধরে উপকূলীয় এলাকাসহ সারাদেশে গুঁড়ি গুঁড়ি বৃষ্টি হয়েছে। আজ কোনও কোনও এলাকায় বৃষ্টির পূর্বাভাস দিয়েছে আবহাওয়া অধিদফতর। তবে দেশের উপকূলীয় এলাকার ওপর দিয়ে ঝোড়ো হাওয়া বয়ে যাওয়ার আশঙ্কা নেই। আজ শনিবার দুপুরে আবহাওয়া অধিদফতরের সতর্কবার্তা বলা হয়, সমুদ্র বন্দরসমূহ, উত্তর বঙ্গোপসাগর ও তৎসংলগ্ন বাংলাদেশের উপকূলীয় এলাকার ওপর দিয়ে ঝড়ো হাওয়া বয়ে যাওয়ার... বিস্তারিত",
       "link": "https://www.banglatribune.com/weather/982344/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%89%E0%A6%AA%E0%A6%95%E0%A7%82%E0%A6%B2%E0%A7%80%E0%A6%AF%E0%A6%BC-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%9D%E0%A7%8B%E0%A6%A1%E0%A6%BC%E0%A7%8B-%E0%A6%B9%E0%A6%BE%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%A8%E0%A7%87%E0%A6%87",
@@ -965,37 +1007,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2036675bbeddbbf937387df65dfaa352"
-    },
-    {
-      "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
-      "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80",
-      "publishedAt": "2026-11-21T08:48:11+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
-          "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f8c53c32dfec70447f15ca5f746d4e57"
     },
     {
       "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
@@ -1521,10 +1532,16 @@
           "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
           "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
           "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত - দৈনিক ইনকিলাব",
+          "summary": "কুষ্টিয়ায় ককটেল সদৃশ্য বোমা বিস্ফোরণে দুইজন আহত দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/965102"
         }
       ],
       "corroborationCount": 4,
-      "alertEventId": "1b0d2a1a0d10c18af35b2f0d055a6dab"
+      "alertEventId": "b1a0b52fa9b3d7bcb201203866df1c9f"
     },
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
@@ -1767,37 +1784,6 @@
       "alertEventId": "05c19c8b188a5a4c67fbef87cf44ab4c"
     },
     {
-      "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় 'আকভান'-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা - Chandpur Times",
-      "summary": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় 'আকভান'-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/amp/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/amp/",
-      "publishedAt": "2026-11-20T12:29:37+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/amp/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় 'আকভান'-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা - Chandpur Times",
-          "summary": "দুপুরেই উড়িষ্যায় আঘাত হানবে ঘূর্ণিঝড় 'আকভান'-বাংলাদেশে ঝড়বৃষ্টির সতর্কতা Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%B8%E0%A6%A4%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%A4%E0%A6%BE-5/amp/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "eb5e1cc78cb719e21e2b6a143afe9aab"
-    },
-    {
       "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
       "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
@@ -1889,37 +1875,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "53f0c5486308f70abc40ff0ad3720736"
-    },
-    {
-      "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন - Chandpur Times",
-      "summary": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/",
-      "publishedAt": "2026-11-20T10:56:33+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন - Chandpur Times",
-          "summary": "মতলব উত্তরে ফের বিএনপি কার্যালয়ে আগুন Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE/amp/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "16340e015b98bf02d8bb4c285536a177"
     }
   ]
 }
