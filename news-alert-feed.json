@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T11:40:35.212294+00:00",
-  "updatedAt": "2026-11-21T11:40:35.212294+00:00",
+  "generatedAt": "2026-11-21T11:50:53.918477+00:00",
+  "updatedAt": "2026-11-21T11:50:53.918477+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 48,
+  "failedSourceCount": 7,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 27,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 27,
+  "fallbackWithItemsSourceCount": 21,
+  "fallbackZeroItemsSourceCount": 6,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -437,32 +437,32 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -557,17 +557,17 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Courier",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,158 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 44,
+  "candidateCount": 42,
   "alertItems": [
+    {
+      "title": "৮৭ শতাংশ দগ্ধ শরীর নিয়ে লড়াই, শেষ পর্যন্ত বাঁচলেন না পাশা",
+      "summary": "নারায়ণগঞ্জের ফতুল্লার ইসদাইর এলাকার রতন ডাইং কারখানায় বয়লার বিস্ফোরণের ঘটনায় দগ্ধ দুই শ্রমিকের মধ্যে পাশা (৪০) নামের এক শ্রমিক মৃত্যুবরণ করেছেন...",
+      "link": "https://www.jagonews24.com/country/news/1182020",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1182020",
+      "publishedAt": "2026-11-21T11:45:58+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1182020"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "৮৭ শতাংশ দগ্ধ শরীর নিয়ে লড়াই, শেষ পর্যন্ত বাঁচলেন না পাশা",
+          "summary": "নারায়ণগঞ্জের ফতুল্লার ইসদাইর এলাকার রতন ডাইং কারখানায় বয়লার বিস্ফোরণের ঘটনায় দগ্ধ দুই শ্রমিকের মধ্যে পাশা (৪০) নামের এক শ্রমিক মৃত্যুবরণ করেছেন...",
+          "url": "https://www.jagonews24.com/country/news/1182020"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "61527f610bdfc406fbd1fe0687561cd1"
+    },
+    {
+      "title": "নড়াইলে আ. লীগ নেতাদের বাড়িতে আগুন, সাম্প্রদায়িক হামলার অভিযোগ নাকচ পুলিশের | Narail| News | JamunaTV",
+      "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
+      "link": "https://www.youtube.com/watch?v=PAjmE72Fhck",
+      "publisherUrl": "https://www.youtube.com/watch?v=PAjmE72Fhck",
+      "publishedAt": "2026-11-21T11:40:36+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV",
+        "Prothom Alo",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=PAjmE72Fhck"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181920"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "নড়াইলে আ. লীগ নেতাদের বাড়িতে আগুন, সাম্প্রদায়িক হামলার অভিযোগ নাকচ পুলিশের | Narail| News | JamunaTV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=PAjmE72Fhck"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
+          "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
+          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun",
+          "incidentDateText": "২১ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের ২০–৩০টি বাড়িতে হামলা–আগুন",
+          "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
+          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas",
+          "incidentDateText": "২১ নভেম্বর ২০২৬",
+          "locationText": "থেকে মধ্যরাত পর্যন্ত উপজেলার, বেন্দারচর গ্রামে, ছাড়া উপজেলার, বড় কালিয়া এলাকায় উপজেলা, কালিয়া উপজেলা, যোগাযোগমাধ্যম ফেসবুকে বেন্দারচর গ্রামে"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+          "summary": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+          "url": "https://www.jagonews24.com/national/news/1181920"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "c38016b2c2a45a4b8170c7cd8346c8fc"
+    },
+    {
+      "title": "পাবনায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সংঘর্ষ | Pabna BNP AL Clash | Channel 24",
+      "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
+      "link": "https://www.youtube.com/watch?v=WxLVsnU_KY0",
+      "publisherUrl": "https://www.youtube.com/watch?v=WxLVsnU_KY0",
+      "publishedAt": "2026-11-21T11:36:17+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24",
+        "Prothom Alo",
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "পাবনায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সংঘর্ষ | Pabna BNP AL Clash | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=WxLVsnU_KY0"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "পাবনায় ক্ষমতাসীন বিএনপি ও কার্যক্রম নিষিদ্ধ আ.লীগের নেতা–কর্মীদের দফায় দফায় সংঘর্ষ",
+          "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
+          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
+          "incidentDateText": "২১ নভেম্বর ২০২৬",
+          "incidentTimeText": "দুপুর ১২টার দিকে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "বৃশালিখা মহল্লার, পাবনা, কাছে নৌকা চত্বর এলাকায়, সম্ভপুর মহল্লার, পায়না মহল্লায়, সঙ্গে পাশের হাতিগাড়া মহল্লার"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
+          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
+    },
     {
       "title": "হুমায়ুন কবিরের বাসভবনে পেট্রোল বোমা নিক্ষেপ, কঠোর হুঁশিয়ারি রিজভীর",
       "summary": "পররাষ্ট্র প্রতিমন্ত্রী হুমায়ুন কবিরের সিলেটের বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় তীব্র নিন্দা ও ক্ষোভ প্রকাশ করেছেন বিএনপির ভারপ্রাপ্ত মহাসচিব অ্যাডভোকেট রুহুল কবির রিজভী...",
@@ -1000,52 +1150,6 @@
       "alertEventId": "2ac3a43e06f180b0ab38fcef1c1d87b1"
     },
     {
-      "title": "পাবনায় ক্ষমতাসীন বিএনপি ও কার্যক্রম নিষিদ্ধ আ.লীগের নেতা–কর্মীদের দফায় দফায় সংঘর্ষ",
-      "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
-      "link": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
-      "publishedAt": "2026-11-21T10:58:39+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672176"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "পাবনায় ক্ষমতাসীন বিএনপি ও কার্যক্রম নিষিদ্ধ আ.লীগের নেতা–কর্মীদের দফায় দফায় সংঘর্ষ",
-          "summary": "পাবনার বেড়ায় দেশীয় অস্ত্রসহ বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীরা মুখোমুখি, পাঁচজন আহত।",
-          "url": "https://www.prothomalo.com/bangladesh/district/gmnfa6kocv",
-          "incidentDateText": "২১ নভেম্বর ২০২৬",
-          "incidentTimeText": "দুপুর ১২টার দিকে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "বৃশালিখা মহল্লার, পাবনা, কাছে নৌকা চত্বর এলাকায়, সম্ভপুর মহল্লার, পায়না মহল্লায়, সঙ্গে পাশের হাতিগাড়া মহল্লার"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
-          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672176"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
-    },
-    {
       "title": "দুর্গাপুরে গ্রামীণ ব্যাংক কার্যালয়ে পেট্রলবোমা নিক্ষেপ",
       "summary": "নেত্রকোনার দুর্গাপুর উপজেলায় গ্রামীণ ব্যাংকের বিরিশিরি শাখা কার্যালয় লক্ষ্য করে পরপর দুটি পেট্রলবোমা নিক্ষেপ করেছে দুর্বৃত্তরা। শুক্রবার (২১ নভেম্বর) দিবাগত রাত দেড়টার দিকে উপজেলার বিরিশিরি বাজারসংলগ্ন শাখা কার্যালয়ে এ ঘটনা ঘটে। এর মধ্যে একটি পেট্রলবোমা বিস্ফোরিত হয়ে আগুন ধরলেও অপরটি অবিস্ফোরিত অবস্থায় পড়ে থাকে। তবে আনসার সদস্যদের তৎপরতায় দ্রুত আগুন নিয়ন্ত্রণে আনা সম্ভব হয়।... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/mymensing/982364/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
@@ -1106,11 +1210,7 @@
           "name": "UNB",
           "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
           "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-          "incidentDateText": "শনিবার (২১ নভেম্বর)",
-          "incidentTimeText": "ভোর ৫টার দিকে",
-          "incidentTimeSource": "UNB",
-          "locationText": "ফতুল্লার পশ্চিম মাসদাইর এলাকায়"
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611"
         },
         {
           "name": "Bangla Tribune",
@@ -1183,54 +1283,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8b6005d5ddecee99313a9806119f8fd7"
-    },
-    {
-      "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
-      "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun",
-      "publishedAt": "2026-11-21T09:01:34+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1181920"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নড়াইলে দুই নেতা হত্যার জেরে বাড়িঘরে আগুন",
-          "summary": "ফায়ার সার্ভিসের হিসাবে, ২০ থেকে ৩০টি বাড়িতে আগুন দেওয়া হয়েছে। বিএনপি অভিযোগ অস্বীকার করেছে, পুলিশের বক্তব্যে ভিন্ন তথ্য এসেছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/nrraaile-dui-netaa-htyaar-jere-baarrighre-aagun"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের ২০–৩০টি বাড়িতে হামলা–আগুন",
-          "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
-          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-          "summary": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-          "url": "https://www.jagonews24.com/national/news/1181920"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "c38016b2c2a45a4b8170c7cd8346c8fc"
     },
     {
       "title": "ঢাকা কলেজে ককটেল বিস্ফোরণ, ছাত্রলীগ সন্দেহে ৬ জনকে পুলিশে সোর্পদ",
@@ -1481,37 +1533,6 @@
       "alertEventId": "72e4c7072bafe4f014d3a54ef52c1ab8"
     },
     {
-      "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
-      "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publishedAt": "2026-11-21T05:31:04+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
-          "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4fa2ebbf529b0c4b61bb6cc28105b849"
-    },
-    {
       "title": "শ্বশুরবাড়ি যাওয়ার পথে সড়ক দুর্ঘটনায় প্রাণ গেলো প্রকৌশলীর",
       "summary": "সুনামগঞ্জের ছাতকে পিকআপ ভ্যানের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে লুৎফুর রহমান (৩৯) নামে এক ডিপ্লোমা প্রকৌশলী নিহত হয়েছেন। শুক্রবার (২০ নভেম্বর) রাত ৮টার দিকে সিলেট-সুনামগঞ্জ সড়কের চৌকা এলাকায় এ দুর্ঘটনা ঘটে। নিহত লুৎফুর রহমান সিলেটের বিশ্বনাথ উপজেলার ইকানিদা দিঘলী গ্রামের বাসিন্দা। তিনি ছাতকের গোবিন্দগঞ্জ এলাকায় সিলেট-সুনামগঞ্জ সড়কের পাশে অবস্থিত আলী ফিলিং স্টেশনে কাজ করতেন। তার স্ত্রী ও এক... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/sylhet/982293/%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B6%E0%A7%81%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%AA%E0%A6%BF%E0%A6%95%E0%A6%86%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
@@ -1583,8 +1604,7 @@
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
         "Risingbd.com",
-        "bd-pratidin.com",
-        "bdnews24.com"
+        "bd-pratidin.com"
       ],
       "sourceLinks": [
         {
@@ -1594,10 +1614,6 @@
         {
           "name": "bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328753"
-        },
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
         }
       ],
       "category": "Bangladesh",
@@ -1617,19 +1633,13 @@
           "url": "https://www.bd-pratidin.com/printnews/1328753"
         },
         {
-          "name": "bdnews24.com",
-          "title": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ - bdnews24.com",
-          "summary": "সৌদি আরবে ‘আরামকো টাওয়ারে’ হুতি হামলার নিন্দা জানাল বাংলাদেশ bdnews24.com",
-          "url": "https://bangla.bdnews24.com/bangladesh/o6dj66e5p5"
-        },
-        {
           "name": "bd-pratidin.com",
           "title": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা|1328700 - bd-pratidin.com",
           "summary": "রিয়াদে আর্থিক জেলার ভবনে হুতিদের হামলায় বাংলাদেশের নিন্দা|1328700 bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/printnews/1328700"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "ad29ddc77bfe4cfd8fed7d56b7dff97f"
     },
     {
@@ -1643,8 +1653,7 @@
       "sourceEvidence": [
         "দৈনিক ইনকিলাব",
         "Daily Naya Diganta",
-        "bd-pratidin.com",
-        "The Daily Ittefaq"
+        "bd-pratidin.com"
       ],
       "sourceLinks": [
         {
@@ -1658,10 +1667,6 @@
         {
           "name": "bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
       "category": "Bangladesh",
@@ -1685,16 +1690,10 @@
           "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - bd-pratidin.com",
           "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত bd-pratidin.com",
           "url": "https://www.bd-pratidin.com/probash-potro/2026/11/20/1328716"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট - The Daily Ittefaq",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত, আহত উট The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822080/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         }
       ],
-      "corroborationCount": 4,
-      "alertEventId": "1b0d2a1a0d10c18af35b2f0d055a6dab"
+      "corroborationCount": 3,
+      "alertEventId": "132c7a33e9d5521937975c72817e3b8d"
     },
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় বাংলাদেশী নিহত - Daily Naya Diganta",
@@ -1732,48 +1731,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bddaeefee7f12e7302a718a996e92b80"
-    },
-    {
-      "title": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ - Jugantor",
-      "summary": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ Jugantor",
-      "link": "https://www.jugantor.com/tp-second-edition/1187581",
-      "publisherUrl": "https://www.jugantor.com/tp-second-edition/1187581",
-      "publishedAt": "2026-11-20T18:00:00+00:00",
-      "source": "Jugantor",
-      "publisherName": "Jugantor",
-      "sourceEvidence": [
-        "Jugantor",
-        "The Daily Ittefaq"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jugantor",
-          "url": "https://www.jugantor.com/tp-second-edition/1187581"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822076/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF-%E0%A6%86%E0%A6%B0%E0%A6%AC%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%80%E0%A6%AC%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jugantor",
-          "title": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ - Jugantor",
-          "summary": "সৌদি আরবে হামলার নিন্দা জানাল বাংলাদেশ Jugantor",
-          "url": "https://www.jugantor.com/tp-second-edition/1187581"
-        },
-        {
-          "name": "The Daily Ittefaq",
-          "title": "সৌদি আরবে হামলার তীব্র নিন্দা জানালো বাংলাদেশ - The Daily Ittefaq",
-          "summary": "সৌদি আরবে হামলার তীব্র নিন্দা জানালো বাংলাদেশ The Daily Ittefaq",
-          "url": "https://www.ittefaq.com.bd/822076/%E0%A6%B8%E0%A7%8C%E0%A6%A6%E0%A6%BF-%E0%A6%86%E0%A6%B0%E0%A6%AC%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%80%E0%A6%AC%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "ebf536298d26765e733e9b7cd595d58e"
     },
     {
       "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
