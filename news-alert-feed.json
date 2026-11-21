@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T06:10:47.785498+00:00",
-  "updatedAt": "2026-11-21T06:10:47.785498+00:00",
+  "generatedAt": "2026-11-21T06:25:33.930520+00:00",
+  "updatedAt": "2026-11-21T06:25:33.930520+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 51,
-  "failedSourceCount": 4,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 30,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 30,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 5,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 5,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -587,17 +587,17 @@
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -840,8 +840,112 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 44,
   "alertItems": [
+    {
+      "title": "খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী",
+      "summary": "খাগড়াছড়িতে মাটি খুঁড়তে গিয়ে উদ্ধার হওয়া মর্টারশেলটি নিরাপদে নিস্ক্রিয় করেছে সেনাবাহিনীর বোম ডিসপোজাল ইউনিট। আজ শনিবার সকালে খাগড়াছড়ি সদরের চেঙ্গী ব্রীজ এলাকায় নদীর পাড়ের বালুর চরে মর্টারশেল নিষ্ক্রিয় করা হয়। এ সময় সেনাবাহিনী থেকে মাইকিং করে স্থানীয়দের নিরাপদ দূরত্বে সরিয়ে দেয়া হয়। এর আগে, সকালে শালবন এলাকায় আরও কোন বিস্ফোরক দ্রব্য আছে কিনা তা খতিয়ে […] The post খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী appeared first on চট্টগ্রাম নিউজ .",
+      "link": "https://chattogramnews.com/archives/161219",
+      "publisherUrl": "https://chattogramnews.com/archives/161219",
+      "publishedAt": "2026-11-21T06:21:12+00:00",
+      "source": "Chattogram News",
+      "publisherName": "Chattogram News",
+      "sourceEvidence": [
+        "Chattogram News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161219"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chattogram News",
+          "title": "খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী",
+          "summary": "খাগড়াছড়িতে মাটি খুঁড়তে গিয়ে উদ্ধার হওয়া মর্টারশেলটি নিরাপদে নিস্ক্রিয় করেছে সেনাবাহিনীর বোম ডিসপোজাল ইউনিট। আজ শনিবার সকালে খাগড়াছড়ি সদরের চেঙ্গী ব্রীজ এলাকায় নদীর পাড়ের বালুর চরে মর্টারশেল নিষ্ক্রিয় করা হয়। এ সময় সেনাবাহিনী থেকে মাইকিং করে স্থানীয়দের নিরাপদ দূরত্বে সরিয়ে দেয়া হয়। এর আগে, সকালে শালবন এলাকায় আরও কোন বিস্ফোরক দ্রব্য আছে কিনা তা খতিয়ে […] The post খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161219"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "43cb5a0a0e75bf2fdafdc54785f88198"
+    },
+    {
+      "title": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
+      "summary": "নড়াইল-১ আসনের সাবেক সংসদ সদস্য কবিরুল হক মুক্তি ও কালিয়া পৌরসভার সাবেক মেয়র ফকির মুশফিকুর রহমান লিটনের বাড়িসহ ৫০ থেকে ৬০টি...",
+      "link": "https://www.jagonews24.com/country/news/1181895",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181895",
+      "publishedAt": "2026-11-21T06:17:15+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181895"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নড়াইলে সাবেক এমপি-মেয়রসহ ৬০ বাড়িতে হামলা-আগুন",
+          "summary": "নড়াইল-১ আসনের সাবেক সংসদ সদস্য কবিরুল হক মুক্তি ও কালিয়া পৌরসভার সাবেক মেয়র ফকির মুশফিকুর রহমান লিটনের বাড়িসহ ৫০ থেকে ৬০টি...",
+          "url": "https://www.jagonews24.com/country/news/1181895"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4ad5c508df38412f5a3e189cace89cb2"
+    },
+    {
+      "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+      "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন...",
+      "link": "https://www.jagonews24.com/country/news/1181892",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1181892",
+      "publishedAt": "2026-11-21T06:07:09+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন...",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
+    },
     {
       "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
       "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
@@ -936,20 +1040,20 @@
       "alertEventId": "72e4c7072bafe4f014d3a54ef52c1ab8"
     },
     {
-      "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
-      "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87",
-      "publishedAt": "2026-11-21T05:35:49+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
+      "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
+      "publishedAt": "2026-11-21T05:31:04+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
         }
       ],
       "category": "Bangladesh",
@@ -957,14 +1061,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+          "name": "Dhaka Tribune Bangla",
+          "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
+          "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
+      "alertEventId": "4fa2ebbf529b0c4b61bb6cc28105b849"
     },
     {
       "title": "শ্বশুরবাড়ি যাওয়ার পথে সড়ক দুর্ঘটনায় প্রাণ গেলো প্রকৌশলীর",
@@ -1574,37 +1678,6 @@
       "alertEventId": "6e1bd71edbe2754e6c9e9742801b91d8"
     },
     {
-      "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
-      "summary": "ইসলামী আন্দোলন বাংলাদেশের মহাসচিব গাজী আতাউর রহমান বলেছেন, জুলাই অভ্যুত্থানের মাধ্যমে এ দেশের ছাত্র-জনতা ফ্যাসিস্ট আওয়ামী লীগকে দেশ থেকে তাড়িয়ে দিয়েছে। হাজারো মানুষকে হত্যা; লাখো মানুষের রক্ত যাদের হাতে লেগে আছে, তারাই আবার মানুষ মারার পরিকল্পনা নিয়ে মাঠে নেমেছে। নিকৃষ্ট কৃতকর্মের জন্য তাদের কোনও অনুশোচনা নেই। আছে ঔদ্ধত্য ও অহমিকা। শুক্রবার (২০ নভেম্বর) ইসলামী আন্দোলন বাংলাদেশ, ঢাকা মহানগর... বিস্তারিত",
-      "link": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95",
-      "publisherUrl": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95",
-      "publishedAt": "2026-11-20T14:00:45+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "আগুনে মানুষ পুড়িয়ে দেশে ফেরার স্বপ্ন ন্যাক্কারজনক: ইসলামী আন্দোলনের মহাসচিব",
-          "summary": "ইসলামী আন্দোলন বাংলাদেশের মহাসচিব গাজী আতাউর রহমান বলেছেন, জুলাই অভ্যুত্থানের মাধ্যমে এ দেশের ছাত্র-জনতা ফ্যাসিস্ট আওয়ামী লীগকে দেশ থেকে তাড়িয়ে দিয়েছে। হাজারো মানুষকে হত্যা; লাখো মানুষের রক্ত যাদের হাতে লেগে আছে, তারাই আবার মানুষ মারার পরিকল্পনা নিয়ে মাঠে নেমেছে। নিকৃষ্ট কৃতকর্মের জন্য তাদের কোনও অনুশোচনা নেই। আছে ঔদ্ধত্য ও অহমিকা। শুক্রবার (২০ নভেম্বর) ইসলামী আন্দোলন বাংলাদেশ, ঢাকা মহানগর... বিস্তারিত",
-          "url": "https://www.banglatribune.com/politics/other-politics/982216/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%B7-%E0%A6%AA%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%8D%E0%A6%A8-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%9C%E0%A6%A8%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "174a237f007e77ee7ba20453460033f8"
-    },
-    {
       "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
       "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF",
@@ -1630,10 +1703,16 @@
           "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
           "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
+          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "2a4a39dfbef20e4044295b63ec4ef3d9"
+      "alertEventId": "9dcc5c6e239718598f7008d5330a2cea"
     },
     {
       "title": "রামুতে ট্রেনের ধাক্কায় একই পরিবারের ৪ জন নিহত",
