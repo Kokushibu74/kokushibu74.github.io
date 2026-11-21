@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T07:10:42.162081+00:00",
-  "updatedAt": "2026-11-21T07:10:42.162081+00:00",
+  "generatedAt": "2026-11-21T07:25:37.972794+00:00",
+  "updatedAt": "2026-11-21T07:25:37.972794+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 7,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 16,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Risingbd",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -843,25 +843,20 @@
   "candidateCount": 39,
   "alertItems": [
     {
-      "title": "বিএনপির ধাওয়ায় কার্যক্রম নিষিদ্ধ দলের নেতাকর্মীরা ককটেল ফেলে পালালেন",
-      "summary": "বগুড়ার নন্দীগ্রামে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীদের মশালমিছিলে বিএনপির নেতাকর্মীরা ধাওয়া দেন। এ সময় দুটি ককটেলের বিস্ফোরণ ঘটে...",
-      "link": "https://www.jagonews24.com/country/news/1181900",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181900",
-      "publishedAt": "2026-11-21T06:34:34+00:00",
+      "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+      "summary": "নড়াইলের কালিয়া উপজেলার বেন্দারচর গ্রামে হিন্দু ধর্মাবলম্বীদের বাড়িঘরে ভাঙচুর, অগ্নিসংযোগ ও লুটপাটের খবরকে মিথ্যা ও বানোয়াট বলে দাবি করেছে পুলিশ সদর দপ্তর...",
+      "link": "https://www.jagonews24.com/national/news/1181920",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1181920",
+      "publishedAt": "2026-11-21T07:24:21+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24",
-        "Bangla Tribune"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181900"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+          "url": "https://www.jagonews24.com/national/news/1181920"
         }
       ],
       "category": "Bangladesh",
@@ -870,19 +865,75 @@
       "sourceStories": [
         {
           "name": "Jago News 24",
-          "title": "বিএনপির ধাওয়ায় কার্যক্রম নিষিদ্ধ দলের নেতাকর্মীরা ককটেল ফেলে পালালেন",
-          "summary": "বগুড়ার নন্দীগ্রামে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীদের মশালমিছিলে বিএনপির নেতাকর্মীরা ধাওয়া দেন। এ সময় দুটি ককটেলের বিস্ফোরণ ঘটে...",
-          "url": "https://www.jagonews24.com/country/news/1181900"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
-          "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+          "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+          "summary": "নড়াইলের কালিয়া উপজেলার বেন্দারচর গ্রামে হিন্দু ধর্মাবলম্বীদের বাড়িঘরে ভাঙচুর, অগ্নিসংযোগ ও লুটপাটের খবরকে মিথ্যা ও বানোয়াট বলে দাবি করেছে পুলিশ সদর দপ্তর...",
+          "url": "https://www.jagonews24.com/national/news/1181920"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "1f67e4f2f107ef6b71a7165a393c71b3"
+      "corroborationCount": 1,
+      "alertEventId": "c38016b2c2a45a4b8170c7cd8346c8fc"
+    },
+    {
+      "title": "নড়াইলে অর্ধশতাধিক বাড়িতে হামলা-লুট-আগুন, পুলিশ বলছে ২০টি",
+      "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6",
+      "publishedAt": "2026-11-21T07:20:44+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নড়াইলে অর্ধশতাধিক বাড়িতে হামলা-লুট-আগুন, পুলিশ বলছে ২০টি",
+          "summary": "কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নড়াইল-১ আসনের সাবেক সংসদ সদস্য বি এম কবিরুল হক মুক্তি বিশ্বাসের বাড়িসহ কালিয়া উপজেলার আওয়ামী লীগের অন্তত অর্ধশতাধিক নেতাকর্মীর বাড়িঘরে অগ্নিসংযোগের খবর পাওয়া গেছে। কালিয়ায় বিএনপির দুই নেতাকে হত্যার দুই দিন পর আওয়ামী লীগের নেতাকর্মীদের এসব বাড়ি ও ব্যবসাপ্রতিষ্ঠানে অগ্নিসংযোগ, ভাঙচুর ও লুটপাটের ঘটনা ঘটলো। শুক্রবার (২০ নভেম্বর) বিকালে কালিয়া উপজেলার বেন্দারচরসহ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/982316/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B2%E0%A7%81%E0%A6%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8f5986d698e70f4a20f1b9174186334d"
+    },
+    {
+      "title": "নারায়ণগঞ্জে গ্যাস থেকে আগুন, দ গ্ধ ৩ | Gas Burn | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=kCx6SkVh2uI",
+      "publisherUrl": "https://www.youtube.com/watch?v=kCx6SkVh2uI",
+      "publishedAt": "2026-11-21T07:05:20+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=kCx6SkVh2uI"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "নারায়ণগঞ্জে গ্যাস থেকে আগুন, দ গ্ধ ৩ | Gas Burn | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=kCx6SkVh2uI"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "0eb8200bf47a8b9f11e62e02fc23416c"
     },
     {
       "title": "খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী",
@@ -987,6 +1038,37 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
+    },
+    {
+      "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
+      "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-21T06:03:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
+          "summary": "বগুড়ার নন্দীগ্রামে মশাল মিছিল বের করে বিএনপির নেতাকর্মীদের ধাওয়ার মুখে মশাল ও ককটেল ফেলে পালিয়েছেন কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। এ সময় দুটি ককটেল বিস্ফোরণের ঘটনা ঘটে। শুক্রবার (২০ নভেম্বর) রাত ১১টার দিকে উপজেলার রনবাঘা বাইপাস এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাত ১১টার দিকে আওয়ামী লীগের ২০ থেকে ২৫ জন নেতাকর্মী রনবাঘা বাইপাস এলাকায় একটি সড়কে মশালমিছিল বের করেন।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/982304/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%B2-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%BE-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1f67e4f2f107ef6b71a7165a393c71b3"
     },
     {
       "title": "গোপালগঞ্জ থেকে সংসদ, সর্বত্রই সংঘাতের বার্তা",
@@ -1137,9 +1219,7 @@
           "name": "Prothom Alo",
           "title": "মোটরসাইকেলে শ্বশুরবাড়ি যাচ্ছিলেন, সড়ক দুর্ঘটনায় প্রাণ গেল ডিপ্লোমা প্রকৌশলীর",
           "summary": "সুনামগঞ্জের ছাতকে পিকআপের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে এক ডিপ্লোমা প্রকৌশলী নিহত হয়েছেন। তিনি মোটরসাইকেল চালাচ্ছিলেন। গতকাল শুক্রবার রাত আটটার দিকে সিলেট–সুনামগঞ্জ সড়কের চৌকা এলাকায় এই দুর্ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2",
-          "incidentDateText": "২১ নভেম্বর ২০২৬",
-          "locationText": "সুনামগঞ্জ সড়কের চৌকা এলাকা, সিলেট, সুনামগঞ্জ, বাড়ি সিলেটের বিশ্বনাথ উপজেলার, ইকানিদা দিঘলী গ্রামে, পথে চৌকা এলাকা"
+          "url": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2"
         }
       ],
       "corroborationCount": 1,
@@ -1534,37 +1614,6 @@
       "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
     },
     {
-      "title": "রিয়াদের সবচেয়ে উঁচু ভবনে হুথিদের হামলা, নিন্দা জানালো বাংলাদেশ",
-      "summary": "সৌদি আরবের রাজধানী রিয়াদের কিং আবদুল্লাহ ফাইন্যান্সিয়াল ডিস্ট্রিক্টের টাওয়ার পিআইএফ-এ বৃহস্পতিবার হামলা চালিয়েছে ইয়েমেনের হুথি বিদ্রোহীরা। এ ঘটনায় তীব্র নিন্দা জানিয়েছে বাংলাদেশ। শুক্রবার (২০ নভেম্বর) পররাষ্ট্রমন্ত্রণালয়ের এক বিবৃতিতে এ কথা জানানো হয়। এতে বলা হয়, বাংলাদেশ মনে করে, বেসামরিক ও অর্থনৈতিক অবকাঠামো লক্ষ্য করে এ ধরনের হামলা কোনোভাবেই গ্রহণযোগ্য নয়। এ ধরনের হামলা আঞ্চলিক... বিস্তারিত",
-      "link": "https://www.banglatribune.com/national/982229/%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AC%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%89%E0%A6%81%E0%A6%9A%E0%A7%81-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%81%E0%A6%A5%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/national/982229/%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AC%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%89%E0%A6%81%E0%A6%9A%E0%A7%81-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%81%E0%A6%A5%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE",
-      "publishedAt": "2026-11-20T14:41:01+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/national/982229/%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AC%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%89%E0%A6%81%E0%A6%9A%E0%A7%81-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%81%E0%A6%A5%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "রিয়াদের সবচেয়ে উঁচু ভবনে হুথিদের হামলা, নিন্দা জানালো বাংলাদেশ",
-          "summary": "সৌদি আরবের রাজধানী রিয়াদের কিং আবদুল্লাহ ফাইন্যান্সিয়াল ডিস্ট্রিক্টের টাওয়ার পিআইএফ-এ বৃহস্পতিবার হামলা চালিয়েছে ইয়েমেনের হুথি বিদ্রোহীরা। এ ঘটনায় তীব্র নিন্দা জানিয়েছে বাংলাদেশ। শুক্রবার (২০ নভেম্বর) পররাষ্ট্রমন্ত্রণালয়ের এক বিবৃতিতে এ কথা জানানো হয়। এতে বলা হয়, বাংলাদেশ মনে করে, বেসামরিক ও অর্থনৈতিক অবকাঠামো লক্ষ্য করে এ ধরনের হামলা কোনোভাবেই গ্রহণযোগ্য নয়। এ ধরনের হামলা আঞ্চলিক... বিস্তারিত",
-          "url": "https://www.banglatribune.com/national/982229/%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AC%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%89%E0%A6%81%E0%A6%9A%E0%A7%81-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%B9%E0%A7%81%E0%A6%A5%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "569b408c93f989b2f18f8e00a1c51eaa"
-    },
-    {
       "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
       "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF",
@@ -1724,37 +1773,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "38166999b8fd45678e0089fc62d0c91d"
-    },
-    {
-      "title": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর - দৈনিক ইনকিলাব",
-      "summary": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর দৈনিক ইনকিলাব",
-      "link": "https://dailyinqilab.com/bangladesh/news/965084",
-      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/965084",
-      "publishedAt": "2026-11-20T10:59:09+00:00",
-      "source": "দৈনিক ইনকিলাব",
-      "publisherName": "দৈনিক ইনকিলাব",
-      "sourceEvidence": [
-        "দৈনিক ইনকিলাব"
-      ],
-      "sourceLinks": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965084"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "দৈনিক ইনকিলাব",
-          "title": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর - দৈনিক ইনকিলাব",
-          "summary": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর দৈনিক ইনকিলাব",
-          "url": "https://dailyinqilab.com/bangladesh/news/965084"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "18f226d1f8758c276c845c174b6e4144"
     },
     {
       "title": "নোয়াখালীতে গ্রামীণ ব্যাংকে পেট্রোল ঢেলে আগুন - Dhaka Tribune Bangla",
