@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T10:18:04.601748+00:00",
-  "updatedAt": "2026-11-21T10:18:04.601748+00:00",
+  "generatedAt": "2026-11-21T10:30:34.806053+00:00",
+  "updatedAt": "2026-11-21T10:30:34.806053+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 45,
   "alertItems": [
     {
       "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
@@ -898,48 +898,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
-    },
-    {
-      "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
-      "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
-      "link": "https://www.jagonews24.com/country/news/1181970",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181970",
-      "publishedAt": "2026-11-21T09:42:03+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181970"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
-          "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
-          "url": "https://www.jagonews24.com/country/news/1181970"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
-          "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "f8c53c32dfec70447f15ca5f746d4e57"
     },
     {
       "title": "দেশের উপকূলীয় এলাকায় ঝোড়ো হাওয়ার আশঙ্কা নেই",
@@ -1064,6 +1022,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2036675bbeddbbf937387df65dfaa352"
+    },
+    {
+      "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
+      "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80",
+      "publishedAt": "2026-11-21T08:48:11+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
+          "summary": "খুলনার দিঘলিয়ায় সাগর জুট স্পিনিং মিলের আবাসিক এলাকার একটি মোড়ে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। শনিবার (২১ নভেম্বর) ভোররাতে দুর্বৃত্তরা সেখানে ককটেল নিক্ষেপ করলে বিকট শব্দে আশপাশের এলাকায় আতঙ্ক ছড়িয়ে পড়ে। পুলিশ ও স্থানীয় বাসিন্দারা জানান, দিঘলিয়া উপজেলার সেনহাটি ইউনিয়নের ৭ নম্বর ওয়ার্ডে সাগর জুট স্পিনিং মিলের আবাসিক এলাকার তিন রাস্তার মোড়ে ফজরের নামাজের আগে এ ঘটনা ঘটে। বিস্ফোরণের শব্দে স্থানীয়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/982334/%E0%A6%A6%E0%A6%BF%E0%A6%98%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f8c53c32dfec70447f15ca5f746d4e57"
     },
     {
       "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
