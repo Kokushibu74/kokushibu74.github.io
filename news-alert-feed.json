@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T08:55:35.733900+00:00",
-  "updatedAt": "2026-11-21T08:55:35.733900+00:00",
+  "generatedAt": "2026-11-21T09:10:48.330511+00:00",
+  "updatedAt": "2026-11-21T09:10:48.330511+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Naya Diganta",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 44,
+  "candidateCount": 43,
   "alertItems": [
     {
       "title": "দিঘলিয়ায় ককটেল বিস্ফোরণ, আতঙ্কে এলাকাবাসী",
@@ -872,6 +872,50 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f8c53c32dfec70447f15ca5f746d4e57"
+    },
+    {
+      "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের অন্তত ২০–৩০টি বাড়িতে হামলা–আগুন",
+      "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
+      "link": "https://www.prothomalo.com/bangladesh/district/fhw23zopas",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/fhw23zopas",
+      "publishedAt": "2026-11-21T08:44:50+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1181920"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "নড়াইলে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ নেতা–কর্মীদের অন্তত ২০–৩০টি বাড়িতে হামলা–আগুন",
+          "summary": "পুলিশ বলছে, নড়াইলে বিএনপির দুই নেতাকে হত্যার জেরে বিক্ষুব্ধ আত্মীয়স্বজন ও অন্যরা কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা–কর্মীদের কয়েকটি বাড়িতে হামলা চালান।",
+          "url": "https://www.prothomalo.com/bangladesh/district/fhw23zopas",
+          "incidentDateText": "২১ নভেম্বর ২০২৬",
+          "locationText": "থেকে মধ্যরাত পর্যন্ত উপজেলার, বেন্দারচর এলাকায়, হঠাৎ করে বেন্দারচর এলাকায়, ছাড়া উপজেলার, বড় কালিয়া এলাকায় উপজেলা, কালিয়া উপজেলা"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+          "summary": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
+          "url": "https://www.jagonews24.com/national/news/1181920"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "c38016b2c2a45a4b8170c7cd8346c8fc"
     },
     {
       "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
@@ -999,68 +1043,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e480fd8c28e0bbfadca17ac879011e16"
-    },
-    {
-      "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-      "summary": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-      "link": "https://www.jagonews24.com/national/news/1181920",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1181920",
-      "publishedAt": "2026-11-21T07:24:21+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1181920"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-          "summary": "নড়াইলে হিন্দুদের বাড়ি-ঘরে হামলার খবর গুজব: পুলিশ",
-          "url": "https://www.jagonews24.com/national/news/1181920"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c38016b2c2a45a4b8170c7cd8346c8fc"
-    },
-    {
-      "title": "নারায়ণগঞ্জে গ্যাস থেকে আগুন, দ গ্ধ ৩ | Gas Burn | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=kCx6SkVh2uI",
-      "publisherUrl": "https://www.youtube.com/watch?v=kCx6SkVh2uI",
-      "publishedAt": "2026-11-21T07:05:20+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
-      "sourceEvidence": [
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Independent Television · YouTube",
-          "url": "https://www.youtube.com/watch?v=kCx6SkVh2uI"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Independent Television",
-          "title": "নারায়ণগঞ্জে গ্যাস থেকে আগুন, দ গ্ধ ৩ | Gas Burn | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=kCx6SkVh2uI"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0eb8200bf47a8b9f11e62e02fc23416c"
     },
     {
       "title": "খাগড়াছড়িতে মাটির নিচ থেকে উদ্ধার করা মর্টারশেলটি ডিসপোজাল করেছে সেনাবাহিনী",
@@ -1322,20 +1304,20 @@
       "alertEventId": "080fa0fe1b8ccb4dfa210771ad57d5e2"
     },
     {
-      "title": "মোটরসাইকেলে শ্বশুরবাড়ি যাচ্ছিলেন, সড়ক দুর্ঘটনায় প্রাণ গেল ডিপ্লোমা প্রকৌশলীর",
-      "summary": "সুনামগঞ্জের ছাতকে পিকআপের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে এক ডিপ্লোমা প্রকৌশলী নিহত হয়েছেন। তিনি মোটরসাইকেল চালাচ্ছিলেন। গতকাল শুক্রবার রাত আটটার দিকে সিলেট–সুনামগঞ্জ সড়কের চৌকা এলাকায় এই দুর্ঘটনা ঘটে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2",
-      "publishedAt": "2026-11-21T04:47:39+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
+      "publishedAt": "2026-11-21T04:25:11+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Prothom Alo"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1343,14 +1325,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Prothom Alo",
-          "title": "মোটরসাইকেলে শ্বশুরবাড়ি যাচ্ছিলেন, সড়ক দুর্ঘটনায় প্রাণ গেল ডিপ্লোমা প্রকৌশলীর",
-          "summary": "সুনামগঞ্জের ছাতকে পিকআপের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে এক ডিপ্লোমা প্রকৌশলী নিহত হয়েছেন। তিনি মোটরসাইকেল চালাচ্ছিলেন। গতকাল শুক্রবার রাত আটটার দিকে সিলেট–সুনামগঞ্জ সড়কের চৌকা এলাকায় এই দুর্ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/h49jc3ehn2"
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে বাসের সঙ্গে মোটরসাইকেলের সংঘর্ষ, নিহত ২ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113534/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "757f6ab1e5f4e6f24b9877c4d8cc477d"
+      "alertEventId": "e43f1efbb71efad12ada62db2d92042e"
     },
     {
       "title": "মধ্যরাতে ঢাকা কলেজে ককটেল বিস্ফোরণ",
@@ -1413,37 +1395,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cc6b0eeb75385634952b8856c0c98d4e"
-    },
-    {
-      "title": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত - Dhaka Tribune Bangla",
-      "summary": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113529/%E0%A6%A8%E0%A6%93%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8B%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A6%BF-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113529/%E0%A6%A8%E0%A6%93%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8B%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A6%BF-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publishedAt": "2026-11-21T03:17:31+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113529/%E0%A6%A8%E0%A6%93%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8B%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A6%BF-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত - Dhaka Tribune Bangla",
-          "summary": "নওগাঁয় ট্রাক-মোটরসাইকেলের মুখোমুখি সংঘর্ষে যুবক নিহত Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113529/%E0%A6%A8%E0%A6%93%E0%A6%97%E0%A6%BE%E0%A6%81%E0%A7%9F-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8B%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A6%BF-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ac9e3660d963c0de7b12072523a2465"
     },
     {
       "title": "কোথায় গিয়ে দাঁড়াবে দেশের পোশাক খাত",
