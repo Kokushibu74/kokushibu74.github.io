@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T09:50:37.923652+00:00",
-  "updatedAt": "2026-11-21T09:50:37.923652+00:00",
+  "generatedAt": "2026-11-21T10:05:37.694217+00:00",
+  "updatedAt": "2026-11-21T10:05:37.694217+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 23,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -843,6 +843,63 @@
   "candidateCount": 45,
   "alertItems": [
     {
+      "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
+      "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
+      "publishedAt": "2026-11-21T09:55:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB",
+        "Jago News 24",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
+          "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
+          "incidentDateText": "শনিবার (২১ নভেম্বর)",
+          "incidentTimeText": "ভোর ৫টার দিকে",
+          "incidentTimeSource": "UNB",
+          "locationText": "ফতুল্লার পশ্চিম মাসদাইর এলাকায়"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+          "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
+          "url": "https://www.jagonews24.com/country/news/1181892"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
+    },
+    {
       "title": "ভোরে বিকট শব্দে কেঁপে উঠল দিঘলিয়ার ফরমায়েশ খানা",
       "summary": "খুলনার দিঘলিয়ায় রাস্তার ওপর ককটেল বিস্ফোরণ ঘটিয়েছে দুর্বৃত্তরা। তবে এসময় এলাকা জনমানবশূন্য থাকায় এতে কোনো হতাহতের ঘটনা ঘটেনি...",
       "link": "https://www.jagonews24.com/country/news/1181970",
@@ -1038,8 +1095,7 @@
           "name": "Jamuna Television",
           "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
           "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668394",
-          "incidentDateText": "২১ নভেম্বর ২০২৬"
+          "url": "https://www.jamuna.tv/all-bangladesh/668394"
         },
         {
           "name": "Channel 24",
@@ -1154,48 +1210,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4ad5c508df38412f5a3e189cace89cb2"
-    },
-    {
-      "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-      "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-      "link": "https://www.jagonews24.com/country/news/1181892",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1181892",
-      "publishedAt": "2026-11-21T06:07:09+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1181892"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-          "summary": "নারায়ণগঞ্জে ফ্ল্যাটে গ্যাস থেকে বিস্ফোরণে স্বামী-স্ত্রীসহ দগ্ধ ৪",
-          "url": "https://www.jagonews24.com/country/news/1181892"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "ঘুম থেকে উঠে চুলা জ্বালাতেই বিস্ফোরণ, দগ্ধ একই পরিবারের ৪ জন",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় আবাসিক ফ্ল্যাটে জমে থাকা গ্যাস থেকে বিস্ফোরণ ও অগ্নিকাণ্ডের ঘটনায় স্বামী-স্ত্রীসহ চারজন দগ্ধ হয়েছেন। শনিবার (২১ নভেম্বর) ভোর ৫টার দিকে পশ্চিম মাসদাইর এলাকায় আসলাম মিয়ার চারতলা ভবনের নিচতলার একটি ফ্ল্যাটে এ দুর্ঘটনা ঘটে। দগ্ধ ব্যক্তিরা হলেন শাহিন, তার স্ত্রী লিমা পারভীন এবং তাদের দুই আত্মীয়। গুরুতর দগ্ধ অবস্থায় তাদের উদ্ধার করে প্রথমে নারায়ণগঞ্জ জেনারেল হাসপাতালে নেওয়া হয়।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982298/%E0%A6%98%E0%A7%81%E0%A6%AE-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A6%B2%E0%A6%BE-%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "5337ecb143f988ec6ef67cabfcd06b69"
     },
     {
       "title": "বিএনপির ধাওয়ায় মশাল-ককটেল ফেলে পালালো আ.লীগের নেতা-কর্মীরা",
@@ -1679,16 +1693,10 @@
           "title": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন - Dhaka Tribune Bangla",
           "summary": "১০ দিনের ব্যবধানে মতলব উত্তরে আবারও বিএনপি কার্যালয়ে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113517/%E0%A7%A7%E0%A7%A6-%E0%A6%A6%E0%A6%BF%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A6%A4%E0%A6%B2%E0%A6%AC-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ - Dhaka Tribune Bangla",
-          "summary": "‘আগুন সন্ত্রাসের পরিবর্তন জরুরি’ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113501/%E2%80%98%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8-%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B0%E0%A6%BF%E2%80%99"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "9dcc5c6e239718598f7008d5330a2cea"
+      "alertEventId": "2a4a39dfbef20e4044295b63ec4ef3d9"
     },
     {
       "title": "রামুতে ট্রেনের ধাক্কায় একই পরিবারের ৪ জন নিহত",
