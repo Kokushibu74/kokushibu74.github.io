@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T03:00:30.638427+00:00",
-  "updatedAt": "2026-11-21T03:00:30.638427+00:00",
+  "generatedAt": "2026-11-21T03:10:38.834396+00:00",
+  "updatedAt": "2026-11-21T03:10:38.834396+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 44,
+  "candidateCount": 45,
   "alertItems": [
     {
       "title": "সুনামগঞ্জে ইউনিয়ন বিএনপির কার্যালয়ে দুর্বৃত্তদের আগুন | Channel 24",
@@ -914,6 +914,39 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "78e88e019745e20c07c76efa794186d9"
+    },
+    {
+      "title": "চুয়াডাঙ্গায় সাংবাদিক ও তার পরিবারকে বহনকারী গাড়িতে হামলা - dhakapost.com",
+      "summary": "চুয়াডাঙ্গায় সাংবাদিক ও তার পরিবারকে বহনকারী গাড়িতে হামলা dhakapost.com",
+      "link": "https://www.dhakapost.com/country/499614",
+      "publisherUrl": "https://www.dhakapost.com/country/499614",
+      "publishedAt": "2026-11-21T01:29:44+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/499614"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "চুয়াডাঙ্গায় সাংবাদিক ও তার পরিবারকে বহনকারী গাড়িতে হামলা - dhakapost.com",
+          "summary": "চুয়াডাঙ্গায় সাংবাদিক ও তার পরিবারকে বহনকারী গাড়িতে হামলা dhakapost.com",
+          "url": "https://www.dhakapost.com/country/499614",
+          "incidentDateText": "২১ নভেম্বর ২০২৬",
+          "locationText": "বড় ভাই সদর থানা, তারা প্রাইভেটকারে আলমডাঙ্গা উপজেলার, রামদিয়া গ্রামে, থামিয়ে সরাসরি সদর থানায়, চুয়াডাঙ্গা সদর থানার, চুয়াডাঙ্গা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e23a3a9b78c676d424c3130283cbc45d"
     },
     {
       "title": "কোথায় গিয়ে দাঁড়াবে দেশের পোশাক খাত",
