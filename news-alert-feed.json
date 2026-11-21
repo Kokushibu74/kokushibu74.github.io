@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-21T05:45:53.413405+00:00",
-  "updatedAt": "2026-11-21T05:45:53.413405+00:00",
+  "generatedAt": "2026-11-21T06:00:33.172829+00:00",
+  "updatedAt": "2026-11-21T06:00:33.172829+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "UNB",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 14,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -467,17 +467,17 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Manab Zamin",
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "<urlopen error [Errno 101] Network is unreachable>",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 1,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 39,
+  "candidateCount": 41,
   "alertItems": [
+    {
+      "title": "গোপালগঞ্জ থেকে সংসদ, সর্বত্রই সংঘাতের বার্তা",
+      "summary": "বাংলাদেশে রাজনৈতিক উত্তাপ ইদানিং বেড়েই চলছে, যে উত্তাপ শুধু গরম বক্তৃতাবাজি বা বিবৃতির মধ্যে সীমাবদ্ধ নয়। গত কয়েকদিনে বিভিন্ন জায়গায় চোরাগোপ্তা হামলার মাধ্যমে নাশকতামূলক কাজের সাথে যোগ হয়েছে— একটা গোটা জেলায় বিদ্রোহের রূপ। নির্দিষ্ট ব্যক্তিত্বের বাড়িঘরের ওপর হামলা, ভাঙচুর এবং অগ্নিসংযোগ ছড়িয়ে পড়েছে বিভিন্ন এলাকায়। গোপালগঞ্জে যেমন তিনজন বিএনপি সংসদ সদস্যের বাড়িতে আগুন দেওয়া হয়েছে, তেমনই... বিস্তারিত",
+      "link": "https://www.banglatribune.com/columns/982207/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6-%E0%A6%B8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%C2%A0",
+      "publisherUrl": "https://www.banglatribune.com/columns/982207/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6-%E0%A6%B8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%C2%A0",
+      "publishedAt": "2026-11-21T06:00:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/columns/982207/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6-%E0%A6%B8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%C2%A0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জ থেকে সংসদ, সর্বত্রই সংঘাতের বার্তা",
+          "summary": "বাংলাদেশে রাজনৈতিক উত্তাপ ইদানিং বেড়েই চলছে, যে উত্তাপ শুধু গরম বক্তৃতাবাজি বা বিবৃতির মধ্যে সীমাবদ্ধ নয়। গত কয়েকদিনে বিভিন্ন জায়গায় চোরাগোপ্তা হামলার মাধ্যমে নাশকতামূলক কাজের সাথে যোগ হয়েছে— একটা গোটা জেলায় বিদ্রোহের রূপ। নির্দিষ্ট ব্যক্তিত্বের বাড়িঘরের ওপর হামলা, ভাঙচুর এবং অগ্নিসংযোগ ছড়িয়ে পড়েছে বিভিন্ন এলাকায়। গোপালগঞ্জে যেমন তিনজন বিএনপি সংসদ সদস্যের বাড়িতে আগুন দেওয়া হয়েছে, তেমনই... বিস্তারিত",
+          "url": "https://www.banglatribune.com/columns/982207/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%B8%E0%A6%A6-%E0%A6%B8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%C2%A0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f86797065f7548866a5be493b9bfc57c"
+    },
     {
       "title": "গোপালগঞ্জে বাসচাপায় প্রাণ গেলো দুই মোটরসাইকেল আরোহীর",
       "summary": "গোপালগঞ্জে যাত্রীবাহী বাসের সঙ্গে মোটরসাইকেলের মুখোমুখি সংঘর্ষে দুই যুবক নিহত হয়েছেন। শনিবার (২১ নভেম্বর) সকালে ঢাকা-খুলনা মহাসড়কের সোনাশুর এলাকায় এ দুর্ঘটনা ঘটে। সংঘর্ষের পর মোটরসাইকেলটি বাসের চাকায় পিষ্ট হলে ঘটনাস্থলেই দুই আরোহীর মৃত্যু হয়। নিহত ব্যক্তিরা হলেন খুলনার শিরোমণি এলাকার কাউসারের ছেলে তৌহিদুল ইসলাম (৩০) এবং পাইকগাছা উপজেলার মোহাম্মদ টুটুল সরদারের ছেলে রিফাত সরদার (২৫)। গোপালগঞ্জ... বিস্তারিত",
@@ -1642,6 +1673,37 @@
       "alertEventId": "868a925472e17e152566258869d647e0"
     },
     {
+      "title": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা - Bangladesh Sangbad Sangstha (BSS)",
+      "summary": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা Bangladesh Sangbad Sangstha (BSS)",
+      "link": "https://www.bssnews.net/bangla/news/362040",
+      "publisherUrl": "https://www.bssnews.net/bangla/news/362040",
+      "publishedAt": "2026-11-20T13:07:00+00:00",
+      "source": "BSS",
+      "publisherName": "BSS",
+      "sourceEvidence": [
+        "BSS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BSS",
+          "url": "https://www.bssnews.net/bangla/news/362040"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BSS",
+          "title": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা - Bangladesh Sangbad Sangstha (BSS)",
+          "summary": "এবি পার্টির চেয়ারম্যানের গাড়িতে অগ্নিসংযোগের ঘটনায় বিএনপির ভারপ্রাপ্ত মহাসচিবের নিন্দা Bangladesh Sangbad Sangstha (BSS)",
+          "url": "https://www.bssnews.net/bangla/news/362040"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "05c19c8b188a5a4c67fbef87cf44ab4c"
+    },
+    {
       "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
       "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
@@ -1667,16 +1729,10 @@
           "title": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ - Dhaka Tribune Bangla",
           "summary": "জর্দার কৌটা কুড়িয়ে ভাঙারির দোকানে আনতেই বিস্ফোরণ, আহত ২ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113510/%E0%A6%9C%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A7%8C%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A7%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A8%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ - Dhaka Tribune Bangla",
-          "summary": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ ২ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113483/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "d97667b9486fe26d397918947ac7a360"
+      "alertEventId": "38166999b8fd45678e0089fc62d0c91d"
     },
     {
       "title": "নোয়াখালীর চৌমুহনী গ্রামীণ ব্যাংকে পেট্রোল দিয়ে আগুন, ভাঙচুর - দৈনিক ইনকিলাব",
@@ -1832,6 +1888,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d9f2cd0f656188e0fc159fe707fa0b4e"
+    },
+    {
+      "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
+      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5",
+      "publishedAt": "2026-11-20T06:07:03+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ - Ajker Patrika",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর সিলেটের বাসভবনের ফটকে অগ্নিসংযোগ Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/sylhet/ajplj37mleka5"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "40d2c8e8608b76c07157ebcccd4119d3"
     }
   ]
 }
