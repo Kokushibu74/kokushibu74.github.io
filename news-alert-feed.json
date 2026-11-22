@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T10:15:41.760202+00:00",
-  "updatedAt": "2026-11-22T10:15:41.760202+00:00",
+  "generatedAt": "2026-11-22T10:19:19.998811+00:00",
+  "updatedAt": "2026-11-22T10:19:19.998811+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 25,
+  "candidateCount": 27,
   "alertItems": [
+    {
+      "title": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ",
+      "summary": "মাদারীপুরে গ্রামীণ ব্যাংকের দুটি শাখায় পেট্টোল বোমা ও ককটেল নিক্ষেপ করে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। এতে একটি শাখার বাইরে কিছু...",
+      "link": "https://www.jagonews24.com/country/news/1182330",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1182330",
+      "publishedAt": "2026-11-22T10:11:19+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1182330"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ",
+          "summary": "মাদারীপুরে গ্রামীণ ব্যাংকের দুটি শাখায় পেট্টোল বোমা ও ককটেল নিক্ষেপ করে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। এতে একটি শাখার বাইরে কিছু...",
+          "url": "https://www.jagonews24.com/country/news/1182330"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b503728e49ac374e48ea8f59214d7157"
+    },
     {
       "title": "গ্যাস বিস্ফোরণে দগ্ধ শাহিন আলমের মৃ/ত্যু #Narayanganj #Fatullah #GasExplosion",
       "summary": "",
@@ -1146,11 +1177,7 @@
           "name": "Dainik Azadi",
           "title": "ভিপি সাদিক কায়েমের বাড়িতে পেট্রোল বোমা নিক্ষেপ ও অগ্নিসংযোগের চেষ্টার অভিযোগ",
           "summary": "খাগড়াছড়িতে ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) সহসভাপতি (ভিপি) সাদিক কায়েমের বাড়িতে পেট্রলবোমা নিক্ষেপ ও কেরোসিন ঢেলে অগ্নিসংযোগের চেষ্টার অভিযোগ উঠেছে। শনিবার (২১ নভেম্বর) দিবাগত রাত সাড়ে ৩টার দিকে এ ঘটনা ঘটে বলে নিজের ফেসবুক স্ট্যাটাসে জানিয়েছেন সাদিক কায়েম। স্ট্যাটাসে তিনি অভিযোগ করেন, কার্যক্রম নিষিদ্ধ আওয়ামী লীগের ‘সন্ত্রাসীরা’ তাঁর বাড়িতে হামলার চেষ্টা চালিয়েছে। ঘটনার সময় […] The post ভিপি সাদিক কায়েমের বাড়িতে পেট্রোল বোমা নিক্ষেপ ও অগ্নিসংযোগের চেষ্টার অভিযোগ appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/khagrachhari-sadik-kayem-house-arson-attempt/",
-          "incidentDateText": "শনিবার (২১ নভেম্বর)",
-          "incidentTimeText": "রাত ৩টার",
-          "incidentTimeSource": "Dainik Azadi",
-          "locationText": "ছড়িয়ে পড়ার আগেই এলাকা"
+          "url": "https://dainikazadi.net/khagrachhari-sadik-kayem-house-arson-attempt/"
         }
       ],
       "corroborationCount": 1,
@@ -1374,43 +1401,6 @@
       "alertEventId": "efe0cf88319e05a320fe371930dcde09"
     },
     {
-      "title": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি - Risingbd.com",
-      "summary": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672245",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672245",
-      "publishedAt": "2026-11-21T18:41:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672245"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি - Risingbd.com",
-          "summary": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672245"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
-          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672176"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
-    },
-    {
       "title": "এআই দিয়ে রায় লেখা যাবে না, বিচারকদের প্রধান বিচারপতি",
       "summary": "এজলাসে বসে সামাজিক যোগাযোগমাধ্যম ব্যবহার এবং মোবাইল ফোন বহন থেকে বিরত থাকতে অধস্তন আদালতের বিচারকদের নির্দেশনা দিয়েছেন প্রধান বিচারপতি জুবায়ের রহমান চৌধুরী। আজ ২১ নভেম্বর শনিবার চট্টগ্রাম বিভাগে কর্মরত জুডিশিয়াল সার্ভিসের সদস্যদের উদ্দেশে এমন নির্দেশনা দিয়ে প্রধান বিচারপতি বলেন, রায় প্রস্তুত বা লেখার ক্ষেত্রে কোনোভাবেই এআইয়ের ওপর নির্ভর করা যাবে না। চট্টগ্রামের রেডিসন ব্লু বে […] The post এআই দিয়ে রায় লেখা যাবে না, বিচারকদের প্রধান বিচারপতি appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161275",
@@ -1504,6 +1494,37 @@
       "alertEventId": "de4fecb7f64d36506bd424ce13d357ce"
     },
     {
+      "title": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+      "summary": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618",
+      "publishedAt": "2026-11-21T12:09:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+          "summary": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "05cb930c83ee3143c0e2a0de29cf5a46"
+    },
+    {
       "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
       "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
       "link": "https://www.bssnews.net/bangla/national/362311",
@@ -1533,6 +1554,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "37979f74b5f01fd316d8f800a4266a2e"
+    },
+    {
+      "title": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ - একাত্তর",
+      "summary": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ একাত্তর",
+      "link": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publisherUrl": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publishedAt": "2026-11-21T11:39:56+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর",
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ - একাত্তর",
+          "summary": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
+          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
     },
     {
       "title": "নড়াইলে সাবেক এমপির বাড়িসহ অন্তত ১৫ বাড়িতে ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
