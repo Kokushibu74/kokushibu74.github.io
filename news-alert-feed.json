@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T11:45:44.417142+00:00",
-  "updatedAt": "2026-11-22T11:45:44.417142+00:00",
+  "generatedAt": "2026-11-22T12:00:32.723548+00:00",
+  "updatedAt": "2026-11-22T12:00:32.723548+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 22,
+  "candidateCount": 21,
   "alertItems": [
+    {
+      "title": "পাবনায় কার্যক্রম নিষিদ্ধ আ. লীগ-বিএনপির সংঘর্ষের পর থমথমে পরিস্থিতি | Pabna Clash | Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=d0mncYO9S_U",
+      "publisherUrl": "https://www.youtube.com/watch?v=d0mncYO9S_U",
+      "publishedAt": "2026-11-22T11:54:05+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=d0mncYO9S_U"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "পাবনায় কার্যক্রম নিষিদ্ধ আ. লীগ-বিএনপির সংঘর্ষের পর থমথমে পরিস্থিতি | Pabna Clash | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=d0mncYO9S_U"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bcb22f823f181d56b20e06542b454a87"
+    },
     {
       "title": "মশার কয়েল ধরাতেই রান্নাঘরে বিস্ফোরণ, স্ত্রীকে বাঁচাতে গিয়ে স্বামী-স্ত্রী দুজনেরও মৃত্যু",
       "summary": "নওগাঁর সাপাহার উপজেলায় গ্যাস সিলিন্ডার বিস্ফোরণে স্বামীর পর স্ত্রীও চিকিৎসাধীন অবস্থায় মারা গেছেন। রবিবার (২২ নভেম্বর) ভোরে স্ত্রী আফরোজা বেগম রাজশাহী মেডিক্যাল কলেজ হাসপাতালে মারা যান। এর দুই দিন আগে গত শুক্রবার চিকিৎসাধীন অবস্থায় স্বামী সোলায়মান আলীর মৃত্যু হয়। তারা হলেন- উপজেলার শিরন্টি ইউনিয়নের গোপালপুর সোনাডাঙা গ্রামের মৃত আবুল হোসেনের ছেলে সোলায়মান আলী (৬৮) ও তার স্ত্রী আফরোজা বেগম... বিস্তারিত",
@@ -1312,37 +1343,6 @@
       "alertEventId": "c64964051535f17fe38bbf376213a048"
     },
     {
-      "title": "সাদিক কায়েমের বাড়িতে পেট্রোলবোমা মেরে অগ্নিসংযোগ, যা বললেন ডাকসু ভিপি",
-      "summary": "ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) ভিপি সাদিক কায়েমের খাগড়াছড়ির বাড়িতে পেট্রোলবোমা ও কেরোসিন ঢেলে অগ্নিসংযোগ করেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। রবিবার (২২ নভেম্বর) ভোররাত সাড়ে ৩টার দিকে এ ঘটনা ঘটে। এ দিন ভোর সাড়ে ৫টায় দেওয়া এক ফেসবুক পোস্টে এ অভিযোগ করেন তিনি। এ সময় বাড়িতে তার বাবা-মা অবস্থান করছিলেন বলেও জানান তিনি। পোস্টে সাদিক কায়েম বলেন, ‘রাত ৩টা ৩০... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/982451/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982451/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-22T01:42:16+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/982451/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "সাদিক কায়েমের বাড়িতে পেট্রোলবোমা মেরে অগ্নিসংযোগ, যা বললেন ডাকসু ভিপি",
-          "summary": "ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদের (ডাকসু) ভিপি সাদিক কায়েমের খাগড়াছড়ির বাড়িতে পেট্রোলবোমা ও কেরোসিন ঢেলে অগ্নিসংযোগ করেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীরা। রবিবার (২২ নভেম্বর) ভোররাত সাড়ে ৩টার দিকে এ ঘটনা ঘটে। এ দিন ভোর সাড়ে ৫টায় দেওয়া এক ফেসবুক পোস্টে এ অভিযোগ করেন তিনি। এ সময় বাড়িতে তার বাবা-মা অবস্থান করছিলেন বলেও জানান তিনি। পোস্টে সাদিক কায়েম বলেন, ‘রাত ৩টা ৩০... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/982451/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4ab6bebd5dee3b4530fde9b4f4170681"
-    },
-    {
       "title": "এআই দিয়ে রায় লেখা যাবে না, বিচারকদের প্রধান বিচারপতি",
       "summary": "এজলাসে বসে সামাজিক যোগাযোগমাধ্যম ব্যবহার এবং মোবাইল ফোন বহন থেকে বিরত থাকতে অধস্তন আদালতের বিচারকদের নির্দেশনা দিয়েছেন প্রধান বিচারপতি জুবায়ের রহমান চৌধুরী। আজ ২১ নভেম্বর শনিবার চট্টগ্রাম বিভাগে কর্মরত জুডিশিয়াল সার্ভিসের সদস্যদের উদ্দেশে এমন নির্দেশনা দিয়ে প্রধান বিচারপতি বলেন, রায় প্রস্তুত বা লেখার ক্ষেত্রে কোনোভাবেই এআইয়ের ওপর নির্ভর করা যাবে না। চট্টগ্রামের রেডিসন ব্লু বে […] The post এআই দিয়ে রায় লেখা যাবে না, বিচারকদের প্রধান বিচারপতি appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161275",
@@ -1496,37 +1496,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "05cb930c83ee3143c0e2a0de29cf5a46"
-    },
-    {
-      "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-      "link": "https://www.bssnews.net/bangla/national/362311",
-      "publisherUrl": "https://www.bssnews.net/bangla/national/362311",
-      "publishedAt": "2026-11-21T11:54:00+00:00",
-      "source": "BSS",
-      "publisherName": "BSS",
-      "sourceEvidence": [
-        "BSS"
-      ],
-      "sourceLinks": [
-        {
-          "name": "BSS",
-          "url": "https://www.bssnews.net/bangla/national/362311"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "BSS",
-          "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
-          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
-          "url": "https://www.bssnews.net/bangla/national/362311"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "37979f74b5f01fd316d8f800a4266a2e"
     }
   ]
 }
