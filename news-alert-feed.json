@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T17:56:43.829867+00:00",
-  "updatedAt": "2026-11-22T17:56:43.829867+00:00",
+  "generatedAt": "2026-11-22T18:10:30.774816+00:00",
+  "updatedAt": "2026-11-22T18:10:30.774816+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 18,
   "alertItems": [
     {
       "title": "চবির শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা দুর্বৃত্তদের",
@@ -972,6 +972,39 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6c1b9c21c60cf93a8ab883798c6a0a3a"
+    },
+    {
+      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publishedAt": "2026-11-22T14:49:30+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+          "incidentDateText": "২২ নভেম্বর ২০২৬",
+          "locationText": "বসুরহাট পৌরসভার করালিয়া এলাকায়, নিহত মাইন উদ্দিনের গ্রামে, বাড়ি কবিরহাট উপজেলার, বাটইয়া ইউনিয়নে, কোম্পানীগঞ্জ থানার"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
     },
     {
       "title": "‘আইনজীবী সুরক্ষা আইন’ প্রণয়নের দাবি গণতান্ত্রিক আইনজীবী সমিতির",
