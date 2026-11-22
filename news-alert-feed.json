@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T01:20:36.162574+00:00",
-  "updatedAt": "2026-11-22T01:20:36.162574+00:00",
+  "generatedAt": "2026-11-22T01:35:34.091828+00:00",
+  "updatedAt": "2026-11-22T01:35:34.091828+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 39,
   "alertItems": [
     {
       "title": "সাদিক কায়েমের বাড়িতে পেট্রোলবোমা ও কেরোসিন দিয়ে অগ্নিসংযোগের চেষ্টা",
@@ -1017,17 +1017,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/rajshahi/982438/%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%B8%E0%A6%BF-%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4%E0%A6%BF"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1182128"
         }
       ],
       "category": "Bangladesh",
@@ -1039,16 +1034,10 @@
           "title": "বেড়া থানার ওসি নয়ন প্রত্যাহার, এলাকার পরিস্থিতি থমথমে",
           "summary": "পাবনার বেড়া পৌর এলাকায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কর্মী-সমর্থকদের মধ্যে দফায় দফায় সংঘর্ষের ঘটনায় বেড়া মডেল থানার ওসি নয়ন কুমার সরকারকে প্রত্যাহার করা হয়েছে। তার স্থলে পাবনা সদর সার্কেলের পরিদর্শক (ইন্সপেক্টর) গোলাম মোস্তফাকে নতুন ওসি হিসেবে দায়িত্ব দেওয়া হয়েছে। শনিবার (২১ নভেম্বর) সন্ধ্যায় জেলা পুলিশের পক্ষ থেকে এ আদেশ দেওয়া হয়েছে বলে নিশ্চিত করেছেন পাবনার পুলিশ সুপার আবু আশ্রাফ।... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/rajshahi/982438/%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE-%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%B8%E0%A6%BF-%E0%A6%A8%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0-%E0%A6%8F%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4%E0%A6%BF"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "বেড়ায় বিএনপি-আ’লীগের সংঘর্ষের ঘটনায় ওসি প্রত্যাহার, থমথমে এলাকায়",
-          "summary": "পাবনা বেড়া পৌর এলাকায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কর্মী সমথকদের দফায় দফায় সংঘর্ষের ঘটনায় বেড়া মডেল থানার ভারপ্রাপ্ত কর্মকর্তা...",
-          "url": "https://www.jagonews24.com/country/news/1182128"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "fc2efebb2d0e84c8bc80594ea9fdbe06"
+      "corroborationCount": 1,
+      "alertEventId": "efe0cf88319e05a320fe371930dcde09"
     },
     {
       "title": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি - Risingbd.com",
@@ -1619,37 +1608,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9f55a773b5e1025e1b31c8d439aea3c0"
-    },
-    {
-      "title": "আ. লীগ-বিএনপির সংঘর্ষে ‎পাবনায় রণক্ষেত্র - dhakapost.com",
-      "summary": "আ. লীগ-বিএনপির সংঘর্ষে ‎পাবনায় রণক্ষেত্র dhakapost.com",
-      "link": "https://www.dhakapost.com/country/499739",
-      "publisherUrl": "https://www.dhakapost.com/country/499739",
-      "publishedAt": "2026-11-21T10:48:15+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499739"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "আ. লীগ-বিএনপির সংঘর্ষে ‎পাবনায় রণক্ষেত্র - dhakapost.com",
-          "summary": "আ. লীগ-বিএনপির সংঘর্ষে ‎পাবনায় রণক্ষেত্র dhakapost.com",
-          "url": "https://www.dhakapost.com/country/499739"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "df7eed8ca9fbb2ec0d540424ffd2ec63"
     },
     {
       "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
