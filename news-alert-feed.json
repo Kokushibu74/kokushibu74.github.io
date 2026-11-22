@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T05:20:42.202977+00:00",
-  "updatedAt": "2026-11-22T05:20:42.202977+00:00",
+  "generatedAt": "2026-11-22T05:35:36.406038+00:00",
+  "updatedAt": "2026-11-22T05:35:36.406038+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 20,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 35,
+  "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Barta24",
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 39,
+  "candidateCount": 37,
   "alertItems": [
     {
       "title": "আমার বাড়িতে অগ্নিসংযোগের চেষ্টা চালিয়েছে আ.লীগের সন্ত্রাসীরা: সাদিক কায়েম",
@@ -1058,6 +1058,37 @@
       "alertEventId": "1e31fa75d4b6d91939c48294e8e3ed57"
     },
     {
+      "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
+      "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/feature/news/2026/11/21/1770541",
+      "publisherUrl": "https://www.kalerkantho.com/feature/news/2026/11/21/1770541",
+      "publishedAt": "2026-11-22T03:26:07+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/feature/news/2026/11/21/1770541"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
+          "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/feature/news/2026/11/21/1770541"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
+    },
+    {
       "title": "নড়াইলে হিন্দু বসতিতে আগুন দেয়ার ভিডিও এআই দিয়ে তৈরি | DBC NEWS",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=5tOSwXeR9ZQ",
@@ -1244,37 +1275,6 @@
       "alertEventId": "077317696eaa26b117727ddab43a5ede"
     },
     {
-      "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
-      "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
-      "link": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
-      "publisherUrl": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
-      "publishedAt": "2026-11-21T20:02:02+00:00",
-      "source": "কালের কণ্ঠ",
-      "publisherName": "কালের কণ্ঠ",
-      "sourceEvidence": [
-        "কালের কণ্ঠ"
-      ],
-      "sourceLinks": [
-        {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "কালের কণ্ঠ",
-          "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
-          "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
-    },
-    {
       "title": "নারায়ণগঞ্জে বাসে আগুন দিলো দুর্বৃত্তরা",
       "summary": "নারায়ণগঞ্জে বাসে আগুন দিলো দুর্বৃত্তরা",
       "link": "https://www.jagonews24.com/country/news/1182133",
@@ -1377,17 +1377,12 @@
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
         "Risingbd.com",
-        "Manab Zamin",
         "একাত্তর"
       ],
       "sourceLinks": [
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672245"
-        },
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/62399"
         },
         {
           "name": "একাত্তর",
@@ -1405,12 +1400,6 @@
           "url": "https://www.risingbd.com/bangladesh/news/672245"
         },
         {
-          "name": "Manab Zamin",
-          "title": "পাবনায় বিএনপি আওয়ামী লীগের দফায় দফায় সংঘর্ষ - Manab Zamin",
-          "summary": "পাবনায় বিএনপি আওয়ামী লীগের দফায় দফায় সংঘর্ষ Manab Zamin",
-          "url": "https://www.mzamin.com/article/62399"
-        },
-        {
           "name": "একাত্তর",
           "title": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ - একাত্তর",
           "summary": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ একাত্তর",
@@ -1423,7 +1412,7 @@
           "url": "https://www.risingbd.com/bangladesh/news/672176"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
     },
     {
@@ -1613,37 +1602,6 @@
       "alertEventId": "dbcf4f20e8a69bb829dc6cf4b382896f"
     },
     {
-      "title": "চট্টগ্রামে যুবদলের মিছিলে যুবলীগের হামলা: ২৮ মোটরসাইকেল ভাঙচুর-অগ্নিসংযোগ - Bd24live",
-      "summary": "চট্টগ্রামে যুবদলের মিছিলে যুবলীগের হামলা: ২৮ মোটরসাইকেল ভাঙচুর-অগ্নিসংযোগ Bd24live",
-      "link": "https://www.bd24live.com/bangla/813869",
-      "publisherUrl": "https://www.bd24live.com/bangla/813869",
-      "publishedAt": "2026-11-21T15:11:46+00:00",
-      "source": "Bd24live",
-      "publisherName": "Bd24live",
-      "sourceEvidence": [
-        "Bd24live"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bd24live",
-          "url": "https://www.bd24live.com/bangla/813869"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bd24live",
-          "title": "চট্টগ্রামে যুবদলের মিছিলে যুবলীগের হামলা: ২৮ মোটরসাইকেল ভাঙচুর-অগ্নিসংযোগ - Bd24live",
-          "summary": "চট্টগ্রামে যুবদলের মিছিলে যুবলীগের হামলা: ২৮ মোটরসাইকেল ভাঙচুর-অগ্নিসংযোগ Bd24live",
-          "url": "https://www.bd24live.com/bangla/813869"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cf9d5546a56b3e5180e6ade6679af192"
-    },
-    {
       "title": "বিচার ছাড়া কার্যক্রম নিষিদ্ধ আ. লীগের রাজনীতিতে ফেরার সুযোগ নেই: হাসনাত কাইয়ূম",
       "summary": "২০২৪ সালের জুলাই গণহত্যার বিচার ছাড়া আওয়ামী লীগের রাজনীতিতে ফেরার কোনও সুযোগ নেই বলে মন্তব্য করেছেন বাংলাদেশ রাষ্ট্র সংস্কার আন্দোলনের সভাপতি অ্যডভোকেট হাসনাত কাইয়ূম। তিনি বলেন, রাজনীতিতে ফিরতে হলে আওয়ামী লীগকে আগে আইনের মুখোমুখি হতে হবে। জোর করে সন্ত্রাস ও অগ্নিসংযোগের মাধ্যমে রাজনীতিতে ফেরার চেষ্টা দেশের মানুষ মেনে নেবে না। শনিবার (২১ নভেম্বর) বিকালে রাজধানীর শাহবাগে জাতীয় জাদুঘরের সামনে... বিস্তারিত",
       "link": "https://www.banglatribune.com/politics/other-politics/982405/%E0%A6%AC%E0%A6%BF%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%9B%E0%A6%BE%E0%A7%9C%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%86.-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87",
@@ -1766,6 +1724,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4fc86c5cd6c42b1dfd93ee430a70564e"
+    },
+    {
+      "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+      "link": "https://www.bssnews.net/bangla/national/362311",
+      "publisherUrl": "https://www.bssnews.net/bangla/national/362311",
+      "publishedAt": "2026-11-21T11:54:00+00:00",
+      "source": "BSS",
+      "publisherName": "BSS",
+      "sourceEvidence": [
+        "BSS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BSS",
+          "url": "https://www.bssnews.net/bangla/national/362311"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BSS",
+          "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+          "url": "https://www.bssnews.net/bangla/national/362311"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "37979f74b5f01fd316d8f800a4266a2e"
     },
     {
       "title": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট - Dhaka Tribune Bangla",
@@ -1921,37 +1910,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "43cb5a0a0e75bf2fdafdc54785f88198"
-    },
-    {
-      "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
-      "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publishedAt": "2026-11-21T05:31:04+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর - Dhaka Tribune Bangla",
-          "summary": "কাঁঠালবাগানে গ্যাস বিস্ফোরণ: মায়ের পর এবার প্রাণ গেলো দেড় বছরের শিশুর Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113537/%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AE%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%B0-%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4fa2ebbf529b0c4b61bb6cc28105b849"
     }
   ]
 }
