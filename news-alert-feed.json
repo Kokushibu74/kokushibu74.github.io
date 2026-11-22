@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T06:55:35.218159+00:00",
-  "updatedAt": "2026-11-22T06:55:35.218159+00:00",
+  "generatedAt": "2026-11-22T07:05:34.277518+00:00",
+  "updatedAt": "2026-11-22T07:05:34.277518+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 23,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,54 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 36,
   "alertItems": [
+    {
+      "title": "সাদিক কায়েমের খাগড়াছড়ির বাড়িতে অগ্নিসংযোগের চেষ্টা দুর্বৃত্তদের | Sadik Kayem | News | JamunaTV",
+      "summary": "সাদিক কায়েম তাঁর পোস্টে লিখেছেন, সন্ত্রাসীরা বাড়ির চারপাশে পেট্রোলবোমা নিক্ষেপ এবং ঘরের দরজার সামনে কেরোসিন ঢেলে আগুন লাগিয়ে পুরো বাড়িতে অগ্নিসংযোগের পরিকল্পনা করেছিল।",
+      "link": "https://www.youtube.com/watch?v=WoNqGXVoGck",
+      "publisherUrl": "https://www.youtube.com/watch?v=WoNqGXVoGck",
+      "publishedAt": "2026-11-22T07:00:06+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=WoNqGXVoGck"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/politics/t0x37iymp8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "সাদিক কায়েমের খাগড়াছড়ির বাড়িতে অগ্নিসংযোগের চেষ্টা দুর্বৃত্তদের | Sadik Kayem | News | JamunaTV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=WoNqGXVoGck"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "খাগড়াছড়িতে আমার বাড়িতে অগ্নিসংযোগের চেষ্টা চালিয়েছে আ.লীগের সন্ত্রাসীরা: সাদিক কায়েম",
+          "summary": "সাদিক কায়েম তাঁর পোস্টে লিখেছেন, সন্ত্রাসীরা বাড়ির চারপাশে পেট্রোলবোমা নিক্ষেপ এবং ঘরের দরজার সামনে কেরোসিন ঢেলে আগুন লাগিয়ে পুরো বাড়িতে অগ্নিসংযোগের পরিকল্পনা করেছিল।",
+          "url": "https://www.prothomalo.com/politics/t0x37iymp8",
+          "incidentDateText": "২২ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ রাত ৩টা ৩০ মিনিটে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "ছড়িয়ে পড়ার আগেই এলাকা"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "1b4af334b17383e66db17f77a2e530d6"
+    },
     {
       "title": "সাইনবোর্ডে বাসে আ'গুন দিল আওয়ামী লীগের স'ন্ত্রাসীরা #Narayanganj #Signboard #BusFire #Rtv",
       "summary": "",
@@ -903,6 +949,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3c53fc5829706751ba28dbaf83ab56cc"
+    },
+    {
+      "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
+      "summary": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publishedAt": "2026-11-22T06:09:05+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
+          "summary": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "11bd9f4d6927b1768dd4424940a7f8df"
     },
     {
       "title": "সাদিক কায়েমের বাড়িতে আগুন, ঘটনাস্থল পরিদর্শনে সেনাবাহিনী",
@@ -1064,93 +1141,6 @@
       "alertEventId": "b42e9f436bee58dc13d15771c43b49b5"
     },
     {
-      "title": "খাগড়াছড়িতে ডাকসু ভিপি সাদিক কায়েমের বাড়িতে অগ্নিসংযোগের চেষ্টা | DBC NEWS",
-      "summary": "সাদিক কায়েম তাঁর পোস্টে লিখেছেন, সন্ত্রাসীরা বাড়ির চারপাশে পেট্রোলবোমা নিক্ষেপ এবং ঘরের দরজার সামনে কেরোসিন ঢেলে আগুন লাগিয়ে পুরো বাড়িতে অগ্নিসংযোগের পরিকল্পনা করেছিল।",
-      "link": "https://www.youtube.com/watch?v=jMjb9rsr7u0",
-      "publisherUrl": "https://www.youtube.com/watch?v=jMjb9rsr7u0",
-      "publishedAt": "2026-11-22T04:03:26+00:00",
-      "source": "DBC News",
-      "publisherName": "DBC News",
-      "sourceEvidence": [
-        "DBC News",
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "DBC News · YouTube",
-          "url": "https://www.youtube.com/watch?v=jMjb9rsr7u0"
-        },
-        {
-          "name": "DBC News ·",
-          "url": "https://www.youtube.com/watch?v=w_-05NqlIrw"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/politics/t0x37iymp8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "DBC News",
-          "title": "খাগড়াছড়িতে ডাকসু ভিপি সাদিক কায়েমের বাড়িতে অগ্নিসংযোগের চেষ্টা | DBC NEWS",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=jMjb9rsr7u0"
-        },
-        {
-          "name": "DBC News",
-          "title": "খাগড়াছড়িতে ডাকসু ভিপি সাদিক কায়েমের বাড়িতে অগ্নিসংযোগের চেষ্টা | DBC NEWS",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=w_-05NqlIrw"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "খাগড়াছড়িতে আমার বাড়িতে অগ্নিসংযোগের চেষ্টা চালিয়েছে আ.লীগের সন্ত্রাসীরা: সাদিক কায়েম",
-          "summary": "সাদিক কায়েম তাঁর পোস্টে লিখেছেন, সন্ত্রাসীরা বাড়ির চারপাশে পেট্রোলবোমা নিক্ষেপ এবং ঘরের দরজার সামনে কেরোসিন ঢেলে আগুন লাগিয়ে পুরো বাড়িতে অগ্নিসংযোগের পরিকল্পনা করেছিল।",
-          "url": "https://www.prothomalo.com/politics/t0x37iymp8",
-          "incidentDateText": "২২ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ রাত ৩টা ৩০ মিনিটে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "ছড়িয়ে পড়ার আগেই এলাকা"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "1b4af334b17383e66db17f77a2e530d6"
-    },
-    {
-      "title": "নড়াইলে হিন্দু বসতিতে আগুন দেয়ার ভিডিও এআই দিয়ে তৈরি | DBC NEWS",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=5tOSwXeR9ZQ",
-      "publisherUrl": "https://www.youtube.com/watch?v=5tOSwXeR9ZQ",
-      "publishedAt": "2026-11-22T03:26:04+00:00",
-      "source": "DBC News",
-      "publisherName": "DBC News",
-      "sourceEvidence": [
-        "DBC News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "DBC News · YouTube",
-          "url": "https://www.youtube.com/watch?v=5tOSwXeR9ZQ"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "DBC News",
-          "title": "নড়াইলে হিন্দু বসতিতে আগুন দেয়ার ভিডিও এআই দিয়ে তৈরি | DBC NEWS",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=5tOSwXeR9ZQ"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a00cc18078b8b0f241e509bc4e5b0dd3"
-    },
-    {
       "title": "সাদিক কায়েমের বাড়িতে পেট্রোল বোমা নিক্ষেপ ও অগ্নিসংযোগের ঘটনায় জামায়াত সেক্রেটারির নিন্দা",
       "summary": "ডাকসুর ভিপি এবং বাংলাদেশ জামায়াতে ইসলামী মনোনীত ঢাকা দক্ষিণ সিটি করপোরেশনের মেয়র প্রার্থী সাদিক কায়েমের খাগড়াছড়ির গ্রামের বাড়িতে পেট্রোল বোমা নিক্ষেপ ও কেরোসিন ঢেলে অগ্নিসংযোগের ঘটনা ঘটেছে। এ ঘটনায় তীব্র নিন্দা জানিয়েছেন জামায়াতে সেক্রেটারি জেনারেল মিয়া গোলাম পরওয়ার। রবিবার (২২ নভেম্বর) এক বিবৃতিতে তিনি এই নিন্দা জানান। জামায়াত সেক্রেটারি বলেন, নিষিদ্ধ ঘোষিত আওয়ামী ফ্যাসিস্টের... বিস্তারিত",
       "link": "https://www.banglatribune.com/politics/jamat-e-islam/982454/%E0%A6%B8%E0%A6%BE%E0%A6%A6%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%AE%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA-%E0%A6%93",
@@ -1275,6 +1265,37 @@
       "alertEventId": "077317696eaa26b117727ddab43a5ede"
     },
     {
+      "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
+      "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
+      "publisherUrl": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541",
+      "publishedAt": "2026-11-21T20:02:02+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ - কালের কণ্ঠ",
+          "summary": "রিয়াদে হুতিদের হামলার নিন্দা জানাল বাংলাদেশ কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/print-edition/news/2026/11/21/1770541"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "75fb9d3329a0e4a5ef9ce08ba4bcf8c6"
+    },
+    {
       "title": "নারায়ণগঞ্জে বাসে আগুন দিলো দুর্বৃত্তরা",
       "summary": "নারায়ণগঞ্জে বাসে আগুন দিলো দুর্বৃত্তরা",
       "link": "https://www.jagonews24.com/country/news/1182133",
@@ -1366,6 +1387,65 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "efe0cf88319e05a320fe371930dcde09"
+    },
+    {
+      "title": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি - Risingbd.com",
+      "summary": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672245",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672245",
+      "publishedAt": "2026-11-21T18:41:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com",
+        "Manab Zamin",
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672245"
+        },
+        {
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/62399"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি - Risingbd.com",
+          "summary": "পাবনায় বিএনপি-আ. লীগ সংঘর্ষের জেরে ওসি প্রত্যাহার, থমথমে পরিস্থিতি Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672245"
+        },
+        {
+          "name": "Manab Zamin",
+          "title": "পাবনায় বিএনপি আওয়ামী লীগের দফায় দফায় সংঘর্ষ - Manab Zamin",
+          "summary": "পাবনায় বিএনপি আওয়ামী লীগের দফায় দফায় সংঘর্ষ Manab Zamin",
+          "url": "https://www.mzamin.com/article/62399"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ - একাত্তর",
+          "summary": "পাবনার বেড়ায় আ.লীগ-বিএনপি তুমুল সংঘর্ষ একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98112/%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%A8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A4%E0%A7%81%E0%A6%AE%E0%A7%81%E0%A6%B2-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ - Risingbd.com",
+          "summary": "পাবনায় বিএনপি-কার্যক্রম নিষিদ্ধ আ.লীগের সংঘর্ষ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672176"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "4a2c6eb4122a959d98bad5a47fccb1a9"
     },
     {
       "title": "এআই দিয়ে রায় লেখা যাবে না, বিচারকদের প্রধান বিচারপতি",
@@ -1593,12 +1673,17 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "UNB"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/khulna/982404/%E0%A6%A8%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%B2%E0%A7%87-%E0%A6%95%E0%A7%80-%E0%A6%98%E0%A6%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A6%B2-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81"
+        },
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%A4-%E0%A7%A7%E0%A7%AB-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116617"
         }
       ],
       "category": "Bangladesh",
@@ -1610,10 +1695,171 @@
           "title": "নড়াইলে আসলে কী ঘটেছিল, যা বলছেন হিন্দু সম্প্রদায়ের লোকজন",
           "summary": "নড়াইল-১ আসনের কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক সংসদ সদস্য কবিরুল হক মুক্তির বাড়ি, কালিয়া উপজেলা চেয়ারম্যান ও উপজেলা আওয়ামী লীগের সাধারণ সম্পাদক কৃষ্ণপদ ঘোষের বাড়িসহ অন্তত ৩০টি বাড়িতে ভাঙচুরের পাশাপাশি অগ্নিসংযোগের ঘটনা ঘটেছে। শুক্রবার (২০ নভেম্বর) বিকাল থেকে রাত ৮টা পর্যন্ত কালিয়ার বেন্দারচর এলাকায় এসব ঘটনা ঘটে। তবে হিন্দুদের বাড়িঘরে হামলা ও আগুনের কোনও ঘটনা ঘটেনি বলে জানিয়েছেন হিন্দু... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/khulna/982404/%E0%A6%A8%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%B2%E0%A7%87-%E0%A6%95%E0%A7%80-%E0%A6%98%E0%A6%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A6%B2-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81"
+        },
+        {
+          "name": "UNB",
+          "title": "নড়াইলে সাবেক এমপির বাড়িসহ অন্তত ১৫ বাড়িতে ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
+          "summary": "নড়াইলে সাবেক এমপির বাড়িসহ অন্তত ১৫ বাড়িতে ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%A4-%E0%A7%A7%E0%A7%AB-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116617"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "bf32ee85086554e33fda13c80bd09e9d"
+    },
+    {
+      "title": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি - Risingbd.com",
+      "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672218",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672218",
+      "publishedAt": "2026-11-21T14:20:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672218"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি - Risingbd.com",
+          "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672218"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "62088888b0395d56e082a5faa7ae2cfb"
+      "alertEventId": "de4fecb7f64d36506bd424ce13d357ce"
+    },
+    {
+      "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+      "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+      "link": "https://www.bssnews.net/bangla/national/362311",
+      "publisherUrl": "https://www.bssnews.net/bangla/national/362311",
+      "publishedAt": "2026-11-21T11:54:00+00:00",
+      "source": "BSS",
+      "publisherName": "BSS",
+      "sourceEvidence": [
+        "BSS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BSS",
+          "url": "https://www.bssnews.net/bangla/national/362311"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BSS",
+          "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+          "summary": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+          "url": "https://www.bssnews.net/bangla/national/362311"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "37979f74b5f01fd316d8f800a4266a2e"
+    },
+    {
+      "title": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট - Dhaka Tribune Bangla",
+      "summary": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113550/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%98%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%96%E0%A6%AC%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%9F",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113550/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%98%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%96%E0%A6%AC%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%9F",
+      "publishedAt": "2026-11-21T09:28:10+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113550/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%98%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%96%E0%A6%AC%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%9F"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট - Dhaka Tribune Bangla",
+          "summary": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113550/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%98%E0%A6%B0%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%96%E0%A6%AC%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A7%9F%E0%A6%BE%E0%A6%9F"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "db4c00161f28930df11825dd0ef8456f"
+    },
+    {
+      "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
+      "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668394",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668394",
+      "publishedAt": "2026-11-21T08:26:26+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668394"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668394"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "291ff61a798032aaa17bdecf72e152b1"
+    },
+    {
+      "title": "গোপালগঞ্জে বাস-মোটরসাইকেল সংঘর্ষ, নিহত ২ - dhakapost.com",
+      "summary": "গোপালগঞ্জে বাস-মোটরসাইকেল সংঘর্ষ, নিহত ২ dhakapost.com",
+      "link": "https://www.dhakapost.com/country/499693",
+      "publisherUrl": "https://www.dhakapost.com/country/499693",
+      "publishedAt": "2026-11-21T07:26:25+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/499693"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "গোপালগঞ্জে বাস-মোটরসাইকেল সংঘর্ষ, নিহত ২ - dhakapost.com",
+          "summary": "গোপালগঞ্জে বাস-মোটরসাইকেল সংঘর্ষ, নিহত ২ dhakapost.com",
+          "url": "https://www.dhakapost.com/country/499693"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4d57a1419d4c565be5f2c5f3685ddda9"
     }
   ]
 }
