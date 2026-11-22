@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T14:20:31.788424+00:00",
-  "updatedAt": "2026-11-22T14:20:31.788424+00:00",
+  "generatedAt": "2026-11-22T14:35:32.146768+00:00",
+  "updatedAt": "2026-11-22T14:35:32.146768+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 15,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "GDACS",
@@ -874,6 +874,37 @@
       "alertEventId": "d8784a24515beea71b554adfdae08af4"
     },
     {
+      "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
+      "summary": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? Daily Observer",
+      "link": "https://bn.observerbd.com/news/151184",
+      "publisherUrl": "https://bn.observerbd.com/news/151184",
+      "publishedAt": "2026-11-22T14:14:00+00:00",
+      "source": "Daily Observer",
+      "publisherName": "Daily Observer",
+      "sourceEvidence": [
+        "Daily Observer"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Observer",
+          "url": "https://bn.observerbd.com/news/151184"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Observer",
+          "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
+          "summary": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? Daily Observer",
+          "url": "https://bn.observerbd.com/news/151184"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a9b70ed88be19df4af54e8b10fd02af6"
+    },
+    {
       "title": "গাজীপুরে ছুটি না দেয়ায় কারখানায় হামলা-ভাঙচুরের অভিযোগ | Gazipur | Garments | Jamuna TV",
       "summary": "গাজীপুরের শ্রীপুর পৌর শহরের চৌরাস্তায় পোশাকশ্রমিকদের সঙ্গে স্থানীয় বিএনপি কর্মীদের সংঘর্ষ ও ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটেছে। এ সময় বিএনপি কর্মীদের বিরুদ্ধে শ্রমিকদের লাঠিপেটার অভিযোগ উঠেছে। এতে কয়েকজন শ্রমিক আহত হয়েছেন। অন্যদিকে, শ্রমিকেরা দক্ষিণ ভাংনাহাটি এলাকার রাতুল অ্যাপারেলস নামের একটি পোশাক কারখানায় হামলা ও ভাঙচুর চালিয়েছেন। রবিবার (২২ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর পৌরসভার চৌরাস্তায় এ... বিস্তারিত",
       "link": "https://www.youtube.com/watch?v=WZUoLtwDnxA",
@@ -976,39 +1007,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fbd6f43e9d75c0f51b09572b0e72374e"
-    },
-    {
-      "title": "হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে বসতঘরে ঘুমন্ত শিশুর মৃত্যু, দগ্ধ বোন হাসপাতালে",
-      "summary": "চাঁদপুরের হাজীগঞ্জে বসতঘরে ভয়াবহ অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় মো. আনাছ হোসেন (২) নামে এক শিশুর মর্মান্তিক মৃত্যু হয়েছে। এ ঘটনায় তার বোন মরিয়ম আক্তার গুরুতর দগ্ধ হয়েছেন। আশঙ্কাজনক অবস্থায় তাকে কুমিল্লা মেডিকেল কলেজ হাসপাতালে পাঠানো হয়েছে। রোববার (২২ নভেম্বর) বিকেলে উপজেলার ৬নং বড়কুল পূর্ব ইউনিয়নের আতিক মেম্বার বাড়িতে এ হৃদয়বিদারক ঘটনা ঘটে। ​নিহত আনাছ ও দগ্ধ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/",
-      "publishedAt": "2026-11-22T13:26:37+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে বসতঘরে ঘুমন্ত শিশুর মৃত্যু, দগ্ধ বোন হাসপাতালে",
-          "summary": "চাঁদপুরের হাজীগঞ্জে বসতঘরে ভয়াবহ অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় মো. আনাছ হোসেন (২) নামে এক শিশুর মর্মান্তিক মৃত্যু হয়েছে। এ ঘটনায় তার বোন মরিয়ম আক্তার গুরুতর দগ্ধ হয়েছেন। আশঙ্কাজনক অবস্থায় তাকে কুমিল্লা মেডিকেল কলেজ হাসপাতালে পাঠানো হয়েছে। রোববার (২২ নভেম্বর) বিকেলে উপজেলার ৬নং বড়কুল পূর্ব ইউনিয়নের আতিক মেম্বার বাড়িতে এ হৃদয়বিদারক ঘটনা ঘটে। ​নিহত আনাছ ও দগ্ধ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/",
-          "incidentDateText": "২২ নভেম্বর",
-          "locationText": "৬নং বড়কুল পূর্ব ইউনিয়নে, খবর পেয়ে হাজীগঞ্জ উপজেলা"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "54192c6f424f25eeb1a94d90d50ca1c7"
     },
     {
       "title": "দেশের বিভিন্ন স্থানে একের পর এক মৃ/ত্যু, কোথাও হ/ত্যা কোথাও দুর্ঘটনা #CrimeNews #Rangpur #Jessore",
@@ -1419,37 +1417,6 @@
       "alertEventId": "f48599db225ef80dee10647d46570740"
     },
     {
-      "title": "ট্রাক-ভটভটি-মোটরসাইকেলের ত্রিমুখী সংঘর্ষে নিহত ২",
-      "summary": "লালমনিরহাটে পণ্যবোঝাই ট্রাকের সঙ্গে গরুবোঝাই ভটভটি ও মোটরসাইকেলের সংঘর্ষে দুই ব্যক্তি নিহত হয়েছেন। এ ঘটনায় একটি গরুও মারা গেছে। রবিববার (২২ নভেম্বর) সকালে রংপুর-কুড়িগ্রাম মহাসড়কের লালমনিরহাট সদর উপজেলার পঞ্চগ্রাম ইউনিয়নের বসুনিয়াটারী এলাকায় এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন সদর উপজেলার পঞ্চগ্রাম ইউনিয়নের খোড়াগাছ গ্রামের ফজলুল হক এবং কুলাঘাট এলাকার এমদাদুল হক (৪৫)। লালমনিরহাট সদর থানার ওসি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/mymensing/982482/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AD%E0%A6%9F%E0%A6%AD%E0%A6%9F%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/mymensing/982482/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AD%E0%A6%9F%E0%A6%AD%E0%A6%9F%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8",
-      "publishedAt": "2026-11-22T06:33:54+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/982482/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AD%E0%A6%9F%E0%A6%AD%E0%A6%9F%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ট্রাক-ভটভটি-মোটরসাইকেলের ত্রিমুখী সংঘর্ষে নিহত ২",
-          "summary": "লালমনিরহাটে পণ্যবোঝাই ট্রাকের সঙ্গে গরুবোঝাই ভটভটি ও মোটরসাইকেলের সংঘর্ষে দুই ব্যক্তি নিহত হয়েছেন। এ ঘটনায় একটি গরুও মারা গেছে। রবিববার (২২ নভেম্বর) সকালে রংপুর-কুড়িগ্রাম মহাসড়কের লালমনিরহাট সদর উপজেলার পঞ্চগ্রাম ইউনিয়নের বসুনিয়াটারী এলাকায় এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন সদর উপজেলার পঞ্চগ্রাম ইউনিয়নের খোড়াগাছ গ্রামের ফজলুল হক এবং কুলাঘাট এলাকার এমদাদুল হক (৪৫)। লালমনিরহাট সদর থানার ওসি... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/982482/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95-%E0%A6%AD%E0%A6%9F%E0%A6%AD%E0%A6%9F%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3c53fc5829706751ba28dbaf83ab56cc"
-    },
-    {
       "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
       "summary": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
@@ -1541,6 +1508,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "eb217a6e37b8d54bd6b14f4d37dbb9d8"
+    },
+    {
+      "title": "গোপালগঞ্জে থানা ও পুলিশের ওপর হামলার নিন্দা, সাহসিকতার প্রশংসা পুলিশ অ্যাসোসিয়েশনের - দৈনিক ইনকিলাব",
+      "summary": "গোপালগঞ্জে থানা ও পুলিশের ওপর হামলার নিন্দা, সাহসিকতার প্রশংসা পুলিশ অ্যাসোসিয়েশনের দৈনিক ইনকিলাব",
+      "link": "https://dailyinqilab.com/bangladesh/news/965616",
+      "publisherUrl": "https://dailyinqilab.com/bangladesh/news/965616",
+      "publishedAt": "2026-11-21T16:20:16+00:00",
+      "source": "দৈনিক ইনকিলাব",
+      "publisherName": "দৈনিক ইনকিলাব",
+      "sourceEvidence": [
+        "দৈনিক ইনকিলাব"
+      ],
+      "sourceLinks": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/965616"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "দৈনিক ইনকিলাব",
+          "title": "গোপালগঞ্জে থানা ও পুলিশের ওপর হামলার নিন্দা, সাহসিকতার প্রশংসা পুলিশ অ্যাসোসিয়েশনের - দৈনিক ইনকিলাব",
+          "summary": "গোপালগঞ্জে থানা ও পুলিশের ওপর হামলার নিন্দা, সাহসিকতার প্রশংসা পুলিশ অ্যাসোসিয়েশনের দৈনিক ইনকিলাব",
+          "url": "https://dailyinqilab.com/bangladesh/news/965616"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b9acf7303eafee27e83eb31cfb734ec9"
     },
     {
       "title": "ঈদগাঁওয়ে সড়ক দুর্ঘটনায় কক্সবাজার সিটি কলেজের শিক্ষার্থী নিহত",
