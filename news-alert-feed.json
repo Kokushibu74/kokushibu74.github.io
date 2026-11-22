@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T12:30:36.058077+00:00",
-  "updatedAt": "2026-11-22T12:30:36.058077+00:00",
+  "generatedAt": "2026-11-22T12:45:42.880984+00:00",
+  "updatedAt": "2026-11-22T12:45:42.880984+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 7,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 26,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -842,6 +842,37 @@
   ],
   "candidateCount": 21,
   "alertItems": [
+    {
+      "title": "চাঁদপুরে ৫৬৮ হেক্টর ফসলি জমি আক্রান্ত, ক্ষয়ক্ষতির তথ্য সংগ্রহে কৃষি বিভাগ | Cyclone| Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=uB9vZvjVQaM",
+      "publisherUrl": "https://www.youtube.com/watch?v=uB9vZvjVQaM",
+      "publishedAt": "2026-11-22T12:36:45+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=uB9vZvjVQaM"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "চাঁদপুরে ৫৬৮ হেক্টর ফসলি জমি আক্রান্ত, ক্ষয়ক্ষতির তথ্য সংগ্রহে কৃষি বিভাগ | Cyclone| Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=uB9vZvjVQaM"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "71dd2afdf921d3f3d9f4e76ee8517e08"
+    },
     {
       "title": "আজও মুখোমুখি বিএনপি-আওয়ামী লীগের নেতাকর্মীরা, পরিস্থিতি থমথমে",
       "summary": "পাবনার বেড়া পৌর এলাকায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীদের সংঘর্ষ থামলেও থমথমে পরিস্থিতি বিরাজ করছে। এখনও আতঙ্ক কাটেনি স্থানীয় বাসিন্দা ও সাধারণ মানুষের। রবিবার (২২ নভেম্বর) সকাল থেকে দুপুর পর্যন্ত বেড়া পৌরসভার কিছু এলাকায় বিএনপি ও আওয়ামী লীগের নেতাকর্মীরা মুখোমুখি অবস্থানে রয়েছেন। পরিস্থিতি স্বাভাবিক রাখতে ওই এলাকায় টহল দিচ্ছে আইনশৃঙ্খলা রক্ষাকারী বাহিনী। পুলিশ ও স্থানীয়... বিস্তারিত",
@@ -1394,37 +1425,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "061122895fcb49a1a0487610ba1cff18"
-    },
-    {
-      "title": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি - Risingbd.com",
-      "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672218",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672218",
-      "publishedAt": "2026-11-21T14:20:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672218"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি - Risingbd.com",
-          "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672218"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "de4fecb7f64d36506bd424ce13d357ce"
     },
     {
       "title": "পাবনায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দফায় দফায় সংঘর্ষ - bd-pratidin.com",
