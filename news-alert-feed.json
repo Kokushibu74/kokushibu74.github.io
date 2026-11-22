@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T03:30:41.257548+00:00",
-  "updatedAt": "2026-11-22T03:30:41.257548+00:00",
+  "generatedAt": "2026-11-22T03:45:35.296986+00:00",
+  "updatedAt": "2026-11-22T03:45:35.296986+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 36,
+  "candidateCount": 38,
   "alertItems": [
+    {
+      "title": "বেপরোয়া গতিতে, চুয়াডাঙ্গা-নাটোরে সড়ক দুর্ঘটনায় উদ্বেগ | Accident Cause | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=DJHYaNVPWA0",
+      "publisherUrl": "https://www.youtube.com/watch?v=DJHYaNVPWA0",
+      "publishedAt": "2026-11-22T03:30:58+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=DJHYaNVPWA0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "বেপরোয়া গতিতে, চুয়াডাঙ্গা-নাটোরে সড়ক দুর্ঘটনায় উদ্বেগ | Accident Cause | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=DJHYaNVPWA0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1e31fa75d4b6d91939c48294e8e3ed57"
+    },
     {
       "title": "নড়াইলে হিন্দু বসতিতে আগুন দেয়ার ভিডিও এআই দিয়ে তৈরি | DBC NEWS",
       "summary": "",
@@ -1783,6 +1814,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "61e86b2e9dcef3fbe0d3328d046a3a1b"
+    },
+    {
+      "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
+      "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668394",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668394",
+      "publishedAt": "2026-11-21T08:26:26+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668394"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ - Jamuna Television",
+          "summary": "নারায়ণগঞ্জের ফতুল্লায় একটি বাসায় বিস্ফোরণ; স্বামী-স্ত্রীসহ দগ্ধ ৩ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668394"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "291ff61a798032aaa17bdecf72e152b1"
     },
     {
       "title": "গোপালগঞ্জে বাস-মোটরসাইকেল সংঘর্ষ, নিহত ২ - dhakapost.com",
