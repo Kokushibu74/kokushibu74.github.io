@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T02:20:30.531031+00:00",
-  "updatedAt": "2026-11-22T02:20:30.531031+00:00",
+  "generatedAt": "2026-11-22T02:30:43.419388+00:00",
+  "updatedAt": "2026-11-22T02:30:43.419388+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 23,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 37,
+  "candidateCount": 35,
   "alertItems": [
+    {
+      "title": "নারায়ণগঞ্জে ঢাকা-চট্টগ্রাম মহাসড়কে চলন্ত বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের | Channel 24",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=uxyaQktWiAc",
+      "publisherUrl": "https://www.youtube.com/watch?v=uxyaQktWiAc",
+      "publishedAt": "2026-11-22T02:27:57+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/watch?v=uxyaQktWiAc"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "নারায়ণগঞ্জে ঢাকা-চট্টগ্রাম মহাসড়কে চলন্ত বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=uxyaQktWiAc"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2a04d2bade5aa0f0547e34c9a06da774"
+    },
+    {
+      "title": "খুলনায় দুর্বৃত্তের গুলিতে আহত বিএনপি নেতা, কী বলছে পুলিশ? | Khulna BNP leader | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=7xy_6RwjMcE",
+      "publisherUrl": "https://www.youtube.com/watch?v=7xy_6RwjMcE",
+      "publishedAt": "2026-11-22T02:08:07+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=7xy_6RwjMcE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "খুলনায় দুর্বৃত্তের গুলিতে আহত বিএনপি নেতা, কী বলছে পুলিশ? | Khulna BNP leader | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=7xy_6RwjMcE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7aa44a4917bbec203c29d2aa40130a3e"
+    },
     {
       "title": "বোনের ভালোবাসা আর টংদোকানই সোহেলের সম্বল",
       "summary": "দুর্ঘটনায় কর্মক্ষমতা হারিয়ে ফেলেন চাঁদপুরের হাইমচর উপজেলার উত্তর বগুলা গ্রামের মৃত সৈয়দ আহমেদ মাঝির ছেলে সোহেল মাঝি (৪২)।",
@@ -1171,24 +1233,19 @@
     },
     {
       "title": "মাদারীপুরে এনসিপি নেতার ওপর হামলা ও গুলি ছোড়ার অভিযোগ | NCP | BNP | Channel 24",
-      "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
+      "summary": "",
       "link": "https://www.youtube.com/watch?v=00nZfs5i4eo",
       "publisherUrl": "https://www.youtube.com/watch?v=00nZfs5i4eo",
       "publishedAt": "2026-11-21T17:50:43+00:00",
       "source": "Channel 24",
       "publisherName": "Channel 24",
       "sourceEvidence": [
-        "Channel 24",
-        "Risingbd.com"
+        "Channel 24"
       ],
       "sourceLinks": [
         {
           "name": "Channel 24 · YouTube",
           "url": "https://www.youtube.com/watch?v=00nZfs5i4eo"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672218"
         }
       ],
       "category": "Bangladesh",
@@ -1200,16 +1257,10 @@
           "title": "মাদারীপুরে এনসিপি নেতার ওপর হামলা ও গুলি ছোড়ার অভিযোগ | NCP | BNP | Channel 24",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=00nZfs5i4eo"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি - Risingbd.com",
-          "summary": "এনসিপির মাদারীপুর জেলা সদস্যসচিবের ওপর হামলার বিচার দাবি Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672218"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "de4fecb7f64d36506bd424ce13d357ce"
+      "corroborationCount": 1,
+      "alertEventId": "53b33fcc765ff434dd06ab1ee692dc27"
     },
     {
       "title": "আরেক জেলায় বিএনপির মিছিলে হামলা আ.লীগের, ১৫টি গাড়ি ভাঙচুর: তিনটিতে আগুন",
@@ -1417,17 +1468,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "UNB"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/khulna/982404/%E0%A6%A8%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%B2%E0%A7%87-%E0%A6%95%E0%A7%80-%E0%A6%98%E0%A6%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A6%B2-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81"
-        },
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%A4-%E0%A7%A7%E0%A7%AB-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116617"
         }
       ],
       "category": "Bangladesh",
@@ -1439,16 +1485,10 @@
           "title": "নড়াইলে আসলে কী ঘটেছিল, যা বলছেন হিন্দু সম্প্রদায়ের লোকজন",
           "summary": "নড়াইল-১ আসনের কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সাবেক সংসদ সদস্য কবিরুল হক মুক্তির বাড়ি, কালিয়া উপজেলা চেয়ারম্যান ও উপজেলা আওয়ামী লীগের সাধারণ সম্পাদক কৃষ্ণপদ ঘোষের বাড়িসহ অন্তত ৩০টি বাড়িতে ভাঙচুরের পাশাপাশি অগ্নিসংযোগের ঘটনা ঘটেছে। শুক্রবার (২০ নভেম্বর) বিকাল থেকে রাত ৮টা পর্যন্ত কালিয়ার বেন্দারচর এলাকায় এসব ঘটনা ঘটে। তবে হিন্দুদের বাড়িঘরে হামলা ও আগুনের কোনও ঘটনা ঘটেনি বলে জানিয়েছেন হিন্দু... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/khulna/982404/%E0%A6%A8%E0%A6%A1%E0%A6%BC%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%B2%E0%A7%87-%E0%A6%95%E0%A7%80-%E0%A6%98%E0%A6%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A6%B2-%E0%A6%AF%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81"
-        },
-        {
-          "name": "UNB",
-          "title": "নড়াইলে সাবেক এমপির বাড়িসহ অন্তত ১৫ বাড়িতে ভাঙচুর-অগ্নিসংযোগ - United News of Bangladesh",
-          "summary": "নড়াইলে সাবেক এমপির বাড়িসহ অন্তত ১৫ বাড়িতে ভাঙচুর-অগ্নিসংযোগ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%95-%E0%A6%8F%E0%A6%AE%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%B8%E0%A6%B9-%E0%A6%85%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A6%A4-%E0%A7%A7%E0%A7%AB-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97/116617"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "bf32ee85086554e33fda13c80bd09e9d"
+      "corroborationCount": 1,
+      "alertEventId": "62088888b0395d56e082a5faa7ae2cfb"
     },
     {
       "title": "রামুতে চারজনের মৃত্যু: গেট নেই, গেটম্যান নেই; রেল বলছে দায় চালকের",
@@ -1511,37 +1551,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4fc86c5cd6c42b1dfd93ee430a70564e"
-    },
-    {
-      "title": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
-      "summary": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618",
-      "publishedAt": "2026-11-21T12:09:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
-          "summary": "নেত্রকোণায় গ্রামীণ ব্যাংক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116618"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "05cb930c83ee3143c0e2a0de29cf5a46"
     },
     {
       "title": "পররাষ্ট্র প্রতিমন্ত্রীর বাসভবনে পেট্রোল বোমা নিক্ষেপের ঘটনায় রিজভীর নিন্দা | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
@@ -1635,37 +1644,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9f55a773b5e1025e1b31c8d439aea3c0"
-    },
-    {
-      "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
-      "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611",
-      "publishedAt": "2026-11-21T09:55:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ - United News of Bangladesh",
-          "summary": "নারায়ণগঞ্জে ‘গ্যাস বিস্ফোরণে’ স্বামী-স্ত্রীসহ দগ্ধ ৪ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E2%80%98%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%AA/116611"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "173f1838e5a8e5f7674d0637d08e793b"
     },
     {
       "title": "পুলিশ: নড়াইলে হিন্দুদের বাড়িঘরে হামলার খবর বানোয়াট - Dhaka Tribune Bangla",
