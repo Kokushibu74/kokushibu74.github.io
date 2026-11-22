@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T12:45:42.880984+00:00",
-  "updatedAt": "2026-11-22T12:45:42.880984+00:00",
+  "generatedAt": "2026-11-22T12:55:38.327679+00:00",
+  "updatedAt": "2026-11-22T12:55:38.327679+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 23,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,50 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 21,
+  "candidateCount": 22,
   "alertItems": [
+    {
+      "title": "গাজীপুরে কারখানা ছুটি না দেয়ায় হামলা-ভাঙচুর! | Garments | Gazipur News | Somoy TV",
+      "summary": "গাজীপুরের শ্রীপুর পৌর শহরের চৌরাস্তায় পোশাকশ্রমিকদের সঙ্গে স্থানীয় বিএনপি কর্মীদের সংঘর্ষ ও ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটেছে। এ সময় বিএনপি কর্মীদের বিরুদ্ধে শ্রমিকদের লাঠিপেটার অভিযোগ উঠেছে। এতে কয়েকজন শ্রমিক আহত হয়েছেন। অন্যদিকে, শ্রমিকেরা দক্ষিণ ভাংনাহাটি এলাকার রাতুল অ্যাপারেলস নামের একটি পোশাক কারখানায় হামলা ও ভাঙচুর চালিয়েছেন। রবিবার (২২ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর পৌরসভার চৌরাস্তায় এ... বিস্তারিত",
+      "link": "https://www.youtube.com/watch?v=hnEHa93JCNg",
+      "publisherUrl": "https://www.youtube.com/watch?v=hnEHa93JCNg",
+      "publishedAt": "2026-11-22T12:41:05+00:00",
+      "source": "Somoy News",
+      "publisherName": "Somoy News",
+      "sourceEvidence": [
+        "Somoy News",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Somoy News · YouTube",
+          "url": "https://www.youtube.com/watch?v=hnEHa93JCNg"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Somoy News",
+          "title": "গাজীপুরে কারখানা ছুটি না দেয়ায় হামলা-ভাঙচুর! | Garments | Gazipur News | Somoy TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=hnEHa93JCNg"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "শ্রীপুরে শ্রমিকদের লাঠিপেটা করলেন বিএনপির নেতা-কর্মীরা",
+          "summary": "গাজীপুরের শ্রীপুর পৌর শহরের চৌরাস্তায় পোশাকশ্রমিকদের সঙ্গে স্থানীয় বিএনপি কর্মীদের সংঘর্ষ ও ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটেছে। এ সময় বিএনপি কর্মীদের বিরুদ্ধে শ্রমিকদের লাঠিপেটার অভিযোগ উঠেছে। এতে কয়েকজন শ্রমিক আহত হয়েছেন। অন্যদিকে, শ্রমিকেরা দক্ষিণ ভাংনাহাটি এলাকার রাতুল অ্যাপারেলস নামের একটি পোশাক কারখানায় হামলা ও ভাঙচুর চালিয়েছেন। রবিবার (২২ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর পৌরসভার চৌরাস্তায় এ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "03622bfccbf0aa94d06c43a9a5096a18"
+    },
     {
       "title": "চাঁদপুরে ৫৬৮ হেক্টর ফসলি জমি আক্রান্ত, ক্ষয়ক্ষতির তথ্য সংগ্রহে কৃষি বিভাগ | Cyclone| Independent TV",
       "summary": "",
@@ -1075,46 +1117,11 @@
           "name": "Prothom Alo",
           "title": "নাশকতা থামেনি, রাতেও দুই জেলায় বাসে আগুন, গ্রামীণ ব্যাংকের দুটি শাখায় পেট্রলবোমা নিক্ষেপ",
           "summary": "দুই জেলায় দুটি বাসে আগুন দেওয়ার ঘটনা ঘটেছে। পেট্রোল বোমা নিক্ষেপ করা হয়েছে মাদারীপুরে গ্রামীণ ব্যাংকের দুটি শাখায়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/c06cu5bpsx",
-          "incidentDateText": "১৯ নভেম্বর ২০২৬",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "চট্টগ্রাম মহাসড়কের সাইনবোর্ড এলাকায়, নারায়ণগঞ্জ, ঢাকা, চট্টগ্রাম, মানিকগঞ্জ মানিকগঞ্জ সদর উপজেলার, মানিকগঞ্জ"
+          "url": "https://www.prothomalo.com/bangladesh/district/c06cu5bpsx"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "f45cdf2095148aa829cc9ab21a19219a"
-    },
-    {
-      "title": "শ্রীপুরে শ্রমিকদের লাঠিপেটা করলেন বিএনপির নেতা-কর্মীরা",
-      "summary": "গাজীপুরের শ্রীপুর পৌর শহরের চৌরাস্তায় পোশাকশ্রমিকদের সঙ্গে স্থানীয় বিএনপি কর্মীদের সংঘর্ষ ও ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটেছে। এ সময় বিএনপি কর্মীদের বিরুদ্ধে শ্রমিকদের লাঠিপেটার অভিযোগ উঠেছে। এতে কয়েকজন শ্রমিক আহত হয়েছেন। অন্যদিকে, শ্রমিকেরা দক্ষিণ ভাংনাহাটি এলাকার রাতুল অ্যাপারেলস নামের একটি পোশাক কারখানায় হামলা ও ভাঙচুর চালিয়েছেন। রবিবার (২২ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর পৌরসভার চৌরাস্তায় এ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0",
-      "publishedAt": "2026-11-22T09:44:34+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "শ্রীপুরে শ্রমিকদের লাঠিপেটা করলেন বিএনপির নেতা-কর্মীরা",
-          "summary": "গাজীপুরের শ্রীপুর পৌর শহরের চৌরাস্তায় পোশাকশ্রমিকদের সঙ্গে স্থানীয় বিএনপি কর্মীদের সংঘর্ষ ও ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটেছে। এ সময় বিএনপি কর্মীদের বিরুদ্ধে শ্রমিকদের লাঠিপেটার অভিযোগ উঠেছে। এতে কয়েকজন শ্রমিক আহত হয়েছেন। অন্যদিকে, শ্রমিকেরা দক্ষিণ ভাংনাহাটি এলাকার রাতুল অ্যাপারেলস নামের একটি পোশাক কারখানায় হামলা ও ভাঙচুর চালিয়েছেন। রবিবার (২২ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর পৌরসভার চৌরাস্তায় এ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982510/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE-%E0%A6%95%E0%A6%B0%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "03622bfccbf0aa94d06c43a9a5096a18"
     },
     {
       "title": "নাটোরে গভীর রাতে পরিত্যক্ত ব্যাগে মিললো ৬ ককটেল",
