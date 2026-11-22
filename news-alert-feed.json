@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-22T21:55:32.078101+00:00",
-  "updatedAt": "2026-11-22T21:55:32.078101+00:00",
+  "generatedAt": "2026-11-22T22:10:32.886287+00:00",
+  "updatedAt": "2026-11-22T22:10:32.886287+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 12,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -557,17 +557,17 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Courier",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 23,
+  "candidateCount": 24,
   "alertItems": [
     {
       "title": "‘টকশোতে আ.লীগের পক্ষে বললে জুতা দিয়ে পেটাবেন’ বক্তব্যের যে ব্যাখ্যা দিলেন রাশেদ খাঁন",
@@ -872,6 +872,38 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0465da0de9802e4942fce50ec163c675"
+    },
+    {
+      "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
+      "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
+      "link": "https://www.dhakapost.com/politics/500087",
+      "publisherUrl": "https://www.dhakapost.com/politics/500087",
+      "publishedAt": "2026-11-22T20:02:22+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500087"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
+          "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500087",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "08714ac0542288ac289965de837d01c3"
     },
     {
       "title": "​চাঁদপুরে বসতঘরে অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় শিশুর মৃত্যু | Chandpur | news | JamunaTV",
