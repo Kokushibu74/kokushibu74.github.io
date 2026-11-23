@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T20:00:40.073489+00:00",
-  "updatedAt": "2026-11-23T20:00:40.073489+00:00",
+  "generatedAt": "2026-11-23T20:15:33.402551+00:00",
+  "updatedAt": "2026-11-23T20:15:33.402551+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -229,10 +229,10 @@
       "domain": "unb.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 40,
   "alertItems": [
     {
       "title": "খুলনার রূপসায় দুর্বৃত্তদের হামলা | Khulna | Independent TV",
@@ -1931,37 +1931,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8364e3cd29101ce8f29e51c0942d7484"
-    },
-    {
-      "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
-      "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
-      "link": "https://www.dhakapost.com/politics/500087",
-      "publisherUrl": "https://www.dhakapost.com/politics/500087",
-      "publishedAt": "2026-11-22T20:02:22+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500087"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
-          "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500087"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "08714ac0542288ac289965de837d01c3"
     }
   ]
 }
