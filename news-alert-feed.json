@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T13:45:46.447624+00:00",
-  "updatedAt": "2026-11-23T13:45:46.447624+00:00",
+  "generatedAt": "2026-11-23T13:56:00.310517+00:00",
+  "updatedAt": "2026-11-23T13:56:00.310517+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -843,6 +843,37 @@
   "candidateCount": 27,
   "alertItems": [
     {
+      "title": "কুমিল্লায় সড়ক দুর্ঘটনায় নিহত ২ | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+      "summary": "কুমিল্লায় সড়ক দুর্ঘটনায় নিহত ২ | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+      "link": "https://www.bssnews.net/bangla/national/363010",
+      "publisherUrl": "https://www.bssnews.net/bangla/national/363010",
+      "publishedAt": "2026-11-23T13:45:00+00:00",
+      "source": "BSS",
+      "publisherName": "BSS",
+      "sourceEvidence": [
+        "BSS"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BSS",
+          "url": "https://www.bssnews.net/bangla/national/363010"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BSS",
+          "title": "কুমিল্লায় সড়ক দুর্ঘটনায় নিহত ২ | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) - Bangladesh Sangbad Sangstha (BSS)",
+          "summary": "কুমিল্লায় সড়ক দুর্ঘটনায় নিহত ২ | জাতীয় | বাংলাদেশ সংবাদ সংস্থা (বাসস) Bangladesh Sangbad Sangstha (BSS)",
+          "url": "https://www.bssnews.net/bangla/national/363010"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bce205ae9642b657d5c0f4e7afa32eab"
+    },
+    {
       "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
       "summary": "চট্টগ্রামরে আনোয়ারার সড়ক দুর্ঘটনায় গুরুতর আহত কলেজ ছাত্রী মিফতাহুল জান্নাত দিলশাত (১৯) মারা গেছেন। চট্টগ্রাম সিটি কলেজ থেকে এইচএসসি পাস করে বিশ্ববিদ্যালয়ে ভর্তির স্বপ্ন নিয়ে প্রস্তুতি নিচ্ছিলেন মিফতাহুল জান্নাত। একাডেমিক কাগজপত্র আনতে কলেজে যাওয়ার পথেই সড়ক দুর্ঘটনায় গুরুতর আহত হন তিনি। এরপর হাসপাতালের বিছানায় লাইফ সাপোর্টে চলছিল তাঁর বেঁচে থাকার লড়াই। শেষ পর্যন্ত সেই লড়াই […] The post লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161348",
@@ -873,9 +904,7 @@
           "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
           "summary": "চট্টগ্রামরে আনোয়ারার সড়ক দুর্ঘটনায় গুরুতর আহত কলেজ ছাত্রী মিফতাহুল জান্নাত দিলশাত (১৯) মারা গেছেন। চট্টগ্রাম সিটি কলেজ থেকে এইচএসসি পাস করে বিশ্ববিদ্যালয়ে ভর্তির স্বপ্ন নিয়ে প্রস্তুতি নিচ্ছিলেন মিফতাহুল জান্নাত। একাডেমিক কাগজপত্র আনতে কলেজে যাওয়ার পথেই সড়ক দুর্ঘটনায় গুরুতর আহত হন তিনি। এরপর হাসপাতালের বিছানায় লাইফ সাপোর্টে চলছিল তাঁর বেঁচে থাকার লড়াই। শেষ পর্যন্ত সেই লড়াই […] The post লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল appeared first on চট্টগ্রাম নিউজ .",
           "url": "https://chattogramnews.com/archives/161348",
-          "incidentDateText": "১৭ নভেম্বর",
-          "incidentTimeText": "সকাল ১০টায়",
-          "incidentTimeSource": "Chattogram News",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬",
           "locationText": "নিহত মিফতাহুল পটিয়া উপজেলার, জিরি ইউনিয়নে, আহত হওয়ার পর থানায়"
         },
         {
@@ -1544,37 +1573,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "7ab65f5a3859c3b8e7b600ea4466ad3d"
-    },
-    {
-      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publishedAt": "2026-11-22T14:49:30+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
     },
     {
       "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
