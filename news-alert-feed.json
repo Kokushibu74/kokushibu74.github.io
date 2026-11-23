@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T21:20:41.978730+00:00",
-  "updatedAt": "2026-11-23T21:20:41.978730+00:00",
+  "generatedAt": "2026-11-23T21:30:54.856417+00:00",
+  "updatedAt": "2026-11-23T21:30:54.856417+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Inqilab",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 41,
+  "candidateCount": 38,
   "alertItems": [
     {
       "title": "ঈশ্বরদীতে ছাত্রদলের নেতাকর্মীদের ওপর হামলার পর মধ্যরাতে যুবলীগ নেতার বাড়িতে আগুন",
@@ -950,17 +950,12 @@
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24",
-        "Prothom Alo"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1182916"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja"
         }
       ],
       "category": "Bangladesh",
@@ -972,20 +967,10 @@
           "title": "কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের সংঘর্ষ, আহত ১০",
           "summary": "গোপালগঞ্জের কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। বিক্ষোভ মিছিলে দাঁড়ানোকে কেন্দ্র করে এ সংঘর্ষে উভয় পক্ষের অন্তত...",
           "url": "https://www.jagonews24.com/country/news/1182916"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "গোপালগঞ্জ সদরের পর কোটালীপাড়াতেও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ",
-          "summary": "কোটালীপাড়া উপজেলার দক্ষিণ হিরণ গ্রামে আজ সোমবার সন্ধ্যায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ হয়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ সন্ধ্যায়",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "দক্ষিণ হিরণ গ্রামে, কোটালীপাড়া উপজেলা, লঞ্চঘাট বটতলা গোলচত্বর এলাকায়, গোপালগঞ্জ, কোটালীপাড়ার গ্রামে, নিষিদ্ধ ছাত্রলীগের হিরন ইউনিয়নে"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "b4e433f7f70f4d957ad6b8c94228f11a"
+      "corroborationCount": 1,
+      "alertEventId": "7bb6d2b8184382ac86b16c1ddda78ce4"
     },
     {
       "title": "লালবাগে প্লাস্টিকের গুদামে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
@@ -1102,17 +1087,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Prothom Alo"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/rr5h0e1jkk"
         }
       ],
       "category": "Bangladesh",
@@ -1124,16 +1104,10 @@
           "title": "গোপালগঞ্জে আ.লীগের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ: গুলিবিদ্ধসহ আহত ২০",
           "summary": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, যুবলীগ ও নিষিদ্ধ ছাত্রলীগের সমাবেশে দাঁড়ানো নিয়ে দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় ধাওয়া-পাল্টা ধাওয়া, হামলা, গুলিবর্ষণ ও ভাঙচুরের পাশাপাশি নিজেদের মধ্যে ককটেল বিস্ফোরণের ঘটনাও ঘটে। এ ঘটনায় চারজন গুলিবিদ্ধসহ ২০ জন আহত হন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে গোপালগঞ্জ জেলা শহরের লঞ্চঘাট বটতলা গোলচত্বর এলাকায় এ ঘটনা ঘটে। এ সময় ছয়টি... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ, ককটেল বিস্ফোরণ ও ভাঙচুর",
-          "summary": "আজ বিকেলে লঞ্চঘাট এলাকা থেকে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও যুবলীগ এবং নিষিদ্ধ ছাত্রলীগের নেতা-কর্মীরা একটি বিক্ষোভ মিছিল বের করেন।",
-          "url": "https://www.prothomalo.com/bangladesh/district/rr5h0e1jkk"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "417fce599c448cf99f56f4548b91e92d"
+      "corroborationCount": 1,
+      "alertEventId": "045743360b7536d1f60066ca75190274"
     },
     {
       "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
@@ -1160,7 +1134,8 @@
           "name": "Ajker Patrika",
           "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
           "summary": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4"
+          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬"
         }
       ],
       "corroborationCount": 1,
@@ -1818,37 +1793,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "09427ea91524ecc086627b57a67e53ef"
-    },
-    {
-      "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
-      "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-      "link": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publishedAt": "2026-11-23T07:37:36+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
-          "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6c10f4cf4df618238b436a33b897094a"
     },
     {
       "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
