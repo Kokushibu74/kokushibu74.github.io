@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T01:15:43.438962+00:00",
-  "updatedAt": "2026-11-23T01:15:43.438962+00:00",
+  "generatedAt": "2026-11-23T01:30:33.479249+00:00",
+  "updatedAt": "2026-11-23T01:30:33.479249+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 9,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -587,17 +587,17 @@
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -840,8 +840,87 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 26,
   "alertItems": [
+    {
+      "title": "বহির্নোঙরে সোডা অ্যাশ বোঝাইয়ের সময় লাইটার জাহাজডুবি",
+      "summary": "চট্টগ্রাম বন্দরের বহির্নোঙরে পণ্যবোঝাইয়ের সময় সোডা অ্যাশবাহী একটি লাইটার জাহাজ ডুবে গেছে। গতকাল রোববার সকাল ৭টার দিকে বন্দরের আলফা অ্যাঙ্করেজ এলাকায় এ দুর্ঘটনা ঘটে। দুর্ঘটনার পরপরই জাহাজে থাকা নাবিক ও কর্মীদের উদ্ধার করা হলেও জাহাজটি সাগরে তলিয়ে যায়। ডুবে যাওয়া জাহাজটির নাম এমভি বালাসুর–১। একটি মাদার ভেসেল থেকে শিল্পের কাঁচামাল হিসেবে ব্যবহৃত সোডিয়াম কার্বনেট বা […] The post বহির্নোঙরে সোডা অ্যাশ বোঝাইয়ের সময় লাইটার জাহাজডুবি appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%ac%e0%a6%b9%e0%a6%bf%e0%a6%b0%e0%a7%8d%e0%a6%a8%e0%a7%8b%e0%a6%99%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a7%8b%e0%a6%a1%e0%a6%be-%e0%a6%85%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b6-%e0%a6%ac%e0%a7%8b/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%ac%e0%a6%b9%e0%a6%bf%e0%a6%b0%e0%a7%8d%e0%a6%a8%e0%a7%8b%e0%a6%99%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a7%8b%e0%a6%a1%e0%a6%be-%e0%a6%85%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b6-%e0%a6%ac%e0%a7%8b/",
+      "publishedAt": "2026-11-23T00:57:19+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%ac%e0%a6%b9%e0%a6%bf%e0%a6%b0%e0%a7%8d%e0%a6%a8%e0%a7%8b%e0%a6%99%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a7%8b%e0%a6%a1%e0%a6%be-%e0%a6%85%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b6-%e0%a6%ac%e0%a7%8b/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "বহির্নোঙরে সোডা অ্যাশ বোঝাইয়ের সময় লাইটার জাহাজডুবি",
+          "summary": "চট্টগ্রাম বন্দরের বহির্নোঙরে পণ্যবোঝাইয়ের সময় সোডা অ্যাশবাহী একটি লাইটার জাহাজ ডুবে গেছে। গতকাল রোববার সকাল ৭টার দিকে বন্দরের আলফা অ্যাঙ্করেজ এলাকায় এ দুর্ঘটনা ঘটে। দুর্ঘটনার পরপরই জাহাজে থাকা নাবিক ও কর্মীদের উদ্ধার করা হলেও জাহাজটি সাগরে তলিয়ে যায়। ডুবে যাওয়া জাহাজটির নাম এমভি বালাসুর–১। একটি মাদার ভেসেল থেকে শিল্পের কাঁচামাল হিসেবে ব্যবহৃত সোডিয়াম কার্বনেট বা […] The post বহির্নোঙরে সোডা অ্যাশ বোঝাইয়ের সময় লাইটার জাহাজডুবি appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%ac%e0%a6%b9%e0%a6%bf%e0%a6%b0%e0%a7%8d%e0%a6%a8%e0%a7%8b%e0%a6%99%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a7%8b%e0%a6%a1%e0%a6%be-%e0%a6%85%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b6-%e0%a6%ac%e0%a7%8b/",
+          "incidentTimeText": "সকাল ৭টার দিকে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "বন্দরের আলফা অ্যাঙ্করেজ এলাকায়"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a98db1469e1f107bd2ed233ba7e365ec"
+    },
+    {
+      "title": "বটতলী স্টেশনে চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
+      "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে অগ্নিসংযোগের চেষ্টা চালিয়েছে দুর্বৃত্তরা। বটতলী রেলস্টেশনে দাঁড়িয়ে থাকা ট্রেনটির একটি বগিতে আগুন দেয়ার চেষ্টা করা হয়। তবে ট্রেনের নিরাপত্তাকর্মী ও শিক্ষার্থীদের তৎপরতায় আগুন নিয়ন্ত্রণে আসে। এতে কোনো ক্ষয়ক্ষতির ঘটনা ঘটেনি। গতকাল রোববার রাত সাড়ে ১০টার দিকে মুঠোফোনে এ তথ্য নিশ্চিত করেন বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম। ঘটনার প্রত্যক্ষদর্শী চবি […] The post বটতলী স্টেশনে চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%ac%e0%a6%9f%e0%a6%a4%e0%a6%b2%e0%a7%80-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%87%e0%a6%b6%e0%a6%a8%e0%a7%87-%e0%a6%9a%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%b6%e0%a6%be%e0%a6%9f%e0%a6%b2-%e0%a6%9f/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%ac%e0%a6%9f%e0%a6%a4%e0%a6%b2%e0%a7%80-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%87%e0%a6%b6%e0%a6%a8%e0%a7%87-%e0%a6%9a%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%b6%e0%a6%be%e0%a6%9f%e0%a6%b2-%e0%a6%9f/",
+      "publishedAt": "2026-11-23T00:55:31+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%ac%e0%a6%9f%e0%a6%a4%e0%a6%b2%e0%a7%80-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%87%e0%a6%b6%e0%a6%a8%e0%a7%87-%e0%a6%9a%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%b6%e0%a6%be%e0%a6%9f%e0%a6%b2-%e0%a6%9f/"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1182506"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "বটতলী স্টেশনে চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
+          "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে অগ্নিসংযোগের চেষ্টা চালিয়েছে দুর্বৃত্তরা। বটতলী রেলস্টেশনে দাঁড়িয়ে থাকা ট্রেনটির একটি বগিতে আগুন দেয়ার চেষ্টা করা হয়। তবে ট্রেনের নিরাপত্তাকর্মী ও শিক্ষার্থীদের তৎপরতায় আগুন নিয়ন্ত্রণে আসে। এতে কোনো ক্ষয়ক্ষতির ঘটনা ঘটেনি। গতকাল রোববার রাত সাড়ে ১০টার দিকে মুঠোফোনে এ তথ্য নিশ্চিত করেন বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম। ঘটনার প্রত্যক্ষদর্শী চবি […] The post বটতলী স্টেশনে চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%ac%e0%a6%9f%e0%a6%a4%e0%a6%b2%e0%a7%80-%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%87%e0%a6%b6%e0%a6%a8%e0%a7%87-%e0%a6%9a%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%b6%e0%a6%be%e0%a6%9f%e0%a6%b2-%e0%a6%9f/",
+          "incidentTimeText": "রাত ৮টা ৫ মিনিটে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "বটতলী স্টেশনসহ সংশ্লিষ্ট এলাকায়"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চবির শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা দুর্বৃত্তদের",
+          "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের নিরাপত্তাকর্মীদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় কোনো ক্ষয়ক্ষতি হয়নি...",
+          "url": "https://www.jagonews24.com/national/news/1182506"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "eff25999570509229b08500202b82fe1"
+    },
     {
       "title": "পাবনায় বিএনপি নেতাকে বহিষ্কার",
       "summary": "পাবনার বেড়া পৌর এলাকায় বিএনপি ও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের সমর্থকদের মধ্যে টানা তিন দিনের সংঘর্ষের রেশ কাটতে না কাটতেই পৌর বিএনপির এক নেতাকে দল থেকে বহিষ্কার করা হয়েছে...",
@@ -1092,37 +1171,6 @@
       "alertEventId": "8c6002e415f99374bb38e6680a2104ac"
     },
     {
-      "title": "চবির শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা দুর্বৃত্তদের",
-      "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের নিরাপত্তাকর্মীদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় কোনো ক্ষয়ক্ষতি হয়নি...",
-      "link": "https://www.jagonews24.com/national/news/1182506",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1182506",
-      "publishedAt": "2026-11-22T17:49:24+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1182506"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "চবির শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা দুর্বৃত্তদের",
-          "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের নিরাপত্তাকর্মীদের তৎপরতায় দ্রুত আগুন নিভিয়ে ফেলায় কোনো ক্ষয়ক্ষতি হয়নি...",
-          "url": "https://www.jagonews24.com/national/news/1182506"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "eff25999570509229b08500202b82fe1"
-    },
-    {
       "title": "রাজধানীতে বিকট শব্দে ব্লেন্ডার বিস্ফোরণ, নারী নিহত",
       "summary": "রাজধানীর হাজারীবাগ বটতলার একটি ফ্ল্যাটের দ্বিতীয় তলায় ব্লেন্ডার মেশিন বিস্ফোরণে একজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। রবিবার (২২ নভেম্বর) সন্ধ্যায় এ ঘটনা ঘটে। নিহতের নাম পারভিন। আহতরা হলেন, ফাতেমা আক্তার উর্মি (২০) ও ফরিদা বেগম (৬০)। আহত ফরিদাকে রাজধানীর জাতীয় বার্ন অ্যান্ড প্লাস্টিক সার্জারি ইনস্টিটিউটে ভর্তি করা হয়েছে। আহত উর্মিকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে নেওয়া হয়। ... বিস্তারিত",
       "link": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -1200,37 +1248,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ab65f5a3859c3b8e7b600ea4466ad3d"
-    },
-    {
-      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publishedAt": "2026-11-22T14:49:30+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
     },
     {
       "title": "‘আইনজীবী সুরক্ষা আইন’ প্রণয়নের দাবি গণতান্ত্রিক আইনজীবী সমিতির",
@@ -1479,6 +1496,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "55026017a054a32261e8f25d8507dc82"
+    },
+    {
+      "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
+      "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
+      "link": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-22T09:41:29+00:00",
+      "source": "ডেইলি সান বাংলা",
+      "publisherName": "ডেইলি সান বাংলা",
+      "sourceEvidence": [
+        "ডেইলি সান বাংলা"
+      ],
+      "sourceLinks": [
+        {
+          "name": "ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "ডেইলি সান বাংলা",
+          "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
+          "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3fb77cd12ffb38ff5d2e1f86cbc77da3"
     },
     {
       "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
