@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T08:15:33.330508+00:00",
-  "updatedAt": "2026-11-23T08:15:33.330508+00:00",
+  "generatedAt": "2026-11-23T08:30:32.499537+00:00",
+  "updatedAt": "2026-11-23T08:30:32.499537+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Banglanews24",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 8,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 26,
   "alertItems": [
     {
       "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
@@ -903,69 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9e605b69ce0b40f5cc8858bfff3e831f"
-    },
-    {
-      "title": "সিলেটের শ্রীপুর পিকনিক সেন্টার থেকে প্লাষ্টিক বিস্ফোরক উদ্ধার",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/An2atY5HR8Y",
-      "publisherUrl": "https://www.youtube.com/shorts/An2atY5HR8Y",
-      "publishedAt": "2026-11-23T06:58:28+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/An2atY5HR8Y"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "সিলেটের শ্রীপুর পিকনিক সেন্টার থেকে প্লাষ্টিক বিস্ফোরক উদ্ধার",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/An2atY5HR8Y"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "992e1319138a01b0e9eaf71b0f9151ca"
-    },
-    {
-      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
-      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
-      "link": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
-      "publisherUrl": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
-      "publishedAt": "2026-11-23T06:37:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
-          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
-          "locationText": "করা এবং আশপাশের এলাকায়"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "96b93fdbdbb41168ab45d3ca7b5b51bd"
     },
     {
       "title": "শ্রীপুরে বন্ধ ২১ কারখানা: কাজ হারানোর শঙ্কায় ৭০ হাজার শ্রমিক",
@@ -1115,9 +1052,7 @@
       "sourceEvidence": [
         "DBC News",
         "Dainik Azadi",
-        "Bangla Tribune",
-        "Prothom Alo",
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -1131,14 +1066,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1182539"
         }
       ],
       "category": "Bangladesh",
@@ -1162,22 +1089,10 @@
           "title": "চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
           "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শিক্ষার্থীদের যাতায়াতের শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের কর্মীরা দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের কোনও ক্ষয়ক্ষতি হয়নি। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে নগরের বটতলী রেলস্টেশনের এক নম্বর প্ল্যাটফর্মে দাঁড়িয়ে থাকা বিশ্ববিদ্যালয়গামী শাটল ট্রেনে এ ঘটনা ঘটে। বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম বিষয়টি নিশ্চিত... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "চট্টগ্রাম বিশ্ববিদ্যালয়ের শাটল ট্রেনে রাতের আঁধারে আগুন, দ্রুত নেভালেন রেলকর্মী ও শিক্ষার্থীরা",
-          "summary": "বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।",
-          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/national/news/1182539"
         }
       ],
-      "corroborationCount": 5,
-      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
+      "corroborationCount": 3,
+      "alertEventId": "3af0775da5d493c2f813f6f7a1d8979b"
     },
     {
       "title": "টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন, শিশুসহ দগ্ধ ৩",
