@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T03:30:45.442279+00:00",
-  "updatedAt": "2026-11-23T03:30:45.442279+00:00",
+  "generatedAt": "2026-11-23T03:45:34.497534+00:00",
+  "updatedAt": "2026-11-23T03:45:34.497534+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -422,17 +422,17 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Desh Rupantor",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 24,
   "alertItems": [
     {
       "title": "টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন, শিশুসহ দগ্ধ ৩",
@@ -1153,68 +1153,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "08714ac0542288ac289965de837d01c3"
-    },
-    {
-      "title": "​চাঁদপুরে বসতঘরে অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় শিশুর মৃত্যু | Chandpur | news | JamunaTV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=GA3PDZAOAGQ",
-      "publisherUrl": "https://www.youtube.com/watch?v=GA3PDZAOAGQ",
-      "publishedAt": "2026-11-22T19:19:14+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=GA3PDZAOAGQ"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "​চাঁদপুরে বসতঘরে অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় শিশুর মৃত্যু | Chandpur | news | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=GA3PDZAOAGQ"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "15b55cfa8e2973cb8ceea2f995f2df31"
-    },
-    {
-      "title": "চট্টগ্রামের ফটিকছড়িতে দুর্বৃত্তের গুলিতে ব্যবসায়ী আহত | chottogram | News | JamunaTV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=5WKE6OvciQo",
-      "publisherUrl": "https://www.youtube.com/watch?v=5WKE6OvciQo",
-      "publishedAt": "2026-11-22T19:15:00+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=5WKE6OvciQo"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "চট্টগ্রামের ফটিকছড়িতে দুর্বৃত্তের গুলিতে ব্যবসায়ী আহত | chottogram | News | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=5WKE6OvciQo"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "edabb4bb27c39dd9673ed4c31ddf62b2"
     },
     {
       "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
