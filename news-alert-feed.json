@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T01:00:38.825110+00:00",
-  "updatedAt": "2026-11-23T01:00:38.825110+00:00",
+  "generatedAt": "2026-11-23T01:15:43.438962+00:00",
+  "updatedAt": "2026-11-23T01:15:43.438962+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 52,
-  "failedSourceCount": 3,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 31,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 31,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Banglanews24",
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -591,7 +591,7 @@
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "failed",
-      "fallbackError": "<urlopen error _ssl.c:1063: The handshake operation timed out>",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
       "fallbackOnly": false,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 23,
+  "candidateCount": 24,
   "alertItems": [
     {
       "title": "পাবনায় বিএনপি নেতাকে বহিষ্কার",
@@ -999,6 +999,37 @@
       "alertEventId": "edabb4bb27c39dd9673ed4c31ddf62b2"
     },
     {
+      "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
+      "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
+      "link": "https://banglanews24.com/national/news/bd/1695220.details",
+      "publisherUrl": "https://banglanews24.com/national/news/bd/1695220.details",
+      "publishedAt": "2026-11-22T19:02:29+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://banglanews24.com/national/news/bd/1695220.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
+          "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
+          "url": "https://banglanews24.com/national/news/bd/1695220.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ca39a5b1fcc5b654a57378a4d96bff4d"
+    },
+    {
       "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
       "summary": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ SAMAKAL",
       "link": "https://samakal.com/whole-country/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6",
@@ -1100,12 +1131,17 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1123,10 +1159,16 @@
           "title": "ককটেল বিস্ফোরণে ঢাকা বিশ্ববদ্যালয়ের কর্মচারী ও ছাত্রদল নেতা আহত",
           "summary": "ঢাকা সেন্ট্রাল ইউনিভার্সিটির সংযুক্ত কবি নজরুল সরকারি কলেজের অনার্স প্রথম বর্ষের পরীক্ষা চলাকালে কলেজের মূল ফটকের সামনে দুইটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে কলেজ ছাত্রদলের এক নেতা ও এক কর্মচারী আহত হয়েছেন। রবিবার ( ২২ নভেম্বর) বিকাল ৫টার দিকে কলেজের মূল ফটকের সামনে এ ঘটনা ঘটেছে বলে জানা গেছে। এ ঘটনায় আহত হয়েছেন কবি নজরুল সরকারি কলেজের ইতিহাস বিভাগের ২০২০-২০ শিক্ষাবর্ষের শিক্ষার্থী ও... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/982590/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%95%E0%A6%AC%E0%A6%BF-%E0%A6%A8%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B2-%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%93"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক - একাত্তর",
+          "summary": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক একাত্তর",
+          "url": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "e6ab51f03d1099b12297999934a1bb09"
+      "corroborationCount": 2,
+      "alertEventId": "cd947e7eec11bd66d2d2a0eb70bf3a30"
     },
     {
       "title": "হাজারীবাগে গ্যাস বিস্ফোরণ: নিহত ১, দগ্ধ ২ - Dhaka Tribune Bangla",
@@ -1437,37 +1479,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "55026017a054a32261e8f25d8507dc82"
-    },
-    {
-      "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
-      "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
-      "link": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-22T09:41:29+00:00",
-      "source": "ডেইলি সান বাংলা",
-      "publisherName": "ডেইলি সান বাংলা",
-      "sourceEvidence": [
-        "ডেইলি সান বাংলা"
-      ],
-      "sourceLinks": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
-          "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3fb77cd12ffb38ff5d2e1f86cbc77da3"
     },
     {
       "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
