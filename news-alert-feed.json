@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T19:05:40.094250+00:00",
-  "updatedAt": "2026-11-23T19:05:40.094250+00:00",
+  "generatedAt": "2026-11-23T19:20:46.093747+00:00",
+  "updatedAt": "2026-11-23T19:20:46.093747+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -840,8 +840,96 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 38,
+  "candidateCount": 40,
   "alertItems": [
+    {
+      "title": "খুলনার রূপসায় দুর্বৃত্তদের হামলা | Khulna | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=kdr9WJqS4F8",
+      "publisherUrl": "https://www.youtube.com/watch?v=kdr9WJqS4F8",
+      "publishedAt": "2026-11-23T19:09:07+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=kdr9WJqS4F8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "খুলনার রূপসায় দুর্বৃত্তদের হামলা | Khulna | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=kdr9WJqS4F8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c75ac66829c8c9f9290f998e2f572a63"
+    },
+    {
+      "title": "কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের সংঘর্ষ, আহত ১০",
+      "summary": "গোপালগঞ্জের কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। বিক্ষোভ মিছিলে দাঁড়ানোকে কেন্দ্র করে এ সংঘর্ষে উভয় পক্ষের অন্তত...",
+      "link": "https://www.jagonews24.com/country/news/1182916",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1182916",
+      "publishedAt": "2026-11-23T19:07:20+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Prothom Alo",
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1182916"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja"
+        },
+        {
+          "name": "Ekattor TV ·",
+          "url": "https://www.youtube.com/watch?v=a3hNdT1x3CE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের সংঘর্ষ, আহত ১০",
+          "summary": "গোপালগঞ্জের কোটালীপাড়ায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। বিক্ষোভ মিছিলে দাঁড়ানোকে কেন্দ্র করে এ সংঘর্ষে উভয় পক্ষের অন্তত...",
+          "url": "https://www.jagonews24.com/country/news/1182916"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "গোপালগঞ্জ সদরের পর কোটালীপাড়াতেও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ",
+          "summary": "কোটালীপাড়া উপজেলার দক্ষিণ হিরণ গ্রামে আজ সোমবার সন্ধ্যায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ হয়।",
+          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ সন্ধ্যায়",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "দক্ষিণ হিরণ গ্রামে, কোটালীপাড়া উপজেলা, লঞ্চঘাট বটতলা গোলচত্বর এলাকায়, গোপালগঞ্জ, কোটালীপাড়ার গ্রামে, নিষিদ্ধ ছাত্রলীগের হিরন ইউনিয়নে"
+        },
+        {
+          "name": "Ekattor TV",
+          "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের দুই গ্রুপের তুমুল সংঘর্ষ | Gopalganj | Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=a3hNdT1x3CE"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "01ec729b8fe74651af17660ba63797b4"
+    },
     {
       "title": "লালবাগে প্লাস্টিকের গুদামে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
       "summary": "ফায়ার ফাইটার জয় রায় ও আজহারুলকে রাতে ঢাকা মেডিকেল কলেজ হাসপাতালে নেওয়া হয়েছে।",
@@ -888,29 +976,19 @@
     },
     {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের মিছিলে কথাকাটাকাটির জেরে ২ গ্রামবাসীর সংঘর্ষ | News | JamunaTV",
-      "summary": "কোটালীপাড়া উপজেলার দক্ষিণ হিরণ গ্রামে আজ সোমবার সন্ধ্যায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ হয়।",
+      "summary": "",
       "link": "https://www.youtube.com/watch?v=AMRhqrl0T0c",
       "publisherUrl": "https://www.youtube.com/watch?v=AMRhqrl0T0c",
       "publishedAt": "2026-11-23T18:19:01+00:00",
       "source": "Jamuna TV",
       "publisherName": "Jamuna TV",
       "sourceEvidence": [
-        "Jamuna TV",
-        "Prothom Alo",
-        "Ekattor TV"
+        "Jamuna TV"
       ],
       "sourceLinks": [
         {
           "name": "Jamuna TV · YouTube",
           "url": "https://www.youtube.com/watch?v=AMRhqrl0T0c"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja"
-        },
-        {
-          "name": "Ekattor TV ·",
-          "url": "https://www.youtube.com/watch?v=a3hNdT1x3CE"
         }
       ],
       "category": "Bangladesh",
@@ -922,26 +1000,10 @@
           "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের মিছিলে কথাকাটাকাটির জেরে ২ গ্রামবাসীর সংঘর্ষ | News | JamunaTV",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=AMRhqrl0T0c"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "গোপালগঞ্জ সদরের পর কোটালীপাড়াতেও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ",
-          "summary": "কোটালীপাড়া উপজেলার দক্ষিণ হিরণ গ্রামে আজ সোমবার সন্ধ্যায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ হয়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/rbxanwk8ja",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ সন্ধ্যায়",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "দক্ষিণ হিরণ গ্রামে, কোটালীপাড়া উপজেলা, লঞ্চঘাট বটতলা গোলচত্বর এলাকায়, গোপালগঞ্জ, কোটালীপাড়ার গ্রামে, নিষিদ্ধ ছাত্রলীগের হিরন ইউনিয়নে"
-        },
-        {
-          "name": "Ekattor TV",
-          "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের দুই গ্রুপের তুমুল সংঘর্ষ | Gopalganj | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=a3hNdT1x3CE"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "01ec729b8fe74651af17660ba63797b4"
+      "corroborationCount": 1,
+      "alertEventId": "c873f5f967cc58d0e4a9796b8456cd97"
     },
     {
       "title": "পাবনায় আধিপত্য বিস্তারকে কেন্দ্র করে দু’গ্রুপের সংঘর্ষ; কয়েকজন গুলিবিদ্ধ | Pabna Clash | Jamuna TV",
@@ -1045,8 +1107,7 @@
           "name": "Ajker Patrika",
           "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
           "summary": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬"
+          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4"
         }
       ],
       "corroborationCount": 1,
@@ -1082,11 +1143,7 @@
           "name": "Prothom Alo",
           "title": "পাবনায় বিএনপির মিছিলের প্রস্তুতির সময় মুখোশধারীদের হামলা–গুলি, আহত ৫",
           "summary": "পাবনার ঈশ্বরদীতে বিএনপির মিছিলের প্রস্তুতির সময় হামলা ও গুলি চালিয়েছে একদল মুখোশধারী। এতে অন্তত পাঁচজন আহত হয়েছেন। আজ সোমবার বিকেলে উপজেলার সাঁড়া ইউনিয়নের মাজদিয়া এলাকায় এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/8ym72m49yl",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ রাতে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "সাঁড়া ইউনিয়নের মাজদিয়া এলাকায়, হলেন ইশ্বরদীর পূর্বটেংরি গ্রামে, সাহেবপাড়া গ্রামে, উদ্ধার করে ঈশ্বরদী উপজেলা"
+          "url": "https://www.prothomalo.com/bangladesh/district/8ym72m49yl"
         },
         {
           "name": "Bangla Tribune",
@@ -1159,6 +1216,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7b65c1308896ff90b1b99b790b903f0d"
+    },
+    {
+      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publishedAt": "2026-11-23T16:20:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1697884564b407e80d621f51a59ca39b"
     },
     {
       "title": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ - Daily Naya Diganta",
@@ -1298,8 +1386,8 @@
     {
       "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
       "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-23T14:58:18+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1309,7 +1397,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1320,7 +1408,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
           "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
@@ -1657,37 +1745,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "dc92a715257ad8d91882178bb6689d8e"
-    },
-    {
-      "title": "টঙ্গীতে গ্যাস সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩ - United News of Bangladesh",
-      "summary": "টঙ্গীতে গ্যাস সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩ United News of Bangladesh",
-      "link": "https://www.unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8,-%E0%A6%AE%E0%A6%BE-%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9/116645",
-      "publisherUrl": "https://www.unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8,-%E0%A6%AE%E0%A6%BE-%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9/116645",
-      "publishedAt": "2026-11-23T09:31:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://www.unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8,-%E0%A6%AE%E0%A6%BE-%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9/116645"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "টঙ্গীতে গ্যাস সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩ - United News of Bangladesh",
-          "summary": "টঙ্গীতে গ্যাস সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩ United News of Bangladesh",
-          "url": "https://www.unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8,-%E0%A6%AE%E0%A6%BE-%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%B8%E0%A6%B9-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A9/116645"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "09427ea91524ecc086627b57a67e53ef"
     },
     {
       "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
