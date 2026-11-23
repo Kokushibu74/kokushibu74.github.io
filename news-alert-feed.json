@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T07:20:32.855864+00:00",
-  "updatedAt": "2026-11-23T07:20:32.855864+00:00",
+  "generatedAt": "2026-11-23T07:30:43.492218+00:00",
+  "updatedAt": "2026-11-23T07:30:43.492218+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 4,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 14,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
+      "summary": "ঢাকার সাভারের আশুলিয়ায় সড়ক অবরোধ করে বিক্ষোভ করেছেন তৈরি পোশাকশ্রমিকদের একটি দল। এ সময় একটি বাস ভাঙচুরের চেষ্টা এবং আশপাশের কয়েকটি কারখানায় হামলার ঘটনা ঘটে। পরে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সদস্যরা টিয়ারশেল ও সাউন্ড গ্রেনেড নিক্ষেপ করে বিক্ষোভকারীদের ছত্রভঙ্গ করে দেন। সোমবার (২৩ নভেম্বর) সকালে আশুলিয়ার নিশ্চিন্তপুর এলাকায় আবদুল্লাহপুর-বাইপাইল সড়কে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, সকালে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982691/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD-%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%B6%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982691/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD-%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%B6%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1",
+      "publishedAt": "2026-11-23T07:30:22+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982691/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD-%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%B6%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
+          "summary": "ঢাকার সাভারের আশুলিয়ায় সড়ক অবরোধ করে বিক্ষোভ করেছেন তৈরি পোশাকশ্রমিকদের একটি দল। এ সময় একটি বাস ভাঙচুরের চেষ্টা এবং আশপাশের কয়েকটি কারখানায় হামলার ঘটনা ঘটে। পরে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সদস্যরা টিয়ারশেল ও সাউন্ড গ্রেনেড নিক্ষেপ করে বিক্ষোভকারীদের ছত্রভঙ্গ করে দেন। সোমবার (২৩ নভেম্বর) সকালে আশুলিয়ার নিশ্চিন্তপুর এলাকায় আবদুল্লাহপুর-বাইপাইল সড়কে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, সকালে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982691/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD-%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%B6%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "73cc4add192faf0f077d87c9eb680876"
+    },
     {
       "title": "সাড়ে চার ঘণ্টার ব্যবধানে নারায়ণগঞ্জে বাস-ট্রাকে আগুন",
       "summary": "নারায়ণগঞ্জে কয়েক ঘণ্টার ব্যবধানে পৃথক স্থানে পার্ক করে রাখা একটি বাসে ও একটি ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। বাস ও ট্রাকের মালিকপক্ষের দাবি, পেট্রলবোমা নিক্ষেপ করে আগুন দেওয়া হয়েছে। তবে এ ঘটনায় কেউ হতাহত হননি। রবিবার (২২ নভেম্বর) দিবাগত রাত সোয়া ১২টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের সাইনবোর্ডের গিরিধারা এলাকায় পার্কিংয়ে থাকা অনাবিল পরিবহনের একটি বাসে আগুন দেওয়া হয়। এর প্রায় সাড়ে চার ঘণ্টা পর... বিস্তারিত",
@@ -1366,114 +1397,46 @@
       "alertEventId": "c73e09d9d6ad9062560596612da337f5"
     },
     {
-      "title": "রাজধানীতে বিকট শব্দে ব্লেন্ডার বিস্ফোরণ, নারী নিহত",
-      "summary": "রাজধানীর হাজারীবাগ বটতলার একটি ফ্ল্যাটের দ্বিতীয় তলায় ব্লেন্ডার মেশিন বিস্ফোরণে একজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। রবিবার (২২ নভেম্বর) সন্ধ্যায় এ ঘটনা ঘটে। নিহতের নাম পারভিন। আহতরা হলেন, ফাতেমা আক্তার উর্মি (২০) ও ফরিদা বেগম (৬০)। আহত ফরিদাকে রাজধানীর জাতীয় বার্ন অ্যান্ড প্লাস্টিক সার্জারি ইনস্টিটিউটে ভর্তি করা হয়েছে। আহত উর্মিকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে নেওয়া হয়। ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-22T17:41:06+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক - একাত্তর",
+      "summary": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক একাত্তর",
+      "link": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87",
+      "publisherUrl": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87",
+      "publishedAt": "2026-11-22T15:25:47+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "একাত্তর"
+        "একাত্তর",
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        },
-        {
           "name": "একাত্তর",
           "url": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113633/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8%C2%A0"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "রাজধানীতে বিকট শব্দে ব্লেন্ডার বিস্ফোরণ, নারী নিহত",
-          "summary": "রাজধানীর হাজারীবাগ বটতলার একটি ফ্ল্যাটের দ্বিতীয় তলায় ব্লেন্ডার মেশিন বিস্ফোরণে একজন নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। রবিবার (২২ নভেম্বর) সন্ধ্যায় এ ঘটনা ঘটে। নিহতের নাম পারভিন। আহতরা হলেন, ফাতেমা আক্তার উর্মি (২০) ও ফরিদা বেগম (৬০)। আহত ফরিদাকে রাজধানীর জাতীয় বার্ন অ্যান্ড প্লাস্টিক সার্জারি ইনস্টিটিউটে ভর্তি করা হয়েছে। আহত উর্মিকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে নেওয়া হয়। ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
-        },
         {
           "name": "একাত্তর",
           "title": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক - একাত্তর",
           "summary": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক একাত্তর",
           "url": "https://ekattor.tv/capital/98225/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "cd947e7eec11bd66d2d2a0eb70bf3a30"
-    },
-    {
-      "title": "হাজারীবাগে গ্যাস বিস্ফোরণ: নিহত ১, দগ্ধ ২ - Dhaka Tribune Bangla",
-      "summary": "হাজারীবাগে গ্যাস বিস্ফোরণ: নিহত ১, দগ্ধ ২ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113633/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8%C2%A0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113633/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8%C2%A0",
-      "publishedAt": "2026-11-22T15:21:39+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113633/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8%C2%A0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
+        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "হাজারীবাগে গ্যাস বিস্ফোরণ: নিহত ১, দগ্ধ ২ - Dhaka Tribune Bangla",
           "summary": "হাজারীবাগে গ্যাস বিস্ফোরণ: নিহত ১, দগ্ধ ২ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113633/%E0%A6%B9%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A7%A8%C2%A0"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু - Dhaka Tribune Bangla",
-          "summary": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "bcab5173017bd584bdd2d27dc407f198"
-    },
-    {
-      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
-      "publishedAt": "2026-11-22T14:49:30+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
-          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
+      "corroborationCount": 2,
+      "alertEventId": "7ab65f5a3859c3b8e7b600ea4466ad3d"
     },
     {
       "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
@@ -1567,6 +1530,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e34bab4b77ace9e1474df1f620ebb565"
+    },
+    {
+      "title": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু - Dhaka Tribune Bangla",
+      "summary": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
+      "publishedAt": "2026-11-22T12:00:42+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু - Dhaka Tribune Bangla",
+          "summary": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bcab5173017bd584bdd2d27dc407f198"
     },
     {
       "title": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
