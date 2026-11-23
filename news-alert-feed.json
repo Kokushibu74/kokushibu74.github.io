@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T02:50:37.260302+00:00",
-  "updatedAt": "2026-11-23T02:50:37.260302+00:00",
+  "generatedAt": "2026-11-23T03:05:42.586841+00:00",
+  "updatedAt": "2026-11-23T03:05:42.586841+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -287,17 +287,17 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sun",
@@ -840,8 +840,71 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 27,
   "alertItems": [
+    {
+      "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+      "summary": "চট্টগ্রাম নগরের দামপাড়ায় চট্টগ্রাম মেট্রোপলিটন পুলিশের (সিএমপি) পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এ সময় ঘটনাস্থল থেকে অবিস্ফোরিত অবস্থায় আরও একটি ককটেল উদ্ধার করে পুলিশ...",
+      "link": "https://www.jagonews24.com/national/news/1182539",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1182539",
+      "publishedAt": "2026-11-23T02:55:42+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+          "summary": "চট্টগ্রাম নগরের দামপাড়ায় চট্টগ্রাম মেট্রোপলিটন পুলিশের (সিএমপি) পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এ সময় ঘটনাস্থল থেকে অবিস্ফোরিত অবস্থায় আরও একটি ককটেল উদ্ধার করে পুলিশ...",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
+    },
+    {
+      "title": "সংবিধান বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায় আগুন ঠেকাতে পারলেন না কেন? প্রশ্ন আতিকুর রহমানের | Somoy TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
+      "publisherUrl": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
+      "publishedAt": "2026-11-23T02:52:22+00:00",
+      "source": "Somoy News",
+      "publisherName": "Somoy News",
+      "sourceEvidence": [
+        "Somoy News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Somoy News · YouTube",
+          "url": "https://www.youtube.com/watch?v=MfTQ-KcGGGk"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Somoy News",
+          "title": "সংবিধান বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায় আগুন ঠেকাতে পারলেন না কেন? প্রশ্ন আতিকুর রহমানের | Somoy TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
+          "locationText": "বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায়, গোপালগঞ্জ"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4e05f7dca32eb38c02f0d869845b3ef2"
+    },
     {
       "title": "ঢাকা-চট্টগ্রাম মহাসড়কের সাইনবোর্ডে বাসে আগুন | DBC NEWS",
       "summary": "",
@@ -996,37 +1059,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3895cf7a149d635932f0fd3f0e6b16c7"
-    },
-    {
-      "title": "নড়াইলের হামলার ঘটনাকে ঘিরে ভারতীয় গণমাধ্যমে অপপ্রচার! | Propaganda | Narail News | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=RW-0N3G5Pdc",
-      "publisherUrl": "https://www.youtube.com/watch?v=RW-0N3G5Pdc",
-      "publishedAt": "2026-11-23T01:44:14+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=RW-0N3G5Pdc"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "নড়াইলের হামলার ঘটনাকে ঘিরে ভারতীয় গণমাধ্যমে অপপ্রচার! | Propaganda | Narail News | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=RW-0N3G5Pdc"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d42443963a2be656e1868d414f2f144e"
     },
     {
       "title": "‘টকশোতে আ.লীগের পক্ষে বললে জুতা দিয়ে পেটাবেন’ বক্তব্যের যে ব্যাখ্যা দিলেন রাশেদ খাঁন",
