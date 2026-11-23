@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T11:50:43.330527+00:00",
-  "updatedAt": "2026-11-23T11:50:43.330527+00:00",
+  "generatedAt": "2026-11-23T12:05:36.675841+00:00",
+  "updatedAt": "2026-11-23T12:05:36.675841+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -11,8 +11,8 @@
   "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -487,12 +487,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 28,
   "alertItems": [
+    {
+      "title": "জানলেন না স্বামী-সন্তানের মৃত্যুর খবর, ৩ দিন পর চলে গেলেন তানিয়াও",
+      "summary": "স্বামী ও সন্তানের পর না ফেরার দেশে চলে গেলেন কক্সবাজারের রামুর দক্ষিণ মিঠাছড়ি রেলক্রসিং দুর্ঘটনায় আহত তানিয়া সুলতানা (২০)। অচেতন অবস্থায়...",
+      "link": "https://www.jagonews24.com/country/news/1182782",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1182782",
+      "publishedAt": "2026-11-23T11:49:01+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1182782"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "জানলেন না স্বামী-সন্তানের মৃত্যুর খবর, ৩ দিন পর চলে গেলেন তানিয়াও",
+          "summary": "স্বামী ও সন্তানের পর না ফেরার দেশে চলে গেলেন কক্সবাজারের রামুর দক্ষিণ মিঠাছড়ি রেলক্রসিং দুর্ঘটনায় আহত তানিয়া সুলতানা (২০)। অচেতন অবস্থায়...",
+          "url": "https://www.jagonews24.com/country/news/1182782"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9a5d8fe45e6fcd9140e412f4b9920c80"
+    },
     {
       "title": "সিলেটে যৌথ অভিযানে বিস্ফোরক উদ্ধার | Sylhet BGB | Independent TV",
       "summary": "",
@@ -905,6 +936,37 @@
       "alertEventId": "516e93e2a55d19fa8c494a3f3bca0c8d"
     },
     {
+      "title": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত - Dhaka Tribune Bangla",
+      "summary": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113660/%E0%A6%AE%E0%A7%8C%E0%A6%B2%E0%A6%AD%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%AE%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87-%E0%A7%A7%E0%A7%A7-%E0%A6%98%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113660/%E0%A6%AE%E0%A7%8C%E0%A6%B2%E0%A6%AD%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%AE%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87-%E0%A7%A7%E0%A7%A7-%E0%A6%98%E0%A6%B0",
+      "publishedAt": "2026-11-23T10:39:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113660/%E0%A6%AE%E0%A7%8C%E0%A6%B2%E0%A6%AD%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%AE%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87-%E0%A7%A7%E0%A7%A7-%E0%A6%98%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত - Dhaka Tribune Bangla",
+          "summary": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113660/%E0%A6%AE%E0%A7%8C%E0%A6%B2%E0%A6%AD%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%AE%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87-%E0%A7%A7%E0%A7%A7-%E0%A6%98%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7819ecd5aaa30eb99275a4163522b1f3"
+    },
+    {
       "title": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা",
       "summary": "এল নিনোর প্রভাবে চলতি বছর হিন্দুকুশ হিমালয় অঞ্চলের কয়েকটি দেশে ভূমিধস ও তুষারধসের ঝুঁকি বাড়তে পারে। আবহাওয়ার পূর্বাভাসে এ অঞ্চলে স্বাভাবিকের চেয়ে বেশি বৃষ্টিপাতের সম্ভাবনা দেখা গেছে। এতে শীতকালীন আবহাওয়া বিপজ্জনক হয়ে উঠতে পারে। নেপাল, আফগানিস্তান ও বাংলাদেশেও স্বাভাবিকের চেয়ে বেশি বৃষ্টিপাতের পূর্বাভাস দেওয়া হয়েছে। ‘এইচকেএইচ উইন্টার আউটলুক ২০২৬’ শীর্ষক এক প্রতিবেদনে এসব তথ্য উঠে... বিস্তারিত",
       "link": "https://www.banglatribune.com/foreign/asia/982735/%E0%A6%B6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%A4%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%AD%E0%A6%BE%E0%A6%B8-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87",
@@ -934,38 +996,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "dc92a715257ad8d91882178bb6689d8e"
-    },
-    {
-      "title": "লিবিয়ায় রুশ যুদ্ধজাহাজে হামলার দায় স্বীকার করলেন জেলেনস্কি - dhakapost.com",
-      "summary": "লিবিয়ায় রুশ যুদ্ধজাহাজে হামলার দায় স্বীকার করলেন জেলেনস্কি dhakapost.com",
-      "link": "https://www.dhakapost.com/international/500228",
-      "publisherUrl": "https://www.dhakapost.com/international/500228",
-      "publishedAt": "2026-11-23T09:41:22+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500228"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "লিবিয়ায় রুশ যুদ্ধজাহাজে হামলার দায় স্বীকার করলেন জেলেনস্কি - dhakapost.com",
-          "summary": "লিবিয়ায় রুশ যুদ্ধজাহাজে হামলার দায় স্বীকার করলেন জেলেনস্কি dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500228",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "63f4a0bf0cc531a58274e89eafe75d4a"
     },
     {
       "title": "আ.লীগ সন্ত্রাসী সংগঠন, তাদের ঠেকাতে ঐক্যবদ্ধ হতে হবে: দুদু",
@@ -1028,37 +1058,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f620abed6df8d5d4e84f42582a327386"
-    },
-    {
-      "title": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-      "summary": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-      "link": "https://www.jagonews24.com/country/news/1182676",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1182676",
-      "publishedAt": "2026-11-23T09:01:36+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1182676"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-          "summary": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-          "url": "https://www.jagonews24.com/country/news/1182676"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b157a786dc3fc3a14fa332f05b5c9b52"
     },
     {
       "title": "‘আমি তোকে না পেলে পৃথিবীর কেউ তোকে পাবে না’, বোমাসদৃশ বস্তুর গায়ে চিরকুট",
@@ -1336,37 +1335,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4c24562ed26d3fc66b6c6671d5ed54fb"
-    },
-    {
-      "title": "চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
-      "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শিক্ষার্থীদের যাতায়াতের শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের কর্মীরা দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের কোনও ক্ষয়ক্ষতি হয়নি। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে নগরের বটতলী রেলস্টেশনের এক নম্বর প্ল্যাটফর্মে দাঁড়িয়ে থাকা বিশ্ববিদ্যালয়গামী শাটল ট্রেনে এ ঘটনা ঘটে। বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম বিষয়টি নিশ্চিত... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
-      "publishedAt": "2026-11-23T04:16:42+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
-          "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শিক্ষার্থীদের যাতায়াতের শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের কর্মীরা দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের কোনও ক্ষয়ক্ষতি হয়নি। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে নগরের বটতলী রেলস্টেশনের এক নম্বর প্ল্যাটফর্মে দাঁড়িয়ে থাকা বিশ্ববিদ্যালয়গামী শাটল ট্রেনে এ ঘটনা ঘটে। বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম বিষয়টি নিশ্চিত... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3af0775da5d493c2f813f6f7a1d8979b"
     },
     {
       "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
@@ -1657,37 +1625,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e34bab4b77ace9e1474df1f620ebb565"
-    },
-    {
-      "title": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু - Dhaka Tribune Bangla",
-      "summary": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
-      "publishedAt": "2026-11-22T12:00:42+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু - Dhaka Tribune Bangla",
-          "summary": "গ্যাস সিলিন্ডারের আগুনে দগ্ধ স্বামী-স্ত্রীর মৃত্যু Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113621/%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bcab5173017bd584bdd2d27dc407f198"
     }
   ]
 }
