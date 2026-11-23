@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T04:40:30.855312+00:00",
-  "updatedAt": "2026-11-23T04:40:30.855312+00:00",
+  "generatedAt": "2026-11-23T04:55:33.404607+00:00",
+  "updatedAt": "2026-11-23T04:55:33.404607+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -334,7 +334,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 25,
   "alertItems": [
     {
       "title": "নারায়ণগঞ্জে জুটভর্তি ট্রাকে দুর্বৃত্তদের আগুন",
@@ -990,38 +990,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a0d1089ce2acfb925df2931bdf4de6d"
-    },
-    {
-      "title": "সংবিধান বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায় আগুন ঠেকাতে পারলেন না কেন? প্রশ্ন আতিকুর রহমানের | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
-      "publisherUrl": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
-      "publishedAt": "2026-11-23T02:52:22+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=MfTQ-KcGGGk"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "সংবিধান বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায় আগুন ঠেকাতে পারলেন না কেন? প্রশ্ন আতিকুর রহমানের | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=MfTQ-KcGGGk",
-          "locationText": "বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায়, গোপালগঞ্জ"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4e05f7dca32eb38c02f0d869845b3ef2"
     },
     {
       "title": "ঢাকা-চট্টগ্রাম মহাসড়কের সাইনবোর্ডে বাসে আগুন | DBC NEWS",
@@ -1413,20 +1381,20 @@
       "alertEventId": "a9b70ed88be19df4af54e8b10fd02af6"
     },
     {
-      "title": "হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে বসতঘরে ঘুমন্ত শিশুর মৃত্যু, দগ্ধ বোন হাসপাতালে",
-      "summary": "চাঁদপুরের হাজীগঞ্জে বসতঘরে ভয়াবহ অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় মো. আনাছ হোসেন (২) নামে এক শিশুর মর্মান্তিক মৃত্যু হয়েছে। এ ঘটনায় তার বোন মরিয়ম আক্তার গুরুতর দগ্ধ হয়েছেন। আশঙ্কাজনক অবস্থায় তাকে কুমিল্লা মেডিকেল কলেজ হাসপাতালে পাঠানো হয়েছে। রোববার (২২ নভেম্বর) বিকেলে উপজেলার ৬নং বড়কুল পূর্ব ইউনিয়নের আতিক মেম্বার বাড়িতে এ হৃদয়বিদারক ঘটনা ঘটে। ​নিহত আনাছ ও দগ্ধ ...",
-      "link": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/",
-      "publishedAt": "2026-11-22T13:26:37+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
+      "title": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
+      "summary": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publishedAt": "2026-11-22T12:30:16+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Chandpur Times"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "category": "Bangladesh",
@@ -1434,14 +1402,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Chandpur Times",
-          "title": "হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে বসতঘরে ঘুমন্ত শিশুর মৃত্যু, দগ্ধ বোন হাসপাতালে",
-          "summary": "চাঁদপুরের হাজীগঞ্জে বসতঘরে ভয়াবহ অগ্নিকাণ্ডে ঘুমন্ত অবস্থায় মো. আনাছ হোসেন (২) নামে এক শিশুর মর্মান্তিক মৃত্যু হয়েছে। এ ঘটনায় তার বোন মরিয়ম আক্তার গুরুতর দগ্ধ হয়েছেন। আশঙ্কাজনক অবস্থায় তাকে কুমিল্লা মেডিকেল কলেজ হাসপাতালে পাঠানো হয়েছে। রোববার (২২ নভেম্বর) বিকেলে উপজেলার ৬নং বড়কুল পূর্ব ইউনিয়নের আতিক মেম্বার বাড়িতে এ হৃদয়বিদারক ঘটনা ঘটে। ​নিহত আনাছ ও দগ্ধ ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a7%9f%e0%a6%be%e0%a6%ac%e0%a6%b9/"
+          "name": "Dhaka Tribune Bangla",
+          "title": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
+          "summary": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "54192c6f424f25eeb1a94d90d50ca1c7"
+      "alertEventId": "e34bab4b77ace9e1474df1f620ebb565"
     },
     {
       "title": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
@@ -1504,37 +1472,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "55026017a054a32261e8f25d8507dc82"
-    },
-    {
-      "title": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী - Bd24live",
-      "summary": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী Bd24live",
-      "link": "https://www.bd24live.com/bangla/813922",
-      "publisherUrl": "https://www.bd24live.com/bangla/813922",
-      "publishedAt": "2026-11-22T10:12:19+00:00",
-      "source": "Bd24live",
-      "publisherName": "Bd24live",
-      "sourceEvidence": [
-        "Bd24live"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bd24live",
-          "url": "https://www.bd24live.com/bangla/813922"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bd24live",
-          "title": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী - Bd24live",
-          "summary": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী Bd24live",
-          "url": "https://www.bd24live.com/bangla/813922"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3b2a593daac7c76944faa1b135686f8a"
     },
     {
       "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
