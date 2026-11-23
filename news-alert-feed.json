@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T03:59:59.675596+00:00",
-  "updatedAt": "2026-11-23T03:59:59.675596+00:00",
+  "generatedAt": "2026-11-23T04:10:43.146269+00:00",
+  "updatedAt": "2026-11-23T04:10:43.146269+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -648,16 +648,16 @@
       "name": "GDACS",
       "domain": "gdacs.org",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "[Errno 104] Connection reset by peer",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
-      "fallbackOnly": true,
+      "directHealthy": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "USGS Earthquake Feed",
@@ -843,6 +843,51 @@
   "candidateCount": 23,
   "alertItems": [
     {
+      "title": "চট্টগ্রাম বিশ্ববিদ্যালয়ের শাটল ট্রেনে রাতের আঁধারে আগুন, দ্রুত নেভালেন রেলকর্মী ও শিক্ষার্থীরা",
+      "summary": "বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।",
+      "link": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr",
+      "publishedAt": "2026-11-23T03:57:31+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "চট্টগ্রাম বিশ্ববিদ্যালয়ের শাটল ট্রেনে রাতের আঁধারে আগুন, দ্রুত নেভালেন রেলকর্মী ও শিক্ষার্থীরা",
+          "summary": "বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।",
+          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬",
+          "incidentTimeText": "গতকাল রাতে",
+          "incidentTimeSource": "Prothom Alo"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
+    },
+    {
       "title": "টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন, শিশুসহ দগ্ধ ৩",
       "summary": "গাজীপুরের টঙ্গীতে একটি ভাড়া বাড়িতে আগুন লেগে ছয় বছরের শিশুসহ তিনজন দগ্ধ হয়েছেন। তাদের শরীরের বিভিন্ন অংশ পুড়ে যাওয়ায় প্রাথমিক চিকিৎসা শেষে উন্নত চিকিৎসার জন্য ঢাকা মেডিক্যাল কলেজ হাসপাতালের বার্ন ইউনিটে পাঠানো হয়েছে। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে টঙ্গী পশ্চিম থানার পশ্চিম দাঁড়াইল এলাকার জাহানারা বেগমের ভাড়া বাড়িতে এ অগ্নিকাণ্ড ঘটে। পরে রাত ১০টার দিকে ফায়ার সার্ভিসের কর্মীরা আগুন... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/982652/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81%E0%A6%B8%E0%A6%B9",
@@ -872,68 +917,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a0d1089ce2acfb925df2931bdf4de6d"
-    },
-    {
-      "title": "টঙ্গীতে সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩",
-      "summary": "গাজীপুরের টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন লেগে নারী ও শিশুসহ ৩ জন দগ্ধ হয়েছেন। চিকিৎসার জন্য তাদেরকে ঢাকায় নেওয়া হয়েছে। দগ্ধদের আশঙ্কাজনক অবস্থায়...",
-      "link": "https://www.jagonews24.com/country/news/1182543",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1182543",
-      "publishedAt": "2026-11-23T03:09:30+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1182543"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "টঙ্গীতে সিলিন্ডার লিকেজ থেকে আগুন, মা-ছেলেসহ দগ্ধ ৩",
-          "summary": "গাজীপুরের টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন লেগে নারী ও শিশুসহ ৩ জন দগ্ধ হয়েছেন। চিকিৎসার জন্য তাদেরকে ঢাকায় নেওয়া হয়েছে। দগ্ধদের আশঙ্কাজনক অবস্থায়...",
-          "url": "https://www.jagonews24.com/country/news/1182543"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "74bfa9c69d974eda3549fbc5af19f0b6"
-    },
-    {
-      "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-      "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-      "link": "https://www.jagonews24.com/national/news/1182539",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1182539",
-      "publishedAt": "2026-11-23T02:55:42+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1182539"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/national/news/1182539"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
     },
     {
       "title": "সংবিধান বিশেষজ্ঞ দিয়ে গোপালগঞ্জ থানায় আগুন ঠেকাতে পারলেন না কেন? প্রশ্ন আতিকুর রহমানের | Somoy TV",
@@ -1148,7 +1131,8 @@
           "name": "Banglanews24",
           "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
           "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
-          "url": "https://banglanews24.com/national/news/bd/1695220.details"
+          "url": "https://banglanews24.com/national/news/bd/1695220.details",
+          "incidentDateText": "২৩ নভেম্বর"
         }
       ],
       "corroborationCount": 1,
