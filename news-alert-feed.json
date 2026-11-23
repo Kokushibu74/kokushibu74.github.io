@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T22:45:47.963915+00:00",
-  "updatedAt": "2026-11-23T22:45:47.963915+00:00",
+  "generatedAt": "2026-11-23T23:00:36.067702+00:00",
+  "updatedAt": "2026-11-23T23:00:36.067702+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 51,
-  "failedSourceCount": 4,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 30,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 30,
-  "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 6,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,32 +302,32 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 1,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -843,6 +843,37 @@
   "candidateCount": 40,
   "alertItems": [
     {
+      "title": "পিরোজপুরে সেতুর ওপর দুই মোটরসাইকেলে ট্রলির ধাক্কা, নিহত ৩",
+      "summary": "পিরোজপুরের কঁচা নদীর ওপর নির্মিত অষ্টম বাংলাদেশ-চীন মৈত্রী সেতুতে দুটি মোটরসাইকেলের দুর্ঘটনায় তিন যুবক নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। তাদের একজন প্রাথমিক চিকিৎসা নিয়ে বাড়ি ফিরেছেন। অন্যজন খুলনায় চিকিৎসাধীন রয়েছেন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে সেতুর কাউখালী প্রান্তে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন কাউখালী উপজেলার বেকুটিয়া গ্রামের শতদল রায়ের ছেলে সান্তনু রায় শান্ত... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE",
+      "publishedAt": "2026-11-23T22:52:36+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "পিরোজপুরে সেতুর ওপর দুই মোটরসাইকেলে ট্রলির ধাক্কা, নিহত ৩",
+          "summary": "পিরোজপুরের কঁচা নদীর ওপর নির্মিত অষ্টম বাংলাদেশ-চীন মৈত্রী সেতুতে দুটি মোটরসাইকেলের দুর্ঘটনায় তিন যুবক নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। তাদের একজন প্রাথমিক চিকিৎসা নিয়ে বাড়ি ফিরেছেন। অন্যজন খুলনায় চিকিৎসাধীন রয়েছেন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে সেতুর কাউখালী প্রান্তে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন কাউখালী উপজেলার বেকুটিয়া গ্রামের শতদল রায়ের ছেলে সান্তনু রায় শান্ত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d597173fdfff78188b7929983965e0da"
+    },
+    {
       "title": "মঠবাড়িয়ায় সম্ভাব্য দুই চেয়ারম্যান প্রার্থীর সমর্থকদের সংঘর্ষ, আহত ৬",
       "summary": "পিরোজপুরের মঠবাড়িয়া উপজেলায় ইউনিয়ন পরিষদ নির্বাচনের দুই চেয়ারম্যান প্রার্থীর সমর্থকদের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে উভয় পক্ষের অন্তত ছয়জন আহত হয়েছেন...",
       "link": "https://www.jagonews24.com/country/news/1182921",
@@ -909,6 +940,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5a5c87158674eb74296406cf7dfef598"
+    },
+    {
+      "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
+      "summary": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ SAMAKAL",
+      "link": "https://samakal.com/chittagong/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6",
+      "publisherUrl": "https://samakal.com/chittagong/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6",
+      "publishedAt": "2026-11-23T21:06:20+00:00",
+      "source": "SAMAKAL",
+      "publisherName": "SAMAKAL",
+      "sourceEvidence": [
+        "SAMAKAL"
+      ],
+      "sourceLinks": [
+        {
+          "name": "SAMAKAL",
+          "url": "https://samakal.com/chittagong/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "SAMAKAL",
+          "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
+          "summary": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ SAMAKAL",
+          "url": "https://samakal.com/chittagong/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c73e09d9d6ad9062560596612da337f5"
     },
     {
       "title": "নেত্রকোনায় প্রকাশ্যে দুই স্কুলছাত্রকে পেটালো কিশোর গ্যাং",
@@ -1004,25 +1066,20 @@
       "alertEventId": "7bb6d2b8184382ac86b16c1ddda78ce4"
     },
     {
-      "title": "লালবাগে প্লাস্টিকের গুদামে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
-      "summary": "ফায়ার ফাইটার জয় রায় ও আজহারুলকে রাতে ঢাকা মেডিকেল কলেজ হাসপাতালে নেওয়া হয়েছে।",
-      "link": "https://www.prothomalo.com/bangladesh/a9jw8cgm0n",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/a9jw8cgm0n",
-      "publishedAt": "2026-11-23T18:44:36+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+      "link": "https://www.mzamin.com/article/63087",
+      "publisherUrl": "https://www.mzamin.com/article/63087",
+      "publishedAt": "2026-11-23T18:38:38+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
       "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
+        "Manab Zamin"
       ],
       "sourceLinks": [
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/a9jw8cgm0n"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087"
         }
       ],
       "category": "Bangladesh",
@@ -1030,22 +1087,16 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Prothom Alo",
-          "title": "লালবাগে প্লাস্টিকের গুদামে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
-          "summary": "ফায়ার ফাইটার জয় রায় ও আজহারুলকে রাতে ঢাকা মেডিকেল কলেজ হাসপাতালে নেওয়া হয়েছে।",
-          "url": "https://www.prothomalo.com/bangladesh/a9jw8cgm0n",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬",
-          "locationText": "ইসলামবাগ এলাকায়"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
-          "summary": "রাজধানীর লালবাগের ইসলামবাগ এলাকায় একটি প্লাস্টিকের গোডাউনে লাগা আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত হয়েছেন। তারা হলেন, ফায়ার ফাইটার জয় রায় (৩২) ও আজহারুল (২৬)। সোমবার (২৩ নভেম্বর) সন্ধ্যায় ঘটনাটি ঘটেছে। আহত অবস্থায় তাদের উদ্ধার করে ঢাকা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়। বিষয়টি নিশ্চিত করে ঢামেক হাসপাতাল পুলিশ ফাড়ির উপপরিদর্শক এসআই মো. সেলিম বলেন, তাদের জরুরি বিভাগে চিকিৎসা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+          "name": "Manab Zamin",
+          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087",
+          "incidentTimeText": "রাত ১০টায়",
+          "incidentTimeSource": "Manab Zamin"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "8809a1b13225ba4188c549ff66e4a2b6"
+      "corroborationCount": 1,
+      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
     },
     {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের মিছিলে কথাকাটাকাটির জেরে ২ গ্রামবাসীর সংঘর্ষ | News | JamunaTV",
@@ -1077,6 +1128,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c873f5f967cc58d0e4a9796b8456cd97"
+    },
+    {
+      "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
+      "summary": "রাজধানীর লালবাগের ইসলামবাগ এলাকায় একটি প্লাস্টিকের গোডাউনে লাগা আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত হয়েছেন। তারা হলেন, ফায়ার ফাইটার জয় রায় (৩২) ও আজহারুল (২৬)। সোমবার (২৩ নভেম্বর) সন্ধ্যায় ঘটনাটি ঘটেছে। আহত অবস্থায় তাদের উদ্ধার করে ঢাকা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়। বিষয়টি নিশ্চিত করে ঢামেক হাসপাতাল পুলিশ ফাড়ির উপপরিদর্শক এসআই মো. সেলিম বলেন, তাদের জরুরি বিভাগে চিকিৎসা... বিস্তারিত",
+      "link": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-23T17:06:36+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
+          "summary": "রাজধানীর লালবাগের ইসলামবাগ এলাকায় একটি প্লাস্টিকের গোডাউনে লাগা আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত হয়েছেন। তারা হলেন, ফায়ার ফাইটার জয় রায় (৩২) ও আজহারুল (২৬)। সোমবার (২৩ নভেম্বর) সন্ধ্যায় ঘটনাটি ঘটেছে। আহত অবস্থায় তাদের উদ্ধার করে ঢাকা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়। বিষয়টি নিশ্চিত করে ঢামেক হাসপাতাল পুলিশ ফাড়ির উপপরিদর্শক এসআই মো. সেলিম বলেন, তাদের জরুরি বিভাগে চিকিৎসা... বিস্তারিত",
+          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8809a1b13225ba4188c549ff66e4a2b6"
     },
     {
       "title": "পাবনায় আধিপত্য বিস্তারকে কেন্দ্র করে দু’গ্রুপের সংঘর্ষ; কয়েকজন গুলিবিদ্ধ | Pabna Clash | Jamuna TV",
@@ -1265,37 +1347,6 @@
       "alertEventId": "1697884564b407e80d621f51a59ca39b"
     },
     {
-      "title": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ - Daily Naya Diganta",
-      "summary": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ Daily Naya Diganta",
-      "link": "https://dailynayadiganta.com/post/other/1072110",
-      "publisherUrl": "https://dailynayadiganta.com/post/other/1072110",
-      "publishedAt": "2026-11-23T16:14:15+00:00",
-      "source": "Daily Naya Diganta",
-      "publisherName": "Daily Naya Diganta",
-      "sourceEvidence": [
-        "Daily Naya Diganta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/other/1072110"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Naya Diganta",
-          "title": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ - Daily Naya Diganta",
-          "summary": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ Daily Naya Diganta",
-          "url": "https://dailynayadiganta.com/post/other/1072110"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7492a41958a59111b499a846e72731c7"
-    },
-    {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ'ওয়ামী সন্ত্রাসীদের দুই পক্ষের সংঘর্ষ, গু লি বিদ্ধ ৪, আহত ১৫|Gopalganj",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=TSvKRq7ScEM",
@@ -1367,37 +1418,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
-    },
-    {
-      "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
-      "summary": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500333",
-      "publisherUrl": "https://www.dhakapost.com/country/500333",
-      "publishedAt": "2026-11-23T15:46:56+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500333"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
-          "summary": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500333"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d727ba14a0b2626f1ef48dc12ae0463b"
     },
     {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - SAMAKAL",
@@ -1827,8 +1847,8 @@
     {
       "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
       "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-      "link": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "link": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
       "publishedAt": "2026-11-23T07:37:36+00:00",
       "source": "একাত্তর",
       "publisherName": "একাত্তর",
@@ -1838,7 +1858,7 @@
       "sourceLinks": [
         {
           "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1849,7 +1869,7 @@
           "name": "একাত্তর",
           "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
           "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-          "url": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
         }
       ],
       "corroborationCount": 1,
