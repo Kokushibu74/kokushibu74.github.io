@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T06:55:32.798204+00:00",
-  "updatedAt": "2026-11-23T06:55:32.798204+00:00",
+  "generatedAt": "2026-11-23T07:05:41.998381+00:00",
+  "updatedAt": "2026-11-23T07:05:41.998381+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 6,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 23,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
+    {
+      "title": "সাড়ে চার ঘণ্টার ব্যবধানে নারায়ণগঞ্জে বাস-ট্রাকে আগুন",
+      "summary": "নারায়ণগঞ্জে কয়েক ঘণ্টার ব্যবধানে পৃথক স্থানে পার্ক করে রাখা একটি বাসে ও একটি ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। বাস ও ট্রাকের মালিকপক্ষের দাবি, পেট্রলবোমা নিক্ষেপ করে আগুন দেওয়া হয়েছে। তবে এ ঘটনায় কেউ হতাহত হননি। রবিবার (২২ নভেম্বর) দিবাগত রাত সোয়া ১২টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের সাইনবোর্ডের গিরিধারা এলাকায় পার্কিংয়ে থাকা অনাবিল পরিবহনের একটি বাসে আগুন দেওয়া হয়। এর প্রায় সাড়ে চার ঘণ্টা পর... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982684/%E0%A6%B8%E0%A6%BE%E0%A7%9C%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982684/%E0%A6%B8%E0%A6%BE%E0%A7%9C%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87",
+      "publishedAt": "2026-11-23T06:58:55+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982684/%E0%A6%B8%E0%A6%BE%E0%A7%9C%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সাড়ে চার ঘণ্টার ব্যবধানে নারায়ণগঞ্জে বাস-ট্রাকে আগুন",
+          "summary": "নারায়ণগঞ্জে কয়েক ঘণ্টার ব্যবধানে পৃথক স্থানে পার্ক করে রাখা একটি বাসে ও একটি ট্রাকে আগুন দিয়েছে দুর্বৃত্তরা। বাস ও ট্রাকের মালিকপক্ষের দাবি, পেট্রলবোমা নিক্ষেপ করে আগুন দেওয়া হয়েছে। তবে এ ঘটনায় কেউ হতাহত হননি। রবিবার (২২ নভেম্বর) দিবাগত রাত সোয়া ১২টার দিকে ঢাকা-চট্টগ্রাম মহাসড়কের সাইনবোর্ডের গিরিধারা এলাকায় পার্কিংয়ে থাকা অনাবিল পরিবহনের একটি বাসে আগুন দেওয়া হয়। এর প্রায় সাড়ে চার ঘণ্টা পর... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982684/%E0%A6%B8%E0%A6%BE%E0%A7%9C%E0%A7%87-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9e605b69ce0b40f5cc8858bfff3e831f"
+    },
+    {
+      "title": "সিলেটের শ্রীপুর পিকনিক সেন্টার থেকে প্লাষ্টিক বিস্ফোরক উদ্ধার",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/An2atY5HR8Y",
+      "publisherUrl": "https://www.youtube.com/shorts/An2atY5HR8Y",
+      "publishedAt": "2026-11-23T06:58:28+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/shorts/An2atY5HR8Y"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "সিলেটের শ্রীপুর পিকনিক সেন্টার থেকে প্লাষ্টিক বিস্ফোরক উদ্ধার",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/An2atY5HR8Y"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "992e1319138a01b0e9eaf71b0f9151ca"
+    },
     {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
       "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
@@ -873,37 +935,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "96b93fdbdbb41168ab45d3ca7b5b51bd"
-    },
-    {
-      "title": "বসতঘরের আগুনে পুড়ে ভাইয়ের মৃত্যু, বোনের অবস্থা আশঙ্কাজনক",
-      "summary": "চাঁদপুরের হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে দুটি বসতঘর পুড়ে ছাই হয়ে গেছে। এ ঘটনায় ঘরে থাকা ভাই-বোনের মধ্যে দুই বছর বয়সী শিশু আনাছ হোসেনের মর্মান্তিক মৃত্যু হয়েছে...",
-      "link": "https://www.jagonews24.com/country/news/1182602",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1182602",
-      "publishedAt": "2026-11-23T06:11:00+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1182602"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "বসতঘরের আগুনে পুড়ে ভাইয়ের মৃত্যু, বোনের অবস্থা আশঙ্কাজনক",
-          "summary": "চাঁদপুরের হাজীগঞ্জে ভয়াবহ অগ্নিকাণ্ডে দুটি বসতঘর পুড়ে ছাই হয়ে গেছে। এ ঘটনায় ঘরে থাকা ভাই-বোনের মধ্যে দুই বছর বয়সী শিশু আনাছ হোসেনের মর্মান্তিক মৃত্যু হয়েছে...",
-          "url": "https://www.jagonews24.com/country/news/1182602"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ec634e148f43a4aa88c8a0f107550043"
     },
     {
       "title": "শ্রীপুরে বন্ধ ২১ কারখানা: কাজ হারানোর শঙ্কায় ৭০ হাজার শ্রমিক",
@@ -1105,10 +1136,7 @@
           "name": "Prothom Alo",
           "title": "চট্টগ্রাম বিশ্ববিদ্যালয়ের শাটল ট্রেনে রাতের আঁধারে আগুন, দ্রুত নেভালেন রেলকর্মী ও শিক্ষার্থীরা",
           "summary": "বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।",
-          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Prothom Alo"
+          "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr"
         },
         {
           "name": "Jago News 24",
@@ -1370,12 +1398,6 @@
           "url": "https://www.banglatribune.com/others/capital-city/982596/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
         },
         {
-          "name": "Bangla Tribune",
-          "title": "ককটেল বিস্ফোরণে ঢাকা বিশ্ববদ্যালয়ের কর্মচারী ও ছাত্রদল নেতা আহত",
-          "summary": "ঢাকা সেন্ট্রাল ইউনিভার্সিটির সংযুক্ত কবি নজরুল সরকারি কলেজের অনার্স প্রথম বর্ষের পরীক্ষা চলাকালে কলেজের মূল ফটকের সামনে দুইটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে কলেজ ছাত্রদলের এক নেতা ও এক কর্মচারী আহত হয়েছেন। রবিবার ( ২২ নভেম্বর) বিকাল ৫টার দিকে কলেজের মূল ফটকের সামনে এ ঘটনা ঘটেছে বলে জানা গেছে। এ ঘটনায় আহত হয়েছেন কবি নজরুল সরকারি কলেজের ইতিহাস বিভাগের ২০২০-২০ শিক্ষাবর্ষের শিক্ষার্থী ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/982590/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%95%E0%A6%AC%E0%A6%BF-%E0%A6%A8%E0%A6%9C%E0%A6%B0%E0%A7%81%E0%A6%B2-%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%93"
-        },
-        {
           "name": "একাত্তর",
           "title": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক - একাত্তর",
           "summary": "ঢাকায় বাসায় সিলিন্ডার বিস্ফোরণ: বিকট শব্দে ভেঙে পড়ে কাচ ও দেয়াল, নিহত এক একাত্তর",
@@ -1421,6 +1443,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bcab5173017bd584bdd2d27dc407f198"
+    },
+    {
+      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publishedAt": "2026-11-22T14:49:30+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
     },
     {
       "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
