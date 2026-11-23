@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T09:15:31.526204+00:00",
-  "updatedAt": "2026-11-23T09:15:31.526204+00:00",
+  "generatedAt": "2026-11-23T09:30:38.204148+00:00",
+  "updatedAt": "2026-11-23T09:30:38.204148+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "আ.লীগ সন্ত্রাসী সংগঠন, তাদের ঠেকাতে ঐক্যবদ্ধ হতে হবে: দুদু",
@@ -906,7 +906,7 @@
     },
     {
       "title": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-      "summary": "যশোর শহরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কয়েকজন নেতার বাড়ি লক্ষ্য করে ককটেল নিক্ষেপের অভিযোগ উঠেছে...",
+      "summary": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
       "link": "https://www.jagonews24.com/country/news/1182676",
       "publisherUrl": "https://www.jagonews24.com/country/news/1182676",
       "publishedAt": "2026-11-23T09:01:36+00:00",
@@ -928,7 +928,7 @@
         {
           "name": "Jago News 24",
           "title": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
-          "summary": "যশোর শহরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কয়েকজন নেতার বাড়ি লক্ষ্য করে ককটেল নিক্ষেপের অভিযোগ উঠেছে...",
+          "summary": "যশোরে পলাতক আ’লীগ নেতাদের বাড়ি লক্ষ্য করে ককটেল হামলা",
           "url": "https://www.jagonews24.com/country/news/1182676"
         }
       ],
@@ -1214,37 +1214,6 @@
       "alertEventId": "4c24562ed26d3fc66b6c6671d5ed54fb"
     },
     {
-      "title": "নারায়ণগঞ্জে মধ্যরাতে দাঁড়িয়ে থাকা বাস ও ভোরে ঝুটবোঝাই ট্রাকে আগুন",
-      "summary": "মোটরসাইকেলে করে আসা দুই ব্যক্তি পার্কিং করে রাখা ট্রাকটি লক্ষ্য করে পেট্রলবোমা নিক্ষেপ করেন। পরে তাঁরা দ্রুত ঘটনাস্থল থেকে পালিয়ে যান।",
-      "link": "https://www.prothomalo.com/bangladesh/district/y8axowmka5",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/y8axowmka5",
-      "publishedAt": "2026-11-23T05:10:16+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/y8axowmka5"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নারায়ণগঞ্জে মধ্যরাতে দাঁড়িয়ে থাকা বাস ও ভোরে ঝুটবোঝাই ট্রাকে আগুন",
-          "summary": "মোটরসাইকেলে করে আসা দুই ব্যক্তি পার্কিং করে রাখা ট্রাকটি লক্ষ্য করে পেট্রলবোমা নিক্ষেপ করেন। পরে তাঁরা দ্রুত ঘটনাস্থল থেকে পালিয়ে যান।",
-          "url": "https://www.prothomalo.com/bangladesh/district/y8axowmka5"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ae4ec6edb47c393a0783ea0a57802ef2"
-    },
-    {
       "title": "চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
       "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শিক্ষার্থীদের যাতায়াতের শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের কর্মীরা দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের কোনও ক্ষয়ক্ষতি হয়নি। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে নগরের বটতলী রেলস্টেশনের এক নম্বর প্ল্যাটফর্মে দাঁড়িয়ে থাকা বিশ্ববিদ্যালয়গামী শাটল ট্রেনে এ ঘটনা ঘটে। বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম বিষয়টি নিশ্চিত... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
@@ -1336,37 +1305,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b13c0970bd272ff591abf264f7ae8d45"
-    },
-    {
-      "title": "‘টকশোতে আ.লীগের পক্ষে বললে জুতা দিয়ে পেটাবেন’ বক্তব্যের যে ব্যাখ্যা দিলেন রাশেদ খাঁন",
-      "summary": "প্রধানমন্ত্রীর রাজনৈতিক সহকারী রাশেদ খাঁন বলেছেন, ‘কেউ টকশোতে আওয়ামী গণহত্যাকারীদের পক্ষে বয়ান উৎপাদন না করলে তো আমার বক্তব্য নিয়ে প্রতিক্রিয়া দেখানোর কথা নয়। গোপালগঞ্জের আগুনসন্ত্রাসীদের পক্ষে যারা কথা বলছে, যারা নড়াইল ও ফরিদপুরে আমার ভাইদের খুনিদের পক্ষে কথা বলছে, আমি তো তাদের বিরুদ্ধে বলেছি। আমি তো কোনও ভালো মানুষের বিপক্ষে বলি নাই, খারাপ মানুষের বিরুদ্ধে কঠিন ভাষায় কথা বলেছি, কিন্তু এতে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/politics/bnp/982636/%E2%80%98%E0%A6%9F%E0%A6%95%E0%A6%B6%E0%A7%8B%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%A4%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%A8%E2%80%99",
-      "publisherUrl": "https://www.banglatribune.com/politics/bnp/982636/%E2%80%98%E0%A6%9F%E0%A6%95%E0%A6%B6%E0%A7%8B%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%A4%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%A8%E2%80%99",
-      "publishedAt": "2026-11-22T21:14:38+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/politics/bnp/982636/%E2%80%98%E0%A6%9F%E0%A6%95%E0%A6%B6%E0%A7%8B%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%A4%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%A8%E2%80%99"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "‘টকশোতে আ.লীগের পক্ষে বললে জুতা দিয়ে পেটাবেন’ বক্তব্যের যে ব্যাখ্যা দিলেন রাশেদ খাঁন",
-          "summary": "প্রধানমন্ত্রীর রাজনৈতিক সহকারী রাশেদ খাঁন বলেছেন, ‘কেউ টকশোতে আওয়ামী গণহত্যাকারীদের পক্ষে বয়ান উৎপাদন না করলে তো আমার বক্তব্য নিয়ে প্রতিক্রিয়া দেখানোর কথা নয়। গোপালগঞ্জের আগুনসন্ত্রাসীদের পক্ষে যারা কথা বলছে, যারা নড়াইল ও ফরিদপুরে আমার ভাইদের খুনিদের পক্ষে কথা বলছে, আমি তো তাদের বিরুদ্ধে বলেছি। আমি তো কোনও ভালো মানুষের বিপক্ষে বলি নাই, খারাপ মানুষের বিরুদ্ধে কঠিন ভাষায় কথা বলেছি, কিন্তু এতে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/politics/bnp/982636/%E2%80%98%E0%A6%9F%E0%A6%95%E0%A6%B6%E0%A7%8B%E0%A6%A4%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%A4%E0%A6%BE-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%A8%E2%80%99"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0465da0de9802e4942fce50ec163c675"
     },
     {
       "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
@@ -1719,37 +1657,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "55026017a054a32261e8f25d8507dc82"
-    },
-    {
-      "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
-      "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
-      "link": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-22T09:41:29+00:00",
-      "source": "ডেইলি সান বাংলা",
-      "publisherName": "ডেইলি সান বাংলা",
-      "sourceEvidence": [
-        "ডেইলি সান বাংলা"
-      ],
-      "sourceLinks": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "ডেইলি সান বাংলা",
-          "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
-          "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3fb77cd12ffb38ff5d2e1f86cbc77da3"
     }
   ]
 }
