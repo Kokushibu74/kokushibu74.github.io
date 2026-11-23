@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T09:30:38.204148+00:00",
-  "updatedAt": "2026-11-23T09:30:38.204148+00:00",
+  "generatedAt": "2026-11-23T09:45:29.278828+00:00",
+  "updatedAt": "2026-11-23T09:45:29.278828+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 4,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -457,12 +457,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 0,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Ajker Patrika",
@@ -1059,6 +1059,37 @@
       "alertEventId": "cd47bfa5a812b35b2bbdc545d28df9d5"
     },
     {
+      "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
+      "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
+      "link": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publishedAt": "2026-11-23T07:37:36+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
+          "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
+          "url": "https://ekattor.tv/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6c10f4cf4df618238b436a33b897094a"
+    },
+    {
       "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
       "summary": "ঢাকার সাভারের আশুলিয়ায় সড়ক অবরোধ করে বিক্ষোভ করেছেন তৈরি পোশাকশ্রমিকদের একটি দল। এ সময় একটি বাস ভাঙচুরের চেষ্টা এবং আশপাশের কয়েকটি কারখানায় হামলার ঘটনা ঘটে। পরে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সদস্যরা টিয়ারশেল ও সাউন্ড গ্রেনেড নিক্ষেপ করে বিক্ষোভকারীদের ছত্রভঙ্গ করে দেন। সোমবার (২৩ নভেম্বর) সকালে আশুলিয়ার নিশ্চিন্তপুর এলাকায় আবদুল্লাহপুর-বাইপাইল সড়কে এ ঘটনা ঘটে। প্রত্যক্ষদর্শীরা জানান, সকালে... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/982691/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD-%E0%A6%9F%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%B6%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%8D%E0%A6%A1",
@@ -1088,37 +1119,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "73cc4add192faf0f077d87c9eb680876"
-    },
-    {
-      "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
-      "summary": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87",
-      "publishedAt": "2026-11-23T06:59:16+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
-          "summary": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "198a2a5b156f8b1ede14293ad220de6d"
     },
     {
       "title": "সাড়ে চার ঘণ্টার ব্যবধানে নারায়ণগঞ্জে বাস-ট্রাকে আগুন",
