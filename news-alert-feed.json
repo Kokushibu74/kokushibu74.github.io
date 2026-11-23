@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T03:45:34.497534+00:00",
-  "updatedAt": "2026-11-23T03:45:34.497534+00:00",
+  "generatedAt": "2026-11-23T03:59:59.675596+00:00",
+  "updatedAt": "2026-11-23T03:59:59.675596+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -648,16 +648,16 @@
       "name": "GDACS",
       "domain": "gdacs.org",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "[Errno 104] Connection reset by peer",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
+      "directHealthy": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "USGS Earthquake Feed",
@@ -840,14 +840,14 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 23,
   "alertItems": [
     {
       "title": "টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন, শিশুসহ দগ্ধ ৩",
       "summary": "গাজীপুরের টঙ্গীতে একটি ভাড়া বাড়িতে আগুন লেগে ছয় বছরের শিশুসহ তিনজন দগ্ধ হয়েছেন। তাদের শরীরের বিভিন্ন অংশ পুড়ে যাওয়ায় প্রাথমিক চিকিৎসা শেষে উন্নত চিকিৎসার জন্য ঢাকা মেডিক্যাল কলেজ হাসপাতালের বার্ন ইউনিটে পাঠানো হয়েছে। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে টঙ্গী পশ্চিম থানার পশ্চিম দাঁড়াইল এলাকার জাহানারা বেগমের ভাড়া বাড়িতে এ অগ্নিকাণ্ড ঘটে। পরে রাত ১০টার দিকে ফায়ার সার্ভিসের কর্মীরা আগুন... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/982652/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81%E0%A6%B8%E0%A6%B9",
       "publisherUrl": "https://www.banglatribune.com/country/dhaka/982652/%E0%A6%9F%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%B8%E0%A6%A4%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81%E0%A6%B8%E0%A6%B9",
-      "publishedAt": "2026-11-23T03:28:52+00:00",
+      "publishedAt": "2026-11-23T03:45:00+00:00",
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
@@ -906,7 +906,7 @@
     },
     {
       "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-      "summary": "চট্টগ্রাম নগরের দামপাড়ায় চট্টগ্রাম মেট্রোপলিটন পুলিশের (সিএমপি) পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এ সময় ঘটনাস্থল থেকে অবিস্ফোরিত অবস্থায় আরও একটি ককটেল উদ্ধার করে পুলিশ...",
+      "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
       "link": "https://www.jagonews24.com/national/news/1182539",
       "publisherUrl": "https://www.jagonews24.com/national/news/1182539",
       "publishedAt": "2026-11-23T02:55:42+00:00",
@@ -928,7 +928,7 @@
         {
           "name": "Jago News 24",
           "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "summary": "চট্টগ্রাম নগরের দামপাড়ায় চট্টগ্রাম মেট্রোপলিটন পুলিশের (সিএমপি) পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এ সময় ঘটনাস্থল থেকে অবিস্ফোরিত অবস্থায় আরও একটি ককটেল উদ্ধার করে পুলিশ...",
+          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
           "url": "https://www.jagonews24.com/national/news/1182539"
         }
       ],
@@ -1059,37 +1059,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8c6002e415f99374bb38e6680a2104ac"
-    },
-    {
-      "title": "পাবনায় কার্যক্রম নিষিদ্ধ আ.লীগ ও বিএনপির নেতাকর্মীদের সংঘর্ষ | Pabna | Political Clash | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=_qrnoYwnFm4",
-      "publisherUrl": "https://www.youtube.com/watch?v=_qrnoYwnFm4",
-      "publishedAt": "2026-11-23T02:16:33+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=_qrnoYwnFm4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "পাবনায় কার্যক্রম নিষিদ্ধ আ.লীগ ও বিএনপির নেতাকর্মীদের সংঘর্ষ | Pabna | Political Clash | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=_qrnoYwnFm4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3895cf7a149d635932f0fd3f0e6b16c7"
     },
     {
       "title": "‘টকশোতে আ.লীগের পক্ষে বললে জুতা দিয়ে পেটাবেন’ বক্তব্যের যে ব্যাখ্যা দিলেন রাশেদ খাঁন",
