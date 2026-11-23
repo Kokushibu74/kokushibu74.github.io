@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T04:10:43.146269+00:00",
-  "updatedAt": "2026-11-23T04:10:43.146269+00:00",
+  "generatedAt": "2026-11-23T04:25:32.356168+00:00",
+  "updatedAt": "2026-11-23T04:25:32.356168+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 20,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 35,
   "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackWithItemsSourceCount": 27,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24",
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,8 +840,61 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 23,
+  "candidateCount": 27,
   "alertItems": [
+    {
+      "title": "চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ",
+      "summary": "চট্টগ্রাম রেলওয়ে স্টেশনে দাঁড়িয়ে থাকা চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে আগুন লাগানোর ঘটনা ঘটেছে। রেলওয়ের কর্মকর্তাদের ধারণা, কেউ কেরোসিনজাতীয় পদার্থ ঢেলে আগুন ধরিয়েছে। গতকাল রোববার রাত আটটার দিকে স্টেশনে ট্রেনটিতে আগুন দেখা যায়। রাত সাড়ে আটটায় ট্রেনটির বিশ্ববিদ্যালয়ের উদ্দেশে ছাড়ার কথা ছিল। চবির প্রক্টর অধ্যাপক কামরুল হোসেন জানান, ট্রেনটি দাঁড়ানো অবস্থায় সামান্য আগুন দেওয়া হয়েছিল। […] The post চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/",
+      "publisherUrl": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/",
+      "publishedAt": "2026-11-23T04:16:57+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi",
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ",
+          "summary": "চট্টগ্রাম রেলওয়ে স্টেশনে দাঁড়িয়ে থাকা চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে আগুন লাগানোর ঘটনা ঘটেছে। রেলওয়ের কর্মকর্তাদের ধারণা, কেউ কেরোসিনজাতীয় পদার্থ ঢেলে আগুন ধরিয়েছে। গতকাল রোববার রাত আটটার দিকে স্টেশনে ট্রেনটিতে আগুন দেখা যায়। রাত সাড়ে আটটায় ট্রেনটির বিশ্ববিদ্যালয়ের উদ্দেশে ছাড়ার কথা ছিল। চবির প্রক্টর অধ্যাপক কামরুল হোসেন জানান, ট্রেনটি দাঁড়ানো অবস্থায় সামান্য আগুন দেওয়া হয়েছিল। […] The post চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "চবির শাটল ট্রেনে আগুন দেওয়ার চেষ্টা",
+          "summary": "চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শিক্ষার্থীদের যাতায়াতের শাটল ট্রেনে কেরোসিন ঢেলে আগুন দেওয়ার চেষ্টা করেছে দুর্বৃত্তরা। তবে ট্রেনের কর্মীরা দ্রুত আগুন নিভিয়ে ফেলায় বড় ধরনের কোনও ক্ষয়ক্ষতি হয়নি। রবিবার (২২ নভেম্বর) রাত সাড়ে ৮টার দিকে নগরের বটতলী রেলস্টেশনের এক নম্বর প্ল্যাটফর্মে দাঁড়িয়ে থাকা বিশ্ববিদ্যালয়গামী শাটল ট্রেনে এ ঘটনা ঘটে। বিশ্ববিদ্যালয়ের প্রক্টর অধ্যাপক ড. কামরুল ইসলাম বিষয়টি নিশ্চিত... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/982657/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
+          "url": "https://www.jagonews24.com/national/news/1182539"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
+    },
     {
       "title": "চট্টগ্রাম বিশ্ববিদ্যালয়ের শাটল ট্রেনে রাতের আঁধারে আগুন, দ্রুত নেভালেন রেলকর্মী ও শিক্ষার্থীরা",
       "summary": "বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।বগিটির ভেতরে কেরোসিনের তীব্র গন্ধ ছিল। পরে বগিতে তল্লাশি করে একটি কেরোসিনের বোতল পাওয়া যায়। বগিটির বেশ কয়েকটি আসনেও কেরোসিন মাখানো ছিল।",
@@ -851,17 +904,12 @@
       "source": "Prothom Alo",
       "publisherName": "Prothom Alo",
       "sourceEvidence": [
-        "Prothom Alo",
-        "Jago News 24"
+        "Prothom Alo"
       ],
       "sourceLinks": [
         {
           "name": "Prothom Alo",
           "url": "https://www.prothomalo.com/bangladesh/district/okmwrffrhr"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1182539"
         }
       ],
       "category": "Bangladesh",
@@ -876,16 +924,10 @@
           "incidentDateText": "২৩ নভেম্বর ২০২৬",
           "incidentTimeText": "গতকাল রাতে",
           "incidentTimeSource": "Prothom Alo"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/national/news/1182539"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "c8bca519497cf3f279bdf1038cb7c38b"
+      "corroborationCount": 1,
+      "alertEventId": "3ec6f0580b4fd6aebbd7c27a9c2636da"
     },
     {
       "title": "টঙ্গীতে গ্যাস লিকেজ থেকে বসতবাড়িতে আগুন, শিশুসহ দগ্ধ ৩",
@@ -1099,8 +1141,7 @@
           "name": "dhakapost.com",
           "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
           "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500087",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬"
+          "url": "https://www.dhakapost.com/politics/500087"
         }
       ],
       "corroborationCount": 1,
@@ -1131,8 +1172,7 @@
           "name": "Banglanews24",
           "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
           "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
-          "url": "https://banglanews24.com/national/news/bd/1695220.details",
-          "incidentDateText": "২৩ নভেম্বর"
+          "url": "https://banglanews24.com/national/news/bd/1695220.details"
         }
       ],
       "corroborationCount": 1,
@@ -1373,6 +1413,37 @@
       "alertEventId": "54192c6f424f25eeb1a94d90d50ca1c7"
     },
     {
+      "title": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
+      "summary": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
+      "publishedAt": "2026-11-22T12:30:16+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ - Dhaka Tribune Bangla",
+          "summary": "ফরিদপুরে তিনটি স্থানে পেট্রোল বোমা ও অগ্নিসংযোগ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113622/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A6%9F%E0%A6%BF-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%93-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e34bab4b77ace9e1474df1f620ebb565"
+    },
+    {
       "title": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ - Risingbd.com",
       "summary": "মাদারীপুরে গ্রামীণ ব্যাংকের দুই শাখায় পেট্রোল বোমা নিক্ষেপ Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/672335",
@@ -1435,6 +1506,37 @@
       "alertEventId": "55026017a054a32261e8f25d8507dc82"
     },
     {
+      "title": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী - Bd24live",
+      "summary": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী Bd24live",
+      "link": "https://www.bd24live.com/bangla/813922",
+      "publisherUrl": "https://www.bd24live.com/bangla/813922",
+      "publishedAt": "2026-11-22T10:12:19+00:00",
+      "source": "Bd24live",
+      "publisherName": "Bd24live",
+      "sourceEvidence": [
+        "Bd24live"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bd24live",
+          "url": "https://www.bd24live.com/bangla/813922"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bd24live",
+          "title": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী - Bd24live",
+          "summary": "অগ্নিকাণ্ডে বসতঘর পুড়ে ছাই, ক্ষতিগ্রস্ত পরিবারের পাশে বাংলাদেশ সেনাবাহিনী Bd24live",
+          "url": "https://www.bd24live.com/bangla/813922"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3b2a593daac7c76944faa1b135686f8a"
+    },
+    {
       "title": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ - ডেইলি সান বাংলা",
       "summary": "নারায়ণগঞ্জে চলন্ত বাসে যাত্রীবেশে দুর্বৃত্তদের আগুন​ ডেইলি সান বাংলা",
       "link": "https://bangla.daily-sun.com/district-news/62349/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1468,8 +1570,8 @@
     {
       "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
       "summary": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
       "publishedAt": "2026-11-22T06:09:05+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1479,7 +1581,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1490,7 +1592,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার - Dhaka Tribune Bangla",
           "summary": "নাটোরে পরিত্যক্ত অবস্থায় ৬ ককটেল উদ্ধার Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113587/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A7%AC-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
         }
       ],
       "corroborationCount": 1,
