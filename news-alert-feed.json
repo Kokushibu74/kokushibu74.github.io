@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T12:30:38.192363+00:00",
-  "updatedAt": "2026-11-23T12:30:38.192363+00:00",
+  "generatedAt": "2026-11-23T12:40:39.146698+00:00",
+  "updatedAt": "2026-11-23T12:40:39.146698+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -843,6 +843,39 @@
   "candidateCount": 26,
   "alertItems": [
     {
+      "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
+      "summary": "চট্টগ্রাম সিটি কলেজ থেকে এইচএসসি পাস করে বিশ্ববিদ্যালয়ে ভর্তির স্বপ্ন নিয়ে প্রস্তুতি নিচ্ছিলেন মিফতাহুল জান্নাত (১৯)। একাডেমিক কাগজপত্র আনতে কলেজে যাওয়ার পথেই সড়ক দুর্ঘটনায় গুরুতর আহত হন তিনি। এরপর হাসপাতালের বিছানায় লাইফ সাপোর্টে চলছিল তাঁর বেঁচে থাকার লড়াই। শেষ পর্যন্ত সেই লড়াই থেমে গেল। রোববার দিবাগত রাত সাড়ে তিনটার দিকে চিকিৎসাধীন অবস্থায় মারা যান মিফতাহুল। […] The post লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/city-college-student-miftahul-jannat-dies/",
+      "publisherUrl": "https://dainikazadi.net/city-college-student-miftahul-jannat-dies/",
+      "publishedAt": "2026-11-23T12:27:26+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/city-college-student-miftahul-jannat-dies/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
+          "summary": "চট্টগ্রাম সিটি কলেজ থেকে এইচএসসি পাস করে বিশ্ববিদ্যালয়ে ভর্তির স্বপ্ন নিয়ে প্রস্তুতি নিচ্ছিলেন মিফতাহুল জান্নাত (১৯)। একাডেমিক কাগজপত্র আনতে কলেজে যাওয়ার পথেই সড়ক দুর্ঘটনায় গুরুতর আহত হন তিনি। এরপর হাসপাতালের বিছানায় লাইফ সাপোর্টে চলছিল তাঁর বেঁচে থাকার লড়াই। শেষ পর্যন্ত সেই লড়াই থেমে গেল। রোববার দিবাগত রাত সাড়ে তিনটার দিকে চিকিৎসাধীন অবস্থায় মারা যান মিফতাহুল। […] The post লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/city-college-student-miftahul-jannat-dies/",
+          "incidentDateText": "১৭ নভেম্বর",
+          "locationText": "নিহত মিফতাহুল পটিয়া উপজেলার, জিরি ইউনিয়নে, আহত হওয়ার পর থানায়"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "76545e5284e724d5a88cd4b763b7c33d"
+    },
+    {
       "title": "সিলেটে যৌথ অভিযানে বিস্ফোরক উদ্ধার | Sylhet BGB | Independent TV",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=N7lczOEbWUE",
@@ -1037,17 +1070,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Prothom Alo"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/khulna/982712/%E2%80%98%E0%A6%86%E0%A6%AE%E0%A6%BF-%E0%A6%A4%E0%A7%8B%E0%A6%95%E0%A7%87-%E0%A6%A8%E0%A6%BE-%E0%A6%AA%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%BF%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%A4%E0%A7%8B%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%A8%E0%A6%BE%E2%80%99"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/vx7i9plk7n"
         }
       ],
       "category": "Bangladesh",
@@ -1059,17 +1087,10 @@
           "title": "‘আমি তোকে না পেলে পৃথিবীর কেউ তোকে পাবে না’, বোমাসদৃশ বস্তুর গায়ে চিরকুট",
           "summary": "প্রেমিকাকে উদ্দেশ করে লেখা একটি চিরকুট ঘিরে মেহেরপুরের গাংনীতে ছড়িয়ে পড়ে বোমা আতঙ্ক। কালো টেপে মোড়ানো একটি জর্দার কৌটার গায়ে লাগানো ছিল চিরকুটটি। তাতে লেখা, ‘আমি তোকে না পেলে পৃথিবীর কেউ তোকে পাবে না।’ তবে বস্তুটি পরীক্ষা করে এর ভেতরে কোনও বিস্ফোরক পাওয়া যায়নি বলে জানিয়েছে পুলিশ। রবিবার (২২ নভেম্বর) দুপুরে গাংনী উপজেলার নবীনপুর গ্রামের একটি খেলার মাঠের পাশে নির্মাণাধীন ভবনের... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/khulna/982712/%E2%80%98%E0%A6%86%E0%A6%AE%E0%A6%BF-%E0%A6%A4%E0%A7%8B%E0%A6%95%E0%A7%87-%E0%A6%A8%E0%A6%BE-%E0%A6%AA%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%BF%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%A4%E0%A7%8B%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%A8%E0%A6%BE%E2%80%99"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "বোমাসদৃশ বস্তুর গায়ে চিরকুট: ‘আমি তোকে না পেলে পৃথিবীর কেউ তোকে পাবে না’",
-          "summary": "মেহেরপুরের গাংনীর নবীনপুর গ্রামে কালো টেপে মোড়ানো জর্দার কৌটায় পাওয়া গেছে প্রেমিকাকে উদ্দেশ করে লেখা হুমকির চিরকুট। বোমাসদৃশ বস্তুটি ঘিরে এলাকায় আতঙ্ক ছড়ালে পুলিশ ঘটনাস্থলে যায়।",
-          "url": "https://www.prothomalo.com/bangladesh/district/vx7i9plk7n",
-          "locationText": "ঘটনাটি মেহেরপুরের গাংনী উপজেলার, মেহেরপুর, নবীনপুর গ্রামে"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "74fe658dec95d2d8922a2c3ac50713a5"
+      "corroborationCount": 1,
+      "alertEventId": "e54af36d912ef794080726961623c83f"
     },
     {
       "title": "কিশোরগঞ্জে দুদক কার্যালয়ে পেট্রোল বোমা নিক্ষেপ",
@@ -1111,17 +1132,12 @@
       "source": "bdnews24.com",
       "publisherName": "bdnews24.com",
       "sourceEvidence": [
-        "bdnews24.com",
-        "Dainik Azadi"
+        "bdnews24.com"
       ],
       "sourceLinks": [
         {
           "name": "bdnews24.com",
           "url": "https://bangla.bdnews24.com/bangladesh/4hxif6a8am"
-        },
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/"
         }
       ],
       "category": "Bangladesh",
@@ -1139,16 +1155,41 @@
           "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
           "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
           "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
-        },
-        {
-          "name": "Dainik Azadi",
-          "title": "চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ",
-          "summary": "চট্টগ্রাম রেলওয়ে স্টেশনে দাঁড়িয়ে থাকা চট্টগ্রাম বিশ্ববিদ্যালয়ের (চবি) শাটল ট্রেনে আগুন লাগানোর ঘটনা ঘটেছে। রেলওয়ের কর্মকর্তাদের ধারণা, কেউ কেরোসিনজাতীয় পদার্থ ঢেলে আগুন ধরিয়েছে। গতকাল রোববার রাত আটটার দিকে স্টেশনে ট্রেনটিতে আগুন দেখা যায়। রাত সাড়ে আটটায় ট্রেনটির বিশ্ববিদ্যালয়ের উদ্দেশে ছাড়ার কথা ছিল। চবির প্রক্টর অধ্যাপক কামরুল হোসেন জানান, ট্রেনটি দাঁড়ানো অবস্থায় সামান্য আগুন দেওয়া হয়েছিল। […] The post চট্টগ্রাম স্টেশনে দাঁড়ানো চবির শাটল ট্রেনে আগুন, কেরোসিন ঢালার সন্দেহ appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/ctg-cu-shuttle-train-fire/"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "cd47bfa5a812b35b2bbdc545d28df9d5"
+      "corroborationCount": 1,
+      "alertEventId": "96b93fdbdbb41168ab45d3ca7b5b51bd"
+    },
+    {
+      "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
+      "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
+      "link": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
+      "publishedAt": "2026-11-23T07:37:36+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
+          "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
+          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6c10f4cf4df618238b436a33b897094a"
     },
     {
       "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
