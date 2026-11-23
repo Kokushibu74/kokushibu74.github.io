@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T07:30:43.492218+00:00",
-  "updatedAt": "2026-11-23T07:30:43.492218+00:00",
+  "generatedAt": "2026-11-23T07:45:45.983128+00:00",
+  "updatedAt": "2026-11-23T07:45:45.983128+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 8,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 5,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "আশুলিয়ায় শ্রমিকদের বিক্ষোভ, টিয়ার শেল-সাউন্ড গ্রেনেড নিক্ষেপ",
@@ -1437,6 +1437,37 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "7ab65f5a3859c3b8e7b600ea4466ad3d"
+    },
+    {
+      "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+      "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18",
+      "publishedAt": "2026-11-22T14:49:30+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত - Ajker Patrika",
+          "summary": "নোয়াখালীতে ট্রাক্টর-অটোরিকশা মুখোমুখি সংঘর্ষ, দলিল লেখক নিহত Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/noakhali/ajphs4i67fx18"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "464d4161e0812250e459cf9cdaa137cc"
     },
     {
       "title": "২০০৬-এর লগি-বৈঠা থেকে ২০২৬-এর ককটেল-অগ্নিসংযোগ: একই বৃত্তে ঘুরছে বাংলাদেশ? - Daily Observer",
