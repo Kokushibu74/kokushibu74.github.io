@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T10:50:29.931417+00:00",
-  "updatedAt": "2026-11-23T10:50:29.931417+00:00",
+  "generatedAt": "2026-11-23T11:05:40.698425+00:00",
+  "updatedAt": "2026-11-23T11:05:40.698425+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা",
@@ -1336,6 +1336,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1a0d1089ce2acfb925df2931bdf4de6d"
+    },
+    {
+      "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+      "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+      "link": "https://www.dhakapost.com/national/500098",
+      "publisherUrl": "https://www.dhakapost.com/national/500098",
+      "publishedAt": "2026-11-23T01:28:23+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500098"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500098"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8364e3cd29101ce8f29e51c0942d7484"
     },
     {
       "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
