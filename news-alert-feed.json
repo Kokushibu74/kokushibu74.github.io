@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-23T18:00:53.117335+00:00",
-  "updatedAt": "2026-11-23T18:00:53.117335+00:00",
+  "generatedAt": "2026-11-23T18:15:39.494148+00:00",
+  "updatedAt": "2026-11-23T18:15:39.494148+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 48,
-  "failedSourceCount": 7,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 27,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 27,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 4,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -62,32 +62,32 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jugantor",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "directError": "HTTP 404",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -557,47 +557,47 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 39,
   "alertItems": [
     {
       "title": "গোপালগঞ্জ সদরের পর কোটালীপাড়াতেও কার্যক্রম নিষিদ্ধ আওয়ামী লীগের দুই পক্ষে সংঘর্ষ",
@@ -854,7 +854,8 @@
         "Prothom Alo",
         "Somoy News",
         "Ekattor TV",
-        "Jago News 24"
+        "Jago News 24",
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
@@ -872,6 +873,10 @@
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1182898"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672528"
         }
       ],
       "category": "Bangladesh",
@@ -905,10 +910,16 @@
           "title": "গোপালগঞ্জে সংঘর্ষ, চারজন গুলিবিদ্ধসহ আহত ২০",
           "summary": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও অঙ্গ-সহযোগী সংগঠনের বিক্ষোভ মিছিলকে কেন্দ্র করে দুই গ্রামবাসীর মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে...",
           "url": "https://www.jagonews24.com/country/news/1182898"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ - Risingbd.com",
+          "summary": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672528"
         }
       ],
-      "corroborationCount": 4,
-      "alertEventId": "f0a2d3f37e0b72a11b9da644aefdd939"
+      "corroborationCount": 5,
+      "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
     },
     {
       "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
@@ -1023,7 +1034,8 @@
           "name": "DBC News",
           "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে আহত ২০, ককটেল বিস্ফোরণ-ভাঙচুর | DBC NEWS",
           "summary": "",
-          "url": "https://www.youtube.com/shorts/BLZn4y2EGfA"
+          "url": "https://www.youtube.com/shorts/BLZn4y2EGfA",
+          "locationText": "গোপালগঞ্জে দুই গ্রাম, গোপালগঞ্জ"
         }
       ],
       "corroborationCount": 3,
@@ -1054,8 +1066,7 @@
           "name": "Ajker Patrika",
           "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
           "summary": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4",
-          "incidentDateText": "২৩ নভেম্বর ২০২৬"
+          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4"
         }
       ],
       "corroborationCount": 1,
@@ -1166,6 +1177,68 @@
       "alertEventId": "7b65c1308896ff90b1b99b790b903f0d"
     },
     {
+      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publishedAt": "2026-11-23T16:20:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1697884564b407e80d621f51a59ca39b"
+    },
+    {
+      "title": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ - Daily Naya Diganta",
+      "summary": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ Daily Naya Diganta",
+      "link": "https://dailynayadiganta.com/post/other/1072110",
+      "publisherUrl": "https://dailynayadiganta.com/post/other/1072110",
+      "publishedAt": "2026-11-23T16:14:15+00:00",
+      "source": "Daily Naya Diganta",
+      "publisherName": "Daily Naya Diganta",
+      "sourceEvidence": [
+        "Daily Naya Diganta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/other/1072110"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Naya Diganta",
+          "title": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ - Daily Naya Diganta",
+          "summary": "সিলেট সীমান্তে বিপুল পরিমাণ বিস্ফোরক জব্দ Daily Naya Diganta",
+          "url": "https://dailynayadiganta.com/post/other/1072110"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7492a41958a59111b499a846e72731c7"
+    },
+    {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - SAMAKAL",
       "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত SAMAKAL",
       "link": "https://samakal.com/international/article/384693/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -1195,6 +1268,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "132c7a33e9d5521937975c72817e3b8d"
+    },
+    {
+      "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
+      "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-23T14:58:18+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
+          "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "79fb93f973913567bb8aff2c5e281840"
     },
     {
       "title": "ব্যাটিং ধসে ৯১ রানে অলআউট বাংলাদেশ - SAMAKAL",
@@ -1290,37 +1394,6 @@
       "alertEventId": "1c3f856231d3a613fc6790fbbad2b5ba"
     },
     {
-      "title": "আধিপত্য বিস্তার নিয়ে দুই পক্ষের সংঘর্ষ, আহত ১০ - dhakapost.com",
-      "summary": "আধিপত্য বিস্তার নিয়ে দুই পক্ষের সংঘর্ষ, আহত ১০ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500321",
-      "publisherUrl": "https://www.dhakapost.com/country/500321",
-      "publishedAt": "2026-11-23T14:27:12+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500321"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "আধিপত্য বিস্তার নিয়ে দুই পক্ষের সংঘর্ষ, আহত ১০ - dhakapost.com",
-          "summary": "আধিপত্য বিস্তার নিয়ে দুই পক্ষের সংঘর্ষ, আহত ১০ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500321"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "08f58aeb7cea62fb68e6878ec55f8025"
-    },
-    {
       "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
       "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
       "link": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
@@ -1350,37 +1423,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e955381b96152f20d15f053ca3376106"
-    },
-    {
-      "title": "লক্ষ্মীপুরে আত্মগোপনে এসেও যেভাবে ধরা পড়েন ‘বোমারু মামুন’",
-      "summary": "",
-      "link": "https://www.prothomalo.com/bangladesh/district/vjm2h0xa20",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/vjm2h0xa20",
-      "publishedAt": "2026-11-23T13:56:37+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/vjm2h0xa20"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "লক্ষ্মীপুরে আত্মগোপনে এসেও যেভাবে ধরা পড়েন ‘বোমারু মামুন’",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/vjm2h0xa20"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "afa9bb5f949b155c18fc49aac777286d"
     },
     {
       "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
@@ -1433,12 +1475,17 @@
       "source": "Chattogram News",
       "publisherName": "Chattogram News",
       "sourceEvidence": [
-        "Chattogram News"
+        "Chattogram News",
+        "bdnews24.com"
       ],
       "sourceLinks": [
         {
           "name": "Chattogram News",
           "url": "https://chattogramnews.com/archives/161339"
+        },
+        {
+          "name": "bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/4hxif6a8am"
         }
       ],
       "category": "Bangladesh",
@@ -1450,10 +1497,16 @@
           "title": "প্রধানমন্ত্রীর সঙ্গে এনসিপি প্রতিনিধিদলের বৈঠক অনুষ্ঠিত",
           "summary": "প্রধানমন্ত্রী তারেক রহমানের সঙ্গে জাতীয় নাগরিক পার্টির (এনসিপি) প্রতিনিধিদলের বৈঠক অনুষ্ঠিত হয়েছে। আজ দুপুরে সচিবালয়ে মন্ত্রিপরিষদ বিভাগের মন্ত্রিসভা কক্ষে বৈঠকটি অনুষ্ঠিত হয়। প্রধানমন্ত্রীর অতিরিক্ত প্রেস সচিব আতিকুর রহমান রুমন এ কথা জানান। দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ, অগ্নিসংযোগ ও সহিংসতার ঘটনার কারণে বিরাজমান রাজনৈতিক পরিস্থিতিতে প্রধানমন্ত্রীর সঙ্গে বৈঠকে বসে চার সদস্য বিশিষ্ট এনসিপি প্রতিনিধিদল। প্রতিনিধিদলের […] The post প্রধানমন্ত্রীর সঙ্গে এনসিপি প্রতিনিধিদলের বৈঠক অনুষ্ঠিত appeared first on চট্টগ্রাম নিউজ .",
           "url": "https://chattogramnews.com/archives/161339"
+        },
+        {
+          "name": "bdnews24.com",
+          "title": "চট্টগ্রামে পুলিশ কমিশনারের কার্যালয়ের কাছে ককটেল বিষ্ফোরণ - bdnews24.com",
+          "summary": "চট্টগ্রামে পুলিশ কমিশনারের কার্যালয়ের কাছে ককটেল বিষ্ফোরণ bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/4hxif6a8am"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "7d1c5c4e9d7381e58044256500ddd692"
+      "corroborationCount": 2,
+      "alertEventId": "5ecfa59871437292839bdd0f6ee4385a"
     },
     {
       "title": "তথ্য নিতে গিয়ে হামলায় পুলিশ সদস্য নিহত, দৌড়ে প্রাণ বাঁচানো পুলিশ কর্মকর্তা ক্লোজড",
@@ -1611,6 +1664,68 @@
       "alertEventId": "6c10f4cf4df618238b436a33b897094a"
     },
     {
+      "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
+      "summary": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87",
+      "publishedAt": "2026-11-23T06:59:16+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
+          "summary": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113644/%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%9D%E0%A7%81%E0%A6%9F%E0%A6%AC%E0%A7%8B%E0%A6%9D%E0%A6%BE%E0%A6%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "198a2a5b156f8b1ede14293ad220de6d"
+    },
+    {
+      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
+      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
+      "link": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
+      "publisherUrl": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
+      "publishedAt": "2026-11-23T06:37:00+00:00",
+      "source": "bdnews24.com",
+      "publisherName": "bdnews24.com",
+      "sourceEvidence": [
+        "bdnews24.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bdnews24.com",
+          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bdnews24.com",
+          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
+          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
+          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "96b93fdbdbb41168ab45d3ca7b5b51bd"
+    },
+    {
       "title": "চবির শাটল ট্রেনে অগ্নিসংযোগের চেষ্টা - Dhaka Tribune Bangla",
       "summary": "চবির শাটল ট্রেনে অগ্নিসংযোগের চেষ্টা Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113639/%E0%A6%9A%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%B6%E0%A6%BE%E0%A6%9F%E0%A6%B2-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
@@ -1642,6 +1757,37 @@
       "alertEventId": "8f8ca1de7a11033de4179ec9b170952c"
     },
     {
+      "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+      "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+      "link": "https://www.dhakapost.com/national/500098",
+      "publisherUrl": "https://www.dhakapost.com/national/500098",
+      "publishedAt": "2026-11-23T01:28:23+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500098"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500098"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8364e3cd29101ce8f29e51c0942d7484"
+    },
+    {
       "title": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা - dhakapost.com",
       "summary": "জুলাইয়ের নেতৃত্বের ওপর পরিকল্পিত হামলা চালাচ্ছে ফ্যাসিস্ট সন্ত্রাসীরা dhakapost.com",
       "link": "https://www.dhakapost.com/politics/500087",
@@ -1671,6 +1817,68 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "08714ac0542288ac289965de837d01c3"
+    },
+    {
+      "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
+      "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
+      "link": "https://banglanews24.com/national/news/bd/1695220.details",
+      "publisherUrl": "https://banglanews24.com/national/news/bd/1695220.details",
+      "publishedAt": "2026-11-22T19:02:29+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://banglanews24.com/national/news/bd/1695220.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ - Banglanews24",
+          "summary": "পুরান ঢাকায় পৃথক বিস্ফোরণে নারীর মৃত্যু, দগ্ধ ৯ Banglanews24",
+          "url": "https://banglanews24.com/national/news/bd/1695220.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ca39a5b1fcc5b654a57378a4d96bff4d"
+    },
+    {
+      "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
+      "summary": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ SAMAKAL",
+      "link": "https://samakal.com/whole-country/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6",
+      "publisherUrl": "https://samakal.com/whole-country/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6",
+      "publishedAt": "2026-11-22T19:00:39+00:00",
+      "source": "SAMAKAL",
+      "publisherName": "SAMAKAL",
+      "sourceEvidence": [
+        "SAMAKAL"
+      ],
+      "sourceLinks": [
+        {
+          "name": "SAMAKAL",
+          "url": "https://samakal.com/whole-country/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "SAMAKAL",
+          "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
+          "summary": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ SAMAKAL",
+          "url": "https://samakal.com/whole-country/article/384551/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%86%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%A5%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8B%E0%A6%A8%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A7%80-%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%9C-%E0%A6%9C%E0%A6%AC%E0%A7%8D%E0%A6%A6"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c73e09d9d6ad9062560596612da337f5"
     }
   ]
 }
