@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T14:15:32.918498+00:00",
-  "updatedAt": "2026-11-24T14:15:32.918498+00:00",
+  "generatedAt": "2026-11-24T14:30:34.015620+00:00",
+  "updatedAt": "2026-11-24T14:30:34.015620+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -123,16 +123,16 @@
       "name": "Bangla Tribune",
       "domain": "banglatribune.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Dhaka Tribune",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sangbad",
@@ -874,37 +874,6 @@
       "alertEventId": "599d615c4971f5fd9a2417e36b910345"
     },
     {
-      "title": "গাজীপুরে বিক্ষোভ-সংঘর্ষ, পুলিশ বক্সে আগুন; ১০৩ কারখানা বন্ধ-ছুটি | Protest | News | Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=Q8ZHFxX7v6E",
-      "publisherUrl": "https://www.youtube.com/watch?v=Q8ZHFxX7v6E",
-      "publishedAt": "2026-11-24T13:15:16+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=Q8ZHFxX7v6E"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "গাজীপুরে বিক্ষোভ-সংঘর্ষ, পুলিশ বক্সে আগুন; ১০৩ কারখানা বন্ধ-ছুটি | Protest | News | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=Q8ZHFxX7v6E"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "992e8ac532e0e9a21e8881ad8167009c"
-    },
-    {
       "title": "গাজীপুরে শ্রমিক-পুলিশ ঘণ্টাব্যাপী সংঘর্ষ",
       "summary": "গাজীপুরে শ্রমিক-পুলিশ ঘণ্টাব্যাপী সংঘর্ষ",
       "link": "https://www.jagonews24.com/country/news/1183251",
@@ -934,37 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3658e54004da67a9c80cb7a3288c71e5"
-    },
-    {
-      "title": "মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির",
-      "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির কেন্দ্রীয়, মহানগর ও কলেজ শাখার নেতা-কর্মীদের ওপর হামলার অভিযোগ উঠেছে ছাত্রশিবিরের বিরুদ্ধে। আজ মঙ্গলবার সকালে কলেজ ক্যাম্পাসে এ ঘটনা ঘটে বলে জানিয়েছে জাতীয় ছাত্রশক্তি। এ ঘটনার প্রতিবাদে সমাবেশ করেছে সংগঠনটি। তবে হামলার সঙ্গে জড়িত থাকার কথা অস্বীকার করেছে ছাত্রশিবির। আজ বিকেল সাড়ে তিনটায় হাজী মুহাম্মদ মহসিন কলেজের […] The post মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/",
-      "publisherUrl": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/",
-      "publishedAt": "2026-11-24T12:37:06+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির",
-          "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির কেন্দ্রীয়, মহানগর ও কলেজ শাখার নেতা-কর্মীদের ওপর হামলার অভিযোগ উঠেছে ছাত্রশিবিরের বিরুদ্ধে। আজ মঙ্গলবার সকালে কলেজ ক্যাম্পাসে এ ঘটনা ঘটে বলে জানিয়েছে জাতীয় ছাত্রশক্তি। এ ঘটনার প্রতিবাদে সমাবেশ করেছে সংগঠনটি। তবে হামলার সঙ্গে জড়িত থাকার কথা অস্বীকার করেছে ছাত্রশিবির। আজ বিকেল সাড়ে তিনটায় হাজী মুহাম্মদ মহসিন কলেজের […] The post মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d12bcfce453b406ccf5ad1017cbf3305"
     },
     {
       "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
@@ -1035,20 +973,20 @@
       "alertEventId": "0816f86747ba962dd469ecb65a0dae0d"
     },
     {
-      "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
-      "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
-      "publisherUrl": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
-      "publishedAt": "2026-11-24T10:37:38+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
+      "title": "চলন্ত অবস্থায় ছিঁড়ে গেছে রংপুর হাসপাতালের লিফটের তার, দুর্ভোগে রোগীরা",
+      "summary": "রংপুর মেডিক্যাল কলেজ হাসপাতালের লিফটের তার ছিঁড়ে যাওয়ায় ভয়াবহ দুর্ঘটনা থেকে রক্ষা পেয়েছেন রোগী ও তাদের স্বজনরা। ঘটনাটি ঘটেছে সোমবার (২৩ নভেম্বর) রাতে। ভাগ্যক্রমে ওই সময় লিফটে কেউ ছিল না। বর্তমানে একটি লিফট দিয়ে কোনোরকমে রোগীরা ওঠানামা করছেন। হাসপাতালের নাম প্রকাশে অনিচ্ছুক এক কর্মকর্তা জানান, হাসপাতালের একটি লিফটের বয়স ৩০ বছরেও বেশি সেটি মালামাল ও রোগী পরিবহন কাজে ব্যবহৃত হয়। মাসের বেশিরভাগ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-24T10:46:38+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Dainik Azadi"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1056,33 +994,30 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Dainik Azadi",
-          "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
-          "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
-          "incidentDateText": "সোমবার (২৩ নভেম্বর)",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Dainik Azadi"
+          "name": "Bangla Tribune",
+          "title": "চলন্ত অবস্থায় ছিঁড়ে গেছে রংপুর হাসপাতালের লিফটের তার, দুর্ভোগে রোগীরা",
+          "summary": "রংপুর মেডিক্যাল কলেজ হাসপাতালের লিফটের তার ছিঁড়ে যাওয়ায় ভয়াবহ দুর্ঘটনা থেকে রক্ষা পেয়েছেন রোগী ও তাদের স্বজনরা। ঘটনাটি ঘটেছে সোমবার (২৩ নভেম্বর) রাতে। ভাগ্যক্রমে ওই সময় লিফটে কেউ ছিল না। বর্তমানে একটি লিফট দিয়ে কোনোরকমে রোগীরা ওঠানামা করছেন। হাসপাতালের নাম প্রকাশে অনিচ্ছুক এক কর্মকর্তা জানান, হাসপাতালের একটি লিফটের বয়স ৩০ বছরেও বেশি সেটি মালামাল ও রোগী পরিবহন কাজে ব্যবহৃত হয়। মাসের বেশিরভাগ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "71594c6df6d5dfd2cb36e49bbfee4ede"
+      "alertEventId": "20c6105c884d3b1018fdb290445c726c"
     },
     {
-      "title": "গাজীপুরে মহাসড়কে শ্রমিকদের বিক্ষোভ, পুলিশ বক্স ভাঙচুর–আগুন, ৭০ কারখানায় ছুটি",
-      "summary": "শ্রমিক অসন্তোষের কারণে আজ মঙ্গলবার গাজীপুরের বিভিন্ন এলাকার ৭০টি কারখানায় ছুটি ঘোষণা করেছে কর্তৃপক্ষ। পাশাপাশি ৩২টি কারখানা অনির্দিষ্টকালের জন্য বন্ধ আছে।",
-      "link": "https://www.prothomalo.com/bangladesh/district/3xlorcmf9v",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/3xlorcmf9v",
-      "publishedAt": "2026-11-24T10:09:13+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "ঢাকা-রিয়াদ রুটে ফ্লাইট চলাচলের নতুন তথ্য দিলো বিমান",
+      "summary": "সৌদি আরবে সাম্প্রতিক বিমান হামলাজনিত পরিস্থিতি এবং যাত্রীদের নিরাপত্তাজনিত কারণে ঢাকা-রিয়াদ-ঢাকা রুটের নিয়মিত ফ্লাইট চলাচল আগামী ১৬ ডিসেম্বর (বাংলাদেশ সময়) পর্যন্ত স্থগিত থাকবে। এ রুটে ফ্লাইট পরিচালনার বিষয়ে যথাসময়ে পরবর্তী সিদ্ধান্ত জানানো হবে। মঙ্গলবার (২৪ নভেম্বর) বিমানের জনসংযোগ বিভাগ থেকে এ তথ্য জানানো হয়। অন্যদিকে, ঢাকা-জেদ্দা-ঢাকা, ঢাকা-দাম্মাম-ঢাকা ও ঢাকা-মদিনা-ঢাকা রুটে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/others/982944/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6-%E0%A6%B0%E0%A7%81%E0%A6%9F%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%9F-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publisherUrl": "https://www.banglatribune.com/others/982944/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6-%E0%A6%B0%E0%A7%81%E0%A6%9F%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%9F-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B",
+      "publishedAt": "2026-11-24T10:20:30+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Prothom Alo"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/3xlorcmf9v"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/others/982944/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6-%E0%A6%B0%E0%A7%81%E0%A6%9F%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%9F-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
         }
       ],
       "category": "Bangladesh",
@@ -1090,18 +1025,76 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Prothom Alo",
-          "title": "গাজীপুরে মহাসড়কে শ্রমিকদের বিক্ষোভ, পুলিশ বক্স ভাঙচুর–আগুন, ৭০ কারখানায় ছুটি",
-          "summary": "শ্রমিক অসন্তোষের কারণে আজ মঙ্গলবার গাজীপুরের বিভিন্ন এলাকার ৭০টি কারখানায় ছুটি ঘোষণা করেছে কর্তৃপক্ষ। পাশাপাশি ৩২টি কারখানা অনির্দিষ্টকালের জন্য বন্ধ আছে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/3xlorcmf9v",
-          "incidentDateText": "২৪ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ সকালে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "ময়মনসিংহ মহাসড়কের গাজীপুরা এলাকায়, ঢাকা, ময়মনসিংহ, গাজীপুর, এসব এলাকায়, টঙ্গী পশ্চিম থানার"
+          "name": "Bangla Tribune",
+          "title": "ঢাকা-রিয়াদ রুটে ফ্লাইট চলাচলের নতুন তথ্য দিলো বিমান",
+          "summary": "সৌদি আরবে সাম্প্রতিক বিমান হামলাজনিত পরিস্থিতি এবং যাত্রীদের নিরাপত্তাজনিত কারণে ঢাকা-রিয়াদ-ঢাকা রুটের নিয়মিত ফ্লাইট চলাচল আগামী ১৬ ডিসেম্বর (বাংলাদেশ সময়) পর্যন্ত স্থগিত থাকবে। এ রুটে ফ্লাইট পরিচালনার বিষয়ে যথাসময়ে পরবর্তী সিদ্ধান্ত জানানো হবে। মঙ্গলবার (২৪ নভেম্বর) বিমানের জনসংযোগ বিভাগ থেকে এ তথ্য জানানো হয়। অন্যদিকে, ঢাকা-জেদ্দা-ঢাকা, ঢাকা-দাম্মাম-ঢাকা ও ঢাকা-মদিনা-ঢাকা রুটে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/others/982944/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%A6-%E0%A6%B0%E0%A7%81%E0%A6%9F%E0%A7%87-%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%9F-%E0%A6%9A%E0%A6%B2%E0%A6%BE%E0%A6%9A%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A7%8B"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "a41a4594524511b261a101f371e552be"
+      "alertEventId": "ef4c8b0ddba6879c019ddd0de79c1029"
+    },
+    {
+      "title": "গাজীপুরে কারখানায় হামলা-ভাঙচুরের প্রতিবাদে বিএনপি-শ্রমিক দলের বিক্ষোভ",
+      "summary": "কার্যক্রম নিষিদ্ধ ঘোষিত সংগঠন আওয়ামী লীগের সন্ত্রাস, নৈরাজ্যে, পোশাক শ্রমিকদেরকে আন্দোলনে উস্কানি, বিভিন্ন পোশাক কারখানায় হামলা এবং ভাংচুরের প্রতিবাদে বিক্ষোভ মিছিল করেছে শ্রীপুর পৌর বিএনপি ও শ্রমিক দল। মঙ্গলবার (২৪ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর-আনসার সড়কে বিক্ষোভ মিছিল করে। শ্রীপুর পৌর বিএনপি এবং শ্রমিক দলের যৌথ উদ্যোগে বিক্ষোভ মিছিল করে দলটির নেতৃবৃন্দ। শ্রীপুর পৌর শ্রমিক দলের আহ্বায়ক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publishedAt": "2026-11-24T09:35:58+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গাজীপুরে কারখানায় হামলা-ভাঙচুরের প্রতিবাদে বিএনপি-শ্রমিক দলের বিক্ষোভ",
+          "summary": "কার্যক্রম নিষিদ্ধ ঘোষিত সংগঠন আওয়ামী লীগের সন্ত্রাস, নৈরাজ্যে, পোশাক শ্রমিকদেরকে আন্দোলনে উস্কানি, বিভিন্ন পোশাক কারখানায় হামলা এবং ভাংচুরের প্রতিবাদে বিক্ষোভ মিছিল করেছে শ্রীপুর পৌর বিএনপি ও শ্রমিক দল। মঙ্গলবার (২৪ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর-আনসার সড়কে বিক্ষোভ মিছিল করে। শ্রীপুর পৌর বিএনপি এবং শ্রমিক দলের যৌথ উদ্যোগে বিক্ষোভ মিছিল করে দলটির নেতৃবৃন্দ। শ্রীপুর পৌর শ্রমিক দলের আহ্বায়ক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4988fa18ac32b27039e44044b789a445"
+    },
+    {
+      "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, চেয়ার-টেবিল ও নথিপত্রে আগুন",
+      "summary": "গাজীপুরের টঙ্গী ও গাজীপুরা এলাকায় বেতন বৃদ্ধির দাবিতে বিক্ষোভ ও মহাসড়ক অবরোধ করেছেন শ্রমিকরা। এতে ঢাকা-ময়মনসিংহ মহাসড়কে যান চলাচল বন্ধ হয়ে যায়। ভোগান্তিতে পড়েন যাত্রী, চালক ও সাধারণ মানুষ। অবরোধ চলাকালে পুলিশের সঙ্গে বিক্ষোভকারীদের সংঘর্ষ, ইটপাটকেল নিক্ষেপ, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ সময় হামলা-ভাঙচুরের মধ্যে পড়ে এক পথচারী আহত হন।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982926/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%93",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982926/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%93",
+      "publishedAt": "2026-11-24T09:01:56+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982926/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%93"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, চেয়ার-টেবিল ও নথিপত্রে আগুন",
+          "summary": "গাজীপুরের টঙ্গী ও গাজীপুরা এলাকায় বেতন বৃদ্ধির দাবিতে বিক্ষোভ ও মহাসড়ক অবরোধ করেছেন শ্রমিকরা। এতে ঢাকা-ময়মনসিংহ মহাসড়কে যান চলাচল বন্ধ হয়ে যায়। ভোগান্তিতে পড়েন যাত্রী, চালক ও সাধারণ মানুষ। অবরোধ চলাকালে পুলিশের সঙ্গে বিক্ষোভকারীদের সংঘর্ষ, ইটপাটকেল নিক্ষেপ, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ সময় হামলা-ভাঙচুরের মধ্যে পড়ে এক পথচারী আহত হন।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982926/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A7%87-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%93"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "33fd157905f2f4dc9b3a16c0c8b2a1ca"
     },
     {
       "title": "ঈশ্বরদীতে বিএনপির মিছিলে গুলির পর জামায়াতের চার নেতা-কর্মীর বাড়িতে হামলা, অগ্নিসংযোগ",
@@ -1139,20 +1132,20 @@
       "alertEventId": "f9f2f231c82264614f4eb3e39b6c7597"
     },
     {
-      "title": "নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে",
-      "summary": "চট্টগ্রাম–১৫ আসনের সংসদ সদস্য শাহজাহান চৌধুরী বলেছেন, নিষিদ্ধ ঘোষিত আওয়ামী লীগের সন্ত্রাসীরা সরকারি কর্মকর্তা–কর্মচারীদের লক্ষ্য করে হামলা চালিয়ে আতঙ্ক সৃষ্টির চেষ্টা করতে পারে। এ বিষয়ে আইনশৃঙ্খলা রক্ষাকারী বাহিনীসহ সংশ্লিষ্ট সবাইকে সতর্ক থাকতে হবে। সন্ত্রাসীরা কোনো ধরনের নাশকতার চেষ্টা করলে সাথে সাথে তাদেরকে কঠোরভাবে দমন করতে হবে। সরকারি কর্মকর্তাদের আরও দায়িত্বশীল, আন্তরিক ও জনবান্ধব মনোভাব নিয়ে […] The post নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/%e0%a6%a8%e0%a6%bf%e0%a6%b7%e0%a6%bf%e0%a6%a6%e0%a7%8d%e0%a6%a7-%e0%a6%86-%e0%a6%b2%e0%a7%80%e0%a6%97%e0%a7%87%e0%a6%b0-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8/",
-      "publisherUrl": "https://dainikazadi.net/%e0%a6%a8%e0%a6%bf%e0%a6%b7%e0%a6%bf%e0%a6%a6%e0%a7%8d%e0%a6%a7-%e0%a6%86-%e0%a6%b2%e0%a7%80%e0%a6%97%e0%a7%87%e0%a6%b0-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8/",
-      "publishedAt": "2026-11-24T02:07:12+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
+      "title": "বেনাপোলে দুই শ্রমিক নেতাকে লক্ষ্য করে বোমা নিক্ষেপ",
+      "summary": "যশোরের শার্শা উপজেলার বেনাপোলে দুই শ্রমিক নেতাকে লক্ষ্য করে ককটেল নিক্ষেপের ঘটনা ঘটেছে। এ ঘটনায় তারা দুজনই আহত হয়েছেন। মঙ্গলবার (২৪ নভেম্বর) দিবাগত রাত ১টার দিকে বেনাপোল পোর্ট থানার ছোট আঁচড়া এলাকায় এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন বেনাপোল পোর্ট হ্যান্ডলিং শ্রমিক ইউনিয়ন-৯২৫-এর ভারপ্রাপ্ত সভাপতি তবিবুর রহমান ওরফে তবি (৫০) এবং শ্রমিক নেতা লোকমান হোসেন (৫০)। তারা দুজনই ছোট আঁচড়া গ্রামের বাসিন্দা।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/982919/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/982919/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publishedAt": "2026-11-24T08:39:26+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Dainik Azadi"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%a8%e0%a6%bf%e0%a6%b7%e0%a6%bf%e0%a6%a6%e0%a7%8d%e0%a6%a7-%e0%a6%86-%e0%a6%b2%e0%a7%80%e0%a6%97%e0%a7%87%e0%a6%b0-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8/"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/982919/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
         }
       ],
       "category": "Bangladesh",
@@ -1160,14 +1153,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Dainik Azadi",
-          "title": "নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে",
-          "summary": "চট্টগ্রাম–১৫ আসনের সংসদ সদস্য শাহজাহান চৌধুরী বলেছেন, নিষিদ্ধ ঘোষিত আওয়ামী লীগের সন্ত্রাসীরা সরকারি কর্মকর্তা–কর্মচারীদের লক্ষ্য করে হামলা চালিয়ে আতঙ্ক সৃষ্টির চেষ্টা করতে পারে। এ বিষয়ে আইনশৃঙ্খলা রক্ষাকারী বাহিনীসহ সংশ্লিষ্ট সবাইকে সতর্ক থাকতে হবে। সন্ত্রাসীরা কোনো ধরনের নাশকতার চেষ্টা করলে সাথে সাথে তাদেরকে কঠোরভাবে দমন করতে হবে। সরকারি কর্মকর্তাদের আরও দায়িত্বশীল, আন্তরিক ও জনবান্ধব মনোভাব নিয়ে […] The post নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%a8%e0%a6%bf%e0%a6%b7%e0%a6%bf%e0%a6%a6%e0%a7%8d%e0%a6%a7-%e0%a6%86-%e0%a6%b2%e0%a7%80%e0%a6%97%e0%a7%87%e0%a6%b0-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8/"
+          "name": "Bangla Tribune",
+          "title": "বেনাপোলে দুই শ্রমিক নেতাকে লক্ষ্য করে বোমা নিক্ষেপ",
+          "summary": "যশোরের শার্শা উপজেলার বেনাপোলে দুই শ্রমিক নেতাকে লক্ষ্য করে ককটেল নিক্ষেপের ঘটনা ঘটেছে। এ ঘটনায় তারা দুজনই আহত হয়েছেন। মঙ্গলবার (২৪ নভেম্বর) দিবাগত রাত ১টার দিকে বেনাপোল পোর্ট থানার ছোট আঁচড়া এলাকায় এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন বেনাপোল পোর্ট হ্যান্ডলিং শ্রমিক ইউনিয়ন-৯২৫-এর ভারপ্রাপ্ত সভাপতি তবিবুর রহমান ওরফে তবি (৫০) এবং শ্রমিক নেতা লোকমান হোসেন (৫০)। তারা দুজনই ছোট আঁচড়া গ্রামের বাসিন্দা।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/982919/%E0%A6%AC%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A7%8B%E0%A6%B2%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "5caa1fc64281694ebca4e7e7075cc0f1"
+      "alertEventId": "c2f8fdd5f3f1fa9d3717baa83803e82e"
     },
     {
       "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
@@ -1194,7 +1187,9 @@
           "name": "Manab Zamin",
           "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
           "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
+          "url": "https://www.mzamin.com/article/63087",
+          "incidentTimeText": "রাত ১০টায়",
+          "incidentTimeSource": "Manab Zamin"
         }
       ],
       "corroborationCount": 1,
@@ -1263,6 +1258,37 @@
       "alertEventId": "c71f7830e3226bc9bbe1d551436069ff"
     },
     {
+      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publishedAt": "2026-11-23T16:20:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1697884564b407e80d621f51a59ca39b"
+    },
+    {
       "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
       "summary": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ dhakapost.com",
       "link": "https://www.dhakapost.com/country/500333",
@@ -1327,8 +1353,8 @@
     {
       "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
       "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-23T14:58:18+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1338,7 +1364,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1349,7 +1375,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
           "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
@@ -1385,37 +1411,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c086adfeecff26f32fa616bc05645f07"
-    },
-    {
-      "title": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ - Risingbd.com",
-      "summary": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672528",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672528",
-      "publishedAt": "2026-11-23T14:27:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672528"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ - Risingbd.com",
-          "summary": "গোপালগঞ্জে মিছিল করা নিয়ে দুই গ্রামবাসীর সংঘর্ষ, আহত ২০ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672528"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
     }
   ]
 }
