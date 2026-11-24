@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T06:20:35.758197+00:00",
-  "updatedAt": "2026-11-24T06:20:35.758197+00:00",
+  "generatedAt": "2026-11-24T06:30:35.904760+00:00",
+  "updatedAt": "2026-11-24T06:30:35.904760+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "‘সিট দখল’ নিয়ে পাবিপ্রবিতে ছাত্রদলের দুই পক্ষের সংঘর্ষ",
+      "summary": "পাবনা বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়ে (পাবিপ্রবি) হলের একটি সিটের দখল নিয়ে বিশ্ববিদ্যালয় শাখা ছাত্রদলের সভাপতি ও সাধারণ সম্পাদকপন্থী নেতা-কর্মীদের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে জুলাই-৬ হল শাখা ছাত্রদলের সভাপতি ইমরান হোসেনসহ দুজন আহত হয়েছেন। তাদের পাবনা জেনারেল হাসপাতালে ভর্তি করা হয়েছে। সোমবার (২৩ নভেম্বর) রাত ৮টার দিকে বিশ্ববিদ্যালয়ের জুলাই-৬ হলের ৭১৭ নম্বর কক্ষে এ ঘটনার সূত্রপাত হয়।... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/982892/%E2%80%98%E0%A6%B8%E0%A6%BF%E0%A6%9F-%E0%A6%A6%E0%A6%96%E0%A6%B2%E2%80%99-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/982892/%E2%80%98%E0%A6%B8%E0%A6%BF%E0%A6%9F-%E0%A6%A6%E0%A6%96%E0%A6%B2%E2%80%99-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-24T06:27:55+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/982892/%E2%80%98%E0%A6%B8%E0%A6%BF%E0%A6%9F-%E0%A6%A6%E0%A6%96%E0%A6%B2%E2%80%99-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "‘সিট দখল’ নিয়ে পাবিপ্রবিতে ছাত্রদলের দুই পক্ষের সংঘর্ষ",
+          "summary": "পাবনা বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়ে (পাবিপ্রবি) হলের একটি সিটের দখল নিয়ে বিশ্ববিদ্যালয় শাখা ছাত্রদলের সভাপতি ও সাধারণ সম্পাদকপন্থী নেতা-কর্মীদের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে জুলাই-৬ হল শাখা ছাত্রদলের সভাপতি ইমরান হোসেনসহ দুজন আহত হয়েছেন। তাদের পাবনা জেনারেল হাসপাতালে ভর্তি করা হয়েছে। সোমবার (২৩ নভেম্বর) রাত ৮টার দিকে বিশ্ববিদ্যালয়ের জুলাই-৬ হলের ৭১৭ নম্বর কক্ষে এ ঘটনার সূত্রপাত হয়।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/982892/%E2%80%98%E0%A6%B8%E0%A6%BF%E0%A6%9F-%E0%A6%A6%E0%A6%96%E0%A6%B2%E2%80%99-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AC%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a45a67eafa2190bf0fef5c943bad9c6b"
+    },
     {
       "title": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
       "summary": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
@@ -965,37 +996,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c3e463f1014eefc48ca983d785acee24"
-    },
-    {
-      "title": "সিলেট সীমান্ত থেকে বিস্ফোরক উদ্ধার - Daily Bonik Barta",
-      "summary": "সিলেট সীমান্ত থেকে বিস্ফোরক উদ্ধার Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/R2Soup8ohj3qU0MH",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/R2Soup8ohj3qU0MH",
-      "publishedAt": "2026-11-24T03:04:35+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/R2Soup8ohj3qU0MH"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "সিলেট সীমান্ত থেকে বিস্ফোরক উদ্ধার - Daily Bonik Barta",
-          "summary": "সিলেট সীমান্ত থেকে বিস্ফোরক উদ্ধার Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/R2Soup8ohj3qU0MH"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "336548bfb7ced161f55ecfaa84ec9d4d"
     },
     {
       "title": "জিপের চাকা মেরামতের সময় লরির ধাক্কা, প্রাণ গেলো চালকের",
@@ -1531,37 +1531,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
-    },
-    {
-      "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
-      "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
-      "link": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
-      "publisherUrl": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
-      "publishedAt": "2026-11-23T14:10:17+00:00",
-      "source": "BD24Live",
-      "publisherName": "BD24Live",
-      "sourceEvidence": [
-        "BD24Live"
-      ],
-      "sourceLinks": [
-        {
-          "name": "BD24Live",
-          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "BD24Live",
-          "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
-          "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
-          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e955381b96152f20d15f053ca3376106"
     },
     {
       "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
