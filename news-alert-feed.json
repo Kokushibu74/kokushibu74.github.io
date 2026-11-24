@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T01:15:47.311917+00:00",
-  "updatedAt": "2026-11-24T01:15:47.311917+00:00",
+  "generatedAt": "2026-11-24T01:30:38.309871+00:00",
+  "updatedAt": "2026-11-24T01:30:38.309871+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 38,
+  "candidateCount": 37,
   "alertItems": [
     {
       "title": "মারা গেলেন আহত তানিয়া, একই পরিবারের পাঁচজনই প্রাণ হারালেন",
@@ -1923,37 +1923,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8f8ca1de7a11033de4179ec9b170952c"
-    },
-    {
-      "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
-      "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
-      "link": "https://www.dhakapost.com/national/500098",
-      "publisherUrl": "https://www.dhakapost.com/national/500098",
-      "publishedAt": "2026-11-23T01:28:23+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/500098"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
-          "summary": "চট্টগ্রামে পুলিশ লাইনসের সামনে দুটি ককটেল বিস্ফোরণ dhakapost.com",
-          "url": "https://www.dhakapost.com/national/500098"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8364e3cd29101ce8f29e51c0942d7484"
     }
   ]
 }
