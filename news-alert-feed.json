@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T22:10:32.539689+00:00",
-  "updatedAt": "2026-11-24T22:10:32.539689+00:00",
+  "generatedAt": "2026-11-24T22:25:32.125263+00:00",
+  "updatedAt": "2026-11-24T22:25:32.125263+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 7,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "no element found: line 1, column 0",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Daily Sangbad",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 15,
+  "candidateCount": 17,
   "alertItems": [
     {
       "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
@@ -914,12 +914,17 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "Dainik Azadi"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0"
+        },
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/"
         }
       ],
       "category": "Bangladesh",
@@ -931,10 +936,16 @@
           "title": "ছাত্রশক্তির নেতাকর্মীদের ওপর শিবিরের হামলার অভিযোগ, ‘গুপ্ত গুপ্ত’ স্লোগান",
           "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির নেতাকর্মীদের ওপর হামলার অভিযোগ উঠেছে কলেজ শাখা ছাত্রশিবিরের বিরুদ্ধে। এ সময় উভয়ের মধ্যে হাতাহাতির ঘটনাও ঘটে। মঙ্গলবার (২৪ নভেম্বর) দুপুরে কলেজের অধ্যক্ষ অধ্যাপক সারাহ পারীনের সঙ্গে জাতীয় ছাত্রশক্তির নেতৃবৃন্দরা দেখা করতে গেলে প্রশাসনিক ভবনের সামনে এ ঘটনা ঘটে। এ ঘটনার প্রতিবাদে বিক্ষোভ মিছিল ও সংবাদ সম্মেলন করে হামলায় জড়িত... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0"
+        },
+        {
+          "name": "Dainik Azadi",
+          "title": "মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির",
+          "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির কেন্দ্রীয়, মহানগর ও কলেজ শাখার নেতা-কর্মীদের ওপর হামলার অভিযোগ উঠেছে ছাত্রশিবিরের বিরুদ্ধে। আজ মঙ্গলবার সকালে কলেজ ক্যাম্পাসে এ ঘটনা ঘটে বলে জানিয়েছে জাতীয় ছাত্রশক্তি। এ ঘটনার প্রতিবাদে সমাবেশ করেছে সংগঠনটি। তবে হামলার সঙ্গে জড়িত থাকার কথা অস্বীকার করেছে ছাত্রশিবির। আজ বিকেল সাড়ে তিনটায় হাজী মুহাম্মদ মহসিন কলেজের […] The post মহসিন কলেজে ‘শিবির শিবির, গুপ্ত গুপ্ত’ স্লোগান ছাত্রশক্তির appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/mohsin-college-chhatrashakti-attack-allegation-shibir-denies/"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "dd4af4682d5003c5f66224ba0b81aa99"
+      "corroborationCount": 2,
+      "alertEventId": "d12bcfce453b406ccf5ad1017cbf3305"
     },
     {
       "title": "কক্সবাজারে বাসের ধাক্কায় অটোরিকশার ৫ যাত্রী নিহত",
@@ -997,6 +1008,39 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9f5283442fc8dd1717df5dbe533c1382"
+    },
+    {
+      "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে নিহত বেড়ে ৫",
+      "summary": "কক্সবাজারের ঈদগাঁও থানার সামনে কক্সবাজার-চট্টগ্রাম মহাসড়কে হানিফ পরিবহনের যাত্রীবাহী বাসের সঙ্গে সিএনজি অটোরিকশার মুখোমুখি সংঘর্ষে নিহতের সংখ্যা বেড়ে পাঁচজনে দাঁড়িয়েছে। ঘটনাস্থলে তিনজন এবং হাসপাতালে নেওয়ার পর আরও দুজন মারা যান। এ ঘটনায় শিশুসহ আরও কয়েকজন আহত হয়েছেন মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে ঈদগাঁও থানার সামনে কক্সবাজার অভিমুখী বাসটির সঙ্গে বিপরীত দিক থেকে আসা […] The post কক্সবাজারে বাস-সিএনজি সংঘর্ষে নিহত বেড়ে ৫ appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident-2/",
+      "publisherUrl": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident-2/",
+      "publishedAt": "2026-11-24T15:35:09+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident-2/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে নিহত বেড়ে ৫",
+          "summary": "কক্সবাজারের ঈদগাঁও থানার সামনে কক্সবাজার-চট্টগ্রাম মহাসড়কে হানিফ পরিবহনের যাত্রীবাহী বাসের সঙ্গে সিএনজি অটোরিকশার মুখোমুখি সংঘর্ষে নিহতের সংখ্যা বেড়ে পাঁচজনে দাঁড়িয়েছে। ঘটনাস্থলে তিনজন এবং হাসপাতালে নেওয়ার পর আরও দুজন মারা যান। এ ঘটনায় শিশুসহ আরও কয়েকজন আহত হয়েছেন মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে ঈদগাঁও থানার সামনে কক্সবাজার অভিমুখী বাসটির সঙ্গে বিপরীত দিক থেকে আসা […] The post কক্সবাজারে বাস-সিএনজি সংঘর্ষে নিহত বেড়ে ৫ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident-2/",
+          "incidentDateText": "মঙ্গলবার (২৪ নভেম্বর)",
+          "locationText": "ছাড়া ঈদগাঁও উপজেলার, ঈদগাঁও থানার"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "077d096ce5d26d1769e8286c614918c0"
     },
     {
       "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
@@ -1063,46 +1107,6 @@
       "alertEventId": "8b831cc24f783d38aeec9b803605b911"
     },
     {
-      "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
-      "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
-      "link": "https://www.dhakapost.com/politics/500607",
-      "publisherUrl": "https://www.dhakapost.com/politics/500607",
-      "publishedAt": "2026-11-24T15:31:53+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500607"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
-          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500607"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "ঘুমন্ত পরিবারের ওপর বুলডোজার হামলা, কুপিয়ে জখম ও টাকা লুটের অভিযোগ - dhakapost.com",
-          "summary": "ঘুমন্ত পরিবারের ওপর বুলডোজার হামলা, কুপিয়ে জখম ও টাকা লুটের অভিযোগ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500480",
-          "incidentDateText": "সোমবার (২৩ নভেম্বর)",
-          "incidentTimeText": "রাত ৩টা",
-          "incidentTimeSource": "dhakapost.com"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "da62335c2ee5a97e9345207bbb7574db"
-    },
-    {
       "title": "হাজীগঞ্জে মাদকাসক্ত যুবককে এক বছরের কারাদণ্ড",
       "summary": "চাঁদপুরের হাজীগঞ্জে মাদকাসক্ত অবস্থায় জনশান্তি বিনষ্ট ও হামলার চেষ্টার দায়ে আবু সালেহ রিমন (৩০) নামের এক যুবককে ১ বছরের বিনাশ্রম কারাদণ্ড ও ২ হাজার টাকা অর্থদণ্ড দিয়েছেন ভ্রাম্যমাণ আদালত। মঙ্গলবার (২৪ নভেম্বর) হাজীগঞ্জ উপজেলা সহকারী কমিশনার (ভূমি) ও এক্সিকিউটিভ ম্যাজিস্ট্রেট মো. ওমর সানী আকন এ আদালত পরিচালনা করেন। সাজাপ্রাপ্ত রিমন উপজেলার ৮ নম্বর পূর্ব হাটিলা ...",
       "link": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a6%95%e0%a6%be%e0%a6%b8%e0%a6%95%e0%a7%8d%e0%a6%a4/",
@@ -1132,6 +1136,39 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c172d74d9406c710eda6af28545f61dc"
+    },
+    {
+      "title": "কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত",
+      "summary": "চট্টগ্রাম-কক্সবাজার মহাসড়কে যাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে ৩ জন নিহত হয়েছেন। নিহতরা সবাই অটোরিকশার যাত্রী। আজ মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে কক্সবাজার-চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার সামনে এই দুর্ঘটনা ঘটে। নিহতদের দুজন নারী ও একজন পুরুষ। তাৎক্ষণিকভাবে তাঁদের পরিচয় নিশ্চিত হওয়া যায়নি। এ ছাড়া এ ঘটনায় গুরুতর আহত হয়েছেন অটোরিকশার এক নারী […] The post কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/",
+      "publisherUrl": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/",
+      "publishedAt": "2026-11-24T14:58:45+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত",
+          "summary": "চট্টগ্রাম-কক্সবাজার মহাসড়কে যাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে ৩ জন নিহত হয়েছেন। নিহতরা সবাই অটোরিকশার যাত্রী। আজ মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে কক্সবাজার-চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার সামনে এই দুর্ঘটনা ঘটে। নিহতদের দুজন নারী ও একজন পুরুষ। তাৎক্ষণিকভাবে তাঁদের পরিচয় নিশ্চিত হওয়া যায়নি। এ ছাড়া এ ঘটনায় গুরুতর আহত হয়েছেন অটোরিকশার এক নারী […] The post কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/",
+          "incidentDateText": "মঙ্গলবার (২৪ নভেম্বর)",
+          "locationText": "চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম, ঈদগাঁও থানার, ঈদগাঁও থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3fa8ae3e8487b202c512f1e33338d260"
     },
     {
       "title": "শিশুকে বাঁচাতে গিয়ে উল্টে গেল ইজিবাইক, প্রাণ গেল সওদাগরের",
@@ -1231,6 +1268,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0816f86747ba962dd469ecb65a0dae0d"
+    },
+    {
+      "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
+      "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
+      "publisherUrl": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
+      "publishedAt": "2026-11-24T10:37:38+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
+          "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "71594c6df6d5dfd2cb36e49bbfee4ede"
     },
     {
       "title": "খুলনায় একদিনে তিন স্থানে গুলি, চাঁদা না পেয়ে রেস্টুরেন্টে হামলা - Daily Bonik Barta",
