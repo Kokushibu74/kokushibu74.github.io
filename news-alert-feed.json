@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T01:45:49.020839+00:00",
-  "updatedAt": "2026-11-24T01:45:49.020839+00:00",
+  "generatedAt": "2026-11-24T01:52:12.277413+00:00",
+  "updatedAt": "2026-11-24T01:52:12.277413+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 50,
-  "failedSourceCount": 5,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 29,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 29,
-  "fallbackWithItemsSourceCount": 22,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -92,32 +92,32 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -842,6 +842,37 @@
   ],
   "candidateCount": 38,
   "alertItems": [
+    {
+      "title": "পটিয়ায় কঠিন চীবর দানোৎসবে এনামুল হক এমপি",
+      "summary": "দেশের জানমাল রক্ষায় সরকার যথেষ্ট ধৈর্যের পরিচয় দিচ্ছে উল্লেখ করে চট্টগ্রাম–১২ (পটিয়া) আসনের সংসদ সদস্য মোহাম্মদ এনামুল হক এনাম বলেছেন, আগুন সন্ত্রাস, অবৈধ মিছিল–মিটিং কিংবা জনগণের মধ্যে ভীতি ও অস্থিতিশীলতা সৃষ্টির চেষ্টা করলে কাউকে ছাড় দেওয়া হবে না। তিনি বলেন, সরকারের দায়িত্ব জনগণের জানমাল রক্ষা করা। কখন পুলিশ আসবে, কখন সেনাবাহিনী আসবে, কখন বিজিবি আসবে […] The post পটিয়ায় কঠিন চীবর দানোৎসবে এনামুল হক এমপি appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%95%e0%a6%a0%e0%a6%bf%e0%a6%a8-%e0%a6%9a%e0%a7%80%e0%a6%ac%e0%a6%b0-%e0%a6%a6%e0%a6%be%e0%a6%a8%e0%a7%8b%e0%a7%8e%e0%a6%b8%e0%a6%ac/",
+      "publisherUrl": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%95%e0%a6%a0%e0%a6%bf%e0%a6%a8-%e0%a6%9a%e0%a7%80%e0%a6%ac%e0%a6%b0-%e0%a6%a6%e0%a6%be%e0%a6%a8%e0%a7%8b%e0%a7%8e%e0%a6%b8%e0%a6%ac/",
+      "publishedAt": "2026-11-24T01:46:37+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%95%e0%a6%a0%e0%a6%bf%e0%a6%a8-%e0%a6%9a%e0%a7%80%e0%a6%ac%e0%a6%b0-%e0%a6%a6%e0%a6%be%e0%a6%a8%e0%a7%8b%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "পটিয়ায় কঠিন চীবর দানোৎসবে এনামুল হক এমপি",
+          "summary": "দেশের জানমাল রক্ষায় সরকার যথেষ্ট ধৈর্যের পরিচয় দিচ্ছে উল্লেখ করে চট্টগ্রাম–১২ (পটিয়া) আসনের সংসদ সদস্য মোহাম্মদ এনামুল হক এনাম বলেছেন, আগুন সন্ত্রাস, অবৈধ মিছিল–মিটিং কিংবা জনগণের মধ্যে ভীতি ও অস্থিতিশীলতা সৃষ্টির চেষ্টা করলে কাউকে ছাড় দেওয়া হবে না। তিনি বলেন, সরকারের দায়িত্ব জনগণের জানমাল রক্ষা করা। কখন পুলিশ আসবে, কখন সেনাবাহিনী আসবে, কখন বিজিবি আসবে […] The post পটিয়ায় কঠিন চীবর দানোৎসবে এনামুল হক এমপি appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/%e0%a6%aa%e0%a6%9f%e0%a6%bf%e0%a7%9f%e0%a6%be%e0%a7%9f-%e0%a6%95%e0%a6%a0%e0%a6%bf%e0%a6%a8-%e0%a6%9a%e0%a7%80%e0%a6%ac%e0%a6%b0-%e0%a6%a6%e0%a6%be%e0%a6%a8%e0%a7%8b%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "580132bee759982ef3fe732a19502ee4"
+    },
     {
       "title": "বেকুটিয়া সেতুতে মোটরসাইকেল-ট্রলির সংঘর্ষ, দুই খালাতো ভাইসহ নিহত ৩",
       "summary": "পিরোজপুরের বেকুটিয়া সেতুতে মোটরসাইকেল ও মালবোঝাই ট্রলির সংঘর্ষে তিন যুবক নিহত হয়েছেন। নিহতদের মধ্যে আপন দুই খালাতো ভাই রয়েছেন...",
@@ -1316,37 +1347,6 @@
       "alertEventId": "7b65c1308896ff90b1b99b790b903f0d"
     },
     {
-      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
-      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
-      "publishedAt": "2026-11-23T16:20:43+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
-          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1697884564b407e80d621f51a59ca39b"
-    },
-    {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ'ওয়ামী সন্ত্রাসীদের দুই পক্ষের সংঘর্ষ, গু লি বিদ্ধ ৪, আহত ১৫|Gopalganj",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=TSvKRq7ScEM",
@@ -1453,8 +1453,8 @@
     {
       "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
       "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-23T14:58:18+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1464,7 +1464,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1475,7 +1475,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
           "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
