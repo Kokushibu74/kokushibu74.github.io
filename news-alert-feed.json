@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T05:00:33.309008+00:00",
-  "updatedAt": "2026-11-24T05:00:33.309008+00:00",
+  "generatedAt": "2026-11-24T05:10:43.550986+00:00",
+  "updatedAt": "2026-11-24T05:10:43.550986+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 33,
+  "candidateCount": 34,
   "alertItems": [
     {
-      "title": "নাশকতা-ভাঙচুরের প্রতিবাদে ঢাকায় জামায়াতের বিক্ষোভ মিছিল বিকেলে",
-      "summary": "রাজধানীতে নাশকতা, ভাঙচুর ও অগ্নিসংযোগের প্রতিবাদে বিক্ষোভ মিছিল করবে বাংলাদেশ জামায়াতে ইসলামী ঢাকা মহানগরী উত্তর...",
-      "link": "https://www.jagonews24.com/politics/news/1182971",
-      "publisherUrl": "https://www.jagonews24.com/politics/news/1182971",
-      "publishedAt": "2026-11-24T04:32:35+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "১৪ বছরেও পূরণ হয়নি প্রতিশ্রুতি, অনিশ্চয়তায় তাজরীনের আহত শ্রমিকদের জীবন",
+      "summary": "দেশের পোশাকশিল্পের ইতিহাসে ভয়াবহ এক অধ্যায়ের নাম তাজরীন ট্র্যাজেডি। ২০১২ সালের ২৪ নভেম্বর ঢাকার আশুলিয়ার নিশ্চিন্তপুরে তাজরীন ফ্যাশনস কারখানায় ভয়াবহ অগ্নিকাণ্ডে প্রাণ হারান ১১৪ জন শ্রমিক। আহত হন দুই শতাধিক। সেই ঘটনার ১৪ বছর পূর্তিতে নিহত শ্রমিকদের স্মরণ এবং আহতদের চিকিৎসা ও পুনর্বাসনের দাবিতে বিভিন্ন কর্মসূচি পালন করেছেন শ্রমিক সংগঠনের নেতাকর্মীরা। তবে এক যুগের বেশি সময় পেরিয়ে গেলেও স্বাভাবিক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982874/%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%93-%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A6%A3-%E0%A6%B9%E0%A7%9F%E0%A6%A8%E0%A6%BF-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A7%9F%E0%A6%A4%E0%A6%BE%E0%A7%9F",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982874/%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%93-%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A6%A3-%E0%A6%B9%E0%A7%9F%E0%A6%A8%E0%A6%BF-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A7%9F%E0%A6%A4%E0%A6%BE%E0%A7%9F",
+      "publishedAt": "2026-11-24T05:04:33+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/politics/news/1182971"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982874/%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%93-%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A6%A3-%E0%A6%B9%E0%A7%9F%E0%A6%A8%E0%A6%BF-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A7%9F%E0%A6%A4%E0%A6%BE%E0%A7%9F"
         }
       ],
       "category": "Bangladesh",
@@ -864,14 +864,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "নাশকতা-ভাঙচুরের প্রতিবাদে ঢাকায় জামায়াতের বিক্ষোভ মিছিল বিকেলে",
-          "summary": "রাজধানীতে নাশকতা, ভাঙচুর ও অগ্নিসংযোগের প্রতিবাদে বিক্ষোভ মিছিল করবে বাংলাদেশ জামায়াতে ইসলামী ঢাকা মহানগরী উত্তর...",
-          "url": "https://www.jagonews24.com/politics/news/1182971"
+          "name": "Bangla Tribune",
+          "title": "১৪ বছরেও পূরণ হয়নি প্রতিশ্রুতি, অনিশ্চয়তায় তাজরীনের আহত শ্রমিকদের জীবন",
+          "summary": "দেশের পোশাকশিল্পের ইতিহাসে ভয়াবহ এক অধ্যায়ের নাম তাজরীন ট্র্যাজেডি। ২০১২ সালের ২৪ নভেম্বর ঢাকার আশুলিয়ার নিশ্চিন্তপুরে তাজরীন ফ্যাশনস কারখানায় ভয়াবহ অগ্নিকাণ্ডে প্রাণ হারান ১১৪ জন শ্রমিক। আহত হন দুই শতাধিক। সেই ঘটনার ১৪ বছর পূর্তিতে নিহত শ্রমিকদের স্মরণ এবং আহতদের চিকিৎসা ও পুনর্বাসনের দাবিতে বিভিন্ন কর্মসূচি পালন করেছেন শ্রমিক সংগঠনের নেতাকর্মীরা। তবে এক যুগের বেশি সময় পেরিয়ে গেলেও স্বাভাবিক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982874/%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0%E0%A7%87%E0%A6%93-%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A6%A3-%E0%A6%B9%E0%A7%9F%E0%A6%A8%E0%A6%BF-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF-%E0%A6%85%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%9A%E0%A7%9F%E0%A6%A4%E0%A6%BE%E0%A7%9F"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "fb5f0b9c2e590422b4fdcb3f39e9a1cd"
+      "alertEventId": "e6fb29ee6da8719130fc678fba90b814"
     },
     {
       "title": "যশোরে কয়েকজন আওয়ামী লীগ নেতার বাড়িতে ককটেল বিস্ফোরণ",
@@ -1542,6 +1542,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1c3f856231d3a613fc6790fbbad2b5ba"
+    },
+    {
+      "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
+      "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
+      "link": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
+      "publisherUrl": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
+      "publishedAt": "2026-11-23T14:10:17+00:00",
+      "source": "BD24Live",
+      "publisherName": "BD24Live",
+      "sourceEvidence": [
+        "BD24Live"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BD24Live",
+          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BD24Live",
+          "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
+          "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
+          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e955381b96152f20d15f053ca3376106"
     },
     {
       "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
