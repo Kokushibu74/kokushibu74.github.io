@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T01:30:38.309871+00:00",
-  "updatedAt": "2026-11-24T01:30:38.309871+00:00",
+  "generatedAt": "2026-11-24T01:45:49.020839+00:00",
+  "updatedAt": "2026-11-24T01:45:49.020839+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 50,
+  "failedSourceCount": 5,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 29,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 29,
+  "fallbackWithItemsSourceCount": 22,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -92,32 +92,32 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "mismatched tag: line 46, column 2",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24",
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -840,39 +840,8 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 37,
+  "candidateCount": 38,
   "alertItems": [
-    {
-      "title": "মারা গেলেন আহত তানিয়া, একই পরিবারের পাঁচজনই প্রাণ হারালেন",
-      "summary": "কক্সবাজারের রামু উপজেলার দক্ষিণ মিঠাছড়ির রেলক্রসিংয়ে ট্রেনের ধাক্কায় সিএনজি টেক্সি দুর্ঘটনায় আহত সাজ্জাদ হোসেন রুবেলের স্ত্রী তানিয়া সুলতানা মারা গেছেন। চট্টগ্রামে চিকিৎসাধীন অবস্থায় গতকাল সকাল ৭টার দিকে তার মৃত্যু হয়। তানিয়ার মৃত্যুর মধ্য দিয়ে মর্মান্তিক এ দুর্ঘটনায় একই পরিবারের পাঁচজনের মৃত্যু হলো। গত শুক্রবার (২০ নভেম্বর) বিকেল সাড়ে ৩টার দিকে দক্ষিণ মিঠাছড়ির কাটিরমাথা রেলক্রসিংয়ে ঢাকা […] The post মারা গেলেন আহত তানিয়া, একই পরিবারের পাঁচজনই প্রাণ হারালেন appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/%e0%a6%ae%e0%a6%be%e0%a6%b0%e0%a6%be-%e0%a6%97%e0%a7%87%e0%a6%b2%e0%a7%87%e0%a6%a8-%e0%a6%86%e0%a6%b9%e0%a6%a4-%e0%a6%a4%e0%a6%be%e0%a6%a8%e0%a6%bf%e0%a7%9f%e0%a6%be-%e0%a6%8f%e0%a6%95%e0%a6%87/",
-      "publisherUrl": "https://dainikazadi.net/%e0%a6%ae%e0%a6%be%e0%a6%b0%e0%a6%be-%e0%a6%97%e0%a7%87%e0%a6%b2%e0%a7%87%e0%a6%a8-%e0%a6%86%e0%a6%b9%e0%a6%a4-%e0%a6%a4%e0%a6%be%e0%a6%a8%e0%a6%bf%e0%a7%9f%e0%a6%be-%e0%a6%8f%e0%a6%95%e0%a6%87/",
-      "publishedAt": "2026-11-24T01:13:23+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%ae%e0%a6%be%e0%a6%b0%e0%a6%be-%e0%a6%97%e0%a7%87%e0%a6%b2%e0%a7%87%e0%a6%a8-%e0%a6%86%e0%a6%b9%e0%a6%a4-%e0%a6%a4%e0%a6%be%e0%a6%a8%e0%a6%bf%e0%a7%9f%e0%a6%be-%e0%a6%8f%e0%a6%95%e0%a6%87/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "মারা গেলেন আহত তানিয়া, একই পরিবারের পাঁচজনই প্রাণ হারালেন",
-          "summary": "কক্সবাজারের রামু উপজেলার দক্ষিণ মিঠাছড়ির রেলক্রসিংয়ে ট্রেনের ধাক্কায় সিএনজি টেক্সি দুর্ঘটনায় আহত সাজ্জাদ হোসেন রুবেলের স্ত্রী তানিয়া সুলতানা মারা গেছেন। চট্টগ্রামে চিকিৎসাধীন অবস্থায় গতকাল সকাল ৭টার দিকে তার মৃত্যু হয়। তানিয়ার মৃত্যুর মধ্য দিয়ে মর্মান্তিক এ দুর্ঘটনায় একই পরিবারের পাঁচজনের মৃত্যু হলো। গত শুক্রবার (২০ নভেম্বর) বিকেল সাড়ে ৩টার দিকে দক্ষিণ মিঠাছড়ির কাটিরমাথা রেলক্রসিংয়ে ঢাকা […] The post মারা গেলেন আহত তানিয়া, একই পরিবারের পাঁচজনই প্রাণ হারালেন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%ae%e0%a6%be%e0%a6%b0%e0%a6%be-%e0%a6%97%e0%a7%87%e0%a6%b2%e0%a7%87%e0%a6%a8-%e0%a6%86%e0%a6%b9%e0%a6%a4-%e0%a6%a4%e0%a6%be%e0%a6%a8%e0%a6%bf%e0%a7%9f%e0%a6%be-%e0%a6%8f%e0%a6%95%e0%a6%87/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bab59707afe7b4b26c899a3d2eba51c8"
-    },
     {
       "title": "বেকুটিয়া সেতুতে মোটরসাইকেল-ট্রলির সংঘর্ষ, দুই খালাতো ভাইসহ নিহত ৩",
       "summary": "পিরোজপুরের বেকুটিয়া সেতুতে মোটরসাইকেল ও মালবোঝাই ট্রলির সংঘর্ষে তিন যুবক নিহত হয়েছেন। নিহতদের মধ্যে আপন দুই খালাতো ভাই রয়েছেন...",
@@ -1128,6 +1097,39 @@
       "alertEventId": "7bb6d2b8184382ac86b16c1ddda78ce4"
     },
     {
+      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+      "link": "https://www.mzamin.com/article/63087",
+      "publisherUrl": "https://www.mzamin.com/article/63087",
+      "publishedAt": "2026-11-23T18:38:38+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
+      "sourceEvidence": [
+        "Manab Zamin"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Manab Zamin",
+          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087",
+          "incidentTimeText": "রাত ১০টায়",
+          "incidentTimeSource": "Manab Zamin"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
+    },
+    {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ. লীগের মিছিলে কথাকাটাকাটির জেরে ২ গ্রামবাসীর সংঘর্ষ | News | JamunaTV",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=AMRhqrl0T0c",
@@ -1314,6 +1316,37 @@
       "alertEventId": "7b65c1308896ff90b1b99b790b903f0d"
     },
     {
+      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publishedAt": "2026-11-23T16:20:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1697884564b407e80d621f51a59ca39b"
+    },
+    {
       "title": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আ'ওয়ামী সন্ত্রাসীদের দুই পক্ষের সংঘর্ষ, গু লি বিদ্ধ ৪, আহত ১৫|Gopalganj",
       "summary": "",
       "link": "https://www.youtube.com/watch?v=TSvKRq7ScEM",
@@ -1420,8 +1453,8 @@
     {
       "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
       "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-23T14:58:18+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1431,7 +1464,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1442,7 +1475,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন - Dhaka Tribune Bangla",
           "summary": "খুলনায় ব্র্যাক ব্যাংকের শিববাড়ি শাখায় আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113674/%E0%A6%96%E0%A7%81%E0%A6%B2%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A7%8D%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%95-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
