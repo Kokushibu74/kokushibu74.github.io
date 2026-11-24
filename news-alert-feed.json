@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T20:35:32.060828+00:00",
-  "updatedAt": "2026-11-24T20:35:32.060828+00:00",
+  "generatedAt": "2026-11-24T20:45:37.306524+00:00",
+  "updatedAt": "2026-11-24T20:45:37.306524+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Samakal",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,40 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 18,
   "alertItems": [
+    {
+      "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
+      "summary": "সংশ্লিষ্ট ব্যক্তিরা বলছেন, আগামী মাসে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের বেশ কয়েকটি কর্মসূচি রয়েছে। ওই সব কর্মসূচি থেকে আবারও হামলা-ভাঙচুর হতে পারে।",
+      "link": "https://www.prothomalo.com/bangladesh/8xj374ke4l",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/8xj374ke4l",
+      "publishedAt": "2026-11-24T20:29:56+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/8xj374ke4l"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
+          "summary": "সংশ্লিষ্ট ব্যক্তিরা বলছেন, আগামী মাসে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের বেশ কয়েকটি কর্মসূচি রয়েছে। ওই সব কর্মসূচি থেকে আবারও হামলা-ভাঙচুর হতে পারে।",
+          "url": "https://www.prothomalo.com/bangladesh/8xj374ke4l",
+          "incidentDateText": "২৪ নভেম্বর ২০২৬"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "24e118106d50ee3b2fd1daebf80a9ca8"
+    },
     {
       "title": "বাস-অটোরিকশার সংঘর্ষে কক্সবাজারে পাঁচজনের ম/ত্যু, পলাতক চালক-হেলপার | Channel 24",
       "summary": "",
