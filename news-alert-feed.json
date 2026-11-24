@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T04:15:33.969158+00:00",
-  "updatedAt": "2026-11-24T04:15:33.969158+00:00",
+  "generatedAt": "2026-11-24T04:30:54.799762+00:00",
+  "updatedAt": "2026-11-24T04:30:54.799762+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "healthySourceCount": 47,
+  "failedSourceCount": 8,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 27,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 27,
+  "fallbackWithItemsSourceCount": 20,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -123,16 +123,16 @@
       "name": "Bangla Tribune",
       "domain": "banglatribune.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dhaka Tribune",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 3,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -362,32 +362,32 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -512,17 +512,17 @@
     {
       "name": "Daily Naya Diganta",
       "domain": "dailynayadiganta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Janakantha",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,39 +840,8 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 33,
+  "candidateCount": 19,
   "alertItems": [
-    {
-      "title": "যশোরে কয়েকজন আওয়ামী লীগ নেতার বাড়িতে ককটেল বিস্ফোরণ",
-      "summary": "যশোর শহরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কয়েকজন নেতার বাড়ি লক্ষ্য করে ককটেল নিক্ষেপ ও বিস্ফোরণের অভিযোগ উঠেছে। রবিবার দিবাগত রাত ১২টা ১৫ মিনিট থেকে ১২টা ২০ মিনিটের মধ্যে শহরের পুরাতন কসবা, ঢাকা রোডসংলগ্ন ঘোষপাড়া ও পোস্ট অফিসপাড়া এলাকায় এসব ঘটনা ঘটে। তবে এসব ঘটনায় কোনও হতাহতের খবর পাওয়া যায়নি। স্থানীয়দের ভাষ্য, সোমবার (২৩ নভেম্বর) সকালে পুরাতন কসবার ঘোষপাড়ায় জেলা আওয়ামী লীগের সাধারণ সম্পাদক ও... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/982865/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/982865/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publishedAt": "2026-11-24T04:03:40+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/982865/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "যশোরে কয়েকজন আওয়ামী লীগ নেতার বাড়িতে ককটেল বিস্ফোরণ",
-          "summary": "যশোর শহরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের কয়েকজন নেতার বাড়ি লক্ষ্য করে ককটেল নিক্ষেপ ও বিস্ফোরণের অভিযোগ উঠেছে। রবিবার দিবাগত রাত ১২টা ১৫ মিনিট থেকে ১২টা ২০ মিনিটের মধ্যে শহরের পুরাতন কসবা, ঢাকা রোডসংলগ্ন ঘোষপাড়া ও পোস্ট অফিসপাড়া এলাকায় এসব ঘটনা ঘটে। তবে এসব ঘটনায় কোনও হতাহতের খবর পাওয়া যায়নি। স্থানীয়দের ভাষ্য, সোমবার (২৩ নভেম্বর) সকালে পুরাতন কসবার ঘোষপাড়ায় জেলা আওয়ামী লীগের সাধারণ সম্পাদক ও... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/982865/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "12e84adcbc8febb6da1282c332d37e39"
-    },
     {
       "title": "পাবনাতে আধিপত্য বিস্তার নিয়ে দুই গ্রুপের সংঘর্ষ, গুলিবিদ্ধ কয়েকজন | News| Pabna | Jamuna TV",
       "summary": "",
@@ -905,37 +874,6 @@
       "alertEventId": "e4de598647e1d466080c4aed44515155"
     },
     {
-      "title": "জিপের চাকা মেরামতের সময় লরির ধাক্কা, প্রাণ গেলো চালকের",
-      "summary": "ফেনীতে ঢাকা-চট্টগ্রাম মহাসড়কের পাশে দাঁড়িয়ে জিপগাড়ির চাকা মেরামতের সময় লরির ধাক্কায় ওয়াজেদ আলী (৪০) নামে এক চালকের মৃত্যু হয়েছে। সোমবার (২৩ নভেম্বর) রাত ৯টার দিকে মহাসড়কের ঢাকামুখী লেনে লালপোল বাজারসংলগ্ন মধুপুর রাস্তার মাথায় এ দুর্ঘটনা ঘটে। নিহত ওয়াজেদ আলী ঢাকার বাড্ডা থানার খিলবাড়ির টেক পশ্চিম এলাকার বাসিন্দা। তিনি জামাল আলীর ছেলে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাতে চলন্ত অবস্থায়... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/982855/%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/982855/%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B",
-      "publishedAt": "2026-11-24T02:44:39+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/982855/%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "জিপের চাকা মেরামতের সময় লরির ধাক্কা, প্রাণ গেলো চালকের",
-          "summary": "ফেনীতে ঢাকা-চট্টগ্রাম মহাসড়কের পাশে দাঁড়িয়ে জিপগাড়ির চাকা মেরামতের সময় লরির ধাক্কায় ওয়াজেদ আলী (৪০) নামে এক চালকের মৃত্যু হয়েছে। সোমবার (২৩ নভেম্বর) রাত ৯টার দিকে মহাসড়কের ঢাকামুখী লেনে লালপোল বাজারসংলগ্ন মধুপুর রাস্তার মাথায় এ দুর্ঘটনা ঘটে। নিহত ওয়াজেদ আলী ঢাকার বাড্ডা থানার খিলবাড়ির টেক পশ্চিম এলাকার বাসিন্দা। তিনি জামাল আলীর ছেলে। পুলিশ ও স্থানীয় সূত্রে জানা যায়, রাতে চলন্ত অবস্থায়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/982855/%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AE%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%B2%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2%E0%A7%8B"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "514c0c3e0d3fc10cf09b03e4ec8bbce6"
-    },
-    {
       "title": "নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে",
       "summary": "চট্টগ্রাম–১৫ আসনের সংসদ সদস্য শাহজাহান চৌধুরী বলেছেন, নিষিদ্ধ ঘোষিত আওয়ামী লীগের সন্ত্রাসীরা সরকারি কর্মকর্তা–কর্মচারীদের লক্ষ্য করে হামলা চালিয়ে আতঙ্ক সৃষ্টির চেষ্টা করতে পারে। এ বিষয়ে আইনশৃঙ্খলা রক্ষাকারী বাহিনীসহ সংশ্লিষ্ট সবাইকে সতর্ক থাকতে হবে। সন্ত্রাসীরা কোনো ধরনের নাশকতার চেষ্টা করলে সাথে সাথে তাদেরকে কঠোরভাবে দমন করতে হবে। সরকারি কর্মকর্তাদের আরও দায়িত্বশীল, আন্তরিক ও জনবান্ধব মনোভাব নিয়ে […] The post নিষিদ্ধ আ. লীগের সন্ত্রাসীরা হামলা চালিয়ে আতংক সৃষ্টির চেষ্টা করতে পারে appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/%e0%a6%a8%e0%a6%bf%e0%a6%b7%e0%a6%bf%e0%a6%a6%e0%a7%8d%e0%a6%a7-%e0%a6%86-%e0%a6%b2%e0%a7%80%e0%a6%97%e0%a7%87%e0%a6%b0-%e0%a6%b8%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%b8/",
@@ -965,74 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5caa1fc64281694ebca4e7e7075cc0f1"
-    },
-    {
-      "title": "পিরোজপুরে সেতুর ওপর দুই মোটরসাইকেলে ট্রলির ধাক্কা, নিহত ৩",
-      "summary": "পিরোজপুরের কঁচা নদীর ওপর নির্মিত অষ্টম বাংলাদেশ-চীন মৈত্রী সেতুতে দুটি মোটরসাইকেলের দুর্ঘটনায় তিন যুবক নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। তাদের একজন প্রাথমিক চিকিৎসা নিয়ে বাড়ি ফিরেছেন। অন্যজন খুলনায় চিকিৎসাধীন রয়েছেন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে সেতুর কাউখালী প্রান্তে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন কাউখালী উপজেলার বেকুটিয়া গ্রামের শতদল রায়ের ছেলে সান্তনু রায় শান্ত... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE",
-      "publishedAt": "2026-11-23T22:52:36+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "পিরোজপুরে সেতুর ওপর দুই মোটরসাইকেলে ট্রলির ধাক্কা, নিহত ৩",
-          "summary": "পিরোজপুরের কঁচা নদীর ওপর নির্মিত অষ্টম বাংলাদেশ-চীন মৈত্রী সেতুতে দুটি মোটরসাইকেলের দুর্ঘটনায় তিন যুবক নিহত হয়েছেন। এ ঘটনায় আহত হয়েছেন আরও দুজন। তাদের একজন প্রাথমিক চিকিৎসা নিয়ে বাড়ি ফিরেছেন। অন্যজন খুলনায় চিকিৎসাধীন রয়েছেন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে সেতুর কাউখালী প্রান্তে এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন কাউখালী উপজেলার বেকুটিয়া গ্রামের শতদল রায়ের ছেলে সান্তনু রায় শান্ত... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/barishal/982849/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%87%E0%A6%A4%E0%A7%81%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0-%E0%A6%A7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%95%E0%A6%BE"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d597173fdfff78188b7929983965e0da"
-    },
-    {
-      "title": "ঈশ্বরদীতে ছাত্রদলের নেতাকর্মীদের ওপর হামলার পর মধ্যরাতে যুবলীগ নেতার বাড়িতে আগুন",
-      "summary": "পাবনার ঈশ্বরদীতে ছাত্রদলের নেতাকর্মীদের ওপর হামলার অভিযোগে নিষিদ্ধ যুবলীগের এক নেতার বাড়িতে অগ্নিসংযোগের অভিযোগ উঠেছে। সোমবার (২৩ নভেম্বর) দিবাগত গভীর রাতে উপজেলার সাঁড়া ইউনিয়নে সেই বাড়িতে আগুনের ঘটনা ঘটে। স্থানীয় ও প্রত্যক্ষদর্শী সূত্রে জানা যায়, সোমবার সন্ধ্যায় উপজেলার সাঁড়া ইউনিয়নের মাঝদিয়া এলাকায় দুর্বৃত্তদের অতর্কিত গুলিতে ছাত্রদলের পাঁচ নেতাকর্মী গুলিবিদ্ধ হন। স্থানীয়রা তাদের উদ্ধার করে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/rajshahi/982847/%E0%A6%88%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%A6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/982847/%E0%A6%88%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%A6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0",
-      "publishedAt": "2026-11-23T21:19:02+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/982847/%E0%A6%88%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%A6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ঈশ্বরদীতে ছাত্রদলের নেতাকর্মীদের ওপর হামলার পর মধ্যরাতে যুবলীগ নেতার বাড়িতে আগুন",
-          "summary": "পাবনার ঈশ্বরদীতে ছাত্রদলের নেতাকর্মীদের ওপর হামলার অভিযোগে নিষিদ্ধ যুবলীগের এক নেতার বাড়িতে অগ্নিসংযোগের অভিযোগ উঠেছে। সোমবার (২৩ নভেম্বর) দিবাগত গভীর রাতে উপজেলার সাঁড়া ইউনিয়নে সেই বাড়িতে আগুনের ঘটনা ঘটে। স্থানীয় ও প্রত্যক্ষদর্শী সূত্রে জানা যায়, সোমবার সন্ধ্যায় উপজেলার সাঁড়া ইউনিয়নের মাঝদিয়া এলাকায় দুর্বৃত্তদের অতর্কিত গুলিতে ছাত্রদলের পাঁচ নেতাকর্মী গুলিবিদ্ধ হন। স্থানীয়রা তাদের উদ্ধার করে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/982847/%E0%A6%88%E0%A6%B6%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A6%A6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "বিএনপির মিছিলের প্রস্তুতির সময় কার্যক্রম নিষিদ্ধ আ.লীগের হামলা, ৫ জন গুলিবিদ্ধ",
-          "summary": "পাবনার ঈশ্বরদী উপজেলার সাঁড়া ইউনিয়নে বিএনপির মিছিলের প্রস্তুতির সময় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের হামলা ও গুলি বর্ষণের ঘটনা ঘটেছে। এতে পাঁচজন গুলিবিদ্ধ হয়েছেন। এ ঘটনায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতা কাকন বাহিনীর বিরুদ্ধে গুলিবর্ষণের অভিযোগ উঠেছে। সোমবার (২৩ নভেম্বর) সন্ধ্যায় উপজেলার সাঁড়া ইউনিয়নের ইসলামপুর ঘাট এলাকায় এ ঘটনা ঘটে। গুলিবিদ্ধরা হলেন—পূর্ব টেংরী এলাকার রিপন খার ছেলে মিজান... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/982818/%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%AE%E0%A6%BF%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%9F-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%AE-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5a5c87158674eb74296406cf7dfef598"
     },
     {
       "title": "বাংলাদেশে আসার পথে ইন্দোনেশিয়ায় বিস্ফোরকবাহী জাহাজ জব্দ - SAMAKAL",
@@ -1097,101 +967,6 @@
       "alertEventId": "d0cc29a5abacfcad413d99d0c8d280c1"
     },
     {
-      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-      "link": "https://www.mzamin.com/article/63087",
-      "publisherUrl": "https://www.mzamin.com/article/63087",
-      "publishedAt": "2026-11-23T18:38:38+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087",
-          "incidentTimeText": "রাত ১০টায়",
-          "incidentTimeSource": "Manab Zamin"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
-    },
-    {
-      "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
-      "summary": "রাজধানীর লালবাগের ইসলামবাগ এলাকায় একটি প্লাস্টিকের গোডাউনে লাগা আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত হয়েছেন। তারা হলেন, ফায়ার ফাইটার জয় রায় (৩২) ও আজহারুল (২৬)। সোমবার (২৩ নভেম্বর) সন্ধ্যায় ঘটনাটি ঘটেছে। আহত অবস্থায় তাদের উদ্ধার করে ঢাকা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়। বিষয়টি নিশ্চিত করে ঢামেক হাসপাতাল পুলিশ ফাড়ির উপপরিদর্শক এসআই মো. সেলিম বলেন, তাদের জরুরি বিভাগে চিকিৎসা... বিস্তারিত",
-      "link": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-23T17:06:36+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "লালবাগে আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত",
-          "summary": "রাজধানীর লালবাগের ইসলামবাগ এলাকায় একটি প্লাস্টিকের গোডাউনে লাগা আগুন নেভাতে গিয়ে দুই ফায়ারকর্মী আহত হয়েছেন। তারা হলেন, ফায়ার ফাইটার জয় রায় (৩২) ও আজহারুল (২৬)। সোমবার (২৩ নভেম্বর) সন্ধ্যায় ঘটনাটি ঘটেছে। আহত অবস্থায় তাদের উদ্ধার করে ঢাকা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়। বিষয়টি নিশ্চিত করে ঢামেক হাসপাতাল পুলিশ ফাড়ির উপপরিদর্শক এসআই মো. সেলিম বলেন, তাদের জরুরি বিভাগে চিকিৎসা... বিস্তারিত",
-          "url": "https://www.banglatribune.com/others/982828/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AB%E0%A6%BE%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8809a1b13225ba4188c549ff66e4a2b6"
-    },
-    {
-      "title": "গোপালগঞ্জে আ.লীগের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ: গুলিবিদ্ধসহ আহত ২০",
-      "summary": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, যুবলীগ ও নিষিদ্ধ ছাত্রলীগের সমাবেশে দাঁড়ানো নিয়ে দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় ধাওয়া-পাল্টা ধাওয়া, হামলা, গুলিবর্ষণ ও ভাঙচুরের পাশাপাশি নিজেদের মধ্যে ককটেল বিস্ফোরণের ঘটনাও ঘটে। এ ঘটনায় চারজন গুলিবিদ্ধসহ ২০ জন আহত হন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে গোপালগঞ্জ জেলা শহরের লঞ্চঘাট বটতলা গোলচত্বর এলাকায় এ ঘটনা ঘটে। এ সময় ছয়টি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2",
-      "publishedAt": "2026-11-23T16:58:36+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "গোপালগঞ্জে আ.লীগের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ: গুলিবিদ্ধসহ আহত ২০",
-          "summary": "গোপালগঞ্জে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ, যুবলীগ ও নিষিদ্ধ ছাত্রলীগের সমাবেশে দাঁড়ানো নিয়ে দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় ধাওয়া-পাল্টা ধাওয়া, হামলা, গুলিবর্ষণ ও ভাঙচুরের পাশাপাশি নিজেদের মধ্যে ককটেল বিস্ফোরণের ঘটনাও ঘটে। এ ঘটনায় চারজন গুলিবিদ্ধসহ ২০ জন আহত হন। সোমবার (২৩ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে গোপালগঞ্জ জেলা শহরের লঞ্চঘাট বটতলা গোলচত্বর এলাকায় এ ঘটনা ঘটে। এ সময় ছয়টি... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982825/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "045743360b7536d1f60066ca75190274"
-    },
-    {
       "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
       "summary": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ Ajker Patrika",
       "link": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4",
@@ -1216,42 +991,12 @@
           "name": "Ajker Patrika",
           "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
           "summary": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4"
+          "url": "https://www.ajkerpatrika.com/technology/ajpb5hhzu82t4",
+          "incidentDateText": "২৩ নভেম্বর ২০২৬"
         }
       ],
       "corroborationCount": 1,
       "alertEventId": "c71f7830e3226bc9bbe1d551436069ff"
-    },
-    {
-      "title": "দেশজুড়ে সংঘাতের আগুন, ‘ঘি ঢালছে’ সামাজিক যোগাযোগমাধ্যম",
-      "summary": "রাজধানীসহ দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ, হামলা ও ভাঙচুরের ঘটনায় জনমনে আতঙ্ক তৈরি হয়েছে। গোপালগঞ্জসহ কয়েকটি জেলায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নৈরাজ্য ও অগ্নিসংযোগের ঘটনার পাশাপাশি নড়াইলের কালিয়ায় আওয়ামী লীগের নেতাকর্মীদের বাড়িঘর ও ব্যবসাপ্রতিষ্ঠানে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনাও সামনে এসেছে। এসব ঘটনার মধ্যে সামাজিক যোগাযোগমাধ্যমে চলছে পাল্টাপাল্টি প্রচার, পুরোনো... বিস্তারিত",
-      "link": "https://www.banglatribune.com/tech-and-gadget/982812/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E2%80%98%E0%A6%98%E0%A6%BF-%E0%A6%A2%E0%A6%BE%E0%A6%B2%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%95",
-      "publisherUrl": "https://www.banglatribune.com/tech-and-gadget/982812/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E2%80%98%E0%A6%98%E0%A6%BF-%E0%A6%A2%E0%A6%BE%E0%A6%B2%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%95",
-      "publishedAt": "2026-11-23T16:36:44+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/tech-and-gadget/982812/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E2%80%98%E0%A6%98%E0%A6%BF-%E0%A6%A2%E0%A6%BE%E0%A6%B2%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "দেশজুড়ে সংঘাতের আগুন, ‘ঘি ঢালছে’ সামাজিক যোগাযোগমাধ্যম",
-          "summary": "রাজধানীসহ দেশের বিভিন্ন স্থানে ককটেল বিস্ফোরণ, বাসে অগ্নিসংযোগ, হামলা ও ভাঙচুরের ঘটনায় জনমনে আতঙ্ক তৈরি হয়েছে। গোপালগঞ্জসহ কয়েকটি জেলায় কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নৈরাজ্য ও অগ্নিসংযোগের ঘটনার পাশাপাশি নড়াইলের কালিয়ায় আওয়ামী লীগের নেতাকর্মীদের বাড়িঘর ও ব্যবসাপ্রতিষ্ঠানে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনাও সামনে এসেছে। এসব ঘটনার মধ্যে সামাজিক যোগাযোগমাধ্যমে চলছে পাল্টাপাল্টি প্রচার, পুরোনো... বিস্তারিত",
-          "url": "https://www.banglatribune.com/tech-and-gadget/982812/%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%9C%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E2%80%98%E0%A6%98%E0%A6%BF-%E0%A6%A2%E0%A6%BE%E0%A6%B2%E0%A6%9B%E0%A7%87%E2%80%99-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7b65c1308896ff90b1b99b790b903f0d"
     },
     {
       "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
@@ -1327,37 +1072,6 @@
       "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
     },
     {
-      "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
-      "summary": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500333",
-      "publisherUrl": "https://www.dhakapost.com/country/500333",
-      "publishedAt": "2026-11-23T15:46:56+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500333"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
-          "summary": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500333"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d727ba14a0b2626f1ef48dc12ae0463b"
-    },
-    {
       "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত - SAMAKAL",
       "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি নিহত SAMAKAL",
       "link": "https://samakal.com/international/article/384693/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%B0%E0%A7%81%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -1418,99 +1132,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "79fb93f973913567bb8aff2c5e281840"
-    },
-    {
-      "title": "ব্যাটিং ধসে ৯১ রানে অলআউট বাংলাদেশ - SAMAKAL",
-      "summary": "ব্যাটিং ধসে ৯১ রানে অলআউট বাংলাদেশ SAMAKAL",
-      "link": "https://samakal.com/sports/article/384689/%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8%E0%A7%87-%E0%A7%AF%E0%A7%A7-%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%85%E0%A6%B2%E0%A6%86%E0%A6%89%E0%A6%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publisherUrl": "https://samakal.com/sports/article/384689/%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8%E0%A7%87-%E0%A7%AF%E0%A7%A7-%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%85%E0%A6%B2%E0%A6%86%E0%A6%89%E0%A6%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publishedAt": "2026-11-23T14:48:57+00:00",
-      "source": "SAMAKAL",
-      "publisherName": "SAMAKAL",
-      "sourceEvidence": [
-        "SAMAKAL"
-      ],
-      "sourceLinks": [
-        {
-          "name": "SAMAKAL",
-          "url": "https://samakal.com/sports/article/384689/%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8%E0%A7%87-%E0%A7%AF%E0%A7%A7-%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%85%E0%A6%B2%E0%A6%86%E0%A6%89%E0%A6%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "SAMAKAL",
-          "title": "ব্যাটিং ধসে ৯১ রানে অলআউট বাংলাদেশ - SAMAKAL",
-          "summary": "ব্যাটিং ধসে ৯১ রানে অলআউট বাংলাদেশ SAMAKAL",
-          "url": "https://samakal.com/sports/article/384689/%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BF%E0%A6%82-%E0%A6%A7%E0%A6%B8%E0%A7%87-%E0%A7%AF%E0%A7%A7-%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%85%E0%A6%B2%E0%A6%86%E0%A6%89%E0%A6%9F-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c086adfeecff26f32fa616bc05645f07"
-    },
-    {
-      "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ দুই রোগীরই মৃত্যু",
-      "summary": "নারায়ণগঞ্জের ফতুল্লায় গ্যাস লাইনের লিকেজ থেকে সৃষ্ট আগুনে দগ্ধ দুই রোগীই চিকিৎসাধীন অবস্থায় মারা গেছেন। গত শুক্রবার (২০ নভেম্বর) রাত ২টা ৫০ মিনিটে এ অগ্নিকাণ্ডের ঘটনা ঘটে। এতে দগ্ধ হয়ে রঞ্জিত (৪৫) ও পাশা (৪০) জাতীয় বার্ন ও প্লাস্টিক সার্জারি ইনস্টিটিউটে ভর্তি হন। হাসপাতাল সূত্রে জানা গেছে, রঞ্জিতের শরীরের ৫২ শতাংশ এবং পাশার ৮৭ শতাংশ দগ্ধ হয়েছিল। দুজনেরই ইনহেলেশন ইনজুরি ছিল। রঞ্জিত আজ ২৩... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/982798/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0%E0%A6%87",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/982798/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0%E0%A6%87",
-      "publishedAt": "2026-11-23T14:41:07+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/982798/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0%E0%A6%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ফতুল্লায় গ্যাস লিকেজ থেকে আগুন, দগ্ধ দুই রোগীরই মৃত্যু",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় গ্যাস লাইনের লিকেজ থেকে সৃষ্ট আগুনে দগ্ধ দুই রোগীই চিকিৎসাধীন অবস্থায় মারা গেছেন। গত শুক্রবার (২০ নভেম্বর) রাত ২টা ৫০ মিনিটে এ অগ্নিকাণ্ডের ঘটনা ঘটে। এতে দগ্ধ হয়ে রঞ্জিত (৪৫) ও পাশা (৪০) জাতীয় বার্ন ও প্লাস্টিক সার্জারি ইনস্টিটিউটে ভর্তি হন। হাসপাতাল সূত্রে জানা গেছে, রঞ্জিতের শরীরের ৫২ শতাংশ এবং পাশার ৮৭ শতাংশ দগ্ধ হয়েছিল। দুজনেরই ইনহেলেশন ইনজুরি ছিল। রঞ্জিত আজ ২৩... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/982798/%E0%A6%AB%E0%A6%A4%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%9C-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B0%E0%A7%8B%E0%A6%97%E0%A7%80%E0%A6%B0%E0%A6%87"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "73b7118a68576a4061c3743be1b92cf4"
-    },
-    {
-      "title": "দক্ষিণ আফ্রিকার তোপ, চায়ের বিরতিতে যাওয়ার আগেই ৬ উইকেট নেই বাংলাদেশের",
-      "summary": "বৃষ্টির বাধা পেরিয়ে খেলা শুরু হতেই বাংলাদেশের ব্যাটিংয়ে ধস নামিয়েছে দক্ষিণ আফ্রিকা। সেঞ্চুরিয়নে দ্বিতীয় টেস্টের প্রথম দিন চা-বিরতিতে যাওয়ার আগেই ৮৫ রানে ৬ উইকেট হারিয়ে ধুঁকছে বাংলাদেশ। প্রোটিয়া পেসারদের গতি ও সুইংয়ের সামনে একের পর এক উইকেট হারিয়ে বড় সংগ্রহের আশা কঠিন হয়ে পড়েছে সফরকারীদের। বৃষ্টির কারণে দেরিতে শুরু হওয়া দ্বিতীয় সেশনে ব্যাট করতে নেমে শুরু থেকেই বিপাকে পড়ে বাংলাদেশ। ১৪ ওভারের... বিস্তারিত",
-      "link": "https://www.banglatribune.com/sport/cricket/982791/%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3-%E0%A6%86%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%8B%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A7%AC",
-      "publisherUrl": "https://www.banglatribune.com/sport/cricket/982791/%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3-%E0%A6%86%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%8B%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A7%AC",
-      "publishedAt": "2026-11-23T14:31:25+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/sport/cricket/982791/%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3-%E0%A6%86%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%8B%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A7%AC"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "দক্ষিণ আফ্রিকার তোপ, চায়ের বিরতিতে যাওয়ার আগেই ৬ উইকেট নেই বাংলাদেশের",
-          "summary": "বৃষ্টির বাধা পেরিয়ে খেলা শুরু হতেই বাংলাদেশের ব্যাটিংয়ে ধস নামিয়েছে দক্ষিণ আফ্রিকা। সেঞ্চুরিয়নে দ্বিতীয় টেস্টের প্রথম দিন চা-বিরতিতে যাওয়ার আগেই ৮৫ রানে ৬ উইকেট হারিয়ে ধুঁকছে বাংলাদেশ। প্রোটিয়া পেসারদের গতি ও সুইংয়ের সামনে একের পর এক উইকেট হারিয়ে বড় সংগ্রহের আশা কঠিন হয়ে পড়েছে সফরকারীদের। বৃষ্টির কারণে দেরিতে শুরু হওয়া দ্বিতীয় সেশনে ব্যাট করতে নেমে শুরু থেকেই বিপাকে পড়ে বাংলাদেশ। ১৪ ওভারের... বিস্তারিত",
-          "url": "https://www.banglatribune.com/sport/cricket/982791/%E0%A6%A6%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A3-%E0%A6%86%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A7%8B%E0%A6%AA-%E0%A6%9A%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%87%E0%A6%87-%E0%A7%AC"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1c3f856231d3a613fc6790fbbad2b5ba"
     },
     {
       "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
@@ -1617,37 +1238,6 @@
       "alertEventId": "5ecfa59871437292839bdd0f6ee4385a"
     },
     {
-      "title": "তথ্য নিতে গিয়ে হামলায় পুলিশ সদস্য নিহত, দৌড়ে প্রাণ বাঁচানো পুলিশ কর্মকর্তা ক্লোজড",
-      "summary": "নারায়ণগঞ্জের ফতুল্লায় সাদা পোশাকে তথ্য সংগ্রহ করতে গিয়ে দুর্বৃত্তদের ছুরিকাঘাতে আনোয়ার হোসেন (৩২) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। ওই সময় ঘটনাস্থল থেকে দৌড়ে পালিয়ে প্রাণে বেঁচে যাওয়া সহকারী উপপরিদর্শক (এএসআই) আব্দুস সাত্তারকে ক্লোজড করে পুলিশ লাইনসে সংযুক্ত করা হয়েছে। সোমবার (২৩ নভেম্বর) দুপুরে বিষয়টি বাংলা ট্রিবিউনকে নিশ্চিত করেছেন নারায়ণগঞ্জের অতিরিক্ত পুলিশ সুপার তারেক আল মেহেদী।... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/982775/%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%8C%E0%A7%9C%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982775/%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%8C%E0%A7%9C%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3",
-      "publishedAt": "2026-11-23T13:02:48+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/982775/%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%8C%E0%A7%9C%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "তথ্য নিতে গিয়ে হামলায় পুলিশ সদস্য নিহত, দৌড়ে প্রাণ বাঁচানো পুলিশ কর্মকর্তা ক্লোজড",
-          "summary": "নারায়ণগঞ্জের ফতুল্লায় সাদা পোশাকে তথ্য সংগ্রহ করতে গিয়ে দুর্বৃত্তদের ছুরিকাঘাতে আনোয়ার হোসেন (৩২) নামে এক পুলিশ কনস্টেবল নিহত হয়েছেন। ওই সময় ঘটনাস্থল থেকে দৌড়ে পালিয়ে প্রাণে বেঁচে যাওয়া সহকারী উপপরিদর্শক (এএসআই) আব্দুস সাত্তারকে ক্লোজড করে পুলিশ লাইনসে সংযুক্ত করা হয়েছে। সোমবার (২৩ নভেম্বর) দুপুরে বিষয়টি বাংলা ট্রিবিউনকে নিশ্চিত করেছেন নারায়ণগঞ্জের অতিরিক্ত পুলিশ সুপার তারেক আল মেহেদী।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/982775/%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%8C%E0%A7%9C%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5c7bd8384fde682dcb3ab77da1ecdceb"
-    },
-    {
       "title": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত - Dhaka Tribune Bangla",
       "summary": "মৌলভীবাজারে শমশেরনগর বাজারে অগ্নিকাণ্ডে ১১ ঘর ভস্মীভূত Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113660/%E0%A6%AE%E0%A7%8C%E0%A6%B2%E0%A6%AD%E0%A7%80%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A6%AE%E0%A6%B6%E0%A7%87%E0%A6%B0%E0%A6%A8%E0%A6%97%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87-%E0%A7%A7%E0%A7%A7-%E0%A6%98%E0%A6%B0",
@@ -1679,20 +1269,20 @@
       "alertEventId": "7819ecd5aaa30eb99275a4163522b1f3"
     },
     {
-      "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
-      "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-      "link": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0",
-      "publishedAt": "2026-11-23T07:37:36+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
+      "title": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা - Bangla Tribune",
+      "summary": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা Bangla Tribune",
+      "link": "https://www.banglatribune.com/foreign/asia/982735/%E0%A6%B6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%A4%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%AD%E0%A6%BE%E0%A6%B8-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/foreign/asia/982735/%E0%A6%B6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%A4%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%AD%E0%A6%BE%E0%A6%B8-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87",
+      "publishedAt": "2026-11-23T10:09:56+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "একাত্তর"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/foreign/asia/982735/%E0%A6%B6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%A4%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%AD%E0%A6%BE%E0%A6%B8-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1700,14 +1290,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "একাত্তর",
-          "title": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার - একাত্তর",
-          "summary": "সিলেটে যৌথ অভিযানে ১৯ প্লাস্টিক বিস্ফোরক উদ্ধার একাত্তর",
-          "url": "https://ekattor.tv/amp/country/sylhet/98247/%E0%A6%B8%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%AF%E0%A7%8C%E0%A6%A5-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A7%A7%E0%A7%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0"
+          "name": "Bangla Tribune",
+          "title": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা - Bangla Tribune",
+          "summary": "শীতে বাংলাদেশে বাড়তি বৃষ্টির আভাস, হিমালয়ে ভূমিধস-তুষারধসের শঙ্কা Bangla Tribune",
+          "url": "https://www.banglatribune.com/foreign/asia/982735/%E0%A6%B6%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A7%9C%E0%A6%A4%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%B0-%E0%A6%86%E0%A6%AD%E0%A6%BE%E0%A6%B8-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "6c10f4cf4df618238b436a33b897094a"
+      "alertEventId": "dc92a715257ad8d91882178bb6689d8e"
     },
     {
       "title": "নারায়ণগঞ্জে দাঁড়িয়ে থাকা যাত্রীবাহী বাস ও ঝুটবোঝাই ট্রাকে আগুন - Dhaka Tribune Bangla",
