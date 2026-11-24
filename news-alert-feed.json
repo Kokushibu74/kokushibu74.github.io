@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T09:30:41.777167+00:00",
-  "updatedAt": "2026-11-24T09:30:41.777167+00:00",
+  "generatedAt": "2026-11-24T09:45:31.558121+00:00",
+  "updatedAt": "2026-11-24T09:45:31.558121+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,20 +840,56 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 26,
   "alertItems": [
     {
-      "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, আসবাপত্র মহাসড়কের এনে আগুন",
-      "summary": "গাজীপুর মহানগরীর গাজীপুরা বাসস্ট্যান্ডে পুলিশ বক্সে ভাঙচুর করে মালামাল বের করে আগুন দিয়েছে আন্দোলনকারীরা। মঙ্গলবার (২৪ নভেম্বর) বেলা ১১টার পর এই ঘটনা ঘটে...",
-      "link": "https://www.jagonews24.com/country/news/1183112",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1183112",
-      "publishedAt": "2026-11-24T09:20:53+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "গাজীপুরে কারখানায় হামলা-ভাঙচুরের প্রতিবাদে বিএনপি-শ্রমিক দলের বিক্ষোভ",
+      "summary": "কার্যক্রম নিষিদ্ধ ঘোষিত সংগঠন আওয়ামী লীগের সন্ত্রাস, নৈরাজ্যে, পোশাক শ্রমিকদেরকে আন্দোলনে উস্কানি, বিভিন্ন পোশাক কারখানায় হামলা এবং ভাংচুরের প্রতিবাদে বিক্ষোভ মিছিল করেছে শ্রীপুর পৌর বিএনপি ও শ্রমিক দল। মঙ্গলবার (২৪ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর-আনসার সড়কে বিক্ষোভ মিছিল করে। শ্রীপুর পৌর বিএনপি এবং শ্রমিক দলের যৌথ উদ্যোগে বিক্ষোভ মিছিল করে দলটির নেতৃবৃন্দ। শ্রীপুর পৌর শ্রমিক দলের আহ্বায়ক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publishedAt": "2026-11-24T09:35:58+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গাজীপুরে কারখানায় হামলা-ভাঙচুরের প্রতিবাদে বিএনপি-শ্রমিক দলের বিক্ষোভ",
+          "summary": "কার্যক্রম নিষিদ্ধ ঘোষিত সংগঠন আওয়ামী লীগের সন্ত্রাস, নৈরাজ্যে, পোশাক শ্রমিকদেরকে আন্দোলনে উস্কানি, বিভিন্ন পোশাক কারখানায় হামলা এবং ভাংচুরের প্রতিবাদে বিক্ষোভ মিছিল করেছে শ্রীপুর পৌর বিএনপি ও শ্রমিক দল। মঙ্গলবার (২৪ নভেম্বর) দুপুর ১২টার দিকে শ্রীপুর-আনসার সড়কে বিক্ষোভ মিছিল করে। শ্রীপুর পৌর বিএনপি এবং শ্রমিক দলের যৌথ উদ্যোগে বিক্ষোভ মিছিল করে দলটির নেতৃবৃন্দ। শ্রীপুর পৌর শ্রমিক দলের আহ্বায়ক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/982933/%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4988fa18ac32b27039e44044b789a445"
+    },
+    {
+      "title": "বেতন বাড়ানোর দাবিতে গাজীপুরে মহাসড়ক অবরোধ, ভাঙচুর ও সংঘর্ষ! #Gazipur #WorkersProtest #rtvnews",
+      "summary": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, আসবাবপত্র মহাসড়কে এনে আগুন",
+      "link": "https://www.youtube.com/shorts/oWsWmW9YeOg",
+      "publisherUrl": "https://www.youtube.com/shorts/oWsWmW9YeOg",
+      "publishedAt": "2026-11-24T09:25:53+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News",
         "Jago News 24"
       ],
       "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/oWsWmW9YeOg"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1183112"
@@ -864,14 +900,20 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "RTV News",
+          "title": "বেতন বাড়ানোর দাবিতে গাজীপুরে মহাসড়ক অবরোধ, ভাঙচুর ও সংঘর্ষ! #Gazipur #WorkersProtest #rtvnews",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/oWsWmW9YeOg"
+        },
+        {
           "name": "Jago News 24",
-          "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, আসবাপত্র মহাসড়কের এনে আগুন",
-          "summary": "গাজীপুর মহানগরীর গাজীপুরা বাসস্ট্যান্ডে পুলিশ বক্সে ভাঙচুর করে মালামাল বের করে আগুন দিয়েছে আন্দোলনকারীরা। মঙ্গলবার (২৪ নভেম্বর) বেলা ১১টার পর এই ঘটনা ঘটে...",
+          "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, আসবাবপত্র মহাসড়কে এনে আগুন",
+          "summary": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, আসবাবপত্র মহাসড়কে এনে আগুন",
           "url": "https://www.jagonews24.com/country/news/1183112"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "c10da421ee356daf72bdd9ba2c5fe86f"
+      "corroborationCount": 2,
+      "alertEventId": "1be8aeb90902a008e0056930d7508e6f"
     },
     {
       "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, চেয়ার-টেবিল ও নথিপত্রে আগুন",
