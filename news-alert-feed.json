@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T18:05:40.872872+00:00",
-  "updatedAt": "2026-11-24T18:05:40.872872+00:00",
+  "generatedAt": "2026-11-24T18:20:34.148296+00:00",
+  "updatedAt": "2026-11-24T18:20:34.148296+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 20,
+  "candidateCount": 21,
   "alertItems": [
+    {
+      "title": "বাস-অটোরিকশার সংঘর্ষে কক্সবাজারে পাঁচজনের ম/ত্যু, পলাতক চালক-হেলপার | Channel 24",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=ZpkeWgaL23o",
+      "publisherUrl": "https://www.youtube.com/watch?v=ZpkeWgaL23o",
+      "publishedAt": "2026-11-24T18:07:42+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/watch?v=ZpkeWgaL23o"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "বাস-অটোরিকশার সংঘর্ষে কক্সবাজারে পাঁচজনের ম/ত্যু, পলাতক চালক-হেলপার | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=ZpkeWgaL23o"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4c6dfe7292430e82e92340d54251526b"
+    },
     {
       "title": "ছাত্রশক্তির নেতাকর্মীদের ওপর শিবিরের হামলার অভিযোগ, ‘গুপ্ত গুপ্ত’ স্লোগান",
       "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির নেতাকর্মীদের ওপর হামলার অভিযোগ উঠেছে কলেজ শাখা ছাত্রশিবিরের বিরুদ্ধে। এ সময় উভয়ের মধ্যে হাতাহাতির ঘটনাও ঘটে। মঙ্গলবার (২৪ নভেম্বর) দুপুরে কলেজের অধ্যক্ষ অধ্যাপক সারাহ পারীনের সঙ্গে জাতীয় ছাত্রশক্তির নেতৃবৃন্দরা দেখা করতে গেলে প্রশাসনিক ভবনের সামনে এ ঘটনা ঘটে। এ ঘটনার প্রতিবাদে বিক্ষোভ মিছিল ও সংবাদ সম্মেলন করে হামলায় জড়িত... বিস্তারিত",
