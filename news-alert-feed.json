@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T23:15:38.970772+00:00",
-  "updatedAt": "2026-11-24T23:15:38.970772+00:00",
+  "generatedAt": "2026-11-24T23:30:30.614424+00:00",
+  "updatedAt": "2026-11-24T23:30:30.614424+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 16,
+  "candidateCount": 17,
   "alertItems": [
+    {
+      "title": "আইনশৃঙ্খলা সভায় মাদকবিরোধী বক্তব্য, প্যানেল চেয়ারম্যানের ওপর হামলা",
+      "summary": "কুমিল্লার চৌদ্দগ্রামে উপজেলা আইনশৃঙ্খলা কমিটির মাসিক সভায় মাদকের বিরুদ্ধে বক্তব্য দেওয়াকে কেন্দ্র করে ইউনিয়ন পরিষদের (ইউপি) প্যানেল চেয়ারম্যানের...",
+      "link": "https://www.jagonews24.com/country/news/1183365",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1183365",
+      "publishedAt": "2026-11-24T23:13:26+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183365"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "আইনশৃঙ্খলা সভায় মাদকবিরোধী বক্তব্য, প্যানেল চেয়ারম্যানের ওপর হামলা",
+          "summary": "কুমিল্লার চৌদ্দগ্রামে উপজেলা আইনশৃঙ্খলা কমিটির মাসিক সভায় মাদকের বিরুদ্ধে বক্তব্য দেওয়াকে কেন্দ্র করে ইউনিয়ন পরিষদের (ইউপি) প্যানেল চেয়ারম্যানের...",
+          "url": "https://www.jagonews24.com/country/news/1183365"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7d7cd9f897915c755e6b0bc8f9606ca5"
+    },
     {
       "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
       "summary": "সংশ্লিষ্ট ব্যক্তিরা বলছেন, আগামী মাসে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের বেশ কয়েকটি কর্মসূচি রয়েছে। ওই সব কর্মসূচি থেকে আবারও হামলা-ভাঙচুর হতে পারে।",
@@ -1162,9 +1193,7 @@
           "name": "Dainik Azadi",
           "title": "কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত",
           "summary": "চট্টগ্রাম-কক্সবাজার মহাসড়কে যাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে ৩ জন নিহত হয়েছেন। নিহতরা সবাই অটোরিকশার যাত্রী। আজ মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে কক্সবাজার-চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার সামনে এই দুর্ঘটনা ঘটে। নিহতদের দুজন নারী ও একজন পুরুষ। তাৎক্ষণিকভাবে তাঁদের পরিচয় নিশ্চিত হওয়া যায়নি। এ ছাড়া এ ঘটনায় গুরুতর আহত হয়েছেন অটোরিকশার এক নারী […] The post কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/",
-          "incidentDateText": "মঙ্গলবার (২৪ নভেম্বর)",
-          "locationText": "চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম, ঈদগাঁও থানার, ঈদগাঁও থানা"
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/"
         }
       ],
       "corroborationCount": 1,
