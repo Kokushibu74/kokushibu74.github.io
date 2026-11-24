@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T11:00:35.981474+00:00",
-  "updatedAt": "2026-11-24T11:00:35.981474+00:00",
+  "generatedAt": "2026-11-24T11:15:35.124394+00:00",
+  "updatedAt": "2026-11-24T11:15:35.124394+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 14,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "চলন্ত অবস্থায় ছিঁড়ে গেছে রংপুর হাসপাতালের লিফটের তার, দুর্ভোগে রোগীরা",
@@ -872,6 +872,40 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "20c6105c884d3b1018fdb290445c726c"
+    },
+    {
+      "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
+      "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
+      "publisherUrl": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
+      "publishedAt": "2026-11-24T10:37:38+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট",
+          "summary": "চট্টগ্রামের ফটিকছড়ি উপজেলার সুয়াবিল চুরখাঁরহাট বাজারে এলোপাতাড়ি গুলিবর্ষণের ঘটনার পর রায়হান আলম (Raihan Alam) নামের একটি আইডি থেকে ফেসবুকে পোস্ট দেওয়া হয়েছে। সোমবার (২৩ নভেম্বর) রাতের ওই ঘটনার পর ভাইরাল হওয়া পোস্টটিতে ‘আত্মরক্ষার্থে’ গুলি চালানোর দাবি করা হয়েছে। ফেসবুকে রায়হান আলম আইডি থেকে দেওয়া ওই পোস্টে নিজেকে রায়হান পরিচয় দিয়ে বলা হয়, ‘আসলামুলাইকুম প্রিয় ফটিকছড়িবাসী, […] The post আত্মরক্ষর্থে গুলি চালিয়েছি: ‘সন্ত্রাসী’ রায়হানের নামে ফেসবুক পোস্ট appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/fatikchhari-firing-facebook-post-self-defence-claim-2/",
+          "incidentDateText": "সোমবার (২৩ নভেম্বর)",
+          "incidentTimeText": "গতকাল রাতে",
+          "incidentTimeSource": "Dainik Azadi"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "71594c6df6d5dfd2cb36e49bbfee4ede"
     },
     {
       "title": "ঢাকা-রিয়াদ রুটে ফ্লাইট চলাচলের নতুন তথ্য দিলো বিমান",
@@ -1340,6 +1374,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c73e09d9d6ad9062560596612da337f5"
+    },
+    {
+      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+      "link": "https://www.mzamin.com/article/63087",
+      "publisherUrl": "https://www.mzamin.com/article/63087",
+      "publishedAt": "2026-11-23T18:38:38+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
+      "sourceEvidence": [
+        "Manab Zamin"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Manab Zamin",
+          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
+          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
+          "url": "https://www.mzamin.com/article/63087"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
     },
     {
       "title": "সরকারি প্রতিষ্ঠানের নামে ভুয়া ডোমেইন, সাইবার হামলার ঝুঁকিতে বাংলাদেশ - Ajker Patrika",
