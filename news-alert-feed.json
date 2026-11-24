@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T09:05:31.426620+00:00",
-  "updatedAt": "2026-11-24T09:05:31.426620+00:00",
+  "generatedAt": "2026-11-24T09:15:40.282791+00:00",
+  "updatedAt": "2026-11-24T09:15:40.282791+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 13,
+      "fallbackItems": 12,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackItems": 2,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 25,
+  "candidateCount": 26,
   "alertItems": [
+    {
+      "title": "বেনাপোলে শ্রমিক নেতার ওপর বোমা হামলা",
+      "summary": "যশোরের বেনাপোল স্থলবন্দর হ্যান্ডলিং শ্রমিক ইউনিয়নের সভাপতি তবিবুর রহমানকে লক্ষ্য করে বোমা নিক্ষেপের ঘটনা ঘটেছে। এতে তবিবুর রহমান ও...",
+      "link": "https://www.jagonews24.com/country/news/1183101",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1183101",
+      "publishedAt": "2026-11-24T09:08:06+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183101"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বেনাপোলে শ্রমিক নেতার ওপর বোমা হামলা",
+          "summary": "যশোরের বেনাপোল স্থলবন্দর হ্যান্ডলিং শ্রমিক ইউনিয়নের সভাপতি তবিবুর রহমানকে লক্ষ্য করে বোমা নিক্ষেপের ঘটনা ঘটেছে। এতে তবিবুর রহমান ও...",
+          "url": "https://www.jagonews24.com/country/news/1183101"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b19c11b4a78bbaa6679e1d947972c47d"
+    },
     {
       "title": "গাজীপুরে পুলিশ বক্সে ভাঙচুর, চেয়ার-টেবিল ও নথিপত্রে আগুন",
       "summary": "গাজীপুরের টঙ্গী ও গাজীপুরা এলাকায় বেতন বৃদ্ধির দাবিতে বিক্ষোভ ও মহাসড়ক অবরোধ করেছেন শ্রমিকরা। এতে ঢাকা-ময়মনসিংহ মহাসড়কে যান চলাচল বন্ধ হয়ে যায়। ভোগান্তিতে পড়েন যাত্রী, চালক ও সাধারণ মানুষ। অবরোধ চলাকালে পুলিশের সঙ্গে বিক্ষোভকারীদের সংঘর্ষ, ইটপাটকেল নিক্ষেপ, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ সময় হামলা-ভাঙচুরের মধ্যে পড়ে এক পথচারী আহত হন।... বিস্তারিত",
@@ -872,6 +903,41 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "33fd157905f2f4dc9b3a16c0c8b2a1ca"
+    },
+    {
+      "title": "ঈশ্বরদীতে বিএনপির মিছিলে গুলির পর জামায়াতের চার নেতা-কর্মীর বাড়িতে হামলা, অগ্নিসংযোগ",
+      "summary": "পাবনার ঈশ্বরদীতে বিএনপির মিছিলের প্রস্তুতির সময় গোলাগুলির ঘটনার জেরে জামায়াতে ইসলামীর স্থানীয় নেতা–কর্মীদের বাড়িঘরে হামলা, লুটপাট ও অগ্নিসংযোগের অভিযোগ উঠেছে।",
+      "link": "https://www.prothomalo.com/bangladesh/district/rv8tg3id87",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/rv8tg3id87",
+      "publishedAt": "2026-11-24T08:56:29+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/rv8tg3id87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "ঈশ্বরদীতে বিএনপির মিছিলে গুলির পর জামায়াতের চার নেতা-কর্মীর বাড়িতে হামলা, অগ্নিসংযোগ",
+          "summary": "পাবনার ঈশ্বরদীতে বিএনপির মিছিলের প্রস্তুতির সময় গোলাগুলির ঘটনার জেরে জামায়াতে ইসলামীর স্থানীয় নেতা–কর্মীদের বাড়িঘরে হামলা, লুটপাট ও অগ্নিসংযোগের অভিযোগ উঠেছে।",
+          "url": "https://www.prothomalo.com/bangladesh/district/rv8tg3id87",
+          "incidentDateText": "২৪ নভেম্বর",
+          "incidentTimeText": "রাত ৮টা",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "পর্যন্ত ঈশ্বরদীর সাঁড়া ইউনিয়নে, মাঝদিয়া এলাকায়, গুলিবিদ্ধ পাঁচজনকে ঈশ্বরদী উপজেলা, রাজশাহী, একদল লোক সাঁড়া ইউনিয়ন"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f9f2f231c82264614f4eb3e39b6c7597"
     },
     {
       "title": "বেনাপোলে দুই শ্রমিক নেতাকে লক্ষ্য করে বোমা নিক্ষেপ",
@@ -965,37 +1031,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a45a67eafa2190bf0fef5c943bad9c6b"
-    },
-    {
-      "title": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
-      "summary": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
-      "link": "https://www.jagonews24.com/country/news/1182988",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1182988",
-      "publishedAt": "2026-11-24T05:16:17+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1182988"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
-          "summary": "৯ মাসে পুলিশের ওপর ১১ হামলা, নিরাপত্তাহীনতায় নারায়ণগঞ্জবাসী",
-          "url": "https://www.jagonews24.com/country/news/1182988"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b2cafa77bac80fe6605ec895c60e4dd9"
     },
     {
       "title": "১৪ বছরেও পূরণ হয়নি প্রতিশ্রুতি, অনিশ্চয়তায় তাজরীনের আহত শ্রমিকদের জীবন",
