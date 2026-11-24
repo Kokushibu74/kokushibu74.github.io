@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T10:46:05.861639+00:00",
-  "updatedAt": "2026-11-24T10:46:05.861639+00:00",
+  "generatedAt": "2026-11-24T11:00:35.981474+00:00",
+  "updatedAt": "2026-11-24T11:00:35.981474+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 51,
-  "failedSourceCount": 4,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 30,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 30,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BSS",
@@ -287,32 +287,32 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 2,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 25,
+  "candidateCount": 27,
   "alertItems": [
+    {
+      "title": "চলন্ত অবস্থায় ছিঁড়ে গেছে রংপুর হাসপাতালের লিফটের তার, দুর্ভোগে রোগীরা",
+      "summary": "রংপুর মেডিক্যাল কলেজ হাসপাতালের লিফটের তার ছিঁড়ে যাওয়ায় ভয়াবহ দুর্ঘটনা থেকে রক্ষা পেয়েছেন রোগী ও তাদের স্বজনরা। ঘটনাটি ঘটেছে সোমবার (২৩ নভেম্বর) রাতে। ভাগ্যক্রমে ওই সময় লিফটে কেউ ছিল না। বর্তমানে একটি লিফট দিয়ে কোনোরকমে রোগীরা ওঠানামা করছেন। হাসপাতালের নাম প্রকাশে অনিচ্ছুক এক কর্মকর্তা জানান, হাসপাতালের একটি লিফটের বয়স ৩০ বছরেও বেশি সেটি মালামাল ও রোগী পরিবহন কাজে ব্যবহৃত হয়। মাসের বেশিরভাগ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-24T10:46:38+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চলন্ত অবস্থায় ছিঁড়ে গেছে রংপুর হাসপাতালের লিফটের তার, দুর্ভোগে রোগীরা",
+          "summary": "রংপুর মেডিক্যাল কলেজ হাসপাতালের লিফটের তার ছিঁড়ে যাওয়ায় ভয়াবহ দুর্ঘটনা থেকে রক্ষা পেয়েছেন রোগী ও তাদের স্বজনরা। ঘটনাটি ঘটেছে সোমবার (২৩ নভেম্বর) রাতে। ভাগ্যক্রমে ওই সময় লিফটে কেউ ছিল না। বর্তমানে একটি লিফট দিয়ে কোনোরকমে রোগীরা ওঠানামা করছেন। হাসপাতালের নাম প্রকাশে অনিচ্ছুক এক কর্মকর্তা জানান, হাসপাতালের একটি লিফটের বয়স ৩০ বছরেও বেশি সেটি মালামাল ও রোগী পরিবহন কাজে ব্যবহৃত হয়। মাসের বেশিরভাগ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rangpur/982949/%E0%A6%9A%E0%A6%B2%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%85%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87-%E0%A6%B0%E0%A6%82%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%B2%E0%A6%BF%E0%A6%AB%E0%A6%9F%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "20c6105c884d3b1018fdb290445c726c"
+    },
     {
       "title": "ঢাকা-রিয়াদ রুটে ফ্লাইট চলাচলের নতুন তথ্য দিলো বিমান",
       "summary": "সৌদি আরবে সাম্প্রতিক বিমান হামলাজনিত পরিস্থিতি এবং যাত্রীদের নিরাপত্তাজনিত কারণে ঢাকা-রিয়াদ-ঢাকা রুটের নিয়মিত ফ্লাইট চলাচল আগামী ১৬ ডিসেম্বর (বাংলাদেশ সময়) পর্যন্ত স্থগিত থাকবে। এ রুটে ফ্লাইট পরিচালনার বিষয়ে যথাসময়ে পরবর্তী সিদ্ধান্ত জানানো হবে। মঙ্গলবার (২৪ নভেম্বর) বিমানের জনসংযোগ বিভাগ থেকে এ তথ্য জানানো হয়। অন্যদিকে, ঢাকা-জেদ্দা-ঢাকা, ঢাকা-দাম্মাম-ঢাকা ও ঢাকা-মদিনা-ঢাকা রুটে... বিস্তারিত",
@@ -1340,6 +1371,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c71f7830e3226bc9bbe1d551436069ff"
+    },
+    {
+      "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+      "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9",
+      "publishedAt": "2026-11-23T16:20:43+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ - Dhaka Tribune Bangla",
+          "summary": "গোপালগঞ্জে দুই গ্রামবাসীর সংঘর্ষে গুলিবিদ্ধ ৪ জনসহ আহত ২০ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113679/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%80%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A7%AA-%E0%A6%9C%E0%A6%A8%E0%A6%B8%E0%A6%B9"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1697884564b407e80d621f51a59ca39b"
     },
     {
       "title": "গোপালগঞ্জে আ.লীগের মিছিল শেষে দুই গ্রামবাসীর সংঘর্ষ, ৬ ককটেল বিস্ফোরণ - dhakapost.com",
