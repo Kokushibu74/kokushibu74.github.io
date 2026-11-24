@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T06:30:35.904760+00:00",
-  "updatedAt": "2026-11-24T06:30:35.904760+00:00",
+  "generatedAt": "2026-11-24T06:45:37.692402+00:00",
+  "updatedAt": "2026-11-24T06:45:37.692402+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 7,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -603,16 +603,16 @@
       "name": "BD24Live",
       "domain": "bd24live.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "BBC News বাংলা",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "‘সিট দখল’ নিয়ে পাবিপ্রবিতে ছাত্রদলের দুই পক্ষের সংঘর্ষ",
@@ -965,37 +965,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "12e84adcbc8febb6da1282c332d37e39"
-    },
-    {
-      "title": "আগুন নেভাতে গিয়ে মাথার ওপর ভেঙে পড়ল দেয়াল, আহত দুই ফায়ার ফাইটার - Dhaka Tribune Bangla",
-      "summary": "আগুন নেভাতে গিয়ে মাথার ওপর ভেঙে পড়ল দেয়াল, আহত দুই ফায়ার ফাইটার Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113682/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87-%E0%A6%AA%E0%A6%A1%E0%A6%BC%E0%A6%B2-%E0%A6%A6%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113682/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87-%E0%A6%AA%E0%A6%A1%E0%A6%BC%E0%A6%B2-%E0%A6%A6%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-24T03:30:00+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113682/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87-%E0%A6%AA%E0%A6%A1%E0%A6%BC%E0%A6%B2-%E0%A6%A6%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "আগুন নেভাতে গিয়ে মাথার ওপর ভেঙে পড়ল দেয়াল, আহত দুই ফায়ার ফাইটার - Dhaka Tribune Bangla",
-          "summary": "আগুন নেভাতে গিয়ে মাথার ওপর ভেঙে পড়ল দেয়াল, আহত দুই ফায়ার ফাইটার Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113682/%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%AD%E0%A7%87%E0%A6%99%E0%A7%87-%E0%A6%AA%E0%A6%A1%E0%A6%BC%E0%A6%B2-%E0%A6%A6%E0%A7%87%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3e463f1014eefc48ca983d785acee24"
     },
     {
       "title": "জিপের চাকা মেরামতের সময় লরির ধাক্কা, প্রাণ গেলো চালকের",
@@ -1533,6 +1502,37 @@
       "alertEventId": "b656b6a988dccfdaff283da62b956e8d"
     },
     {
+      "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
+      "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
+      "link": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
+      "publisherUrl": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/",
+      "publishedAt": "2026-11-23T14:10:17+00:00",
+      "source": "BD24Live",
+      "publisherName": "BD24Live",
+      "sourceEvidence": [
+        "BD24Live"
+      ],
+      "sourceLinks": [
+        {
+          "name": "BD24Live",
+          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "BD24Live",
+          "title": "Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi",
+          "summary": "Even after fleeing to India, Sheikh Hasina is conspiring to destabilize Bangladesh through sabotage and arson terrorism, alleged BNP Acting Secretary General Ruhul Kabir Rizvi. He stated that even after… The post Sheikh Hasina Plotting to Turn Country into Graveyard: Rizvi appeared first on Bangla Online News Portal .",
+          "url": "https://www.bd24live.com/sheikh-hasina-plotting-to-turn-country-into-graveyard-rizvi/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e955381b96152f20d15f053ca3376106"
+    },
+    {
       "title": "লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল",
       "summary": "চট্টগ্রামরে আনোয়ারার সড়ক দুর্ঘটনায় গুরুতর আহত কলেজ ছাত্রী মিফতাহুল জান্নাত দিলশাত (১৯) মারা গেছেন। চট্টগ্রাম সিটি কলেজ থেকে এইচএসসি পাস করে বিশ্ববিদ্যালয়ে ভর্তির স্বপ্ন নিয়ে প্রস্তুতি নিচ্ছিলেন মিফতাহুল জান্নাত। একাডেমিক কাগজপত্র আনতে কলেজে যাওয়ার পথেই সড়ক দুর্ঘটনায় গুরুতর আহত হন তিনি। এরপর হাসপাতালের বিছানায় লাইফ সাপোর্টে চলছিল তাঁর বেঁচে থাকার লড়াই। শেষ পর্যন্ত সেই লড়াই […] The post লাইফ সাপোর্টে লড়াই শেষে চলে গেলেন সিটি কলেজের শিক্ষার্থী মিফতাহুল appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://chattogramnews.com/archives/161348",
@@ -1697,37 +1697,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "198a2a5b156f8b1ede14293ad220de6d"
-    },
-    {
-      "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
-      "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
-      "link": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
-      "publisherUrl": "https://bangla.bdnews24.com/probash/5yij9d8zg4",
-      "publishedAt": "2026-11-23T06:37:00+00:00",
-      "source": "bdnews24.com",
-      "publisherName": "bdnews24.com",
-      "sourceEvidence": [
-        "bdnews24.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bdnews24.com",
-          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bdnews24.com",
-          "title": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত - bdnews24.com",
-          "summary": "কুয়েতের মরুভূমিতে মাইন বিস্ফোরণে বাংলাদেশি রাখাল নিহত bdnews24.com",
-          "url": "https://bangla.bdnews24.com/probash/5yij9d8zg4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "96b93fdbdbb41168ab45d3ca7b5b51bd"
     }
   ]
 }
