@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T04:10:36.654786+00:00",
-  "updatedAt": "2026-11-25T04:10:36.654786+00:00",
+  "generatedAt": "2026-11-25T04:25:33.919201+00:00",
+  "updatedAt": "2026-11-25T04:25:33.919201+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 20,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 35,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "<urlopen error [Errno 101] Network is unreachable>",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 1,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 21,
+  "candidateCount": 22,
   "alertItems": [
+    {
+      "title": "গোপালগঞ্জে নাশকতা-সহিংসতা: ৯৭ জনের ব্যাংক হিসাব জব্দ, তলব ৪ প্রতিষ্ঠানের",
+      "summary": "গোপালগঞ্জে সাম্প্রতিক নাশকতা, সহিংসতা ও অগ্নিসংযোগের ঘটনায় অর্থের জোগানদাতা এবং সংশ্লিষ্ট ব্যক্তিদের আর্থিক লেনদেন ও করসংক্রান্ত তথ্য খতিয়ে দেখার উদ্যোগ নিয়েছে জাতীয় রাজস্ব বোর্ড (এনবিআর)। এর অংশ হিসেবে জেলার ৯৭ ব্যক্তির ব্যাংক হিসাব জব্দ করা হয়েছে। পাশাপাশি চারটি প্রতিষ্ঠানের ব্যাংক হিসাবের তথ্য তলব করা হয়েছে। এনবিআরের সংশ্লিষ্ট সূত্রে পাওয়া তথ্য অনুযায়ী, তালিকায় মোট ১০১ জন করদাতা ও... বিস্তারিত",
+      "link": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC",
+      "publisherUrl": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC",
+      "publishedAt": "2026-11-25T04:17:19+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জে নাশকতা-সহিংসতা: ৯৭ জনের ব্যাংক হিসাব জব্দ, তলব ৪ প্রতিষ্ঠানের",
+          "summary": "গোপালগঞ্জে সাম্প্রতিক নাশকতা, সহিংসতা ও অগ্নিসংযোগের ঘটনায় অর্থের জোগানদাতা এবং সংশ্লিষ্ট ব্যক্তিদের আর্থিক লেনদেন ও করসংক্রান্ত তথ্য খতিয়ে দেখার উদ্যোগ নিয়েছে জাতীয় রাজস্ব বোর্ড (এনবিআর)। এর অংশ হিসেবে জেলার ৯৭ ব্যক্তির ব্যাংক হিসাব জব্দ করা হয়েছে। পাশাপাশি চারটি প্রতিষ্ঠানের ব্যাংক হিসাবের তথ্য তলব করা হয়েছে। এনবিআরের সংশ্লিষ্ট সূত্রে পাওয়া তথ্য অনুযায়ী, তালিকায় মোট ১০১ জন করদাতা ও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ec1846f018e49e08cc1daec47ee476e0"
+    },
     {
       "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
       "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন ঘোষণার পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড়সহ কয়েকটি কারখানার সামনে বিক্ষোভ করছেন...",
@@ -1386,8 +1417,8 @@
     {
       "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
       "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
+      "link": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/",
       "publishedAt": "2026-11-24T07:58:00+00:00",
       "source": "Daily Bonik Barta",
       "publisherName": "Daily Bonik Barta",
@@ -1397,7 +1428,7 @@
       "sourceLinks": [
         {
           "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/"
         }
       ],
       "category": "Bangladesh",
@@ -1408,7 +1439,7 @@
           "name": "Daily Bonik Barta",
           "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
           "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/"
         }
       ],
       "corroborationCount": 1,
