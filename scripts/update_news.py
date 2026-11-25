@@ -1744,7 +1744,10 @@ def main():
         month = stamp.strftime("%Y-%m")
         archive_by_month.setdefault(month, []).append(item)
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
-    expected_chunk_names = {month + ".json" for month in archive_by_month}
+    expected_chunk_names = set()
+    for month, month_items in archive_by_month.items():
+        part_count = (len(month_items) + 4999) // 5000
+        expected_chunk_names.update(f"{month}-{part_number:02d}.json" for part_number in range(1, part_count + 1))
     for stale_path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]*.json"):
         if stale_path.name not in expected_chunk_names:
             stale_path.unlink()
