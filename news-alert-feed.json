@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T16:45:47.024749+00:00",
-  "updatedAt": "2026-11-25T16:45:47.024749+00:00",
+  "generatedAt": "2026-11-25T16:55:46.924803+00:00",
+  "updatedAt": "2026-11-25T16:55:46.924803+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 28,
   "alertItems": [
     {
       "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
@@ -1065,17 +1065,12 @@
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
       "sourceEvidence": [
-        "Jamuna Television",
-        "Prothom Alo"
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668690"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/v2wuehd2q1"
         }
       ],
       "category": "Bangladesh",
@@ -1087,16 +1082,10 @@
           "title": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত - Jamuna Television",
           "summary": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668690"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "চাঁপাইনবাবগঞ্জে ককটেল বানাতে গিয়ে বিস্ফোরণে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ কর্মী নিহত",
-          "summary": "চাঁপাইনবাবগঞ্জের শিবগঞ্জে ককটেল বানাতে গিয়ে বিস্ফোরণে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের এক কর্মী নিহত হয়েছেন। আজ বুধবার দুপুরে উপজেলার মনাকষা ইউনিয়নের চৌকা এলাকায় এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/v2wuehd2q1"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "d05f196ef756cbc50c1f01afd439b79b"
+      "corroborationCount": 1,
+      "alertEventId": "5872ca5d427da453e453216d75500346"
     },
     {
       "title": "ককটেল তৈরির সময় বিস্ফোরণে আ.লীগের কর্মী নিহত, পুলিশ বলছে খারাপ উদ্দেশ্য ছিল",
@@ -1159,37 +1148,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ca55957ad813f4570e66b5921218cd40"
-    },
-    {
-      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
-      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672804",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
-      "publishedAt": "2026-11-25T12:47:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672804"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
-          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672804"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
       "title": "ছেলেদের বাঁচাতে গিয়ে প্রতিপক্ষের হামলায় নিহত মা",
@@ -1345,6 +1303,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2c2d3aeb647298d9ec8dec343bbce8e0"
+    },
+    {
+      "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
+      "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
+      "publishedAt": "2026-11-25T11:13:06+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
+          "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a09e152e1218c3ab9a93ce5de598d41f"
     },
     {
       "title": "শ্রমিকদের সঙ্গে সংঘর্ষে আইনশৃঙ্খলা বাহিনীর ১১ সদস্য আহত",
@@ -1513,22 +1502,17 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
-      "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
-      "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
-      "link": "https://www.jugantor.com/international/1189718",
-      "publisherUrl": "https://www.jugantor.com/international/1189718",
-      "publishedAt": "2026-11-25T08:21:31+00:00",
-      "source": "Jugantor",
-      "publisherName": "Jugantor",
+      "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
+      "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
+      "link": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0",
+      "publisherUrl": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0",
+      "publishedAt": "2026-11-25T07:51:03+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
       "sourceEvidence": [
-        "Jugantor",
         "Channel 24"
       ],
       "sourceLinks": [
-        {
-          "name": "Jugantor",
-          "url": "https://www.jugantor.com/international/1189718"
-        },
         {
           "name": "Channel 24",
           "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
@@ -1538,12 +1522,6 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
-        {
-          "name": "Jugantor",
-          "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
-          "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
-          "url": "https://www.jugantor.com/international/1189718"
-        },
         {
           "name": "Channel 24",
           "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
@@ -1551,24 +1529,24 @@
           "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
     },
     {
-      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publishedAt": "2026-11-25T03:29:01+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
+      "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+      "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+      "link": "https://www.dhakapost.com/country/500703",
+      "publisherUrl": "https://www.dhakapost.com/country/500703",
+      "publishedAt": "2026-11-25T06:34:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
-        "একাত্তর"
+        "dhakapost.com"
       ],
       "sourceLinks": [
         {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
         }
       ],
       "category": "Bangladesh",
@@ -1576,14 +1554,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "একাত্তর",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+          "name": "dhakapost.com",
+          "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+          "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
+      "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
     }
   ]
 }
