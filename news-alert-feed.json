@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T19:30:36.017638+00:00",
-  "updatedAt": "2026-11-25T19:30:36.017638+00:00",
+  "generatedAt": "2026-11-25T19:45:49.446205+00:00",
+  "updatedAt": "2026-11-25T19:45:49.446205+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jamuna TV",
@@ -467,17 +467,17 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Manab Zamin",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 26,
   "alertItems": [
     {
       "title": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান’",
@@ -916,8 +916,7 @@
       "publisherName": "Jago News 24",
       "sourceEvidence": [
         "Jago News 24",
-        "Bangla Tribune",
-        "Ajker Patrika"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -927,10 +926,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
         }
       ],
       "category": "Bangladesh",
@@ -956,23 +951,13 @@
           "url": "https://www.jagonews24.com/country/news/1183691"
         },
         {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-          "incidentDateText": "২৫ নভেম্বর ২০২৬",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Ajker Patrika",
-          "locationText": "নন্দীগ্রাম ফিলিং স্টেশন এলাকায়, অবস্থিত উপজেলা, কর্মীদের দায়ী করেছেন উপজেলা, আমরা উপজেলা, বিষয়ে থানার"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
           "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
     },
     {
@@ -1216,6 +1201,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ca55957ad813f4570e66b5921218cd40"
+    },
+    {
+      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672804",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
+      "publishedAt": "2026-11-25T12:47:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
@@ -1474,17 +1490,12 @@
       "source": "Jugantor",
       "publisherName": "Jugantor",
       "sourceEvidence": [
-        "Jugantor",
-        "Channel 24"
+        "Jugantor"
       ],
       "sourceLinks": [
         {
           "name": "Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
-        },
-        {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1496,16 +1507,10 @@
           "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
           "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
-        },
-        {
-          "name": "Channel 24",
-          "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
-          "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
-          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
+      "corroborationCount": 1,
+      "alertEventId": "71e6c40e76663e79bdd72c384d253264"
     },
     {
       "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
