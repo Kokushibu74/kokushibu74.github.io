@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T04:25:33.919201+00:00",
-  "updatedAt": "2026-11-25T04:25:33.919201+00:00",
+  "generatedAt": "2026-11-25T04:40:33.492334+00:00",
+  "updatedAt": "2026-11-25T04:40:33.492334+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 20,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 35,
+  "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Kaler Kantho",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "<urlopen error [Errno 101] Network is unreachable>",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 1,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -843,6 +843,37 @@
   "candidateCount": 22,
   "alertItems": [
     {
+      "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+      "summary": "মজুরি বোর্ড নতুন বেতন স্কেল ঘোষণা করলেও গাজীপুরে শ্রমিকদের বিক্ষোভ অব্যাহত রয়েছে। বুধবার (২৫ নভেম্বর) ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড় এলাকায় কয়েকটি কারখানার সামনে বিক্ষোভ করেন পোশাকশ্রমিকরা। এ সময় মহাসড়ক ছেড়ে দেওয়ার অনুরোধ জানালে পুলিশের সঙ্গে শ্রমিকদের ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটে। বুধবার সকাল সাড়ে ৮টার দিকে দুটি মহাসড়কে অবস্থান নিয়ে বিক্ষোভ শুরু করেন শ্রমিকরা। এতে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-25T04:36:48+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+          "summary": "মজুরি বোর্ড নতুন বেতন স্কেল ঘোষণা করলেও গাজীপুরে শ্রমিকদের বিক্ষোভ অব্যাহত রয়েছে। বুধবার (২৫ নভেম্বর) ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড় এলাকায় কয়েকটি কারখানার সামনে বিক্ষোভ করেন পোশাকশ্রমিকরা। এ সময় মহাসড়ক ছেড়ে দেওয়ার অনুরোধ জানালে পুলিশের সঙ্গে শ্রমিকদের ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটে। বুধবার সকাল সাড়ে ৮টার দিকে দুটি মহাসড়কে অবস্থান নিয়ে বিক্ষোভ শুরু করেন শ্রমিকরা। এতে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e648abd16c3618d7639a55c876c932f4"
+    },
+    {
       "title": "গোপালগঞ্জে নাশকতা-সহিংসতা: ৯৭ জনের ব্যাংক হিসাব জব্দ, তলব ৪ প্রতিষ্ঠানের",
       "summary": "গোপালগঞ্জে সাম্প্রতিক নাশকতা, সহিংসতা ও অগ্নিসংযোগের ঘটনায় অর্থের জোগানদাতা এবং সংশ্লিষ্ট ব্যক্তিদের আর্থিক লেনদেন ও করসংক্রান্ত তথ্য খতিয়ে দেখার উদ্যোগ নিয়েছে জাতীয় রাজস্ব বোর্ড (এনবিআর)। এর অংশ হিসেবে জেলার ৯৭ ব্যক্তির ব্যাংক হিসাব জব্দ করা হয়েছে। পাশাপাশি চারটি প্রতিষ্ঠানের ব্যাংক হিসাবের তথ্য তলব করা হয়েছে। এনবিআরের সংশ্লিষ্ট সূত্রে পাওয়া তথ্য অনুযায়ী, তালিকায় মোট ১০১ জন করদাতা ও... বিস্তারিত",
       "link": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC",
@@ -875,7 +906,7 @@
     },
     {
       "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
-      "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন ঘোষণার পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড়সহ কয়েকটি কারখানার সামনে বিক্ষোভ করছেন...",
+      "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন নির্ধারণের পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস...",
       "link": "https://www.jagonews24.com/country/news/1183406",
       "publisherUrl": "https://www.jagonews24.com/country/news/1183406",
       "publishedAt": "2026-11-25T04:02:23+00:00",
@@ -897,7 +928,7 @@
         {
           "name": "Jago News 24",
           "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
-          "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন ঘোষণার পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড়সহ কয়েকটি কারখানার সামনে বিক্ষোভ করছেন...",
+          "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন নির্ধারণের পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস...",
           "url": "https://www.jagonews24.com/country/news/1183406"
         }
       ],
@@ -1103,37 +1134,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "f78bc56e7e672a89e3f207ca94c700e9"
-    },
-    {
-      "title": "নেত্রকোণার খালিয়াজুরী উপজেলা নির্বাহী কর্মকর্তার কার্যালয়ে অগ্নিকাণ্ড | Netrokona | News | JamunaTV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=euEa_e_xMAc",
-      "publisherUrl": "https://www.youtube.com/watch?v=euEa_e_xMAc",
-      "publishedAt": "2026-11-25T03:04:20+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=euEa_e_xMAc"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "নেত্রকোণার খালিয়াজুরী উপজেলা নির্বাহী কর্মকর্তার কার্যালয়ে অগ্নিকাণ্ড | Netrokona | News | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=euEa_e_xMAc"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e5aae9507e1e3db2627730fc7c405fe0"
     },
     {
       "title": "নরসিংদীর মহাসড়কে বেপরোয়া অটোরিকশা, বাড়ছে দুর্ঘটনা ও যানজট | Narsingdi Highway | Ekattor TV",
@@ -1417,8 +1417,8 @@
     {
       "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
       "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/",
+      "link": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
       "publishedAt": "2026-11-24T07:58:00+00:00",
       "source": "Daily Bonik Barta",
       "publisherName": "Daily Bonik Barta",
@@ -1428,7 +1428,7 @@
       "sourceLinks": [
         {
           "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/"
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
         }
       ],
       "category": "Bangladesh",
@@ -1439,7 +1439,7 @@
           "name": "Daily Bonik Barta",
           "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
           "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP/"
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
         }
       ],
       "corroborationCount": 1,
