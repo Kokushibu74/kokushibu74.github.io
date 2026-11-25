@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T00:00:36.184054+00:00",
-  "updatedAt": "2026-11-25T00:00:36.184054+00:00",
+  "generatedAt": "2026-11-25T00:15:31.558949+00:00",
+  "updatedAt": "2026-11-25T00:15:31.558949+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Risingbd",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 6,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 18,
+  "candidateCount": 19,
   "alertItems": [
     {
       "title": "আইনশৃঙ্খলা সভায় মাদকবিরোধী বক্তব্য, প্যানেল চেয়ারম্যানের ওপর হামলা",
@@ -1136,6 +1136,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "8b831cc24f783d38aeec9b803605b911"
+    },
+    {
+      "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
+      "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
+      "link": "https://www.dhakapost.com/politics/500607",
+      "publisherUrl": "https://www.dhakapost.com/politics/500607",
+      "publishedAt": "2026-11-24T15:31:53+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500607"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
+          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500607"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e8d2cf1183301a605cc86086f8f0866c"
     },
     {
       "title": "হাজীগঞ্জে মাদকাসক্ত যুবককে এক বছরের কারাদণ্ড",
