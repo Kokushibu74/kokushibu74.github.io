@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T16:30:26.855479+00:00",
-  "updatedAt": "2026-11-25T16:30:26.855479+00:00",
+  "generatedAt": "2026-11-25T16:45:47.024749+00:00",
+  "updatedAt": "2026-11-25T16:45:47.024749+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -840,8 +840,73 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
+      "summary": "বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার খবর ছড়িয়ে পড়লেও ঘটনাটি সঠিক নয়। কার্যালয়ের পাশে ময়লার স্তূপে লাগা আগুনে...",
+      "link": "https://www.jagonews24.com/politics/news/1183759",
+      "publisherUrl": "https://www.jagonews24.com/politics/news/1183759",
+      "publishedAt": "2026-11-25T16:39:24+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Bangla Tribune",
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/politics/news/1183759"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
+          "summary": "বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার খবর ছড়িয়ে পড়লেও ঘটনাটি সঠিক নয়। কার্যালয়ের পাশে ময়লার স্তূপে লাগা আগুনে...",
+          "url": "https://www.jagonews24.com/politics/news/1183759"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার তথ্য সঠিক নয়: প্রধানমন্ত্রীর উপ-প্রেস সচিব",
+          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটা সঠিক নয় বলে জানিয়েছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব সুজাউদ্দৌলা (সুজন মাহমুদ)। বুধবার (২৫ নভেম্বর) সামাজিক যোগাযোগমাধ্যম ফেসবুকে নিজের আইডিতে দেওয়া এক পোস্টে তিনি এ তথ্য জানিয়েছেন। ফেসবুক পোস্টে সুজাউদ্দৌলা বলেন, বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার ভুয়া খবর ছড়িয়ে পড়েছে সামাজিক যোগাযোগমাধ্যমে। যা নিয়ে কিছু কিছু গণমাধ্যমও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
+          "url": "https://www.jagonews24.com/country/news/1183691"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
+          "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
+    },
     {
       "title": "চট্টগ্রামের হালিশহরে বিস্ফোরণের কারণ জানতে তদন্ত করছে পুলিশ Police | Independent TV",
       "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
@@ -985,10 +1050,7 @@
           "name": "Chandpur Times",
           "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা",
           "summary": "চাঁদপুরের ফরিদগঞ্জ উপজেলার গাজীপুর বাজারে প্রধান সড়কের উপর কালভাট নির্মাণ করার জন্য রাস্তা কেটে ফেলায় সড়কে প্রতিনিয়ত ঘটছে দুর্ঘটনা। সরজমিনে গিয়ে দেখা যায়, গাজীপুর বাজারের প্রধান যে সড়কটি রয়েছে তার উপর কালভার্ট নির্মাণের জন্য প্রায় ২০ থেকে ২৫ দিন যাবত বাজারের যাতায়াতের প্রধান সড়কটি কেটে ফেলা হয়েছে। ফলে রাস্তা দিয়ে ফরিদগঞ্জ চান্দ্রাসহ বিভিন্ন স্থানের যাতায়াতের ...",
-          "url": "https://chandpurtimes.com/%e0%a6%ab%e0%a6%b0%e0%a6%bf%e0%a6%a6%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c-%e0%a6%97%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%aa%e0%a7%81%e0%a6%b0/",
-          "incidentTimeText": "আজ বিকেলে",
-          "incidentTimeSource": "Chandpur Times",
-          "locationText": "ফরিদগঞ্জ গাজীপুর বাজারে, গাজীপুর, চাঁদপুর, ফরিদগঞ্জ চাঁদপুরের ফরিদগঞ্জ উপজেলার, গাজীপুর বাজারে, ফরিদগঞ্জ থেকে চান্দ্রা বাজার"
+          "url": "https://chandpurtimes.com/%e0%a6%ab%e0%a6%b0%e0%a6%bf%e0%a6%a6%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c-%e0%a6%97%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%aa%e0%a7%81%e0%a6%b0/"
         }
       ],
       "corroborationCount": 1,
@@ -1030,66 +1092,11 @@
           "name": "Prothom Alo",
           "title": "চাঁপাইনবাবগঞ্জে ককটেল বানাতে গিয়ে বিস্ফোরণে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ কর্মী নিহত",
           "summary": "চাঁপাইনবাবগঞ্জের শিবগঞ্জে ককটেল বানাতে গিয়ে বিস্ফোরণে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের এক কর্মী নিহত হয়েছেন। আজ বুধবার দুপুরে উপজেলার মনাকষা ইউনিয়নের চৌকা এলাকায় এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/v2wuehd2q1",
-          "incidentDateText": "২৫ নভেম্বর ২০২৬",
-          "locationText": "মনাকষা ইউনিয়নের চৌকা এলাকায়"
+          "url": "https://www.prothomalo.com/bangladesh/district/v2wuehd2q1"
         }
       ],
       "corroborationCount": 2,
       "alertEventId": "d05f196ef756cbc50c1f01afd439b79b"
-    },
-    {
-      "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-      "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-      "link": "https://www.jagonews24.com/country/news/1183691",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1183691",
-      "publishedAt": "2026-11-25T13:22:04+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "একাত্তর",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183691"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-          "url": "https://www.jagonews24.com/country/news/1183691"
-        },
-        {
-          "name": "একাত্তর",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
-          "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
     },
     {
       "title": "ককটেল তৈরির সময় বিস্ফোরণে আ.লীগের কর্মী নিহত, পুলিশ বলছে খারাপ উদ্দেশ্য ছিল",
@@ -1152,6 +1159,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ca55957ad813f4570e66b5921218cd40"
+    },
+    {
+      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672804",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
+      "publishedAt": "2026-11-25T12:47:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
       "title": "ছেলেদের বাঁচাতে গিয়ে প্রতিপক্ষের হামলায় নিহত মা",
@@ -1309,37 +1347,6 @@
       "alertEventId": "2c2d3aeb647298d9ec8dec343bbce8e0"
     },
     {
-      "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
-      "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
-      "publishedAt": "2026-11-25T11:13:06+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
-          "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a09e152e1218c3ab9a93ce5de598d41f"
-    },
-    {
       "title": "শ্রমিকদের সঙ্গে সংঘর্ষে আইনশৃঙ্খলা বাহিনীর ১১ সদস্য আহত",
       "summary": "ন্যূনতম মজুরি ১৭ হাজার টাকা নির্ধারণ অমান্য করে গাজীপুরে শ্রমিকদের সঙ্গে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সংঘর্ষ ও পাল্টাপাল্টি ধাওয়ার ঘটনা ঘটেছে। এ সময় ইটপাটকেলের আঘাতে ছয় পুলিশ ও পাঁচ আনসার সদস্য আহত হয়েছেন। বুধবার দুপুর ১২টার দিকে মহানগরীর সালনা এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ১৭ হাজার টাকা মজুরি নির্ধারণ অমান্য করে সালনা এলাকায় ঢাকা-ময়মনসিংহ মহাসড়কে আন্দোলনে নামেন... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/983180/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%B6%E0%A7%83%E0%A6%99%E0%A7%8D%E0%A6%96%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A7%A7%E0%A7%A7",
@@ -1369,6 +1376,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a17f9dca50c9abc1782b981c09e47c4d"
+    },
+    {
+      "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
+      "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
+      "link": "https://www.dhakapost.com/country/500777",
+      "publisherUrl": "https://www.dhakapost.com/country/500777",
+      "publishedAt": "2026-11-25T10:29:08+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com",
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500777"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
+          "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500777"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "147ed2ba787b24c9114c5e276dbd4068"
     },
     {
       "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
@@ -1504,74 +1553,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
-    },
-    {
-      "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-      "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
-      "publishedAt": "2026-11-25T07:01:46+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
-          "summary": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c061c769cf69609bb505167d4e0ab992"
-    },
-    {
-      "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
-      "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500703",
-      "publisherUrl": "https://www.dhakapost.com/country/500703",
-      "publishedAt": "2026-11-25T06:34:14+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500703"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
-          "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500703"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
     },
     {
       "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
