@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T01:25:36.711952+00:00",
-  "updatedAt": "2026-11-25T01:25:36.711952+00:00",
+  "generatedAt": "2026-11-25T01:35:38.193804+00:00",
+  "updatedAt": "2026-11-25T01:35:38.193804+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 16,
   "alertItems": [
     {
       "title": "আইনশৃঙ্খলা সভায় মাদকবিরোধী বক্তব্য, প্যানেল চেয়ারম্যানের ওপর হামলা",
@@ -1298,37 +1298,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "336548bfb7ced161f55ecfaa84ec9d4d"
-    },
-    {
-      "title": "খুলনায় একদিনে তিন স্থানে গুলি, চাঁদা না পেয়ে রেস্টুরেন্টে হামলা - Daily Bonik Barta",
-      "summary": "খুলনায় একদিনে তিন স্থানে গুলি, চাঁদা না পেয়ে রেস্টুরেন্টে হামলা Daily Bonik Barta",
-      "link": "https://bonikbarta.com/bangladesh/ziuZBM3NFmgUWPaX/",
-      "publisherUrl": "https://bonikbarta.com/bangladesh/ziuZBM3NFmgUWPaX/",
-      "publishedAt": "2026-11-24T01:35:00+00:00",
-      "source": "Daily Bonik Barta",
-      "publisherName": "Daily Bonik Barta",
-      "sourceEvidence": [
-        "Daily Bonik Barta"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/ziuZBM3NFmgUWPaX/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Daily Bonik Barta",
-          "title": "খুলনায় একদিনে তিন স্থানে গুলি, চাঁদা না পেয়ে রেস্টুরেন্টে হামলা - Daily Bonik Barta",
-          "summary": "খুলনায় একদিনে তিন স্থানে গুলি, চাঁদা না পেয়ে রেস্টুরেন্টে হামলা Daily Bonik Barta",
-          "url": "https://bonikbarta.com/bangladesh/ziuZBM3NFmgUWPaX/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0ecd5b8bcc31f75932dfe298017d76df"
     }
   ]
 }
