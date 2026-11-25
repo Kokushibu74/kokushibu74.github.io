@@ -433,6 +433,8 @@ class NewsLogicTests(unittest.TestCase):
             response.read.return_value = json.dumps(legacy).encode("utf-8")
             with patch.object(news, "OUTPUT", str(latest_path)), \
                  patch.object(news, "ARCHIVE_OUTPUT", str(archive_path)), \
+                 patch.object(news, "LEGACY_ARCHIVE_OUTPUT", str(archive_path)), \
+                 patch.object(news, "ARCHIVE_DIR", Path(folder) / "archive-chunks"), \
                  patch.object(news, "LEGACY_FEED_SEED_URL", "https://example.com/legacy.json"), \
                  patch.object(news.urllib.request, "urlopen", return_value=response) as opener:
                 ordinary, _ = news.read_previous_snapshot()
@@ -446,6 +448,7 @@ class NewsLogicTests(unittest.TestCase):
         import json
         from tempfile import TemporaryDirectory
         old_output, old_archive_output = news.OUTPUT, news.ARCHIVE_OUTPUT
+        old_legacy_archive_output, old_archive_dir = news.LEGACY_ARCHIVE_OUTPUT, news.ARCHIVE_DIR
         try:
             with TemporaryDirectory() as folder:
                 path = Path(folder) / "news-feed.json"
@@ -459,10 +462,13 @@ class NewsLogicTests(unittest.TestCase):
                     {"title": "Archived headline", "link": "https://example.com/archive", "publishedAt": (now - timedelta(days=3)).isoformat(), "category": "World"}
                 ]}), encoding="utf-8")
                 news.OUTPUT, news.ARCHIVE_OUTPUT = str(path), str(archive_path)
+                news.LEGACY_ARCHIVE_OUTPUT = str(archive_path)
+                news.ARCHIVE_DIR = Path(folder) / "archive-chunks"
                 previous = news.read_previous()
                 self.assertEqual({item["title"] for item in previous}, {"Fresh headline", "Archived headline"})
         finally:
             news.OUTPUT, news.ARCHIVE_OUTPUT = old_output, old_archive_output
+            news.LEGACY_ARCHIVE_OUTPUT, news.ARCHIVE_DIR = old_legacy_archive_output, old_archive_dir
 
     def test_feed_partitions_keep_latest_and_archive_at_exact_24_hour_boundary(self):
         now = datetime(2026, 11, 7, 12, 0, tzinfo=timezone.utc)
