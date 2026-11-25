@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T18:05:43.939772+00:00",
-  "updatedAt": "2026-11-25T18:05:43.939772+00:00",
+  "generatedAt": "2026-11-25T18:20:40.119120+00:00",
+  "updatedAt": "2026-11-25T18:20:40.119120+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 20,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 35,
+  "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 6,
+      "fallbackItems": 5,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -678,16 +678,16 @@
       "name": "Chattogram News",
       "domain": "chattogramnews.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 12,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Daily Sylhet News",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 28,
   "alertItems": [
     {
       "title": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান’",
@@ -988,7 +988,7 @@
     },
     {
       "title": "চট্টগ্রামের হালিশহরে বিস্ফোরণের কারণ জানতে তদন্ত করছে পুলিশ Police | Independent TV",
-      "summary": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ Chattogram News",
+      "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
       "link": "https://www.youtube.com/watch?v=A1j1cSldobA",
       "publisherUrl": "https://www.youtube.com/watch?v=A1j1cSldobA",
       "publishedAt": "2026-11-25T16:09:31+00:00",
@@ -1025,8 +1025,8 @@
         },
         {
           "name": "Chattogram News",
-          "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ - Chattogram News",
-          "summary": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ Chattogram News",
+          "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩",
+          "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
           "url": "https://chattogramnews.com/archives/161447",
           "incidentDateText": "২৫ নভেম্বর ২০২৬",
           "locationText": "বন্দর থানার, কক্সবাজার মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম"
@@ -1232,7 +1232,7 @@
       "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
       "link": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
       "publisherUrl": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publishedAt": "2026-11-25T12:16:52+00:00",
+      "publishedAt": "2026-11-25T12:18:20+00:00",
       "source": "Samakal",
       "publisherName": "Samakal",
       "sourceEvidence": [
@@ -1484,12 +1484,17 @@
       "source": "Jugantor",
       "publisherName": "Jugantor",
       "sourceEvidence": [
-        "Jugantor"
+        "Jugantor",
+        "Channel 24"
       ],
       "sourceLinks": [
         {
           "name": "Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
+        },
+        {
+          "name": "Channel 24",
+          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1501,10 +1506,16 @@
           "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
           "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
+        },
+        {
+          "name": "Channel 24",
+          "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
+          "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
+          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "71e6c40e76663e79bdd72c384d253264"
+      "corroborationCount": 2,
+      "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
     },
     {
       "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
