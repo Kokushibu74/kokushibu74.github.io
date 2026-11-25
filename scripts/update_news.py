@@ -1156,7 +1156,7 @@ def read_previous_snapshot(allow_legacy_bootstrap=False):
     baseline_available = False
     archive_paths = [Path(LEGACY_ARCHIVE_OUTPUT), Path(ARCHIVE_OUTPUT)]
     if ARCHIVE_DIR.exists():
-        archive_paths.extend(sorted(path for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json") if path.is_file()))
+        archive_paths.extend(sorted(path for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]*.json") if path.is_file()))
     for path in (Path(OUTPUT), *archive_paths):
         try:
             with path.open("r", encoding="utf-8") as file:
@@ -1745,31 +1745,34 @@ def main():
         archive_by_month.setdefault(month, []).append(item)
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
     expected_chunk_names = {month + ".json" for month in archive_by_month}
-    for stale_path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json"):
+    for stale_path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]*.json"):
         if stale_path.name not in expected_chunk_names:
             stale_path.unlink()
     chunk_index = []
     written_archive_count = 0
     for month, month_items in sorted(archive_by_month.items(), reverse=True):
-        chunk_name = month + ".json"
-        chunk_payload = {"updatedAt": now_iso, "month": month, "items": month_items}
-        chunk_path = ARCHIVE_DIR / chunk_name
-        with chunk_path.open("w", encoding="utf-8") as file:
-            json.dump(chunk_payload, file, ensure_ascii=False, separators=(",", ":"))
-            file.write("\n")
-        with chunk_path.open("r", encoding="utf-8") as file:
-            verified_chunk = json.load(file)
-        chunk_validation = validate_feed_payload({"updatedAt": now_iso, "items": verified_chunk["items"], "weatherItems": []})
-        if not chunk_validation["valid"]:
-            raise ValueError("Archive chunk failed validation: " + chunk_name + "; " + "; ".join(chunk_validation["issues"]))
-        written_archive_count += len(verified_chunk["items"])
-        chunk_index.append({
-            "file": chunk_name,
-            "month": month,
-            "count": len(month_items),
-            "firstPublishedAt": month_items[-1].get("publishedAt"),
-            "lastPublishedAt": month_items[0].get("publishedAt"),
-        })
+        for part_number, offset in enumerate(range(0, len(month_items), 5000), start=1):
+            part_items = month_items[offset:offset + 5000]
+            chunk_name = f"{month}-{part_number:02d}.json"
+            chunk_payload = {"updatedAt": now_iso, "month": month, "part": part_number, "items": part_items}
+            chunk_path = ARCHIVE_DIR / chunk_name
+            with chunk_path.open("w", encoding="utf-8") as file:
+                json.dump(chunk_payload, file, ensure_ascii=False, separators=(",", ":"))
+                file.write("\n")
+            with chunk_path.open("r", encoding="utf-8") as file:
+                verified_chunk = json.load(file)
+            chunk_validation = validate_feed_payload({"updatedAt": now_iso, "items": verified_chunk["items"], "weatherItems": []})
+            if not chunk_validation["valid"]:
+                raise ValueError("Archive chunk failed validation: " + chunk_name + "; " + "; ".join(chunk_validation["issues"]))
+            written_archive_count += len(verified_chunk["items"])
+            chunk_index.append({
+                "file": chunk_name,
+                "month": month,
+                "part": part_number,
+                "count": len(part_items),
+                "firstPublishedAt": part_items[-1].get("publishedAt"),
+                "lastPublishedAt": part_items[0].get("publishedAt"),
+            })
     archive_index = {"updatedAt": now_iso, "itemsCount": written_archive_count, "chunks": chunk_index}
     with open(ARCHIVE_OUTPUT, "w", encoding="utf-8") as file:
         json.dump(archive_index, file, ensure_ascii=False, indent=2)
@@ -1817,7 +1820,7 @@ def main():
     attempted_feeds = len(DIRECT_FEEDS) + len(QUERIES) + len(WEATHER_QUERIES)
     print("Feed diagnostics:", successful_feeds, "/", attempted_feeds, "successful; failures:", " | ".join(feed_failures[:20]) or "none")
     print("Feed partition sizes: latest_bytes:", Path(OUTPUT).stat().st_size, "archive_index_bytes:", Path(ARCHIVE_OUTPUT).stat().st_size,
-          "archive_chunk_bytes:", sum(path.stat().st_size for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json")))
+          "archive_chunk_bytes:", sum(path.stat().st_size for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]*.json")))
 
 if __name__ == "__main__":
     main()

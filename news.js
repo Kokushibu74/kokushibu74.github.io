@@ -572,7 +572,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
       const index=await fetchJson("./news-archive/index.json",{cache:"no-cache"},20000);
       if(!index||!Array.isArray(index.chunks))throw new Error("Archive index is invalid or has no chunks.");
       const chunks=await Promise.all(index.chunks.map(async chunk=>{
-        if(!chunk||typeof chunk.file!=="string"||!/^[0-9]{4}-[0-9]{2}\.json$/.test(chunk.file))throw new Error("Archive index contains an invalid chunk name.");
+        if(!chunk||typeof chunk.file!=="string"||!/^[0-9]{4}-[0-9]{2}(?:-[0-9]{2})?\.json$/.test(chunk.file))throw new Error("Archive index contains an invalid chunk name.");
         const payload=await fetchJson("./news-archive/"+chunk.file,{cache:"no-cache"},25000);
         if(!payload||!Array.isArray(payload.items))throw new Error("Archive chunk "+chunk.file+" is invalid.");
         return payload.items;
