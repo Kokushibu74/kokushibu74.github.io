@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T13:40:40.910956+00:00",
-  "updatedAt": "2026-11-25T13:40:40.910956+00:00",
+  "generatedAt": "2026-11-25T13:55:34.980869+00:00",
+  "updatedAt": "2026-11-25T13:55:34.980869+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 26,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -875,7 +875,7 @@
     },
     {
       "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-      "summary": "বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। এতে কার্যালয়ের সামনে টাঙানো কয়েকটি ব্যানার ও ফেস্টুন পুড়ে গেছে....",
+      "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
       "link": "https://www.jagonews24.com/country/news/1183691",
       "publisherUrl": "https://www.jagonews24.com/country/news/1183691",
       "publishedAt": "2026-11-25T13:22:04+00:00",
@@ -883,12 +883,17 @@
       "publisherName": "Jago News 24",
       "sourceEvidence": [
         "Jago News 24",
+        "একাত্তর",
         "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1183691"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Bangla Tribune",
@@ -902,8 +907,14 @@
         {
           "name": "Jago News 24",
           "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-          "summary": "বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। এতে কার্যালয়ের সামনে টাঙানো কয়েকটি ব্যানার ও ফেস্টুন পুড়ে গেছে....",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
           "url": "https://www.jagonews24.com/country/news/1183691"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Bangla Tribune",
@@ -912,7 +923,7 @@
           "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 3,
       "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
     },
     {
@@ -1078,37 +1089,6 @@
       "alertEventId": "490523fc899ed56abfdde1c67c3a0108"
     },
     {
-      "title": "রাজশাহীতে রাতভর ছাত্রদলের দু’পক্ষের সংঘর্ষ, বিস্ফোরণ-গোলাগুলি | Rajshahi | JSD Clash | Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=mkcBpq5n2k0",
-      "publisherUrl": "https://www.youtube.com/watch?v=mkcBpq5n2k0",
-      "publishedAt": "2026-11-25T12:50:18+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=mkcBpq5n2k0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "রাজশাহীতে রাতভর ছাত্রদলের দু’পক্ষের সংঘর্ষ, বিস্ফোরণ-গোলাগুলি | Rajshahi | JSD Clash | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=mkcBpq5n2k0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ca637c8c4e9aa52a5adb9db465de08de"
-    },
-    {
       "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
       "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/672804",
@@ -1169,37 +1149,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "aa0f7cadaac07e9bb3803a50ede48813"
-    },
-    {
-      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আ/গু/ন, ক্ষতিগ্রস্ত বিভিন্ন অংশ #Netrokona #Khaliajuri #FireIncident",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/waqMzR5fr5s",
-      "publisherUrl": "https://www.youtube.com/shorts/waqMzR5fr5s",
-      "publishedAt": "2026-11-25T12:31:58+00:00",
-      "source": "RTV News",
-      "publisherName": "RTV News",
-      "sourceEvidence": [
-        "RTV News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "RTV News · YouTube",
-          "url": "https://www.youtube.com/shorts/waqMzR5fr5s"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "RTV News",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আ/গু/ন, ক্ষতিগ্রস্ত বিভিন্ন অংশ #Netrokona #Khaliajuri #FireIncident",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/waqMzR5fr5s"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "661bc46d1562abba3fe68b9e21922dd4"
     },
     {
       "title": "চাঁপাইনবাবগঞ্জে ককটেল বি স্ফো রণে নিষিদ্ধ কৃষক লীগ নেতার প্রাণহানি | Chapainawabganj News | Somoy TV",
@@ -1523,48 +1472,6 @@
       "alertEventId": "a2e03d023376f3db0447ee7041d26cf1"
     },
     {
-      "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-      "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500777",
-      "publisherUrl": "https://www.dhakapost.com/country/500777",
-      "publishedAt": "2026-11-25T10:29:08+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com",
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-          "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "147ed2ba787b24c9114c5e276dbd4068"
-    },
-    {
       "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
       "summary": "চট্টগ্রাম নগরের নয়াবাজার গোলচত্বরে ব্যস্ততম পোর্ট কানেকটিং (পিসি) সড়কের একটি অংশ দেবে গেছে। মঙ্গলবার (২৪ নভেম্বর) গোলচত্বরের এক পাশে এবং বুধবার (২৫ নভেম্বর) সকালে আরেক পাশে দেবে যায়। প্রশস্ত সড়ক হওয়ায় আপাতত যানবাহন চলাচলে সমস্যা না হলেও দ্রুত সড়কটি সংস্কার করা না গেলে দুর্ঘটনার ঝুঁকির আশঙ্কা প্রকাশ করেছেন স্থানীয় লোকজন। সড়কের অংশ দেবে যাওয়ার ঘটনায় চট্টগ্রাম ওয়াসা ও বাংলাদেশ টেলিকমিউনিকেশনস... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87",
@@ -1666,12 +1573,17 @@
       "source": "Jugantor",
       "publisherName": "Jugantor",
       "sourceEvidence": [
-        "Jugantor"
+        "Jugantor",
+        "Channel 24"
       ],
       "sourceLinks": [
         {
           "name": "Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
+        },
+        {
+          "name": "Channel 24",
+          "url": "https://www.channel24bd.tv/national/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -1683,10 +1595,16 @@
           "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
           "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
           "url": "https://www.jugantor.com/international/1189718"
+        },
+        {
+          "name": "Channel 24",
+          "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
+          "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
+          "url": "https://www.channel24bd.tv/national/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "71e6c40e76663e79bdd72c384d253264"
+      "corroborationCount": 2,
+      "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
     },
     {
       "title": "নোঙর ছিঁড়ে ডুবলো বালুভর্তি নৌকা, ঘুমন্ত দুই শ্রমিক নিখোঁজ",
@@ -1720,11 +1638,42 @@
       "alertEventId": "44d663a12991f6c3faf729aed03be13b"
     },
     {
-      "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
-      "summary": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7",
-      "publishedAt": "2026-11-25T05:39:22+00:00",
+      "title": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল - Banglanews24",
+      "summary": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল Banglanews24",
+      "link": "https://www.banglanews24.com/politics/news/bd/1695741.details",
+      "publisherUrl": "https://www.banglanews24.com/politics/news/bd/1695741.details",
+      "publishedAt": "2026-11-25T07:38:10+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://www.banglanews24.com/politics/news/bd/1695741.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল - Banglanews24",
+          "summary": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল Banglanews24",
+          "url": "https://www.banglanews24.com/politics/news/bd/1695741.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "71378c74c99e2575a4c328a5783fee7c"
+    },
+    {
+      "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publishedAt": "2026-11-25T07:01:46+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -1733,13 +1682,19 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
@@ -1813,6 +1768,37 @@
       "alertEventId": "ac0c9961e8f005a2891a2fa1ba20b06c"
     },
     {
+      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publishedAt": "2026-11-25T03:29:01+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
+    },
+    {
       "title": "কক্সবাজারে বাস-সিএনজি মুখোমুখি সংঘর্ষ, নারী-শিশুসহ নিহত ৫ - The Financial Express",
       "summary": "কক্সবাজারে বাস-সিএনজি মুখোমুখি সংঘর্ষ, নারী-শিশুসহ নিহত ৫ The Financial Express",
       "link": "https://bangla.thefinancialexpress.com.bd/national/kksbajare-bas-sienji-mukhomukhi-sngghrsh-naree-sisush-niht-5",
@@ -1842,37 +1828,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "704da9482a29d8f969553244d927ee16"
-    },
-    {
-      "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
-      "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
-      "link": "https://www.dhakapost.com/international/500610",
-      "publisherUrl": "https://www.dhakapost.com/international/500610",
-      "publishedAt": "2026-11-24T15:36:09+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500610"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
-          "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500610"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6fb0dbbb5a0adb76d7efce4dba01ed17"
     },
     {
       "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
