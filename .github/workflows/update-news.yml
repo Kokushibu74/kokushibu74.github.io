@@ -43,13 +43,15 @@ jobs:
         run: python3 tests/test_slider_rules.py -v
       - name: Generate feed from public RSS sources
         if: ${{ github.event_name != 'pull_request' }}
-        run: python3 scripts/update_news.py
+        run: |
+          python3 scripts/update_news.py
+          rm -f news-archive.json
       - name: Commit public feed when changed
         if: ${{ github.event_name != 'pull_request' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news-feed.json news-archive.json
+          git add -A news-feed.json news-archive.json news-archive/
           if git diff --cached --quiet; then
             echo "Public news feed unchanged."
           else

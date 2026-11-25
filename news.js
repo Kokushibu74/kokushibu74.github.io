@@ -14,6 +14,18 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
   document.getElementById("year").textContent=new Date().getFullYear();
   const editionDate=document.getElementById("news-edition-date");
   if(editionDate)editionDate.textContent=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dhaka",weekday:"long",day:"2-digit",month:"long",year:"numeric"}).format(new Date()).toUpperCase();
+  async function fetchJson(url,options={},timeoutMs=15000){
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),timeoutMs);
+    try{
+      const response=await fetch(url,{...options,signal:controller.signal});
+      if(!response.ok)throw new Error("HTTP "+response.status);
+      return await response.json();
+    }catch(error){
+      if(error?.name==="AbortError")throw new Error("Request timed out after "+Math.round(timeoutMs/1000)+" seconds.");
+      throw error;
+    }finally{clearTimeout(timer)}
+  }
   const DEFAULT_SUBCATEGORY="Other / Unclassified";
   const FALLBACK_TAXONOMY={
     Bangladesh:["Politics & Government","Economy & Business","Crime & Law","Society & Education","Health & Environment"],
@@ -23,9 +35,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
   let categoryTaxonomy=FALLBACK_TAXONOMY;
   const categoryTaxonomyReady=(async()=>{
     try{
-      const response=await fetch("./news-categories.json",{cache:"force-cache"});
-      if(!response.ok)throw new Error("Category taxonomy request failed (HTTP "+response.status+").");
-      const data=await response.json();
+      const data=await fetchJson("./news-categories.json",{cache:"force-cache"},12000);
       if(!data||!data.categories||!["Bangladesh","World","Technology"].every(key=>Array.isArray(data.categories[key])&&data.categories[key].length===5))throw new Error("Category taxonomy is incomplete.");
       categoryTaxonomy=data.categories;
     }catch(error){console.warn("Using built-in news category taxonomy:",error?.message||error)}
@@ -559,12 +569,15 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
     if(archiveLoaded)return archiveItems;
     if(archiveLoading)return archiveLoading;
     archiveLoading=(async()=>{
-      const archiveUrl=new URL("./news-archive.json",document.baseURI);
-      const response=await fetch(archiveUrl.href,{cache:"no-cache"});
-      if(!response.ok)throw new Error("Archive request failed (HTTP "+response.status+").");
-      const data=await response.json();
-      if(!data||!Array.isArray(data.items))throw new Error("Archive JSON is valid but has no items array.");
-      archiveItems=normalizeNewsItems(data.items);
+      const index=await fetchJson("./news-archive/index.json",{cache:"no-cache"},20000);
+      if(!index||!Array.isArray(index.chunks))throw new Error("Archive index is invalid or has no chunks.");
+      const chunks=await Promise.all(index.chunks.map(async chunk=>{
+        if(!chunk||typeof chunk.file!=="string"||!/^[0-9]{4}-[0-9]{2}\.json$/.test(chunk.file))throw new Error("Archive index contains an invalid chunk name.");
+        const payload=await fetchJson("./news-archive/"+chunk.file,{cache:"no-cache"},25000);
+        if(!payload||!Array.isArray(payload.items))throw new Error("Archive chunk "+chunk.file+" is invalid.");
+        return payload.items;
+      }));
+      archiveItems=normalizeNewsItems(chunks.flat());
       archiveLoaded=true;
       items=latestItems.concat(archiveItems);
       return archiveItems;
@@ -577,10 +590,7 @@ import { buildLocationContext, rankNewsByLocation } from "./news-location.mjs?v=
     await categoryTaxonomyReady;
     if(status&&viewMode==="feed")status.textContent="Loading headlines…";
     try{
-      const feedUrl=new URL("./news-feed.json",document.baseURI);
-      const response=await fetch(feedUrl.href,{cache:"no-cache"});
-      if(!response.ok)throw new Error("Feed request failed (HTTP "+response.status+").");
-      const data=await response.json();
+      const data=await fetchJson("./news-feed.json",{cache:"no-cache"},20000);
       if(!data||!Array.isArray(data.items))throw new Error("Feed JSON is valid but has no items array.");
       latestItems=normalizeNewsItems(data.items);
       items=latestItems.concat(archiveItems);

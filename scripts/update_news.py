@@ -17,7 +17,9 @@ from urllib.parse import urlparse
 from pathlib import Path
 
 OUTPUT = "news-feed.json"
-ARCHIVE_OUTPUT = "news-archive.json"
+ARCHIVE_OUTPUT = "news-archive/index.json"
+LEGACY_ARCHIVE_OUTPUT = "news-archive.json"
+ARCHIVE_DIR = Path("news-archive")
 LEGACY_FEED_SEED_URL = "https://raw.githubusercontent.com/Kokushibu74/kokushibu74.github.io/53d209cebdcd44bbfc834adb9a9f5c0d1b178310/news-feed.json"
 WEATHER_QUERIES = [
     ("Bangladesh weather OR flood OR cyclone OR landslide OR storm OR earthquake OR lightning OR wildfire", "bn-BD", "BD", "BD:bn"),
@@ -1152,9 +1154,12 @@ def read_previous_snapshot(allow_legacy_bootstrap=False):
     combined = []
     seen = set()
     baseline_available = False
-    for path in (OUTPUT, ARCHIVE_OUTPUT):
+    archive_paths = [Path(LEGACY_ARCHIVE_OUTPUT), Path(ARCHIVE_OUTPUT)]
+    if ARCHIVE_DIR.exists():
+        archive_paths.extend(sorted(path for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json") if path.is_file()))
+    for path in (Path(OUTPUT), *archive_paths):
         try:
-            with open(path, "r", encoding="utf-8") as file:
+            with path.open("r", encoding="utf-8") as file:
                 payload = json.load(file)
             if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
                 continue
@@ -1732,10 +1737,42 @@ def main():
         "alertItems": alert_items,
         "breakingHistory": history[:500],
     }
-    archive_payload = {"updatedAt": now_iso, "items": archive_items, "weatherItems": []}
-    # Publish both partitions together in the workflow commit.
+    # Store the 90-day archive in month-sized files so no individual static asset grows beyond GitHub's recommended size.
+    archive_by_month = {}
+    for item in archive_items:
+        stamp = datetime.fromisoformat(str(item.get("publishedAt") or "").replace("Z", "+00:00"))
+        month = stamp.strftime("%Y-%m")
+        archive_by_month.setdefault(month, []).append(item)
+    ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+    expected_chunk_names = {month + ".json" for month in archive_by_month}
+    for stale_path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json"):
+        if stale_path.name not in expected_chunk_names:
+            stale_path.unlink()
+    chunk_index = []
+    written_archive_count = 0
+    for month, month_items in sorted(archive_by_month.items(), reverse=True):
+        chunk_name = month + ".json"
+        chunk_payload = {"updatedAt": now_iso, "month": month, "items": month_items}
+        chunk_path = ARCHIVE_DIR / chunk_name
+        with chunk_path.open("w", encoding="utf-8") as file:
+            json.dump(chunk_payload, file, ensure_ascii=False, separators=(",", ":"))
+            file.write("\n")
+        with chunk_path.open("r", encoding="utf-8") as file:
+            verified_chunk = json.load(file)
+        chunk_validation = validate_feed_payload({"updatedAt": now_iso, "items": verified_chunk["items"], "weatherItems": []})
+        if not chunk_validation["valid"]:
+            raise ValueError("Archive chunk failed validation: " + chunk_name + "; " + "; ".join(chunk_validation["issues"]))
+        written_archive_count += len(verified_chunk["items"])
+        chunk_index.append({
+            "file": chunk_name,
+            "month": month,
+            "count": len(month_items),
+            "firstPublishedAt": month_items[-1].get("publishedAt"),
+            "lastPublishedAt": month_items[0].get("publishedAt"),
+        })
+    archive_index = {"updatedAt": now_iso, "itemsCount": written_archive_count, "chunks": chunk_index}
     with open(ARCHIVE_OUTPUT, "w", encoding="utf-8") as file:
-        json.dump(archive_payload, file, ensure_ascii=False, indent=2)
+        json.dump(archive_index, file, ensure_ascii=False, indent=2)
         file.write("\n")
     with open(OUTPUT, "w", encoding="utf-8") as file:
         json.dump(latest_payload, file, ensure_ascii=False, indent=2)
@@ -1743,14 +1780,10 @@ def main():
 
     with open(OUTPUT, "r", encoding="utf-8") as file:
         written_latest = json.load(file)
-    with open(ARCHIVE_OUTPUT, "r", encoding="utf-8") as file:
-        written_archive = json.load(file)
     latest_validation = validate_feed_payload(written_latest)
-    archive_validation = validate_feed_payload(written_archive)
-    if not latest_validation["valid"] or not archive_validation["valid"]:
-        issues = latest_validation["issues"] + archive_validation["issues"]
-        raise ValueError("Generated news partitions failed validation: " + "; ".join(issues))
-    if len(written_latest["items"]) + len(written_archive["items"]) != len(selected):
+    if not latest_validation["valid"]:
+        raise ValueError("Generated latest feed failed validation: " + "; ".join(latest_validation["issues"]))
+    if len(written_latest["items"]) + written_archive_count != len(selected):
         raise ValueError("Generated news partitions do not account for every retained headline.")
 
     content_metrics = feed_content_metrics(selected, weather_items)
@@ -1778,12 +1811,13 @@ def main():
           "bd_slider_preview_candidates:", content_metrics["bd_slider_preview_candidates"],
           "weather_cards:", content_metrics["weather_cards"],
           "weather_cards_with_preview:", content_metrics["weather_cards_with_preview"])
-    print("Feed validation: PASS; latest:", len(latest_items), "; archive:", len(archive_items),
-          "; invalid:", latest_validation["invalid"] + archive_validation["invalid"],
-          "; duplicates:", latest_validation["duplicates"] + archive_validation["duplicates"])
+    print("Feed validation: PASS; latest:", len(latest_items), "; archive:", written_archive_count,
+          "; archive chunks:", len(chunk_index), "; invalid:", latest_validation["invalid"],
+          "; duplicates:", latest_validation["duplicates"])
     attempted_feeds = len(DIRECT_FEEDS) + len(QUERIES) + len(WEATHER_QUERIES)
     print("Feed diagnostics:", successful_feeds, "/", attempted_feeds, "successful; failures:", " | ".join(feed_failures[:20]) or "none")
-    print("Feed partition sizes: latest_bytes:", Path(OUTPUT).stat().st_size, "archive_bytes:", Path(ARCHIVE_OUTPUT).stat().st_size)
+    print("Feed partition sizes: latest_bytes:", Path(OUTPUT).stat().st_size, "archive_index_bytes:", Path(ARCHIVE_OUTPUT).stat().st_size,
+          "archive_chunk_bytes:", sum(path.stat().st_size for path in ARCHIVE_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9].json")))
 
 if __name__ == "__main__":
     main()
