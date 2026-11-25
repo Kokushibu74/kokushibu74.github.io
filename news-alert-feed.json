@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T10:20:38.565035+00:00",
-  "updatedAt": "2026-11-25T10:20:38.565035+00:00",
+  "generatedAt": "2026-11-25T10:35:34.921467+00:00",
+  "updatedAt": "2026-11-25T10:35:34.921467+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
-  "fallbackZeroItemsSourceCount": 8,
+  "directHealthySourceCount": 19,
+  "fallbackHealthySourceCount": 36,
+  "directFailedSourceCount": 36,
+  "fallbackOnlySourceCount": 36,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -127,12 +127,12 @@
       "directError": "The read operation timed out",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 0,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dhaka Tribune",
@@ -153,16 +153,16 @@
       "name": "The Business Standard",
       "domain": "tbsnews.net",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Financial Express",
@@ -277,12 +277,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 0,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -334,7 +334,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
+      "directError": "HTTP 502",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 21,
   "alertItems": [
+    {
+      "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest - United News of Bangladesh",
+      "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest United News of Bangladesh",
+      "link": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
+      "publisherUrl": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
+      "publishedAt": "2026-11-25T10:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest - United News of Bangladesh",
+          "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest United News of Bangladesh",
+          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "96f618aae9b4fb11adac00a60f3c1364"
+    },
     {
       "title": "মেহেরপুরে জমি বিরোধে প্রতিপক্ষের হামলায় ছেলেদের বাঁচাতে গিয়ে নিহত মা | DBC NEWS",
       "summary": "",
@@ -878,7 +909,7 @@
       "summary": "গাজীপুরে মজুরি নিয়ে শ্রমিক-পুলিশ সংঘর্ষে ইটের আঘাতে এক পুলিশ সদস্য আহত হয়েছেন | Gazipur Protest | UNB United News of Bangladesh",
       "link": "https://unb.com.bd/video/10055/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%87%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%8F%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%B9%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8---Gazipur-Protest---UNB",
       "publisherUrl": "https://unb.com.bd/video/10055/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%87%E0%A6%9F%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%8F%E0%A6%95-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A6%A6%E0%A6%B8%E0%A7%8D%E0%A6%AF-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%B9%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8---Gazipur-Protest---UNB",
-      "publishedAt": "2026-11-25T10:07:55+00:00",
+      "publishedAt": "2026-11-25T10:08:21+00:00",
       "source": "UNB",
       "publisherName": "UNB",
       "sourceEvidence": [
@@ -908,7 +939,7 @@
         {
           "name": "Jago News 24",
           "title": "গাজীপুরে শ্রমিকদের সঙ্গে সংঘর্ষে পুলিশ-আনসারের ১০ সদস্য আহত",
-          "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন নির্ধারণের পরও গাজীপুর শিল্পাঞ্চলের বিভিন্ন জায়গায় পুলিশের সঙ্গে সংঘর্ষে জড়িয়েছেন শ্রমিকরা...",
+          "summary": "গাজীপুরে শ্রমিকদের সঙ্গে সংঘর্ষে পুলিশ-আনসারের ১০ সদস্য আহত",
           "url": "https://www.jagonews24.com/country/news/1183588"
         }
       ],
@@ -945,37 +976,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
-    },
-    {
-      "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
-      "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
-      "publishedAt": "2026-11-25T08:23:51+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
-          "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bfb1f6be057c5d680e4ba7d9fd0d9a3f"
     },
     {
       "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
@@ -1040,37 +1040,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a221af8ab19832605019f88a3bb637ed"
-    },
-    {
-      "title": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল - Banglanews24",
-      "summary": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল Banglanews24",
-      "link": "https://www.banglanews24.com/politics/news/bd/1695741.details",
-      "publisherUrl": "https://www.banglanews24.com/politics/news/bd/1695741.details",
-      "publishedAt": "2026-11-25T07:38:10+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://www.banglanews24.com/politics/news/bd/1695741.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল - Banglanews24",
-          "summary": "রাজশাহীতে ছাত্রলীগ নেতাকে পুলিশে দেওয়া নিয়ে ছাত্রদলে সংঘর্ষ, গুলি-ককটেল Banglanews24",
-          "url": "https://www.banglanews24.com/politics/news/bd/1695741.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "71378c74c99e2575a4c328a5783fee7c"
     },
     {
       "title": "টাঙ্গাইলে পার্কিং করা বাসে আগুন দেওয়ার চেষ্টা",
@@ -1203,6 +1172,37 @@
       "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
     },
     {
+      "title": "নেত্রকোণায় ইউএনওর কার্যালয়ে অগ্নিকাণ্ড - Dhaka Tribune Bangla",
+      "summary": "নেত্রকোণায় ইউএনওর কার্যালয়ে অগ্নিকাণ্ড Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113751/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113751/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1",
+      "publishedAt": "2026-11-25T04:50:34+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113751/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "নেত্রকোণায় ইউএনওর কার্যালয়ে অগ্নিকাণ্ড - Dhaka Tribune Bangla",
+          "summary": "নেত্রকোণায় ইউএনওর কার্যালয়ে অগ্নিকাণ্ড Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113751/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A3%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f3bd5937d1b045f9b6586131a65d8aac"
+    },
+    {
       "title": "নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা",
       "summary": "গ্রামীণ ব্যাংকের শাখা ও দপ্তরে সংঘটিত হামলার ঘটনা বেড়েছে। ব্যাংকের সর্বশেষ অভ্যন্তরীণ স্মারক অনুযায়ী, ১০ থেকে ২৩ নভেম্বরের মধ্যে ৯৭টি শাখা ও কার্যালয়ে হামলা হয়েছে। সরকার ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছে। আল জাজিরার প্রতিবেদনে এ তথ্য জানানো হয়েছে। গোপালগঞ্জের কাশিয়ানী শাখার ব্যবস্থাপক সোলায়মান মোড়ল জানান, ১৮ নভেম্বর বিকেলে প্রায় এক ডজন লোক দেশীয় অস্ত্র, […] The post নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/",
@@ -1232,37 +1232,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ac0c9961e8f005a2891a2fa1ba20b06c"
-    },
-    {
-      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publishedAt": "2026-11-25T03:29:01+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
     },
     {
       "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
@@ -1325,43 +1294,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "704da9482a29d8f969553244d927ee16"
-    },
-    {
-      "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
-      "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
-      "link": "https://www.dhakapost.com/international/500610",
-      "publisherUrl": "https://www.dhakapost.com/international/500610",
-      "publishedAt": "2026-11-24T15:36:09+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500610"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
-          "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500610"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
-          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500607"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e8d2cf1183301a605cc86086f8f0866c"
     },
     {
       "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
