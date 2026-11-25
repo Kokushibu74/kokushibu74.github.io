@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T06:40:40.147137+00:00",
-  "updatedAt": "2026-11-25T06:40:40.147137+00:00",
+  "generatedAt": "2026-11-25T06:55:32.149759+00:00",
+  "updatedAt": "2026-11-25T06:55:32.149759+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 10,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 1,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 28,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "গাজীপুরে কারখানায় হামলাকারীরা শ্রমিক নয়, বহিরাগত: দাবি পুলিশের",
@@ -903,6 +903,71 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7b80de75db455b15cc16eb2fe1d34c5f"
+    },
+    {
+      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন - Barta 24",
+      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন Barta 24",
+      "link": "https://barta24.com/details/national/349570",
+      "publisherUrl": "https://barta24.com/details/national/349570",
+      "publishedAt": "2026-11-25T06:29:30+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24",
+        "Prothom Alo",
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349570"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/mymensing/983075/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183378"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন - Barta 24",
+          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন Barta 24",
+          "url": "https://barta24.com/details/national/349570"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নেত্রকোনায় ইউএনওর কক্ষে আগুন লেগে সবকিছু পুড়ে গেছে",
+          "summary": "ভোরে কার্যালয়ের পাহারাদার অলি মিয়া পোড়া গন্ধ পেয়ে গ্রাম পুলিশদের ডাকেন। তাঁরা খোঁজাখুঁজি করে ইউএনওর কক্ষ থেকে ধোঁয়া বের হতে দেখেন।",
+          "url": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
+          "summary": "নেত্রকোনার খালিয়াজুরী উপজেলা নির্বাহী কর্মকর্তার (ইউএনও) কার্যালয়ে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (২৫ নভেম্বর) ভোরে উপজেলা পরিষদ চত্বরে অবস্থিত দ্বিতল ভবনের দ্বিতীয় তলায় এ আগুন লাগে। এতে ইউএনওর কক্ষসহ ভবনের কয়েকটি কক্ষ ব্যাপকভাবে ক্ষতিগ্রস্ত হয়েছে। প্রত্যক্ষদর্শীরা জানান, বুধবার (২৫ নভেম্বর) ভোর ৪টার দিকে ইউএনওর কক্ষে আগুন জ্বলতে দেখেন স্থানীয়রা। পরে তারা আগুন নেভানোর চেষ্টা করেন। খবর পেয়ে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/mymensing/983075/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
+          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
+          "url": "https://www.jagonews24.com/country/news/1183378"
+        }
+      ],
+      "corroborationCount": 4,
+      "alertEventId": "5c9568557bda1bb5d277854268e17c6f"
     },
     {
       "title": "চলন্ত অ্যাম্বুলেন্সেই ডাকাতের হামলা, টাকা দিয়েও শেষ রক্ষা হলো না! | Bangladesh Politics | Rtv",
@@ -1031,39 +1096,6 @@
       "alertEventId": "8f81d0d25bb70543469c4d7264a8900f"
     },
     {
-      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-      "link": "https://www.mzamin.com/article/63087",
-      "publisherUrl": "https://www.mzamin.com/article/63087",
-      "publishedAt": "2026-11-25T05:14:30+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087",
-          "incidentTimeText": "রাত ১০টায়",
-          "incidentTimeSource": "Manab Zamin"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
-    },
-    {
       "title": "নিষিদ্ধ ছাত্রলীগ নেতাকে পুলিশে সোপর্দ করা নিয়ে ছাত্রদলের দুই গ্রুপে সংঘর্ষ",
       "summary": "রাজশাহীতে নিষিদ্ধ ছাত্রলীগের এক নেতাকে পুলিশের হাতে তুলে দেওয়াকে কেন্দ্র করে মহানগর ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় দেশীয় অস্ত্র নিয়ে ধাওয়া-পাল্টাধাওয়া, ইটপাটকেল নিক্ষেপ ও ককটেল বিস্ফোরণের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ ঘটনায় ছাত্রদলের কয়েকজন নেতাকর্মী আহত হয়। তাদের রাজশাহী মেডিক্যাল কলেজ হাসপাতালে চিকিৎসা দেওয়া হয়েছে। মঙ্গলবার (২৪... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/rajshahi/983096/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87-%E0%A6%B8%E0%A7%8B%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A6-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87",
@@ -1150,9 +1182,7 @@
           "name": "Dainik Azadi",
           "title": "হামলার নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা",
           "summary": "গ্রামীণ ব্যাংকের শাখা ও দপ্তরে সংঘটিত হামলার ঘটনা বেড়েছে। ব্যাংকের সর্বশেষ অভ্যন্তরীণ স্মারক অনুযায়ী, ১০ থেকে ২৩ নভেম্বরের মধ্যে ৯৭টি শাখা ও কার্যালয়ে হামলা হয়েছে। সরকার ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছে। আল জাজিরার প্রতিবেদনে এ তথ্য জানানো হয়েছে। গোপালগঞ্জের কাশিয়ানী শাখার ব্যবস্থাপক সোলায়মান মোড়ল জানান, ১৮ নভেম্বর বিকেলে প্রায় এক ডজন লোক দেশীয় অস্ত্র, […] The post হামলার নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/",
-          "incidentDateText": "২৩ নভেম্বর",
-          "locationText": "আগুন দেওয়া হয় গ্রাম, থেকে সরে যাওয়া গ্রাম, অস্থিরতায় গোপালগঞ্জসহ কয়েকটি এলাকা, গোপালগঞ্জ"
+          "url": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/"
         }
       ],
       "corroborationCount": 1,
@@ -1252,59 +1282,6 @@
       "alertEventId": "9fba3370dc92f84a1527571ab2c5cb11"
     },
     {
-      "title": "নেত্রকোনায় ইউএনওর কক্ষে আগুন লেগে সবকিছু পুড়ে গেছে",
-      "summary": "ভোরে কার্যালয়ের পাহারাদার অলি মিয়া পোড়া গন্ধ পেয়ে গ্রাম পুলিশদের ডাকেন। তাঁরা খোঁজাখুঁজি করে ইউএনওর কক্ষ থেকে ধোঁয়া বের হতে দেখেন।",
-      "link": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4",
-      "publishedAt": "2026-11-25T03:47:42+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune",
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/mymensing/983075/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183378"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নেত্রকোনায় ইউএনওর কক্ষে আগুন লেগে সবকিছু পুড়ে গেছে",
-          "summary": "ভোরে কার্যালয়ের পাহারাদার অলি মিয়া পোড়া গন্ধ পেয়ে গ্রাম পুলিশদের ডাকেন। তাঁরা খোঁজাখুঁজি করে ইউএনওর কক্ষ থেকে ধোঁয়া বের হতে দেখেন।",
-          "url": "https://www.prothomalo.com/bangladesh/district/dqku8r47c4"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
-          "summary": "নেত্রকোনার খালিয়াজুরী উপজেলা নির্বাহী কর্মকর্তার (ইউএনও) কার্যালয়ে অগ্নিকাণ্ডের ঘটনা ঘটেছে। বুধবার (২৫ নভেম্বর) ভোরে উপজেলা পরিষদ চত্বরে অবস্থিত দ্বিতল ভবনের দ্বিতীয় তলায় এ আগুন লাগে। এতে ইউএনওর কক্ষসহ ভবনের কয়েকটি কক্ষ ব্যাপকভাবে ক্ষতিগ্রস্ত হয়েছে। প্রত্যক্ষদর্শীরা জানান, বুধবার (২৫ নভেম্বর) ভোর ৪টার দিকে ইউএনওর কক্ষে আগুন জ্বলতে দেখেন স্থানীয়রা। পরে তারা আগুন নেভানোর চেষ্টা করেন। খবর পেয়ে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/mymensing/983075/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
-          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1183378"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "5c9568557bda1bb5d277854268e17c6f"
-    },
-    {
       "title": "সেপটিক ট্যাংকের বিষাক্ত গ্যাসে দুইজনের মৃত্যু",
       "summary": "সাতক্ষীরার কালিগঞ্জে সেপটিক ট্যাংকের বিষাক্ত গ্যাস ও অক্সিজেনের অভাবে দুইজনের মৃত্যু হয়েছে। এ ঘটনায় গুরুতর অসুস্থ হয়েছেন আরও দুজন। তাদের মধ্যে তারালী ইউনিয়ন স্বেচ্ছাসেবক দলের যুগ্ম আহ্বায়ক গোলাম হোসেনও রয়েছেন। মঙ্গলবার (২৪ নভেম্বর) দুপুরে উপজেলার তারালী ইউনিয়নের বরেয়া গ্রামে এ দুর্ঘটনা ঘটে। নিহতরা হলেন বরেয়া গ্রামের সনাতন সরকারের ছেলে মহানন্দ সরকার (৩৫) এবং একই গ্রামের মনি পাড়ের ছেলে মো.... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983079/%E0%A6%B8%E0%A7%87%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%9F%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
@@ -1334,37 +1311,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e8508f923adbc30f2634984c1607299a"
-    },
-    {
-      "title": "ছাত্রশক্তির নেতাকর্মীদের ওপর শিবিরের হামলার অভিযোগ, ‘গুপ্ত গুপ্ত’ স্লোগান",
-      "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির নেতাকর্মীদের ওপর হামলার অভিযোগ উঠেছে কলেজ শাখা ছাত্রশিবিরের বিরুদ্ধে। এ সময় উভয়ের মধ্যে হাতাহাতির ঘটনাও ঘটে। মঙ্গলবার (২৪ নভেম্বর) দুপুরে কলেজের অধ্যক্ষ অধ্যাপক সারাহ পারীনের সঙ্গে জাতীয় ছাত্রশক্তির নেতৃবৃন্দরা দেখা করতে গেলে প্রশাসনিক ভবনের সামনে এ ঘটনা ঘটে। এ ঘটনার প্রতিবাদে বিক্ষোভ মিছিল ও সংবাদ সম্মেলন করে হামলায় জড়িত... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publishedAt": "2026-11-24T17:08:46+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ছাত্রশক্তির নেতাকর্মীদের ওপর শিবিরের হামলার অভিযোগ, ‘গুপ্ত গুপ্ত’ স্লোগান",
-          "summary": "চট্টগ্রামের সরকারি হাজী মুহাম্মদ মহসিন কলেজে জাতীয় ছাত্রশক্তির নেতাকর্মীদের ওপর হামলার অভিযোগ উঠেছে কলেজ শাখা ছাত্রশিবিরের বিরুদ্ধে। এ সময় উভয়ের মধ্যে হাতাহাতির ঘটনাও ঘটে। মঙ্গলবার (২৪ নভেম্বর) দুপুরে কলেজের অধ্যক্ষ অধ্যাপক সারাহ পারীনের সঙ্গে জাতীয় ছাত্রশক্তির নেতৃবৃন্দরা দেখা করতে গেলে প্রশাসনিক ভবনের সামনে এ ঘটনা ঘটে। এ ঘটনার প্রতিবাদে বিক্ষোভ মিছিল ও সংবাদ সম্মেলন করে হামলায় জড়িত... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/983026/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%93%E0%A6%AA%E0%A6%B0-%E0%A6%B6%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "dd4af4682d5003c5f66224ba0b81aa99"
     },
     {
       "title": "কক্সবাজারে বাসের ধাক্কায় অটোরিকশার ৫ যাত্রী নিহত",
