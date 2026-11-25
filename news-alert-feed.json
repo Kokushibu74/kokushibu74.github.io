@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T14:25:35.975356+00:00",
-  "updatedAt": "2026-11-25T14:25:35.975356+00:00",
+  "generatedAt": "2026-11-25T14:40:33.854562+00:00",
+  "updatedAt": "2026-11-25T14:40:33.854562+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -242,17 +242,17 @@
     {
       "name": "Risingbd",
       "domain": "risingbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Samakal",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 8,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -840,8 +840,110 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 35,
+  "candidateCount": 37,
   "alertItems": [
+    {
+      "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩",
+      "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
+      "link": "https://chattogramnews.com/archives/161447",
+      "publisherUrl": "https://chattogramnews.com/archives/161447",
+      "publishedAt": "2026-11-25T14:32:39+00:00",
+      "source": "Chattogram News",
+      "publisherName": "Chattogram News",
+      "sourceEvidence": [
+        "Chattogram News",
+        "Jamuna TV",
+        "Dainik Azadi",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chattogram News",
+          "url": "https://chattogramnews.com/archives/161447"
+        },
+        {
+          "name": "Jamuna TV ·",
+          "url": "https://www.youtube.com/watch?v=SkzxXYn6Bfc"
+        },
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/tbl93m01xr"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chattogram News",
+          "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩",
+          "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
+          "url": "https://chattogramnews.com/archives/161447",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬",
+          "locationText": "বন্দর থানার, কক্সবাজার মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম"
+        },
+        {
+          "name": "Jamuna TV",
+          "title": "চট্টগ্রামে বাসায় বিস্ফোরণ; যা জানা গেলো | Chattogram | Blast | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=SkzxXYn6Bfc"
+        },
+        {
+          "name": "Dainik Azadi",
+          "title": "হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ",
+          "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে একই পরিবারের তিনজন দগ্ধ হয়েছেন। মঙ্গলবার রাত সাড়ে ১১টার দিকে ঘটনাটি ঘটে। দগ্ধ তিনজনের অবস্থাই গুরুতর বলে জানা গেছে। দগ্ধরা হলেন মো. আরিফ, তাঁর স্ত্রী রাশেদা বেগম ও তিন বছর বয়সী মেয়ে আরিফা বেগম। দগ্ধ তিনজনের শরীরের ৩০ থেকে ৮০ শতাংশ পুড়ে গেছে। তাঁরা চট্টগ্রাম […] The post হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/",
+          "locationText": "বন্দর থানার"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "চট্টগ্রামে বাসায় হঠাৎ বিকট শব্দে বিস্ফোরণ, দগ্ধ এক পরিবারের তিনজন",
+          "summary": "",
+          "url": "https://www.prothomalo.com/bangladesh/district/tbl93m01xr",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ বিকেলে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "নগরের বন্দর থানার"
+        }
+      ],
+      "corroborationCount": 4,
+      "alertEventId": "23430f668dc770d7b4c97d943a09e17d"
+    },
+    {
+      "title": "যমুনা টিভির শেরপুরের প্রতিনিধির বাড়িতে আগুন, পুড়েছে ২৫ লাখ টাকার মালামাল | News | Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=xw8DtE5H8aY",
+      "publisherUrl": "https://www.youtube.com/watch?v=xw8DtE5H8aY",
+      "publishedAt": "2026-11-25T14:19:30+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=xw8DtE5H8aY"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "যমুনা টিভির শেরপুরের প্রতিনিধির বাড়িতে আগুন, পুড়েছে ২৫ লাখ টাকার মালামাল | News | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=xw8DtE5H8aY"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c231e91ed8a83927ba4eb891c1871b94"
+    },
     {
       "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
       "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
@@ -958,30 +1060,20 @@
       "alertEventId": "ca55957ad813f4570e66b5921218cd40"
     },
     {
-      "title": "🛑 LIVE: চট্টগ্রামে আবাসিক ভবনে বিস্ফোরণ ঘিরে রহস্য",
-      "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে একই পরিবারের তিনজন দগ্ধ হয়েছেন। মঙ্গলবার রাত সাড়ে ১১টার দিকে ঘটনাটি ঘটে। দগ্ধ তিনজনের অবস্থাই গুরুতর বলে জানা গেছে। দগ্ধরা হলেন মো. আরিফ, তাঁর স্ত্রী রাশেদা বেগম ও তিন বছর বয়সী মেয়ে আরিফা বেগম। দগ্ধ তিনজনের শরীরের ৩০ থেকে ৮০ শতাংশ পুড়ে গেছে। তাঁরা চট্টগ্রাম […] The post হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ appeared first on দৈনিক আজাদী .",
-      "link": "https://www.youtube.com/watch?v=ULGQk8xogw8",
-      "publisherUrl": "https://www.youtube.com/watch?v=ULGQk8xogw8",
-      "publishedAt": "2026-11-25T13:07:50+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
+      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672804",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
+      "publishedAt": "2026-11-25T12:47:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Jamuna TV",
-        "Dainik Azadi",
-        "Prothom Alo"
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=ULGQk8xogw8"
-        },
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/"
-        },
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/tbl93m01xr"
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
         }
       ],
       "category": "Bangladesh",
@@ -989,31 +1081,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jamuna TV",
-          "title": "🛑 LIVE: চট্টগ্রামে আবাসিক ভবনে বিস্ফোরণ ঘিরে রহস্য",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=ULGQk8xogw8"
-        },
-        {
-          "name": "Dainik Azadi",
-          "title": "হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ",
-          "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে একই পরিবারের তিনজন দগ্ধ হয়েছেন। মঙ্গলবার রাত সাড়ে ১১টার দিকে ঘটনাটি ঘটে। দগ্ধ তিনজনের অবস্থাই গুরুতর বলে জানা গেছে। দগ্ধরা হলেন মো. আরিফ, তাঁর স্ত্রী রাশেদা বেগম ও তিন বছর বয়সী মেয়ে আরিফা বেগম। দগ্ধ তিনজনের শরীরের ৩০ থেকে ৮০ শতাংশ পুড়ে গেছে। তাঁরা চট্টগ্রাম […] The post হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/",
-          "locationText": "বন্দর থানার"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "চট্টগ্রামে বাসায় হঠাৎ বিকট শব্দে বিস্ফোরণ, দগ্ধ এক পরিবারের তিনজন",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/tbl93m01xr",
-          "incidentDateText": "২৫ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ বিকেলে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "নগরের বন্দর থানার"
+          "name": "Risingbd.com",
+          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "23430f668dc770d7b4c97d943a09e17d"
+      "corroborationCount": 1,
+      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
       "title": "ছেলেদের বাঁচাতে গিয়ে প্রতিপক্ষের হামলায় নিহত মা",
@@ -1040,11 +1115,7 @@
           "name": "Prothom Alo",
           "title": "ছেলেদের বাঁচাতে গিয়ে প্রতিপক্ষের হামলায় নিহত মা",
           "summary": "মেহেরপুরের মুজিবনগর উপজেলার সোনাপুর গ্রামের বাজারপাড়া এলাকায় আজ সকাল ১০টার দিকে এ ঘটনা ঘটে।",
-          "url": "https://www.prothomalo.com/bangladesh/district/n9f8ut3cid",
-          "incidentDateText": "২৫ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ সকালে",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "সোনাপুর গ্রামের বাজার"
+          "url": "https://www.prothomalo.com/bangladesh/district/n9f8ut3cid"
         }
       ],
       "corroborationCount": 1,
@@ -1595,68 +1666,6 @@
       "alertEventId": "c061c769cf69609bb505167d4e0ab992"
     },
     {
-      "title": "ভাইয়ের পর মারা গেল দগ্ধ বোনও",
-      "summary": "চাঁদপুরের হাজীগঞ্জ উপজেলার বড়কুল পূর্ব ইউনিয়নে বসতঘরে ভয়াবহ অগ্নিকাণ্ডের ঘটনায় দগ্ধ শিশু মরিয়ম আক্তার (৩) মারা গেছে। তিন দিন মৃত্যুর সঙ্গে লড়ে মঙ্গলবার রাতে ঢাকা মেডিকেল কলেজ হাসপাতালের বার্ন ইউনিটে চিকিৎসাধীন অবস্থায় তার মৃত্যু হয়। এর আগে গত রোববার ওই অগ্নিকাণ্ডেই ঘটনাস্থলে পুড়ে মারা যায় তার দুই বছর বয়সী ভাই মো. আনাছ হোসেন। নিহত দুই ...",
-      "link": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87%e0%a6%b0/",
-      "publisherUrl": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87%e0%a6%b0/",
-      "publishedAt": "2026-11-25T05:18:21+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87%e0%a6%b0/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "ভাইয়ের পর মারা গেল দগ্ধ বোনও",
-          "summary": "চাঁদপুরের হাজীগঞ্জ উপজেলার বড়কুল পূর্ব ইউনিয়নে বসতঘরে ভয়াবহ অগ্নিকাণ্ডের ঘটনায় দগ্ধ শিশু মরিয়ম আক্তার (৩) মারা গেছে। তিন দিন মৃত্যুর সঙ্গে লড়ে মঙ্গলবার রাতে ঢাকা মেডিকেল কলেজ হাসপাতালের বার্ন ইউনিটে চিকিৎসাধীন অবস্থায় তার মৃত্যু হয়। এর আগে গত রোববার ওই অগ্নিকাণ্ডেই ঘটনাস্থলে পুড়ে মারা যায় তার দুই বছর বয়সী ভাই মো. আনাছ হোসেন। নিহত দুই ...",
-          "url": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ad%e0%a6%be%e0%a6%87%e0%a7%9f%e0%a7%87%e0%a6%b0/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8f81d0d25bb70543469c4d7264a8900f"
-    },
-    {
-      "title": "নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা",
-      "summary": "গ্রামীণ ব্যাংকের শাখা ও দপ্তরে সংঘটিত হামলার ঘটনা বেড়েছে। ব্যাংকের সর্বশেষ অভ্যন্তরীণ স্মারক অনুযায়ী, ১০ থেকে ২৩ নভেম্বরের মধ্যে ৯৭টি শাখা ও কার্যালয়ে হামলা হয়েছে। সরকার ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছে। আল জাজিরার প্রতিবেদনে এ তথ্য জানানো হয়েছে। গোপালগঞ্জের কাশিয়ানী শাখার ব্যবস্থাপক সোলায়মান মোড়ল জানান, ১৮ নভেম্বর বিকেলে প্রায় এক ডজন লোক দেশীয় অস্ত্র, […] The post নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/",
-      "publisherUrl": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/",
-      "publishedAt": "2026-11-25T04:36:00+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা",
-          "summary": "গ্রামীণ ব্যাংকের শাখা ও দপ্তরে সংঘটিত হামলার ঘটনা বেড়েছে। ব্যাংকের সর্বশেষ অভ্যন্তরীণ স্মারক অনুযায়ী, ১০ থেকে ২৩ নভেম্বরের মধ্যে ৯৭টি শাখা ও কার্যালয়ে হামলা হয়েছে। সরকার ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছে। আল জাজিরার প্রতিবেদনে এ তথ্য জানানো হয়েছে। গোপালগঞ্জের কাশিয়ানী শাখার ব্যবস্থাপক সোলায়মান মোড়ল জানান, ১৮ নভেম্বর বিকেলে প্রায় এক ডজন লোক দেশীয় অস্ত্র, […] The post নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ac0c9961e8f005a2891a2fa1ba20b06c"
-    },
-    {
       "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
       "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
       "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
@@ -1785,6 +1794,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ee7991cb83edd3f17bd725c92e58e31"
+    },
+    {
+      "title": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ - Dhaka Tribune Bangla",
+      "summary": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113739/%E0%A6%AE%E0%A6%B8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113739/%E0%A6%AE%E0%A6%B8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publishedAt": "2026-11-24T15:20:19+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113739/%E0%A6%AE%E0%A6%B8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ - Dhaka Tribune Bangla",
+          "summary": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113739/%E0%A6%AE%E0%A6%B8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cda14270f8375c5f04bbadcffdcc2c7d"
     }
   ]
 }
