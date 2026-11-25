@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T17:55:43.799949+00:00",
-  "updatedAt": "2026-11-25T17:55:43.799949+00:00",
+  "generatedAt": "2026-11-25T18:05:43.939772+00:00",
+  "updatedAt": "2026-11-25T18:05:43.939772+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 20,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 35,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
@@ -678,16 +678,16 @@
       "name": "Chattogram News",
       "domain": "chattogramnews.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 12,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sylhet News",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 25,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান’",
@@ -916,7 +916,9 @@
       "publisherName": "Jago News 24",
       "sourceEvidence": [
         "Jago News 24",
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "Ajker Patrika",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -926,6 +928,14 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
+        },
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -951,18 +961,34 @@
           "url": "https://www.jagonews24.com/country/news/1183691"
         },
         {
+          "name": "Ajker Patrika",
+          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
+          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬",
+          "incidentTimeText": "গতকাল রাতে",
+          "incidentTimeSource": "Ajker Patrika",
+          "locationText": "নন্দীগ্রাম ফিলিং স্টেশন এলাকায়, অবস্থিত উপজেলা, কর্মীদের দায়ী করেছেন উপজেলা, আমরা উপজেলা, বিষয়ে থানার"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
           "name": "Bangla Tribune",
           "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
           "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 4,
       "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
     },
     {
       "title": "চট্টগ্রামের হালিশহরে বিস্ফোরণের কারণ জানতে তদন্ত করছে পুলিশ Police | Independent TV",
-      "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
+      "summary": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ Chattogram News",
       "link": "https://www.youtube.com/watch?v=A1j1cSldobA",
       "publisherUrl": "https://www.youtube.com/watch?v=A1j1cSldobA",
       "publishedAt": "2026-11-25T16:09:31+00:00",
@@ -999,8 +1025,8 @@
         },
         {
           "name": "Chattogram News",
-          "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩",
-          "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে স্বামী-স্ত্রী ও তাঁদের তিন বছর বয়সী মেয়ে দগ্ধ হয়েছে। গতকাল মঙ্গলবার রাত সাড়ে ১১টার দিকে এ ঘটনা ঘটে। বিস্ফোরণে তাঁদের শরীরের বিভিন্ন অংশ পুড়ে গেছে। তিনজনের অবস্থাই গুরুতর। ঘটনাটি রাতের হলেও পুলিশ ও ফায়ার সার্ভিস জেনেছে আজ বুধবার (২৫ নভেম্বর) সকালে। দগ্ধ তিনজনের শরীরের বিভিন্ন […] The post চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ appeared first on চট্টগ্রাম নিউজ .",
+          "title": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ - Chattogram News",
+          "summary": "চট্টগ্রামে নিউ মুরিংয়ে আবাসিক ভবনে বিস্ফোরণ, নারী ও শিশুসহ দগ্ধ ৩ Chattogram News",
           "url": "https://chattogramnews.com/archives/161447",
           "incidentDateText": "২৫ নভেম্বর ২০২৬",
           "locationText": "বন্দর থানার, কক্সবাজার মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম"
@@ -1009,8 +1035,7 @@
           "name": "Dainik Azadi",
           "title": "হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ",
           "summary": "চট্টগ্রাম নগরের হালিশহরের নিউ মুরিং আবাসিক এলাকার একটি বাসায় বিস্ফোরণে একই পরিবারের তিনজন দগ্ধ হয়েছেন। মঙ্গলবার রাত সাড়ে ১১টার দিকে ঘটনাটি ঘটে। দগ্ধ তিনজনের অবস্থাই গুরুতর বলে জানা গেছে। দগ্ধরা হলেন মো. আরিফ, তাঁর স্ত্রী রাশেদা বেগম ও তিন বছর বয়সী মেয়ে আরিফা বেগম। দগ্ধ তিনজনের শরীরের ৩০ থেকে ৮০ শতাংশ পুড়ে গেছে। তাঁরা চট্টগ্রাম […] The post হালিশহরে বিস্ফোরণে দগ্ধ একই পরিবারের তিনজন, কারণ জানতে পারেনি পুলিশ appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/",
-          "locationText": "বন্দর থানার"
+          "url": "https://dainikazadi.net/halishahar-blast-three-of-family-burnt/"
         }
       ],
       "corroborationCount": 3,
@@ -1049,7 +1074,7 @@
     },
     {
       "title": "সিরাজগঞ্জে ট্রাক-অটোরিকশা মুখোমুখি সংঘর্ষে নিহত ২",
-      "summary": "সিরাজগঞ্জের উল্লাপাড়ায় ট্রাকের সঙ্গে সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে দুজন নিহত হয়েছেন...",
+      "summary": "সিরাজগঞ্জে ট্রাক-অটোরিকশা মুখোমুখি সংঘর্ষে নিহত ২",
       "link": "https://www.jagonews24.com/country/news/1183749",
       "publisherUrl": "https://www.jagonews24.com/country/news/1183749",
       "publishedAt": "2026-11-25T15:45:57+00:00",
@@ -1071,7 +1096,7 @@
         {
           "name": "Jago News 24",
           "title": "সিরাজগঞ্জে ট্রাক-অটোরিকশা মুখোমুখি সংঘর্ষে নিহত ২",
-          "summary": "সিরাজগঞ্জের উল্লাপাড়ায় ট্রাকের সঙ্গে সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে দুজন নিহত হয়েছেন...",
+          "summary": "সিরাজগঞ্জে ট্রাক-অটোরিকশা মুখোমুখি সংঘর্ষে নিহত ২",
           "url": "https://www.jagonews24.com/country/news/1183749"
         }
       ],
@@ -1451,20 +1476,20 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
-      "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
-      "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
-      "link": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0",
-      "publisherUrl": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0",
-      "publishedAt": "2026-11-25T07:51:03+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
+      "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
+      "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
+      "link": "https://www.jugantor.com/international/1189718",
+      "publisherUrl": "https://www.jugantor.com/international/1189718",
+      "publishedAt": "2026-11-25T08:21:31+00:00",
+      "source": "Jugantor",
+      "publisherName": "Jugantor",
       "sourceEvidence": [
-        "Channel 24"
+        "Jugantor"
       ],
       "sourceLinks": [
         {
-          "name": "Channel 24",
-          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
+          "name": "Jugantor",
+          "url": "https://www.jugantor.com/international/1189718"
         }
       ],
       "category": "Bangladesh",
@@ -1472,30 +1497,30 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Channel 24",
-          "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
-          "summary": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির Channel 24",
-          "url": "https://www.channel24bd.tv/international/article/361085/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A6%93-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%87-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%B0"
+          "name": "Jugantor",
+          "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
+          "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
+          "url": "https://www.jugantor.com/international/1189718"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
+      "alertEventId": "71e6c40e76663e79bdd72c384d253264"
     },
     {
-      "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
-      "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500703",
-      "publisherUrl": "https://www.dhakapost.com/country/500703",
-      "publishedAt": "2026-11-25T06:34:14+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
+      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publishedAt": "2026-11-25T03:29:01+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
       "sourceEvidence": [
-        "dhakapost.com"
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500703"
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
         }
       ],
       "category": "Bangladesh",
@@ -1503,14 +1528,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "dhakapost.com",
-          "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
-          "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500703"
+          "name": "একাত্তর",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
+      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
     }
   ]
 }
