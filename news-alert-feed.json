@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T17:40:45.576403+00:00",
-  "updatedAt": "2026-11-25T17:40:45.576403+00:00",
+  "generatedAt": "2026-11-25T17:55:43.799949+00:00",
+  "updatedAt": "2026-11-25T17:55:43.799949+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -77,17 +77,17 @@
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jugantor",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -707,17 +707,17 @@
     {
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "<urlopen error [Errno 101] Network is unreachable>",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 25,
   "alertItems": [
     {
       "title": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান’",
@@ -916,8 +916,7 @@
       "publisherName": "Jago News 24",
       "sourceEvidence": [
         "Jago News 24",
-        "Bangla Tribune",
-        "একাত্তর"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -927,10 +926,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -956,19 +951,13 @@
           "url": "https://www.jagonews24.com/country/news/1183691"
         },
         {
-          "name": "একাত্তর",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
           "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
     },
     {
@@ -1245,37 +1234,6 @@
       "alertEventId": "c55ee204eb1bf7656fc4f35c485c1086"
     },
     {
-      "title": "ব্যাটিংয়ে হঠাৎ ধস, ইনিংস পরাজয়ের পথে বাংলাদেশ",
-      "summary": "ব্যাটিংয়ে হঠাৎ ধস, ইনিংস পরাজয়ের পথে বাংলাদেশ",
-      "link": "https://www.jagonews24.com/sports/cricket/1183661",
-      "publisherUrl": "https://www.jagonews24.com/sports/cricket/1183661",
-      "publishedAt": "2026-11-25T12:16:06+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/sports/cricket/1183661"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "ব্যাটিংয়ে হঠাৎ ধস, ইনিংস পরাজয়ের পথে বাংলাদেশ",
-          "summary": "ব্যাটিংয়ে হঠাৎ ধস, ইনিংস পরাজয়ের পথে বাংলাদেশ",
-          "url": "https://www.jagonews24.com/sports/cricket/1183661"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "64aeafed2a10e7aadcd50cd9af3c62a1"
-    },
-    {
       "title": "উত্তপ্ত নড়াইলের এসপি পদে বদলি, নতুন কে হলেন?",
       "summary": "হামলায় বিএনপির দুই নেতা নিহত এবং এর জেরে কার্যক্রম নিষিদ্ধ আওয়ামী লীগের নেতাকর্মীদের ঘরবাড়িতে আগুন দেওয়ার ঘটনায় আলোচিত নড়াইলে পুলিশ সুপার (এসপি) পদে পরিবর্তন আনা হয়েছে। বুধবার (২৫ নভেম্বর) স্বরাষ্ট্র মন্ত্রণালয়ের এক প্রজ্ঞাপনে এই বদলির আদেশ দেওয়া হয়েছে। নড়াইলের সঙ্গে আরও ছয় জেলায় নতুন পুলিশ সুপার (এসপি) নিয়োগ দিয়েছে সরকার। এসব জেলার মধ্যেই পাঁচটিই সীমান্তবর্তী। ক্ষমতাচ্যুত প্রধানমন্ত্রী শেখ... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983204/%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%AA%E0%A7%8D%E0%A6%A4-%E0%A6%A8%E0%A7%9C%E0%A6%BE%E0%A6%87%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%B8%E0%A6%AA%E0%A6%BF-%E0%A6%AA%E0%A6%A6%E0%A7%87-%E0%A6%AC%E0%A6%A6%E0%A6%B2%E0%A6%BF-%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%87-%E0%A6%B9%E0%A6%B2%E0%A7%87%E0%A6%A8",
@@ -1398,48 +1356,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a17f9dca50c9abc1782b981c09e47c4d"
-    },
-    {
-      "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-      "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500777",
-      "publisherUrl": "https://www.dhakapost.com/country/500777",
-      "publishedAt": "2026-11-25T10:29:08+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com",
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-          "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "147ed2ba787b24c9114c5e276dbd4068"
     },
     {
       "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
@@ -1595,37 +1511,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
-    },
-    {
-      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publishedAt": "2026-11-25T03:29:01+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
     }
   ]
 }
