@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T10:35:34.921467+00:00",
-  "updatedAt": "2026-11-25T10:35:34.921467+00:00",
+  "generatedAt": "2026-11-25T10:50:31.381681+00:00",
+  "updatedAt": "2026-11-25T10:50:31.381681+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 19,
-  "fallbackHealthySourceCount": 36,
-  "directFailedSourceCount": 36,
-  "fallbackOnlySourceCount": 36,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 10,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -123,16 +123,16 @@
       "name": "Bangla Tribune",
       "domain": "banglatribune.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
-      "fallbackOnly": true,
+      "directHealthy": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Dhaka Tribune",
@@ -153,16 +153,16 @@
       "name": "The Business Standard",
       "domain": "tbsnews.net",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "The Financial Express",
@@ -277,12 +277,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -334,7 +334,7 @@
       "domain": "channel24bd.tv",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 502",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,101 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 21,
+  "candidateCount": 33,
   "alertItems": [
+    {
+      "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
+      "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8",
+      "publishedAt": "2026-11-25T10:48:24+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ, নেতারা বলছেন ‘আ.লীগের সন্ত্রাসীরা দিয়েছে’",
+          "summary": "বগুড়ার নন্দীগ্রাম উপজেলা বিএনপির কার্যালয়ে অগ্নিসংযোগের ঘটনা ঘটেছে। আগুনে কার্যালয়ের সামনে থাকা কয়েকটি ফেস্টুন ও ব্যানার পুড়ে গেছে। মঙ্গলবার মধ্যরাতে নন্দীগ্রাম ফিলিং স্টেশন এলাকায় উপজেলা বিএনপির দলীয় কার্যালয়ে দুর্বৃত্তরা এই অগ্নিসংযোগ করেছে বলে জানিয়েছে পুলিশ। পুলিশ ও দলীয় নেতাকর্মরা জানান, দুই-তিনজন অজ্ঞাত যুবক বিএনপির দলীয় কার্যালয়ের সামনে আগুন দেয়। এতে কার্যালয়ের সামনে থাকা কয়েকটি দলীয়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/983176/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%AC%E0%A6%B2%E0%A6%9B%E0%A7%87%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c704599ea1dfa52ca4bc09d2b7028fbf"
+    },
+    {
+      "title": "শেরপুরে লোটো শোরুমের গুদামে আগুন | DBC NEWS",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/C-Z74JYYTrQ",
+      "publisherUrl": "https://www.youtube.com/shorts/C-Z74JYYTrQ",
+      "publishedAt": "2026-11-25T10:32:09+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/shorts/C-Z74JYYTrQ"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "শেরপুরে লোটো শোরুমের গুদামে আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/C-Z74JYYTrQ"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "149e28b735201dea2ea8bc18f4772453"
+    },
+    {
+      "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
+      "summary": "চট্টগ্রাম নগরের নয়াবাজার গোলচত্বরে ব্যস্ততম পোর্ট কানেকটিং (পিসি) সড়কের একটি অংশ দেবে গেছে। মঙ্গলবার (২৪ নভেম্বর) গোলচত্বরের এক পাশে এবং বুধবার (২৫ নভেম্বর) সকালে আরেক পাশে দেবে যায়। প্রশস্ত সড়ক হওয়ায় আপাতত যানবাহন চলাচলে সমস্যা না হলেও দ্রুত সড়কটি সংস্কার করা না গেলে দুর্ঘটনার ঝুঁকির আশঙ্কা প্রকাশ করেছেন স্থানীয় লোকজন। সড়কের অংশ দেবে যাওয়ার ঘটনায় চট্টগ্রাম ওয়াসা ও বাংলাদেশ টেলিকমিউনিকেশনস... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87",
+      "publishedAt": "2026-11-25T10:20:48+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
+          "summary": "চট্টগ্রাম নগরের নয়াবাজার গোলচত্বরে ব্যস্ততম পোর্ট কানেকটিং (পিসি) সড়কের একটি অংশ দেবে গেছে। মঙ্গলবার (২৪ নভেম্বর) গোলচত্বরের এক পাশে এবং বুধবার (২৫ নভেম্বর) সকালে আরেক পাশে দেবে যায়। প্রশস্ত সড়ক হওয়ায় আপাতত যানবাহন চলাচলে সমস্যা না হলেও দ্রুত সড়কটি সংস্কার করা না গেলে দুর্ঘটনার ঝুঁকির আশঙ্কা প্রকাশ করেছেন স্থানীয় লোকজন। সড়কের অংশ দেবে যাওয়ার ঘটনায় চট্টগ্রাম ওয়াসা ও বাংলাদেশ টেলিকমিউনিকেশনস... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "30a586b85bfdad69d63ff06977c48a5d"
+    },
     {
       "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest - United News of Bangladesh",
       "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest United News of Bangladesh",
@@ -978,6 +1071,37 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
+      "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
+      "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
+      "publishedAt": "2026-11-25T08:23:51+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
+          "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bfb1f6be057c5d680e4ba7d9fd0d9a3f"
+    },
+    {
       "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
       "summary": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ Jugantor",
       "link": "https://www.jugantor.com/international/1189718",
@@ -1009,6 +1133,37 @@
       "alertEventId": "71e6c40e76663e79bdd72c384d253264"
     },
     {
+      "title": "নোঙর ছিঁড়ে ডুবলো বালুভর্তি নৌকা, ঘুমন্ত দুই শ্রমিক নিখোঁজ",
+      "summary": "সুনামগঞ্জের জামালগঞ্জে সুরমা নদীতে নোঙর করে রাখা বালুভর্তি একটি নৌকা ডুবে দুই শ্রমিক নিখোঁজ হয়েছেন। বুধবার (২৫ নভেম্বর) রাত দেড়টার দিকে উপজেলার সাচনা বাজার মাছঘাটসংলগ্ন চামারবাড়ী ঘাট এলাকায় এ দুর্ঘটনা ঘটে। এ সময় নৌকায় থাকা অপর চার শ্রমিক সাঁতরে তীরে উঠতে সক্ষম হলেও তাদের মধ্যে দুজন আহত হয়েছেন। নিখোঁজ শ্রমিকরা হলেন, জামালগঞ্জ উপজেলার বেহেলী ইউনিয়নের ইনাতনগর গ্রামের আবুল কাশেমের ছেলে মোবাশ্বির... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/sylhet/983144/%E0%A6%A8%E0%A7%8B%E0%A6%99%E0%A6%B0-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%A1%E0%A7%81%E0%A6%AC%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%A8%E0%A7%8C%E0%A6%95%E0%A6%BE-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publisherUrl": "https://www.banglatribune.com/country/sylhet/983144/%E0%A6%A8%E0%A7%8B%E0%A6%99%E0%A6%B0-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%A1%E0%A7%81%E0%A6%AC%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%A8%E0%A7%8C%E0%A6%95%E0%A6%BE-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publishedAt": "2026-11-25T08:20:01+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/sylhet/983144/%E0%A6%A8%E0%A7%8B%E0%A6%99%E0%A6%B0-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%A1%E0%A7%81%E0%A6%AC%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%A8%E0%A7%8C%E0%A6%95%E0%A6%BE-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নোঙর ছিঁড়ে ডুবলো বালুভর্তি নৌকা, ঘুমন্ত দুই শ্রমিক নিখোঁজ",
+          "summary": "সুনামগঞ্জের জামালগঞ্জে সুরমা নদীতে নোঙর করে রাখা বালুভর্তি একটি নৌকা ডুবে দুই শ্রমিক নিখোঁজ হয়েছেন। বুধবার (২৫ নভেম্বর) রাত দেড়টার দিকে উপজেলার সাচনা বাজার মাছঘাটসংলগ্ন চামারবাড়ী ঘাট এলাকায় এ দুর্ঘটনা ঘটে। এ সময় নৌকায় থাকা অপর চার শ্রমিক সাঁতরে তীরে উঠতে সক্ষম হলেও তাদের মধ্যে দুজন আহত হয়েছেন। নিখোঁজ শ্রমিকরা হলেন, জামালগঞ্জ উপজেলার বেহেলী ইউনিয়নের ইনাতনগর গ্রামের আবুল কাশেমের ছেলে মোবাশ্বির... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/sylhet/983144/%E0%A6%A8%E0%A7%8B%E0%A6%99%E0%A6%B0-%E0%A6%9B%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A7%87-%E0%A6%A1%E0%A7%81%E0%A6%AC%E0%A6%B2%E0%A7%8B-%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A7%81%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%A8%E0%A7%8C%E0%A6%95%E0%A6%BE-%E0%A6%98%E0%A7%81%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "44d663a12991f6c3faf729aed03be13b"
+    },
+    {
       "title": "রিজার্ভ চুরির তদন্ত প্রতিবেদন দাখিল ১০০ বার পেছাল",
       "summary": "২০১৬ সালের ৫ ফেব্রুয়ারি যুক্তরাষ্ট্রের ফেডারেল রিজার্ভ ব্যাংকে থাকা বাংলাদেশ ব্যাংকের হিসাব থেকে সাইবার হামলার মাধ্যমে ৮ কোটি ১০ লাখ মার্কিন ডলার চুরি হয়।",
       "link": "https://www.prothomalo.com/bangladesh/tgooynig79",
@@ -1033,9 +1188,7 @@
           "name": "Prothom Alo",
           "title": "রিজার্ভ চুরির তদন্ত প্রতিবেদন দাখিল ১০০ বার পেছাল",
           "summary": "২০১৬ সালের ৫ ফেব্রুয়ারি যুক্তরাষ্ট্রের ফেডারেল রিজার্ভ ব্যাংকে থাকা বাংলাদেশ ব্যাংকের হিসাব থেকে সাইবার হামলার মাধ্যমে ৮ কোটি ১০ লাখ মার্কিন ডলার চুরি হয়।",
-          "url": "https://www.prothomalo.com/bangladesh/tgooynig79",
-          "incidentDateText": "৫ ফেব্রুয়ারি",
-          "locationText": "হুদা রাজধানীর মতিঝিল থানায়, বাংলাদেশ"
+          "url": "https://www.prothomalo.com/bangladesh/tgooynig79"
         }
       ],
       "corroborationCount": 1,
@@ -1108,6 +1261,68 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c061c769cf69609bb505167d4e0ab992"
+    },
+    {
+      "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+      "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+      "link": "https://www.dhakapost.com/country/500703",
+      "publisherUrl": "https://www.dhakapost.com/country/500703",
+      "publishedAt": "2026-11-25T06:34:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+          "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
+    },
+    {
+      "title": "সাভারে শ্রমিকদের সড়ক অবরোধের চেষ্টা, টিয়ারশেলে ছত্রভঙ্গ",
+      "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে ঢাকার সাভারের হেমায়েতপুরে সড়ক অবরোধের চেষ্টা করেছেন তৈরি পোশাকশ্রমিকেরা। এ সময় পুলিশের সঙ্গে তাদের সংঘর্ষ হয়। পরিস্থিতি নিয়ন্ত্রণে পুলিশ টিয়ারশেল নিক্ষেপ করে শ্রমিকদের ছত্রভঙ্গ করে দেয়। বুধবার (২৫ নভেম্বর) সকাল পৌনে নয়টার দিকে হেমায়েতপুরের বাগবাড়ি মোড় এলাকায় এ ঘটনা ঘটে। প্রত্যক্ষদর্শী ও পুলিশ সূত্রে জানা যায়, সকালে হেমায়েতপুর এলাকার তৈরি পোশাক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983105/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%B6%E0%A7%87%E0%A6%B2%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983105/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%B6%E0%A7%87%E0%A6%B2%E0%A7%87",
+      "publishedAt": "2026-11-25T05:42:20+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983105/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%B6%E0%A7%87%E0%A6%B2%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "সাভারে শ্রমিকদের সড়ক অবরোধের চেষ্টা, টিয়ারশেলে ছত্রভঙ্গ",
+          "summary": "ন্যূনতম ৩০ হাজার টাকা মজুরির দাবিতে ঢাকার সাভারের হেমায়েতপুরে সড়ক অবরোধের চেষ্টা করেছেন তৈরি পোশাকশ্রমিকেরা। এ সময় পুলিশের সঙ্গে তাদের সংঘর্ষ হয়। পরিস্থিতি নিয়ন্ত্রণে পুলিশ টিয়ারশেল নিক্ষেপ করে শ্রমিকদের ছত্রভঙ্গ করে দেয়। বুধবার (২৫ নভেম্বর) সকাল পৌনে নয়টার দিকে হেমায়েতপুরের বাগবাড়ি মোড় এলাকায় এ ঘটনা ঘটে। প্রত্যক্ষদর্শী ও পুলিশ সূত্রে জানা যায়, সকালে হেমায়েতপুর এলাকার তৈরি পোশাক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983105/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%85%E0%A6%AC%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE-%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0%E0%A6%B6%E0%A7%87%E0%A6%B2%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "93defc90ab8f54c2295990c0723712dd"
     },
     {
       "title": "ভাইয়ের পর মারা গেল দগ্ধ বোনও",
@@ -1203,6 +1418,68 @@
       "alertEventId": "f3bd5937d1b045f9b6586131a65d8aac"
     },
     {
+      "title": "নিষিদ্ধ ছাত্রলীগ নেতাকে পুলিশে সোপর্দ করা নিয়ে ছাত্রদলের দুই গ্রুপে সংঘর্ষ",
+      "summary": "রাজশাহীতে নিষিদ্ধ ছাত্রলীগের এক নেতাকে পুলিশের হাতে তুলে দেওয়াকে কেন্দ্র করে মহানগর ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় দেশীয় অস্ত্র নিয়ে ধাওয়া-পাল্টাধাওয়া, ইটপাটকেল নিক্ষেপ ও ককটেল বিস্ফোরণের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ ঘটনায় ছাত্রদলের কয়েকজন নেতাকর্মী আহত হয়। তাদের রাজশাহী মেডিক্যাল কলেজ হাসপাতালে চিকিৎসা দেওয়া হয়েছে। মঙ্গলবার (২৪... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/rajshahi/983096/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87-%E0%A6%B8%E0%A7%8B%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A6-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/rajshahi/983096/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87-%E0%A6%B8%E0%A7%8B%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A6-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87",
+      "publishedAt": "2026-11-25T04:47:55+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/rajshahi/983096/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87-%E0%A6%B8%E0%A7%8B%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A6-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নিষিদ্ধ ছাত্রলীগ নেতাকে পুলিশে সোপর্দ করা নিয়ে ছাত্রদলের দুই গ্রুপে সংঘর্ষ",
+          "summary": "রাজশাহীতে নিষিদ্ধ ছাত্রলীগের এক নেতাকে পুলিশের হাতে তুলে দেওয়াকে কেন্দ্র করে মহানগর ছাত্রদলের দুই পক্ষের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এ সময় দেশীয় অস্ত্র নিয়ে ধাওয়া-পাল্টাধাওয়া, ইটপাটকেল নিক্ষেপ ও ককটেল বিস্ফোরণের ঘটনা ঘটে। পরিস্থিতি নিয়ন্ত্রণে আনতে পুলিশ টিয়ারশেল নিক্ষেপ করে। এ ঘটনায় ছাত্রদলের কয়েকজন নেতাকর্মী আহত হয়। তাদের রাজশাহী মেডিক্যাল কলেজ হাসপাতালে চিকিৎসা দেওয়া হয়েছে। মঙ্গলবার (২৪... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/rajshahi/983096/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%A7-%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87-%E0%A6%B8%E0%A7%8B%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%A6-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "659eda1618f8a650578031ccefbf54c8"
+    },
+    {
+      "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+      "summary": "মজুরি বোর্ড নতুন বেতন স্কেল ঘোষণা করলেও গাজীপুরে শ্রমিকদের বিক্ষোভ অব্যাহত রয়েছে। বুধবার (২৫ নভেম্বর) ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড় এলাকায় কয়েকটি কারখানার সামনে বিক্ষোভ করেন পোশাকশ্রমিকরা। এ সময় মহাসড়ক ছেড়ে দেওয়ার অনুরোধ জানালে পুলিশের সঙ্গে শ্রমিকদের ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটে। বুধবার সকাল সাড়ে ৮টার দিকে দুটি মহাসড়কে অবস্থান নিয়ে বিক্ষোভ শুরু করেন শ্রমিকরা। এতে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-25T04:36:48+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+          "summary": "মজুরি বোর্ড নতুন বেতন স্কেল ঘোষণা করলেও গাজীপুরে শ্রমিকদের বিক্ষোভ অব্যাহত রয়েছে। বুধবার (২৫ নভেম্বর) ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড় এলাকায় কয়েকটি কারখানার সামনে বিক্ষোভ করেন পোশাকশ্রমিকরা। এ সময় মহাসড়ক ছেড়ে দেওয়ার অনুরোধ জানালে পুলিশের সঙ্গে শ্রমিকদের ধাওয়া-পাল্টাধাওয়ার ঘটনা ঘটে। বুধবার সকাল সাড়ে ৮টার দিকে দুটি মহাসড়কে অবস্থান নিয়ে বিক্ষোভ শুরু করেন শ্রমিকরা। এতে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983092/%E0%A6%A8%E0%A6%A4%E0%A7%81%E0%A6%A8-%E0%A6%AC%E0%A7%87%E0%A6%A4%E0%A6%A8-%E0%A6%98%E0%A7%8B%E0%A6%B7%E0%A6%A3%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8B%E0%A6%AD%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e648abd16c3618d7639a55c876c932f4"
+    },
+    {
       "title": "নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা",
       "summary": "গ্রামীণ ব্যাংকের শাখা ও দপ্তরে সংঘটিত হামলার ঘটনা বেড়েছে। ব্যাংকের সর্বশেষ অভ্যন্তরীণ স্মারক অনুযায়ী, ১০ থেকে ২৩ নভেম্বরের মধ্যে ৯৭টি শাখা ও কার্যালয়ে হামলা হয়েছে। সরকার ঘটনার জন্য আওয়ামী লীগকে দায়ী করেছে। আল জাজিরার প্রতিবেদনে এ তথ্য জানানো হয়েছে। গোপালগঞ্জের কাশিয়ানী শাখার ব্যবস্থাপক সোলায়মান মোড়ল জানান, ১৮ নভেম্বর বিকেলে প্রায় এক ডজন লোক দেশীয় অস্ত্র, […] The post নতুন লক্ষ্যবস্তু গ্রামীণ ব্যাংক, ১৪ দিনে ৯৭ শাখায় হামলা appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/%e0%a6%b9%e0%a6%be%e0%a6%ae%e0%a6%b2%e0%a6%be%e0%a6%b0-%e0%a6%a8%e0%a6%a4%e0%a7%81%e0%a6%a8-%e0%a6%b2%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a7%8d%e0%a6%af%e0%a6%ac%e0%a6%b8%e0%a7%8d%e0%a6%a4%e0%a7%81/",
@@ -1232,6 +1509,99 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ac0c9961e8f005a2891a2fa1ba20b06c"
+    },
+    {
+      "title": "গোপালগঞ্জে নাশকতা-সহিংসতা: ৯৭ জনের ব্যাংক হিসাব জব্দ, তলব ৪ প্রতিষ্ঠানের",
+      "summary": "গোপালগঞ্জে সাম্প্রতিক নাশকতা, সহিংসতা ও অগ্নিসংযোগের ঘটনায় অর্থের জোগানদাতা এবং সংশ্লিষ্ট ব্যক্তিদের আর্থিক লেনদেন ও করসংক্রান্ত তথ্য খতিয়ে দেখার উদ্যোগ নিয়েছে জাতীয় রাজস্ব বোর্ড (এনবিআর)। এর অংশ হিসেবে জেলার ৯৭ ব্যক্তির ব্যাংক হিসাব জব্দ করা হয়েছে। পাশাপাশি চারটি প্রতিষ্ঠানের ব্যাংক হিসাবের তথ্য তলব করা হয়েছে। এনবিআরের সংশ্লিষ্ট সূত্রে পাওয়া তথ্য অনুযায়ী, তালিকায় মোট ১০১ জন করদাতা ও... বিস্তারিত",
+      "link": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC",
+      "publisherUrl": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC",
+      "publishedAt": "2026-11-25T04:17:19+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গোপালগঞ্জে নাশকতা-সহিংসতা: ৯৭ জনের ব্যাংক হিসাব জব্দ, তলব ৪ প্রতিষ্ঠানের",
+          "summary": "গোপালগঞ্জে সাম্প্রতিক নাশকতা, সহিংসতা ও অগ্নিসংযোগের ঘটনায় অর্থের জোগানদাতা এবং সংশ্লিষ্ট ব্যক্তিদের আর্থিক লেনদেন ও করসংক্রান্ত তথ্য খতিয়ে দেখার উদ্যোগ নিয়েছে জাতীয় রাজস্ব বোর্ড (এনবিআর)। এর অংশ হিসেবে জেলার ৯৭ ব্যক্তির ব্যাংক হিসাব জব্দ করা হয়েছে। পাশাপাশি চারটি প্রতিষ্ঠানের ব্যাংক হিসাবের তথ্য তলব করা হয়েছে। এনবিআরের সংশ্লিষ্ট সূত্রে পাওয়া তথ্য অনুযায়ী, তালিকায় মোট ১০১ জন করদাতা ও... বিস্তারিত",
+          "url": "https://www.banglatribune.com/business/money-and-investment/983090/%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%A8%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%A4%E0%A6%BE-%E0%A6%B8%E0%A6%B9%E0%A6%BF%E0%A6%82%E0%A6%B8%E0%A6%A4%E0%A6%BE-%E0%A7%AF%E0%A7%AD-%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ec1846f018e49e08cc1daec47ee476e0"
+    },
+    {
+      "title": "গ্রামীণ ব্যাংকে আগুন: আওয়ামী লীগকে সন্ত্রাসী সংগঠন হিসেবে তালিকাভুক্তির আহ্বান নাহিদের",
+      "summary": "গ্রামীণ ব্যাংকে আগুন দেওয়ার অভিযোগে আওয়ামী লীগকে সন্ত্রাসী সংগঠন হিসেবে তালিকাভুক্ত করার আহ্বান জানিয়েছেন এনসিপির আহ্বায়ক ও বিরোধীদলীয় চিফ হুইপ নাহিদ ইসলাম। গতরাতে ফেসবুকে দেওয়া এক পোস্টে তিনি এই আহ্বান জানান। গ্রামীণ ব্যাংকের বিভিন্ন শাখায় অগ্নিসংযোগ এবং সাবেক অন্তর্বর্তী সরকারের প্রধান উপদেষ্টা অধ্যাপক ড. মুহাম্মদ ইউনূসের চট্টগ্রামে অবস্থিত পৈতৃক বাড়িতে আগুন দেওয়ার ঘটনায় তীব্র নিন্দা জানিয়ে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/politics/ncp/983083/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A6%A0%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/politics/ncp/983083/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A6%A0%E0%A6%A8",
+      "publishedAt": "2026-11-25T03:48:47+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/politics/ncp/983083/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A6%A0%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গ্রামীণ ব্যাংকে আগুন: আওয়ামী লীগকে সন্ত্রাসী সংগঠন হিসেবে তালিকাভুক্তির আহ্বান নাহিদের",
+          "summary": "গ্রামীণ ব্যাংকে আগুন দেওয়ার অভিযোগে আওয়ামী লীগকে সন্ত্রাসী সংগঠন হিসেবে তালিকাভুক্ত করার আহ্বান জানিয়েছেন এনসিপির আহ্বায়ক ও বিরোধীদলীয় চিফ হুইপ নাহিদ ইসলাম। গতরাতে ফেসবুকে দেওয়া এক পোস্টে তিনি এই আহ্বান জানান। গ্রামীণ ব্যাংকের বিভিন্ন শাখায় অগ্নিসংযোগ এবং সাবেক অন্তর্বর্তী সরকারের প্রধান উপদেষ্টা অধ্যাপক ড. মুহাম্মদ ইউনূসের চট্টগ্রামে অবস্থিত পৈতৃক বাড়িতে আগুন দেওয়ার ঘটনায় তীব্র নিন্দা জানিয়ে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/politics/ncp/983083/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A6%95%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A7%80-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A6%A0%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9fba3370dc92f84a1527571ab2c5cb11"
+    },
+    {
+      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
+      "publishedAt": "2026-11-25T03:29:01+00:00",
+      "source": "একাত্তর",
+      "publisherName": "একাত্তর",
+      "sourceEvidence": [
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "একাত্তর",
+          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
+          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
+          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
     },
     {
       "title": "গোপালগঞ্জে ট্রেন-থানা শিগগিরই চালু হচ্ছে না, স্থগিত থাকবে বিভিন্ন সরকারি বরাদ্দ",
@@ -1294,6 +1664,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "704da9482a29d8f969553244d927ee16"
+    },
+    {
+      "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
+      "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
+      "link": "https://www.dhakapost.com/international/500610",
+      "publisherUrl": "https://www.dhakapost.com/international/500610",
+      "publishedAt": "2026-11-24T15:36:09+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/500610"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
+          "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
+          "url": "https://www.dhakapost.com/international/500610"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6fb0dbbb5a0adb76d7efce4dba01ed17"
     },
     {
       "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
@@ -1418,37 +1819,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "599d615c4971f5fd9a2417e36b910345"
-    },
-    {
-      "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
-      "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-24T10:50:21+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
-          "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a40f6b066b4abbc1488510337b2c0aa0"
     }
   ]
 }
