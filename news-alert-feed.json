@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T15:20:38.980677+00:00",
-  "updatedAt": "2026-11-25T15:20:38.980677+00:00",
+  "generatedAt": "2026-11-25T15:33:33.272516+00:00",
+  "updatedAt": "2026-11-25T15:33:33.272516+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BSS",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 35,
+  "candidateCount": 32,
   "alertItems": [
     {
       "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা",
@@ -1404,48 +1404,6 @@
       "alertEventId": "a17f9dca50c9abc1782b981c09e47c4d"
     },
     {
-      "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-      "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-      "link": "https://www.dhakapost.com/country/500777",
-      "publisherUrl": "https://www.dhakapost.com/country/500777",
-      "publishedAt": "2026-11-25T10:29:08+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com",
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু - dhakapost.com",
-          "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মীর মৃত্যু dhakapost.com",
-          "url": "https://www.dhakapost.com/country/500777"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "147ed2ba787b24c9114c5e276dbd4068"
-    },
-    {
       "title": "চট্টগ্রাম শহরের এক সড়কের দুই পাশেই দেবে গেছে",
       "summary": "চট্টগ্রাম নগরের নয়াবাজার গোলচত্বরে ব্যস্ততম পোর্ট কানেকটিং (পিসি) সড়কের একটি অংশ দেবে গেছে। মঙ্গলবার (২৪ নভেম্বর) গোলচত্বরের এক পাশে এবং বুধবার (২৫ নভেম্বর) সকালে আরেক পাশে দেবে যায়। প্রশস্ত সড়ক হওয়ায় আপাতত যানবাহন চলাচলে সমস্যা না হলেও দ্রুত সড়কটি সংস্কার করা না গেলে দুর্ঘটনার ঝুঁকির আশঙ্কা প্রকাশ করেছেন স্থানীয় লোকজন। সড়কের অংশ দেবে যাওয়ার ঘটনায় চট্টগ্রাম ওয়াসা ও বাংলাদেশ টেলিকমিউনিকেশনস... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/983171/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B6%E0%A6%B9%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%BE%E0%A6%B6%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A7%87-%E0%A6%97%E0%A7%87%E0%A6%9B%E0%A7%87",
@@ -1643,11 +1601,11 @@
       "alertEventId": "44d663a12991f6c3faf729aed03be13b"
     },
     {
-      "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
-      "summary": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7",
-      "publishedAt": "2026-11-25T05:39:22+00:00",
+      "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+      "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3",
+      "publishedAt": "2026-11-25T07:01:46+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
@@ -1656,13 +1614,19 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
       "category": "Bangladesh",
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
+          "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        },
         {
           "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
@@ -1672,37 +1636,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c061c769cf69609bb505167d4e0ab992"
-    },
-    {
-      "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-      "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-      "link": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publisherUrl": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4",
-      "publishedAt": "2026-11-25T03:29:01+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ - একাত্তর",
-          "summary": "নেত্রকোনায় ইউএনও কার্যালয়ে আগুন, ক্ষতিগ্রস্ত একাধিক কক্ষ একাত্তর",
-          "url": "https://ekattor.tv/country/mymensingh/98391/%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8B%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%87%E0%A6%89%E0%A6%8F%E0%A6%A8%E0%A6%93-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A4%E0%A6%BF%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A7%8D%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a31b67d640043ed41fd34a1742d3fdb8"
     },
     {
       "title": "কক্সবাজারে বাস-সিএনজি মুখোমুখি সংঘর্ষ, নারী-শিশুসহ নিহত ৫ - The Financial Express",
@@ -1765,37 +1698,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6fb0dbbb5a0adb76d7efce4dba01ed17"
-    },
-    {
-      "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
-      "summary": "চট্টগ্রাম- কক্সবাজার মহাসড়কের ঈদগাঁও থানার সামনেযাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার সংঘর্ষে তিনজন নিহত হয়েছেন। নিহতদের মধ্যে দুজন নারী ও একজন পুরুষ। এ ঘটনায় গুরুতর আহত হয়েছেন আরও দুজন। আহতদের মধ্যে এক মা ও তার শিশুসন্তান রয়েছে। আজ ২৪ নভেম্বর সোমবার সন্ধ্যা সাড়ে ছয়টার দিকে যাত্রীবাহী বাস হানিফ এন্টারপ্রাইজ ও সিএনজি অটোরিক্সার মুখোমুখি সংঘর্ষে এ ঘটনা […] The post কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩ appeared first on চট্টগ্রাম নিউজ .",
-      "link": "https://chattogramnews.com/archives/161415",
-      "publisherUrl": "https://chattogramnews.com/archives/161415",
-      "publishedAt": "2026-11-24T15:33:06+00:00",
-      "source": "Chattogram News",
-      "publisherName": "Chattogram News",
-      "sourceEvidence": [
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161415"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chattogram News",
-          "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
-          "summary": "চট্টগ্রাম- কক্সবাজার মহাসড়কের ঈদগাঁও থানার সামনেযাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার সংঘর্ষে তিনজন নিহত হয়েছেন। নিহতদের মধ্যে দুজন নারী ও একজন পুরুষ। এ ঘটনায় গুরুতর আহত হয়েছেন আরও দুজন। আহতদের মধ্যে এক মা ও তার শিশুসন্তান রয়েছে। আজ ২৪ নভেম্বর সোমবার সন্ধ্যা সাড়ে ছয়টার দিকে যাত্রীবাহী বাস হানিফ এন্টারপ্রাইজ ও সিএনজি অটোরিক্সার মুখোমুখি সংঘর্ষে এ ঘটনা […] The post কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩ appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161415"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ee7991cb83edd3f17bd725c92e58e31"
     }
   ]
 }
