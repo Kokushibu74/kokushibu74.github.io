@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T04:00:41.511818+00:00",
-  "updatedAt": "2026-11-25T04:00:41.511818+00:00",
+  "generatedAt": "2026-11-25T04:10:36.654786+00:00",
+  "updatedAt": "2026-11-25T04:10:36.654786+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -840,22 +840,58 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 19,
+  "candidateCount": 21,
   "alertItems": [
     {
-      "title": "কক্সবাজারে বাসের চাপায় সিএনজি অটোরিকশার ৫ আরোহী নি হ ত | Cox’s Accident | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=4maSfA5_9jM",
-      "publisherUrl": "https://www.youtube.com/watch?v=4maSfA5_9jM",
-      "publishedAt": "2026-11-25T03:53:56+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
+      "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+      "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন ঘোষণার পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড়সহ কয়েকটি কারখানার সামনে বিক্ষোভ করছেন...",
+      "link": "https://www.jagonews24.com/country/news/1183406",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1183406",
+      "publishedAt": "2026-11-25T04:02:23+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
       "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183406"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "নতুন বেতন ঘোষণার পরও বিক্ষোভে শ্রমিকরা, পুলিশের সঙ্গে সংঘর্ষ",
+          "summary": "সরকারের গঠন করা মজুরি বোর্ডের নতুন বেতন ঘোষণার পরও গাজীপুরে ঢাকা-ময়মনসিংহ ও ঢাকা-টাঙ্গাইল মহাসড়কের ভোগড়া বাইপাস ও নাওজোড়সহ কয়েকটি কারখানার সামনে বিক্ষোভ করছেন...",
+          "url": "https://www.jagonews24.com/country/news/1183406"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e648abd16c3618d7639a55c876c932f4"
+    },
+    {
+      "title": "কক্সবাজারে বাসের ধাক্কায় সিএনজি অটোরিকশার ৫ আরোহী নিহত l Cox's Bazar Accident l Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=UxEIdzK5WL4",
+      "publisherUrl": "https://www.youtube.com/watch?v=UxEIdzK5WL4",
+      "publishedAt": "2026-11-25T04:00:21+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV",
         "Independent Television"
       ],
       "sourceLinks": [
         {
-          "name": "Independent Television · YouTube",
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=UxEIdzK5WL4"
+        },
+        {
+          "name": "Independent Television ·",
           "url": "https://www.youtube.com/watch?v=4maSfA5_9jM"
         }
       ],
@@ -864,13 +900,19 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "Jamuna TV",
+          "title": "কক্সবাজারে বাসের ধাক্কায় সিএনজি অটোরিকশার ৫ আরোহী নিহত l Cox's Bazar Accident l Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=UxEIdzK5WL4"
+        },
+        {
           "name": "Independent Television",
           "title": "কক্সবাজারে বাসের চাপায় সিএনজি অটোরিকশার ৫ আরোহী নি হ ত | Cox’s Accident | Independent TV",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=4maSfA5_9jM"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "4d2eb4fd5e3069190bde3fa070f23dab"
     },
     {
@@ -1218,37 +1260,6 @@
       "alertEventId": "7ee7991cb83edd3f17bd725c92e58e31"
     },
     {
-      "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
-      "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
-      "link": "https://www.dhakapost.com/politics/500607",
-      "publisherUrl": "https://www.dhakapost.com/politics/500607",
-      "publishedAt": "2026-11-24T15:31:53+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500607"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
-          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
-          "url": "https://www.dhakapost.com/politics/500607"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "e8d2cf1183301a605cc86086f8f0866c"
-    },
-    {
       "title": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ - Dhaka Tribune Bangla",
       "summary": "মসজিদের বৈদ্যুতিক তার চুরি নিয়ে দুপক্ষের সংঘর্ষ, নারীসহ আহত ৫ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113739/%E0%A6%AE%E0%A6%B8%E0%A6%9C%E0%A6%BF%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
@@ -1371,6 +1382,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a40f6b066b4abbc1488510337b2c0aa0"
+    },
+    {
+      "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
+      "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
+      "link": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
+      "publisherUrl": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP",
+      "publishedAt": "2026-11-24T07:58:00+00:00",
+      "source": "Daily Bonik Barta",
+      "publisherName": "Daily Bonik Barta",
+      "sourceEvidence": [
+        "Daily Bonik Barta"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Daily Bonik Barta",
+          "title": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ - Daily Bonik Barta",
+          "summary": "কক্সবাজারে বাস-সিএনজি সংঘর্ষে শিশুসহ নিহত ৫ Daily Bonik Barta",
+          "url": "https://bonikbarta.com/bangladesh/Gougp18yJB5Q9DZP"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "71631bf90b1c1617bc1d9cfb251b1d33"
     }
   ]
 }
