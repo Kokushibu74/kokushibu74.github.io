@@ -60,8 +60,9 @@ assert.match(page, /news\.js\?v=35/, "News module cache must be refreshed after 
 assert.match(news, /async function loadArchiveFeed\(\)/, "Archive data must have a dedicated loader");
 assert.match(news, /if\(viewMode==="archive"&&!archiveLoaded\)/, "Archive data must load only after the visitor selects Archive");
 assert.match(news, /items=latestItems\.concat\(archiveItems\)/, "Latest and archive data must be combined without re-downloading either partition");
-assert.match(news, /news-archive\\/index\\.json/, "Archive must load its chunk index only after Archive is selected");
-assert.match(news, /index\\.chunks\\.map/, "Archive chunks must be fetched from the generated index");
-assert.match(news, /controller\\.abort\\(\\)/, "Feed and archive requests must have bounded timeouts");
 
 console.log("News client optimization contracts OK.");
+
+assert.match(news, /news-archive\/index\.json/, "Archive must load its chunk index only after Archive is selected");
+assert.match(news, /index\.chunks\.map/, "Archive chunks must be fetched from the generated index");
+assert.match(news, /controller\.abort\(\)/, "Feed and archive requests must have bounded timeouts");
