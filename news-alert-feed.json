@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-24T23:45:37.857915+00:00",
-  "updatedAt": "2026-11-24T23:45:37.857915+00:00",
+  "generatedAt": "2026-11-25T00:00:36.184054+00:00",
+  "updatedAt": "2026-11-25T00:00:36.184054+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
@@ -1233,8 +1233,8 @@
     {
       "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
       "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-24T10:50:21+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1244,7 +1244,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1255,7 +1255,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
           "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
