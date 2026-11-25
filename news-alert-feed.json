@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T00:55:33.695052+00:00",
-  "updatedAt": "2026-11-25T00:55:33.695052+00:00",
+  "generatedAt": "2026-11-25T01:10:41.754274+00:00",
+  "updatedAt": "2026-11-25T01:10:41.754274+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 8,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 17,
+  "candidateCount": 18,
   "alertItems": [
     {
       "title": "আইনশৃঙ্খলা সভায় মাদকবিরোধী বক্তব্য, প্যানেল চেয়ারম্যানের ওপর হামলা",
@@ -1106,6 +1106,37 @@
       "alertEventId": "8b831cc24f783d38aeec9b803605b911"
     },
     {
+      "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
+      "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
+      "link": "https://www.dhakapost.com/politics/500607",
+      "publisherUrl": "https://www.dhakapost.com/politics/500607",
+      "publishedAt": "2026-11-24T15:31:53+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500607"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
+          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500607"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e8d2cf1183301a605cc86086f8f0866c"
+    },
+    {
       "title": "হাজীগঞ্জে মাদকাসক্ত যুবককে এক বছরের কারাদণ্ড",
       "summary": "চাঁদপুরের হাজীগঞ্জে মাদকাসক্ত অবস্থায় জনশান্তি বিনষ্ট ও হামলার চেষ্টার দায়ে আবু সালেহ রিমন (৩০) নামের এক যুবককে ১ বছরের বিনাশ্রম কারাদণ্ড ও ২ হাজার টাকা অর্থদণ্ড দিয়েছেন ভ্রাম্যমাণ আদালত। মঙ্গলবার (২৪ নভেম্বর) হাজীগঞ্জ উপজেলা সহকারী কমিশনার (ভূমি) ও এক্সিকিউটিভ ম্যাজিস্ট্রেট মো. ওমর সানী আকন এ আদালত পরিচালনা করেন। সাজাপ্রাপ্ত রিমন উপজেলার ৮ নম্বর পূর্ব হাটিলা ...",
       "link": "https://chandpurtimes.com/%e0%a6%b9%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c%e0%a7%87-%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a6%95%e0%a6%be%e0%a6%b8%e0%a6%95%e0%a7%8d%e0%a6%a4/",
@@ -1161,9 +1192,7 @@
           "name": "Dainik Azadi",
           "title": "কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত",
           "summary": "চট্টগ্রাম-কক্সবাজার মহাসড়কে যাত্রীবাহী বাস ও সিএনজিচালিত অটোরিকশার মুখোমুখি সংঘর্ষে ৩ জন নিহত হয়েছেন। নিহতরা সবাই অটোরিকশার যাত্রী। আজ মঙ্গলবার (২৪ নভেম্বর) সন্ধ্যা সাড়ে ৬টার দিকে কক্সবাজার-চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার সামনে এই দুর্ঘটনা ঘটে। নিহতদের দুজন নারী ও একজন পুরুষ। তাৎক্ষণিকভাবে তাঁদের পরিচয় নিশ্চিত হওয়া যায়নি। এ ছাড়া এ ঘটনায় গুরুতর আহত হয়েছেন অটোরিকশার এক নারী […] The post কক্সবাজারে বাসের সঙ্গে মুখোমুখি সংঘর্ষে ৩ সিএনজিযাত্রী নিহত appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/",
-          "incidentDateText": "মঙ্গলবার (২৪ নভেম্বর)",
-          "locationText": "চট্টগ্রাম মহাসড়কের ঈদগাঁও থানার, কক্সবাজার, চট্টগ্রাম, ঈদগাঁও থানার, ঈদগাঁও থানা"
+          "url": "https://dainikazadi.net/eidgaon-hanif-bus-cng-accident/"
         }
       ],
       "corroborationCount": 1,
@@ -1203,8 +1232,8 @@
     {
       "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
       "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-24T10:50:21+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1214,7 +1243,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1225,7 +1254,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন - Dhaka Tribune Bangla",
           "summary": "পুলিশ বক্স থেকে চেয়ার-টেবিল বের করে সড়কে ফেলে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113719/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%9F%E0%A7%87%E0%A6%AC%E0%A6%BF%E0%A6%B2-%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
