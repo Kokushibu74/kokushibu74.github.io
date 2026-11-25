@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-25T09:25:34.626698+00:00",
-  "updatedAt": "2026-11-25T09:25:34.626698+00:00",
+  "generatedAt": "2026-11-25T09:40:35.096292+00:00",
+  "updatedAt": "2026-11-25T09:40:35.096292+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -169,10 +169,10 @@
       "domain": "thefinancialexpress.com.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 22,
+      "fallbackItems": 23,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -557,17 +557,17 @@
     {
       "name": "Daily Sangbad",
       "domain": "sangbad.net.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dhaka Courier",
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 31,
   "alertItems": [
     {
-      "title": "বন্ধ কারখানার শ্রমিকরা বাড়ি যাচ্ছেন, মহাসড়কে বেড়েছে চাপ",
-      "summary": "গাজীপুর শিল্পাঞ্চলে বিভিন্ন কারখানার শ্রমিকরা আজও জেলার নানা স্থানে পুলিশের সঙ্গে সংঘর্ষে জড়িয়েছে। পরিস্থিতি বিবেচনায় ছুটি ঘোষণা করা হয়েছে...",
-      "link": "https://www.jagonews24.com/country/news/1183554",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1183554",
-      "publishedAt": "2026-11-25T08:58:24+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
+      "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
+      "link": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-25T09:33:20+00:00",
+      "source": "Samakal",
+      "publisherName": "Samakal",
       "sourceEvidence": [
-        "Jago News 24"
+        "Samakal"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183554"
+          "name": "Samakal",
+          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
         }
       ],
       "category": "Bangladesh",
@@ -864,45 +864,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "বন্ধ কারখানার শ্রমিকরা বাড়ি যাচ্ছেন, মহাসড়কে বেড়েছে চাপ",
-          "summary": "গাজীপুর শিল্পাঞ্চলে বিভিন্ন কারখানার শ্রমিকরা আজও জেলার নানা স্থানে পুলিশের সঙ্গে সংঘর্ষে জড়িয়েছে। পরিস্থিতি বিবেচনায় ছুটি ঘোষণা করা হয়েছে...",
-          "url": "https://www.jagonews24.com/country/news/1183554"
+          "name": "Samakal",
+          "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
+          "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
+          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "47f0a3880100fb0aca706e41f771ebb4"
-    },
-    {
-      "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
-      "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
-      "publishedAt": "2026-11-25T08:23:51+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ - Dhaka Tribune Bangla",
-          "summary": "বগুড়ার বাস ও অটোরিকশার সংঘর্ষে নিহত ১ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113765/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8-%E0%A6%93-%E0%A6%85%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B6%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bfb1f6be057c5d680e4ba7d9fd0d9a3f"
+      "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
       "title": "বাংলাদেশে সহিংসতা ও গ্রামীণ ব্যাংকে হামলা, কেরি কেনেডির উদ্বেগ প্রকাশ - Jugantor",
@@ -1009,37 +978,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a221af8ab19832605019f88a3bb637ed"
-    },
-    {
-      "title": "রাজশাহীতে ছাত্রদলের দুই গ্রুপের সংঘর্ষ, গোলাগুলি #chatradal #rajshahi #jamunatv",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/7ArZXkZCae0",
-      "publisherUrl": "https://www.youtube.com/shorts/7ArZXkZCae0",
-      "publishedAt": "2026-11-25T07:58:55+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/shorts/7ArZXkZCae0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "রাজশাহীতে ছাত্রদলের দুই গ্রুপের সংঘর্ষ, গোলাগুলি #chatradal #rajshahi #jamunatv",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/7ArZXkZCae0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a5430389b4ba59ab8c45b26b97b7837c"
     },
     {
       "title": "নেত্রকোনায় ইউএনও কার্যালয়ে ভ য়া ব হ আগুন | Netrokona | Fire | Independent TV",
@@ -1171,10 +1109,16 @@
           "title": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
           "summary": "ছাত্রদলের দুই পক্ষের সংঘর্ষ, ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113759/%E0%A6%9B%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%B2%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু - Dhaka Tribune Bangla",
+          "summary": "রাজধানীর কাঁঠালবাগানে গ্যাস বিস্ফোরণ, দগ্ধ পাঁচজনের মধ্যে চারজনের মৃত্যু Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113754/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%81%E0%A6%A0%E0%A6%BE%E0%A6%B2%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "147ed2ba787b24c9114c5e276dbd4068"
+      "alertEventId": "c061c769cf69609bb505167d4e0ab992"
     },
     {
       "title": "গাজীপুরে কারখানায় হামলাকারীরা শ্রমিক নয়, বহিরাগত: দাবি পুলিশের",
@@ -1487,37 +1431,6 @@
       "alertEventId": "9fba3370dc92f84a1527571ab2c5cb11"
     },
     {
-      "title": "মার্কিন গোয়েন্দা সংস্থার ওয়েবসাইটে সাইবার হামলা, গুরুত্বপূর্ণ তথ্য ফাঁস - dhakapost.com",
-      "summary": "মার্কিন গোয়েন্দা সংস্থার ওয়েবসাইটে সাইবার হামলা, গুরুত্বপূর্ণ তথ্য ফাঁস dhakapost.com",
-      "link": "https://www.dhakapost.com/international/500664",
-      "publisherUrl": "https://www.dhakapost.com/international/500664",
-      "publishedAt": "2026-11-25T03:28:21+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500664"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "মার্কিন গোয়েন্দা সংস্থার ওয়েবসাইটে সাইবার হামলা, গুরুত্বপূর্ণ তথ্য ফাঁস - dhakapost.com",
-          "summary": "মার্কিন গোয়েন্দা সংস্থার ওয়েবসাইটে সাইবার হামলা, গুরুত্বপূর্ণ তথ্য ফাঁস dhakapost.com",
-          "url": "https://www.dhakapost.com/international/500664"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f3260b8abbac79f927299d339a0170b6"
-    },
-    {
       "title": "সেপটিক ট্যাংকের বিষাক্ত গ্যাসে দুইজনের মৃত্যু",
       "summary": "সাতক্ষীরার কালিগঞ্জে সেপটিক ট্যাংকের বিষাক্ত গ্যাস ও অক্সিজেনের অভাবে দুইজনের মৃত্যু হয়েছে। এ ঘটনায় গুরুতর অসুস্থ হয়েছেন আরও দুজন। তাদের মধ্যে তারালী ইউনিয়ন স্বেচ্ছাসেবক দলের যুগ্ম আহ্বায়ক গোলাম হোসেনও রয়েছেন। মঙ্গলবার (২৪ নভেম্বর) দুপুরে উপজেলার তারালী ইউনিয়নের বরেয়া গ্রামে এ দুর্ঘটনা ঘটে। নিহতরা হলেন বরেয়া গ্রামের সনাতন সরকারের ছেলে মহানন্দ সরকার (৩৫) এবং একই গ্রামের মনি পাড়ের ছেলে মো.... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983079/%E0%A6%B8%E0%A7%87%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A6%95-%E0%A6%9F%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%87%E0%A6%9C%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A7%81",
@@ -1636,10 +1549,16 @@
           "title": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ - dhakapost.com",
           "summary": "সৌদির রাজধানীতে আকাশচুম্বী ভবনে হুথিদের হামলা, আহত ১১ dhakapost.com",
           "url": "https://www.dhakapost.com/international/500610"
+        },
+        {
+          "name": "dhakapost.com",
+          "title": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ - dhakapost.com",
+          "summary": "শিশুদের হাতে বইয়ের বদলে বোমা-ককটেল তুলে দিচ্ছে আওয়ামী লীগ dhakapost.com",
+          "url": "https://www.dhakapost.com/politics/500607"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "6fb0dbbb5a0adb76d7efce4dba01ed17"
+      "alertEventId": "e8d2cf1183301a605cc86086f8f0866c"
     },
     {
       "title": "কক্সবাজারে ঈদগাঁওতে বাস-অটোরিকশা সংঘর্ষে নিহত ৩",
