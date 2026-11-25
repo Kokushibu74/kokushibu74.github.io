@@ -46,7 +46,8 @@ jobs:
         run: |
           archive_count=$(python3 -c 'import json, pathlib; p=pathlib.Path("news-archive/index.json"); print(json.loads(p.read_text()).get("itemsCount", 0) if p.exists() else 0)')
           if [ "$archive_count" -lt 30000 ]; then
-            git show 31f34fd6388b3be36cc9a40ade354b98e8454b47:news-archive.json > news-archive.json
+            git fetch --no-tags --depth=1 origin 65c5464e2f24da3a3d3acc11f2d30a24a868a5cb
+            git show FETCH_HEAD:news-archive.json > news-archive.json
             echo "Restored the full pre-split archive snapshot for one-time migration."
           fi
           python3 scripts/update_news.py
