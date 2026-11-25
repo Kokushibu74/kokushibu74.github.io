@@ -44,18 +44,20 @@ jobs:
       - name: Generate feed from public RSS sources
         if: ${{ github.event_name != 'pull_request' }}
         run: |
-          if ! find news-archive -maxdepth 1 -type f -name '20??-??.json' -print -quit 2>/dev/null | grep -q .; then
+          archive_count=$(python3 -c 'import json, pathlib; p=pathlib.Path("news-archive/index.json"); print(json.loads(p.read_text()).get("itemsCount", 0) if p.exists() else 0)')
+          if [ "$archive_count" -lt 30000 ]; then
             git show 31f34fd6388b3be36cc9a40ade354b98e8454b47:news-archive.json > news-archive.json
             echo "Restored the full pre-split archive snapshot for one-time migration."
           fi
           python3 scripts/update_news.py
           rm -f news-archive.json
+          rm -rf scripts/__pycache__
       - name: Commit public feed when changed
         if: ${{ github.event_name != 'pull_request' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add -A news-feed.json news-archive/
           if git diff --cached --quiet; then
             echo "Public news feed unchanged."
           else
