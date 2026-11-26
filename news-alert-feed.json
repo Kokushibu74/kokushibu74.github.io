@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T02:01:01.105514+00:00",
-  "updatedAt": "2026-11-26T02:01:01.105514+00:00",
+  "generatedAt": "2026-11-26T02:15:43.338876+00:00",
+  "updatedAt": "2026-11-26T02:15:43.338876+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 50,
-  "failedSourceCount": 5,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 29,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 29,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 4,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -182,17 +182,17 @@
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Daily Observer",
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Barta24",
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "কুষ্টিয়ায় বিএনপি-জামায়াতের সংঘর্ষ-গুলিবর্ষণ, আহত ৮",
@@ -967,6 +967,37 @@
       "alertEventId": "285de9e63a6b398c267193952cae3175"
     },
     {
+      "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
+      "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-25T18:03:30+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
+          "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
+    },
+    {
       "title": "ঢাকায় আবাসন ব্যবসার আড়ালে কী চলছে, রাজউক নিয়ে বিস্ফোরক তথ্য টিআইবির #ekattortv #rajuk #tib",
       "summary": "",
       "link": "https://www.youtube.com/shorts/eklOODN2X1o",
@@ -1034,16 +1065,10 @@
           "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার তথ্য সঠিক নয়: প্রধানমন্ত্রীর উপ-প্রেস সচিব",
           "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটা সঠিক নয় বলে জানিয়েছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব সুজাউদ্দৌলা (সুজন মাহমুদ)। বুধবার (২৫ নভেম্বর) সামাজিক যোগাযোগমাধ্যম ফেসবুকে নিজের আইডিতে দেওয়া এক পোস্টে তিনি এ তথ্য জানিয়েছেন। ফেসবুক পোস্টে সুজাউদ্দৌলা বলেন, বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার ভুয়া খবর ছড়িয়ে পড়েছে সামাজিক যোগাযোগমাধ্যমে। যা নিয়ে কিছু কিছু গণমাধ্যমও... বিস্তারিত",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে অগ্নিসংযোগ",
-          "url": "https://www.jagonews24.com/country/news/1183691"
         }
       ],
       "corroborationCount": 2,
-      "alertEventId": "149e91a87acf3fc7cb3fc142c1cf73b6"
+      "alertEventId": "fa1686712e2157ec347b2c0ae9bdbb9a"
     },
     {
       "title": "চট্টগ্রামের হালিশহরে বিস্ফোরণের কারণ জানতে তদন্ত করছে পুলিশ Police | Independent TV",
@@ -1152,6 +1177,37 @@
       "alertEventId": "a894e9471a20f00b333b769aeb38c2c8"
     },
     {
+      "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
+      "summary": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি dhakapost.com",
+      "link": "https://www.dhakapost.com/national/500877",
+      "publisherUrl": "https://www.dhakapost.com/national/500877",
+      "publishedAt": "2026-11-25T15:31:06+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500877"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
+          "summary": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি dhakapost.com",
+          "url": "https://www.dhakapost.com/national/500877"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7c864c8458470f05283d33aefe11d991"
+    },
+    {
       "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা",
       "summary": "চাঁদপুরের ফরিদগঞ্জ উপজেলার গাজীপুর বাজারে প্রধান সড়কের উপর কালভাট নির্মাণ করার জন্য রাস্তা কেটে ফেলায় সড়কে প্রতিনিয়ত ঘটছে দুর্ঘটনা। সরজমিনে গিয়ে দেখা যায়, গাজীপুর বাজারের প্রধান যে সড়কটি রয়েছে তার উপর কালভার্ট নির্মাণের জন্য প্রায় ২০ থেকে ২৫ দিন যাবত বাজারের যাতায়াতের প্রধান সড়কটি কেটে ফেলা হয়েছে। ফলে রাস্তা দিয়ে ফরিদগঞ্জ চান্দ্রাসহ বিভিন্ন স্থানের যাতায়াতের ...",
       "link": "https://chandpurtimes.com/%e0%a6%ab%e0%a6%b0%e0%a6%bf%e0%a6%a6%e0%a6%97%e0%a6%9e%e0%a7%8d%e0%a6%9c-%e0%a6%97%e0%a6%be%e0%a6%9c%e0%a7%80%e0%a6%aa%e0%a7%81%e0%a6%b0/",
@@ -1181,6 +1237,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "06732090934653be2ce80479c28449fb"
+    },
+    {
+      "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
+      "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/201644",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/201644",
+      "publishedAt": "2026-11-25T14:48:48+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/201644"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
+          "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/201644"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f4289c5539a7380bd1ac15010e8c596f"
     },
     {
       "title": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত - Jamuna Television",
@@ -1307,6 +1394,37 @@
       "alertEventId": "ca55957ad813f4570e66b5921218cd40"
     },
     {
+      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672804",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
+      "publishedAt": "2026-11-25T12:47:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
+          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672804"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
+    },
+    {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
       "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
       "link": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
@@ -1431,20 +1549,20 @@
       "alertEventId": "a09e152e1218c3ab9a93ce5de598d41f"
     },
     {
-      "title": "শ্রমিকদের সঙ্গে সংঘর্ষে আইনশৃঙ্খলা বাহিনীর ১১ সদস্য আহত",
-      "summary": "ন্যূনতম মজুরি ১৭ হাজার টাকা নির্ধারণ অমান্য করে গাজীপুরে শ্রমিকদের সঙ্গে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সংঘর্ষ ও পাল্টাপাল্টি ধাওয়ার ঘটনা ঘটেছে। এ সময় ইটপাটকেলের আঘাতে ছয় পুলিশ ও পাঁচ আনসার সদস্য আহত হয়েছেন। বুধবার দুপুর ১২টার দিকে মহানগরীর সালনা এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ১৭ হাজার টাকা মজুরি নির্ধারণ অমান্য করে সালনা এলাকায় ঢাকা-ময়মনসিংহ মহাসড়কে আন্দোলনে নামেন... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983180/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%B6%E0%A7%83%E0%A6%99%E0%A7%8D%E0%A6%96%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A7%A7%E0%A7%A7",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983180/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%B6%E0%A7%83%E0%A6%99%E0%A7%8D%E0%A6%96%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A7%A7%E0%A7%A7",
-      "publishedAt": "2026-11-25T11:03:24+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest - United News of Bangladesh",
+      "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest United News of Bangladesh",
+      "link": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
+      "publisherUrl": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
+      "publishedAt": "2026-11-25T10:11:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "UNB"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983180/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%B6%E0%A7%83%E0%A6%99%E0%A7%8D%E0%A6%96%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A7%A7%E0%A7%A7"
+          "name": "UNB",
+          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
         }
       ],
       "category": "Bangladesh",
@@ -1452,14 +1570,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "শ্রমিকদের সঙ্গে সংঘর্ষে আইনশৃঙ্খলা বাহিনীর ১১ সদস্য আহত",
-          "summary": "ন্যূনতম মজুরি ১৭ হাজার টাকা নির্ধারণ অমান্য করে গাজীপুরে শ্রমিকদের সঙ্গে আইনশৃঙ্খলা রক্ষাকারী বাহিনীর সংঘর্ষ ও পাল্টাপাল্টি ধাওয়ার ঘটনা ঘটেছে। এ সময় ইটপাটকেলের আঘাতে ছয় পুলিশ ও পাঁচ আনসার সদস্য আহত হয়েছেন। বুধবার দুপুর ১২টার দিকে মহানগরীর সালনা এলাকায় এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ১৭ হাজার টাকা মজুরি নির্ধারণ অমান্য করে সালনা এলাকায় ঢাকা-ময়মনসিংহ মহাসড়কে আন্দোলনে নামেন... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983180/%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%B6%E0%A7%83%E0%A6%99%E0%A7%8D%E0%A6%96%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A7%A7%E0%A7%A7"
+          "name": "UNB",
+          "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest - United News of Bangladesh",
+          "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest United News of Bangladesh",
+          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "a17f9dca50c9abc1782b981c09e47c4d"
+      "alertEventId": "96f618aae9b4fb11adac00a60f3c1364"
     },
     {
       "title": "বাংলাদেশে রাজনৈতিক সহিংসতা ও গ্রামীণ ব্যাংকে অগ্নিসংযোগে উদ্বেগ কেরি কেনেডির - Channel 24",
@@ -1493,20 +1611,20 @@
       "alertEventId": "6ff760e1e1c54be85ada8bcb23cf9e4d"
     },
     {
-      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-      "link": "https://www.mzamin.com/article/63087",
-      "publisherUrl": "https://www.mzamin.com/article/63087",
-      "publishedAt": "2026-11-25T05:14:30+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
+      "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+      "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+      "link": "https://www.dhakapost.com/country/500703",
+      "publisherUrl": "https://www.dhakapost.com/country/500703",
+      "publishedAt": "2026-11-25T06:34:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
-        "Manab Zamin"
+        "dhakapost.com"
       ],
       "sourceLinks": [
         {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
         }
       ],
       "category": "Bangladesh",
@@ -1514,14 +1632,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Manab Zamin",
-          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
+          "name": "dhakapost.com",
+          "title": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ - dhakapost.com",
+          "summary": "ফের উত্তাল গাজীপুর, শ্রমিকদের সঙ্গে পুলিশের সংঘর্ষ dhakapost.com",
+          "url": "https://www.dhakapost.com/country/500703"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
+      "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
     }
   ]
 }
