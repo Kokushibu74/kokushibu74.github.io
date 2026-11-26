@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T07:05:44.414951+00:00",
-  "updatedAt": "2026-11-26T07:05:44.414951+00:00",
+  "generatedAt": "2026-11-26T07:20:40.888971+00:00",
+  "updatedAt": "2026-11-26T07:20:40.888971+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 20,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 21,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 35,
+  "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 27,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -708,16 +708,16 @@
       "name": "Daily Purbanchal",
       "domain": "purbanchal.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 1,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Jamuna TV YouTube",
@@ -840,8 +840,50 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 29,
   "alertItems": [
+    {
+      "title": "ঢাকার সিএমএম কোর্টের সামনে ক/ক/টেল বিস্ফো/রণ #CocktailBlast #DhakaCourt #rtvnews",
+      "summary": "ঢাকার চিফ মেট্রোপলিটন ম্যাজিস্ট্রেট (সিএমএম) আদালতের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে একজন আইনজীবী আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) সকাল ১১টা ১৭ মিনিটের দিকে এ ঘটনা ঘটে। এ সময় আদালতপাড়ায় আতঙ্ক ছড়িয়ে পড়ে। ককটেল বিস্ফোরণের ঘটনায় আহত আইনজীবীকে চিকিৎসার জন্য হাসপাতালে নিয়ে যাওয়া হয়েছে। তাৎক্ষণিকভাবে ওই আইনজীবীর নাম জানা যায়নি। ঢাকার সিএমএম আদালতের হাজতখানার ইনচার্জ এসআই... বিস্তারিত",
+      "link": "https://www.youtube.com/shorts/ObvIfUXMHc8",
+      "publisherUrl": "https://www.youtube.com/shorts/ObvIfUXMHc8",
+      "publishedAt": "2026-11-26T07:12:19+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News",
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/ObvIfUXMHc8"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/law-and-crime/983334/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "ঢাকার সিএমএম কোর্টের সামনে ক/ক/টেল বিস্ফো/রণ #CocktailBlast #DhakaCourt #rtvnews",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/ObvIfUXMHc8"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত",
+          "summary": "ঢাকার চিফ মেট্রোপলিটন ম্যাজিস্ট্রেট (সিএমএম) আদালতের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে একজন আইনজীবী আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) সকাল ১১টা ১৭ মিনিটের দিকে এ ঘটনা ঘটে। এ সময় আদালতপাড়ায় আতঙ্ক ছড়িয়ে পড়ে। ককটেল বিস্ফোরণের ঘটনায় আহত আইনজীবীকে চিকিৎসার জন্য হাসপাতালে নিয়ে যাওয়া হয়েছে। তাৎক্ষণিকভাবে ওই আইনজীবীর নাম জানা যায়নি। ঢাকার সিএমএম আদালতের হাজতখানার ইনচার্জ এসআই... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/983334/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "568b55b4d53df6e3cfc1588020d8607a"
+    },
     {
       "title": "পুলিশ ও শ্রমিকের সংঘর্ষ, এএসপি আহত",
       "summary": "গাজীপুরের শ্রীপুরে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভের সময় শ্রমিক-পুলিশ সংঘর্ষের ঘটনা ঘটেছে। এতে গাজীপুর জেলা পুলিশের অতিরিক্ত পুলিশ সুপার (কালিয়াকৈর সার্কেল- এএসপি) মো. শফিকুল ইসলামসহ কয়েকজন পুলিশ সদস্য আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) বেলা ১১টার দিকে শ্রীপুর উপজেলার নয়নপুর এলাকায় এ ঘটনা ঘটে। পুলিশ ও প্রত্যক্ষদর্শী সূত্রে জানা গেছে, বেলা ১১টার দিকে আশপাশের কয়েকটি কারখানার... বিস্তারিত",
@@ -882,17 +924,12 @@
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24",
-        "Bangla Tribune"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/law-courts/news/1183903"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/983334/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80"
         }
       ],
       "category": "Bangladesh",
@@ -904,16 +941,10 @@
           "title": "আদালতপাড়ায় আবারও ককটেল বিস্ফোরণ, হাসপাতালে আইনজীবী",
           "summary": "রাজধানীর আদালতপাড়ায় আবারও বিস্ফোরণের ঘটনা ঘটেছে। বৃহস্পতিবার (২৬ নভেম্বর) বেলা ১১টার দিকে ঢাকার চিফ মেট্রোপলিটন ম্যাজিস্ট্রেট...",
           "url": "https://www.jagonews24.com/law-courts/news/1183903"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত",
-          "summary": "ঢাকার চিফ মেট্রোপলিটন ম্যাজিস্ট্রেট (সিএমএম) আদালতের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে একজন আইনজীবী আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) সকাল ১১টা ১৭ মিনিটের দিকে এ ঘটনা ঘটে। এ সময় আদালতপাড়ায় আতঙ্ক ছড়িয়ে পড়ে। ককটেল বিস্ফোরণের ঘটনায় আহত আইনজীবীকে চিকিৎসার জন্য হাসপাতালে নিয়ে যাওয়া হয়েছে। তাৎক্ষণিকভাবে ওই আইনজীবীর নাম জানা যায়নি। ঢাকার সিএমএম আদালতের হাজতখানার ইনচার্জ এসআই... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/983334/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "568b55b4d53df6e3cfc1588020d8607a"
+      "corroborationCount": 1,
+      "alertEventId": "73172030823e339c78f39618e4b359db"
     },
     {
       "title": "ঢাকার সিএমএম আদালতের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ",
@@ -1056,37 +1087,6 @@
       "alertEventId": "ec206c96bb34318412084d92d162c000"
     },
     {
-      "title": "সিলেটে গ্রামীণ ব্যাংকে ফের আগুন, ১১ দিনের ব্যবধানে দ্বিতীয় ঘটনা | Sylhet | News | Fire | JamunaTV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=F6wFQ4F2AvY",
-      "publisherUrl": "https://www.youtube.com/watch?v=F6wFQ4F2AvY",
-      "publishedAt": "2026-11-26T06:15:16+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=F6wFQ4F2AvY"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "সিলেটে গ্রামীণ ব্যাংকে ফের আগুন, ১১ দিনের ব্যবধানে দ্বিতীয় ঘটনা | Sylhet | News | Fire | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=F6wFQ4F2AvY"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "38aadfb70e7a3fb43a37faa0c7ce08bd"
-    },
-    {
       "title": "মজুরি বৃদ্ধির পরও গাজীপুরে শ্রমিক অসন্তোষ, পুলিশের সঙ্গে সংঘর্ষ | Gazipur | Worker Protest - United News of Bangladesh",
       "summary": "মজুরি বৃদ্ধির পরও গাজীপুরে শ্রমিক অসন্তোষ, পুলিশের সঙ্গে সংঘর্ষ | Gazipur | Worker Protest United News of Bangladesh",
       "link": "https://unb.com.bd/video/10063/%E0%A6%AE%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A6%BF-%E0%A6%AC%E0%A7%83%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BF%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95-%E0%A6%85%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8B%E0%A6%B7,-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7---Gazipur---Worker-Protest---UNB",
@@ -1116,37 +1116,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6a4470e0524e0f1f1b9c9936cd5beea6"
-    },
-    {
-      "title": "ঢাকার সিএমএম আদালতে ককটেল বিস্ফো/রণ #DhakaCMMcourt #cocktailexplosion #CMMcourt #Rtv",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/TesETUrqLEc",
-      "publisherUrl": "https://www.youtube.com/shorts/TesETUrqLEc",
-      "publishedAt": "2026-11-26T05:44:45+00:00",
-      "source": "RTV News",
-      "publisherName": "RTV News",
-      "sourceEvidence": [
-        "RTV News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "RTV News · YouTube",
-          "url": "https://www.youtube.com/shorts/TesETUrqLEc"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "RTV News",
-          "title": "ঢাকার সিএমএম আদালতে ককটেল বিস্ফো/রণ #DhakaCMMcourt #cocktailexplosion #CMMcourt #Rtv",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/TesETUrqLEc"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "272a6ee6e7f6bd623db18c0c592a16c4"
     },
     {
       "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় দুর্বৃত্তদের আগুন",
@@ -1304,37 +1273,6 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
-      "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-      "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-25T18:03:30+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-          "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
-    },
-    {
       "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার তথ্য সঠিক নয়: প্রধানমন্ত্রীর উপ-প্রেস সচিব",
       "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটা সঠিক নয় বলে জানিয়েছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব সুজাউদ্দৌলা (সুজন মাহমুদ)। বুধবার (২৫ নভেম্বর) সামাজিক যোগাযোগমাধ্যম ফেসবুকে নিজের আইডিতে দেওয়া এক পোস্টে তিনি এ তথ্য জানিয়েছেন। ফেসবুক পোস্টে সুজাউদ্দৌলা বলেন, বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার ভুয়া খবর ছড়িয়ে পড়েছে সামাজিক যোগাযোগমাধ্যমে। যা নিয়ে কিছু কিছু গণমাধ্যমও... বিস্তারিত",
       "link": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F",
@@ -1344,17 +1282,12 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "Ajker Patrika",
         "একাত্তর"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
         },
         {
           "name": "একাত্তর",
@@ -1372,19 +1305,13 @@
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
         },
         {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        },
-        {
           "name": "একাত্তর",
           "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
           "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
           "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "763f522da78b6d6cd123b1c84b871b72"
     },
     {
