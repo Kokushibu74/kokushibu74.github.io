@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T09:15:40.427875+00:00",
-  "updatedAt": "2026-11-26T09:15:40.427875+00:00",
+  "generatedAt": "2026-11-26T09:30:43.280345+00:00",
+  "updatedAt": "2026-11-26T09:30:43.280345+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 35,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 35,
-  "fallbackWithItemsSourceCount": 27,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 12,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "feed redirected outside its publisher domain",
+      "directError": "<urlopen error timed out>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 16,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "GDACS",
@@ -840,11 +840,64 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 36,
+  "candidateCount": 34,
   "alertItems": [
     {
+      "title": "কুষ্টিয়া জেলা কারাগার ফটকে ককটেল নিক্ষেপ",
+      "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটক লক্ষ্য করে ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা।বৃহস্পতিবার (২৬ নভেম্বর) ভোর পৌনে ৫টার দিকে এ ঘটনা ঘটে। পুলিশ ও কারা কর্তৃপক্ষ সূত্রে জানা গেছে, ভোরে একটি মোটরসাইকেলে করে তিন দুর্বৃত্ত কুষ্টিয়া জেলা কারাগারের সামনে আসে। এ সময় তারা সড়কের ওপর থেকে কারাগারের প্রধান ফটক লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এটি বিস্ফোরণের পর দ্রুত ঘটনাস্থল ত্যাগ করে তারা। বিকট শব্দে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/983372/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/983372/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publishedAt": "2026-11-26T09:23:57+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24",
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/983372/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183957"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672898"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "কুষ্টিয়া জেলা কারাগার ফটকে ককটেল নিক্ষেপ",
+          "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটক লক্ষ্য করে ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা।বৃহস্পতিবার (২৬ নভেম্বর) ভোর পৌনে ৫টার দিকে এ ঘটনা ঘটে। পুলিশ ও কারা কর্তৃপক্ষ সূত্রে জানা গেছে, ভোরে একটি মোটরসাইকেলে করে তিন দুর্বৃত্ত কুষ্টিয়া জেলা কারাগারের সামনে আসে। এ সময় তারা সড়কের ওপর থেকে কারাগারের প্রধান ফটক লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এটি বিস্ফোরণের পর দ্রুত ঘটনাস্থল ত্যাগ করে তারা। বিকট শব্দে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/983372/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটকে ককটেল নিক্ষেপ",
+          "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটকে ককটেল নিক্ষেপ",
+          "url": "https://www.jagonews24.com/country/news/1183957"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
+          "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672898"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "fbd99e9ff30d44430250ce245179d894"
+    },
+    {
       "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-      "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে মো. সেলিম নামে একজন নিহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে সদর উপজেলার মোল্লাকান্দির চরডুমুরিয়া ও সামারচর এলাকায় দুই পক্ষের মধ্যে...",
+      "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
       "link": "https://www.jagonews24.com/country/news/1183960",
       "publisherUrl": "https://www.jagonews24.com/country/news/1183960",
       "publishedAt": "2026-11-26T08:58:37+00:00",
@@ -871,7 +924,7 @@
         {
           "name": "Jago News 24",
           "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-          "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে মো. সেলিম নামে একজন নিহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে সদর উপজেলার মোল্লাকান্দির চরডুমুরিয়া ও সামারচর এলাকায় দুই পক্ষের মধ্যে...",
+          "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
           "url": "https://www.jagonews24.com/country/news/1183960"
         },
         {
@@ -885,48 +938,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
-    },
-    {
-      "title": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটকে ককটেল নিক্ষেপ",
-      "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটক লক্ষ্য করে ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা। বিকট শব্দে ককটেলটি বিস্ফোরিত হলে আশপাশের এলাকায় আতঙ্ক...",
-      "link": "https://www.jagonews24.com/country/news/1183957",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1183957",
-      "publishedAt": "2026-11-26T08:55:18+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183957"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672898"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটকে ককটেল নিক্ষেপ",
-          "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটক লক্ষ্য করে ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা। বিকট শব্দে ককটেলটি বিস্ফোরিত হলে আশপাশের এলাকায় আতঙ্ক...",
-          "url": "https://www.jagonews24.com/country/news/1183957"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
-          "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672898"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "fbd99e9ff30d44430250ce245179d894"
     },
     {
       "title": "কুষ্টিয়ায় জামায়াত নেতার বাড়িতে হামলা-ভাঙচুর, গুলির খোসা ও তাজা গুলি উদ্ধার",
@@ -1195,8 +1206,7 @@
       "publisherName": "Ekattor TV",
       "sourceEvidence": [
         "Ekattor TV",
-        "Risingbd.com",
-        "Jamuna Television"
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
@@ -1206,10 +1216,6 @@
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
       "category": "Bangladesh",
@@ -1227,16 +1233,10 @@
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
-          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
+      "corroborationCount": 2,
+      "alertEventId": "f3bb07e2084a107665f841048c42525a"
     },
     {
       "title": "সারা রাত ছিলেন বাসে, ফজরের নামাজ পড়ে এসে দেখেন জ্বালিয়ে দিয়েছে",
@@ -1456,6 +1456,37 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
+      "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
+      "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
+      "publishedAt": "2026-11-25T18:03:30+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
+          "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
+    },
+    {
       "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
       "summary": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি dhakapost.com",
       "link": "https://www.dhakapost.com/national/500877",
@@ -1485,37 +1516,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7c864c8458470f05283d33aefe11d991"
-    },
-    {
-      "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা - Chandpur Times",
-      "summary": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা Chandpur Times",
-      "link": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/",
-      "publisherUrl": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/",
-      "publishedAt": "2026-11-25T15:05:31+00:00",
-      "source": "Chandpur Times",
-      "publisherName": "Chandpur Times",
-      "sourceEvidence": [
-        "Chandpur Times"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chandpur Times",
-          "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা - Chandpur Times",
-          "summary": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা Chandpur Times",
-          "url": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ec7975b9ce950186f2cb5625fd568bb9"
     },
     {
       "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
@@ -1681,17 +1681,12 @@
       "source": "Ajker Patrika",
       "publisherName": "Ajker Patrika",
       "sourceEvidence": [
-        "Ajker Patrika",
-        "একাত্তর"
+        "Ajker Patrika"
       ],
       "sourceLinks": [
         {
           "name": "Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1703,16 +1698,10 @@
           "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
           "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        },
-        {
-          "name": "একাত্তর",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "763f522da78b6d6cd123b1c84b871b72"
+      "corroborationCount": 1,
+      "alertEventId": "9c1469d3d85327289e011cd752f53314"
     },
     {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
@@ -1744,37 +1733,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c55ee204eb1bf7656fc4f35c485c1086"
-    },
-    {
-      "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
-      "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF",
-      "publishedAt": "2026-11-25T11:13:06+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা - Dhaka Tribune Bangla",
-          "summary": "গাজীপুরে কারখানায় হামলা, অর্ধশতাধিক কারখানা ছুটি ঘোষণা Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113784/%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A7%E0%A6%B6%E0%A6%A4%E0%A6%BE%E0%A6%A7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a09e152e1218c3ab9a93ce5de598d41f"
     },
     {
       "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB - United News of Bangladesh",
