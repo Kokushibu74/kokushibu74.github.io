@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T11:20:45.888854+00:00",
-  "updatedAt": "2026-11-26T11:20:45.888854+00:00",
+  "generatedAt": "2026-11-26T11:30:44.176165+00:00",
+  "updatedAt": "2026-11-26T11:30:44.176165+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -843,21 +843,26 @@
   "candidateCount": 33,
   "alertItems": [
     {
-      "title": "আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জে ফের সংঘর্ষ নিহত ১, থমথমে এলাকা | Munshigonj | BNP | JamunaTV",
+      "title": "মুন্সীগঞ্জে ইউপি নির্বাচন ঘিরে দুই পক্ষের সং ঘর্ষ, নি হত ১ | Clash Munshiganj | Independent TV",
       "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-      "link": "https://www.youtube.com/watch?v=8mnh6sFaHRI",
-      "publisherUrl": "https://www.youtube.com/watch?v=8mnh6sFaHRI",
-      "publishedAt": "2026-11-26T11:04:26+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
+      "link": "https://www.youtube.com/watch?v=tvQOyn5J1sc",
+      "publisherUrl": "https://www.youtube.com/watch?v=tvQOyn5J1sc",
+      "publishedAt": "2026-11-26T11:22:26+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
       "sourceEvidence": [
+        "Independent Television",
         "Jamuna TV",
         "Jago News 24",
         "Jamuna Television"
       ],
       "sourceLinks": [
         {
-          "name": "Jamuna TV · YouTube",
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=tvQOyn5J1sc"
+        },
+        {
+          "name": "Jamuna TV ·",
           "url": "https://www.youtube.com/watch?v=8mnh6sFaHRI"
         },
         {
@@ -874,10 +879,17 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "Independent Television",
+          "title": "মুন্সীগঞ্জে ইউপি নির্বাচন ঘিরে দুই পক্ষের সং ঘর্ষ, নি হত ১ | Clash Munshiganj | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=tvQOyn5J1sc"
+        },
+        {
           "name": "Jamuna TV",
           "title": "আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জে ফের সংঘর্ষ নিহত ১, থমথমে এলাকা | Munshigonj | BNP | JamunaTV",
           "summary": "",
-          "url": "https://www.youtube.com/watch?v=8mnh6sFaHRI"
+          "url": "https://www.youtube.com/watch?v=8mnh6sFaHRI",
+          "locationText": "থমথমে এলাকা, মুন্সীগঞ্জ"
         },
         {
           "name": "Jago News 24",
@@ -894,7 +906,7 @@
           "locationText": "সংঘর্ষের পর এলাকায়"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 4,
       "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
     },
     {
@@ -1671,37 +1683,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
-    },
-    {
-      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-      "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publishedAt": "2026-11-25T12:45:17+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
     },
     {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
