@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T00:55:42.770082+00:00",
-  "updatedAt": "2026-11-26T00:55:42.770082+00:00",
+  "generatedAt": "2026-11-26T01:10:47.867355+00:00",
+  "updatedAt": "2026-11-26T01:10:47.867355+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -257,17 +257,17 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Post",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "কুষ্টিয়ায় বিএনপি-জামায়াতের সংঘর্ষ-গুলিবর্ষণ, আহত ৮",
@@ -903,37 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a7ee48ccade2c52c2ba5e2850219bdc0"
-    },
-    {
-      "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
-      "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
-      "link": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-25T21:33:26+00:00",
-      "source": "Samakal",
-      "publisherName": "Samakal",
-      "sourceEvidence": [
-        "Samakal"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Samakal",
-          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Samakal",
-          "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
-          "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
-          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
       "title": "বাংলাদেশে চলমান সব ধরনের সহিংসতার নিন্দা জানিয়েছে যুক্তরাষ্ট্র | USA | BD | Arson | Jamuna TV",
@@ -1119,7 +1088,11 @@
           "name": "Ajker Patrika",
           "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
           "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬",
+          "incidentTimeText": "গতকাল রাতে",
+          "incidentTimeSource": "Ajker Patrika",
+          "locationText": "নন্দীগ্রাম ফিলিং স্টেশন এলাকায়, অবস্থিত উপজেলা, কর্মীদের দায়ী করেছেন উপজেলা, আমরা উপজেলা, বিষয়ে থানার"
         },
         {
           "name": "একাত্তর",
@@ -1315,37 +1288,6 @@
       "alertEventId": "06732090934653be2ce80479c28449fb"
     },
     {
-      "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
-      "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/201644",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/201644",
-      "publishedAt": "2026-11-25T14:48:48+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/201644"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
-          "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/201644"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f4289c5539a7380bd1ac15010e8c596f"
-    },
-    {
       "title": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত - Jamuna Television",
       "summary": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত Jamuna Television",
       "link": "https://www.jamuna.tv/all-bangladesh/668690",
@@ -1468,37 +1410,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
-    },
-    {
-      "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
-      "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
-      "link": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publisherUrl": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
-      "publishedAt": "2026-11-25T12:18:20+00:00",
-      "source": "Samakal",
-      "publisherName": "Samakal",
-      "sourceEvidence": [
-        "Samakal"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Samakal",
-          "url": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Samakal",
-          "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
-          "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
-          "url": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c55ee204eb1bf7656fc4f35c485c1086"
     },
     {
       "title": "উত্তপ্ত নড়াইলের এসপি পদে বদলি, নতুন কে হলেন?",
