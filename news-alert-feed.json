@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T09:00:52.589434+00:00",
-  "updatedAt": "2026-11-26T09:00:52.589434+00:00",
+  "generatedAt": "2026-11-26T09:15:40.427875+00:00",
+  "updatedAt": "2026-11-26T09:15:40.427875+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
   "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 7,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 16,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "GDACS",
@@ -1247,17 +1247,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Jago News 24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/chitagong/983335/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AB%E0%A6%9C%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%8F%E0%A6%B8%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%A8"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183847"
         }
       ],
       "category": "Bangladesh",
@@ -1269,16 +1264,10 @@
           "title": "সারা রাত ছিলেন বাসে, ফজরের নামাজ পড়ে এসে দেখেন জ্বালিয়ে দিয়েছে",
           "summary": "লক্ষ্মীপুরের রামগঞ্জে সড়কের পাশে রাখা একটি বাসে অগ্নিকাণ্ড ঘটেছে। এ আগুনে পাশের দোকানের সাইনবোর্ড ও সিসি ক্যামেরাও পুড়ে ছাই হয়ে যায়। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে রামগঞ্জ বাসস্ট্যান্ডের রেস্টহাউসের সামনে পার্কিং করে থাকা বাসটিতে অগ্নিকাণ্ডের ঘটনা ঘটে। রামগঞ্জ ফায়ার সার্ভিস ও সিভিল ডিফেন্সের কর্মকর্তা রেজাউল করীম বিষয়টি নিশ্চিত করেছেন। ক্ষতিগ্রস্ত বাসটির মালিক স্থানীয় কাজিরখিল চৌকিদার বাড়ির... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/chitagong/983335/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AB%E0%A6%9C%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%8F%E0%A6%B8%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%A8"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "লক্ষ্মীপুরে পার্কিং করা বাসে আগুন",
-          "summary": "লক্ষ্মীপুরে পার্কিং করা বাসে আগুন",
-          "url": "https://www.jagonews24.com/country/news/1183847"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "ec206c96bb34318412084d92d162c000"
+      "corroborationCount": 1,
+      "alertEventId": "e4d335899f915103b00b066e15952f61"
     },
     {
       "title": "মজুরি বৃদ্ধির পরও গাজীপুরে শ্রমিক অসন্তোষ, পুলিশের সঙ্গে সংঘর্ষ | Gazipur | Worker Protest - United News of Bangladesh",
@@ -1467,37 +1456,6 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
-      "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-      "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-25T18:03:30+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-          "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
-    },
-    {
       "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
       "summary": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি dhakapost.com",
       "link": "https://www.dhakapost.com/national/500877",
@@ -1527,6 +1485,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7c864c8458470f05283d33aefe11d991"
+    },
+    {
+      "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা - Chandpur Times",
+      "summary": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা Chandpur Times",
+      "link": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/",
+      "publisherUrl": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/",
+      "publishedAt": "2026-11-25T15:05:31+00:00",
+      "source": "Chandpur Times",
+      "publisherName": "Chandpur Times",
+      "sourceEvidence": [
+        "Chandpur Times"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Chandpur Times",
+          "url": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Chandpur Times",
+          "title": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা - Chandpur Times",
+          "summary": "ফরিদগঞ্জ গাজীপুর বাজারে রাস্তা কেটে ফেলায় ঘটছে দুর্ঘটনা Chandpur Times",
+          "url": "https://chandpurtimes.com/%E0%A6%AB%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C-%E0%A6%97%E0%A6%BE%E0%A6%9C%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ec7975b9ce950186f2cb5625fd568bb9"
     },
     {
       "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
@@ -1684,6 +1673,48 @@
       "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
+      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
+      "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
+      "publishedAt": "2026-11-25T12:45:17+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika",
+        "একাত্তর"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ajker Patrika",
+          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
+          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
+          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "763f522da78b6d6cd123b1c84b871b72"
+    },
+    {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
       "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
       "link": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
@@ -1744,37 +1775,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "a09e152e1218c3ab9a93ce5de598d41f"
-    },
-    {
-      "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
-      "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
-      "link": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-25T11:06:50+00:00",
-      "source": "একাত্তর",
-      "publisherName": "একাত্তর",
-      "sourceEvidence": [
-        "একাত্তর"
-      ],
-      "sourceLinks": [
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "একাত্তর",
-          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
-          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
-          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "763f522da78b6d6cd123b1c84b871b72"
     },
     {
       "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB - United News of Bangladesh",
