@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T14:50:50.651006+00:00",
-  "updatedAt": "2026-11-26T14:50:50.651006+00:00",
+  "generatedAt": "2026-11-26T15:05:41.308320+00:00",
+  "updatedAt": "2026-11-26T15:05:41.308320+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BSS",
@@ -347,17 +347,17 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ekattor TV",
@@ -840,8 +840,81 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 22,
+  "candidateCount": 26,
   "alertItems": [
+    {
+      "title": "কুমিল্লা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণে শিক্ষার্থীসহ আহত ২",
+      "summary": "কুমিল্লা বিশ্ববিদ্যালয়ের (কুবি) প্রধান ফটকের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে বিশ্ববিদ্যালয়ের এক শিক্ষার্থীসহ দুজন আহত হয়েছেন...",
+      "link": "https://www.jagonews24.com/campus/news/1184137",
+      "publisherUrl": "https://www.jagonews24.com/campus/news/1184137",
+      "publishedAt": "2026-11-26T14:55:06+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/campus/news/1184137"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "কুমিল্লা বিশ্ববিদ্যালয়ে ককটেল বিস্ফোরণে শিক্ষার্থীসহ আহত ২",
+          "summary": "কুমিল্লা বিশ্ববিদ্যালয়ের (কুবি) প্রধান ফটকের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে বিশ্ববিদ্যালয়ের এক শিক্ষার্থীসহ দুজন আহত হয়েছেন...",
+          "url": "https://www.jagonews24.com/campus/news/1184137"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7a3cddb3bd5b06ac7d1df0dff420facc"
+    },
+    {
+      "title": "চকবাজারে বহুতল ভবনে আগুন",
+      "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-26T14:54:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1184134"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চকবাজারে বহুতল ভবনে আগুন",
+          "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, নিয়ন্ত্রণে ৫ ইউনিট",
+          "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় একটি প্লাস্টিকের গোডাউনে আগুন লাগার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে কাজ করছে ফায়ার সার্ভিসের পাঁচটি ইউনিট...",
+          "url": "https://www.jagonews24.com/national/news/1184134"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "d4d64e9286427ee5d54c921ec700d36a"
+    },
     {
       "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
       "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
@@ -883,37 +956,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
-    },
-    {
-      "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, নিয়ন্ত্রণে ৫ ইউনিট",
-      "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় একটি প্লাস্টিকের গোডাউনে আগুন লাগার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে কাজ করছে ফায়ার সার্ভিসের পাঁচটি ইউনিট...",
-      "link": "https://www.jagonews24.com/national/news/1184134",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1184134",
-      "publishedAt": "2026-11-26T14:39:47+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1184134"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, নিয়ন্ত্রণে ৫ ইউনিট",
-          "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় একটি প্লাস্টিকের গোডাউনে আগুন লাগার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে কাজ করছে ফায়ার সার্ভিসের পাঁচটি ইউনিট...",
-          "url": "https://www.jagonews24.com/national/news/1184134"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d4d64e9286427ee5d54c921ec700d36a"
     },
     {
       "title": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
@@ -1192,6 +1234,37 @@
       "alertEventId": "6357c7aafc0b4970286e85d5964c561f"
     },
     {
+      "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668730",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668730",
+      "publishedAt": "2026-11-26T08:01:26+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
+    },
+    {
       "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
       "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
       "link": "https://www.mzamin.com/article/63858",
@@ -1201,7 +1274,8 @@
       "publisherName": "Manab Zamin",
       "sourceEvidence": [
         "Manab Zamin",
-        "Risingbd.com"
+        "Risingbd.com",
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
@@ -1211,6 +1285,10 @@
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
       "category": "Bangladesh",
@@ -1228,10 +1306,16 @@
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Jamuna Television",
+          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
+          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "f3bb07e2084a107665f841048c42525a"
+      "corroborationCount": 3,
+      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
     },
     {
       "title": "বিএনপির দুই পক্ষের মধ্যে গোলাগুলি-ককটেল বিস্ফোরণ, নিহত ১ - dhakapost.com",
