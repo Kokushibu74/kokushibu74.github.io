@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T09:30:43.280345+00:00",
-  "updatedAt": "2026-11-26T09:30:43.280345+00:00",
+  "generatedAt": "2026-11-26T09:40:54.612510+00:00",
+  "updatedAt": "2026-11-26T09:40:54.612510+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 50,
+  "failedSourceCount": 5,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 29,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 29,
+  "fallbackWithItemsSourceCount": 21,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -97,12 +97,12 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 0,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Kaler Kantho",
@@ -137,17 +137,17 @@
     {
       "name": "Dhaka Tribune",
       "domain": "dhakatribune.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Business Standard",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 12,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "BSS",
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "কুষ্টিয়া জেলা কারাগার ফটকে ককটেল নিক্ষেপ",
@@ -1015,17 +1015,12 @@
       "publisherName": "UNB",
       "sourceEvidence": [
         "UNB",
-        "RTV News",
         "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "UNB",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
-        },
-        {
-          "name": "RTV News ·",
-          "url": "https://www.youtube.com/shorts/ObvIfUXMHc8"
         },
         {
           "name": "Bangla Tribune",
@@ -1046,19 +1041,13 @@
           "incidentTimeSource": "UNB"
         },
         {
-          "name": "RTV News",
-          "title": "ঢাকার সিএমএম কোর্টের সামনে ক/ক/টেল বিস্ফো/রণ #CocktailBlast #DhakaCourt #rtvnews",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/ObvIfUXMHc8"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত",
           "summary": "ঢাকার চিফ মেট্রোপলিটন ম্যাজিস্ট্রেট (সিএমএম) আদালতের সামনে ককটেল বিস্ফোরণের ঘটনা ঘটেছে। এতে একজন আইনজীবী আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) সকাল ১১টা ১৭ মিনিটের দিকে এ ঘটনা ঘটে। এ সময় আদালতপাড়ায় আতঙ্ক ছড়িয়ে পড়ে। ককটেল বিস্ফোরণের ঘটনায় আহত আইনজীবীকে চিকিৎসার জন্য হাসপাতালে নিয়ে যাওয়া হয়েছে। তাৎক্ষণিকভাবে ওই আইনজীবীর নাম জানা যায়নি। ঢাকার সিএমএম আদালতের হাজতখানার ইনচার্জ এসআই... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/983334/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "568b55b4d53df6e3cfc1588020d8607a"
     },
     {
@@ -1197,48 +1186,6 @@
       "alertEventId": "036cbd8b7ecba96d6edb148d50219e2d"
     },
     {
-      "title": "নেত্রকোনায় এনসিপি নেতার বাসায় অগ্নিসংযোগ #ekattortv #netrokona #ncp",
-      "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
-      "link": "https://www.youtube.com/shorts/rwe-KEshL48",
-      "publisherUrl": "https://www.youtube.com/shorts/rwe-KEshL48",
-      "publishedAt": "2026-11-26T06:46:36+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV",
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/rwe-KEshL48"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672883"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "নেত্রকোনায় এনসিপি নেতার বাসায় অগ্নিসংযোগ #ekattortv #netrokona #ncp",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/rwe-KEshL48"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
-          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672883"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "f3bb07e2084a107665f841048c42525a"
-    },
-    {
       "title": "সারা রাত ছিলেন বাসে, ফজরের নামাজ পড়ে এসে দেখেন জ্বালিয়ে দিয়েছে",
       "summary": "লক্ষ্মীপুরের রামগঞ্জে সড়কের পাশে রাখা একটি বাসে অগ্নিকাণ্ড ঘটেছে। এ আগুনে পাশের দোকানের সাইনবোর্ড ও সিসি ক্যামেরাও পুড়ে ছাই হয়ে যায়। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে রামগঞ্জ বাসস্ট্যান্ডের রেস্টহাউসের সামনে পার্কিং করে থাকা বাসটিতে অগ্নিকাণ্ডের ঘটনা ঘটে। রামগঞ্জ ফায়ার সার্ভিস ও সিভিল ডিফেন্সের কর্মকর্তা রেজাউল করীম বিষয়টি নিশ্চিত করেছেন। ক্ষতিগ্রস্ত বাসটির মালিক স্থানীয় কাজিরখিল চৌকিদার বাড়ির... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/983335/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE-%E0%A6%B0%E0%A6%BE%E0%A6%A4-%E0%A6%9B%E0%A6%BF%E0%A6%B2%E0%A7%87%E0%A6%A8-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AB%E0%A6%9C%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%A8%E0%A6%BE%E0%A6%AE%E0%A6%BE%E0%A6%9C-%E0%A6%AA%E0%A7%9C%E0%A7%87-%E0%A6%8F%E0%A6%B8%E0%A7%87-%E0%A6%A6%E0%A7%87%E0%A6%96%E0%A7%87%E0%A6%A8",
@@ -1268,6 +1215,59 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e4d335899f915103b00b066e15952f61"
+    },
+    {
+      "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
+      "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672883",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672883",
+      "publishedAt": "2026-11-26T06:22:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com",
+        "Prothom Alo",
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/gn8idp332r"
+        },
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
+          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় দুর্বৃত্তদের আগুন",
+          "summary": "আজ ভোরে পোড়া গন্ধ পেয়ে ফাহিমের ছোট ভাই নাফিউর ঘরের দরজা খুলে বারান্দায় আগুন দেখতে পান।",
+          "url": "https://www.prothomalo.com/bangladesh/district/gn8idp332r"
+        },
+        {
+          "name": "Jamuna Television",
+          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
+          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
     },
     {
       "title": "মজুরি বৃদ্ধির পরও গাজীপুরে শ্রমিক অসন্তোষ, পুলিশের সঙ্গে সংঘর্ষ | Gazipur | Worker Protest - United News of Bangladesh",
@@ -1301,37 +1301,6 @@
       "alertEventId": "6a4470e0524e0f1f1b9c9936cd5beea6"
     },
     {
-      "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় দুর্বৃত্তদের আগুন",
-      "summary": "আজ ভোরে পোড়া গন্ধ পেয়ে ফাহিমের ছোট ভাই নাফিউর ঘরের দরজা খুলে বারান্দায় আগুন দেখতে পান।",
-      "link": "https://www.prothomalo.com/bangladesh/district/gn8idp332r",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/gn8idp332r",
-      "publishedAt": "2026-11-26T05:44:15+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/gn8idp332r"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় দুর্বৃত্তদের আগুন",
-          "summary": "আজ ভোরে পোড়া গন্ধ পেয়ে ফাহিমের ছোট ভাই নাফিউর ঘরের দরজা খুলে বারান্দায় আগুন দেখতে পান।",
-          "url": "https://www.prothomalo.com/bangladesh/district/gn8idp332r"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6f3835ae390b075dc5d05b1898d5cc23"
-    },
-    {
       "title": "আবারও বিএনপির সেই দুই গ্রুপের সংঘর্ষ, একজন নিহত",
       "summary": "মুন্সীগঞ্জের সদরের মোল্লাকান্দি আধিপত্য বিস্তারিতকে কেন্দ্র করে বিএনপির দুই গ্রুপের মধ্যে সংঘর্ষ, ককটেল বিস্ফোরণ ও গোলাগুলির ঘটনা ঘটেছে। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে চরডুমুরিয়া, সামারচর এলাকায় রহিম মোল্লা গ্রুপ ও আওলাদ মোল্লা গ্রুপের মধ্যে সংঘাতের ঘটনা ঘটে। এ ঘটনায় সেলিম নামের একজন নিহত হয়েছেন। তার লাশ মুন্সীগঞ্জ জেনারেল হাসপাতালে আছে। তিনি মোল্লাকান্দি ইউনিয়নের চরডুমুরিয়া মোল্লাবাড়ির আমিনুল... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/dhaka/983327/%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A7%87%E0%A6%87-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%8F%E0%A6%95%E0%A6%9C%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
@@ -1361,37 +1330,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "98c65fc9b70825ccae863f1677da2638"
-    },
-    {
-      "title": "এনসিপির কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Dhaka Tribune Bangla",
-      "summary": "এনসিপির কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113814/%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A7%9F-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113814/%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A7%9F-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97",
-      "publishedAt": "2026-11-26T05:04:12+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113814/%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A7%9F-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "এনসিপির কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Dhaka Tribune Bangla",
-          "summary": "এনসিপির কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113814/%E0%A6%8F%E0%A6%A8%E0%A6%B8%E0%A6%BF%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A7%9F-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1c1929edab37ba4529846fb8d118f555"
     },
     {
       "title": "এনসিপির কেন্দ্রীয় এক নেতার বাড়িতে আগুন",
@@ -1454,37 +1392,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
-    },
-    {
-      "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-      "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-25T18:03:30+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
-          "summary": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113805/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%9F-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A6%E0%A6%97%E0%A7%8D%E0%A6%A7-%E0%A6%8F%E0%A6%95%E0%A6%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
     },
     {
       "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
@@ -1673,37 +1580,6 @@
       "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
     },
     {
-      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-      "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publishedAt": "2026-11-25T12:45:17+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
-    },
-    {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
       "summary": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ Samakal",
       "link": "https://samakal.com/sports/article/385014/%E0%A6%AE%E0%A7%81%E0%A6%B2%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BF%E0%A6%82%E0%A6%B8-%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%B6%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6",
@@ -1733,37 +1609,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c55ee204eb1bf7656fc4f35c485c1086"
-    },
-    {
-      "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB - United News of Bangladesh",
-      "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB United News of Bangladesh",
-      "link": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
-      "publisherUrl": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB",
-      "publishedAt": "2026-11-25T10:11:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB - United News of Bangladesh",
-          "summary": "তাজরীন অগ্নিকাণ্ডের ১৪ বছর পরও পুনর্বাসনের অপেক্ষায় রয়েছেন আহত অনেক শ্রমিক | Savar Protest | UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/10056/%E0%A6%A4%E0%A6%BE%E0%A6%9C%E0%A6%B0%E0%A7%80%E0%A6%A8-%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%A3%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%AA-%E0%A6%AC%E0%A6%9B%E0%A6%B0-%E0%A6%AA%E0%A6%B0%E0%A6%93-%E0%A6%AA%E0%A7%81%E0%A6%A8%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%85%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A7%9F-%E0%A6%B0%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A7%87%E0%A6%A8-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95---Savar-Protest---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "09c4c500676f04358449ae72b533eb88"
     }
   ]
 }
