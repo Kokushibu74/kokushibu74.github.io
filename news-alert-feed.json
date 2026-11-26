@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T08:20:45.848348+00:00",
-  "updatedAt": "2026-11-26T08:20:45.848348+00:00",
+  "generatedAt": "2026-11-26T08:35:39.153908+00:00",
+  "updatedAt": "2026-11-26T08:35:39.153908+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 27,
   "alertItems": [
     {
-      "title": "গাজীপুরে শ্রমিকদের সঙ্গে পাল্টাপাল্টি ধাওয়া, পুলিশ পরিদর্শককে অবরুদ্ধের পর মোটরসাইকেলে আগুন",
-      "summary": "সরকার গঠিত মজুরি বোর্ডের নতুন বেতন ঘোষণার পর দ্বিতীয় দিনের মতো গাজীপুরে শ্রমিকদের বিক্ষোভ চলছে। আজ বৃহস্পতিবার সকাল থেকে বিভিন্ন এলাকায় বিচ্ছিন্নভাবে বিক্ষোভ করেন শ্রমিকেরা।",
-      "link": "https://www.prothomalo.com/bangladesh/district/246ty0xqgr",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/246ty0xqgr",
-      "publishedAt": "2026-11-26T07:55:59+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
+      "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668730",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668730",
+      "publishedAt": "2026-11-26T08:01:26+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
       "sourceEvidence": [
-        "Prothom Alo"
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/246ty0xqgr"
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730"
         }
       ],
       "category": "Bangladesh",
@@ -864,46 +864,16 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Prothom Alo",
-          "title": "গাজীপুরে শ্রমিকদের সঙ্গে পাল্টাপাল্টি ধাওয়া, পুলিশ পরিদর্শককে অবরুদ্ধের পর মোটরসাইকেলে আগুন",
-          "summary": "সরকার গঠিত মজুরি বোর্ডের নতুন বেতন ঘোষণার পর দ্বিতীয় দিনের মতো গাজীপুরে শ্রমিকদের বিক্ষোভ চলছে। আজ বৃহস্পতিবার সকাল থেকে বিভিন্ন এলাকায় বিচ্ছিন্নভাবে বিক্ষোভ করেন শ্রমিকেরা।",
-          "url": "https://www.prothomalo.com/bangladesh/district/246ty0xqgr",
-          "incidentDateText": "২৬ নভেম্বর ২০২৬"
+          "name": "Jamuna Television",
+          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730",
+          "incidentDateText": "২৬ নভেম্বর ২০২৬",
+          "locationText": "সংঘর্ষের পর এলাকায়"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "cc549cab3d0ed0a4fb6b12d8fb7cd366"
-    },
-    {
-      "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
-      "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672898",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672898",
-      "publishedAt": "2026-11-26T07:40:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672898"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
-          "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672898"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "fbd99e9ff30d44430250ce245179d894"
+      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
     },
     {
       "title": "ঢাকার সিএমএম কোর্টের সামনে ক/ক/টেল বিস্ফো/রণ #CocktailBlast #DhakaCourt #rtvnews",
@@ -1054,8 +1024,7 @@
       "sourceEvidence": [
         "Ekattor TV",
         "Risingbd.com",
-        "Jamuna Television",
-        "Jago News 24"
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
@@ -1069,10 +1038,6 @@
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668709"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183827"
         }
       ],
       "category": "Bangladesh",
@@ -1098,16 +1063,10 @@
           "url": "https://www.jamuna.tv/all-bangladesh/668709",
           "incidentDateText": "২৬ নভেম্বর ২০২৬",
           "locationText": "নম্বর ওয়ার্ডের হোসেনপুর এলাকায়, পরে স্থানীয় এলাকা"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় অগ্নিসংযোগ",
-          "summary": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় অগ্নিসংযোগ",
-          "url": "https://www.jagonews24.com/country/news/1183827"
         }
       ],
-      "corroborationCount": 4,
-      "alertEventId": "94bc2d72da5ebe5f6051aba4a9cb6354"
+      "corroborationCount": 3,
+      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
     },
     {
       "title": "সারা রাত ছিলেন বাসে, ফজরের নামাজ পড়ে এসে দেখেন জ্বালিয়ে দিয়েছে",
@@ -1553,37 +1512,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
-    },
-    {
-      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-      "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publishedAt": "2026-11-25T12:45:17+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
     },
     {
       "title": "মুল্ডারের আগুনে ইনিংস হারের শঙ্কায় বাংলাদেশ - Samakal",
