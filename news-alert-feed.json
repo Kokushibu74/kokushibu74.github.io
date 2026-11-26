@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T03:00:38.250613+00:00",
-  "updatedAt": "2026-11-26T03:00:38.250613+00:00",
+  "generatedAt": "2026-11-26T03:10:51.684573+00:00",
+  "updatedAt": "2026-11-26T03:10:51.684573+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -347,17 +347,17 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ekattor TV",
@@ -843,6 +843,68 @@
   "candidateCount": 23,
   "alertItems": [
     {
+      "title": "চট্টগ্রামের ফটিকছড়িতে কৃষকের পাকা ধানে আগুন দিল দু*র্বৃ*ত্তরা | Chattogram | Farmer | Ekattor TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=nwP6oE8cGNg",
+      "publisherUrl": "https://www.youtube.com/watch?v=nwP6oE8cGNg",
+      "publishedAt": "2026-11-26T03:00:30+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=nwP6oE8cGNg"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "চট্টগ্রামের ফটিকছড়িতে কৃষকের পাকা ধানে আগুন দিল দু*র্বৃ*ত্তরা | Chattogram | Farmer | Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=nwP6oE8cGNg"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cc542fec7b98761f3951a2635ee41664"
+    },
+    {
+      "title": "বিএনপি কার্যালয়ে আগুনের খবর, সরেজমিনে মিলল ভিন্ন চিত্র | Nandigram | Bogura | BNP Office | Somoy TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=-2-pSuR2Xjc",
+      "publisherUrl": "https://www.youtube.com/watch?v=-2-pSuR2Xjc",
+      "publishedAt": "2026-11-26T02:45:36+00:00",
+      "source": "Somoy News",
+      "publisherName": "Somoy News",
+      "sourceEvidence": [
+        "Somoy News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Somoy News · YouTube",
+          "url": "https://www.youtube.com/watch?v=-2-pSuR2Xjc"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Somoy News",
+          "title": "বিএনপি কার্যালয়ে আগুনের খবর, সরেজমিনে মিলল ভিন্ন চিত্র | Nandigram | Bogura | BNP Office | Somoy TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=-2-pSuR2Xjc"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ebda866078df44776e8bc0ffe43f5bae"
+    },
+    {
       "title": "কুষ্টিয়ায় বিএনপি-জামায়াতের সংঘর্ষ-গুলিবর্ষণ, আহত ৮",
       "summary": "কুষ্টিয়ায় বিএনপি-জামায়াতের সংঘর্ষ-গুলিবর্ষণ, আহত ৮",
       "link": "https://www.jagonews24.com/politics/news/1183785",
@@ -934,37 +996,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "285de9e63a6b398c267193952cae3175"
-    },
-    {
-      "title": "ঢাকায় আবাসন ব্যবসার আড়ালে কী চলছে, রাজউক নিয়ে বিস্ফোরক তথ্য টিআইবির #ekattortv #rajuk #tib",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/eklOODN2X1o",
-      "publisherUrl": "https://www.youtube.com/shorts/eklOODN2X1o",
-      "publishedAt": "2026-11-25T17:18:22+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/eklOODN2X1o"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "ঢাকায় আবাসন ব্যবসার আড়ালে কী চলছে, রাজউক নিয়ে বিস্ফোরক তথ্য টিআইবির #ekattortv #rajuk #tib",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/eklOODN2X1o"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6f96ec0b73da2b487a1370864a7562dc"
     },
     {
       "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
@@ -1110,11 +1141,7 @@
           "name": "dhakapost.com",
           "title": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি - dhakapost.com",
           "summary": "নাশকতার শঙ্কায় সীমান্তে কড়াকড়ি, বিস্ফোরকদ্রব্য ঠেকাতে নানামুখী নজরদারি dhakapost.com",
-          "url": "https://www.dhakapost.com/national/500877",
-          "incidentDateText": "৩০ সেপ্টেম্বর",
-          "incidentTimeText": "রাত ৮টার দিকে",
-          "incidentTimeSource": "dhakapost.com",
-          "locationText": "গোপালগঞ্জে দুটি থানায়, গোপালগঞ্জ, বিরুদ্ধে পল্টন মডেল থানায়"
+          "url": "https://www.dhakapost.com/national/500877"
         }
       ],
       "corroborationCount": 1,
@@ -1491,37 +1518,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b59c5ae9e52b0f5e6cd53e3e7b690814"
-    },
-    {
-      "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-      "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-      "link": "https://www.mzamin.com/article/63087",
-      "publisherUrl": "https://www.mzamin.com/article/63087",
-      "publishedAt": "2026-11-25T05:14:30+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান - Manab Zamin",
-          "summary": "সিলেট সীমান্ত পথে ধরা পড়ছে অস্ত্র ও বিস্ফোরকের চালান Manab Zamin",
-          "url": "https://www.mzamin.com/article/63087"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d373c9387b57cf65cead3d658f32cd29"
     }
   ]
 }
