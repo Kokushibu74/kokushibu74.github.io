@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T10:50:39.059259+00:00",
-  "updatedAt": "2026-11-26T10:50:39.059259+00:00",
+  "generatedAt": "2026-11-26T11:06:00.104480+00:00",
+  "updatedAt": "2026-11-26T11:06:00.104480+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 3,
+      "fallbackItems": 6,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -559,7 +559,7 @@
       "domain": "sangbad.net.bd",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "feed redirected outside its publisher domain",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 0,
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -843,6 +843,61 @@
   "candidateCount": 34,
   "alertItems": [
     {
+      "title": "আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জে ফের সংঘর্ষ নিহত ১, থমথমে এলাকা | Munshigonj | BNP | JamunaTV",
+      "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
+      "link": "https://www.youtube.com/watch?v=8mnh6sFaHRI",
+      "publisherUrl": "https://www.youtube.com/watch?v=8mnh6sFaHRI",
+      "publishedAt": "2026-11-26T11:04:26+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV",
+        "Jago News 24",
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=8mnh6sFaHRI"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1183960"
+        },
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "আধিপত্য বিস্তার নিয়ে মুন্সীগঞ্জে ফের সংঘর্ষ নিহত ১, থমথমে এলাকা | Munshigonj | BNP | JamunaTV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=8mnh6sFaHRI"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
+          "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
+          "url": "https://www.jagonews24.com/country/news/1183960"
+        },
+        {
+          "name": "Jamuna Television",
+          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668730",
+          "incidentDateText": "২৬ নভেম্বর ২০২৬",
+          "locationText": "সংঘর্ষের পর এলাকায়"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
+    },
+    {
       "title": "কুষ্টিয়া জেলা কারাগার ফটকে ককটেল নিক্ষেপ",
       "summary": "কুষ্টিয়া জেলা কারাগারের প্রধান ফটক লক্ষ্য করে ককটেল নিক্ষেপ করেছে দুর্বৃত্তরা।বৃহস্পতিবার (২৬ নভেম্বর) ভোর পৌনে ৫টার দিকে এ ঘটনা ঘটে। পুলিশ ও কারা কর্তৃপক্ষ সূত্রে জানা গেছে, ভোরে একটি মোটরসাইকেলে করে তিন দুর্বৃত্ত কুষ্টিয়া জেলা কারাগারের সামনে আসে। এ সময় তারা সড়কের ওপর থেকে কারাগারের প্রধান ফটক লক্ষ্য করে একটি ককটেল নিক্ষেপ করে। এটি বিস্ফোরণের পর দ্রুত ঘটনাস্থল ত্যাগ করে তারা। বিকট শব্দে... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983372/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A6%9F%E0%A6%95%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
@@ -894,50 +949,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "fbd99e9ff30d44430250ce245179d894"
-    },
-    {
-      "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-      "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-      "link": "https://www.jagonews24.com/country/news/1183960",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1183960",
-      "publishedAt": "2026-11-26T08:58:37+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1183960"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-          "summary": "মুন্সীগঞ্জে বিএনপির দুই পক্ষের সংঘর্ষে নিহত ১",
-          "url": "https://www.jagonews24.com/country/news/1183960"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
-          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730",
-          "incidentDateText": "২৬ নভেম্বর ২০২৬",
-          "locationText": "সংঘর্ষের পর এলাকায়"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
     },
     {
       "title": "কুষ্টিয়ায় জামায়াত নেতার বাড়িতে হামলা-ভাঙচুর, গুলির খোসা ও তাজা গুলি উদ্ধার",
@@ -1153,37 +1164,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "dcd95baa4da15cf2fbaecbf17d0986ff"
-    },
-    {
-      "title": "ঢাকার সিএমএম আদালতের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ",
-      "summary": "ঢাকা মহানগর পুলিশের (ডিএমপি) প্রসিকিউশন বিভাগের উপকমিশনার (ডিসি) মহিউদ্দিন মাহমুদ সোহেল প্রথম আলোকে এই তথ্যের সত্যতা নিশ্চিত করেছেন।",
-      "link": "https://www.prothomalo.com/bangladesh/crime/9pwfj0y5ik",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/crime/9pwfj0y5ik",
-      "publishedAt": "2026-11-26T06:52:41+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/crime/9pwfj0y5ik"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "ঢাকার সিএমএম আদালতের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ",
-          "summary": "ঢাকা মহানগর পুলিশের (ডিএমপি) প্রসিকিউশন বিভাগের উপকমিশনার (ডিসি) মহিউদ্দিন মাহমুদ সোহেল প্রথম আলোকে এই তথ্যের সত্যতা নিশ্চিত করেছেন।",
-          "url": "https://www.prothomalo.com/bangladesh/crime/9pwfj0y5ik"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "036cbd8b7ecba96d6edb148d50219e2d"
     },
     {
       "title": "বিএনপির দুই পক্ষের গোলাগুলি-ককটেল বিস্ফোরণ, নিহত ১ - dhakapost.com",
@@ -1609,7 +1589,7 @@
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
         "Risingbd.com",
-        "Ajker Patrika"
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -1617,8 +1597,8 @@
           "url": "https://www.risingbd.com/bangladesh/news/672815"
         },
         {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1632,14 +1612,14 @@
           "url": "https://www.risingbd.com/bangladesh/news/672815"
         },
         {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
+          "name": "একাত্তর",
+          "title": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন - একাত্তর",
+          "summary": "বগুড়ায় বিএনপির কার্যালয়ে দুর্বৃত্তের আগুন একাত্তর",
+          "url": "https://ekattor.tv/country/rajshahi/98438/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 2,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
+      "alertEventId": "763f522da78b6d6cd123b1c84b871b72"
     },
     {
       "title": "বগুড়ায় আবর্জনার আগুনকে ‘বিএনপি কার্যালয়ে অগ্নিসংযোগ’ বলে প্রচার! - dhakapost.com",
