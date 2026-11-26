@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T04:05:41.259503+00:00",
-  "updatedAt": "2026-11-26T04:05:41.259503+00:00",
+  "generatedAt": "2026-11-26T04:15:47.423897+00:00",
+  "updatedAt": "2026-11-26T04:15:47.423897+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -843,6 +843,37 @@
   "candidateCount": 25,
   "alertItems": [
     {
+      "title": "বিএনপির সংসদ সদস্য নোমানের গাড়ি লক্ষ্য করে কাঠের টুকরো নিক্ষেপ",
+      "summary": "চট্টগ্রাম নগরের হালিশহরে বিএনপি দলীয় সংসদ সদস্য সাঈদ আল নোমানের গাড়িতে কাঠের টুকরো নিক্ষেপের ঘটনা ঘটেছে। তবে এটি পরিকল্পিত ‘হামলা’ কি না, তাৎক্ষণিকভাবে...",
+      "link": "https://www.jagonews24.com/national/news/1183830",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1183830",
+      "publishedAt": "2026-11-26T04:04:06+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1183830"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "বিএনপির সংসদ সদস্য নোমানের গাড়ি লক্ষ্য করে কাঠের টুকরো নিক্ষেপ",
+          "summary": "চট্টগ্রাম নগরের হালিশহরে বিএনপি দলীয় সংসদ সদস্য সাঈদ আল নোমানের গাড়িতে কাঠের টুকরো নিক্ষেপের ঘটনা ঘটেছে। তবে এটি পরিকল্পিত ‘হামলা’ কি না, তাৎক্ষণিকভাবে...",
+          "url": "https://www.jagonews24.com/national/news/1183830"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b5ca1fb998cc8e484a56b1ff71859a59"
+    },
+    {
       "title": "নেত্রকোনায় এনসিপি নেতা ফাহিমের বাসায় অগ্নিসংযোগ",
       "summary": "নেত্রকোনা পৌর শহরে জাতীয় নাগরিক পার্টির (এনসিপি) কেন্দ্রীয় নেতা মো. ফাহিম রহমান খান পাঠানের বাসায় অগ্নিসংযোগের ঘটনা ঘটেছে। বৃহস্পতিবার...",
       "link": "https://www.jagonews24.com/country/news/1183827",
@@ -903,37 +934,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f9bb155033da9947bf0287cfb439d0f8"
-    },
-    {
-      "title": "চট্টগ্রামের ফটিকছড়িতে কৃষকের পাকা ধানে আগুন দিল দু*র্বৃ*ত্তরা | Chattogram | Farmer | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=nwP6oE8cGNg",
-      "publisherUrl": "https://www.youtube.com/watch?v=nwP6oE8cGNg",
-      "publishedAt": "2026-11-26T03:00:30+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=nwP6oE8cGNg"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "চট্টগ্রামের ফটিকছড়িতে কৃষকের পাকা ধানে আগুন দিল দু*র্বৃ*ত্তরা | Chattogram | Farmer | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=nwP6oE8cGNg"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cc542fec7b98761f3951a2635ee41664"
     },
     {
       "title": "বিএনপি কার্যালয়ে আগুনের খবর, সরেজমিনে মিলল ভিন্ন চিত্র | Nandigram | Bogura | BNP Office | Somoy TV",
@@ -1060,6 +1060,38 @@
       "alertEventId": "c3f4b88f6b1b3a94e7ca535b4cdc7e8f"
     },
     {
+      "title": "হরমুজে একের পর এক ট্যাংকার-জাহাজে হামলা চালাচ্ছে বিপ্লবী গার্ড - dhakapost.com",
+      "summary": "হরমুজে একের পর এক ট্যাংকার-জাহাজে হামলা চালাচ্ছে বিপ্লবী গার্ড dhakapost.com",
+      "link": "https://www.dhakapost.com/international/500893",
+      "publisherUrl": "https://www.dhakapost.com/international/500893",
+      "publishedAt": "2026-11-25T16:43:45+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/500893"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "হরমুজে একের পর এক ট্যাংকার-জাহাজে হামলা চালাচ্ছে বিপ্লবী গার্ড - dhakapost.com",
+          "summary": "হরমুজে একের পর এক ট্যাংকার-জাহাজে হামলা চালাচ্ছে বিপ্লবী গার্ড dhakapost.com",
+          "url": "https://www.dhakapost.com/international/500893",
+          "incidentDateText": "২৫ নভেম্বর ২০২৬"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ba9fc39189e6ff9a73815a9e58de3dca"
+    },
+    {
       "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
       "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটি সঠিক নয়",
       "link": "https://www.jagonews24.com/politics/news/1183759",
@@ -1069,8 +1101,7 @@
       "publisherName": "Jago News 24",
       "sourceEvidence": [
         "Jago News 24",
-        "Bangla Tribune",
-        "Ajker Patrika"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -1080,10 +1111,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
         }
       ],
       "category": "Bangladesh",
@@ -1101,20 +1128,10 @@
           "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার তথ্য সঠিক নয়: প্রধানমন্ত্রীর উপ-প্রেস সচিব",
           "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন দেওয়ার ঘটনাটা সঠিক নয় বলে জানিয়েছেন প্রধানমন্ত্রীর উপ-প্রেস সচিব সুজাউদ্দৌলা (সুজন মাহমুদ)। বুধবার (২৫ নভেম্বর) সামাজিক যোগাযোগমাধ্যম ফেসবুকে নিজের আইডিতে দেওয়া এক পোস্টে তিনি এ তথ্য জানিয়েছেন। ফেসবুক পোস্টে সুজাউদ্দৌলা বলেন, বগুড়ার নন্দীগ্রামে উপজেলা বিএনপির দলীয় কার্যালয়ে আগুন দেওয়ার ভুয়া খবর ছড়িয়ে পড়েছে সামাজিক যোগাযোগমাধ্যমে। যা নিয়ে কিছু কিছু গণমাধ্যমও... বিস্তারিত",
           "url": "https://www.banglatribune.com/others/983253/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A7%87%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%A0%E0%A6%BF%E0%A6%95-%E0%A6%A8%E0%A7%9F"
-        },
-        {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-          "incidentDateText": "২৫ নভেম্বর ২০২৬",
-          "incidentTimeText": "গতকাল রাতে",
-          "incidentTimeSource": "Ajker Patrika",
-          "locationText": "নন্দীগ্রাম ফিলিং স্টেশন এলাকায়, অবস্থিত উপজেলা, কর্মীদের দায়ী করেছেন উপজেলা, আমরা উপজেলা, বিষয়ে থানার"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
+      "corroborationCount": 2,
+      "alertEventId": "fa1686712e2157ec347b2c0ae9bdbb9a"
     },
     {
       "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন লাগেনি, ‌‘অপপ্রচার’ বললেন এমপি",
