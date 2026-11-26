@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T14:35:36.308862+00:00",
-  "updatedAt": "2026-11-26T14:35:36.308862+00:00",
+  "generatedAt": "2026-11-26T14:50:50.651006+00:00",
+  "updatedAt": "2026-11-26T14:50:50.651006+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "BSS",
@@ -347,17 +347,17 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ekattor TV",
@@ -840,20 +840,25 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 22,
   "alertItems": [
     {
-      "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
-      "summary": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672972",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672972",
-      "publishedAt": "2026-11-26T14:04:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
+      "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
+      "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87",
+      "publishedAt": "2026-11-26T14:47:46+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
+        "Bangla Tribune",
         "Risingbd.com"
       ],
       "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
+        },
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672972"
@@ -864,14 +869,51 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "Bangla Tribune",
+          "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
+          "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
+        },
+        {
           "name": "Risingbd.com",
           "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
           "summary": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672972"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
+    },
+    {
+      "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, নিয়ন্ত্রণে ৫ ইউনিট",
+      "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় একটি প্লাস্টিকের গোডাউনে আগুন লাগার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে কাজ করছে ফায়ার সার্ভিসের পাঁচটি ইউনিট...",
+      "link": "https://www.jagonews24.com/national/news/1184134",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1184134",
+      "publishedAt": "2026-11-26T14:39:47+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/national/news/1184134"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, নিয়ন্ত্রণে ৫ ইউনিট",
+          "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় একটি প্লাস্টিকের গোডাউনে আগুন লাগার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে কাজ করছে ফায়ার সার্ভিসের পাঁচটি ইউনিট...",
+          "url": "https://www.jagonews24.com/national/news/1184134"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d4d64e9286427ee5d54c921ec700d36a"
     },
     {
       "title": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
@@ -1011,37 +1053,6 @@
       "alertEventId": "01633f004e9795936c6f314ad9e798a2"
     },
     {
-      "title": "কুষ্টিয়ায় জেলা কারাগার লক্ষ্য করে ককটেল নিক্ষেপ - Dhaka Tribune Bangla",
-      "summary": "কুষ্টিয়ায় জেলা কারাগার লক্ষ্য করে ককটেল নিক্ষেপ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113836/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113836/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publishedAt": "2026-11-26T09:36:50+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113836/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "কুষ্টিয়ায় জেলা কারাগার লক্ষ্য করে ককটেল নিক্ষেপ - Dhaka Tribune Bangla",
-          "summary": "কুষ্টিয়ায় জেলা কারাগার লক্ষ্য করে ককটেল নিক্ষেপ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113836/%E0%A6%95%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c387b21076425e5a6607efe86300025b"
-    },
-    {
       "title": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ - United News of Bangladesh",
       "summary": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%95-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8/116702",
@@ -1127,17 +1138,12 @@
       "source": "UNB",
       "publisherName": "UNB",
       "sourceEvidence": [
-        "UNB",
-        "Dhaka Tribune Bangla"
+        "UNB"
       ],
       "sourceLinks": [
         {
           "name": "UNB",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113824/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
       "category": "Bangladesh",
@@ -1149,16 +1155,10 @@
           "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
           "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত United News of Bangladesh",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ - Dhaka Tribune Bangla",
-          "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113824/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "56e0c4e2a8f8d9a598007a057ab3fa5f"
+      "corroborationCount": 1,
+      "alertEventId": "18a2db70ba9b9dcd17f73cfd46207640"
     },
     {
       "title": "ইনানীর নলকূপের গ্যাসের আগুন নিয়ন্ত্রণে বাপেক্স, মুখ বন্ধের অপারেশন শুরু",
@@ -1192,68 +1192,6 @@
       "alertEventId": "6357c7aafc0b4970286e85d5964c561f"
     },
     {
-      "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
-      "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668730",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668730",
-      "publishedAt": "2026-11-26T08:01:26+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
-          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
-    },
-    {
-      "title": "পুলিশ ও শ্রমিকের সংঘর্ষ, এএসপি আহত",
-      "summary": "গাজীপুরের শ্রীপুরে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভের সময় শ্রমিক-পুলিশ সংঘর্ষের ঘটনা ঘটেছে। এতে গাজীপুর জেলা পুলিশের অতিরিক্ত পুলিশ সুপার (কালিয়াকৈর সার্কেল- এএসপি) মো. শফিকুল ইসলামসহ কয়েকজন পুলিশ সদস্য আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) বেলা ১১টার দিকে শ্রীপুর উপজেলার নয়নপুর এলাকায় এ ঘটনা ঘটে। পুলিশ ও প্রত্যক্ষদর্শী সূত্রে জানা গেছে, বেলা ১১টার দিকে আশপাশের কয়েকটি কারখানার... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983342/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%93-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%8F%E0%A6%8F%E0%A6%B8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983342/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%93-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%8F%E0%A6%8F%E0%A6%B8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%B9%E0%A6%A4",
-      "publishedAt": "2026-11-26T07:03:34+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983342/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%93-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%8F%E0%A6%8F%E0%A6%B8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "পুলিশ ও শ্রমিকের সংঘর্ষ, এএসপি আহত",
-          "summary": "গাজীপুরের শ্রীপুরে ঢাকা-ময়মনসিংহ মহাসড়ক অবরোধ করে বিক্ষোভের সময় শ্রমিক-পুলিশ সংঘর্ষের ঘটনা ঘটেছে। এতে গাজীপুর জেলা পুলিশের অতিরিক্ত পুলিশ সুপার (কালিয়াকৈর সার্কেল- এএসপি) মো. শফিকুল ইসলামসহ কয়েকজন পুলিশ সদস্য আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) বেলা ১১টার দিকে শ্রীপুর উপজেলার নয়নপুর এলাকায় এ ঘটনা ঘটে। পুলিশ ও প্রত্যক্ষদর্শী সূত্রে জানা গেছে, বেলা ১১টার দিকে আশপাশের কয়েকটি কারখানার... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983342/%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%93-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%8F%E0%A6%8F%E0%A6%B8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%B9%E0%A6%A4"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "dcd95baa4da15cf2fbaecbf17d0986ff"
-    },
-    {
       "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
       "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
       "link": "https://www.mzamin.com/article/63858",
@@ -1263,8 +1201,7 @@
       "publisherName": "Manab Zamin",
       "sourceEvidence": [
         "Manab Zamin",
-        "Risingbd.com",
-        "Jamuna Television"
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
@@ -1274,10 +1211,6 @@
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
       "category": "Bangladesh",
@@ -1295,16 +1228,10 @@
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
-          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
+      "corroborationCount": 2,
+      "alertEventId": "f3bb07e2084a107665f841048c42525a"
     },
     {
       "title": "বিএনপির দুই পক্ষের মধ্যে গোলাগুলি-ককটেল বিস্ফোরণ, নিহত ১ - dhakapost.com",
@@ -1522,37 +1449,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7c864c8458470f05283d33aefe11d991"
-    },
-    {
-      "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
-      "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/201644",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/201644",
-      "publishedAt": "2026-11-25T14:48:48+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/201644"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু - Jamuna Television",
-          "summary": "নাটোরে দুই মোটরসাইকেলের সংঘর্ষে পল্লী বিদ্যুতের টেকনিশিয়ানের মৃত্যু Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/201644"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f4289c5539a7380bd1ac15010e8c596f"
     }
   ]
 }
