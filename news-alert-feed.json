@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T15:47:19.578767+00:00",
-  "updatedAt": "2026-11-26T15:47:19.578767+00:00",
+  "generatedAt": "2026-11-26T16:00:40.801480+00:00",
+  "updatedAt": "2026-11-26T16:00:40.801480+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "bdnews24.com",
       "domain": "bdnews24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "not well-formed (invalid token): line 8, column 46",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Banglanews24",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 14,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "পুরান ঢাকার চকবাজারে একটি প্লাস্টিকের গুদামে আগুন | DBC NEWS",
@@ -893,17 +893,12 @@
       "source": "Dainik Azadi",
       "publisherName": "Dainik Azadi",
       "sourceEvidence": [
-        "Dainik Azadi",
-        "Bangla Tribune"
+        "Dainik Azadi"
       ],
       "sourceLinks": [
         {
           "name": "Dainik Azadi",
           "url": "https://dainikazadi.net/ukhia-inani-gas-fire-reignites-after-seven-minutes/"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8"
         }
       ],
       "category": "Bangladesh",
@@ -917,16 +912,10 @@
           "url": "https://dainikazadi.net/ukhia-inani-gas-fire-reignites-after-seven-minutes/",
           "incidentDateText": "২৭ অক্টোবর",
           "locationText": "ইনানী ইউনিয়নের ছোটখাল এলাকায়, আশপাশের কয়েক কিলোমিটার এলাকায়, অক্টোবর কক্সবাজারের উখিয়া উপজেলার, কক্সবাজার"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "ইনানীর নলকূপের গ্যাসের আগুন নিয়ন্ত্রণে বাপেক্স, মুখ বন্ধের অপারেশন শুরু",
-          "summary": "টানা ৩০ দিন ধরে জ্বলতে থাকা কক্সবাজারের ইনানীর ছোটখাল এলাকার পরিত্যক্ত নলকূপ থেকে নির্গত গ্যাসের আগুন নিয়ন্ত্রণে এনে গর্তের মুখ বন্ধের চূড়ান্ত প্রস্তুতি নিয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। বৃহস্পতিবার (২৬ নভেম্বর) বিকালের পর আগুনের চাপ কমিয়ে ধাপে ধাপে গর্তের মুখ বন্ধের কার্যক্রম শুরু হবে বলে জানিয়েছে সংস্থাটি। সকালে আগুনের মুখবন্ধের ৭ মিনিটের... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "6357c7aafc0b4970286e85d5964c561f"
+      "corroborationCount": 1,
+      "alertEventId": "a2a13069ff9fbea0f3d865ed7edd9b44"
     },
     {
       "title": "কুষ্টিয়ায় কারাগারের কোয়ার্টার ও ফটকে ককটেল বিস্ফোরণ, ময়মনসিংহে গ্রামীণ ব্যাংকে আগুন",
@@ -1211,17 +1200,12 @@
       "source": "Prothom Alo",
       "publisherName": "Prothom Alo",
       "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
+        "Prothom Alo"
       ],
       "sourceLinks": [
         {
           "name": "Prothom Alo",
           "url": "https://www.prothomalo.com/business/bank/sqmi8x8esc"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/business/money-and-investment/983362/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%A6%E0%A7%AA-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7"
         }
       ],
       "category": "Bangladesh",
@@ -1233,16 +1217,10 @@
           "title": "গ্রামীণ ব্যাংকের ১০৪টি শাখা-কার্যালয়ে হামলা, ২৯টির কার্যক্রম বন্ধ",
           "summary": "গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয় ক্ষতিগ্রস্ত হয়েছে। নিরাপত্তার কারণে ২৯টি শাখার কার্যক্রম বন্ধ। ব্যাংকিং সেবা স্বাভাবিক রাখতে সবার সহযোগিতা চেয়েছে বাংলাদেশ ব্যাংক।",
           "url": "https://www.prothomalo.com/business/bank/sqmi8x8esc"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "গ্রামীণ ব্যাংকের ১০৪ শাখা-কার্যালয়ে হামলা, বন্ধ ২৯টির কার্যক্রম: বাংলাদেশ ব্যাংক",
-          "summary": "দেশের বিভিন্ন স্থানে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয় অনাকাঙ্ক্ষিত ঘটনায় ক্ষতিগ্রস্ত হয়েছে। গত ১০ নভেম্বর থেকে ২৫ নভেম্বর পর্যন্ত এসব ঘটনা ঘটে। নিরাপত্তাজনিত কারণে এর মধ্যে ২৯টি শাখার কার্যক্রম সাময়িকভাবে বন্ধ রয়েছে। এতে ব্যাংকটির স্বাভাবিক কার্যক্রমের পাশাপাশি গ্রামীণ পর্যায়ে ঋণ বিতরণ ও গ্রাহকসেবা ব্যাহত হচ্ছে। বাংলাদেশ ব্যাংকের এক বিবরণীতে এসব তথ্য তুলে ধরা হয়েছে। এতে বলা হয়, বিভিন্ন... বিস্তারিত",
-          "url": "https://www.banglatribune.com/business/money-and-investment/983362/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A7%A7%E0%A7%A6%E0%A7%AA-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "01633f004e9795936c6f314ad9e798a2"
+      "corroborationCount": 1,
+      "alertEventId": "ea765055a60d11b3d5b57b82a4c90ebc"
     },
     {
       "title": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ - United News of Bangladesh",
@@ -1346,12 +1324,17 @@
       "source": "UNB",
       "publisherName": "UNB",
       "sourceEvidence": [
-        "UNB"
+        "UNB",
+        "bdnews24.com"
       ],
       "sourceLinks": [
         {
           "name": "UNB",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
+        },
+        {
+          "name": "bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv"
         }
       ],
       "category": "Bangladesh",
@@ -1363,10 +1346,16 @@
           "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
           "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত United News of Bangladesh",
           "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
+        },
+        {
+          "name": "bdnews24.com",
+          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - bdnews24.com",
+          "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "18a2db70ba9b9dcd17f73cfd46207640"
+      "corroborationCount": 2,
+      "alertEventId": "568b55b4d53df6e3cfc1588020d8607a"
     },
     {
       "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
