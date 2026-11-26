@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T08:35:39.153908+00:00",
-  "updatedAt": "2026-11-26T08:35:39.153908+00:00",
+  "generatedAt": "2026-11-26T08:50:34.350464+00:00",
+  "updatedAt": "2026-11-26T08:50:34.350464+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangla Tribune",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 11,
+      "fallbackItems": 13,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,86 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "ইনানীর নলকূপের গ্যাসের আগুন নিয়ন্ত্রণে বাপেক্স, মুখ বন্ধের অপারেশন শুরু",
+      "summary": "টানা ৩০ দিন ধরে জ্বলতে থাকা কক্সবাজারের ইনানীর ছোটখাল এলাকার পরিত্যক্ত নলকূপ থেকে নির্গত গ্যাসের আগুন নিয়ন্ত্রণে এনে গর্তের মুখ বন্ধের চূড়ান্ত প্রস্তুতি নিয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। বৃহস্পতিবার (২৬ নভেম্বর) বিকালের পর আগুনের চাপ কমিয়ে ধাপে ধাপে গর্তের মুখ বন্ধের কার্যক্রম শুরু হবে বলে জানিয়েছে সংস্থাটি। সকালে আগুনের মুখবন্ধের ৭ মিনিটের... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8",
+      "publishedAt": "2026-11-26T08:45:46+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "ইনানীর নলকূপের গ্যাসের আগুন নিয়ন্ত্রণে বাপেক্স, মুখ বন্ধের অপারেশন শুরু",
+          "summary": "টানা ৩০ দিন ধরে জ্বলতে থাকা কক্সবাজারের ইনানীর ছোটখাল এলাকার পরিত্যক্ত নলকূপ থেকে নির্গত গ্যাসের আগুন নিয়ন্ত্রণে এনে গর্তের মুখ বন্ধের চূড়ান্ত প্রস্তুতি নিয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। বৃহস্পতিবার (২৬ নভেম্বর) বিকালের পর আগুনের চাপ কমিয়ে ধাপে ধাপে গর্তের মুখ বন্ধের কার্যক্রম শুরু হবে বলে জানিয়েছে সংস্থাটি। সকালে আগুনের মুখবন্ধের ৭ মিনিটের... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/983361/%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%B2%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%AA%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6357c7aafc0b4970286e85d5964c561f"
+    },
+    {
+      "title": "চট্টগ্রামে সাড়ে পাঁচ ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসে আগুন",
+      "summary": "চট্টগ্রাম নগরে এর আগেও একাধিক পুলিশ বক্সে হামলা ও আগুন দেওয়ার ঘটনা ঘটেছে। আগুন দেওয়ার সময় পুলিশ বক্সের ভেতরে কেউ ছিলেন না।",
+      "link": "https://www.prothomalo.com/bangladesh/district/u0i7dtboyn",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/u0i7dtboyn",
+      "publishedAt": "2026-11-26T08:33:15+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/u0i7dtboyn"
+        },
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "চট্টগ্রামে সাড়ে পাঁচ ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসে আগুন",
+          "summary": "চট্টগ্রাম নগরে এর আগেও একাধিক পুলিশ বক্সে হামলা ও আগুন দেওয়ার ঘটনা ঘটেছে। আগুন দেওয়ার সময় পুলিশ বক্সের ভেতরে কেউ ছিলেন না।",
+          "url": "https://www.prothomalo.com/bangladesh/district/u0i7dtboyn",
+          "incidentDateText": "২৬ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ সকালে",
+          "incidentTimeSource": "Prothom Alo"
+        },
+        {
+          "name": "Dainik Azadi",
+          "title": "হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি",
+          "summary": "চট্টগ্রাম নগরের বড়পোল পুলিশ বক্সে আগুন ধরিয়ে দেওয়ার চেষ্টা করা হয়েছে। আজ বৃহস্পতিবার ভোর পাঁচটার দিকে এ ঘটনা ঘটে। এতে বক্সের জানালা ক্ষতিগ্রস্ত হয়েছে। পুলিশ জানিয়েছে, বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি। প্রত্যক্ষদর্শীদের ভাষ্য, ভোরে পুলিশ বক্সের জানালার বাইরে থেকে আগুন দেওয়ার চেষ্টা করা হয়। এতে জানালার কিছু অংশ ক্ষতিগ্রস্ত হয়। ধোঁয়ায় বক্সের ভেতর ও বাইরের […] The post হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/",
+          "incidentDateText": "১৯ নভেম্বর",
+          "locationText": "নিশ্চিত করে হালিশহর থানার"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "f722dfe7e021166c747fad3e923bcbf3"
+    },
     {
       "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
       "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
@@ -874,6 +952,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
+    },
+    {
+      "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
+      "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672898",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672898",
+      "publishedAt": "2026-11-26T07:40:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672898"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ - Risingbd.com",
+          "summary": "কুষ্টিয়া কারা ফটকে ককটেল বিস্ফোরণ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672898"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "fbd99e9ff30d44430250ce245179d894"
     },
     {
       "title": "ঢাকার সিএমএম কোর্টের সামনে ক/ক/টেল বিস্ফো/রণ #CocktailBlast #DhakaCourt #rtvnews",
@@ -947,39 +1056,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "dcd95baa4da15cf2fbaecbf17d0986ff"
-    },
-    {
-      "title": "হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি",
-      "summary": "চট্টগ্রাম নগরের বড়পোল পুলিশ বক্সে আগুন ধরিয়ে দেওয়ার চেষ্টা করা হয়েছে। আজ বৃহস্পতিবার ভোর পাঁচটার দিকে এ ঘটনা ঘটে। এতে বক্সের জানালা ক্ষতিগ্রস্ত হয়েছে। পুলিশ জানিয়েছে, বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি। প্রত্যক্ষদর্শীদের ভাষ্য, ভোরে পুলিশ বক্সের জানালার বাইরে থেকে আগুন দেওয়ার চেষ্টা করা হয়। এতে জানালার কিছু অংশ ক্ষতিগ্রস্ত হয়। ধোঁয়ায় বক্সের ভেতর ও বাইরের […] The post হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/",
-      "publisherUrl": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/",
-      "publishedAt": "2026-11-26T07:01:33+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি",
-          "summary": "চট্টগ্রাম নগরের বড়পোল পুলিশ বক্সে আগুন ধরিয়ে দেওয়ার চেষ্টা করা হয়েছে। আজ বৃহস্পতিবার ভোর পাঁচটার দিকে এ ঘটনা ঘটে। এতে বক্সের জানালা ক্ষতিগ্রস্ত হয়েছে। পুলিশ জানিয়েছে, বড় ধরনের কোনো ক্ষয়ক্ষতি হয়নি। প্রত্যক্ষদর্শীদের ভাষ্য, ভোরে পুলিশ বক্সের জানালার বাইরে থেকে আগুন দেওয়ার চেষ্টা করা হয়। এতে জানালার কিছু অংশ ক্ষতিগ্রস্ত হয়। ধোঁয়ায় বক্সের ভেতর ও বাইরের […] The post হালিশহরে পুলিশ বক্সে আগুন দেওয়ার চেষ্টা, বড় ক্ষয়ক্ষতি হয়নি appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/borpol-police-box-fire-attempt-chattogram/",
-          "incidentDateText": "১৯ নভেম্বর",
-          "locationText": "নিশ্চিত করে হালিশহর থানার"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f722dfe7e021166c747fad3e923bcbf3"
     },
     {
       "title": "ঢাকার সিএমএম আদালতের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ",
@@ -1060,9 +1136,7 @@
           "name": "Jamuna Television",
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668709",
-          "incidentDateText": "২৬ নভেম্বর ২০২৬",
-          "locationText": "নম্বর ওয়ার্ডের হোসেনপুর এলাকায়, পরে স্থানীয় এলাকা"
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
       "corroborationCount": 3,
