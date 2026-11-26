@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-26T12:35:43.711893+00:00",
-  "updatedAt": "2026-11-26T12:35:43.711893+00:00",
+  "generatedAt": "2026-11-26T12:50:43.107658+00:00",
+  "updatedAt": "2026-11-26T12:50:43.107658+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -77,17 +77,17 @@
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jugantor",
@@ -139,7 +139,7 @@
       "domain": "dhakatribune.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "The read operation timed out",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -257,17 +257,17 @@
     {
       "name": "Samakal",
       "domain": "samakal.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dhaka Post",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
+    {
+      "title": "তিন জেলায় দুর্বৃত্তদের তা/ণ্ডব, পু/ড়ল গুরুত্বপূর্ণ কাগজপত্র ও বাস #bombattack #crimenews #kushtia",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/uNIRIttXc1Y",
+      "publisherUrl": "https://www.youtube.com/shorts/uNIRIttXc1Y",
+      "publishedAt": "2026-11-26T12:43:04+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/uNIRIttXc1Y"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "তিন জেলায় দুর্বৃত্তদের তা/ণ্ডব, পু/ড়ল গুরুত্বপূর্ণ কাগজপত্র ও বাস #bombattack #crimenews #kushtia",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/uNIRIttXc1Y"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "0cc60697c4d6f5da83d44126275b1d4f"
+    },
     {
       "title": "আধিপত্য বিস্তার নিয়ে দুপক্ষের সংঘর্ষ, প্রা/ণ গেল একজনের। Munshiganj।Mollakandi। BNP। Channel 24",
       "summary": "",
@@ -1286,18 +1317,54 @@
       "alertEventId": "e4d335899f915103b00b066e15952f61"
     },
     {
-      "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
-      "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672883",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672883",
-      "publishedAt": "2026-11-26T06:22:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
+      "title": "মুন্সীগঞ্জে ফের বিএনপির দুই পক্ষের সংঘর্ষ, নিহত ১ - Dhaka Tribune Bangla",
+      "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই পক্ষের সংঘর্ষ, নিহত ১ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113822/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113822/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7",
+      "publishedAt": "2026-11-26T06:25:35+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113822/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই পক্ষের সংঘর্ষ, নিহত ১ - Dhaka Tribune Bangla",
+          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই পক্ষের সংঘর্ষ, নিহত ১ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113822/%E0%A6%AE%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%B8%E0%A6%BF%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AB%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A7"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9be1eb808db1e9a2aa23864662f63612"
+    },
+    {
+      "title": "নেত্রকোনায় এনসিপি নেতার বাসায় আগুন - কালের কণ্ঠ",
+      "summary": "নেত্রকোনায় এনসিপি নেতার বাসায় আগুন কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/country-news/2026/11/26/1773010",
+      "publisherUrl": "https://www.kalerkantho.com/online/country-news/2026/11/26/1773010",
+      "publishedAt": "2026-11-26T06:22:37+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ",
         "Risingbd.com",
         "Jamuna Television"
       ],
       "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/country-news/2026/11/26/1773010"
+        },
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
@@ -1312,6 +1379,12 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "কালের কণ্ঠ",
+          "title": "নেত্রকোনায় এনসিপি নেতার বাসায় আগুন - কালের কণ্ঠ",
+          "summary": "নেত্রকোনায় এনসিপি নেতার বাসায় আগুন কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/country-news/2026/11/26/1773010"
+        },
+        {
           "name": "Risingbd.com",
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
@@ -1324,7 +1397,7 @@
           "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 3,
       "alertEventId": "6277888ed890895a00c817d993e0f5b8"
     },
     {
@@ -1419,37 +1492,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1c1929edab37ba4529846fb8d118f555"
-    },
-    {
-      "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
-      "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
-      "link": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publisherUrl": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
-      "publishedAt": "2026-11-25T21:33:26+00:00",
-      "source": "Samakal",
-      "publisherName": "Samakal",
-      "sourceEvidence": [
-        "Samakal"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Samakal",
-          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Samakal",
-          "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
-          "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
-          "url": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
       "title": "চট্টগ্রামে বাসায় বিকট বিস্ফোরণ, দগ্ধ একই পরিবারের ৩ জন - Dhaka Tribune Bangla",
@@ -1576,6 +1618,37 @@
       "alertEventId": "84f169a909caa603740ae5fff90c93db"
     },
     {
+      "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মী নিহত, আহত ৪ - Dhaka Tribune Bangla",
+      "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মী নিহত, আহত ৪ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113800/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113800/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4",
+      "publishedAt": "2026-11-25T14:27:00+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113800/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মী নিহত, আহত ৪ - Dhaka Tribune Bangla",
+          "summary": "ককটেল তৈরির সময় বিস্ফোরণে আওয়ামী লীগ কর্মী নিহত, আহত ৪ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113800/%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "97553ad96f9940453a8bf0ffd5d4a8fe"
+    },
+    {
       "title": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত - Jamuna Television",
       "summary": "চাঁপাইনবাবগঞ্জে বোমা তৈরির সময় বিস্ফোরণে কার্যক্রম নিষিদ্ধ কৃষক লীগ সদস্য নিহত Jamuna Television",
       "link": "https://www.jamuna.tv/all-bangladesh/668690",
@@ -1636,68 +1709,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "639bb9cdf0c774b7705dcc9a3c58dd1d"
-    },
-    {
-      "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
-      "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/672804",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672804",
-      "publishedAt": "2026-11-25T12:47:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672804"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ - Risingbd.com",
-          "summary": "লক্ষ্মীপুরে বিএনপি নেতার পিকআপে অগ্নিসংযোগ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/672804"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2e1f30e711e54a3ea0baeb0e6e40a23a"
-    },
-    {
-      "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-      "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr",
-      "publishedAt": "2026-11-25T12:45:17+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
-        "Ajker Patrika"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ajker Patrika",
-          "title": "বগুড়ায় বিএনপি কার্যালয়ে আগুন - Ajker Patrika",
-          "summary": "বগুড়ায় বিএনপি কার্যালয়ে আগুন Ajker Patrika",
-          "url": "https://www.ajkerpatrika.com/bangladesh/bogra/ajpbqj62181rr"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9c1469d3d85327289e011cd752f53314"
     }
   ]
 }
