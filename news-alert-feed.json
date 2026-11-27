@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T18:35:41.167560+00:00",
-  "updatedAt": "2026-11-27T18:35:41.167560+00:00",
+  "generatedAt": "2026-11-27T18:50:44.955860+00:00",
+  "updatedAt": "2026-11-27T18:50:44.955860+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 10,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক - Risingbd.com",
+      "summary": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/673131",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673131",
+      "publishedAt": "2026-11-27T18:35:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673131"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক - Risingbd.com",
+          "summary": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673131"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5de8055e93239b29829dcb0151078133"
+    },
     {
       "title": "কুমিল্লা বিশ্ববিদ্যালয়ের প্রধান ফটকে ককটেল বিস্ফোরণ, শিক্ষার্থীসহ আহত দুজন",
       "summary": "",
