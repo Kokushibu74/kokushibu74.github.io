@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T01:50:52.990907+00:00",
-  "updatedAt": "2026-11-27T01:50:52.990907+00:00",
+  "generatedAt": "2026-11-27T02:15:46.770532+00:00",
+  "updatedAt": "2026-11-27T02:15:46.770532+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 49,
@@ -11,8 +11,8 @@
   "fallbackHealthySourceCount": 28,
   "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 28,
-  "fallbackWithItemsSourceCount": 21,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackWithItemsSourceCount": 23,
+  "fallbackZeroItemsSourceCount": 5,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Kaler Kantho",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "UNB",
@@ -272,32 +272,32 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sun",
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 8,
+      "fallbackItems": 9,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -347,32 +347,32 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -572,32 +572,32 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "BD24Live",
@@ -843,51 +843,6 @@
   "candidateCount": 30,
   "alertItems": [
     {
-      "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ",
-      "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
-      "link": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
-      "publishedAt": "2026-11-26T21:33:23+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo",
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh"
-        },
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ",
-          "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
-          "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
-          "incidentDateText": "১৯ নভেম্বর",
-          "incidentTimeText": "বিকেল ৪টা ১০ মিনিটে",
-          "incidentTimeSource": "Prothom Alo"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
-          "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "3569376b763f9b321834bcbb4d903246"
-    },
-    {
       "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
       "summary": "পটুয়াখালীর কুয়াকাটায় সড়কের পাশে দীর্ঘদিন ধরে পার্কিং করে রাখা পর্যটকবাহী একটি পরিত্যক্ত জিপে (চান্দেরগাড়ী) অগ্নিকাণ্ড ঘটেছে...",
       "link": "https://www.jagonews24.com/country/news/1184193",
@@ -967,23 +922,18 @@
       "alertEventId": "3c35422276a34afc9ffa9da9fffa0f54"
     },
     {
-      "title": "৭ ঘণ্টার চেষ্টায় নিভলো চকবাজারের প্লাস্টিক গোডাউনের আগুন",
-      "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় প্লাস্টিকের গোডাউনে লাগা আগুন নির্বাপণ হয়েছে...",
-      "link": "https://www.jagonews24.com/national/news/1184189",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1184189",
-      "publishedAt": "2026-11-26T19:24:38+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
+      "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
+      "link": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
+      "publishedAt": "2026-11-26T18:58:55+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Jago News 24",
         "Bangla Tribune",
         "DBC News"
       ],
       "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1184189"
-        },
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
@@ -998,26 +948,67 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "৭ ঘণ্টার চেষ্টায় নিভলো চকবাজারের প্লাস্টিক গোডাউনের আগুন",
-          "summary": "রাজধানীর পুরান ঢাকার চকবাজার এলাকায় প্লাস্টিকের গোডাউনে লাগা আগুন নির্বাপণ হয়েছে...",
-          "url": "https://www.jagonews24.com/national/news/1184189"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
           "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
         },
         {
+          "name": "Bangla Tribune",
+          "title": "চকবাজারে বহুতল ভবনের আগুন নিয়ন্ত্রণে",
+          "summary": "পুরান ঢাকার চকবাজারে বহুতল ভবনে লাগা আগুন নিয়ন্ত্রণে এসেছে। ফায়ার সার্ভিসের পাঁচটি ইউনিটের চেষ্টায় বৃহস্পতিবার (২৬ নভেম্বর) ১০টা ২২ মি‌নি‌টে আগুন নিয়ন্ত্রণে আসে। এদিন ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করেছে।... বিস্তারিত",
+          "url": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
+        },
+        {
           "name": "DBC News",
           "title": "পুরান ঢাকার চকবাজারে একটি প্লাস্টিকের গুদামে আগুন | DBC NEWS",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=OlN5sWK9TsU"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "চকবাজারে বহুতল ভবনে আগুন",
+          "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "8ae10cea5f359c556e67e3c6e48fa06f"
+      "corroborationCount": 2,
+      "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
+    },
+    {
+      "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
+      "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/national/501172",
+      "publisherUrl": "https://www.dhakapost.com/national/501172",
+      "publishedAt": "2026-11-26T18:53:36+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501172"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
+          "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501172",
+          "incidentDateText": "বৃহস্পতিবার (২৬ নভেম্বর)",
+          "incidentTimeText": "রাত ১২টা ২০ মিনিটে",
+          "incidentTimeSource": "dhakapost.com",
+          "locationText": "বাড্ডা এলাকা, মিল্লাত ক্যাম্প সংলগ্ন এলাকা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "31618273d2c9fd167d6897c611ee7920"
     },
     {
       "title": "বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধের সতর্কতা - Dhaka Tribune Bangla",
@@ -1051,54 +1042,6 @@
       "alertEventId": "e083350994b9e789c23a5b0c418e75e5"
     },
     {
-      "title": "চকবাজারে বহুতল ভবনের আগুন নিয়ন্ত্রণে",
-      "summary": "পুরান ঢাকার চকবাজারে বহুতল ভবনে লাগা আগুন নিয়ন্ত্রণে এসেছে। ফায়ার সার্ভিসের পাঁচটি ইউনিটের চেষ্টায় বৃহস্পতিবার (২৬ নভেম্বর) ১০টা ২২ মি‌নি‌টে আগুন নিয়ন্ত্রণে আসে। এদিন ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করেছে।... বিস্তারিত",
-      "link": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87",
-      "publisherUrl": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87",
-      "publishedAt": "2026-11-26T16:54:39+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune",
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "চকবাজারে বহুতল ভবনের আগুন নিয়ন্ত্রণে",
-          "summary": "পুরান ঢাকার চকবাজারে বহুতল ভবনে লাগা আগুন নিয়ন্ত্রণে এসেছে। ফায়ার সার্ভিসের পাঁচটি ইউনিটের চেষ্টায় বৃহস্পতিবার (২৬ নভেম্বর) ১০টা ২২ মি‌নি‌টে আগুন নিয়ন্ত্রণে আসে। এদিন ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করেছে।... বিস্তারিত",
-          "url": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
-          "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Bangla Tribune",
-          "title": "চকবাজারে বহুতল ভবনে আগুন",
-          "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
-    },
-    {
       "title": "বিস্ফোরণে দগ্ধ ‘আমি আর বাচতাম না’ বলা রাশেদা মারা গেছেন",
       "summary": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান।’ হাসপাতালের বিছানায় শুয়ে বড় ভাইয়ের স্ত্রীকে এ কথা বলেছিলেন রাশেদা বেগম (২১)। সেই রাশেদা আর নেই। আজ বৃহস্পতিবার দুপুর ২টার দিকে চট্টগ্রাম মেডিকেল কলেজ (চমেক) হাসপাতালের আইসিইউতে তিনি মারা যান। হাসপাতালের বার্ন ও প্লাস্টিক সার্জারি বিভাগের রেজিস্ট্রার ডা. লিটন কুমার পালিত বিষয়টি নিশ্চিত করেছেন। তিনি […] The post বিস্ফোরণে দগ্ধ ‘আমি আর বাচতাম না’ বলা রাশেদা মারা গেছেন appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/rashedas-death-newmooring-blast-chattogram/",
@@ -1128,6 +1071,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "21c68df8d5aaf301bf3c57028cb00de9"
+    },
+    {
+      "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
+      "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87",
+      "publishedAt": "2026-11-26T16:36:10+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune",
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
+          "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "Banglanews24",
+          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
+          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     },
     {
       "title": "কুমিল্লা বিশ্ববিদ্যালয়ের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ, শিক্ষার্থীসহ আহত ২ | DBC NEWS",
@@ -1212,6 +1197,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0dd2e6a78639b8705a6a79292e02c674"
+    },
+    {
+      "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
+      "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
+      "publishedAt": "2026-11-26T15:30:41+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
+          "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e4b1e4be66efbe63ce42a01b7a082392"
     },
     {
       "title": "সাত মিনিটের স্বস্তি, ফের জ্বলে উঠলো ইনানীর গ্যাসের আগুন",
@@ -1318,37 +1334,6 @@
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
     },
     {
-      "title": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
-      "summary": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
-      "link": "https://www.jagonews24.com/country/news/1184102",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184102",
-      "publishedAt": "2026-11-26T13:23:31+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184102"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
-          "summary": "কুষ্টিয়া জেলা কারাগারে আবারও ককটেল নিক্ষেপ",
-          "url": "https://www.jagonews24.com/country/news/1184102"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "59cacf49b88a17b1e01f2c9e93868163"
-    },
-    {
       "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
       "summary": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের Samakal",
       "link": "https://samakal.com/whole-country/article/384986/%E0%A6%87%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF-%E0%A6%AF%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%BE%E0%A6%A5%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3-%E0%A6%97%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95%E0%A7%87%E0%A6%B0",
@@ -1442,37 +1427,6 @@
       "alertEventId": "b25f4028f84c2675e90ca39eb10ac15f"
     },
     {
-      "title": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন - Dhaka Tribune Bangla",
-      "summary": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-26T09:26:51+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন - Dhaka Tribune Bangla",
-          "summary": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cd6dc9f10763009994134f0e25e0c616"
-    },
-    {
       "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
       "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত United News of Bangladesh",
       "link": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700",
@@ -1504,6 +1458,37 @@
       "alertEventId": "18a2db70ba9b9dcd17f73cfd46207640"
     },
     {
+      "title": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন - Barta 24",
+      "summary": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন Barta 24",
+      "link": "https://barta24.com/details/national/349752",
+      "publisherUrl": "https://barta24.com/details/national/349752",
+      "publishedAt": "2026-11-26T07:40:02+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349752"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন - Barta 24",
+          "summary": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন Barta 24",
+          "url": "https://barta24.com/details/national/349752"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "aad8e9ba403d1a8ac5f56f09dce9febb"
+    },
+    {
       "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
       "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/672883",
@@ -1512,12 +1497,17 @@
       "source": "Risingbd.com",
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Risingbd.com"
+        "Risingbd.com",
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
       "category": "Bangladesh",
@@ -1529,10 +1519,16 @@
           "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Risingbd.com",
           "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672883"
+        },
+        {
+          "name": "Jamuna Television",
+          "title": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ - Jamuna Television",
+          "summary": "নেত্রকোণায় এনসিপির কেন্দ্রীয় নেতা ফাহিমের বাসায় অগ্নিসংযোগ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668709"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "f3bb07e2084a107665f841048c42525a"
+      "corroborationCount": 2,
+      "alertEventId": "6277888ed890895a00c817d993e0f5b8"
     },
     {
       "title": "এনসিপির কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Dhaka Tribune Bangla",
