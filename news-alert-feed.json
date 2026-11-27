@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T21:50:37.982725+00:00",
-  "updatedAt": "2026-11-27T21:50:37.982725+00:00",
+  "generatedAt": "2026-11-27T22:05:36.642064+00:00",
+  "updatedAt": "2026-11-27T22:05:36.642064+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -842,6 +842,37 @@
   ],
   "candidateCount": 32,
   "alertItems": [
+    {
+      "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+      "summary": "মাদারীপুরের কালকিনিতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও বিএনপির নেতাকর্মীদের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে আহত হয়েছেন ছয়জন। এসময় অর্ধশতাধিক ককটেল বিস্ফোরণের ঘটনা ঘটে...",
+      "link": "https://www.jagonews24.com/country/news/1184444",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184444",
+      "publishedAt": "2026-11-27T21:52:39+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+          "summary": "মাদারীপুরের কালকিনিতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও বিএনপির নেতাকর্মীদের মধ্যে সংঘর্ষের ঘটনা ঘটেছে। এতে আহত হয়েছেন ছয়জন। এসময় অর্ধশতাধিক ককটেল বিস্ফোরণের ঘটনা ঘটে...",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
+    },
     {
       "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন",
       "summary": "চাঁদপুরে চট্টগ্রাম থেকে ছেড়ে আসা মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন দেওয়ার ঘটনা ঘটেছে। এতে বগিটির দুটি আসনসহ বেশ কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। তবে কোনো হতাহতের ঘটনা ঘটেনি...",
@@ -1147,8 +1178,7 @@
           "name": "Dainik Azadi",
           "title": "হামাগুড়ি দিয়ে বাসায় ঢুকল চোর, ধরা পড়ল সিসি ক্যামেরায়",
           "summary": "চট্টগ্রাম নগরের আগ্রাবাদে সরকারি সিজিএস কলোনির একটি বাসায় চুরির ঘটনা সিসি ক্যামেরায় ধরা পড়েছে। বাসাটি বিস্ফোরক অধিদপ্তরের চট্টগ্রাম কার্যালয়ে কর্মরত এক সরকারি কর্মকর্তার। ফুটেজে দেখা যায়, হালকা রঙের জামা ও কালো প্যান্ট পরা এক ব্যক্তি বাসার ভেতরে হামাগুড়ি দিয়ে এগোচ্ছেন। পরে তাঁকে দাঁড়িয়ে হাঁটতে এবং একপর্যায়ে ক্যামেরার খুব কাছে আসতে দেখা যায়। বৃহস্পতিবার দিবাগত রাত […] The post হামাগুড়ি দিয়ে বাসায় ঢুকল চোর, ধরা পড়ল সিসি ক্যামেরায় appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/agrabad-cgs-colony-theft-cctv/",
-          "locationText": "সোসাইটির সেক্রেটারি ডবলমুরিং থানা"
+          "url": "https://dainikazadi.net/agrabad-cgs-colony-theft-cctv/"
         }
       ],
       "corroborationCount": 1,
@@ -1476,37 +1506,6 @@
       "alertEventId": "2355610d84b6906547bad4b4f9e0713b"
     },
     {
-      "title": "আওয়ামী লীগ নেতার ফোনকল ফাঁস, বললেন ‘গেরিলা বাহিনী গড়ে ১০ জনকে মেরে ফেলতে’",
-      "summary": "লক্ষ্মীপুরের সাবেক মেয়র ও আওয়ামী লীগ নেতা প্রয়াত এম এ তাহেরের ছেলে আফতাব উদ্দিন বিপ্লবের একটি কথোপকথনের অডিও রেকর্ডিং সামাজিক যোগাযোগমাধ্যম ফেসবুকে ছড়িয়ে পড়েছে। প্রায় তিন মিনিটের ওই রেকর্ডিংয়ে তাকে বিএনপি-জামায়াতের নেতাকর্মীদের লক্ষ্য করে হামলা এবং গেরিলা বাহিনী গড়ে তোলার বিষয়ে কথা বলতে শোনা যায়। তবে রেকর্ডিংটি কৃত্রিম বুদ্ধিমত্তা (এআই) দিয়ে তৈরি বলে দাবি করেছেন বিপ্লব। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
-      "publishedAt": "2026-11-27T09:54:39+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "আওয়ামী লীগ নেতার ফোনকল ফাঁস, বললেন ‘গেরিলা বাহিনী গড়ে ১০ জনকে মেরে ফেলতে’",
-          "summary": "লক্ষ্মীপুরের সাবেক মেয়র ও আওয়ামী লীগ নেতা প্রয়াত এম এ তাহেরের ছেলে আফতাব উদ্দিন বিপ্লবের একটি কথোপকথনের অডিও রেকর্ডিং সামাজিক যোগাযোগমাধ্যম ফেসবুকে ছড়িয়ে পড়েছে। প্রায় তিন মিনিটের ওই রেকর্ডিংয়ে তাকে বিএনপি-জামায়াতের নেতাকর্মীদের লক্ষ্য করে হামলা এবং গেরিলা বাহিনী গড়ে তোলার বিষয়ে কথা বলতে শোনা যায়। তবে রেকর্ডিংটি কৃত্রিম বুদ্ধিমত্তা (এআই) দিয়ে তৈরি বলে দাবি করেছেন বিপ্লব। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "45df0b1c2d91c5f79314861cbb810c38"
-    },
-    {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
       "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1537,7 +1536,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
           "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
