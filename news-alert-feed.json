@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T09:50:46.209440+00:00",
-  "updatedAt": "2026-11-27T09:50:46.209440+00:00",
+  "generatedAt": "2026-11-27T10:05:42.695921+00:00",
+  "updatedAt": "2026-11-27T10:05:42.695921+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 26,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,101 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 31,
   "alertItems": [
+    {
+      "title": "কুমিল্লা বিশ্ববিদ্যালয়ে আওয়ামী স/ন্ত্রাসীদের ক/কটেল হা/মলায় শিক্ষার্থীসহ আহত ২ জন #CocktailBlast",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/7vSNBxdWgsQ",
+      "publisherUrl": "https://www.youtube.com/shorts/7vSNBxdWgsQ",
+      "publishedAt": "2026-11-27T09:55:50+00:00",
+      "source": "RTV News",
+      "publisherName": "RTV News",
+      "sourceEvidence": [
+        "RTV News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "RTV News · YouTube",
+          "url": "https://www.youtube.com/shorts/7vSNBxdWgsQ"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "RTV News",
+          "title": "কুমিল্লা বিশ্ববিদ্যালয়ে আওয়ামী স/ন্ত্রাসীদের ক/কটেল হা/মলায় শিক্ষার্থীসহ আহত ২ জন #CocktailBlast",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/7vSNBxdWgsQ"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1dbe6bffb866dcb2c755401d28c27a89"
+    },
+    {
+      "title": "আওয়ামী লীগ নেতার ফোনকল ফাঁস, বললেন ‘গেরিলা বাহিনী গড়ে ১০ জনকে মেরে ফেলতে’",
+      "summary": "লক্ষ্মীপুরের সাবেক মেয়র ও আওয়ামী লীগ নেতা প্রয়াত এম এ তাহেরের ছেলে আফতাব উদ্দিন বিপ্লবের একটি কথোপকথনের অডিও রেকর্ডিং সামাজিক যোগাযোগমাধ্যম ফেসবুকে ছড়িয়ে পড়েছে। প্রায় তিন মিনিটের ওই রেকর্ডিংয়ে তাকে বিএনপি-জামায়াতের নেতাকর্মীদের লক্ষ্য করে হামলা এবং গেরিলা বাহিনী গড়ে তোলার বিষয়ে কথা বলতে শোনা যায়। তবে রেকর্ডিংটি কৃত্রিম বুদ্ধিমত্তা (এআই) দিয়ে তৈরি বলে দাবি করেছেন বিপ্লব। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
+      "publishedAt": "2026-11-27T09:54:39+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "আওয়ামী লীগ নেতার ফোনকল ফাঁস, বললেন ‘গেরিলা বাহিনী গড়ে ১০ জনকে মেরে ফেলতে’",
+          "summary": "লক্ষ্মীপুরের সাবেক মেয়র ও আওয়ামী লীগ নেতা প্রয়াত এম এ তাহেরের ছেলে আফতাব উদ্দিন বিপ্লবের একটি কথোপকথনের অডিও রেকর্ডিং সামাজিক যোগাযোগমাধ্যম ফেসবুকে ছড়িয়ে পড়েছে। প্রায় তিন মিনিটের ওই রেকর্ডিংয়ে তাকে বিএনপি-জামায়াতের নেতাকর্মীদের লক্ষ্য করে হামলা এবং গেরিলা বাহিনী গড়ে তোলার বিষয়ে কথা বলতে শোনা যায়। তবে রেকর্ডিংটি কৃত্রিম বুদ্ধিমত্তা (এআই) দিয়ে তৈরি বলে দাবি করেছেন বিপ্লব। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "45df0b1c2d91c5f79314861cbb810c38"
+    },
+    {
+      "title": "গ্রামীণ ব্যাংকের এক শাখায় ৩ পেট্রোলবোমা নিক্ষেপ",
+      "summary": "বরিশালের উজিরপুর উপজেলায় গ্রামীণ ব্যাংকের একটি শাখায় তিনটি পেট্রোলবোমা নিক্ষেপ করা হয়েছে। শুক্রবার (২৭ নভেম্বর) ভোরে উপজেলার বামরাইল ইউনিয়নের সানুহার বাসস্ট্যান্ড-সংলগ্ন এলাকার একটি কার্যালয়ে এই বিস্ফোরণের ঘটনা ঘটে। এ ঘটনায় কেউ হতাহত না হলেও স্থানীয় লোকজনের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। উজিরপুর মডেল থানার ওসি রাকিবুল ইসলাম বিষয়টি নিশ্চিত করে বলেন, খবর পাওয়ার সঙ্গে সঙ্গে ঘটনাস্থলে পুলিশ পাঠানো হয়। এ... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/barishal/983582/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A7%A9-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publisherUrl": "https://www.banglatribune.com/country/barishal/983582/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A7%A9-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
+      "publishedAt": "2026-11-27T09:53:38+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/983582/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A7%A9-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "গ্রামীণ ব্যাংকের এক শাখায় ৩ পেট্রোলবোমা নিক্ষেপ",
+          "summary": "বরিশালের উজিরপুর উপজেলায় গ্রামীণ ব্যাংকের একটি শাখায় তিনটি পেট্রোলবোমা নিক্ষেপ করা হয়েছে। শুক্রবার (২৭ নভেম্বর) ভোরে উপজেলার বামরাইল ইউনিয়নের সানুহার বাসস্ট্যান্ড-সংলগ্ন এলাকার একটি কার্যালয়ে এই বিস্ফোরণের ঘটনা ঘটে। এ ঘটনায় কেউ হতাহত না হলেও স্থানীয় লোকজনের মধ্যে আতঙ্ক ছড়িয়ে পড়ে। উজিরপুর মডেল থানার ওসি রাকিবুল ইসলাম বিষয়টি নিশ্চিত করে বলেন, খবর পাওয়ার সঙ্গে সঙ্গে ঘটনাস্থলে পুলিশ পাঠানো হয়। এ... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/983582/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%8F%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A7%A9-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "dce0f548550e581946e8a00c06957544"
+    },
     {
       "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
       "summary": "ঢাকার সাভারে ঢাকা-আরিচা মহাসড়কে একটি পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) বেলা ১টা৩৫ মিনিটে মহাসড়কের জোড়পুল এলাকায় লাব্বাইক পরিবহনের পার্কিং করা বাসটিতে আগুন দেয়। সাভার মডেল থানার ওসি সাইফুল আলম বলেন, বাসটি মহাসড়কের পাশে গত দুই দিন ধরে পার্কিং করা ছিল। দুপুর ১টা ৩৫ মিনিটে বাসটিতে আগুন দেয় দুর্বৃত্তরা। তিনি আরও বলেন, ধারণা করা হচ্ছে, কার্যক্রম নিষিদ্ধ আওয়ামী... বিস্তারিত",
@@ -934,37 +1027,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fee0e4bf01084c39aec4c3b56bae3e36"
-    },
-    {
-      "title": "মুখোমুখি সংঘর্ষের পর বসতঘরে গিয়ে উল্টে পড়লো বাস, আহত ১০",
-      "summary": "বরিশালের গৌরনদীতে ঢাকা-বরিশাল মহাসড়কে দুটি যাত্রীবাহী বাসের মুখোমুখি সংঘর্ষে অন্তত ১০ জন আহত হয়েছেন...",
-      "link": "https://www.jagonews24.com/country/news/1184323",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184323",
-      "publishedAt": "2026-11-27T09:20:59+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184323"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "মুখোমুখি সংঘর্ষের পর বসতঘরে গিয়ে উল্টে পড়লো বাস, আহত ১০",
-          "summary": "বরিশালের গৌরনদীতে ঢাকা-বরিশাল মহাসড়কে দুটি যাত্রীবাহী বাসের মুখোমুখি সংঘর্ষে অন্তত ১০ জন আহত হয়েছেন...",
-          "url": "https://www.jagonews24.com/country/news/1184323"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bd8c78492bad9ce8cf0f60634a5addeb"
     },
     {
       "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
@@ -1193,8 +1255,7 @@
           "name": "Dainik Azadi",
           "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
           "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
-          "incidentDateText": "২৭ অক্টোবর"
+          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
         },
         {
           "name": "Bangla Tribune",
@@ -1354,25 +1415,20 @@
       "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     },
     {
-      "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
-      "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
-      "publishedAt": "2026-11-26T18:58:55+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
+      "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/national/501172",
+      "publisherUrl": "https://www.dhakapost.com/national/501172",
+      "publishedAt": "2026-11-26T18:53:36+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "একাত্তর"
+        "dhakapost.com"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501172"
         }
       ],
       "category": "Bangladesh",
@@ -1380,20 +1436,26 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
-          "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
+          "name": "dhakapost.com",
+          "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
+          "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501172"
         },
         {
-          "name": "একাত্তর",
-          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
-          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
-          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
+          "name": "dhakapost.com",
+          "title": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন - dhakapost.com",
+          "summary": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501167"
+        },
+        {
+          "name": "dhakapost.com",
+          "title": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে - dhakapost.com",
+          "summary": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501165"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
+      "corroborationCount": 1,
+      "alertEventId": "cab8f70e88cc497c71084d4ce3652497"
     },
     {
       "title": "বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধের সতর্কতা - Dhaka Tribune Bangla",
@@ -1435,12 +1497,17 @@
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Dhaka Tribune Bangla"
+        "Dhaka Tribune Bangla",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1452,10 +1519,16 @@
           "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
           "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
+          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "e4b1e4be66efbe63ce42a01b7a082392"
+      "corroborationCount": 2,
+      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
     },
     {
       "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
@@ -1518,6 +1591,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
+    },
+    {
+      "title": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি - dhakapost.com",
+      "summary": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি dhakapost.com",
+      "link": "https://www.dhakapost.com/country/501104",
+      "publisherUrl": "https://www.dhakapost.com/country/501104",
+      "publishedAt": "2026-11-26T13:05:06+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501104"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি - dhakapost.com",
+          "summary": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501104"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "b75710fde889491b649d13b5e0a6f529"
     },
     {
       "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
