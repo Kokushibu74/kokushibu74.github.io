@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T11:55:52.534324+00:00",
-  "updatedAt": "2026-11-27T11:55:52.534324+00:00",
+  "generatedAt": "2026-11-27T12:10:41.138750+00:00",
+  "updatedAt": "2026-11-27T12:10:41.138750+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -678,16 +678,16 @@
       "name": "Chattogram News",
       "domain": "chattogramnews.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 19,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sylhet News",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 36,
+  "candidateCount": 35,
   "alertItems": [
+    {
+      "title": "মাটির স্তুপ সরানোর কাজ হলো শ্রমিকের কাল! | Jessore Bomb | Independent TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=NndQGbOQLIs",
+      "publisherUrl": "https://www.youtube.com/watch?v=NndQGbOQLIs",
+      "publishedAt": "2026-11-27T11:59:15+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
+      "sourceEvidence": [
+        "Independent Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=NndQGbOQLIs"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Independent Television",
+          "title": "মাটির স্তুপ সরানোর কাজ হলো শ্রমিকের কাল! | Jessore Bomb | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=NndQGbOQLIs"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "6b3ee27361dd614f9ae1282caf4b8585"
+    },
     {
       "title": "টুঙ্গিপাড়ায় টহল দলের ওপর আওয়ামী সন্ত্রাসীদের হামলা | Tungipara Gopalganj | Awami League | Somoy TV",
       "summary": "",
@@ -934,37 +965,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3f4e2e6322f5e160890ccba50eed12c2"
-    },
-    {
-      "title": "চাঁদাবাজি-মাটি বাণিজ্যের নিয়ন্ত্রণ নিয়ে সংঘর্ষ, আহত ২০",
-      "summary": "নারায়ণগঞ্জের বক্তাবলীতে চাঁদাবাজি এবং মাটি বিক্রির কমিশন বাণিজ্যের নিয়ন্ত্রণ ও আধিপত্য বিস্তারকে কেন্দ্র করে সামাদ আলী ও হালিম আজাদ গ্রুপের মধ্যে দফায় দফায় সংঘর্ষের ঘটনা ঘটেছে...",
-      "link": "https://www.jagonews24.com/country/news/1184361",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184361",
-      "publishedAt": "2026-11-27T11:23:23+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184361"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "চাঁদাবাজি-মাটি বাণিজ্যের নিয়ন্ত্রণ নিয়ে সংঘর্ষ, আহত ২০",
-          "summary": "নারায়ণগঞ্জের বক্তাবলীতে চাঁদাবাজি এবং মাটি বিক্রির কমিশন বাণিজ্যের নিয়ন্ত্রণ ও আধিপত্য বিস্তারকে কেন্দ্র করে সামাদ আলী ও হালিম আজাদ গ্রুপের মধ্যে দফায় দফায় সংঘর্ষের ঘটনা ঘটেছে...",
-          "url": "https://www.jagonews24.com/country/news/1184361"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1e448b9463c425bdcee9ea10f5e1d745"
     },
     {
       "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু",
@@ -1155,8 +1155,8 @@
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
       "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-27T09:34:08+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1166,7 +1166,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1177,7 +1177,13 @@
           "name": "Dhaka Tribune Bangla",
           "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
+          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -1486,37 +1492,6 @@
       "alertEventId": "b16bb1cc3953c60e998e8a2d198ac6e2"
     },
     {
-      "title": "আশুলিয়ার আন্ডারপাসে মিললো ৫ ককটেল সদৃশ বস্তু",
-      "summary": "ঢাকার সাভার উপজেলার আশুলিয়ার বাইপাইল বাসস্ট্যান্ড এলাকায় আন্ডারপাসের নিচ থেকে পাঁচটি ককটেল সদৃশ বস্তু উদ্ধার করা হয়েছে। বৃহস্পতিবার (২৬ নভেম্বর) সন্ধ্যায় স্পেশাল রেসপন্স ব্যাটালিয়ন (এসআরবি)-৪-এর সদস্যরা বস্তুগুলো দেখতে পান। পরে ঢাকা মহানগর পুলিশের (ডিএমপি) বোমা নিষ্ক্রিয়করণ ইউনিটের সদস্যরা ঘটনাস্থলে গিয়ে সেগুলো নিয়ে যান। এসআরবি-৪-এর সিপিসি-২-এর সদস্যরা জানান, বৃহস্পতিবার সন্ধ্যা সাড়ে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983518/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%B2%E0%A7%8B-%E0%A7%AB-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983518/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%B2%E0%A7%8B-%E0%A7%AB-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81",
-      "publishedAt": "2026-11-27T03:38:47+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983518/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%B2%E0%A7%8B-%E0%A7%AB-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "আশুলিয়ার আন্ডারপাসে মিললো ৫ ককটেল সদৃশ বস্তু",
-          "summary": "ঢাকার সাভার উপজেলার আশুলিয়ার বাইপাইল বাসস্ট্যান্ড এলাকায় আন্ডারপাসের নিচ থেকে পাঁচটি ককটেল সদৃশ বস্তু উদ্ধার করা হয়েছে। বৃহস্পতিবার (২৬ নভেম্বর) সন্ধ্যায় স্পেশাল রেসপন্স ব্যাটালিয়ন (এসআরবি)-৪-এর সদস্যরা বস্তুগুলো দেখতে পান। পরে ঢাকা মহানগর পুলিশের (ডিএমপি) বোমা নিষ্ক্রিয়করণ ইউনিটের সদস্যরা ঘটনাস্থলে গিয়ে সেগুলো নিয়ে যান। এসআরবি-৪-এর সিপিসি-২-এর সদস্যরা জানান, বৃহস্পতিবার সন্ধ্যা সাড়ে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983518/%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0-%E0%A6%86%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%AE%E0%A6%BF%E0%A6%B2%E0%A6%B2%E0%A7%8B-%E0%A7%AB-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%B8%E0%A6%A6%E0%A7%83%E0%A6%B6-%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%81"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "617dfd70592476c687fd78f24b07952b"
-    },
-    {
       "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ, হামলা হলে বিদ্যুৎ বন্ধের সতর্কতা",
       "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
       "link": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
@@ -1673,37 +1648,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
-    },
-    {
-      "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-      "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-      "link": "https://chattogramnews.com/archives/161490",
-      "publisherUrl": "https://chattogramnews.com/archives/161490",
-      "publishedAt": "2026-11-26T15:20:43+00:00",
-      "source": "Chattogram News",
-      "publisherName": "Chattogram News",
-      "sourceEvidence": [
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chattogram News",
-          "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-          "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0864a322894b5db9387336c06f00384a"
     },
     {
       "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
