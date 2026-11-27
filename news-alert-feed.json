@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T22:05:36.642064+00:00",
-  "updatedAt": "2026-11-27T22:05:36.642064+00:00",
+  "generatedAt": "2026-11-27T22:15:41.904357+00:00",
+  "updatedAt": "2026-11-27T22:15:41.904357+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 403",
+      "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -1317,17 +1317,12 @@
       "source": "কালের কণ্ঠ",
       "publisherName": "কালের কণ্ঠ",
       "sourceEvidence": [
-        "কালের কণ্ঠ",
-        "Jugantor"
+        "কালের কণ্ঠ"
       ],
       "sourceLinks": [
         {
           "name": "কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        },
-        {
-          "name": "Jugantor",
-          "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
       "category": "Bangladesh",
@@ -1339,16 +1334,10 @@
           "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
           "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        },
-        {
-          "name": "Jugantor",
-          "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
-          "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
-          "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "54781f4f193dce751cf31b8b289712bf"
+      "corroborationCount": 1,
+      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
     },
     {
       "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
@@ -1739,6 +1728,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
+    },
+    {
+      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publishedAt": "2026-11-27T00:48:40+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
     }
   ]
 }
