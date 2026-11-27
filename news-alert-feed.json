@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T15:05:55.851950+00:00",
-  "updatedAt": "2026-11-27T15:05:55.851950+00:00",
+  "generatedAt": "2026-11-27T15:20:45.379136+00:00",
+  "updatedAt": "2026-11-27T15:20:45.379136+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 50,
-  "failedSourceCount": 5,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 30,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 30,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 7,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 33,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -77,17 +77,17 @@
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jugantor",
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 1,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -392,32 +392,32 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "The Daily Ittefaq",
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Daily Sangbad",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 27,
+  "candidateCount": 26,
   "alertItems": [
     {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
@@ -905,20 +905,20 @@
       "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
     },
     {
-      "title": "গোপালগঞ্জের লোকজন দিয়ে সন্ত্রাস করিয়ে লাভ হবে না: আইনমন্ত্রী",
-      "summary": "গোপালগঞ্জের লোকজন দিয়ে আগুন জ্বালিয়ে ও সন্ত্রাস করিয়ে কোনো লাভ হবে না বলে মন্তব্য করেছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান....",
-      "link": "https://www.jagonews24.com/country/news/1184401",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184401",
-      "publishedAt": "2026-11-27T13:49:10+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publishedAt": "2026-11-27T13:46:48+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
       "sourceEvidence": [
-        "Jago News 24"
+        "কালের কণ্ঠ"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184401"
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
         }
       ],
       "category": "Bangladesh",
@@ -926,14 +926,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "গোপালগঞ্জের লোকজন দিয়ে সন্ত্রাস করিয়ে লাভ হবে না: আইনমন্ত্রী",
-          "summary": "গোপালগঞ্জের লোকজন দিয়ে আগুন জ্বালিয়ে ও সন্ত্রাস করিয়ে কোনো লাভ হবে না বলে মন্তব্য করেছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান....",
-          "url": "https://www.jagonews24.com/country/news/1184401"
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "480941f378a703e3e45a3009be043eb9"
+      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
     },
     {
       "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
@@ -965,6 +965,40 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9a9dcafabba4891c6e72c9c3f780b5f0"
+    },
+    {
+      "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
+      "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+      "publisherUrl": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+      "publishedAt": "2026-11-27T13:11:13+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
+          "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+          "incidentTimeText": "রাত ৩টার দিকে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "এবার উপজেলার বাড়বকুণ্ড ইউনিয়নে, মান্দারীটোলা এলাকায়, সীতাকুণ্ড থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5f2fd807678e171fd4735af8b7093d06"
     },
     {
       "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
@@ -1027,6 +1061,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bf04c5e458a1317fb5e1bf51d376906d"
+    },
+    {
+      "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু",
+      "summary": "সৌদি আরবের আভা অঞ্চলে পাহাড়ি সড়কে নামার সময় দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু হয়েছে। আজ শুক্রবার সকাল সাতটার দিকে (সৌদি সময়) এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন খাগড়াছড়ির মাটিরাঙ্গার তবলছড়ি এলাকার আশরাফ উদ্দিন রনি এবং ফ্রিজার ভ্যানের চালক কামরুল হাসান। কামরুলের বাড়ি নোয়াখালী জেলায়। নিহত আশরাফের চাচা ও খাগড়াছড়ি পৌর বিএনপির সাংগঠনিক সম্পাদক মীর হোসাইন ঘটনাটি […] The post সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/",
+      "publisherUrl": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/",
+      "publishedAt": "2026-11-27T10:59:47+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু",
+          "summary": "সৌদি আরবের আভা অঞ্চলে পাহাড়ি সড়কে নামার সময় দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু হয়েছে। আজ শুক্রবার সকাল সাতটার দিকে (সৌদি সময়) এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন খাগড়াছড়ির মাটিরাঙ্গার তবলছড়ি এলাকার আশরাফ উদ্দিন রনি এবং ফ্রিজার ভ্যানের চালক কামরুল হাসান। কামরুলের বাড়ি নোয়াখালী জেলায়। নিহত আশরাফের চাচা ও খাগড়াছড়ি পৌর বিএনপির সাংগঠনিক সম্পাদক মীর হোসাইন ঘটনাটি […] The post সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "2355610d84b6906547bad4b4f9e0713b"
     },
     {
       "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
@@ -1181,12 +1246,6 @@
         },
         {
           "name": "Dhaka Tribune Bangla",
-          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
-          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113873/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A7%8D%E0%A6%A1%E0%A6%BE-%E0%A6%93-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -1326,37 +1385,6 @@
       "alertEventId": "85a83e459654b729f62f2b7c308a4327"
     },
     {
-      "title": "মাটি খুঁড়তেই বোমা বিস্ফোরণ, আহত দুই শ্রমিক",
-      "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খোঁড়ার সময় বোমা বিস্ফোরণে দুই শ্রমিক আহত হয়েছেন। শুক্রবার (২৭ নভেম্বর) বেলা ১১টার দিকে বেজপাড়ার বেহারী কলোনির বাদলের বাড়ির পেছনে এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন সাতক্ষীরার কালিগঞ্জ উপজেলার গণেশপুর গ্রামের কাশেম সরদারের ছেলে আব্দুর রাজ্জাক (৩৫) ও মোহাম্মদ গাজীর ছেলে আকবর (৫৫)। পুলিশ ও ঘটনাস্থলে কর্মরত শ্রমিকেরা জানান, সকালে বাদলের বাড়ির পেছনে স্তূপ করে রাখা মাটি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
-      "publishedAt": "2026-11-27T08:16:54+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "মাটি খুঁড়তেই বোমা বিস্ফোরণ, আহত দুই শ্রমিক",
-          "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খোঁড়ার সময় বোমা বিস্ফোরণে দুই শ্রমিক আহত হয়েছেন। শুক্রবার (২৭ নভেম্বর) বেলা ১১টার দিকে বেজপাড়ার বেহারী কলোনির বাদলের বাড়ির পেছনে এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন সাতক্ষীরার কালিগঞ্জ উপজেলার গণেশপুর গ্রামের কাশেম সরদারের ছেলে আব্দুর রাজ্জাক (৩৫) ও মোহাম্মদ গাজীর ছেলে আকবর (৫৫)। পুলিশ ও ঘটনাস্থলে কর্মরত শ্রমিকেরা জানান, সকালে বাদলের বাড়ির পেছনে স্তূপ করে রাখা মাটি... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "158961dbaa17d2da8c0a3cf95dbc2add"
-    },
-    {
       "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
       "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
       "link": "https://www.dhakapost.com/international/501237",
@@ -1386,6 +1414,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
+    },
+    {
+      "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
+      "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
+      "publisherUrl": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
+      "publishedAt": "2026-11-27T06:57:17+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
+          "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
     },
     {
       "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
@@ -1491,68 +1550,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e4b1e4be66efbe63ce42a01b7a082392"
-    },
-    {
-      "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-      "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-      "link": "https://chattogramnews.com/archives/161490",
-      "publisherUrl": "https://chattogramnews.com/archives/161490",
-      "publishedAt": "2026-11-26T15:20:43+00:00",
-      "source": "Chattogram News",
-      "publisherName": "Chattogram News",
-      "sourceEvidence": [
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chattogram News",
-          "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-          "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0864a322894b5db9387336c06f00384a"
-    },
-    {
-      "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-      "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-      "link": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publisherUrl": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publishedAt": "2026-11-26T15:16:19+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     }
   ]
 }
