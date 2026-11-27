@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T20:55:37.418681+00:00",
-  "updatedAt": "2026-11-27T20:55:37.418681+00:00",
+  "generatedAt": "2026-11-27T21:05:38.540241+00:00",
+  "updatedAt": "2026-11-27T21:05:38.540241+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 10,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 33,
+  "candidateCount": 34,
   "alertItems": [
+    {
+      "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন",
+      "summary": "চাঁদপুরে চট্টগ্রাম থেকে ছেড়ে আসা মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন দেওয়ার ঘটনা ঘটেছে। এতে বগিটির দুটি আসনসহ বেশ কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। তবে কোনো হতাহতের ঘটনা ঘটেনি...",
+      "link": "https://www.jagonews24.com/country/news/1184443",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184443",
+      "publishedAt": "2026-11-27T20:56:11+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184443"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন",
+          "summary": "চাঁদপুরে চট্টগ্রাম থেকে ছেড়ে আসা মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন দেওয়ার ঘটনা ঘটেছে। এতে বগিটির দুটি আসনসহ বেশ কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। তবে কোনো হতাহতের ঘটনা ঘটেনি...",
+          "url": "https://www.jagonews24.com/country/news/1184443"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9ac57d7a0caf90e3099cfd824b489724"
+    },
     {
       "title": "চাঁদপুর কোর্ট স্টেশনে মেঘনা এক্সপ্রেসের বগিতে আগুন",
       "summary": "চট্টগ্রাম থেকে চাঁদপুরগামী মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন লাগার ঘটনা ঘটেছে। এতে হতাহতের কোনও খবর পাননি রেলের কর্মকর্তরা। শুক্রবার (২৭ নভেম্বর) রাত সোয়া ১০টার দিকে চাঁদপুরের কোর্ট স্টেশনে এ ঘটনা ঘটে। চাঁদপুর রেলওয়ে স্টেশনের স্টেশন মাস্টার মারুফ হোসাইন বলেন, ট্রেনে থাকা রেলের কর্মী ও যাত্রীদের প্রচেষ্টায় আগুন নিয়ন্ত্রণে আসায় বড় ধরনের কোনও ক্ষতি হয়নি। রেলের কর্মীদের বরাতে তিনি বলেন,... বিস্তারিত",
@@ -1122,41 +1153,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "4b6d23ea23d84822a869ed3c00ce37d3"
-    },
-    {
-      "title": "ফেনীতে বিএনপির দুই পক্ষের মধ্যে সংঘর্ষ, দুই মোটরসাইকেলে আগুন, আহত ১৮",
-      "summary": "",
-      "link": "https://www.prothomalo.com/bangladesh/district/e53s1sjy6i",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/e53s1sjy6i",
-      "publishedAt": "2026-11-27T16:52:08+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/e53s1sjy6i"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "ফেনীতে বিএনপির দুই পক্ষের মধ্যে সংঘর্ষ, দুই মোটরসাইকেলে আগুন, আহত ১৮",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/e53s1sjy6i",
-          "incidentDateText": "২৭ নভেম্বর ২০২৬",
-          "incidentTimeText": "আজ সন্ধ্যায়",
-          "incidentTimeSource": "Prothom Alo",
-          "locationText": "দাগনভূঞা পৌরসভার আলাইয়ারপুর গ্রামে, দাগনভূঞা উপজেলা, ফেনী, পথে আলাইয়ারপুর গ্রামে, হামলার চেষ্টা করলে এলাকা, দাগনভূঞা থানার"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7e5e7abebcb4247e31bda25c061e80be"
     },
     {
       "title": "ইসলামি বক্তা নোমানীর গাড়িকে ধাওয়া, ভাঙচুরের অভিযোগ",
@@ -1775,6 +1771,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
+    },
+    {
+      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publishedAt": "2026-11-27T00:48:40+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
     }
   ]
 }
