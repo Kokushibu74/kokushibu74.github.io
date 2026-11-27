@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T20:15:52.710842+00:00",
-  "updatedAt": "2026-11-27T20:15:52.710842+00:00",
+  "generatedAt": "2026-11-27T20:30:36.457575+00:00",
+  "updatedAt": "2026-11-27T20:30:36.457575+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 50,
-  "failedSourceCount": 5,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 29,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 29,
-  "fallbackWithItemsSourceCount": 20,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 24,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -287,17 +287,17 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sun",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -467,32 +467,32 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -587,17 +587,17 @@
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 32,
   "alertItems": [
     {
       "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন",
@@ -1541,7 +1541,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
           "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -1558,6 +1558,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6033f2888e81a6f3294424b496fd7bb0"
+    },
+    {
+      "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+      "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publishedAt": "2026-11-27T09:18:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+          "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "58cb3010a88bf3cf25b0b5565a60d0e2"
     },
     {
       "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
@@ -1651,6 +1682,68 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
+    },
+    {
+      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+      "link": "https://www.mzamin.com/article/63858",
+      "publisherUrl": "https://www.mzamin.com/article/63858",
+      "publishedAt": "2026-11-27T05:08:48+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
+      "sourceEvidence": [
+        "Manab Zamin"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Manab Zamin",
+          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
+    },
+    {
+      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publishedAt": "2026-11-27T00:48:40+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
     }
   ]
 }
