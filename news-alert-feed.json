@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T14:55:37.640395+00:00",
-  "updatedAt": "2026-11-27T14:55:37.640395+00:00",
+  "generatedAt": "2026-11-27T15:05:55.851950+00:00",
+  "updatedAt": "2026-11-27T15:05:55.851950+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "healthySourceCount": 50,
+  "failedSourceCount": 5,
+  "directHealthySourceCount": 20,
+  "fallbackHealthySourceCount": 30,
+  "directFailedSourceCount": 35,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 23,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -302,17 +302,17 @@
     {
       "name": "Daily Sun",
       "domain": "daily-sun.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy News",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,32 +392,32 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Bonik Barta",
@@ -437,17 +437,17 @@
     {
       "name": "Desh Rupantor",
       "domain": "deshrupantor.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "The Daily Ittefaq",
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 30,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sangbad",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 27,
   "alertItems": [
     {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
@@ -967,40 +967,6 @@
       "alertEventId": "9a9dcafabba4891c6e72c9c3f780b5f0"
     },
     {
-      "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
-      "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
-      "publisherUrl": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
-      "publishedAt": "2026-11-27T13:11:13+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
-          "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
-          "incidentTimeText": "রাত ৩টার দিকে",
-          "incidentTimeSource": "Dainik Azadi",
-          "locationText": "এবার উপজেলার বাড়বকুণ্ড ইউনিয়নে, মান্দারীটোলা এলাকায়, সীতাকুণ্ড থানা"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5f2fd807678e171fd4735af8b7093d06"
-    },
-    {
       "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
       "summary": "দেশের বিভিন্ন জেলায় ১৬ দিনে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। নিরাপত্তার অভাবে বন্ধ রয়েছে ২৯টি শাখার কার্যক্রম। এতে ব্যাংকটির স্বাভাবিক কার্যক্রম ব্যাহত হওয়ার পাশাপাশি গ্রামীণ ঋণপ্রবাহ, কৃষি অর্থায়ন ও প্রান্তিক জনগোষ্ঠীর জীবিকা নিয়ে অনিশ্চয়তা তৈরি হয়েছে। ধারাবাহিক এসব হামলার ঘটনায় উদ্বেগ জানিয়েছে বাংলাদেশ ব্যাংক। হামলার পেছনে অর্থায়ন রয়েছে কি না,... বিস্তারিত",
       "link": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80",
@@ -1061,37 +1027,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bf04c5e458a1317fb5e1bf51d376906d"
-    },
-    {
-      "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু",
-      "summary": "সৌদি আরবের আভা অঞ্চলে পাহাড়ি সড়কে নামার সময় দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু হয়েছে। আজ শুক্রবার সকাল সাতটার দিকে (সৌদি সময়) এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন খাগড়াছড়ির মাটিরাঙ্গার তবলছড়ি এলাকার আশরাফ উদ্দিন রনি এবং ফ্রিজার ভ্যানের চালক কামরুল হাসান। কামরুলের বাড়ি নোয়াখালী জেলায়। নিহত আশরাফের চাচা ও খাগড়াছড়ি পৌর বিএনপির সাংগঠনিক সম্পাদক মীর হোসাইন ঘটনাটি […] The post সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/",
-      "publisherUrl": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/",
-      "publishedAt": "2026-11-27T10:59:47+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু",
-          "summary": "সৌদি আরবের আভা অঞ্চলে পাহাড়ি সড়কে নামার সময় দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু হয়েছে। আজ শুক্রবার সকাল সাতটার দিকে (সৌদি সময়) এ দুর্ঘটনা ঘটে। নিহত ব্যক্তিরা হলেন খাগড়াছড়ির মাটিরাঙ্গার তবলছড়ি এলাকার আশরাফ উদ্দিন রনি এবং ফ্রিজার ভ্যানের চালক কামরুল হাসান। কামরুলের বাড়ি নোয়াখালী জেলায়। নিহত আশরাফের চাচা ও খাগড়াছড়ি পৌর বিএনপির সাংগঠনিক সম্পাদক মীর হোসাইন ঘটনাটি […] The post সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশির মৃত্যু appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/saudi-accident-2-bangladeshi-dead/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2355610d84b6906547bad4b4f9e0713b"
     },
     {
       "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
@@ -1243,6 +1178,12 @@
           "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
+          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -1416,37 +1357,6 @@
       "alertEventId": "158961dbaa17d2da8c0a3cf95dbc2add"
     },
     {
-      "title": "বাংলাদেশের আইন প্রণয়ন প্রক্রিয়া এবং ২০২৬ পরবর্তী সংকট",
-      "summary": "স্বাধীনতা-পরবর্তী বাংলাদেশের অর্ধশতাব্দীরও বেশি সময়ের সাংবিধানিক ও আইনি ইতিহাস পর্যালোচনা করলে এক গভীর কাঠামোগত স্ববিরোধ স্পষ্ট হয়ে ওঠে— ১৯৭১ সালের মুক্তিযুদ্ধ ও ২০২৪ সালের রক্তক্ষয়ী জুলাই গণঅভ্যুত্থানের মতো যুগান্তকারী জনআকাঙ্ক্ষার বিস্ফোরণ ঘটলেও রাষ্ট্রের আইন প্রণয়ন প্রক্রিয়া ও প্রশাসনিক যন্ত্র কখনোই পুরোপুরি বি-উপনিবেশায়িত বা জনসার্বভৌমত্বের অধীনস্থ হতে পারেনি। বরং সামরিক-বেসামরিক... বিস্তারিত",
-      "link": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80",
-      "publisherUrl": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80",
-      "publishedAt": "2026-11-27T08:00:00+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "বাংলাদেশের আইন প্রণয়ন প্রক্রিয়া এবং ২০২৬ পরবর্তী সংকট",
-          "summary": "স্বাধীনতা-পরবর্তী বাংলাদেশের অর্ধশতাব্দীরও বেশি সময়ের সাংবিধানিক ও আইনি ইতিহাস পর্যালোচনা করলে এক গভীর কাঠামোগত স্ববিরোধ স্পষ্ট হয়ে ওঠে— ১৯৭১ সালের মুক্তিযুদ্ধ ও ২০২৪ সালের রক্তক্ষয়ী জুলাই গণঅভ্যুত্থানের মতো যুগান্তকারী জনআকাঙ্ক্ষার বিস্ফোরণ ঘটলেও রাষ্ট্রের আইন প্রণয়ন প্রক্রিয়া ও প্রশাসনিক যন্ত্র কখনোই পুরোপুরি বি-উপনিবেশায়িত বা জনসার্বভৌমত্বের অধীনস্থ হতে পারেনি। বরং সামরিক-বেসামরিক... বিস্তারিত",
-          "url": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "59af513f985df391cabd3a06b80174fe"
-    },
-    {
       "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
       "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
       "link": "https://www.dhakapost.com/international/501237",
@@ -1476,37 +1386,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
-    },
-    {
-      "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
-      "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
-      "publisherUrl": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
-      "publishedAt": "2026-11-27T06:57:17+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
-          "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
     },
     {
       "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
