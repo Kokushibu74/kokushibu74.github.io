@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T09:35:38.568446+00:00",
-  "updatedAt": "2026-11-27T09:35:38.568446+00:00",
+  "generatedAt": "2026-11-27T09:50:46.209440+00:00",
+  "updatedAt": "2026-11-27T09:50:46.209440+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 26,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,8 +840,70 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 26,
   "alertItems": [
+    {
+      "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
+      "summary": "ঢাকার সাভারে ঢাকা-আরিচা মহাসড়কে একটি পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) বেলা ১টা৩৫ মিনিটে মহাসড়কের জোড়পুল এলাকায় লাব্বাইক পরিবহনের পার্কিং করা বাসটিতে আগুন দেয়। সাভার মডেল থানার ওসি সাইফুল আলম বলেন, বাসটি মহাসড়কের পাশে গত দুই দিন ধরে পার্কিং করা ছিল। দুপুর ১টা ৩৫ মিনিটে বাসটিতে আগুন দেয় দুর্বৃত্তরা। তিনি আরও বলেন, ধারণা করা হচ্ছে, কার্যক্রম নিষিদ্ধ আওয়ামী... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-27T09:42:42+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
+          "summary": "ঢাকার সাভারে ঢাকা-আরিচা মহাসড়কে একটি পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) বেলা ১টা৩৫ মিনিটে মহাসড়কের জোড়পুল এলাকায় লাব্বাইক পরিবহনের পার্কিং করা বাসটিতে আগুন দেয়। সাভার মডেল থানার ওসি সাইফুল আলম বলেন, বাসটি মহাসড়কের পাশে গত দুই দিন ধরে পার্কিং করা ছিল। দুপুর ১টা ৩৫ মিনিটে বাসটিতে আগুন দেয় দুর্বৃত্তরা। তিনি আরও বলেন, ধারণা করা হচ্ছে, কার্যক্রম নিষিদ্ধ আওয়ামী... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "389c889fa69b0f0c2e1a01996758e2f5"
+    },
+    {
+      "title": "জিয়াউল আহসানের বাড়ির গেটে ‘খুনির বাড়ি’ লেখা ব্যানার",
+      "summary": "বরিশাল নগরীর বৈদ্যপাড়া এলাকায় সেনাবাহিনীর বরখাস্ত কর্মকর্তা জিয়াউল আহসানের পরিবারের মালিকানাধীন একটি ভবনের প্রধান ফটকে ‘খুনি জিয়াউল আহসানের বাড়ি’ লেখা ব্যানার ঝুলিয়ে দিয়েছেন ক্ষুব্ধ বাসিন্দারা। ভবনটি ঘিরে স্থানীয়দের মধ্যে ক্ষোভ ক্রমেই বাড়ছে। এর আগে ভবনটির নিচতলার একটি কক্ষে আগুন দেওয়ার ঘটনাও ঘটে। স্থানীয়দের অভিযোগ, ভবন নির্মাণের জন্য জমি দখল থেকে শুরু করে ছোট ভাই সাবেক কাউন্সিলর... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/barishal/983573/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E2%80%98%E0%A6%96%E0%A7%81%E0%A6%A8%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E2%80%99-%E0%A6%B2%E0%A7%87%E0%A6%96%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/country/barishal/983573/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E2%80%98%E0%A6%96%E0%A7%81%E0%A6%A8%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E2%80%99-%E0%A6%B2%E0%A7%87%E0%A6%96%E0%A6%BE",
+      "publishedAt": "2026-11-27T09:36:42+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/983573/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E2%80%98%E0%A6%96%E0%A7%81%E0%A6%A8%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E2%80%99-%E0%A6%B2%E0%A7%87%E0%A6%96%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "জিয়াউল আহসানের বাড়ির গেটে ‘খুনির বাড়ি’ লেখা ব্যানার",
+          "summary": "বরিশাল নগরীর বৈদ্যপাড়া এলাকায় সেনাবাহিনীর বরখাস্ত কর্মকর্তা জিয়াউল আহসানের পরিবারের মালিকানাধীন একটি ভবনের প্রধান ফটকে ‘খুনি জিয়াউল আহসানের বাড়ি’ লেখা ব্যানার ঝুলিয়ে দিয়েছেন ক্ষুব্ধ বাসিন্দারা। ভবনটি ঘিরে স্থানীয়দের মধ্যে ক্ষোভ ক্রমেই বাড়ছে। এর আগে ভবনটির নিচতলার একটি কক্ষে আগুন দেওয়ার ঘটনাও ঘটে। স্থানীয়দের অভিযোগ, ভবন নির্মাণের জন্য জমি দখল থেকে শুরু করে ছোট ভাই সাবেক কাউন্সিলর... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/983573/%E0%A6%9C%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%89%E0%A6%B2-%E0%A6%86%E0%A6%B9%E0%A6%B8%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%87%E0%A6%9F%E0%A7%87-%E2%80%98%E0%A6%96%E0%A7%81%E0%A6%A8%E0%A6%BF%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF%E2%80%99-%E0%A6%B2%E0%A7%87%E0%A6%96%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "846a6438c5bacd9facf2b8bf92a5ed94"
+    },
     {
       "title": "গুলশানে হঠাৎ ব্যবসায়ীর ওপর ৭-৮ জনের হামলা, ছিনিয়ে নিলো স্বর্ণের চেইন",
       "summary": "রাজধানীর গুলশান থানা এলাকায় ছিনতাইকারীদের মারধর ও ছুরিকাঘাতে মো. সুমন (৪০) নামে এক ব্যবসায়ী আহত হয়েছেন। বৃহস্পতিবার (২৬ নভেম্বর) রাত ১১টার দিকে উন্নত চিকিৎসার জন্য তাকে ঢাকা মেডিক্যাল কলেজ (ঢামেক) হাসপাতালে ভর্তি করা হয়েছে। আহত সুমনের বাবা শাহাদাত এবং তার বাড়ি গুলশান থানার নর্দার জিপিক ৫ নম্বর এলাকায়। ​আহতের বড় ভাই শাহিন জানান, বৃহস্প‌তিবার সন্ধ্যার দি‌কে গুলশানের কালাচাঁদপুর... বিস্তারিত",
@@ -1250,25 +1312,25 @@
       "alertEventId": "7aaacb43d920a0a3c435bf29975a7eed"
     },
     {
-      "title": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
-      "summary": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
-      "link": "https://www.jagonews24.com/national/news/1184209",
-      "publisherUrl": "https://www.jagonews24.com/national/news/1184209",
-      "publishedAt": "2026-11-27T02:27:32+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ, হামলা হলে বিদ্যুৎ বন্ধের সতর্কতা",
+      "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
+      "link": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/v49ugzmcfh",
+      "publishedAt": "2026-11-26T21:33:23+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
       "sourceEvidence": [
-        "Jago News 24",
-        "Prothom Alo"
+        "Prothom Alo",
+        "Banglanews24"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/national/news/1184209"
-        },
-        {
           "name": "Prothom Alo",
           "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh"
+        },
+        {
+          "name": "Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -1276,20 +1338,20 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
-          "summary": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
-          "url": "https://www.jagonews24.com/national/news/1184209"
-        },
-        {
           "name": "Prothom Alo",
           "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ, হামলা হলে বিদ্যুৎ বন্ধের সতর্কতা",
           "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
           "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh"
+        },
+        {
+          "name": "Banglanews24",
+          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
+          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "corroborationCount": 2,
-      "alertEventId": "1022788185a8294b89a1c907f650e55e"
+      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     },
     {
       "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
@@ -1301,17 +1363,12 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "dhakapost.com",
         "একাত্তর"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
-        },
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501167"
         },
         {
           "name": "একাত্তর",
@@ -1329,57 +1386,14 @@
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
         },
         {
-          "name": "dhakapost.com",
-          "title": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন - dhakapost.com",
-          "summary": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501167"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে - dhakapost.com",
-          "summary": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501165"
-        },
-        {
           "name": "একাত্তর",
           "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
           "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
           "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 2,
       "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
-    },
-    {
-      "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-      "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-      "link": "https://www.dhakapost.com/national/501172",
-      "publisherUrl": "https://www.dhakapost.com/national/501172",
-      "publishedAt": "2026-11-26T18:53:36+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-          "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "31618273d2c9fd167d6897c611ee7920"
     },
     {
       "title": "বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধের সতর্কতা - Dhaka Tribune Bangla",
@@ -1475,37 +1489,6 @@
       "alertEventId": "0864a322894b5db9387336c06f00384a"
     },
     {
-      "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-      "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-      "link": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publisherUrl": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publishedAt": "2026-11-26T15:16:19+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
-    },
-    {
       "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
       "summary": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/672972",
@@ -1535,37 +1518,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
-    },
-    {
-      "title": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি - dhakapost.com",
-      "summary": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি dhakapost.com",
-      "link": "https://www.dhakapost.com/country/501104",
-      "publisherUrl": "https://www.dhakapost.com/country/501104",
-      "publishedAt": "2026-11-26T13:05:06+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501104"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি - dhakapost.com",
-          "summary": "গোপালগঞ্জে বিদ্যুৎ অফিসে হামলা হলে সরবরাহ বন্ধের হুঁশিয়ারি dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501104"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b75710fde889491b649d13b5e0a6f529"
     },
     {
       "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
