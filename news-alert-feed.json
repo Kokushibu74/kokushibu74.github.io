@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T07:55:45.973414+00:00",
-  "updatedAt": "2026-11-27T07:55:45.973414+00:00",
+  "generatedAt": "2026-11-27T08:10:35.940737+00:00",
+  "updatedAt": "2026-11-27T08:10:35.940737+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 47,
-  "failedSourceCount": 8,
-  "directHealthySourceCount": 15,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
+  "directHealthySourceCount": 21,
   "fallbackHealthySourceCount": 32,
-  "directFailedSourceCount": 40,
+  "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 32,
   "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,24 +332,9 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
-    },
-    {
-      "name": "Jamuna TV",
-      "domain": "jamuna.tv",
       "status": "failed",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "failed",
       "fallbackError": "HTTP 429",
       "fallbackItems": 0,
@@ -358,6 +343,21 @@
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
       "healthClass": "failed"
+    },
+    {
+      "name": "Jamuna TV",
+      "domain": "jamuna.tv",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "HTTP 404",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 25,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ekattor TV",
@@ -422,17 +422,17 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Desh Rupantor",
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -737,77 +737,77 @@
     {
       "name": "Somoy TV YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Channel 24 YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Ekattor TV YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "DBC News YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Independent Television YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "News24 YouTube",
@@ -827,21 +827,52 @@
     {
       "name": "RTV News YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 28,
   "alertItems": [
+    {
+      "title": "বাংলাদেশের আইন প্রণয়ন প্রক্রিয়া এবং ২০২৬ পরবর্তী সংকট",
+      "summary": "স্বাধীনতা-পরবর্তী বাংলাদেশের অর্ধশতাব্দীরও বেশি সময়ের সাংবিধানিক ও আইনি ইতিহাস পর্যালোচনা করলে এক গভীর কাঠামোগত স্ববিরোধ স্পষ্ট হয়ে ওঠে— ১৯৭১ সালের মুক্তিযুদ্ধ ও ২০২৪ সালের রক্তক্ষয়ী জুলাই গণঅভ্যুত্থানের মতো যুগান্তকারী জনআকাঙ্ক্ষার বিস্ফোরণ ঘটলেও রাষ্ট্রের আইন প্রণয়ন প্রক্রিয়া ও প্রশাসনিক যন্ত্র কখনোই পুরোপুরি বি-উপনিবেশায়িত বা জনসার্বভৌমত্বের অধীনস্থ হতে পারেনি। বরং সামরিক-বেসামরিক... বিস্তারিত",
+      "link": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80",
+      "publisherUrl": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80",
+      "publishedAt": "2026-11-27T08:00:00+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "বাংলাদেশের আইন প্রণয়ন প্রক্রিয়া এবং ২০২৬ পরবর্তী সংকট",
+          "summary": "স্বাধীনতা-পরবর্তী বাংলাদেশের অর্ধশতাব্দীরও বেশি সময়ের সাংবিধানিক ও আইনি ইতিহাস পর্যালোচনা করলে এক গভীর কাঠামোগত স্ববিরোধ স্পষ্ট হয়ে ওঠে— ১৯৭১ সালের মুক্তিযুদ্ধ ও ২০২৪ সালের রক্তক্ষয়ী জুলাই গণঅভ্যুত্থানের মতো যুগান্তকারী জনআকাঙ্ক্ষার বিস্ফোরণ ঘটলেও রাষ্ট্রের আইন প্রণয়ন প্রক্রিয়া ও প্রশাসনিক যন্ত্র কখনোই পুরোপুরি বি-উপনিবেশায়িত বা জনসার্বভৌমত্বের অধীনস্থ হতে পারেনি। বরং সামরিক-বেসামরিক... বিস্তারিত",
+          "url": "https://www.banglatribune.com/%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B2%E0%A7%87%E0%A6%B7%E0%A6%A3/983411/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%9F%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC-%E0%A6%AA%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "59af513f985df391cabd3a06b80174fe"
+    },
     {
       "title": "ইনানীতে এক মাস ধরে জ্বলছিল গ্যাসের আগুন; অবশেষে নিয়ন্ত্রণে | Coxs Bazar GAS | News | JamunaTV",
       "summary": "",
@@ -914,7 +945,8 @@
       "publisherName": "Dainik Azadi",
       "sourceEvidence": [
         "Dainik Azadi",
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "DBC News"
       ],
       "sourceLinks": [
         {
@@ -924,6 +956,10 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "DBC News ·",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
         }
       ],
       "category": "Bangladesh",
@@ -942,10 +978,16 @@
           "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
           "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "DBC News",
+          "title": "টানা ৩১ দিন পর নেভানো হলো কক্সবাজারের ইনানির সেই গ্যাসকূপের আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "b16bb1cc3953c60e998e8a2d198ac6e2"
+      "corroborationCount": 3,
+      "alertEventId": "d62e38d20c130bdbf04b9b1ba221ead2"
     },
     {
       "title": "আশুলিয়ার আন্ডারপাসে মিললো ৫ ককটেল সদৃশ বস্তু",
