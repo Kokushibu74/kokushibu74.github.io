@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T18:50:44.955860+00:00",
-  "updatedAt": "2026-11-27T18:50:44.955860+00:00",
+  "generatedAt": "2026-11-27T19:05:36.149722+00:00",
+  "updatedAt": "2026-11-27T19:05:36.149722+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
@@ -843,11 +843,42 @@
   "candidateCount": 30,
   "alertItems": [
     {
-      "title": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক - Risingbd.com",
-      "summary": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/673131",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673131",
-      "publishedAt": "2026-11-27T18:35:00+00:00",
+      "title": "খুলনায় ফার্মেসিতে দুর্বৃত্তদের গুলিতে মালিকের ছেলে গুলিবিদ্ধ l Khulna Pharmecy Shoot l Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=qe6RgFDaYjI",
+      "publisherUrl": "https://www.youtube.com/watch?v=qe6RgFDaYjI",
+      "publishedAt": "2026-11-27T18:49:44+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=qe6RgFDaYjI"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "খুলনায় ফার্মেসিতে দুর্বৃত্তদের গুলিতে মালিকের ছেলে গুলিবিদ্ধ l Khulna Pharmecy Shoot l Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=qe6RgFDaYjI"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7529134daec51bb09f4bb3b1a80e493d"
+    },
+    {
+      "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+      "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/673132",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673132",
+      "publishedAt": "2026-11-27T18:44:00+00:00",
       "source": "Risingbd.com",
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
@@ -856,7 +887,7 @@
       "sourceLinks": [
         {
           "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673131"
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
         }
       ],
       "category": "Bangladesh",
@@ -865,13 +896,13 @@
       "sourceStories": [
         {
           "name": "Risingbd.com",
-          "title": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক - Risingbd.com",
-          "summary": "খুলনার শিববাড়ি মোড়ে ককটেল বিস্ফোরণ, আতঙ্ক Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673131"
+          "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+          "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "5de8055e93239b29829dcb0151078133"
+      "alertEventId": "19f0c52321becde1675e9aef99a5dac9"
     },
     {
       "title": "কুমিল্লা বিশ্ববিদ্যালয়ের প্রধান ফটকে ককটেল বিস্ফোরণ, শিক্ষার্থীসহ আহত দুজন",
@@ -1477,12 +1508,6 @@
         },
         {
           "name": "Dhaka Tribune Bangla",
-          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
-          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113873/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A7%8D%E0%A6%A1%E0%A6%BE-%E0%A6%93-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -1496,6 +1521,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6033f2888e81a6f3294424b496fd7bb0"
+    },
+    {
+      "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
+      "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
+      "link": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
+      "publisherUrl": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
+      "publishedAt": "2026-11-27T09:25:08+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
+          "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a3200af1f16e6a201abe8cb724b6aaa4"
     },
     {
       "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
@@ -1622,20 +1678,20 @@
       "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
     },
     {
-      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
-      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/432025",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
-      "publishedAt": "2026-11-27T00:48:40+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
+      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+      "link": "https://www.mzamin.com/article/63858",
+      "publisherUrl": "https://www.mzamin.com/article/63858",
+      "publishedAt": "2026-11-27T05:08:48+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
       "sourceEvidence": [
-        "Jamuna Television"
+        "Manab Zamin"
       ],
       "sourceLinks": [
         {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
         }
       ],
       "category": "Bangladesh",
@@ -1643,45 +1699,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
-          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+          "name": "Manab Zamin",
+          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
-    },
-    {
-      "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-      "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-      "link": "https://www.dhakapost.com/national/501172",
-      "publisherUrl": "https://www.dhakapost.com/national/501172",
-      "publishedAt": "2026-11-26T18:53:36+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-          "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "31618273d2c9fd167d6897c611ee7920"
+      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
     }
   ]
 }
