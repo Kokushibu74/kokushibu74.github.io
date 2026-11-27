@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T02:30:36.645809+00:00",
-  "updatedAt": "2026-11-27T02:30:36.645809+00:00",
+  "generatedAt": "2026-11-27T02:45:38.305781+00:00",
+  "updatedAt": "2026-11-27T02:45:38.305781+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 9,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 28,
   "alertItems": [
     {
       "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
@@ -915,7 +915,7 @@
       "sourceEvidence": [
         "Independent Television",
         "Bangla Tribune",
-        "DBC News"
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -927,12 +927,8 @@
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
         },
         {
-          "name": "Independent Television ·",
-          "url": "https://www.youtube.com/watch?v=XkiGdJ_gXPE"
-        },
-        {
-          "name": "DBC News ·",
-          "url": "https://www.youtube.com/watch?v=OlN5sWK9TsU"
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -958,26 +954,20 @@
           "url": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         },
         {
-          "name": "Independent Television",
-          "title": "পুরান ঢাকার চকবাজারের ছোট কাটরায় অগ্নিকাণ্ড | Puran | Dhaka Fire | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=XkiGdJ_gXPE"
-        },
-        {
-          "name": "DBC News",
-          "title": "পুরান ঢাকার চকবাজারে একটি প্লাস্টিকের গুদামে আগুন | DBC NEWS",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=OlN5sWK9TsU"
-        },
-        {
           "name": "Bangla Tribune",
           "title": "চকবাজারে বহুতল ভবনে আগুন",
           "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
+          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "corroborationCount": 3,
-      "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
+      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
     },
     {
       "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
@@ -1070,7 +1060,10 @@
           "name": "Dainik Azadi",
           "title": "বিস্ফোরণে দগ্ধ ‘আমি আর বাচতাম না’ বলা রাশেদা মারা গেছেন",
           "summary": "‘ভাবি, আমি আর বাঁচতাম না, আমাকে এখান থেকে নিয়ে যান।’ হাসপাতালের বিছানায় শুয়ে বড় ভাইয়ের স্ত্রীকে এ কথা বলেছিলেন রাশেদা বেগম (২১)। সেই রাশেদা আর নেই। আজ বৃহস্পতিবার দুপুর ২টার দিকে চট্টগ্রাম মেডিকেল কলেজ (চমেক) হাসপাতালের আইসিইউতে তিনি মারা যান। হাসপাতালের বার্ন ও প্লাস্টিক সার্জারি বিভাগের রেজিস্ট্রার ডা. লিটন কুমার পালিত বিষয়টি নিশ্চিত করেছেন। তিনি […] The post বিস্ফোরণে দগ্ধ ‘আমি আর বাচতাম না’ বলা রাশেদা মারা গেছেন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/rashedas-death-newmooring-blast-chattogram/"
+          "url": "https://dainikazadi.net/rashedas-death-newmooring-blast-chattogram/",
+          "incidentTimeText": "দুপুর ২টার দিকে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "বন্দর থানার"
         }
       ],
       "corroborationCount": 1,
@@ -1085,12 +1078,17 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "Banglanews24"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -1102,10 +1100,16 @@
           "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
           "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
+        },
+        {
+          "name": "Banglanews24",
+          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
+          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
+          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "3569376b763f9b321834bcbb4d903246"
+      "corroborationCount": 2,
+      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     },
     {
       "title": "কুমিল্লা বিশ্ববিদ্যালয়ের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ, শিক্ষার্থীসহ আহত ২ | DBC NEWS",
@@ -1356,37 +1360,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
-    },
-    {
-      "title": "কয়েক ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসে আগুন",
-      "summary": "চট্টগ্রাম নগরে কয়েক ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসের একটি কক্ষে আগুন দেওয়ার ঘটনা ঘটেছে। তবে আগুন দেওয়ার সময় পুলিশ বক্স ও ভূমি অফিসের ভেতরে কেউ ছিলেন না। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে ও বুধবার রাতে পৃথক দুই জায়গায় এ ঘটনা ঘটে। হালিশহর থানার ভারপ্রাপ্ত কর্মকর্তা (ওসি) জয়নাল আবেদীন ও পাহাড়তলী থানার ওসি নুরুল আবসার এসব তথ্য নিশ্চিত করেছেন। পুলিশ ও স্থানীয় সূত্রে জানা যায়, ভোর ৫টার দিকে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/983401/%E0%A6%95%E0%A7%9F%E0%A7%87%E0%A6%95-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983401/%E0%A6%95%E0%A7%9F%E0%A7%87%E0%A6%95-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-26T11:43:46+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/983401/%E0%A6%95%E0%A7%9F%E0%A7%87%E0%A6%95-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "কয়েক ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসে আগুন",
-          "summary": "চট্টগ্রাম নগরে কয়েক ঘণ্টার ব্যবধানে পুলিশ বক্স ও ভূমি অফিসের একটি কক্ষে আগুন দেওয়ার ঘটনা ঘটেছে। তবে আগুন দেওয়ার সময় পুলিশ বক্স ও ভূমি অফিসের ভেতরে কেউ ছিলেন না। বৃহস্পতিবার (২৬ নভেম্বর) ভোরে ও বুধবার রাতে পৃথক দুই জায়গায় এ ঘটনা ঘটে। হালিশহর থানার ভারপ্রাপ্ত কর্মকর্তা (ওসি) জয়নাল আবেদীন ও পাহাড়তলী থানার ওসি নুরুল আবসার এসব তথ্য নিশ্চিত করেছেন। পুলিশ ও স্থানীয় সূত্রে জানা যায়, ভোর ৫টার দিকে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/983401/%E0%A6%95%E0%A7%9F%E0%A7%87%E0%A6%95-%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "3530fd883fea52b8f72474ec4737350d"
     },
     {
       "title": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ - United News of Bangladesh",
