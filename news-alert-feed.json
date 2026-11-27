@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T20:40:47.351791+00:00",
-  "updatedAt": "2026-11-27T20:40:47.351791+00:00",
+  "generatedAt": "2026-11-27T20:55:37.418681+00:00",
+  "updatedAt": "2026-11-27T20:55:37.418681+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 24,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "New Age",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Ajker Patrika",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 33,
   "alertItems": [
+    {
+      "title": "চাঁদপুর কোর্ট স্টেশনে মেঘনা এক্সপ্রেসের বগিতে আগুন",
+      "summary": "চট্টগ্রাম থেকে চাঁদপুরগামী মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন লাগার ঘটনা ঘটেছে। এতে হতাহতের কোনও খবর পাননি রেলের কর্মকর্তরা। শুক্রবার (২৭ নভেম্বর) রাত সোয়া ১০টার দিকে চাঁদপুরের কোর্ট স্টেশনে এ ঘটনা ঘটে। চাঁদপুর রেলওয়ে স্টেশনের স্টেশন মাস্টার মারুফ হোসাইন বলেন, ট্রেনে থাকা রেলের কর্মী ও যাত্রীদের প্রচেষ্টায় আগুন নিয়ন্ত্রণে আসায় বড় ধরনের কোনও ক্ষতি হয়নি। রেলের কর্মীদের বরাতে তিনি বলেন,... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/983695/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/983695/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-27T20:50:50+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/983695/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চাঁদপুর কোর্ট স্টেশনে মেঘনা এক্সপ্রেসের বগিতে আগুন",
+          "summary": "চট্টগ্রাম থেকে চাঁদপুরগামী মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন লাগার ঘটনা ঘটেছে। এতে হতাহতের কোনও খবর পাননি রেলের কর্মকর্তরা। শুক্রবার (২৭ নভেম্বর) রাত সোয়া ১০টার দিকে চাঁদপুরের কোর্ট স্টেশনে এ ঘটনা ঘটে। চাঁদপুর রেলওয়ে স্টেশনের স্টেশন মাস্টার মারুফ হোসাইন বলেন, ট্রেনে থাকা রেলের কর্মী ও যাত্রীদের প্রচেষ্টায় আগুন নিয়ন্ত্রণে আসায় বড় ধরনের কোনও ক্ষতি হয়নি। রেলের কর্মীদের বরাতে তিনি বলেন,... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/983695/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8%E0%A7%87-%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%97%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d65238c16292db695b40ec15cc59a1e3"
+    },
     {
       "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন",
       "summary": "ঢাকা-চট্টগ্রাম মহাসড়কের নারায়ণগঞ্জ এলাকায় ঢাকাগামী ‘মেঘলা পরিবহন’-এর একটি যাত্রীবাহী বাসে আগুন দিয়েছে দুর্বৃত্তরা। তবে চালক, সহকারী ও যাত্রীরা নিরাপদে বাস থেকে নেমে আসায় হতাহতের ঘটনা ঘটেনি। শুক্রবার (২৭ নভেম্বর) রাত পৌনে ১০টার দিকে মহাসড়কের সিদ্ধিরগঞ্জ সানারপাড় ইউটার্ন এলাকায় ঢাকামুখী লেনে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা যায়, মেঘলা পরিবহনের একটি বাসটি গাউছিয়া থেকে রাজধানীর... বিস্তারিত",
@@ -1513,8 +1544,8 @@
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
       "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-27T09:34:08+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1524,7 +1555,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1535,7 +1566,13 @@
           "name": "Dhaka Tribune Bangla",
           "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
+          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
