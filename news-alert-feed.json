@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T06:30:39.798200+00:00",
-  "updatedAt": "2026-11-27T06:30:39.798200+00:00",
+  "generatedAt": "2026-11-27T06:45:40.148545+00:00",
+  "updatedAt": "2026-11-27T06:45:40.148545+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 49,
-  "failedSourceCount": 6,
-  "directHealthySourceCount": 16,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 39,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 48,
+  "failedSourceCount": 7,
+  "directHealthySourceCount": 14,
+  "fallbackHealthySourceCount": 34,
+  "directFailedSourceCount": 41,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -737,17 +737,17 @@
     {
       "name": "Somoy TV YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24 YouTube",
@@ -797,6 +797,21 @@
     {
       "name": "Independent Television YouTube",
       "domain": "youtube.com",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
+    },
+    {
+      "name": "News24 YouTube",
+      "domain": "youtube.com",
       "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 503",
@@ -810,53 +825,38 @@
       "healthClass": "failed"
     },
     {
-      "name": "News24 YouTube",
-      "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
-      "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
-    },
-    {
       "name": "RTV News YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 28,
   "alertItems": [
     {
-      "title": "টানা ৩১ দিন জ্বলার পর নিভল কক্সবাজারের ইনানীর আগুন | BAPEX | Gas Field | Somoy TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=nA2M2reNYB0",
-      "publisherUrl": "https://www.youtube.com/watch?v=nA2M2reNYB0",
-      "publishedAt": "2026-11-27T04:48:24+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
+      "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
+      "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-27T06:37:30+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Somoy News"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=nA2M2reNYB0"
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -864,14 +864,45 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Somoy News",
-          "title": "টানা ৩১ দিন জ্বলার পর নিভল কক্সবাজারের ইনানীর আগুন | BAPEX | Gas Field | Somoy TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=nA2M2reNYB0"
+          "name": "Bangla Tribune",
+          "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
+          "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "50555ab9656b49f41f5bb07bfdec59f7"
+      "alertEventId": "b16bb1cc3953c60e998e8a2d198ac6e2"
+    },
+    {
+      "title": "৩০ দিন পর ইনানীর গ্যাসের আগুন বন্ধ করলো বাপেক্স",
+      "summary": "কক্সবাজারের উখিয়ার ইনানীতে মাটির নিচ থেকে বের হওয়া গ্যাসের আগুন ৩০ দিন পর নিয়ন্ত্রণে এনেছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)...",
+      "link": "https://www.jagonews24.com/country/news/1184276",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184276",
+      "publishedAt": "2026-11-27T06:32:41+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184276"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "৩০ দিন পর ইনানীর গ্যাসের আগুন বন্ধ করলো বাপেক্স",
+          "summary": "কক্সবাজারের উখিয়ার ইনানীতে মাটির নিচ থেকে বের হওয়া গ্যাসের আগুন ৩০ দিন পর নিয়ন্ত্রণে এনেছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)...",
+          "url": "https://www.jagonews24.com/country/news/1184276"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "afc490c672cde711a619b38428526999"
     },
     {
       "title": "আশুলিয়ার আন্ডারপাসে মিললো ৫ ককটেল সদৃশ বস্তু",
@@ -1520,6 +1551,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
+    },
+    {
+      "title": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন - Barta 24",
+      "summary": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন Barta 24",
+      "link": "https://barta24.com/details/national/349752",
+      "publisherUrl": "https://barta24.com/details/national/349752",
+      "publishedAt": "2026-11-26T07:40:02+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349752"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন - Barta 24",
+          "summary": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন Barta 24",
+          "url": "https://barta24.com/details/national/349752"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "aad8e9ba403d1a8ac5f56f09dce9febb"
     }
   ]
 }
