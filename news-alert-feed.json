@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T19:05:36.149722+00:00",
-  "updatedAt": "2026-11-27T19:05:36.149722+00:00",
+  "generatedAt": "2026-11-27T19:20:40.624695+00:00",
+  "updatedAt": "2026-11-27T19:20:40.624695+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 10,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 31,
   "alertItems": [
+    {
+      "title": "ফেনীতে দুই গ্রুপের সংঘর্ষে আহত অন্তত ১৫ জন l Feni Bnp Clash l Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=EXpnFQ3UjnI",
+      "publisherUrl": "https://www.youtube.com/watch?v=EXpnFQ3UjnI",
+      "publishedAt": "2026-11-27T19:04:21+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=EXpnFQ3UjnI"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "ফেনীতে দুই গ্রুপের সংঘর্ষে আহত অন্তত ১৫ জন l Feni Bnp Clash l Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=EXpnFQ3UjnI"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "3b507170a9cabb9c39cbd06dc31c94c8"
+    },
     {
       "title": "খুলনায় ফার্মেসিতে দুর্বৃত্তদের গুলিতে মালিকের ছেলে গুলিবিদ্ধ l Khulna Pharmecy Shoot l Jamuna TV",
       "summary": "",
@@ -1508,6 +1539,12 @@
         },
         {
           "name": "Dhaka Tribune Bangla",
+          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
+          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113873/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A7%8D%E0%A6%A1%E0%A6%BE-%E0%A6%93-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -1521,37 +1558,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "6033f2888e81a6f3294424b496fd7bb0"
-    },
-    {
-      "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
-      "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
-      "link": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
-      "publisherUrl": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
-      "publishedAt": "2026-11-27T09:25:08+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
-          "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
-          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "a3200af1f16e6a201abe8cb724b6aaa4"
     },
     {
       "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
