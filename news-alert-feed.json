@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T06:55:45.419330+00:00",
-  "updatedAt": "2026-11-27T06:55:45.419330+00:00",
+  "generatedAt": "2026-11-27T07:10:38.635043+00:00",
+  "updatedAt": "2026-11-27T07:10:38.635043+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 47,
   "failedSourceCount": 8,
-  "directHealthySourceCount": 13,
-  "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 42,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 12,
+  "fallbackHealthySourceCount": 35,
+  "directFailedSourceCount": 43,
+  "fallbackOnlySourceCount": 35,
+  "fallbackWithItemsSourceCount": 27,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 6,
+      "fallbackItems": 5,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 25,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -678,16 +678,16 @@
       "name": "Chattogram News",
       "domain": "chattogramnews.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 20,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Sylhet News",
@@ -840,51 +840,30 @@
       "healthClass": "failed"
     }
   ],
-  "candidateCount": 28,
+  "candidateCount": 26,
   "alertItems": [
     {
-      "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
-      "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-27T06:37:30+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
+      "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
+      "publisherUrl": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
+      "publishedAt": "2026-11-27T06:57:17+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
       "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
-          "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b16bb1cc3953c60e998e8a2d198ac6e2"
-    },
-    {
-      "title": "৩০ দিন পর ইনানীর গ্যাসের আগুন বন্ধ করলো বাপেক্স",
-      "summary": "কক্সবাজারের উখিয়ার ইনানীতে মাটির নিচ থেকে বের হওয়া গ্যাসের আগুন ৩০ দিন পর নিয়ন্ত্রণে এনেছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)...",
-      "link": "https://www.jagonews24.com/country/news/1184276",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184276",
-      "publishedAt": "2026-11-27T06:32:41+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
+        "Dainik Azadi",
+        "Bangla Tribune",
         "Jago News 24"
       ],
       "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/"
+        },
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1184276"
@@ -894,6 +873,19 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
+          "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
+          "incidentDateText": "২৭ অক্টোবর"
+        },
+        {
+          "name": "Bangla Tribune",
+          "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন",
+          "summary": "টানা ৩১ দিনের চেষ্টার পর কক্সবাজারের ইনানী এলাকার গ্যাসকূপের আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানি (বাপেক্স)। শুক্রবার সকালে বিশেষ কারিগরি পদ্ধতিতে ৩০ ইঞ্চি কেসিং স্থাপনের মাধ্যমে কূপের বিভিন্ন স্থান দিয়ে বের হওয়া গ্যাসের আগুন নিভিয়ে ফেলা হয়। আগুন নিয়ন্ত্রণে আসায় এখন কূপটিকে নিরাপদ করার পাশাপাশি নতুন করে গ্যাস অনুসন্ধানের প্রস্তুতি নিচ্ছে... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/chitagong/983538/%E0%A7%A9%E0%A7%A7-%E0%A6%A6%E0%A6%BF%E0%A6%A8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
         {
           "name": "Jago News 24",
           "title": "৩০ দিন পর ইনানীর গ্যাসের আগুন বন্ধ করলো বাপেক্স",
@@ -901,7 +893,7 @@
           "url": "https://www.jagonews24.com/country/news/1184276"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 3,
       "alertEventId": "afc490c672cde711a619b38428526999"
     },
     {
@@ -1085,11 +1077,7 @@
           "name": "dhakapost.com",
           "title": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে - dhakapost.com",
           "summary": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501165",
-          "incidentDateText": "বৃহস্পতিবার (২৬ নভেম্বর)",
-          "incidentTimeText": "রাত ১০টা ২২ মিনিটে",
-          "incidentTimeSource": "dhakapost.com",
-          "locationText": "চকবাজারের ছোট কাটারা এলাকা, ঢাকা"
+          "url": "https://www.dhakapost.com/national/501165"
         },
         {
           "name": "Bangla Tribune",
@@ -1207,37 +1195,6 @@
       "alertEventId": "3569376b763f9b321834bcbb4d903246"
     },
     {
-      "title": "শেরপুরে ভূমি অফিসে আগুন, নথিপত্র পুড়ে ছাই",
-      "summary": "শেরপুরে ভূমি অফিসে আগুন, নথিপত্র পুড়ে ছাই",
-      "link": "https://www.jagonews24.com/country/news/1184170",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184170",
-      "publishedAt": "2026-11-26T16:03:14+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184170"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "শেরপুরে ভূমি অফিসে আগুন, নথিপত্র পুড়ে ছাই",
-          "summary": "শেরপুরে ভূমি অফিসে আগুন, নথিপত্র পুড়ে ছাই",
-          "url": "https://www.jagonews24.com/country/news/1184170"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0dd2e6a78639b8705a6a79292e02c674"
-    },
-    {
       "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
       "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
@@ -1300,53 +1257,17 @@
       "alertEventId": "628425234b811e432d9219166629c658"
     },
     {
-      "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-      "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-      "link": "https://chattogramnews.com/archives/161490",
-      "publisherUrl": "https://chattogramnews.com/archives/161490",
-      "publishedAt": "2026-11-26T15:20:43+00:00",
-      "source": "Chattogram News",
-      "publisherName": "Chattogram News",
+      "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
+      "summary": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/672972",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/672972",
+      "publishedAt": "2026-11-26T14:04:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Chattogram News"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Chattogram News",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Chattogram News",
-          "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
-          "summary": "চট্টগ্রামের সীতাকুণ্ডের বিএম কনটেইনার ডিপোতে কর্মরত অবস্থায় ট্রেইলারের নিচে চাপা পড়ে নিহত হয়েছেন বাঁশখালীর সন্তান শহিদুল আজম চৌধুরী (রিপন)। আজ বৃহস্পতিবার (২৬ নভেম্বর) বিকেল আনুমানিক ৪টা ৪৫ মিনিটে ডিপোর ভেতরে এ দুর্ঘটনা ঘটে। মৃত্যুকালে তাঁর বয়স হয়েছিল ৫৫ বছর। নিহত শহিদুল আজম চৌধুরী (রিপন) বাঁশখালী উপজেলার কালিপুর ইউনিয়নের পশ্চিম গুনাগরী গ্রামের বাসিন্দা। তিনি কালিপুর ইউনিয়নের […] The post সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত appeared first on চট্টগ্রাম নিউজ .",
-          "url": "https://chattogramnews.com/archives/161490"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0864a322894b5db9387336c06f00384a"
-    },
-    {
-      "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
-      "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87",
-      "publishedAt": "2026-11-26T14:47:46+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune",
         "Risingbd.com"
       ],
       "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
-        },
         {
           "name": "Risingbd.com",
           "url": "https://www.risingbd.com/bangladesh/news/672972"
@@ -1356,12 +1277,6 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
-          "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
-        },
         {
           "name": "Risingbd.com",
           "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
@@ -1369,7 +1284,7 @@
           "url": "https://www.risingbd.com/bangladesh/news/672972"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
     },
     {
