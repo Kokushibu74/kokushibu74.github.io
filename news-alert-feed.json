@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T00:20:38.939405+00:00",
-  "updatedAt": "2026-11-27T00:20:38.939405+00:00",
+  "generatedAt": "2026-11-27T00:35:43.064526+00:00",
+  "updatedAt": "2026-11-27T00:35:43.064526+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
+  "directHealthySourceCount": 20,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 35,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 4,
+      "fallbackItems": 2,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "UNB",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -633,16 +633,16 @@
       "name": "Chandpur Times",
       "domain": "chandpurtimes.com",
       "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
-      "fallbackStatus": "not_needed",
+      "directStatus": "failed",
+      "directError": "The read operation timed out",
+      "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": true,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackItems": 19,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "GDACS",
@@ -852,8 +852,7 @@
       "publisherName": "Prothom Alo",
       "sourceEvidence": [
         "Prothom Alo",
-        "Bangla Tribune",
-        "Banglanews24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
@@ -863,10 +862,6 @@
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -887,16 +882,10 @@
           "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
           "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
-      "corroborationCount": 3,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
+      "corroborationCount": 2,
+      "alertEventId": "3569376b763f9b321834bcbb4d903246"
     },
     {
       "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
@@ -1055,7 +1044,11 @@
           "name": "dhakapost.com",
           "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
           "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
+          "url": "https://www.dhakapost.com/national/501172",
+          "incidentDateText": "বৃহস্পতিবার (২৬ নভেম্বর)",
+          "incidentTimeText": "রাত ১২টা ২০ মিনিটে",
+          "incidentTimeSource": "dhakapost.com",
+          "locationText": "বাড্ডা এলাকা, মিল্লাত ক্যাম্প সংলগ্ন এলাকা"
         }
       ],
       "corroborationCount": 1,
@@ -1482,6 +1475,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "b25f4028f84c2675e90ca39eb10ac15f"
+    },
+    {
+      "title": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন - Dhaka Tribune Bangla",
+      "summary": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-26T09:26:51+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন - Dhaka Tribune Bangla",
+          "summary": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cd6dc9f10763009994134f0e25e0c616"
     },
     {
       "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
