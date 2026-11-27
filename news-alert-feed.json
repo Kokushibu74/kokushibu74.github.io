@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T19:20:40.624695+00:00",
-  "updatedAt": "2026-11-27T19:20:40.624695+00:00",
+  "generatedAt": "2026-11-27T19:35:36.375993+00:00",
+  "updatedAt": "2026-11-27T19:35:36.375993+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 10,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 30,
   "alertItems": [
     {
       "title": "ফেনীতে দুই গ্রুপের সংঘর্ষে আহত অন্তত ১৫ জন l Feni Bnp Clash l Jamuna TV",
@@ -1418,37 +1418,6 @@
       "alertEventId": "2355610d84b6906547bad4b4f9e0713b"
     },
     {
-      "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
-      "summary": "ঢাকার সাভারে ঢাকা-আরিচা মহাসড়কে একটি পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) বেলা ১টা৩৫ মিনিটে মহাসড়কের জোড়পুল এলাকায় লাব্বাইক পরিবহনের পার্কিং করা বাসটিতে আগুন দেয়। সাভার মডেল থানার ওসি সাইফুল আলম বলেন, বাসটি মহাসড়কের পাশে গত দুই দিন ধরে পার্কিং করা ছিল। দুপুর ১টা ৩৫ মিনিটে বাসটিতে আগুন দেয় দুর্বৃত্তরা। তিনি আরও বলেন, ধারণা করা হচ্ছে, কার্যক্রম নিষিদ্ধ আওয়ামী লীগের... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-27T10:35:16+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "ঢাকা-আরিচা মহাসড়কে দাঁড়িয়ে থাকা বাসে আগুন",
-          "summary": "ঢাকার সাভারে ঢাকা-আরিচা মহাসড়কে একটি পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) বেলা ১টা৩৫ মিনিটে মহাসড়কের জোড়পুল এলাকায় লাব্বাইক পরিবহনের পার্কিং করা বাসটিতে আগুন দেয়। সাভার মডেল থানার ওসি সাইফুল আলম বলেন, বাসটি মহাসড়কের পাশে গত দুই দিন ধরে পার্কিং করা ছিল। দুপুর ১টা ৩৫ মিনিটে বাসটিতে আগুন দেয় দুর্বৃত্তরা। তিনি আরও বলেন, ধারণা করা হচ্ছে, কার্যক্রম নিষিদ্ধ আওয়ামী লীগের... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983577/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%86%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BE-%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "389c889fa69b0f0c2e1a01996758e2f5"
-    },
-    {
       "title": "আওয়ামী লীগ নেতার ফোনকল ফাঁস, বললেন ‘গেরিলা বাহিনী গড়ে ১০ জনকে মেরে ফেলতে’",
       "summary": "লক্ষ্মীপুরের সাবেক মেয়র ও আওয়ামী লীগ নেতা প্রয়াত এম এ তাহেরের ছেলে আফতাব উদ্দিন বিপ্লবের একটি কথোপকথনের অডিও রেকর্ডিং সামাজিক যোগাযোগমাধ্যম ফেসবুকে ছড়িয়ে পড়েছে। প্রায় তিন মিনিটের ওই রেকর্ডিংয়ে তাকে বিএনপি-জামায়াতের নেতাকর্মীদের লক্ষ্য করে হামলা এবং গেরিলা বাহিনী গড়ে তোলার বিষয়ে কথা বলতে শোনা যায়। তবে রেকর্ডিংটি কৃত্রিম বুদ্ধিমত্তা (এআই) দিয়ে তৈরি বলে দাবি করেছেন বিপ্লব। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/983583/%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%B0-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A6%95%E0%A6%B2-%E0%A6%AB%E0%A6%BE%E0%A6%81%E0%A6%B8-%E0%A6%AC%E0%A6%B2%E0%A6%B2%E0%A7%87%E0%A6%A8-%E2%80%98%E0%A6%97%E0%A7%87%E0%A6%B0%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80",
@@ -1536,12 +1505,6 @@
           "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
-          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -1713,6 +1676,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
+    },
+    {
+      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
+      "publishedAt": "2026-11-27T00:48:40+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
+          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/432025"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
     }
   ]
 }
