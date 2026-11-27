@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T15:50:40.517542+00:00",
-  "updatedAt": "2026-11-27T15:50:40.517542+00:00",
+  "generatedAt": "2026-11-27T16:00:36.053219+00:00",
+  "updatedAt": "2026-11-27T16:00:36.053219+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 26,
   "alertItems": [
     {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
@@ -903,6 +903,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
+    },
+    {
+      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publishedAt": "2026-11-27T13:46:48+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
     },
     {
       "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
@@ -1265,6 +1296,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fee0e4bf01084c39aec4c3b56bae3e36"
+    },
+    {
+      "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
+      "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
+      "link": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
+      "publisherUrl": "https://www.banglanews24.com/saradesh/news/bd/1696213.details",
+      "publishedAt": "2026-11-27T09:25:08+00:00",
+      "source": "Banglanews24",
+      "publisherName": "Banglanews24",
+      "sourceEvidence": [
+        "Banglanews24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Banglanews24",
+          "title": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ - Banglanews24",
+          "summary": "বরিশালে গ্রামীণ ব্যাংকে পেট্রলবোমা নিক্ষেপ Banglanews24",
+          "url": "https://www.banglanews24.com/saradesh/news/bd/1696213.details"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "a3200af1f16e6a201abe8cb724b6aaa4"
     },
     {
       "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
