@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T02:15:46.770532+00:00",
-  "updatedAt": "2026-11-27T02:15:46.770532+00:00",
+  "generatedAt": "2026-11-27T02:30:36.645809+00:00",
+  "updatedAt": "2026-11-27T02:30:36.645809+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 49,
-  "failedSourceCount": 6,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 28,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 28,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 5,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -92,17 +92,17 @@
     {
       "name": "Jugantor",
       "domain": "jugantor.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Kaler Kantho",
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 1,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "UNB",
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -572,32 +572,32 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "The Business Post",
       "domain": "businesspostbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "BD24Live",
@@ -840,14 +840,45 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 30,
+  "candidateCount": 29,
   "alertItems": [
     {
       "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
-      "summary": "পটুয়াখালীর কুয়াকাটায় সড়কের পাশে দীর্ঘদিন ধরে পার্কিং করে রাখা পর্যটকবাহী একটি পরিত্যক্ত জিপে (চান্দেরগাড়ী) অগ্নিকাণ্ড ঘটেছে...",
-      "link": "https://www.jagonews24.com/country/news/1184193",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184193",
-      "publishedAt": "2026-11-26T20:38:57+00:00",
+      "summary": "পটুয়াখালীর কুয়াকাটায় গভীর রাতে সড়কের পাশে দীর্ঘদিন ধরে পড়ে থাকা পর্যটকবাহী একটি পরিত্যক্ত জিপে আগুনের ঘটনা ঘটেছে। বৃহস্পতিবার (২৭ নভেম্বর) রাত ১টার দিকে কুয়াকাটা চৌরাস্তার পূর্ব পাশে হোটেল আল-বেলালের সামনে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা যায়, জিপটি (চান্দেরগাড়ী) একসময় কুয়াকাটায় আগত পর্যটকদের বিভিন্ন দর্শনীয় স্থান ঘুরিয়ে দেখানোর কাজে ব্যবহৃত হতো। তবে দীর্ঘদিন ধরে গাড়িটি সড়কের পাশে অচল অবস্থায়... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/barishal/983512/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/barishal/983512/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-27T02:29:26+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/barishal/983512/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
+          "summary": "পটুয়াখালীর কুয়াকাটায় গভীর রাতে সড়কের পাশে দীর্ঘদিন ধরে পড়ে থাকা পর্যটকবাহী একটি পরিত্যক্ত জিপে আগুনের ঘটনা ঘটেছে। বৃহস্পতিবার (২৭ নভেম্বর) রাত ১টার দিকে কুয়াকাটা চৌরাস্তার পূর্ব পাশে হোটেল আল-বেলালের সামনে এ ঘটনা ঘটে। স্থানীয় সূত্রে জানা যায়, জিপটি (চান্দেরগাড়ী) একসময় কুয়াকাটায় আগত পর্যটকদের বিভিন্ন দর্শনীয় স্থান ঘুরিয়ে দেখানোর কাজে ব্যবহৃত হতো। তবে দীর্ঘদিন ধরে গাড়িটি সড়কের পাশে অচল অবস্থায়... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/barishal/983512/%E0%A6%95%E0%A7%81%E0%A7%9F%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A7%9F-%E0%A6%B8%E0%A7%9C%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%95%E0%A7%8D%E0%A6%A4-%E0%A6%9C%E0%A6%BF%E0%A6%AA%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "7aaacb43d920a0a3c435bf29975a7eed"
+    },
+    {
+      "title": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
+      "summary": "গোপালগঞ্জে ১০ থেকে ২৫ নভেম্বর আওয়ামী লীগের ধারাবাহিক হামলা-ভাঙচুর ও অগ্নিসংযোগে বাড়িঘর, ব্যবসা প্রতিষ্ঠান, এমপিদের বাসভবন, থানা, হাসপাতাল ও সরকারি স্থাপনার ব্যাপক ক্ষয়ক্ষতি হয়েছে। কোন উপজেলায় কোথায় হামলা, কত টাকার ক্ষতি—জানুন বিস্তারিত...",
+      "link": "https://www.jagonews24.com/national/news/1184209",
+      "publisherUrl": "https://www.jagonews24.com/national/news/1184209",
+      "publishedAt": "2026-11-27T02:27:32+00:00",
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
@@ -856,7 +887,7 @@
       "sourceLinks": [
         {
           "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184193"
+          "url": "https://www.jagonews24.com/national/news/1184209"
         }
       ],
       "category": "Bangladesh",
@@ -865,78 +896,39 @@
       "sourceStories": [
         {
           "name": "Jago News 24",
-          "title": "কুয়াকাটায় সড়কে পার্কিং করা পরিত্যক্ত জিপে আগুন",
-          "summary": "পটুয়াখালীর কুয়াকাটায় সড়কের পাশে দীর্ঘদিন ধরে পার্কিং করে রাখা পর্যটকবাহী একটি পরিত্যক্ত জিপে (চান্দেরগাড়ী) অগ্নিকাণ্ড ঘটেছে...",
-          "url": "https://www.jagonews24.com/country/news/1184193"
+          "title": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
+          "summary": "গোপালগঞ্জে ১০ থেকে ২৫ নভেম্বর আওয়ামী লীগের ধারাবাহিক হামলা-ভাঙচুর ও অগ্নিসংযোগে বাড়িঘর, ব্যবসা প্রতিষ্ঠান, এমপিদের বাসভবন, থানা, হাসপাতাল ও সরকারি স্থাপনার ব্যাপক ক্ষয়ক্ষতি হয়েছে। কোন উপজেলায় কোথায় হামলা, কত টাকার ক্ষতি—জানুন বিস্তারিত...",
+          "url": "https://www.jagonews24.com/national/news/1184209"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "7aaacb43d920a0a3c435bf29975a7eed"
+      "alertEventId": "9a2254d5414acdc47090acc334c97e0a"
     },
     {
-      "title": "উত্তর বাড্ডায় যাত্রীবাহী বাসে আগুন | Dhaka | Fire Incident | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=UOKcsO5p2PQ",
-      "publisherUrl": "https://www.youtube.com/watch?v=UOKcsO5p2PQ",
-      "publishedAt": "2026-11-26T20:09:24+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV",
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=UOKcsO5p2PQ"
-        },
-        {
-          "name": "Independent Television ·",
-          "url": "https://www.youtube.com/watch?v=dFbH56ASFRg"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "উত্তর বাড্ডায় যাত্রীবাহী বাসে আগুন | Dhaka | Fire Incident | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=UOKcsO5p2PQ"
-        },
-        {
-          "name": "Independent Television",
-          "title": "পুরান ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন | Chakbazar | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=dFbH56ASFRg"
-        },
-        {
-          "name": "Independent Television",
-          "title": "পুরান ঢাকার চকবাজারের ছোট কাটরায় অগ্নিকাণ্ড | Puran | Dhaka Fire | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=XkiGdJ_gXPE"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "3c35422276a34afc9ffa9da9fffa0f54"
-    },
-    {
-      "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
+      "title": "পুরান ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন | Chakbazar | Independent TV",
       "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87",
-      "publishedAt": "2026-11-26T18:58:55+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "link": "https://www.youtube.com/watch?v=dFbH56ASFRg",
+      "publisherUrl": "https://www.youtube.com/watch?v=dFbH56ASFRg",
+      "publishedAt": "2026-11-26T19:08:59+00:00",
+      "source": "Independent Television",
+      "publisherName": "Independent Television",
       "sourceEvidence": [
+        "Independent Television",
         "Bangla Tribune",
         "DBC News"
       ],
       "sourceLinks": [
         {
+          "name": "Independent Television · YouTube",
+          "url": "https://www.youtube.com/watch?v=dFbH56ASFRg"
+        },
+        {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/law-and-crime/983492/%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A3-%E0%A6%B8%E0%A6%BF%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A7%87%E0%A6%AD%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%97-%E0%A6%AA%E0%A7%87%E0%A6%A4%E0%A7%87"
+        },
+        {
+          "name": "Independent Television ·",
+          "url": "https://www.youtube.com/watch?v=XkiGdJ_gXPE"
         },
         {
           "name": "DBC News ·",
@@ -948,6 +940,12 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "Independent Television",
+          "title": "পুরান ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন | Chakbazar | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=dFbH56ASFRg"
+        },
+        {
           "name": "Bangla Tribune",
           "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
           "summary": "পুরান ঢাকার চকবাজারের ছোট কাটারা এলাকায় সাততলা ভবনের চতুর্থ তলায় প্লাস্টিক ও ইলেকট্রিক পণ্যের গোডাউনে লাগা আগুন নিয়ন্ত্রণে বেগ পেতে হয়েছে ফায়ার সার্ভিসের কর্মীদের। ভবনটিতে ওঠানামার জন্য মাত্র একটি সংকীর্ণ সিঁড়ি এবং পর্যাপ্ত বায়ু চলাচলের ব্যবস্থা না থাকায় আগুন নেভানোর কাজে সমস্যা হয়। ফায়ার সার্ভিসের ঢাকা জোন-১-এর জোন কমান্ডার মোহাম্মদ এনামুল হক এ তথ্য জানিয়েছেন। আগুন নিয়ন্ত্রণে আসার পর তিনি... বিস্তারিত",
@@ -958,6 +956,12 @@
           "title": "চকবাজারে বহুতল ভবনের আগুন নিয়ন্ত্রণে",
           "summary": "পুরান ঢাকার চকবাজারে বহুতল ভবনে লাগা আগুন নিয়ন্ত্রণে এসেছে। ফায়ার সার্ভিসের পাঁচটি ইউনিটের চেষ্টায় বৃহস্পতিবার (২৬ নভেম্বর) ১০টা ২২ মি‌নি‌টে আগুন নিয়ন্ত্রণে আসে। এদিন ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করেছে।... বিস্তারিত",
           "url": "https://www.banglatribune.com/others/983476/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
+        },
+        {
+          "name": "Independent Television",
+          "title": "পুরান ঢাকার চকবাজারের ছোট কাটরায় অগ্নিকাণ্ড | Puran | Dhaka Fire | Independent TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=XkiGdJ_gXPE"
         },
         {
           "name": "DBC News",
@@ -972,7 +976,7 @@
           "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 3,
       "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
     },
     {
@@ -1081,17 +1085,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Banglanews24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -1103,16 +1102,10 @@
           "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
           "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
+      "corroborationCount": 1,
+      "alertEventId": "3569376b763f9b321834bcbb4d903246"
     },
     {
       "title": "কুমিল্লা বিশ্ববিদ্যালয়ের প্রধান ফটকের সামনে ককটেল বিস্ফোরণ, শিক্ষার্থীসহ আহত ২ | DBC NEWS",
@@ -1201,8 +1194,8 @@
     {
       "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
       "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87",
       "publishedAt": "2026-11-26T15:30:41+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1212,7 +1205,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1223,7 +1216,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
           "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
         }
       ],
       "corroborationCount": 1,
