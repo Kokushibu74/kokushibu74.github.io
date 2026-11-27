@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T13:50:45.138589+00:00",
-  "updatedAt": "2026-11-27T13:50:45.138589+00:00",
+  "generatedAt": "2026-11-27T14:00:43.445554+00:00",
+  "updatedAt": "2026-11-27T14:00:43.445554+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 52,
-  "failedSourceCount": 3,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 31,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 31,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 5,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 2,
+      "fallbackItems": 1,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -317,17 +317,17 @@
     {
       "name": "Somoy News",
       "domain": "somoynews.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,23 +840,23 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 33,
+  "candidateCount": 32,
   "alertItems": [
     {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
-      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
-      "publishedAt": "2026-11-27T13:46:48+00:00",
-      "source": "কালের কণ্ঠ",
-      "publisherName": "কালের কণ্ঠ",
+      "title": "গোপালগঞ্জের লোকজন দিয়ে সন্ত্রাস করিয়ে লাভ হবে না: আইনমন্ত্রী",
+      "summary": "গোপালগঞ্জের লোকজন দিয়ে আগুন জ্বালিয়ে ও সন্ত্রাস করিয়ে কোনো লাভ হবে না বলে মন্তব্য করেছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান....",
+      "link": "https://www.jagonews24.com/country/news/1184401",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184401",
+      "publishedAt": "2026-11-27T13:49:10+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "কালের কণ্ঠ"
+        "Jago News 24"
       ],
       "sourceLinks": [
         {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184401"
         }
       ],
       "category": "Bangladesh",
@@ -864,14 +864,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "কালের কণ্ঠ",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+          "name": "Jago News 24",
+          "title": "গোপালগঞ্জের লোকজন দিয়ে সন্ত্রাস করিয়ে লাভ হবে না: আইনমন্ত্রী",
+          "summary": "গোপালগঞ্জের লোকজন দিয়ে আগুন জ্বালিয়ে ও সন্ত্রাস করিয়ে কোনো লাভ হবে না বলে মন্তব্য করেছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান....",
+          "url": "https://www.jagonews24.com/country/news/1184401"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
+      "alertEventId": "480941f378a703e3e45a3009be043eb9"
     },
     {
       "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
@@ -1061,37 +1061,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "40b3603ac2054b1ed19341806661fb84"
-    },
-    {
-      "title": "মাটির স্তুপ সরানোর কাজ হলো শ্রমিকের কাল! | Jessore Bomb | Independent TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=NndQGbOQLIs",
-      "publisherUrl": "https://www.youtube.com/watch?v=NndQGbOQLIs",
-      "publishedAt": "2026-11-27T11:59:15+00:00",
-      "source": "Independent Television",
-      "publisherName": "Independent Television",
-      "sourceEvidence": [
-        "Independent Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Independent Television · YouTube",
-          "url": "https://www.youtube.com/watch?v=NndQGbOQLIs"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Independent Television",
-          "title": "মাটির স্তুপ সরানোর কাজ হলো শ্রমিকের কাল! | Jessore Bomb | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=NndQGbOQLIs"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "6b3ee27361dd614f9ae1282caf4b8585"
     },
     {
       "title": "গোপালগঞ্জে বিএনপির তিন এমপির বাড়িতে হামলার নেপথ্যে কী?",
