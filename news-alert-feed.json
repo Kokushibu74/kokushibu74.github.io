@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T13:05:51.188362+00:00",
-  "updatedAt": "2026-11-27T13:05:51.188362+00:00",
+  "generatedAt": "2026-11-27T13:20:59.770499+00:00",
+  "updatedAt": "2026-11-27T13:20:59.770499+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 49,
-  "failedSourceCount": 6,
+  "healthySourceCount": 40,
+  "failedSourceCount": 15,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 28,
+  "fallbackHealthySourceCount": 19,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 28,
-  "fallbackWithItemsSourceCount": 23,
-  "fallbackZeroItemsSourceCount": 5,
+  "fallbackOnlySourceCount": 19,
+  "fallbackWithItemsSourceCount": 16,
+  "fallbackZeroItemsSourceCount": 3,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -77,17 +77,17 @@
     {
       "name": "Banglanews24",
       "domain": "banglanews24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "directError": "HTTP 404",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Jugantor",
@@ -167,32 +167,32 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "New Age",
       "domain": "newagebd.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Daily Observer",
@@ -212,17 +212,17 @@
     {
       "name": "BSS",
       "domain": "bssnews.net",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "UNB",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,51 +272,6 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
-    },
-    {
-      "name": "Bangladesh Pratidin",
-      "domain": "bd-pratidin.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
-    },
-    {
-      "name": "Daily Sun",
-      "domain": "daily-sun.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 3,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
-    },
-    {
-      "name": "Somoy News",
-      "domain": "somoynews.tv",
       "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
@@ -328,6 +283,51 @@
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
       "healthClass": "failed"
+    },
+    {
+      "name": "Bangladesh Pratidin",
+      "domain": "bd-pratidin.com",
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
+    },
+    {
+      "name": "Daily Sun",
+      "domain": "daily-sun.com",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 2,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
+    },
+    {
+      "name": "Somoy News",
+      "domain": "somoynews.tv",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "HTTP 404",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Channel 24",
@@ -347,32 +347,32 @@
     {
       "name": "Jamuna TV",
       "domain": "jamuna.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Daily Inqilab",
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bhorer Kagoj",
@@ -422,17 +422,17 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Desh Rupantor",
@@ -467,32 +467,32 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -572,17 +572,17 @@
     {
       "name": "Dhaka Courier",
       "domain": "dhakacourier.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "The Business Post",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,104 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 32,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
+      "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব রুহুল কবির রিজভী বলেছেন, ‘কলকাতায় বসে আওয়ামী লীগের নেতারা বিকাশে টাকা পাঠিয়ে সন্ত্রাসীদের মাধ্যমে নাশকতা চালিয়ে দেশকে অস্থিতিশীল করার চেষ্টা করছে। আওয়ামী লীগের নেতারা স্থানীয় সন্ত্রাসীদের হাতে ককটেল ও পেট্রোল তুলে দিয়ে গ্রামীণ ব্যাংকে আগুন দিচ্ছেন। বিএনপি নেতাকর্মীদের বাড়িতে আগুন দিচ্ছেন।’ তিনি বলেন, ‘পালিয়ে যাওয়ার পরও বাংলাদেশকে রক্তাক্ত করার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
+      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
+      "publishedAt": "2026-11-27T13:11:21+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
+          "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব রুহুল কবির রিজভী বলেছেন, ‘কলকাতায় বসে আওয়ামী লীগের নেতারা বিকাশে টাকা পাঠিয়ে সন্ত্রাসীদের মাধ্যমে নাশকতা চালিয়ে দেশকে অস্থিতিশীল করার চেষ্টা করছে। আওয়ামী লীগের নেতারা স্থানীয় সন্ত্রাসীদের হাতে ককটেল ও পেট্রোল তুলে দিয়ে গ্রামীণ ব্যাংকে আগুন দিচ্ছেন। বিএনপি নেতাকর্মীদের বাড়িতে আগুন দিচ্ছেন।’ তিনি বলেন, ‘পালিয়ে যাওয়ার পরও বাংলাদেশকে রক্তাক্ত করার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9a9dcafabba4891c6e72c9c3f780b5f0"
+    },
+    {
+      "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
+      "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+      "publisherUrl": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+      "publishedAt": "2026-11-27T13:11:13+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট",
+          "summary": "চট্টগ্রামের সীতাকুণ্ডে শিল্পকারখানায় একের পর এক চুরি ও ডাকাতির ঘটনায় উদ্বেগ বাড়ছে। এবার উপজেলার বাড়বকুণ্ড ইউনিয়নের মান্দারীটোলা এলাকায় বেড়িবাঁধসংলগ্ন ইউরো গ্যাস কারখানায় ডাকাতির ঘটনা ঘটেছে। বৃহস্পতিবার দিবাগত রাত ৩টার দিকে বোরখা পরা ৬ জনের একটি সংঘবদ্ধ দল কারখানায় ঢুকে পাঁচ নিরাপত্তাকর্মীকে বেঁধে নগদ পাঁচ লাখ টাকা ও প্রায় ২০ লাখ টাকা মূল্যের তামার তার লুট […] The post বোরখা পরে সীতাকুণ্ডে ইউরো গ্যাস কারখানা লুট appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/sitakunda-euro-gas-factory-robbery/",
+          "incidentTimeText": "রাত ৩টার দিকে",
+          "incidentTimeSource": "Dainik Azadi",
+          "locationText": "এবার উপজেলার বাড়বকুণ্ড ইউনিয়নে, মান্দারীটোলা এলাকায়, সীতাকুণ্ড থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5f2fd807678e171fd4735af8b7093d06"
+    },
+    {
+      "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
+      "summary": "দেশের বিভিন্ন জেলায় ১৬ দিনে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। নিরাপত্তার অভাবে বন্ধ রয়েছে ২৯টি শাখার কার্যক্রম। এতে ব্যাংকটির স্বাভাবিক কার্যক্রম ব্যাহত হওয়ার পাশাপাশি গ্রামীণ ঋণপ্রবাহ, কৃষি অর্থায়ন ও প্রান্তিক জনগোষ্ঠীর জীবিকা নিয়ে অনিশ্চয়তা তৈরি হয়েছে। ধারাবাহিক এসব হামলার ঘটনায় উদ্বেগ জানিয়েছে বাংলাদেশ ব্যাংক। হামলার পেছনে অর্থায়ন রয়েছে কি না,... বিস্তারিত",
+      "link": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80",
+      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80",
+      "publishedAt": "2026-11-27T13:05:56+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
+          "summary": "দেশের বিভিন্ন জেলায় ১৬ দিনে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। নিরাপত্তার অভাবে বন্ধ রয়েছে ২৯টি শাখার কার্যক্রম। এতে ব্যাংকটির স্বাভাবিক কার্যক্রম ব্যাহত হওয়ার পাশাপাশি গ্রামীণ ঋণপ্রবাহ, কৃষি অর্থায়ন ও প্রান্তিক জনগোষ্ঠীর জীবিকা নিয়ে অনিশ্চয়তা তৈরি হয়েছে। ধারাবাহিক এসব হামলার ঘটনায় উদ্বেগ জানিয়েছে বাংলাদেশ ব্যাংক। হামলার পেছনে অর্থায়ন রয়েছে কি না,... বিস্তারিত",
+          "url": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ebc25c82218ac17e94be3ac05d28caee"
+    },
     {
       "title": "অস্ত্র, ককটেল ও মাদকসহ দেশজুড়ে অভিযান #BangladeshNews #CrimeNews #PoliceRaid",
       "summary": "",
@@ -1208,8 +1304,8 @@
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
       "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
       "publishedAt": "2026-11-27T09:34:08+00:00",
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
@@ -1219,7 +1315,7 @@
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         }
       ],
       "category": "Bangladesh",
@@ -1230,7 +1326,7 @@
           "name": "Dhaka Tribune Bangla",
           "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
         },
         {
           "name": "Dhaka Tribune Bangla",
@@ -1278,6 +1374,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "fee0e4bf01084c39aec4c3b56bae3e36"
+    },
+    {
+      "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+      "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publishedAt": "2026-11-27T09:18:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+          "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "58cb3010a88bf3cf25b0b5565a60d0e2"
     },
     {
       "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
@@ -1373,37 +1500,6 @@
       "alertEventId": "59af513f985df391cabd3a06b80174fe"
     },
     {
-      "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
-      "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
-      "link": "https://www.dhakapost.com/international/501237",
-      "publisherUrl": "https://www.dhakapost.com/international/501237",
-      "publishedAt": "2026-11-27T07:43:14+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/international/501237"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
-          "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
-          "url": "https://www.dhakapost.com/international/501237"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
-    },
-    {
       "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
       "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
@@ -1446,49 +1542,6 @@
       "alertEventId": "b16bb1cc3953c60e998e8a2d198ac6e2"
     },
     {
-      "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-      "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-      "link": "https://www.dhakapost.com/national/501172",
-      "publisherUrl": "https://www.dhakapost.com/national/501172",
-      "publishedAt": "2026-11-26T18:53:36+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
-          "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন - dhakapost.com",
-          "summary": "পল্লবীর পর বাড্ডায় যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501167"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে - dhakapost.com",
-          "summary": "চকবাজারে আগুন : সংকীর্ণ সিঁড়ির কারণে নেভাতে বেগ পেতে হয় ফায়ার সার্ভিসকে dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501165"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cab8f70e88cc497c71084d4ce3652497"
-    },
-    {
       "title": "বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধের সতর্কতা - Dhaka Tribune Bangla",
       "summary": "বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধের সতর্কতা Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113869/%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%B2%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E",
@@ -1528,17 +1581,12 @@
       "source": "Dhaka Tribune Bangla",
       "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Dhaka Tribune Bangla",
-        "একাত্তর"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
           "name": "Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "একাত্তর",
-          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1550,16 +1598,10 @@
           "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
           "summary": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/bangladesh/113864/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%89%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "একাত্তর",
-          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
-          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
-          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
+      "corroborationCount": 1,
+      "alertEventId": "e4b1e4be66efbe63ce42a01b7a082392"
     },
     {
       "title": "সীতাকুণ্ডে ট্রেইলারের চাপায় বাঁশখালীর শহিদুল আজম নিহত",
@@ -1591,37 +1633,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "0864a322894b5db9387336c06f00384a"
-    },
-    {
-      "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-      "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-      "link": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publisherUrl": "https://banglanews24.com/power-fuel/news/bd/1696104.details",
-      "publishedAt": "2026-11-26T15:16:19+00:00",
-      "source": "Banglanews24",
-      "publisherName": "Banglanews24",
-      "sourceEvidence": [
-        "Banglanews24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
     },
     {
       "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
