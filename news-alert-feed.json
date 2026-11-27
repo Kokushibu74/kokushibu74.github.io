@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T06:00:46.689997+00:00",
-  "updatedAt": "2026-11-27T06:00:46.689997+00:00",
+  "generatedAt": "2026-11-27T06:15:46.293281+00:00",
+  "updatedAt": "2026-11-27T06:15:46.293281+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 47,
-  "failedSourceCount": 8,
-  "directHealthySourceCount": 14,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 41,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
+  "healthySourceCount": 46,
+  "failedSourceCount": 9,
+  "directHealthySourceCount": 16,
+  "fallbackHealthySourceCount": 30,
+  "directFailedSourceCount": 39,
+  "fallbackOnlySourceCount": 30,
+  "fallbackWithItemsSourceCount": 22,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 1,
+      "fallbackItems": 2,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -362,17 +362,17 @@
     {
       "name": "Ekattor TV",
       "domain": "ekattor.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Inqilab",
@@ -422,17 +422,17 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Desh Rupantor",
@@ -467,17 +467,17 @@
     {
       "name": "Ajker Patrika",
       "domain": "ajkerpatrika.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Manab Zamin",
@@ -752,17 +752,17 @@
     {
       "name": "Channel 24 YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": false,
+      "directHealthy": true,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Ekattor TV YouTube",
@@ -782,21 +782,6 @@
     {
       "name": "DBC News YouTube",
       "domain": "youtube.com",
-      "status": "failed",
-      "directStatus": "failed",
-      "directError": "HTTP 503",
-      "fallbackStatus": "not_needed",
-      "fallbackError": null,
-      "fallbackItems": 0,
-      "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
-    },
-    {
-      "name": "Independent Television YouTube",
-      "domain": "youtube.com",
       "status": "healthy",
       "directStatus": "healthy",
       "directError": null,
@@ -810,7 +795,7 @@
       "healthClass": "direct_healthy"
     },
     {
-      "name": "News24 YouTube",
+      "name": "Independent Television YouTube",
       "domain": "youtube.com",
       "status": "failed",
       "directStatus": "failed",
@@ -823,6 +808,21 @@
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
       "healthClass": "failed"
+    },
+    {
+      "name": "News24 YouTube",
+      "domain": "youtube.com",
+      "status": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
+      "fallbackError": null,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
+      "fallbackZeroItems": false,
+      "healthClass": "direct_healthy"
     },
     {
       "name": "RTV News YouTube",
@@ -840,8 +840,39 @@
       "healthClass": "failed"
     }
   ],
-  "candidateCount": 24,
+  "candidateCount": 25,
   "alertItems": [
+    {
+      "title": "টানা ৩১ দিন পর নেভানো হলো কক্সবাজারের ইনানির সেই গ্যাসকূপের আগুন | DBC NEWS",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=Sdi2RzVVICA",
+      "publisherUrl": "https://www.youtube.com/watch?v=Sdi2RzVVICA",
+      "publishedAt": "2026-11-27T05:38:44+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "টানা ৩১ দিন পর নেভানো হলো কক্সবাজারের ইনানির সেই গ্যাসকূপের আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d62e38d20c130bdbf04b9b1ba221ead2"
+    },
     {
       "title": "আশুলিয়ার আন্ডারপাসে মিললো ৫ ককটেল সদৃশ বস্তু",
       "summary": "ঢাকার সাভার উপজেলার আশুলিয়ার বাইপাইল বাসস্ট্যান্ড এলাকায় আন্ডারপাসের নিচ থেকে পাঁচটি ককটেল সদৃশ বস্তু উদ্ধার করা হয়েছে। বৃহস্পতিবার (২৬ নভেম্বর) সন্ধ্যায় স্পেশাল রেসপন্স ব্যাটালিয়ন (এসআরবি)-৪-এর সদস্যরা বস্তুগুলো দেখতে পান। পরে ঢাকা মহানগর পুলিশের (ডিএমপি) বোমা নিষ্ক্রিয়করণ ইউনিটের সদস্যরা ঘটনাস্থলে গিয়ে সেগুলো নিয়ে যান। এসআরবি-৪-এর সিপিসি-২-এর সদস্যরা জানান, বৃহস্পতিবার সন্ধ্যা সাড়ে... বিস্তারিত",
@@ -976,7 +1007,8 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "dhakapost.com"
+        "dhakapost.com",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -986,6 +1018,10 @@
         {
           "name": "dhakapost.com",
           "url": "https://www.dhakapost.com/national/501167"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1029,10 +1065,16 @@
           "title": "চকবাজারে বহুতল ভবনে আগুন",
           "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
+          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
+      "corroborationCount": 3,
+      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
     },
     {
       "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
@@ -1059,11 +1101,7 @@
           "name": "dhakapost.com",
           "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
           "summary": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501172",
-          "incidentDateText": "বৃহস্পতিবার (২৬ নভেম্বর)",
-          "incidentTimeText": "রাত ১২টা ২০ মিনিটে",
-          "incidentTimeSource": "dhakapost.com",
-          "locationText": "বাড্ডা এলাকা, মিল্লাত ক্যাম্প সংলগ্ন এলাকা"
+          "url": "https://www.dhakapost.com/national/501172"
         }
       ],
       "corroborationCount": 1,
@@ -1264,12 +1302,17 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Bangla Tribune",
+        "Risingbd.com"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672972"
         }
       ],
       "category": "Bangladesh",
@@ -1281,10 +1324,16 @@
           "title": "গ্রামীণ ব্যাংকের আরেক শাখার সামনে আগুন, কাউকে শনাক্ত করতে পারেনি পুলিশ",
           "summary": "মুন্সীগঞ্জের টংগীবাড়ি উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখার গেটে কেরোসিন ঢেলে আগুন দিয়েছে দুর্বৃত্তরা। এ সময় পাশে রাখা একটি মোটরসাইকেলের কিছু অংশ পুড়ে ক্ষতিগ্রস্ত হয়েছে। বুধবার (২৫ নভেম্বর) দিবাগত রাত ২টার দিকে উপজেলার যশলং ইউনিয়নের পুরা বাজার এলাকায় গ্রামীণ ব্যাংকের যশলং শাখায় এ ঘটনা ঘটে। ব্যবস্থাপক কামাল হোসেন বলেন, বুধবার মধ্যরাতে কে বা কারা ব্যাংকের দরজার... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983450/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%89%E0%A6%95%E0%A7%87"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন - Risingbd.com",
+          "summary": "মুন্সীগঞ্জে গ্রামীণ ব্যাংকের সামনে আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/672972"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "4e227ffb7407858bd7ff95d4ed4fe114"
+      "corroborationCount": 2,
+      "alertEventId": "1ef1db2edf3ab3f7d8a475d3cf449fcb"
     },
     {
       "title": "ইতালি যাওয়ার দুই মাসের মাথায় সড়ক দুর্ঘটনায় প্রাণ গেল বাংলাদেশি যুবকের - Samakal",
@@ -1318,37 +1367,6 @@
       "alertEventId": "7ebd5c0a8428d490cc9e4b4968806609"
     },
     {
-      "title": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ - United News of Bangladesh",
-      "summary": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%95-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8/116702",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%95-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8/116702",
-      "publishedAt": "2026-11-26T09:27:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%95-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8/116702"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ - United News of Bangladesh",
-          "summary": "ঝিনাইদহে পৃথক সড়ক দুর্ঘটনায় নিহত ২ United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%9D%E0%A6%BF%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%A6%E0%A6%B9%E0%A7%87-%E0%A6%AA%E0%A7%83%E0%A6%A5%E0%A6%95-%E0%A6%B8%E0%A6%A1%E0%A6%BC%E0%A6%95-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%9F%E0%A6%A8%E0%A6%BE%E0%A6%AF%E0%A6%BC-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%A8/116702"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "b25f4028f84c2675e90ca39eb10ac15f"
-    },
-    {
       "title": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন - Dhaka Tribune Bangla",
       "summary": "চট্টগ্রামে পুলিশ বক্স ও ভূমি অফিসে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113835/%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%AC%E0%A6%95%E0%A7%8D%E0%A6%B8-%E0%A6%93-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1378,68 +1396,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "cd6dc9f10763009994134f0e25e0c616"
-    },
-    {
-      "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
-      "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত United News of Bangladesh",
-      "link": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700",
-      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700",
-      "publishedAt": "2026-11-26T08:49:00+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - United News of Bangladesh",
-          "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত United News of Bangladesh",
-          "url": "https://unb.com.bd/bangla/category/%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%AE-%E0%A6%86%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%A4%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%A8%E0%A7%87-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3,-%E0%A6%86%E0%A6%87%E0%A6%A8%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A7%80-%E0%A6%86%E0%A6%B9%E0%A6%A4/116700"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "18a2db70ba9b9dcd17f73cfd46207640"
-    },
-    {
-      "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
-      "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668730",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668730",
-      "publishedAt": "2026-11-26T08:01:26+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ - Jamuna Television",
-          "summary": "মুন্সীগঞ্জে ফের বিএনপির দুই গ্রুপের সংঘর্ষে নিহত ১ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668730"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "bd14e946ec605a9b9b00d43b6c89c101"
     },
     {
       "title": "লক্ষ্মীপুরে সড়কের পাশে পার্ক করা বাসে আগুন - Barta 24",
@@ -1502,6 +1458,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "f3bb07e2084a107665f841048c42525a"
+    },
+    {
+      "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - bdnews24.com",
+      "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত bdnews24.com",
+      "link": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv",
+      "publisherUrl": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv",
+      "publishedAt": "2026-11-26T06:17:00+00:00",
+      "source": "bdnews24.com",
+      "publisherName": "bdnews24.com",
+      "sourceEvidence": [
+        "bdnews24.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bdnews24.com",
+          "title": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত - bdnews24.com",
+          "summary": "ঢাকার সিএমএম আদালতের সামনে ককটেল বিস্ফোরণ, আইনজীবী আহত bdnews24.com",
+          "url": "https://bangla.bdnews24.com/bangladesh/cid1gd2erv"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "568b55b4d53df6e3cfc1588020d8607a"
     }
   ]
 }
