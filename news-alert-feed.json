@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T09:05:49.119105+00:00",
-  "updatedAt": "2026-11-27T09:05:49.119105+00:00",
+  "generatedAt": "2026-11-27T09:20:39.062272+00:00",
+  "updatedAt": "2026-11-27T09:20:39.062272+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -167,17 +167,17 @@
     {
       "name": "The Financial Express",
       "domain": "thefinancialexpress.com.bd",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 1,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 27,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -392,17 +392,17 @@
     {
       "name": "Barta24",
       "domain": "barta24.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bhorer Kagoj",
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 18,
+      "fallbackItems": 19,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,11 +840,42 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 31,
+  "candidateCount": 30,
   "alertItems": [
     {
+      "title": "নারায়ণগঞ্জে আধিপত্য বিস্তারকে কেন্দ্র করে দু’গ্রুপের সংঘর্ষ | Narayanganj Clash | Jamuna TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=ihSHcsVP3VU",
+      "publisherUrl": "https://www.youtube.com/watch?v=ihSHcsVP3VU",
+      "publishedAt": "2026-11-27T08:50:35+00:00",
+      "source": "Jamuna TV",
+      "publisherName": "Jamuna TV",
+      "sourceEvidence": [
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna TV · YouTube",
+          "url": "https://www.youtube.com/watch?v=ihSHcsVP3VU"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna TV",
+          "title": "নারায়ণগঞ্জে আধিপত্য বিস্তারকে কেন্দ্র করে দু’গ্রুপের সংঘর্ষ | Narayanganj Clash | Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=ihSHcsVP3VU"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "42c0300f0cce08a1b16fada788f501f4"
+    },
+    {
       "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ, দুই শ্রমিক আহত",
-      "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ ঘটনা ঘটেছে। এতে দুই শ্রমিক আহত হয়েছেন....",
+      "summary": "যশোরে মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ, দুই শ্রমিক আহত",
       "link": "https://www.jagonews24.com/country/news/1184304",
       "publisherUrl": "https://www.jagonews24.com/country/news/1184304",
       "publishedAt": "2026-11-27T08:46:46+00:00",
@@ -866,7 +897,7 @@
         {
           "name": "Jago News 24",
           "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ, দুই শ্রমিক আহত",
-          "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ ঘটনা ঘটেছে। এতে দুই শ্রমিক আহত হয়েছেন....",
+          "summary": "যশোরে মাটি খুঁড়তে গিয়ে বোমার বিস্ফোরণ, দুই শ্রমিক আহত",
           "url": "https://www.jagonews24.com/country/news/1184304"
         }
       ],
@@ -998,37 +1029,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9369b5688c23572ec8d5782400ab5bb9"
-    },
-    {
-      "title": "কাপ্তাই হ্রদে জেলেদের বিরোধ; ধারালো অস্ত্রের হামলায় নিহত ১ | Rangamati | News | JamunaTV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=S8gPzv9ES_M",
-      "publisherUrl": "https://www.youtube.com/watch?v=S8gPzv9ES_M",
-      "publishedAt": "2026-11-27T07:10:33+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=S8gPzv9ES_M"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "কাপ্তাই হ্রদে জেলেদের বিরোধ; ধারালো অস্ত্রের হামলায় নিহত ১ | Rangamati | News | JamunaTV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=S8gPzv9ES_M"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "03b319a3fef840072f60eec720623722"
     },
     {
       "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
@@ -1361,17 +1361,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Banglanews24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -1383,16 +1378,10 @@
           "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
           "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
+      "corroborationCount": 1,
+      "alertEventId": "3569376b763f9b321834bcbb4d903246"
     },
     {
       "title": "চকবাজারে প্লাস্টিকের গোডাউনে আগুন, ঘটনাস্থলে ফায়ার সার্ভিসের ৫ ইউনিট - Dhaka Tribune Bangla",
