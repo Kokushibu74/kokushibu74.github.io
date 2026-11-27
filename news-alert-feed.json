@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T05:35:36.620041+00:00",
-  "updatedAt": "2026-11-27T05:35:36.620041+00:00",
+  "generatedAt": "2026-11-27T05:45:43.051326+00:00",
+  "updatedAt": "2026-11-27T05:45:43.051326+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 33,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -840,23 +840,28 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 26,
+  "candidateCount": 27,
   "alertItems": [
     {
-      "title": "টানা ৩১ দিন জ্বলার পর নিভল কক্সবাজারের ইনানীর আগুন | BAPEX | Gas Field | Somoy TV",
+      "title": "টানা ৩১ দিন পর নেভানো হলো কক্সবাজারের ইনানির সেই গ্যাসকূপের আগুন | DBC NEWS",
       "summary": "",
-      "link": "https://www.youtube.com/watch?v=nA2M2reNYB0",
-      "publisherUrl": "https://www.youtube.com/watch?v=nA2M2reNYB0",
-      "publishedAt": "2026-11-27T04:48:24+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
+      "link": "https://www.youtube.com/watch?v=Sdi2RzVVICA",
+      "publisherUrl": "https://www.youtube.com/watch?v=Sdi2RzVVICA",
+      "publishedAt": "2026-11-27T05:38:44+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
       "sourceEvidence": [
+        "DBC News",
         "Somoy News",
         "Jamuna TV"
       ],
       "sourceLinks": [
         {
-          "name": "Somoy News · YouTube",
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
+        },
+        {
+          "name": "Somoy News ·",
           "url": "https://www.youtube.com/watch?v=nA2M2reNYB0"
         },
         {
@@ -868,6 +873,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "টানা ৩১ দিন পর নেভানো হলো কক্সবাজারের ইনানির সেই গ্যাসকূপের আগুন | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=Sdi2RzVVICA"
+        },
         {
           "name": "Somoy News",
           "title": "টানা ৩১ দিন জ্বলার পর নিভল কক্সবাজারের ইনানীর আগুন | BAPEX | Gas Field | Somoy TV",
@@ -881,7 +892,7 @@
           "url": "https://www.youtube.com/watch?v=5C6VGvLJ3fA"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 3,
       "alertEventId": "ea8fb2add7942f8ef13393a6338b84e5"
     },
     {
@@ -1018,7 +1029,8 @@
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
         "Bangla Tribune",
-        "dhakapost.com"
+        "dhakapost.com",
+        "একাত্তর"
       ],
       "sourceLinks": [
         {
@@ -1028,6 +1040,10 @@
         {
           "name": "dhakapost.com",
           "url": "https://www.dhakapost.com/national/501165"
+        },
+        {
+          "name": "একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1061,10 +1077,16 @@
           "title": "চকবাজারে বহুতল ভবনে আগুন",
           "summary": "পুরান ঢাকার চকবাজারে একটি বহুতল ভবনে আগুন লেগেছে। খবর পেয়ে ফায়ার সার্ভিসের পাঁচটি ইউনিট আগুন নিয়ন্ত্রণে কাজ করছে। বৃহস্পতিবার (২৬ নভেম্বর) ৫টা ২৮ মিনিটে ছোট কাটরা এলাকায় আগুনের খবর পায় ফায়ার সার্ভিস। সেখানকার একটি ৬তলা ভবনের চতুর্থ তলায় এ অগ্নিকাণ্ড ঘটে। ফায়ার সার্ভিসের মিডিয়া সেলের ভারপ্রাপ্ত কর্মকর্তা শাহজাহান শিকদার বলেন, আগুন নিয়ন্ত্রণে পাঁচটি ইউনিট কাজ করছে। তবে ধোয়ার কারণে আগুন নেভাতে... বিস্তারিত",
           "url": "https://www.banglatribune.com/law-and-crime/983453/%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%B9%E0%A7%81%E0%A6%A4%E0%A6%B2-%E0%A6%AD%E0%A6%AC%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "একাত্তর",
+          "title": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট - একাত্তর",
+          "summary": "ঢাকার চকবাজারে প্লাস্টিকের গুদামে আগুন, নিয়ন্ত্রণে পাঁচ ইউনিট একাত্তর",
+          "url": "https://ekattor.tv/capital/98548/%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%9A%E0%A6%95%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%97%E0%A7%81%E0%A6%A6%E0%A6%BE%E0%A6%AE%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "567ff3cc0c9aad123496a6a2bd968eb3"
+      "corroborationCount": 3,
+      "alertEventId": "9f36b67b2afc0af5b1f3f201fa54a41c"
     },
     {
       "title": "রাজধানীতে ৩ যাত্রীবাহী বাসে আগুন - dhakapost.com",
@@ -1137,17 +1159,12 @@
       "source": "Bangla Tribune",
       "publisherName": "Bangla Tribune",
       "sourceEvidence": [
-        "Bangla Tribune",
-        "Banglanews24"
+        "Bangla Tribune"
       ],
       "sourceLinks": [
         {
           "name": "Bangla Tribune",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
       "category": "Bangladesh",
@@ -1159,16 +1176,10 @@
           "title": "রাজনৈতিক কারণে বিদ্যুৎ স্থাপনায় হামলা হলে গোপালগঞ্জে বিদ্যুৎ সরবরাহ বন্ধ হয়ে যাবে",
           "summary": "রাজনৈতিক কর্মসূচি ও সহিংসতার মধ্যে বিদ্যুৎ স্থাপনা, উপকেন্দ্র এবং জরুরি রক্ষণাবেক্ষণের কাজে নিয়োজিত যানবাহন ও জনবলের ওপর হামলা না করার আহ্বান জানিয়েছে ওয়েস্ট জোন পাওয়ার ডিস্ট্রিবিউশন কোম্পানি (ওজোপাডিকো) গোপালগঞ্জ বিদ্যুৎ সরবরাহ বিভাগ। রাজনৈতিক কারণে বিদ্যুৎ অবকাঠামো ক্ষতিগ্রস্ত হলে জেলার সব এলাকায় বিদ্যুৎ সরবরাহ বন্ধ হয়ে যেতে পারে বলে সতর্ক করেছে প্রতিষ্ঠানটি। বৃহস্পতিবার (২৬ নভেম্বর)... বিস্তারিত",
           "url": "https://www.banglatribune.com/country/dhaka/983474/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A8%E0%A7%88%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A7%9F-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE-%E0%A6%B9%E0%A6%B2%E0%A7%87"
-        },
-        {
-          "name": "Banglanews24",
-          "title": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে - Banglanews24",
-          "summary": "হামলা হলে গোপালগঞ্জে বিদ্যুৎ বন্ধ-এমন তথ্য নেই ওজোপাডিকোর কাছে Banglanews24",
-          "url": "https://banglanews24.com/power-fuel/news/bd/1696104.details"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "39d5b772068d1a385bc9171ddd467575"
+      "corroborationCount": 1,
+      "alertEventId": "3569376b763f9b321834bcbb4d903246"
     },
     {
       "title": "শেরপুরে ভূমি অফিসে আগুন, নথিপত্র পুড়ে ছাই",
