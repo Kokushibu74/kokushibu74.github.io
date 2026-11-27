@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-27T08:10:35.940737+00:00",
-  "updatedAt": "2026-11-27T08:10:35.940737+00:00",
+  "generatedAt": "2026-11-27T08:20:48.489712+00:00",
+  "updatedAt": "2026-11-27T08:20:48.489712+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -307,7 +307,7 @@
       "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 4,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -332,17 +332,17 @@
     {
       "name": "Channel 24",
       "domain": "channel24bd.tv",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Jamuna TV",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackItems": 24,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -422,17 +422,17 @@
     {
       "name": "Bonik Barta",
       "domain": "bonikbarta.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "syntax error: line 1, column 0",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 18,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Desh Rupantor",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 28,
+  "candidateCount": 30,
   "alertItems": [
+    {
+      "title": "মাটি খুঁড়তেই বোমা বিস্ফোরণ, আহত দুই শ্রমিক",
+      "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খোঁড়ার সময় বোমা বিস্ফোরণে দুই শ্রমিক আহত হয়েছেন। শুক্রবার (২৭ নভেম্বর) বেলা ১১টার দিকে বেজপাড়ার বেহারী কলোনির বাদলের বাড়ির পেছনে এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন সাতক্ষীরার কালিগঞ্জ উপজেলার গণেশপুর গ্রামের কাশেম সরদারের ছেলে আব্দুর রাজ্জাক (৩৫) ও মোহাম্মদ গাজীর ছেলে আকবর (৫৫)। পুলিশ ও ঘটনাস্থলে কর্মরত শ্রমিকেরা জানান, সকালে বাদলের বাড়ির পেছনে স্তূপ করে রাখা মাটি... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publishedAt": "2026-11-27T08:16:54+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "মাটি খুঁড়তেই বোমা বিস্ফোরণ, আহত দুই শ্রমিক",
+          "summary": "যশোর শহরের বেজপাড়া এলাকায় মাটি খোঁড়ার সময় বোমা বিস্ফোরণে দুই শ্রমিক আহত হয়েছেন। শুক্রবার (২৭ নভেম্বর) বেলা ১১টার দিকে বেজপাড়ার বেহারী কলোনির বাদলের বাড়ির পেছনে এ ঘটনা ঘটে। আহত ব্যক্তিরা হলেন সাতক্ষীরার কালিগঞ্জ উপজেলার গণেশপুর গ্রামের কাশেম সরদারের ছেলে আব্দুর রাজ্জাক (৩৫) ও মোহাম্মদ গাজীর ছেলে আকবর (৫৫)। পুলিশ ও ঘটনাস্থলে কর্মরত শ্রমিকেরা জানান, সকালে বাদলের বাড়ির পেছনে স্তূপ করে রাখা মাটি... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/983554/%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87%E0%A6%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "158961dbaa17d2da8c0a3cf95dbc2add"
+    },
     {
       "title": "বাংলাদেশের আইন প্রণয়ন প্রক্রিয়া এবং ২০২৬ পরবর্তী সংকট",
       "summary": "স্বাধীনতা-পরবর্তী বাংলাদেশের অর্ধশতাব্দীরও বেশি সময়ের সাংবিধানিক ও আইনি ইতিহাস পর্যালোচনা করলে এক গভীর কাঠামোগত স্ববিরোধ স্পষ্ট হয়ে ওঠে— ১৯৭১ সালের মুক্তিযুদ্ধ ও ২০২৪ সালের রক্তক্ষয়ী জুলাই গণঅভ্যুত্থানের মতো যুগান্তকারী জনআকাঙ্ক্ষার বিস্ফোরণ ঘটলেও রাষ্ট্রের আইন প্রণয়ন প্রক্রিয়া ও প্রশাসনিক যন্ত্র কখনোই পুরোপুরি বি-উপনিবেশায়িত বা জনসার্বভৌমত্বের অধীনস্থ হতে পারেনি। বরং সামরিক-বেসামরিক... বিস্তারিত",
@@ -1097,12 +1128,17 @@
       "source": "Jago News 24",
       "publisherName": "Jago News 24",
       "sourceEvidence": [
-        "Jago News 24"
+        "Jago News 24",
+        "Prothom Alo"
       ],
       "sourceLinks": [
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/national/news/1184209"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh"
         }
       ],
       "category": "Bangladesh",
@@ -1114,10 +1150,16 @@
           "title": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
           "summary": "গোপালগঞ্জে কোথায় কোথায় হামলা-ভাঙচুর, কত কোটি টাকার ক্ষতি",
           "url": "https://www.jagonews24.com/national/news/1184209"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "গোপালগঞ্জে বেশির ভাগ মোবাইল ব্যাংকিং বন্ধ, হামলা হলে বিদ্যুৎ বন্ধের সতর্কতা",
+          "summary": "৯ দিন ধরে ট্রেন চলাচল বন্ধ। বেশির ভাগ মোবাইল ব্যাংকিং সেবাও বন্ধ করা হয়েছে। বিদ্যুৎকেন্দ্রে হামলা না করার অনুরোধ কর্তৃপক্ষের।",
+          "url": "https://www.prothomalo.com/bangladesh/v49ugzmcfh"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "9a2254d5414acdc47090acc334c97e0a"
+      "corroborationCount": 2,
+      "alertEventId": "1022788185a8294b89a1c907f650e55e"
     },
     {
       "title": "সংকীর্ণ সিঁড়ির কারণে চকবাজারে আগুন নেভাতে বেগ পেতে হয়: ফায়ার সার্ভিস",
