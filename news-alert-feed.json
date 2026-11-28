@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T17:05:39.498577+00:00",
-  "updatedAt": "2026-11-28T17:05:39.498577+00:00",
+  "generatedAt": "2026-11-28T17:15:43.122050+00:00",
+  "updatedAt": "2026-11-28T17:15:43.122050+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
+  "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 12,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,51 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 38,
+  "candidateCount": 37,
   "alertItems": [
+    {
+      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পরপর দুই রাতে হামলা",
+      "summary": "",
+      "link": "https://www.prothomalo.com/video/bangladesh/dou1le2ynf",
+      "publisherUrl": "https://www.prothomalo.com/video/bangladesh/dou1le2ynf",
+      "publishedAt": "2026-11-28T17:00:36+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Jamuna TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/video/bangladesh/dou1le2ynf"
+        },
+        {
+          "name": "Jamuna TV ·",
+          "url": "https://www.youtube.com/watch?v=OSjYwDh0RT0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পরপর দুই রাতে হামলা",
+          "summary": "",
+          "url": "https://www.prothomalo.com/video/bangladesh/dou1le2ynf",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬"
+        },
+        {
+          "name": "Jamuna TV",
+          "title": "যেভাবে রাজশাহী পল্লী বিদ্যুতের উপকেন্দ্রে পেট্রোলবোমা নিক্ষেপ করলো দুর্বৃত্তরা | Rajshahi |Jamuna TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=OSjYwDh0RT0"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "367ec45c132429cfdcc6d2c5633d6d6b"
+    },
     {
       "title": "মিরসরাইয়ে গ্রামীণ ব্যাংকে পেট্রলবোমা ছুড়ে আগুন",
       "summary": "চট্টগ্রামের মিরসরাইয়ে গ্রামীণ ব্যাংকের একটি শাখায় পেট্রলবোমা ছুড়ে আগুন ধরিয়ে দিয়েছে দুর্বৃত্তরা।, আজ শনিবার (২৮ নভেম্বর) ভোরে মিরসরাই সদর ইউনিয়ন শাখায় এ ঘটনা ঘটে। ঘটনার পর ব্যাংকের নিরাপত্তাকর্মী ও কর্মকর্তারা আগুন নিয়ন্ত্রণে আনেন। খবর পেয়ে ঘটনাস্থলে যায় পুলিশ। এদিকে, শনিবার সন্ধ্যায় নিষিদ্ধ সংগঠন ছাত্রলীগের কয়েকজন নেতাকর্মীর ফেসবুক আইডিতে অগ্নিসংযোগের একটি ভিডিও ছড়িয়ে পড়তে দেখা যায়। […] The post মিরসরাইয়ে গ্রামীণ ব্যাংকে পেট্রলবোমা ছুড়ে আগুন appeared first on চট্টগ্রাম নিউজ .",
@@ -1550,37 +1593,6 @@
       "alertEventId": "37fccde9319c58a49ba68283336e6998"
     },
     {
-      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/501418",
-      "publisherUrl": "https://www.dhakapost.com/country/501418",
-      "publishedAt": "2026-11-28T05:46:14+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501418"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501418"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ec4e4fbd8dcc4ce40c74182e9cccfe8c"
-    },
-    {
       "title": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
       "summary": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/bangladesh/113925/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E2%80%98%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1778,37 +1790,6 @@
       "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
-      "title": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
-      "summary": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ dhakapost.com",
-      "link": "https://www.dhakapost.com/national/501355",
-      "publisherUrl": "https://www.dhakapost.com/national/501355",
-      "publishedAt": "2026-11-27T21:10:08+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501355"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
-          "summary": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ dhakapost.com",
-          "url": "https://www.dhakapost.com/national/501355"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4b822c557ee21ef365a8f2f808651576"
-    },
-    {
       "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
       "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/673132",
@@ -1849,37 +1830,6 @@
       ],
       "corroborationCount": 2,
       "alertEventId": "e4b61056be9cca4fc996e5397aca4936"
-    },
-    {
-      "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা - bd-pratidin.com",
-      "summary": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877",
-      "publisherUrl": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877",
-      "publishedAt": "2026-11-27T18:18:09+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা - bd-pratidin.com",
-          "summary": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "9ac7bfa20909ec3f59254970112e6c1c"
     }
   ]
 }
