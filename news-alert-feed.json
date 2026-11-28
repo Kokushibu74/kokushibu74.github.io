@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T00:15:48.595893+00:00",
-  "updatedAt": "2026-11-28T00:15:48.595893+00:00",
+  "generatedAt": "2026-11-28T00:30:41.338056+00:00",
+  "updatedAt": "2026-11-28T00:30:41.338056+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 25,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 23,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -107,17 +107,17 @@
     {
       "name": "Kaler Kantho",
       "domain": "kalerkantho.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Bangla Tribune",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 28,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -452,17 +452,17 @@
     {
       "name": "The Daily Ittefaq",
       "domain": "ittefaq.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Ajker Patrika",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 31,
   "alertItems": [
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
@@ -1339,22 +1339,17 @@
       "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
     },
     {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
-      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
-      "publishedAt": "2026-11-27T13:46:48+00:00",
-      "source": "কালের কণ্ঠ",
-      "publisherName": "কালের কণ্ঠ",
+      "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
+      "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
+      "link": "https://www.jugantor.com/country-news/1190760",
+      "publisherUrl": "https://www.jugantor.com/country-news/1190760",
+      "publishedAt": "2026-11-27T13:18:52+00:00",
+      "source": "Jugantor",
+      "publisherName": "Jugantor",
       "sourceEvidence": [
-        "কালের কণ্ঠ",
         "Jugantor"
       ],
       "sourceLinks": [
-        {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        },
         {
           "name": "Jugantor",
           "url": "https://www.jugantor.com/country-news/1190760"
@@ -1365,19 +1360,13 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "কালের কণ্ঠ",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        },
-        {
           "name": "Jugantor",
           "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
           "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
           "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "54781f4f193dce751cf31b8b289712bf"
     },
     {
@@ -1564,12 +1553,6 @@
         },
         {
           "name": "Dhaka Tribune Bangla",
-          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
-          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
           "title": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন - Dhaka Tribune Bangla",
           "summary": "রাজধানীর উত্তর বাড্ডা ও পল্লবীতে বাসে আগুন Dhaka Tribune Bangla",
           "url": "https://bangla.dhakatribune.com/amp/bangladesh/113873/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%A7%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A7%8D%E0%A6%A1%E0%A6%BE-%E0%A6%93-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%AC%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
@@ -1738,37 +1721,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
-    },
-    {
-      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-      "link": "https://www.mzamin.com/article/63858",
-      "publisherUrl": "https://www.mzamin.com/article/63858",
-      "publishedAt": "2026-11-27T05:08:48+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
     },
     {
       "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
