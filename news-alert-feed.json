@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T07:10:45.897271+00:00",
-  "updatedAt": "2026-11-28T07:10:45.897271+00:00",
+  "generatedAt": "2026-11-28T07:20:51.229425+00:00",
+  "updatedAt": "2026-11-28T07:20:51.229425+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 47,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 5,
+      "fallbackItems": 7,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 24,
+      "fallbackItems": 23,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 19,
+      "fallbackItems": 20,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -427,7 +427,7 @@
       "directError": "syntax error: line 1, column 0",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -514,7 +514,7 @@
       "domain": "dailynayadiganta.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -843,6 +843,63 @@
   "candidateCount": 38,
   "alertItems": [
     {
+      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ‘পেট্রলবোমা’ নিক্ষেপ, ফাঁকা গুলির অভিযোগ",
+      "summary": "গতকাল শুক্রবার দিবাগত রাত দুইটার দিকে উপজেলার পারিলা ইউনিয়নের খড়খড়ি এলাকায় পল্লী বিদ্যুৎ সমিতির পবা-২ (খড়খড়ি) উপকেন্দ্রে এ হামলা চালানো হয়।",
+      "link": "https://www.prothomalo.com/bangladesh/district/q4qqeazhpu",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/q4qqeazhpu",
+      "publishedAt": "2026-11-28T07:09:04+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo",
+        "Jago News 24",
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/q4qqeazhpu"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ‘পেট্রলবোমা’ নিক্ষেপ, ফাঁকা গুলির অভিযোগ",
+          "summary": "গতকাল শুক্রবার দিবাগত রাত দুইটার দিকে উপজেলার পারিলা ইউনিয়নের খড়খড়ি এলাকায় পল্লী বিদ্যুৎ সমিতির পবা-২ (খড়খড়ি) উপকেন্দ্রে এ হামলা চালানো হয়।",
+          "url": "https://www.prothomalo.com/bangladesh/district/q4qqeazhpu",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬",
+          "incidentTimeText": "আজ সকালে",
+          "incidentTimeSource": "Prothom Alo",
+          "locationText": "পারিলা ইউনিয়নের খড়খড়ি এলাকায়, চেষ্টা হয়েছিল বলে থানায়"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
+          "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা - Risingbd.com",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
+        }
+      ],
+      "corroborationCount": 3,
+      "alertEventId": "fb171956fa0d7701b3b2ec24e4fea663"
+    },
+    {
       "title": "চাঁদাবাজির টাকা পুলিশ ও বিএনপি নেতাদের মধ্যে ভাগাভাগি হয়: জানালেন আরেক নেতা",
       "summary": "চট্টগ্রাম মহানগরের বিভিন্ন থানা এলাকায় চাঁদাবাজির অর্থ আদায় এবং সেই অর্থের ভাগবাটোয়ারা নিয়ে বিস্ফোরক অভিযোগ করেছেন মহানগর বিএনপির সদস্যসচিব নাজিমুর রহমান। তার দাবি, বিভিন্ন খাত থেকে আদায় করা চাঁদার টাকা থানা পুলিশের কর্মকর্তা ও স্থানীয় রাজনৈতিক নেতাদের মধ্যে ভাগ হয়। সম্প্রতি সামাজিক যোগাযোগমাধ্যমে ছড়িয়ে পড়া একটি ভিডিওতে তাকে এসব অভিযোগ করতে শোনা যায়। ভিডিওতে নাজিমুর রহমান বলেন, কোনও থানায় নতুন... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/chitagong/983747/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BF%E0%A6%B0-%E0%A6%9F%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87",
@@ -1112,90 +1169,6 @@
       "alertEventId": "6f956c806db01766ecb12f8a6138c4ff"
     },
     {
-      "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
-      "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। চাঁদার... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publishedAt": "2026-11-28T05:27:39+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
-          "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। চাঁদার... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ddc77e9c2ed46613853245395c903241"
-    },
-    {
-      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-      "link": "https://www.jagonews24.com/country/news/1184498",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184498",
-      "publishedAt": "2026-11-28T05:06:09+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24",
-        "Risingbd.com",
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184498"
-        },
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673170"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668802"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-          "url": "https://www.jagonews24.com/country/news/1184498"
-        },
-        {
-          "name": "Risingbd.com",
-          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা - Risingbd.com",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673170"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668802"
-        }
-      ],
-      "corroborationCount": 3,
-      "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
-    },
-    {
       "title": "চাঁদপুর কালীবাড়ি কোর্টস্টেশনে ট্রেনে আগুন",
       "summary": "চট্টগ্রাম থেকে ছেড়ে আসা চাঁদপুরগামী আন্তঃনগর মেঘনা এক্সপ্রেস ট্রেনে আগুন লাগার ঘটনা ঘটেছে। শুক্রবার (২৭ নভেম্বর) রাতে শহরের কালীবাড়ি কোর্টস্টেশনে পৌঁছানোর পর এ আগুন দেখা যায়। জানা যায়, চট্টগ্রাম থেকে চাঁদপুরগামী মেঘনা এক্সপ্রেস (৭২৯) ট্রেনটি কালীবাড়ি কোর্টস্টেশনে পৌঁছালে হঠাৎ ‘ত’ বগির পেছনের ২টি সিটে আগুন দেখা যায়। এতে যাত্রীরা আতঙ্কিত হয়ে ছোটাছুটি শুরু করেন। এ ...",
       "link": "https://chandpurtimes.com/%e0%a6%95%e0%a7%8b%e0%a6%b0%e0%a7%8d%e0%a6%9f%e0%a6%b8%e0%a7%8d%e0%a6%9f%e0%a7%87%e0%a6%b6%e0%a6%a8%e0%a7%87-%e0%a6%9f%e0%a7%8d%e0%a6%b0%e0%a7%87%e0%a6%a8%e0%a7%87/",
@@ -1256,6 +1229,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "449e128c2bd9248a3fbc1e46f21b54e9"
+    },
+    {
+      "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
+      "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668802",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668802",
+      "publishedAt": "2026-11-28T04:16:45+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668802"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668802"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
       "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
@@ -1497,37 +1501,6 @@
       "alertEventId": "7c3f3ab284909314acb92f9ddc232306"
     },
     {
-      "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-      "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-      "link": "https://www.jagonews24.com/country/news/1184444",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184444",
-      "publishedAt": "2026-11-27T21:52:39+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184444"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/country/news/1184444"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
-    },
-    {
       "title": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
       "summary": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ dhakapost.com",
       "link": "https://www.dhakapost.com/national/501355",
@@ -1691,12 +1664,17 @@
       "source": "কালের কণ্ঠ",
       "publisherName": "কালের কণ্ঠ",
       "sourceEvidence": [
-        "কালের কণ্ঠ"
+        "কালের কণ্ঠ",
+        "Jugantor"
       ],
       "sourceLinks": [
         {
           "name": "কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
+        {
+          "name": "Jugantor",
+          "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
       "category": "Bangladesh",
@@ -1708,10 +1686,16 @@
           "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
           "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
           "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
+        {
+          "name": "Jugantor",
+          "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
+          "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
+          "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
+      "corroborationCount": 2,
+      "alertEventId": "54781f4f193dce751cf31b8b289712bf"
     },
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
