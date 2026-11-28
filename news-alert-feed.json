@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T02:05:38.866438+00:00",
-  "updatedAt": "2026-11-28T02:05:38.866438+00:00",
+  "generatedAt": "2026-11-28T02:20:39.796839+00:00",
+  "updatedAt": "2026-11-28T02:20:39.796839+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 23,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -497,17 +497,17 @@
     {
       "name": "Dainik Amader Shomoy",
       "domain": "dainikamadershomoy.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Daily Naya Diganta",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 29,
+  "candidateCount": 33,
   "alertItems": [
+    {
+      "title": "তিন জেলায় সহিংসতা, মাদারীপুরে শতাধিক ককটেল বি-স্ফোরণ | Madaripur | Channel 24",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=bAq_78P8tVI",
+      "publisherUrl": "https://www.youtube.com/watch?v=bAq_78P8tVI",
+      "publishedAt": "2026-11-28T02:09:58+00:00",
+      "source": "Channel 24",
+      "publisherName": "Channel 24",
+      "sourceEvidence": [
+        "Channel 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Channel 24 · YouTube",
+          "url": "https://www.youtube.com/watch?v=bAq_78P8tVI"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Channel 24",
+          "title": "তিন জেলায় সহিংসতা, মাদারীপুরে শতাধিক ককটেল বি-স্ফোরণ | Madaripur | Channel 24",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=bAq_78P8tVI"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "690adc5545d1fe93dbdc786eec0fd8db"
+    },
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
       "summary": "মোটরসাইকেলে এসে বোমা ছুড়ে পালিয়ে যাওয়ার মতো ঘটনা ঘটিয়ে কেউ পার পাবে না বলে হুঁশিয়ারি দিয়েছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান। তিনি বলেন, আগুন সন্ত্রাস ও সহিংসতার বিরুদ্ধে সবাইকে ঐক্যবদ্ধ থাকতে হবে। বাংলাদেশের শান্তি, সার্বভৌমত্ব, গণতন্ত্র ও আইনের শাসন প্রতিষ্ঠায় সরকার দৃঢ়প্রতিজ্ঞ। সব হত্যাকাণ্ডের বিচার নিশ্চিত করতে সরকার অতন্দ্র প্রহরীর মতো জেগে থাকবে। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
@@ -1559,6 +1590,43 @@
       "alertEventId": "58cb3010a88bf3cf25b0b5565a60d0e2"
     },
     {
+      "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - dhakapost.com",
+      "summary": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/country/501246",
+      "publisherUrl": "https://www.dhakapost.com/country/501246",
+      "publishedAt": "2026-11-27T08:46:08+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501246"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - dhakapost.com",
+          "summary": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501246"
+        },
+        {
+          "name": "dhakapost.com",
+          "title": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত - dhakapost.com",
+          "summary": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501224"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9ae9e31ad7ee4f30123009b6c5269519"
+    },
+    {
       "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
       "summary": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113895/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%A8-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
@@ -1588,6 +1656,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "85a83e459654b729f62f2b7c308a4327"
+    },
+    {
+      "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
+      "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
+      "link": "https://www.dhakapost.com/international/501237",
+      "publisherUrl": "https://www.dhakapost.com/international/501237",
+      "publishedAt": "2026-11-27T07:43:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501237"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
+          "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501237"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
     },
     {
       "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
