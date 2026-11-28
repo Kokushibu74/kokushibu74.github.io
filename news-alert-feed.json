@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T00:45:36.463567+00:00",
-  "updatedAt": "2026-11-28T00:45:36.463567+00:00",
+  "generatedAt": "2026-11-28T01:00:35.958175+00:00",
+  "updatedAt": "2026-11-28T01:00:35.958175+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 24,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
@@ -197,17 +197,17 @@
     {
       "name": "Daily Observer",
       "domain": "observerbd.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "BSS",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 27,
+      "fallbackItems": 26,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 18,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 34,
+  "candidateCount": 30,
   "alertItems": [
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
@@ -1215,37 +1215,6 @@
       "alertEventId": "4b6d23ea23d84822a869ed3c00ce37d3"
     },
     {
-      "title": "ইসলামি বক্তা নোমানীর গাড়িকে ধাওয়া, ভাঙচুরের অভিযোগ",
-      "summary": "নেত্রকোনায় ওয়াজ মাহফিলে বক্তব্য দিয়ে ফেরার পথে নওমুসলিম ইসলামি বক্তা ওয়াসেক বিল্লাহ নোমানীর গাড়িতে হামলা ও ভাঙচুরের ঘটনা ঘটেছে...",
-      "link": "https://www.jagonews24.com/country/news/1184434",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184434",
-      "publishedAt": "2026-11-27T16:47:20+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184434"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "ইসলামি বক্তা নোমানীর গাড়িকে ধাওয়া, ভাঙচুরের অভিযোগ",
-          "summary": "নেত্রকোনায় ওয়াজ মাহফিলে বক্তব্য দিয়ে ফেরার পথে নওমুসলিম ইসলামি বক্তা ওয়াসেক বিল্লাহ নোমানীর গাড়িতে হামলা ও ভাঙচুরের ঘটনা ঘটেছে...",
-          "url": "https://www.jagonews24.com/country/news/1184434"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "df198c084ef724e3317add943dbf210e"
-    },
-    {
       "title": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ - Risingbd.com",
       "summary": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ Risingbd.com",
       "link": "https://www.risingbd.com/bangladesh/news/673121",
@@ -1275,48 +1244,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "5b82bc74599694d05556a0425319afdb"
-    },
-    {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 - bd-pratidin.com",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/printnews/1331727",
-      "publisherUrl": "https://www.bd-pratidin.com/printnews/1331727",
-      "publishedAt": "2026-11-27T14:55:00+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com",
-        "কালের কণ্ঠ"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331727"
-        },
-        {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 - bd-pratidin.com",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331727"
-        },
-        {
-          "name": "কালের কণ্ঠ",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
     },
     {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
@@ -1381,17 +1308,22 @@
       "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
     },
     {
-      "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
-      "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
-      "link": "https://www.jugantor.com/country-news/1190760",
-      "publisherUrl": "https://www.jugantor.com/country-news/1190760",
-      "publishedAt": "2026-11-27T13:18:52+00:00",
-      "source": "Jugantor",
-      "publisherName": "Jugantor",
+      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publishedAt": "2026-11-27T13:46:48+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
       "sourceEvidence": [
+        "কালের কণ্ঠ",
         "Jugantor"
       ],
       "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
         {
           "name": "Jugantor",
           "url": "https://www.jugantor.com/country-news/1190760"
@@ -1402,13 +1334,19 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
+        {
           "name": "Jugantor",
           "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
           "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
           "url": "https://www.jugantor.com/country-news/1190760"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "54781f4f193dce751cf31b8b289712bf"
     },
     {
@@ -1763,68 +1701,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
-    },
-    {
-      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-      "link": "https://www.mzamin.com/article/63858",
-      "publisherUrl": "https://www.mzamin.com/article/63858",
-      "publishedAt": "2026-11-27T05:08:48+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
-    },
-    {
-      "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
-      "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/432025",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/432025",
-      "publishedAt": "2026-11-27T00:48:40+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/432025"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ - Jamuna Television",
-          "summary": "গোপালগঞ্জে পিকআপ ও মোটরসাইকেলের সংঘর্ষে নিহত ১ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/432025"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cbdc8402b36874d25c480d16689cce68"
     }
   ]
 }
