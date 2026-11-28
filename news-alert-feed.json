@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T05:05:42.568865+00:00",
-  "updatedAt": "2026-11-28T05:05:42.568865+00:00",
+  "generatedAt": "2026-11-28T05:15:47.995050+00:00",
+  "updatedAt": "2026-11-28T05:15:47.995050+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 54,
@@ -11,8 +11,8 @@
   "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
   "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackWithItemsSourceCount": 24,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 17,
+      "fallbackItems": 15,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Barta24",
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Dainik Azadi",
@@ -840,8 +840,52 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 40,
+  "candidateCount": 37,
   "alertItems": [
+    {
+      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
+      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
+      "link": "https://www.jagonews24.com/country/news/1184498",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184498",
+      "publishedAt": "2026-11-28T05:06:09+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24",
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668802"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
+          "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Jamuna Television",
+          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668802",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬",
+          "locationText": "দুইটায় নগরীর মতিহার থানার, খড়খড়ি এলাকায়"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
+    },
     {
       "title": "বিএনপি-কার্যক্রম নিষিদ্ধ আ. লীগ সংঘর্ষের পর স্বাভাবিক মাদারীপুরের কালকিনি | Channel 24",
       "summary": "",
@@ -954,41 +998,6 @@
       "alertEventId": "e097c013a6fffe9ffaece501b81f696c"
     },
     {
-      "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন, পুড়ল দুটি আসন",
-      "summary": "চট্টগ্রাম থেকে চাঁদপুরগামী আন্তঃনগর মেঘনা এক্সপ্রেসের একটি বগিতে আগুন লেগে দুটি আসন পুড়ে গেছে। শুক্রবার (২৭ নভেম্বর) রাত সোয়া ১০টার দিকে চাঁদপুর কোর্ট স্টেশনে এ ঘটনা ঘটে। হতাহতের কোনো খবর পাওয়া যায়নি। চাঁদপুর রেলওয়ে স্টেশনের স্টেশন মাস্টার মারুফ হোসাইন জানান, ট্রেনটি কোর্ট স্টেশনে পৌঁছে শেষ গন্তব্য চাঁদপুর বড় স্টেশনের উদ্দেশে ছাড়ার প্রস্তুতি নিচ্ছিল। এ সময় […] The post চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন, পুড়ল দুটি আসন appeared first on দৈনিক আজাদী .",
-      "link": "https://dainikazadi.net/meghna-express-coach-fire-chandpur-court-station/",
-      "publisherUrl": "https://dainikazadi.net/meghna-express-coach-fire-chandpur-court-station/",
-      "publishedAt": "2026-11-28T04:28:20+00:00",
-      "source": "Dainik Azadi",
-      "publisherName": "Dainik Azadi",
-      "sourceEvidence": [
-        "Dainik Azadi"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/meghna-express-coach-fire-chandpur-court-station/"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dainik Azadi",
-          "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন, পুড়ল দুটি আসন",
-          "summary": "চট্টগ্রাম থেকে চাঁদপুরগামী আন্তঃনগর মেঘনা এক্সপ্রেসের একটি বগিতে আগুন লেগে দুটি আসন পুড়ে গেছে। শুক্রবার (২৭ নভেম্বর) রাত সোয়া ১০টার দিকে চাঁদপুর কোর্ট স্টেশনে এ ঘটনা ঘটে। হতাহতের কোনো খবর পাওয়া যায়নি। চাঁদপুর রেলওয়ে স্টেশনের স্টেশন মাস্টার মারুফ হোসাইন জানান, ট্রেনটি কোর্ট স্টেশনে পৌঁছে শেষ গন্তব্য চাঁদপুর বড় স্টেশনের উদ্দেশে ছাড়ার প্রস্তুতি নিচ্ছিল। এ সময় […] The post চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন, পুড়ল দুটি আসন appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/meghna-express-coach-fire-chandpur-court-station/",
-          "incidentDateText": "শুক্রবার (২৭ নভেম্বর)",
-          "incidentTimeText": "ভোর ৫টায়",
-          "incidentTimeSource": "Dainik Azadi",
-          "locationText": "চাঁদপুর রেলওয়ে জিআরপি থানার, চাঁদপুর"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5dc112bce2763b4b18854dd9381356ca"
-    },
-    {
       "title": "মাদারীপুরে থানার সামনে আওয়ামী লীগ-বিএনপির দফায় দফায় সংঘর্ষ, ককটেল বিস্ফোরণ",
       "summary": "মাদারীপুরের কালকিনিতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও বিএনপির নেতা–কর্মীদের মধ্যে দফায় দফায় সংঘর্ষের ঘটনা ঘটেছে। গতকাল শুক্রবার রাত আটটার পর শুরু হওয়া এ সংঘর্ষ চলে প্রায় দুই ঘণ্টা।",
       "link": "https://www.prothomalo.com/bangladesh/district/gue2m5ccjs",
@@ -1053,39 +1062,6 @@
       "alertEventId": "8e6228e599f4c6ca32e478f0ed228684"
     },
     {
-      "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668802",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668802",
-      "publishedAt": "2026-11-28T04:16:45+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
-      "sourceEvidence": [
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668802"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna Television",
-          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668802",
-          "incidentDateText": "২৮ নভেম্বর ২০২৬",
-          "locationText": "দুইটায় নগরীর মতিহার থানার, খড়খড়ি এলাকায়"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
-    },
-    {
       "title": "পিরোজপুরে পার্কিং করা বাসে আগুন",
       "summary": "পিরোজপুরের মঠবাড়িয়ায় পার্কিং করে রাখা একটি বাসে অগ্নিসংযোগের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) রাতে উপজেলা পরিষদসংলগ্ন বাসস্ট্যান্ডে এ ঘটনা ঘটে। এতে বাসটির পেছনের অংশ ও কয়েকটি আসন পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হননি। স্থানীয় সূত্রে জানা গেছে, শুক্রবার রাত সাড়ে ১১টার দিকে বাসস্ট্যান্ডে অবস্থানরত অন্য বাসের হেলপাররা আরাফাত পরিবহনের একটি বাসে আগুন জ্বলতে দেখেন। পরে তারা ফায়ার সার্ভিসকে খবর দেন।... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/barishal/983717/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%96%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1144,24 +1120,19 @@
     },
     {
       "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
-      "summary": "কক্সবাজারের উখিয়ার ইনানীর ছোটখাল এলাকার নলকূপ থেকে নির্গত প্রাকৃতিক গ্যাসের আগুন অবশেষে ৩১ দিনের মাথায় নিয়ন্ত্রণে এসেছে। গতকাল শুক্রবার সকালে দীর্ঘ প্রচেষ্টার পর আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আগুন নিয়ন্ত্রণে আসার পরপরই ঘটনাস্থল থেকে গ্যাসের দুটি নমুনা সংগ্রহ করেছে সংস্থাটির ভূতাত্ত্বিক জরিপ দল। এসব নমুনা পরীক্ষার […] The post ইনানীর গ্যাসের আগুন ৩১ দিন পর নিয়ন্ত্রণে appeared first on দৈনিক আজাদী .",
+      "summary": "",
       "link": "https://www.youtube.com/shorts/x0CNsDTO9dM",
       "publisherUrl": "https://www.youtube.com/shorts/x0CNsDTO9dM",
       "publishedAt": "2026-11-28T03:45:27+00:00",
       "source": "Ekattor TV",
       "publisherName": "Ekattor TV",
       "sourceEvidence": [
-        "Ekattor TV",
-        "Dainik Azadi"
+        "Ekattor TV"
       ],
       "sourceLinks": [
         {
           "name": "Ekattor TV · YouTube",
           "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
-        },
-        {
-          "name": "Dainik Azadi",
-          "url": "https://dainikazadi.net/%e0%a6%87%e0%a6%a8%e0%a6%be%e0%a6%a8%e0%a7%80%e0%a6%b0-%e0%a6%97%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b8%e0%a7%87%e0%a6%b0-%e0%a6%86%e0%a6%97%e0%a7%81%e0%a6%a8-%e0%a7%a9%e0%a7%a7-%e0%a6%a6%e0%a6%bf/"
         }
       ],
       "category": "Bangladesh",
@@ -1173,16 +1144,10 @@
           "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
           "summary": "",
           "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
-        },
-        {
-          "name": "Dainik Azadi",
-          "title": "ইনানীর গ্যাসের আগুন ৩১ দিন পর নিয়ন্ত্রণে",
-          "summary": "কক্সবাজারের উখিয়ার ইনানীর ছোটখাল এলাকার নলকূপ থেকে নির্গত প্রাকৃতিক গ্যাসের আগুন অবশেষে ৩১ দিনের মাথায় নিয়ন্ত্রণে এসেছে। গতকাল শুক্রবার সকালে দীর্ঘ প্রচেষ্টার পর আগুন নিয়ন্ত্রণে আনতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আগুন নিয়ন্ত্রণে আসার পরপরই ঘটনাস্থল থেকে গ্যাসের দুটি নমুনা সংগ্রহ করেছে সংস্থাটির ভূতাত্ত্বিক জরিপ দল। এসব নমুনা পরীক্ষার […] The post ইনানীর গ্যাসের আগুন ৩১ দিন পর নিয়ন্ত্রণে appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/%e0%a6%87%e0%a6%a8%e0%a6%be%e0%a6%a8%e0%a7%80%e0%a6%b0-%e0%a6%97%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%b8%e0%a7%87%e0%a6%b0-%e0%a6%86%e0%a6%97%e0%a7%81%e0%a6%a8-%e0%a7%a9%e0%a7%a7-%e0%a6%a6%e0%a6%bf/"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "e2b0c811bb305a6a4af304df9ef9b43b"
+      "corroborationCount": 1,
+      "alertEventId": "4faa8b97a0aee142910f3bb952016a9c"
     },
     {
       "title": "বাবাকে বলেছিলেন, ‘আমি ভালো আছি, দোয়া করিও’, দুদিন পর এল ছেলের মৃত্যুর খবর",
@@ -1216,25 +1181,20 @@
       "alertEventId": "2791f320cd78d3e0ca05e71296a3a7cb"
     },
     {
-      "title": "তিন জেলায় সহিংসতা, মাদারীপুরে শতাধিক ককটেল বি-স্ফোরণ | Madaripur | Channel 24",
-      "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-      "link": "https://www.youtube.com/watch?v=bAq_78P8tVI",
-      "publisherUrl": "https://www.youtube.com/watch?v=bAq_78P8tVI",
-      "publishedAt": "2026-11-28T02:09:58+00:00",
-      "source": "Channel 24",
-      "publisherName": "Channel 24",
+      "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
+      "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
+      "publishedAt": "2026-11-28T02:16:02+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
       "sourceEvidence": [
-        "Channel 24",
-        "Jago News 24"
+        "Dhaka Tribune Bangla"
       ],
       "sourceLinks": [
         {
-          "name": "Channel 24 · YouTube",
-          "url": "https://www.youtube.com/watch?v=bAq_78P8tVI"
-        },
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184444"
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
         }
       ],
       "category": "Bangladesh",
@@ -1242,20 +1202,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Channel 24",
-          "title": "তিন জেলায় সহিংসতা, মাদারীপুরে শতাধিক ককটেল বি-স্ফোরণ | Madaripur | Channel 24",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=bAq_78P8tVI"
-        },
-        {
-          "name": "Jago News 24",
-          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/country/news/1184444"
+          "name": "Dhaka Tribune Bangla",
+          "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
+          "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
+      "corroborationCount": 1,
+      "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
@@ -1318,6 +1272,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7c3f3ab284909314acb92f9ddc232306"
+    },
+    {
+      "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+      "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+      "link": "https://www.jagonews24.com/country/news/1184444",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184444",
+      "publishedAt": "2026-11-27T21:52:39+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+          "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
     },
     {
       "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন",
@@ -1546,37 +1531,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ddc77e9c2ed46613853245395c903241"
-    },
-    {
-      "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
-      "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
-      "link": "https://barta24.com/details/national/349999",
-      "publisherUrl": "https://barta24.com/details/national/349999",
-      "publishedAt": "2026-11-27T14:11:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/national/349999"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
-          "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
-          "url": "https://barta24.com/details/national/349999"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5bd5d013a3abfe95d74282d8a444ebc5"
     },
     {
       "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
@@ -1879,37 +1833,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
-    },
-    {
-      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-      "link": "https://www.mzamin.com/article/63858",
-      "publisherUrl": "https://www.mzamin.com/article/63858",
-      "publishedAt": "2026-11-27T05:08:48+00:00",
-      "source": "Manab Zamin",
-      "publisherName": "Manab Zamin",
-      "sourceEvidence": [
-        "Manab Zamin"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Manab Zamin",
-          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
-          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
-          "url": "https://www.mzamin.com/article/63858"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
     }
   ]
 }
