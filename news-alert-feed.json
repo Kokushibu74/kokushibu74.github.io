@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T13:45:40.843430+00:00",
-  "updatedAt": "2026-11-28T13:45:40.843430+00:00",
+  "generatedAt": "2026-11-28T13:55:49.959787+00:00",
+  "updatedAt": "2026-11-28T13:55:49.959787+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 53,
+  "failedSourceCount": 2,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 32,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
-  "fallbackWithItemsSourceCount": 26,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 24,
   "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
@@ -227,17 +227,17 @@
     {
       "name": "UNB",
       "domain": "unb.com.bd",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 25,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Risingbd",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 20,
+      "fallbackItems": 21,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -482,17 +482,17 @@
     {
       "name": "Manab Zamin",
       "domain": "mzamin.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
+      "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Amader Shomoy",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 46,
+  "candidateCount": 41,
   "alertItems": [
     {
       "title": "রংপুরে গ্যারেজে পার্কিং করা বাসে আগুন দিয়েছে দুর্বৃত্তরা",
@@ -872,6 +872,57 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "15f6770b0b3696e0244cef85a9635587"
+    },
+    {
+      "title": "নাটোরে গভীর রাতে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আগুন | Natore News | Somoy TV",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=Cs42lkN_pME",
+      "publisherUrl": "https://www.youtube.com/watch?v=Cs42lkN_pME",
+      "publishedAt": "2026-11-28T13:34:27+00:00",
+      "source": "Somoy News",
+      "publisherName": "Somoy News",
+      "sourceEvidence": [
+        "Somoy News",
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Somoy News · YouTube",
+          "url": "https://www.youtube.com/watch?v=Cs42lkN_pME"
+        },
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Somoy News",
+          "title": "নাটোরে গভীর রাতে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আগুন | Natore News | Somoy TV",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=Cs42lkN_pME"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "নাটোরে ভোরে জুলাই স্মৃতিস্তম্ভে আগুন, দিনে নিষিদ্ধ ছাত্রলীগ নেতার বাড়ি ভাঙচুর",
+          "summary": "",
+          "url": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬",
+          "locationText": "নাটোর সদর থানা, নাটোর, সদর থানার"
+        },
+        {
+          "name": "Prothom Alo",
+          "title": "সিসিটিভিতে ধরা পড়ল নাটোরে জুলাই স্মৃতিস্তম্ভে আগুন দেওয়ার ঘটনা",
+          "summary": "",
+          "url": "https://www.prothomalo.com/video/bangladesh/aoxfhfzxvt",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "122307674572df74fd6dd4bf3ad76225"
     },
     {
       "title": "সিসিটিভিতে ধরা পড়ল রাজশাহীর পল্লী বিদ্যুৎ উপকেন্দ্রে পে/ট্রলবোমা হা/মলা! #Rajshahi #PetrolBomb",
@@ -991,6 +1042,49 @@
       "alertEventId": "a0391d2db7e4a1ef865dd7f3bac5cb74"
     },
     {
+      "title": "মুক্তিযোদ্ধার ‘বীর নিবাসে’ আগুন, আতঙ্কে পরিবার - Dhaka Tribune Bangla",
+      "summary": "মুক্তিযোদ্ধার ‘বীর নিবাসে’ আগুন, আতঙ্কে পরিবার Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113953/%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0-%E2%80%98%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113953/%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0-%E2%80%98%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0",
+      "publishedAt": "2026-11-28T12:20:34+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113953/%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0-%E2%80%98%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মুক্তিযোদ্ধার ‘বীর নিবাসে’ আগুন, আতঙ্কে পরিবার - Dhaka Tribune Bangla",
+          "summary": "মুক্তিযোদ্ধার ‘বীর নিবাসে’ আগুন, আতঙ্কে পরিবার Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113953/%E0%A6%AE%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%B0-%E2%80%98%E0%A6%AC%E0%A7%80%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%86%E0%A6%A4%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%B0"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ - Dhaka Tribune Bangla",
+          "summary": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113952/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "সাভার ও আশুলিয়ায় একরাতে ৩ বাসে আগুন - Dhaka Tribune Bangla",
+          "summary": "সাভার ও আশুলিয়ায় একরাতে ৩ বাসে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113928/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0-%E0%A6%93-%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%8F%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A7%A9-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1e3bca4cb250872323e210fd79e33c60"
+    },
+    {
       "title": "চুয়েটে দুই পক্ষের শিক্ষার্থীদের সং/ঘর্ষ! #CUET #Chittagong #CampusClash",
       "summary": "চট্টগ্রাম প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়ে (চুয়েট) মধ্যরাতে দুই পক্ষের শিক্ষার্থীদের মধ্যে সংঘর্ষ হয়েছে। শুক্রবার (২৭ নভেম্বর) দিবাগত রাতে বিশ্ববিদ্যালয়ের কেন্দ্রীয় শহীদ মিনার প্রাঙ্গণে এ সংঘর্ষের সূত্রপাত হয়। পরে প্রধান ফটকের সামনেও দুই পক্ষের মধ্যে কয়েক দফা মারামারি হয়। প্রত্যক্ষদর্শী ও সংশ্লিষ্ট শিক্ষার্থীদের সঙ্গে কথা বলে জানা যায়, ২০২৪-২৫ শিক্ষাবর্ষের কয়েকজন শিক্ষার্থীকে কেন্দ্র করে এ ঘটনার […] The post জুনিয়রকে ডাকা নিয়ে চুয়েটে দফায় দফায় সংঘর্ষ, আহত ৫; সাংবাদিককে হেনস্তা appeared first on দৈনিক আজাদী .",
       "link": "https://www.youtube.com/shorts/U8DIB0_qfLc",
@@ -1031,10 +1125,7 @@
           "name": "Dainik Azadi",
           "title": "জুনিয়রকে ডাকা নিয়ে চুয়েটে দফায় দফায় সংঘর্ষ, আহত ৫; সাংবাদিককে হেনস্তা",
           "summary": "চট্টগ্রাম প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয়ে (চুয়েট) মধ্যরাতে দুই পক্ষের শিক্ষার্থীদের মধ্যে সংঘর্ষ হয়েছে। শুক্রবার (২৭ নভেম্বর) দিবাগত রাতে বিশ্ববিদ্যালয়ের কেন্দ্রীয় শহীদ মিনার প্রাঙ্গণে এ সংঘর্ষের সূত্রপাত হয়। পরে প্রধান ফটকের সামনেও দুই পক্ষের মধ্যে কয়েক দফা মারামারি হয়। প্রত্যক্ষদর্শী ও সংশ্লিষ্ট শিক্ষার্থীদের সঙ্গে কথা বলে জানা যায়, ২০২৪-২৫ শিক্ষাবর্ষের কয়েকজন শিক্ষার্থীকে কেন্দ্র করে এ ঘটনার […] The post জুনিয়রকে ডাকা নিয়ে চুয়েটে দফায় দফায় সংঘর্ষ, আহত ৫; সাংবাদিককে হেনস্তা appeared first on দৈনিক আজাদী .",
-          "url": "https://dainikazadi.net/chuet-clash-junior-dispute-journalist-harassed/",
-          "incidentDateText": "শুক্রবার (২৭ নভেম্বর)",
-          "incidentTimeText": "রাত ১২টার দিকে",
-          "incidentTimeSource": "Dainik Azadi"
+          "url": "https://dainikazadi.net/chuet-clash-junior-dispute-journalist-harassed/"
         },
         {
           "name": "Bangla Tribune",
@@ -1045,87 +1136,6 @@
       ],
       "corroborationCount": 3,
       "alertEventId": "dcf5b0c45facc2b17ba8c482958e6a3e"
-    },
-    {
-      "title": "সিলেট-৩ আসনের এমপির বাড়িতে আওয়ামী স/ন্ত্রা/সীদের পেট্রোল বোমা হামলা | MA Malek | Sylhet MP",
-      "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
-      "link": "https://www.youtube.com/watch?v=jAyjtJl0Mig",
-      "publisherUrl": "https://www.youtube.com/watch?v=jAyjtJl0Mig",
-      "publishedAt": "2026-11-28T11:56:31+00:00",
-      "source": "Somoy News",
-      "publisherName": "Somoy News",
-      "sourceEvidence": [
-        "Somoy News",
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Somoy News · YouTube",
-          "url": "https://www.youtube.com/watch?v=jAyjtJl0Mig"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668811"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Somoy News",
-          "title": "সিলেট-৩ আসনের এমপির বাড়িতে আওয়ামী স/ন্ত্রা/সীদের পেট্রোল বোমা হামলা | MA Malek | Sylhet MP",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=jAyjtJl0Mig"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
-          "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668811",
-          "incidentDateText": "২৮ নভেম্বর ২০২৬",
-          "locationText": "সিলেটের দক্ষিণ সুরমা এলাকায়, সিলেট"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "1f715ab2681e23c00bcd1ec7f215e27d"
-    },
-    {
-      "title": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ - Dhaka Tribune Bangla",
-      "summary": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113952/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113952/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA",
-      "publishedAt": "2026-11-28T11:53:36+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113952/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ - Dhaka Tribune Bangla",
-          "summary": "গ্রামীণ ব্যাংকের পটিয়া শাখায় ককটেল নিক্ষেপ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113952/%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%9F%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%B6%E0%A6%BE%E0%A6%96%E0%A6%BE%E0%A7%9F-%E0%A6%95%E0%A6%95%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA"
-        },
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "সাভার ও আশুলিয়ায় একরাতে ৩ বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "সাভার ও আশুলিয়ায় একরাতে ৩ বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113928/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0-%E0%A6%93-%E0%A6%86%E0%A6%B6%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%8F%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A7%A9-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "1e3bca4cb250872323e210fd79e33c60"
     },
     {
       "title": "পটিয়ায় গ্রামীণ ব্যাংকের এক শাখায় ককটেল নিক্ষেপ",
@@ -1157,43 +1167,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "64144df7f24e28df8bac93ef2a2c0c35"
-    },
-    {
-      "title": "নাটোরে ভোরে জুলাই স্মৃতিস্তম্ভে আগুন, দিনে নিষিদ্ধ ছাত্রলীগ নেতার বাড়ি ভাঙচুর",
-      "summary": "",
-      "link": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj",
-      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj",
-      "publishedAt": "2026-11-28T11:36:18+00:00",
-      "source": "Prothom Alo",
-      "publisherName": "Prothom Alo",
-      "sourceEvidence": [
-        "Prothom Alo"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Prothom Alo",
-          "url": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Prothom Alo",
-          "title": "নাটোরে ভোরে জুলাই স্মৃতিস্তম্ভে আগুন, দিনে নিষিদ্ধ ছাত্রলীগ নেতার বাড়ি ভাঙচুর",
-          "summary": "",
-          "url": "https://www.prothomalo.com/bangladesh/district/3xve81y7uj"
-        },
-        {
-          "name": "Prothom Alo",
-          "title": "সিসিটিভিতে ধরা পড়ল নাটোরে জুলাই স্মৃতিস্তম্ভে আগুন দেওয়ার ঘটনা",
-          "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/aoxfhfzxvt"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "122307674572df74fd6dd4bf3ad76225"
     },
     {
       "title": "পূজা উদযাপন পরিষদের সম্মেলনে সংঘর্ষে আহত ৩০",
@@ -1256,37 +1229,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e6a20bd623ba2e28daab5cdc0d0f3ecc"
-    },
-    {
-      "title": "নাটোরের ভবানীগঞ্জে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আ/গু/ন | July Monument | Fire Incident | UNB - United News of Bangladesh",
-      "summary": "নাটোরের ভবানীগঞ্জে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আ/গু/ন | July Monument | Fire Incident | UNB United News of Bangladesh",
-      "link": "https://unb.com.bd/video/10085/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---July-Monument---Fire-Incident---UNB",
-      "publisherUrl": "https://unb.com.bd/video/10085/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---July-Monument---Fire-Incident---UNB",
-      "publishedAt": "2026-11-28T10:09:23+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/10085/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---July-Monument---Fire-Incident---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "নাটোরের ভবানীগঞ্জে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আ/গু/ন | July Monument | Fire Incident | UNB - United News of Bangladesh",
-          "summary": "নাটোরের ভবানীগঞ্জে জুলাই স্মৃতিস্তম্ভে দুর্বৃত্তদের আ/গু/ন | July Monument | Fire Incident | UNB United News of Bangladesh",
-          "url": "https://unb.com.bd/video/10085/%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AD%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%97%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%86-%E0%A6%97%E0%A7%81-%E0%A6%A8---July-Monument---Fire-Incident---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4793ab5053140760c470f47e53bb0b2c"
     },
     {
       "title": "পটিয়ায় গ্রামীণ ব্যাংক লক্ষ্য করে দুর্বৃত্তদের পেট্রোল বোমা নিক্ষেপ",
@@ -1360,37 +1302,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "3034bc42f07bbebcc2c75b6b0dc60d26"
-    },
-    {
-      "title": "ভারত-মিজোরাম সীমান্তে সন্দেহজনক ড্রোন লক্ষ্য করে বিজিবির গু/লি | BGB | Drone Fired | Security - United News of Bangladesh",
-      "summary": "ভারত-মিজোরাম সীমান্তে সন্দেহজনক ড্রোন লক্ষ্য করে বিজিবির গু/লি | BGB | Drone Fired | Security United News of Bangladesh",
-      "link": "https://unb.com.bd/video/10082/%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%9C%E0%A7%8B%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B8%E0%A7%80%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B9%E0%A6%9C%E0%A6%A8%E0%A6%95-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A8-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%81-%E0%A6%B2%E0%A6%BF---BGB---Drone-Fired---Security---UNB",
-      "publisherUrl": "https://unb.com.bd/video/10082/%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%9C%E0%A7%8B%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B8%E0%A7%80%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B9%E0%A6%9C%E0%A6%A8%E0%A6%95-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A8-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%81-%E0%A6%B2%E0%A6%BF---BGB---Drone-Fired---Security---UNB",
-      "publishedAt": "2026-11-28T08:09:22+00:00",
-      "source": "UNB",
-      "publisherName": "UNB",
-      "sourceEvidence": [
-        "UNB"
-      ],
-      "sourceLinks": [
-        {
-          "name": "UNB",
-          "url": "https://unb.com.bd/video/10082/%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%9C%E0%A7%8B%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B8%E0%A7%80%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B9%E0%A6%9C%E0%A6%A8%E0%A6%95-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A8-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%81-%E0%A6%B2%E0%A6%BF---BGB---Drone-Fired---Security---UNB"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "UNB",
-          "title": "ভারত-মিজোরাম সীমান্তে সন্দেহজনক ড্রোন লক্ষ্য করে বিজিবির গু/লি | BGB | Drone Fired | Security - United News of Bangladesh",
-          "summary": "ভারত-মিজোরাম সীমান্তে সন্দেহজনক ড্রোন লক্ষ্য করে বিজিবির গু/লি | BGB | Drone Fired | Security United News of Bangladesh",
-          "url": "https://unb.com.bd/video/10082/%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%AE%E0%A6%BF%E0%A6%9C%E0%A7%8B%E0%A6%B0%E0%A6%BE%E0%A6%AE-%E0%A6%B8%E0%A7%80%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87-%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B9%E0%A6%9C%E0%A6%A8%E0%A6%95-%E0%A6%A1%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A8-%E0%A6%B2%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%B0-%E0%A6%97%E0%A7%81-%E0%A6%B2%E0%A6%BF---BGB---Drone-Fired---Security---UNB"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "2ef2b2a1ecf146dd598f2b29b1bb3e4e"
     },
     {
       "title": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ",
@@ -1590,6 +1501,37 @@
       "alertEventId": "20a44965ddeacf98a4baa2644701c7d6"
     },
     {
+      "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
+      "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668811",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668811",
+      "publishedAt": "2026-11-28T06:13:31+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668811"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
+          "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668811"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "1f715ab2681e23c00bcd1ec7f215e27d"
+    },
+    {
       "title": "এবার নাটোরে জুলাই স্মৃতিস্তম্ভে আগুন - Dhaka Tribune Bangla",
       "summary": "এবার নাটোরে জুলাই স্মৃতিস্তম্ভে আগুন Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113929/%E0%A6%8F%E0%A6%AC%E0%A6%BE%E0%A6%B0-%E0%A6%A8%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1619,37 +1561,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "37fccde9319c58a49ba68283336e6998"
-    },
-    {
-      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
-      "link": "https://www.dhakapost.com/country/501418",
-      "publisherUrl": "https://www.dhakapost.com/country/501418",
-      "publishedAt": "2026-11-28T05:46:14+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501418"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
-          "url": "https://www.dhakapost.com/country/501418"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ec4e4fbd8dcc4ce40c74182e9cccfe8c"
     },
     {
       "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা - Risingbd.com",
@@ -1764,17 +1675,12 @@
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
       "sourceEvidence": [
-        "Jamuna Television",
-        "ডেইলি সান বাংলা"
+        "Jamuna Television"
       ],
       "sourceLinks": [
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668801"
-        },
-        {
-          "name": "ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62869/%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1786,16 +1692,10 @@
           "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
           "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668801"
-        },
-        {
-          "name": "ডেইলি সান বাংলা",
-          "title": "মাদারীপুরে বিএনপি-আওয়ামী লীগ নেতাকর্মীদের মধ্যে সংঘর্ষ - ডেইলি সান বাংলা",
-          "summary": "মাদারীপুরে বিএনপি-আওয়ামী লীগ নেতাকর্মীদের মধ্যে সংঘর্ষ ডেইলি সান বাংলা",
-          "url": "https://bangla.daily-sun.com/bangladesh/62869/%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "3d9bfc1325705fc2a7989b86f2a6073e"
+      "corroborationCount": 1,
+      "alertEventId": "e097c013a6fffe9ffaece501b81f696c"
     },
     {
       "title": "ফরিদপুর কোতয়ালী থানা লক্ষ্য করে ককটেল নিক্ষেপের অভিযোগ - Dhaka Tribune Bangla",
@@ -1922,6 +1822,37 @@
       "alertEventId": "4b822c557ee21ef365a8f2f808651576"
     },
     {
+      "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা - bd-pratidin.com",
+      "summary": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877",
+      "publisherUrl": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877",
+      "publishedAt": "2026-11-27T18:18:09+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
+      "sourceEvidence": [
+        "bd-pratidin.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "bd-pratidin.com",
+          "title": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা - bd-pratidin.com",
+          "summary": "ঢাকা-চট্টগ্রাম মহাসড়কে যাত্রীবেশে বাসে আগুন, আতঙ্কে যাত্রীরা bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/city-news/2026/11/28/1331877"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9ac7bfa20909ec3f59254970112e6c1c"
+    },
+    {
       "title": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের - Ajker Patrika",
       "summary": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের Ajker Patrika",
       "link": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi",
@@ -1951,79 +1882,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "e4b61056be9cca4fc996e5397aca4936"
-    },
-    {
-      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 - bd-pratidin.com",
-      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/printnews/1331727",
-      "publisherUrl": "https://www.bd-pratidin.com/printnews/1331727",
-      "publishedAt": "2026-11-27T14:55:00+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
-      "sourceEvidence": [
-        "bd-pratidin.com",
-        "কালের কণ্ঠ"
-      ],
-      "sourceLinks": [
-        {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331727"
-        },
-        {
-          "name": "কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "bd-pratidin.com",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 - bd-pratidin.com",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু|1331727 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331727"
-        },
-        {
-          "name": "কালের কণ্ঠ",
-          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
-          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
-          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "f6e4d531b79876acf94898ce193b3379"
-    },
-    {
-      "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা, ট্রান্সফরমারে আগুন - Barta 24",
-      "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা, ট্রান্সফরমারে আগুন Barta 24",
-      "link": "https://barta24.com/details/national/349997",
-      "publisherUrl": "https://barta24.com/details/national/349997",
-      "publishedAt": "2026-11-27T14:01:00+00:00",
-      "source": "Barta 24",
-      "publisherName": "Barta 24",
-      "sourceEvidence": [
-        "Barta 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Barta 24",
-          "url": "https://barta24.com/details/national/349997"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Barta 24",
-          "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা, ট্রান্সফরমারে আগুন - Barta 24",
-          "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা, ট্রান্সফরমারে আগুন Barta 24",
-          "url": "https://barta24.com/details/national/349997"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8798e2201bbc82f15f5c8048e13d6769"
     }
   ]
 }
