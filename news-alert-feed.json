@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T18:15:46.231300+00:00",
-  "updatedAt": "2026-11-28T18:15:46.231300+00:00",
+  "generatedAt": "2026-11-28T18:30:54.049916+00:00",
+  "updatedAt": "2026-11-28T18:30:54.049916+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 53,
   "failedSourceCount": 2,
-  "directHealthySourceCount": 20,
-  "fallbackHealthySourceCount": 33,
-  "directFailedSourceCount": 35,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 26,
+  "directHealthySourceCount": 21,
+  "fallbackHealthySourceCount": 32,
+  "directFailedSourceCount": 34,
+  "fallbackOnlySourceCount": 32,
+  "fallbackWithItemsSourceCount": 25,
   "fallbackZeroItemsSourceCount": 7,
   "sourceHealth": [
     {
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -287,21 +287,6 @@
     {
       "name": "Bangladesh Pratidin",
       "domain": "bd-pratidin.com",
-      "status": "healthy",
-      "directStatus": "failed",
-      "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
-      "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
-    },
-    {
-      "name": "Daily Sun",
-      "domain": "daily-sun.com",
       "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
@@ -313,6 +298,21 @@
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
       "healthClass": "failed"
+    },
+    {
+      "name": "Daily Sun",
+      "domain": "daily-sun.com",
+      "status": "healthy",
+      "directStatus": "failed",
+      "directError": "HTTP 403",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 27,
+      "directHealthy": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Somoy News",
@@ -407,17 +407,17 @@
     {
       "name": "Bhorer Kagoj",
       "domain": "bhorerkagoj.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Bonik Barta",
@@ -543,16 +543,16 @@
       "name": "Dainik Azadi",
       "domain": "dainikazadi.net",
       "status": "healthy",
-      "directStatus": "failed",
-      "directError": "The read operation timed out",
-      "fallbackStatus": "healthy",
+      "directStatus": "healthy",
+      "directError": null,
+      "fallbackStatus": "not_needed",
       "fallbackError": null,
-      "fallbackItems": 30,
-      "directHealthy": false,
-      "fallbackOnly": true,
-      "fallbackWithItems": true,
+      "fallbackItems": 0,
+      "directHealthy": true,
+      "fallbackOnly": false,
+      "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "fallback_with_items"
+      "healthClass": "direct_healthy"
     },
     {
       "name": "Daily Sangbad",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,72 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 39,
+  "candidateCount": 41,
   "alertItems": [
+    {
+      "title": "এক রাতে পুলিশ সুপারের বাসভবন-কারাগারসহ চার স্থান থেকে বোমাসদৃশ বস্তু উদ্ধার",
+      "summary": "মেহেরপুর শহরে পুলিশ সুপারের বাসভবন, জেলা কারাগারসহ চারটি গুরুত্বপূর্ণ স্থাপনার সামনে থেকে চারটি বোমাসদৃশ বস্তু উদ্ধার করেছে পুলিশ। শনিবার (২৮ নভেম্বর) রাত সাড়ে ১০টার দিকে প্রায় একই সময়ে এসব বস্তু উদ্ধার করা হয়। এ ঘটনায় শহরজুড়ে আতঙ্ক ছড়িয়ে পড়ে। উদ্ধার করা বস্তুগুলোর মধ্যে একটি ছিল পুলিশ সুপারের বাসভবনের সামনের ফটকসংলগ্ন এলাকায়, একটি জেলা কারাগারের মূল ফটকের সামনে, একটি সার্কিট হাউসের ফটকের... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/983902/%E0%A6%8F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0%E0%A6%B8%E0%A6%B9-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/983902/%E0%A6%8F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0%E0%A6%B8%E0%A6%B9-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8",
+      "publishedAt": "2026-11-28T18:26:51+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
+      "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/983902/%E0%A6%8F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0%E0%A6%B8%E0%A6%B9-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "এক রাতে পুলিশ সুপারের বাসভবন-কারাগারসহ চার স্থান থেকে বোমাসদৃশ বস্তু উদ্ধার",
+          "summary": "মেহেরপুর শহরে পুলিশ সুপারের বাসভবন, জেলা কারাগারসহ চারটি গুরুত্বপূর্ণ স্থাপনার সামনে থেকে চারটি বোমাসদৃশ বস্তু উদ্ধার করেছে পুলিশ। শনিবার (২৮ নভেম্বর) রাত সাড়ে ১০টার দিকে প্রায় একই সময়ে এসব বস্তু উদ্ধার করা হয়। এ ঘটনায় শহরজুড়ে আতঙ্ক ছড়িয়ে পড়ে। উদ্ধার করা বস্তুগুলোর মধ্যে একটি ছিল পুলিশ সুপারের বাসভবনের সামনের ফটকসংলগ্ন এলাকায়, একটি জেলা কারাগারের মূল ফটকের সামনে, একটি সার্কিট হাউসের ফটকের... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/983902/%E0%A6%8F%E0%A6%95-%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6-%E0%A6%B8%E0%A7%81%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%AD%E0%A6%AC%E0%A6%A8-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0%E0%A6%B8%E0%A6%B9-%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "309a274e480c648be0b65134090d1d11"
+    },
+    {
+      "title": "জমি নিয়ে বিরোধ : বায়েজিদে কাগতিয়া দরবারের অনুসারী ও এলাকাবাসীর সংঘর্ষ, আহত ৩",
+      "summary": "চট্টগ্রাম নগরের বায়েজিদে জমির মালিকানা নিয়ে বিরোধের জেরে কাগতিয়া দরবার শরীফের অনুসারীদের সঙ্গে স্থানীয় বাসিন্দাদের সংঘর্ষ হয়েছে। এতে অন্তত তিনজন আহত হয়েছেন। তাঁদের উদ্ধার করে চট্টগ্রাম মেডিকেল কলেজ (চমেক) হাসপাতালে ভর্তি করা হয়েছে। শনিবার (২৮ নভেম্বর) রাত নয়টার দিকে নগরের আরেফিন নগর এলাকার মুক্তিযোদ্ধা কলোনিতে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ওই […] The post জমি নিয়ে বিরোধ : বায়েজিদে কাগতিয়া দরবারের অনুসারী ও এলাকাবাসীর সংঘর্ষ, আহত ৩ appeared first on দৈনিক আজাদী .",
+      "link": "https://dainikazadi.net/bayezid-kagtia-darbar-land-clash/",
+      "publisherUrl": "https://dainikazadi.net/bayezid-kagtia-darbar-land-clash/",
+      "publishedAt": "2026-11-28T17:53:45+00:00",
+      "source": "Dainik Azadi",
+      "publisherName": "Dainik Azadi",
+      "sourceEvidence": [
+        "Dainik Azadi"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dainik Azadi",
+          "url": "https://dainikazadi.net/bayezid-kagtia-darbar-land-clash/"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dainik Azadi",
+          "title": "জমি নিয়ে বিরোধ : বায়েজিদে কাগতিয়া দরবারের অনুসারী ও এলাকাবাসীর সংঘর্ষ, আহত ৩",
+          "summary": "চট্টগ্রাম নগরের বায়েজিদে জমির মালিকানা নিয়ে বিরোধের জেরে কাগতিয়া দরবার শরীফের অনুসারীদের সঙ্গে স্থানীয় বাসিন্দাদের সংঘর্ষ হয়েছে। এতে অন্তত তিনজন আহত হয়েছেন। তাঁদের উদ্ধার করে চট্টগ্রাম মেডিকেল কলেজ (চমেক) হাসপাতালে ভর্তি করা হয়েছে। শনিবার (২৮ নভেম্বর) রাত নয়টার দিকে নগরের আরেফিন নগর এলাকার মুক্তিযোদ্ধা কলোনিতে এ ঘটনা ঘটে। পুলিশ ও স্থানীয় সূত্রে জানা গেছে, ওই […] The post জমি নিয়ে বিরোধ : বায়েজিদে কাগতিয়া দরবারের অনুসারী ও এলাকাবাসীর সংঘর্ষ, আহত ৩ appeared first on দৈনিক আজাদী .",
+          "url": "https://dainikazadi.net/bayezid-kagtia-darbar-land-clash/",
+          "incidentDateText": "শনিবার (২৮ নভেম্বর)",
+          "locationText": "পেয়ে বায়েজিদ বোস্তামী থানা"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "56e76c30542bccf39dab3c83d1a9ff4a"
+    },
     {
       "title": "মিরসরাইয়ে গ্রামীণ ব্যাংকে পেট্রল বোমা ছুড়ে অগ্নিসংযোগ",
       "summary": "চট্টগ্রামের মিরসরাইয়ে গ্রামীণ ব্যাংকের শাখায় ভোরে পেট্রল বোমা ছুড়ে আগুন দেওয়ার ঘটনা ঘটেছে। আগুন নিয়ন্ত্রণে আনেন ব্যাংকের নাইটগার্ড ও কর্মকর্তারা। ঘটনার তদন্ত করছে পুলিশ...",
@@ -1550,22 +1614,48 @@
       "alertEventId": "0fe2b9ae4005e786e6ad3e734fff665f"
     },
     {
-      "title": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 - bd-pratidin.com",
-      "summary": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 bd-pratidin.com",
-      "link": "https://www.bd-pratidin.com/printnews/1331956",
-      "publisherUrl": "https://www.bd-pratidin.com/printnews/1331956",
-      "publishedAt": "2026-11-28T06:24:00+00:00",
-      "source": "bd-pratidin.com",
-      "publisherName": "bd-pratidin.com",
+      "title": "সাভারে দুর্বৃত্তদের দেওয়া আগুনে পুড়ল ৩ বাস - dhakapost.com",
+      "summary": "সাভারে দুর্বৃত্তদের দেওয়া আগুনে পুড়ল ৩ বাস dhakapost.com",
+      "link": "https://www.dhakapost.com/country/501425",
+      "publisherUrl": "https://www.dhakapost.com/country/501425",
+      "publishedAt": "2026-11-28T06:21:12+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
-        "bd-pratidin.com",
-        "Jamuna Television"
+        "dhakapost.com"
       ],
       "sourceLinks": [
         {
-          "name": "bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331956"
-        },
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501425"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "সাভারে দুর্বৃত্তদের দেওয়া আগুনে পুড়ল ৩ বাস - dhakapost.com",
+          "summary": "সাভারে দুর্বৃত্তদের দেওয়া আগুনে পুড়ল ৩ বাস dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501425"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "8be49f00cae50d0b5d7c95b760982d21"
+    },
+    {
+      "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
+      "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668811",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668811",
+      "publishedAt": "2026-11-28T06:13:31+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668811"
@@ -1576,19 +1666,13 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "bd-pratidin.com",
-          "title": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 - bd-pratidin.com",
-          "summary": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 bd-pratidin.com",
-          "url": "https://www.bd-pratidin.com/printnews/1331956"
-        },
-        {
           "name": "Jamuna Television",
           "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
           "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668811"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "1f715ab2681e23c00bcd1ec7f215e27d"
     },
     {
@@ -1665,37 +1749,6 @@
       "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
-      "title": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
-      "summary": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113925/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E2%80%98%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113925/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E2%80%98%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-28T04:56:27+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113925/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E2%80%98%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
-          "summary": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113925/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E2%80%98%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%A8%E0%A6%BE-%E0%A6%8F%E0%A6%95%E0%A7%8D%E0%A6%B8%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%B8%E0%A7%87%E2%80%99-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "c92a1ca5a7320d3eba81e29387e6118e"
-    },
-    {
       "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ - Dhaka Tribune Bangla",
       "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ Dhaka Tribune Bangla",
       "link": "https://bangla.dhakatribune.com/amp/bangladesh/113924/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%89%E0%A6%AA%E0%A6%95%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE",
@@ -1735,12 +1788,17 @@
       "source": "Jamuna Television",
       "publisherName": "Jamuna Television",
       "sourceEvidence": [
-        "Jamuna Television"
+        "Jamuna Television",
+        "ডেইলি সান বাংলা"
       ],
       "sourceLinks": [
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668801"
+        },
+        {
+          "name": "ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62869/%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87"
         }
       ],
       "category": "Bangladesh",
@@ -1752,10 +1810,16 @@
           "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
           "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668801"
+        },
+        {
+          "name": "ডেইলি সান বাংলা",
+          "title": "মাদারীপুরে বিএনপি-আওয়ামী লীগ নেতাকর্মীদের মধ্যে সংঘর্ষ - ডেইলি সান বাংলা",
+          "summary": "মাদারীপুরে বিএনপি-আওয়ামী লীগ নেতাকর্মীদের মধ্যে সংঘর্ষ ডেইলি সান বাংলা",
+          "url": "https://bangla.daily-sun.com/bangladesh/62869/%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A6%BE%E0%A6%B0%E0%A7%80%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AC%E0%A6%BF%E0%A6%8F%E0%A6%A8%E0%A6%AA%E0%A6%BF-%E0%A6%86%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A6%AE%E0%A7%80-%E0%A6%B2%E0%A7%80%E0%A6%97-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A7%87-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A7%87"
         }
       ],
-      "corroborationCount": 1,
-      "alertEventId": "e097c013a6fffe9ffaece501b81f696c"
+      "corroborationCount": 2,
+      "alertEventId": "3d9bfc1325705fc2a7989b86f2a6073e"
     },
     {
       "title": "ফরিদপুর কোতয়ালী থানা লক্ষ্য করে ককটেল নিক্ষেপের অভিযোগ - Dhaka Tribune Bangla",
