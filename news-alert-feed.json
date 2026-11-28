@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T04:50:39.250953+00:00",
-  "updatedAt": "2026-11-28T04:50:39.250953+00:00",
+  "generatedAt": "2026-11-28T05:05:42.568865+00:00",
+  "updatedAt": "2026-11-28T05:05:42.568865+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
+  "healthySourceCount": 54,
+  "failedSourceCount": 1,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 34,
+  "fallbackHealthySourceCount": 33,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 34,
+  "fallbackOnlySourceCount": 33,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 16,
+      "fallbackItems": 17,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -527,17 +527,17 @@
     {
       "name": "Daily Janakantha",
       "domain": "dailyjanakantha.com",
-      "status": "healthy",
+      "status": "failed",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "healthy",
-      "fallbackError": null,
+      "fallbackStatus": "failed",
+      "fallbackError": "HTTP 429",
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": true,
+      "fallbackOnly": false,
       "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackZeroItems": false,
+      "healthClass": "failed"
     },
     {
       "name": "Dainik Azadi",
@@ -840,7 +840,7 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 42,
+  "candidateCount": 40,
   "alertItems": [
     {
       "title": "বিএনপি-কার্যক্রম নিষিদ্ধ আ. লীগ সংঘর্ষের পর স্বাভাবিক মাদারীপুরের কালকিনি | Channel 24",
@@ -851,17 +851,12 @@
       "source": "Channel 24",
       "publisherName": "Channel 24",
       "sourceEvidence": [
-        "Channel 24",
-        "Independent Television"
+        "Channel 24"
       ],
       "sourceLinks": [
         {
           "name": "Channel 24 · YouTube",
           "url": "https://www.youtube.com/watch?v=EKcTU9WoiQI"
-        },
-        {
-          "name": "Independent Television ·",
-          "url": "https://www.youtube.com/watch?v=ovi_kc2Uf8U"
         }
       ],
       "category": "Bangladesh",
@@ -873,16 +868,10 @@
           "title": "বিএনপি-কার্যক্রম নিষিদ্ধ আ. লীগ সংঘর্ষের পর স্বাভাবিক মাদারীপুরের কালকিনি | Channel 24",
           "summary": "",
           "url": "https://www.youtube.com/watch?v=EKcTU9WoiQI"
-        },
-        {
-          "name": "Independent Television",
-          "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ ও বিএনপির নেতাকর্মীদের মধ্যে সংঘর্ষ | Madaripur | Independent TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=ovi_kc2Uf8U"
         }
       ],
-      "corroborationCount": 2,
-      "alertEventId": "d2d25e5377d7dc5ed396dbae9fb085a9"
+      "corroborationCount": 1,
+      "alertEventId": "b673aea0d99c61c00b5c5280887ad71f"
     },
     {
       "title": "চাঁদপুর কালীবাড়ি কোর্টস্টেশনে ট্রেনে আগুন",
@@ -1137,7 +1126,11 @@
           "name": "Jamuna Television",
           "title": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন - Jamuna Television",
           "summary": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668800"
+          "url": "https://www.jamuna.tv/all-bangladesh/668800",
+          "incidentDateText": "শুক্রবার (২৭ নভেম্বর)",
+          "incidentTimeText": "রাত ১২ টার দিকে",
+          "incidentTimeSource": "Jamuna Television",
+          "locationText": "মঠবাড়িয়া উপজেলা, পিরোজপুর, খুলনা, বিষয়ে মঠবাড়িয়া উপজেলা"
         },
         {
           "name": "Jago News 24",
@@ -1221,68 +1214,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2791f320cd78d3e0ca05e71296a3a7cb"
-    },
-    {
-      "title": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর - dhakapost.com",
-      "summary": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর dhakapost.com",
-      "link": "https://www.dhakapost.com/campus/501374",
-      "publisherUrl": "https://www.dhakapost.com/campus/501374",
-      "publishedAt": "2026-11-28T02:19:02+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/campus/501374"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর - dhakapost.com",
-          "summary": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর dhakapost.com",
-          "url": "https://www.dhakapost.com/campus/501374"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cd8a5661b59bd7100a79facfae483377"
-    },
-    {
-      "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
-      "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publishedAt": "2026-11-28T02:16:02+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
-          "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
       "title": "তিন জেলায় সহিংসতা, মাদারীপুরে শতাধিক ককটেল বি-স্ফোরণ | Madaripur | Channel 24",
@@ -1615,6 +1546,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "ddc77e9c2ed46613853245395c903241"
+    },
+    {
+      "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
+      "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
+      "link": "https://barta24.com/details/national/349999",
+      "publisherUrl": "https://barta24.com/details/national/349999",
+      "publishedAt": "2026-11-27T14:11:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
+      "sourceEvidence": [
+        "Barta 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349999"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Barta 24",
+          "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
+          "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
+          "url": "https://barta24.com/details/national/349999"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5bd5d013a3abfe95d74282d8a444ebc5"
     },
     {
       "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
