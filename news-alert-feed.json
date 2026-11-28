@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T03:35:46.799290+00:00",
-  "updatedAt": "2026-11-28T03:35:46.799290+00:00",
+  "generatedAt": "2026-11-28T03:50:37.285940+00:00",
+  "updatedAt": "2026-11-28T03:50:37.285940+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
+  "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 8,
+  "fallbackZeroItemsSourceCount": 9,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -352,7 +352,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 15,
+      "fallbackItems": 16,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 22,
+  "candidateCount": 33,
   "alertItems": [
+    {
+      "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
+      "summary": "",
+      "link": "https://www.youtube.com/shorts/x0CNsDTO9dM",
+      "publisherUrl": "https://www.youtube.com/shorts/x0CNsDTO9dM",
+      "publishedAt": "2026-11-28T03:45:27+00:00",
+      "source": "Ekattor TV",
+      "publisherName": "Ekattor TV",
+      "sourceEvidence": [
+        "Ekattor TV"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Ekattor TV · YouTube",
+          "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Ekattor TV",
+          "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
+          "summary": "",
+          "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4faa8b97a0aee142910f3bb952016a9c"
+    },
     {
       "title": "পিরোজপুরে পার্কিং করা বাসে আগুন",
       "summary": "পিরোজপুরের মঠবাড়িয়ায় উপজেলা বাসস্ট্যান্ডে পার্কিং করে রাখা আরাফাত পরিবহন নামে একটি বাসে আগুন দিয়েছে দুর্বৃত্তরা। শুক্রবার (২৭ নভেম্বর) রাত ১১টা...",
@@ -872,37 +903,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9e11b0918e5e354f9a363927707f6bc6"
-    },
-    {
-      "title": "বিএনপির কার্যালয়ে আগুন দেওয়ার অভিযোগ আ’লীগের বিরুদ্ধে",
-      "summary": "চুয়াডাঙ্গা সদর উপজেলার আলুকদিয়া ইউনিয়নে ৫ ও ৬ নম্বর ওয়ার্ড বিএনপির কার্যালয়ের ব্যানার ছিঁড়ে আগুন দেওয়ার অভিযোগ উঠেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের...",
-      "link": "https://www.jagonews24.com/country/news/1184459",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184459",
-      "publishedAt": "2026-11-28T02:35:19+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184459"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "বিএনপির কার্যালয়ে আগুন দেওয়ার অভিযোগ আ’লীগের বিরুদ্ধে",
-          "summary": "চুয়াডাঙ্গা সদর উপজেলার আলুকদিয়া ইউনিয়নে ৫ ও ৬ নম্বর ওয়ার্ড বিএনপির কার্যালয়ের ব্যানার ছিঁড়ে আগুন দেওয়ার অভিযোগ উঠেছে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও নিষিদ্ধ ছাত্রলীগের...",
-          "url": "https://www.jagonews24.com/country/news/1184459"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "8d58b6786f6fc996cab15b1298bde042"
     },
     {
       "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ ও বিএনপির নেতাকর্মীদের মধ্যে সংঘর্ষ | Madaripur | Independent TV",
@@ -1164,48 +1164,22 @@
       "alertEventId": "3b507170a9cabb9c39cbd06dc31c94c8"
     },
     {
-      "title": "খুলনায় ফার্মেসিতে দুর্বৃত্তদের গুলিতে মালিকের ছেলে গুলিবিদ্ধ l Khulna Pharmecy Shoot l Jamuna TV",
-      "summary": "",
-      "link": "https://www.youtube.com/watch?v=qe6RgFDaYjI",
-      "publisherUrl": "https://www.youtube.com/watch?v=qe6RgFDaYjI",
-      "publishedAt": "2026-11-27T18:49:44+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
+      "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+      "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/673132",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673132",
+      "publishedAt": "2026-11-27T18:44:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Jamuna TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=qe6RgFDaYjI"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "খুলনায় ফার্মেসিতে দুর্বৃত্তদের গুলিতে মালিকের ছেলে গুলিবিদ্ধ l Khulna Pharmecy Shoot l Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=qe6RgFDaYjI"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "7529134daec51bb09f4bb3b1a80e493d"
-    },
-    {
-      "title": "নারায়ণগঞ্জে যাত্রীবেশে বাসে উঠে আগুন",
-      "summary": "নারায়ণগঞ্জে যাত্রীবেশে বাসে উঠে আগুন",
-      "link": "https://www.jagonews24.com/country/news/1184436",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184436",
-      "publishedAt": "2026-11-27T17:21:16+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
+        "Risingbd.com",
         "Jago News 24"
       ],
       "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1184436"
@@ -1215,6 +1189,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+          "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
+        },
         {
           "name": "Jago News 24",
           "title": "নারায়ণগঞ্জে যাত্রীবেশে বাসে উঠে আগুন",
@@ -1222,7 +1202,7 @@
           "url": "https://www.jagonews24.com/country/news/1184436"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "0536d113e809fcb7b15c6955aef95200"
     },
     {
@@ -1288,6 +1268,37 @@
       "alertEventId": "4b6d23ea23d84822a869ed3c00ce37d3"
     },
     {
+      "title": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ - Risingbd.com",
+      "summary": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/673121",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673121",
+      "publishedAt": "2026-11-27T16:42:00+00:00",
+      "source": "Risingbd.com",
+      "publisherName": "Risingbd.com",
+      "sourceEvidence": [
+        "Risingbd.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673121"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ - Risingbd.com",
+          "summary": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673121"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "5b82bc74599694d05556a0425319afdb"
+    },
+    {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
       "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। ... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
@@ -1348,6 +1359,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
+    },
+    {
+      "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+      "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+      "link": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publisherUrl": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635",
+      "publishedAt": "2026-11-27T13:46:48+00:00",
+      "source": "কালের কণ্ঠ",
+      "publisherName": "কালের কণ্ঠ",
+      "sourceEvidence": [
+        "কালের কণ্ঠ",
+        "Jugantor"
+      ],
+      "sourceLinks": [
+        {
+          "name": "কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
+        {
+          "name": "Jugantor",
+          "url": "https://www.jugantor.com/country-news/1190760"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "কালের কণ্ঠ",
+          "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
+          "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু কালের কণ্ঠ",
+          "url": "https://www.kalerkantho.com/online/nrb/2026/11/27/1773635"
+        },
+        {
+          "name": "Jugantor",
+          "title": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত - Jugantor",
+          "summary": "সৌদিতে সড়ক দুর্ঘটনায় ২ বাংলাদেশি নিহত Jugantor",
+          "url": "https://www.jugantor.com/country-news/1190760"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "54781f4f193dce751cf31b8b289712bf"
     },
     {
       "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
@@ -1474,6 +1527,173 @@
       "alertEventId": "2355610d84b6906547bad4b4f9e0713b"
     },
     {
+      "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
+      "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
+      "publishedAt": "2026-11-27T09:34:08+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
+          "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        },
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - Dhaka Tribune Bangla",
+          "summary": "এক মাস পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113883/%E0%A6%8F%E0%A6%95-%E0%A6%AE%E0%A6%BE%E0%A6%B8-%E0%A6%AA%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%87%E0%A6%A8%E0%A6%BE%E0%A6%A8%E0%A7%80%E0%A6%B0-%E0%A6%97%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%82%E0%A6%AA%E0%A7%87%E0%A6%B0-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "62d8e0a6cea8070dbb49a6b2de81380a"
+    },
+    {
+      "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+      "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+      "link": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publisherUrl": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713",
+      "publishedAt": "2026-11-27T09:18:00+00:00",
+      "source": "UNB",
+      "publisherName": "UNB",
+      "sourceEvidence": [
+        "UNB"
+      ],
+      "sourceLinks": [
+        {
+          "name": "UNB",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "UNB",
+          "title": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ - United News of Bangladesh",
+          "summary": "বরিশালে গ্রামীণ ব‍্যাংকে পেট্রোল বোমা নিক্ষেপ United News of Bangladesh",
+          "url": "https://unb.com.bd/bangla/category/%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6/%E0%A6%AC%E0%A6%B0%E0%A6%BF%E0%A6%B6%E0%A6%BE%E0%A6%B2%E0%A7%87-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E2%80%8D%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA/116713"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "58cb3010a88bf3cf25b0b5565a60d0e2"
+    },
+    {
+      "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - dhakapost.com",
+      "summary": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন dhakapost.com",
+      "link": "https://www.dhakapost.com/country/501246",
+      "publisherUrl": "https://www.dhakapost.com/country/501246",
+      "publishedAt": "2026-11-27T08:46:08+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501246"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - dhakapost.com",
+          "summary": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501246"
+        },
+        {
+          "name": "dhakapost.com",
+          "title": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত - dhakapost.com",
+          "summary": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501224"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "9ae9e31ad7ee4f30123009b6c5269519"
+    },
+    {
+      "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
+      "summary": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113895/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%A8-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113895/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%A8-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95",
+      "publishedAt": "2026-11-27T08:44:50+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113895/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%A8-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
+          "summary": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113895/%E0%A6%AF%E0%A6%B6%E0%A7%8B%E0%A6%B0%E0%A7%87-%E0%A6%AE%E0%A6%BE%E0%A6%9F%E0%A6%BF-%E0%A6%96%E0%A7%81%E0%A6%81%E0%A7%9C%E0%A6%A4%E0%A7%87-%E0%A6%97%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%86%E0%A6%B9%E0%A6%A4-%E0%A7%A8-%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%BF%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "85a83e459654b729f62f2b7c308a4327"
+    },
+    {
+      "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
+      "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
+      "link": "https://www.dhakapost.com/international/501237",
+      "publisherUrl": "https://www.dhakapost.com/international/501237",
+      "publishedAt": "2026-11-27T07:43:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501237"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ - dhakapost.com",
+          "summary": "করাচিতে ভবন ধসে নিহত ৬, নিখোঁজ ১৩ dhakapost.com",
+          "url": "https://www.dhakapost.com/international/501237"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ac8b54e4e16afc4c65a8986bf5b48e28"
+    },
+    {
       "title": "এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন",
       "summary": "টানা এক মাস পর কক্সবাজারের ইনানীর ছোটখাল এলাকার গ্যাসকূপের আগুন নেভাতে সক্ষম হয়েছে বাংলাদেশ পেট্রোলিয়াম এক্সপ্লোরেশন অ্যান্ড প্রোডাকশন কোম্পানির (বাপেক্স) কারিগরি দল। আজ শুক্রবার সকালে ৩০ ইঞ্চি কেসিং স্থাপন করে ভূপৃষ্ঠের বিভিন্ন স্থানে জ্বলতে থাকা আগুন নেভানো হয়। বাপেক্সের ড্রিলিং টিমের কর্মকর্তা রকিবুল হাসান বিষয়টি নিশ্চিত করেছেন। তিনি জানান, কেসিং লাইনের সঙ্গে সংযুক্ত ডাইভার্ট লাইনের […] The post এক মাস পর নিভল ইনানীর গ্যাসকূপের আগুন appeared first on দৈনিক আজাদী .",
       "link": "https://dainikazadi.net/inani-gas-well-fire-extinguished-after-one-month/",
@@ -1503,6 +1723,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "d35a0a819c4b2c14f1d49388d5d51e21"
+    },
+    {
+      "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+      "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+      "link": "https://www.mzamin.com/article/63858",
+      "publisherUrl": "https://www.mzamin.com/article/63858",
+      "publishedAt": "2026-11-27T05:08:48+00:00",
+      "source": "Manab Zamin",
+      "publisherName": "Manab Zamin",
+      "sourceEvidence": [
+        "Manab Zamin"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Manab Zamin",
+          "title": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ - Manab Zamin",
+          "summary": "নেত্রকোণায় এনসিপি’র কেন্দ্রীয় নেতার বাসায় অগ্নিসংযোগ Manab Zamin",
+          "url": "https://www.mzamin.com/article/63858"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "cda0f0e19928a01ae168518655bcbaff"
     }
   ]
 }
