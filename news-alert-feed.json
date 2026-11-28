@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T17:15:43.122050+00:00",
-  "updatedAt": "2026-11-28T17:15:43.122050+00:00",
+  "generatedAt": "2026-11-28T17:25:51.188866+00:00",
+  "updatedAt": "2026-11-28T17:25:51.188866+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 53,
-  "failedSourceCount": 2,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 32,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 32,
-  "fallbackWithItemsSourceCount": 25,
-  "fallbackZeroItemsSourceCount": 7,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -272,17 +272,17 @@
     {
       "name": "Dhaka Post",
       "domain": "dhakapost.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 404",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Bangladesh Pratidin",
@@ -617,17 +617,17 @@
     {
       "name": "BBC News বাংলা",
       "domain": "bbc.co.uk",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "feed redirected outside its publisher domain",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
       "fallbackItems": 0,
       "directHealthy": false,
-      "fallbackOnly": false,
+      "fallbackOnly": true,
       "fallbackWithItems": false,
-      "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "fallbackZeroItems": true,
+      "healthClass": "fallback_zero_items"
     },
     {
       "name": "Chandpur Times",
@@ -840,8 +840,39 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 37,
+  "candidateCount": 40,
   "alertItems": [
+    {
+      "title": "পূর্বধলায় যুবদল নেতাকে কুপিয়ে জখম, অভিযুক্ত যুবলীগ নেতার বাড়িতে আগুন",
+      "summary": "নেত্রকোনার পূর্বধলায় যুবদল নেতা আবু বকর রানাকে কুপিয়ে গুরুতর জখম করার অভিযোগ উঠেছে যুবলীগ নেতা রফিকুল ইসলামের বিরুদ্ধে। এ ঘটনার পর অভিযুক্তের বাড়িতে আগুন দেওয়ার খবর পাওয়া গেছে...",
+      "link": "https://www.jagonews24.com/country/news/1184769",
+      "publisherUrl": "https://www.jagonews24.com/country/news/1184769",
+      "publishedAt": "2026-11-28T17:22:38+00:00",
+      "source": "Jago News 24",
+      "publisherName": "Jago News 24",
+      "sourceEvidence": [
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184769"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jago News 24",
+          "title": "পূর্বধলায় যুবদল নেতাকে কুপিয়ে জখম, অভিযুক্ত যুবলীগ নেতার বাড়িতে আগুন",
+          "summary": "নেত্রকোনার পূর্বধলায় যুবদল নেতা আবু বকর রানাকে কুপিয়ে গুরুতর জখম করার অভিযোগ উঠেছে যুবলীগ নেতা রফিকুল ইসলামের বিরুদ্ধে। এ ঘটনার পর অভিযুক্তের বাড়িতে আগুন দেওয়ার খবর পাওয়া গেছে...",
+          "url": "https://www.jagonews24.com/country/news/1184769"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "207d926ff943c08d1f59e74b6cb19d9d"
+    },
     {
       "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পরপর দুই রাতে হামলা",
       "summary": "",
@@ -1531,17 +1562,22 @@
       "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
-      "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
-      "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
-      "link": "https://www.jamuna.tv/all-bangladesh/668811",
-      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668811",
-      "publishedAt": "2026-11-28T06:13:31+00:00",
-      "source": "Jamuna Television",
-      "publisherName": "Jamuna Television",
+      "title": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 - bd-pratidin.com",
+      "summary": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 bd-pratidin.com",
+      "link": "https://www.bd-pratidin.com/printnews/1331956",
+      "publisherUrl": "https://www.bd-pratidin.com/printnews/1331956",
+      "publishedAt": "2026-11-28T06:24:00+00:00",
+      "source": "bd-pratidin.com",
+      "publisherName": "bd-pratidin.com",
       "sourceEvidence": [
+        "bd-pratidin.com",
         "Jamuna Television"
       ],
       "sourceLinks": [
+        {
+          "name": "bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1331956"
+        },
         {
           "name": "Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668811"
@@ -1552,13 +1588,19 @@
       "isBreaking": true,
       "sourceStories": [
         {
+          "name": "bd-pratidin.com",
+          "title": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 - bd-pratidin.com",
+          "summary": "সিলেটে এমপি মালেকের বাড়িতে পেট্রোল বোমা নিক্ষেপ|1331956 bd-pratidin.com",
+          "url": "https://www.bd-pratidin.com/printnews/1331956"
+        },
+        {
           "name": "Jamuna Television",
           "title": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ - Jamuna Television",
           "summary": "সিলেটে বিএনপির এমপি এম এ মালেকের বাড়িতে অগ্নিসংযোগ Jamuna Television",
           "url": "https://www.jamuna.tv/all-bangladesh/668811"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "1f715ab2681e23c00bcd1ec7f215e27d"
     },
     {
@@ -1591,6 +1633,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "37fccde9319c58a49ba68283336e6998"
+    },
+    {
+      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
+      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
+      "link": "https://www.dhakapost.com/country/501418",
+      "publisherUrl": "https://www.dhakapost.com/country/501418",
+      "publishedAt": "2026-11-28T05:46:14+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
+      "sourceEvidence": [
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501418"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ - dhakapost.com",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণ dhakapost.com",
+          "url": "https://www.dhakapost.com/country/501418"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ec4e4fbd8dcc4ce40c74182e9cccfe8c"
     },
     {
       "title": "চাঁদপুরে ‘মেঘনা এক্সপ্রেসে’ আগুন - Dhaka Tribune Bangla",
@@ -1790,22 +1863,48 @@
       "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
-      "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
-      "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/673132",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673132",
-      "publishedAt": "2026-11-27T18:44:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
+      "title": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+      "summary": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+      "link": "https://www.dhakapost.com/national/501355",
+      "publisherUrl": "https://www.dhakapost.com/national/501355",
+      "publishedAt": "2026-11-27T21:10:08+00:00",
+      "source": "dhakapost.com",
+      "publisherName": "dhakapost.com",
       "sourceEvidence": [
-        "Risingbd.com",
-        "Ajker Patrika"
+        "dhakapost.com"
       ],
       "sourceLinks": [
         {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673132"
-        },
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501355"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "dhakapost.com",
+          "title": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ - dhakapost.com",
+          "summary": "মধ্যরাতে সচিবালয়ের পাশে দুটি ককটেল বিস্ফোরণ dhakapost.com",
+          "url": "https://www.dhakapost.com/national/501355"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "4b822c557ee21ef365a8f2f808651576"
+    },
+    {
+      "title": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের - Ajker Patrika",
+      "summary": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের Ajker Patrika",
+      "link": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi",
+      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi",
+      "publishedAt": "2026-11-27T18:06:00+00:00",
+      "source": "Ajker Patrika",
+      "publisherName": "Ajker Patrika",
+      "sourceEvidence": [
+        "Ajker Patrika"
+      ],
+      "sourceLinks": [
         {
           "name": "Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi"
@@ -1816,19 +1915,13 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Risingbd.com",
-          "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
-          "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673132"
-        },
-        {
           "name": "Ajker Patrika",
           "title": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের - Ajker Patrika",
           "summary": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 1,
       "alertEventId": "e4b61056be9cca4fc996e5397aca4936"
     }
   ]
