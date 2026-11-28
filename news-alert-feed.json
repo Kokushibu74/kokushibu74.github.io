@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T09:28:32.165029+00:00",
-  "updatedAt": "2026-11-28T09:28:32.165029+00:00",
+  "generatedAt": "2026-11-28T09:40:44.882950+00:00",
+  "updatedAt": "2026-11-28T09:40:44.882950+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
   "healthySourceCount": 55,
@@ -79,7 +79,7 @@
       "domain": "banglanews24.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "HTTP 404",
+      "directError": "HTTP 403",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -172,7 +172,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 10,
+      "fallbackItems": 11,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 21,
+      "fallbackItems": 22,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -514,7 +514,7 @@
       "domain": "dailynayadiganta.com",
       "status": "healthy",
       "directStatus": "failed",
-      "directError": "<urlopen error timed out>",
+      "directError": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.dailynayadiganta.com'. (_ssl.c:1081)>",
       "fallbackStatus": "healthy",
       "fallbackError": null,
       "fallbackItems": 30,
@@ -840,8 +840,41 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 43,
+  "candidateCount": 45,
   "alertItems": [
+    {
+      "title": "চাঁদপুরে মেঘনা এক্সপ্রেস ট্রেনের বগিতে দুর্বৃত্তদের আগুন",
+      "summary": "চাঁদপুরে আন্তনগর মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন দিয়েছে দুর্বৃত্তরা। এতে ওই বগির দুটি আসন পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হননি।",
+      "link": "https://www.prothomalo.com/bangladesh/district/qn33lg3id8",
+      "publisherUrl": "https://www.prothomalo.com/bangladesh/district/qn33lg3id8",
+      "publishedAt": "2026-11-28T09:18:57+00:00",
+      "source": "Prothom Alo",
+      "publisherName": "Prothom Alo",
+      "sourceEvidence": [
+        "Prothom Alo"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Prothom Alo",
+          "url": "https://www.prothomalo.com/bangladesh/district/qn33lg3id8"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Prothom Alo",
+          "title": "চাঁদপুরে মেঘনা এক্সপ্রেস ট্রেনের বগিতে দুর্বৃত্তদের আগুন",
+          "summary": "চাঁদপুরে আন্তনগর মেঘনা এক্সপ্রেস ট্রেনের একটি বগিতে আগুন দিয়েছে দুর্বৃত্তরা। এতে ওই বগির দুটি আসন পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হননি।",
+          "url": "https://www.prothomalo.com/bangladesh/district/qn33lg3id8",
+          "incidentDateText": "২৮ নভেম্বর ২০২৬",
+          "locationText": "সংলগ্ন এলাকায়, চাঁদপুর"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e723fe497841e0caaa43e4fbe980de57"
+    },
     {
       "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ‘পেট্রোল বোমা’ নিক্ষেপ-গুলিবর্ষণ",
       "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির উপকেন্দ্রে টানা দুই দিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনায় কর্মকর্তা-কর্মচারীদের মধ্যে আতঙ্ক ছড়িয়ে পড়েছে। সর্বশেষ শুক্রবার (২৭ নভেম্বর) গভীর রাতে পবা উপজেলার পারিলা ইউনিয়নের খড়খড়ি এলাকায় পল্লী বিদ্যুৎ সমিতির পবা-২ উপকেন্দ্রে হামলা চালায় ৮ থেকে ১০ জন দুর্বৃত্ত। এ সময় তারা কয়েকটি পেট্রোল বোমা নিক্ষেপ ও তিন রাউন্ড গুলি ছোড়ে। এতে তিনটি পেট্রোল বোমা বিস্ফোরিত হয়ে... বিস্তারিত",
@@ -854,6 +887,7 @@
         "Bangla Tribune",
         "Prothom Alo",
         "ডেইলি সান বাংলা",
+        "Risingbd.com",
         "Jamuna Television"
       ],
       "sourceLinks": [
@@ -868,6 +902,10 @@
         {
           "name": "ডেইলি সান বাংলা",
           "url": "https://bangla.daily-sun.com/bangladesh/62890/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%A3"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
         },
         {
           "name": "Jamuna Television",
@@ -901,6 +939,12 @@
           "url": "https://bangla.daily-sun.com/bangladesh/62890/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A7%80%E0%A6%A4%E0%A7%87-%E0%A6%AA%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A7%80-%E0%A6%AC%E0%A6%BF%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A7%8E-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%AA%E0%A7%87%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%B2-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%A8%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%AA-%E0%A6%97%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%A3"
         },
         {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা - Risingbd.com",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
+        },
+        {
           "name": "Jamuna Television",
           "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ - Jamuna Television",
           "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্র লক্ষ্য করে বোমা নিক্ষেপ ও ফাঁকা গুলিবর্ষণ Jamuna Television",
@@ -909,7 +953,7 @@
           "locationText": "দুইটায় নগরীর মতিহার থানার, খড়খড়ি এলাকায়"
         }
       ],
-      "corroborationCount": 4,
+      "corroborationCount": 5,
       "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
@@ -1039,8 +1083,7 @@
           "name": "Prothom Alo",
           "title": "সিসিটিভিতে ধরা পড়ল নাটোরে জুলাই স্মৃতিস্তম্ভে আগুন দেওয়ার ঘটনা",
           "summary": "",
-          "url": "https://www.prothomalo.com/video/bangladesh/aoxfhfzxvt",
-          "incidentDateText": "২৮ নভেম্বর ২০২৬"
+          "url": "https://www.prothomalo.com/video/bangladesh/aoxfhfzxvt"
         },
         {
           "name": "DBC News",
@@ -1150,6 +1193,48 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "880f43f04591b1705b3c96357a8d44c2"
+    },
+    {
+      "title": "মধ্যরাতে চুয়েটে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, আহত ৫ - Dhaka Tribune Bangla",
+      "summary": "মধ্যরাতে চুয়েটে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, আহত ৫ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/amp/bangladesh/113934/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publisherUrl": "https://bangla.dhakatribune.com/amp/bangladesh/113934/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7",
+      "publishedAt": "2026-11-28T07:00:07+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla",
+        "dhakapost.com"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113934/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        },
+        {
+          "name": "dhakapost.com",
+          "url": "https://www.dhakapost.com/campus/501374"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মধ্যরাতে চুয়েটে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, আহত ৫ - Dhaka Tribune Bangla",
+          "summary": "মধ্যরাতে চুয়েটে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, আহত ৫ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/amp/bangladesh/113934/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%87-%E0%A6%9A%E0%A7%81%E0%A7%9F%E0%A7%87%E0%A6%9F%E0%A7%87-%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A5%E0%A7%80%E0%A6%A6%E0%A7%87%E0%A6%B0-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AA%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%98%E0%A6%B0%E0%A7%8D%E0%A6%B7"
+        },
+        {
+          "name": "dhakapost.com",
+          "title": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর - dhakapost.com",
+          "summary": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর dhakapost.com",
+          "url": "https://www.dhakapost.com/campus/501374"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "cd8a5661b59bd7100a79facfae483377"
     },
     {
       "title": "যাত্রীবেশে বাসে উঠে আগুন, অল্পের জন্য রক্ষা পেলেন যাত্রীরা",
@@ -1589,37 +1674,6 @@
       "alertEventId": "4cf04acc036ca059a56244631b964d0e"
     },
     {
-      "title": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর - dhakapost.com",
-      "summary": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর dhakapost.com",
-      "link": "https://www.dhakapost.com/campus/501374",
-      "publisherUrl": "https://www.dhakapost.com/campus/501374",
-      "publishedAt": "2026-11-28T02:19:02+00:00",
-      "source": "dhakapost.com",
-      "publisherName": "dhakapost.com",
-      "sourceEvidence": [
-        "dhakapost.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "dhakapost.com",
-          "url": "https://www.dhakapost.com/campus/501374"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "dhakapost.com",
-          "title": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর - dhakapost.com",
-          "summary": "চুয়েটে মধ্যরাতে শিক্ষার্থীদের দুই পক্ষের সংঘর্ষ, সাংবাদিককে মারধর dhakapost.com",
-          "url": "https://www.dhakapost.com/campus/501374"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "cd8a5661b59bd7100a79facfae483377"
-    },
-    {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
       "summary": "মোটরসাইকেলে এসে বোমা ছুড়ে পালিয়ে যাওয়ার মতো ঘটনা ঘটিয়ে কেউ পার পাবে না বলে হুঁশিয়ারি দিয়েছেন আইন, বিচার ও সংসদবিষয়ক মন্ত্রী মো. আসাদুজ্জামান। তিনি বলেন, আগুন সন্ত্রাস ও সহিংসতার বিরুদ্ধে সবাইকে ঐক্যবদ্ধ থাকতে হবে। বাংলাদেশের শান্তি, সার্বভৌমত্ব, গণতন্ত্র ও আইনের শাসন প্রতিষ্ঠায় সরকার দৃঢ়প্রতিজ্ঞ। সব হত্যাকাণ্ডের বিচার নিশ্চিত করতে সরকার অতন্দ্র প্রহরীর মতো জেগে থাকবে। শুক্রবার (২৭ নভেম্বর)... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/khulna/983704/%E0%A6%AE%E0%A7%8B%E0%A6%9F%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%E0%A7%87-%E0%A6%8F%E0%A6%B8%E0%A7%87-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%9B%E0%A7%81%E0%A7%9C%E0%A7%87-%E0%A6%95%E0%A7%87%E0%A6%89-%E0%A6%AA%E0%A6%BE%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%A8%E0%A6%BE",
@@ -1775,48 +1829,22 @@
       "alertEventId": "6bf30619dafd9a62d2078c05567f9111"
     },
     {
-      "title": "মধ্যরাতে পিরোজপুরে পার্কিংয়ে রাখা বাসে আগুন - Risingbd.com",
-      "summary": "মধ্যরাতে পিরোজপুরে পার্কিংয়ে রাখা বাসে আগুন Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/673137",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673137",
-      "publishedAt": "2026-11-27T19:45:00+00:00",
+      "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+      "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+      "link": "https://www.risingbd.com/bangladesh/news/673132",
+      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673132",
+      "publishedAt": "2026-11-27T18:44:00+00:00",
       "source": "Risingbd.com",
       "publisherName": "Risingbd.com",
       "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673137"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "মধ্যরাতে পিরোজপুরে পার্কিংয়ে রাখা বাসে আগুন - Risingbd.com",
-          "summary": "মধ্যরাতে পিরোজপুরে পার্কিংয়ে রাখা বাসে আগুন Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673137"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "0af3f97e4f4ebf2612ffca34f8c1f4fc"
-    },
-    {
-      "title": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের - Ajker Patrika",
-      "summary": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের Ajker Patrika",
-      "link": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi",
-      "publisherUrl": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi",
-      "publishedAt": "2026-11-27T18:06:00+00:00",
-      "source": "Ajker Patrika",
-      "publisherName": "Ajker Patrika",
-      "sourceEvidence": [
+        "Risingbd.com",
         "Ajker Patrika"
       ],
       "sourceLinks": [
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
+        },
         {
           "name": "Ajker Patrika",
           "url": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi"
@@ -1826,6 +1854,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "Risingbd.com",
+          "title": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন - Risingbd.com",
+          "summary": "নারায়ণগঞ্জে যাত্রীবাহী বাসে আগুন Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673132"
+        },
         {
           "name": "Ajker Patrika",
           "title": "নারায়ণগঞ্জে চলন্ত যাত্রীবাহী বাসে আগুন, অল্পের জন্য রক্ষা যাত্রীদের - Ajker Patrika",
@@ -1833,7 +1867,7 @@
           "url": "https://www.ajkerpatrika.com/bangladesh/narayanganj/ajp5h8djxfnyi"
         }
       ],
-      "corroborationCount": 1,
+      "corroborationCount": 2,
       "alertEventId": "e4b61056be9cca4fc996e5397aca4936"
     },
     {
@@ -1908,37 +1942,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "54781f4f193dce751cf31b8b289712bf"
-    },
-    {
-      "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
-      "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
-      "publishedAt": "2026-11-27T09:34:08+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
-          "summary": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113899/%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A7%87-%E0%A6%A6%E0%A6%BE%E0%A6%BE%E0%A6%81%E0%A7%9C%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "f4ec0f8fb1da7e6ebab11d8897286fff"
     }
   ]
 }
