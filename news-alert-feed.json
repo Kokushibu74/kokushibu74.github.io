@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T05:15:47.995050+00:00",
-  "updatedAt": "2026-11-28T05:15:47.995050+00:00",
+  "generatedAt": "2026-11-28T05:30:32.740247+00:00",
+  "updatedAt": "2026-11-28T05:30:32.740247+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 54,
-  "failedSourceCount": 1,
+  "healthySourceCount": 55,
+  "failedSourceCount": 0,
   "directHealthySourceCount": 21,
-  "fallbackHealthySourceCount": 33,
+  "fallbackHealthySourceCount": 34,
   "directFailedSourceCount": 34,
-  "fallbackOnlySourceCount": 33,
-  "fallbackWithItemsSourceCount": 24,
-  "fallbackZeroItemsSourceCount": 9,
+  "fallbackOnlySourceCount": 34,
+  "fallbackWithItemsSourceCount": 26,
+  "fallbackZeroItemsSourceCount": 8,
   "sourceHealth": [
     {
       "name": "The Daily Star",
@@ -172,12 +172,12 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 0,
+      "fallbackItems": 3,
       "directHealthy": false,
       "fallbackOnly": true,
-      "fallbackWithItems": false,
-      "fallbackZeroItems": true,
-      "healthClass": "fallback_zero_items"
+      "fallbackWithItems": true,
+      "fallbackZeroItems": false,
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "New Age",
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 28,
+      "fallbackItems": 29,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -377,17 +377,17 @@
     {
       "name": "Daily Inqilab",
       "domain": "dailyinqilab.com",
-      "status": "failed",
+      "status": "healthy",
       "directStatus": "failed",
       "directError": "HTTP 403",
-      "fallbackStatus": "failed",
-      "fallbackError": "HTTP 429",
-      "fallbackItems": 0,
+      "fallbackStatus": "healthy",
+      "fallbackError": null,
+      "fallbackItems": 30,
       "directHealthy": false,
-      "fallbackOnly": false,
-      "fallbackWithItems": false,
+      "fallbackOnly": true,
+      "fallbackWithItems": true,
       "fallbackZeroItems": false,
-      "healthClass": "failed"
+      "healthClass": "fallback_with_items"
     },
     {
       "name": "Barta24",
@@ -840,21 +840,57 @@
       "healthClass": "direct_healthy"
     }
   ],
-  "candidateCount": 37,
+  "candidateCount": 35,
   "alertItems": [
     {
-      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
-      "link": "https://www.jagonews24.com/country/news/1184498",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184498",
-      "publishedAt": "2026-11-28T05:06:09+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
+      "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। চাঁদার... বিস্তারিত",
+      "link": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
+      "publisherUrl": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
+      "publishedAt": "2026-11-28T05:27:39+00:00",
+      "source": "Bangla Tribune",
+      "publisherName": "Bangla Tribune",
       "sourceEvidence": [
+        "Bangla Tribune"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Bangla Tribune",
+          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Bangla Tribune",
+          "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
+          "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। চাঁদার... বিস্তারিত",
+          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "ddc77e9c2ed46613853245395c903241"
+    },
+    {
+      "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ, তিন ঘন্টা বিদ্যুৎ সরবরাহ বন্ধ | DBC NEWS",
+      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
+      "link": "https://www.youtube.com/watch?v=lEb7cIe1CRo",
+      "publisherUrl": "https://www.youtube.com/watch?v=lEb7cIe1CRo",
+      "publishedAt": "2026-11-28T05:19:36+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News",
         "Jago News 24",
         "Jamuna Television"
       ],
       "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=lEb7cIe1CRo"
+        },
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1184498"
@@ -868,6 +904,12 @@
       "alertScope": "bangladesh",
       "isBreaking": true,
       "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ, তিন ঘন্টা বিদ্যুৎ সরবরাহ বন্ধ | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=lEb7cIe1CRo"
+        },
         {
           "name": "Jago News 24",
           "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
@@ -883,7 +925,7 @@
           "locationText": "দুইটায় নগরীর মতিহার থানার, খড়খড়ি এলাকায়"
         }
       ],
-      "corroborationCount": 2,
+      "corroborationCount": 3,
       "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
@@ -1102,11 +1144,7 @@
           "name": "Jamuna Television",
           "title": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন - Jamuna Television",
           "summary": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668800",
-          "incidentDateText": "শুক্রবার (২৭ নভেম্বর)",
-          "incidentTimeText": "রাত ১২ টার দিকে",
-          "incidentTimeSource": "Jamuna Television",
-          "locationText": "মঠবাড়িয়া উপজেলা, পিরোজপুর, খুলনা, বিষয়ে মঠবাড়িয়া উপজেলা"
+          "url": "https://www.jamuna.tv/all-bangladesh/668800"
         },
         {
           "name": "Jago News 24",
@@ -1179,37 +1217,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2791f320cd78d3e0ca05e71296a3a7cb"
-    },
-    {
-      "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
-      "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
-      "link": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
-      "publishedAt": "2026-11-28T02:16:02+00:00",
-      "source": "Dhaka Tribune Bangla",
-      "publisherName": "Dhaka Tribune Bangla",
-      "sourceEvidence": [
-        "Dhaka Tribune Bangla"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Dhaka Tribune Bangla",
-          "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
-          "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
-          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
@@ -1471,68 +1478,6 @@
       "alertEventId": "850d20a73653758eb1a4c15b0c60a2a7"
     },
     {
-      "title": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ - Risingbd.com",
-      "summary": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ Risingbd.com",
-      "link": "https://www.risingbd.com/bangladesh/news/673121",
-      "publisherUrl": "https://www.risingbd.com/bangladesh/news/673121",
-      "publishedAt": "2026-11-27T16:42:00+00:00",
-      "source": "Risingbd.com",
-      "publisherName": "Risingbd.com",
-      "sourceEvidence": [
-        "Risingbd.com"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673121"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Risingbd.com",
-          "title": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ - Risingbd.com",
-          "summary": "ফেনীতে বিএনপির দু’পক্ষের সংঘর্ষ, আহত ১১ Risingbd.com",
-          "url": "https://www.risingbd.com/bangladesh/news/673121"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "5b82bc74599694d05556a0425319afdb"
-    },
-    {
-      "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
-      "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। ... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publisherUrl": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0",
-      "publishedAt": "2026-11-27T14:47:12+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
-          "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। ... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/khulna/983661/%E0%A6%9A%E0%A6%BE%E0%A6%81%E0%A6%A6%E0%A6%BE-%E0%A6%9A%E0%A6%BE%E0%A6%93%E0%A7%9F%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7-%E0%A6%AB%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A7%87%E0%A6%B8%E0%A6%BF-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%96%E0%A7%8B%E0%A6%B2%E0%A6%BE%E0%A6%B0"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ddc77e9c2ed46613853245395c903241"
-    },
-    {
       "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
       "summary": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
       "link": "https://www.jagonews24.com/country/news/1184403",
@@ -1635,37 +1580,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "9a9dcafabba4891c6e72c9c3f780b5f0"
-    },
-    {
-      "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
-      "summary": "দেশের বিভিন্ন জেলায় ১৬ দিনে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। নিরাপত্তার অভাবে বন্ধ রয়েছে ২৯টি শাখার কার্যক্রম। এতে ব্যাংকটির স্বাভাবিক কার্যক্রম ব্যাহত হওয়ার পাশাপাশি গ্রামীণ ঋণপ্রবাহ, কৃষি অর্থায়ন ও প্রান্তিক জনগোষ্ঠীর জীবিকা নিয়ে অনিশ্চয়তা তৈরি হয়েছে। ধারাবাহিক এসব হামলার ঘটনায় উদ্বেগ জানিয়েছে বাংলাদেশ ব্যাংক। হামলার পেছনে অর্থায়ন রয়েছে কি না,... বিস্তারিত",
-      "link": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80",
-      "publisherUrl": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80",
-      "publishedAt": "2026-11-27T13:05:56+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
-      "sourceEvidence": [
-        "Bangla Tribune"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Bangla Tribune",
-          "title": "অগ্নিসংযোগ-হামলায় বিপর্যস্ত গ্রামীণ ব্যাংক, কী পদক্ষেপ নিচ্ছে সরকার",
-          "summary": "দেশের বিভিন্ন জেলায় ১৬ দিনে গ্রামীণ ব্যাংকের ১০৪টি শাখা ও কার্যালয়ে হামলা, ভাঙচুর ও অগ্নিসংযোগের ঘটনা ঘটেছে। নিরাপত্তার অভাবে বন্ধ রয়েছে ২৯টি শাখার কার্যক্রম। এতে ব্যাংকটির স্বাভাবিক কার্যক্রম ব্যাহত হওয়ার পাশাপাশি গ্রামীণ ঋণপ্রবাহ, কৃষি অর্থায়ন ও প্রান্তিক জনগোষ্ঠীর জীবিকা নিয়ে অনিশ্চয়তা তৈরি হয়েছে। ধারাবাহিক এসব হামলার ঘটনায় উদ্বেগ জানিয়েছে বাংলাদেশ ব্যাংক। হামলার পেছনে অর্থায়ন রয়েছে কি না,... বিস্তারিত",
-          "url": "https://www.banglatribune.com/law-and-crime/983634/%E0%A6%85%E0%A6%97%E0%A7%8D%E0%A6%A8%E0%A6%BF%E0%A6%B8%E0%A6%82%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%B9%E0%A6%BE%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A7%9F-%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%B8%E0%A7%8D%E0%A6%A4-%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%80%E0%A6%A3-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%82%E0%A6%95-%E0%A6%95%E0%A7%80"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "ebc25c82218ac17e94be3ac05d28caee"
     },
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
