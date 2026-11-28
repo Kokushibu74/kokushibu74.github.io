@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "scope": "bangladesh",
-  "generatedAt": "2026-11-28T05:30:32.740247+00:00",
-  "updatedAt": "2026-11-28T05:30:32.740247+00:00",
+  "generatedAt": "2026-11-28T05:45:36.901094+00:00",
+  "updatedAt": "2026-11-28T05:45:36.901094+00:00",
   "collector": "publisher-rss+google-news-fallback",
   "sourceCount": 55,
-  "healthySourceCount": 55,
-  "failedSourceCount": 0,
-  "directHealthySourceCount": 21,
+  "healthySourceCount": 51,
+  "failedSourceCount": 4,
+  "directHealthySourceCount": 17,
   "fallbackHealthySourceCount": 34,
-  "directFailedSourceCount": 34,
+  "directFailedSourceCount": 38,
   "fallbackOnlySourceCount": 34,
   "fallbackWithItemsSourceCount": 26,
   "fallbackZeroItemsSourceCount": 8,
@@ -232,7 +232,7 @@
       "directError": "HTTP 404",
       "fallbackStatus": "healthy",
       "fallbackError": null,
-      "fallbackItems": 29,
+      "fallbackItems": 30,
       "directHealthy": false,
       "fallbackOnly": true,
       "fallbackWithItems": true,
@@ -722,32 +722,32 @@
     {
       "name": "Jamuna TV YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     },
     {
       "name": "Somoy TV YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     },
     {
       "name": "Channel 24 YouTube",
@@ -812,36 +812,78 @@
     {
       "name": "News24 YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     },
     {
       "name": "RTV News YouTube",
       "domain": "youtube.com",
-      "status": "healthy",
-      "directStatus": "healthy",
-      "directError": null,
+      "status": "failed",
+      "directStatus": "failed",
+      "directError": "HTTP 503",
       "fallbackStatus": "not_needed",
       "fallbackError": null,
       "fallbackItems": 0,
-      "directHealthy": true,
+      "directHealthy": false,
       "fallbackOnly": false,
       "fallbackWithItems": false,
       "fallbackZeroItems": false,
-      "healthClass": "direct_healthy"
+      "healthClass": "failed"
     }
   ],
   "candidateCount": 35,
   "alertItems": [
+    {
+      "title": "মাদারীপুরে আ.লীগ-বিএনপির সংঘর্ষ, অর্ধশতাধিক ককটেল বিস্ফোরণ | DBC NEWS",
+      "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+      "link": "https://www.youtube.com/watch?v=aGI_i8Z4sBU",
+      "publisherUrl": "https://www.youtube.com/watch?v=aGI_i8Z4sBU",
+      "publishedAt": "2026-11-28T05:35:52+00:00",
+      "source": "DBC News",
+      "publisherName": "DBC News",
+      "sourceEvidence": [
+        "DBC News",
+        "Jago News 24"
+      ],
+      "sourceLinks": [
+        {
+          "name": "DBC News · YouTube",
+          "url": "https://www.youtube.com/watch?v=aGI_i8Z4sBU"
+        },
+        {
+          "name": "Jago News 24",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "DBC News",
+          "title": "মাদারীপুরে আ.লীগ-বিএনপির সংঘর্ষ, অর্ধশতাধিক ককটেল বিস্ফোরণ | DBC NEWS",
+          "summary": "",
+          "url": "https://www.youtube.com/watch?v=aGI_i8Z4sBU"
+        },
+        {
+          "name": "Jago News 24",
+          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+          "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
+          "url": "https://www.jagonews24.com/country/news/1184444"
+        }
+      ],
+      "corroborationCount": 2,
+      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
+    },
     {
       "title": "চাঁদা চাওয়ায় বন্ধ ফার্মেসি, পুলিশের পাহারায় খোলার পর বোরকা পরে এসে গুলি",
       "summary": "পুলিশ পাহারায় চালুর ১৩ দিনের মাথায় টুটপাড়ার সেই চয়নিকা ফার্মেসিতে সন্ত্রাসীরা বোরকা পরে মোটরসাইকেলে এসে গুলি করে পালিয়েছে। গুলিতে দোকান মালিকের ছেলে জারিফুজ্জামান জারিফ জখম হয়েছে। তার পায়ে গুলি লাগে। আহত অবস্থায় তাকে খুলনা মেডিক্যাল কলেজ হাসপাতালে নেওয়া হয়েছে। অন্য দিনের মতো শুক্রবারও (২৭ নভেম্বর) পুলিশ পাহারা ছিল ফার্মেসিটি। কিন্তু ঘটনার সময় সেখানে কোনও পুলিশ ছিল না বলে জানা গেছে। চাঁদার... বিস্তারিত",
@@ -875,7 +917,7 @@
     },
     {
       "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে পেট্রোল বোমা নিক্ষেপ, তিন ঘন্টা বিদ্যুৎ সরবরাহ বন্ধ | DBC NEWS",
-      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
+      "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
       "link": "https://www.youtube.com/watch?v=lEb7cIe1CRo",
       "publisherUrl": "https://www.youtube.com/watch?v=lEb7cIe1CRo",
       "publishedAt": "2026-11-28T05:19:36+00:00",
@@ -884,6 +926,7 @@
       "sourceEvidence": [
         "DBC News",
         "Jago News 24",
+        "Risingbd.com",
         "Jamuna Television"
       ],
       "sourceLinks": [
@@ -894,6 +937,10 @@
         {
           "name": "Jago News 24",
           "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
         },
         {
           "name": "Jamuna Television",
@@ -913,8 +960,14 @@
         {
           "name": "Jago News 24",
           "title": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
-          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ সমিতির কার্যালয়ে পরপর দুইদিন পেট্রোল বোমা নিক্ষেপ ও গুলিবর্ষণের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) গভীর রাতে পবা উপজেলার...",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুৎ উপকেন্দ্রে ফের পেট্রোল বোমা নিক্ষেপ, গুলিবর্ষণ",
           "url": "https://www.jagonews24.com/country/news/1184498"
+        },
+        {
+          "name": "Risingbd.com",
+          "title": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা - Risingbd.com",
+          "summary": "রাজশাহীতে পল্লী বিদ্যুতের উপকেন্দ্রে দুই রাতে হামলা, আতঙ্কে কর্মীরা Risingbd.com",
+          "url": "https://www.risingbd.com/bangladesh/news/673170"
         },
         {
           "name": "Jamuna Television",
@@ -925,7 +978,7 @@
           "locationText": "দুইটায় নগরীর মতিহার থানার, খড়খড়ি এলাকায়"
         }
       ],
-      "corroborationCount": 3,
+      "corroborationCount": 4,
       "alertEventId": "89cb1fe284972c0222ab2c758462a8e3"
     },
     {
@@ -994,52 +1047,6 @@
       "alertEventId": "fda2404f1132e51beaccd0f2dbda4447"
     },
     {
-      "title": "মাদারীপুরে বিএনপি - কার্যক্রম নিষিদ্ধ আ.লীগ সংঘর্ষ; আহত ৫ | Madaripur | BNP | News | Jamuna TV",
-      "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
-      "link": "https://www.youtube.com/watch?v=MYp7rnAZGYM",
-      "publisherUrl": "https://www.youtube.com/watch?v=MYp7rnAZGYM",
-      "publishedAt": "2026-11-28T04:30:04+00:00",
-      "source": "Jamuna TV",
-      "publisherName": "Jamuna TV",
-      "sourceEvidence": [
-        "Jamuna TV",
-        "Jamuna Television"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jamuna TV · YouTube",
-          "url": "https://www.youtube.com/watch?v=MYp7rnAZGYM"
-        },
-        {
-          "name": "Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668801"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jamuna TV",
-          "title": "মাদারীপুরে বিএনপি - কার্যক্রম নিষিদ্ধ আ.লীগ সংঘর্ষ; আহত ৫ | Madaripur | BNP | News | Jamuna TV",
-          "summary": "",
-          "url": "https://www.youtube.com/watch?v=MYp7rnAZGYM"
-        },
-        {
-          "name": "Jamuna Television",
-          "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
-          "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
-          "url": "https://www.jamuna.tv/all-bangladesh/668801",
-          "incidentDateText": "শুক্রবার (২৭ নভেম্বর)",
-          "incidentTimeText": "রাত ৮টার",
-          "incidentTimeSource": "Jamuna Television",
-          "locationText": "কালকিনি পৌরসভার মাছবাজার এলাকায়"
-        }
-      ],
-      "corroborationCount": 2,
-      "alertEventId": "e097c013a6fffe9ffaece501b81f696c"
-    },
-    {
       "title": "মাদারীপুরে থানার সামনে আওয়ামী লীগ-বিএনপির দফায় দফায় সংঘর্ষ, ককটেল বিস্ফোরণ",
       "summary": "মাদারীপুরের কালকিনিতে কার্যক্রম নিষিদ্ধ আওয়ামী লীগ ও বিএনপির নেতা–কর্মীদের মধ্যে দফায় দফায় সংঘর্ষের ঘটনা ঘটেছে। গতকাল শুক্রবার রাত আটটার পর শুরু হওয়া এ সংঘর্ষ চলে প্রায় দুই ঘণ্টা।",
       "link": "https://www.prothomalo.com/bangladesh/district/gue2m5ccjs",
@@ -1104,6 +1111,37 @@
       "alertEventId": "8e6228e599f4c6ca32e478f0ed228684"
     },
     {
+      "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
+      "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
+      "link": "https://www.jamuna.tv/all-bangladesh/668801",
+      "publisherUrl": "https://www.jamuna.tv/all-bangladesh/668801",
+      "publishedAt": "2026-11-28T04:08:21+00:00",
+      "source": "Jamuna Television",
+      "publisherName": "Jamuna Television",
+      "sourceEvidence": [
+        "Jamuna Television"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668801"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Jamuna Television",
+          "title": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ - Jamuna Television",
+          "summary": "মাদারীপুরে কার্যক্রম নিষিদ্ধ আ. লীগ নেতাকর্মীদের সাথে বিএনপির সংঘর্ষ, আহত ৫ Jamuna Television",
+          "url": "https://www.jamuna.tv/all-bangladesh/668801"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "e097c013a6fffe9ffaece501b81f696c"
+    },
+    {
       "title": "পিরোজপুরে পার্কিং করা বাসে আগুন",
       "summary": "পিরোজপুরের মঠবাড়িয়ায় পার্কিং করে রাখা একটি বাসে অগ্নিসংযোগের ঘটনা ঘটেছে। শুক্রবার (২৮ নভেম্বর) রাতে উপজেলা পরিষদসংলগ্ন বাসস্ট্যান্ডে এ ঘটনা ঘটে। এতে বাসটির পেছনের অংশ ও কয়েকটি আসন পুড়ে গেছে। তবে এ ঘটনায় কেউ হতাহত হননি। স্থানীয় সূত্রে জানা গেছে, শুক্রবার রাত সাড়ে ১১টার দিকে বাসস্ট্যান্ডে অবস্থানরত অন্য বাসের হেলপাররা আরাফাত পরিবহনের একটি বাসে আগুন জ্বলতে দেখেন। পরে তারা ফায়ার সার্ভিসকে খবর দেন।... বিস্তারিত",
       "link": "https://www.banglatribune.com/country/barishal/983717/%E0%A6%AA%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%9C%E0%A6%AA%E0%A7%81%E0%A6%B0%E0%A7%87-%E0%A6%AA%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%82-%E0%A6%95%E0%A6%B0%E0%A7%87-%E0%A6%B0%E0%A6%BE%E0%A6%96%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8",
@@ -1157,37 +1195,6 @@
       "alertEventId": "9e11b0918e5e354f9a363927707f6bc6"
     },
     {
-      "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
-      "summary": "",
-      "link": "https://www.youtube.com/shorts/x0CNsDTO9dM",
-      "publisherUrl": "https://www.youtube.com/shorts/x0CNsDTO9dM",
-      "publishedAt": "2026-11-28T03:45:27+00:00",
-      "source": "Ekattor TV",
-      "publisherName": "Ekattor TV",
-      "sourceEvidence": [
-        "Ekattor TV"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Ekattor TV · YouTube",
-          "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Ekattor TV",
-          "title": "কক্সবাজারে নলকূপে গ্যাসের আগুন, কী ঘটছে সেখানে? | Cox's Bazar Fire | Ekattor TV",
-          "summary": "",
-          "url": "https://www.youtube.com/shorts/x0CNsDTO9dM"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "4faa8b97a0aee142910f3bb952016a9c"
-    },
-    {
       "title": "বাবাকে বলেছিলেন, ‘আমি ভালো আছি, দোয়া করিও’, দুদিন পর এল ছেলের মৃত্যুর খবর",
       "summary": "সৌদি আরবে সড়ক দুর্ঘটনায় প্রাণ হারিয়েছেন খাগড়াছড়ির মাটিরাঙ্গা উপজেলার আশরাফ উদ্দিন। দুই মাস আগে দেশে এসে বিয়ে করেন আশরাফ।",
       "link": "https://www.prothomalo.com/bangladesh/district/tjmb50nuqf",
@@ -1217,6 +1224,37 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "2791f320cd78d3e0ca05e71296a3a7cb"
+    },
+    {
+      "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
+      "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
+      "link": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
+      "publisherUrl": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95",
+      "publishedAt": "2026-11-28T02:16:02+00:00",
+      "source": "Dhaka Tribune Bangla",
+      "publisherName": "Dhaka Tribune Bangla",
+      "sourceEvidence": [
+        "Dhaka Tribune Bangla"
+      ],
+      "sourceLinks": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
+        }
+      ],
+      "category": "Bangladesh",
+      "alertScope": "bangladesh",
+      "isBreaking": true,
+      "sourceStories": [
+        {
+          "name": "Dhaka Tribune Bangla",
+          "title": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ - Dhaka Tribune Bangla",
+          "summary": "মহাসড়কে যাত্রীবেশে বাসে আগুন দেওয়ার অভিযোগ Dhaka Tribune Bangla",
+          "url": "https://bangla.dhakatribune.com/bangladesh/113914/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%87-%E0%A6%89%E0%A6%A0%E0%A7%87-%E0%A6%86%E0%A6%97%E0%A7%81%E0%A6%A8-%E0%A6%A6%E0%A6%BF%E0%A7%9F%E0%A7%87-%E0%A6%A8%E0%A7%87%E0%A6%AE%E0%A7%87-%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A6%A6%E0%A7%81%E0%A6%87-%E0%A6%AF%E0%A7%81%E0%A6%AC%E0%A6%95"
+        }
+      ],
+      "corroborationCount": 1,
+      "alertEventId": "afadf95b1328d5ea7c460dbf7a483dbe"
     },
     {
       "title": "মোটরসাইকেলে এসে বোমা ছুড়ে কেউ পার পাবে না: আইনমন্ত্রী",
@@ -1279,37 +1317,6 @@
       ],
       "corroborationCount": 1,
       "alertEventId": "7c3f3ab284909314acb92f9ddc232306"
-    },
-    {
-      "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-      "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-      "link": "https://www.jagonews24.com/country/news/1184444",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184444",
-      "publishedAt": "2026-11-27T21:52:39+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
-      "sourceEvidence": [
-        "Jago News 24"
-      ],
-      "sourceLinks": [
-        {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184444"
-        }
-      ],
-      "category": "Bangladesh",
-      "alertScope": "bangladesh",
-      "isBreaking": true,
-      "sourceStories": [
-        {
-          "name": "Jago News 24",
-          "title": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "summary": "মাদারীপুরে আওয়ামী লীগ-বিএনপি সংঘর্ষ, অর্ধশত ককটেল বিস্ফোরণ",
-          "url": "https://www.jagonews24.com/country/news/1184444"
-        }
-      ],
-      "corroborationCount": 1,
-      "alertEventId": "d50e6f57ac8b1014f9cabe437deb415e"
     },
     {
       "title": "চাঁদপুরে মেঘনা এক্সপ্রেসের বগিতে আগুন",
@@ -1478,20 +1485,20 @@
       "alertEventId": "850d20a73653758eb1a4c15b0c60a2a7"
     },
     {
-      "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
-      "summary": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
-      "link": "https://www.jagonews24.com/country/news/1184403",
-      "publisherUrl": "https://www.jagonews24.com/country/news/1184403",
-      "publishedAt": "2026-11-27T14:03:22+00:00",
-      "source": "Jago News 24",
-      "publisherName": "Jago News 24",
+      "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
+      "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
+      "link": "https://barta24.com/details/national/349999",
+      "publisherUrl": "https://barta24.com/details/national/349999",
+      "publishedAt": "2026-11-27T14:11:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
       "sourceEvidence": [
-        "Jago News 24"
+        "Barta 24"
       ],
       "sourceLinks": [
         {
-          "name": "Jago News 24",
-          "url": "https://www.jagonews24.com/country/news/1184403"
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349999"
         }
       ],
       "category": "Bangladesh",
@@ -1499,14 +1506,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Jago News 24",
-          "title": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
-          "summary": "ফেনীতে বিএনপির দুই পক্ষের সংঘর্ষে একজনের কবজি বিচ্ছিন্ন, আহত ২০",
-          "url": "https://www.jagonews24.com/country/news/1184403"
+          "name": "Barta 24",
+          "title": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা - Barta 24",
+          "summary": "রাজশাহীতে পরপর দুই রাতে বিদ্যুৎ উপকেন্দ্রে হামলা Barta 24",
+          "url": "https://barta24.com/details/national/349999"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "c37bb617f5e0a59661b4a6161d88c031"
+      "alertEventId": "5bd5d013a3abfe95d74282d8a444ebc5"
     },
     {
       "title": "সৌদি আরবে সড়ক দুর্ঘটনায় দুই বাংলাদেশির মৃত্যু - কালের কণ্ঠ",
@@ -1551,20 +1558,20 @@
       "alertEventId": "54781f4f193dce751cf31b8b289712bf"
     },
     {
-      "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
-      "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব রুহুল কবির রিজভী বলেছেন, ‘কলকাতায় বসে আওয়ামী লীগের নেতারা বিকাশে টাকা পাঠিয়ে সন্ত্রাসীদের মাধ্যমে নাশকতা চালিয়ে দেশকে অস্থিতিশীল করার চেষ্টা করছে। আওয়ামী লীগের নেতারা স্থানীয় সন্ত্রাসীদের হাতে ককটেল ও পেট্রোল তুলে দিয়ে গ্রামীণ ব্যাংকে আগুন দিচ্ছেন। বিএনপি নেতাকর্মীদের বাড়িতে আগুন দিচ্ছেন।’ তিনি বলেন, ‘পালিয়ে যাওয়ার পরও বাংলাদেশকে রক্তাক্ত করার... বিস্তারিত",
-      "link": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
-      "publisherUrl": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE",
-      "publishedAt": "2026-11-27T13:11:21+00:00",
-      "source": "Bangla Tribune",
-      "publisherName": "Bangla Tribune",
+      "title": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন - Barta 24",
+      "summary": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন Barta 24",
+      "link": "https://barta24.com/details/national/349987",
+      "publisherUrl": "https://barta24.com/details/national/349987",
+      "publishedAt": "2026-11-27T12:39:00+00:00",
+      "source": "Barta 24",
+      "publisherName": "Barta 24",
       "sourceEvidence": [
-        "Bangla Tribune"
+        "Barta 24"
       ],
       "sourceLinks": [
         {
-          "name": "Bangla Tribune",
-          "url": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+          "name": "Barta 24",
+          "url": "https://barta24.com/details/national/349987"
         }
       ],
       "category": "Bangladesh",
@@ -1572,14 +1579,14 @@
       "isBreaking": true,
       "sourceStories": [
         {
-          "name": "Bangla Tribune",
-          "title": "তারেক রহমানের যোগ্য নেতৃত্বের কারণে আ.লীগের চেষ্টা সফল হচ্ছে না: রিজভী",
-          "summary": "বিএনপির ভারপ্রাপ্ত মহাসচিব রুহুল কবির রিজভী বলেছেন, ‘কলকাতায় বসে আওয়ামী লীগের নেতারা বিকাশে টাকা পাঠিয়ে সন্ত্রাসীদের মাধ্যমে নাশকতা চালিয়ে দেশকে অস্থিতিশীল করার চেষ্টা করছে। আওয়ামী লীগের নেতারা স্থানীয় সন্ত্রাসীদের হাতে ককটেল ও পেট্রোল তুলে দিয়ে গ্রামীণ ব্যাংকে আগুন দিচ্ছেন। বিএনপি নেতাকর্মীদের বাড়িতে আগুন দিচ্ছেন।’ তিনি বলেন, ‘পালিয়ে যাওয়ার পরও বাংলাদেশকে রক্তাক্ত করার... বিস্তারিত",
-          "url": "https://www.banglatribune.com/country/dhaka/983639/%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%95-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A7%87%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%A3%E0%A7%87-%E0%A6%86.%E0%A6%B2%E0%A7%80%E0%A6%97%E0%A7%87%E0%A6%B0-%E0%A6%9A%E0%A7%87%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%BE"
+          "name": "Barta 24",
+          "title": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন - Barta 24",
+          "summary": "পিরোজপুরে পার্কিং করে রাখা বাসে আগুন Barta 24",
+          "url": "https://barta24.com/details/national/349987"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "9a9dcafabba4891c6e72c9c3f780b5f0"
+      "alertEventId": "e6a20bd623ba2e28daab5cdc0d0f3ecc"
     },
     {
       "title": "সাভারে দাাঁড়িয়ে থাকা বাসে আগুন - Dhaka Tribune Bangla",
@@ -1675,16 +1682,10 @@
           "title": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন - dhakapost.com",
           "summary": "৩১ দিন পর নিয়ন্ত্রণে ইনানীর গ্যাসকূপের আগুন dhakapost.com",
           "url": "https://www.dhakapost.com/country/501246"
-        },
-        {
-          "name": "dhakapost.com",
-          "title": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত - dhakapost.com",
-          "summary": "সৌদির এক তেল শোধনাগারে হুথি-হামলা : বিদেশি নাগরিক নিহত dhakapost.com",
-          "url": "https://www.dhakapost.com/international/501224"
         }
       ],
       "corroborationCount": 1,
-      "alertEventId": "9ae9e31ad7ee4f30123009b6c5269519"
+      "alertEventId": "4a3ebe4a62f5c0360b4a1ee6cf9c722e"
     },
     {
       "title": "যশোরে মাটি খুঁড়তে গিয়ে বোমা বিস্ফোরণ, আহত ২ শ্রমিক - Dhaka Tribune Bangla",
